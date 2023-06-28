@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class ToggleSupergroupIsBroadcastGroup extends TdFunction {
-
-  /// Upgrades supergroup to a broadcast group; requires owner privileges in the supergroup
+/// **ToggleSupergroupIsBroadcastGroup** *(toggleSupergroupIsBroadcastGroup)* - TDLib function
+///
+/// Upgrades supergroup to a broadcast group; requires owner privileges in the supergroup.
+///
+/// * [supergroupId]: Identifier of the supergroup.
+///
+/// [Ok] is returned on completion.
+final class ToggleSupergroupIsBroadcastGroup extends TdFunction {
+  
+  /// **ToggleSupergroupIsBroadcastGroup** *(toggleSupergroupIsBroadcastGroup)* - TDLib function
+  ///
+  /// Upgrades supergroup to a broadcast group; requires owner privileges in the supergroup.
+  ///
+  /// * [supergroupId]: Identifier of the supergroup.
+  ///
+  /// [Ok] is returned on completion.
   const ToggleSupergroupIsBroadcastGroup({
     required this.supergroupId,
   });
   
-  /// [supergroupId] Identifier of the supergroup
+  /// Identifier of the supergroup
   final int supergroupId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "supergroup_id": supergroupId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   ToggleSupergroupIsBroadcastGroup copyWith({
     int? supergroupId,
@@ -25,8 +39,11 @@ class ToggleSupergroupIsBroadcastGroup extends TdFunction {
     supergroupId: supergroupId ?? this.supergroupId,
   );
 
-  static const CONSTRUCTOR = 'toggleSupergroupIsBroadcastGroup';
-  
+  static const String objectType = 'toggleSupergroupIsBroadcastGroup';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

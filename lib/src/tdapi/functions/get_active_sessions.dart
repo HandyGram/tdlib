@@ -1,23 +1,36 @@
 part of '../tdapi.dart';
 
-class GetActiveSessions extends TdFunction {
-
-  /// Returns all active sessions of the current user
+/// **GetActiveSessions** *(getActiveSessions)* - TDLib function
+///
+/// Returns all active sessions of the current user.
+///
+/// [Sessions] is returned on completion.
+final class GetActiveSessions extends TdFunction {
+  
+  /// **GetActiveSessions** *(getActiveSessions)* - TDLib function
+  ///
+  /// Returns all active sessions of the current user.
+  ///
+  /// [Sessions] is returned on completion.
   const GetActiveSessions();
   
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetActiveSessions copyWith() => const GetActiveSessions();
 
-  static const CONSTRUCTOR = 'getActiveSessions';
-  
+  static const String objectType = 'getActiveSessions';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

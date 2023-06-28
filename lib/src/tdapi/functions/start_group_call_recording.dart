@@ -1,8 +1,27 @@
 part of '../tdapi.dart';
 
-class StartGroupCallRecording extends TdFunction {
-
-  /// Starts recording of an active group call. Requires groupCall.can_be_managed group call flag
+/// **StartGroupCallRecording** *(startGroupCallRecording)* - TDLib function
+///
+/// Starts recording of an active group call. Requires groupCall.can_be_managed group call flag.
+///
+/// * [groupCallId]: Group call identifier.
+/// * [title]: Group call recording title; 0-64 characters.
+/// * [recordVideo]: Pass true to record a video file instead of an audio file.
+/// * [usePortraitOrientation]: Pass true to use portrait orientation for video instead of landscape one.
+///
+/// [Ok] is returned on completion.
+final class StartGroupCallRecording extends TdFunction {
+  
+  /// **StartGroupCallRecording** *(startGroupCallRecording)* - TDLib function
+  ///
+  /// Starts recording of an active group call. Requires groupCall.can_be_managed group call flag.
+  ///
+  /// * [groupCallId]: Group call identifier.
+  /// * [title]: Group call recording title; 0-64 characters.
+  /// * [recordVideo]: Pass true to record a video file instead of an audio file.
+  /// * [usePortraitOrientation]: Pass true to use portrait orientation for video instead of landscape one.
+  ///
+  /// [Ok] is returned on completion.
   const StartGroupCallRecording({
     required this.groupCallId,
     required this.title,
@@ -10,29 +29,30 @@ class StartGroupCallRecording extends TdFunction {
     required this.usePortraitOrientation,
   });
   
-  /// [groupCallId] Group call identifier 
+  /// Group call identifier
   final int groupCallId;
 
-  /// [title] Group call recording title; 0-64 characters
+  /// Group call recording title; 0-64 characters
   final String title;
 
-  /// [recordVideo] Pass true to record a video file instead of an audio file
+  /// Pass true to record a video file instead of an audio file
   final bool recordVideo;
 
-  /// [usePortraitOrientation] Pass true to use portrait orientation for video instead of landscape one
+  /// Pass true to use portrait orientation for video instead of landscape one
   final bool usePortraitOrientation;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "group_call_id": groupCallId,
       "title": title,
       "record_video": recordVideo,
       "use_portrait_orientation": usePortraitOrientation,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   StartGroupCallRecording copyWith({
     int? groupCallId,
@@ -46,8 +66,11 @@ class StartGroupCallRecording extends TdFunction {
     usePortraitOrientation: usePortraitOrientation ?? this.usePortraitOrientation,
   );
 
-  static const CONSTRUCTOR = 'startGroupCallRecording';
-  
+  static const String objectType = 'startGroupCallRecording';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

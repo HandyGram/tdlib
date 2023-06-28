@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class ParseTextEntities extends TdFunction {
-
-  /// Parses Bold, Italic, Underline, Strikethrough, Spoiler, Code, Pre, PreCode, TextUrl and MentionName entities contained in the text. Can be called synchronously
+/// **ParseTextEntities** *(parseTextEntities)* - TDLib function
+///
+/// Parses Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, Code, Pre, PreCode, TextUrl and MentionName entities from a marked-up text. Can be called synchronously.
+///
+/// * [text]: The text to parse.
+/// * [parseMode]: Text parse mode.
+///
+/// [FormattedText] is returned on completion.
+final class ParseTextEntities extends TdFunction {
+  
+  /// **ParseTextEntities** *(parseTextEntities)* - TDLib function
+  ///
+  /// Parses Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, Code, Pre, PreCode, TextUrl and MentionName entities from a marked-up text. Can be called synchronously.
+  ///
+  /// * [text]: The text to parse.
+  /// * [parseMode]: Text parse mode.
+  ///
+  /// [FormattedText] is returned on completion.
   const ParseTextEntities({
     required this.text,
     required this.parseMode,
   });
   
-  /// [text] The text to parse 
+  /// The text to parse 
   final String text;
 
-  /// [parseMode] Text parse mode
+  /// Text parse mode
   final TextParseMode parseMode;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "text": text,
       "parse_mode": parseMode.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   ParseTextEntities copyWith({
     String? text,
@@ -32,8 +48,11 @@ class ParseTextEntities extends TdFunction {
     parseMode: parseMode ?? this.parseMode,
   );
 
-  static const CONSTRUCTOR = 'parseTextEntities';
-  
+  static const String objectType = 'parseTextEntities';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

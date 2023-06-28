@@ -1,15 +1,24 @@
 part of '../tdapi.dart';
 
-class LocalizationTargetInfo extends TdObject {
-
-  /// Contains information about the current localization target
+/// **LocalizationTargetInfo** *(localizationTargetInfo)* - basic class
+///
+/// Contains information about the current localization target.
+///
+/// * [languagePacks]: List of available language packs for this application.
+final class LocalizationTargetInfo extends TdObject {
+  
+  /// **LocalizationTargetInfo** *(localizationTargetInfo)* - basic class
+  ///
+  /// Contains information about the current localization target.
+  ///
+  /// * [languagePacks]: List of available language packs for this application.
   const LocalizationTargetInfo({
     required this.languagePacks,
     this.extra,
     this.clientId,
   });
   
-  /// [languagePacks] List of available language packs for this application
+  /// List of available language packs for this application
   final List<LanguagePackInfo> languagePacks;
 
   /// [extra] callback sign
@@ -29,12 +38,13 @@ class LocalizationTargetInfo extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "language_packs": languagePacks.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   LocalizationTargetInfo copyWith({
     List<LanguagePackInfo>? languagePacks,
@@ -46,8 +56,11 @@ class LocalizationTargetInfo extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'localizationTargetInfo';
-  
+  static const String objectType = 'localizationTargetInfo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

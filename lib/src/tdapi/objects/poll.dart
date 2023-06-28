@@ -1,8 +1,35 @@
 part of '../tdapi.dart';
 
-class Poll extends TdObject {
-
-  /// Describes a poll
+/// **Poll** *(poll)* - basic class
+///
+/// Describes a poll.
+///
+/// * [id]: Unique poll identifier.
+/// * [question]: Poll question; 1-300 characters.
+/// * [options]: List of poll answer options.
+/// * [totalVoterCount]: Total number of voters, participating in the poll.
+/// * [recentVoterUserIds]: User identifiers of recent voters, if the poll is non-anonymous.
+/// * [isAnonymous]: True, if the poll is anonymous.
+/// * [type]: Type of the poll.
+/// * [openPeriod]: Amount of time the poll will be active after creation, in seconds.
+/// * [closeDate]: Point in time (Unix timestamp) when the poll will automatically be closed.
+/// * [isClosed]: True, if the poll is closed.
+final class Poll extends TdObject {
+  
+  /// **Poll** *(poll)* - basic class
+  ///
+  /// Describes a poll.
+  ///
+  /// * [id]: Unique poll identifier.
+  /// * [question]: Poll question; 1-300 characters.
+  /// * [options]: List of poll answer options.
+  /// * [totalVoterCount]: Total number of voters, participating in the poll.
+  /// * [recentVoterUserIds]: User identifiers of recent voters, if the poll is non-anonymous.
+  /// * [isAnonymous]: True, if the poll is anonymous.
+  /// * [type]: Type of the poll.
+  /// * [openPeriod]: Amount of time the poll will be active after creation, in seconds.
+  /// * [closeDate]: Point in time (Unix timestamp) when the poll will automatically be closed.
+  /// * [isClosed]: True, if the poll is closed.
   const Poll({
     required this.id,
     required this.question,
@@ -16,34 +43,34 @@ class Poll extends TdObject {
     required this.isClosed,
   });
   
-  /// [id] Unique poll identifier 
+  /// Unique poll identifier
   final int id;
 
-  /// [question] Poll question; 1-300 characters 
+  /// Poll question; 1-300 characters
   final String question;
 
-  /// [options] List of poll answer options
+  /// List of poll answer options
   final List<PollOption> options;
 
-  /// [totalVoterCount] Total number of voters, participating in the poll
+  /// Total number of voters, participating in the poll
   final int totalVoterCount;
 
-  /// [recentVoterUserIds] User identifiers of recent voters, if the poll is non-anonymous
+  /// User identifiers of recent voters, if the poll is non-anonymous
   final List<int> recentVoterUserIds;
 
-  /// [isAnonymous] True, if the poll is anonymous
+  /// True, if the poll is anonymous
   final bool isAnonymous;
 
-  /// [type] Type of the poll
+  /// Type of the poll
   final PollType type;
 
-  /// [openPeriod] Amount of time the poll will be active after creation, in seconds
+  /// Amount of time the poll will be active after creation, in seconds
   final int openPeriod;
 
-  /// [closeDate] Point in time (Unix timestamp) when the poll will automatically be closed 
+  /// Point in time (Unix timestamp) when the poll will automatically be closed
   final int closeDate;
 
-  /// [isClosed] True, if the poll is closed
+  /// True, if the poll is closed
   final bool isClosed;
   
   /// Parse from a json
@@ -62,9 +89,9 @@ class Poll extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "id": id,
       "question": question,
       "options": options.map((i) => i.toJson()).toList(),
@@ -75,8 +102,9 @@ class Poll extends TdObject {
       "open_period": openPeriod,
       "close_date": closeDate,
       "is_closed": isClosed,
-    };
-  }
+		};
+	}
+
   
   Poll copyWith({
     int? id,
@@ -102,8 +130,11 @@ class Poll extends TdObject {
     isClosed: isClosed ?? this.isClosed,
   );
 
-  static const CONSTRUCTOR = 'poll';
-  
+  static const String objectType = 'poll';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

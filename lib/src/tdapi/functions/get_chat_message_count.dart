@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class GetChatMessageCount extends TdFunction {
-
-  /// Returns approximate number of messages of the specified type in the chat
+/// **GetChatMessageCount** *(getChatMessageCount)* - TDLib function
+///
+/// Returns approximate number of messages of the specified type in the chat.
+///
+/// * [chatId]: Identifier of the chat in which to count messages.
+/// * [filter]: Filter for message content; searchMessagesFilterEmpty is unsupported in this function.
+/// * [returnLocal]: Pass true to get the number of messages without sending network requests, or -1 if the number of messages is unknown locally.
+///
+/// [Count] is returned on completion.
+final class GetChatMessageCount extends TdFunction {
+  
+  /// **GetChatMessageCount** *(getChatMessageCount)* - TDLib function
+  ///
+  /// Returns approximate number of messages of the specified type in the chat.
+  ///
+  /// * [chatId]: Identifier of the chat in which to count messages.
+  /// * [filter]: Filter for message content; searchMessagesFilterEmpty is unsupported in this function.
+  /// * [returnLocal]: Pass true to get the number of messages without sending network requests, or -1 if the number of messages is unknown locally.
+  ///
+  /// [Count] is returned on completion.
   const GetChatMessageCount({
     required this.chatId,
     required this.filter,
     required this.returnLocal,
   });
   
-  /// [chatId] Identifier of the chat in which to count messages 
+  /// Identifier of the chat in which to count messages
   final int chatId;
 
-  /// [filter] Filter for message content; searchMessagesFilterEmpty is unsupported in this function 
+  /// Filter for message content; searchMessagesFilterEmpty is unsupported in this function
   final SearchMessagesFilter filter;
 
-  /// [returnLocal] If true, returns count that is available locally without sending network requests, returning -1 if the number of messages is unknown
+  /// Pass true to get the number of messages without sending network requests, or -1 if the number of messages is unknown locally
   final bool returnLocal;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "filter": filter.toJson(),
       "return_local": returnLocal,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetChatMessageCount copyWith({
     int? chatId,
@@ -39,8 +57,11 @@ class GetChatMessageCount extends TdFunction {
     returnLocal: returnLocal ?? this.returnLocal,
   );
 
-  static const CONSTRUCTOR = 'getChatMessageCount';
-  
+  static const String objectType = 'getChatMessageCount';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

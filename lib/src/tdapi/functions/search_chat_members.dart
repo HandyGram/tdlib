@@ -1,8 +1,27 @@
 part of '../tdapi.dart';
 
-class SearchChatMembers extends TdFunction {
-
-  /// Searches for a specified query in the first name, last name and username of the members of a specified chat. Requires administrator rights in channels
+/// **SearchChatMembers** *(searchChatMembers)* - TDLib function
+///
+/// Searches for a specified query in the first name, last name and usernames of the members of a specified chat. Requires administrator rights in channels.
+///
+/// * [chatId]: Chat identifier.
+/// * [query]: Query to search for.
+/// * [limit]: The maximum number of users to be returned; up to 200.
+/// * [filter]: The type of users to search for; pass null to search among all chat members *(optional)*.
+///
+/// [ChatMembers] is returned on completion.
+final class SearchChatMembers extends TdFunction {
+  
+  /// **SearchChatMembers** *(searchChatMembers)* - TDLib function
+  ///
+  /// Searches for a specified query in the first name, last name and usernames of the members of a specified chat. Requires administrator rights in channels.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [query]: Query to search for.
+  /// * [limit]: The maximum number of users to be returned; up to 200.
+  /// * [filter]: The type of users to search for; pass null to search among all chat members *(optional)*.
+  ///
+  /// [ChatMembers] is returned on completion.
   const SearchChatMembers({
     required this.chatId,
     required this.query,
@@ -10,29 +29,30 @@ class SearchChatMembers extends TdFunction {
     this.filter,
   });
   
-  /// [chatId] Chat identifier
+  /// Chat identifier
   final int chatId;
 
-  /// [query] Query to search for
+  /// Query to search for
   final String query;
 
-  /// [limit] The maximum number of users to be returned; up to 200
+  /// The maximum number of users to be returned; up to 200
   final int limit;
 
-  /// [filter] The type of users to search for; pass null to search among all chat members
+  /// The type of users to search for; pass null to search among all chat members
   final ChatMembersFilter? filter;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "query": query,
       "limit": limit,
       "filter": filter?.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SearchChatMembers copyWith({
     int? chatId,
@@ -46,8 +66,11 @@ class SearchChatMembers extends TdFunction {
     filter: filter ?? this.filter,
   );
 
-  static const CONSTRUCTOR = 'searchChatMembers';
-  
+  static const String objectType = 'searchChatMembers';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

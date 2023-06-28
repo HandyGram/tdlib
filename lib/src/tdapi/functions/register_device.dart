@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class RegisterDevice extends TdFunction {
-
-  /// Registers the currently used device for receiving push notifications. Returns a globally unique identifier of the push notification subscription
+/// **RegisterDevice** *(registerDevice)* - TDLib function
+///
+/// Registers the currently used device for receiving push notifications. Returns a globally unique identifier of the push notification subscription.
+///
+/// * [deviceToken]: Device token.
+/// * [otherUserIds]: List of user identifiers of other users currently using the application.
+///
+/// [PushReceiverId] is returned on completion.
+final class RegisterDevice extends TdFunction {
+  
+  /// **RegisterDevice** *(registerDevice)* - TDLib function
+  ///
+  /// Registers the currently used device for receiving push notifications. Returns a globally unique identifier of the push notification subscription.
+  ///
+  /// * [deviceToken]: Device token.
+  /// * [otherUserIds]: List of user identifiers of other users currently using the application.
+  ///
+  /// [PushReceiverId] is returned on completion.
   const RegisterDevice({
     required this.deviceToken,
     required this.otherUserIds,
   });
   
-  /// [deviceToken] Device token 
+  /// Device token 
   final DeviceToken deviceToken;
 
-  /// [otherUserIds] List of user identifiers of other users currently using the application
+  /// List of user identifiers of other users currently using the application
   final List<int> otherUserIds;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "device_token": deviceToken.toJson(),
       "other_user_ids": otherUserIds.map((i) => i).toList(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   RegisterDevice copyWith({
     DeviceToken? deviceToken,
@@ -32,8 +48,11 @@ class RegisterDevice extends TdFunction {
     otherUserIds: otherUserIds ?? this.otherUserIds,
   );
 
-  static const CONSTRUCTOR = 'registerDevice';
-  
+  static const String objectType = 'registerDevice';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

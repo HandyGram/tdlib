@@ -1,8 +1,31 @@
 part of '../tdapi.dart';
 
-class GetMapThumbnailFile extends TdFunction {
-
-  /// Returns information about a file with a map thumbnail in PNG format. Only map thumbnail files with size less than 1MB can be downloaded
+/// **GetMapThumbnailFile** *(getMapThumbnailFile)* - TDLib function
+///
+/// Returns information about a file with a map thumbnail in PNG format. Only map thumbnail files with size less than 1MB can be downloaded.
+///
+/// * [location]: Location of the map center.
+/// * [zoom]: Map zoom level; 13-20.
+/// * [width]: Map width in pixels before applying scale; 16-1024.
+/// * [height]: Map height in pixels before applying scale; 16-1024.
+/// * [scale]: Map scale; 1-3.
+/// * [chatId]: Identifier of a chat in which the thumbnail will be shown. Use 0 if unknown.
+///
+/// [File] is returned on completion.
+final class GetMapThumbnailFile extends TdFunction {
+  
+  /// **GetMapThumbnailFile** *(getMapThumbnailFile)* - TDLib function
+  ///
+  /// Returns information about a file with a map thumbnail in PNG format. Only map thumbnail files with size less than 1MB can be downloaded.
+  ///
+  /// * [location]: Location of the map center.
+  /// * [zoom]: Map zoom level; 13-20.
+  /// * [width]: Map width in pixels before applying scale; 16-1024.
+  /// * [height]: Map height in pixels before applying scale; 16-1024.
+  /// * [scale]: Map scale; 1-3.
+  /// * [chatId]: Identifier of a chat in which the thumbnail will be shown. Use 0 if unknown.
+  ///
+  /// [File] is returned on completion.
   const GetMapThumbnailFile({
     required this.location,
     required this.zoom,
@@ -12,28 +35,28 @@ class GetMapThumbnailFile extends TdFunction {
     required this.chatId,
   });
   
-  /// [location] Location of the map center 
+  /// Location of the map center
   final Location location;
 
-  /// [zoom] Map zoom level; 13-20 
+  /// Map zoom level; 13-20
   final int zoom;
 
-  /// [width] Map width in pixels before applying scale; 16-1024 
+  /// Map width in pixels before applying scale; 16-1024
   final int width;
 
-  /// [height] Map height in pixels before applying scale; 16-1024 
+  /// Map height in pixels before applying scale; 16-1024
   final int height;
 
-  /// [scale] Map scale; 1-3 
+  /// Map scale; 1-3
   final int scale;
 
-  /// [chatId] Identifier of a chat, in which the thumbnail will be shown. Use 0 if unknown
+  /// Identifier of a chat in which the thumbnail will be shown. Use 0 if unknown
   final int chatId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "location": location.toJson(),
       "zoom": zoom,
       "width": width,
@@ -41,8 +64,9 @@ class GetMapThumbnailFile extends TdFunction {
       "scale": scale,
       "chat_id": chatId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetMapThumbnailFile copyWith({
     Location? location,
@@ -60,8 +84,11 @@ class GetMapThumbnailFile extends TdFunction {
     chatId: chatId ?? this.chatId,
   );
 
-  static const CONSTRUCTOR = 'getMapThumbnailFile';
-  
+  static const String objectType = 'getMapThumbnailFile';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

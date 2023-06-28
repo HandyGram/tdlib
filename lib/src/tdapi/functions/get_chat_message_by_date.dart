@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class GetChatMessageByDate extends TdFunction {
-
-  /// Returns the last message sent in a chat no later than the specified date
+/// **GetChatMessageByDate** *(getChatMessageByDate)* - TDLib function
+///
+/// Returns the last message sent in a chat no later than the specified date.
+///
+/// * [chatId]: Chat identifier.
+/// * [date]: Point in time (Unix timestamp) relative to which to search for messages.
+///
+/// [Message] is returned on completion.
+final class GetChatMessageByDate extends TdFunction {
+  
+  /// **GetChatMessageByDate** *(getChatMessageByDate)* - TDLib function
+  ///
+  /// Returns the last message sent in a chat no later than the specified date.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [date]: Point in time (Unix timestamp) relative to which to search for messages.
+  ///
+  /// [Message] is returned on completion.
   const GetChatMessageByDate({
     required this.chatId,
     required this.date,
   });
   
-  /// [chatId] Chat identifier 
+  /// Chat identifier 
   final int chatId;
 
-  /// [date] Point in time (Unix timestamp) relative to which to search for messages
+  /// Point in time (Unix timestamp) relative to which to search for messages
   final int date;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "date": date,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetChatMessageByDate copyWith({
     int? chatId,
@@ -32,8 +48,11 @@ class GetChatMessageByDate extends TdFunction {
     date: date ?? this.date,
   );
 
-  static const CONSTRUCTOR = 'getChatMessageByDate';
-  
+  static const String objectType = 'getChatMessageByDate';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

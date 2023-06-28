@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class GetMessageStatistics extends TdFunction {
-
-  /// Returns detailed statistics about a message. Can be used only if message.can_get_statistics == true
+/// **GetMessageStatistics** *(getMessageStatistics)* - TDLib function
+///
+/// Returns detailed statistics about a message. Can be used only if message.can_get_statistics == true.
+///
+/// * [chatId]: Chat identifier.
+/// * [messageId]: Message identifier.
+/// * [isDark]: Pass true if a dark theme is used by the application.
+///
+/// [MessageStatistics] is returned on completion.
+final class GetMessageStatistics extends TdFunction {
+  
+  /// **GetMessageStatistics** *(getMessageStatistics)* - TDLib function
+  ///
+  /// Returns detailed statistics about a message. Can be used only if message.can_get_statistics == true.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [messageId]: Message identifier.
+  /// * [isDark]: Pass true if a dark theme is used by the application.
+  ///
+  /// [MessageStatistics] is returned on completion.
   const GetMessageStatistics({
     required this.chatId,
     required this.messageId,
     required this.isDark,
   });
   
-  /// [chatId] Chat identifier 
+  /// Chat identifier 
   final int chatId;
 
-  /// [messageId] Message identifier 
+  /// Message identifier 
   final int messageId;
 
-  /// [isDark] Pass true if a dark theme is used by the application
+  /// Pass true if a dark theme is used by the application
   final bool isDark;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "message_id": messageId,
       "is_dark": isDark,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetMessageStatistics copyWith({
     int? chatId,
@@ -39,8 +57,11 @@ class GetMessageStatistics extends TdFunction {
     isDark: isDark ?? this.isDark,
   );
 
-  static const CONSTRUCTOR = 'getMessageStatistics';
-  
+  static const String objectType = 'getMessageStatistics';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

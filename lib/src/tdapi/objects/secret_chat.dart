@@ -1,8 +1,27 @@
 part of '../tdapi.dart';
 
-class SecretChat extends TdObject {
-
-  /// Represents a secret chat
+/// **SecretChat** *(secretChat)* - basic class
+///
+/// Represents a secret chat.
+///
+/// * [id]: Secret chat identifier.
+/// * [userId]: Identifier of the chat partner.
+/// * [state]: State of the secret chat.
+/// * [isOutbound]: True, if the chat was created by the current user; false otherwise.
+/// * [keyHash]: Hash of the currently used key for comparison with the hash of the chat partner's key. This is a string of 36 little-endian bytes, which must be split into groups of 2 bits, each denoting a pixel of one of 4 colors FFFFFF, D5E6F3, 2D5775, and 2F99C9.. The pixels must be used to make a 12x12 square image filled from left to right, top to bottom. Alternatively, the first 32 bytes of the hash can be converted to the hexadecimal format and printed as 32 2-digit hex numbers.
+/// * [layer]: Secret chat layer; determines features supported by the chat partner's application. Nested text entities and underline and strikethrough entities are supported if the layer. files bigger than 2000MB are supported if the layer.
+final class SecretChat extends TdObject {
+  
+  /// **SecretChat** *(secretChat)* - basic class
+  ///
+  /// Represents a secret chat.
+  ///
+  /// * [id]: Secret chat identifier.
+  /// * [userId]: Identifier of the chat partner.
+  /// * [state]: State of the secret chat.
+  /// * [isOutbound]: True, if the chat was created by the current user; false otherwise.
+  /// * [keyHash]: Hash of the currently used key for comparison with the hash of the chat partner's key. This is a string of 36 little-endian bytes, which must be split into groups of 2 bits, each denoting a pixel of one of 4 colors FFFFFF, D5E6F3, 2D5775, and 2F99C9.. The pixels must be used to make a 12x12 square image filled from left to right, top to bottom. Alternatively, the first 32 bytes of the hash can be converted to the hexadecimal format and printed as 32 2-digit hex numbers.
+  /// * [layer]: Secret chat layer; determines features supported by the chat partner's application. Nested text entities and underline and strikethrough entities are supported if the layer. files bigger than 2000MB are supported if the layer.
   const SecretChat({
     required this.id,
     required this.userId,
@@ -14,22 +33,22 @@ class SecretChat extends TdObject {
     this.clientId,
   });
   
-  /// [id] Secret chat identifier
+  /// Secret chat identifier
   final int id;
 
-  /// [userId] Identifier of the chat partner
+  /// Identifier of the chat partner
   final int userId;
 
-  /// [state] State of the secret chat
+  /// State of the secret chat
   final SecretChatState state;
 
-  /// [isOutbound] True, if the chat was created by the current user; otherwise false
+  /// True, if the chat was created by the current user; false otherwise
   final bool isOutbound;
 
-  /// [keyHash] Hash of the currently used key for comparison with the hash of the chat partner's key. This is a string of 36 little-endian bytes, which must be split into groups of 2 bits, each denoting a pixel of one of 4 colors FFFFFF, D5E6F3, 2D5775, and 2F99C9.. The pixels must be used to make a 12x12 square image filled from left to right, top to bottom. Alternatively, the first 32 bytes of the hash can be converted to the hexadecimal format and printed as 32 2-digit hex numbers
+  /// Hash of the currently used key for comparison with the hash of the chat partner's key. This is a string of 36 little-endian bytes, which must be split into groups of 2 bits, each denoting a pixel of one of 4 colors FFFFFF, D5E6F3, 2D5775, and 2F99C9.. The pixels must be used to make a 12x12 square image filled from left to right, top to bottom. Alternatively, the first 32 bytes of the hash can be converted to the hexadecimal format and printed as 32 2-digit hex numbers
   final String keyHash;
 
-  /// [layer] Secret chat layer; determines features supported by the chat partner's application. Nested text entities and underline and strikethrough entities are supported if the layer
+  /// Secret chat layer; determines features supported by the chat partner's application. Nested text entities and underline and strikethrough entities are supported if the layer. files bigger than 2000MB are supported if the layer
   final int layer;
 
   /// [extra] callback sign
@@ -54,17 +73,18 @@ class SecretChat extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "id": id,
       "user_id": userId,
       "state": state.toJson(),
       "is_outbound": isOutbound,
       "key_hash": keyHash,
       "layer": layer,
-    };
-  }
+		};
+	}
+
   
   SecretChat copyWith({
     int? id,
@@ -86,8 +106,11 @@ class SecretChat extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'secretChat';
-  
+  static const String objectType = 'secretChat';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

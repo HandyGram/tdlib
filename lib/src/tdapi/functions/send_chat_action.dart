@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class SendChatAction extends TdFunction {
-
-  /// Sends a notification about user activity in a chat
+/// **SendChatAction** *(sendChatAction)* - TDLib function
+///
+/// Sends a notification about user activity in a chat.
+///
+/// * [chatId]: Chat identifier.
+/// * [messageThreadId]: If not 0, a message thread identifier in which the action was performed.
+/// * [action]: The action description; pass null to cancel the currently active action *(optional)*.
+///
+/// [Ok] is returned on completion.
+final class SendChatAction extends TdFunction {
+  
+  /// **SendChatAction** *(sendChatAction)* - TDLib function
+  ///
+  /// Sends a notification about user activity in a chat.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [messageThreadId]: If not 0, a message thread identifier in which the action was performed.
+  /// * [action]: The action description; pass null to cancel the currently active action *(optional)*.
+  ///
+  /// [Ok] is returned on completion.
   const SendChatAction({
     required this.chatId,
     required this.messageThreadId,
     this.action,
   });
   
-  /// [chatId] Chat identifier 
+  /// Chat identifier 
   final int chatId;
 
-  /// [messageThreadId] If not 0, a message thread identifier in which the action was performed 
+  /// If not 0, a message thread identifier in which the action was performed 
   final int messageThreadId;
 
-  /// [action] The action description; pass null to cancel the currently active action
+  /// The action description; pass null to cancel the currently active action
   final ChatAction? action;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "message_thread_id": messageThreadId,
       "action": action?.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SendChatAction copyWith({
     int? chatId,
@@ -39,8 +57,11 @@ class SendChatAction extends TdFunction {
     action: action ?? this.action,
   );
 
-  static const CONSTRUCTOR = 'sendChatAction';
-  
+  static const String objectType = 'sendChatAction';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

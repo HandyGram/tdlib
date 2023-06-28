@@ -1,8 +1,19 @@
 part of '../tdapi.dart';
 
-class FormattedText extends TdObject {
-
-  /// A text with some entities
+/// **FormattedText** *(formattedText)* - basic class
+///
+/// A text with some entities.
+///
+/// * [text]: The text.
+/// * [entities]: Entities contained in the text. Entities can be nested, but must not mutually intersect with each other.. Pre, Code and PreCode entities can't contain other entities. Bold, Italic, Underline, Strikethrough, and Spoiler entities can contain and can be part of any other entities. All other entities can't contain each other.
+final class FormattedText extends TdObject {
+  
+  /// **FormattedText** *(formattedText)* - basic class
+  ///
+  /// A text with some entities.
+  ///
+  /// * [text]: The text.
+  /// * [entities]: Entities contained in the text. Entities can be nested, but must not mutually intersect with each other.. Pre, Code and PreCode entities can't contain other entities. Bold, Italic, Underline, Strikethrough, and Spoiler entities can contain and can be part of any other entities. All other entities can't contain each other.
   const FormattedText({
     required this.text,
     required this.entities,
@@ -10,10 +21,10 @@ class FormattedText extends TdObject {
     this.clientId,
   });
   
-  /// [text] The text 
+  /// The text 
   final String text;
 
-  /// [entities] Entities contained in the text. Entities can be nested, but must not mutually intersect with each other.. Pre, Code and PreCode entities can't contain other entities. Bold, Italic, Underline, Strikethrough, and Spoiler entities can contain and to be contained in all other entities. All other entities can't contain each other
+  /// Entities contained in the text. Entities can be nested, but must not mutually intersect with each other.. Pre, Code and PreCode entities can't contain other entities. Bold, Italic, Underline, Strikethrough, and Spoiler entities can contain and can be part of any other entities. All other entities can't contain each other
   final List<TextEntity> entities;
 
   /// [extra] callback sign
@@ -34,13 +45,14 @@ class FormattedText extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "text": text,
       "entities": entities.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   FormattedText copyWith({
     String? text,
@@ -54,8 +66,11 @@ class FormattedText extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'formattedText';
-  
+  static const String objectType = 'formattedText';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

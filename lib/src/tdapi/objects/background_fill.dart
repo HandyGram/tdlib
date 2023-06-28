@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class BackgroundFill extends TdObject {
-
-  /// Describes a fill of a background
+/// **BackgroundFill** *(backgroundFill)* - parent
+///
+/// Describes a fill of a background.
+sealed class BackgroundFill extends TdObject {
+  
+  /// **BackgroundFill** *(backgroundFill)* - parent
+  ///
+  /// Describes a fill of a background.
   const BackgroundFill();
   
   /// a BackgroundFill return type can be :
@@ -11,41 +16,53 @@ class BackgroundFill extends TdObject {
   /// * [BackgroundFillFreeformGradient]
   factory BackgroundFill.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case BackgroundFillSolid.CONSTRUCTOR:
+      case BackgroundFillSolid.objectType:
         return BackgroundFillSolid.fromJson(json);
-      case BackgroundFillGradient.CONSTRUCTOR:
+      case BackgroundFillGradient.objectType:
         return BackgroundFillGradient.fromJson(json);
-      case BackgroundFillFreeformGradient.CONSTRUCTOR:
+      case BackgroundFillFreeformGradient.objectType:
         return BackgroundFillFreeformGradient.fromJson(json);
       default:
-        return const BackgroundFill();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of BackgroundFill)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  BackgroundFill copyWith() => const BackgroundFill();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'backgroundFill';
   
+  BackgroundFill copyWith();
+
+  static const String objectType = 'backgroundFill';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class BackgroundFillSolid extends BackgroundFill {
-
-  /// Describes a solid fill of a background
+/// **BackgroundFillSolid** *(backgroundFillSolid)* - child of BackgroundFill
+///
+/// Describes a solid fill of a background.
+///
+/// * [color]: A color of the background in the RGB24 format.
+final class BackgroundFillSolid extends BackgroundFill {
+  
+  /// **BackgroundFillSolid** *(backgroundFillSolid)* - child of BackgroundFill
+  ///
+  /// Describes a solid fill of a background.
+  ///
+  /// * [color]: A color of the background in the RGB24 format.
   const BackgroundFillSolid({
     required this.color,
   });
   
-  /// [color] A color of the background in the RGB24 format
+  /// A color of the background in the RGB24 format
   final int color;
   
   /// Parse from a json
@@ -55,12 +72,13 @@ class BackgroundFillSolid extends BackgroundFill {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "color": color,
-    };
-  }
+		};
+	}
+
   
   @override
   BackgroundFillSolid copyWith({
@@ -69,29 +87,45 @@ class BackgroundFillSolid extends BackgroundFill {
     color: color ?? this.color,
   );
 
-  static const CONSTRUCTOR = 'backgroundFillSolid';
-  
+  static const String objectType = 'backgroundFillSolid';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class BackgroundFillGradient extends BackgroundFill {
-
-  /// Describes a gradient fill of a background
+/// **BackgroundFillGradient** *(backgroundFillGradient)* - child of BackgroundFill
+///
+/// Describes a gradient fill of a background.
+///
+/// * [topColor]: A top color of the background in the RGB24 format.
+/// * [bottomColor]: A bottom color of the background in the RGB24 format.
+/// * [rotationAngle]: Clockwise rotation angle of the gradient, in degrees; 0-359. Must always be divisible by 45.
+final class BackgroundFillGradient extends BackgroundFill {
+  
+  /// **BackgroundFillGradient** *(backgroundFillGradient)* - child of BackgroundFill
+  ///
+  /// Describes a gradient fill of a background.
+  ///
+  /// * [topColor]: A top color of the background in the RGB24 format.
+  /// * [bottomColor]: A bottom color of the background in the RGB24 format.
+  /// * [rotationAngle]: Clockwise rotation angle of the gradient, in degrees; 0-359. Must always be divisible by 45.
   const BackgroundFillGradient({
     required this.topColor,
     required this.bottomColor,
     required this.rotationAngle,
   });
   
-  /// [topColor] A top color of the background in the RGB24 format 
+  /// A top color of the background in the RGB24 format
   final int topColor;
 
-  /// [bottomColor] A bottom color of the background in the RGB24 format
+  /// A bottom color of the background in the RGB24 format
   final int bottomColor;
 
-  /// [rotationAngle] Clockwise rotation angle of the gradient, in degrees; 0-359. Must be always divisible by 45
+  /// Clockwise rotation angle of the gradient, in degrees; 0-359. Must always be divisible by 45
   final int rotationAngle;
   
   /// Parse from a json
@@ -103,14 +137,15 @@ class BackgroundFillGradient extends BackgroundFill {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "top_color": topColor,
       "bottom_color": bottomColor,
       "rotation_angle": rotationAngle,
-    };
-  }
+		};
+	}
+
   
   @override
   BackgroundFillGradient copyWith({
@@ -123,21 +158,33 @@ class BackgroundFillGradient extends BackgroundFill {
     rotationAngle: rotationAngle ?? this.rotationAngle,
   );
 
-  static const CONSTRUCTOR = 'backgroundFillGradient';
-  
+  static const String objectType = 'backgroundFillGradient';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class BackgroundFillFreeformGradient extends BackgroundFill {
-
-  /// Describes a freeform gradient fill of a background
+/// **BackgroundFillFreeformGradient** *(backgroundFillFreeformGradient)* - child of BackgroundFill
+///
+/// Describes a freeform gradient fill of a background.
+///
+/// * [colors]: A list of 3 or 4 colors of the freeform gradients in the RGB24 format.
+final class BackgroundFillFreeformGradient extends BackgroundFill {
+  
+  /// **BackgroundFillFreeformGradient** *(backgroundFillFreeformGradient)* - child of BackgroundFill
+  ///
+  /// Describes a freeform gradient fill of a background.
+  ///
+  /// * [colors]: A list of 3 or 4 colors of the freeform gradients in the RGB24 format.
   const BackgroundFillFreeformGradient({
     required this.colors,
   });
   
-  /// [colors] A list of 3 or 4 colors of the freeform gradients in the RGB24 format
+  /// A list of 3 or 4 colors of the freeform gradients in the RGB24 format
   final List<int> colors;
   
   /// Parse from a json
@@ -147,12 +194,13 @@ class BackgroundFillFreeformGradient extends BackgroundFill {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "colors": colors.map((i) => i).toList(),
-    };
-  }
+		};
+	}
+
   
   @override
   BackgroundFillFreeformGradient copyWith({
@@ -161,8 +209,11 @@ class BackgroundFillFreeformGradient extends BackgroundFill {
     colors: colors ?? this.colors,
   );
 
-  static const CONSTRUCTOR = 'backgroundFillFreeformGradient';
-  
+  static const String objectType = 'backgroundFillFreeformGradient';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

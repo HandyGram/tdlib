@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class InputFile extends TdObject {
-
-  /// Points to a file
+/// **InputFile** *(inputFile)* - parent
+///
+/// Points to a file.
+sealed class InputFile extends TdObject {
+  
+  /// **InputFile** *(inputFile)* - parent
+  ///
+  /// Points to a file.
   const InputFile();
   
   /// a InputFile return type can be :
@@ -12,43 +17,55 @@ class InputFile extends TdObject {
   /// * [InputFileGenerated]
   factory InputFile.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case InputFileId.CONSTRUCTOR:
+      case InputFileId.objectType:
         return InputFileId.fromJson(json);
-      case InputFileRemote.CONSTRUCTOR:
+      case InputFileRemote.objectType:
         return InputFileRemote.fromJson(json);
-      case InputFileLocal.CONSTRUCTOR:
+      case InputFileLocal.objectType:
         return InputFileLocal.fromJson(json);
-      case InputFileGenerated.CONSTRUCTOR:
+      case InputFileGenerated.objectType:
         return InputFileGenerated.fromJson(json);
       default:
-        return const InputFile();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of InputFile)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  InputFile copyWith() => const InputFile();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'inputFile';
   
+  InputFile copyWith();
+
+  static const String objectType = 'inputFile';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InputFileId extends InputFile {
-
-  /// A file defined by its unique inputFileId
+/// **InputFileId** *(inputFileId)* - child of InputFile
+///
+/// A file defined by its unique inputFileId.
+///
+/// * [id]: Unique file identifier.
+final class InputFileId extends InputFile {
+  
+  /// **InputFileId** *(inputFileId)* - child of InputFile
+  ///
+  /// A file defined by its unique inputFileId.
+  ///
+  /// * [id]: Unique file identifier.
   const InputFileId({
     required this.id,
   });
   
-  /// [id] Unique file identifier
+  /// Unique file identifier
   final int id;
   
   /// Parse from a json
@@ -58,12 +75,13 @@ class InputFileId extends InputFile {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "id": id,
-    };
-  }
+		};
+	}
+
   
   @override
   InputFileId copyWith({
@@ -72,21 +90,33 @@ class InputFileId extends InputFile {
     id: id ?? this.id,
   );
 
-  static const CONSTRUCTOR = 'inputFileId';
-  
+  static const String objectType = 'inputFileId';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InputFileRemote extends InputFile {
-
-  /// A file defined by its remote inputFileRemote. The remote inputFileRemote is guaranteed to be usable only if the corresponding file is still accessible to the user and known to TDLib.. For example, if the file is from a message, then the message must be not deleted and accessible to the user. If the file database is disabled, then the corresponding object with the file must be preloaded by the application
+/// **InputFileRemote** *(inputFileRemote)* - child of InputFile
+///
+/// A file defined by its remote inputFileRemote. The remote inputFileRemote is guaranteed to be usable only if the corresponding file is still accessible to the user and known to TDLib.. For example, if the file is from a message, then the message must be not deleted and accessible to the user. If the file database is disabled, then the corresponding object with the file must be preloaded by the application.
+///
+/// * [id]: Remote file identifier.
+final class InputFileRemote extends InputFile {
+  
+  /// **InputFileRemote** *(inputFileRemote)* - child of InputFile
+  ///
+  /// A file defined by its remote inputFileRemote. The remote inputFileRemote is guaranteed to be usable only if the corresponding file is still accessible to the user and known to TDLib.. For example, if the file is from a message, then the message must be not deleted and accessible to the user. If the file database is disabled, then the corresponding object with the file must be preloaded by the application.
+  ///
+  /// * [id]: Remote file identifier.
   const InputFileRemote({
     required this.id,
   });
   
-  /// [id] Remote file identifier
+  /// Remote file identifier
   final String id;
   
   /// Parse from a json
@@ -96,12 +126,13 @@ class InputFileRemote extends InputFile {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "id": id,
-    };
-  }
+		};
+	}
+
   
   @override
   InputFileRemote copyWith({
@@ -110,21 +141,33 @@ class InputFileRemote extends InputFile {
     id: id ?? this.id,
   );
 
-  static const CONSTRUCTOR = 'inputFileRemote';
-  
+  static const String objectType = 'inputFileRemote';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InputFileLocal extends InputFile {
-
-  /// A file defined by a local path
+/// **InputFileLocal** *(inputFileLocal)* - child of InputFile
+///
+/// A file defined by a local path.
+///
+/// * [path]: Local path to the file.
+final class InputFileLocal extends InputFile {
+  
+  /// **InputFileLocal** *(inputFileLocal)* - child of InputFile
+  ///
+  /// A file defined by a local path.
+  ///
+  /// * [path]: Local path to the file.
   const InputFileLocal({
     required this.path,
   });
   
-  /// [path] Local path to the file
+  /// Local path to the file
   final String path;
   
   /// Parse from a json
@@ -134,12 +177,13 @@ class InputFileLocal extends InputFile {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "path": path,
-    };
-  }
+		};
+	}
+
   
   @override
   InputFileLocal copyWith({
@@ -148,29 +192,45 @@ class InputFileLocal extends InputFile {
     path: path ?? this.path,
   );
 
-  static const CONSTRUCTOR = 'inputFileLocal';
-  
+  static const String objectType = 'inputFileLocal';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InputFileGenerated extends InputFile {
-
-  /// A file generated by the application
+/// **InputFileGenerated** *(inputFileGenerated)* - child of InputFile
+///
+/// A file generated by the application.
+///
+/// * [originalPath]: Local path to a file from which the file is generated; may be empty if there is no such file.
+/// * [conversion]: String specifying the conversion applied to the original file; must be persistent across application restarts. Conversions beginning with '#' are reserved for internal TDLib usage.
+/// * [expectedSize]: Expected size of the generated file, in bytes; 0 if unknown.
+final class InputFileGenerated extends InputFile {
+  
+  /// **InputFileGenerated** *(inputFileGenerated)* - child of InputFile
+  ///
+  /// A file generated by the application.
+  ///
+  /// * [originalPath]: Local path to a file from which the file is generated; may be empty if there is no such file.
+  /// * [conversion]: String specifying the conversion applied to the original file; must be persistent across application restarts. Conversions beginning with '#' are reserved for internal TDLib usage.
+  /// * [expectedSize]: Expected size of the generated file, in bytes; 0 if unknown.
   const InputFileGenerated({
     required this.originalPath,
     required this.conversion,
     required this.expectedSize,
   });
   
-  /// [originalPath] Local path to a file from which the file is generated; may be empty if there is no such file
+  /// Local path to a file from which the file is generated; may be empty if there is no such file
   final String originalPath;
 
-  /// [conversion] String specifying the conversion applied to the original file; must be persistent across application restarts. Conversions beginning with '#' are reserved for internal TDLib usage
+  /// String specifying the conversion applied to the original file; must be persistent across application restarts. Conversions beginning with '#' are reserved for internal TDLib usage
   final String conversion;
 
-  /// [expectedSize] Expected size of the generated file, in bytes; 0 if unknown
+  /// Expected size of the generated file, in bytes; 0 if unknown
   final int expectedSize;
   
   /// Parse from a json
@@ -182,14 +242,15 @@ class InputFileGenerated extends InputFile {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "original_path": originalPath,
       "conversion": conversion,
       "expected_size": expectedSize,
-    };
-  }
+		};
+	}
+
   
   @override
   InputFileGenerated copyWith({
@@ -202,8 +263,11 @@ class InputFileGenerated extends InputFile {
     expectedSize: expectedSize ?? this.expectedSize,
   );
 
-  static const CONSTRUCTOR = 'inputFileGenerated';
-  
+  static const String objectType = 'inputFileGenerated';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

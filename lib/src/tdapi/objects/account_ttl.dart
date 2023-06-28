@@ -1,15 +1,24 @@
 part of '../tdapi.dart';
 
-class AccountTtl extends TdObject {
-
-  /// Contains information about the period of inactivity after which the current user's account will automatically be deleted
+/// **AccountTtl** *(accountTtl)* - basic class
+///
+/// Contains information about the period of inactivity after which the current user's account will automatically be deleted.
+///
+/// * [days]: Number of days of inactivity before the account will be flagged for deletion; 30-366 days.
+final class AccountTtl extends TdObject {
+  
+  /// **AccountTtl** *(accountTtl)* - basic class
+  ///
+  /// Contains information about the period of inactivity after which the current user's account will automatically be deleted.
+  ///
+  /// * [days]: Number of days of inactivity before the account will be flagged for deletion; 30-366 days.
   const AccountTtl({
     required this.days,
     this.extra,
     this.clientId,
   });
   
-  /// [days] Number of days of inactivity before the account will be flagged for deletion; 30-366 days
+  /// Number of days of inactivity before the account will be flagged for deletion; 30-366 days
   final int days;
 
   /// [extra] callback sign
@@ -29,12 +38,13 @@ class AccountTtl extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "days": days,
-    };
-  }
+		};
+	}
+
   
   AccountTtl copyWith({
     int? days,
@@ -46,8 +56,11 @@ class AccountTtl extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'accountTtl';
-  
+  static const String objectType = 'accountTtl';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

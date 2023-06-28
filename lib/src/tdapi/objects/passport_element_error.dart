@@ -1,21 +1,34 @@
 part of '../tdapi.dart';
 
-class PassportElementError extends TdObject {
-
-  /// Contains the description of an error in a Telegram Passport element
+/// **PassportElementError** *(passportElementError)* - basic class
+///
+/// Contains the description of an error in a Telegram Passport element.
+///
+/// * [type]: Type of the Telegram Passport element which has the error.
+/// * [message]: Error message.
+/// * [source]: Error source.
+final class PassportElementError extends TdObject {
+  
+  /// **PassportElementError** *(passportElementError)* - basic class
+  ///
+  /// Contains the description of an error in a Telegram Passport element.
+  ///
+  /// * [type]: Type of the Telegram Passport element which has the error.
+  /// * [message]: Error message.
+  /// * [source]: Error source.
   const PassportElementError({
     required this.type,
     required this.message,
     required this.source,
   });
   
-  /// [type] Type of the Telegram Passport element which has the error 
+  /// Type of the Telegram Passport element which has the error 
   final PassportElementType type;
 
-  /// [message] Error message 
+  /// Error message 
   final String message;
 
-  /// [source] Error source
+  /// Error source
   final PassportElementErrorSource source;
   
   /// Parse from a json
@@ -27,14 +40,15 @@ class PassportElementError extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "type": type.toJson(),
       "message": message,
       "source": source.toJson(),
-    };
-  }
+		};
+	}
+
   
   PassportElementError copyWith({
     PassportElementType? type,
@@ -46,8 +60,11 @@ class PassportElementError extends TdObject {
     source: source ?? this.source,
   );
 
-  static const CONSTRUCTOR = 'passportElementError';
-  
+  static const String objectType = 'passportElementError';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

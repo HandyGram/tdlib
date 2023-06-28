@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class NetworkStatisticsEntry extends TdObject {
-
-  /// Contains statistics about network usage
+/// **NetworkStatisticsEntry** *(networkStatisticsEntry)* - parent
+///
+/// Contains statistics about network usage.
+sealed class NetworkStatisticsEntry extends TdObject {
+  
+  /// **NetworkStatisticsEntry** *(networkStatisticsEntry)* - parent
+  ///
+  /// Contains statistics about network usage.
   const NetworkStatisticsEntry();
   
   /// a NetworkStatisticsEntry return type can be :
@@ -10,34 +15,52 @@ class NetworkStatisticsEntry extends TdObject {
   /// * [NetworkStatisticsEntryCall]
   factory NetworkStatisticsEntry.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case NetworkStatisticsEntryFile.CONSTRUCTOR:
+      case NetworkStatisticsEntryFile.objectType:
         return NetworkStatisticsEntryFile.fromJson(json);
-      case NetworkStatisticsEntryCall.CONSTRUCTOR:
+      case NetworkStatisticsEntryCall.objectType:
         return NetworkStatisticsEntryCall.fromJson(json);
       default:
-        return const NetworkStatisticsEntry();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of NetworkStatisticsEntry)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  NetworkStatisticsEntry copyWith() => const NetworkStatisticsEntry();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'networkStatisticsEntry';
   
+  NetworkStatisticsEntry copyWith();
+
+  static const String objectType = 'networkStatisticsEntry';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
-
-  /// Contains information about the total amount of data that was used to send and receive files
+/// **NetworkStatisticsEntryFile** *(networkStatisticsEntryFile)* - child of NetworkStatisticsEntry
+///
+/// Contains information about the total amount of data that was used to send and receive files.
+///
+/// * [fileType]: Type of the file the data is part of; pass null if the data isn't related to files *(optional)*.
+/// * [networkType]: Type of the network the data was sent through. Call setNetworkType to maintain the actual network type.
+/// * [sentBytes]: Total number of bytes sent.
+/// * [receivedBytes]: Total number of bytes received.
+final class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
+  
+  /// **NetworkStatisticsEntryFile** *(networkStatisticsEntryFile)* - child of NetworkStatisticsEntry
+  ///
+  /// Contains information about the total amount of data that was used to send and receive files.
+  ///
+  /// * [fileType]: Type of the file the data is part of; pass null if the data isn't related to files *(optional)*.
+  /// * [networkType]: Type of the network the data was sent through. Call setNetworkType to maintain the actual network type.
+  /// * [sentBytes]: Total number of bytes sent.
+  /// * [receivedBytes]: Total number of bytes received.
   const NetworkStatisticsEntryFile({
     this.fileType,
     required this.networkType,
@@ -45,16 +68,16 @@ class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
     required this.receivedBytes,
   });
   
-  /// [fileType] Type of the file the data is part of; pass null if the data isn't related to files
+  /// Type of the file the data is part of; pass null if the data isn't related to files
   final FileType? fileType;
 
-  /// [networkType] Type of the network the data was sent through. Call setNetworkType to maintain the actual network type
+  /// Type of the network the data was sent through. Call setNetworkType to maintain the actual network type
   final NetworkType networkType;
 
-  /// [sentBytes] Total number of bytes sent
+  /// Total number of bytes sent
   final int sentBytes;
 
-  /// [receivedBytes] Total number of bytes received
+  /// Total number of bytes received
   final int receivedBytes;
   
   /// Parse from a json
@@ -67,15 +90,16 @@ class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "file_type": fileType?.toJson(),
       "network_type": networkType.toJson(),
       "sent_bytes": sentBytes,
       "received_bytes": receivedBytes,
-    };
-  }
+		};
+	}
+
   
   @override
   NetworkStatisticsEntryFile copyWith({
@@ -90,16 +114,34 @@ class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
     receivedBytes: receivedBytes ?? this.receivedBytes,
   );
 
-  static const CONSTRUCTOR = 'networkStatisticsEntryFile';
-  
+  static const String objectType = 'networkStatisticsEntryFile';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
-
-  /// Contains information about the total amount of data that was used for calls
+/// **NetworkStatisticsEntryCall** *(networkStatisticsEntryCall)* - child of NetworkStatisticsEntry
+///
+/// Contains information about the total amount of data that was used for calls.
+///
+/// * [networkType]: Type of the network the data was sent through. Call setNetworkType to maintain the actual network type.
+/// * [sentBytes]: Total number of bytes sent.
+/// * [receivedBytes]: Total number of bytes received.
+/// * [duration]: Total call duration, in seconds.
+final class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
+  
+  /// **NetworkStatisticsEntryCall** *(networkStatisticsEntryCall)* - child of NetworkStatisticsEntry
+  ///
+  /// Contains information about the total amount of data that was used for calls.
+  ///
+  /// * [networkType]: Type of the network the data was sent through. Call setNetworkType to maintain the actual network type.
+  /// * [sentBytes]: Total number of bytes sent.
+  /// * [receivedBytes]: Total number of bytes received.
+  /// * [duration]: Total call duration, in seconds.
   const NetworkStatisticsEntryCall({
     required this.networkType,
     required this.sentBytes,
@@ -107,16 +149,16 @@ class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
     required this.duration,
   });
   
-  /// [networkType] Type of the network the data was sent through. Call setNetworkType to maintain the actual network type
+  /// Type of the network the data was sent through. Call setNetworkType to maintain the actual network type
   final NetworkType networkType;
 
-  /// [sentBytes] Total number of bytes sent
+  /// Total number of bytes sent
   final int sentBytes;
 
-  /// [receivedBytes] Total number of bytes received
+  /// Total number of bytes received
   final int receivedBytes;
 
-  /// [duration] Total call duration, in seconds
+  /// Total call duration, in seconds
   final double duration;
   
   /// Parse from a json
@@ -129,15 +171,16 @@ class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "network_type": networkType.toJson(),
       "sent_bytes": sentBytes,
       "received_bytes": receivedBytes,
       "duration": duration,
-    };
-  }
+		};
+	}
+
   
   @override
   NetworkStatisticsEntryCall copyWith({
@@ -152,8 +195,11 @@ class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
     duration: duration ?? this.duration,
   );
 
-  static const CONSTRUCTOR = 'networkStatisticsEntryCall';
-  
+  static const String objectType = 'networkStatisticsEntryCall';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

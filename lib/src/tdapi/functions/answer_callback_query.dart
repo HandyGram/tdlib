@@ -1,8 +1,29 @@
 part of '../tdapi.dart';
 
-class AnswerCallbackQuery extends TdFunction {
-
-  /// Sets the result of a callback query; for bots only
+/// **AnswerCallbackQuery** *(answerCallbackQuery)* - TDLib function
+///
+/// Sets the result of a callback query; for bots only.
+///
+/// * [callbackQueryId]: Identifier of the callback query.
+/// * [text]: Text of the answer.
+/// * [showAlert]: Pass true to show an alert to the user instead of a toast notification.
+/// * [url]: URL to be opened.
+/// * [cacheTime]: Time during which the result of the query can be cached, in seconds.
+///
+/// [Ok] is returned on completion.
+final class AnswerCallbackQuery extends TdFunction {
+  
+  /// **AnswerCallbackQuery** *(answerCallbackQuery)* - TDLib function
+  ///
+  /// Sets the result of a callback query; for bots only.
+  ///
+  /// * [callbackQueryId]: Identifier of the callback query.
+  /// * [text]: Text of the answer.
+  /// * [showAlert]: Pass true to show an alert to the user instead of a toast notification.
+  /// * [url]: URL to be opened.
+  /// * [cacheTime]: Time during which the result of the query can be cached, in seconds.
+  ///
+  /// [Ok] is returned on completion.
   const AnswerCallbackQuery({
     required this.callbackQueryId,
     required this.text,
@@ -11,33 +32,34 @@ class AnswerCallbackQuery extends TdFunction {
     required this.cacheTime,
   });
   
-  /// [callbackQueryId] Identifier of the callback query 
+  /// Identifier of the callback query
   final int callbackQueryId;
 
-  /// [text] Text of the answer 
+  /// Text of the answer
   final String text;
 
-  /// [showAlert] If true, an alert must be shown to the user instead of a toast notification 
+  /// Pass true to show an alert to the user instead of a toast notification
   final bool showAlert;
 
-  /// [url] URL to be opened 
+  /// URL to be opened
   final String url;
 
-  /// [cacheTime] Time during which the result of the query can be cached, in seconds
+  /// Time during which the result of the query can be cached, in seconds
   final int cacheTime;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "callback_query_id": callbackQueryId,
       "text": text,
       "show_alert": showAlert,
       "url": url,
       "cache_time": cacheTime,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   AnswerCallbackQuery copyWith({
     int? callbackQueryId,
@@ -53,8 +75,11 @@ class AnswerCallbackQuery extends TdFunction {
     cacheTime: cacheTime ?? this.cacheTime,
   );
 
-  static const CONSTRUCTOR = 'answerCallbackQuery';
-  
+  static const String objectType = 'answerCallbackQuery';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

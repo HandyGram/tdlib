@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class ProcessChatJoinRequests extends TdFunction {
-
-  /// Handles all pending join requests for a given link in a chat
+/// **ProcessChatJoinRequests** *(processChatJoinRequests)* - TDLib function
+///
+/// Handles all pending join requests for a given link in a chat.
+///
+/// * [chatId]: Chat identifier.
+/// * [inviteLink]: Invite link for which to process join requests. If empty, all join requests will be processed. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links.
+/// * [approve]: Pass true to approve all requests; pass false to decline them.
+///
+/// [Ok] is returned on completion.
+final class ProcessChatJoinRequests extends TdFunction {
+  
+  /// **ProcessChatJoinRequests** *(processChatJoinRequests)* - TDLib function
+  ///
+  /// Handles all pending join requests for a given link in a chat.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [inviteLink]: Invite link for which to process join requests. If empty, all join requests will be processed. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links.
+  /// * [approve]: Pass true to approve all requests; pass false to decline them.
+  ///
+  /// [Ok] is returned on completion.
   const ProcessChatJoinRequests({
     required this.chatId,
     required this.inviteLink,
     required this.approve,
   });
   
-  /// [chatId] Chat identifier
+  /// Chat identifier
   final int chatId;
 
-  /// [inviteLink] Invite link for which to process join requests. If empty, all join requests will be processed. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links
+  /// Invite link for which to process join requests. If empty, all join requests will be processed. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links
   final String inviteLink;
 
-  /// [approve] True, if the requests are approved. Otherwise the requests are declived
+  /// Pass true to approve all requests; pass false to decline them
   final bool approve;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "invite_link": inviteLink,
       "approve": approve,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   ProcessChatJoinRequests copyWith({
     int? chatId,
@@ -39,8 +57,11 @@ class ProcessChatJoinRequests extends TdFunction {
     approve: approve ?? this.approve,
   );
 
-  static const CONSTRUCTOR = 'processChatJoinRequests';
-  
+  static const String objectType = 'processChatJoinRequests';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

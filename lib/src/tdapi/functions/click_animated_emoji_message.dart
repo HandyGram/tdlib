@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class ClickAnimatedEmojiMessage extends TdFunction {
-
-  /// Informs TDLib that a message with an animated emoji was clicked by the user. Returns a big animated sticker to be played or a 404 error if usual animation needs to be played
+/// **ClickAnimatedEmojiMessage** *(clickAnimatedEmojiMessage)* - TDLib function
+///
+/// Informs TDLib that a message with an animated emoji was clicked by the user. Returns a big animated sticker to be played or a 404 error if usual animation needs to be played.
+///
+/// * [chatId]: Chat identifier of the message.
+/// * [messageId]: Identifier of the clicked message.
+///
+/// [Sticker] is returned on completion.
+final class ClickAnimatedEmojiMessage extends TdFunction {
+  
+  /// **ClickAnimatedEmojiMessage** *(clickAnimatedEmojiMessage)* - TDLib function
+  ///
+  /// Informs TDLib that a message with an animated emoji was clicked by the user. Returns a big animated sticker to be played or a 404 error if usual animation needs to be played.
+  ///
+  /// * [chatId]: Chat identifier of the message.
+  /// * [messageId]: Identifier of the clicked message.
+  ///
+  /// [Sticker] is returned on completion.
   const ClickAnimatedEmojiMessage({
     required this.chatId,
     required this.messageId,
   });
   
-  /// [chatId] Chat identifier of the message 
+  /// Chat identifier of the message 
   final int chatId;
 
-  /// [messageId] Identifier of the clicked message
+  /// Identifier of the clicked message
   final int messageId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "message_id": messageId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   ClickAnimatedEmojiMessage copyWith({
     int? chatId,
@@ -32,8 +48,11 @@ class ClickAnimatedEmojiMessage extends TdFunction {
     messageId: messageId ?? this.messageId,
   );
 
-  static const CONSTRUCTOR = 'clickAnimatedEmojiMessage';
-  
+  static const String objectType = 'clickAnimatedEmojiMessage';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

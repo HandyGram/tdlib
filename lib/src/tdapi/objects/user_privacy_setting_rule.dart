@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class UserPrivacySettingRule extends TdObject {
-
-  /// Represents a single rule for managing privacy settings
+/// **UserPrivacySettingRule** *(userPrivacySettingRule)* - parent
+///
+/// Represents a single rule for managing privacy settings.
+sealed class UserPrivacySettingRule extends TdObject {
+  
+  /// **UserPrivacySettingRule** *(userPrivacySettingRule)* - parent
+  ///
+  /// Represents a single rule for managing privacy settings.
   const UserPrivacySettingRule();
   
   /// a UserPrivacySettingRule return type can be :
@@ -16,101 +21,131 @@ class UserPrivacySettingRule extends TdObject {
   /// * [UserPrivacySettingRuleRestrictChatMembers]
   factory UserPrivacySettingRule.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case UserPrivacySettingRuleAllowAll.CONSTRUCTOR:
+      case UserPrivacySettingRuleAllowAll.objectType:
         return UserPrivacySettingRuleAllowAll.fromJson(json);
-      case UserPrivacySettingRuleAllowContacts.CONSTRUCTOR:
+      case UserPrivacySettingRuleAllowContacts.objectType:
         return UserPrivacySettingRuleAllowContacts.fromJson(json);
-      case UserPrivacySettingRuleAllowUsers.CONSTRUCTOR:
+      case UserPrivacySettingRuleAllowUsers.objectType:
         return UserPrivacySettingRuleAllowUsers.fromJson(json);
-      case UserPrivacySettingRuleAllowChatMembers.CONSTRUCTOR:
+      case UserPrivacySettingRuleAllowChatMembers.objectType:
         return UserPrivacySettingRuleAllowChatMembers.fromJson(json);
-      case UserPrivacySettingRuleRestrictAll.CONSTRUCTOR:
+      case UserPrivacySettingRuleRestrictAll.objectType:
         return UserPrivacySettingRuleRestrictAll.fromJson(json);
-      case UserPrivacySettingRuleRestrictContacts.CONSTRUCTOR:
+      case UserPrivacySettingRuleRestrictContacts.objectType:
         return UserPrivacySettingRuleRestrictContacts.fromJson(json);
-      case UserPrivacySettingRuleRestrictUsers.CONSTRUCTOR:
+      case UserPrivacySettingRuleRestrictUsers.objectType:
         return UserPrivacySettingRuleRestrictUsers.fromJson(json);
-      case UserPrivacySettingRuleRestrictChatMembers.CONSTRUCTOR:
+      case UserPrivacySettingRuleRestrictChatMembers.objectType:
         return UserPrivacySettingRuleRestrictChatMembers.fromJson(json);
       default:
-        return const UserPrivacySettingRule();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of UserPrivacySettingRule)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  UserPrivacySettingRule copyWith() => const UserPrivacySettingRule();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'userPrivacySettingRule';
   
+  UserPrivacySettingRule copyWith();
+
+  static const String objectType = 'userPrivacySettingRule';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class UserPrivacySettingRuleAllowAll extends UserPrivacySettingRule {
-
-  /// A rule to allow all users to do something
+/// **UserPrivacySettingRuleAllowAll** *(userPrivacySettingRuleAllowAll)* - child of UserPrivacySettingRule
+///
+/// A rule to allow all users to do something.
+final class UserPrivacySettingRuleAllowAll extends UserPrivacySettingRule {
+  
+  /// **UserPrivacySettingRuleAllowAll** *(userPrivacySettingRuleAllowAll)* - child of UserPrivacySettingRule
+  ///
+  /// A rule to allow all users to do something.
   const UserPrivacySettingRuleAllowAll();
   
   /// Parse from a json
   factory UserPrivacySettingRuleAllowAll.fromJson(Map<String, dynamic> json) => const UserPrivacySettingRuleAllowAll();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   UserPrivacySettingRuleAllowAll copyWith() => const UserPrivacySettingRuleAllowAll();
 
-  static const CONSTRUCTOR = 'userPrivacySettingRuleAllowAll';
-  
+  static const String objectType = 'userPrivacySettingRuleAllowAll';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class UserPrivacySettingRuleAllowContacts extends UserPrivacySettingRule {
-
-  /// A rule to allow all of a user's contacts to do something
+/// **UserPrivacySettingRuleAllowContacts** *(userPrivacySettingRuleAllowContacts)* - child of UserPrivacySettingRule
+///
+/// A rule to allow all of a user's contacts to do something.
+final class UserPrivacySettingRuleAllowContacts extends UserPrivacySettingRule {
+  
+  /// **UserPrivacySettingRuleAllowContacts** *(userPrivacySettingRuleAllowContacts)* - child of UserPrivacySettingRule
+  ///
+  /// A rule to allow all of a user's contacts to do something.
   const UserPrivacySettingRuleAllowContacts();
   
   /// Parse from a json
   factory UserPrivacySettingRuleAllowContacts.fromJson(Map<String, dynamic> json) => const UserPrivacySettingRuleAllowContacts();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   UserPrivacySettingRuleAllowContacts copyWith() => const UserPrivacySettingRuleAllowContacts();
 
-  static const CONSTRUCTOR = 'userPrivacySettingRuleAllowContacts';
-  
+  static const String objectType = 'userPrivacySettingRuleAllowContacts';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class UserPrivacySettingRuleAllowUsers extends UserPrivacySettingRule {
-
-  /// A rule to allow certain specified users to do something
+/// **UserPrivacySettingRuleAllowUsers** *(userPrivacySettingRuleAllowUsers)* - child of UserPrivacySettingRule
+///
+/// A rule to allow certain specified users to do something.
+///
+/// * [userIds]: The user identifiers, total number of users in all rules must not exceed 1000.
+final class UserPrivacySettingRuleAllowUsers extends UserPrivacySettingRule {
+  
+  /// **UserPrivacySettingRuleAllowUsers** *(userPrivacySettingRuleAllowUsers)* - child of UserPrivacySettingRule
+  ///
+  /// A rule to allow certain specified users to do something.
+  ///
+  /// * [userIds]: The user identifiers, total number of users in all rules must not exceed 1000.
   const UserPrivacySettingRuleAllowUsers({
     required this.userIds,
   });
   
-  /// [userIds] The user identifiers, total number of users in all rules must not exceed 1000
+  /// The user identifiers, total number of users in all rules must not exceed 1000
   final List<int> userIds;
   
   /// Parse from a json
@@ -120,12 +155,13 @@ class UserPrivacySettingRuleAllowUsers extends UserPrivacySettingRule {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "user_ids": userIds.map((i) => i).toList(),
-    };
-  }
+		};
+	}
+
   
   @override
   UserPrivacySettingRuleAllowUsers copyWith({
@@ -134,21 +170,33 @@ class UserPrivacySettingRuleAllowUsers extends UserPrivacySettingRule {
     userIds: userIds ?? this.userIds,
   );
 
-  static const CONSTRUCTOR = 'userPrivacySettingRuleAllowUsers';
-  
+  static const String objectType = 'userPrivacySettingRuleAllowUsers';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class UserPrivacySettingRuleAllowChatMembers extends UserPrivacySettingRule {
-
-  /// A rule to allow all members of certain specified basic groups and supergroups to doing something
+/// **UserPrivacySettingRuleAllowChatMembers** *(userPrivacySettingRuleAllowChatMembers)* - child of UserPrivacySettingRule
+///
+/// A rule to allow all members of certain specified basic groups and supergroups to doing something.
+///
+/// * [chatIds]: The chat identifiers, total number of chats in all rules must not exceed 20.
+final class UserPrivacySettingRuleAllowChatMembers extends UserPrivacySettingRule {
+  
+  /// **UserPrivacySettingRuleAllowChatMembers** *(userPrivacySettingRuleAllowChatMembers)* - child of UserPrivacySettingRule
+  ///
+  /// A rule to allow all members of certain specified basic groups and supergroups to doing something.
+  ///
+  /// * [chatIds]: The chat identifiers, total number of chats in all rules must not exceed 20.
   const UserPrivacySettingRuleAllowChatMembers({
     required this.chatIds,
   });
   
-  /// [chatIds] The chat identifiers, total number of chats in all rules must not exceed 20
+  /// The chat identifiers, total number of chats in all rules must not exceed 20
   final List<int> chatIds;
   
   /// Parse from a json
@@ -158,12 +206,13 @@ class UserPrivacySettingRuleAllowChatMembers extends UserPrivacySettingRule {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "chat_ids": chatIds.map((i) => i).toList(),
-    };
-  }
+		};
+	}
+
   
   @override
   UserPrivacySettingRuleAllowChatMembers copyWith({
@@ -172,71 +221,101 @@ class UserPrivacySettingRuleAllowChatMembers extends UserPrivacySettingRule {
     chatIds: chatIds ?? this.chatIds,
   );
 
-  static const CONSTRUCTOR = 'userPrivacySettingRuleAllowChatMembers';
-  
+  static const String objectType = 'userPrivacySettingRuleAllowChatMembers';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class UserPrivacySettingRuleRestrictAll extends UserPrivacySettingRule {
-
-  /// A rule to restrict all users from doing something
+/// **UserPrivacySettingRuleRestrictAll** *(userPrivacySettingRuleRestrictAll)* - child of UserPrivacySettingRule
+///
+/// A rule to restrict all users from doing something.
+final class UserPrivacySettingRuleRestrictAll extends UserPrivacySettingRule {
+  
+  /// **UserPrivacySettingRuleRestrictAll** *(userPrivacySettingRuleRestrictAll)* - child of UserPrivacySettingRule
+  ///
+  /// A rule to restrict all users from doing something.
   const UserPrivacySettingRuleRestrictAll();
   
   /// Parse from a json
   factory UserPrivacySettingRuleRestrictAll.fromJson(Map<String, dynamic> json) => const UserPrivacySettingRuleRestrictAll();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   UserPrivacySettingRuleRestrictAll copyWith() => const UserPrivacySettingRuleRestrictAll();
 
-  static const CONSTRUCTOR = 'userPrivacySettingRuleRestrictAll';
-  
+  static const String objectType = 'userPrivacySettingRuleRestrictAll';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class UserPrivacySettingRuleRestrictContacts extends UserPrivacySettingRule {
-
-  /// A rule to restrict all contacts of a user from doing something
+/// **UserPrivacySettingRuleRestrictContacts** *(userPrivacySettingRuleRestrictContacts)* - child of UserPrivacySettingRule
+///
+/// A rule to restrict all contacts of a user from doing something.
+final class UserPrivacySettingRuleRestrictContacts extends UserPrivacySettingRule {
+  
+  /// **UserPrivacySettingRuleRestrictContacts** *(userPrivacySettingRuleRestrictContacts)* - child of UserPrivacySettingRule
+  ///
+  /// A rule to restrict all contacts of a user from doing something.
   const UserPrivacySettingRuleRestrictContacts();
   
   /// Parse from a json
   factory UserPrivacySettingRuleRestrictContacts.fromJson(Map<String, dynamic> json) => const UserPrivacySettingRuleRestrictContacts();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   UserPrivacySettingRuleRestrictContacts copyWith() => const UserPrivacySettingRuleRestrictContacts();
 
-  static const CONSTRUCTOR = 'userPrivacySettingRuleRestrictContacts';
-  
+  static const String objectType = 'userPrivacySettingRuleRestrictContacts';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class UserPrivacySettingRuleRestrictUsers extends UserPrivacySettingRule {
-
-  /// A rule to restrict all specified users from doing something
+/// **UserPrivacySettingRuleRestrictUsers** *(userPrivacySettingRuleRestrictUsers)* - child of UserPrivacySettingRule
+///
+/// A rule to restrict all specified users from doing something.
+///
+/// * [userIds]: The user identifiers, total number of users in all rules must not exceed 1000.
+final class UserPrivacySettingRuleRestrictUsers extends UserPrivacySettingRule {
+  
+  /// **UserPrivacySettingRuleRestrictUsers** *(userPrivacySettingRuleRestrictUsers)* - child of UserPrivacySettingRule
+  ///
+  /// A rule to restrict all specified users from doing something.
+  ///
+  /// * [userIds]: The user identifiers, total number of users in all rules must not exceed 1000.
   const UserPrivacySettingRuleRestrictUsers({
     required this.userIds,
   });
   
-  /// [userIds] The user identifiers, total number of users in all rules must not exceed 1000
+  /// The user identifiers, total number of users in all rules must not exceed 1000
   final List<int> userIds;
   
   /// Parse from a json
@@ -246,12 +325,13 @@ class UserPrivacySettingRuleRestrictUsers extends UserPrivacySettingRule {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "user_ids": userIds.map((i) => i).toList(),
-    };
-  }
+		};
+	}
+
   
   @override
   UserPrivacySettingRuleRestrictUsers copyWith({
@@ -260,21 +340,33 @@ class UserPrivacySettingRuleRestrictUsers extends UserPrivacySettingRule {
     userIds: userIds ?? this.userIds,
   );
 
-  static const CONSTRUCTOR = 'userPrivacySettingRuleRestrictUsers';
-  
+  static const String objectType = 'userPrivacySettingRuleRestrictUsers';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class UserPrivacySettingRuleRestrictChatMembers extends UserPrivacySettingRule {
-
-  /// A rule to restrict all members of specified basic groups and supergroups from doing something
+/// **UserPrivacySettingRuleRestrictChatMembers** *(userPrivacySettingRuleRestrictChatMembers)* - child of UserPrivacySettingRule
+///
+/// A rule to restrict all members of specified basic groups and supergroups from doing something.
+///
+/// * [chatIds]: The chat identifiers, total number of chats in all rules must not exceed 20.
+final class UserPrivacySettingRuleRestrictChatMembers extends UserPrivacySettingRule {
+  
+  /// **UserPrivacySettingRuleRestrictChatMembers** *(userPrivacySettingRuleRestrictChatMembers)* - child of UserPrivacySettingRule
+  ///
+  /// A rule to restrict all members of specified basic groups and supergroups from doing something.
+  ///
+  /// * [chatIds]: The chat identifiers, total number of chats in all rules must not exceed 20.
   const UserPrivacySettingRuleRestrictChatMembers({
     required this.chatIds,
   });
   
-  /// [chatIds] The chat identifiers, total number of chats in all rules must not exceed 20
+  /// The chat identifiers, total number of chats in all rules must not exceed 20
   final List<int> chatIds;
   
   /// Parse from a json
@@ -284,12 +376,13 @@ class UserPrivacySettingRuleRestrictChatMembers extends UserPrivacySettingRule {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "chat_ids": chatIds.map((i) => i).toList(),
-    };
-  }
+		};
+	}
+
   
   @override
   UserPrivacySettingRuleRestrictChatMembers copyWith({
@@ -298,8 +391,11 @@ class UserPrivacySettingRuleRestrictChatMembers extends UserPrivacySettingRule {
     chatIds: chatIds ?? this.chatIds,
   );
 
-  static const CONSTRUCTOR = 'userPrivacySettingRuleRestrictChatMembers';
-  
+  static const String objectType = 'userPrivacySettingRuleRestrictChatMembers';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

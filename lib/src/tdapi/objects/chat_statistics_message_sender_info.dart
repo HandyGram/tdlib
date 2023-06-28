@@ -1,21 +1,34 @@
 part of '../tdapi.dart';
 
-class ChatStatisticsMessageSenderInfo extends TdObject {
-
-  /// Contains statistics about messages sent by a user
+/// **ChatStatisticsMessageSenderInfo** *(chatStatisticsMessageSenderInfo)* - basic class
+///
+/// Contains statistics about messages sent by a user.
+///
+/// * [userId]: User identifier.
+/// * [sentMessageCount]: Number of sent messages.
+/// * [averageCharacterCount]: Average number of characters in sent messages; 0 if unknown.
+final class ChatStatisticsMessageSenderInfo extends TdObject {
+  
+  /// **ChatStatisticsMessageSenderInfo** *(chatStatisticsMessageSenderInfo)* - basic class
+  ///
+  /// Contains statistics about messages sent by a user.
+  ///
+  /// * [userId]: User identifier.
+  /// * [sentMessageCount]: Number of sent messages.
+  /// * [averageCharacterCount]: Average number of characters in sent messages; 0 if unknown.
   const ChatStatisticsMessageSenderInfo({
     required this.userId,
     required this.sentMessageCount,
     required this.averageCharacterCount,
   });
   
-  /// [userId] User identifier
+  /// User identifier
   final int userId;
 
-  /// [sentMessageCount] Number of sent messages
+  /// Number of sent messages
   final int sentMessageCount;
 
-  /// [averageCharacterCount] Average number of characters in sent messages; 0 if unknown
+  /// Average number of characters in sent messages; 0 if unknown
   final int averageCharacterCount;
   
   /// Parse from a json
@@ -27,14 +40,15 @@ class ChatStatisticsMessageSenderInfo extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "user_id": userId,
       "sent_message_count": sentMessageCount,
       "average_character_count": averageCharacterCount,
-    };
-  }
+		};
+	}
+
   
   ChatStatisticsMessageSenderInfo copyWith({
     int? userId,
@@ -46,8 +60,11 @@ class ChatStatisticsMessageSenderInfo extends TdObject {
     averageCharacterCount: averageCharacterCount ?? this.averageCharacterCount,
   );
 
-  static const CONSTRUCTOR = 'chatStatisticsMessageSenderInfo';
-  
+  static const String objectType = 'chatStatisticsMessageSenderInfo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class ReportSupergroupSpam extends TdFunction {
-
-  /// Reports messages in a supergroup as spam; requires administrator rights in the supergroup
+/// **ReportSupergroupSpam** *(reportSupergroupSpam)* - TDLib function
+///
+/// Reports messages in a supergroup as spam; requires administrator rights in the supergroup.
+///
+/// * [supergroupId]: Supergroup identifier.
+/// * [messageIds]: Identifiers of messages to report.
+///
+/// [Ok] is returned on completion.
+final class ReportSupergroupSpam extends TdFunction {
+  
+  /// **ReportSupergroupSpam** *(reportSupergroupSpam)* - TDLib function
+  ///
+  /// Reports messages in a supergroup as spam; requires administrator rights in the supergroup.
+  ///
+  /// * [supergroupId]: Supergroup identifier.
+  /// * [messageIds]: Identifiers of messages to report.
+  ///
+  /// [Ok] is returned on completion.
   const ReportSupergroupSpam({
     required this.supergroupId,
     required this.messageIds,
   });
   
-  /// [supergroupId] Supergroup identifier 
+  /// Supergroup identifier 
   final int supergroupId;
 
-  /// [messageIds] Identifiers of messages to report
+  /// Identifiers of messages to report
   final List<int> messageIds;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "supergroup_id": supergroupId,
       "message_ids": messageIds.map((i) => i).toList(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   ReportSupergroupSpam copyWith({
     int? supergroupId,
@@ -32,8 +48,11 @@ class ReportSupergroupSpam extends TdFunction {
     messageIds: messageIds ?? this.messageIds,
   );
 
-  static const CONSTRUCTOR = 'reportSupergroupSpam';
-  
+  static const String objectType = 'reportSupergroupSpam';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

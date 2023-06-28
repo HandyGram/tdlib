@@ -1,8 +1,27 @@
 part of '../tdapi.dart';
 
-class InputIdentityDocument extends TdObject {
-
-  /// An identity document to be saved to Telegram Passport
+/// **InputIdentityDocument** *(inputIdentityDocument)* - basic class
+///
+/// An identity document to be saved to Telegram Passport.
+///
+/// * [number]: Document number; 1-24 characters.
+/// * [expiryDate]: Document expiry date; pass null if not applicable *(optional)*.
+/// * [frontSide]: Front side of the document.
+/// * [reverseSide]: Reverse side of the document; only for driver license and identity card; pass null otherwise *(optional)*.
+/// * [selfie]: Selfie with the document; pass null if unavailable *(optional)*.
+/// * [translation]: List of files containing a certified English translation of the document.
+final class InputIdentityDocument extends TdObject {
+  
+  /// **InputIdentityDocument** *(inputIdentityDocument)* - basic class
+  ///
+  /// An identity document to be saved to Telegram Passport.
+  ///
+  /// * [number]: Document number; 1-24 characters.
+  /// * [expiryDate]: Document expiry date; pass null if not applicable *(optional)*.
+  /// * [frontSide]: Front side of the document.
+  /// * [reverseSide]: Reverse side of the document; only for driver license and identity card; pass null otherwise *(optional)*.
+  /// * [selfie]: Selfie with the document; pass null if unavailable *(optional)*.
+  /// * [translation]: List of files containing a certified English translation of the document.
   const InputIdentityDocument({
     required this.number,
     this.expiryDate,
@@ -12,22 +31,22 @@ class InputIdentityDocument extends TdObject {
     required this.translation,
   });
   
-  /// [number] Document number; 1-24 characters 
+  /// Document number; 1-24 characters
   final String number;
 
-  /// [expiryDate] Document expiry date; pass null if not applicable 
+  /// Document expiry date; pass null if not applicable
   final Date? expiryDate;
 
-  /// [frontSide] Front side of the document
+  /// Front side of the document
   final InputFile frontSide;
 
-  /// [reverseSide] Reverse side of the document; only for driver license and identity card; pass null otherwise
+  /// Reverse side of the document; only for driver license and identity card; pass null otherwise
   final InputFile? reverseSide;
 
-  /// [selfie] Selfie with the document; pass null if unavailable 
+  /// Selfie with the document; pass null if unavailable
   final InputFile? selfie;
 
-  /// [translation] List of files containing a certified English translation of the document
+  /// List of files containing a certified English translation of the document
   final List<InputFile> translation;
   
   /// Parse from a json
@@ -42,17 +61,18 @@ class InputIdentityDocument extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "number": number,
       "expiry_date": expiryDate?.toJson(),
       "front_side": frontSide.toJson(),
       "reverse_side": reverseSide?.toJson(),
       "selfie": selfie?.toJson(),
       "translation": translation.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   InputIdentityDocument copyWith({
     String? number,
@@ -70,8 +90,11 @@ class InputIdentityDocument extends TdObject {
     translation: translation ?? this.translation,
   );
 
-  static const CONSTRUCTOR = 'inputIdentityDocument';
-  
+  static const String objectType = 'inputIdentityDocument';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

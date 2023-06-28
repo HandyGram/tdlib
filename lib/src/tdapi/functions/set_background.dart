@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class SetBackground extends TdFunction {
-
-  /// Changes the background selected by the user; adds background to the list of installed backgrounds
+/// **SetBackground** *(setBackground)* - TDLib function
+///
+/// Changes the background selected by the user; adds background to the list of installed backgrounds.
+///
+/// * [background]: The input background to use; pass null to create a new filled background or to remove the current background *(optional)*.
+/// * [type]: Background type; pass null to use the default type of the remote background or to remove the current background *(optional)*.
+/// * [forDarkTheme]: Pass true if the background is changed for a dark theme.
+///
+/// [Background] is returned on completion.
+final class SetBackground extends TdFunction {
+  
+  /// **SetBackground** *(setBackground)* - TDLib function
+  ///
+  /// Changes the background selected by the user; adds background to the list of installed backgrounds.
+  ///
+  /// * [background]: The input background to use; pass null to create a new filled background or to remove the current background *(optional)*.
+  /// * [type]: Background type; pass null to use the default type of the remote background or to remove the current background *(optional)*.
+  /// * [forDarkTheme]: Pass true if the background is changed for a dark theme.
+  ///
+  /// [Background] is returned on completion.
   const SetBackground({
     this.background,
     this.type,
     required this.forDarkTheme,
   });
   
-  /// [background] The input background to use; pass null to create a new filled backgrounds or to remove the current background
+  /// The input background to use; pass null to create a new filled background or to remove the current background
   final InputBackground? background;
 
-  /// [type] Background type; pass null to use the default type of the remote background or to remove the current background
+  /// Background type; pass null to use the default type of the remote background or to remove the current background
   final BackgroundType? type;
 
-  /// [forDarkTheme] True, if the background is chosen for dark theme
+  /// Pass true if the background is changed for a dark theme
   final bool forDarkTheme;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "background": background?.toJson(),
       "type": type?.toJson(),
       "for_dark_theme": forDarkTheme,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SetBackground copyWith({
     InputBackground? background,
@@ -39,8 +57,11 @@ class SetBackground extends TdFunction {
     forDarkTheme: forDarkTheme ?? this.forDarkTheme,
   );
 
-  static const CONSTRUCTOR = 'setBackground';
-  
+  static const String objectType = 'setBackground';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,8 +1,29 @@
 part of '../tdapi.dart';
 
-class Game extends TdObject {
-
-  /// Describes a game
+/// **Game** *(game)* - basic class
+///
+/// Describes a game. Use getInternalLink with internalLinkTypeGame to share the game.
+///
+/// * [id]: Unique game identifier.
+/// * [shortName]: Game short name.
+/// * [title]: Game title.
+/// * [text]: Game text, usually containing scoreboards for a game.
+/// * [description]: Game description.
+/// * [photo]: Game photo.
+/// * [animation]: Game animation; may be null *(optional)*.
+final class Game extends TdObject {
+  
+  /// **Game** *(game)* - basic class
+  ///
+  /// Describes a game. Use getInternalLink with internalLinkTypeGame to share the game.
+  ///
+  /// * [id]: Unique game identifier.
+  /// * [shortName]: Game short name.
+  /// * [title]: Game title.
+  /// * [text]: Game text, usually containing scoreboards for a game.
+  /// * [description]: Game description.
+  /// * [photo]: Game photo.
+  /// * [animation]: Game animation; may be null *(optional)*.
   const Game({
     required this.id,
     required this.shortName,
@@ -13,25 +34,25 @@ class Game extends TdObject {
     this.animation,
   });
   
-  /// [id] Game game 
+  /// Unique game identifier
   final int id;
 
-  /// [shortName] Game short name. To share a game use the URL https://t.me/{bot_username}?game={game_short_name} 
+  /// Game short name
   final String shortName;
 
-  /// [title] Game title 
+  /// Game title
   final String title;
 
-  /// [text] Game text, usually containing scoreboards for a game
+  /// Game text, usually containing scoreboards for a game
   final FormattedText text;
 
-  /// [description] Game description
+  /// Game description
   final String description;
 
-  /// [photo] Game photo 
+  /// Game photo
   final Photo photo;
 
-  /// [animation] Game animation; may be null
+  /// Game animation; may be null
   final Animation? animation;
   
   /// Parse from a json
@@ -47,9 +68,9 @@ class Game extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "id": id,
       "short_name": shortName,
       "title": title,
@@ -57,8 +78,9 @@ class Game extends TdObject {
       "description": description,
       "photo": photo.toJson(),
       "animation": animation?.toJson(),
-    };
-  }
+		};
+	}
+
   
   Game copyWith({
     int? id,
@@ -78,8 +100,11 @@ class Game extends TdObject {
     animation: animation ?? this.animation,
   );
 
-  static const CONSTRUCTOR = 'game';
-  
+  static const String objectType = 'game';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

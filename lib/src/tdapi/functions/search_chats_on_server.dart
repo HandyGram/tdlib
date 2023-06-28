@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class SearchChatsOnServer extends TdFunction {
-
-  /// Searches for the specified query in the title and username of already known chats via request to the server. Returns chats in the order seen in the main chat list
+/// **SearchChatsOnServer** *(searchChatsOnServer)* - TDLib function
+///
+/// Searches for the specified query in the title and username of already known chats via request to the server. Returns chats in the order seen in the main chat list.
+///
+/// * [query]: Query to search for.
+/// * [limit]: The maximum number of chats to be returned.
+///
+/// [Chats] is returned on completion.
+final class SearchChatsOnServer extends TdFunction {
+  
+  /// **SearchChatsOnServer** *(searchChatsOnServer)* - TDLib function
+  ///
+  /// Searches for the specified query in the title and username of already known chats via request to the server. Returns chats in the order seen in the main chat list.
+  ///
+  /// * [query]: Query to search for.
+  /// * [limit]: The maximum number of chats to be returned.
+  ///
+  /// [Chats] is returned on completion.
   const SearchChatsOnServer({
     required this.query,
     required this.limit,
   });
   
-  /// [query] Query to search for 
+  /// Query to search for 
   final String query;
 
-  /// [limit] The maximum number of chats to be returned
+  /// The maximum number of chats to be returned
   final int limit;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "query": query,
       "limit": limit,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SearchChatsOnServer copyWith({
     String? query,
@@ -32,8 +48,11 @@ class SearchChatsOnServer extends TdFunction {
     limit: limit ?? this.limit,
   );
 
-  static const CONSTRUCTOR = 'searchChatsOnServer';
-  
+  static const String objectType = 'searchChatsOnServer';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

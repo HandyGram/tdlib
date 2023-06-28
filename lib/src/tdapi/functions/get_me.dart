@@ -1,23 +1,36 @@
 part of '../tdapi.dart';
 
-class GetMe extends TdFunction {
-
-  /// Returns the current user
+/// **GetMe** *(getMe)* - TDLib function
+///
+/// Returns the current user.
+///
+/// [User] is returned on completion.
+final class GetMe extends TdFunction {
+  
+  /// **GetMe** *(getMe)* - TDLib function
+  ///
+  /// Returns the current user.
+  ///
+  /// [User] is returned on completion.
   const GetMe();
   
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetMe copyWith() => const GetMe();
 
-  static const CONSTRUCTOR = 'getMe';
-  
+  static const String objectType = 'getMe';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,13 +1,40 @@
 part of '../tdapi.dart';
 
-class ChatNotificationSettings extends TdObject {
-
-  /// Contains information about notification settings for a chat
+/// **ChatNotificationSettings** *(chatNotificationSettings)* - basic class
+///
+/// Contains information about notification settings for a chat or a forum topic.
+///
+/// * [useDefaultMuteFor]: If true, mute_for is ignored and the value for the relevant type of chat or the forum chat is used instead.
+/// * [muteFor]: Time left before notifications will be unmuted, in seconds.
+/// * [useDefaultSound]: If true, the value for the relevant type of chat or the forum chat is used instead of sound_id.
+/// * [soundId]: Identifier of the notification sound to be played; 0 if sound is disabled.
+/// * [useDefaultShowPreview]: If true, show_preview is ignored and the value for the relevant type of chat or the forum chat is used instead.
+/// * [showPreview]: True, if message content must be displayed in notifications.
+/// * [useDefaultDisablePinnedMessageNotifications]: If true, disable_pinned_message_notifications is ignored and the value for the relevant type of chat or the forum chat is used instead.
+/// * [disablePinnedMessageNotifications]: If true, notifications for incoming pinned messages will be created as for an ordinary unread message.
+/// * [useDefaultDisableMentionNotifications]: If true, disable_mention_notifications is ignored and the value for the relevant type of chat or the forum chat is used instead.
+/// * [disableMentionNotifications]: If true, notifications for messages with mentions will be created as for an ordinary unread message.
+final class ChatNotificationSettings extends TdObject {
+  
+  /// **ChatNotificationSettings** *(chatNotificationSettings)* - basic class
+  ///
+  /// Contains information about notification settings for a chat or a forum topic.
+  ///
+  /// * [useDefaultMuteFor]: If true, mute_for is ignored and the value for the relevant type of chat or the forum chat is used instead.
+  /// * [muteFor]: Time left before notifications will be unmuted, in seconds.
+  /// * [useDefaultSound]: If true, the value for the relevant type of chat or the forum chat is used instead of sound_id.
+  /// * [soundId]: Identifier of the notification sound to be played; 0 if sound is disabled.
+  /// * [useDefaultShowPreview]: If true, show_preview is ignored and the value for the relevant type of chat or the forum chat is used instead.
+  /// * [showPreview]: True, if message content must be displayed in notifications.
+  /// * [useDefaultDisablePinnedMessageNotifications]: If true, disable_pinned_message_notifications is ignored and the value for the relevant type of chat or the forum chat is used instead.
+  /// * [disablePinnedMessageNotifications]: If true, notifications for incoming pinned messages will be created as for an ordinary unread message.
+  /// * [useDefaultDisableMentionNotifications]: If true, disable_mention_notifications is ignored and the value for the relevant type of chat or the forum chat is used instead.
+  /// * [disableMentionNotifications]: If true, notifications for messages with mentions will be created as for an ordinary unread message.
   const ChatNotificationSettings({
     required this.useDefaultMuteFor,
     required this.muteFor,
     required this.useDefaultSound,
-    required this.sound,
+    required this.soundId,
     required this.useDefaultShowPreview,
     required this.showPreview,
     required this.useDefaultDisablePinnedMessageNotifications,
@@ -16,34 +43,34 @@ class ChatNotificationSettings extends TdObject {
     required this.disableMentionNotifications,
   });
   
-  /// [useDefaultMuteFor] If true, mute_for is ignored and the value for the relevant type of chat is used instead
+  /// If true, mute_for is ignored and the value for the relevant type of chat or the forum chat is used instead
   final bool useDefaultMuteFor;
 
-  /// [muteFor] Time left before notifications will be unmuted, in seconds
+  /// Time left before notifications will be unmuted, in seconds
   final int muteFor;
 
-  /// [useDefaultSound] If true, sound is ignored and the value for the relevant type of chat is used instead
+  /// If true, the value for the relevant type of chat or the forum chat is used instead of sound_id
   final bool useDefaultSound;
 
-  /// [sound] The name of an audio file to be used for notification sounds; only applies to iOS applications
-  final String sound;
+  /// Identifier of the notification sound to be played; 0 if sound is disabled
+  final int soundId;
 
-  /// [useDefaultShowPreview] If true, show_preview is ignored and the value for the relevant type of chat is used instead
+  /// If true, show_preview is ignored and the value for the relevant type of chat or the forum chat is used instead
   final bool useDefaultShowPreview;
 
-  /// [showPreview] True, if message content must be displayed in notifications
+  /// True, if message content must be displayed in notifications
   final bool showPreview;
 
-  /// [useDefaultDisablePinnedMessageNotifications] If true, disable_pinned_message_notifications is ignored and the value for the relevant type of chat is used instead
+  /// If true, disable_pinned_message_notifications is ignored and the value for the relevant type of chat or the forum chat is used instead
   final bool useDefaultDisablePinnedMessageNotifications;
 
-  /// [disablePinnedMessageNotifications] If true, notifications for incoming pinned messages will be created as for an ordinary unread message
+  /// If true, notifications for incoming pinned messages will be created as for an ordinary unread message
   final bool disablePinnedMessageNotifications;
 
-  /// [useDefaultDisableMentionNotifications] If true, disable_mention_notifications is ignored and the value for the relevant type of chat is used instead
+  /// If true, disable_mention_notifications is ignored and the value for the relevant type of chat or the forum chat is used instead
   final bool useDefaultDisableMentionNotifications;
 
-  /// [disableMentionNotifications] If true, notifications for messages with mentions will be created as for an ordinary unread message
+  /// If true, notifications for messages with mentions will be created as for an ordinary unread message
   final bool disableMentionNotifications;
   
   /// Parse from a json
@@ -51,7 +78,7 @@ class ChatNotificationSettings extends TdObject {
     useDefaultMuteFor: json['use_default_mute_for'],
     muteFor: json['mute_for'],
     useDefaultSound: json['use_default_sound'],
-    sound: json['sound'],
+    soundId: int.parse(json['sound_id']),
     useDefaultShowPreview: json['use_default_show_preview'],
     showPreview: json['show_preview'],
     useDefaultDisablePinnedMessageNotifications: json['use_default_disable_pinned_message_notifications'],
@@ -62,27 +89,28 @@ class ChatNotificationSettings extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "use_default_mute_for": useDefaultMuteFor,
       "mute_for": muteFor,
       "use_default_sound": useDefaultSound,
-      "sound": sound,
+      "sound_id": soundId,
       "use_default_show_preview": useDefaultShowPreview,
       "show_preview": showPreview,
       "use_default_disable_pinned_message_notifications": useDefaultDisablePinnedMessageNotifications,
       "disable_pinned_message_notifications": disablePinnedMessageNotifications,
       "use_default_disable_mention_notifications": useDefaultDisableMentionNotifications,
       "disable_mention_notifications": disableMentionNotifications,
-    };
-  }
+		};
+	}
+
   
   ChatNotificationSettings copyWith({
     bool? useDefaultMuteFor,
     int? muteFor,
     bool? useDefaultSound,
-    String? sound,
+    int? soundId,
     bool? useDefaultShowPreview,
     bool? showPreview,
     bool? useDefaultDisablePinnedMessageNotifications,
@@ -93,7 +121,7 @@ class ChatNotificationSettings extends TdObject {
     useDefaultMuteFor: useDefaultMuteFor ?? this.useDefaultMuteFor,
     muteFor: muteFor ?? this.muteFor,
     useDefaultSound: useDefaultSound ?? this.useDefaultSound,
-    sound: sound ?? this.sound,
+    soundId: soundId ?? this.soundId,
     useDefaultShowPreview: useDefaultShowPreview ?? this.useDefaultShowPreview,
     showPreview: showPreview ?? this.showPreview,
     useDefaultDisablePinnedMessageNotifications: useDefaultDisablePinnedMessageNotifications ?? this.useDefaultDisablePinnedMessageNotifications,
@@ -102,8 +130,11 @@ class ChatNotificationSettings extends TdObject {
     disableMentionNotifications: disableMentionNotifications ?? this.disableMentionNotifications,
   );
 
-  static const CONSTRUCTOR = 'chatNotificationSettings';
-  
+  static const String objectType = 'chatNotificationSettings';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

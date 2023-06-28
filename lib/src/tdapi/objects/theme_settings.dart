@@ -1,8 +1,25 @@
 part of '../tdapi.dart';
 
-class ThemeSettings extends TdObject {
-
-  /// Describes theme settings
+/// **ThemeSettings** *(themeSettings)* - basic class
+///
+/// Describes theme settings.
+///
+/// * [accentColor]: Theme accent color in ARGB format.
+/// * [background]: The background to be used in chats; may be null *(optional)*.
+/// * [outgoingMessageFill]: The fill to be used as a background for outgoing messages.
+/// * [animateOutgoingMessageFill]: If true, the freeform gradient fill needs to be animated on every sent message.
+/// * [outgoingMessageAccentColor]: Accent color of outgoing messages in ARGB format.
+final class ThemeSettings extends TdObject {
+  
+  /// **ThemeSettings** *(themeSettings)* - basic class
+  ///
+  /// Describes theme settings.
+  ///
+  /// * [accentColor]: Theme accent color in ARGB format.
+  /// * [background]: The background to be used in chats; may be null *(optional)*.
+  /// * [outgoingMessageFill]: The fill to be used as a background for outgoing messages.
+  /// * [animateOutgoingMessageFill]: If true, the freeform gradient fill needs to be animated on every sent message.
+  /// * [outgoingMessageAccentColor]: Accent color of outgoing messages in ARGB format.
   const ThemeSettings({
     required this.accentColor,
     this.background,
@@ -11,19 +28,19 @@ class ThemeSettings extends TdObject {
     required this.outgoingMessageAccentColor,
   });
   
-  /// [accentColor] Theme accent color in ARGB format
+  /// Theme accent color in ARGB format
   final int accentColor;
 
-  /// [background] The background to be used in chats; may be null
+  /// The background to be used in chats; may be null
   final Background? background;
 
-  /// [outgoingMessageFill] The fill to be used as a background for outgoing messages
+  /// The fill to be used as a background for outgoing messages
   final BackgroundFill outgoingMessageFill;
 
-  /// [animateOutgoingMessageFill] If true, the freeform gradient fill needs to be animated on every sent message
+  /// If true, the freeform gradient fill needs to be animated on every sent message
   final bool animateOutgoingMessageFill;
 
-  /// [outgoingMessageAccentColor] Accent color of outgoing messages in ARGB format
+  /// Accent color of outgoing messages in ARGB format
   final int outgoingMessageAccentColor;
   
   /// Parse from a json
@@ -37,16 +54,17 @@ class ThemeSettings extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "accent_color": accentColor,
       "background": background?.toJson(),
       "outgoing_message_fill": outgoingMessageFill.toJson(),
       "animate_outgoing_message_fill": animateOutgoingMessageFill,
       "outgoing_message_accent_color": outgoingMessageAccentColor,
-    };
-  }
+		};
+	}
+
   
   ThemeSettings copyWith({
     int? accentColor,
@@ -62,8 +80,11 @@ class ThemeSettings extends TdObject {
     outgoingMessageAccentColor: outgoingMessageAccentColor ?? this.outgoingMessageAccentColor,
   );
 
-  static const CONSTRUCTOR = 'themeSettings';
-  
+  static const String objectType = 'themeSettings';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

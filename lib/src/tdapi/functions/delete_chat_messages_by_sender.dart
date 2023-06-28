@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class DeleteChatMessagesBySender extends TdFunction {
-
-  /// Deletes all messages sent by the specified message sender in a chat. Supported only for supergroups; requires can_delete_messages administrator privileges
+/// **DeleteChatMessagesBySender** *(deleteChatMessagesBySender)* - TDLib function
+///
+/// Deletes all messages sent by the specified message sender in a chat. Supported only for supergroups; requires can_delete_messages administrator privileges.
+///
+/// * [chatId]: Chat identifier.
+/// * [senderId]: Identifier of the sender of messages to delete.
+///
+/// [Ok] is returned on completion.
+final class DeleteChatMessagesBySender extends TdFunction {
+  
+  /// **DeleteChatMessagesBySender** *(deleteChatMessagesBySender)* - TDLib function
+  ///
+  /// Deletes all messages sent by the specified message sender in a chat. Supported only for supergroups; requires can_delete_messages administrator privileges.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [senderId]: Identifier of the sender of messages to delete.
+  ///
+  /// [Ok] is returned on completion.
   const DeleteChatMessagesBySender({
     required this.chatId,
     required this.senderId,
   });
   
-  /// [chatId] Chat identifier 
+  /// Chat identifier 
   final int chatId;
 
-  /// [senderId] Identifier of the sender of messages to delete
+  /// Identifier of the sender of messages to delete
   final MessageSender senderId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "sender_id": senderId.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   DeleteChatMessagesBySender copyWith({
     int? chatId,
@@ -32,8 +48,11 @@ class DeleteChatMessagesBySender extends TdFunction {
     senderId: senderId ?? this.senderId,
   );
 
-  static const CONSTRUCTOR = 'deleteChatMessagesBySender';
-  
+  static const String objectType = 'deleteChatMessagesBySender';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

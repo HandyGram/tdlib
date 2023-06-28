@@ -1,21 +1,34 @@
 part of '../tdapi.dart';
 
-class TermsOfService extends TdObject {
-
-  /// Contains Telegram terms of service
+/// **TermsOfService** *(termsOfService)* - basic class
+///
+/// Contains Telegram terms of service.
+///
+/// * [text]: Text of the terms of service.
+/// * [minUserAge]: The minimum age of a user to be able to accept the terms; 0 if age isn't restricted.
+/// * [showPopup]: True, if a blocking popup with terms of service must be shown to the user.
+final class TermsOfService extends TdObject {
+  
+  /// **TermsOfService** *(termsOfService)* - basic class
+  ///
+  /// Contains Telegram terms of service.
+  ///
+  /// * [text]: Text of the terms of service.
+  /// * [minUserAge]: The minimum age of a user to be able to accept the terms; 0 if age isn't restricted.
+  /// * [showPopup]: True, if a blocking popup with terms of service must be shown to the user.
   const TermsOfService({
     required this.text,
     required this.minUserAge,
     required this.showPopup,
   });
   
-  /// [text] Text of the terms of service 
+  /// Text of the terms of service 
   final FormattedText text;
 
-  /// [minUserAge] The minimum age of a user to be able to accept the terms; 0 if any 
+  /// The minimum age of a user to be able to accept the terms; 0 if age isn't restricted 
   final int minUserAge;
 
-  /// [showPopup] True, if a blocking popup with terms of service must be shown to the user
+  /// True, if a blocking popup with terms of service must be shown to the user
   final bool showPopup;
   
   /// Parse from a json
@@ -27,14 +40,15 @@ class TermsOfService extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "text": text.toJson(),
       "min_user_age": minUserAge,
       "show_popup": showPopup,
-    };
-  }
+		};
+	}
+
   
   TermsOfService copyWith({
     FormattedText? text,
@@ -46,8 +60,11 @@ class TermsOfService extends TdObject {
     showPopup: showPopup ?? this.showPopup,
   );
 
-  static const CONSTRUCTOR = 'termsOfService';
-  
+  static const String objectType = 'termsOfService';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class DeleteRevokedChatInviteLink extends TdFunction {
-
-  /// Deletes revoked chat invite links. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links
+/// **DeleteRevokedChatInviteLink** *(deleteRevokedChatInviteLink)* - TDLib function
+///
+/// Deletes revoked chat invite links. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links.
+///
+/// * [chatId]: Chat identifier.
+/// * [inviteLink]: Invite link to revoke.
+///
+/// [Ok] is returned on completion.
+final class DeleteRevokedChatInviteLink extends TdFunction {
+  
+  /// **DeleteRevokedChatInviteLink** *(deleteRevokedChatInviteLink)* - TDLib function
+  ///
+  /// Deletes revoked chat invite links. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [inviteLink]: Invite link to revoke.
+  ///
+  /// [Ok] is returned on completion.
   const DeleteRevokedChatInviteLink({
     required this.chatId,
     required this.inviteLink,
   });
   
-  /// [chatId] Chat identifier 
+  /// Chat identifier 
   final int chatId;
 
-  /// [inviteLink] Invite link to revoke
+  /// Invite link to revoke
   final String inviteLink;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "invite_link": inviteLink,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   DeleteRevokedChatInviteLink copyWith({
     int? chatId,
@@ -32,8 +48,11 @@ class DeleteRevokedChatInviteLink extends TdFunction {
     inviteLink: inviteLink ?? this.inviteLink,
   );
 
-  static const CONSTRUCTOR = 'deleteRevokedChatInviteLink';
-  
+  static const String objectType = 'deleteRevokedChatInviteLink';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

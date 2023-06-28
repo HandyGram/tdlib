@@ -1,8 +1,27 @@
 part of '../tdapi.dart';
 
-class Address extends TdObject {
-
-  /// Describes an address
+/// **Address** *(address)* - basic class
+///
+/// Describes an address.
+///
+/// * [countryCode]: A two-letter ISO 3166-1 alpha-2 country code.
+/// * [state]: State, if applicable.
+/// * [city]: City.
+/// * [streetLine1]: First line of the address.
+/// * [streetLine2]: Second line of the address.
+/// * [postalCode]: Address postal code.
+final class Address extends TdObject {
+  
+  /// **Address** *(address)* - basic class
+  ///
+  /// Describes an address.
+  ///
+  /// * [countryCode]: A two-letter ISO 3166-1 alpha-2 country code.
+  /// * [state]: State, if applicable.
+  /// * [city]: City.
+  /// * [streetLine1]: First line of the address.
+  /// * [streetLine2]: Second line of the address.
+  /// * [postalCode]: Address postal code.
   const Address({
     required this.countryCode,
     required this.state,
@@ -12,22 +31,22 @@ class Address extends TdObject {
     required this.postalCode,
   });
   
-  /// [countryCode] A two-letter ISO 3166-1 alpha-2 country code 
+  /// A two-letter ISO 3166-1 alpha-2 country code
   final String countryCode;
 
-  /// [state] State, if applicable 
+  /// State, if applicable
   final String state;
 
-  /// [city] City 
+  /// City
   final String city;
 
-  /// [streetLine1] First line of the address 
+  /// First line of the address
   final String streetLine1;
 
-  /// [streetLine2] Second line of the address 
+  /// Second line of the address
   final String streetLine2;
 
-  /// [postalCode] Address postal code
+  /// Address postal code
   final String postalCode;
   
   /// Parse from a json
@@ -42,17 +61,18 @@ class Address extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "country_code": countryCode,
       "state": state,
       "city": city,
       "street_line1": streetLine1,
       "street_line2": streetLine2,
       "postal_code": postalCode,
-    };
-  }
+		};
+	}
+
   
   Address copyWith({
     String? countryCode,
@@ -70,8 +90,11 @@ class Address extends TdObject {
     postalCode: postalCode ?? this.postalCode,
   );
 
-  static const CONSTRUCTOR = 'address';
-  
+  static const String objectType = 'address';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class CallServerType extends TdObject {
-
-  /// Describes the type of a call server
+/// **CallServerType** *(callServerType)* - parent
+///
+/// Describes the type of a call server.
+sealed class CallServerType extends TdObject {
+  
+  /// **CallServerType** *(callServerType)* - parent
+  ///
+  /// Describes the type of a call server.
   const CallServerType();
   
   /// a CallServerType return type can be :
@@ -10,72 +15,113 @@ class CallServerType extends TdObject {
   /// * [CallServerTypeWebrtc]
   factory CallServerType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case CallServerTypeTelegramReflector.CONSTRUCTOR:
+      case CallServerTypeTelegramReflector.objectType:
         return CallServerTypeTelegramReflector.fromJson(json);
-      case CallServerTypeWebrtc.CONSTRUCTOR:
+      case CallServerTypeWebrtc.objectType:
         return CallServerTypeWebrtc.fromJson(json);
       default:
-        return const CallServerType();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of CallServerType)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  CallServerType copyWith() => const CallServerType();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'callServerType';
   
+  CallServerType copyWith();
+
+  static const String objectType = 'callServerType';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class CallServerTypeTelegramReflector extends CallServerType {
-
-  /// A Telegram call reflector
+/// **CallServerTypeTelegramReflector** *(callServerTypeTelegramReflector)* - child of CallServerType
+///
+/// A Telegram call reflector.
+///
+/// * [peerTag]: A peer tag to be used with the reflector.
+/// * [isTcp]: True, if the server uses TCP instead of UDP.
+final class CallServerTypeTelegramReflector extends CallServerType {
+  
+  /// **CallServerTypeTelegramReflector** *(callServerTypeTelegramReflector)* - child of CallServerType
+  ///
+  /// A Telegram call reflector.
+  ///
+  /// * [peerTag]: A peer tag to be used with the reflector.
+  /// * [isTcp]: True, if the server uses TCP instead of UDP.
   const CallServerTypeTelegramReflector({
     required this.peerTag,
+    required this.isTcp,
   });
   
-  /// [peerTag] A peer tag to be used with the reflector
+  /// A peer tag to be used with the reflector 
   final String peerTag;
+
+  /// True, if the server uses TCP instead of UDP
+  final bool isTcp;
   
   /// Parse from a json
   factory CallServerTypeTelegramReflector.fromJson(Map<String, dynamic> json) => CallServerTypeTelegramReflector(
     peerTag: json['peer_tag'],
+    isTcp: json['is_tcp'],
   );
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "peer_tag": peerTag,
-    };
-  }
+      "is_tcp": isTcp,
+		};
+	}
+
   
   @override
   CallServerTypeTelegramReflector copyWith({
     String? peerTag,
+    bool? isTcp,
   }) => CallServerTypeTelegramReflector(
     peerTag: peerTag ?? this.peerTag,
+    isTcp: isTcp ?? this.isTcp,
   );
 
-  static const CONSTRUCTOR = 'callServerTypeTelegramReflector';
-  
+  static const String objectType = 'callServerTypeTelegramReflector';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class CallServerTypeWebrtc extends CallServerType {
-
-  /// A WebRTC server
+/// **CallServerTypeWebrtc** *(callServerTypeWebrtc)* - child of CallServerType
+///
+/// A WebRTC server.
+///
+/// * [username]: Username to be used for authentication.
+/// * [password]: Authentication password.
+/// * [supportsTurn]: True, if the server supports TURN.
+/// * [supportsStun]: True, if the server supports STUN.
+final class CallServerTypeWebrtc extends CallServerType {
+  
+  /// **CallServerTypeWebrtc** *(callServerTypeWebrtc)* - child of CallServerType
+  ///
+  /// A WebRTC server.
+  ///
+  /// * [username]: Username to be used for authentication.
+  /// * [password]: Authentication password.
+  /// * [supportsTurn]: True, if the server supports TURN.
+  /// * [supportsStun]: True, if the server supports STUN.
   const CallServerTypeWebrtc({
     required this.username,
     required this.password,
@@ -83,16 +129,16 @@ class CallServerTypeWebrtc extends CallServerType {
     required this.supportsStun,
   });
   
-  /// [username] Username to be used for authentication 
+  /// Username to be used for authentication
   final String username;
 
-  /// [password] Authentication password 
+  /// Authentication password
   final String password;
 
-  /// [supportsTurn] True, if the server supports TURN 
+  /// True, if the server supports TURN
   final bool supportsTurn;
 
-  /// [supportsStun] True, if the server supports STUN
+  /// True, if the server supports STUN
   final bool supportsStun;
   
   /// Parse from a json
@@ -105,15 +151,16 @@ class CallServerTypeWebrtc extends CallServerType {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "username": username,
       "password": password,
       "supports_turn": supportsTurn,
       "supports_stun": supportsStun,
-    };
-  }
+		};
+	}
+
   
   @override
   CallServerTypeWebrtc copyWith({
@@ -128,8 +175,11 @@ class CallServerTypeWebrtc extends CallServerType {
     supportsStun: supportsStun ?? this.supportsStun,
   );
 
-  static const CONSTRUCTOR = 'callServerTypeWebrtc';
-  
+  static const String objectType = 'callServerTypeWebrtc';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

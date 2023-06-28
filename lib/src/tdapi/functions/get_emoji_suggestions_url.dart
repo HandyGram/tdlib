@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class GetEmojiSuggestionsUrl extends TdFunction {
-
-  /// Returns an HTTP URL which can be used to automatically log in to the translation platform and suggest new emoji replacements. The URL will be valid for 30 seconds after generation
+/// **GetEmojiSuggestionsUrl** *(getEmojiSuggestionsUrl)* - TDLib function
+///
+/// Returns an HTTP URL which can be used to automatically log in to the translation platform and suggest new emoji replacements. The URL will be valid for 30 seconds after generation.
+///
+/// * [languageCode]: Language code for which the emoji replacements will be suggested.
+///
+/// [HttpUrl] is returned on completion.
+final class GetEmojiSuggestionsUrl extends TdFunction {
+  
+  /// **GetEmojiSuggestionsUrl** *(getEmojiSuggestionsUrl)* - TDLib function
+  ///
+  /// Returns an HTTP URL which can be used to automatically log in to the translation platform and suggest new emoji replacements. The URL will be valid for 30 seconds after generation.
+  ///
+  /// * [languageCode]: Language code for which the emoji replacements will be suggested.
+  ///
+  /// [HttpUrl] is returned on completion.
   const GetEmojiSuggestionsUrl({
     required this.languageCode,
   });
   
-  /// [languageCode] Language code for which the emoji replacements will be suggested
+  /// Language code for which the emoji replacements will be suggested
   final String languageCode;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "language_code": languageCode,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetEmojiSuggestionsUrl copyWith({
     String? languageCode,
@@ -25,8 +39,11 @@ class GetEmojiSuggestionsUrl extends TdFunction {
     languageCode: languageCode ?? this.languageCode,
   );
 
-  static const CONSTRUCTOR = 'getEmojiSuggestionsUrl';
-  
+  static const String objectType = 'getEmojiSuggestionsUrl';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

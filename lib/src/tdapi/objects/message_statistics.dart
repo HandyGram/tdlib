@@ -1,15 +1,24 @@
 part of '../tdapi.dart';
 
-class MessageStatistics extends TdObject {
-
-  /// A detailed statistics about a message
+/// **MessageStatistics** *(messageStatistics)* - basic class
+///
+/// A detailed statistics about a message.
+///
+/// * [messageInteractionGraph]: A graph containing number of message views and shares.
+final class MessageStatistics extends TdObject {
+  
+  /// **MessageStatistics** *(messageStatistics)* - basic class
+  ///
+  /// A detailed statistics about a message.
+  ///
+  /// * [messageInteractionGraph]: A graph containing number of message views and shares.
   const MessageStatistics({
     required this.messageInteractionGraph,
     this.extra,
     this.clientId,
   });
   
-  /// [messageInteractionGraph] A graph containing number of message views and shares
+  /// A graph containing number of message views and shares
   final StatisticalGraph messageInteractionGraph;
 
   /// [extra] callback sign
@@ -29,12 +38,13 @@ class MessageStatistics extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "message_interaction_graph": messageInteractionGraph.toJson(),
-    };
-  }
+		};
+	}
+
   
   MessageStatistics copyWith({
     StatisticalGraph? messageInteractionGraph,
@@ -46,8 +56,11 @@ class MessageStatistics extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'messageStatistics';
-  
+  static const String objectType = 'messageStatistics';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class TestCallVectorString extends TdFunction {
-
-  /// Returns the received vector of strings; for testing only. This is an offline method. Can be called before authorization
+/// **TestCallVectorString** *(testCallVectorString)* - TDLib function
+///
+/// Returns the received vector of strings; for testing only. This is an offline method. Can be called before authorization.
+///
+/// * [x]: Vector of strings to return.
+///
+/// [TestVectorString] is returned on completion.
+final class TestCallVectorString extends TdFunction {
+  
+  /// **TestCallVectorString** *(testCallVectorString)* - TDLib function
+  ///
+  /// Returns the received vector of strings; for testing only. This is an offline method. Can be called before authorization.
+  ///
+  /// * [x]: Vector of strings to return.
+  ///
+  /// [TestVectorString] is returned on completion.
   const TestCallVectorString({
     required this.x,
   });
   
-  /// [x] Vector of strings to return
+  /// Vector of strings to return
   final List<String> x;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "x": x.map((i) => i).toList(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   TestCallVectorString copyWith({
     List<String>? x,
@@ -25,8 +39,11 @@ class TestCallVectorString extends TdFunction {
     x: x ?? this.x,
   );
 
-  static const CONSTRUCTOR = 'testCallVectorString';
-  
+  static const String objectType = 'testCallVectorString';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

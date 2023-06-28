@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class SetCustomLanguagePack extends TdFunction {
-
-  /// Adds or changes a custom local language pack to the current localization target
+/// **SetCustomLanguagePack** *(setCustomLanguagePack)* - TDLib function
+///
+/// Adds or changes a custom local language pack to the current localization target.
+///
+/// * [info]: Information about the language pack. Language pack setCustomLanguagePack must start with 'X', consist only of English letters, digits and hyphens, and must not exceed 64 characters. Can be called before authorization.
+/// * [strings]: Strings of the new language pack.
+///
+/// [Ok] is returned on completion.
+final class SetCustomLanguagePack extends TdFunction {
+  
+  /// **SetCustomLanguagePack** *(setCustomLanguagePack)* - TDLib function
+  ///
+  /// Adds or changes a custom local language pack to the current localization target.
+  ///
+  /// * [info]: Information about the language pack. Language pack setCustomLanguagePack must start with 'X', consist only of English letters, digits and hyphens, and must not exceed 64 characters. Can be called before authorization.
+  /// * [strings]: Strings of the new language pack.
+  ///
+  /// [Ok] is returned on completion.
   const SetCustomLanguagePack({
     required this.info,
     required this.strings,
   });
   
-  /// [info] Information about the language pack. Language pack setCustomLanguagePack must start with 'X', consist only of English letters, digits and hyphens, and must not exceed 64 characters. Can be called before authorization 
+  /// Information about the language pack. Language pack setCustomLanguagePack must start with 'X', consist only of English letters, digits and hyphens, and must not exceed 64 characters. Can be called before authorization
   final LanguagePackInfo info;
 
-  /// [strings] Strings of the new language pack
+  /// Strings of the new language pack
   final List<LanguagePackString> strings;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "info": info.toJson(),
       "strings": strings.map((i) => i.toJson()).toList(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SetCustomLanguagePack copyWith({
     LanguagePackInfo? info,
@@ -32,8 +48,11 @@ class SetCustomLanguagePack extends TdFunction {
     strings: strings ?? this.strings,
   );
 
-  static const CONSTRUCTOR = 'setCustomLanguagePack';
-  
+  static const String objectType = 'setCustomLanguagePack';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

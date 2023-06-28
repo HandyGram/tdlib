@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class GetCallbackQueryMessage extends TdFunction {
-
-  /// Returns information about a message with the callback button that originated a callback query; for bots only
+/// **GetCallbackQueryMessage** *(getCallbackQueryMessage)* - TDLib function
+///
+/// Returns information about a message with the callback button that originated a callback query; for bots only.
+///
+/// * [chatId]: Identifier of the chat the message belongs to.
+/// * [messageId]: Message identifier.
+/// * [callbackQueryId]: Identifier of the callback query.
+///
+/// [Message] is returned on completion.
+final class GetCallbackQueryMessage extends TdFunction {
+  
+  /// **GetCallbackQueryMessage** *(getCallbackQueryMessage)* - TDLib function
+  ///
+  /// Returns information about a message with the callback button that originated a callback query; for bots only.
+  ///
+  /// * [chatId]: Identifier of the chat the message belongs to.
+  /// * [messageId]: Message identifier.
+  /// * [callbackQueryId]: Identifier of the callback query.
+  ///
+  /// [Message] is returned on completion.
   const GetCallbackQueryMessage({
     required this.chatId,
     required this.messageId,
     required this.callbackQueryId,
   });
   
-  /// [chatId] Identifier of the chat the message belongs to 
+  /// Identifier of the chat the message belongs to 
   final int chatId;
 
-  /// [messageId] Message identifier 
+  /// Message identifier 
   final int messageId;
 
-  /// [callbackQueryId] Identifier of the callback query
+  /// Identifier of the callback query
   final int callbackQueryId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "message_id": messageId,
       "callback_query_id": callbackQueryId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetCallbackQueryMessage copyWith({
     int? chatId,
@@ -39,8 +57,11 @@ class GetCallbackQueryMessage extends TdFunction {
     callbackQueryId: callbackQueryId ?? this.callbackQueryId,
   );
 
-  static const CONSTRUCTOR = 'getCallbackQueryMessage';
-  
+  static const String objectType = 'getCallbackQueryMessage';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

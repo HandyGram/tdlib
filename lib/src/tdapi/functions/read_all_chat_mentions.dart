@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class ReadAllChatMentions extends TdFunction {
-
-  /// Marks all mentions in a chat as read
+/// **ReadAllChatMentions** *(readAllChatMentions)* - TDLib function
+///
+/// Marks all mentions in a chat as read.
+///
+/// * [chatId]: Chat identifier.
+///
+/// [Ok] is returned on completion.
+final class ReadAllChatMentions extends TdFunction {
+  
+  /// **ReadAllChatMentions** *(readAllChatMentions)* - TDLib function
+  ///
+  /// Marks all mentions in a chat as read.
+  ///
+  /// * [chatId]: Chat identifier.
+  ///
+  /// [Ok] is returned on completion.
   const ReadAllChatMentions({
     required this.chatId,
   });
   
-  /// [chatId] Chat identifier
+  /// Chat identifier
   final int chatId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   ReadAllChatMentions copyWith({
     int? chatId,
@@ -25,8 +39,11 @@ class ReadAllChatMentions extends TdFunction {
     chatId: chatId ?? this.chatId,
   );
 
-  static const CONSTRUCTOR = 'readAllChatMentions';
-  
+  static const String objectType = 'readAllChatMentions';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

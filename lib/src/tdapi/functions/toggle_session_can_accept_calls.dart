@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class ToggleSessionCanAcceptCalls extends TdFunction {
-
-  /// Toggles whether a session can accept incoming calls
+/// **ToggleSessionCanAcceptCalls** *(toggleSessionCanAcceptCalls)* - TDLib function
+///
+/// Toggles whether a session can accept incoming calls.
+///
+/// * [sessionId]: Session identifier.
+/// * [canAcceptCalls]: Pass true to allow accepting incoming calls by the session; pass false otherwise.
+///
+/// [Ok] is returned on completion.
+final class ToggleSessionCanAcceptCalls extends TdFunction {
+  
+  /// **ToggleSessionCanAcceptCalls** *(toggleSessionCanAcceptCalls)* - TDLib function
+  ///
+  /// Toggles whether a session can accept incoming calls.
+  ///
+  /// * [sessionId]: Session identifier.
+  /// * [canAcceptCalls]: Pass true to allow accepting incoming calls by the session; pass false otherwise.
+  ///
+  /// [Ok] is returned on completion.
   const ToggleSessionCanAcceptCalls({
     required this.sessionId,
     required this.canAcceptCalls,
   });
   
-  /// [sessionId] Session identifier 
+  /// Session identifier 
   final int sessionId;
 
-  /// [canAcceptCalls] True, if incoming calls can be accepted by the session
+  /// Pass true to allow accepting incoming calls by the session; pass false otherwise
   final bool canAcceptCalls;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "session_id": sessionId,
       "can_accept_calls": canAcceptCalls,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   ToggleSessionCanAcceptCalls copyWith({
     int? sessionId,
@@ -32,8 +48,11 @@ class ToggleSessionCanAcceptCalls extends TdFunction {
     canAcceptCalls: canAcceptCalls ?? this.canAcceptCalls,
   );
 
-  static const CONSTRUCTOR = 'toggleSessionCanAcceptCalls';
-  
+  static const String objectType = 'toggleSessionCanAcceptCalls';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

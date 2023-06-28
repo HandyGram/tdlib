@@ -1,15 +1,24 @@
 part of '../tdapi.dart';
 
-class Animations extends TdObject {
-
-  /// Represents a list of animations
+/// **Animations** *(animations)* - basic class
+///
+/// Represents a list of animations.
+///
+/// * [animations]: List of animations.
+final class Animations extends TdObject {
+  
+  /// **Animations** *(animations)* - basic class
+  ///
+  /// Represents a list of animations.
+  ///
+  /// * [animations]: List of animations.
   const Animations({
     required this.animations,
     this.extra,
     this.clientId,
   });
   
-  /// [animations] List of animations
+  /// List of animations
   final List<Animation> animations;
 
   /// [extra] callback sign
@@ -29,12 +38,13 @@ class Animations extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "animations": animations.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   Animations copyWith({
     List<Animation>? animations,
@@ -46,8 +56,11 @@ class Animations extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'animations';
-  
+  static const String objectType = 'animations';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

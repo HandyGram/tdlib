@@ -1,8 +1,23 @@
 part of '../tdapi.dart';
 
-class ChatStatisticsAdministratorActionsInfo extends TdObject {
-
-  /// Contains statistics about administrator actions done by a user
+/// **ChatStatisticsAdministratorActionsInfo** *(chatStatisticsAdministratorActionsInfo)* - basic class
+///
+/// Contains statistics about administrator actions done by a user.
+///
+/// * [userId]: Administrator user identifier.
+/// * [deletedMessageCount]: Number of messages deleted by the administrator.
+/// * [bannedUserCount]: Number of users banned by the administrator.
+/// * [restrictedUserCount]: Number of users restricted by the administrator.
+final class ChatStatisticsAdministratorActionsInfo extends TdObject {
+  
+  /// **ChatStatisticsAdministratorActionsInfo** *(chatStatisticsAdministratorActionsInfo)* - basic class
+  ///
+  /// Contains statistics about administrator actions done by a user.
+  ///
+  /// * [userId]: Administrator user identifier.
+  /// * [deletedMessageCount]: Number of messages deleted by the administrator.
+  /// * [bannedUserCount]: Number of users banned by the administrator.
+  /// * [restrictedUserCount]: Number of users restricted by the administrator.
   const ChatStatisticsAdministratorActionsInfo({
     required this.userId,
     required this.deletedMessageCount,
@@ -10,16 +25,16 @@ class ChatStatisticsAdministratorActionsInfo extends TdObject {
     required this.restrictedUserCount,
   });
   
-  /// [userId] Administrator user identifier
+  /// Administrator user identifier
   final int userId;
 
-  /// [deletedMessageCount] Number of messages deleted by the administrator
+  /// Number of messages deleted by the administrator
   final int deletedMessageCount;
 
-  /// [bannedUserCount] Number of users banned by the administrator
+  /// Number of users banned by the administrator
   final int bannedUserCount;
 
-  /// [restrictedUserCount] Number of users restricted by the administrator
+  /// Number of users restricted by the administrator
   final int restrictedUserCount;
   
   /// Parse from a json
@@ -32,15 +47,16 @@ class ChatStatisticsAdministratorActionsInfo extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "user_id": userId,
       "deleted_message_count": deletedMessageCount,
       "banned_user_count": bannedUserCount,
       "restricted_user_count": restrictedUserCount,
-    };
-  }
+		};
+	}
+
   
   ChatStatisticsAdministratorActionsInfo copyWith({
     int? userId,
@@ -54,8 +70,11 @@ class ChatStatisticsAdministratorActionsInfo extends TdObject {
     restrictedUserCount: restrictedUserCount ?? this.restrictedUserCount,
   );
 
-  static const CONSTRUCTOR = 'chatStatisticsAdministratorActionsInfo';
-  
+  static const String objectType = 'chatStatisticsAdministratorActionsInfo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

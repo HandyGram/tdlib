@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class InputMessageContent extends TdObject {
-
-  /// The content of a message to send
+/// **InputMessageContent** *(inputMessageContent)* - parent
+///
+/// The content of a message to send.
+sealed class InputMessageContent extends TdObject {
+  
+  /// **InputMessageContent** *(inputMessageContent)* - parent
+  ///
+  /// The content of a message to send.
   const InputMessageContent();
   
   /// a InputMessageContent return type can be :
@@ -25,77 +30,93 @@ class InputMessageContent extends TdObject {
   /// * [InputMessageForwarded]
   factory InputMessageContent.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case InputMessageText.CONSTRUCTOR:
+      case InputMessageText.objectType:
         return InputMessageText.fromJson(json);
-      case InputMessageAnimation.CONSTRUCTOR:
+      case InputMessageAnimation.objectType:
         return InputMessageAnimation.fromJson(json);
-      case InputMessageAudio.CONSTRUCTOR:
+      case InputMessageAudio.objectType:
         return InputMessageAudio.fromJson(json);
-      case InputMessageDocument.CONSTRUCTOR:
+      case InputMessageDocument.objectType:
         return InputMessageDocument.fromJson(json);
-      case InputMessagePhoto.CONSTRUCTOR:
+      case InputMessagePhoto.objectType:
         return InputMessagePhoto.fromJson(json);
-      case InputMessageSticker.CONSTRUCTOR:
+      case InputMessageSticker.objectType:
         return InputMessageSticker.fromJson(json);
-      case InputMessageVideo.CONSTRUCTOR:
+      case InputMessageVideo.objectType:
         return InputMessageVideo.fromJson(json);
-      case InputMessageVideoNote.CONSTRUCTOR:
+      case InputMessageVideoNote.objectType:
         return InputMessageVideoNote.fromJson(json);
-      case InputMessageVoiceNote.CONSTRUCTOR:
+      case InputMessageVoiceNote.objectType:
         return InputMessageVoiceNote.fromJson(json);
-      case InputMessageLocation.CONSTRUCTOR:
+      case InputMessageLocation.objectType:
         return InputMessageLocation.fromJson(json);
-      case InputMessageVenue.CONSTRUCTOR:
+      case InputMessageVenue.objectType:
         return InputMessageVenue.fromJson(json);
-      case InputMessageContact.CONSTRUCTOR:
+      case InputMessageContact.objectType:
         return InputMessageContact.fromJson(json);
-      case InputMessageDice.CONSTRUCTOR:
+      case InputMessageDice.objectType:
         return InputMessageDice.fromJson(json);
-      case InputMessageGame.CONSTRUCTOR:
+      case InputMessageGame.objectType:
         return InputMessageGame.fromJson(json);
-      case InputMessageInvoice.CONSTRUCTOR:
+      case InputMessageInvoice.objectType:
         return InputMessageInvoice.fromJson(json);
-      case InputMessagePoll.CONSTRUCTOR:
+      case InputMessagePoll.objectType:
         return InputMessagePoll.fromJson(json);
-      case InputMessageForwarded.CONSTRUCTOR:
+      case InputMessageForwarded.objectType:
         return InputMessageForwarded.fromJson(json);
       default:
-        return const InputMessageContent();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of InputMessageContent)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  InputMessageContent copyWith() => const InputMessageContent();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'inputMessageContent';
   
+  InputMessageContent copyWith();
+
+  static const String objectType = 'inputMessageContent';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InputMessageText extends InputMessageContent {
-
-  /// A text message
+/// **InputMessageText** *(inputMessageText)* - child of InputMessageContent
+///
+/// A text message.
+///
+/// * [text]: Formatted text to be sent; 1-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually.
+/// * [disableWebPagePreview]: True, if rich web page previews for URLs in the message text must be disabled.
+/// * [clearDraft]: True, if a chat message draft must be deleted.
+final class InputMessageText extends InputMessageContent {
+  
+  /// **InputMessageText** *(inputMessageText)* - child of InputMessageContent
+  ///
+  /// A text message.
+  ///
+  /// * [text]: Formatted text to be sent; 1-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually.
+  /// * [disableWebPagePreview]: True, if rich web page previews for URLs in the message text must be disabled.
+  /// * [clearDraft]: True, if a chat message draft must be deleted.
   const InputMessageText({
     required this.text,
     required this.disableWebPagePreview,
     required this.clearDraft,
   });
   
-  /// [text] Formatted text to be sent; 1-GetOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually
+  /// Formatted text to be sent; 1-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually
   final FormattedText text;
 
-  /// [disableWebPagePreview] True, if rich web page previews for URLs in the message text must be disabled
+  /// True, if rich web page previews for URLs in the message text must be disabled
   final bool disableWebPagePreview;
 
-  /// [clearDraft] True, if a chat message draft must be deleted
+  /// True, if a chat message draft must be deleted
   final bool clearDraft;
   
   /// Parse from a json
@@ -107,14 +128,15 @@ class InputMessageText extends InputMessageContent {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "text": text.toJson(),
       "disable_web_page_preview": disableWebPagePreview,
       "clear_draft": clearDraft,
-    };
-  }
+		};
+	}
+
   
   @override
   InputMessageText copyWith({
@@ -127,16 +149,42 @@ class InputMessageText extends InputMessageContent {
     clearDraft: clearDraft ?? this.clearDraft,
   );
 
-  static const CONSTRUCTOR = 'inputMessageText';
-  
+  static const String objectType = 'inputMessageText';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InputMessageAnimation extends InputMessageContent {
-
+/// **InputMessageAnimation** *(inputMessageAnimation)* - child of InputMessageContent
+///
+/// An animation message (GIF-style).
+///
+/// * [animation]: Animation file to be sent.
+/// * [thumbnail]: Animation thumbnail; pass null to skip thumbnail uploading *(optional)*.
+/// * [addedStickerFileIds]: File identifiers of the stickers added to the animation, if applicable.
+/// * [duration]: Duration of the animation, in seconds.
+/// * [width]: Width of the animation; may be replaced by the server.
+/// * [height]: Height of the animation; may be replaced by the server.
+/// * [caption]: Animation caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
+/// * [hasSpoiler]: True, if the animation preview must be covered by a spoiler animation; not supported in secret chats.
+final class InputMessageAnimation extends InputMessageContent {
+  
+  /// **InputMessageAnimation** *(inputMessageAnimation)* - child of InputMessageContent
+  ///
   /// An animation message (GIF-style).
+  ///
+  /// * [animation]: Animation file to be sent.
+  /// * [thumbnail]: Animation thumbnail; pass null to skip thumbnail uploading *(optional)*.
+  /// * [addedStickerFileIds]: File identifiers of the stickers added to the animation, if applicable.
+  /// * [duration]: Duration of the animation, in seconds.
+  /// * [width]: Width of the animation; may be replaced by the server.
+  /// * [height]: Height of the animation; may be replaced by the server.
+  /// * [caption]: Animation caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
+  /// * [hasSpoiler]: True, if the animation preview must be covered by a spoiler animation; not supported in secret chats.
   const InputMessageAnimation({
     required this.animation,
     this.thumbnail,
@@ -145,28 +193,32 @@ class InputMessageAnimation extends InputMessageContent {
     required this.width,
     required this.height,
     this.caption,
+    required this.hasSpoiler,
   });
   
-  /// [animation] Animation file to be sent 
+  /// Animation file to be sent
   final InputFile animation;
 
-  /// [thumbnail] Animation thumbnail; pass null to skip thumbnail uploading 
+  /// Animation thumbnail; pass null to skip thumbnail uploading
   final InputThumbnail? thumbnail;
 
-  /// [addedStickerFileIds] File identifiers of the stickers added to the animation, if applicable
+  /// File identifiers of the stickers added to the animation, if applicable
   final List<int> addedStickerFileIds;
 
-  /// [duration] Duration of the animation, in seconds
+  /// Duration of the animation, in seconds
   final int duration;
 
-  /// [width] Width of the animation; may be replaced by the server 
+  /// Width of the animation; may be replaced by the server
   final int width;
 
-  /// [height] Height of the animation; may be replaced by the server 
+  /// Height of the animation; may be replaced by the server
   final int height;
 
-  /// [caption] Animation caption; pass null to use an empty caption; 0-GetOption("message_caption_length_max") characters
+  /// Animation caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
+
+  /// True, if the animation preview must be covered by a spoiler animation; not supported in secret chats
+  final bool hasSpoiler;
   
   /// Parse from a json
   factory InputMessageAnimation.fromJson(Map<String, dynamic> json) => InputMessageAnimation(
@@ -177,13 +229,14 @@ class InputMessageAnimation extends InputMessageContent {
     width: json['width'],
     height: json['height'],
     caption: json['caption'] == null ? null : FormattedText.fromJson(json['caption']),
+    hasSpoiler: json['has_spoiler'],
   );
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "animation": animation.toJson(),
       "thumbnail": thumbnail?.toJson(),
       "added_sticker_file_ids": addedStickerFileIds.map((i) => i).toList(),
@@ -191,8 +244,10 @@ class InputMessageAnimation extends InputMessageContent {
       "width": width,
       "height": height,
       "caption": caption?.toJson(),
-    };
-  }
+      "has_spoiler": hasSpoiler,
+		};
+	}
+
   
   @override
   InputMessageAnimation copyWith({
@@ -203,6 +258,7 @@ class InputMessageAnimation extends InputMessageContent {
     int? width,
     int? height,
     FormattedText? caption,
+    bool? hasSpoiler,
   }) => InputMessageAnimation(
     animation: animation ?? this.animation,
     thumbnail: thumbnail ?? this.thumbnail,
@@ -211,18 +267,41 @@ class InputMessageAnimation extends InputMessageContent {
     width: width ?? this.width,
     height: height ?? this.height,
     caption: caption ?? this.caption,
+    hasSpoiler: hasSpoiler ?? this.hasSpoiler,
   );
 
-  static const CONSTRUCTOR = 'inputMessageAnimation';
-  
+  static const String objectType = 'inputMessageAnimation';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InputMessageAudio extends InputMessageContent {
-
-  /// An audio message
+/// **InputMessageAudio** *(inputMessageAudio)* - child of InputMessageContent
+///
+/// An audio message.
+///
+/// * [audio]: Audio file to be sent.
+/// * [albumCoverThumbnail]: Thumbnail of the cover for the album; pass null to skip thumbnail uploading *(optional)*.
+/// * [duration]: Duration of the audio, in seconds; may be replaced by the server.
+/// * [title]: Title of the audio; 0-64 characters; may be replaced by the server.
+/// * [performer]: Performer of the audio; 0-64 characters, may be replaced by the server.
+/// * [caption]: Audio caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
+final class InputMessageAudio extends InputMessageContent {
+  
+  /// **InputMessageAudio** *(inputMessageAudio)* - child of InputMessageContent
+  ///
+  /// An audio message.
+  ///
+  /// * [audio]: Audio file to be sent.
+  /// * [albumCoverThumbnail]: Thumbnail of the cover for the album; pass null to skip thumbnail uploading *(optional)*.
+  /// * [duration]: Duration of the audio, in seconds; may be replaced by the server.
+  /// * [title]: Title of the audio; 0-64 characters; may be replaced by the server.
+  /// * [performer]: Performer of the audio; 0-64 characters, may be replaced by the server.
+  /// * [caption]: Audio caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
   const InputMessageAudio({
     required this.audio,
     this.albumCoverThumbnail,
@@ -232,22 +311,22 @@ class InputMessageAudio extends InputMessageContent {
     this.caption,
   });
   
-  /// [audio] Audio file to be sent 
+  /// Audio file to be sent
   final InputFile audio;
 
-  /// [albumCoverThumbnail] Thumbnail of the cover for the album; pass null to skip thumbnail uploading 
+  /// Thumbnail of the cover for the album; pass null to skip thumbnail uploading
   final InputThumbnail? albumCoverThumbnail;
 
-  /// [duration] Duration of the audio, in seconds; may be replaced by the server 
+  /// Duration of the audio, in seconds; may be replaced by the server
   final int duration;
 
-  /// [title] Title of the audio; 0-64 characters; may be replaced by the server
+  /// Title of the audio; 0-64 characters; may be replaced by the server
   final String title;
 
-  /// [performer] Performer of the audio; 0-64 characters, may be replaced by the server
+  /// Performer of the audio; 0-64 characters, may be replaced by the server
   final String performer;
 
-  /// [caption] Audio caption; pass null to use an empty caption; 0-GetOption("message_caption_length_max") characters
+  /// Audio caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
   
   /// Parse from a json
@@ -262,17 +341,18 @@ class InputMessageAudio extends InputMessageContent {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "audio": audio.toJson(),
       "album_cover_thumbnail": albumCoverThumbnail?.toJson(),
       "duration": duration,
       "title": title,
       "performer": performer,
       "caption": caption?.toJson(),
-    };
-  }
+		};
+	}
+
   
   @override
   InputMessageAudio copyWith({
@@ -291,16 +371,34 @@ class InputMessageAudio extends InputMessageContent {
     caption: caption ?? this.caption,
   );
 
-  static const CONSTRUCTOR = 'inputMessageAudio';
-  
+  static const String objectType = 'inputMessageAudio';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InputMessageDocument extends InputMessageContent {
-
-  /// A document message (general file)
+/// **InputMessageDocument** *(inputMessageDocument)* - child of InputMessageContent
+///
+/// A document message (general file).
+///
+/// * [document]: Document to be sent.
+/// * [thumbnail]: Document thumbnail; pass null to skip thumbnail uploading *(optional)*.
+/// * [disableContentTypeDetection]: If true, automatic file type detection will be disabled and the document will always be sent as file. Always true for files sent to secret chats.
+/// * [caption]: Document caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
+final class InputMessageDocument extends InputMessageContent {
+  
+  /// **InputMessageDocument** *(inputMessageDocument)* - child of InputMessageContent
+  ///
+  /// A document message (general file).
+  ///
+  /// * [document]: Document to be sent.
+  /// * [thumbnail]: Document thumbnail; pass null to skip thumbnail uploading *(optional)*.
+  /// * [disableContentTypeDetection]: If true, automatic file type detection will be disabled and the document will always be sent as file. Always true for files sent to secret chats.
+  /// * [caption]: Document caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
   const InputMessageDocument({
     required this.document,
     this.thumbnail,
@@ -308,16 +406,16 @@ class InputMessageDocument extends InputMessageContent {
     this.caption,
   });
   
-  /// [document] Document to be sent 
+  /// Document to be sent
   final InputFile document;
 
-  /// [thumbnail] Document thumbnail; pass null to skip thumbnail uploading 
+  /// Document thumbnail; pass null to skip thumbnail uploading
   final InputThumbnail? thumbnail;
 
-  /// [disableContentTypeDetection] If true, automatic file type detection will be disabled and the document will be always sent as file. Always true for files sent to secret chats 
+  /// If true, automatic file type detection will be disabled and the document will always be sent as file. Always true for files sent to secret chats
   final bool disableContentTypeDetection;
 
-  /// [caption] Document caption; pass null to use an empty caption; 0-GetOption("message_caption_length_max") characters
+  /// Document caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
   
   /// Parse from a json
@@ -330,15 +428,16 @@ class InputMessageDocument extends InputMessageContent {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "document": document.toJson(),
       "thumbnail": thumbnail?.toJson(),
       "disable_content_type_detection": disableContentTypeDetection,
       "caption": caption?.toJson(),
-    };
-  }
+		};
+	}
+
   
   @override
   InputMessageDocument copyWith({
@@ -353,16 +452,42 @@ class InputMessageDocument extends InputMessageContent {
     caption: caption ?? this.caption,
   );
 
-  static const CONSTRUCTOR = 'inputMessageDocument';
-  
+  static const String objectType = 'inputMessageDocument';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InputMessagePhoto extends InputMessageContent {
-
-  /// A photo message
+/// **InputMessagePhoto** *(inputMessagePhoto)* - child of InputMessageContent
+///
+/// A photo message.
+///
+/// * [photo]: Photo to send. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20.
+/// * [thumbnail]: Photo thumbnail to be sent; pass null to skip thumbnail uploading. The thumbnail is sent to the other party only in secret chats *(optional)*.
+/// * [addedStickerFileIds]: File identifiers of the stickers added to the photo, if applicable.
+/// * [width]: Photo width.
+/// * [height]: Photo height.
+/// * [caption]: Photo caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
+/// * [selfDestructTime]: Photo self-destruct time, in seconds (0-60). A non-zero self-destruct time can be specified only in private chats.
+/// * [hasSpoiler]: True, if the photo preview must be covered by a spoiler animation; not supported in secret chats.
+final class InputMessagePhoto extends InputMessageContent {
+  
+  /// **InputMessagePhoto** *(inputMessagePhoto)* - child of InputMessageContent
+  ///
+  /// A photo message.
+  ///
+  /// * [photo]: Photo to send. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20.
+  /// * [thumbnail]: Photo thumbnail to be sent; pass null to skip thumbnail uploading. The thumbnail is sent to the other party only in secret chats *(optional)*.
+  /// * [addedStickerFileIds]: File identifiers of the stickers added to the photo, if applicable.
+  /// * [width]: Photo width.
+  /// * [height]: Photo height.
+  /// * [caption]: Photo caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
+  /// * [selfDestructTime]: Photo self-destruct time, in seconds (0-60). A non-zero self-destruct time can be specified only in private chats.
+  /// * [hasSpoiler]: True, if the photo preview must be covered by a spoiler animation; not supported in secret chats.
   const InputMessagePhoto({
     required this.photo,
     this.thumbnail,
@@ -370,29 +495,33 @@ class InputMessagePhoto extends InputMessageContent {
     required this.width,
     required this.height,
     this.caption,
-    required this.ttl,
+    required this.selfDestructTime,
+    required this.hasSpoiler,
   });
   
-  /// [photo] Photo to send 
+  /// Photo to send. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20
   final InputFile photo;
 
-  /// [thumbnail] Photo thumbnail to be sent; pass null to skip thumbnail uploading. The thumbnail is sent to the other party only in secret chats 
+  /// Photo thumbnail to be sent; pass null to skip thumbnail uploading. The thumbnail is sent to the other party only in secret chats
   final InputThumbnail? thumbnail;
 
-  /// [addedStickerFileIds] File identifiers of the stickers added to the photo, if applicable 
+  /// File identifiers of the stickers added to the photo, if applicable
   final List<int> addedStickerFileIds;
 
-  /// [width] Photo width 
+  /// Photo width
   final int width;
 
-  /// [height] Photo height 
+  /// Photo height
   final int height;
 
-  /// [caption] Photo caption; pass null to use an empty caption; 0-GetOption("message_caption_length_max") characters
+  /// Photo caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
-  /// [ttl] Photo TTL (Time To Live), in seconds (0-60). A non-zero TTL can be specified only in private chats
-  final int ttl;
+  /// Photo self-destruct time, in seconds (0-60). A non-zero self-destruct time can be specified only in private chats
+  final int selfDestructTime;
+
+  /// True, if the photo preview must be covered by a spoiler animation; not supported in secret chats
+  final bool hasSpoiler;
   
   /// Parse from a json
   factory InputMessagePhoto.fromJson(Map<String, dynamic> json) => InputMessagePhoto(
@@ -402,23 +531,26 @@ class InputMessagePhoto extends InputMessageContent {
     width: json['width'],
     height: json['height'],
     caption: json['caption'] == null ? null : FormattedText.fromJson(json['caption']),
-    ttl: json['ttl'],
+    selfDestructTime: json['self_destruct_time'],
+    hasSpoiler: json['has_spoiler'],
   );
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "photo": photo.toJson(),
       "thumbnail": thumbnail?.toJson(),
       "added_sticker_file_ids": addedStickerFileIds.map((i) => i).toList(),
       "width": width,
       "height": height,
       "caption": caption?.toJson(),
-      "ttl": ttl,
-    };
-  }
+      "self_destruct_time": selfDestructTime,
+      "has_spoiler": hasSpoiler,
+		};
+	}
+
   
   @override
   InputMessagePhoto copyWith({
@@ -428,7 +560,8 @@ class InputMessagePhoto extends InputMessageContent {
     int? width,
     int? height,
     FormattedText? caption,
-    int? ttl,
+    int? selfDestructTime,
+    bool? hasSpoiler,
   }) => InputMessagePhoto(
     photo: photo ?? this.photo,
     thumbnail: thumbnail ?? this.thumbnail,
@@ -436,19 +569,40 @@ class InputMessagePhoto extends InputMessageContent {
     width: width ?? this.width,
     height: height ?? this.height,
     caption: caption ?? this.caption,
-    ttl: ttl ?? this.ttl,
+    selfDestructTime: selfDestructTime ?? this.selfDestructTime,
+    hasSpoiler: hasSpoiler ?? this.hasSpoiler,
   );
 
-  static const CONSTRUCTOR = 'inputMessagePhoto';
-  
+  static const String objectType = 'inputMessagePhoto';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InputMessageSticker extends InputMessageContent {
-
-  /// A sticker message
+/// **InputMessageSticker** *(inputMessageSticker)* - child of InputMessageContent
+///
+/// A sticker message.
+///
+/// * [sticker]: Sticker to be sent.
+/// * [thumbnail]: Sticker thumbnail; pass null to skip thumbnail uploading *(optional)*.
+/// * [width]: Sticker width.
+/// * [height]: Sticker height.
+/// * [emoji]: Emoji used to choose the sticker.
+final class InputMessageSticker extends InputMessageContent {
+  
+  /// **InputMessageSticker** *(inputMessageSticker)* - child of InputMessageContent
+  ///
+  /// A sticker message.
+  ///
+  /// * [sticker]: Sticker to be sent.
+  /// * [thumbnail]: Sticker thumbnail; pass null to skip thumbnail uploading *(optional)*.
+  /// * [width]: Sticker width.
+  /// * [height]: Sticker height.
+  /// * [emoji]: Emoji used to choose the sticker.
   const InputMessageSticker({
     required this.sticker,
     this.thumbnail,
@@ -457,19 +611,19 @@ class InputMessageSticker extends InputMessageContent {
     required this.emoji,
   });
   
-  /// [sticker] Sticker to be sent 
+  /// Sticker to be sent
   final InputFile sticker;
 
-  /// [thumbnail] Sticker thumbnail; pass null to skip thumbnail uploading 
+  /// Sticker thumbnail; pass null to skip thumbnail uploading
   final InputThumbnail? thumbnail;
 
-  /// [width] Sticker width 
+  /// Sticker width
   final int width;
 
-  /// [height] Sticker height 
+  /// Sticker height
   final int height;
 
-  /// [emoji] Emoji used to choose the sticker
+  /// Emoji used to choose the sticker
   final String emoji;
   
   /// Parse from a json
@@ -483,16 +637,17 @@ class InputMessageSticker extends InputMessageContent {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "sticker": sticker.toJson(),
       "thumbnail": thumbnail?.toJson(),
       "width": width,
       "height": height,
       "emoji": emoji,
-    };
-  }
+		};
+	}
+
   
   @override
   InputMessageSticker copyWith({
@@ -509,16 +664,46 @@ class InputMessageSticker extends InputMessageContent {
     emoji: emoji ?? this.emoji,
   );
 
-  static const CONSTRUCTOR = 'inputMessageSticker';
-  
+  static const String objectType = 'inputMessageSticker';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InputMessageVideo extends InputMessageContent {
-
-  /// A video message
+/// **InputMessageVideo** *(inputMessageVideo)* - child of InputMessageContent
+///
+/// A video message.
+///
+/// * [video]: Video to be sent.
+/// * [thumbnail]: Video thumbnail; pass null to skip thumbnail uploading *(optional)*.
+/// * [addedStickerFileIds]: File identifiers of the stickers added to the video, if applicable.
+/// * [duration]: Duration of the video, in seconds.
+/// * [width]: Video width.
+/// * [height]: Video height.
+/// * [supportsStreaming]: True, if the video is supposed to be streamed.
+/// * [caption]: Video caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
+/// * [selfDestructTime]: Video self-destruct time, in seconds (0-60). A non-zero self-destruct time can be specified only in private chats.
+/// * [hasSpoiler]: True, if the video preview must be covered by a spoiler animation; not supported in secret chats.
+final class InputMessageVideo extends InputMessageContent {
+  
+  /// **InputMessageVideo** *(inputMessageVideo)* - child of InputMessageContent
+  ///
+  /// A video message.
+  ///
+  /// * [video]: Video to be sent.
+  /// * [thumbnail]: Video thumbnail; pass null to skip thumbnail uploading *(optional)*.
+  /// * [addedStickerFileIds]: File identifiers of the stickers added to the video, if applicable.
+  /// * [duration]: Duration of the video, in seconds.
+  /// * [width]: Video width.
+  /// * [height]: Video height.
+  /// * [supportsStreaming]: True, if the video is supposed to be streamed.
+  /// * [caption]: Video caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
+  /// * [selfDestructTime]: Video self-destruct time, in seconds (0-60). A non-zero self-destruct time can be specified only in private chats.
+  /// * [hasSpoiler]: True, if the video preview must be covered by a spoiler animation; not supported in secret chats.
   const InputMessageVideo({
     required this.video,
     this.thumbnail,
@@ -528,35 +713,39 @@ class InputMessageVideo extends InputMessageContent {
     required this.height,
     required this.supportsStreaming,
     this.caption,
-    required this.ttl,
+    required this.selfDestructTime,
+    required this.hasSpoiler,
   });
   
-  /// [video] Video to be sent 
+  /// Video to be sent
   final InputFile video;
 
-  /// [thumbnail] Video thumbnail; pass null to skip thumbnail uploading 
+  /// Video thumbnail; pass null to skip thumbnail uploading
   final InputThumbnail? thumbnail;
 
-  /// [addedStickerFileIds] File identifiers of the stickers added to the video, if applicable
+  /// File identifiers of the stickers added to the video, if applicable
   final List<int> addedStickerFileIds;
 
-  /// [duration] Duration of the video, in seconds
+  /// Duration of the video, in seconds
   final int duration;
 
-  /// [width] Video width 
+  /// Video width
   final int width;
 
-  /// [height] Video height 
+  /// Video height
   final int height;
 
-  /// [supportsStreaming] True, if the video is supposed to be streamed
+  /// True, if the video is supposed to be streamed
   final bool supportsStreaming;
 
-  /// [caption] Video caption; pass null to use an empty caption; 0-GetOption("message_caption_length_max") characters
+  /// Video caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
-  /// [ttl] Video TTL (Time To Live), in seconds (0-60). A non-zero TTL can be specified only in private chats
-  final int ttl;
+  /// Video self-destruct time, in seconds (0-60). A non-zero self-destruct time can be specified only in private chats
+  final int selfDestructTime;
+
+  /// True, if the video preview must be covered by a spoiler animation; not supported in secret chats
+  final bool hasSpoiler;
   
   /// Parse from a json
   factory InputMessageVideo.fromJson(Map<String, dynamic> json) => InputMessageVideo(
@@ -568,14 +757,15 @@ class InputMessageVideo extends InputMessageContent {
     height: json['height'],
     supportsStreaming: json['supports_streaming'],
     caption: json['caption'] == null ? null : FormattedText.fromJson(json['caption']),
-    ttl: json['ttl'],
+    selfDestructTime: json['self_destruct_time'],
+    hasSpoiler: json['has_spoiler'],
   );
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "video": video.toJson(),
       "thumbnail": thumbnail?.toJson(),
       "added_sticker_file_ids": addedStickerFileIds.map((i) => i).toList(),
@@ -584,9 +774,11 @@ class InputMessageVideo extends InputMessageContent {
       "height": height,
       "supports_streaming": supportsStreaming,
       "caption": caption?.toJson(),
-      "ttl": ttl,
-    };
-  }
+      "self_destruct_time": selfDestructTime,
+      "has_spoiler": hasSpoiler,
+		};
+	}
+
   
   @override
   InputMessageVideo copyWith({
@@ -598,7 +790,8 @@ class InputMessageVideo extends InputMessageContent {
     int? height,
     bool? supportsStreaming,
     FormattedText? caption,
-    int? ttl,
+    int? selfDestructTime,
+    bool? hasSpoiler,
   }) => InputMessageVideo(
     video: video ?? this.video,
     thumbnail: thumbnail ?? this.thumbnail,
@@ -608,19 +801,38 @@ class InputMessageVideo extends InputMessageContent {
     height: height ?? this.height,
     supportsStreaming: supportsStreaming ?? this.supportsStreaming,
     caption: caption ?? this.caption,
-    ttl: ttl ?? this.ttl,
+    selfDestructTime: selfDestructTime ?? this.selfDestructTime,
+    hasSpoiler: hasSpoiler ?? this.hasSpoiler,
   );
 
-  static const CONSTRUCTOR = 'inputMessageVideo';
-  
+  static const String objectType = 'inputMessageVideo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InputMessageVideoNote extends InputMessageContent {
-
-  /// A video note message
+/// **InputMessageVideoNote** *(inputMessageVideoNote)* - child of InputMessageContent
+///
+/// A video note message.
+///
+/// * [videoNote]: Video note to be sent.
+/// * [thumbnail]: Video thumbnail; pass null to skip thumbnail uploading *(optional)*.
+/// * [duration]: Duration of the video, in seconds.
+/// * [length]: Video width and height; must be positive and not greater than 640.
+final class InputMessageVideoNote extends InputMessageContent {
+  
+  /// **InputMessageVideoNote** *(inputMessageVideoNote)* - child of InputMessageContent
+  ///
+  /// A video note message.
+  ///
+  /// * [videoNote]: Video note to be sent.
+  /// * [thumbnail]: Video thumbnail; pass null to skip thumbnail uploading *(optional)*.
+  /// * [duration]: Duration of the video, in seconds.
+  /// * [length]: Video width and height; must be positive and not greater than 640.
   const InputMessageVideoNote({
     required this.videoNote,
     this.thumbnail,
@@ -628,16 +840,16 @@ class InputMessageVideoNote extends InputMessageContent {
     required this.length,
   });
   
-  /// [videoNote] Video note to be sent 
+  /// Video note to be sent
   final InputFile videoNote;
 
-  /// [thumbnail] Video thumbnail; pass null to skip thumbnail uploading 
+  /// Video thumbnail; pass null to skip thumbnail uploading
   final InputThumbnail? thumbnail;
 
-  /// [duration] Duration of the video, in seconds 
+  /// Duration of the video, in seconds
   final int duration;
 
-  /// [length] Video width and height; must be positive and not greater than 640
+  /// Video width and height; must be positive and not greater than 640
   final int length;
   
   /// Parse from a json
@@ -650,15 +862,16 @@ class InputMessageVideoNote extends InputMessageContent {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "video_note": videoNote.toJson(),
       "thumbnail": thumbnail?.toJson(),
       "duration": duration,
       "length": length,
-    };
-  }
+		};
+	}
+
   
   @override
   InputMessageVideoNote copyWith({
@@ -673,16 +886,34 @@ class InputMessageVideoNote extends InputMessageContent {
     length: length ?? this.length,
   );
 
-  static const CONSTRUCTOR = 'inputMessageVideoNote';
-  
+  static const String objectType = 'inputMessageVideoNote';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InputMessageVoiceNote extends InputMessageContent {
-
-  /// A voice note message
+/// **InputMessageVoiceNote** *(inputMessageVoiceNote)* - child of InputMessageContent
+///
+/// A voice note message.
+///
+/// * [voiceNote]: Voice note to be sent.
+/// * [duration]: Duration of the voice note, in seconds.
+/// * [waveform]: Waveform representation of the voice note in 5-bit format.
+/// * [caption]: Voice note caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
+final class InputMessageVoiceNote extends InputMessageContent {
+  
+  /// **InputMessageVoiceNote** *(inputMessageVoiceNote)* - child of InputMessageContent
+  ///
+  /// A voice note message.
+  ///
+  /// * [voiceNote]: Voice note to be sent.
+  /// * [duration]: Duration of the voice note, in seconds.
+  /// * [waveform]: Waveform representation of the voice note in 5-bit format.
+  /// * [caption]: Voice note caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
   const InputMessageVoiceNote({
     required this.voiceNote,
     required this.duration,
@@ -690,16 +921,16 @@ class InputMessageVoiceNote extends InputMessageContent {
     this.caption,
   });
   
-  /// [voiceNote] Voice note to be sent 
+  /// Voice note to be sent
   final InputFile voiceNote;
 
-  /// [duration] Duration of the voice note, in seconds 
+  /// Duration of the voice note, in seconds
   final int duration;
 
-  /// [waveform] Waveform representation of the voice note, in 5-bit format 
+  /// Waveform representation of the voice note in 5-bit format
   final String waveform;
 
-  /// [caption] Voice note caption; pass null to use an empty caption; 0-GetOption("message_caption_length_max") characters
+  /// Voice note caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
   
   /// Parse from a json
@@ -712,15 +943,16 @@ class InputMessageVoiceNote extends InputMessageContent {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "voice_note": voiceNote.toJson(),
       "duration": duration,
       "waveform": waveform,
       "caption": caption?.toJson(),
-    };
-  }
+		};
+	}
+
   
   @override
   InputMessageVoiceNote copyWith({
@@ -735,16 +967,34 @@ class InputMessageVoiceNote extends InputMessageContent {
     caption: caption ?? this.caption,
   );
 
-  static const CONSTRUCTOR = 'inputMessageVoiceNote';
-  
+  static const String objectType = 'inputMessageVoiceNote';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InputMessageLocation extends InputMessageContent {
-
-  /// A message with a location
+/// **InputMessageLocation** *(inputMessageLocation)* - child of InputMessageContent
+///
+/// A message with a location.
+///
+/// * [location]: Location to be sent.
+/// * [livePeriod]: Period for which the location can be updated, in seconds; must be between 60 and 86400 for a live location and 0 otherwise.
+/// * [heading]: For live locations, a direction in which the location moves, in degrees; 1-360. Pass 0 if unknown.
+/// * [proximityAlertRadius]: For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled. Can't be enabled in channels and Saved Messages.
+final class InputMessageLocation extends InputMessageContent {
+  
+  /// **InputMessageLocation** *(inputMessageLocation)* - child of InputMessageContent
+  ///
+  /// A message with a location.
+  ///
+  /// * [location]: Location to be sent.
+  /// * [livePeriod]: Period for which the location can be updated, in seconds; must be between 60 and 86400 for a live location and 0 otherwise.
+  /// * [heading]: For live locations, a direction in which the location moves, in degrees; 1-360. Pass 0 if unknown.
+  /// * [proximityAlertRadius]: For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled. Can't be enabled in channels and Saved Messages.
   const InputMessageLocation({
     required this.location,
     required this.livePeriod,
@@ -752,16 +1002,16 @@ class InputMessageLocation extends InputMessageContent {
     required this.proximityAlertRadius,
   });
   
-  /// [location] Location to be sent 
+  /// Location to be sent
   final Location location;
 
-  /// [livePeriod] Period for which the location can be updated, in seconds; must be between 60 and 86400 for a live location and 0 otherwise
+  /// Period for which the location can be updated, in seconds; must be between 60 and 86400 for a live location and 0 otherwise
   final int livePeriod;
 
-  /// [heading] For live locations, a direction in which the location moves, in degrees; 1-360. Pass 0 if unknown
+  /// For live locations, a direction in which the location moves, in degrees; 1-360. Pass 0 if unknown
   final int heading;
 
-  /// [proximityAlertRadius] For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled. Can't be enabled in channels and Saved Messages
+  /// For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled. Can't be enabled in channels and Saved Messages
   final int proximityAlertRadius;
   
   /// Parse from a json
@@ -774,15 +1024,16 @@ class InputMessageLocation extends InputMessageContent {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "location": location.toJson(),
       "live_period": livePeriod,
       "heading": heading,
       "proximity_alert_radius": proximityAlertRadius,
-    };
-  }
+		};
+	}
+
   
   @override
   InputMessageLocation copyWith({
@@ -797,21 +1048,33 @@ class InputMessageLocation extends InputMessageContent {
     proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
   );
 
-  static const CONSTRUCTOR = 'inputMessageLocation';
-  
+  static const String objectType = 'inputMessageLocation';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InputMessageVenue extends InputMessageContent {
-
-  /// A message with information about a venue
+/// **InputMessageVenue** *(inputMessageVenue)* - child of InputMessageContent
+///
+/// A message with information about a venue.
+///
+/// * [venue]: Venue to send.
+final class InputMessageVenue extends InputMessageContent {
+  
+  /// **InputMessageVenue** *(inputMessageVenue)* - child of InputMessageContent
+  ///
+  /// A message with information about a venue.
+  ///
+  /// * [venue]: Venue to send.
   const InputMessageVenue({
     required this.venue,
   });
   
-  /// [venue] Venue to send
+  /// Venue to send
   final Venue venue;
   
   /// Parse from a json
@@ -821,12 +1084,13 @@ class InputMessageVenue extends InputMessageContent {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "venue": venue.toJson(),
-    };
-  }
+		};
+	}
+
   
   @override
   InputMessageVenue copyWith({
@@ -835,21 +1099,33 @@ class InputMessageVenue extends InputMessageContent {
     venue: venue ?? this.venue,
   );
 
-  static const CONSTRUCTOR = 'inputMessageVenue';
-  
+  static const String objectType = 'inputMessageVenue';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InputMessageContact extends InputMessageContent {
-
-  /// A message containing a user contact
+/// **InputMessageContact** *(inputMessageContact)* - child of InputMessageContent
+///
+/// A message containing a user contact.
+///
+/// * [contact]: Contact to send.
+final class InputMessageContact extends InputMessageContent {
+  
+  /// **InputMessageContact** *(inputMessageContact)* - child of InputMessageContent
+  ///
+  /// A message containing a user contact.
+  ///
+  /// * [contact]: Contact to send.
   const InputMessageContact({
     required this.contact,
   });
   
-  /// [contact] Contact to send
+  /// Contact to send
   final Contact contact;
   
   /// Parse from a json
@@ -859,12 +1135,13 @@ class InputMessageContact extends InputMessageContent {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "contact": contact.toJson(),
-    };
-  }
+		};
+	}
+
   
   @override
   InputMessageContact copyWith({
@@ -873,25 +1150,39 @@ class InputMessageContact extends InputMessageContent {
     contact: contact ?? this.contact,
   );
 
-  static const CONSTRUCTOR = 'inputMessageContact';
-  
+  static const String objectType = 'inputMessageContact';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InputMessageDice extends InputMessageContent {
-
-  /// A dice message
+/// **InputMessageDice** *(inputMessageDice)* - child of InputMessageContent
+///
+/// A dice message.
+///
+/// * [emoji]: Emoji on which the dice throw animation is based.
+/// * [clearDraft]: True, if the chat message draft must be deleted.
+final class InputMessageDice extends InputMessageContent {
+  
+  /// **InputMessageDice** *(inputMessageDice)* - child of InputMessageContent
+  ///
+  /// A dice message.
+  ///
+  /// * [emoji]: Emoji on which the dice throw animation is based.
+  /// * [clearDraft]: True, if the chat message draft must be deleted.
   const InputMessageDice({
     required this.emoji,
     required this.clearDraft,
   });
   
-  /// [emoji] Emoji on which the dice throw animation is based 
+  /// Emoji on which the dice throw animation is based 
   final String emoji;
 
-  /// [clearDraft] True, if the chat message draft must be deleted
+  /// True, if the chat message draft must be deleted
   final bool clearDraft;
   
   /// Parse from a json
@@ -902,13 +1193,14 @@ class InputMessageDice extends InputMessageContent {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "emoji": emoji,
       "clear_draft": clearDraft,
-    };
-  }
+		};
+	}
+
   
   @override
   InputMessageDice copyWith({
@@ -919,25 +1211,39 @@ class InputMessageDice extends InputMessageContent {
     clearDraft: clearDraft ?? this.clearDraft,
   );
 
-  static const CONSTRUCTOR = 'inputMessageDice';
-  
+  static const String objectType = 'inputMessageDice';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InputMessageGame extends InputMessageContent {
-
-  /// A message with a game; not supported for channels or secret chats
+/// **InputMessageGame** *(inputMessageGame)* - child of InputMessageContent
+///
+/// A message with a game; not supported for channels or secret chats.
+///
+/// * [botUserId]: User identifier of the bot that owns the game.
+/// * [gameShortName]: Short name of the game.
+final class InputMessageGame extends InputMessageContent {
+  
+  /// **InputMessageGame** *(inputMessageGame)* - child of InputMessageContent
+  ///
+  /// A message with a game; not supported for channels or secret chats.
+  ///
+  /// * [botUserId]: User identifier of the bot that owns the game.
+  /// * [gameShortName]: Short name of the game.
   const InputMessageGame({
     required this.botUserId,
     required this.gameShortName,
   });
   
-  /// [botUserId] User identifier of the bot that owns the game 
+  /// User identifier of the bot that owns the game 
   final int botUserId;
 
-  /// [gameShortName] Short name of the game
+  /// Short name of the game
   final String gameShortName;
   
   /// Parse from a json
@@ -948,13 +1254,14 @@ class InputMessageGame extends InputMessageContent {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "bot_user_id": botUserId,
       "game_short_name": gameShortName,
-    };
-  }
+		};
+	}
+
   
   @override
   InputMessageGame copyWith({
@@ -965,16 +1272,50 @@ class InputMessageGame extends InputMessageContent {
     gameShortName: gameShortName ?? this.gameShortName,
   );
 
-  static const CONSTRUCTOR = 'inputMessageGame';
-  
+  static const String objectType = 'inputMessageGame';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InputMessageInvoice extends InputMessageContent {
-
-  /// A message with an invoice; can be used only by bots
+/// **InputMessageInvoice** *(inputMessageInvoice)* - child of InputMessageContent
+///
+/// A message with an invoice; can be used only by bots.
+///
+/// * [invoice]: Invoice.
+/// * [title]: Product title; 1-32 characters.
+/// * [description]: Product description; 0-255 characters.
+/// * [photoUrl]: Product photo URL; optional.
+/// * [photoSize]: Product photo size.
+/// * [photoWidth]: Product photo width.
+/// * [photoHeight]: Product photo height.
+/// * [payload]: The invoice payload.
+/// * [providerToken]: Payment provider token.
+/// * [providerData]: JSON-encoded data about the invoice, which will be shared with the payment provider.
+/// * [startParameter]: Unique invoice bot deep link parameter for the generation of this invoice. If empty, it would be possible to pay directly from forwards of the invoice message.
+/// * [extendedMediaContent]: The content of extended media attached to the invoice. The content of the message to be sent. Must be one of the following types: inputMessagePhoto, inputMessageVideo.
+final class InputMessageInvoice extends InputMessageContent {
+  
+  /// **InputMessageInvoice** *(inputMessageInvoice)* - child of InputMessageContent
+  ///
+  /// A message with an invoice; can be used only by bots.
+  ///
+  /// * [invoice]: Invoice.
+  /// * [title]: Product title; 1-32 characters.
+  /// * [description]: Product description; 0-255 characters.
+  /// * [photoUrl]: Product photo URL; optional.
+  /// * [photoSize]: Product photo size.
+  /// * [photoWidth]: Product photo width.
+  /// * [photoHeight]: Product photo height.
+  /// * [payload]: The invoice payload.
+  /// * [providerToken]: Payment provider token.
+  /// * [providerData]: JSON-encoded data about the invoice, which will be shared with the payment provider.
+  /// * [startParameter]: Unique invoice bot deep link parameter for the generation of this invoice. If empty, it would be possible to pay directly from forwards of the invoice message.
+  /// * [extendedMediaContent]: The content of extended media attached to the invoice. The content of the message to be sent. Must be one of the following types: inputMessagePhoto, inputMessageVideo.
   const InputMessageInvoice({
     required this.invoice,
     required this.title,
@@ -987,40 +1328,44 @@ class InputMessageInvoice extends InputMessageContent {
     required this.providerToken,
     required this.providerData,
     required this.startParameter,
+    required this.extendedMediaContent,
   });
   
-  /// [invoice] Invoice 
+  /// Invoice
   final Invoice invoice;
 
-  /// [title] Product title; 1-32 characters 
+  /// Product title; 1-32 characters
   final String title;
 
-  /// [description] Product description; 0-255 characters
+  /// Product description; 0-255 characters
   final String description;
 
-  /// [photoUrl] Product photo URL; optional
+  /// Product photo URL; optional
   final String photoUrl;
 
-  /// [photoSize] Product photo size 
+  /// Product photo size
   final int photoSize;
 
-  /// [photoWidth] Product photo width 
+  /// Product photo width
   final int photoWidth;
 
-  /// [photoHeight] Product photo height
+  /// Product photo height
   final int photoHeight;
 
-  /// [payload] The invoice payload
+  /// The invoice payload
   final String payload;
 
-  /// [providerToken] Payment provider token 
+  /// Payment provider token
   final String providerToken;
 
-  /// [providerData] JSON-encoded data about the invoice, which will be shared with the payment provider
+  /// JSON-encoded data about the invoice, which will be shared with the payment provider
   final String providerData;
 
-  /// [startParameter] Unique invoice bot deep link parameter for the generation of this invoice. If empty, it would be possible to pay directly from forwards of the invoice message
+  /// Unique invoice bot deep link parameter for the generation of this invoice. If empty, it would be possible to pay directly from forwards of the invoice message
   final String startParameter;
+
+  /// The content of extended media attached to the invoice. The content of the message to be sent. Must be one of the following types: inputMessagePhoto, inputMessageVideo
+  final InputMessageContent extendedMediaContent;
   
   /// Parse from a json
   factory InputMessageInvoice.fromJson(Map<String, dynamic> json) => InputMessageInvoice(
@@ -1035,13 +1380,14 @@ class InputMessageInvoice extends InputMessageContent {
     providerToken: json['provider_token'],
     providerData: json['provider_data'],
     startParameter: json['start_parameter'],
+    extendedMediaContent: InputMessageContent.fromJson(json['extended_media_content']),
   );
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "invoice": invoice.toJson(),
       "title": title,
       "description": description,
@@ -1053,8 +1399,10 @@ class InputMessageInvoice extends InputMessageContent {
       "provider_token": providerToken,
       "provider_data": providerData,
       "start_parameter": startParameter,
-    };
-  }
+      "extended_media_content": extendedMediaContent.toJson(),
+		};
+	}
+
   
   @override
   InputMessageInvoice copyWith({
@@ -1069,6 +1417,7 @@ class InputMessageInvoice extends InputMessageContent {
     String? providerToken,
     String? providerData,
     String? startParameter,
+    InputMessageContent? extendedMediaContent,
   }) => InputMessageInvoice(
     invoice: invoice ?? this.invoice,
     title: title ?? this.title,
@@ -1081,18 +1430,43 @@ class InputMessageInvoice extends InputMessageContent {
     providerToken: providerToken ?? this.providerToken,
     providerData: providerData ?? this.providerData,
     startParameter: startParameter ?? this.startParameter,
+    extendedMediaContent: extendedMediaContent ?? this.extendedMediaContent,
   );
 
-  static const CONSTRUCTOR = 'inputMessageInvoice';
-  
+  static const String objectType = 'inputMessageInvoice';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InputMessagePoll extends InputMessageContent {
-
-  /// A message with a poll. Polls can't be sent to secret chats. Polls can be sent only to a private chat with a bot
+/// **InputMessagePoll** *(inputMessagePoll)* - child of InputMessageContent
+///
+/// A message with a poll. Polls can't be sent to secret chats. Polls can be sent only to a private chat with a bot.
+///
+/// * [question]: Poll question; 1-255 characters (up to 300 characters for bots).
+/// * [options]: List of poll answer options, 2-10 strings 1-100 characters each.
+/// * [isAnonymous]: True, if the poll voters are anonymous. Non-anonymous polls can't be sent or forwarded to channels.
+/// * [type]: Type of the poll.
+/// * [openPeriod]: Amount of time the poll will be active after creation, in seconds; for bots only.
+/// * [closeDate]: Point in time (Unix timestamp) when the poll will automatically be closed; for bots only.
+/// * [isClosed]: True, if the poll needs to be sent already closed; for bots only.
+final class InputMessagePoll extends InputMessageContent {
+  
+  /// **InputMessagePoll** *(inputMessagePoll)* - child of InputMessageContent
+  ///
+  /// A message with a poll. Polls can't be sent to secret chats. Polls can be sent only to a private chat with a bot.
+  ///
+  /// * [question]: Poll question; 1-255 characters (up to 300 characters for bots).
+  /// * [options]: List of poll answer options, 2-10 strings 1-100 characters each.
+  /// * [isAnonymous]: True, if the poll voters are anonymous. Non-anonymous polls can't be sent or forwarded to channels.
+  /// * [type]: Type of the poll.
+  /// * [openPeriod]: Amount of time the poll will be active after creation, in seconds; for bots only.
+  /// * [closeDate]: Point in time (Unix timestamp) when the poll will automatically be closed; for bots only.
+  /// * [isClosed]: True, if the poll needs to be sent already closed; for bots only.
   const InputMessagePoll({
     required this.question,
     required this.options,
@@ -1103,25 +1477,25 @@ class InputMessagePoll extends InputMessageContent {
     required this.isClosed,
   });
   
-  /// [question] Poll question; 1-255 characters (up to 300 characters for bots) 
+  /// Poll question; 1-255 characters (up to 300 characters for bots)
   final String question;
 
-  /// [options] List of poll answer options, 2-10 strings 1-100 characters each
+  /// List of poll answer options, 2-10 strings 1-100 characters each
   final List<String> options;
 
-  /// [isAnonymous] True, if the poll voters are anonymous. Non-anonymous polls can't be sent or forwarded to channels
+  /// True, if the poll voters are anonymous. Non-anonymous polls can't be sent or forwarded to channels
   final bool isAnonymous;
 
-  /// [type] Type of the poll
+  /// Type of the poll
   final PollType type;
 
-  /// [openPeriod] Amount of time the poll will be active after creation, in seconds; for bots only
+  /// Amount of time the poll will be active after creation, in seconds; for bots only
   final int openPeriod;
 
-  /// [closeDate] Point in time (Unix timestamp) when the poll will automatically be closed; for bots only
+  /// Point in time (Unix timestamp) when the poll will automatically be closed; for bots only
   final int closeDate;
 
-  /// [isClosed] True, if the poll needs to be sent already closed; for bots only
+  /// True, if the poll needs to be sent already closed; for bots only
   final bool isClosed;
   
   /// Parse from a json
@@ -1137,9 +1511,9 @@ class InputMessagePoll extends InputMessageContent {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "question": question,
       "options": options.map((i) => i).toList(),
       "is_anonymous": isAnonymous,
@@ -1147,8 +1521,9 @@ class InputMessagePoll extends InputMessageContent {
       "open_period": openPeriod,
       "close_date": closeDate,
       "is_closed": isClosed,
-    };
-  }
+		};
+	}
+
   
   @override
   InputMessagePoll copyWith({
@@ -1169,16 +1544,34 @@ class InputMessagePoll extends InputMessageContent {
     isClosed: isClosed ?? this.isClosed,
   );
 
-  static const CONSTRUCTOR = 'inputMessagePoll';
-  
+  static const String objectType = 'inputMessagePoll';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InputMessageForwarded extends InputMessageContent {
-
-  /// A forwarded message
+/// **InputMessageForwarded** *(inputMessageForwarded)* - child of InputMessageContent
+///
+/// A forwarded message.
+///
+/// * [fromChatId]: Identifier for the chat this forwarded message came from.
+/// * [messageId]: Identifier of the message to forward.
+/// * [inGameShare]: True, if a game message is being shared from a launched game; applies only to game messages.
+/// * [copyOptions]: Options to be used to copy content of the message without reference to the original sender; pass null to forward the message as usual *(optional)*.
+final class InputMessageForwarded extends InputMessageContent {
+  
+  /// **InputMessageForwarded** *(inputMessageForwarded)* - child of InputMessageContent
+  ///
+  /// A forwarded message.
+  ///
+  /// * [fromChatId]: Identifier for the chat this forwarded message came from.
+  /// * [messageId]: Identifier of the message to forward.
+  /// * [inGameShare]: True, if a game message is being shared from a launched game; applies only to game messages.
+  /// * [copyOptions]: Options to be used to copy content of the message without reference to the original sender; pass null to forward the message as usual *(optional)*.
   const InputMessageForwarded({
     required this.fromChatId,
     required this.messageId,
@@ -1186,16 +1579,16 @@ class InputMessageForwarded extends InputMessageContent {
     this.copyOptions,
   });
   
-  /// [fromChatId] Identifier for the chat this forwarded message came from 
+  /// Identifier for the chat this forwarded message came from
   final int fromChatId;
 
-  /// [messageId] Identifier of the message to forward
+  /// Identifier of the message to forward
   final int messageId;
 
-  /// [inGameShare] True, if a game message is being shared from a launched game; applies only to game messages
+  /// True, if a game message is being shared from a launched game; applies only to game messages
   final bool inGameShare;
 
-  /// [copyOptions] Options to be used to copy content of the message without reference to the original sender; pass null to forward the message as usual
+  /// Options to be used to copy content of the message without reference to the original sender; pass null to forward the message as usual
   final MessageCopyOptions? copyOptions;
   
   /// Parse from a json
@@ -1208,15 +1601,16 @@ class InputMessageForwarded extends InputMessageContent {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "from_chat_id": fromChatId,
       "message_id": messageId,
       "in_game_share": inGameShare,
       "copy_options": copyOptions?.toJson(),
-    };
-  }
+		};
+	}
+
   
   @override
   InputMessageForwarded copyWith({
@@ -1231,8 +1625,11 @@ class InputMessageForwarded extends InputMessageContent {
     copyOptions: copyOptions ?? this.copyOptions,
   );
 
-  static const CONSTRUCTOR = 'inputMessageForwarded';
-  
+  static const String objectType = 'inputMessageForwarded';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

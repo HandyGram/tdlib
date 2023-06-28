@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class ProcessChatJoinRequest extends TdFunction {
-
-  /// Handles a pending join request in a chat
+/// **ProcessChatJoinRequest** *(processChatJoinRequest)* - TDLib function
+///
+/// Handles a pending join request in a chat.
+///
+/// * [chatId]: Chat identifier.
+/// * [userId]: Identifier of the user that sent the request.
+/// * [approve]: Pass true to approve the request; pass false to decline it.
+///
+/// [Ok] is returned on completion.
+final class ProcessChatJoinRequest extends TdFunction {
+  
+  /// **ProcessChatJoinRequest** *(processChatJoinRequest)* - TDLib function
+  ///
+  /// Handles a pending join request in a chat.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [userId]: Identifier of the user that sent the request.
+  /// * [approve]: Pass true to approve the request; pass false to decline it.
+  ///
+  /// [Ok] is returned on completion.
   const ProcessChatJoinRequest({
     required this.chatId,
     required this.userId,
     required this.approve,
   });
   
-  /// [chatId] Chat identifier 
+  /// Chat identifier 
   final int chatId;
 
-  /// [userId] Identifier of the user that sent the request 
+  /// Identifier of the user that sent the request 
   final int userId;
 
-  /// [approve] True, if the request is approved. Otherwise the request is declived
+  /// Pass true to approve the request; pass false to decline it
   final bool approve;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "user_id": userId,
       "approve": approve,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   ProcessChatJoinRequest copyWith({
     int? chatId,
@@ -39,8 +57,11 @@ class ProcessChatJoinRequest extends TdFunction {
     approve: approve ?? this.approve,
   );
 
-  static const CONSTRUCTOR = 'processChatJoinRequest';
-  
+  static const String objectType = 'processChatJoinRequest';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

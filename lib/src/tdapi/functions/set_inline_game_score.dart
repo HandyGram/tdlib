@@ -1,8 +1,29 @@
 part of '../tdapi.dart';
 
-class SetInlineGameScore extends TdFunction {
-
-  /// Updates the game score of the specified user in a game; for bots only
+/// **SetInlineGameScore** *(setInlineGameScore)* - TDLib function
+///
+/// Updates the game score of the specified user in a game; for bots only.
+///
+/// * [inlineMessageId]: Inline message identifier.
+/// * [editMessage]: Pass true to edit the game message to include the current scoreboard.
+/// * [userId]: User identifier.
+/// * [score]: The new score.
+/// * [force]: Pass true to update the score even if it decreases. If the score is 0, the user will be deleted from the high score table.
+///
+/// [Ok] is returned on completion.
+final class SetInlineGameScore extends TdFunction {
+  
+  /// **SetInlineGameScore** *(setInlineGameScore)* - TDLib function
+  ///
+  /// Updates the game score of the specified user in a game; for bots only.
+  ///
+  /// * [inlineMessageId]: Inline message identifier.
+  /// * [editMessage]: Pass true to edit the game message to include the current scoreboard.
+  /// * [userId]: User identifier.
+  /// * [score]: The new score.
+  /// * [force]: Pass true to update the score even if it decreases. If the score is 0, the user will be deleted from the high score table.
+  ///
+  /// [Ok] is returned on completion.
   const SetInlineGameScore({
     required this.inlineMessageId,
     required this.editMessage,
@@ -11,33 +32,34 @@ class SetInlineGameScore extends TdFunction {
     required this.force,
   });
   
-  /// [inlineMessageId] Inline message identifier 
+  /// Inline message identifier
   final String inlineMessageId;
 
-  /// [editMessage] True, if the message needs to be edited 
+  /// Pass true to edit the game message to include the current scoreboard
   final bool editMessage;
 
-  /// [userId] User identifier 
+  /// User identifier
   final int userId;
 
-  /// [score] The new score
+  /// The new score
   final int score;
 
-  /// [force] Pass true to update the score even if it decreases. If the score is 0, the user will be deleted from the high score table
+  /// Pass true to update the score even if it decreases. If the score is 0, the user will be deleted from the high score table
   final bool force;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "inline_message_id": inlineMessageId,
       "edit_message": editMessage,
       "user_id": userId,
       "score": score,
       "force": force,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SetInlineGameScore copyWith({
     String? inlineMessageId,
@@ -53,8 +75,11 @@ class SetInlineGameScore extends TdFunction {
     force: force ?? this.force,
   );
 
-  static const CONSTRUCTOR = 'setInlineGameScore';
-  
+  static const String objectType = 'setInlineGameScore';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

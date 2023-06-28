@@ -1,8 +1,23 @@
 part of '../tdapi.dart';
 
-class PassportSuitableElement extends TdObject {
-
-  /// Contains information about a Telegram Passport element that was requested by a service
+/// **PassportSuitableElement** *(passportSuitableElement)* - basic class
+///
+/// Contains information about a Telegram Passport element that was requested by a service.
+///
+/// * [type]: Type of the element.
+/// * [isSelfieRequired]: True, if a selfie is required with the identity document.
+/// * [isTranslationRequired]: True, if a certified English translation is required with the document.
+/// * [isNativeNameRequired]: True, if personal details must include the user's name in the language of their country of residence.
+final class PassportSuitableElement extends TdObject {
+  
+  /// **PassportSuitableElement** *(passportSuitableElement)* - basic class
+  ///
+  /// Contains information about a Telegram Passport element that was requested by a service.
+  ///
+  /// * [type]: Type of the element.
+  /// * [isSelfieRequired]: True, if a selfie is required with the identity document.
+  /// * [isTranslationRequired]: True, if a certified English translation is required with the document.
+  /// * [isNativeNameRequired]: True, if personal details must include the user's name in the language of their country of residence.
   const PassportSuitableElement({
     required this.type,
     required this.isSelfieRequired,
@@ -10,16 +25,16 @@ class PassportSuitableElement extends TdObject {
     required this.isNativeNameRequired,
   });
   
-  /// [type] Type of the element 
+  /// Type of the element
   final PassportElementType type;
 
-  /// [isSelfieRequired] True, if a selfie is required with the identity document
+  /// True, if a selfie is required with the identity document
   final bool isSelfieRequired;
 
-  /// [isTranslationRequired] True, if a certified English translation is required with the document
+  /// True, if a certified English translation is required with the document
   final bool isTranslationRequired;
 
-  /// [isNativeNameRequired] True, if personal details must include the user's name in the language of their country of residence
+  /// True, if personal details must include the user's name in the language of their country of residence
   final bool isNativeNameRequired;
   
   /// Parse from a json
@@ -32,15 +47,16 @@ class PassportSuitableElement extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "type": type.toJson(),
       "is_selfie_required": isSelfieRequired,
       "is_translation_required": isTranslationRequired,
       "is_native_name_required": isNativeNameRequired,
-    };
-  }
+		};
+	}
+
   
   PassportSuitableElement copyWith({
     PassportElementType? type,
@@ -54,8 +70,11 @@ class PassportSuitableElement extends TdObject {
     isNativeNameRequired: isNativeNameRequired ?? this.isNativeNameRequired,
   );
 
-  static const CONSTRUCTOR = 'passportSuitableElement';
-  
+  static const String objectType = 'passportSuitableElement';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

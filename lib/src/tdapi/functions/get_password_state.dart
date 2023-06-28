@@ -1,23 +1,36 @@
 part of '../tdapi.dart';
 
-class GetPasswordState extends TdFunction {
-
-  /// Returns the current state of 2-step verification
+/// **GetPasswordState** *(getPasswordState)* - TDLib function
+///
+/// Returns the current state of 2-step verification.
+///
+/// [PasswordState] is returned on completion.
+final class GetPasswordState extends TdFunction {
+  
+  /// **GetPasswordState** *(getPasswordState)* - TDLib function
+  ///
+  /// Returns the current state of 2-step verification.
+  ///
+  /// [PasswordState] is returned on completion.
   const GetPasswordState();
   
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetPasswordState copyWith() => const GetPasswordState();
 
-  static const CONSTRUCTOR = 'getPasswordState';
-  
+  static const String objectType = 'getPasswordState';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

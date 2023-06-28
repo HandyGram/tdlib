@@ -1,15 +1,24 @@
 part of '../tdapi.dart';
 
-class Text extends TdObject {
-
-  /// Contains some text
+/// **Text** *(text)* - basic class
+///
+/// Contains some text.
+///
+/// * [text]: Text.
+final class Text extends TdObject {
+  
+  /// **Text** *(text)* - basic class
+  ///
+  /// Contains some text.
+  ///
+  /// * [text]: Text.
   const Text({
     required this.text,
     this.extra,
     this.clientId,
   });
   
-  /// [text] Text
+  /// Text
   final String text;
 
   /// [extra] callback sign
@@ -29,12 +38,13 @@ class Text extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "text": text,
-    };
-  }
+		};
+	}
+
   
   Text copyWith({
     String? text,
@@ -46,8 +56,11 @@ class Text extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'text';
-  
+  static const String objectType = 'text';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

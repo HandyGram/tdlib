@@ -1,15 +1,24 @@
 part of '../tdapi.dart';
 
-class Seconds extends TdObject {
-
-  /// Contains a value representing a number of seconds
+/// **Seconds** *(seconds)* - basic class
+///
+/// Contains a value representing a number of seconds.
+///
+/// * [seconds]: Number of seconds.
+final class Seconds extends TdObject {
+  
+  /// **Seconds** *(seconds)* - basic class
+  ///
+  /// Contains a value representing a number of seconds.
+  ///
+  /// * [seconds]: Number of seconds.
   const Seconds({
     required this.seconds,
     this.extra,
     this.clientId,
   });
   
-  /// [seconds] Number of seconds
+  /// Number of seconds
   final double seconds;
 
   /// [extra] callback sign
@@ -29,12 +38,13 @@ class Seconds extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "seconds": seconds,
-    };
-  }
+		};
+	}
+
   
   Seconds copyWith({
     double? seconds,
@@ -46,8 +56,11 @@ class Seconds extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'seconds';
-  
+  static const String objectType = 'seconds';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

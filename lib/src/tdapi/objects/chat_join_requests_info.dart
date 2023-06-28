@@ -1,17 +1,28 @@
 part of '../tdapi.dart';
 
-class ChatJoinRequestsInfo extends TdObject {
-
-  /// Contains information about pending join requests for a chat
+/// **ChatJoinRequestsInfo** *(chatJoinRequestsInfo)* - basic class
+///
+/// Contains information about pending join requests for a chat.
+///
+/// * [totalCount]: Total number of pending join requests.
+/// * [userIds]: Identifiers of at most 3 users sent the newest pending join requests.
+final class ChatJoinRequestsInfo extends TdObject {
+  
+  /// **ChatJoinRequestsInfo** *(chatJoinRequestsInfo)* - basic class
+  ///
+  /// Contains information about pending join requests for a chat.
+  ///
+  /// * [totalCount]: Total number of pending join requests.
+  /// * [userIds]: Identifiers of at most 3 users sent the newest pending join requests.
   const ChatJoinRequestsInfo({
     required this.totalCount,
     required this.userIds,
   });
   
-  /// [totalCount] Total number of pending join requests 
+  /// Total number of pending join requests 
   final int totalCount;
 
-  /// [userIds] Identifiers of at most 3 users sent the newest pending join requests
+  /// Identifiers of at most 3 users sent the newest pending join requests
   final List<int> userIds;
   
   /// Parse from a json
@@ -22,13 +33,14 @@ class ChatJoinRequestsInfo extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "total_count": totalCount,
       "user_ids": userIds.map((i) => i).toList(),
-    };
-  }
+		};
+	}
+
   
   ChatJoinRequestsInfo copyWith({
     int? totalCount,
@@ -38,8 +50,11 @@ class ChatJoinRequestsInfo extends TdObject {
     userIds: userIds ?? this.userIds,
   );
 
-  static const CONSTRUCTOR = 'chatJoinRequestsInfo';
-  
+  static const String objectType = 'chatJoinRequestsInfo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

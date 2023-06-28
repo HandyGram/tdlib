@@ -1,8 +1,41 @@
 part of '../tdapi.dart';
 
-class StickerSetInfo extends TdObject {
-
-  /// Represents short information about a sticker set
+/// **StickerSetInfo** *(stickerSetInfo)* - basic class
+///
+/// Represents short information about a sticker set.
+///
+/// * [id]: Identifier of the sticker set.
+/// * [title]: Title of the sticker set.
+/// * [name]: Name of the sticker set.
+/// * [thumbnail]: Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null *(optional)*.
+/// * [thumbnailOutline]: Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner.
+/// * [isInstalled]: True, if the sticker set has been installed by the current user.
+/// * [isArchived]: True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously.
+/// * [isOfficial]: True, if the sticker set is official.
+/// * [stickerFormat]: Format of the stickers in the set.
+/// * [stickerType]: Type of the stickers in the set.
+/// * [isViewed]: True for already viewed trending sticker sets.
+/// * [size]: Total number of stickers in the set.
+/// * [covers]: Up to the first 5 stickers from the set, depending on the context. If the application needs more stickers the full sticker set needs to be requested.
+final class StickerSetInfo extends TdObject {
+  
+  /// **StickerSetInfo** *(stickerSetInfo)* - basic class
+  ///
+  /// Represents short information about a sticker set.
+  ///
+  /// * [id]: Identifier of the sticker set.
+  /// * [title]: Title of the sticker set.
+  /// * [name]: Name of the sticker set.
+  /// * [thumbnail]: Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null *(optional)*.
+  /// * [thumbnailOutline]: Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner.
+  /// * [isInstalled]: True, if the sticker set has been installed by the current user.
+  /// * [isArchived]: True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously.
+  /// * [isOfficial]: True, if the sticker set is official.
+  /// * [stickerFormat]: Format of the stickers in the set.
+  /// * [stickerType]: Type of the stickers in the set.
+  /// * [isViewed]: True for already viewed trending sticker sets.
+  /// * [size]: Total number of stickers in the set.
+  /// * [covers]: Up to the first 5 stickers from the set, depending on the context. If the application needs more stickers the full sticker set needs to be requested.
   const StickerSetInfo({
     required this.id,
     required this.title,
@@ -12,50 +45,50 @@ class StickerSetInfo extends TdObject {
     required this.isInstalled,
     required this.isArchived,
     required this.isOfficial,
-    required this.isAnimated,
-    required this.isMasks,
+    required this.stickerFormat,
+    required this.stickerType,
     required this.isViewed,
     required this.size,
     required this.covers,
   });
   
-  /// [id] Identifier of the sticker set
+  /// Identifier of the sticker set
   final int id;
 
-  /// [title] Title of the sticker set 
+  /// Title of the sticker set
   final String title;
 
-  /// [name] Name of the sticker set 
+  /// Name of the sticker set
   final String name;
 
-  /// [thumbnail] Sticker set thumbnail in WEBP or TGS format with width and height 100; may be null
+  /// Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null
   final Thumbnail? thumbnail;
 
-  /// [thumbnailOutline] Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner
+  /// Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner
   final List<ClosedVectorPath> thumbnailOutline;
 
-  /// [isInstalled] True, if the sticker set has been installed by the current user
+  /// True, if the sticker set has been installed by the current user
   final bool isInstalled;
 
-  /// [isArchived] True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously
+  /// True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously
   final bool isArchived;
 
-  /// [isOfficial] True, if the sticker set is official
+  /// True, if the sticker set is official
   final bool isOfficial;
 
-  /// [isAnimated] True, is the stickers in the set are animated 
-  final bool isAnimated;
+  /// Format of the stickers in the set
+  final StickerFormat stickerFormat;
 
-  /// [isMasks] True, if the stickers in the set are masks 
-  final bool isMasks;
+  /// Type of the stickers in the set
+  final StickerType stickerType;
 
-  /// [isViewed] True for already viewed trending sticker sets
+  /// True for already viewed trending sticker sets
   final bool isViewed;
 
-  /// [size] Total number of stickers in the set
+  /// Total number of stickers in the set
   final int size;
 
-  /// [covers] Up to the first 5 stickers from the set, depending on the context. If the application needs more stickers the full sticker set needs to be requested
+  /// Up to the first 5 stickers from the set, depending on the context. If the application needs more stickers the full sticker set needs to be requested
   final List<Sticker> covers;
   
   /// Parse from a json
@@ -68,8 +101,8 @@ class StickerSetInfo extends TdObject {
     isInstalled: json['is_installed'],
     isArchived: json['is_archived'],
     isOfficial: json['is_official'],
-    isAnimated: json['is_animated'],
-    isMasks: json['is_masks'],
+    stickerFormat: StickerFormat.fromJson(json['sticker_format']),
+    stickerType: StickerType.fromJson(json['sticker_type']),
     isViewed: json['is_viewed'],
     size: json['size'],
     covers: List<Sticker>.from((json['covers'] ?? []).map((item) => Sticker.fromJson(item)).toList()),
@@ -77,9 +110,9 @@ class StickerSetInfo extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "id": id,
       "title": title,
       "name": name,
@@ -88,13 +121,14 @@ class StickerSetInfo extends TdObject {
       "is_installed": isInstalled,
       "is_archived": isArchived,
       "is_official": isOfficial,
-      "is_animated": isAnimated,
-      "is_masks": isMasks,
+      "sticker_format": stickerFormat.toJson(),
+      "sticker_type": stickerType.toJson(),
       "is_viewed": isViewed,
       "size": size,
       "covers": covers.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   StickerSetInfo copyWith({
     int? id,
@@ -105,8 +139,8 @@ class StickerSetInfo extends TdObject {
     bool? isInstalled,
     bool? isArchived,
     bool? isOfficial,
-    bool? isAnimated,
-    bool? isMasks,
+    StickerFormat? stickerFormat,
+    StickerType? stickerType,
     bool? isViewed,
     int? size,
     List<Sticker>? covers,
@@ -119,15 +153,18 @@ class StickerSetInfo extends TdObject {
     isInstalled: isInstalled ?? this.isInstalled,
     isArchived: isArchived ?? this.isArchived,
     isOfficial: isOfficial ?? this.isOfficial,
-    isAnimated: isAnimated ?? this.isAnimated,
-    isMasks: isMasks ?? this.isMasks,
+    stickerFormat: stickerFormat ?? this.stickerFormat,
+    stickerType: stickerType ?? this.stickerType,
     isViewed: isViewed ?? this.isViewed,
     size: size ?? this.size,
     covers: covers ?? this.covers,
   );
 
-  static const CONSTRUCTOR = 'stickerSetInfo';
-  
+  static const String objectType = 'stickerSetInfo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

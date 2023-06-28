@@ -1,8 +1,19 @@
 part of '../tdapi.dart';
 
-class Users extends TdObject {
-
-  /// Represents a list of users
+/// **Users** *(users)* - basic class
+///
+/// Represents a list of users.
+///
+/// * [totalCount]: Approximate total number of users found.
+/// * [userIds]: A list of user identifiers.
+final class Users extends TdObject {
+  
+  /// **Users** *(users)* - basic class
+  ///
+  /// Represents a list of users.
+  ///
+  /// * [totalCount]: Approximate total number of users found.
+  /// * [userIds]: A list of user identifiers.
   const Users({
     required this.totalCount,
     required this.userIds,
@@ -10,10 +21,10 @@ class Users extends TdObject {
     this.clientId,
   });
   
-  /// [totalCount] Approximate total count of users found 
+  /// Approximate total number of users found 
   final int totalCount;
 
-  /// [userIds] A list of user identifiers
+  /// A list of user identifiers
   final List<int> userIds;
 
   /// [extra] callback sign
@@ -34,13 +45,14 @@ class Users extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "total_count": totalCount,
       "user_ids": userIds.map((i) => i).toList(),
-    };
-  }
+		};
+	}
+
   
   Users copyWith({
     int? totalCount,
@@ -54,8 +66,11 @@ class Users extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'users';
-  
+  static const String objectType = 'users';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

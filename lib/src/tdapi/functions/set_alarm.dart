@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class SetAlarm extends TdFunction {
-
-  /// Succeeds after a specified amount of time has passed. Can be called before initialization
+/// **SetAlarm** *(setAlarm)* - TDLib function
+///
+/// Succeeds after a specified amount of time has passed. Can be called before initialization.
+///
+/// * [seconds]: Number of seconds before the function returns.
+///
+/// [Ok] is returned on completion.
+final class SetAlarm extends TdFunction {
+  
+  /// **SetAlarm** *(setAlarm)* - TDLib function
+  ///
+  /// Succeeds after a specified amount of time has passed. Can be called before initialization.
+  ///
+  /// * [seconds]: Number of seconds before the function returns.
+  ///
+  /// [Ok] is returned on completion.
   const SetAlarm({
     required this.seconds,
   });
   
-  /// [seconds] Number of seconds before the function returns
+  /// Number of seconds before the function returns
   final double seconds;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "seconds": seconds,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SetAlarm copyWith({
     double? seconds,
@@ -25,8 +39,11 @@ class SetAlarm extends TdFunction {
     seconds: seconds ?? this.seconds,
   );
 
-  static const CONSTRUCTOR = 'setAlarm';
-  
+  static const String objectType = 'setAlarm';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

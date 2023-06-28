@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class GetStickerEmojis extends TdFunction {
-
-  /// Returns emoji corresponding to a sticker. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object
+/// **GetStickerEmojis** *(getStickerEmojis)* - TDLib function
+///
+/// Returns emoji corresponding to a sticker. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object.
+///
+/// * [sticker]: Sticker file identifier.
+///
+/// [Emojis] is returned on completion.
+final class GetStickerEmojis extends TdFunction {
+  
+  /// **GetStickerEmojis** *(getStickerEmojis)* - TDLib function
+  ///
+  /// Returns emoji corresponding to a sticker. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object.
+  ///
+  /// * [sticker]: Sticker file identifier.
+  ///
+  /// [Emojis] is returned on completion.
   const GetStickerEmojis({
     required this.sticker,
   });
   
-  /// [sticker] Sticker file identifier
+  /// Sticker file identifier
   final InputFile sticker;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "sticker": sticker.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetStickerEmojis copyWith({
     InputFile? sticker,
@@ -25,8 +39,11 @@ class GetStickerEmojis extends TdFunction {
     sticker: sticker ?? this.sticker,
   );
 
-  static const CONSTRUCTOR = 'getStickerEmojis';
-  
+  static const String objectType = 'getStickerEmojis';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

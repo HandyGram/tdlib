@@ -1,23 +1,36 @@
 part of '../tdapi.dart';
 
-class TestCallEmpty extends TdFunction {
-
-  /// Does nothing; for testing only. This is an offline method. Can be called before authorization
+/// **TestCallEmpty** *(testCallEmpty)* - TDLib function
+///
+/// Does nothing; for testing only. This is an offline method. Can be called before authorization.
+///
+/// [Ok] is returned on completion.
+final class TestCallEmpty extends TdFunction {
+  
+  /// **TestCallEmpty** *(testCallEmpty)* - TDLib function
+  ///
+  /// Does nothing; for testing only. This is an offline method. Can be called before authorization.
+  ///
+  /// [Ok] is returned on completion.
   const TestCallEmpty();
   
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   TestCallEmpty copyWith() => const TestCallEmpty();
 
-  static const CONSTRUCTOR = 'testCallEmpty';
-  
+  static const String objectType = 'testCallEmpty';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,15 +1,24 @@
 part of '../tdapi.dart';
 
-class TestString extends TdObject {
-
-  /// A simple object containing a string; for testing only
+/// **TestString** *(testString)* - basic class
+///
+/// A simple object containing a string; for testing only.
+///
+/// * [value]: String.
+final class TestString extends TdObject {
+  
+  /// **TestString** *(testString)* - basic class
+  ///
+  /// A simple object containing a string; for testing only.
+  ///
+  /// * [value]: String.
   const TestString({
     required this.value,
     this.extra,
     this.clientId,
   });
   
-  /// [value] String
+  /// String
   final String value;
 
   /// [extra] callback sign
@@ -29,12 +38,13 @@ class TestString extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "value": value,
-    };
-  }
+		};
+	}
+
   
   TestString copyWith({
     String? value,
@@ -46,8 +56,11 @@ class TestString extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'testString';
-  
+  static const String objectType = 'testString';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

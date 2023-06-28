@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class RemoveChatActionBar extends TdFunction {
-
-  /// Removes a chat action bar without any other action
+/// **RemoveChatActionBar** *(removeChatActionBar)* - TDLib function
+///
+/// Removes a chat action bar without any other action.
+///
+/// * [chatId]: Chat identifier.
+///
+/// [Ok] is returned on completion.
+final class RemoveChatActionBar extends TdFunction {
+  
+  /// **RemoveChatActionBar** *(removeChatActionBar)* - TDLib function
+  ///
+  /// Removes a chat action bar without any other action.
+  ///
+  /// * [chatId]: Chat identifier.
+  ///
+  /// [Ok] is returned on completion.
   const RemoveChatActionBar({
     required this.chatId,
   });
   
-  /// [chatId] Chat identifier
+  /// Chat identifier
   final int chatId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   RemoveChatActionBar copyWith({
     int? chatId,
@@ -25,8 +39,11 @@ class RemoveChatActionBar extends TdFunction {
     chatId: chatId ?? this.chatId,
   );
 
-  static const CONSTRUCTOR = 'removeChatActionBar';
-  
+  static const String objectType = 'removeChatActionBar';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

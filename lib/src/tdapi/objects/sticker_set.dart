@@ -1,8 +1,41 @@
 part of '../tdapi.dart';
 
-class StickerSet extends TdObject {
-
-  /// Represents a sticker set
+/// **StickerSet** *(stickerSet)* - basic class
+///
+/// Represents a sticker set.
+///
+/// * [id]: Identifier of the sticker set.
+/// * [title]: Title of the sticker set.
+/// * [name]: Name of the sticker set.
+/// * [thumbnail]: Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null. The file can be downloaded only before the thumbnail is changed *(optional)*.
+/// * [thumbnailOutline]: Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner.
+/// * [isInstalled]: True, if the sticker set has been installed by the current user.
+/// * [isArchived]: True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously.
+/// * [isOfficial]: True, if the sticker set is official.
+/// * [stickerFormat]: Format of the stickers in the set.
+/// * [stickerType]: Type of the stickers in the set.
+/// * [isViewed]: True for already viewed trending sticker sets.
+/// * [stickers]: List of stickers in this set.
+/// * [emojis]: A list of emoji corresponding to the stickers in the same order. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object.
+final class StickerSet extends TdObject {
+  
+  /// **StickerSet** *(stickerSet)* - basic class
+  ///
+  /// Represents a sticker set.
+  ///
+  /// * [id]: Identifier of the sticker set.
+  /// * [title]: Title of the sticker set.
+  /// * [name]: Name of the sticker set.
+  /// * [thumbnail]: Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null. The file can be downloaded only before the thumbnail is changed *(optional)*.
+  /// * [thumbnailOutline]: Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner.
+  /// * [isInstalled]: True, if the sticker set has been installed by the current user.
+  /// * [isArchived]: True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously.
+  /// * [isOfficial]: True, if the sticker set is official.
+  /// * [stickerFormat]: Format of the stickers in the set.
+  /// * [stickerType]: Type of the stickers in the set.
+  /// * [isViewed]: True for already viewed trending sticker sets.
+  /// * [stickers]: List of stickers in this set.
+  /// * [emojis]: A list of emoji corresponding to the stickers in the same order. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object.
   const StickerSet({
     required this.id,
     required this.title,
@@ -12,8 +45,8 @@ class StickerSet extends TdObject {
     required this.isInstalled,
     required this.isArchived,
     required this.isOfficial,
-    required this.isAnimated,
-    required this.isMasks,
+    required this.stickerFormat,
+    required this.stickerType,
     required this.isViewed,
     required this.stickers,
     required this.emojis,
@@ -21,43 +54,43 @@ class StickerSet extends TdObject {
     this.clientId,
   });
   
-  /// [id] Identifier of the sticker set
+  /// Identifier of the sticker set
   final int id;
 
-  /// [title] Title of the sticker set 
+  /// Title of the sticker set
   final String title;
 
-  /// [name] Name of the sticker set 
+  /// Name of the sticker set
   final String name;
 
-  /// [thumbnail] Sticker set thumbnail in WEBP or TGS format with width and height 100; may be null. The file can be downloaded only before the thumbnail is changed
+  /// Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null. The file can be downloaded only before the thumbnail is changed
   final Thumbnail? thumbnail;
 
-  /// [thumbnailOutline] Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner
+  /// Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner
   final List<ClosedVectorPath> thumbnailOutline;
 
-  /// [isInstalled] True, if the sticker set has been installed by the current user
+  /// True, if the sticker set has been installed by the current user
   final bool isInstalled;
 
-  /// [isArchived] True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously
+  /// True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously
   final bool isArchived;
 
-  /// [isOfficial] True, if the sticker set is official
+  /// True, if the sticker set is official
   final bool isOfficial;
 
-  /// [isAnimated] True, is the stickers in the set are animated 
-  final bool isAnimated;
+  /// Format of the stickers in the set
+  final StickerFormat stickerFormat;
 
-  /// [isMasks] True, if the stickers in the set are masks 
-  final bool isMasks;
+  /// Type of the stickers in the set
+  final StickerType stickerType;
 
-  /// [isViewed] True for already viewed trending sticker sets
+  /// True for already viewed trending sticker sets
   final bool isViewed;
 
-  /// [stickers] List of stickers in this set
+  /// List of stickers in this set
   final List<Sticker> stickers;
 
-  /// [emojis] A list of emoji corresponding to the stickers in the same order. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object
+  /// A list of emoji corresponding to the stickers in the same order. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object
   final List<Emojis> emojis;
 
   /// [extra] callback sign
@@ -78,8 +111,8 @@ class StickerSet extends TdObject {
     isInstalled: json['is_installed'],
     isArchived: json['is_archived'],
     isOfficial: json['is_official'],
-    isAnimated: json['is_animated'],
-    isMasks: json['is_masks'],
+    stickerFormat: StickerFormat.fromJson(json['sticker_format']),
+    stickerType: StickerType.fromJson(json['sticker_type']),
     isViewed: json['is_viewed'],
     stickers: List<Sticker>.from((json['stickers'] ?? []).map((item) => Sticker.fromJson(item)).toList()),
     emojis: List<Emojis>.from((json['emojis'] ?? []).map((item) => Emojis.fromJson(item)).toList()),
@@ -89,9 +122,9 @@ class StickerSet extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "id": id,
       "title": title,
       "name": name,
@@ -100,13 +133,14 @@ class StickerSet extends TdObject {
       "is_installed": isInstalled,
       "is_archived": isArchived,
       "is_official": isOfficial,
-      "is_animated": isAnimated,
-      "is_masks": isMasks,
+      "sticker_format": stickerFormat.toJson(),
+      "sticker_type": stickerType.toJson(),
       "is_viewed": isViewed,
       "stickers": stickers.map((i) => i.toJson()).toList(),
       "emojis": emojis.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   StickerSet copyWith({
     int? id,
@@ -117,8 +151,8 @@ class StickerSet extends TdObject {
     bool? isInstalled,
     bool? isArchived,
     bool? isOfficial,
-    bool? isAnimated,
-    bool? isMasks,
+    StickerFormat? stickerFormat,
+    StickerType? stickerType,
     bool? isViewed,
     List<Sticker>? stickers,
     List<Emojis>? emojis,
@@ -133,8 +167,8 @@ class StickerSet extends TdObject {
     isInstalled: isInstalled ?? this.isInstalled,
     isArchived: isArchived ?? this.isArchived,
     isOfficial: isOfficial ?? this.isOfficial,
-    isAnimated: isAnimated ?? this.isAnimated,
-    isMasks: isMasks ?? this.isMasks,
+    stickerFormat: stickerFormat ?? this.stickerFormat,
+    stickerType: stickerType ?? this.stickerType,
     isViewed: isViewed ?? this.isViewed,
     stickers: stickers ?? this.stickers,
     emojis: emojis ?? this.emojis,
@@ -142,8 +176,11 @@ class StickerSet extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'stickerSet';
-  
+  static const String objectType = 'stickerSet';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

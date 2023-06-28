@@ -1,3 +1,3 @@
 library td_api;
 
-export 'package:tdlib/src/tdapi/tdapi.dart';
+export 'package:handy_tdlib/src/tdapi/tdapi.dart';

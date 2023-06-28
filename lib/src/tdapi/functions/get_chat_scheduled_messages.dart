@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class GetChatScheduledMessages extends TdFunction {
-
-  /// Returns all scheduled messages in a chat. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id)
+/// **GetChatScheduledMessages** *(getChatScheduledMessages)* - TDLib function
+///
+/// Returns all scheduled messages in a chat. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id).
+///
+/// * [chatId]: Chat identifier.
+///
+/// [Messages] is returned on completion.
+final class GetChatScheduledMessages extends TdFunction {
+  
+  /// **GetChatScheduledMessages** *(getChatScheduledMessages)* - TDLib function
+  ///
+  /// Returns all scheduled messages in a chat. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id).
+  ///
+  /// * [chatId]: Chat identifier.
+  ///
+  /// [Messages] is returned on completion.
   const GetChatScheduledMessages({
     required this.chatId,
   });
   
-  /// [chatId] Chat identifier
+  /// Chat identifier
   final int chatId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetChatScheduledMessages copyWith({
     int? chatId,
@@ -25,8 +39,11 @@ class GetChatScheduledMessages extends TdFunction {
     chatId: chatId ?? this.chatId,
   );
 
-  static const CONSTRUCTOR = 'getChatScheduledMessages';
-  
+  static const String objectType = 'getChatScheduledMessages';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

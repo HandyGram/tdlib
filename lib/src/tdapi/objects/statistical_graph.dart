@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class StatisticalGraph extends TdObject {
-
-  /// Describes a statistical graph
+/// **StatisticalGraph** *(statisticalGraph)* - parent
+///
+/// Describes a statistical graph.
+sealed class StatisticalGraph extends TdObject {
+  
+  /// **StatisticalGraph** *(statisticalGraph)* - parent
+  ///
+  /// Describes a statistical graph.
   const StatisticalGraph();
   
   /// a StatisticalGraph return type can be :
@@ -11,36 +16,50 @@ class StatisticalGraph extends TdObject {
   /// * [StatisticalGraphError]
   factory StatisticalGraph.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case StatisticalGraphData.CONSTRUCTOR:
+      case StatisticalGraphData.objectType:
         return StatisticalGraphData.fromJson(json);
-      case StatisticalGraphAsync.CONSTRUCTOR:
+      case StatisticalGraphAsync.objectType:
         return StatisticalGraphAsync.fromJson(json);
-      case StatisticalGraphError.CONSTRUCTOR:
+      case StatisticalGraphError.objectType:
         return StatisticalGraphError.fromJson(json);
       default:
-        return const StatisticalGraph();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of StatisticalGraph)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  StatisticalGraph copyWith() => const StatisticalGraph();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'statisticalGraph';
   
+  StatisticalGraph copyWith();
+
+  static const String objectType = 'statisticalGraph';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class StatisticalGraphData extends StatisticalGraph {
-
-  /// A graph data
+/// **StatisticalGraphData** *(statisticalGraphData)* - child of StatisticalGraph
+///
+/// A graph data.
+///
+/// * [jsonData]: Graph data in JSON format.
+/// * [zoomToken]: If non-empty, a token which can be used to receive a zoomed in graph.
+final class StatisticalGraphData extends StatisticalGraph {
+  
+  /// **StatisticalGraphData** *(statisticalGraphData)* - child of StatisticalGraph
+  ///
+  /// A graph data.
+  ///
+  /// * [jsonData]: Graph data in JSON format.
+  /// * [zoomToken]: If non-empty, a token which can be used to receive a zoomed in graph.
   const StatisticalGraphData({
     required this.jsonData,
     required this.zoomToken,
@@ -48,10 +67,10 @@ class StatisticalGraphData extends StatisticalGraph {
     this.clientId,
   });
   
-  /// [jsonData] Graph data in JSON format 
+  /// Graph data in JSON format 
   final String jsonData;
 
-  /// [zoomToken] If non-empty, a token which can be used to receive a zoomed in graph
+  /// If non-empty, a token which can be used to receive a zoomed in graph
   final String zoomToken;
 
   /// [extra] callback sign
@@ -72,13 +91,14 @@ class StatisticalGraphData extends StatisticalGraph {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "json_data": jsonData,
       "zoom_token": zoomToken,
-    };
-  }
+		};
+	}
+
   
   @override
   StatisticalGraphData copyWith({
@@ -93,23 +113,35 @@ class StatisticalGraphData extends StatisticalGraph {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'statisticalGraphData';
-  
+  static const String objectType = 'statisticalGraphData';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class StatisticalGraphAsync extends StatisticalGraph {
-
-  /// The graph data to be asynchronously loaded through getStatisticalGraph
+/// **StatisticalGraphAsync** *(statisticalGraphAsync)* - child of StatisticalGraph
+///
+/// The graph data to be asynchronously loaded through getStatisticalGraph.
+///
+/// * [token]: The token to use for data loading.
+final class StatisticalGraphAsync extends StatisticalGraph {
+  
+  /// **StatisticalGraphAsync** *(statisticalGraphAsync)* - child of StatisticalGraph
+  ///
+  /// The graph data to be asynchronously loaded through getStatisticalGraph.
+  ///
+  /// * [token]: The token to use for data loading.
   const StatisticalGraphAsync({
     required this.token,
     this.extra,
     this.clientId,
   });
   
-  /// [token] The token to use for data loading
+  /// The token to use for data loading
   final String token;
 
   /// [extra] callback sign
@@ -129,12 +161,13 @@ class StatisticalGraphAsync extends StatisticalGraph {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "token": token,
-    };
-  }
+		};
+	}
+
   
   @override
   StatisticalGraphAsync copyWith({
@@ -147,23 +180,35 @@ class StatisticalGraphAsync extends StatisticalGraph {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'statisticalGraphAsync';
-  
+  static const String objectType = 'statisticalGraphAsync';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class StatisticalGraphError extends StatisticalGraph {
-
-  /// An error message to be shown to the user instead of the graph
+/// **StatisticalGraphError** *(statisticalGraphError)* - child of StatisticalGraph
+///
+/// An error message to be shown to the user instead of the graph.
+///
+/// * [errorMessage]: The error message.
+final class StatisticalGraphError extends StatisticalGraph {
+  
+  /// **StatisticalGraphError** *(statisticalGraphError)* - child of StatisticalGraph
+  ///
+  /// An error message to be shown to the user instead of the graph.
+  ///
+  /// * [errorMessage]: The error message.
   const StatisticalGraphError({
     required this.errorMessage,
     this.extra,
     this.clientId,
   });
   
-  /// [errorMessage] The error message
+  /// The error message
   final String errorMessage;
 
   /// [extra] callback sign
@@ -183,12 +228,13 @@ class StatisticalGraphError extends StatisticalGraph {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "error_message": errorMessage,
-    };
-  }
+		};
+	}
+
   
   @override
   StatisticalGraphError copyWith({
@@ -201,8 +247,11 @@ class StatisticalGraphError extends StatisticalGraph {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'statisticalGraphError';
-  
+  static const String objectType = 'statisticalGraphError';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

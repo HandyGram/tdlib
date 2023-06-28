@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class GetChatMember extends TdFunction {
-
-  /// Returns information about a single member of a chat
+/// **GetChatMember** *(getChatMember)* - TDLib function
+///
+/// Returns information about a single member of a chat.
+///
+/// * [chatId]: Chat identifier.
+/// * [memberId]: Member identifier.
+///
+/// [ChatMember] is returned on completion.
+final class GetChatMember extends TdFunction {
+  
+  /// **GetChatMember** *(getChatMember)* - TDLib function
+  ///
+  /// Returns information about a single member of a chat.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [memberId]: Member identifier.
+  ///
+  /// [ChatMember] is returned on completion.
   const GetChatMember({
     required this.chatId,
     required this.memberId,
   });
   
-  /// [chatId] Chat identifier 
+  /// Chat identifier 
   final int chatId;
 
-  /// [memberId] Member identifier
+  /// Member identifier
   final MessageSender memberId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "member_id": memberId.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetChatMember copyWith({
     int? chatId,
@@ -32,8 +48,11 @@ class GetChatMember extends TdFunction {
     memberId: memberId ?? this.memberId,
   );
 
-  static const CONSTRUCTOR = 'getChatMember';
-  
+  static const String objectType = 'getChatMember';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

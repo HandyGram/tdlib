@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class AcceptTermsOfService extends TdFunction {
-
-  /// Accepts Telegram terms of services
+/// **AcceptTermsOfService** *(acceptTermsOfService)* - TDLib function
+///
+/// Accepts Telegram terms of services.
+///
+/// * [termsOfServiceId]: Terms of service identifier.
+///
+/// [Ok] is returned on completion.
+final class AcceptTermsOfService extends TdFunction {
+  
+  /// **AcceptTermsOfService** *(acceptTermsOfService)* - TDLib function
+  ///
+  /// Accepts Telegram terms of services.
+  ///
+  /// * [termsOfServiceId]: Terms of service identifier.
+  ///
+  /// [Ok] is returned on completion.
   const AcceptTermsOfService({
     required this.termsOfServiceId,
   });
   
-  /// [termsOfServiceId] Terms of service identifier
+  /// Terms of service identifier
   final String termsOfServiceId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "terms_of_service_id": termsOfServiceId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   AcceptTermsOfService copyWith({
     String? termsOfServiceId,
@@ -25,8 +39,11 @@ class AcceptTermsOfService extends TdFunction {
     termsOfServiceId: termsOfServiceId ?? this.termsOfServiceId,
   );
 
-  static const CONSTRUCTOR = 'acceptTermsOfService';
-  
+  static const String objectType = 'acceptTermsOfService';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,8 +1,21 @@
 part of '../tdapi.dart';
 
-class FoundMessages extends TdObject {
-
-  /// Contains a list of messages found by a search
+/// **FoundMessages** *(foundMessages)* - basic class
+///
+/// Contains a list of messages found by a search.
+///
+/// * [totalCount]: Approximate total number of messages found; -1 if unknown.
+/// * [messages]: List of messages.
+/// * [nextOffset]: The offset for the next request. If empty, there are no more results.
+final class FoundMessages extends TdObject {
+  
+  /// **FoundMessages** *(foundMessages)* - basic class
+  ///
+  /// Contains a list of messages found by a search.
+  ///
+  /// * [totalCount]: Approximate total number of messages found; -1 if unknown.
+  /// * [messages]: List of messages.
+  /// * [nextOffset]: The offset for the next request. If empty, there are no more results.
   const FoundMessages({
     required this.totalCount,
     required this.messages,
@@ -11,13 +24,13 @@ class FoundMessages extends TdObject {
     this.clientId,
   });
   
-  /// [totalCount] Approximate total count of messages found; -1 if unknown 
+  /// Approximate total number of messages found; -1 if unknown 
   final int totalCount;
 
-  /// [messages] List of messages 
+  /// List of messages 
   final List<Message> messages;
 
-  /// [nextOffset] The offset for the next request. If empty, there are no more results
+  /// The offset for the next request. If empty, there are no more results
   final String nextOffset;
 
   /// [extra] callback sign
@@ -39,14 +52,15 @@ class FoundMessages extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "total_count": totalCount,
       "messages": messages.map((i) => i.toJson()).toList(),
       "next_offset": nextOffset,
-    };
-  }
+		};
+	}
+
   
   FoundMessages copyWith({
     int? totalCount,
@@ -62,8 +76,11 @@ class FoundMessages extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'foundMessages';
-  
+  static const String objectType = 'foundMessages';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

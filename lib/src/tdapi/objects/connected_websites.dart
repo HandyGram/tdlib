@@ -1,15 +1,24 @@
 part of '../tdapi.dart';
 
-class ConnectedWebsites extends TdObject {
-
-  /// Contains a list of websites the current user is logged in with Telegram
+/// **ConnectedWebsites** *(connectedWebsites)* - basic class
+///
+/// Contains a list of websites the current user is logged in with Telegram.
+///
+/// * [websites]: List of connected websites.
+final class ConnectedWebsites extends TdObject {
+  
+  /// **ConnectedWebsites** *(connectedWebsites)* - basic class
+  ///
+  /// Contains a list of websites the current user is logged in with Telegram.
+  ///
+  /// * [websites]: List of connected websites.
   const ConnectedWebsites({
     required this.websites,
     this.extra,
     this.clientId,
   });
   
-  /// [websites] List of connected websites
+  /// List of connected websites
   final List<ConnectedWebsite> websites;
 
   /// [extra] callback sign
@@ -29,12 +38,13 @@ class ConnectedWebsites extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "websites": websites.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   ConnectedWebsites copyWith({
     List<ConnectedWebsite>? websites,
@@ -46,8 +56,11 @@ class ConnectedWebsites extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'connectedWebsites';
-  
+  static const String objectType = 'connectedWebsites';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

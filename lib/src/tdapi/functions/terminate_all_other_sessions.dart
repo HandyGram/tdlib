@@ -1,23 +1,36 @@
 part of '../tdapi.dart';
 
-class TerminateAllOtherSessions extends TdFunction {
-
-  /// Terminates all other sessions of the current user
+/// **TerminateAllOtherSessions** *(terminateAllOtherSessions)* - TDLib function
+///
+/// Terminates all other sessions of the current user.
+///
+/// [Ok] is returned on completion.
+final class TerminateAllOtherSessions extends TdFunction {
+  
+  /// **TerminateAllOtherSessions** *(terminateAllOtherSessions)* - TDLib function
+  ///
+  /// Terminates all other sessions of the current user.
+  ///
+  /// [Ok] is returned on completion.
   const TerminateAllOtherSessions();
   
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   TerminateAllOtherSessions copyWith() => const TerminateAllOtherSessions();
 
-  static const CONSTRUCTOR = 'terminateAllOtherSessions';
-  
+  static const String objectType = 'terminateAllOtherSessions';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

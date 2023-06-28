@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class ClearRecentStickers extends TdFunction {
-
-  /// Clears the list of recently used stickers
+/// **ClearRecentStickers** *(clearRecentStickers)* - TDLib function
+///
+/// Clears the list of recently used stickers.
+///
+/// * [isAttached]: Pass true to clear the list of stickers recently attached to photo or video files; pass false to clear the list of recently sent stickers.
+///
+/// [Ok] is returned on completion.
+final class ClearRecentStickers extends TdFunction {
+  
+  /// **ClearRecentStickers** *(clearRecentStickers)* - TDLib function
+  ///
+  /// Clears the list of recently used stickers.
+  ///
+  /// * [isAttached]: Pass true to clear the list of stickers recently attached to photo or video files; pass false to clear the list of recently sent stickers.
+  ///
+  /// [Ok] is returned on completion.
   const ClearRecentStickers({
     required this.isAttached,
   });
   
-  /// [isAttached] Pass true to clear the list of stickers recently attached to photo or video files; pass false to clear the list of recently sent stickers
+  /// Pass true to clear the list of stickers recently attached to photo or video files; pass false to clear the list of recently sent stickers
   final bool isAttached;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "is_attached": isAttached,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   ClearRecentStickers copyWith({
     bool? isAttached,
@@ -25,8 +39,11 @@ class ClearRecentStickers extends TdFunction {
     isAttached: isAttached ?? this.isAttached,
   );
 
-  static const CONSTRUCTOR = 'clearRecentStickers';
-  
+  static const String objectType = 'clearRecentStickers';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

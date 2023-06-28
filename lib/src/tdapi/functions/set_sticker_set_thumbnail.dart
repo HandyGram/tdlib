@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class SetStickerSetThumbnail extends TdFunction {
-
-  /// Sets a sticker set thumbnail; for bots only. Returns the sticker set
+/// **SetStickerSetThumbnail** *(setStickerSetThumbnail)* - TDLib function
+///
+/// Sets a sticker set thumbnail; for bots only.
+///
+/// * [userId]: Sticker set owner.
+/// * [name]: Sticker set name.
+/// * [thumbnail]: Thumbnail to set in PNG, TGS, or WEBM format; pass null to remove the sticker set thumbnail. Thumbnail format must match the format of stickers in the set *(optional)*.
+///
+/// [Ok] is returned on completion.
+final class SetStickerSetThumbnail extends TdFunction {
+  
+  /// **SetStickerSetThumbnail** *(setStickerSetThumbnail)* - TDLib function
+  ///
+  /// Sets a sticker set thumbnail; for bots only.
+  ///
+  /// * [userId]: Sticker set owner.
+  /// * [name]: Sticker set name.
+  /// * [thumbnail]: Thumbnail to set in PNG, TGS, or WEBM format; pass null to remove the sticker set thumbnail. Thumbnail format must match the format of stickers in the set *(optional)*.
+  ///
+  /// [Ok] is returned on completion.
   const SetStickerSetThumbnail({
     required this.userId,
     required this.name,
     this.thumbnail,
   });
   
-  /// [userId] Sticker set owner
+  /// Sticker set owner
   final int userId;
 
-  /// [name] Sticker set name
+  /// Sticker set name
   final String name;
 
-  /// [thumbnail] Thumbnail to set in PNG or TGS format; pass null to remove the sticker set thumbnail. Animated thumbnail must be set for animated sticker sets and only for them
+  /// Thumbnail to set in PNG, TGS, or WEBM format; pass null to remove the sticker set thumbnail. Thumbnail format must match the format of stickers in the set
   final InputFile? thumbnail;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "user_id": userId,
       "name": name,
       "thumbnail": thumbnail?.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SetStickerSetThumbnail copyWith({
     int? userId,
@@ -39,8 +57,11 @@ class SetStickerSetThumbnail extends TdFunction {
     thumbnail: thumbnail ?? this.thumbnail,
   );
 
-  static const CONSTRUCTOR = 'setStickerSetThumbnail';
-  
+  static const String objectType = 'setStickerSetThumbnail';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

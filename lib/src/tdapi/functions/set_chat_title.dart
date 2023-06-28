@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class SetChatTitle extends TdFunction {
-
-  /// Changes the chat title. Supported only for basic groups, supergroups and channels. Requires can_change_info administrator right
+/// **SetChatTitle** *(setChatTitle)* - TDLib function
+///
+/// Changes the chat title. Supported only for basic groups, supergroups and channels. Requires can_change_info administrator right.
+///
+/// * [chatId]: Chat identifier.
+/// * [title]: New title of the chat; 1-128 characters.
+///
+/// [Ok] is returned on completion.
+final class SetChatTitle extends TdFunction {
+  
+  /// **SetChatTitle** *(setChatTitle)* - TDLib function
+  ///
+  /// Changes the chat title. Supported only for basic groups, supergroups and channels. Requires can_change_info administrator right.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [title]: New title of the chat; 1-128 characters.
+  ///
+  /// [Ok] is returned on completion.
   const SetChatTitle({
     required this.chatId,
     required this.title,
   });
   
-  /// [chatId] Chat identifier
+  /// Chat identifier
   final int chatId;
 
-  /// [title] New title of the chat; 1-128 characters
+  /// New title of the chat; 1-128 characters
   final String title;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "title": title,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SetChatTitle copyWith({
     int? chatId,
@@ -32,8 +48,11 @@ class SetChatTitle extends TdFunction {
     title: title ?? this.title,
   );
 
-  static const CONSTRUCTOR = 'setChatTitle';
-  
+  static const String objectType = 'setChatTitle';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

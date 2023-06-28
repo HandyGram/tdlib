@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class GroupCallVideoQuality extends TdObject {
-
-  /// Describes the quality of a group call video
+/// **GroupCallVideoQuality** *(groupCallVideoQuality)* - parent
+///
+/// Describes the quality of a group call video.
+sealed class GroupCallVideoQuality extends TdObject {
+  
+  /// **GroupCallVideoQuality** *(groupCallVideoQuality)* - parent
+  ///
+  /// Describes the quality of a group call video.
   const GroupCallVideoQuality();
   
   /// a GroupCallVideoQuality return type can be :
@@ -11,103 +16,133 @@ class GroupCallVideoQuality extends TdObject {
   /// * [GroupCallVideoQualityFull]
   factory GroupCallVideoQuality.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case GroupCallVideoQualityThumbnail.CONSTRUCTOR:
+      case GroupCallVideoQualityThumbnail.objectType:
         return GroupCallVideoQualityThumbnail.fromJson(json);
-      case GroupCallVideoQualityMedium.CONSTRUCTOR:
+      case GroupCallVideoQualityMedium.objectType:
         return GroupCallVideoQualityMedium.fromJson(json);
-      case GroupCallVideoQualityFull.CONSTRUCTOR:
+      case GroupCallVideoQualityFull.objectType:
         return GroupCallVideoQualityFull.fromJson(json);
       default:
-        return const GroupCallVideoQuality();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of GroupCallVideoQuality)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  GroupCallVideoQuality copyWith() => const GroupCallVideoQuality();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'groupCallVideoQuality';
   
+  GroupCallVideoQuality copyWith();
+
+  static const String objectType = 'groupCallVideoQuality';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class GroupCallVideoQualityThumbnail extends GroupCallVideoQuality {
-
-  /// The worst available video quality
+/// **GroupCallVideoQualityThumbnail** *(groupCallVideoQualityThumbnail)* - child of GroupCallVideoQuality
+///
+/// The worst available video quality.
+final class GroupCallVideoQualityThumbnail extends GroupCallVideoQuality {
+  
+  /// **GroupCallVideoQualityThumbnail** *(groupCallVideoQualityThumbnail)* - child of GroupCallVideoQuality
+  ///
+  /// The worst available video quality.
   const GroupCallVideoQualityThumbnail();
   
   /// Parse from a json
   factory GroupCallVideoQualityThumbnail.fromJson(Map<String, dynamic> json) => const GroupCallVideoQualityThumbnail();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   GroupCallVideoQualityThumbnail copyWith() => const GroupCallVideoQualityThumbnail();
 
-  static const CONSTRUCTOR = 'groupCallVideoQualityThumbnail';
-  
+  static const String objectType = 'groupCallVideoQualityThumbnail';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class GroupCallVideoQualityMedium extends GroupCallVideoQuality {
-
-  /// The medium video quality
+/// **GroupCallVideoQualityMedium** *(groupCallVideoQualityMedium)* - child of GroupCallVideoQuality
+///
+/// The medium video quality.
+final class GroupCallVideoQualityMedium extends GroupCallVideoQuality {
+  
+  /// **GroupCallVideoQualityMedium** *(groupCallVideoQualityMedium)* - child of GroupCallVideoQuality
+  ///
+  /// The medium video quality.
   const GroupCallVideoQualityMedium();
   
   /// Parse from a json
   factory GroupCallVideoQualityMedium.fromJson(Map<String, dynamic> json) => const GroupCallVideoQualityMedium();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   GroupCallVideoQualityMedium copyWith() => const GroupCallVideoQualityMedium();
 
-  static const CONSTRUCTOR = 'groupCallVideoQualityMedium';
-  
+  static const String objectType = 'groupCallVideoQualityMedium';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class GroupCallVideoQualityFull extends GroupCallVideoQuality {
-
-  /// The best available video quality
+/// **GroupCallVideoQualityFull** *(groupCallVideoQualityFull)* - child of GroupCallVideoQuality
+///
+/// The best available video quality.
+final class GroupCallVideoQualityFull extends GroupCallVideoQuality {
+  
+  /// **GroupCallVideoQualityFull** *(groupCallVideoQualityFull)* - child of GroupCallVideoQuality
+  ///
+  /// The best available video quality.
   const GroupCallVideoQualityFull();
   
   /// Parse from a json
   factory GroupCallVideoQualityFull.fromJson(Map<String, dynamic> json) => const GroupCallVideoQualityFull();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   GroupCallVideoQualityFull copyWith() => const GroupCallVideoQualityFull();
 
-  static const CONSTRUCTOR = 'groupCallVideoQualityFull';
-  
+  static const String objectType = 'groupCallVideoQualityFull';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class ToggleSupergroupIsAllHistoryAvailable extends TdFunction {
-
-  /// Toggles whether the message history of a supergroup is available to new members; requires can_change_info administrator right
+/// **ToggleSupergroupIsAllHistoryAvailable** *(toggleSupergroupIsAllHistoryAvailable)* - TDLib function
+///
+/// Toggles whether the message history of a supergroup is available to new members; requires can_change_info administrator right.
+///
+/// * [supergroupId]: The identifier of the supergroup.
+/// * [isAllHistoryAvailable]: The new value of is_all_history_available.
+///
+/// [Ok] is returned on completion.
+final class ToggleSupergroupIsAllHistoryAvailable extends TdFunction {
+  
+  /// **ToggleSupergroupIsAllHistoryAvailable** *(toggleSupergroupIsAllHistoryAvailable)* - TDLib function
+  ///
+  /// Toggles whether the message history of a supergroup is available to new members; requires can_change_info administrator right.
+  ///
+  /// * [supergroupId]: The identifier of the supergroup.
+  /// * [isAllHistoryAvailable]: The new value of is_all_history_available.
+  ///
+  /// [Ok] is returned on completion.
   const ToggleSupergroupIsAllHistoryAvailable({
     required this.supergroupId,
     required this.isAllHistoryAvailable,
   });
   
-  /// [supergroupId] The identifier of the supergroup 
+  /// The identifier of the supergroup 
   final int supergroupId;
 
-  /// [isAllHistoryAvailable] The new value of is_all_history_available
+  /// The new value of is_all_history_available
   final bool isAllHistoryAvailable;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "supergroup_id": supergroupId,
       "is_all_history_available": isAllHistoryAvailable,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   ToggleSupergroupIsAllHistoryAvailable copyWith({
     int? supergroupId,
@@ -32,8 +48,11 @@ class ToggleSupergroupIsAllHistoryAvailable extends TdFunction {
     isAllHistoryAvailable: isAllHistoryAvailable ?? this.isAllHistoryAvailable,
   );
 
-  static const CONSTRUCTOR = 'toggleSupergroupIsAllHistoryAvailable';
-  
+  static const String objectType = 'toggleSupergroupIsAllHistoryAvailable';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

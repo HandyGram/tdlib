@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class GetRecentlyVisitedTMeUrls extends TdFunction {
-
-  /// Returns t.me URLs recently visited by a newly registered user
+/// **GetRecentlyVisitedTMeUrls** *(getRecentlyVisitedTMeUrls)* - TDLib function
+///
+/// Returns t.me URLs recently visited by a newly registered user.
+///
+/// * [referrer]: Google Play referrer to identify the user.
+///
+/// [TMeUrls] is returned on completion.
+final class GetRecentlyVisitedTMeUrls extends TdFunction {
+  
+  /// **GetRecentlyVisitedTMeUrls** *(getRecentlyVisitedTMeUrls)* - TDLib function
+  ///
+  /// Returns t.me URLs recently visited by a newly registered user.
+  ///
+  /// * [referrer]: Google Play referrer to identify the user.
+  ///
+  /// [TMeUrls] is returned on completion.
   const GetRecentlyVisitedTMeUrls({
     required this.referrer,
   });
   
-  /// [referrer] Google Play referrer to identify the user
+  /// Google Play referrer to identify the user
   final String referrer;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "referrer": referrer,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetRecentlyVisitedTMeUrls copyWith({
     String? referrer,
@@ -25,8 +39,11 @@ class GetRecentlyVisitedTMeUrls extends TdFunction {
     referrer: referrer ?? this.referrer,
   );
 
-  static const CONSTRUCTOR = 'getRecentlyVisitedTMeUrls';
-  
+  static const String objectType = 'getRecentlyVisitedTMeUrls';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class CheckAuthenticationCode extends TdFunction {
-
-  /// Checks the authentication code. Works only when the current authorization state is authorizationStateWaitCode
+/// **CheckAuthenticationCode** *(checkAuthenticationCode)* - TDLib function
+///
+/// Checks the authentication code. Works only when the current authorization state is authorizationStateWaitCode.
+///
+/// * [code]: Authentication code to check.
+///
+/// [Ok] is returned on completion.
+final class CheckAuthenticationCode extends TdFunction {
+  
+  /// **CheckAuthenticationCode** *(checkAuthenticationCode)* - TDLib function
+  ///
+  /// Checks the authentication code. Works only when the current authorization state is authorizationStateWaitCode.
+  ///
+  /// * [code]: Authentication code to check.
+  ///
+  /// [Ok] is returned on completion.
   const CheckAuthenticationCode({
     required this.code,
   });
   
-  /// [code] Authentication code to check
+  /// Authentication code to check
   final String code;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "code": code,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   CheckAuthenticationCode copyWith({
     String? code,
@@ -25,8 +39,11 @@ class CheckAuthenticationCode extends TdFunction {
     code: code ?? this.code,
   );
 
-  static const CONSTRUCTOR = 'checkAuthenticationCode';
-  
+  static const String objectType = 'checkAuthenticationCode';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

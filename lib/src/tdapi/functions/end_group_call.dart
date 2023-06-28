@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class EndGroupCall extends TdFunction {
-
-  /// Ends a group call. Requires groupCall.can_be_managed
+/// **EndGroupCall** *(endGroupCall)* - TDLib function
+///
+/// Ends a group call. Requires groupCall.can_be_managed.
+///
+/// * [groupCallId]: Group call identifier.
+///
+/// [Ok] is returned on completion.
+final class EndGroupCall extends TdFunction {
+  
+  /// **EndGroupCall** *(endGroupCall)* - TDLib function
+  ///
+  /// Ends a group call. Requires groupCall.can_be_managed.
+  ///
+  /// * [groupCallId]: Group call identifier.
+  ///
+  /// [Ok] is returned on completion.
   const EndGroupCall({
     required this.groupCallId,
   });
   
-  /// [groupCallId] Group call identifier
+  /// Group call identifier
   final int groupCallId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "group_call_id": groupCallId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   EndGroupCall copyWith({
     int? groupCallId,
@@ -25,8 +39,11 @@ class EndGroupCall extends TdFunction {
     groupCallId: groupCallId ?? this.groupCallId,
   );
 
-  static const CONSTRUCTOR = 'endGroupCall';
-  
+  static const String objectType = 'endGroupCall';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

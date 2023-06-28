@@ -1,23 +1,36 @@
 part of '../tdapi.dart';
 
-class DeleteSavedCredentials extends TdFunction {
-
-  /// Deletes saved credentials for all payment provider bots
+/// **DeleteSavedCredentials** *(deleteSavedCredentials)* - TDLib function
+///
+/// Deletes saved credentials for all payment provider bots.
+///
+/// [Ok] is returned on completion.
+final class DeleteSavedCredentials extends TdFunction {
+  
+  /// **DeleteSavedCredentials** *(deleteSavedCredentials)* - TDLib function
+  ///
+  /// Deletes saved credentials for all payment provider bots.
+  ///
+  /// [Ok] is returned on completion.
   const DeleteSavedCredentials();
   
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   DeleteSavedCredentials copyWith() => const DeleteSavedCredentials();
 
-  static const CONSTRUCTOR = 'deleteSavedCredentials';
-  
+  static const String objectType = 'deleteSavedCredentials';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

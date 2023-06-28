@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class CreateSupergroupChat extends TdFunction {
-
-  /// Returns an existing chat corresponding to a known supergroup or channel
+/// **CreateSupergroupChat** *(createSupergroupChat)* - TDLib function
+///
+/// Returns an existing chat corresponding to a known supergroup or channel.
+///
+/// * [supergroupId]: Supergroup or channel identifier.
+/// * [force]: Pass true to create the chat without a network request. In this case all information about the chat except its type, title and photo can be incorrect.
+///
+/// [Chat] is returned on completion.
+final class CreateSupergroupChat extends TdFunction {
+  
+  /// **CreateSupergroupChat** *(createSupergroupChat)* - TDLib function
+  ///
+  /// Returns an existing chat corresponding to a known supergroup or channel.
+  ///
+  /// * [supergroupId]: Supergroup or channel identifier.
+  /// * [force]: Pass true to create the chat without a network request. In this case all information about the chat except its type, title and photo can be incorrect.
+  ///
+  /// [Chat] is returned on completion.
   const CreateSupergroupChat({
     required this.supergroupId,
     required this.force,
   });
   
-  /// [supergroupId] Supergroup or channel identifier 
+  /// Supergroup or channel identifier 
   final int supergroupId;
 
-  /// [force] If true, the chat will be created without network request. In this case all information about the chat except its type, title and photo can be incorrect
+  /// Pass true to create the chat without a network request. In this case all information about the chat except its type, title and photo can be incorrect
   final bool force;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "supergroup_id": supergroupId,
       "force": force,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   CreateSupergroupChat copyWith({
     int? supergroupId,
@@ -32,8 +48,11 @@ class CreateSupergroupChat extends TdFunction {
     force: force ?? this.force,
   );
 
-  static const CONSTRUCTOR = 'createSupergroupChat';
-  
+  static const String objectType = 'createSupergroupChat';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

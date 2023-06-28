@@ -1,21 +1,34 @@
 part of '../tdapi.dart';
 
-class ChatInviteLinkCount extends TdObject {
-
-  /// Describes a chat administrator with a number of active and revoked chat invite links
+/// **ChatInviteLinkCount** *(chatInviteLinkCount)* - basic class
+///
+/// Describes a chat administrator with a number of active and revoked chat invite links.
+///
+/// * [userId]: Administrator's user identifier.
+/// * [inviteLinkCount]: Number of active invite links.
+/// * [revokedInviteLinkCount]: Number of revoked invite links.
+final class ChatInviteLinkCount extends TdObject {
+  
+  /// **ChatInviteLinkCount** *(chatInviteLinkCount)* - basic class
+  ///
+  /// Describes a chat administrator with a number of active and revoked chat invite links.
+  ///
+  /// * [userId]: Administrator's user identifier.
+  /// * [inviteLinkCount]: Number of active invite links.
+  /// * [revokedInviteLinkCount]: Number of revoked invite links.
   const ChatInviteLinkCount({
     required this.userId,
     required this.inviteLinkCount,
     required this.revokedInviteLinkCount,
   });
   
-  /// [userId] Administrator's user identifier
+  /// Administrator's user identifier
   final int userId;
 
-  /// [inviteLinkCount] Number of active invite links
+  /// Number of active invite links
   final int inviteLinkCount;
 
-  /// [revokedInviteLinkCount] Number of revoked invite links
+  /// Number of revoked invite links
   final int revokedInviteLinkCount;
   
   /// Parse from a json
@@ -27,14 +40,15 @@ class ChatInviteLinkCount extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "user_id": userId,
       "invite_link_count": inviteLinkCount,
       "revoked_invite_link_count": revokedInviteLinkCount,
-    };
-  }
+		};
+	}
+
   
   ChatInviteLinkCount copyWith({
     int? userId,
@@ -46,8 +60,11 @@ class ChatInviteLinkCount extends TdObject {
     revokedInviteLinkCount: revokedInviteLinkCount ?? this.revokedInviteLinkCount,
   );
 
-  static const CONSTRUCTOR = 'chatInviteLinkCount';
-  
+  static const String objectType = 'chatInviteLinkCount';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

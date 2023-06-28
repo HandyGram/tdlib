@@ -1,15 +1,24 @@
 part of '../tdapi.dart';
 
-class PassportElements extends TdObject {
-
-  /// Contains information about saved Telegram Passport elements
+/// **PassportElements** *(passportElements)* - basic class
+///
+/// Contains information about saved Telegram Passport elements.
+///
+/// * [elements]: Telegram Passport elements.
+final class PassportElements extends TdObject {
+  
+  /// **PassportElements** *(passportElements)* - basic class
+  ///
+  /// Contains information about saved Telegram Passport elements.
+  ///
+  /// * [elements]: Telegram Passport elements.
   const PassportElements({
     required this.elements,
     this.extra,
     this.clientId,
   });
   
-  /// [elements] Telegram Passport elements
+  /// Telegram Passport elements
   final List<PassportElement> elements;
 
   /// [extra] callback sign
@@ -29,12 +38,13 @@ class PassportElements extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "elements": elements.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   PassportElements copyWith({
     List<PassportElement>? elements,
@@ -46,8 +56,11 @@ class PassportElements extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'passportElements';
-  
+  static const String objectType = 'passportElements';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

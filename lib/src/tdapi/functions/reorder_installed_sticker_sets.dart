@@ -1,39 +1,58 @@
 part of '../tdapi.dart';
 
-class ReorderInstalledStickerSets extends TdFunction {
-
-  /// Changes the order of installed sticker sets
+/// **ReorderInstalledStickerSets** *(reorderInstalledStickerSets)* - TDLib function
+///
+/// Changes the order of installed sticker sets.
+///
+/// * [stickerType]: Type of the sticker sets to reorder.
+/// * [stickerSetIds]: Identifiers of installed sticker sets in the new correct order.
+///
+/// [Ok] is returned on completion.
+final class ReorderInstalledStickerSets extends TdFunction {
+  
+  /// **ReorderInstalledStickerSets** *(reorderInstalledStickerSets)* - TDLib function
+  ///
+  /// Changes the order of installed sticker sets.
+  ///
+  /// * [stickerType]: Type of the sticker sets to reorder.
+  /// * [stickerSetIds]: Identifiers of installed sticker sets in the new correct order.
+  ///
+  /// [Ok] is returned on completion.
   const ReorderInstalledStickerSets({
-    required this.isMasks,
+    required this.stickerType,
     required this.stickerSetIds,
   });
   
-  /// [isMasks] Pass true to change the order of mask sticker sets; pass false to change the order of ordinary sticker sets 
-  final bool isMasks;
+  /// Type of the sticker sets to reorder 
+  final StickerType stickerType;
 
-  /// [stickerSetIds] Identifiers of installed sticker sets in the new correct order
+  /// Identifiers of installed sticker sets in the new correct order
   final List<int> stickerSetIds;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "is_masks": isMasks,
+		return {
+			"@type": objectType,
+      "sticker_type": stickerType.toJson(),
       "sticker_set_ids": stickerSetIds.map((i) => i).toList(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   ReorderInstalledStickerSets copyWith({
-    bool? isMasks,
+    StickerType? stickerType,
     List<int>? stickerSetIds,
   }) => ReorderInstalledStickerSets(
-    isMasks: isMasks ?? this.isMasks,
+    stickerType: stickerType ?? this.stickerType,
     stickerSetIds: stickerSetIds ?? this.stickerSetIds,
   );
 
-  static const CONSTRUCTOR = 'reorderInstalledStickerSets';
-  
+  static const String objectType = 'reorderInstalledStickerSets';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

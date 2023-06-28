@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class GetPhoneNumberInfo extends TdFunction {
-
-  /// Returns information about a phone number by its prefix. Can be called before authorization
+/// **GetPhoneNumberInfo** *(getPhoneNumberInfo)* - TDLib function
+///
+/// Returns information about a phone number by its prefix. Can be called before authorization.
+///
+/// * [phoneNumberPrefix]: The phone number prefix.
+///
+/// [PhoneNumberInfo] is returned on completion.
+final class GetPhoneNumberInfo extends TdFunction {
+  
+  /// **GetPhoneNumberInfo** *(getPhoneNumberInfo)* - TDLib function
+  ///
+  /// Returns information about a phone number by its prefix. Can be called before authorization.
+  ///
+  /// * [phoneNumberPrefix]: The phone number prefix.
+  ///
+  /// [PhoneNumberInfo] is returned on completion.
   const GetPhoneNumberInfo({
     required this.phoneNumberPrefix,
   });
   
-  /// [phoneNumberPrefix] The phone number prefix
+  /// The phone number prefix
   final String phoneNumberPrefix;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "phone_number_prefix": phoneNumberPrefix,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetPhoneNumberInfo copyWith({
     String? phoneNumberPrefix,
@@ -25,8 +39,11 @@ class GetPhoneNumberInfo extends TdFunction {
     phoneNumberPrefix: phoneNumberPrefix ?? this.phoneNumberPrefix,
   );
 
-  static const CONSTRUCTOR = 'getPhoneNumberInfo';
-  
+  static const String objectType = 'getPhoneNumberInfo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

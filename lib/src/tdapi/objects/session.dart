@@ -1,14 +1,58 @@
 part of '../tdapi.dart';
 
-class Session extends TdObject {
-
-  /// Contains information about one session in a Telegram application used by the current user. Sessions must be shown to the user in the returned order
+/// **Session** *(session)* - basic class
+///
+/// Contains information about one session in a Telegram application used by the current user. Sessions must be shown to the user in the returned order.
+///
+/// * [id]: Session identifier.
+/// * [isCurrent]: True, if this session is the current session.
+/// * [isPasswordPending]: True, if a 2-step verification password is needed to complete authorization of the session.
+/// * [canAcceptSecretChats]: True, if incoming secret chats can be accepted by the session.
+/// * [canAcceptCalls]: True, if incoming calls can be accepted by the session.
+/// * [type]: Session type based on the system and application version, which can be used to display a corresponding icon.
+/// * [apiId]: Telegram API identifier, as provided by the application.
+/// * [applicationName]: Name of the application, as provided by the application.
+/// * [applicationVersion]: The version of the application, as provided by the application.
+/// * [isOfficialApplication]: True, if the application is an official application or uses the api_id of an official application.
+/// * [deviceModel]: Model of the device the application has been run or is running on, as provided by the application.
+/// * [platform]: Operating system the application has been run or is running on, as provided by the application.
+/// * [systemVersion]: Version of the operating system the application has been run or is running on, as provided by the application.
+/// * [logInDate]: Point in time (Unix timestamp) when the user has logged in.
+/// * [lastActiveDate]: Point in time (Unix timestamp) when the session was last used.
+/// * [ip]: IP address from which the session was created, in human-readable format.
+/// * [country]: A two-letter country code for the country from which the session was created, based on the IP address.
+/// * [region]: Region code from which the session was created, based on the IP address.
+final class Session extends TdObject {
+  
+  /// **Session** *(session)* - basic class
+  ///
+  /// Contains information about one session in a Telegram application used by the current user. Sessions must be shown to the user in the returned order.
+  ///
+  /// * [id]: Session identifier.
+  /// * [isCurrent]: True, if this session is the current session.
+  /// * [isPasswordPending]: True, if a 2-step verification password is needed to complete authorization of the session.
+  /// * [canAcceptSecretChats]: True, if incoming secret chats can be accepted by the session.
+  /// * [canAcceptCalls]: True, if incoming calls can be accepted by the session.
+  /// * [type]: Session type based on the system and application version, which can be used to display a corresponding icon.
+  /// * [apiId]: Telegram API identifier, as provided by the application.
+  /// * [applicationName]: Name of the application, as provided by the application.
+  /// * [applicationVersion]: The version of the application, as provided by the application.
+  /// * [isOfficialApplication]: True, if the application is an official application or uses the api_id of an official application.
+  /// * [deviceModel]: Model of the device the application has been run or is running on, as provided by the application.
+  /// * [platform]: Operating system the application has been run or is running on, as provided by the application.
+  /// * [systemVersion]: Version of the operating system the application has been run or is running on, as provided by the application.
+  /// * [logInDate]: Point in time (Unix timestamp) when the user has logged in.
+  /// * [lastActiveDate]: Point in time (Unix timestamp) when the session was last used.
+  /// * [ip]: IP address from which the session was created, in human-readable format.
+  /// * [country]: A two-letter country code for the country from which the session was created, based on the IP address.
+  /// * [region]: Region code from which the session was created, based on the IP address.
   const Session({
     required this.id,
     required this.isCurrent,
     required this.isPasswordPending,
     required this.canAcceptSecretChats,
     required this.canAcceptCalls,
+    required this.type,
     required this.apiId,
     required this.applicationName,
     required this.applicationVersion,
@@ -25,55 +69,58 @@ class Session extends TdObject {
     this.clientId,
   });
   
-  /// [id] Session identifier
+  /// Session identifier
   final int id;
 
-  /// [isCurrent] True, if this session is the current session
+  /// True, if this session is the current session
   final bool isCurrent;
 
-  /// [isPasswordPending] True, if a password is needed to complete authorization of the session
+  /// True, if a 2-step verification password is needed to complete authorization of the session
   final bool isPasswordPending;
 
-  /// [canAcceptSecretChats] True, if incoming secret chats can be accepted by the session
+  /// True, if incoming secret chats can be accepted by the session
   final bool canAcceptSecretChats;
 
-  /// [canAcceptCalls] True, if incoming calls can be accepted by the session
+  /// True, if incoming calls can be accepted by the session
   final bool canAcceptCalls;
 
-  /// [apiId] Telegram API identifier, as provided by the application
+  /// Session type based on the system and application version, which can be used to display a corresponding icon
+  final SessionType type;
+
+  /// Telegram API identifier, as provided by the application
   final int apiId;
 
-  /// [applicationName] Name of the application, as provided by the application
+  /// Name of the application, as provided by the application
   final String applicationName;
 
-  /// [applicationVersion] The version of the application, as provided by the application
+  /// The version of the application, as provided by the application
   final String applicationVersion;
 
-  /// [isOfficialApplication] True, if the application is an official application or uses the api_id of an official application
+  /// True, if the application is an official application or uses the api_id of an official application
   final bool isOfficialApplication;
 
-  /// [deviceModel] Model of the device the application has been run or is running on, as provided by the application
+  /// Model of the device the application has been run or is running on, as provided by the application
   final String deviceModel;
 
-  /// [platform] Operating system the application has been run or is running on, as provided by the application
+  /// Operating system the application has been run or is running on, as provided by the application
   final String platform;
 
-  /// [systemVersion] Version of the operating system the application has been run or is running on, as provided by the application
+  /// Version of the operating system the application has been run or is running on, as provided by the application
   final String systemVersion;
 
-  /// [logInDate] Point in time (Unix timestamp) when the user has logged in
+  /// Point in time (Unix timestamp) when the user has logged in
   final int logInDate;
 
-  /// [lastActiveDate] Point in time (Unix timestamp) when the session was last used
+  /// Point in time (Unix timestamp) when the session was last used
   final int lastActiveDate;
 
-  /// [ip] IP address from which the session was created, in human-readable format
+  /// IP address from which the session was created, in human-readable format
   final String ip;
 
-  /// [country] A two-letter country code for the country from which the session was created, based on the IP address
+  /// A two-letter country code for the country from which the session was created, based on the IP address
   final String country;
 
-  /// [region] Region code from which the session was created, based on the IP address
+  /// Region code from which the session was created, based on the IP address
   final String region;
 
   /// [extra] callback sign
@@ -91,6 +138,7 @@ class Session extends TdObject {
     isPasswordPending: json['is_password_pending'],
     canAcceptSecretChats: json['can_accept_secret_chats'],
     canAcceptCalls: json['can_accept_calls'],
+    type: SessionType.fromJson(json['type']),
     apiId: json['api_id'],
     applicationName: json['application_name'],
     applicationVersion: json['application_version'],
@@ -109,14 +157,15 @@ class Session extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "id": id,
       "is_current": isCurrent,
       "is_password_pending": isPasswordPending,
       "can_accept_secret_chats": canAcceptSecretChats,
       "can_accept_calls": canAcceptCalls,
+      "type": type.toJson(),
       "api_id": apiId,
       "application_name": applicationName,
       "application_version": applicationVersion,
@@ -129,8 +178,9 @@ class Session extends TdObject {
       "ip": ip,
       "country": country,
       "region": region,
-    };
-  }
+		};
+	}
+
   
   Session copyWith({
     int? id,
@@ -138,6 +188,7 @@ class Session extends TdObject {
     bool? isPasswordPending,
     bool? canAcceptSecretChats,
     bool? canAcceptCalls,
+    SessionType? type,
     int? apiId,
     String? applicationName,
     String? applicationVersion,
@@ -158,6 +209,7 @@ class Session extends TdObject {
     isPasswordPending: isPasswordPending ?? this.isPasswordPending,
     canAcceptSecretChats: canAcceptSecretChats ?? this.canAcceptSecretChats,
     canAcceptCalls: canAcceptCalls ?? this.canAcceptCalls,
+    type: type ?? this.type,
     apiId: apiId ?? this.apiId,
     applicationName: applicationName ?? this.applicationName,
     applicationVersion: applicationVersion ?? this.applicationVersion,
@@ -174,8 +226,11 @@ class Session extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'session';
-  
+  static const String objectType = 'session';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

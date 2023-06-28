@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class SetAuthenticationPhoneNumber extends TdFunction {
-
-  /// Sets the phone number of the user and sends an authentication code to the user. Works only when the current authorization state is authorizationStateWaitPhoneNumber,. or if there is no pending authentication query and the current authorization state is authorizationStateWaitCode, authorizationStateWaitRegistration, or authorizationStateWaitPassword
+/// **SetAuthenticationPhoneNumber** *(setAuthenticationPhoneNumber)* - TDLib function
+///
+/// Sets the phone number of the user and sends an authentication code to the user. Works only when the current authorization state is authorizationStateWaitPhoneNumber,. or if there is no pending authentication query and the current authorization state is authorizationStateWaitEmailAddress, authorizationStateWaitEmailCode, authorizationStateWaitCode, authorizationStateWaitRegistration, or authorizationStateWaitPassword.
+///
+/// * [phoneNumber]: The phone number of the user, in international format.
+/// * [settings]: Settings for the authentication of the user's phone number; pass null to use default settings *(optional)*.
+///
+/// [Ok] is returned on completion.
+final class SetAuthenticationPhoneNumber extends TdFunction {
+  
+  /// **SetAuthenticationPhoneNumber** *(setAuthenticationPhoneNumber)* - TDLib function
+  ///
+  /// Sets the phone number of the user and sends an authentication code to the user. Works only when the current authorization state is authorizationStateWaitPhoneNumber,. or if there is no pending authentication query and the current authorization state is authorizationStateWaitEmailAddress, authorizationStateWaitEmailCode, authorizationStateWaitCode, authorizationStateWaitRegistration, or authorizationStateWaitPassword.
+  ///
+  /// * [phoneNumber]: The phone number of the user, in international format.
+  /// * [settings]: Settings for the authentication of the user's phone number; pass null to use default settings *(optional)*.
+  ///
+  /// [Ok] is returned on completion.
   const SetAuthenticationPhoneNumber({
     required this.phoneNumber,
     this.settings,
   });
   
-  /// [phoneNumber] The phone number of the user, in international format
+  /// The phone number of the user, in international format
   final String phoneNumber;
 
-  /// [settings] Settings for the authentication of the user's phone number; pass null to use default settings
+  /// Settings for the authentication of the user's phone number; pass null to use default settings
   final PhoneNumberAuthenticationSettings? settings;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "phone_number": phoneNumber,
       "settings": settings?.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SetAuthenticationPhoneNumber copyWith({
     String? phoneNumber,
@@ -32,8 +48,11 @@ class SetAuthenticationPhoneNumber extends TdFunction {
     settings: settings ?? this.settings,
   );
 
-  static const CONSTRUCTOR = 'setAuthenticationPhoneNumber';
-  
+  static const String objectType = 'setAuthenticationPhoneNumber';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

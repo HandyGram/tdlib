@@ -1,8 +1,27 @@
 part of '../tdapi.dart';
 
-class Proxy extends TdObject {
-
-  /// Contains information about a proxy server
+/// **Proxy** *(proxy)* - basic class
+///
+/// Contains information about a proxy server.
+///
+/// * [id]: Unique identifier of the proxy.
+/// * [server]: Proxy server IP address.
+/// * [port]: Proxy server port.
+/// * [lastUsedDate]: Point in time (Unix timestamp) when the proxy was last used; 0 if never.
+/// * [isEnabled]: True, if the proxy is enabled now.
+/// * [type]: Type of the proxy.
+final class Proxy extends TdObject {
+  
+  /// **Proxy** *(proxy)* - basic class
+  ///
+  /// Contains information about a proxy server.
+  ///
+  /// * [id]: Unique identifier of the proxy.
+  /// * [server]: Proxy server IP address.
+  /// * [port]: Proxy server port.
+  /// * [lastUsedDate]: Point in time (Unix timestamp) when the proxy was last used; 0 if never.
+  /// * [isEnabled]: True, if the proxy is enabled now.
+  /// * [type]: Type of the proxy.
   const Proxy({
     required this.id,
     required this.server,
@@ -14,22 +33,22 @@ class Proxy extends TdObject {
     this.clientId,
   });
   
-  /// [id] Unique identifier of the proxy 
+  /// Unique identifier of the proxy
   final int id;
 
-  /// [server] Proxy server IP address 
+  /// Proxy server IP address
   final String server;
 
-  /// [port] Proxy server port 
+  /// Proxy server port
   final int port;
 
-  /// [lastUsedDate] Point in time (Unix timestamp) when the proxy was last used; 0 if never 
+  /// Point in time (Unix timestamp) when the proxy was last used; 0 if never
   final int lastUsedDate;
 
-  /// [isEnabled] True, if the proxy is enabled now 
+  /// True, if the proxy is enabled now
   final bool isEnabled;
 
-  /// [type] Type of the proxy
+  /// Type of the proxy
   final ProxyType type;
 
   /// [extra] callback sign
@@ -54,17 +73,18 @@ class Proxy extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "id": id,
       "server": server,
       "port": port,
       "last_used_date": lastUsedDate,
       "is_enabled": isEnabled,
       "type": type.toJson(),
-    };
-  }
+		};
+	}
+
   
   Proxy copyWith({
     int? id,
@@ -86,8 +106,11 @@ class Proxy extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'proxy';
-  
+  static const String objectType = 'proxy';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

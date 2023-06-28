@@ -1,13 +1,47 @@
 part of '../tdapi.dart';
 
-class Invoice extends TdObject {
-
-  /// Product invoice
+/// **Invoice** *(invoice)* - basic class
+///
+/// Product invoice.
+///
+/// * [currency]: ISO 4217 currency code.
+/// * [priceParts]: A list of objects used to calculate the total price of the product.
+/// * [maxTipAmount]: The maximum allowed amount of tip in the smallest units of the currency.
+/// * [suggestedTipAmounts]: Suggested amounts of tip in the smallest units of the currency.
+/// * [recurringPaymentTermsOfServiceUrl]: An HTTP URL with terms of service for recurring payments. If non-empty, the invoice payment will result in recurring payments and the user must accept the terms of service before allowed to pay.
+/// * [isTest]: True, if the payment is a test payment.
+/// * [needName]: True, if the user's name is needed for payment.
+/// * [needPhoneNumber]: True, if the user's phone number is needed for payment.
+/// * [needEmailAddress]: True, if the user's email address is needed for payment.
+/// * [needShippingAddress]: True, if the user's shipping address is needed for payment.
+/// * [sendPhoneNumberToProvider]: True, if the user's phone number will be sent to the provider.
+/// * [sendEmailAddressToProvider]: True, if the user's email address will be sent to the provider.
+/// * [isFlexible]: True, if the total price depends on the shipping method.
+final class Invoice extends TdObject {
+  
+  /// **Invoice** *(invoice)* - basic class
+  ///
+  /// Product invoice.
+  ///
+  /// * [currency]: ISO 4217 currency code.
+  /// * [priceParts]: A list of objects used to calculate the total price of the product.
+  /// * [maxTipAmount]: The maximum allowed amount of tip in the smallest units of the currency.
+  /// * [suggestedTipAmounts]: Suggested amounts of tip in the smallest units of the currency.
+  /// * [recurringPaymentTermsOfServiceUrl]: An HTTP URL with terms of service for recurring payments. If non-empty, the invoice payment will result in recurring payments and the user must accept the terms of service before allowed to pay.
+  /// * [isTest]: True, if the payment is a test payment.
+  /// * [needName]: True, if the user's name is needed for payment.
+  /// * [needPhoneNumber]: True, if the user's phone number is needed for payment.
+  /// * [needEmailAddress]: True, if the user's email address is needed for payment.
+  /// * [needShippingAddress]: True, if the user's shipping address is needed for payment.
+  /// * [sendPhoneNumberToProvider]: True, if the user's phone number will be sent to the provider.
+  /// * [sendEmailAddressToProvider]: True, if the user's email address will be sent to the provider.
+  /// * [isFlexible]: True, if the total price depends on the shipping method.
   const Invoice({
     required this.currency,
     required this.priceParts,
     required this.maxTipAmount,
     required this.suggestedTipAmounts,
+    required this.recurringPaymentTermsOfServiceUrl,
     required this.isTest,
     required this.needName,
     required this.needPhoneNumber,
@@ -18,40 +52,43 @@ class Invoice extends TdObject {
     required this.isFlexible,
   });
   
-  /// [currency] ISO 4217 currency code
+  /// ISO 4217 currency code
   final String currency;
 
-  /// [priceParts] A list of objects used to calculate the total price of the product
+  /// A list of objects used to calculate the total price of the product
   final List<LabeledPricePart> priceParts;
 
-  /// [maxTipAmount] The maximum allowed amount of tip in the smallest units of the currency
+  /// The maximum allowed amount of tip in the smallest units of the currency
   final int maxTipAmount;
 
-  /// [suggestedTipAmounts] Suggested amounts of tip in the smallest units of the currency
+  /// Suggested amounts of tip in the smallest units of the currency
   final List<int> suggestedTipAmounts;
 
-  /// [isTest] True, if the payment is a test payment
+  /// An HTTP URL with terms of service for recurring payments. If non-empty, the invoice payment will result in recurring payments and the user must accept the terms of service before allowed to pay
+  final String recurringPaymentTermsOfServiceUrl;
+
+  /// True, if the payment is a test payment
   final bool isTest;
 
-  /// [needName] True, if the user's name is needed for payment
+  /// True, if the user's name is needed for payment
   final bool needName;
 
-  /// [needPhoneNumber] True, if the user's phone number is needed for payment
+  /// True, if the user's phone number is needed for payment
   final bool needPhoneNumber;
 
-  /// [needEmailAddress] True, if the user's email address is needed for payment
+  /// True, if the user's email address is needed for payment
   final bool needEmailAddress;
 
-  /// [needShippingAddress] True, if the user's shipping address is needed for payment
+  /// True, if the user's shipping address is needed for payment
   final bool needShippingAddress;
 
-  /// [sendPhoneNumberToProvider] True, if the user's phone number will be sent to the provider
+  /// True, if the user's phone number will be sent to the provider
   final bool sendPhoneNumberToProvider;
 
-  /// [sendEmailAddressToProvider] True, if the user's email address will be sent to the provider
+  /// True, if the user's email address will be sent to the provider
   final bool sendEmailAddressToProvider;
 
-  /// [isFlexible] True, if the total price depends on the shipping method
+  /// True, if the total price depends on the shipping method
   final bool isFlexible;
   
   /// Parse from a json
@@ -60,6 +97,7 @@ class Invoice extends TdObject {
     priceParts: List<LabeledPricePart>.from((json['price_parts'] ?? []).map((item) => LabeledPricePart.fromJson(item)).toList()),
     maxTipAmount: json['max_tip_amount'],
     suggestedTipAmounts: List<int>.from((json['suggested_tip_amounts'] ?? []).map((item) => item).toList()),
+    recurringPaymentTermsOfServiceUrl: json['recurring_payment_terms_of_service_url'],
     isTest: json['is_test'],
     needName: json['need_name'],
     needPhoneNumber: json['need_phone_number'],
@@ -72,13 +110,14 @@ class Invoice extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "currency": currency,
       "price_parts": priceParts.map((i) => i.toJson()).toList(),
       "max_tip_amount": maxTipAmount,
       "suggested_tip_amounts": suggestedTipAmounts.map((i) => i).toList(),
+      "recurring_payment_terms_of_service_url": recurringPaymentTermsOfServiceUrl,
       "is_test": isTest,
       "need_name": needName,
       "need_phone_number": needPhoneNumber,
@@ -87,14 +126,16 @@ class Invoice extends TdObject {
       "send_phone_number_to_provider": sendPhoneNumberToProvider,
       "send_email_address_to_provider": sendEmailAddressToProvider,
       "is_flexible": isFlexible,
-    };
-  }
+		};
+	}
+
   
   Invoice copyWith({
     String? currency,
     List<LabeledPricePart>? priceParts,
     int? maxTipAmount,
     List<int>? suggestedTipAmounts,
+    String? recurringPaymentTermsOfServiceUrl,
     bool? isTest,
     bool? needName,
     bool? needPhoneNumber,
@@ -108,6 +149,7 @@ class Invoice extends TdObject {
     priceParts: priceParts ?? this.priceParts,
     maxTipAmount: maxTipAmount ?? this.maxTipAmount,
     suggestedTipAmounts: suggestedTipAmounts ?? this.suggestedTipAmounts,
+    recurringPaymentTermsOfServiceUrl: recurringPaymentTermsOfServiceUrl ?? this.recurringPaymentTermsOfServiceUrl,
     isTest: isTest ?? this.isTest,
     needName: needName ?? this.needName,
     needPhoneNumber: needPhoneNumber ?? this.needPhoneNumber,
@@ -118,8 +160,11 @@ class Invoice extends TdObject {
     isFlexible: isFlexible ?? this.isFlexible,
   );
 
-  static const CONSTRUCTOR = 'invoice';
-  
+  static const String objectType = 'invoice';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

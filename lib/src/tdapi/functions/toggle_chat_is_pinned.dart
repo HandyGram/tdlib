@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class ToggleChatIsPinned extends TdFunction {
-
-  /// Changes the pinned state of a chat. There can be up to GetOption("pinned_chat_count_max")/GetOption("pinned_archived_chat_count_max") pinned non-secret chats and the same number of secret chats in the main/arhive chat list
+/// **ToggleChatIsPinned** *(toggleChatIsPinned)* - TDLib function
+///
+/// Changes the pinned state of a chat. There can be up to getOption("pinned_chat_count_max")/getOption("pinned_archived_chat_count_max") pinned non-secret chats and the same number of secret chats in the main/archive chat list. The limit can be increased with Telegram Premium.
+///
+/// * [chatList]: Chat list in which to change the pinned state of the chat.
+/// * [chatId]: Chat identifier.
+/// * [isPinned]: Pass true to pin the chat; pass false to unpin it.
+///
+/// [Ok] is returned on completion.
+final class ToggleChatIsPinned extends TdFunction {
+  
+  /// **ToggleChatIsPinned** *(toggleChatIsPinned)* - TDLib function
+  ///
+  /// Changes the pinned state of a chat. There can be up to getOption("pinned_chat_count_max")/getOption("pinned_archived_chat_count_max") pinned non-secret chats and the same number of secret chats in the main/archive chat list. The limit can be increased with Telegram Premium.
+  ///
+  /// * [chatList]: Chat list in which to change the pinned state of the chat.
+  /// * [chatId]: Chat identifier.
+  /// * [isPinned]: Pass true to pin the chat; pass false to unpin it.
+  ///
+  /// [Ok] is returned on completion.
   const ToggleChatIsPinned({
     required this.chatList,
     required this.chatId,
     required this.isPinned,
   });
   
-  /// [chatList] Chat list in which to change the pinned state of the chat
+  /// Chat list in which to change the pinned state of the chat
   final ChatList chatList;
 
-  /// [chatId] Chat identifier 
+  /// Chat identifier
   final int chatId;
 
-  /// [isPinned] True, if the chat is pinned
+  /// Pass true to pin the chat; pass false to unpin it
   final bool isPinned;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_list": chatList.toJson(),
       "chat_id": chatId,
       "is_pinned": isPinned,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   ToggleChatIsPinned copyWith({
     ChatList? chatList,
@@ -39,8 +57,11 @@ class ToggleChatIsPinned extends TdFunction {
     isPinned: isPinned ?? this.isPinned,
   );
 
-  static const CONSTRUCTOR = 'toggleChatIsPinned';
-  
+  static const String objectType = 'toggleChatIsPinned';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

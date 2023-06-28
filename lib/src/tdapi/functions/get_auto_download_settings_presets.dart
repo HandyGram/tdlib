@@ -1,23 +1,36 @@
 part of '../tdapi.dart';
 
-class GetAutoDownloadSettingsPresets extends TdFunction {
-
-  /// Returns auto-download settings presets for the current user
+/// **GetAutoDownloadSettingsPresets** *(getAutoDownloadSettingsPresets)* - TDLib function
+///
+/// Returns auto-download settings presets for the current user.
+///
+/// [AutoDownloadSettingsPresets] is returned on completion.
+final class GetAutoDownloadSettingsPresets extends TdFunction {
+  
+  /// **GetAutoDownloadSettingsPresets** *(getAutoDownloadSettingsPresets)* - TDLib function
+  ///
+  /// Returns auto-download settings presets for the current user.
+  ///
+  /// [AutoDownloadSettingsPresets] is returned on completion.
   const GetAutoDownloadSettingsPresets();
   
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetAutoDownloadSettingsPresets copyWith() => const GetAutoDownloadSettingsPresets();
 
-  static const CONSTRUCTOR = 'getAutoDownloadSettingsPresets';
-  
+  static const String objectType = 'getAutoDownloadSettingsPresets';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

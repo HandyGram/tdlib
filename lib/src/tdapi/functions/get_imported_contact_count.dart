@@ -1,23 +1,36 @@
 part of '../tdapi.dart';
 
-class GetImportedContactCount extends TdFunction {
-
-  /// Returns the total number of imported contacts
+/// **GetImportedContactCount** *(getImportedContactCount)* - TDLib function
+///
+/// Returns the total number of imported contacts.
+///
+/// [Count] is returned on completion.
+final class GetImportedContactCount extends TdFunction {
+  
+  /// **GetImportedContactCount** *(getImportedContactCount)* - TDLib function
+  ///
+  /// Returns the total number of imported contacts.
+  ///
+  /// [Count] is returned on completion.
   const GetImportedContactCount();
   
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetImportedContactCount copyWith() => const GetImportedContactCount();
 
-  static const CONSTRUCTOR = 'getImportedContactCount';
-  
+  static const String objectType = 'getImportedContactCount';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

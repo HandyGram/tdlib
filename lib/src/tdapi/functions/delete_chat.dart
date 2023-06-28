@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class DeleteChat extends TdFunction {
-
-  /// Deletes a chat along with all messages in the corresponding chat for all chat members; requires owner privileges. For group chats this will release the username and remove all members. Chats with more than 1000 members can't be deleted using this method
+/// **DeleteChat** *(deleteChat)* - TDLib function
+///
+/// Deletes a chat along with all messages in the corresponding chat for all chat members. For group chats this will release the usernames and remove all members.. Use the field chat.can_be_deleted_for_all_users to find whether the method can be applied to the chat.
+///
+/// * [chatId]: Chat identifier.
+///
+/// [Ok] is returned on completion.
+final class DeleteChat extends TdFunction {
+  
+  /// **DeleteChat** *(deleteChat)* - TDLib function
+  ///
+  /// Deletes a chat along with all messages in the corresponding chat for all chat members. For group chats this will release the usernames and remove all members.. Use the field chat.can_be_deleted_for_all_users to find whether the method can be applied to the chat.
+  ///
+  /// * [chatId]: Chat identifier.
+  ///
+  /// [Ok] is returned on completion.
   const DeleteChat({
     required this.chatId,
   });
   
-  /// [chatId] Chat identifier
+  /// Chat identifier
   final int chatId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   DeleteChat copyWith({
     int? chatId,
@@ -25,8 +39,11 @@ class DeleteChat extends TdFunction {
     chatId: chatId ?? this.chatId,
   );
 
-  static const CONSTRUCTOR = 'deleteChat';
-  
+  static const String objectType = 'deleteChat';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

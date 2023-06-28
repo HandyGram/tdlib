@@ -1,23 +1,36 @@
 part of '../tdapi.dart';
 
-class RequestPasswordRecovery extends TdFunction {
-
-  /// Requests to send a 2-step verification password recovery code to an email address that was previously set up
+/// **RequestPasswordRecovery** *(requestPasswordRecovery)* - TDLib function
+///
+/// Requests to send a 2-step verification password recovery code to an email address that was previously set up.
+///
+/// [EmailAddressAuthenticationCodeInfo] is returned on completion.
+final class RequestPasswordRecovery extends TdFunction {
+  
+  /// **RequestPasswordRecovery** *(requestPasswordRecovery)* - TDLib function
+  ///
+  /// Requests to send a 2-step verification password recovery code to an email address that was previously set up.
+  ///
+  /// [EmailAddressAuthenticationCodeInfo] is returned on completion.
   const RequestPasswordRecovery();
   
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   RequestPasswordRecovery copyWith() => const RequestPasswordRecovery();
 
-  static const CONSTRUCTOR = 'requestPasswordRecovery';
-  
+  static const String objectType = 'requestPasswordRecovery';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

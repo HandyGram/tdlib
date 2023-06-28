@@ -1,8 +1,27 @@
 part of '../tdapi.dart';
 
-class Venue extends TdObject {
-
-  /// Describes a venue
+/// **Venue** *(venue)* - basic class
+///
+/// Describes a venue.
+///
+/// * [location]: Venue location; as defined by the sender.
+/// * [title]: Venue name; as defined by the sender.
+/// * [address]: Venue address; as defined by the sender.
+/// * [provider]: Provider of the venue database; as defined by the sender. Currently, only "foursquare" and "gplaces" (Google Places) need to be supported.
+/// * [id]: Identifier of the venue in the provider database; as defined by the sender.
+/// * [type]: Type of the venue in the provider database; as defined by the sender.
+final class Venue extends TdObject {
+  
+  /// **Venue** *(venue)* - basic class
+  ///
+  /// Describes a venue.
+  ///
+  /// * [location]: Venue location; as defined by the sender.
+  /// * [title]: Venue name; as defined by the sender.
+  /// * [address]: Venue address; as defined by the sender.
+  /// * [provider]: Provider of the venue database; as defined by the sender. Currently, only "foursquare" and "gplaces" (Google Places) need to be supported.
+  /// * [id]: Identifier of the venue in the provider database; as defined by the sender.
+  /// * [type]: Type of the venue in the provider database; as defined by the sender.
   const Venue({
     required this.location,
     required this.title,
@@ -12,22 +31,22 @@ class Venue extends TdObject {
     required this.type,
   });
   
-  /// [location] Venue location; as defined by the sender 
+  /// Venue location; as defined by the sender
   final Location location;
 
-  /// [title] Venue name; as defined by the sender 
+  /// Venue name; as defined by the sender
   final String title;
 
-  /// [address] Venue address; as defined by the sender 
+  /// Venue address; as defined by the sender
   final String address;
 
-  /// [provider] Provider of the venue database; as defined by the sender. Currently, only "foursquare" and "gplaces" (Google Places) need to be supported
+  /// Provider of the venue database; as defined by the sender. Currently, only "foursquare" and "gplaces" (Google Places) need to be supported
   final String provider;
 
-  /// [id] Identifier of the venue in the provider database; as defined by the sender
+  /// Identifier of the venue in the provider database; as defined by the sender
   final String id;
 
-  /// [type] Type of the venue in the provider database; as defined by the sender
+  /// Type of the venue in the provider database; as defined by the sender
   final String type;
   
   /// Parse from a json
@@ -42,17 +61,18 @@ class Venue extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "location": location.toJson(),
       "title": title,
       "address": address,
       "provider": provider,
       "id": id,
       "type": type,
-    };
-  }
+		};
+	}
+
   
   Venue copyWith({
     Location? location,
@@ -70,8 +90,11 @@ class Venue extends TdObject {
     type: type ?? this.type,
   );
 
-  static const CONSTRUCTOR = 'venue';
-  
+  static const String objectType = 'venue';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

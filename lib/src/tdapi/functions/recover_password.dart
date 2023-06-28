@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class RecoverPassword extends TdFunction {
-
-  /// Recovers the 2-step verification password using a recovery code sent to an email address that was previously set up
+/// **RecoverPassword** *(recoverPassword)* - TDLib function
+///
+/// Recovers the 2-step verification password using a recovery code sent to an email address that was previously set up.
+///
+/// * [recoveryCode]: Recovery code to check.
+/// * [newPassword]: New 2-step verification password of the user; may be empty to remove the password.
+/// * [newHint]: New password hint; may be empty.
+///
+/// [PasswordState] is returned on completion.
+final class RecoverPassword extends TdFunction {
+  
+  /// **RecoverPassword** *(recoverPassword)* - TDLib function
+  ///
+  /// Recovers the 2-step verification password using a recovery code sent to an email address that was previously set up.
+  ///
+  /// * [recoveryCode]: Recovery code to check.
+  /// * [newPassword]: New 2-step verification password of the user; may be empty to remove the password.
+  /// * [newHint]: New password hint; may be empty.
+  ///
+  /// [PasswordState] is returned on completion.
   const RecoverPassword({
     required this.recoveryCode,
     required this.newPassword,
     required this.newHint,
   });
   
-  /// [recoveryCode] Recovery code to check
+  /// Recovery code to check
   final String recoveryCode;
 
-  /// [newPassword] New password of the user; may be empty to remove the password 
+  /// New 2-step verification password of the user; may be empty to remove the password
   final String newPassword;
 
-  /// [newHint] New password hint; may be empty
+  /// New password hint; may be empty
   final String newHint;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "recovery_code": recoveryCode,
       "new_password": newPassword,
       "new_hint": newHint,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   RecoverPassword copyWith({
     String? recoveryCode,
@@ -39,8 +57,11 @@ class RecoverPassword extends TdFunction {
     newHint: newHint ?? this.newHint,
   );
 
-  static const CONSTRUCTOR = 'recoverPassword';
-  
+  static const String objectType = 'recoverPassword';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

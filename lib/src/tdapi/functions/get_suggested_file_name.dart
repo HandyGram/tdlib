@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class GetSuggestedFileName extends TdFunction {
-
-  /// Returns suggested name for saving a file in a given directory
+/// **GetSuggestedFileName** *(getSuggestedFileName)* - TDLib function
+///
+/// Returns suggested name for saving a file in a given directory.
+///
+/// * [fileId]: Identifier of the file.
+/// * [directory]: Directory in which the file is supposed to be saved.
+///
+/// [Text] is returned on completion.
+final class GetSuggestedFileName extends TdFunction {
+  
+  /// **GetSuggestedFileName** *(getSuggestedFileName)* - TDLib function
+  ///
+  /// Returns suggested name for saving a file in a given directory.
+  ///
+  /// * [fileId]: Identifier of the file.
+  /// * [directory]: Directory in which the file is supposed to be saved.
+  ///
+  /// [Text] is returned on completion.
   const GetSuggestedFileName({
     required this.fileId,
     required this.directory,
   });
   
-  /// [fileId] Identifier of the file 
+  /// Identifier of the file 
   final int fileId;
 
-  /// [directory] Directory in which the file is supposed to be saved
+  /// Directory in which the file is supposed to be saved
   final String directory;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "file_id": fileId,
       "directory": directory,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetSuggestedFileName copyWith({
     int? fileId,
@@ -32,8 +48,11 @@ class GetSuggestedFileName extends TdFunction {
     directory: directory ?? this.directory,
   );
 
-  static const CONSTRUCTOR = 'getSuggestedFileName';
-  
+  static const String objectType = 'getSuggestedFileName';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

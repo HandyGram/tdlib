@@ -1,13 +1,22 @@
 part of '../tdapi.dart';
 
-class PassportRequiredElement extends TdObject {
-
-  /// Contains a description of the required Telegram Passport element that was requested by a service
+/// **PassportRequiredElement** *(passportRequiredElement)* - basic class
+///
+/// Contains a description of the required Telegram Passport element that was requested by a service.
+///
+/// * [suitableElements]: List of Telegram Passport elements any of which is enough to provide.
+final class PassportRequiredElement extends TdObject {
+  
+  /// **PassportRequiredElement** *(passportRequiredElement)* - basic class
+  ///
+  /// Contains a description of the required Telegram Passport element that was requested by a service.
+  ///
+  /// * [suitableElements]: List of Telegram Passport elements any of which is enough to provide.
   const PassportRequiredElement({
     required this.suitableElements,
   });
   
-  /// [suitableElements] List of Telegram Passport elements any of which is enough to provide
+  /// List of Telegram Passport elements any of which is enough to provide
   final List<PassportSuitableElement> suitableElements;
   
   /// Parse from a json
@@ -17,12 +26,13 @@ class PassportRequiredElement extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "suitable_elements": suitableElements.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   PassportRequiredElement copyWith({
     List<PassportSuitableElement>? suitableElements,
@@ -30,8 +40,11 @@ class PassportRequiredElement extends TdObject {
     suitableElements: suitableElements ?? this.suitableElements,
   );
 
-  static const CONSTRUCTOR = 'passportRequiredElement';
-  
+  static const String objectType = 'passportRequiredElement';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

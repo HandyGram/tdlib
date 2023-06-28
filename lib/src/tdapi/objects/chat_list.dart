@@ -1,126 +1,165 @@
 part of '../tdapi.dart';
 
-class ChatList extends TdObject {
-
-  /// Describes a list of chats
+/// **ChatList** *(chatList)* - parent
+///
+/// Describes a list of chats.
+sealed class ChatList extends TdObject {
+  
+  /// **ChatList** *(chatList)* - parent
+  ///
+  /// Describes a list of chats.
   const ChatList();
   
   /// a ChatList return type can be :
   /// * [ChatListMain]
   /// * [ChatListArchive]
-  /// * [ChatListFilter]
+  /// * [ChatListFolder]
   factory ChatList.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case ChatListMain.CONSTRUCTOR:
+      case ChatListMain.objectType:
         return ChatListMain.fromJson(json);
-      case ChatListArchive.CONSTRUCTOR:
+      case ChatListArchive.objectType:
         return ChatListArchive.fromJson(json);
-      case ChatListFilter.CONSTRUCTOR:
-        return ChatListFilter.fromJson(json);
+      case ChatListFolder.objectType:
+        return ChatListFolder.fromJson(json);
       default:
-        return const ChatList();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of ChatList)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  ChatList copyWith() => const ChatList();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'chatList';
   
+  ChatList copyWith();
+
+  static const String objectType = 'chatList';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ChatListMain extends ChatList {
-
-  /// A main list of chats
+/// **ChatListMain** *(chatListMain)* - child of ChatList
+///
+/// A main list of chats.
+final class ChatListMain extends ChatList {
+  
+  /// **ChatListMain** *(chatListMain)* - child of ChatList
+  ///
+  /// A main list of chats.
   const ChatListMain();
   
   /// Parse from a json
   factory ChatListMain.fromJson(Map<String, dynamic> json) => const ChatListMain();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   ChatListMain copyWith() => const ChatListMain();
 
-  static const CONSTRUCTOR = 'chatListMain';
-  
+  static const String objectType = 'chatListMain';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ChatListArchive extends ChatList {
-
-  /// A list of chats usually located at the top of the main chat list. Unmuted chats are automatically moved from the Archive to the Main chat list when a new message arrives
+/// **ChatListArchive** *(chatListArchive)* - child of ChatList
+///
+/// A list of chats usually located at the top of the main chat list. Unmuted chats are automatically moved from the Archive to the Main chat list when a new message arrives.
+final class ChatListArchive extends ChatList {
+  
+  /// **ChatListArchive** *(chatListArchive)* - child of ChatList
+  ///
+  /// A list of chats usually located at the top of the main chat list. Unmuted chats are automatically moved from the Archive to the Main chat list when a new message arrives.
   const ChatListArchive();
   
   /// Parse from a json
   factory ChatListArchive.fromJson(Map<String, dynamic> json) => const ChatListArchive();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   ChatListArchive copyWith() => const ChatListArchive();
 
-  static const CONSTRUCTOR = 'chatListArchive';
-  
+  static const String objectType = 'chatListArchive';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ChatListFilter extends ChatList {
-
-  /// A list of chats belonging to a chat filter
-  const ChatListFilter({
-    required this.chatFilterId,
+/// **ChatListFolder** *(chatListFolder)* - child of ChatList
+///
+/// A list of chats added to a chat folder.
+///
+/// * [chatFolderId]: Chat folder identifier.
+final class ChatListFolder extends ChatList {
+  
+  /// **ChatListFolder** *(chatListFolder)* - child of ChatList
+  ///
+  /// A list of chats added to a chat folder.
+  ///
+  /// * [chatFolderId]: Chat folder identifier.
+  const ChatListFolder({
+    required this.chatFolderId,
   });
   
-  /// [chatFilterId] Chat filter identifier
-  final int chatFilterId;
+  /// Chat folder identifier
+  final int chatFolderId;
   
   /// Parse from a json
-  factory ChatListFilter.fromJson(Map<String, dynamic> json) => ChatListFilter(
-    chatFilterId: json['chat_filter_id'],
+  factory ChatListFolder.fromJson(Map<String, dynamic> json) => ChatListFolder(
+    chatFolderId: json['chat_folder_id'],
   );
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "chat_filter_id": chatFilterId,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "chat_folder_id": chatFolderId,
+		};
+	}
+
   
   @override
-  ChatListFilter copyWith({
-    int? chatFilterId,
-  }) => ChatListFilter(
-    chatFilterId: chatFilterId ?? this.chatFilterId,
+  ChatListFolder copyWith({
+    int? chatFolderId,
+  }) => ChatListFolder(
+    chatFolderId: chatFolderId ?? this.chatFolderId,
   );
 
-  static const CONSTRUCTOR = 'chatListFilter';
-  
+  static const String objectType = 'chatListFolder';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

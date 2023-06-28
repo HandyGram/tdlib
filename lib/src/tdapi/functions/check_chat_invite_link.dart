@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class CheckChatInviteLink extends TdFunction {
-
-  /// Checks the validity of an invite link for a chat and returns information about the corresponding chat
+/// **CheckChatInviteLink** *(checkChatInviteLink)* - TDLib function
+///
+/// Checks the validity of an invite link for a chat and returns information about the corresponding chat.
+///
+/// * [inviteLink]: Invite link to be checked.
+///
+/// [ChatInviteLinkInfo] is returned on completion.
+final class CheckChatInviteLink extends TdFunction {
+  
+  /// **CheckChatInviteLink** *(checkChatInviteLink)* - TDLib function
+  ///
+  /// Checks the validity of an invite link for a chat and returns information about the corresponding chat.
+  ///
+  /// * [inviteLink]: Invite link to be checked.
+  ///
+  /// [ChatInviteLinkInfo] is returned on completion.
   const CheckChatInviteLink({
     required this.inviteLink,
   });
   
-  /// [inviteLink] Invite link to be checked
+  /// Invite link to be checked
   final String inviteLink;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "invite_link": inviteLink,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   CheckChatInviteLink copyWith({
     String? inviteLink,
@@ -25,8 +39,11 @@ class CheckChatInviteLink extends TdFunction {
     inviteLink: inviteLink ?? this.inviteLink,
   );
 
-  static const CONSTRUCTOR = 'checkChatInviteLink';
-  
+  static const String objectType = 'checkChatInviteLink';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

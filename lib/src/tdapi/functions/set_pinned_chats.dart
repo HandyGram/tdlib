@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class SetPinnedChats extends TdFunction {
-
-  /// Changes the order of pinned chats
+/// **SetPinnedChats** *(setPinnedChats)* - TDLib function
+///
+/// Changes the order of pinned chats.
+///
+/// * [chatList]: Chat list in which to change the order of pinned chats.
+/// * [chatIds]: The new list of pinned chats.
+///
+/// [Ok] is returned on completion.
+final class SetPinnedChats extends TdFunction {
+  
+  /// **SetPinnedChats** *(setPinnedChats)* - TDLib function
+  ///
+  /// Changes the order of pinned chats.
+  ///
+  /// * [chatList]: Chat list in which to change the order of pinned chats.
+  /// * [chatIds]: The new list of pinned chats.
+  ///
+  /// [Ok] is returned on completion.
   const SetPinnedChats({
     required this.chatList,
     required this.chatIds,
   });
   
-  /// [chatList] Chat list in which to change the order of pinned chats 
+  /// Chat list in which to change the order of pinned chats 
   final ChatList chatList;
 
-  /// [chatIds] The new list of pinned chats
+  /// The new list of pinned chats
   final List<int> chatIds;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_list": chatList.toJson(),
       "chat_ids": chatIds.map((i) => i).toList(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SetPinnedChats copyWith({
     ChatList? chatList,
@@ -32,8 +48,11 @@ class SetPinnedChats extends TdFunction {
     chatIds: chatIds ?? this.chatIds,
   );
 
-  static const CONSTRUCTOR = 'setPinnedChats';
-  
+  static const String objectType = 'setPinnedChats';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

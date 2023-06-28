@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class SetPassportElementErrors extends TdFunction {
-
-  /// Informs the user that some of the elements in their Telegram Passport contain errors; for bots only. The user will not be able to resend the elements, until the errors are fixed
+/// **SetPassportElementErrors** *(setPassportElementErrors)* - TDLib function
+///
+/// Informs the user that some of the elements in their Telegram Passport contain errors; for bots only. The user will not be able to resend the elements, until the errors are fixed.
+///
+/// * [userId]: User identifier.
+/// * [errors]: The errors.
+///
+/// [Ok] is returned on completion.
+final class SetPassportElementErrors extends TdFunction {
+  
+  /// **SetPassportElementErrors** *(setPassportElementErrors)* - TDLib function
+  ///
+  /// Informs the user that some of the elements in their Telegram Passport contain errors; for bots only. The user will not be able to resend the elements, until the errors are fixed.
+  ///
+  /// * [userId]: User identifier.
+  /// * [errors]: The errors.
+  ///
+  /// [Ok] is returned on completion.
   const SetPassportElementErrors({
     required this.userId,
     required this.errors,
   });
   
-  /// [userId] User identifier 
+  /// User identifier 
   final int userId;
 
-  /// [errors] The errors
+  /// The errors
   final List<InputPassportElementError> errors;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "user_id": userId,
       "errors": errors.map((i) => i.toJson()).toList(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SetPassportElementErrors copyWith({
     int? userId,
@@ -32,8 +48,11 @@ class SetPassportElementErrors extends TdFunction {
     errors: errors ?? this.errors,
   );
 
-  static const CONSTRUCTOR = 'setPassportElementErrors';
-  
+  static const String objectType = 'setPassportElementErrors';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

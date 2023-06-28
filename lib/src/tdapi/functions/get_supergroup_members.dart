@@ -1,8 +1,27 @@
 part of '../tdapi.dart';
 
-class GetSupergroupMembers extends TdFunction {
-
-  /// Returns information about members or banned users in a supergroup or channel. Can be used only if supergroupFullInfo.can_get_members == true; additionally, administrator privileges may be required for some filters
+/// **GetSupergroupMembers** *(getSupergroupMembers)* - TDLib function
+///
+/// Returns information about members or banned users in a supergroup or channel. Can be used only if supergroupFullInfo.can_get_members == true; additionally, administrator privileges may be required for some filters.
+///
+/// * [supergroupId]: Identifier of the supergroup or channel.
+/// * [filter]: The type of users to return; pass null to use supergroupMembersFilterRecent *(optional)*.
+/// * [offset]: Number of users to skip.
+/// * [limit]: The maximum number of users be returned; up to 200.
+///
+/// [ChatMembers] is returned on completion.
+final class GetSupergroupMembers extends TdFunction {
+  
+  /// **GetSupergroupMembers** *(getSupergroupMembers)* - TDLib function
+  ///
+  /// Returns information about members or banned users in a supergroup or channel. Can be used only if supergroupFullInfo.can_get_members == true; additionally, administrator privileges may be required for some filters.
+  ///
+  /// * [supergroupId]: Identifier of the supergroup or channel.
+  /// * [filter]: The type of users to return; pass null to use supergroupMembersFilterRecent *(optional)*.
+  /// * [offset]: Number of users to skip.
+  /// * [limit]: The maximum number of users be returned; up to 200.
+  ///
+  /// [ChatMembers] is returned on completion.
   const GetSupergroupMembers({
     required this.supergroupId,
     this.filter,
@@ -10,29 +29,30 @@ class GetSupergroupMembers extends TdFunction {
     required this.limit,
   });
   
-  /// [supergroupId] Identifier of the supergroup or channel
+  /// Identifier of the supergroup or channel
   final int supergroupId;
 
-  /// [filter] The type of users to return; pass null to use supergroupMembersFilterRecent
+  /// The type of users to return; pass null to use supergroupMembersFilterRecent
   final SupergroupMembersFilter? filter;
 
-  /// [offset] Number of users to skip 
+  /// Number of users to skip
   final int offset;
 
-  /// [limit] The maximum number of users be returned; up to 200
+  /// The maximum number of users be returned; up to 200
   final int limit;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "supergroup_id": supergroupId,
       "filter": filter?.toJson(),
       "offset": offset,
       "limit": limit,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetSupergroupMembers copyWith({
     int? supergroupId,
@@ -46,8 +66,11 @@ class GetSupergroupMembers extends TdFunction {
     limit: limit ?? this.limit,
   );
 
-  static const CONSTRUCTOR = 'getSupergroupMembers';
-  
+  static const String objectType = 'getSupergroupMembers';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

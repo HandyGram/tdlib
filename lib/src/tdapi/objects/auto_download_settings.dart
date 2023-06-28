@@ -1,8 +1,31 @@
 part of '../tdapi.dart';
 
-class AutoDownloadSettings extends TdObject {
-
-  /// Contains auto-download settings
+/// **AutoDownloadSettings** *(autoDownloadSettings)* - basic class
+///
+/// Contains auto-download settings.
+///
+/// * [isAutoDownloadEnabled]: True, if the auto-download is enabled.
+/// * [maxPhotoFileSize]: The maximum size of a photo file to be auto-downloaded, in bytes.
+/// * [maxVideoFileSize]: The maximum size of a video file to be auto-downloaded, in bytes.
+/// * [maxOtherFileSize]: The maximum size of other file types to be auto-downloaded, in bytes.
+/// * [videoUploadBitrate]: The maximum suggested bitrate for uploaded videos, in kbit/s.
+/// * [preloadLargeVideos]: True, if the beginning of video files needs to be preloaded for instant playback.
+/// * [preloadNextAudio]: True, if the next audio track needs to be preloaded while the user is listening to an audio file.
+/// * [useLessDataForCalls]: True, if "use less data for calls" option needs to be enabled.
+final class AutoDownloadSettings extends TdObject {
+  
+  /// **AutoDownloadSettings** *(autoDownloadSettings)* - basic class
+  ///
+  /// Contains auto-download settings.
+  ///
+  /// * [isAutoDownloadEnabled]: True, if the auto-download is enabled.
+  /// * [maxPhotoFileSize]: The maximum size of a photo file to be auto-downloaded, in bytes.
+  /// * [maxVideoFileSize]: The maximum size of a video file to be auto-downloaded, in bytes.
+  /// * [maxOtherFileSize]: The maximum size of other file types to be auto-downloaded, in bytes.
+  /// * [videoUploadBitrate]: The maximum suggested bitrate for uploaded videos, in kbit/s.
+  /// * [preloadLargeVideos]: True, if the beginning of video files needs to be preloaded for instant playback.
+  /// * [preloadNextAudio]: True, if the next audio track needs to be preloaded while the user is listening to an audio file.
+  /// * [useLessDataForCalls]: True, if "use less data for calls" option needs to be enabled.
   const AutoDownloadSettings({
     required this.isAutoDownloadEnabled,
     required this.maxPhotoFileSize,
@@ -14,28 +37,28 @@ class AutoDownloadSettings extends TdObject {
     required this.useLessDataForCalls,
   });
   
-  /// [isAutoDownloadEnabled] True, if the auto-download is enabled
+  /// True, if the auto-download is enabled
   final bool isAutoDownloadEnabled;
 
-  /// [maxPhotoFileSize] The maximum size of a photo file to be auto-downloaded, in bytes
+  /// The maximum size of a photo file to be auto-downloaded, in bytes
   final int maxPhotoFileSize;
 
-  /// [maxVideoFileSize] The maximum size of a video file to be auto-downloaded, in bytes
+  /// The maximum size of a video file to be auto-downloaded, in bytes
   final int maxVideoFileSize;
 
-  /// [maxOtherFileSize] The maximum size of other file types to be auto-downloaded, in bytes
+  /// The maximum size of other file types to be auto-downloaded, in bytes
   final int maxOtherFileSize;
 
-  /// [videoUploadBitrate] The maximum suggested bitrate for uploaded videos, in kbit/s
+  /// The maximum suggested bitrate for uploaded videos, in kbit/s
   final int videoUploadBitrate;
 
-  /// [preloadLargeVideos] True, if the beginning of video files needs to be preloaded for instant playback
+  /// True, if the beginning of video files needs to be preloaded for instant playback
   final bool preloadLargeVideos;
 
-  /// [preloadNextAudio] True, if the next audio track needs to be preloaded while the user is listening to an audio file
+  /// True, if the next audio track needs to be preloaded while the user is listening to an audio file
   final bool preloadNextAudio;
 
-  /// [useLessDataForCalls] True, if "use less data for calls" option needs to be enabled
+  /// True, if "use less data for calls" option needs to be enabled
   final bool useLessDataForCalls;
   
   /// Parse from a json
@@ -52,9 +75,9 @@ class AutoDownloadSettings extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "is_auto_download_enabled": isAutoDownloadEnabled,
       "max_photo_file_size": maxPhotoFileSize,
       "max_video_file_size": maxVideoFileSize,
@@ -63,8 +86,9 @@ class AutoDownloadSettings extends TdObject {
       "preload_large_videos": preloadLargeVideos,
       "preload_next_audio": preloadNextAudio,
       "use_less_data_for_calls": useLessDataForCalls,
-    };
-  }
+		};
+	}
+
   
   AutoDownloadSettings copyWith({
     bool? isAutoDownloadEnabled,
@@ -86,8 +110,11 @@ class AutoDownloadSettings extends TdObject {
     useLessDataForCalls: useLessDataForCalls ?? this.useLessDataForCalls,
   );
 
-  static const CONSTRUCTOR = 'autoDownloadSettings';
-  
+  static const String objectType = 'autoDownloadSettings';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

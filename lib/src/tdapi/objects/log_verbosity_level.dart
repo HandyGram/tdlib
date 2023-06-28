@@ -1,15 +1,24 @@
 part of '../tdapi.dart';
 
-class LogVerbosityLevel extends TdObject {
-
-  /// Contains a TDLib internal log verbosity level
+/// **LogVerbosityLevel** *(logVerbosityLevel)* - basic class
+///
+/// Contains a TDLib internal log verbosity level.
+///
+/// * [verbosityLevel]: Log verbosity level.
+final class LogVerbosityLevel extends TdObject {
+  
+  /// **LogVerbosityLevel** *(logVerbosityLevel)* - basic class
+  ///
+  /// Contains a TDLib internal log verbosity level.
+  ///
+  /// * [verbosityLevel]: Log verbosity level.
   const LogVerbosityLevel({
     required this.verbosityLevel,
     this.extra,
     this.clientId,
   });
   
-  /// [verbosityLevel] Log verbosity level
+  /// Log verbosity level
   final int verbosityLevel;
 
   /// [extra] callback sign
@@ -29,12 +38,13 @@ class LogVerbosityLevel extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "verbosity_level": verbosityLevel,
-    };
-  }
+		};
+	}
+
   
   LogVerbosityLevel copyWith({
     int? verbosityLevel,
@@ -46,8 +56,11 @@ class LogVerbosityLevel extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'logVerbosityLevel';
-  
+  static const String objectType = 'logVerbosityLevel';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

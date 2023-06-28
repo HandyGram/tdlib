@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class AnswerCustomQuery extends TdFunction {
-
-  /// Answers a custom query; for bots only
+/// **AnswerCustomQuery** *(answerCustomQuery)* - TDLib function
+///
+/// Answers a custom query; for bots only.
+///
+/// * [customQueryId]: Identifier of a custom query.
+/// * [data]: JSON-serialized answer to the query.
+///
+/// [Ok] is returned on completion.
+final class AnswerCustomQuery extends TdFunction {
+  
+  /// **AnswerCustomQuery** *(answerCustomQuery)* - TDLib function
+  ///
+  /// Answers a custom query; for bots only.
+  ///
+  /// * [customQueryId]: Identifier of a custom query.
+  /// * [data]: JSON-serialized answer to the query.
+  ///
+  /// [Ok] is returned on completion.
   const AnswerCustomQuery({
     required this.customQueryId,
     required this.data,
   });
   
-  /// [customQueryId] Identifier of a custom query 
+  /// Identifier of a custom query 
   final int customQueryId;
 
-  /// [data] JSON-serialized answer to the query
+  /// JSON-serialized answer to the query
   final String data;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "custom_query_id": customQueryId,
       "data": data,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   AnswerCustomQuery copyWith({
     int? customQueryId,
@@ -32,8 +48,11 @@ class AnswerCustomQuery extends TdFunction {
     data: data ?? this.data,
   );
 
-  static const CONSTRUCTOR = 'answerCustomQuery';
-  
+  static const String objectType = 'answerCustomQuery';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

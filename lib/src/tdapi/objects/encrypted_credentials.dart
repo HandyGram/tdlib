@@ -1,21 +1,34 @@
 part of '../tdapi.dart';
 
-class EncryptedCredentials extends TdObject {
-
-  /// Contains encrypted Telegram Passport data credentials
+/// **EncryptedCredentials** *(encryptedCredentials)* - basic class
+///
+/// Contains encrypted Telegram Passport data credentials.
+///
+/// * [data]: The encrypted credentials.
+/// * [hash]: The decrypted data hash.
+/// * [secret]: Secret for data decryption, encrypted with the service's public key.
+final class EncryptedCredentials extends TdObject {
+  
+  /// **EncryptedCredentials** *(encryptedCredentials)* - basic class
+  ///
+  /// Contains encrypted Telegram Passport data credentials.
+  ///
+  /// * [data]: The encrypted credentials.
+  /// * [hash]: The decrypted data hash.
+  /// * [secret]: Secret for data decryption, encrypted with the service's public key.
   const EncryptedCredentials({
     required this.data,
     required this.hash,
     required this.secret,
   });
   
-  /// [data] The encrypted credentials 
+  /// The encrypted credentials 
   final String data;
 
-  /// [hash] The decrypted data hash 
+  /// The decrypted data hash 
   final String hash;
 
-  /// [secret] Secret for data decryption, encrypted with the service's public key
+  /// Secret for data decryption, encrypted with the service's public key
   final String secret;
   
   /// Parse from a json
@@ -27,14 +40,15 @@ class EncryptedCredentials extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "data": data,
       "hash": hash,
       "secret": secret,
-    };
-  }
+		};
+	}
+
   
   EncryptedCredentials copyWith({
     String? data,
@@ -46,8 +60,11 @@ class EncryptedCredentials extends TdObject {
     secret: secret ?? this.secret,
   );
 
-  static const CONSTRUCTOR = 'encryptedCredentials';
-  
+  static const String objectType = 'encryptedCredentials';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

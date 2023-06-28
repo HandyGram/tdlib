@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class ReplacePrimaryChatInviteLink extends TdFunction {
-
-  /// Replaces current primary invite link for a chat with a new primary invite link. Available for basic groups, supergroups, and channels. Requires administrator privileges and can_invite_users right
+/// **ReplacePrimaryChatInviteLink** *(replacePrimaryChatInviteLink)* - TDLib function
+///
+/// Replaces current primary invite link for a chat with a new primary invite link. Available for basic groups, supergroups, and channels. Requires administrator privileges and can_invite_users right.
+///
+/// * [chatId]: Chat identifier.
+///
+/// [ChatInviteLink] is returned on completion.
+final class ReplacePrimaryChatInviteLink extends TdFunction {
+  
+  /// **ReplacePrimaryChatInviteLink** *(replacePrimaryChatInviteLink)* - TDLib function
+  ///
+  /// Replaces current primary invite link for a chat with a new primary invite link. Available for basic groups, supergroups, and channels. Requires administrator privileges and can_invite_users right.
+  ///
+  /// * [chatId]: Chat identifier.
+  ///
+  /// [ChatInviteLink] is returned on completion.
   const ReplacePrimaryChatInviteLink({
     required this.chatId,
   });
   
-  /// [chatId] Chat identifier
+  /// Chat identifier
   final int chatId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   ReplacePrimaryChatInviteLink copyWith({
     int? chatId,
@@ -25,8 +39,11 @@ class ReplacePrimaryChatInviteLink extends TdFunction {
     chatId: chatId ?? this.chatId,
   );
 
-  static const CONSTRUCTOR = 'replacePrimaryChatInviteLink';
-  
+  static const String objectType = 'replacePrimaryChatInviteLink';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,8 +1,27 @@
 part of '../tdapi.dart';
 
-class DeleteChatMessagesByDate extends TdFunction {
-
-  /// Deletes all messages between the specified dates in a chat. Supported only for private chats and basic groups. Messages sent in the last 30 seconds will not be deleted
+/// **DeleteChatMessagesByDate** *(deleteChatMessagesByDate)* - TDLib function
+///
+/// Deletes all messages between the specified dates in a chat. Supported only for private chats and basic groups. Messages sent in the last 30 seconds will not be deleted.
+///
+/// * [chatId]: Chat identifier.
+/// * [minDate]: The minimum date of the messages to delete.
+/// * [maxDate]: The maximum date of the messages to delete.
+/// * [revoke]: Pass true to delete chat messages for all users; private chats only.
+///
+/// [Ok] is returned on completion.
+final class DeleteChatMessagesByDate extends TdFunction {
+  
+  /// **DeleteChatMessagesByDate** *(deleteChatMessagesByDate)* - TDLib function
+  ///
+  /// Deletes all messages between the specified dates in a chat. Supported only for private chats and basic groups. Messages sent in the last 30 seconds will not be deleted.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [minDate]: The minimum date of the messages to delete.
+  /// * [maxDate]: The maximum date of the messages to delete.
+  /// * [revoke]: Pass true to delete chat messages for all users; private chats only.
+  ///
+  /// [Ok] is returned on completion.
   const DeleteChatMessagesByDate({
     required this.chatId,
     required this.minDate,
@@ -10,29 +29,30 @@ class DeleteChatMessagesByDate extends TdFunction {
     required this.revoke,
   });
   
-  /// [chatId] Chat identifier
+  /// Chat identifier
   final int chatId;
 
-  /// [minDate] The minimum date of the messages to delete 
+  /// The minimum date of the messages to delete
   final int minDate;
 
-  /// [maxDate] The maximum date of the messages to delete 
+  /// The maximum date of the messages to delete
   final int maxDate;
 
-  /// [revoke] Pass true to delete chat messages for all users; private chats only
+  /// Pass true to delete chat messages for all users; private chats only
   final bool revoke;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "min_date": minDate,
       "max_date": maxDate,
       "revoke": revoke,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   DeleteChatMessagesByDate copyWith({
     int? chatId,
@@ -46,8 +66,11 @@ class DeleteChatMessagesByDate extends TdFunction {
     revoke: revoke ?? this.revoke,
   );
 
-  static const CONSTRUCTOR = 'deleteChatMessagesByDate';
-  
+  static const String objectType = 'deleteChatMessagesByDate';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

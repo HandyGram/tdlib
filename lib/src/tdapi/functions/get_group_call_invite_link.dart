@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class GetGroupCallInviteLink extends TdFunction {
-
-  /// Returns invite link to a video chat in a public chat
+/// **GetGroupCallInviteLink** *(getGroupCallInviteLink)* - TDLib function
+///
+/// Returns invite link to a video chat in a public chat.
+///
+/// * [groupCallId]: Group call identifier.
+/// * [canSelfUnmute]: Pass true if the invite link needs to contain an invite hash, passing which to joinGroupCall would allow the invited user to unmute themselves. Requires groupCall.can_be_managed group call flag.
+///
+/// [HttpUrl] is returned on completion.
+final class GetGroupCallInviteLink extends TdFunction {
+  
+  /// **GetGroupCallInviteLink** *(getGroupCallInviteLink)* - TDLib function
+  ///
+  /// Returns invite link to a video chat in a public chat.
+  ///
+  /// * [groupCallId]: Group call identifier.
+  /// * [canSelfUnmute]: Pass true if the invite link needs to contain an invite hash, passing which to joinGroupCall would allow the invited user to unmute themselves. Requires groupCall.can_be_managed group call flag.
+  ///
+  /// [HttpUrl] is returned on completion.
   const GetGroupCallInviteLink({
     required this.groupCallId,
     required this.canSelfUnmute,
   });
   
-  /// [groupCallId] Group call identifier
+  /// Group call identifier
   final int groupCallId;
 
-  /// [canSelfUnmute] Pass true if the invite link needs to contain an invite hash, passing which to joinGroupCall would allow the invited user to unmute themselves. Requires groupCall.can_be_managed group call flag
+  /// Pass true if the invite link needs to contain an invite hash, passing which to joinGroupCall would allow the invited user to unmute themselves. Requires groupCall.can_be_managed group call flag
   final bool canSelfUnmute;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "group_call_id": groupCallId,
       "can_self_unmute": canSelfUnmute,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetGroupCallInviteLink copyWith({
     int? groupCallId,
@@ -32,8 +48,11 @@ class GetGroupCallInviteLink extends TdFunction {
     canSelfUnmute: canSelfUnmute ?? this.canSelfUnmute,
   );
 
-  static const CONSTRUCTOR = 'getGroupCallInviteLink';
-  
+  static const String objectType = 'getGroupCallInviteLink';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

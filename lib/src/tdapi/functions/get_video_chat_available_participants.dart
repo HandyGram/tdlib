@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class GetVideoChatAvailableParticipants extends TdFunction {
-
-  /// Returns list of participant identifiers, on whose behalf a video chat in the chat can be joined
+/// **GetVideoChatAvailableParticipants** *(getVideoChatAvailableParticipants)* - TDLib function
+///
+/// Returns list of participant identifiers, on whose behalf a video chat in the chat can be joined.
+///
+/// * [chatId]: Chat identifier.
+///
+/// [MessageSenders] is returned on completion.
+final class GetVideoChatAvailableParticipants extends TdFunction {
+  
+  /// **GetVideoChatAvailableParticipants** *(getVideoChatAvailableParticipants)* - TDLib function
+  ///
+  /// Returns list of participant identifiers, on whose behalf a video chat in the chat can be joined.
+  ///
+  /// * [chatId]: Chat identifier.
+  ///
+  /// [MessageSenders] is returned on completion.
   const GetVideoChatAvailableParticipants({
     required this.chatId,
   });
   
-  /// [chatId] Chat identifier
+  /// Chat identifier
   final int chatId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetVideoChatAvailableParticipants copyWith({
     int? chatId,
@@ -25,8 +39,11 @@ class GetVideoChatAvailableParticipants extends TdFunction {
     chatId: chatId ?? this.chatId,
   );
 
-  static const CONSTRUCTOR = 'getVideoChatAvailableParticipants';
-  
+  static const String objectType = 'getVideoChatAvailableParticipants';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

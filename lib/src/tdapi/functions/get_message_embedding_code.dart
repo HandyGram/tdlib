@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class GetMessageEmbeddingCode extends TdFunction {
-
-  /// Returns an HTML code for embedding the message. Available only for messages in supergroups and channels with a username
+/// **GetMessageEmbeddingCode** *(getMessageEmbeddingCode)* - TDLib function
+///
+/// Returns an HTML code for embedding the message. Available only for messages in supergroups and channels with a username.
+///
+/// * [chatId]: Identifier of the chat to which the message belongs.
+/// * [messageId]: Identifier of the message.
+/// * [forAlbum]: Pass true to return an HTML code for embedding of the whole media album.
+///
+/// [Text] is returned on completion.
+final class GetMessageEmbeddingCode extends TdFunction {
+  
+  /// **GetMessageEmbeddingCode** *(getMessageEmbeddingCode)* - TDLib function
+  ///
+  /// Returns an HTML code for embedding the message. Available only for messages in supergroups and channels with a username.
+  ///
+  /// * [chatId]: Identifier of the chat to which the message belongs.
+  /// * [messageId]: Identifier of the message.
+  /// * [forAlbum]: Pass true to return an HTML code for embedding of the whole media album.
+  ///
+  /// [Text] is returned on completion.
   const GetMessageEmbeddingCode({
     required this.chatId,
     required this.messageId,
     required this.forAlbum,
   });
   
-  /// [chatId] Identifier of the chat to which the message belongs
+  /// Identifier of the chat to which the message belongs
   final int chatId;
 
-  /// [messageId] Identifier of the message
+  /// Identifier of the message
   final int messageId;
 
-  /// [forAlbum] Pass true to return an HTML code for embedding of the whole media album
+  /// Pass true to return an HTML code for embedding of the whole media album
   final bool forAlbum;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "message_id": messageId,
       "for_album": forAlbum,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetMessageEmbeddingCode copyWith({
     int? chatId,
@@ -39,8 +57,11 @@ class GetMessageEmbeddingCode extends TdFunction {
     forAlbum: forAlbum ?? this.forAlbum,
   );
 
-  static const CONSTRUCTOR = 'getMessageEmbeddingCode';
-  
+  static const String objectType = 'getMessageEmbeddingCode';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,15 +1,24 @@
 part of '../tdapi.dart';
 
-class TMeUrls extends TdObject {
-
-  /// Contains a list of t.me URLs
+/// **TMeUrls** *(tMeUrls)* - basic class
+///
+/// Contains a list of t.me URLs.
+///
+/// * [urls]: List of URLs.
+final class TMeUrls extends TdObject {
+  
+  /// **TMeUrls** *(tMeUrls)* - basic class
+  ///
+  /// Contains a list of t.me URLs.
+  ///
+  /// * [urls]: List of URLs.
   const TMeUrls({
     required this.urls,
     this.extra,
     this.clientId,
   });
   
-  /// [urls] List of URLs
+  /// List of URLs
   final List<TMeUrl> urls;
 
   /// [extra] callback sign
@@ -29,12 +38,13 @@ class TMeUrls extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "urls": urls.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   TMeUrls copyWith({
     List<TMeUrl>? urls,
@@ -46,8 +56,11 @@ class TMeUrls extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'tMeUrls';
-  
+  static const String objectType = 'tMeUrls';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

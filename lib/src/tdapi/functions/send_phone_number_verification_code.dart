@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class SendPhoneNumberVerificationCode extends TdFunction {
-
-  /// Sends a code to verify a phone number to be added to a user's Telegram Passport
+/// **SendPhoneNumberVerificationCode** *(sendPhoneNumberVerificationCode)* - TDLib function
+///
+/// Sends a code to verify a phone number to be added to a user's Telegram Passport.
+///
+/// * [phoneNumber]: The phone number of the user, in international format.
+/// * [settings]: Settings for the authentication of the user's phone number; pass null to use default settings *(optional)*.
+///
+/// [AuthenticationCodeInfo] is returned on completion.
+final class SendPhoneNumberVerificationCode extends TdFunction {
+  
+  /// **SendPhoneNumberVerificationCode** *(sendPhoneNumberVerificationCode)* - TDLib function
+  ///
+  /// Sends a code to verify a phone number to be added to a user's Telegram Passport.
+  ///
+  /// * [phoneNumber]: The phone number of the user, in international format.
+  /// * [settings]: Settings for the authentication of the user's phone number; pass null to use default settings *(optional)*.
+  ///
+  /// [AuthenticationCodeInfo] is returned on completion.
   const SendPhoneNumberVerificationCode({
     required this.phoneNumber,
     this.settings,
   });
   
-  /// [phoneNumber] The phone number of the user, in international format
+  /// The phone number of the user, in international format
   final String phoneNumber;
 
-  /// [settings] Settings for the authentication of the user's phone number; pass null to use default settings
+  /// Settings for the authentication of the user's phone number; pass null to use default settings
   final PhoneNumberAuthenticationSettings? settings;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "phone_number": phoneNumber,
       "settings": settings?.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SendPhoneNumberVerificationCode copyWith({
     String? phoneNumber,
@@ -32,8 +48,11 @@ class SendPhoneNumberVerificationCode extends TdFunction {
     settings: settings ?? this.settings,
   );
 
-  static const CONSTRUCTOR = 'sendPhoneNumberVerificationCode';
-  
+  static const String objectType = 'sendPhoneNumberVerificationCode';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,8 +1,27 @@
 part of '../tdapi.dart';
 
-class WebPageInstantView extends TdObject {
-
-  /// Describes an instant view page for a web page
+/// **WebPageInstantView** *(webPageInstantView)* - basic class
+///
+/// Describes an instant view page for a web page.
+///
+/// * [pageBlocks]: Content of the web page.
+/// * [viewCount]: Number of the instant view views; 0 if unknown.
+/// * [version]: Version of the instant view; currently, can be 1 or 2.
+/// * [isRtl]: True, if the instant view must be shown from right to left.
+/// * [isFull]: True, if the instant view contains the full page. A network request might be needed to get the full web page instant view.
+/// * [feedbackLink]: An internal link to be opened to leave feedback about the instant view.
+final class WebPageInstantView extends TdObject {
+  
+  /// **WebPageInstantView** *(webPageInstantView)* - basic class
+  ///
+  /// Describes an instant view page for a web page.
+  ///
+  /// * [pageBlocks]: Content of the web page.
+  /// * [viewCount]: Number of the instant view views; 0 if unknown.
+  /// * [version]: Version of the instant view; currently, can be 1 or 2.
+  /// * [isRtl]: True, if the instant view must be shown from right to left.
+  /// * [isFull]: True, if the instant view contains the full page. A network request might be needed to get the full web page instant view.
+  /// * [feedbackLink]: An internal link to be opened to leave feedback about the instant view.
   const WebPageInstantView({
     required this.pageBlocks,
     required this.viewCount,
@@ -14,22 +33,22 @@ class WebPageInstantView extends TdObject {
     this.clientId,
   });
   
-  /// [pageBlocks] Content of the web page
+  /// Content of the web page
   final List<PageBlock> pageBlocks;
 
-  /// [viewCount] Number of the instant view views; 0 if unknown
+  /// Number of the instant view views; 0 if unknown
   final int viewCount;
 
-  /// [version] Version of the instant view; currently, can be 1 or 2
+  /// Version of the instant view; currently, can be 1 or 2
   final int version;
 
-  /// [isRtl] True, if the instant view must be shown from right to left
+  /// True, if the instant view must be shown from right to left
   final bool isRtl;
 
-  /// [isFull] True, if the instant view contains the full page. A network request might be needed to get the full web page instant view
+  /// True, if the instant view contains the full page. A network request might be needed to get the full web page instant view
   final bool isFull;
 
-  /// [feedbackLink] An internal link to be opened to leave feedback about the instant view
+  /// An internal link to be opened to leave feedback about the instant view
   final InternalLinkType feedbackLink;
 
   /// [extra] callback sign
@@ -54,17 +73,18 @@ class WebPageInstantView extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "page_blocks": pageBlocks.map((i) => i.toJson()).toList(),
       "view_count": viewCount,
       "version": version,
       "is_rtl": isRtl,
       "is_full": isFull,
       "feedback_link": feedbackLink.toJson(),
-    };
-  }
+		};
+	}
+
   
   WebPageInstantView copyWith({
     List<PageBlock>? pageBlocks,
@@ -86,8 +106,11 @@ class WebPageInstantView extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'webPageInstantView';
-  
+  static const String objectType = 'webPageInstantView';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

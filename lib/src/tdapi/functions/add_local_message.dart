@@ -1,8 +1,29 @@
 part of '../tdapi.dart';
 
-class AddLocalMessage extends TdFunction {
-
-  /// Adds a local message to a chat. The message is persistent across application restarts only if the message database is used. Returns the added message
+/// **AddLocalMessage** *(addLocalMessage)* - TDLib function
+///
+/// Adds a local message to a chat. The message is persistent across application restarts only if the message database is used. Returns the added message.
+///
+/// * [chatId]: Target chat.
+/// * [senderId]: Identifier of the sender of the message.
+/// * [replyToMessageId]: Identifier of the replied message; 0 if none.
+/// * [disableNotification]: Pass true to disable notification for the message.
+/// * [inputMessageContent]: The content of the message to be added.
+///
+/// [Message] is returned on completion.
+final class AddLocalMessage extends TdFunction {
+  
+  /// **AddLocalMessage** *(addLocalMessage)* - TDLib function
+  ///
+  /// Adds a local message to a chat. The message is persistent across application restarts only if the message database is used. Returns the added message.
+  ///
+  /// * [chatId]: Target chat.
+  /// * [senderId]: Identifier of the sender of the message.
+  /// * [replyToMessageId]: Identifier of the replied message; 0 if none.
+  /// * [disableNotification]: Pass true to disable notification for the message.
+  /// * [inputMessageContent]: The content of the message to be added.
+  ///
+  /// [Message] is returned on completion.
   const AddLocalMessage({
     required this.chatId,
     required this.senderId,
@@ -11,33 +32,34 @@ class AddLocalMessage extends TdFunction {
     required this.inputMessageContent,
   });
   
-  /// [chatId] Target chat
+  /// Target chat
   final int chatId;
 
-  /// [senderId] Identifier of the sender of the message
+  /// Identifier of the sender of the message
   final MessageSender senderId;
 
-  /// [replyToMessageId] Identifier of the message to reply to or 0
+  /// Identifier of the replied message; 0 if none
   final int replyToMessageId;
 
-  /// [disableNotification] Pass true to disable notification for the message
+  /// Pass true to disable notification for the message
   final bool disableNotification;
 
-  /// [inputMessageContent] The content of the message to be added
+  /// The content of the message to be added
   final InputMessageContent inputMessageContent;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "sender_id": senderId.toJson(),
       "reply_to_message_id": replyToMessageId,
       "disable_notification": disableNotification,
       "input_message_content": inputMessageContent.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   AddLocalMessage copyWith({
     int? chatId,
@@ -53,8 +75,11 @@ class AddLocalMessage extends TdFunction {
     inputMessageContent: inputMessageContent ?? this.inputMessageContent,
   );
 
-  static const CONSTRUCTOR = 'addLocalMessage';
-  
+  static const String objectType = 'addLocalMessage';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class ChatMembersFilter extends TdObject {
-
-  /// Specifies the kind of chat members to return in searchChatMembers
+/// **ChatMembersFilter** *(chatMembersFilter)* - parent
+///
+/// Specifies the kind of chat members to return in searchChatMembers.
+sealed class ChatMembersFilter extends TdObject {
+  
+  /// **ChatMembersFilter** *(chatMembersFilter)* - parent
+  ///
+  /// Specifies the kind of chat members to return in searchChatMembers.
   const ChatMembersFilter();
   
   /// a ChatMembersFilter return type can be :
@@ -15,124 +20,163 @@ class ChatMembersFilter extends TdObject {
   /// * [ChatMembersFilterBots]
   factory ChatMembersFilter.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case ChatMembersFilterContacts.CONSTRUCTOR:
+      case ChatMembersFilterContacts.objectType:
         return ChatMembersFilterContacts.fromJson(json);
-      case ChatMembersFilterAdministrators.CONSTRUCTOR:
+      case ChatMembersFilterAdministrators.objectType:
         return ChatMembersFilterAdministrators.fromJson(json);
-      case ChatMembersFilterMembers.CONSTRUCTOR:
+      case ChatMembersFilterMembers.objectType:
         return ChatMembersFilterMembers.fromJson(json);
-      case ChatMembersFilterMention.CONSTRUCTOR:
+      case ChatMembersFilterMention.objectType:
         return ChatMembersFilterMention.fromJson(json);
-      case ChatMembersFilterRestricted.CONSTRUCTOR:
+      case ChatMembersFilterRestricted.objectType:
         return ChatMembersFilterRestricted.fromJson(json);
-      case ChatMembersFilterBanned.CONSTRUCTOR:
+      case ChatMembersFilterBanned.objectType:
         return ChatMembersFilterBanned.fromJson(json);
-      case ChatMembersFilterBots.CONSTRUCTOR:
+      case ChatMembersFilterBots.objectType:
         return ChatMembersFilterBots.fromJson(json);
       default:
-        return const ChatMembersFilter();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of ChatMembersFilter)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  ChatMembersFilter copyWith() => const ChatMembersFilter();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'chatMembersFilter';
   
+  ChatMembersFilter copyWith();
+
+  static const String objectType = 'chatMembersFilter';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ChatMembersFilterContacts extends ChatMembersFilter {
-
-  /// Returns contacts of the user
+/// **ChatMembersFilterContacts** *(chatMembersFilterContacts)* - child of ChatMembersFilter
+///
+/// Returns contacts of the user.
+final class ChatMembersFilterContacts extends ChatMembersFilter {
+  
+  /// **ChatMembersFilterContacts** *(chatMembersFilterContacts)* - child of ChatMembersFilter
+  ///
+  /// Returns contacts of the user.
   const ChatMembersFilterContacts();
   
   /// Parse from a json
   factory ChatMembersFilterContacts.fromJson(Map<String, dynamic> json) => const ChatMembersFilterContacts();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   ChatMembersFilterContacts copyWith() => const ChatMembersFilterContacts();
 
-  static const CONSTRUCTOR = 'chatMembersFilterContacts';
-  
+  static const String objectType = 'chatMembersFilterContacts';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ChatMembersFilterAdministrators extends ChatMembersFilter {
-
-  /// Returns the owner and administrators
+/// **ChatMembersFilterAdministrators** *(chatMembersFilterAdministrators)* - child of ChatMembersFilter
+///
+/// Returns the owner and administrators.
+final class ChatMembersFilterAdministrators extends ChatMembersFilter {
+  
+  /// **ChatMembersFilterAdministrators** *(chatMembersFilterAdministrators)* - child of ChatMembersFilter
+  ///
+  /// Returns the owner and administrators.
   const ChatMembersFilterAdministrators();
   
   /// Parse from a json
   factory ChatMembersFilterAdministrators.fromJson(Map<String, dynamic> json) => const ChatMembersFilterAdministrators();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   ChatMembersFilterAdministrators copyWith() => const ChatMembersFilterAdministrators();
 
-  static const CONSTRUCTOR = 'chatMembersFilterAdministrators';
-  
+  static const String objectType = 'chatMembersFilterAdministrators';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ChatMembersFilterMembers extends ChatMembersFilter {
-
-  /// Returns all chat members, including restricted chat members
+/// **ChatMembersFilterMembers** *(chatMembersFilterMembers)* - child of ChatMembersFilter
+///
+/// Returns all chat members, including restricted chat members.
+final class ChatMembersFilterMembers extends ChatMembersFilter {
+  
+  /// **ChatMembersFilterMembers** *(chatMembersFilterMembers)* - child of ChatMembersFilter
+  ///
+  /// Returns all chat members, including restricted chat members.
   const ChatMembersFilterMembers();
   
   /// Parse from a json
   factory ChatMembersFilterMembers.fromJson(Map<String, dynamic> json) => const ChatMembersFilterMembers();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   ChatMembersFilterMembers copyWith() => const ChatMembersFilterMembers();
 
-  static const CONSTRUCTOR = 'chatMembersFilterMembers';
-  
+  static const String objectType = 'chatMembersFilterMembers';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ChatMembersFilterMention extends ChatMembersFilter {
-
-  /// Returns users which can be mentioned in the chat
+/// **ChatMembersFilterMention** *(chatMembersFilterMention)* - child of ChatMembersFilter
+///
+/// Returns users which can be mentioned in the chat.
+///
+/// * [messageThreadId]: If non-zero, the identifier of the current message thread.
+final class ChatMembersFilterMention extends ChatMembersFilter {
+  
+  /// **ChatMembersFilterMention** *(chatMembersFilterMention)* - child of ChatMembersFilter
+  ///
+  /// Returns users which can be mentioned in the chat.
+  ///
+  /// * [messageThreadId]: If non-zero, the identifier of the current message thread.
   const ChatMembersFilterMention({
     required this.messageThreadId,
   });
   
-  /// [messageThreadId] If non-zero, the identifier of the current message thread
+  /// If non-zero, the identifier of the current message thread
   final int messageThreadId;
   
   /// Parse from a json
@@ -142,12 +186,13 @@ class ChatMembersFilterMention extends ChatMembersFilter {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "message_thread_id": messageThreadId,
-    };
-  }
+		};
+	}
+
   
   @override
   ChatMembersFilterMention copyWith({
@@ -156,83 +201,113 @@ class ChatMembersFilterMention extends ChatMembersFilter {
     messageThreadId: messageThreadId ?? this.messageThreadId,
   );
 
-  static const CONSTRUCTOR = 'chatMembersFilterMention';
-  
+  static const String objectType = 'chatMembersFilterMention';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ChatMembersFilterRestricted extends ChatMembersFilter {
-
-  /// Returns users under certain restrictions in the chat; can be used only by administrators in a supergroup
+/// **ChatMembersFilterRestricted** *(chatMembersFilterRestricted)* - child of ChatMembersFilter
+///
+/// Returns users under certain restrictions in the chat; can be used only by administrators in a supergroup.
+final class ChatMembersFilterRestricted extends ChatMembersFilter {
+  
+  /// **ChatMembersFilterRestricted** *(chatMembersFilterRestricted)* - child of ChatMembersFilter
+  ///
+  /// Returns users under certain restrictions in the chat; can be used only by administrators in a supergroup.
   const ChatMembersFilterRestricted();
   
   /// Parse from a json
   factory ChatMembersFilterRestricted.fromJson(Map<String, dynamic> json) => const ChatMembersFilterRestricted();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   ChatMembersFilterRestricted copyWith() => const ChatMembersFilterRestricted();
 
-  static const CONSTRUCTOR = 'chatMembersFilterRestricted';
-  
+  static const String objectType = 'chatMembersFilterRestricted';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ChatMembersFilterBanned extends ChatMembersFilter {
-
-  /// Returns users banned from the chat; can be used only by administrators in a supergroup or in a channel
+/// **ChatMembersFilterBanned** *(chatMembersFilterBanned)* - child of ChatMembersFilter
+///
+/// Returns users banned from the chat; can be used only by administrators in a supergroup or in a channel.
+final class ChatMembersFilterBanned extends ChatMembersFilter {
+  
+  /// **ChatMembersFilterBanned** *(chatMembersFilterBanned)* - child of ChatMembersFilter
+  ///
+  /// Returns users banned from the chat; can be used only by administrators in a supergroup or in a channel.
   const ChatMembersFilterBanned();
   
   /// Parse from a json
   factory ChatMembersFilterBanned.fromJson(Map<String, dynamic> json) => const ChatMembersFilterBanned();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   ChatMembersFilterBanned copyWith() => const ChatMembersFilterBanned();
 
-  static const CONSTRUCTOR = 'chatMembersFilterBanned';
-  
+  static const String objectType = 'chatMembersFilterBanned';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ChatMembersFilterBots extends ChatMembersFilter {
-
-  /// Returns bot members of the chat
+/// **ChatMembersFilterBots** *(chatMembersFilterBots)* - child of ChatMembersFilter
+///
+/// Returns bot members of the chat.
+final class ChatMembersFilterBots extends ChatMembersFilter {
+  
+  /// **ChatMembersFilterBots** *(chatMembersFilterBots)* - child of ChatMembersFilter
+  ///
+  /// Returns bot members of the chat.
   const ChatMembersFilterBots();
   
   /// Parse from a json
   factory ChatMembersFilterBots.fromJson(Map<String, dynamic> json) => const ChatMembersFilterBots();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   ChatMembersFilterBots copyWith() => const ChatMembersFilterBots();
 
-  static const CONSTRUCTOR = 'chatMembersFilterBots';
-  
+  static const String objectType = 'chatMembersFilterBots';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

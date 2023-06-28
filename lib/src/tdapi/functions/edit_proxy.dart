@@ -1,8 +1,29 @@
 part of '../tdapi.dart';
 
-class EditProxy extends TdFunction {
-
-  /// Edits an existing proxy server for network requests. Can be called before authorization
+/// **EditProxy** *(editProxy)* - TDLib function
+///
+/// Edits an existing proxy server for network requests. Can be called before authorization.
+///
+/// * [proxyId]: Proxy identifier.
+/// * [server]: Proxy server IP address.
+/// * [port]: Proxy server port.
+/// * [enable]: Pass true to immediately enable the proxy.
+/// * [type]: Proxy type.
+///
+/// [Proxy] is returned on completion.
+final class EditProxy extends TdFunction {
+  
+  /// **EditProxy** *(editProxy)* - TDLib function
+  ///
+  /// Edits an existing proxy server for network requests. Can be called before authorization.
+  ///
+  /// * [proxyId]: Proxy identifier.
+  /// * [server]: Proxy server IP address.
+  /// * [port]: Proxy server port.
+  /// * [enable]: Pass true to immediately enable the proxy.
+  /// * [type]: Proxy type.
+  ///
+  /// [Proxy] is returned on completion.
   const EditProxy({
     required this.proxyId,
     required this.server,
@@ -11,33 +32,34 @@ class EditProxy extends TdFunction {
     required this.type,
   });
   
-  /// [proxyId] Proxy identifier 
+  /// Proxy identifier
   final int proxyId;
 
-  /// [server] Proxy server IP address 
+  /// Proxy server IP address
   final String server;
 
-  /// [port] Proxy server port 
+  /// Proxy server port
   final int port;
 
-  /// [enable] True, if the proxy needs to be enabled 
+  /// Pass true to immediately enable the proxy
   final bool enable;
 
-  /// [type] Proxy type
+  /// Proxy type
   final ProxyType type;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "proxy_id": proxyId,
       "server": server,
       "port": port,
       "enable": enable,
       "type": type.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   EditProxy copyWith({
     int? proxyId,
@@ -53,8 +75,11 @@ class EditProxy extends TdFunction {
     type: type ?? this.type,
   );
 
-  static const CONSTRUCTOR = 'editProxy';
-  
+  static const String objectType = 'editProxy';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

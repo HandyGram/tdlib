@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class VectorPathCommand extends TdObject {
-
-  /// Represents a vector path command
+/// **VectorPathCommand** *(vectorPathCommand)* - parent
+///
+/// Represents a vector path command.
+sealed class VectorPathCommand extends TdObject {
+  
+  /// **VectorPathCommand** *(vectorPathCommand)* - parent
+  ///
+  /// Represents a vector path command.
   const VectorPathCommand();
   
   /// a VectorPathCommand return type can be :
@@ -10,39 +15,51 @@ class VectorPathCommand extends TdObject {
   /// * [VectorPathCommandCubicBezierCurve]
   factory VectorPathCommand.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case VectorPathCommandLine.CONSTRUCTOR:
+      case VectorPathCommandLine.objectType:
         return VectorPathCommandLine.fromJson(json);
-      case VectorPathCommandCubicBezierCurve.CONSTRUCTOR:
+      case VectorPathCommandCubicBezierCurve.objectType:
         return VectorPathCommandCubicBezierCurve.fromJson(json);
       default:
-        return const VectorPathCommand();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of VectorPathCommand)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  VectorPathCommand copyWith() => const VectorPathCommand();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'vectorPathCommand';
   
+  VectorPathCommand copyWith();
+
+  static const String objectType = 'vectorPathCommand';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class VectorPathCommandLine extends VectorPathCommand {
-
-  /// A straight line to a given point
+/// **VectorPathCommandLine** *(vectorPathCommandLine)* - child of VectorPathCommand
+///
+/// A straight line to a given point.
+///
+/// * [endPoint]: The end point of the straight line.
+final class VectorPathCommandLine extends VectorPathCommand {
+  
+  /// **VectorPathCommandLine** *(vectorPathCommandLine)* - child of VectorPathCommand
+  ///
+  /// A straight line to a given point.
+  ///
+  /// * [endPoint]: The end point of the straight line.
   const VectorPathCommandLine({
     required this.endPoint,
   });
   
-  /// [endPoint] The end point of the straight line
+  /// The end point of the straight line
   final Point endPoint;
   
   /// Parse from a json
@@ -52,12 +69,13 @@ class VectorPathCommandLine extends VectorPathCommand {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "end_point": endPoint.toJson(),
-    };
-  }
+		};
+	}
+
   
   @override
   VectorPathCommandLine copyWith({
@@ -66,33 +84,45 @@ class VectorPathCommandLine extends VectorPathCommand {
     endPoint: endPoint ?? this.endPoint,
   );
 
-  static const CONSTRUCTOR = 'vectorPathCommandLine';
-  
+  static const String objectType = 'vectorPathCommandLine';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class VectorPathCommandCubicBezierCurve extends VectorPathCommand {
-
-  /// A cubic B
+/// **VectorPathCommandCubicBezierCurve** *(vectorPathCommandCubicBezierCurve)* - child of VectorPathCommand
+///
+/// A cubic B.
+final class VectorPathCommandCubicBezierCurve extends VectorPathCommand {
+  
+  /// **VectorPathCommandCubicBezierCurve** *(vectorPathCommandCubicBezierCurve)* - child of VectorPathCommand
+  ///
+  /// A cubic B.
   const VectorPathCommandCubicBezierCurve();
   
   /// Parse from a json
   factory VectorPathCommandCubicBezierCurve.fromJson(Map<String, dynamic> json) => const VectorPathCommandCubicBezierCurve();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   VectorPathCommandCubicBezierCurve copyWith() => const VectorPathCommandCubicBezierCurve();
 
-  static const CONSTRUCTOR = 'vectorPathCommandCubicBezierCurve';
-  
+  static const String objectType = 'vectorPathCommandCubicBezierCurve';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

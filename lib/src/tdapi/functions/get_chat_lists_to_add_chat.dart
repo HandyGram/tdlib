@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class GetChatListsToAddChat extends TdFunction {
-
-  /// Returns chat lists to which the chat can be added. This is an offline request
+/// **GetChatListsToAddChat** *(getChatListsToAddChat)* - TDLib function
+///
+/// Returns chat lists to which the chat can be added. This is an offline request.
+///
+/// * [chatId]: Chat identifier.
+///
+/// [ChatLists] is returned on completion.
+final class GetChatListsToAddChat extends TdFunction {
+  
+  /// **GetChatListsToAddChat** *(getChatListsToAddChat)* - TDLib function
+  ///
+  /// Returns chat lists to which the chat can be added. This is an offline request.
+  ///
+  /// * [chatId]: Chat identifier.
+  ///
+  /// [ChatLists] is returned on completion.
   const GetChatListsToAddChat({
     required this.chatId,
   });
   
-  /// [chatId] Chat identifier
+  /// Chat identifier
   final int chatId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetChatListsToAddChat copyWith({
     int? chatId,
@@ -25,8 +39,11 @@ class GetChatListsToAddChat extends TdFunction {
     chatId: chatId ?? this.chatId,
   );
 
-  static const CONSTRUCTOR = 'getChatListsToAddChat';
-  
+  static const String objectType = 'getChatListsToAddChat';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

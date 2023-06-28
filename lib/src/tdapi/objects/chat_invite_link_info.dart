@@ -1,8 +1,35 @@
 part of '../tdapi.dart';
 
-class ChatInviteLinkInfo extends TdObject {
-
-  /// Contains information about a chat invite link
+/// **ChatInviteLinkInfo** *(chatInviteLinkInfo)* - basic class
+///
+/// Contains information about a chat invite link.
+///
+/// * [chatId]: Chat identifier of the invite link; 0 if the user has no access to the chat before joining.
+/// * [accessibleFor]: If non-zero, the amount of time for which read access to the chat will remain available, in seconds.
+/// * [type]: Type of the chat.
+/// * [title]: Title of the chat.
+/// * [photo]: Chat photo; may be null *(optional)*.
+/// * [description]: Chat description.
+/// * [memberCount]: Number of members in the chat.
+/// * [memberUserIds]: User identifiers of some chat members that may be known to the current user.
+/// * [createsJoinRequest]: True, if the link only creates join request.
+/// * [isPublic]: True, if the chat is a public supergroup or channel, i.e. it has a username or it is a location-based supergroup.
+final class ChatInviteLinkInfo extends TdObject {
+  
+  /// **ChatInviteLinkInfo** *(chatInviteLinkInfo)* - basic class
+  ///
+  /// Contains information about a chat invite link.
+  ///
+  /// * [chatId]: Chat identifier of the invite link; 0 if the user has no access to the chat before joining.
+  /// * [accessibleFor]: If non-zero, the amount of time for which read access to the chat will remain available, in seconds.
+  /// * [type]: Type of the chat.
+  /// * [title]: Title of the chat.
+  /// * [photo]: Chat photo; may be null *(optional)*.
+  /// * [description]: Chat description.
+  /// * [memberCount]: Number of members in the chat.
+  /// * [memberUserIds]: User identifiers of some chat members that may be known to the current user.
+  /// * [createsJoinRequest]: True, if the link only creates join request.
+  /// * [isPublic]: True, if the chat is a public supergroup or channel, i.e. it has a username or it is a location-based supergroup.
   const ChatInviteLinkInfo({
     required this.chatId,
     required this.accessibleFor,
@@ -18,34 +45,34 @@ class ChatInviteLinkInfo extends TdObject {
     this.clientId,
   });
   
-  /// [chatId] Chat identifier of the invite link; 0 if the user has no access to the chat before joining
+  /// Chat identifier of the invite link; 0 if the user has no access to the chat before joining
   final int chatId;
 
-  /// [accessibleFor] If non-zero, the amount of time for which read access to the chat will remain available, in seconds
+  /// If non-zero, the amount of time for which read access to the chat will remain available, in seconds
   final int accessibleFor;
 
-  /// [type] Type of the chat
+  /// Type of the chat
   final ChatType type;
 
-  /// [title] Title of the chat
+  /// Title of the chat
   final String title;
 
-  /// [photo] Chat photo; may be null
+  /// Chat photo; may be null
   final ChatPhotoInfo? photo;
 
-  /// [description] Chat description
+  /// Chat description
   final String description;
 
-  /// [memberCount] Number of members in the chat
+  /// Number of members in the chat
   final int memberCount;
 
-  /// [memberUserIds] User identifiers of some chat members that may be known to the current user
+  /// User identifiers of some chat members that may be known to the current user
   final List<int> memberUserIds;
 
-  /// [createsJoinRequest] True, if the link only creates join request
+  /// True, if the link only creates join request
   final bool createsJoinRequest;
 
-  /// [isPublic] True, if the chat is a public supergroup or channel, i.e. it has a username or it is a location-based supergroup
+  /// True, if the chat is a public supergroup or channel, i.e. it has a username or it is a location-based supergroup
   final bool isPublic;
 
   /// [extra] callback sign
@@ -74,9 +101,9 @@ class ChatInviteLinkInfo extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "accessible_for": accessibleFor,
       "type": type.toJson(),
@@ -87,8 +114,9 @@ class ChatInviteLinkInfo extends TdObject {
       "member_user_ids": memberUserIds.map((i) => i).toList(),
       "creates_join_request": createsJoinRequest,
       "is_public": isPublic,
-    };
-  }
+		};
+	}
+
   
   ChatInviteLinkInfo copyWith({
     int? chatId,
@@ -118,8 +146,11 @@ class ChatInviteLinkInfo extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'chatInviteLinkInfo';
-  
+  static const String objectType = 'chatInviteLinkInfo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

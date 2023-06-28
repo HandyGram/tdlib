@@ -1,8 +1,23 @@
 part of '../tdapi.dart';
 
-class OrderInfo extends TdObject {
-
-  /// Order information
+/// **OrderInfo** *(orderInfo)* - basic class
+///
+/// Order information.
+///
+/// * [name]: Name of the user.
+/// * [phoneNumber]: Phone number of the user.
+/// * [emailAddress]: Email address of the user.
+/// * [shippingAddress]: Shipping address for this order; may be null *(optional)*.
+final class OrderInfo extends TdObject {
+  
+  /// **OrderInfo** *(orderInfo)* - basic class
+  ///
+  /// Order information.
+  ///
+  /// * [name]: Name of the user.
+  /// * [phoneNumber]: Phone number of the user.
+  /// * [emailAddress]: Email address of the user.
+  /// * [shippingAddress]: Shipping address for this order; may be null *(optional)*.
   const OrderInfo({
     required this.name,
     required this.phoneNumber,
@@ -12,16 +27,16 @@ class OrderInfo extends TdObject {
     this.clientId,
   });
   
-  /// [name] Name of the user 
+  /// Name of the user
   final String name;
 
-  /// [phoneNumber] Phone number of the user 
+  /// Phone number of the user
   final String phoneNumber;
 
-  /// [emailAddress] Email address of the user 
+  /// Email address of the user
   final String emailAddress;
 
-  /// [shippingAddress] Shipping address for this order; may be null
+  /// Shipping address for this order; may be null
   final Address? shippingAddress;
 
   /// [extra] callback sign
@@ -44,15 +59,16 @@ class OrderInfo extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "name": name,
       "phone_number": phoneNumber,
       "email_address": emailAddress,
       "shipping_address": shippingAddress?.toJson(),
-    };
-  }
+		};
+	}
+
   
   OrderInfo copyWith({
     String? name,
@@ -70,8 +86,11 @@ class OrderInfo extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'orderInfo';
-  
+  static const String objectType = 'orderInfo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

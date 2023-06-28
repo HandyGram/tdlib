@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class SetChatMemberStatus extends TdFunction {
-
-  /// Changes the status of a chat member, needs appropriate privileges. This function is currently not suitable for transferring chat ownership; use transferChatOwnership instead. Use addChatMember or banChatMember if some additional parameters needs to be passed
+/// **SetChatMemberStatus** *(setChatMemberStatus)* - TDLib function
+///
+/// Changes the status of a chat member, needs appropriate privileges. This function is currently not suitable for transferring chat ownership; use transferChatOwnership instead. Use addChatMember or banChatMember if some additional parameters needs to be passed.
+///
+/// * [chatId]: Chat identifier.
+/// * [memberId]: Member identifier. Chats can be only banned and unbanned in supergroups and channels.
+/// * [status]: The new status of the member in the chat.
+///
+/// [Ok] is returned on completion.
+final class SetChatMemberStatus extends TdFunction {
+  
+  /// **SetChatMemberStatus** *(setChatMemberStatus)* - TDLib function
+  ///
+  /// Changes the status of a chat member, needs appropriate privileges. This function is currently not suitable for transferring chat ownership; use transferChatOwnership instead. Use addChatMember or banChatMember if some additional parameters needs to be passed.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [memberId]: Member identifier. Chats can be only banned and unbanned in supergroups and channels.
+  /// * [status]: The new status of the member in the chat.
+  ///
+  /// [Ok] is returned on completion.
   const SetChatMemberStatus({
     required this.chatId,
     required this.memberId,
     required this.status,
   });
   
-  /// [chatId] Chat identifier
+  /// Chat identifier
   final int chatId;
 
-  /// [memberId] Member identifier. Chats can be only banned and unbanned in supergroups and channels 
+  /// Member identifier. Chats can be only banned and unbanned in supergroups and channels
   final MessageSender memberId;
 
-  /// [status] The new status of the member in the chat
+  /// The new status of the member in the chat
   final ChatMemberStatus status;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "member_id": memberId.toJson(),
       "status": status.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SetChatMemberStatus copyWith({
     int? chatId,
@@ -39,8 +57,11 @@ class SetChatMemberStatus extends TdFunction {
     status: status ?? this.status,
   );
 
-  static const CONSTRUCTOR = 'setChatMemberStatus';
-  
+  static const String objectType = 'setChatMemberStatus';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

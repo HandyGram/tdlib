@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class EditMessageSchedulingState extends TdFunction {
-
-  /// Edits the time when a scheduled message will be sent. Scheduling state of all messages in the same album or forwarded together with the message will be also changed
+/// **EditMessageSchedulingState** *(editMessageSchedulingState)* - TDLib function
+///
+/// Edits the time when a scheduled message will be sent. Scheduling state of all messages in the same album or forwarded together with the message will be also changed.
+///
+/// * [chatId]: The chat the message belongs to.
+/// * [messageId]: Identifier of the message.
+/// * [schedulingState]: The new message scheduling state; pass null to send the message immediately *(optional)*.
+///
+/// [Ok] is returned on completion.
+final class EditMessageSchedulingState extends TdFunction {
+  
+  /// **EditMessageSchedulingState** *(editMessageSchedulingState)* - TDLib function
+  ///
+  /// Edits the time when a scheduled message will be sent. Scheduling state of all messages in the same album or forwarded together with the message will be also changed.
+  ///
+  /// * [chatId]: The chat the message belongs to.
+  /// * [messageId]: Identifier of the message.
+  /// * [schedulingState]: The new message scheduling state; pass null to send the message immediately *(optional)*.
+  ///
+  /// [Ok] is returned on completion.
   const EditMessageSchedulingState({
     required this.chatId,
     required this.messageId,
     this.schedulingState,
   });
   
-  /// [chatId] The chat the message belongs to
+  /// The chat the message belongs to
   final int chatId;
 
-  /// [messageId] Identifier of the message
+  /// Identifier of the message
   final int messageId;
 
-  /// [schedulingState] The new message scheduling state; pass null to send the message immediately
+  /// The new message scheduling state; pass null to send the message immediately
   final MessageSchedulingState? schedulingState;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "message_id": messageId,
       "scheduling_state": schedulingState?.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   EditMessageSchedulingState copyWith({
     int? chatId,
@@ -39,8 +57,11 @@ class EditMessageSchedulingState extends TdFunction {
     schedulingState: schedulingState ?? this.schedulingState,
   );
 
-  static const CONSTRUCTOR = 'editMessageSchedulingState';
-  
+  static const String objectType = 'editMessageSchedulingState';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

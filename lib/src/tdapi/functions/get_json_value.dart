@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class GetJsonValue extends TdFunction {
-
-  /// Converts a JSON-serialized string to corresponding JsonValue object. Can be called synchronously
+/// **GetJsonValue** *(getJsonValue)* - TDLib function
+///
+/// Converts a JSON-serialized string to corresponding JsonValue object. Can be called synchronously.
+///
+/// * [json]: The JSON-serialized string.
+///
+/// [JsonValue] is returned on completion.
+final class GetJsonValue extends TdFunction {
+  
+  /// **GetJsonValue** *(getJsonValue)* - TDLib function
+  ///
+  /// Converts a JSON-serialized string to corresponding JsonValue object. Can be called synchronously.
+  ///
+  /// * [json]: The JSON-serialized string.
+  ///
+  /// [JsonValue] is returned on completion.
   const GetJsonValue({
     required this.json,
   });
   
-  /// [json] The JSON-serialized string
+  /// The JSON-serialized string
   final String json;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "json": json,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetJsonValue copyWith({
     String? json,
@@ -25,8 +39,11 @@ class GetJsonValue extends TdFunction {
     json: json ?? this.json,
   );
 
-  static const CONSTRUCTOR = 'getJsonValue';
-  
+  static const String objectType = 'getJsonValue';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

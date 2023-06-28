@@ -1,21 +1,34 @@
 part of '../tdapi.dart';
 
-class ChatTheme extends TdObject {
-
-  /// Describes a chat theme
+/// **ChatTheme** *(chatTheme)* - basic class
+///
+/// Describes a chat theme.
+///
+/// * [name]: Theme name.
+/// * [lightSettings]: Theme settings for a light chat theme.
+/// * [darkSettings]: Theme settings for a dark chat theme.
+final class ChatTheme extends TdObject {
+  
+  /// **ChatTheme** *(chatTheme)* - basic class
+  ///
+  /// Describes a chat theme.
+  ///
+  /// * [name]: Theme name.
+  /// * [lightSettings]: Theme settings for a light chat theme.
+  /// * [darkSettings]: Theme settings for a dark chat theme.
   const ChatTheme({
     required this.name,
     required this.lightSettings,
     required this.darkSettings,
   });
   
-  /// [name] Theme name
+  /// Theme name
   final String name;
 
-  /// [lightSettings] Theme settings for a light chat theme
+  /// Theme settings for a light chat theme
   final ThemeSettings lightSettings;
 
-  /// [darkSettings] Theme settings for a dark chat theme
+  /// Theme settings for a dark chat theme
   final ThemeSettings darkSettings;
   
   /// Parse from a json
@@ -27,14 +40,15 @@ class ChatTheme extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "name": name,
       "light_settings": lightSettings.toJson(),
       "dark_settings": darkSettings.toJson(),
-    };
-  }
+		};
+	}
+
   
   ChatTheme copyWith({
     String? name,
@@ -46,8 +60,11 @@ class ChatTheme extends TdObject {
     darkSettings: darkSettings ?? this.darkSettings,
   );
 
-  static const CONSTRUCTOR = 'chatTheme';
-  
+  static const String objectType = 'chatTheme';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class CleanFileName extends TdFunction {
-
-  /// Removes potentially dangerous characters from the name of a file. The encoding of the file name is supposed to be UTF-8. Returns an empty string on failure. Can be called synchronously
+/// **CleanFileName** *(cleanFileName)* - TDLib function
+///
+/// Removes potentially dangerous characters from the name of a file. The encoding of the file name is supposed to be UTF-8. Returns an empty string on failure. Can be called synchronously.
+///
+/// * [fileName]: File name or path to the file.
+///
+/// [Text] is returned on completion.
+final class CleanFileName extends TdFunction {
+  
+  /// **CleanFileName** *(cleanFileName)* - TDLib function
+  ///
+  /// Removes potentially dangerous characters from the name of a file. The encoding of the file name is supposed to be UTF-8. Returns an empty string on failure. Can be called synchronously.
+  ///
+  /// * [fileName]: File name or path to the file.
+  ///
+  /// [Text] is returned on completion.
   const CleanFileName({
     required this.fileName,
   });
   
-  /// [fileName] File name or path to the file
+  /// File name or path to the file
   final String fileName;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "file_name": fileName,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   CleanFileName copyWith({
     String? fileName,
@@ -25,8 +39,11 @@ class CleanFileName extends TdFunction {
     fileName: fileName ?? this.fileName,
   );
 
-  static const CONSTRUCTOR = 'cleanFileName';
-  
+  static const String objectType = 'cleanFileName';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,8 +1,25 @@
 part of '../tdapi.dart';
 
-class MessageForwardInfo extends TdObject {
-
-  /// Contains information about a forwarded message
+/// **MessageForwardInfo** *(messageForwardInfo)* - basic class
+///
+/// Contains information about a forwarded message.
+///
+/// * [origin]: Origin of a forwarded message.
+/// * [date]: Point in time (Unix timestamp) when the message was originally sent.
+/// * [publicServiceAnnouncementType]: The type of a public service announcement for the forwarded message.
+/// * [fromChatId]: For messages forwarded to the chat with the current user (Saved Messages), to the Replies bot chat, or to the channel's discussion group, the identifier of the chat from which the message was forwarded last time; 0 if unknown.
+/// * [fromMessageId]: For messages forwarded to the chat with the current user (Saved Messages), to the Replies bot chat, or to the channel's discussion group, the identifier of the original message from which the new message was forwarded last time; 0 if unknown.
+final class MessageForwardInfo extends TdObject {
+  
+  /// **MessageForwardInfo** *(messageForwardInfo)* - basic class
+  ///
+  /// Contains information about a forwarded message.
+  ///
+  /// * [origin]: Origin of a forwarded message.
+  /// * [date]: Point in time (Unix timestamp) when the message was originally sent.
+  /// * [publicServiceAnnouncementType]: The type of a public service announcement for the forwarded message.
+  /// * [fromChatId]: For messages forwarded to the chat with the current user (Saved Messages), to the Replies bot chat, or to the channel's discussion group, the identifier of the chat from which the message was forwarded last time; 0 if unknown.
+  /// * [fromMessageId]: For messages forwarded to the chat with the current user (Saved Messages), to the Replies bot chat, or to the channel's discussion group, the identifier of the original message from which the new message was forwarded last time; 0 if unknown.
   const MessageForwardInfo({
     required this.origin,
     required this.date,
@@ -11,19 +28,19 @@ class MessageForwardInfo extends TdObject {
     required this.fromMessageId,
   });
   
-  /// [origin] Origin of a forwarded message
+  /// Origin of a forwarded message
   final MessageForwardOrigin origin;
 
-  /// [date] Point in time (Unix timestamp) when the message was originally sent
+  /// Point in time (Unix timestamp) when the message was originally sent
   final int date;
 
-  /// [publicServiceAnnouncementType] The type of a public service announcement for the forwarded message
+  /// The type of a public service announcement for the forwarded message
   final String publicServiceAnnouncementType;
 
-  /// [fromChatId] For messages forwarded to the chat with the current user (Saved Messages), to the Replies bot chat, or to the channel's discussion group, the identifier of the chat from which the message was forwarded last time; 0 if unknown
+  /// For messages forwarded to the chat with the current user (Saved Messages), to the Replies bot chat, or to the channel's discussion group, the identifier of the chat from which the message was forwarded last time; 0 if unknown
   final int fromChatId;
 
-  /// [fromMessageId] For messages forwarded to the chat with the current user (Saved Messages), to the Replies bot chat, or to the channel's discussion group, the identifier of the original message from which the new message was forwarded last time; 0 if unknown
+  /// For messages forwarded to the chat with the current user (Saved Messages), to the Replies bot chat, or to the channel's discussion group, the identifier of the original message from which the new message was forwarded last time; 0 if unknown
   final int fromMessageId;
   
   /// Parse from a json
@@ -37,16 +54,17 @@ class MessageForwardInfo extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "origin": origin.toJson(),
       "date": date,
       "public_service_announcement_type": publicServiceAnnouncementType,
       "from_chat_id": fromChatId,
       "from_message_id": fromMessageId,
-    };
-  }
+		};
+	}
+
   
   MessageForwardInfo copyWith({
     MessageForwardOrigin? origin,
@@ -62,8 +80,11 @@ class MessageForwardInfo extends TdObject {
     fromMessageId: fromMessageId ?? this.fromMessageId,
   );
 
-  static const CONSTRUCTOR = 'messageForwardInfo';
-  
+  static const String objectType = 'messageForwardInfo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

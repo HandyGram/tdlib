@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class PublicChatType extends TdObject {
-
-  /// Describes a type of public chats
+/// **PublicChatType** *(publicChatType)* - parent
+///
+/// Describes a type of public chats.
+sealed class PublicChatType extends TdObject {
+  
+  /// **PublicChatType** *(publicChatType)* - parent
+  ///
+  /// Describes a type of public chats.
   const PublicChatType();
   
   /// a PublicChatType return type can be :
@@ -10,76 +15,97 @@ class PublicChatType extends TdObject {
   /// * [PublicChatTypeIsLocationBased]
   factory PublicChatType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case PublicChatTypeHasUsername.CONSTRUCTOR:
+      case PublicChatTypeHasUsername.objectType:
         return PublicChatTypeHasUsername.fromJson(json);
-      case PublicChatTypeIsLocationBased.CONSTRUCTOR:
+      case PublicChatTypeIsLocationBased.objectType:
         return PublicChatTypeIsLocationBased.fromJson(json);
       default:
-        return const PublicChatType();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of PublicChatType)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  PublicChatType copyWith() => const PublicChatType();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'publicChatType';
   
+  PublicChatType copyWith();
+
+  static const String objectType = 'publicChatType';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PublicChatTypeHasUsername extends PublicChatType {
-
-  /// The chat is public, because it has username
+/// **PublicChatTypeHasUsername** *(publicChatTypeHasUsername)* - child of PublicChatType
+///
+/// The chat is public, because it has an active username.
+final class PublicChatTypeHasUsername extends PublicChatType {
+  
+  /// **PublicChatTypeHasUsername** *(publicChatTypeHasUsername)* - child of PublicChatType
+  ///
+  /// The chat is public, because it has an active username.
   const PublicChatTypeHasUsername();
   
   /// Parse from a json
   factory PublicChatTypeHasUsername.fromJson(Map<String, dynamic> json) => const PublicChatTypeHasUsername();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   PublicChatTypeHasUsername copyWith() => const PublicChatTypeHasUsername();
 
-  static const CONSTRUCTOR = 'publicChatTypeHasUsername';
-  
+  static const String objectType = 'publicChatTypeHasUsername';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PublicChatTypeIsLocationBased extends PublicChatType {
-
-  /// The chat is public, because it is a location-based supergroup
+/// **PublicChatTypeIsLocationBased** *(publicChatTypeIsLocationBased)* - child of PublicChatType
+///
+/// The chat is public, because it is a location-based supergroup.
+final class PublicChatTypeIsLocationBased extends PublicChatType {
+  
+  /// **PublicChatTypeIsLocationBased** *(publicChatTypeIsLocationBased)* - child of PublicChatType
+  ///
+  /// The chat is public, because it is a location-based supergroup.
   const PublicChatTypeIsLocationBased();
   
   /// Parse from a json
   factory PublicChatTypeIsLocationBased.fromJson(Map<String, dynamic> json) => const PublicChatTypeIsLocationBased();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   PublicChatTypeIsLocationBased copyWith() => const PublicChatTypeIsLocationBased();
 
-  static const CONSTRUCTOR = 'publicChatTypeIsLocationBased';
-  
+  static const String objectType = 'publicChatTypeIsLocationBased';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

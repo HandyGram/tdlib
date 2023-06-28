@@ -1,23 +1,36 @@
 part of '../tdapi.dart';
 
-class DisableProxy extends TdFunction {
-
-  /// Disables the currently enabled proxy. Can be called before authorization
+/// **DisableProxy** *(disableProxy)* - TDLib function
+///
+/// Disables the currently enabled proxy. Can be called before authorization.
+///
+/// [Ok] is returned on completion.
+final class DisableProxy extends TdFunction {
+  
+  /// **DisableProxy** *(disableProxy)* - TDLib function
+  ///
+  /// Disables the currently enabled proxy. Can be called before authorization.
+  ///
+  /// [Ok] is returned on completion.
   const DisableProxy();
   
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   DisableProxy copyWith() => const DisableProxy();
 
-  static const CONSTRUCTOR = 'disableProxy';
-  
+  static const String objectType = 'disableProxy';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

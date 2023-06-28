@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class ToggleChatHasProtectedContent extends TdFunction {
-
-  /// Changes the ability of users to save, forward, or copy chat content. Supported only for basic groups, supergroups and channels. Requires owner privileges
+/// **ToggleChatHasProtectedContent** *(toggleChatHasProtectedContent)* - TDLib function
+///
+/// Changes the ability of users to save, forward, or copy chat content. Supported only for basic groups, supergroups and channels. Requires owner privileges.
+///
+/// * [chatId]: Chat identifier.
+/// * [hasProtectedContent]: New value of has_protected_content.
+///
+/// [Ok] is returned on completion.
+final class ToggleChatHasProtectedContent extends TdFunction {
+  
+  /// **ToggleChatHasProtectedContent** *(toggleChatHasProtectedContent)* - TDLib function
+  ///
+  /// Changes the ability of users to save, forward, or copy chat content. Supported only for basic groups, supergroups and channels. Requires owner privileges.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [hasProtectedContent]: New value of has_protected_content.
+  ///
+  /// [Ok] is returned on completion.
   const ToggleChatHasProtectedContent({
     required this.chatId,
     required this.hasProtectedContent,
   });
   
-  /// [chatId] Chat identifier
+  /// Chat identifier
   final int chatId;
 
-  /// [hasProtectedContent] True, if chat content can't be saved locally, forwarded, or copied
+  /// New value of has_protected_content
   final bool hasProtectedContent;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "has_protected_content": hasProtectedContent,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   ToggleChatHasProtectedContent copyWith({
     int? chatId,
@@ -32,8 +48,11 @@ class ToggleChatHasProtectedContent extends TdFunction {
     hasProtectedContent: hasProtectedContent ?? this.hasProtectedContent,
   );
 
-  static const CONSTRUCTOR = 'toggleChatHasProtectedContent';
-  
+  static const String objectType = 'toggleChatHasProtectedContent';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

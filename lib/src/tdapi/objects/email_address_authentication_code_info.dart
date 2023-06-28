@@ -1,8 +1,19 @@
 part of '../tdapi.dart';
 
-class EmailAddressAuthenticationCodeInfo extends TdObject {
-
-  /// Information about the email address authentication code that was sent
+/// **EmailAddressAuthenticationCodeInfo** *(emailAddressAuthenticationCodeInfo)* - basic class
+///
+/// Information about the email address authentication code that was sent.
+///
+/// * [emailAddressPattern]: Pattern of the email address to which an authentication code was sent.
+/// * [length]: Length of the code; 0 if unknown.
+final class EmailAddressAuthenticationCodeInfo extends TdObject {
+  
+  /// **EmailAddressAuthenticationCodeInfo** *(emailAddressAuthenticationCodeInfo)* - basic class
+  ///
+  /// Information about the email address authentication code that was sent.
+  ///
+  /// * [emailAddressPattern]: Pattern of the email address to which an authentication code was sent.
+  /// * [length]: Length of the code; 0 if unknown.
   const EmailAddressAuthenticationCodeInfo({
     required this.emailAddressPattern,
     required this.length,
@@ -10,10 +21,10 @@ class EmailAddressAuthenticationCodeInfo extends TdObject {
     this.clientId,
   });
   
-  /// [emailAddressPattern] Pattern of the email address to which an authentication code was sent 
+  /// Pattern of the email address to which an authentication code was sent
   final String emailAddressPattern;
 
-  /// [length] Length of the code; 0 if unknown
+  /// Length of the code; 0 if unknown
   final int length;
 
   /// [extra] callback sign
@@ -34,13 +45,14 @@ class EmailAddressAuthenticationCodeInfo extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "email_address_pattern": emailAddressPattern,
       "length": length,
-    };
-  }
+		};
+	}
+
   
   EmailAddressAuthenticationCodeInfo copyWith({
     String? emailAddressPattern,
@@ -54,8 +66,11 @@ class EmailAddressAuthenticationCodeInfo extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'emailAddressAuthenticationCodeInfo';
-  
+  static const String objectType = 'emailAddressAuthenticationCodeInfo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

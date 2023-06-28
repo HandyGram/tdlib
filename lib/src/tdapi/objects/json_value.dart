@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class JsonValue extends TdObject {
-
-  /// Represents a JSON value
+/// **JsonValue** *(jsonValue)* - parent
+///
+/// Represents a JSON value.
+sealed class JsonValue extends TdObject {
+  
+  /// **JsonValue** *(jsonValue)* - parent
+  ///
+  /// Represents a JSON value.
   const JsonValue();
   
   /// a JsonValue return type can be :
@@ -14,42 +19,50 @@ class JsonValue extends TdObject {
   /// * [JsonValueObject]
   factory JsonValue.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case JsonValueNull.CONSTRUCTOR:
+      case JsonValueNull.objectType:
         return JsonValueNull.fromJson(json);
-      case JsonValueBoolean.CONSTRUCTOR:
+      case JsonValueBoolean.objectType:
         return JsonValueBoolean.fromJson(json);
-      case JsonValueNumber.CONSTRUCTOR:
+      case JsonValueNumber.objectType:
         return JsonValueNumber.fromJson(json);
-      case JsonValueString.CONSTRUCTOR:
+      case JsonValueString.objectType:
         return JsonValueString.fromJson(json);
-      case JsonValueArray.CONSTRUCTOR:
+      case JsonValueArray.objectType:
         return JsonValueArray.fromJson(json);
-      case JsonValueObject.CONSTRUCTOR:
+      case JsonValueObject.objectType:
         return JsonValueObject.fromJson(json);
       default:
-        return const JsonValue();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of JsonValue)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  JsonValue copyWith() => const JsonValue();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'jsonValue';
   
+  JsonValue copyWith();
+
+  static const String objectType = 'jsonValue';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class JsonValueNull extends JsonValue {
-
-  /// Represents a null JSON value
+/// **JsonValueNull** *(jsonValueNull)* - child of JsonValue
+///
+/// Represents a null JSON value.
+final class JsonValueNull extends JsonValue {
+  
+  /// **JsonValueNull** *(jsonValueNull)* - child of JsonValue
+  ///
+  /// Represents a null JSON value.
   const JsonValueNull({
     this.extra,
     this.clientId,
@@ -71,11 +84,12 @@ class JsonValueNull extends JsonValue {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   JsonValueNull copyWith({
@@ -86,23 +100,35 @@ class JsonValueNull extends JsonValue {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'jsonValueNull';
-  
+  static const String objectType = 'jsonValueNull';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class JsonValueBoolean extends JsonValue {
-
-  /// Represents a boolean JSON value
+/// **JsonValueBoolean** *(jsonValueBoolean)* - child of JsonValue
+///
+/// Represents a boolean JSON value.
+///
+/// * [value]: The value.
+final class JsonValueBoolean extends JsonValue {
+  
+  /// **JsonValueBoolean** *(jsonValueBoolean)* - child of JsonValue
+  ///
+  /// Represents a boolean JSON value.
+  ///
+  /// * [value]: The value.
   const JsonValueBoolean({
     required this.value,
     this.extra,
     this.clientId,
   });
   
-  /// [value] The value
+  /// The value
   final bool value;
 
   /// [extra] callback sign
@@ -122,12 +148,13 @@ class JsonValueBoolean extends JsonValue {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "value": value,
-    };
-  }
+		};
+	}
+
   
   @override
   JsonValueBoolean copyWith({
@@ -140,23 +167,35 @@ class JsonValueBoolean extends JsonValue {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'jsonValueBoolean';
-  
+  static const String objectType = 'jsonValueBoolean';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class JsonValueNumber extends JsonValue {
-
-  /// Represents a numeric JSON value
+/// **JsonValueNumber** *(jsonValueNumber)* - child of JsonValue
+///
+/// Represents a numeric JSON value.
+///
+/// * [value]: The value.
+final class JsonValueNumber extends JsonValue {
+  
+  /// **JsonValueNumber** *(jsonValueNumber)* - child of JsonValue
+  ///
+  /// Represents a numeric JSON value.
+  ///
+  /// * [value]: The value.
   const JsonValueNumber({
     required this.value,
     this.extra,
     this.clientId,
   });
   
-  /// [value] The value
+  /// The value
   final double value;
 
   /// [extra] callback sign
@@ -176,12 +215,13 @@ class JsonValueNumber extends JsonValue {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "value": value,
-    };
-  }
+		};
+	}
+
   
   @override
   JsonValueNumber copyWith({
@@ -194,23 +234,35 @@ class JsonValueNumber extends JsonValue {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'jsonValueNumber';
-  
+  static const String objectType = 'jsonValueNumber';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class JsonValueString extends JsonValue {
-
-  /// Represents a string JSON value
+/// **JsonValueString** *(jsonValueString)* - child of JsonValue
+///
+/// Represents a string JSON value.
+///
+/// * [value]: The value.
+final class JsonValueString extends JsonValue {
+  
+  /// **JsonValueString** *(jsonValueString)* - child of JsonValue
+  ///
+  /// Represents a string JSON value.
+  ///
+  /// * [value]: The value.
   const JsonValueString({
     required this.value,
     this.extra,
     this.clientId,
   });
   
-  /// [value] The value
+  /// The value
   final String value;
 
   /// [extra] callback sign
@@ -230,12 +282,13 @@ class JsonValueString extends JsonValue {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "value": value,
-    };
-  }
+		};
+	}
+
   
   @override
   JsonValueString copyWith({
@@ -248,23 +301,35 @@ class JsonValueString extends JsonValue {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'jsonValueString';
-  
+  static const String objectType = 'jsonValueString';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class JsonValueArray extends JsonValue {
-
-  /// Represents a JSON array
+/// **JsonValueArray** *(jsonValueArray)* - child of JsonValue
+///
+/// Represents a JSON array.
+///
+/// * [values]: The list of array elements.
+final class JsonValueArray extends JsonValue {
+  
+  /// **JsonValueArray** *(jsonValueArray)* - child of JsonValue
+  ///
+  /// Represents a JSON array.
+  ///
+  /// * [values]: The list of array elements.
   const JsonValueArray({
     required this.values,
     this.extra,
     this.clientId,
   });
   
-  /// [values] The list of array elements
+  /// The list of array elements
   final List<JsonValue> values;
 
   /// [extra] callback sign
@@ -284,12 +349,13 @@ class JsonValueArray extends JsonValue {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "values": values.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   @override
   JsonValueArray copyWith({
@@ -302,23 +368,35 @@ class JsonValueArray extends JsonValue {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'jsonValueArray';
-  
+  static const String objectType = 'jsonValueArray';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class JsonValueObject extends JsonValue {
-
-  /// Represents a JSON object
+/// **JsonValueObject** *(jsonValueObject)* - child of JsonValue
+///
+/// Represents a JSON object.
+///
+/// * [members]: The list of object members.
+final class JsonValueObject extends JsonValue {
+  
+  /// **JsonValueObject** *(jsonValueObject)* - child of JsonValue
+  ///
+  /// Represents a JSON object.
+  ///
+  /// * [members]: The list of object members.
   const JsonValueObject({
     required this.members,
     this.extra,
     this.clientId,
   });
   
-  /// [members] The list of object members
+  /// The list of object members
   final List<JsonObjectMember> members;
 
   /// [extra] callback sign
@@ -338,12 +416,13 @@ class JsonValueObject extends JsonValue {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "members": members.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   @override
   JsonValueObject copyWith({
@@ -356,8 +435,11 @@ class JsonValueObject extends JsonValue {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'jsonValueObject';
-  
+  static const String objectType = 'jsonValueObject';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

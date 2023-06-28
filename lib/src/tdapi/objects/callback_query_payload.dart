@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class CallbackQueryPayload extends TdObject {
-
-  /// Represents a payload of a callback query
+/// **CallbackQueryPayload** *(callbackQueryPayload)* - parent
+///
+/// Represents a payload of a callback query.
+sealed class CallbackQueryPayload extends TdObject {
+  
+  /// **CallbackQueryPayload** *(callbackQueryPayload)* - parent
+  ///
+  /// Represents a payload of a callback query.
   const CallbackQueryPayload();
   
   /// a CallbackQueryPayload return type can be :
@@ -11,41 +16,53 @@ class CallbackQueryPayload extends TdObject {
   /// * [CallbackQueryPayloadGame]
   factory CallbackQueryPayload.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case CallbackQueryPayloadData.CONSTRUCTOR:
+      case CallbackQueryPayloadData.objectType:
         return CallbackQueryPayloadData.fromJson(json);
-      case CallbackQueryPayloadDataWithPassword.CONSTRUCTOR:
+      case CallbackQueryPayloadDataWithPassword.objectType:
         return CallbackQueryPayloadDataWithPassword.fromJson(json);
-      case CallbackQueryPayloadGame.CONSTRUCTOR:
+      case CallbackQueryPayloadGame.objectType:
         return CallbackQueryPayloadGame.fromJson(json);
       default:
-        return const CallbackQueryPayload();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of CallbackQueryPayload)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  CallbackQueryPayload copyWith() => const CallbackQueryPayload();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'callbackQueryPayload';
   
+  CallbackQueryPayload copyWith();
+
+  static const String objectType = 'callbackQueryPayload';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class CallbackQueryPayloadData extends CallbackQueryPayload {
-
-  /// The payload for a general callback button
+/// **CallbackQueryPayloadData** *(callbackQueryPayloadData)* - child of CallbackQueryPayload
+///
+/// The payload for a general callback button.
+///
+/// * [data]: Data that was attached to the callback button.
+final class CallbackQueryPayloadData extends CallbackQueryPayload {
+  
+  /// **CallbackQueryPayloadData** *(callbackQueryPayloadData)* - child of CallbackQueryPayload
+  ///
+  /// The payload for a general callback button.
+  ///
+  /// * [data]: Data that was attached to the callback button.
   const CallbackQueryPayloadData({
     required this.data,
   });
   
-  /// [data] Data that was attached to the callback button
+  /// Data that was attached to the callback button
   final String data;
   
   /// Parse from a json
@@ -55,12 +72,13 @@ class CallbackQueryPayloadData extends CallbackQueryPayload {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "data": data,
-    };
-  }
+		};
+	}
+
   
   @override
   CallbackQueryPayloadData copyWith({
@@ -69,25 +87,39 @@ class CallbackQueryPayloadData extends CallbackQueryPayload {
     data: data ?? this.data,
   );
 
-  static const CONSTRUCTOR = 'callbackQueryPayloadData';
-  
+  static const String objectType = 'callbackQueryPayloadData';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class CallbackQueryPayloadDataWithPassword extends CallbackQueryPayload {
-
-  /// The payload for a callback button requiring password
+/// **CallbackQueryPayloadDataWithPassword** *(callbackQueryPayloadDataWithPassword)* - child of CallbackQueryPayload
+///
+/// The payload for a callback button requiring password.
+///
+/// * [password]: The 2-step verification password for the current user.
+/// * [data]: Data that was attached to the callback button.
+final class CallbackQueryPayloadDataWithPassword extends CallbackQueryPayload {
+  
+  /// **CallbackQueryPayloadDataWithPassword** *(callbackQueryPayloadDataWithPassword)* - child of CallbackQueryPayload
+  ///
+  /// The payload for a callback button requiring password.
+  ///
+  /// * [password]: The 2-step verification password for the current user.
+  /// * [data]: Data that was attached to the callback button.
   const CallbackQueryPayloadDataWithPassword({
     required this.password,
     required this.data,
   });
   
-  /// [password] The password for the current user 
+  /// The 2-step verification password for the current user 
   final String password;
 
-  /// [data] Data that was attached to the callback button
+  /// Data that was attached to the callback button
   final String data;
   
   /// Parse from a json
@@ -98,13 +130,14 @@ class CallbackQueryPayloadDataWithPassword extends CallbackQueryPayload {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "password": password,
       "data": data,
-    };
-  }
+		};
+	}
+
   
   @override
   CallbackQueryPayloadDataWithPassword copyWith({
@@ -115,21 +148,33 @@ class CallbackQueryPayloadDataWithPassword extends CallbackQueryPayload {
     data: data ?? this.data,
   );
 
-  static const CONSTRUCTOR = 'callbackQueryPayloadDataWithPassword';
-  
+  static const String objectType = 'callbackQueryPayloadDataWithPassword';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class CallbackQueryPayloadGame extends CallbackQueryPayload {
-
-  /// The payload for a game callback button
+/// **CallbackQueryPayloadGame** *(callbackQueryPayloadGame)* - child of CallbackQueryPayload
+///
+/// The payload for a game callback button.
+///
+/// * [gameShortName]: A short name of the game that was attached to the callback button.
+final class CallbackQueryPayloadGame extends CallbackQueryPayload {
+  
+  /// **CallbackQueryPayloadGame** *(callbackQueryPayloadGame)* - child of CallbackQueryPayload
+  ///
+  /// The payload for a game callback button.
+  ///
+  /// * [gameShortName]: A short name of the game that was attached to the callback button.
   const CallbackQueryPayloadGame({
     required this.gameShortName,
   });
   
-  /// [gameShortName] A short name of the game that was attached to the callback button
+  /// A short name of the game that was attached to the callback button
   final String gameShortName;
   
   /// Parse from a json
@@ -139,12 +184,13 @@ class CallbackQueryPayloadGame extends CallbackQueryPayload {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "game_short_name": gameShortName,
-    };
-  }
+		};
+	}
+
   
   @override
   CallbackQueryPayloadGame copyWith({
@@ -153,8 +199,11 @@ class CallbackQueryPayloadGame extends CallbackQueryPayload {
     gameShortName: gameShortName ?? this.gameShortName,
   );
 
-  static const CONSTRUCTOR = 'callbackQueryPayloadGame';
-  
+  static const String objectType = 'callbackQueryPayloadGame';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

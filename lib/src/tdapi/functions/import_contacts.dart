@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class ImportContacts extends TdFunction {
-
-  /// Adds new contacts or edits existing contacts by their phone numbers; contacts' user identifiers are ignored
+/// **ImportContacts** *(importContacts)* - TDLib function
+///
+/// Adds new contacts or edits existing contacts by their phone numbers; contacts' user identifiers are ignored.
+///
+/// * [contacts]: The list of contacts to import or edit; contacts' vCard are ignored and are not imported.
+///
+/// [ImportedContacts] is returned on completion.
+final class ImportContacts extends TdFunction {
+  
+  /// **ImportContacts** *(importContacts)* - TDLib function
+  ///
+  /// Adds new contacts or edits existing contacts by their phone numbers; contacts' user identifiers are ignored.
+  ///
+  /// * [contacts]: The list of contacts to import or edit; contacts' vCard are ignored and are not imported.
+  ///
+  /// [ImportedContacts] is returned on completion.
   const ImportContacts({
     required this.contacts,
   });
   
-  /// [contacts] The list of contacts to import or edit; contacts' vCard are ignored and are not imported
+  /// The list of contacts to import or edit; contacts' vCard are ignored and are not imported
   final List<Contact> contacts;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "contacts": contacts.map((i) => i.toJson()).toList(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   ImportContacts copyWith({
     List<Contact>? contacts,
@@ -25,8 +39,11 @@ class ImportContacts extends TdFunction {
     contacts: contacts ?? this.contacts,
   );
 
-  static const CONSTRUCTOR = 'importContacts';
-  
+  static const String objectType = 'importContacts';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

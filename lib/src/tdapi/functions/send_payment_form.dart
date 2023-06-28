@@ -1,11 +1,33 @@
 part of '../tdapi.dart';
 
-class SendPaymentForm extends TdFunction {
-
-  /// Sends a filled-out payment form to the bot for final verification
+/// **SendPaymentForm** *(sendPaymentForm)* - TDLib function
+///
+/// Sends a filled-out payment form to the bot for final verification.
+///
+/// * [inputInvoice]: The invoice.
+/// * [paymentFormId]: Payment form identifier returned by getPaymentForm.
+/// * [orderInfoId]: Identifier returned by validateOrderInfo, or an empty string.
+/// * [shippingOptionId]: Identifier of a chosen shipping option, if applicable.
+/// * [credentials]: The credentials chosen by user for payment.
+/// * [tipAmount]: Chosen by the user amount of tip in the smallest units of the currency.
+///
+/// [PaymentResult] is returned on completion.
+final class SendPaymentForm extends TdFunction {
+  
+  /// **SendPaymentForm** *(sendPaymentForm)* - TDLib function
+  ///
+  /// Sends a filled-out payment form to the bot for final verification.
+  ///
+  /// * [inputInvoice]: The invoice.
+  /// * [paymentFormId]: Payment form identifier returned by getPaymentForm.
+  /// * [orderInfoId]: Identifier returned by validateOrderInfo, or an empty string.
+  /// * [shippingOptionId]: Identifier of a chosen shipping option, if applicable.
+  /// * [credentials]: The credentials chosen by user for payment.
+  /// * [tipAmount]: Chosen by the user amount of tip in the smallest units of the currency.
+  ///
+  /// [PaymentResult] is returned on completion.
   const SendPaymentForm({
-    required this.chatId,
-    required this.messageId,
+    required this.inputInvoice,
     required this.paymentFormId,
     required this.orderInfoId,
     required this.shippingOptionId,
@@ -13,53 +35,48 @@ class SendPaymentForm extends TdFunction {
     required this.tipAmount,
   });
   
-  /// [chatId] Chat identifier of the Invoice message 
-  final int chatId;
+  /// The invoice
+  final InputInvoice inputInvoice;
 
-  /// [messageId] Message identifier
-  final int messageId;
-
-  /// [paymentFormId] Payment form identifier returned by getPaymentForm
+  /// Payment form identifier returned by getPaymentForm
   final int paymentFormId;
 
-  /// [orderInfoId] Identifier returned by validateOrderInfo, or an empty string 
+  /// Identifier returned by validateOrderInfo, or an empty string
   final String orderInfoId;
 
-  /// [shippingOptionId] Identifier of a chosen shipping option, if applicable
+  /// Identifier of a chosen shipping option, if applicable
   final String shippingOptionId;
 
-  /// [credentials] The credentials chosen by user for payment
+  /// The credentials chosen by user for payment
   final InputCredentials credentials;
 
-  /// [tipAmount] Chosen by the user amount of tip in the smallest units of the currency
+  /// Chosen by the user amount of tip in the smallest units of the currency
   final int tipAmount;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "chat_id": chatId,
-      "message_id": messageId,
+		return {
+			"@type": objectType,
+      "input_invoice": inputInvoice.toJson(),
       "payment_form_id": paymentFormId,
       "order_info_id": orderInfoId,
       "shipping_option_id": shippingOptionId,
       "credentials": credentials.toJson(),
       "tip_amount": tipAmount,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SendPaymentForm copyWith({
-    int? chatId,
-    int? messageId,
+    InputInvoice? inputInvoice,
     int? paymentFormId,
     String? orderInfoId,
     String? shippingOptionId,
     InputCredentials? credentials,
     int? tipAmount,
   }) => SendPaymentForm(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
+    inputInvoice: inputInvoice ?? this.inputInvoice,
     paymentFormId: paymentFormId ?? this.paymentFormId,
     orderInfoId: orderInfoId ?? this.orderInfoId,
     shippingOptionId: shippingOptionId ?? this.shippingOptionId,
@@ -67,8 +84,11 @@ class SendPaymentForm extends TdFunction {
     tipAmount: tipAmount ?? this.tipAmount,
   );
 
-  static const CONSTRUCTOR = 'sendPaymentForm';
-  
+  static const String objectType = 'sendPaymentForm';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class AddStickerToSet extends TdFunction {
-
-  /// Adds a new sticker to a set; for bots only. Returns the sticker set
+/// **AddStickerToSet** *(addStickerToSet)* - TDLib function
+///
+/// Adds a new sticker to a set; for bots only.
+///
+/// * [userId]: Sticker set owner.
+/// * [name]: Sticker set name.
+/// * [sticker]: Sticker to add to the set.
+///
+/// [Ok] is returned on completion.
+final class AddStickerToSet extends TdFunction {
+  
+  /// **AddStickerToSet** *(addStickerToSet)* - TDLib function
+  ///
+  /// Adds a new sticker to a set; for bots only.
+  ///
+  /// * [userId]: Sticker set owner.
+  /// * [name]: Sticker set name.
+  /// * [sticker]: Sticker to add to the set.
+  ///
+  /// [Ok] is returned on completion.
   const AddStickerToSet({
     required this.userId,
     required this.name,
     required this.sticker,
   });
   
-  /// [userId] Sticker set owner
+  /// Sticker set owner
   final int userId;
 
-  /// [name] Sticker set name 
+  /// Sticker set name
   final String name;
 
-  /// [sticker] Sticker to add to the set
+  /// Sticker to add to the set
   final InputSticker sticker;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "user_id": userId,
       "name": name,
       "sticker": sticker.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   AddStickerToSet copyWith({
     int? userId,
@@ -39,8 +57,11 @@ class AddStickerToSet extends TdFunction {
     sticker: sticker ?? this.sticker,
   );
 
-  static const CONSTRUCTOR = 'addStickerToSet';
-  
+  static const String objectType = 'addStickerToSet';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

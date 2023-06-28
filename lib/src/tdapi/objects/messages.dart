@@ -1,8 +1,19 @@
 part of '../tdapi.dart';
 
-class Messages extends TdObject {
-
-  /// Contains a list of messages
+/// **Messages** *(messages)* - basic class
+///
+/// Contains a list of messages.
+///
+/// * [totalCount]: Approximate total number of messages found.
+/// * [messages]: List of messages; messages may be null.
+final class Messages extends TdObject {
+  
+  /// **Messages** *(messages)* - basic class
+  ///
+  /// Contains a list of messages.
+  ///
+  /// * [totalCount]: Approximate total number of messages found.
+  /// * [messages]: List of messages; messages may be null.
   const Messages({
     required this.totalCount,
     required this.messages,
@@ -10,10 +21,10 @@ class Messages extends TdObject {
     this.clientId,
   });
   
-  /// [totalCount] Approximate total count of messages found 
+  /// Approximate total number of messages found 
   final int totalCount;
 
-  /// [messages] List of messages; messages may be null
+  /// List of messages; messages may be null
   final List<Message> messages;
 
   /// [extra] callback sign
@@ -34,13 +45,14 @@ class Messages extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "total_count": totalCount,
       "messages": messages.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   Messages copyWith({
     int? totalCount,
@@ -54,8 +66,11 @@ class Messages extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'messages';
-  
+  static const String objectType = 'messages';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

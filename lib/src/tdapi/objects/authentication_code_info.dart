@@ -1,8 +1,23 @@
 part of '../tdapi.dart';
 
-class AuthenticationCodeInfo extends TdObject {
-
-  /// Information about the authentication code that was sent
+/// **AuthenticationCodeInfo** *(authenticationCodeInfo)* - basic class
+///
+/// Information about the authentication code that was sent.
+///
+/// * [phoneNumber]: A phone number that is being authenticated.
+/// * [type]: The way the code was sent to the user.
+/// * [nextType]: The way the next code will be sent to the user; may be null *(optional)*.
+/// * [timeout]: Timeout before the code can be re-sent, in seconds.
+final class AuthenticationCodeInfo extends TdObject {
+  
+  /// **AuthenticationCodeInfo** *(authenticationCodeInfo)* - basic class
+  ///
+  /// Information about the authentication code that was sent.
+  ///
+  /// * [phoneNumber]: A phone number that is being authenticated.
+  /// * [type]: The way the code was sent to the user.
+  /// * [nextType]: The way the next code will be sent to the user; may be null *(optional)*.
+  /// * [timeout]: Timeout before the code can be re-sent, in seconds.
   const AuthenticationCodeInfo({
     required this.phoneNumber,
     required this.type,
@@ -12,16 +27,16 @@ class AuthenticationCodeInfo extends TdObject {
     this.clientId,
   });
   
-  /// [phoneNumber] A phone number that is being authenticated 
+  /// A phone number that is being authenticated
   final String phoneNumber;
 
-  /// [type] The way the code was sent to the user 
+  /// The way the code was sent to the user
   final AuthenticationCodeType type;
 
-  /// [nextType] The way the next code will be sent to the user; may be null 
+  /// The way the next code will be sent to the user; may be null
   final AuthenticationCodeType? nextType;
 
-  /// [timeout] Timeout before the code can be re-sent, in seconds
+  /// Timeout before the code can be re-sent, in seconds
   final int timeout;
 
   /// [extra] callback sign
@@ -44,15 +59,16 @@ class AuthenticationCodeInfo extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "phone_number": phoneNumber,
       "type": type.toJson(),
       "next_type": nextType?.toJson(),
       "timeout": timeout,
-    };
-  }
+		};
+	}
+
   
   AuthenticationCodeInfo copyWith({
     String? phoneNumber,
@@ -70,8 +86,11 @@ class AuthenticationCodeInfo extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'authenticationCodeInfo';
-  
+  static const String objectType = 'authenticationCodeInfo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

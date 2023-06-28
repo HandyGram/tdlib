@@ -1,8 +1,27 @@
 part of '../tdapi.dart';
 
-class BlockMessageSenderFromReplies extends TdFunction {
-
-  /// Blocks an original sender of a message in the Replies chat
+/// **BlockMessageSenderFromReplies** *(blockMessageSenderFromReplies)* - TDLib function
+///
+/// Blocks an original sender of a message in the Replies chat.
+///
+/// * [messageId]: The identifier of an incoming message in the Replies chat.
+/// * [deleteMessage]: Pass true to delete the message.
+/// * [deleteAllMessages]: Pass true to delete all messages from the same sender.
+/// * [reportSpam]: Pass true to report the sender to the Telegram moderators.
+///
+/// [Ok] is returned on completion.
+final class BlockMessageSenderFromReplies extends TdFunction {
+  
+  /// **BlockMessageSenderFromReplies** *(blockMessageSenderFromReplies)* - TDLib function
+  ///
+  /// Blocks an original sender of a message in the Replies chat.
+  ///
+  /// * [messageId]: The identifier of an incoming message in the Replies chat.
+  /// * [deleteMessage]: Pass true to delete the message.
+  /// * [deleteAllMessages]: Pass true to delete all messages from the same sender.
+  /// * [reportSpam]: Pass true to report the sender to the Telegram moderators.
+  ///
+  /// [Ok] is returned on completion.
   const BlockMessageSenderFromReplies({
     required this.messageId,
     required this.deleteMessage,
@@ -10,29 +29,30 @@ class BlockMessageSenderFromReplies extends TdFunction {
     required this.reportSpam,
   });
   
-  /// [messageId] The identifier of an incoming message in the Replies chat
+  /// The identifier of an incoming message in the Replies chat
   final int messageId;
 
-  /// [deleteMessage] Pass true if the message must be deleted
+  /// Pass true to delete the message
   final bool deleteMessage;
 
-  /// [deleteAllMessages] Pass true if all messages from the same sender must be deleted
+  /// Pass true to delete all messages from the same sender
   final bool deleteAllMessages;
 
-  /// [reportSpam] Pass true if the sender must be reported to the Telegram moderators
+  /// Pass true to report the sender to the Telegram moderators
   final bool reportSpam;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "message_id": messageId,
       "delete_message": deleteMessage,
       "delete_all_messages": deleteAllMessages,
       "report_spam": reportSpam,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   BlockMessageSenderFromReplies copyWith({
     int? messageId,
@@ -46,8 +66,11 @@ class BlockMessageSenderFromReplies extends TdFunction {
     reportSpam: reportSpam ?? this.reportSpam,
   );
 
-  static const CONSTRUCTOR = 'blockMessageSenderFromReplies';
-  
+  static const String objectType = 'blockMessageSenderFromReplies';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

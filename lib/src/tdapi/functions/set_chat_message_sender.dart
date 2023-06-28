@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class SetChatMessageSender extends TdFunction {
-
-  /// Selects a message sender to send messages in a chat
+/// **SetChatMessageSender** *(setChatMessageSender)* - TDLib function
+///
+/// Selects a message sender to send messages in a chat.
+///
+/// * [chatId]: Chat identifier.
+/// * [messageSenderId]: New message sender for the chat.
+///
+/// [Ok] is returned on completion.
+final class SetChatMessageSender extends TdFunction {
+  
+  /// **SetChatMessageSender** *(setChatMessageSender)* - TDLib function
+  ///
+  /// Selects a message sender to send messages in a chat.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [messageSenderId]: New message sender for the chat.
+  ///
+  /// [Ok] is returned on completion.
   const SetChatMessageSender({
     required this.chatId,
     required this.messageSenderId,
   });
   
-  /// [chatId] Chat identifier 
+  /// Chat identifier 
   final int chatId;
 
-  /// [messageSenderId] New message sender for the chat
+  /// New message sender for the chat
   final MessageSender messageSenderId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "message_sender_id": messageSenderId.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SetChatMessageSender copyWith({
     int? chatId,
@@ -32,8 +48,11 @@ class SetChatMessageSender extends TdFunction {
     messageSenderId: messageSenderId ?? this.messageSenderId,
   );
 
-  static const CONSTRUCTOR = 'setChatMessageSender';
-  
+  static const String objectType = 'setChatMessageSender';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class ChatAction extends TdObject {
-
-  /// Describes the different types of activity in a chat
+/// **ChatAction** *(chatAction)* - parent
+///
+/// Describes the different types of activity in a chat.
+sealed class ChatAction extends TdObject {
+  
+  /// **ChatAction** *(chatAction)* - parent
+  ///
+  /// Describes the different types of activity in a chat.
   const ChatAction();
   
   /// a ChatAction return type can be :
@@ -23,115 +28,145 @@ class ChatAction extends TdObject {
   /// * [ChatActionCancel]
   factory ChatAction.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case ChatActionTyping.CONSTRUCTOR:
+      case ChatActionTyping.objectType:
         return ChatActionTyping.fromJson(json);
-      case ChatActionRecordingVideo.CONSTRUCTOR:
+      case ChatActionRecordingVideo.objectType:
         return ChatActionRecordingVideo.fromJson(json);
-      case ChatActionUploadingVideo.CONSTRUCTOR:
+      case ChatActionUploadingVideo.objectType:
         return ChatActionUploadingVideo.fromJson(json);
-      case ChatActionRecordingVoiceNote.CONSTRUCTOR:
+      case ChatActionRecordingVoiceNote.objectType:
         return ChatActionRecordingVoiceNote.fromJson(json);
-      case ChatActionUploadingVoiceNote.CONSTRUCTOR:
+      case ChatActionUploadingVoiceNote.objectType:
         return ChatActionUploadingVoiceNote.fromJson(json);
-      case ChatActionUploadingPhoto.CONSTRUCTOR:
+      case ChatActionUploadingPhoto.objectType:
         return ChatActionUploadingPhoto.fromJson(json);
-      case ChatActionUploadingDocument.CONSTRUCTOR:
+      case ChatActionUploadingDocument.objectType:
         return ChatActionUploadingDocument.fromJson(json);
-      case ChatActionChoosingSticker.CONSTRUCTOR:
+      case ChatActionChoosingSticker.objectType:
         return ChatActionChoosingSticker.fromJson(json);
-      case ChatActionChoosingLocation.CONSTRUCTOR:
+      case ChatActionChoosingLocation.objectType:
         return ChatActionChoosingLocation.fromJson(json);
-      case ChatActionChoosingContact.CONSTRUCTOR:
+      case ChatActionChoosingContact.objectType:
         return ChatActionChoosingContact.fromJson(json);
-      case ChatActionStartPlayingGame.CONSTRUCTOR:
+      case ChatActionStartPlayingGame.objectType:
         return ChatActionStartPlayingGame.fromJson(json);
-      case ChatActionRecordingVideoNote.CONSTRUCTOR:
+      case ChatActionRecordingVideoNote.objectType:
         return ChatActionRecordingVideoNote.fromJson(json);
-      case ChatActionUploadingVideoNote.CONSTRUCTOR:
+      case ChatActionUploadingVideoNote.objectType:
         return ChatActionUploadingVideoNote.fromJson(json);
-      case ChatActionWatchingAnimations.CONSTRUCTOR:
+      case ChatActionWatchingAnimations.objectType:
         return ChatActionWatchingAnimations.fromJson(json);
-      case ChatActionCancel.CONSTRUCTOR:
+      case ChatActionCancel.objectType:
         return ChatActionCancel.fromJson(json);
       default:
-        return const ChatAction();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of ChatAction)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  ChatAction copyWith() => const ChatAction();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'chatAction';
   
+  ChatAction copyWith();
+
+  static const String objectType = 'chatAction';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ChatActionTyping extends ChatAction {
-
-  /// The user is typing a message
+/// **ChatActionTyping** *(chatActionTyping)* - child of ChatAction
+///
+/// The user is typing a message.
+final class ChatActionTyping extends ChatAction {
+  
+  /// **ChatActionTyping** *(chatActionTyping)* - child of ChatAction
+  ///
+  /// The user is typing a message.
   const ChatActionTyping();
   
   /// Parse from a json
   factory ChatActionTyping.fromJson(Map<String, dynamic> json) => const ChatActionTyping();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   ChatActionTyping copyWith() => const ChatActionTyping();
 
-  static const CONSTRUCTOR = 'chatActionTyping';
-  
+  static const String objectType = 'chatActionTyping';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ChatActionRecordingVideo extends ChatAction {
-
-  /// The user is recording a video
+/// **ChatActionRecordingVideo** *(chatActionRecordingVideo)* - child of ChatAction
+///
+/// The user is recording a video.
+final class ChatActionRecordingVideo extends ChatAction {
+  
+  /// **ChatActionRecordingVideo** *(chatActionRecordingVideo)* - child of ChatAction
+  ///
+  /// The user is recording a video.
   const ChatActionRecordingVideo();
   
   /// Parse from a json
   factory ChatActionRecordingVideo.fromJson(Map<String, dynamic> json) => const ChatActionRecordingVideo();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   ChatActionRecordingVideo copyWith() => const ChatActionRecordingVideo();
 
-  static const CONSTRUCTOR = 'chatActionRecordingVideo';
-  
+  static const String objectType = 'chatActionRecordingVideo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ChatActionUploadingVideo extends ChatAction {
-
-  /// The user is uploading a video
+/// **ChatActionUploadingVideo** *(chatActionUploadingVideo)* - child of ChatAction
+///
+/// The user is uploading a video.
+///
+/// * [progress]: Upload progress, as a percentage.
+final class ChatActionUploadingVideo extends ChatAction {
+  
+  /// **ChatActionUploadingVideo** *(chatActionUploadingVideo)* - child of ChatAction
+  ///
+  /// The user is uploading a video.
+  ///
+  /// * [progress]: Upload progress, as a percentage.
   const ChatActionUploadingVideo({
     required this.progress,
   });
   
-  /// [progress] Upload progress, as a percentage
+  /// Upload progress, as a percentage
   final int progress;
   
   /// Parse from a json
@@ -141,12 +176,13 @@ class ChatActionUploadingVideo extends ChatAction {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "progress": progress,
-    };
-  }
+		};
+	}
+
   
   @override
   ChatActionUploadingVideo copyWith({
@@ -155,46 +191,67 @@ class ChatActionUploadingVideo extends ChatAction {
     progress: progress ?? this.progress,
   );
 
-  static const CONSTRUCTOR = 'chatActionUploadingVideo';
-  
+  static const String objectType = 'chatActionUploadingVideo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ChatActionRecordingVoiceNote extends ChatAction {
-
-  /// The user is recording a voice note
+/// **ChatActionRecordingVoiceNote** *(chatActionRecordingVoiceNote)* - child of ChatAction
+///
+/// The user is recording a voice note.
+final class ChatActionRecordingVoiceNote extends ChatAction {
+  
+  /// **ChatActionRecordingVoiceNote** *(chatActionRecordingVoiceNote)* - child of ChatAction
+  ///
+  /// The user is recording a voice note.
   const ChatActionRecordingVoiceNote();
   
   /// Parse from a json
   factory ChatActionRecordingVoiceNote.fromJson(Map<String, dynamic> json) => const ChatActionRecordingVoiceNote();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   ChatActionRecordingVoiceNote copyWith() => const ChatActionRecordingVoiceNote();
 
-  static const CONSTRUCTOR = 'chatActionRecordingVoiceNote';
-  
+  static const String objectType = 'chatActionRecordingVoiceNote';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ChatActionUploadingVoiceNote extends ChatAction {
-
-  /// The user is uploading a voice note
+/// **ChatActionUploadingVoiceNote** *(chatActionUploadingVoiceNote)* - child of ChatAction
+///
+/// The user is uploading a voice note.
+///
+/// * [progress]: Upload progress, as a percentage.
+final class ChatActionUploadingVoiceNote extends ChatAction {
+  
+  /// **ChatActionUploadingVoiceNote** *(chatActionUploadingVoiceNote)* - child of ChatAction
+  ///
+  /// The user is uploading a voice note.
+  ///
+  /// * [progress]: Upload progress, as a percentage.
   const ChatActionUploadingVoiceNote({
     required this.progress,
   });
   
-  /// [progress] Upload progress, as a percentage
+  /// Upload progress, as a percentage
   final int progress;
   
   /// Parse from a json
@@ -204,12 +261,13 @@ class ChatActionUploadingVoiceNote extends ChatAction {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "progress": progress,
-    };
-  }
+		};
+	}
+
   
   @override
   ChatActionUploadingVoiceNote copyWith({
@@ -218,21 +276,33 @@ class ChatActionUploadingVoiceNote extends ChatAction {
     progress: progress ?? this.progress,
   );
 
-  static const CONSTRUCTOR = 'chatActionUploadingVoiceNote';
-  
+  static const String objectType = 'chatActionUploadingVoiceNote';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ChatActionUploadingPhoto extends ChatAction {
-
-  /// The user is uploading a photo
+/// **ChatActionUploadingPhoto** *(chatActionUploadingPhoto)* - child of ChatAction
+///
+/// The user is uploading a photo.
+///
+/// * [progress]: Upload progress, as a percentage.
+final class ChatActionUploadingPhoto extends ChatAction {
+  
+  /// **ChatActionUploadingPhoto** *(chatActionUploadingPhoto)* - child of ChatAction
+  ///
+  /// The user is uploading a photo.
+  ///
+  /// * [progress]: Upload progress, as a percentage.
   const ChatActionUploadingPhoto({
     required this.progress,
   });
   
-  /// [progress] Upload progress, as a percentage
+  /// Upload progress, as a percentage
   final int progress;
   
   /// Parse from a json
@@ -242,12 +312,13 @@ class ChatActionUploadingPhoto extends ChatAction {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "progress": progress,
-    };
-  }
+		};
+	}
+
   
   @override
   ChatActionUploadingPhoto copyWith({
@@ -256,21 +327,33 @@ class ChatActionUploadingPhoto extends ChatAction {
     progress: progress ?? this.progress,
   );
 
-  static const CONSTRUCTOR = 'chatActionUploadingPhoto';
-  
+  static const String objectType = 'chatActionUploadingPhoto';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ChatActionUploadingDocument extends ChatAction {
-
-  /// The user is uploading a document
+/// **ChatActionUploadingDocument** *(chatActionUploadingDocument)* - child of ChatAction
+///
+/// The user is uploading a document.
+///
+/// * [progress]: Upload progress, as a percentage.
+final class ChatActionUploadingDocument extends ChatAction {
+  
+  /// **ChatActionUploadingDocument** *(chatActionUploadingDocument)* - child of ChatAction
+  ///
+  /// The user is uploading a document.
+  ///
+  /// * [progress]: Upload progress, as a percentage.
   const ChatActionUploadingDocument({
     required this.progress,
   });
   
-  /// [progress] Upload progress, as a percentage
+  /// Upload progress, as a percentage
   final int progress;
   
   /// Parse from a json
@@ -280,12 +363,13 @@ class ChatActionUploadingDocument extends ChatAction {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "progress": progress,
-    };
-  }
+		};
+	}
+
   
   @override
   ChatActionUploadingDocument copyWith({
@@ -294,146 +378,203 @@ class ChatActionUploadingDocument extends ChatAction {
     progress: progress ?? this.progress,
   );
 
-  static const CONSTRUCTOR = 'chatActionUploadingDocument';
-  
+  static const String objectType = 'chatActionUploadingDocument';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ChatActionChoosingSticker extends ChatAction {
-
-  /// The user is picking a sticker to send
+/// **ChatActionChoosingSticker** *(chatActionChoosingSticker)* - child of ChatAction
+///
+/// The user is picking a sticker to send.
+final class ChatActionChoosingSticker extends ChatAction {
+  
+  /// **ChatActionChoosingSticker** *(chatActionChoosingSticker)* - child of ChatAction
+  ///
+  /// The user is picking a sticker to send.
   const ChatActionChoosingSticker();
   
   /// Parse from a json
   factory ChatActionChoosingSticker.fromJson(Map<String, dynamic> json) => const ChatActionChoosingSticker();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   ChatActionChoosingSticker copyWith() => const ChatActionChoosingSticker();
 
-  static const CONSTRUCTOR = 'chatActionChoosingSticker';
-  
+  static const String objectType = 'chatActionChoosingSticker';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ChatActionChoosingLocation extends ChatAction {
-
-  /// The user is picking a location or venue to send
+/// **ChatActionChoosingLocation** *(chatActionChoosingLocation)* - child of ChatAction
+///
+/// The user is picking a location or venue to send.
+final class ChatActionChoosingLocation extends ChatAction {
+  
+  /// **ChatActionChoosingLocation** *(chatActionChoosingLocation)* - child of ChatAction
+  ///
+  /// The user is picking a location or venue to send.
   const ChatActionChoosingLocation();
   
   /// Parse from a json
   factory ChatActionChoosingLocation.fromJson(Map<String, dynamic> json) => const ChatActionChoosingLocation();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   ChatActionChoosingLocation copyWith() => const ChatActionChoosingLocation();
 
-  static const CONSTRUCTOR = 'chatActionChoosingLocation';
-  
+  static const String objectType = 'chatActionChoosingLocation';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ChatActionChoosingContact extends ChatAction {
-
-  /// The user is picking a contact to send
+/// **ChatActionChoosingContact** *(chatActionChoosingContact)* - child of ChatAction
+///
+/// The user is picking a contact to send.
+final class ChatActionChoosingContact extends ChatAction {
+  
+  /// **ChatActionChoosingContact** *(chatActionChoosingContact)* - child of ChatAction
+  ///
+  /// The user is picking a contact to send.
   const ChatActionChoosingContact();
   
   /// Parse from a json
   factory ChatActionChoosingContact.fromJson(Map<String, dynamic> json) => const ChatActionChoosingContact();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   ChatActionChoosingContact copyWith() => const ChatActionChoosingContact();
 
-  static const CONSTRUCTOR = 'chatActionChoosingContact';
-  
+  static const String objectType = 'chatActionChoosingContact';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ChatActionStartPlayingGame extends ChatAction {
-
-  /// The user has started to play a game
+/// **ChatActionStartPlayingGame** *(chatActionStartPlayingGame)* - child of ChatAction
+///
+/// The user has started to play a game.
+final class ChatActionStartPlayingGame extends ChatAction {
+  
+  /// **ChatActionStartPlayingGame** *(chatActionStartPlayingGame)* - child of ChatAction
+  ///
+  /// The user has started to play a game.
   const ChatActionStartPlayingGame();
   
   /// Parse from a json
   factory ChatActionStartPlayingGame.fromJson(Map<String, dynamic> json) => const ChatActionStartPlayingGame();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   ChatActionStartPlayingGame copyWith() => const ChatActionStartPlayingGame();
 
-  static const CONSTRUCTOR = 'chatActionStartPlayingGame';
-  
+  static const String objectType = 'chatActionStartPlayingGame';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ChatActionRecordingVideoNote extends ChatAction {
-
-  /// The user is recording a video note
+/// **ChatActionRecordingVideoNote** *(chatActionRecordingVideoNote)* - child of ChatAction
+///
+/// The user is recording a video note.
+final class ChatActionRecordingVideoNote extends ChatAction {
+  
+  /// **ChatActionRecordingVideoNote** *(chatActionRecordingVideoNote)* - child of ChatAction
+  ///
+  /// The user is recording a video note.
   const ChatActionRecordingVideoNote();
   
   /// Parse from a json
   factory ChatActionRecordingVideoNote.fromJson(Map<String, dynamic> json) => const ChatActionRecordingVideoNote();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   ChatActionRecordingVideoNote copyWith() => const ChatActionRecordingVideoNote();
 
-  static const CONSTRUCTOR = 'chatActionRecordingVideoNote';
-  
+  static const String objectType = 'chatActionRecordingVideoNote';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ChatActionUploadingVideoNote extends ChatAction {
-
-  /// The user is uploading a video note
+/// **ChatActionUploadingVideoNote** *(chatActionUploadingVideoNote)* - child of ChatAction
+///
+/// The user is uploading a video note.
+///
+/// * [progress]: Upload progress, as a percentage.
+final class ChatActionUploadingVideoNote extends ChatAction {
+  
+  /// **ChatActionUploadingVideoNote** *(chatActionUploadingVideoNote)* - child of ChatAction
+  ///
+  /// The user is uploading a video note.
+  ///
+  /// * [progress]: Upload progress, as a percentage.
   const ChatActionUploadingVideoNote({
     required this.progress,
   });
   
-  /// [progress] Upload progress, as a percentage
+  /// Upload progress, as a percentage
   final int progress;
   
   /// Parse from a json
@@ -443,12 +584,13 @@ class ChatActionUploadingVideoNote extends ChatAction {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "progress": progress,
-    };
-  }
+		};
+	}
+
   
   @override
   ChatActionUploadingVideoNote copyWith({
@@ -457,21 +599,33 @@ class ChatActionUploadingVideoNote extends ChatAction {
     progress: progress ?? this.progress,
   );
 
-  static const CONSTRUCTOR = 'chatActionUploadingVideoNote';
-  
+  static const String objectType = 'chatActionUploadingVideoNote';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ChatActionWatchingAnimations extends ChatAction {
-
-  /// The user is watching animations sent by the other party by clicking on an animated emoji
+/// **ChatActionWatchingAnimations** *(chatActionWatchingAnimations)* - child of ChatAction
+///
+/// The user is watching animations sent by the other party by clicking on an animated emoji.
+///
+/// * [emoji]: The animated emoji.
+final class ChatActionWatchingAnimations extends ChatAction {
+  
+  /// **ChatActionWatchingAnimations** *(chatActionWatchingAnimations)* - child of ChatAction
+  ///
+  /// The user is watching animations sent by the other party by clicking on an animated emoji.
+  ///
+  /// * [emoji]: The animated emoji.
   const ChatActionWatchingAnimations({
     required this.emoji,
   });
   
-  /// [emoji] The animated emoji
+  /// The animated emoji
   final String emoji;
   
   /// Parse from a json
@@ -481,12 +635,13 @@ class ChatActionWatchingAnimations extends ChatAction {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "emoji": emoji,
-    };
-  }
+		};
+	}
+
   
   @override
   ChatActionWatchingAnimations copyWith({
@@ -495,33 +650,45 @@ class ChatActionWatchingAnimations extends ChatAction {
     emoji: emoji ?? this.emoji,
   );
 
-  static const CONSTRUCTOR = 'chatActionWatchingAnimations';
-  
+  static const String objectType = 'chatActionWatchingAnimations';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ChatActionCancel extends ChatAction {
-
-  /// The user has canceled the previous action
+/// **ChatActionCancel** *(chatActionCancel)* - child of ChatAction
+///
+/// The user has canceled the previous action.
+final class ChatActionCancel extends ChatAction {
+  
+  /// **ChatActionCancel** *(chatActionCancel)* - child of ChatAction
+  ///
+  /// The user has canceled the previous action.
   const ChatActionCancel();
   
   /// Parse from a json
   factory ChatActionCancel.fromJson(Map<String, dynamic> json) => const ChatActionCancel();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   ChatActionCancel copyWith() => const ChatActionCancel();
 
-  static const CONSTRUCTOR = 'chatActionCancel';
-  
+  static const String objectType = 'chatActionCancel';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

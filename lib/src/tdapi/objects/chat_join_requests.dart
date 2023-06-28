@@ -1,8 +1,19 @@
 part of '../tdapi.dart';
 
-class ChatJoinRequests extends TdObject {
-
-  /// Contains a list of requests to join a chat
+/// **ChatJoinRequests** *(chatJoinRequests)* - basic class
+///
+/// Contains a list of requests to join a chat.
+///
+/// * [totalCount]: Approximate total number of requests found.
+/// * [requests]: List of the requests.
+final class ChatJoinRequests extends TdObject {
+  
+  /// **ChatJoinRequests** *(chatJoinRequests)* - basic class
+  ///
+  /// Contains a list of requests to join a chat.
+  ///
+  /// * [totalCount]: Approximate total number of requests found.
+  /// * [requests]: List of the requests.
   const ChatJoinRequests({
     required this.totalCount,
     required this.requests,
@@ -10,10 +21,10 @@ class ChatJoinRequests extends TdObject {
     this.clientId,
   });
   
-  /// [totalCount] Approximate total count of requests found 
+  /// Approximate total number of requests found 
   final int totalCount;
 
-  /// [requests] List of the requests
+  /// List of the requests
   final List<ChatJoinRequest> requests;
 
   /// [extra] callback sign
@@ -34,13 +45,14 @@ class ChatJoinRequests extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "total_count": totalCount,
       "requests": requests.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   ChatJoinRequests copyWith({
     int? totalCount,
@@ -54,8 +66,11 @@ class ChatJoinRequests extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'chatJoinRequests';
-  
+  static const String objectType = 'chatJoinRequests';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

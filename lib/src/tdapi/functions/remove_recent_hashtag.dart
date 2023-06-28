@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class RemoveRecentHashtag extends TdFunction {
-
-  /// Removes a hashtag from the list of recently used hashtags
+/// **RemoveRecentHashtag** *(removeRecentHashtag)* - TDLib function
+///
+/// Removes a hashtag from the list of recently used hashtags.
+///
+/// * [hashtag]: Hashtag to delete.
+///
+/// [Ok] is returned on completion.
+final class RemoveRecentHashtag extends TdFunction {
+  
+  /// **RemoveRecentHashtag** *(removeRecentHashtag)* - TDLib function
+  ///
+  /// Removes a hashtag from the list of recently used hashtags.
+  ///
+  /// * [hashtag]: Hashtag to delete.
+  ///
+  /// [Ok] is returned on completion.
   const RemoveRecentHashtag({
     required this.hashtag,
   });
   
-  /// [hashtag] Hashtag to delete
+  /// Hashtag to delete
   final String hashtag;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "hashtag": hashtag,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   RemoveRecentHashtag copyWith({
     String? hashtag,
@@ -25,8 +39,11 @@ class RemoveRecentHashtag extends TdFunction {
     hashtag: hashtag ?? this.hashtag,
   );
 
-  static const CONSTRUCTOR = 'removeRecentHashtag';
-  
+  static const String objectType = 'removeRecentHashtag';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

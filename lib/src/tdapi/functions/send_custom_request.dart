@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class SendCustomRequest extends TdFunction {
-
-  /// Sends a custom request; for bots only
+/// **SendCustomRequest** *(sendCustomRequest)* - TDLib function
+///
+/// Sends a custom request; for bots only.
+///
+/// * [method]: The method name.
+/// * [parameters]: JSON-serialized method parameters.
+///
+/// [CustomRequestResult] is returned on completion.
+final class SendCustomRequest extends TdFunction {
+  
+  /// **SendCustomRequest** *(sendCustomRequest)* - TDLib function
+  ///
+  /// Sends a custom request; for bots only.
+  ///
+  /// * [method]: The method name.
+  /// * [parameters]: JSON-serialized method parameters.
+  ///
+  /// [CustomRequestResult] is returned on completion.
   const SendCustomRequest({
     required this.method,
     required this.parameters,
   });
   
-  /// [method] The method name 
+  /// The method name 
   final String method;
 
-  /// [parameters] JSON-serialized method parameters
+  /// JSON-serialized method parameters
   final String parameters;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "method": method,
       "parameters": parameters,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SendCustomRequest copyWith({
     String? method,
@@ -32,8 +48,11 @@ class SendCustomRequest extends TdFunction {
     parameters: parameters ?? this.parameters,
   );
 
-  static const CONSTRUCTOR = 'sendCustomRequest';
-  
+  static const String objectType = 'sendCustomRequest';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

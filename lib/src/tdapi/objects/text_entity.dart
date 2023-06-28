@@ -1,21 +1,34 @@
 part of '../tdapi.dart';
 
-class TextEntity extends TdObject {
-
-  /// Represents a part of the text that needs to be formatted in some unusual way
+/// **TextEntity** *(textEntity)* - basic class
+///
+/// Represents a part of the text that needs to be formatted in some unusual way.
+///
+/// * [offset]: Offset of the entity, in UTF-16 code units.
+/// * [length]: Length of the entity, in UTF-16 code units.
+/// * [type]: Type of the entity.
+final class TextEntity extends TdObject {
+  
+  /// **TextEntity** *(textEntity)* - basic class
+  ///
+  /// Represents a part of the text that needs to be formatted in some unusual way.
+  ///
+  /// * [offset]: Offset of the entity, in UTF-16 code units.
+  /// * [length]: Length of the entity, in UTF-16 code units.
+  /// * [type]: Type of the entity.
   const TextEntity({
     required this.offset,
     required this.length,
     required this.type,
   });
   
-  /// [offset] Offset of the entity, in UTF-16 code units 
+  /// Offset of the entity, in UTF-16 code units 
   final int offset;
 
-  /// [length] Length of the entity, in UTF-16 code units 
+  /// Length of the entity, in UTF-16 code units 
   final int length;
 
-  /// [type] Type of the entity
+  /// Type of the entity
   final TextEntityType type;
   
   /// Parse from a json
@@ -27,14 +40,15 @@ class TextEntity extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "offset": offset,
       "length": length,
       "type": type.toJson(),
-    };
-  }
+		};
+	}
+
   
   TextEntity copyWith({
     int? offset,
@@ -46,8 +60,11 @@ class TextEntity extends TdObject {
     type: type ?? this.type,
   );
 
-  static const CONSTRUCTOR = 'textEntity';
-  
+  static const String objectType = 'textEntity';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

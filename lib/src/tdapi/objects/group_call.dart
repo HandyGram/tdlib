@@ -1,18 +1,69 @@
 part of '../tdapi.dart';
 
-class GroupCall extends TdObject {
-
-  /// Describes a group call
+/// **GroupCall** *(groupCall)* - basic class
+///
+/// Describes a group call.
+///
+/// * [id]: Group call identifier.
+/// * [title]: Group call title.
+/// * [scheduledStartDate]: Point in time (Unix timestamp) when the group call is supposed to be started by an administrator; 0 if it is already active or was ended.
+/// * [enabledStartNotification]: True, if the group call is scheduled and the current user will receive a notification when the group call will start.
+/// * [isActive]: True, if the call is active.
+/// * [isRtmpStream]: True, if the chat is an RTMP stream instead of an ordinary video chat.
+/// * [isJoined]: True, if the call is joined.
+/// * [needRejoin]: True, if user was kicked from the call because of network loss and the call needs to be rejoined.
+/// * [canBeManaged]: True, if the current user can manage the group call.
+/// * [participantCount]: Number of participants in the group call.
+/// * [hasHiddenListeners]: True, if group call participants, which are muted, aren't returned in participant list.
+/// * [loadedAllParticipants]: True, if all group call participants are loaded.
+/// * [recentSpeakers]: At most 3 recently speaking users in the group call.
+/// * [isMyVideoEnabled]: True, if the current user's video is enabled.
+/// * [isMyVideoPaused]: True, if the current user's video is paused.
+/// * [canEnableVideo]: True, if the current user can broadcast video or share screen.
+/// * [muteNewParticipants]: True, if only group call administrators can unmute new participants.
+/// * [canToggleMuteNewParticipants]: True, if the current user can enable or disable mute_new_participants setting.
+/// * [recordDuration]: Duration of the ongoing group call recording, in seconds; 0 if none. An updateGroupCall update is not triggered when value of this field changes, but the same recording goes on.
+/// * [isVideoRecorded]: True, if a video file is being recorded for the call.
+/// * [duration]: Call duration, in seconds; for ended calls only.
+final class GroupCall extends TdObject {
+  
+  /// **GroupCall** *(groupCall)* - basic class
+  ///
+  /// Describes a group call.
+  ///
+  /// * [id]: Group call identifier.
+  /// * [title]: Group call title.
+  /// * [scheduledStartDate]: Point in time (Unix timestamp) when the group call is supposed to be started by an administrator; 0 if it is already active or was ended.
+  /// * [enabledStartNotification]: True, if the group call is scheduled and the current user will receive a notification when the group call will start.
+  /// * [isActive]: True, if the call is active.
+  /// * [isRtmpStream]: True, if the chat is an RTMP stream instead of an ordinary video chat.
+  /// * [isJoined]: True, if the call is joined.
+  /// * [needRejoin]: True, if user was kicked from the call because of network loss and the call needs to be rejoined.
+  /// * [canBeManaged]: True, if the current user can manage the group call.
+  /// * [participantCount]: Number of participants in the group call.
+  /// * [hasHiddenListeners]: True, if group call participants, which are muted, aren't returned in participant list.
+  /// * [loadedAllParticipants]: True, if all group call participants are loaded.
+  /// * [recentSpeakers]: At most 3 recently speaking users in the group call.
+  /// * [isMyVideoEnabled]: True, if the current user's video is enabled.
+  /// * [isMyVideoPaused]: True, if the current user's video is paused.
+  /// * [canEnableVideo]: True, if the current user can broadcast video or share screen.
+  /// * [muteNewParticipants]: True, if only group call administrators can unmute new participants.
+  /// * [canToggleMuteNewParticipants]: True, if the current user can enable or disable mute_new_participants setting.
+  /// * [recordDuration]: Duration of the ongoing group call recording, in seconds; 0 if none. An updateGroupCall update is not triggered when value of this field changes, but the same recording goes on.
+  /// * [isVideoRecorded]: True, if a video file is being recorded for the call.
+  /// * [duration]: Call duration, in seconds; for ended calls only.
   const GroupCall({
     required this.id,
     required this.title,
     required this.scheduledStartDate,
     required this.enabledStartNotification,
     required this.isActive,
+    required this.isRtmpStream,
     required this.isJoined,
     required this.needRejoin,
     required this.canBeManaged,
     required this.participantCount,
+    required this.hasHiddenListeners,
     required this.loadedAllParticipants,
     required this.recentSpeakers,
     required this.isMyVideoEnabled,
@@ -27,61 +78,67 @@ class GroupCall extends TdObject {
     this.clientId,
   });
   
-  /// [id] Group call identifier
+  /// Group call identifier
   final int id;
 
-  /// [title] Group call title
+  /// Group call title
   final String title;
 
-  /// [scheduledStartDate] Point in time (Unix timestamp) when the group call is supposed to be started by an administrator; 0 if it is already active or was ended
+  /// Point in time (Unix timestamp) when the group call is supposed to be started by an administrator; 0 if it is already active or was ended
   final int scheduledStartDate;
 
-  /// [enabledStartNotification] True, if the group call is scheduled and the current user will receive a notification when the group call will start
+  /// True, if the group call is scheduled and the current user will receive a notification when the group call will start
   final bool enabledStartNotification;
 
-  /// [isActive] True, if the call is active
+  /// True, if the call is active
   final bool isActive;
 
-  /// [isJoined] True, if the call is joined
+  /// True, if the chat is an RTMP stream instead of an ordinary video chat
+  final bool isRtmpStream;
+
+  /// True, if the call is joined
   final bool isJoined;
 
-  /// [needRejoin] True, if user was kicked from the call because of network loss and the call needs to be rejoined
+  /// True, if user was kicked from the call because of network loss and the call needs to be rejoined
   final bool needRejoin;
 
-  /// [canBeManaged] True, if the current user can manage the group call
+  /// True, if the current user can manage the group call
   final bool canBeManaged;
 
-  /// [participantCount] Number of participants in the group call
+  /// Number of participants in the group call
   final int participantCount;
 
-  /// [loadedAllParticipants] True, if all group call participants are loaded
+  /// True, if group call participants, which are muted, aren't returned in participant list
+  final bool hasHiddenListeners;
+
+  /// True, if all group call participants are loaded
   final bool loadedAllParticipants;
 
-  /// [recentSpeakers] At most 3 recently speaking users in the group call
+  /// At most 3 recently speaking users in the group call
   final List<GroupCallRecentSpeaker> recentSpeakers;
 
-  /// [isMyVideoEnabled] True, if the current user's video is enabled
+  /// True, if the current user's video is enabled
   final bool isMyVideoEnabled;
 
-  /// [isMyVideoPaused] True, if the current user's video is paused
+  /// True, if the current user's video is paused
   final bool isMyVideoPaused;
 
-  /// [canEnableVideo] True, if the current user can broadcast video or share screen
+  /// True, if the current user can broadcast video or share screen
   final bool canEnableVideo;
 
-  /// [muteNewParticipants] True, if only group call administrators can unmute new participants
+  /// True, if only group call administrators can unmute new participants
   final bool muteNewParticipants;
 
-  /// [canToggleMuteNewParticipants] True, if the current user can enable or disable mute_new_participants setting
+  /// True, if the current user can enable or disable mute_new_participants setting
   final bool canToggleMuteNewParticipants;
 
-  /// [recordDuration] Duration of the ongoing group call recording, in seconds; 0 if none. An updateGroupCall update is not triggered when value of this field changes, but the same recording goes on
+  /// Duration of the ongoing group call recording, in seconds; 0 if none. An updateGroupCall update is not triggered when value of this field changes, but the same recording goes on
   final int recordDuration;
 
-  /// [isVideoRecorded] True, if a video file is being recorded for the call
+  /// True, if a video file is being recorded for the call
   final bool isVideoRecorded;
 
-  /// [duration] Call duration, in seconds; for ended calls only
+  /// Call duration, in seconds; for ended calls only
   final int duration;
 
   /// [extra] callback sign
@@ -99,10 +156,12 @@ class GroupCall extends TdObject {
     scheduledStartDate: json['scheduled_start_date'],
     enabledStartNotification: json['enabled_start_notification'],
     isActive: json['is_active'],
+    isRtmpStream: json['is_rtmp_stream'],
     isJoined: json['is_joined'],
     needRejoin: json['need_rejoin'],
     canBeManaged: json['can_be_managed'],
     participantCount: json['participant_count'],
+    hasHiddenListeners: json['has_hidden_listeners'],
     loadedAllParticipants: json['loaded_all_participants'],
     recentSpeakers: List<GroupCallRecentSpeaker>.from((json['recent_speakers'] ?? []).map((item) => GroupCallRecentSpeaker.fromJson(item)).toList()),
     isMyVideoEnabled: json['is_my_video_enabled'],
@@ -119,18 +178,20 @@ class GroupCall extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "id": id,
       "title": title,
       "scheduled_start_date": scheduledStartDate,
       "enabled_start_notification": enabledStartNotification,
       "is_active": isActive,
+      "is_rtmp_stream": isRtmpStream,
       "is_joined": isJoined,
       "need_rejoin": needRejoin,
       "can_be_managed": canBeManaged,
       "participant_count": participantCount,
+      "has_hidden_listeners": hasHiddenListeners,
       "loaded_all_participants": loadedAllParticipants,
       "recent_speakers": recentSpeakers.map((i) => i.toJson()).toList(),
       "is_my_video_enabled": isMyVideoEnabled,
@@ -141,8 +202,9 @@ class GroupCall extends TdObject {
       "record_duration": recordDuration,
       "is_video_recorded": isVideoRecorded,
       "duration": duration,
-    };
-  }
+		};
+	}
+
   
   GroupCall copyWith({
     int? id,
@@ -150,10 +212,12 @@ class GroupCall extends TdObject {
     int? scheduledStartDate,
     bool? enabledStartNotification,
     bool? isActive,
+    bool? isRtmpStream,
     bool? isJoined,
     bool? needRejoin,
     bool? canBeManaged,
     int? participantCount,
+    bool? hasHiddenListeners,
     bool? loadedAllParticipants,
     List<GroupCallRecentSpeaker>? recentSpeakers,
     bool? isMyVideoEnabled,
@@ -172,10 +236,12 @@ class GroupCall extends TdObject {
     scheduledStartDate: scheduledStartDate ?? this.scheduledStartDate,
     enabledStartNotification: enabledStartNotification ?? this.enabledStartNotification,
     isActive: isActive ?? this.isActive,
+    isRtmpStream: isRtmpStream ?? this.isRtmpStream,
     isJoined: isJoined ?? this.isJoined,
     needRejoin: needRejoin ?? this.needRejoin,
     canBeManaged: canBeManaged ?? this.canBeManaged,
     participantCount: participantCount ?? this.participantCount,
+    hasHiddenListeners: hasHiddenListeners ?? this.hasHiddenListeners,
     loadedAllParticipants: loadedAllParticipants ?? this.loadedAllParticipants,
     recentSpeakers: recentSpeakers ?? this.recentSpeakers,
     isMyVideoEnabled: isMyVideoEnabled ?? this.isMyVideoEnabled,
@@ -190,8 +256,11 @@ class GroupCall extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'groupCall';
-  
+  static const String objectType = 'groupCall';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

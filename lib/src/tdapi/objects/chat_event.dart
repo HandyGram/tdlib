@@ -1,8 +1,23 @@
 part of '../tdapi.dart';
 
-class ChatEvent extends TdObject {
-
-  /// Represents a chat event
+/// **ChatEvent** *(chatEvent)* - basic class
+///
+/// Represents a chat event.
+///
+/// * [id]: Chat event identifier.
+/// * [date]: Point in time (Unix timestamp) when the event happened.
+/// * [memberId]: Identifier of the user or chat who performed the action.
+/// * [action]: The action.
+final class ChatEvent extends TdObject {
+  
+  /// **ChatEvent** *(chatEvent)* - basic class
+  ///
+  /// Represents a chat event.
+  ///
+  /// * [id]: Chat event identifier.
+  /// * [date]: Point in time (Unix timestamp) when the event happened.
+  /// * [memberId]: Identifier of the user or chat who performed the action.
+  /// * [action]: The action.
   const ChatEvent({
     required this.id,
     required this.date,
@@ -10,16 +25,16 @@ class ChatEvent extends TdObject {
     required this.action,
   });
   
-  /// [id] Chat event identifier 
+  /// Chat event identifier
   final int id;
 
-  /// [date] Point in time (Unix timestamp) when the event happened 
+  /// Point in time (Unix timestamp) when the event happened
   final int date;
 
-  /// [memberId] Identifier of the user or chat who performed the action 
+  /// Identifier of the user or chat who performed the action
   final MessageSender memberId;
 
-  /// [action] The action
+  /// The action
   final ChatEventAction action;
   
   /// Parse from a json
@@ -32,15 +47,16 @@ class ChatEvent extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "id": id,
       "date": date,
       "member_id": memberId.toJson(),
       "action": action.toJson(),
-    };
-  }
+		};
+	}
+
   
   ChatEvent copyWith({
     int? id,
@@ -54,8 +70,11 @@ class ChatEvent extends TdObject {
     action: action ?? this.action,
   );
 
-  static const CONSTRUCTOR = 'chatEvent';
-  
+  static const String objectType = 'chatEvent';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

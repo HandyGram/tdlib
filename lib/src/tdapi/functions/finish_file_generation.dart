@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class FinishFileGeneration extends TdFunction {
-
-  /// Finishes the file generation
+/// **FinishFileGeneration** *(finishFileGeneration)* - TDLib function
+///
+/// Finishes the file generation.
+///
+/// * [generationId]: The identifier of the generation process.
+/// * [error]: If passed, the file generation has failed and must be terminated; pass null if the file generation succeeded *(optional)*.
+///
+/// [Ok] is returned on completion.
+final class FinishFileGeneration extends TdFunction {
+  
+  /// **FinishFileGeneration** *(finishFileGeneration)* - TDLib function
+  ///
+  /// Finishes the file generation.
+  ///
+  /// * [generationId]: The identifier of the generation process.
+  /// * [error]: If passed, the file generation has failed and must be terminated; pass null if the file generation succeeded *(optional)*.
+  ///
+  /// [Ok] is returned on completion.
   const FinishFileGeneration({
     required this.generationId,
     this.error,
   });
   
-  /// [generationId] The identifier of the generation process
+  /// The identifier of the generation process
   final int generationId;
 
-  /// [error] If passed, the file generation has failed and must be terminated; pass null if the file generation succeeded
+  /// If passed, the file generation has failed and must be terminated; pass null if the file generation succeeded
   final TdError? error;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "generation_id": generationId,
       "error": error?.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   FinishFileGeneration copyWith({
     int? generationId,
@@ -32,8 +48,11 @@ class FinishFileGeneration extends TdFunction {
     error: error ?? this.error,
   );
 
-  static const CONSTRUCTOR = 'finishFileGeneration';
-  
+  static const String objectType = 'finishFileGeneration';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class ToggleSessionCanAcceptSecretChats extends TdFunction {
-
-  /// Toggles whether a session can accept incoming secret chats
+/// **ToggleSessionCanAcceptSecretChats** *(toggleSessionCanAcceptSecretChats)* - TDLib function
+///
+/// Toggles whether a session can accept incoming secret chats.
+///
+/// * [sessionId]: Session identifier.
+/// * [canAcceptSecretChats]: Pass true to allow accepting secret chats by the session; pass false otherwise.
+///
+/// [Ok] is returned on completion.
+final class ToggleSessionCanAcceptSecretChats extends TdFunction {
+  
+  /// **ToggleSessionCanAcceptSecretChats** *(toggleSessionCanAcceptSecretChats)* - TDLib function
+  ///
+  /// Toggles whether a session can accept incoming secret chats.
+  ///
+  /// * [sessionId]: Session identifier.
+  /// * [canAcceptSecretChats]: Pass true to allow accepting secret chats by the session; pass false otherwise.
+  ///
+  /// [Ok] is returned on completion.
   const ToggleSessionCanAcceptSecretChats({
     required this.sessionId,
     required this.canAcceptSecretChats,
   });
   
-  /// [sessionId] Session identifier 
+  /// Session identifier 
   final int sessionId;
 
-  /// [canAcceptSecretChats] True, if incoming secret chats can be accepted by the session
+  /// Pass true to allow accepting secret chats by the session; pass false otherwise
   final bool canAcceptSecretChats;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "session_id": sessionId,
       "can_accept_secret_chats": canAcceptSecretChats,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   ToggleSessionCanAcceptSecretChats copyWith({
     int? sessionId,
@@ -32,8 +48,11 @@ class ToggleSessionCanAcceptSecretChats extends TdFunction {
     canAcceptSecretChats: canAcceptSecretChats ?? this.canAcceptSecretChats,
   );
 
-  static const CONSTRUCTOR = 'toggleSessionCanAcceptSecretChats';
-  
+  static const String objectType = 'toggleSessionCanAcceptSecretChats';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

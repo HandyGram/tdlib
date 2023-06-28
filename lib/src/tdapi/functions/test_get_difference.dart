@@ -1,23 +1,36 @@
 part of '../tdapi.dart';
 
-class TestGetDifference extends TdFunction {
-
-  /// Forces an updates.getDifference call to the Telegram servers; for testing only
+/// **TestGetDifference** *(testGetDifference)* - TDLib function
+///
+/// Forces an updates.getDifference call to the Telegram servers; for testing only.
+///
+/// [Ok] is returned on completion.
+final class TestGetDifference extends TdFunction {
+  
+  /// **TestGetDifference** *(testGetDifference)* - TDLib function
+  ///
+  /// Forces an updates.getDifference call to the Telegram servers; for testing only.
+  ///
+  /// [Ok] is returned on completion.
   const TestGetDifference();
   
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   TestGetDifference copyWith() => const TestGetDifference();
 
-  static const CONSTRUCTOR = 'testGetDifference';
-  
+  static const String objectType = 'testGetDifference';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

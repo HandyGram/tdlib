@@ -1,8 +1,27 @@
 part of '../tdapi.dart';
 
-class PageBlockRelatedArticle extends TdObject {
-
-  /// Contains information about a related article
+/// **PageBlockRelatedArticle** *(pageBlockRelatedArticle)* - basic class
+///
+/// Contains information about a related article.
+///
+/// * [url]: Related article URL.
+/// * [title]: Article title; may be empty.
+/// * [description]: Article description; may be empty.
+/// * [photo]: Article photo; may be null *(optional)*.
+/// * [author]: Article author; may be empty.
+/// * [publishDate]: Point in time (Unix timestamp) when the article was published; 0 if unknown.
+final class PageBlockRelatedArticle extends TdObject {
+  
+  /// **PageBlockRelatedArticle** *(pageBlockRelatedArticle)* - basic class
+  ///
+  /// Contains information about a related article.
+  ///
+  /// * [url]: Related article URL.
+  /// * [title]: Article title; may be empty.
+  /// * [description]: Article description; may be empty.
+  /// * [photo]: Article photo; may be null *(optional)*.
+  /// * [author]: Article author; may be empty.
+  /// * [publishDate]: Point in time (Unix timestamp) when the article was published; 0 if unknown.
   const PageBlockRelatedArticle({
     required this.url,
     required this.title,
@@ -12,22 +31,22 @@ class PageBlockRelatedArticle extends TdObject {
     required this.publishDate,
   });
   
-  /// [url] Related article URL 
+  /// Related article URL
   final String url;
 
-  /// [title] Article title; may be empty 
+  /// Article title; may be empty
   final String title;
 
-  /// [description] Article description; may be empty
+  /// Article description; may be empty
   final String description;
 
-  /// [photo] Article photo; may be null
+  /// Article photo; may be null
   final Photo? photo;
 
-  /// [author] Article author; may be empty 
+  /// Article author; may be empty
   final String author;
 
-  /// [publishDate] Point in time (Unix timestamp) when the article was published; 0 if unknown
+  /// Point in time (Unix timestamp) when the article was published; 0 if unknown
   final int publishDate;
   
   /// Parse from a json
@@ -42,17 +61,18 @@ class PageBlockRelatedArticle extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "url": url,
       "title": title,
       "description": description,
       "photo": photo?.toJson(),
       "author": author,
       "publish_date": publishDate,
-    };
-  }
+		};
+	}
+
   
   PageBlockRelatedArticle copyWith({
     String? url,
@@ -70,8 +90,11 @@ class PageBlockRelatedArticle extends TdObject {
     publishDate: publishDate ?? this.publishDate,
   );
 
-  static const CONSTRUCTOR = 'pageBlockRelatedArticle';
-  
+  static const String objectType = 'pageBlockRelatedArticle';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

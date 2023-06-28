@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class CheckPasswordRecoveryCode extends TdFunction {
-
-  /// Checks whether a 2-step verification password recovery code sent to an email address is valid
+/// **CheckPasswordRecoveryCode** *(checkPasswordRecoveryCode)* - TDLib function
+///
+/// Checks whether a 2-step verification password recovery code sent to an email address is valid.
+///
+/// * [recoveryCode]: Recovery code to check.
+///
+/// [Ok] is returned on completion.
+final class CheckPasswordRecoveryCode extends TdFunction {
+  
+  /// **CheckPasswordRecoveryCode** *(checkPasswordRecoveryCode)* - TDLib function
+  ///
+  /// Checks whether a 2-step verification password recovery code sent to an email address is valid.
+  ///
+  /// * [recoveryCode]: Recovery code to check.
+  ///
+  /// [Ok] is returned on completion.
   const CheckPasswordRecoveryCode({
     required this.recoveryCode,
   });
   
-  /// [recoveryCode] Recovery code to check
+  /// Recovery code to check
   final String recoveryCode;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "recovery_code": recoveryCode,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   CheckPasswordRecoveryCode copyWith({
     String? recoveryCode,
@@ -25,8 +39,11 @@ class CheckPasswordRecoveryCode extends TdFunction {
     recoveryCode: recoveryCode ?? this.recoveryCode,
   );
 
-  static const CONSTRUCTOR = 'checkPasswordRecoveryCode';
-  
+  static const String objectType = 'checkPasswordRecoveryCode';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

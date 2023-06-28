@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class SetChatPermissions extends TdFunction {
-
-  /// Changes the chat members permissions. Supported only for basic groups and supergroups. Requires can_restrict_members administrator right
+/// **SetChatPermissions** *(setChatPermissions)* - TDLib function
+///
+/// Changes the chat members permissions. Supported only for basic groups and supergroups. Requires can_restrict_members administrator right.
+///
+/// * [chatId]: Chat identifier.
+/// * [permissions]: New non-administrator members permissions in the chat.
+///
+/// [Ok] is returned on completion.
+final class SetChatPermissions extends TdFunction {
+  
+  /// **SetChatPermissions** *(setChatPermissions)* - TDLib function
+  ///
+  /// Changes the chat members permissions. Supported only for basic groups and supergroups. Requires can_restrict_members administrator right.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [permissions]: New non-administrator members permissions in the chat.
+  ///
+  /// [Ok] is returned on completion.
   const SetChatPermissions({
     required this.chatId,
     required this.permissions,
   });
   
-  /// [chatId] Chat identifier
+  /// Chat identifier
   final int chatId;
 
-  /// [permissions] New non-administrator members permissions in the chat
+  /// New non-administrator members permissions in the chat
   final ChatPermissions permissions;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "permissions": permissions.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SetChatPermissions copyWith({
     int? chatId,
@@ -32,8 +48,11 @@ class SetChatPermissions extends TdFunction {
     permissions: permissions ?? this.permissions,
   );
 
-  static const CONSTRUCTOR = 'setChatPermissions';
-  
+  static const String objectType = 'setChatPermissions';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,23 +1,36 @@
 part of '../tdapi.dart';
 
-class GetCountries extends TdFunction {
-
-  /// Returns information about existing countries. Can be called before authorization
+/// **GetCountries** *(getCountries)* - TDLib function
+///
+/// Returns information about existing countries. Can be called before authorization.
+///
+/// [Countries] is returned on completion.
+final class GetCountries extends TdFunction {
+  
+  /// **GetCountries** *(getCountries)* - TDLib function
+  ///
+  /// Returns information about existing countries. Can be called before authorization.
+  ///
+  /// [Countries] is returned on completion.
   const GetCountries();
   
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetCountries copyWith() => const GetCountries();
 
-  static const CONSTRUCTOR = 'getCountries';
-  
+  static const String objectType = 'getCountries';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

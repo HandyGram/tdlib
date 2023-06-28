@@ -1,24 +1,21 @@
-name: tdlib
-description: Flutter Plugin for TDLib.A complete tdlib-tdjson binding package.
-version: 1.5.9
-homepage: https://github.com/i-Naji/tdlib
+name: handy_tdlib
+description: Improved fork of tdlib package by i-Naji
+version: 2.0.0
+homepage: https://github.com/HandyGram/tdlib
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
-  flutter: ">=2.8.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  ffi: ^1.1.2
-  js: ^0.6.3
+  
+  ffi: ^2.0.2
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  flutter_lints: ^1.0.4
+  flutter_lints: ^2.0.2
   
-# For information on the generic Dart part of this file, see the
+# For information on thes generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
 
 # The following section is specific to Flutter.
@@ -32,16 +29,6 @@ flutter:
       android:
         package: org.naji.td.tdlib
         dartPluginClass: TdNativePlugin
-      ios:
-        dartPluginClass: TdNativePlugin
-      windows:
-        dartPluginClass: TdNativePlugin
-      macos:
-        dartPluginClass: TdNativePlugin
-      linux:
-        dartPluginClass: TdNativePlugin
-      web:
-        pluginClass: TdWebPlugin
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg
@@ -74,7 +61,7 @@ flutter:
   # https://flutter.dev/custom-fonts/#from-packages
 
 false_secrets:
-  - /android/src/main/jniLibs/arm64-v8a/libtdjson.so
-  - /android/src/main/jniLibs/armeabi-v7a/libtdjson.so
-  - /android/src/main/jniLibs/x86/libtdjson.so
-  - /android/src/main/jniLibs/x86_64/libtdjson.so
+  - /android/src/main/jniLibs/arm64-v8a/libtdjsonandroid.so
+  - /android/src/main/jniLibs/armeabi-v7a/libtdjsonandroid.so
+  - /android/src/main/jniLibs/x86/libtdjsonandroid.so
+  - /android/src/main/jniLibs/x86_64/libtdjsonandroid.so

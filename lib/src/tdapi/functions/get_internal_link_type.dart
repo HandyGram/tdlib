@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class GetInternalLinkType extends TdFunction {
-
-  /// Returns information about the type of an internal link. Returns a 404 error if the link is not internal. Can be called before authorization
+/// **GetInternalLinkType** *(getInternalLinkType)* - TDLib function
+///
+/// Returns information about the type of an internal link. Returns a 404 error if the link is not internal. Can be called before authorization.
+///
+/// * [link]: The link.
+///
+/// [InternalLinkType] is returned on completion.
+final class GetInternalLinkType extends TdFunction {
+  
+  /// **GetInternalLinkType** *(getInternalLinkType)* - TDLib function
+  ///
+  /// Returns information about the type of an internal link. Returns a 404 error if the link is not internal. Can be called before authorization.
+  ///
+  /// * [link]: The link.
+  ///
+  /// [InternalLinkType] is returned on completion.
   const GetInternalLinkType({
     required this.link,
   });
   
-  /// [link] The link
+  /// The link
   final String link;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "link": link,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetInternalLinkType copyWith({
     String? link,
@@ -25,8 +39,11 @@ class GetInternalLinkType extends TdFunction {
     link: link ?? this.link,
   );
 
-  static const CONSTRUCTOR = 'getInternalLinkType';
-  
+  static const String objectType = 'getInternalLinkType';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

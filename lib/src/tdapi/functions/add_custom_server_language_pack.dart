@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class AddCustomServerLanguagePack extends TdFunction {
-
-  /// Adds a custom server language pack to the list of installed language packs in current localization target. Can be called before authorization
+/// **AddCustomServerLanguagePack** *(addCustomServerLanguagePack)* - TDLib function
+///
+/// Adds a custom server language pack to the list of installed language packs in current localization target. Can be called before authorization.
+///
+/// * [languagePackId]: Identifier of a language pack to be added.
+///
+/// [Ok] is returned on completion.
+final class AddCustomServerLanguagePack extends TdFunction {
+  
+  /// **AddCustomServerLanguagePack** *(addCustomServerLanguagePack)* - TDLib function
+  ///
+  /// Adds a custom server language pack to the list of installed language packs in current localization target. Can be called before authorization.
+  ///
+  /// * [languagePackId]: Identifier of a language pack to be added.
+  ///
+  /// [Ok] is returned on completion.
   const AddCustomServerLanguagePack({
     required this.languagePackId,
   });
   
-  /// [languagePackId] Identifier of a language pack to be added; may be different from a name that is used in an "https://t.me/setlanguage/" link
+  /// Identifier of a language pack to be added
   final String languagePackId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "language_pack_id": languagePackId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   AddCustomServerLanguagePack copyWith({
     String? languagePackId,
@@ -25,8 +39,11 @@ class AddCustomServerLanguagePack extends TdFunction {
     languagePackId: languagePackId ?? this.languagePackId,
   );
 
-  static const CONSTRUCTOR = 'addCustomServerLanguagePack';
-  
+  static const String objectType = 'addCustomServerLanguagePack';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

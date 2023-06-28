@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class LoginUrlInfo extends TdObject {
-
-  /// Contains information about an inline button of type inlineKeyboardButtonTypeLoginUrl
+/// **LoginUrlInfo** *(loginUrlInfo)* - parent
+///
+/// Contains information about an inline button of type inlineKeyboardButtonTypeLoginUrl.
+sealed class LoginUrlInfo extends TdObject {
+  
+  /// **LoginUrlInfo** *(loginUrlInfo)* - parent
+  ///
+  /// Contains information about an inline button of type inlineKeyboardButtonTypeLoginUrl.
   const LoginUrlInfo();
   
   /// a LoginUrlInfo return type can be :
@@ -10,46 +15,60 @@ class LoginUrlInfo extends TdObject {
   /// * [LoginUrlInfoRequestConfirmation]
   factory LoginUrlInfo.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case LoginUrlInfoOpen.CONSTRUCTOR:
+      case LoginUrlInfoOpen.objectType:
         return LoginUrlInfoOpen.fromJson(json);
-      case LoginUrlInfoRequestConfirmation.CONSTRUCTOR:
+      case LoginUrlInfoRequestConfirmation.objectType:
         return LoginUrlInfoRequestConfirmation.fromJson(json);
       default:
-        return const LoginUrlInfo();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of LoginUrlInfo)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  LoginUrlInfo copyWith() => const LoginUrlInfo();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'loginUrlInfo';
   
+  LoginUrlInfo copyWith();
+
+  static const String objectType = 'loginUrlInfo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class LoginUrlInfoOpen extends LoginUrlInfo {
-
-  /// An HTTP url needs to be open
+/// **LoginUrlInfoOpen** *(loginUrlInfoOpen)* - child of LoginUrlInfo
+///
+/// An HTTP URL needs to be open.
+///
+/// * [url]: The URL to open.
+/// * [skipConfirmation]: True, if there is no need to show an ordinary open URL confirmation.
+final class LoginUrlInfoOpen extends LoginUrlInfo {
+  
+  /// **LoginUrlInfoOpen** *(loginUrlInfoOpen)* - child of LoginUrlInfo
+  ///
+  /// An HTTP URL needs to be open.
+  ///
+  /// * [url]: The URL to open.
+  /// * [skipConfirmation]: True, if there is no need to show an ordinary open URL confirmation.
   const LoginUrlInfoOpen({
     required this.url,
-    required this.skipConfirm,
+    required this.skipConfirmation,
     this.extra,
     this.clientId,
   });
   
-  /// [url] The URL to open 
+  /// The URL to open 
   final String url;
 
-  /// [skipConfirm] True, if there is no need to show an ordinary open URL confirm
-  final bool skipConfirm;
+  /// True, if there is no need to show an ordinary open URL confirmation
+  final bool skipConfirmation;
 
   /// [extra] callback sign
   @override
@@ -62,44 +81,63 @@ class LoginUrlInfoOpen extends LoginUrlInfo {
   /// Parse from a json
   factory LoginUrlInfoOpen.fromJson(Map<String, dynamic> json) => LoginUrlInfoOpen(
     url: json['url'],
-    skipConfirm: json['skip_confirm'],
+    skipConfirmation: json['skip_confirmation'],
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "url": url,
-      "skip_confirm": skipConfirm,
-    };
-  }
+      "skip_confirmation": skipConfirmation,
+		};
+	}
+
   
   @override
   LoginUrlInfoOpen copyWith({
     String? url,
-    bool? skipConfirm,
+    bool? skipConfirmation,
     dynamic extra,
     int? clientId,
   }) => LoginUrlInfoOpen(
     url: url ?? this.url,
-    skipConfirm: skipConfirm ?? this.skipConfirm,
+    skipConfirmation: skipConfirmation ?? this.skipConfirmation,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'loginUrlInfoOpen';
-  
+  static const String objectType = 'loginUrlInfoOpen';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
-
-  /// An authorization confirmation dialog needs to be shown to the user
+/// **LoginUrlInfoRequestConfirmation** *(loginUrlInfoRequestConfirmation)* - child of LoginUrlInfo
+///
+/// An authorization confirmation dialog needs to be shown to the user.
+///
+/// * [url]: An HTTP URL to be opened.
+/// * [domain]: A domain of the URL.
+/// * [botUserId]: User identifier of a bot linked with the website.
+/// * [requestWriteAccess]: True, if the user must be asked for the permission to the bot to send them messages.
+final class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
+  
+  /// **LoginUrlInfoRequestConfirmation** *(loginUrlInfoRequestConfirmation)* - child of LoginUrlInfo
+  ///
+  /// An authorization confirmation dialog needs to be shown to the user.
+  ///
+  /// * [url]: An HTTP URL to be opened.
+  /// * [domain]: A domain of the URL.
+  /// * [botUserId]: User identifier of a bot linked with the website.
+  /// * [requestWriteAccess]: True, if the user must be asked for the permission to the bot to send them messages.
   const LoginUrlInfoRequestConfirmation({
     required this.url,
     required this.domain,
@@ -109,16 +147,16 @@ class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
     this.clientId,
   });
   
-  /// [url] An HTTP URL to be opened 
+  /// An HTTP URL to be opened
   final String url;
 
-  /// [domain] A domain of the URL
+  /// A domain of the URL
   final String domain;
 
-  /// [botUserId] User identifier of a bot linked with the website
+  /// User identifier of a bot linked with the website
   final int botUserId;
 
-  /// [requestWriteAccess] True, if the user needs to be requested to give the permission to the bot to send them messages
+  /// True, if the user must be asked for the permission to the bot to send them messages
   final bool requestWriteAccess;
 
   /// [extra] callback sign
@@ -141,15 +179,16 @@ class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "url": url,
       "domain": domain,
       "bot_user_id": botUserId,
       "request_write_access": requestWriteAccess,
-    };
-  }
+		};
+	}
+
   
   @override
   LoginUrlInfoRequestConfirmation copyWith({
@@ -168,8 +207,11 @@ class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'loginUrlInfoRequestConfirmation';
-  
+  static const String objectType = 'loginUrlInfoRequestConfirmation';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

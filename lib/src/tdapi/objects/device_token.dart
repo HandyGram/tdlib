@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class DeviceToken extends TdObject {
-
-  /// Represents a data needed to subscribe for push notifications through registerDevice method. To use specific push notification service, the correct application platform must be specified and a valid server authentication data must be uploaded at https://my.telegram.org
+/// **DeviceToken** *(deviceToken)* - parent
+///
+/// Represents a data needed to subscribe for push notifications through registerDevice method.
+sealed class DeviceToken extends TdObject {
+  
+  /// **DeviceToken** *(deviceToken)* - parent
+  ///
+  /// Represents a data needed to subscribe for push notifications through registerDevice method.
   const DeviceToken();
   
   /// a DeviceToken return type can be :
@@ -17,63 +22,80 @@ class DeviceToken extends TdObject {
   /// * [DeviceTokenUbuntuPush]
   /// * [DeviceTokenBlackBerryPush]
   /// * [DeviceTokenTizenPush]
+  /// * [DeviceTokenHuaweiPush]
   factory DeviceToken.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case DeviceTokenFirebaseCloudMessaging.CONSTRUCTOR:
+      case DeviceTokenFirebaseCloudMessaging.objectType:
         return DeviceTokenFirebaseCloudMessaging.fromJson(json);
-      case DeviceTokenApplePush.CONSTRUCTOR:
+      case DeviceTokenApplePush.objectType:
         return DeviceTokenApplePush.fromJson(json);
-      case DeviceTokenApplePushVoIP.CONSTRUCTOR:
+      case DeviceTokenApplePushVoIP.objectType:
         return DeviceTokenApplePushVoIP.fromJson(json);
-      case DeviceTokenWindowsPush.CONSTRUCTOR:
+      case DeviceTokenWindowsPush.objectType:
         return DeviceTokenWindowsPush.fromJson(json);
-      case DeviceTokenMicrosoftPush.CONSTRUCTOR:
+      case DeviceTokenMicrosoftPush.objectType:
         return DeviceTokenMicrosoftPush.fromJson(json);
-      case DeviceTokenMicrosoftPushVoIP.CONSTRUCTOR:
+      case DeviceTokenMicrosoftPushVoIP.objectType:
         return DeviceTokenMicrosoftPushVoIP.fromJson(json);
-      case DeviceTokenWebPush.CONSTRUCTOR:
+      case DeviceTokenWebPush.objectType:
         return DeviceTokenWebPush.fromJson(json);
-      case DeviceTokenSimplePush.CONSTRUCTOR:
+      case DeviceTokenSimplePush.objectType:
         return DeviceTokenSimplePush.fromJson(json);
-      case DeviceTokenUbuntuPush.CONSTRUCTOR:
+      case DeviceTokenUbuntuPush.objectType:
         return DeviceTokenUbuntuPush.fromJson(json);
-      case DeviceTokenBlackBerryPush.CONSTRUCTOR:
+      case DeviceTokenBlackBerryPush.objectType:
         return DeviceTokenBlackBerryPush.fromJson(json);
-      case DeviceTokenTizenPush.CONSTRUCTOR:
+      case DeviceTokenTizenPush.objectType:
         return DeviceTokenTizenPush.fromJson(json);
+      case DeviceTokenHuaweiPush.objectType:
+        return DeviceTokenHuaweiPush.fromJson(json);
       default:
-        return const DeviceToken();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of DeviceToken)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  DeviceToken copyWith() => const DeviceToken();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'deviceToken';
   
+  DeviceToken copyWith();
+
+  static const String objectType = 'deviceToken';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class DeviceTokenFirebaseCloudMessaging extends DeviceToken {
-
-  /// A token for Firebase Cloud Messaging
+/// **DeviceTokenFirebaseCloudMessaging** *(deviceTokenFirebaseCloudMessaging)* - child of DeviceToken
+///
+/// A token for Firebase Cloud Messaging.
+///
+/// * [token]: Device registration token; may be empty to deregister a device.
+/// * [encrypt]: True, if push notifications must be additionally encrypted.
+final class DeviceTokenFirebaseCloudMessaging extends DeviceToken {
+  
+  /// **DeviceTokenFirebaseCloudMessaging** *(deviceTokenFirebaseCloudMessaging)* - child of DeviceToken
+  ///
+  /// A token for Firebase Cloud Messaging.
+  ///
+  /// * [token]: Device registration token; may be empty to deregister a device.
+  /// * [encrypt]: True, if push notifications must be additionally encrypted.
   const DeviceTokenFirebaseCloudMessaging({
     required this.token,
     required this.encrypt,
   });
   
-  /// [token] Device registration token; may be empty to deregister a device 
+  /// Device registration token; may be empty to deregister a device 
   final String token;
 
-  /// [encrypt] True, if push notifications must be additionally encrypted
+  /// True, if push notifications must be additionally encrypted
   final bool encrypt;
   
   /// Parse from a json
@@ -84,13 +106,14 @@ class DeviceTokenFirebaseCloudMessaging extends DeviceToken {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "token": token,
       "encrypt": encrypt,
-    };
-  }
+		};
+	}
+
   
   @override
   DeviceTokenFirebaseCloudMessaging copyWith({
@@ -101,25 +124,39 @@ class DeviceTokenFirebaseCloudMessaging extends DeviceToken {
     encrypt: encrypt ?? this.encrypt,
   );
 
-  static const CONSTRUCTOR = 'deviceTokenFirebaseCloudMessaging';
-  
+  static const String objectType = 'deviceTokenFirebaseCloudMessaging';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class DeviceTokenApplePush extends DeviceToken {
-
-  /// A token for Apple Push Notification service
+/// **DeviceTokenApplePush** *(deviceTokenApplePush)* - child of DeviceToken
+///
+/// A token for Apple Push Notification service.
+///
+/// * [deviceToken]: Device token; may be empty to deregister a device.
+/// * [isAppSandbox]: True, if App Sandbox is enabled.
+final class DeviceTokenApplePush extends DeviceToken {
+  
+  /// **DeviceTokenApplePush** *(deviceTokenApplePush)* - child of DeviceToken
+  ///
+  /// A token for Apple Push Notification service.
+  ///
+  /// * [deviceToken]: Device token; may be empty to deregister a device.
+  /// * [isAppSandbox]: True, if App Sandbox is enabled.
   const DeviceTokenApplePush({
     required this.deviceToken,
     required this.isAppSandbox,
   });
   
-  /// [deviceToken] Device token; may be empty to deregister a device 
+  /// Device token; may be empty to deregister a device 
   final String deviceToken;
 
-  /// [isAppSandbox] True, if App Sandbox is enabled
+  /// True, if App Sandbox is enabled
   final bool isAppSandbox;
   
   /// Parse from a json
@@ -130,13 +167,14 @@ class DeviceTokenApplePush extends DeviceToken {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "device_token": deviceToken,
       "is_app_sandbox": isAppSandbox,
-    };
-  }
+		};
+	}
+
   
   @override
   DeviceTokenApplePush copyWith({
@@ -147,29 +185,45 @@ class DeviceTokenApplePush extends DeviceToken {
     isAppSandbox: isAppSandbox ?? this.isAppSandbox,
   );
 
-  static const CONSTRUCTOR = 'deviceTokenApplePush';
-  
+  static const String objectType = 'deviceTokenApplePush';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class DeviceTokenApplePushVoIP extends DeviceToken {
-
-  /// A token for Apple Push Notification service VoIP notifications
+/// **DeviceTokenApplePushVoIP** *(deviceTokenApplePushVoIP)* - child of DeviceToken
+///
+/// A token for Apple Push Notification service VoIP notifications.
+///
+/// * [deviceToken]: Device token; may be empty to deregister a device.
+/// * [isAppSandbox]: True, if App Sandbox is enabled.
+/// * [encrypt]: True, if push notifications must be additionally encrypted.
+final class DeviceTokenApplePushVoIP extends DeviceToken {
+  
+  /// **DeviceTokenApplePushVoIP** *(deviceTokenApplePushVoIP)* - child of DeviceToken
+  ///
+  /// A token for Apple Push Notification service VoIP notifications.
+  ///
+  /// * [deviceToken]: Device token; may be empty to deregister a device.
+  /// * [isAppSandbox]: True, if App Sandbox is enabled.
+  /// * [encrypt]: True, if push notifications must be additionally encrypted.
   const DeviceTokenApplePushVoIP({
     required this.deviceToken,
     required this.isAppSandbox,
     required this.encrypt,
   });
   
-  /// [deviceToken] Device token; may be empty to deregister a device 
+  /// Device token; may be empty to deregister a device 
   final String deviceToken;
 
-  /// [isAppSandbox] True, if App Sandbox is enabled 
+  /// True, if App Sandbox is enabled 
   final bool isAppSandbox;
 
-  /// [encrypt] True, if push notifications must be additionally encrypted
+  /// True, if push notifications must be additionally encrypted
   final bool encrypt;
   
   /// Parse from a json
@@ -181,14 +235,15 @@ class DeviceTokenApplePushVoIP extends DeviceToken {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "device_token": deviceToken,
       "is_app_sandbox": isAppSandbox,
       "encrypt": encrypt,
-    };
-  }
+		};
+	}
+
   
   @override
   DeviceTokenApplePushVoIP copyWith({
@@ -201,21 +256,33 @@ class DeviceTokenApplePushVoIP extends DeviceToken {
     encrypt: encrypt ?? this.encrypt,
   );
 
-  static const CONSTRUCTOR = 'deviceTokenApplePushVoIP';
-  
+  static const String objectType = 'deviceTokenApplePushVoIP';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class DeviceTokenWindowsPush extends DeviceToken {
-
-  /// A token for Windows Push Notification Services
+/// **DeviceTokenWindowsPush** *(deviceTokenWindowsPush)* - child of DeviceToken
+///
+/// A token for Windows Push Notification Services.
+///
+/// * [accessToken]: The access token that will be used to send notifications; may be empty to deregister a device.
+final class DeviceTokenWindowsPush extends DeviceToken {
+  
+  /// **DeviceTokenWindowsPush** *(deviceTokenWindowsPush)* - child of DeviceToken
+  ///
+  /// A token for Windows Push Notification Services.
+  ///
+  /// * [accessToken]: The access token that will be used to send notifications; may be empty to deregister a device.
   const DeviceTokenWindowsPush({
     required this.accessToken,
   });
   
-  /// [accessToken] The access token that will be used to send notifications; may be empty to deregister a device
+  /// The access token that will be used to send notifications; may be empty to deregister a device
   final String accessToken;
   
   /// Parse from a json
@@ -225,12 +292,13 @@ class DeviceTokenWindowsPush extends DeviceToken {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "access_token": accessToken,
-    };
-  }
+		};
+	}
+
   
   @override
   DeviceTokenWindowsPush copyWith({
@@ -239,21 +307,33 @@ class DeviceTokenWindowsPush extends DeviceToken {
     accessToken: accessToken ?? this.accessToken,
   );
 
-  static const CONSTRUCTOR = 'deviceTokenWindowsPush';
-  
+  static const String objectType = 'deviceTokenWindowsPush';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class DeviceTokenMicrosoftPush extends DeviceToken {
-
-  /// A token for Microsoft Push Notification Service
+/// **DeviceTokenMicrosoftPush** *(deviceTokenMicrosoftPush)* - child of DeviceToken
+///
+/// A token for Microsoft Push Notification Service.
+///
+/// * [channelUri]: Push notification channel URI; may be empty to deregister a device.
+final class DeviceTokenMicrosoftPush extends DeviceToken {
+  
+  /// **DeviceTokenMicrosoftPush** *(deviceTokenMicrosoftPush)* - child of DeviceToken
+  ///
+  /// A token for Microsoft Push Notification Service.
+  ///
+  /// * [channelUri]: Push notification channel URI; may be empty to deregister a device.
   const DeviceTokenMicrosoftPush({
     required this.channelUri,
   });
   
-  /// [channelUri] Push notification channel URI; may be empty to deregister a device
+  /// Push notification channel URI; may be empty to deregister a device
   final String channelUri;
   
   /// Parse from a json
@@ -263,12 +343,13 @@ class DeviceTokenMicrosoftPush extends DeviceToken {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "channel_uri": channelUri,
-    };
-  }
+		};
+	}
+
   
   @override
   DeviceTokenMicrosoftPush copyWith({
@@ -277,21 +358,33 @@ class DeviceTokenMicrosoftPush extends DeviceToken {
     channelUri: channelUri ?? this.channelUri,
   );
 
-  static const CONSTRUCTOR = 'deviceTokenMicrosoftPush';
-  
+  static const String objectType = 'deviceTokenMicrosoftPush';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class DeviceTokenMicrosoftPushVoIP extends DeviceToken {
-
-  /// A token for Microsoft Push Notification Service VoIP channel
+/// **DeviceTokenMicrosoftPushVoIP** *(deviceTokenMicrosoftPushVoIP)* - child of DeviceToken
+///
+/// A token for Microsoft Push Notification Service VoIP channel.
+///
+/// * [channelUri]: Push notification channel URI; may be empty to deregister a device.
+final class DeviceTokenMicrosoftPushVoIP extends DeviceToken {
+  
+  /// **DeviceTokenMicrosoftPushVoIP** *(deviceTokenMicrosoftPushVoIP)* - child of DeviceToken
+  ///
+  /// A token for Microsoft Push Notification Service VoIP channel.
+  ///
+  /// * [channelUri]: Push notification channel URI; may be empty to deregister a device.
   const DeviceTokenMicrosoftPushVoIP({
     required this.channelUri,
   });
   
-  /// [channelUri] Push notification channel URI; may be empty to deregister a device
+  /// Push notification channel URI; may be empty to deregister a device
   final String channelUri;
   
   /// Parse from a json
@@ -301,12 +394,13 @@ class DeviceTokenMicrosoftPushVoIP extends DeviceToken {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "channel_uri": channelUri,
-    };
-  }
+		};
+	}
+
   
   @override
   DeviceTokenMicrosoftPushVoIP copyWith({
@@ -315,29 +409,45 @@ class DeviceTokenMicrosoftPushVoIP extends DeviceToken {
     channelUri: channelUri ?? this.channelUri,
   );
 
-  static const CONSTRUCTOR = 'deviceTokenMicrosoftPushVoIP';
-  
+  static const String objectType = 'deviceTokenMicrosoftPushVoIP';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class DeviceTokenWebPush extends DeviceToken {
-
-  /// A token for web Push API
+/// **DeviceTokenWebPush** *(deviceTokenWebPush)* - child of DeviceToken
+///
+/// A token for web Push API.
+///
+/// * [endpoint]: Absolute URL exposed by the push service where the application server can send push messages; may be empty to deregister a device.
+/// * [p256dhBase64url]: Base64url-encoded P-256 elliptic curve Diffie-Hellman public key.
+/// * [authBase64url]: Base64url-encoded authentication secret.
+final class DeviceTokenWebPush extends DeviceToken {
+  
+  /// **DeviceTokenWebPush** *(deviceTokenWebPush)* - child of DeviceToken
+  ///
+  /// A token for web Push API.
+  ///
+  /// * [endpoint]: Absolute URL exposed by the push service where the application server can send push messages; may be empty to deregister a device.
+  /// * [p256dhBase64url]: Base64url-encoded P-256 elliptic curve Diffie-Hellman public key.
+  /// * [authBase64url]: Base64url-encoded authentication secret.
   const DeviceTokenWebPush({
     required this.endpoint,
     required this.p256dhBase64url,
     required this.authBase64url,
   });
   
-  /// [endpoint] Absolute URL exposed by the push service where the application server can send push messages; may be empty to deregister a device
+  /// Absolute URL exposed by the push service where the application server can send push messages; may be empty to deregister a device
   final String endpoint;
 
-  /// [p256dhBase64url] Base64url-encoded P-256 elliptic curve Diffie-Hellman public key
+  /// Base64url-encoded P-256 elliptic curve Diffie-Hellman public key
   final String p256dhBase64url;
 
-  /// [authBase64url] Base64url-encoded authentication secret
+  /// Base64url-encoded authentication secret
   final String authBase64url;
   
   /// Parse from a json
@@ -349,14 +459,15 @@ class DeviceTokenWebPush extends DeviceToken {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "endpoint": endpoint,
       "p256dh_base64url": p256dhBase64url,
       "auth_base64url": authBase64url,
-    };
-  }
+		};
+	}
+
   
   @override
   DeviceTokenWebPush copyWith({
@@ -369,21 +480,33 @@ class DeviceTokenWebPush extends DeviceToken {
     authBase64url: authBase64url ?? this.authBase64url,
   );
 
-  static const CONSTRUCTOR = 'deviceTokenWebPush';
-  
+  static const String objectType = 'deviceTokenWebPush';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class DeviceTokenSimplePush extends DeviceToken {
-
-  /// A token for Simple Push API for Firefox OS
+/// **DeviceTokenSimplePush** *(deviceTokenSimplePush)* - child of DeviceToken
+///
+/// A token for Simple Push API for Firefox OS.
+///
+/// * [endpoint]: Absolute URL exposed by the push service where the application server can send push messages; may be empty to deregister a device.
+final class DeviceTokenSimplePush extends DeviceToken {
+  
+  /// **DeviceTokenSimplePush** *(deviceTokenSimplePush)* - child of DeviceToken
+  ///
+  /// A token for Simple Push API for Firefox OS.
+  ///
+  /// * [endpoint]: Absolute URL exposed by the push service where the application server can send push messages; may be empty to deregister a device.
   const DeviceTokenSimplePush({
     required this.endpoint,
   });
   
-  /// [endpoint] Absolute URL exposed by the push service where the application server can send push messages; may be empty to deregister a device
+  /// Absolute URL exposed by the push service where the application server can send push messages; may be empty to deregister a device
   final String endpoint;
   
   /// Parse from a json
@@ -393,12 +516,13 @@ class DeviceTokenSimplePush extends DeviceToken {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "endpoint": endpoint,
-    };
-  }
+		};
+	}
+
   
   @override
   DeviceTokenSimplePush copyWith({
@@ -407,21 +531,33 @@ class DeviceTokenSimplePush extends DeviceToken {
     endpoint: endpoint ?? this.endpoint,
   );
 
-  static const CONSTRUCTOR = 'deviceTokenSimplePush';
-  
+  static const String objectType = 'deviceTokenSimplePush';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class DeviceTokenUbuntuPush extends DeviceToken {
-
-  /// A token for Ubuntu Push Client service
+/// **DeviceTokenUbuntuPush** *(deviceTokenUbuntuPush)* - child of DeviceToken
+///
+/// A token for Ubuntu Push Client service.
+///
+/// * [token]: Token; may be empty to deregister a device.
+final class DeviceTokenUbuntuPush extends DeviceToken {
+  
+  /// **DeviceTokenUbuntuPush** *(deviceTokenUbuntuPush)* - child of DeviceToken
+  ///
+  /// A token for Ubuntu Push Client service.
+  ///
+  /// * [token]: Token; may be empty to deregister a device.
   const DeviceTokenUbuntuPush({
     required this.token,
   });
   
-  /// [token] Token; may be empty to deregister a device
+  /// Token; may be empty to deregister a device
   final String token;
   
   /// Parse from a json
@@ -431,12 +567,13 @@ class DeviceTokenUbuntuPush extends DeviceToken {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "token": token,
-    };
-  }
+		};
+	}
+
   
   @override
   DeviceTokenUbuntuPush copyWith({
@@ -445,21 +582,33 @@ class DeviceTokenUbuntuPush extends DeviceToken {
     token: token ?? this.token,
   );
 
-  static const CONSTRUCTOR = 'deviceTokenUbuntuPush';
-  
+  static const String objectType = 'deviceTokenUbuntuPush';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class DeviceTokenBlackBerryPush extends DeviceToken {
-
-  /// A token for BlackBerry Push Service
+/// **DeviceTokenBlackBerryPush** *(deviceTokenBlackBerryPush)* - child of DeviceToken
+///
+/// A token for BlackBerry Push Service.
+///
+/// * [token]: Token; may be empty to deregister a device.
+final class DeviceTokenBlackBerryPush extends DeviceToken {
+  
+  /// **DeviceTokenBlackBerryPush** *(deviceTokenBlackBerryPush)* - child of DeviceToken
+  ///
+  /// A token for BlackBerry Push Service.
+  ///
+  /// * [token]: Token; may be empty to deregister a device.
   const DeviceTokenBlackBerryPush({
     required this.token,
   });
   
-  /// [token] Token; may be empty to deregister a device
+  /// Token; may be empty to deregister a device
   final String token;
   
   /// Parse from a json
@@ -469,12 +618,13 @@ class DeviceTokenBlackBerryPush extends DeviceToken {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "token": token,
-    };
-  }
+		};
+	}
+
   
   @override
   DeviceTokenBlackBerryPush copyWith({
@@ -483,21 +633,33 @@ class DeviceTokenBlackBerryPush extends DeviceToken {
     token: token ?? this.token,
   );
 
-  static const CONSTRUCTOR = 'deviceTokenBlackBerryPush';
-  
+  static const String objectType = 'deviceTokenBlackBerryPush';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class DeviceTokenTizenPush extends DeviceToken {
-
-  /// A token for Tizen Push Service
+/// **DeviceTokenTizenPush** *(deviceTokenTizenPush)* - child of DeviceToken
+///
+/// A token for Tizen Push Service.
+///
+/// * [regId]: Push service registration identifier; may be empty to deregister a device.
+final class DeviceTokenTizenPush extends DeviceToken {
+  
+  /// **DeviceTokenTizenPush** *(deviceTokenTizenPush)* - child of DeviceToken
+  ///
+  /// A token for Tizen Push Service.
+  ///
+  /// * [regId]: Push service registration identifier; may be empty to deregister a device.
   const DeviceTokenTizenPush({
     required this.regId,
   });
   
-  /// [regId] Push service registration identifier; may be empty to deregister a device
+  /// Push service registration identifier; may be empty to deregister a device
   final String regId;
   
   /// Parse from a json
@@ -507,12 +669,13 @@ class DeviceTokenTizenPush extends DeviceToken {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "reg_id": regId,
-    };
-  }
+		};
+	}
+
   
   @override
   DeviceTokenTizenPush copyWith({
@@ -521,8 +684,72 @@ class DeviceTokenTizenPush extends DeviceToken {
     regId: regId ?? this.regId,
   );
 
-  static const CONSTRUCTOR = 'deviceTokenTizenPush';
+  static const String objectType = 'deviceTokenTizenPush';
+
+  @override
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **DeviceTokenHuaweiPush** *(deviceTokenHuaweiPush)* - child of DeviceToken
+///
+/// A token for HUAWEI Push Service.
+///
+/// * [token]: Device registration token; may be empty to deregister a device.
+/// * [encrypt]: True, if push notifications must be additionally encrypted.
+final class DeviceTokenHuaweiPush extends DeviceToken {
+  
+  /// **DeviceTokenHuaweiPush** *(deviceTokenHuaweiPush)* - child of DeviceToken
+  ///
+  /// A token for HUAWEI Push Service.
+  ///
+  /// * [token]: Device registration token; may be empty to deregister a device.
+  /// * [encrypt]: True, if push notifications must be additionally encrypted.
+  const DeviceTokenHuaweiPush({
+    required this.token,
+    required this.encrypt,
+  });
+  
+  /// Device registration token; may be empty to deregister a device 
+  final String token;
+
+  /// True, if push notifications must be additionally encrypted
+  final bool encrypt;
+  
+  /// Parse from a json
+  factory DeviceTokenHuaweiPush.fromJson(Map<String, dynamic> json) => DeviceTokenHuaweiPush(
+    token: json['token'],
+    encrypt: json['encrypt'],
+  );
+  
   
   @override
-  String getConstructor() => CONSTRUCTOR;
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "token": token,
+      "encrypt": encrypt,
+		};
+	}
+
+  
+  @override
+  DeviceTokenHuaweiPush copyWith({
+    String? token,
+    bool? encrypt,
+  }) => DeviceTokenHuaweiPush(
+    token: token ?? this.token,
+    encrypt: encrypt ?? this.encrypt,
+  );
+
+  static const String objectType = 'deviceTokenHuaweiPush';
+
+  @override
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

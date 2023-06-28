@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class GetChatStatistics extends TdFunction {
-
-  /// Returns detailed statistics about a chat. Currently, this method can be used only for supergroups and channels. Can be used only if supergroupFullInfo.can_get_statistics == true
+/// **GetChatStatistics** *(getChatStatistics)* - TDLib function
+///
+/// Returns detailed statistics about a chat. Currently, this method can be used only for supergroups and channels. Can be used only if supergroupFullInfo.can_get_statistics == true.
+///
+/// * [chatId]: Chat identifier.
+/// * [isDark]: Pass true if a dark theme is used by the application.
+///
+/// [ChatStatistics] is returned on completion.
+final class GetChatStatistics extends TdFunction {
+  
+  /// **GetChatStatistics** *(getChatStatistics)* - TDLib function
+  ///
+  /// Returns detailed statistics about a chat. Currently, this method can be used only for supergroups and channels. Can be used only if supergroupFullInfo.can_get_statistics == true.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [isDark]: Pass true if a dark theme is used by the application.
+  ///
+  /// [ChatStatistics] is returned on completion.
   const GetChatStatistics({
     required this.chatId,
     required this.isDark,
   });
   
-  /// [chatId] Chat identifier 
+  /// Chat identifier 
   final int chatId;
 
-  /// [isDark] Pass true if a dark theme is used by the application
+  /// Pass true if a dark theme is used by the application
   final bool isDark;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "is_dark": isDark,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetChatStatistics copyWith({
     int? chatId,
@@ -32,8 +48,11 @@ class GetChatStatistics extends TdFunction {
     isDark: isDark ?? this.isDark,
   );
 
-  static const CONSTRUCTOR = 'getChatStatistics';
-  
+  static const String objectType = 'getChatStatistics';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

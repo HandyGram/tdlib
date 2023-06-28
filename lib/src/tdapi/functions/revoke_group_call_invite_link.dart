@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class RevokeGroupCallInviteLink extends TdFunction {
-
-  /// Revokes invite link for a group call. Requires groupCall.can_be_managed group call flag
+/// **RevokeGroupCallInviteLink** *(revokeGroupCallInviteLink)* - TDLib function
+///
+/// Revokes invite link for a group call. Requires groupCall.can_be_managed group call flag.
+///
+/// * [groupCallId]: Group call identifier.
+///
+/// [Ok] is returned on completion.
+final class RevokeGroupCallInviteLink extends TdFunction {
+  
+  /// **RevokeGroupCallInviteLink** *(revokeGroupCallInviteLink)* - TDLib function
+  ///
+  /// Revokes invite link for a group call. Requires groupCall.can_be_managed group call flag.
+  ///
+  /// * [groupCallId]: Group call identifier.
+  ///
+  /// [Ok] is returned on completion.
   const RevokeGroupCallInviteLink({
     required this.groupCallId,
   });
   
-  /// [groupCallId] Group call identifier
+  /// Group call identifier
   final int groupCallId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "group_call_id": groupCallId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   RevokeGroupCallInviteLink copyWith({
     int? groupCallId,
@@ -25,8 +39,11 @@ class RevokeGroupCallInviteLink extends TdFunction {
     groupCallId: groupCallId ?? this.groupCallId,
   );
 
-  static const CONSTRUCTOR = 'revokeGroupCallInviteLink';
-  
+  static const String objectType = 'revokeGroupCallInviteLink';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

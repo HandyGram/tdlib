@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class SetChatLocation extends TdFunction {
-
-  /// Changes the location of a chat. Available only for some location-based supergroups, use supergroupFullInfo.can_set_location to check whether the method is allowed to use
+/// **SetChatLocation** *(setChatLocation)* - TDLib function
+///
+/// Changes the location of a chat. Available only for some location-based supergroups, use supergroupFullInfo.can_set_location to check whether the method is allowed to use.
+///
+/// * [chatId]: Chat identifier.
+/// * [location]: New location for the chat; must be valid and not null.
+///
+/// [Ok] is returned on completion.
+final class SetChatLocation extends TdFunction {
+  
+  /// **SetChatLocation** *(setChatLocation)* - TDLib function
+  ///
+  /// Changes the location of a chat. Available only for some location-based supergroups, use supergroupFullInfo.can_set_location to check whether the method is allowed to use.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [location]: New location for the chat; must be valid and not null.
+  ///
+  /// [Ok] is returned on completion.
   const SetChatLocation({
     required this.chatId,
     required this.location,
   });
   
-  /// [chatId] Chat identifier 
+  /// Chat identifier 
   final int chatId;
 
-  /// [location] New location for the chat; must be valid and not null
+  /// New location for the chat; must be valid and not null
   final ChatLocation location;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "location": location.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SetChatLocation copyWith({
     int? chatId,
@@ -32,8 +48,11 @@ class SetChatLocation extends TdFunction {
     location: location ?? this.location,
   );
 
-  static const CONSTRUCTOR = 'setChatLocation';
-  
+  static const String objectType = 'setChatLocation';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class SearchHashtags extends TdFunction {
-
-  /// Searches for recently used hashtags by their prefix
+/// **SearchHashtags** *(searchHashtags)* - TDLib function
+///
+/// Searches for recently used hashtags by their prefix.
+///
+/// * [prefix]: Hashtag prefix to search for.
+/// * [limit]: The maximum number of hashtags to be returned.
+///
+/// [Hashtags] is returned on completion.
+final class SearchHashtags extends TdFunction {
+  
+  /// **SearchHashtags** *(searchHashtags)* - TDLib function
+  ///
+  /// Searches for recently used hashtags by their prefix.
+  ///
+  /// * [prefix]: Hashtag prefix to search for.
+  /// * [limit]: The maximum number of hashtags to be returned.
+  ///
+  /// [Hashtags] is returned on completion.
   const SearchHashtags({
     required this.prefix,
     required this.limit,
   });
   
-  /// [prefix] Hashtag prefix to search for 
+  /// Hashtag prefix to search for 
   final String prefix;
 
-  /// [limit] The maximum number of hashtags to be returned
+  /// The maximum number of hashtags to be returned
   final int limit;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "prefix": prefix,
       "limit": limit,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SearchHashtags copyWith({
     String? prefix,
@@ -32,8 +48,11 @@ class SearchHashtags extends TdFunction {
     limit: limit ?? this.limit,
   );
 
-  static const CONSTRUCTOR = 'searchHashtags';
-  
+  static const String objectType = 'searchHashtags';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

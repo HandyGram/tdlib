@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class SetInactiveSessionTtl extends TdFunction {
-
-  /// Changes the period of inactivity after which sessions will automatically be terminated
+/// **SetInactiveSessionTtl** *(setInactiveSessionTtl)* - TDLib function
+///
+/// Changes the period of inactivity after which sessions will automatically be terminated.
+///
+/// * [inactiveSessionTtlDays]: New number of days of inactivity before sessions will be automatically terminated; 1-366 days.
+///
+/// [Ok] is returned on completion.
+final class SetInactiveSessionTtl extends TdFunction {
+  
+  /// **SetInactiveSessionTtl** *(setInactiveSessionTtl)* - TDLib function
+  ///
+  /// Changes the period of inactivity after which sessions will automatically be terminated.
+  ///
+  /// * [inactiveSessionTtlDays]: New number of days of inactivity before sessions will be automatically terminated; 1-366 days.
+  ///
+  /// [Ok] is returned on completion.
   const SetInactiveSessionTtl({
     required this.inactiveSessionTtlDays,
   });
   
-  /// [inactiveSessionTtlDays] New number of days of inactivity before sessions will be automatically terminated; 1-366 days
+  /// New number of days of inactivity before sessions will be automatically terminated; 1-366 days
   final int inactiveSessionTtlDays;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "inactive_session_ttl_days": inactiveSessionTtlDays,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SetInactiveSessionTtl copyWith({
     int? inactiveSessionTtlDays,
@@ -25,8 +39,11 @@ class SetInactiveSessionTtl extends TdFunction {
     inactiveSessionTtlDays: inactiveSessionTtlDays ?? this.inactiveSessionTtlDays,
   );
 
-  static const CONSTRUCTOR = 'setInactiveSessionTtl';
-  
+  static const String objectType = 'setInactiveSessionTtl';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

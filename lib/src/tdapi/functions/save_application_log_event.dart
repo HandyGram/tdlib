@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class SaveApplicationLogEvent extends TdFunction {
-
-  /// Saves application log event on the server. Can be called before authorization
+/// **SaveApplicationLogEvent** *(saveApplicationLogEvent)* - TDLib function
+///
+/// Saves application log event on the server. Can be called before authorization.
+///
+/// * [type]: Event type.
+/// * [chatId]: Optional chat identifier, associated with the event.
+/// * [data]: The log event data.
+///
+/// [Ok] is returned on completion.
+final class SaveApplicationLogEvent extends TdFunction {
+  
+  /// **SaveApplicationLogEvent** *(saveApplicationLogEvent)* - TDLib function
+  ///
+  /// Saves application log event on the server. Can be called before authorization.
+  ///
+  /// * [type]: Event type.
+  /// * [chatId]: Optional chat identifier, associated with the event.
+  /// * [data]: The log event data.
+  ///
+  /// [Ok] is returned on completion.
   const SaveApplicationLogEvent({
     required this.type,
     required this.chatId,
     required this.data,
   });
   
-  /// [type] Event type 
+  /// Event type 
   final String type;
 
-  /// [chatId] Optional chat identifier, associated with the event 
+  /// Optional chat identifier, associated with the event 
   final int chatId;
 
-  /// [data] The log event data
+  /// The log event data
   final JsonValue data;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "type": type,
       "chat_id": chatId,
       "data": data.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SaveApplicationLogEvent copyWith({
     String? type,
@@ -39,8 +57,11 @@ class SaveApplicationLogEvent extends TdFunction {
     data: data ?? this.data,
   );
 
-  static const CONSTRUCTOR = 'saveApplicationLogEvent';
-  
+  static const String objectType = 'saveApplicationLogEvent';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

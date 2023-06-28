@@ -1,8 +1,29 @@
 part of '../tdapi.dart';
 
-class TestProxy extends TdFunction {
-
-  /// Sends a simple network request to the Telegram servers via proxy; for testing only. Can be called before authorization
+/// **TestProxy** *(testProxy)* - TDLib function
+///
+/// Sends a simple network request to the Telegram servers via proxy; for testing only. Can be called before authorization.
+///
+/// * [server]: Proxy server IP address.
+/// * [port]: Proxy server port.
+/// * [type]: Proxy type.
+/// * [dcId]: Identifier of a datacenter with which to test connection.
+/// * [timeout]: The maximum overall timeout for the request.
+///
+/// [Ok] is returned on completion.
+final class TestProxy extends TdFunction {
+  
+  /// **TestProxy** *(testProxy)* - TDLib function
+  ///
+  /// Sends a simple network request to the Telegram servers via proxy; for testing only. Can be called before authorization.
+  ///
+  /// * [server]: Proxy server IP address.
+  /// * [port]: Proxy server port.
+  /// * [type]: Proxy type.
+  /// * [dcId]: Identifier of a datacenter with which to test connection.
+  /// * [timeout]: The maximum overall timeout for the request.
+  ///
+  /// [Ok] is returned on completion.
   const TestProxy({
     required this.server,
     required this.port,
@@ -11,33 +32,34 @@ class TestProxy extends TdFunction {
     required this.timeout,
   });
   
-  /// [server] Proxy server IP address 
+  /// Proxy server IP address
   final String server;
 
-  /// [port] Proxy server port 
+  /// Proxy server port
   final int port;
 
-  /// [type] Proxy type
+  /// Proxy type
   final ProxyType type;
 
-  /// [dcId] Identifier of a datacenter, with which to test connection
+  /// Identifier of a datacenter with which to test connection
   final int dcId;
 
-  /// [timeout] The maximum overall timeout for the request
+  /// The maximum overall timeout for the request
   final double timeout;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "server": server,
       "port": port,
       "type": type.toJson(),
       "dc_id": dcId,
       "timeout": timeout,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   TestProxy copyWith({
     String? server,
@@ -53,8 +75,11 @@ class TestProxy extends TdFunction {
     timeout: timeout ?? this.timeout,
   );
 
-  static const CONSTRUCTOR = 'testProxy';
-  
+  static const String objectType = 'testProxy';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

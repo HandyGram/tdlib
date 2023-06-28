@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class GetFileDownloadedPrefixSize extends TdFunction {
-
-  /// Returns file downloaded prefix size from a given offset, in bytes
+/// **GetFileDownloadedPrefixSize** *(getFileDownloadedPrefixSize)* - TDLib function
+///
+/// Returns file downloaded prefix size from a given offset, in bytes.
+///
+/// * [fileId]: Identifier of the file.
+/// * [offset]: Offset from which downloaded prefix size needs to be calculated.
+///
+/// [FileDownloadedPrefixSize] is returned on completion.
+final class GetFileDownloadedPrefixSize extends TdFunction {
+  
+  /// **GetFileDownloadedPrefixSize** *(getFileDownloadedPrefixSize)* - TDLib function
+  ///
+  /// Returns file downloaded prefix size from a given offset, in bytes.
+  ///
+  /// * [fileId]: Identifier of the file.
+  /// * [offset]: Offset from which downloaded prefix size needs to be calculated.
+  ///
+  /// [FileDownloadedPrefixSize] is returned on completion.
   const GetFileDownloadedPrefixSize({
     required this.fileId,
     required this.offset,
   });
   
-  /// [fileId] Identifier of the file 
+  /// Identifier of the file 
   final int fileId;
 
-  /// [offset] Offset from which downloaded prefix size needs to be calculated
+  /// Offset from which downloaded prefix size needs to be calculated
   final int offset;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "file_id": fileId,
       "offset": offset,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetFileDownloadedPrefixSize copyWith({
     int? fileId,
@@ -32,8 +48,11 @@ class GetFileDownloadedPrefixSize extends TdFunction {
     offset: offset ?? this.offset,
   );
 
-  static const CONSTRUCTOR = 'getFileDownloadedPrefixSize';
-  
+  static const String objectType = 'getFileDownloadedPrefixSize';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

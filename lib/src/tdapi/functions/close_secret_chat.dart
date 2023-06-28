@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class CloseSecretChat extends TdFunction {
-
-  /// Closes a secret chat, effectively transferring its state to secretChatStateClosed
+/// **CloseSecretChat** *(closeSecretChat)* - TDLib function
+///
+/// Closes a secret chat, effectively transferring its state to secretChatStateClosed.
+///
+/// * [secretChatId]: Secret chat identifier.
+///
+/// [Ok] is returned on completion.
+final class CloseSecretChat extends TdFunction {
+  
+  /// **CloseSecretChat** *(closeSecretChat)* - TDLib function
+  ///
+  /// Closes a secret chat, effectively transferring its state to secretChatStateClosed.
+  ///
+  /// * [secretChatId]: Secret chat identifier.
+  ///
+  /// [Ok] is returned on completion.
   const CloseSecretChat({
     required this.secretChatId,
   });
   
-  /// [secretChatId] Secret chat identifier
+  /// Secret chat identifier
   final int secretChatId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "secret_chat_id": secretChatId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   CloseSecretChat copyWith({
     int? secretChatId,
@@ -25,8 +39,11 @@ class CloseSecretChat extends TdFunction {
     secretChatId: secretChatId ?? this.secretChatId,
   );
 
-  static const CONSTRUCTOR = 'closeSecretChat';
-  
+  static const String objectType = 'closeSecretChat';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

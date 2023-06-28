@@ -1,21 +1,34 @@
 part of '../tdapi.dart';
 
-class Photo extends TdObject {
-
-  /// Describes a photo
+/// **Photo** *(photo)* - basic class
+///
+/// Describes a photo.
+///
+/// * [hasStickers]: True, if stickers were added to the photo. The list of corresponding sticker sets can be received using getAttachedStickerSets.
+/// * [minithumbnail]: Photo minithumbnail; may be null *(optional)*.
+/// * [sizes]: Available variants of the photo, in different sizes.
+final class Photo extends TdObject {
+  
+  /// **Photo** *(photo)* - basic class
+  ///
+  /// Describes a photo.
+  ///
+  /// * [hasStickers]: True, if stickers were added to the photo. The list of corresponding sticker sets can be received using getAttachedStickerSets.
+  /// * [minithumbnail]: Photo minithumbnail; may be null *(optional)*.
+  /// * [sizes]: Available variants of the photo, in different sizes.
   const Photo({
     required this.hasStickers,
     this.minithumbnail,
     required this.sizes,
   });
   
-  /// [hasStickers] True, if stickers were added to the photo. The list of corresponding sticker sets can be received using getAttachedStickerSets
+  /// True, if stickers were added to the photo. The list of corresponding sticker sets can be received using getAttachedStickerSets
   final bool hasStickers;
 
-  /// [minithumbnail] Photo minithumbnail; may be null
+  /// Photo minithumbnail; may be null
   final Minithumbnail? minithumbnail;
 
-  /// [sizes] Available variants of the photo, in different sizes
+  /// Available variants of the photo, in different sizes
   final List<PhotoSize> sizes;
   
   /// Parse from a json
@@ -27,14 +40,15 @@ class Photo extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "has_stickers": hasStickers,
       "minithumbnail": minithumbnail?.toJson(),
       "sizes": sizes.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   Photo copyWith({
     bool? hasStickers,
@@ -46,8 +60,11 @@ class Photo extends TdObject {
     sizes: sizes ?? this.sizes,
   );
 
-  static const CONSTRUCTOR = 'photo';
-  
+  static const String objectType = 'photo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class SetBio extends TdFunction {
-
-  /// Changes the bio of the current user
+/// **SetBio** *(setBio)* - TDLib function
+///
+/// Changes the bio of the current user.
+///
+/// * [bio]: The new value of the user bio; 0-getOption("bio_length_max") characters without line feeds.
+///
+/// [Ok] is returned on completion.
+final class SetBio extends TdFunction {
+  
+  /// **SetBio** *(setBio)* - TDLib function
+  ///
+  /// Changes the bio of the current user.
+  ///
+  /// * [bio]: The new value of the user bio; 0-getOption("bio_length_max") characters without line feeds.
+  ///
+  /// [Ok] is returned on completion.
   const SetBio({
     required this.bio,
   });
   
-  /// [bio] The new value of the user bio; 0-70 characters without line feeds
+  /// The new value of the user bio; 0-getOption("bio_length_max") characters without line feeds
   final String bio;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "bio": bio,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SetBio copyWith({
     String? bio,
@@ -25,8 +39,11 @@ class SetBio extends TdFunction {
     bio: bio ?? this.bio,
   );
 
-  static const CONSTRUCTOR = 'setBio';
-  
+  static const String objectType = 'setBio';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class MessageSchedulingState extends TdObject {
-
-  /// Contains information about the time when a scheduled message will be sent
+/// **MessageSchedulingState** *(messageSchedulingState)* - parent
+///
+/// Contains information about the time when a scheduled message will be sent.
+sealed class MessageSchedulingState extends TdObject {
+  
+  /// **MessageSchedulingState** *(messageSchedulingState)* - parent
+  ///
+  /// Contains information about the time when a scheduled message will be sent.
   const MessageSchedulingState();
   
   /// a MessageSchedulingState return type can be :
@@ -10,39 +15,51 @@ class MessageSchedulingState extends TdObject {
   /// * [MessageSchedulingStateSendWhenOnline]
   factory MessageSchedulingState.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case MessageSchedulingStateSendAtDate.CONSTRUCTOR:
+      case MessageSchedulingStateSendAtDate.objectType:
         return MessageSchedulingStateSendAtDate.fromJson(json);
-      case MessageSchedulingStateSendWhenOnline.CONSTRUCTOR:
+      case MessageSchedulingStateSendWhenOnline.objectType:
         return MessageSchedulingStateSendWhenOnline.fromJson(json);
       default:
-        return const MessageSchedulingState();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of MessageSchedulingState)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  MessageSchedulingState copyWith() => const MessageSchedulingState();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'messageSchedulingState';
   
+  MessageSchedulingState copyWith();
+
+  static const String objectType = 'messageSchedulingState';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
-
-  /// The message will be sent at the specified date
+/// **MessageSchedulingStateSendAtDate** *(messageSchedulingStateSendAtDate)* - child of MessageSchedulingState
+///
+/// The message will be sent at the specified date.
+///
+/// * [sendDate]: Date the message will be sent. The date must be within 367 days in the future.
+final class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
+  
+  /// **MessageSchedulingStateSendAtDate** *(messageSchedulingStateSendAtDate)* - child of MessageSchedulingState
+  ///
+  /// The message will be sent at the specified date.
+  ///
+  /// * [sendDate]: Date the message will be sent. The date must be within 367 days in the future.
   const MessageSchedulingStateSendAtDate({
     required this.sendDate,
   });
   
-  /// [sendDate] Date the message will be sent. The date must be within 367 days in the future
+  /// Date the message will be sent. The date must be within 367 days in the future
   final int sendDate;
   
   /// Parse from a json
@@ -52,12 +69,13 @@ class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "send_date": sendDate,
-    };
-  }
+		};
+	}
+
   
   @override
   MessageSchedulingStateSendAtDate copyWith({
@@ -66,33 +84,45 @@ class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
     sendDate: sendDate ?? this.sendDate,
   );
 
-  static const CONSTRUCTOR = 'messageSchedulingStateSendAtDate';
-  
+  static const String objectType = 'messageSchedulingStateSendAtDate';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class MessageSchedulingStateSendWhenOnline extends MessageSchedulingState {
-
-  /// The message will be sent when the peer will be online. Applicable to private chats only and when the exact online status of the peer is known
+/// **MessageSchedulingStateSendWhenOnline** *(messageSchedulingStateSendWhenOnline)* - child of MessageSchedulingState
+///
+/// The message will be sent when the peer will be online. Applicable to private chats only and when the exact online status of the peer is known.
+final class MessageSchedulingStateSendWhenOnline extends MessageSchedulingState {
+  
+  /// **MessageSchedulingStateSendWhenOnline** *(messageSchedulingStateSendWhenOnline)* - child of MessageSchedulingState
+  ///
+  /// The message will be sent when the peer will be online. Applicable to private chats only and when the exact online status of the peer is known.
   const MessageSchedulingStateSendWhenOnline();
   
   /// Parse from a json
   factory MessageSchedulingStateSendWhenOnline.fromJson(Map<String, dynamic> json) => const MessageSchedulingStateSendWhenOnline();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   MessageSchedulingStateSendWhenOnline copyWith() => const MessageSchedulingStateSendWhenOnline();
 
-  static const CONSTRUCTOR = 'messageSchedulingStateSendWhenOnline';
-  
+  static const String objectType = 'messageSchedulingStateSendWhenOnline';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

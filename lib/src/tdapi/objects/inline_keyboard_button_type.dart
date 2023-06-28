@@ -1,13 +1,19 @@
 part of '../tdapi.dart';
 
-class InlineKeyboardButtonType extends TdObject {
-
-  /// Describes the type of an inline keyboard button
+/// **InlineKeyboardButtonType** *(inlineKeyboardButtonType)* - parent
+///
+/// Describes the type of an inline keyboard button.
+sealed class InlineKeyboardButtonType extends TdObject {
+  
+  /// **InlineKeyboardButtonType** *(inlineKeyboardButtonType)* - parent
+  ///
+  /// Describes the type of an inline keyboard button.
   const InlineKeyboardButtonType();
   
   /// a InlineKeyboardButtonType return type can be :
   /// * [InlineKeyboardButtonTypeUrl]
   /// * [InlineKeyboardButtonTypeLoginUrl]
+  /// * [InlineKeyboardButtonTypeWebApp]
   /// * [InlineKeyboardButtonTypeCallback]
   /// * [InlineKeyboardButtonTypeCallbackWithPassword]
   /// * [InlineKeyboardButtonTypeCallbackGame]
@@ -16,51 +22,65 @@ class InlineKeyboardButtonType extends TdObject {
   /// * [InlineKeyboardButtonTypeUser]
   factory InlineKeyboardButtonType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case InlineKeyboardButtonTypeUrl.CONSTRUCTOR:
+      case InlineKeyboardButtonTypeUrl.objectType:
         return InlineKeyboardButtonTypeUrl.fromJson(json);
-      case InlineKeyboardButtonTypeLoginUrl.CONSTRUCTOR:
+      case InlineKeyboardButtonTypeLoginUrl.objectType:
         return InlineKeyboardButtonTypeLoginUrl.fromJson(json);
-      case InlineKeyboardButtonTypeCallback.CONSTRUCTOR:
+      case InlineKeyboardButtonTypeWebApp.objectType:
+        return InlineKeyboardButtonTypeWebApp.fromJson(json);
+      case InlineKeyboardButtonTypeCallback.objectType:
         return InlineKeyboardButtonTypeCallback.fromJson(json);
-      case InlineKeyboardButtonTypeCallbackWithPassword.CONSTRUCTOR:
+      case InlineKeyboardButtonTypeCallbackWithPassword.objectType:
         return InlineKeyboardButtonTypeCallbackWithPassword.fromJson(json);
-      case InlineKeyboardButtonTypeCallbackGame.CONSTRUCTOR:
+      case InlineKeyboardButtonTypeCallbackGame.objectType:
         return InlineKeyboardButtonTypeCallbackGame.fromJson(json);
-      case InlineKeyboardButtonTypeSwitchInline.CONSTRUCTOR:
+      case InlineKeyboardButtonTypeSwitchInline.objectType:
         return InlineKeyboardButtonTypeSwitchInline.fromJson(json);
-      case InlineKeyboardButtonTypeBuy.CONSTRUCTOR:
+      case InlineKeyboardButtonTypeBuy.objectType:
         return InlineKeyboardButtonTypeBuy.fromJson(json);
-      case InlineKeyboardButtonTypeUser.CONSTRUCTOR:
+      case InlineKeyboardButtonTypeUser.objectType:
         return InlineKeyboardButtonTypeUser.fromJson(json);
       default:
-        return const InlineKeyboardButtonType();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of InlineKeyboardButtonType)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  InlineKeyboardButtonType copyWith() => const InlineKeyboardButtonType();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'inlineKeyboardButtonType';
   
+  InlineKeyboardButtonType copyWith();
+
+  static const String objectType = 'inlineKeyboardButtonType';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InlineKeyboardButtonTypeUrl extends InlineKeyboardButtonType {
-
-  /// A button that opens a specified URL
+/// **InlineKeyboardButtonTypeUrl** *(inlineKeyboardButtonTypeUrl)* - child of InlineKeyboardButtonType
+///
+/// A button that opens a specified URL.
+///
+/// * [url]: HTTP or tg:// URL to open.
+final class InlineKeyboardButtonTypeUrl extends InlineKeyboardButtonType {
+  
+  /// **InlineKeyboardButtonTypeUrl** *(inlineKeyboardButtonTypeUrl)* - child of InlineKeyboardButtonType
+  ///
+  /// A button that opens a specified URL.
+  ///
+  /// * [url]: HTTP or tg:// URL to open.
   const InlineKeyboardButtonTypeUrl({
     required this.url,
   });
   
-  /// [url] HTTP or tg:// URL to open
+  /// HTTP or tg:// URL to open
   final String url;
   
   /// Parse from a json
@@ -70,12 +90,13 @@ class InlineKeyboardButtonTypeUrl extends InlineKeyboardButtonType {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "url": url,
-    };
-  }
+		};
+	}
+
   
   @override
   InlineKeyboardButtonTypeUrl copyWith({
@@ -84,29 +105,45 @@ class InlineKeyboardButtonTypeUrl extends InlineKeyboardButtonType {
     url: url ?? this.url,
   );
 
-  static const CONSTRUCTOR = 'inlineKeyboardButtonTypeUrl';
-  
+  static const String objectType = 'inlineKeyboardButtonTypeUrl';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
-
-  /// A button that opens a specified URL and automatically authorize the current user if allowed to do so
+/// **InlineKeyboardButtonTypeLoginUrl** *(inlineKeyboardButtonTypeLoginUrl)* - child of InlineKeyboardButtonType
+///
+/// A button that opens a specified URL and automatically authorize the current user by calling getLoginUrlInfo.
+///
+/// * [url]: An HTTP URL to pass to getLoginUrlInfo.
+/// * [id]: Unique button identifier.
+/// * [forwardText]: If non-empty, new text of the button in forwarded messages.
+final class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
+  
+  /// **InlineKeyboardButtonTypeLoginUrl** *(inlineKeyboardButtonTypeLoginUrl)* - child of InlineKeyboardButtonType
+  ///
+  /// A button that opens a specified URL and automatically authorize the current user by calling getLoginUrlInfo.
+  ///
+  /// * [url]: An HTTP URL to pass to getLoginUrlInfo.
+  /// * [id]: Unique button identifier.
+  /// * [forwardText]: If non-empty, new text of the button in forwarded messages.
   const InlineKeyboardButtonTypeLoginUrl({
     required this.url,
     required this.id,
     required this.forwardText,
   });
   
-  /// [url] An HTTP URL to open 
+  /// An HTTP URL to pass to getLoginUrlInfo 
   final String url;
 
-  /// [id] Unique button identifier 
+  /// Unique button identifier 
   final int id;
 
-  /// [forwardText] If non-empty, new text of the button in forwarded messages
+  /// If non-empty, new text of the button in forwarded messages
   final String forwardText;
   
   /// Parse from a json
@@ -118,14 +155,15 @@ class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "url": url,
       "id": id,
       "forward_text": forwardText,
-    };
-  }
+		};
+	}
+
   
   @override
   InlineKeyboardButtonTypeLoginUrl copyWith({
@@ -138,21 +176,84 @@ class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
     forwardText: forwardText ?? this.forwardText,
   );
 
-  static const CONSTRUCTOR = 'inlineKeyboardButtonTypeLoginUrl';
-  
+  static const String objectType = 'inlineKeyboardButtonTypeLoginUrl';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InlineKeyboardButtonTypeCallback extends InlineKeyboardButtonType {
+/// **InlineKeyboardButtonTypeWebApp** *(inlineKeyboardButtonTypeWebApp)* - child of InlineKeyboardButtonType
+///
+/// A button that opens a Web App by calling openWebApp.
+///
+/// * [url]: An HTTP URL to pass to openWebApp.
+final class InlineKeyboardButtonTypeWebApp extends InlineKeyboardButtonType {
+  
+  /// **InlineKeyboardButtonTypeWebApp** *(inlineKeyboardButtonTypeWebApp)* - child of InlineKeyboardButtonType
+  ///
+  /// A button that opens a Web App by calling openWebApp.
+  ///
+  /// * [url]: An HTTP URL to pass to openWebApp.
+  const InlineKeyboardButtonTypeWebApp({
+    required this.url,
+  });
+  
+  /// An HTTP URL to pass to openWebApp
+  final String url;
+  
+  /// Parse from a json
+  factory InlineKeyboardButtonTypeWebApp.fromJson(Map<String, dynamic> json) => InlineKeyboardButtonTypeWebApp(
+    url: json['url'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "url": url,
+		};
+	}
 
-  /// A button that sends a callback query to a bot
+  
+  @override
+  InlineKeyboardButtonTypeWebApp copyWith({
+    String? url,
+  }) => InlineKeyboardButtonTypeWebApp(
+    url: url ?? this.url,
+  );
+
+  static const String objectType = 'inlineKeyboardButtonTypeWebApp';
+
+  @override
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **InlineKeyboardButtonTypeCallback** *(inlineKeyboardButtonTypeCallback)* - child of InlineKeyboardButtonType
+///
+/// A button that sends a callback query to a bot.
+///
+/// * [data]: Data to be sent to the bot via a callback query.
+final class InlineKeyboardButtonTypeCallback extends InlineKeyboardButtonType {
+  
+  /// **InlineKeyboardButtonTypeCallback** *(inlineKeyboardButtonTypeCallback)* - child of InlineKeyboardButtonType
+  ///
+  /// A button that sends a callback query to a bot.
+  ///
+  /// * [data]: Data to be sent to the bot via a callback query.
   const InlineKeyboardButtonTypeCallback({
     required this.data,
   });
   
-  /// [data] Data to be sent to the bot via a callback query
+  /// Data to be sent to the bot via a callback query
   final String data;
   
   /// Parse from a json
@@ -162,12 +263,13 @@ class InlineKeyboardButtonTypeCallback extends InlineKeyboardButtonType {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "data": data,
-    };
-  }
+		};
+	}
+
   
   @override
   InlineKeyboardButtonTypeCallback copyWith({
@@ -176,21 +278,33 @@ class InlineKeyboardButtonTypeCallback extends InlineKeyboardButtonType {
     data: data ?? this.data,
   );
 
-  static const CONSTRUCTOR = 'inlineKeyboardButtonTypeCallback';
-  
+  static const String objectType = 'inlineKeyboardButtonTypeCallback';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InlineKeyboardButtonTypeCallbackWithPassword extends InlineKeyboardButtonType {
-
-  /// A button that asks for password of the current user and then sends a callback query to a bot
+/// **InlineKeyboardButtonTypeCallbackWithPassword** *(inlineKeyboardButtonTypeCallbackWithPassword)* - child of InlineKeyboardButtonType
+///
+/// A button that asks for the 2-step verification password of the current user and then sends a callback query to a bot.
+///
+/// * [data]: Data to be sent to the bot via a callback query.
+final class InlineKeyboardButtonTypeCallbackWithPassword extends InlineKeyboardButtonType {
+  
+  /// **InlineKeyboardButtonTypeCallbackWithPassword** *(inlineKeyboardButtonTypeCallbackWithPassword)* - child of InlineKeyboardButtonType
+  ///
+  /// A button that asks for the 2-step verification password of the current user and then sends a callback query to a bot.
+  ///
+  /// * [data]: Data to be sent to the bot via a callback query.
   const InlineKeyboardButtonTypeCallbackWithPassword({
     required this.data,
   });
   
-  /// [data] Data to be sent to the bot via a callback query
+  /// Data to be sent to the bot via a callback query
   final String data;
   
   /// Parse from a json
@@ -200,12 +314,13 @@ class InlineKeyboardButtonTypeCallbackWithPassword extends InlineKeyboardButtonT
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "data": data,
-    };
-  }
+		};
+	}
+
   
   @override
   InlineKeyboardButtonTypeCallbackWithPassword copyWith({
@@ -214,117 +329,162 @@ class InlineKeyboardButtonTypeCallbackWithPassword extends InlineKeyboardButtonT
     data: data ?? this.data,
   );
 
-  static const CONSTRUCTOR = 'inlineKeyboardButtonTypeCallbackWithPassword';
-  
+  static const String objectType = 'inlineKeyboardButtonTypeCallbackWithPassword';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InlineKeyboardButtonTypeCallbackGame extends InlineKeyboardButtonType {
-
-  /// A button with a game that sends a callback query to a bot. This button must be in the first column and row of the keyboard and can be attached only to a message with content of the type messageGame
+/// **InlineKeyboardButtonTypeCallbackGame** *(inlineKeyboardButtonTypeCallbackGame)* - child of InlineKeyboardButtonType
+///
+/// A button with a game that sends a callback query to a bot. This button must be in the first column and row of the keyboard and can be attached only to a message with content of the type messageGame.
+final class InlineKeyboardButtonTypeCallbackGame extends InlineKeyboardButtonType {
+  
+  /// **InlineKeyboardButtonTypeCallbackGame** *(inlineKeyboardButtonTypeCallbackGame)* - child of InlineKeyboardButtonType
+  ///
+  /// A button with a game that sends a callback query to a bot. This button must be in the first column and row of the keyboard and can be attached only to a message with content of the type messageGame.
   const InlineKeyboardButtonTypeCallbackGame();
   
   /// Parse from a json
   factory InlineKeyboardButtonTypeCallbackGame.fromJson(Map<String, dynamic> json) => const InlineKeyboardButtonTypeCallbackGame();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   InlineKeyboardButtonTypeCallbackGame copyWith() => const InlineKeyboardButtonTypeCallbackGame();
 
-  static const CONSTRUCTOR = 'inlineKeyboardButtonTypeCallbackGame';
-  
+  static const String objectType = 'inlineKeyboardButtonTypeCallbackGame';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InlineKeyboardButtonTypeSwitchInline extends InlineKeyboardButtonType {
-
-  /// A button that forces an inline query to the bot to be inserted in the input field
+/// **InlineKeyboardButtonTypeSwitchInline** *(inlineKeyboardButtonTypeSwitchInline)* - child of InlineKeyboardButtonType
+///
+/// A button that forces an inline query to the bot to be inserted in the input field.
+///
+/// * [query]: Inline query to be sent to the bot.
+/// * [targetChat]: Target chat from which to send the inline query.
+final class InlineKeyboardButtonTypeSwitchInline extends InlineKeyboardButtonType {
+  
+  /// **InlineKeyboardButtonTypeSwitchInline** *(inlineKeyboardButtonTypeSwitchInline)* - child of InlineKeyboardButtonType
+  ///
+  /// A button that forces an inline query to the bot to be inserted in the input field.
+  ///
+  /// * [query]: Inline query to be sent to the bot.
+  /// * [targetChat]: Target chat from which to send the inline query.
   const InlineKeyboardButtonTypeSwitchInline({
     required this.query,
-    required this.inCurrentChat,
+    required this.targetChat,
   });
   
-  /// [query] Inline query to be sent to the bot 
+  /// Inline query to be sent to the bot 
   final String query;
 
-  /// [inCurrentChat] True, if the inline query must be sent from the current chat
-  final bool inCurrentChat;
+  /// Target chat from which to send the inline query
+  final TargetChat targetChat;
   
   /// Parse from a json
   factory InlineKeyboardButtonTypeSwitchInline.fromJson(Map<String, dynamic> json) => InlineKeyboardButtonTypeSwitchInline(
     query: json['query'],
-    inCurrentChat: json['in_current_chat'],
+    targetChat: TargetChat.fromJson(json['target_chat']),
   );
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "query": query,
-      "in_current_chat": inCurrentChat,
-    };
-  }
+      "target_chat": targetChat.toJson(),
+		};
+	}
+
   
   @override
   InlineKeyboardButtonTypeSwitchInline copyWith({
     String? query,
-    bool? inCurrentChat,
+    TargetChat? targetChat,
   }) => InlineKeyboardButtonTypeSwitchInline(
     query: query ?? this.query,
-    inCurrentChat: inCurrentChat ?? this.inCurrentChat,
+    targetChat: targetChat ?? this.targetChat,
   );
 
-  static const CONSTRUCTOR = 'inlineKeyboardButtonTypeSwitchInline';
-  
+  static const String objectType = 'inlineKeyboardButtonTypeSwitchInline';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InlineKeyboardButtonTypeBuy extends InlineKeyboardButtonType {
-
-  /// A button to buy something. This button must be in the first column and row of the keyboard and can be attached only to a message with content of the type messageInvoice
+/// **InlineKeyboardButtonTypeBuy** *(inlineKeyboardButtonTypeBuy)* - child of InlineKeyboardButtonType
+///
+/// A button to buy something. This button must be in the first column and row of the keyboard and can be attached only to a message with content of the type messageInvoice.
+final class InlineKeyboardButtonTypeBuy extends InlineKeyboardButtonType {
+  
+  /// **InlineKeyboardButtonTypeBuy** *(inlineKeyboardButtonTypeBuy)* - child of InlineKeyboardButtonType
+  ///
+  /// A button to buy something. This button must be in the first column and row of the keyboard and can be attached only to a message with content of the type messageInvoice.
   const InlineKeyboardButtonTypeBuy();
   
   /// Parse from a json
   factory InlineKeyboardButtonTypeBuy.fromJson(Map<String, dynamic> json) => const InlineKeyboardButtonTypeBuy();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   InlineKeyboardButtonTypeBuy copyWith() => const InlineKeyboardButtonTypeBuy();
 
-  static const CONSTRUCTOR = 'inlineKeyboardButtonTypeBuy';
-  
+  static const String objectType = 'inlineKeyboardButtonTypeBuy';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class InlineKeyboardButtonTypeUser extends InlineKeyboardButtonType {
-
-  /// A button with a user reference to be handled in the same way as textEntityTypeMentionName entities
+/// **InlineKeyboardButtonTypeUser** *(inlineKeyboardButtonTypeUser)* - child of InlineKeyboardButtonType
+///
+/// A button with a user reference to be handled in the same way as textEntityTypeMentionName entities.
+///
+/// * [userId]: User identifier.
+final class InlineKeyboardButtonTypeUser extends InlineKeyboardButtonType {
+  
+  /// **InlineKeyboardButtonTypeUser** *(inlineKeyboardButtonTypeUser)* - child of InlineKeyboardButtonType
+  ///
+  /// A button with a user reference to be handled in the same way as textEntityTypeMentionName entities.
+  ///
+  /// * [userId]: User identifier.
   const InlineKeyboardButtonTypeUser({
     required this.userId,
   });
   
-  /// [userId] User identifier
+  /// User identifier
   final int userId;
   
   /// Parse from a json
@@ -334,12 +494,13 @@ class InlineKeyboardButtonTypeUser extends InlineKeyboardButtonType {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "user_id": userId,
-    };
-  }
+		};
+	}
+
   
   @override
   InlineKeyboardButtonTypeUser copyWith({
@@ -348,8 +509,11 @@ class InlineKeyboardButtonTypeUser extends InlineKeyboardButtonType {
     userId: userId ?? this.userId,
   );
 
-  static const CONSTRUCTOR = 'inlineKeyboardButtonTypeUser';
-  
+  static const String objectType = 'inlineKeyboardButtonTypeUser';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

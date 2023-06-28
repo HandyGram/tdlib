@@ -1,21 +1,34 @@
 part of '../tdapi.dart';
 
-class ChatJoinRequest extends TdObject {
-
-  /// Describes a user that sent a join request and waits for administrator approval
+/// **ChatJoinRequest** *(chatJoinRequest)* - basic class
+///
+/// Describes a user that sent a join request and waits for administrator approval.
+///
+/// * [userId]: User identifier.
+/// * [date]: Point in time (Unix timestamp) when the user sent the join request.
+/// * [bio]: A short bio of the user.
+final class ChatJoinRequest extends TdObject {
+  
+  /// **ChatJoinRequest** *(chatJoinRequest)* - basic class
+  ///
+  /// Describes a user that sent a join request and waits for administrator approval.
+  ///
+  /// * [userId]: User identifier.
+  /// * [date]: Point in time (Unix timestamp) when the user sent the join request.
+  /// * [bio]: A short bio of the user.
   const ChatJoinRequest({
     required this.userId,
     required this.date,
     required this.bio,
   });
   
-  /// [userId] User identifier 
+  /// User identifier 
   final int userId;
 
-  /// [date] Point in time (Unix timestamp) when the user sent the join request 
+  /// Point in time (Unix timestamp) when the user sent the join request 
   final int date;
 
-  /// [bio] A short bio of the user
+  /// A short bio of the user
   final String bio;
   
   /// Parse from a json
@@ -27,14 +40,15 @@ class ChatJoinRequest extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "user_id": userId,
       "date": date,
       "bio": bio,
-    };
-  }
+		};
+	}
+
   
   ChatJoinRequest copyWith({
     int? userId,
@@ -46,8 +60,11 @@ class ChatJoinRequest extends TdObject {
     bio: bio ?? this.bio,
   );
 
-  static const CONSTRUCTOR = 'chatJoinRequest';
-  
+  static const String objectType = 'chatJoinRequest';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

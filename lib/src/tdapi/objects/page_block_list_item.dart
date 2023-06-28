@@ -1,17 +1,28 @@
 part of '../tdapi.dart';
 
-class PageBlockListItem extends TdObject {
-
-  /// Describes an item of a list page block
+/// **PageBlockListItem** *(pageBlockListItem)* - basic class
+///
+/// Describes an item of a list page block.
+///
+/// * [label]: Item label.
+/// * [pageBlocks]: Item blocks.
+final class PageBlockListItem extends TdObject {
+  
+  /// **PageBlockListItem** *(pageBlockListItem)* - basic class
+  ///
+  /// Describes an item of a list page block.
+  ///
+  /// * [label]: Item label.
+  /// * [pageBlocks]: Item blocks.
   const PageBlockListItem({
     required this.label,
     required this.pageBlocks,
   });
   
-  /// [label] Item label 
+  /// Item label 
   final String label;
 
-  /// [pageBlocks] Item blocks
+  /// Item blocks
   final List<PageBlock> pageBlocks;
   
   /// Parse from a json
@@ -22,13 +33,14 @@ class PageBlockListItem extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "label": label,
       "page_blocks": pageBlocks.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   PageBlockListItem copyWith({
     String? label,
@@ -38,8 +50,11 @@ class PageBlockListItem extends TdObject {
     pageBlocks: pageBlocks ?? this.pageBlocks,
   );
 
-  static const CONSTRUCTOR = 'pageBlockListItem';
-  
+  static const String objectType = 'pageBlockListItem';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

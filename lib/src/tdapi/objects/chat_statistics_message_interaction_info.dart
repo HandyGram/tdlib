@@ -1,21 +1,34 @@
 part of '../tdapi.dart';
 
-class ChatStatisticsMessageInteractionInfo extends TdObject {
-
-  /// Contains statistics about interactions with a message
+/// **ChatStatisticsMessageInteractionInfo** *(chatStatisticsMessageInteractionInfo)* - basic class
+///
+/// Contains statistics about interactions with a message.
+///
+/// * [messageId]: Message identifier.
+/// * [viewCount]: Number of times the message was viewed.
+/// * [forwardCount]: Number of times the message was forwarded.
+final class ChatStatisticsMessageInteractionInfo extends TdObject {
+  
+  /// **ChatStatisticsMessageInteractionInfo** *(chatStatisticsMessageInteractionInfo)* - basic class
+  ///
+  /// Contains statistics about interactions with a message.
+  ///
+  /// * [messageId]: Message identifier.
+  /// * [viewCount]: Number of times the message was viewed.
+  /// * [forwardCount]: Number of times the message was forwarded.
   const ChatStatisticsMessageInteractionInfo({
     required this.messageId,
     required this.viewCount,
     required this.forwardCount,
   });
   
-  /// [messageId] Message identifier
+  /// Message identifier
   final int messageId;
 
-  /// [viewCount] Number of times the message was viewed
+  /// Number of times the message was viewed
   final int viewCount;
 
-  /// [forwardCount] Number of times the message was forwarded
+  /// Number of times the message was forwarded
   final int forwardCount;
   
   /// Parse from a json
@@ -27,14 +40,15 @@ class ChatStatisticsMessageInteractionInfo extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "message_id": messageId,
       "view_count": viewCount,
       "forward_count": forwardCount,
-    };
-  }
+		};
+	}
+
   
   ChatStatisticsMessageInteractionInfo copyWith({
     int? messageId,
@@ -46,8 +60,11 @@ class ChatStatisticsMessageInteractionInfo extends TdObject {
     forwardCount: forwardCount ?? this.forwardCount,
   );
 
-  static const CONSTRUCTOR = 'chatStatisticsMessageInteractionInfo';
-  
+  static const String objectType = 'chatStatisticsMessageInteractionInfo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

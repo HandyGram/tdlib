@@ -1,15 +1,24 @@
 part of '../tdapi.dart';
 
-class TestVectorStringObject extends TdObject {
-
-  /// A simple object containing a vector of objects that hold a string; for testing only
+/// **TestVectorStringObject** *(testVectorStringObject)* - basic class
+///
+/// A simple object containing a vector of objects that hold a string; for testing only.
+///
+/// * [value]: Vector of objects.
+final class TestVectorStringObject extends TdObject {
+  
+  /// **TestVectorStringObject** *(testVectorStringObject)* - basic class
+  ///
+  /// A simple object containing a vector of objects that hold a string; for testing only.
+  ///
+  /// * [value]: Vector of objects.
   const TestVectorStringObject({
     required this.value,
     this.extra,
     this.clientId,
   });
   
-  /// [value] Vector of objects
+  /// Vector of objects
   final List<TestString> value;
 
   /// [extra] callback sign
@@ -29,12 +38,13 @@ class TestVectorStringObject extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "value": value.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   TestVectorStringObject copyWith({
     List<TestString>? value,
@@ -46,8 +56,11 @@ class TestVectorStringObject extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'testVectorStringObject';
-  
+  static const String objectType = 'testVectorStringObject';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

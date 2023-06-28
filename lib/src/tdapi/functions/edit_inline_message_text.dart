@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class EditInlineMessageText extends TdFunction {
-
-  /// Edits the text of an inline text or game message sent via a bot; for bots only
+/// **EditInlineMessageText** *(editInlineMessageText)* - TDLib function
+///
+/// Edits the text of an inline text or game message sent via a bot; for bots only.
+///
+/// * [inlineMessageId]: Inline message identifier.
+/// * [replyMarkup]: The new message reply markup; pass null if none *(optional)*.
+/// * [inputMessageContent]: New text content of the message. Must be of type inputMessageText.
+///
+/// [Ok] is returned on completion.
+final class EditInlineMessageText extends TdFunction {
+  
+  /// **EditInlineMessageText** *(editInlineMessageText)* - TDLib function
+  ///
+  /// Edits the text of an inline text or game message sent via a bot; for bots only.
+  ///
+  /// * [inlineMessageId]: Inline message identifier.
+  /// * [replyMarkup]: The new message reply markup; pass null if none *(optional)*.
+  /// * [inputMessageContent]: New text content of the message. Must be of type inputMessageText.
+  ///
+  /// [Ok] is returned on completion.
   const EditInlineMessageText({
     required this.inlineMessageId,
     this.replyMarkup,
     required this.inputMessageContent,
   });
   
-  /// [inlineMessageId] Inline message identifier
+  /// Inline message identifier
   final String inlineMessageId;
 
-  /// [replyMarkup] The new message reply markup; pass null if none
+  /// The new message reply markup; pass null if none
   final ReplyMarkup? replyMarkup;
 
-  /// [inputMessageContent] New text content of the message. Must be of type inputMessageText
+  /// New text content of the message. Must be of type inputMessageText
   final InputMessageContent inputMessageContent;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "inline_message_id": inlineMessageId,
       "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   EditInlineMessageText copyWith({
     String? inlineMessageId,
@@ -39,8 +57,11 @@ class EditInlineMessageText extends TdFunction {
     inputMessageContent: inputMessageContent ?? this.inputMessageContent,
   );
 
-  static const CONSTRUCTOR = 'editInlineMessageText';
-  
+  static const String objectType = 'editInlineMessageText';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

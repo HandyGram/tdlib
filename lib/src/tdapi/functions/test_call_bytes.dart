@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class TestCallBytes extends TdFunction {
-
-  /// Returns the received bytes; for testing only. This is an offline method. Can be called before authorization
+/// **TestCallBytes** *(testCallBytes)* - TDLib function
+///
+/// Returns the received bytes; for testing only. This is an offline method. Can be called before authorization.
+///
+/// * [x]: Bytes to return.
+///
+/// [TestBytes] is returned on completion.
+final class TestCallBytes extends TdFunction {
+  
+  /// **TestCallBytes** *(testCallBytes)* - TDLib function
+  ///
+  /// Returns the received bytes; for testing only. This is an offline method. Can be called before authorization.
+  ///
+  /// * [x]: Bytes to return.
+  ///
+  /// [TestBytes] is returned on completion.
   const TestCallBytes({
     required this.x,
   });
   
-  /// [x] Bytes to return
+  /// Bytes to return
   final String x;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "x": x,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   TestCallBytes copyWith({
     String? x,
@@ -25,8 +39,11 @@ class TestCallBytes extends TdFunction {
     x: x ?? this.x,
   );
 
-  static const CONSTRUCTOR = 'testCallBytes';
-  
+  static const String objectType = 'testCallBytes';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

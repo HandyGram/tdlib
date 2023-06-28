@@ -1,8 +1,25 @@
 part of '../tdapi.dart';
 
-class CallServer extends TdObject {
-
-  /// Describes a server for relaying call data
+/// **CallServer** *(callServer)* - basic class
+///
+/// Describes a server for relaying call data.
+///
+/// * [id]: Server identifier.
+/// * [ipAddress]: Server IPv4 address.
+/// * [ipv6Address]: Server IPv6 address.
+/// * [port]: Server port number.
+/// * [type]: Server type.
+final class CallServer extends TdObject {
+  
+  /// **CallServer** *(callServer)* - basic class
+  ///
+  /// Describes a server for relaying call data.
+  ///
+  /// * [id]: Server identifier.
+  /// * [ipAddress]: Server IPv4 address.
+  /// * [ipv6Address]: Server IPv6 address.
+  /// * [port]: Server port number.
+  /// * [type]: Server type.
   const CallServer({
     required this.id,
     required this.ipAddress,
@@ -11,19 +28,19 @@ class CallServer extends TdObject {
     required this.type,
   });
   
-  /// [id] Server identifier 
+  /// Server identifier
   final int id;
 
-  /// [ipAddress] Server IPv4 address 
+  /// Server IPv4 address
   final String ipAddress;
 
-  /// [ipv6Address] Server IPv6 address 
+  /// Server IPv6 address
   final String ipv6Address;
 
-  /// [port] Server port number 
+  /// Server port number
   final int port;
 
-  /// [type] Server type
+  /// Server type
   final CallServerType type;
   
   /// Parse from a json
@@ -37,16 +54,17 @@ class CallServer extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "id": id,
       "ip_address": ipAddress,
       "ipv6_address": ipv6Address,
       "port": port,
       "type": type.toJson(),
-    };
-  }
+		};
+	}
+
   
   CallServer copyWith({
     int? id,
@@ -62,8 +80,11 @@ class CallServer extends TdObject {
     type: type ?? this.type,
   );
 
-  static const CONSTRUCTOR = 'callServer';
-  
+  static const String objectType = 'callServer';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class DeleteChatReplyMarkup extends TdFunction {
-
-  /// Deletes the default reply markup from a chat. Must be called after a one-time keyboard or a ForceReply reply markup has been used. UpdateChatReplyMarkup will be sent if the reply markup is changed
+/// **DeleteChatReplyMarkup** *(deleteChatReplyMarkup)* - TDLib function
+///
+/// Deletes the default reply markup from a chat. Must be called after a one-time keyboard or a replyMarkupForceReply reply markup has been used. An updateChatReplyMarkup update will be sent if the reply markup is changed.
+///
+/// * [chatId]: Chat identifier.
+/// * [messageId]: The message identifier of the used keyboard.
+///
+/// [Ok] is returned on completion.
+final class DeleteChatReplyMarkup extends TdFunction {
+  
+  /// **DeleteChatReplyMarkup** *(deleteChatReplyMarkup)* - TDLib function
+  ///
+  /// Deletes the default reply markup from a chat. Must be called after a one-time keyboard or a replyMarkupForceReply reply markup has been used. An updateChatReplyMarkup update will be sent if the reply markup is changed.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [messageId]: The message identifier of the used keyboard.
+  ///
+  /// [Ok] is returned on completion.
   const DeleteChatReplyMarkup({
     required this.chatId,
     required this.messageId,
   });
   
-  /// [chatId] Chat identifier
+  /// Chat identifier
   final int chatId;
 
-  /// [messageId] The message identifier of the used keyboard
+  /// The message identifier of the used keyboard
   final int messageId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "message_id": messageId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   DeleteChatReplyMarkup copyWith({
     int? chatId,
@@ -32,8 +48,11 @@ class DeleteChatReplyMarkup extends TdFunction {
     messageId: messageId ?? this.messageId,
   );
 
-  static const CONSTRUCTOR = 'deleteChatReplyMarkup';
-  
+  static const String objectType = 'deleteChatReplyMarkup';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

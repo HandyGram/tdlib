@@ -1,8 +1,25 @@
 part of '../tdapi.dart';
 
-class CallProtocol extends TdObject {
-
-  /// Specifies the supported call protocols
+/// **CallProtocol** *(callProtocol)* - basic class
+///
+/// Specifies the supported call protocols.
+///
+/// * [udpP2p]: True, if UDP peer-to-peer connections are supported.
+/// * [udpReflector]: True, if connection through UDP reflectors is supported.
+/// * [minLayer]: The minimum supported API layer; use 65.
+/// * [maxLayer]: The maximum supported API layer; use 65.
+/// * [libraryVersions]: List of supported tgcalls versions.
+final class CallProtocol extends TdObject {
+  
+  /// **CallProtocol** *(callProtocol)* - basic class
+  ///
+  /// Specifies the supported call protocols.
+  ///
+  /// * [udpP2p]: True, if UDP peer-to-peer connections are supported.
+  /// * [udpReflector]: True, if connection through UDP reflectors is supported.
+  /// * [minLayer]: The minimum supported API layer; use 65.
+  /// * [maxLayer]: The maximum supported API layer; use 65.
+  /// * [libraryVersions]: List of supported tgcalls versions.
   const CallProtocol({
     required this.udpP2p,
     required this.udpReflector,
@@ -11,19 +28,19 @@ class CallProtocol extends TdObject {
     required this.libraryVersions,
   });
   
-  /// [udpP2p] True, if UDP peer-to-peer connections are supported
+  /// True, if UDP peer-to-peer connections are supported
   final bool udpP2p;
 
-  /// [udpReflector] True, if connection through UDP reflectors is supported
+  /// True, if connection through UDP reflectors is supported
   final bool udpReflector;
 
-  /// [minLayer] The minimum supported API layer; use 65
+  /// The minimum supported API layer; use 65
   final int minLayer;
 
-  /// [maxLayer] The maximum supported API layer; use 65
+  /// The maximum supported API layer; use 65
   final int maxLayer;
 
-  /// [libraryVersions] List of supported tgcalls versions
+  /// List of supported tgcalls versions
   final List<String> libraryVersions;
   
   /// Parse from a json
@@ -37,16 +54,17 @@ class CallProtocol extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "udp_p2p": udpP2p,
       "udp_reflector": udpReflector,
       "min_layer": minLayer,
       "max_layer": maxLayer,
       "library_versions": libraryVersions.map((i) => i).toList(),
-    };
-  }
+		};
+	}
+
   
   CallProtocol copyWith({
     bool? udpP2p,
@@ -62,8 +80,11 @@ class CallProtocol extends TdObject {
     libraryVersions: libraryVersions ?? this.libraryVersions,
   );
 
-  static const CONSTRUCTOR = 'callProtocol';
-  
+  static const String objectType = 'callProtocol';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

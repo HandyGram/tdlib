@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class AnswerPreCheckoutQuery extends TdFunction {
-
-  /// Sets the result of a pre-checkout query; for bots only
+/// **AnswerPreCheckoutQuery** *(answerPreCheckoutQuery)* - TDLib function
+///
+/// Sets the result of a pre-checkout query; for bots only.
+///
+/// * [preCheckoutQueryId]: Identifier of the pre-checkout query.
+/// * [errorMessage]: An error message, empty on success.
+///
+/// [Ok] is returned on completion.
+final class AnswerPreCheckoutQuery extends TdFunction {
+  
+  /// **AnswerPreCheckoutQuery** *(answerPreCheckoutQuery)* - TDLib function
+  ///
+  /// Sets the result of a pre-checkout query; for bots only.
+  ///
+  /// * [preCheckoutQueryId]: Identifier of the pre-checkout query.
+  /// * [errorMessage]: An error message, empty on success.
+  ///
+  /// [Ok] is returned on completion.
   const AnswerPreCheckoutQuery({
     required this.preCheckoutQueryId,
     required this.errorMessage,
   });
   
-  /// [preCheckoutQueryId] Identifier of the pre-checkout query 
+  /// Identifier of the pre-checkout query 
   final int preCheckoutQueryId;
 
-  /// [errorMessage] An error message, empty on success
+  /// An error message, empty on success
   final String errorMessage;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "pre_checkout_query_id": preCheckoutQueryId,
       "error_message": errorMessage,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   AnswerPreCheckoutQuery copyWith({
     int? preCheckoutQueryId,
@@ -32,8 +48,11 @@ class AnswerPreCheckoutQuery extends TdFunction {
     errorMessage: errorMessage ?? this.errorMessage,
   );
 
-  static const CONSTRUCTOR = 'answerPreCheckoutQuery';
-  
+  static const String objectType = 'answerPreCheckoutQuery';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class SendPhoneNumberConfirmationCode extends TdFunction {
-
-  /// Sends phone number confirmation code to handle links of the type internalLinkTypePhoneNumberConfirmation
+/// **SendPhoneNumberConfirmationCode** *(sendPhoneNumberConfirmationCode)* - TDLib function
+///
+/// Sends phone number confirmation code to handle links of the type internalLinkTypePhoneNumberConfirmation.
+///
+/// * [hash]: Hash value from the link.
+/// * [phoneNumber]: Phone number value from the link.
+/// * [settings]: Settings for the authentication of the user's phone number; pass null to use default settings *(optional)*.
+///
+/// [AuthenticationCodeInfo] is returned on completion.
+final class SendPhoneNumberConfirmationCode extends TdFunction {
+  
+  /// **SendPhoneNumberConfirmationCode** *(sendPhoneNumberConfirmationCode)* - TDLib function
+  ///
+  /// Sends phone number confirmation code to handle links of the type internalLinkTypePhoneNumberConfirmation.
+  ///
+  /// * [hash]: Hash value from the link.
+  /// * [phoneNumber]: Phone number value from the link.
+  /// * [settings]: Settings for the authentication of the user's phone number; pass null to use default settings *(optional)*.
+  ///
+  /// [AuthenticationCodeInfo] is returned on completion.
   const SendPhoneNumberConfirmationCode({
     required this.hash,
     required this.phoneNumber,
     this.settings,
   });
   
-  /// [hash] Hash value from the link 
+  /// Hash value from the link
   final String hash;
 
-  /// [phoneNumber] Phone number value from the link 
+  /// Phone number value from the link
   final String phoneNumber;
 
-  /// [settings] Settings for the authentication of the user's phone number; pass null to use default settings
+  /// Settings for the authentication of the user's phone number; pass null to use default settings
   final PhoneNumberAuthenticationSettings? settings;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "hash": hash,
       "phone_number": phoneNumber,
       "settings": settings?.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SendPhoneNumberConfirmationCode copyWith({
     String? hash,
@@ -39,8 +57,11 @@ class SendPhoneNumberConfirmationCode extends TdFunction {
     settings: settings ?? this.settings,
   );
 
-  static const CONSTRUCTOR = 'sendPhoneNumberConfirmationCode';
-  
+  static const String objectType = 'sendPhoneNumberConfirmationCode';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

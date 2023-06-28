@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class SetGroupCallParticipantVolumeLevel extends TdFunction {
-
-  /// Changes volume level of a participant of an active group call. If the current user can manage the group call, then the participant's volume level will be changed for all users with the default volume level
+/// **SetGroupCallParticipantVolumeLevel** *(setGroupCallParticipantVolumeLevel)* - TDLib function
+///
+/// Changes volume level of a participant of an active group call. If the current user can manage the group call, then the participant's volume level will be changed for all users with the default volume level.
+///
+/// * [groupCallId]: Group call identifier.
+/// * [participantId]: Participant identifier.
+/// * [volumeLevel]: New participant's volume level; 1-20000 in hundreds of percents.
+///
+/// [Ok] is returned on completion.
+final class SetGroupCallParticipantVolumeLevel extends TdFunction {
+  
+  /// **SetGroupCallParticipantVolumeLevel** *(setGroupCallParticipantVolumeLevel)* - TDLib function
+  ///
+  /// Changes volume level of a participant of an active group call. If the current user can manage the group call, then the participant's volume level will be changed for all users with the default volume level.
+  ///
+  /// * [groupCallId]: Group call identifier.
+  /// * [participantId]: Participant identifier.
+  /// * [volumeLevel]: New participant's volume level; 1-20000 in hundreds of percents.
+  ///
+  /// [Ok] is returned on completion.
   const SetGroupCallParticipantVolumeLevel({
     required this.groupCallId,
     required this.participantId,
     required this.volumeLevel,
   });
   
-  /// [groupCallId] Group call identifier
+  /// Group call identifier
   final int groupCallId;
 
-  /// [participantId] Participant identifier 
+  /// Participant identifier
   final MessageSender participantId;
 
-  /// [volumeLevel] New participant's volume level; 1-20000 in hundreds of percents
+  /// New participant's volume level; 1-20000 in hundreds of percents
   final int volumeLevel;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "group_call_id": groupCallId,
       "participant_id": participantId.toJson(),
       "volume_level": volumeLevel,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SetGroupCallParticipantVolumeLevel copyWith({
     int? groupCallId,
@@ -39,8 +57,11 @@ class SetGroupCallParticipantVolumeLevel extends TdFunction {
     volumeLevel: volumeLevel ?? this.volumeLevel,
   );
 
-  static const CONSTRUCTOR = 'setGroupCallParticipantVolumeLevel';
-  
+  static const String objectType = 'setGroupCallParticipantVolumeLevel';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

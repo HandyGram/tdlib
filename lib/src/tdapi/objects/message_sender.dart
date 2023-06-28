@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class MessageSender extends TdObject {
-
-  /// Contains information about the sender of a message
+/// **MessageSender** *(messageSender)* - parent
+///
+/// Contains information about the sender of a message.
+sealed class MessageSender extends TdObject {
+  
+  /// **MessageSender** *(messageSender)* - parent
+  ///
+  /// Contains information about the sender of a message.
   const MessageSender();
   
   /// a MessageSender return type can be :
@@ -10,39 +15,51 @@ class MessageSender extends TdObject {
   /// * [MessageSenderChat]
   factory MessageSender.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case MessageSenderUser.CONSTRUCTOR:
+      case MessageSenderUser.objectType:
         return MessageSenderUser.fromJson(json);
-      case MessageSenderChat.CONSTRUCTOR:
+      case MessageSenderChat.objectType:
         return MessageSenderChat.fromJson(json);
       default:
-        return const MessageSender();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of MessageSender)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  MessageSender copyWith() => const MessageSender();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'messageSender';
   
+  MessageSender copyWith();
+
+  static const String objectType = 'messageSender';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class MessageSenderUser extends MessageSender {
-
-  /// The message was sent by a known user
+/// **MessageSenderUser** *(messageSenderUser)* - child of MessageSender
+///
+/// The message was sent by a known user.
+///
+/// * [userId]: Identifier of the user that sent the message.
+final class MessageSenderUser extends MessageSender {
+  
+  /// **MessageSenderUser** *(messageSenderUser)* - child of MessageSender
+  ///
+  /// The message was sent by a known user.
+  ///
+  /// * [userId]: Identifier of the user that sent the message.
   const MessageSenderUser({
     required this.userId,
   });
   
-  /// [userId] Identifier of the user that sent the message
+  /// Identifier of the user that sent the message
   final int userId;
   
   /// Parse from a json
@@ -52,12 +69,13 @@ class MessageSenderUser extends MessageSender {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "user_id": userId,
-    };
-  }
+		};
+	}
+
   
   @override
   MessageSenderUser copyWith({
@@ -66,21 +84,33 @@ class MessageSenderUser extends MessageSender {
     userId: userId ?? this.userId,
   );
 
-  static const CONSTRUCTOR = 'messageSenderUser';
-  
+  static const String objectType = 'messageSenderUser';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class MessageSenderChat extends MessageSender {
-
-  /// The message was sent on behalf of a chat
+/// **MessageSenderChat** *(messageSenderChat)* - child of MessageSender
+///
+/// The message was sent on behalf of a chat.
+///
+/// * [chatId]: Identifier of the chat that sent the message.
+final class MessageSenderChat extends MessageSender {
+  
+  /// **MessageSenderChat** *(messageSenderChat)* - child of MessageSender
+  ///
+  /// The message was sent on behalf of a chat.
+  ///
+  /// * [chatId]: Identifier of the chat that sent the message.
   const MessageSenderChat({
     required this.chatId,
   });
   
-  /// [chatId] Identifier of the chat that sent the message
+  /// Identifier of the chat that sent the message
   final int chatId;
   
   /// Parse from a json
@@ -90,12 +120,13 @@ class MessageSenderChat extends MessageSender {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "chat_id": chatId,
-    };
-  }
+		};
+	}
+
   
   @override
   MessageSenderChat copyWith({
@@ -104,8 +135,11 @@ class MessageSenderChat extends MessageSender {
     chatId: chatId ?? this.chatId,
   );
 
-  static const CONSTRUCTOR = 'messageSenderChat';
-  
+  static const String objectType = 'messageSenderChat';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

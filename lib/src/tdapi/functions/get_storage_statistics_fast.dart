@@ -1,23 +1,36 @@
 part of '../tdapi.dart';
 
-class GetStorageStatisticsFast extends TdFunction {
-
-  /// Quickly returns approximate storage usage statistics. Can be called before authorization
+/// **GetStorageStatisticsFast** *(getStorageStatisticsFast)* - TDLib function
+///
+/// Quickly returns approximate storage usage statistics. Can be called before authorization.
+///
+/// [StorageStatisticsFast] is returned on completion.
+final class GetStorageStatisticsFast extends TdFunction {
+  
+  /// **GetStorageStatisticsFast** *(getStorageStatisticsFast)* - TDLib function
+  ///
+  /// Quickly returns approximate storage usage statistics. Can be called before authorization.
+  ///
+  /// [StorageStatisticsFast] is returned on completion.
   const GetStorageStatisticsFast();
   
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetStorageStatisticsFast copyWith() => const GetStorageStatisticsFast();
 
-  static const CONSTRUCTOR = 'getStorageStatisticsFast';
-  
+  static const String objectType = 'getStorageStatisticsFast';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

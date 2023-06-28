@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class Ok extends TdObject {
-
-  /// An object of this type is returned on a successful function call for certain functions
+/// **Ok** *(ok)* - basic class
+///
+/// An object of this type is returned on a successful function call for certain functions.
+final class Ok extends TdObject {
+  
+  /// **Ok** *(ok)* - basic class
+  ///
+  /// An object of this type is returned on a successful function call for certain functions.
   const Ok({
     this.extra,
     this.clientId,
@@ -24,11 +29,12 @@ class Ok extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   Ok copyWith({
     dynamic extra,
@@ -38,8 +44,11 @@ class Ok extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'ok';
-  
+  static const String objectType = 'ok';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

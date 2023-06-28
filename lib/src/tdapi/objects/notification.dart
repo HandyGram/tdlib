@@ -1,8 +1,23 @@
 part of '../tdapi.dart';
 
-class Notification extends TdObject {
-
-  /// Contains information about a notification
+/// **Notification** *(notification)* - basic class
+///
+/// Contains information about a notification.
+///
+/// * [id]: Unique persistent identifier of this notification.
+/// * [date]: Notification date.
+/// * [isSilent]: True, if the notification was explicitly sent without sound.
+/// * [type]: Notification type.
+final class Notification extends TdObject {
+  
+  /// **Notification** *(notification)* - basic class
+  ///
+  /// Contains information about a notification.
+  ///
+  /// * [id]: Unique persistent identifier of this notification.
+  /// * [date]: Notification date.
+  /// * [isSilent]: True, if the notification was explicitly sent without sound.
+  /// * [type]: Notification type.
   const Notification({
     required this.id,
     required this.date,
@@ -10,16 +25,16 @@ class Notification extends TdObject {
     required this.type,
   });
   
-  /// [id] Unique persistent identifier of this notification 
+  /// Unique persistent identifier of this notification
   final int id;
 
-  /// [date] Notification date
+  /// Notification date
   final int date;
 
-  /// [isSilent] True, if the notification was initially silent
+  /// True, if the notification was explicitly sent without sound
   final bool isSilent;
 
-  /// [type] Notification type
+  /// Notification type
   final NotificationType type;
   
   /// Parse from a json
@@ -32,15 +47,16 @@ class Notification extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "id": id,
       "date": date,
       "is_silent": isSilent,
       "type": type.toJson(),
-    };
-  }
+		};
+	}
+
   
   Notification copyWith({
     int? id,
@@ -54,8 +70,11 @@ class Notification extends TdObject {
     type: type ?? this.type,
   );
 
-  static const CONSTRUCTOR = 'notification';
-  
+  static const String objectType = 'notification';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

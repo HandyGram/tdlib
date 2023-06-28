@@ -1,8 +1,27 @@
 part of '../tdapi.dart';
 
-class ReportChat extends TdFunction {
-
-  /// Reports a chat to the Telegram moderators. A chat can be reported only from the chat action bar, or if chat.can_be_reported
+/// **ReportChat** *(reportChat)* - TDLib function
+///
+/// Reports a chat to the Telegram moderators. A chat can be reported only from the chat action bar, or if chat.can_be_reported.
+///
+/// * [chatId]: Chat identifier.
+/// * [messageIds]: Identifiers of reported messages; may be empty to report the whole chat.
+/// * [reason]: The reason for reporting the chat.
+/// * [text]: Additional report details; 0-1024 characters.
+///
+/// [Ok] is returned on completion.
+final class ReportChat extends TdFunction {
+  
+  /// **ReportChat** *(reportChat)* - TDLib function
+  ///
+  /// Reports a chat to the Telegram moderators. A chat can be reported only from the chat action bar, or if chat.can_be_reported.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [messageIds]: Identifiers of reported messages; may be empty to report the whole chat.
+  /// * [reason]: The reason for reporting the chat.
+  /// * [text]: Additional report details; 0-1024 characters.
+  ///
+  /// [Ok] is returned on completion.
   const ReportChat({
     required this.chatId,
     required this.messageIds,
@@ -10,29 +29,30 @@ class ReportChat extends TdFunction {
     required this.text,
   });
   
-  /// [chatId] Chat identifier
+  /// Chat identifier
   final int chatId;
 
-  /// [messageIds] Identifiers of reported messages, if any 
+  /// Identifiers of reported messages; may be empty to report the whole chat
   final List<int> messageIds;
 
-  /// [reason] The reason for reporting the chat 
+  /// The reason for reporting the chat
   final ChatReportReason reason;
 
-  /// [text] Additional report details; 0-1024 characters
+  /// Additional report details; 0-1024 characters
   final String text;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "message_ids": messageIds.map((i) => i).toList(),
       "reason": reason.toJson(),
       "text": text,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   ReportChat copyWith({
     int? chatId,
@@ -46,8 +66,11 @@ class ReportChat extends TdFunction {
     text: text ?? this.text,
   );
 
-  static const CONSTRUCTOR = 'reportChat';
-  
+  static const String objectType = 'reportChat';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

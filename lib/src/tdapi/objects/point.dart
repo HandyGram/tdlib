@@ -1,17 +1,28 @@
 part of '../tdapi.dart';
 
-class Point extends TdObject {
-
-  /// A point on a Cartesian plane
+/// **Point** *(point)* - basic class
+///
+/// A point on a Cartesian plane.
+///
+/// * [x]: The point's first coordinate.
+/// * [y]: The point's second coordinate.
+final class Point extends TdObject {
+  
+  /// **Point** *(point)* - basic class
+  ///
+  /// A point on a Cartesian plane.
+  ///
+  /// * [x]: The point's first coordinate.
+  /// * [y]: The point's second coordinate.
   const Point({
     required this.x,
     required this.y,
   });
   
-  /// [x] The point's first coordinate 
+  /// The point's first coordinate 
   final double x;
 
-  /// [y] The point's second coordinate
+  /// The point's second coordinate
   final double y;
   
   /// Parse from a json
@@ -22,13 +33,14 @@ class Point extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "x": x,
       "y": y,
-    };
-  }
+		};
+	}
+
   
   Point copyWith({
     double? x,
@@ -38,8 +50,11 @@ class Point extends TdObject {
     y: y ?? this.y,
   );
 
-  static const CONSTRUCTOR = 'point';
-  
+  static const String objectType = 'point';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

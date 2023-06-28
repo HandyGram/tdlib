@@ -1,8 +1,33 @@
 part of '../tdapi.dart';
 
-class ConnectedWebsite extends TdObject {
-
-  /// Contains information about one website the current user is logged in with Telegram
+/// **ConnectedWebsite** *(connectedWebsite)* - basic class
+///
+/// Contains information about one website the current user is logged in with Telegram.
+///
+/// * [id]: Website identifier.
+/// * [domainName]: The domain name of the website.
+/// * [botUserId]: User identifier of a bot linked with the website.
+/// * [browser]: The version of a browser used to log in.
+/// * [platform]: Operating system the browser is running on.
+/// * [logInDate]: Point in time (Unix timestamp) when the user was logged in.
+/// * [lastActiveDate]: Point in time (Unix timestamp) when obtained authorization was last used.
+/// * [ip]: IP address from which the user was logged in, in human-readable format.
+/// * [location]: Human-readable description of a country and a region from which the user was logged in, based on the IP address.
+final class ConnectedWebsite extends TdObject {
+  
+  /// **ConnectedWebsite** *(connectedWebsite)* - basic class
+  ///
+  /// Contains information about one website the current user is logged in with Telegram.
+  ///
+  /// * [id]: Website identifier.
+  /// * [domainName]: The domain name of the website.
+  /// * [botUserId]: User identifier of a bot linked with the website.
+  /// * [browser]: The version of a browser used to log in.
+  /// * [platform]: Operating system the browser is running on.
+  /// * [logInDate]: Point in time (Unix timestamp) when the user was logged in.
+  /// * [lastActiveDate]: Point in time (Unix timestamp) when obtained authorization was last used.
+  /// * [ip]: IP address from which the user was logged in, in human-readable format.
+  /// * [location]: Human-readable description of a country and a region from which the user was logged in, based on the IP address.
   const ConnectedWebsite({
     required this.id,
     required this.domainName,
@@ -15,31 +40,31 @@ class ConnectedWebsite extends TdObject {
     required this.location,
   });
   
-  /// [id] Website identifier
+  /// Website identifier
   final int id;
 
-  /// [domainName] The domain name of the website
+  /// The domain name of the website
   final String domainName;
 
-  /// [botUserId] User identifier of a bot linked with the website
+  /// User identifier of a bot linked with the website
   final int botUserId;
 
-  /// [browser] The version of a browser used to log in
+  /// The version of a browser used to log in
   final String browser;
 
-  /// [platform] Operating system the browser is running on
+  /// Operating system the browser is running on
   final String platform;
 
-  /// [logInDate] Point in time (Unix timestamp) when the user was logged in
+  /// Point in time (Unix timestamp) when the user was logged in
   final int logInDate;
 
-  /// [lastActiveDate] Point in time (Unix timestamp) when obtained authorization was last used
+  /// Point in time (Unix timestamp) when obtained authorization was last used
   final int lastActiveDate;
 
-  /// [ip] IP address from which the user was logged in, in human-readable format
+  /// IP address from which the user was logged in, in human-readable format
   final String ip;
 
-  /// [location] Human-readable description of a country and a region, from which the user was logged in, based on the IP address
+  /// Human-readable description of a country and a region from which the user was logged in, based on the IP address
   final String location;
   
   /// Parse from a json
@@ -57,9 +82,9 @@ class ConnectedWebsite extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "id": id,
       "domain_name": domainName,
       "bot_user_id": botUserId,
@@ -69,8 +94,9 @@ class ConnectedWebsite extends TdObject {
       "last_active_date": lastActiveDate,
       "ip": ip,
       "location": location,
-    };
-  }
+		};
+	}
+
   
   ConnectedWebsite copyWith({
     int? id,
@@ -94,8 +120,11 @@ class ConnectedWebsite extends TdObject {
     location: location ?? this.location,
   );
 
-  static const CONSTRUCTOR = 'connectedWebsite';
-  
+  static const String objectType = 'connectedWebsite';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

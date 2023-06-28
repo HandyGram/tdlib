@@ -1,8 +1,19 @@
 part of '../tdapi.dart';
 
-class MessageCalendar extends TdObject {
-
-  /// Contains information about found messages, split by days according to the option "utc_time_offset"
+/// **MessageCalendar** *(messageCalendar)* - basic class
+///
+/// Contains information about found messages, split by days according to the option "utc_time_offset".
+///
+/// * [totalCount]: Total number of found messages.
+/// * [days]: Information about messages sent.
+final class MessageCalendar extends TdObject {
+  
+  /// **MessageCalendar** *(messageCalendar)* - basic class
+  ///
+  /// Contains information about found messages, split by days according to the option "utc_time_offset".
+  ///
+  /// * [totalCount]: Total number of found messages.
+  /// * [days]: Information about messages sent.
   const MessageCalendar({
     required this.totalCount,
     required this.days,
@@ -10,10 +21,10 @@ class MessageCalendar extends TdObject {
     this.clientId,
   });
   
-  /// [totalCount] Total number of found messages 
+  /// Total number of found messages 
   final int totalCount;
 
-  /// [days] Information about messages sent
+  /// Information about messages sent
   final List<MessageCalendarDay> days;
 
   /// [extra] callback sign
@@ -34,13 +45,14 @@ class MessageCalendar extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "total_count": totalCount,
       "days": days.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   MessageCalendar copyWith({
     int? totalCount,
@@ -54,8 +66,11 @@ class MessageCalendar extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'messageCalendar';
-  
+  static const String objectType = 'messageCalendar';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class UserPrivacySetting extends TdObject {
-
-  /// Describes available user privacy settings
+/// **UserPrivacySetting** *(userPrivacySetting)* - parent
+///
+/// Describes available user privacy settings.
+sealed class UserPrivacySetting extends TdObject {
+  
+  /// **UserPrivacySetting** *(userPrivacySetting)* - parent
+  ///
+  /// Describes available user privacy settings.
   const UserPrivacySetting();
   
   /// a UserPrivacySetting return type can be :
@@ -14,240 +19,352 @@ class UserPrivacySetting extends TdObject {
   /// * [UserPrivacySettingAllowCalls]
   /// * [UserPrivacySettingAllowPeerToPeerCalls]
   /// * [UserPrivacySettingAllowFindingByPhoneNumber]
+  /// * [UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages]
   factory UserPrivacySetting.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case UserPrivacySettingShowStatus.CONSTRUCTOR:
+      case UserPrivacySettingShowStatus.objectType:
         return UserPrivacySettingShowStatus.fromJson(json);
-      case UserPrivacySettingShowProfilePhoto.CONSTRUCTOR:
+      case UserPrivacySettingShowProfilePhoto.objectType:
         return UserPrivacySettingShowProfilePhoto.fromJson(json);
-      case UserPrivacySettingShowLinkInForwardedMessages.CONSTRUCTOR:
+      case UserPrivacySettingShowLinkInForwardedMessages.objectType:
         return UserPrivacySettingShowLinkInForwardedMessages.fromJson(json);
-      case UserPrivacySettingShowPhoneNumber.CONSTRUCTOR:
+      case UserPrivacySettingShowPhoneNumber.objectType:
         return UserPrivacySettingShowPhoneNumber.fromJson(json);
-      case UserPrivacySettingAllowChatInvites.CONSTRUCTOR:
+      case UserPrivacySettingAllowChatInvites.objectType:
         return UserPrivacySettingAllowChatInvites.fromJson(json);
-      case UserPrivacySettingAllowCalls.CONSTRUCTOR:
+      case UserPrivacySettingAllowCalls.objectType:
         return UserPrivacySettingAllowCalls.fromJson(json);
-      case UserPrivacySettingAllowPeerToPeerCalls.CONSTRUCTOR:
+      case UserPrivacySettingAllowPeerToPeerCalls.objectType:
         return UserPrivacySettingAllowPeerToPeerCalls.fromJson(json);
-      case UserPrivacySettingAllowFindingByPhoneNumber.CONSTRUCTOR:
+      case UserPrivacySettingAllowFindingByPhoneNumber.objectType:
         return UserPrivacySettingAllowFindingByPhoneNumber.fromJson(json);
+      case UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages.objectType:
+        return UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages.fromJson(json);
       default:
-        return const UserPrivacySetting();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of UserPrivacySetting)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  UserPrivacySetting copyWith() => const UserPrivacySetting();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'userPrivacySetting';
   
+  UserPrivacySetting copyWith();
+
+  static const String objectType = 'userPrivacySetting';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class UserPrivacySettingShowStatus extends UserPrivacySetting {
-
-  /// A privacy setting for managing whether the user's online status is visible
+/// **UserPrivacySettingShowStatus** *(userPrivacySettingShowStatus)* - child of UserPrivacySetting
+///
+/// A privacy setting for managing whether the user's online status is visible.
+final class UserPrivacySettingShowStatus extends UserPrivacySetting {
+  
+  /// **UserPrivacySettingShowStatus** *(userPrivacySettingShowStatus)* - child of UserPrivacySetting
+  ///
+  /// A privacy setting for managing whether the user's online status is visible.
   const UserPrivacySettingShowStatus();
   
   /// Parse from a json
   factory UserPrivacySettingShowStatus.fromJson(Map<String, dynamic> json) => const UserPrivacySettingShowStatus();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   UserPrivacySettingShowStatus copyWith() => const UserPrivacySettingShowStatus();
 
-  static const CONSTRUCTOR = 'userPrivacySettingShowStatus';
-  
+  static const String objectType = 'userPrivacySettingShowStatus';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class UserPrivacySettingShowProfilePhoto extends UserPrivacySetting {
-
-  /// A privacy setting for managing whether the user's profile photo is visible
+/// **UserPrivacySettingShowProfilePhoto** *(userPrivacySettingShowProfilePhoto)* - child of UserPrivacySetting
+///
+/// A privacy setting for managing whether the user's profile photo is visible.
+final class UserPrivacySettingShowProfilePhoto extends UserPrivacySetting {
+  
+  /// **UserPrivacySettingShowProfilePhoto** *(userPrivacySettingShowProfilePhoto)* - child of UserPrivacySetting
+  ///
+  /// A privacy setting for managing whether the user's profile photo is visible.
   const UserPrivacySettingShowProfilePhoto();
   
   /// Parse from a json
   factory UserPrivacySettingShowProfilePhoto.fromJson(Map<String, dynamic> json) => const UserPrivacySettingShowProfilePhoto();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   UserPrivacySettingShowProfilePhoto copyWith() => const UserPrivacySettingShowProfilePhoto();
 
-  static const CONSTRUCTOR = 'userPrivacySettingShowProfilePhoto';
-  
+  static const String objectType = 'userPrivacySettingShowProfilePhoto';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class UserPrivacySettingShowLinkInForwardedMessages extends UserPrivacySetting {
-
-  /// A privacy setting for managing whether a link to the user's account is included in forwarded messages
+/// **UserPrivacySettingShowLinkInForwardedMessages** *(userPrivacySettingShowLinkInForwardedMessages)* - child of UserPrivacySetting
+///
+/// A privacy setting for managing whether a link to the user's account is included in forwarded messages.
+final class UserPrivacySettingShowLinkInForwardedMessages extends UserPrivacySetting {
+  
+  /// **UserPrivacySettingShowLinkInForwardedMessages** *(userPrivacySettingShowLinkInForwardedMessages)* - child of UserPrivacySetting
+  ///
+  /// A privacy setting for managing whether a link to the user's account is included in forwarded messages.
   const UserPrivacySettingShowLinkInForwardedMessages();
   
   /// Parse from a json
   factory UserPrivacySettingShowLinkInForwardedMessages.fromJson(Map<String, dynamic> json) => const UserPrivacySettingShowLinkInForwardedMessages();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   UserPrivacySettingShowLinkInForwardedMessages copyWith() => const UserPrivacySettingShowLinkInForwardedMessages();
 
-  static const CONSTRUCTOR = 'userPrivacySettingShowLinkInForwardedMessages';
-  
+  static const String objectType = 'userPrivacySettingShowLinkInForwardedMessages';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class UserPrivacySettingShowPhoneNumber extends UserPrivacySetting {
-
-  /// A privacy setting for managing whether the user's phone number is visible
+/// **UserPrivacySettingShowPhoneNumber** *(userPrivacySettingShowPhoneNumber)* - child of UserPrivacySetting
+///
+/// A privacy setting for managing whether the user's phone number is visible.
+final class UserPrivacySettingShowPhoneNumber extends UserPrivacySetting {
+  
+  /// **UserPrivacySettingShowPhoneNumber** *(userPrivacySettingShowPhoneNumber)* - child of UserPrivacySetting
+  ///
+  /// A privacy setting for managing whether the user's phone number is visible.
   const UserPrivacySettingShowPhoneNumber();
   
   /// Parse from a json
   factory UserPrivacySettingShowPhoneNumber.fromJson(Map<String, dynamic> json) => const UserPrivacySettingShowPhoneNumber();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   UserPrivacySettingShowPhoneNumber copyWith() => const UserPrivacySettingShowPhoneNumber();
 
-  static const CONSTRUCTOR = 'userPrivacySettingShowPhoneNumber';
-  
+  static const String objectType = 'userPrivacySettingShowPhoneNumber';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class UserPrivacySettingAllowChatInvites extends UserPrivacySetting {
-
-  /// A privacy setting for managing whether the user can be invited to chats
+/// **UserPrivacySettingAllowChatInvites** *(userPrivacySettingAllowChatInvites)* - child of UserPrivacySetting
+///
+/// A privacy setting for managing whether the user can be invited to chats.
+final class UserPrivacySettingAllowChatInvites extends UserPrivacySetting {
+  
+  /// **UserPrivacySettingAllowChatInvites** *(userPrivacySettingAllowChatInvites)* - child of UserPrivacySetting
+  ///
+  /// A privacy setting for managing whether the user can be invited to chats.
   const UserPrivacySettingAllowChatInvites();
   
   /// Parse from a json
   factory UserPrivacySettingAllowChatInvites.fromJson(Map<String, dynamic> json) => const UserPrivacySettingAllowChatInvites();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   UserPrivacySettingAllowChatInvites copyWith() => const UserPrivacySettingAllowChatInvites();
 
-  static const CONSTRUCTOR = 'userPrivacySettingAllowChatInvites';
-  
+  static const String objectType = 'userPrivacySettingAllowChatInvites';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class UserPrivacySettingAllowCalls extends UserPrivacySetting {
-
-  /// A privacy setting for managing whether the user can be called
+/// **UserPrivacySettingAllowCalls** *(userPrivacySettingAllowCalls)* - child of UserPrivacySetting
+///
+/// A privacy setting for managing whether the user can be called.
+final class UserPrivacySettingAllowCalls extends UserPrivacySetting {
+  
+  /// **UserPrivacySettingAllowCalls** *(userPrivacySettingAllowCalls)* - child of UserPrivacySetting
+  ///
+  /// A privacy setting for managing whether the user can be called.
   const UserPrivacySettingAllowCalls();
   
   /// Parse from a json
   factory UserPrivacySettingAllowCalls.fromJson(Map<String, dynamic> json) => const UserPrivacySettingAllowCalls();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   UserPrivacySettingAllowCalls copyWith() => const UserPrivacySettingAllowCalls();
 
-  static const CONSTRUCTOR = 'userPrivacySettingAllowCalls';
-  
+  static const String objectType = 'userPrivacySettingAllowCalls';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class UserPrivacySettingAllowPeerToPeerCalls extends UserPrivacySetting {
-
-  /// A privacy setting for managing whether peer-to-peer connections can be used for calls
+/// **UserPrivacySettingAllowPeerToPeerCalls** *(userPrivacySettingAllowPeerToPeerCalls)* - child of UserPrivacySetting
+///
+/// A privacy setting for managing whether peer-to-peer connections can be used for calls.
+final class UserPrivacySettingAllowPeerToPeerCalls extends UserPrivacySetting {
+  
+  /// **UserPrivacySettingAllowPeerToPeerCalls** *(userPrivacySettingAllowPeerToPeerCalls)* - child of UserPrivacySetting
+  ///
+  /// A privacy setting for managing whether peer-to-peer connections can be used for calls.
   const UserPrivacySettingAllowPeerToPeerCalls();
   
   /// Parse from a json
   factory UserPrivacySettingAllowPeerToPeerCalls.fromJson(Map<String, dynamic> json) => const UserPrivacySettingAllowPeerToPeerCalls();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   UserPrivacySettingAllowPeerToPeerCalls copyWith() => const UserPrivacySettingAllowPeerToPeerCalls();
 
-  static const CONSTRUCTOR = 'userPrivacySettingAllowPeerToPeerCalls';
-  
+  static const String objectType = 'userPrivacySettingAllowPeerToPeerCalls';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class UserPrivacySettingAllowFindingByPhoneNumber extends UserPrivacySetting {
-
-  /// A privacy setting for managing whether the user can be found by their phone number. Checked only if the phone number is not known to the other user. Can be set only to "Allow contacts" or "Allow all"
+/// **UserPrivacySettingAllowFindingByPhoneNumber** *(userPrivacySettingAllowFindingByPhoneNumber)* - child of UserPrivacySetting
+///
+/// A privacy setting for managing whether the user can be found by their phone number. Checked only if the phone number is not known to the other user. Can be set only to "Allow contacts" or "Allow all".
+final class UserPrivacySettingAllowFindingByPhoneNumber extends UserPrivacySetting {
+  
+  /// **UserPrivacySettingAllowFindingByPhoneNumber** *(userPrivacySettingAllowFindingByPhoneNumber)* - child of UserPrivacySetting
+  ///
+  /// A privacy setting for managing whether the user can be found by their phone number. Checked only if the phone number is not known to the other user. Can be set only to "Allow contacts" or "Allow all".
   const UserPrivacySettingAllowFindingByPhoneNumber();
   
   /// Parse from a json
   factory UserPrivacySettingAllowFindingByPhoneNumber.fromJson(Map<String, dynamic> json) => const UserPrivacySettingAllowFindingByPhoneNumber();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   UserPrivacySettingAllowFindingByPhoneNumber copyWith() => const UserPrivacySettingAllowFindingByPhoneNumber();
 
-  static const CONSTRUCTOR = 'userPrivacySettingAllowFindingByPhoneNumber';
+  static const String objectType = 'userPrivacySettingAllowFindingByPhoneNumber';
+
+  @override
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages** *(userPrivacySettingAllowPrivateVoiceAndVideoNoteMessages)* - child of UserPrivacySetting
+///
+/// A privacy setting for managing whether the user can receive voice and video messages in private chats.
+final class UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages extends UserPrivacySetting {
+  
+  /// **UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages** *(userPrivacySettingAllowPrivateVoiceAndVideoNoteMessages)* - child of UserPrivacySetting
+  ///
+  /// A privacy setting for managing whether the user can receive voice and video messages in private chats.
+  const UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages();
+  
+  /// Parse from a json
+  factory UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages.fromJson(Map<String, dynamic> json) => const UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages();
   
   @override
-  String getConstructor() => CONSTRUCTOR;
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  
+  @override
+  UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages copyWith() => const UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages();
+
+  static const String objectType = 'userPrivacySettingAllowPrivateVoiceAndVideoNoteMessages';
+
+  @override
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

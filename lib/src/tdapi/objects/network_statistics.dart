@@ -1,8 +1,19 @@
 part of '../tdapi.dart';
 
-class NetworkStatistics extends TdObject {
-
-  /// A full list of available network statistic entries
+/// **NetworkStatistics** *(networkStatistics)* - basic class
+///
+/// A full list of available network statistic entries.
+///
+/// * [sinceDate]: Point in time (Unix timestamp) from which the statistics are collected.
+/// * [entries]: Network statistics entries.
+final class NetworkStatistics extends TdObject {
+  
+  /// **NetworkStatistics** *(networkStatistics)* - basic class
+  ///
+  /// A full list of available network statistic entries.
+  ///
+  /// * [sinceDate]: Point in time (Unix timestamp) from which the statistics are collected.
+  /// * [entries]: Network statistics entries.
   const NetworkStatistics({
     required this.sinceDate,
     required this.entries,
@@ -10,10 +21,10 @@ class NetworkStatistics extends TdObject {
     this.clientId,
   });
   
-  /// [sinceDate] Point in time (Unix timestamp) from which the statistics are collected 
+  /// Point in time (Unix timestamp) from which the statistics are collected 
   final int sinceDate;
 
-  /// [entries] Network statistics entries
+  /// Network statistics entries
   final List<NetworkStatisticsEntry> entries;
 
   /// [extra] callback sign
@@ -34,13 +45,14 @@ class NetworkStatistics extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "since_date": sinceDate,
       "entries": entries.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   NetworkStatistics copyWith({
     int? sinceDate,
@@ -54,8 +66,11 @@ class NetworkStatistics extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'networkStatistics';
-  
+  static const String objectType = 'networkStatistics';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

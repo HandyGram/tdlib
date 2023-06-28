@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class GetSecretChat extends TdFunction {
-
-  /// Returns information about a secret chat by its identifier. This is an offline request
+/// **GetSecretChat** *(getSecretChat)* - TDLib function
+///
+/// Returns information about a secret chat by its identifier. This is an offline request.
+///
+/// * [secretChatId]: Secret chat identifier.
+///
+/// [SecretChat] is returned on completion.
+final class GetSecretChat extends TdFunction {
+  
+  /// **GetSecretChat** *(getSecretChat)* - TDLib function
+  ///
+  /// Returns information about a secret chat by its identifier. This is an offline request.
+  ///
+  /// * [secretChatId]: Secret chat identifier.
+  ///
+  /// [SecretChat] is returned on completion.
   const GetSecretChat({
     required this.secretChatId,
   });
   
-  /// [secretChatId] Secret chat identifier
+  /// Secret chat identifier
   final int secretChatId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "secret_chat_id": secretChatId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetSecretChat copyWith({
     int? secretChatId,
@@ -25,8 +39,11 @@ class GetSecretChat extends TdFunction {
     secretChatId: secretChatId ?? this.secretChatId,
   );
 
-  static const CONSTRUCTOR = 'getSecretChat';
-  
+  static const String objectType = 'getSecretChat';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class GetChatPinnedMessage extends TdFunction {
-
-  /// Returns information about a newest pinned message in the chat
+/// **GetChatPinnedMessage** *(getChatPinnedMessage)* - TDLib function
+///
+/// Returns information about a newest pinned message in the chat.
+///
+/// * [chatId]: Identifier of the chat the message belongs to.
+///
+/// [Message] is returned on completion.
+final class GetChatPinnedMessage extends TdFunction {
+  
+  /// **GetChatPinnedMessage** *(getChatPinnedMessage)* - TDLib function
+  ///
+  /// Returns information about a newest pinned message in the chat.
+  ///
+  /// * [chatId]: Identifier of the chat the message belongs to.
+  ///
+  /// [Message] is returned on completion.
   const GetChatPinnedMessage({
     required this.chatId,
   });
   
-  /// [chatId] Identifier of the chat the message belongs to
+  /// Identifier of the chat the message belongs to
   final int chatId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetChatPinnedMessage copyWith({
     int? chatId,
@@ -25,8 +39,11 @@ class GetChatPinnedMessage extends TdFunction {
     chatId: chatId ?? this.chatId,
   );
 
-  static const CONSTRUCTOR = 'getChatPinnedMessage';
-  
+  static const String objectType = 'getChatPinnedMessage';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class SetVideoChatDefaultParticipant extends TdFunction {
-
-  /// Changes default participant identifier, on whose behalf a video chat in the chat will be joined
+/// **SetVideoChatDefaultParticipant** *(setVideoChatDefaultParticipant)* - TDLib function
+///
+/// Changes default participant identifier, on whose behalf a video chat in the chat will be joined.
+///
+/// * [chatId]: Chat identifier.
+/// * [defaultParticipantId]: Default group call participant identifier to join the video chats.
+///
+/// [Ok] is returned on completion.
+final class SetVideoChatDefaultParticipant extends TdFunction {
+  
+  /// **SetVideoChatDefaultParticipant** *(setVideoChatDefaultParticipant)* - TDLib function
+  ///
+  /// Changes default participant identifier, on whose behalf a video chat in the chat will be joined.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [defaultParticipantId]: Default group call participant identifier to join the video chats.
+  ///
+  /// [Ok] is returned on completion.
   const SetVideoChatDefaultParticipant({
     required this.chatId,
     required this.defaultParticipantId,
   });
   
-  /// [chatId] Chat identifier 
+  /// Chat identifier 
   final int chatId;
 
-  /// [defaultParticipantId] Default group call participant identifier to join the video chats
+  /// Default group call participant identifier to join the video chats
   final MessageSender defaultParticipantId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "default_participant_id": defaultParticipantId.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SetVideoChatDefaultParticipant copyWith({
     int? chatId,
@@ -32,8 +48,11 @@ class SetVideoChatDefaultParticipant extends TdFunction {
     defaultParticipantId: defaultParticipantId ?? this.defaultParticipantId,
   );
 
-  static const CONSTRUCTOR = 'setVideoChatDefaultParticipant';
-  
+  static const String objectType = 'setVideoChatDefaultParticipant';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

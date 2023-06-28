@@ -1,23 +1,36 @@
 part of '../tdapi.dart';
 
-class GetApplicationDownloadLink extends TdFunction {
-
-  /// Returns the link for downloading official Telegram application to be used when the current user invites friends to Telegram
+/// **GetApplicationDownloadLink** *(getApplicationDownloadLink)* - TDLib function
+///
+/// Returns the link for downloading official Telegram application to be used when the current user invites friends to Telegram.
+///
+/// [HttpUrl] is returned on completion.
+final class GetApplicationDownloadLink extends TdFunction {
+  
+  /// **GetApplicationDownloadLink** *(getApplicationDownloadLink)* - TDLib function
+  ///
+  /// Returns the link for downloading official Telegram application to be used when the current user invites friends to Telegram.
+  ///
+  /// [HttpUrl] is returned on completion.
   const GetApplicationDownloadLink();
   
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetApplicationDownloadLink copyWith() => const GetApplicationDownloadLink();
 
-  static const CONSTRUCTOR = 'getApplicationDownloadLink';
-  
+  static const String objectType = 'getApplicationDownloadLink';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

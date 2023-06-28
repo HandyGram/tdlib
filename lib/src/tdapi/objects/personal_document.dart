@@ -1,17 +1,28 @@
 part of '../tdapi.dart';
 
-class PersonalDocument extends TdObject {
-
-  /// A personal document, containing some information about a user
+/// **PersonalDocument** *(personalDocument)* - basic class
+///
+/// A personal document, containing some information about a user.
+///
+/// * [files]: List of files containing the pages of the document.
+/// * [translation]: List of files containing a certified English translation of the document.
+final class PersonalDocument extends TdObject {
+  
+  /// **PersonalDocument** *(personalDocument)* - basic class
+  ///
+  /// A personal document, containing some information about a user.
+  ///
+  /// * [files]: List of files containing the pages of the document.
+  /// * [translation]: List of files containing a certified English translation of the document.
   const PersonalDocument({
     required this.files,
     required this.translation,
   });
   
-  /// [files] List of files containing the pages of the document 
+  /// List of files containing the pages of the document 
   final List<DatedFile> files;
 
-  /// [translation] List of files containing a certified English translation of the document
+  /// List of files containing a certified English translation of the document
   final List<DatedFile> translation;
   
   /// Parse from a json
@@ -22,13 +33,14 @@ class PersonalDocument extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "files": files.map((i) => i.toJson()).toList(),
       "translation": translation.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   PersonalDocument copyWith({
     List<DatedFile>? files,
@@ -38,8 +50,11 @@ class PersonalDocument extends TdObject {
     translation: translation ?? this.translation,
   );
 
-  static const CONSTRUCTOR = 'personalDocument';
-  
+  static const String objectType = 'personalDocument';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

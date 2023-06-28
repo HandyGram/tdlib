@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class GetWebPagePreview extends TdFunction {
-
-  /// Returns a web page preview by the text of the message. Do not call this function too often. Returns a 404 error if the web page has no preview
+/// **GetWebPagePreview** *(getWebPagePreview)* - TDLib function
+///
+/// Returns a web page preview by the text of the message. Do not call this function too often. Returns a 404 error if the web page has no preview.
+///
+/// * [text]: Message text with formatting.
+///
+/// [WebPage] is returned on completion.
+final class GetWebPagePreview extends TdFunction {
+  
+  /// **GetWebPagePreview** *(getWebPagePreview)* - TDLib function
+  ///
+  /// Returns a web page preview by the text of the message. Do not call this function too often. Returns a 404 error if the web page has no preview.
+  ///
+  /// * [text]: Message text with formatting.
+  ///
+  /// [WebPage] is returned on completion.
   const GetWebPagePreview({
     required this.text,
   });
   
-  /// [text] Message text with formatting
+  /// Message text with formatting
   final FormattedText text;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "text": text.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetWebPagePreview copyWith({
     FormattedText? text,
@@ -25,8 +39,11 @@ class GetWebPagePreview extends TdFunction {
     text: text ?? this.text,
   );
 
-  static const CONSTRUCTOR = 'getWebPagePreview';
-  
+  static const String objectType = 'getWebPagePreview';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

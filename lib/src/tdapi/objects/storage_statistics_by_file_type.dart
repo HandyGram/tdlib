@@ -1,21 +1,34 @@
 part of '../tdapi.dart';
 
-class StorageStatisticsByFileType extends TdObject {
-
-  /// Contains the storage usage statistics for a specific file type
+/// **StorageStatisticsByFileType** *(storageStatisticsByFileType)* - basic class
+///
+/// Contains the storage usage statistics for a specific file type.
+///
+/// * [fileType]: File type.
+/// * [size]: Total size of the files, in bytes.
+/// * [count]: Total number of files.
+final class StorageStatisticsByFileType extends TdObject {
+  
+  /// **StorageStatisticsByFileType** *(storageStatisticsByFileType)* - basic class
+  ///
+  /// Contains the storage usage statistics for a specific file type.
+  ///
+  /// * [fileType]: File type.
+  /// * [size]: Total size of the files, in bytes.
+  /// * [count]: Total number of files.
   const StorageStatisticsByFileType({
     required this.fileType,
     required this.size,
     required this.count,
   });
   
-  /// [fileType] File type 
+  /// File type
   final FileType fileType;
 
-  /// [size] Total size of the files, in bytes 
+  /// Total size of the files, in bytes
   final int size;
 
-  /// [count] Total number of files
+  /// Total number of files
   final int count;
   
   /// Parse from a json
@@ -27,14 +40,15 @@ class StorageStatisticsByFileType extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "file_type": fileType.toJson(),
       "size": size,
       "count": count,
-    };
-  }
+		};
+	}
+
   
   StorageStatisticsByFileType copyWith({
     FileType? fileType,
@@ -46,8 +60,11 @@ class StorageStatisticsByFileType extends TdObject {
     count: count ?? this.count,
   );
 
-  static const CONSTRUCTOR = 'storageStatisticsByFileType';
-  
+  static const String objectType = 'storageStatisticsByFileType';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

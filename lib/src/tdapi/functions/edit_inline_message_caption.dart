@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class EditInlineMessageCaption extends TdFunction {
-
-  /// Edits the caption of an inline message sent via a bot; for bots only
+/// **EditInlineMessageCaption** *(editInlineMessageCaption)* - TDLib function
+///
+/// Edits the caption of an inline message sent via a bot; for bots only.
+///
+/// * [inlineMessageId]: Inline message identifier.
+/// * [replyMarkup]: The new message reply markup; pass null if none *(optional)*.
+/// * [caption]: New message content caption; pass null to remove caption; 0-getOption("message_caption_length_max") characters *(optional)*.
+///
+/// [Ok] is returned on completion.
+final class EditInlineMessageCaption extends TdFunction {
+  
+  /// **EditInlineMessageCaption** *(editInlineMessageCaption)* - TDLib function
+  ///
+  /// Edits the caption of an inline message sent via a bot; for bots only.
+  ///
+  /// * [inlineMessageId]: Inline message identifier.
+  /// * [replyMarkup]: The new message reply markup; pass null if none *(optional)*.
+  /// * [caption]: New message content caption; pass null to remove caption; 0-getOption("message_caption_length_max") characters *(optional)*.
+  ///
+  /// [Ok] is returned on completion.
   const EditInlineMessageCaption({
     required this.inlineMessageId,
     this.replyMarkup,
     this.caption,
   });
   
-  /// [inlineMessageId] Inline message identifier
+  /// Inline message identifier
   final String inlineMessageId;
 
-  /// [replyMarkup] The new message reply markup; pass null if none
+  /// The new message reply markup; pass null if none
   final ReplyMarkup? replyMarkup;
 
-  /// [caption] New message content caption; pass null to remove caption; 0-GetOption("message_caption_length_max") characters
+  /// New message content caption; pass null to remove caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "inline_message_id": inlineMessageId,
       "reply_markup": replyMarkup?.toJson(),
       "caption": caption?.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   EditInlineMessageCaption copyWith({
     String? inlineMessageId,
@@ -39,8 +57,11 @@ class EditInlineMessageCaption extends TdFunction {
     caption: caption ?? this.caption,
   );
 
-  static const CONSTRUCTOR = 'editInlineMessageCaption';
-  
+  static const String objectType = 'editInlineMessageCaption';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

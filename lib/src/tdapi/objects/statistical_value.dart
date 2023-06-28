@@ -1,21 +1,34 @@
 part of '../tdapi.dart';
 
-class StatisticalValue extends TdObject {
-
-  /// A value with information about its recent changes
+/// **StatisticalValue** *(statisticalValue)* - basic class
+///
+/// A value with information about its recent changes.
+///
+/// * [value]: The current value.
+/// * [previousValue]: The value for the previous day.
+/// * [growthRatePercentage]: The growth rate of the value, as a percentage.
+final class StatisticalValue extends TdObject {
+  
+  /// **StatisticalValue** *(statisticalValue)* - basic class
+  ///
+  /// A value with information about its recent changes.
+  ///
+  /// * [value]: The current value.
+  /// * [previousValue]: The value for the previous day.
+  /// * [growthRatePercentage]: The growth rate of the value, as a percentage.
   const StatisticalValue({
     required this.value,
     required this.previousValue,
     required this.growthRatePercentage,
   });
   
-  /// [value] The current value 
+  /// The current value 
   final double value;
 
-  /// [previousValue] The value for the previous day 
+  /// The value for the previous day 
   final double previousValue;
 
-  /// [growthRatePercentage] The growth rate of the value, as a percentage
+  /// The growth rate of the value, as a percentage
   final double growthRatePercentage;
   
   /// Parse from a json
@@ -27,14 +40,15 @@ class StatisticalValue extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "value": value,
       "previous_value": previousValue,
       "growth_rate_percentage": growthRatePercentage,
-    };
-  }
+		};
+	}
+
   
   StatisticalValue copyWith({
     double? value,
@@ -46,8 +60,11 @@ class StatisticalValue extends TdObject {
     growthRatePercentage: growthRatePercentage ?? this.growthRatePercentage,
   );
 
-  static const CONSTRUCTOR = 'statisticalValue';
-  
+  static const String objectType = 'statisticalValue';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

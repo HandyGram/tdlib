@@ -1,8 +1,27 @@
 part of '../tdapi.dart';
 
-class PageBlockTableCell extends TdObject {
-
-  /// Represents a cell of a table
+/// **PageBlockTableCell** *(pageBlockTableCell)* - basic class
+///
+/// Represents a cell of a table.
+///
+/// * [text]: Cell text; may be null. If the text is null, then the cell must be invisible *(optional)*.
+/// * [isHeader]: True, if it is a header cell.
+/// * [colspan]: The number of columns the cell spans.
+/// * [rowspan]: The number of rows the cell spans.
+/// * [align]: Horizontal cell content alignment.
+/// * [valign]: Vertical cell content alignment.
+final class PageBlockTableCell extends TdObject {
+  
+  /// **PageBlockTableCell** *(pageBlockTableCell)* - basic class
+  ///
+  /// Represents a cell of a table.
+  ///
+  /// * [text]: Cell text; may be null. If the text is null, then the cell must be invisible *(optional)*.
+  /// * [isHeader]: True, if it is a header cell.
+  /// * [colspan]: The number of columns the cell spans.
+  /// * [rowspan]: The number of rows the cell spans.
+  /// * [align]: Horizontal cell content alignment.
+  /// * [valign]: Vertical cell content alignment.
   const PageBlockTableCell({
     this.text,
     required this.isHeader,
@@ -12,22 +31,22 @@ class PageBlockTableCell extends TdObject {
     required this.valign,
   });
   
-  /// [text] Cell text; may be null. If the text is null, then the cell must be invisible 
+  /// Cell text; may be null. If the text is null, then the cell must be invisible
   final RichText? text;
 
-  /// [isHeader] True, if it is a header cell
+  /// True, if it is a header cell
   final bool isHeader;
 
-  /// [colspan] The number of columns the cell spans
+  /// The number of columns the cell spans
   final int colspan;
 
-  /// [rowspan] The number of rows the cell spans
+  /// The number of rows the cell spans
   final int rowspan;
 
-  /// [align] Horizontal cell content alignment
+  /// Horizontal cell content alignment
   final PageBlockHorizontalAlignment align;
 
-  /// [valign] Vertical cell content alignment
+  /// Vertical cell content alignment
   final PageBlockVerticalAlignment valign;
   
   /// Parse from a json
@@ -42,17 +61,18 @@ class PageBlockTableCell extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "text": text?.toJson(),
       "is_header": isHeader,
       "colspan": colspan,
       "rowspan": rowspan,
       "align": align.toJson(),
       "valign": valign.toJson(),
-    };
-  }
+		};
+	}
+
   
   PageBlockTableCell copyWith({
     RichText? text,
@@ -70,8 +90,11 @@ class PageBlockTableCell extends TdObject {
     valign: valign ?? this.valign,
   );
 
-  static const CONSTRUCTOR = 'pageBlockTableCell';
-  
+  static const String objectType = 'pageBlockTableCell';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

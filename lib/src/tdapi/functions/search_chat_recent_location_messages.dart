@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class SearchChatRecentLocationMessages extends TdFunction {
-
-  /// Returns information about the recent locations of chat members that were sent to the chat. Returns up to 1 location message per user
+/// **SearchChatRecentLocationMessages** *(searchChatRecentLocationMessages)* - TDLib function
+///
+/// Returns information about the recent locations of chat members that were sent to the chat. Returns up to 1 location message per user.
+///
+/// * [chatId]: Chat identifier.
+/// * [limit]: The maximum number of messages to be returned.
+///
+/// [Messages] is returned on completion.
+final class SearchChatRecentLocationMessages extends TdFunction {
+  
+  /// **SearchChatRecentLocationMessages** *(searchChatRecentLocationMessages)* - TDLib function
+  ///
+  /// Returns information about the recent locations of chat members that were sent to the chat. Returns up to 1 location message per user.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [limit]: The maximum number of messages to be returned.
+  ///
+  /// [Messages] is returned on completion.
   const SearchChatRecentLocationMessages({
     required this.chatId,
     required this.limit,
   });
   
-  /// [chatId] Chat identifier 
+  /// Chat identifier 
   final int chatId;
 
-  /// [limit] The maximum number of messages to be returned
+  /// The maximum number of messages to be returned
   final int limit;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "limit": limit,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SearchChatRecentLocationMessages copyWith({
     int? chatId,
@@ -32,8 +48,11 @@ class SearchChatRecentLocationMessages extends TdFunction {
     limit: limit ?? this.limit,
   );
 
-  static const CONSTRUCTOR = 'searchChatRecentLocationMessages';
-  
+  static const String objectType = 'searchChatRecentLocationMessages';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

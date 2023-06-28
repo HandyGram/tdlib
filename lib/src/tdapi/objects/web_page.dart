@@ -1,8 +1,57 @@
 part of '../tdapi.dart';
 
-class WebPage extends TdObject {
-
-  /// Describes a web page preview
+/// **WebPage** *(webPage)* - basic class
+///
+/// Describes a web page preview.
+///
+/// * [url]: Original URL of the link.
+/// * [displayUrl]: URL to display.
+/// * [type]: Type of the web page. Can be: article, photo, audio, video, document, profile, app, or something else.
+/// * [siteName]: Short name of the site (e.g., Google Docs, App Store).
+/// * [title]: Title of the content.
+/// * [description]: Description of the content.
+/// * [photo]: Image representing the content; may be null *(optional)*.
+/// * [embedUrl]: URL to show in the embedded preview.
+/// * [embedType]: MIME type of the embedded preview, (e.g., text/html or video/mp4).
+/// * [embedWidth]: Width of the embedded preview.
+/// * [embedHeight]: Height of the embedded preview.
+/// * [duration]: Duration of the content, in seconds.
+/// * [author]: Author of the content.
+/// * [animation]: Preview of the content as an animation, if available; may be null *(optional)*.
+/// * [audio]: Preview of the content as an audio file, if available; may be null *(optional)*.
+/// * [document]: Preview of the content as a document, if available; may be null *(optional)*.
+/// * [sticker]: Preview of the content as a sticker for small WEBP files, if available; may be null *(optional)*.
+/// * [video]: Preview of the content as a video, if available; may be null *(optional)*.
+/// * [videoNote]: Preview of the content as a video note, if available; may be null *(optional)*.
+/// * [voiceNote]: Preview of the content as a voice note, if available; may be null *(optional)*.
+/// * [instantViewVersion]: Version of web page instant view (currently, can be 1 or 2); 0 if none.
+final class WebPage extends TdObject {
+  
+  /// **WebPage** *(webPage)* - basic class
+  ///
+  /// Describes a web page preview.
+  ///
+  /// * [url]: Original URL of the link.
+  /// * [displayUrl]: URL to display.
+  /// * [type]: Type of the web page. Can be: article, photo, audio, video, document, profile, app, or something else.
+  /// * [siteName]: Short name of the site (e.g., Google Docs, App Store).
+  /// * [title]: Title of the content.
+  /// * [description]: Description of the content.
+  /// * [photo]: Image representing the content; may be null *(optional)*.
+  /// * [embedUrl]: URL to show in the embedded preview.
+  /// * [embedType]: MIME type of the embedded preview, (e.g., text/html or video/mp4).
+  /// * [embedWidth]: Width of the embedded preview.
+  /// * [embedHeight]: Height of the embedded preview.
+  /// * [duration]: Duration of the content, in seconds.
+  /// * [author]: Author of the content.
+  /// * [animation]: Preview of the content as an animation, if available; may be null *(optional)*.
+  /// * [audio]: Preview of the content as an audio file, if available; may be null *(optional)*.
+  /// * [document]: Preview of the content as a document, if available; may be null *(optional)*.
+  /// * [sticker]: Preview of the content as a sticker for small WEBP files, if available; may be null *(optional)*.
+  /// * [video]: Preview of the content as a video, if available; may be null *(optional)*.
+  /// * [videoNote]: Preview of the content as a video note, if available; may be null *(optional)*.
+  /// * [voiceNote]: Preview of the content as a voice note, if available; may be null *(optional)*.
+  /// * [instantViewVersion]: Version of web page instant view (currently, can be 1 or 2); 0 if none.
   const WebPage({
     required this.url,
     required this.displayUrl,
@@ -29,67 +78,67 @@ class WebPage extends TdObject {
     this.clientId,
   });
   
-  /// [url] Original URL of the link
+  /// Original URL of the link
   final String url;
 
-  /// [displayUrl] URL to display
+  /// URL to display
   final String displayUrl;
 
-  /// [type] Type of the web page. Can be: article, photo, audio, video, document, profile, app, or something else
+  /// Type of the web page. Can be: article, photo, audio, video, document, profile, app, or something else
   final String type;
 
-  /// [siteName] Short name of the site (e.g., Google Docs, App Store)
+  /// Short name of the site (e.g., Google Docs, App Store)
   final String siteName;
 
-  /// [title] Title of the content
+  /// Title of the content
   final String title;
 
-  /// [description] Description of the content
+  /// Description of the content
   final FormattedText description;
 
-  /// [photo] Image representing the content; may be null
+  /// Image representing the content; may be null
   final Photo? photo;
 
-  /// [embedUrl] URL to show in the embedded preview
+  /// URL to show in the embedded preview
   final String embedUrl;
 
-  /// [embedType] MIME type of the embedded preview, (e.g., text/html or video/mp4)
+  /// MIME type of the embedded preview, (e.g., text/html or video/mp4)
   final String embedType;
 
-  /// [embedWidth] Width of the embedded preview
+  /// Width of the embedded preview
   final int embedWidth;
 
-  /// [embedHeight] Height of the embedded preview
+  /// Height of the embedded preview
   final int embedHeight;
 
-  /// [duration] Duration of the content, in seconds
+  /// Duration of the content, in seconds
   final int duration;
 
-  /// [author] Author of the content
+  /// Author of the content
   final String author;
 
-  /// [animation] Preview of the content as an animation, if available; may be null
+  /// Preview of the content as an animation, if available; may be null
   final Animation? animation;
 
-  /// [audio] Preview of the content as an audio file, if available; may be null
+  /// Preview of the content as an audio file, if available; may be null
   final Audio? audio;
 
-  /// [document] Preview of the content as a document, if available; may be null
+  /// Preview of the content as a document, if available; may be null
   final Document? document;
 
-  /// [sticker] Preview of the content as a sticker for small WEBP files, if available; may be null
+  /// Preview of the content as a sticker for small WEBP files, if available; may be null
   final Sticker? sticker;
 
-  /// [video] Preview of the content as a video, if available; may be null
+  /// Preview of the content as a video, if available; may be null
   final Video? video;
 
-  /// [videoNote] Preview of the content as a video note, if available; may be null
+  /// Preview of the content as a video note, if available; may be null
   final VideoNote? videoNote;
 
-  /// [voiceNote] Preview of the content as a voice note, if available; may be null
+  /// Preview of the content as a voice note, if available; may be null
   final VoiceNote? voiceNote;
 
-  /// [instantViewVersion] Version of instant view, available for the web page (currently, can be 1 or 2), 0 if none
+  /// Version of web page instant view (currently, can be 1 or 2); 0 if none
   final int instantViewVersion;
 
   /// [extra] callback sign
@@ -129,9 +178,9 @@ class WebPage extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "url": url,
       "display_url": displayUrl,
       "type": type,
@@ -153,8 +202,9 @@ class WebPage extends TdObject {
       "video_note": videoNote?.toJson(),
       "voice_note": voiceNote?.toJson(),
       "instant_view_version": instantViewVersion,
-    };
-  }
+		};
+	}
+
   
   WebPage copyWith({
     String? url,
@@ -206,8 +256,11 @@ class WebPage extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'webPage';
-  
+  static const String objectType = 'webPage';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

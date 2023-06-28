@@ -1,8 +1,27 @@
 part of '../tdapi.dart';
 
-class IdentityDocument extends TdObject {
-
-  /// An identity document
+/// **IdentityDocument** *(identityDocument)* - basic class
+///
+/// An identity document.
+///
+/// * [number]: Document number; 1-24 characters.
+/// * [expiryDate]: Document expiry date; may be null if not applicable *(optional)*.
+/// * [frontSide]: Front side of the document.
+/// * [reverseSide]: Reverse side of the document; only for driver license and identity card; may be null *(optional)*.
+/// * [selfie]: Selfie with the document; may be null *(optional)*.
+/// * [translation]: List of files containing a certified English translation of the document.
+final class IdentityDocument extends TdObject {
+  
+  /// **IdentityDocument** *(identityDocument)* - basic class
+  ///
+  /// An identity document.
+  ///
+  /// * [number]: Document number; 1-24 characters.
+  /// * [expiryDate]: Document expiry date; may be null if not applicable *(optional)*.
+  /// * [frontSide]: Front side of the document.
+  /// * [reverseSide]: Reverse side of the document; only for driver license and identity card; may be null *(optional)*.
+  /// * [selfie]: Selfie with the document; may be null *(optional)*.
+  /// * [translation]: List of files containing a certified English translation of the document.
   const IdentityDocument({
     required this.number,
     this.expiryDate,
@@ -12,22 +31,22 @@ class IdentityDocument extends TdObject {
     required this.translation,
   });
   
-  /// [number] Document number; 1-24 characters 
+  /// Document number; 1-24 characters
   final String number;
 
-  /// [expiryDate] Document expiry date; may be null if not applicable 
+  /// Document expiry date; may be null if not applicable
   final Date? expiryDate;
 
-  /// [frontSide] Front side of the document
+  /// Front side of the document
   final DatedFile frontSide;
 
-  /// [reverseSide] Reverse side of the document; only for driver license and identity card; may be null
+  /// Reverse side of the document; only for driver license and identity card; may be null
   final DatedFile? reverseSide;
 
-  /// [selfie] Selfie with the document; may be null 
+  /// Selfie with the document; may be null
   final DatedFile? selfie;
 
-  /// [translation] List of files containing a certified English translation of the document
+  /// List of files containing a certified English translation of the document
   final List<DatedFile> translation;
   
   /// Parse from a json
@@ -42,17 +61,18 @@ class IdentityDocument extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "number": number,
       "expiry_date": expiryDate?.toJson(),
       "front_side": frontSide.toJson(),
       "reverse_side": reverseSide?.toJson(),
       "selfie": selfie?.toJson(),
       "translation": translation.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   IdentityDocument copyWith({
     String? number,
@@ -70,8 +90,11 @@ class IdentityDocument extends TdObject {
     translation: translation ?? this.translation,
   );
 
-  static const CONSTRUCTOR = 'identityDocument';
-  
+  static const String objectType = 'identityDocument';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

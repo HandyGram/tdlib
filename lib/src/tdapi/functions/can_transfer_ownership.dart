@@ -1,23 +1,36 @@
 part of '../tdapi.dart';
 
-class CanTransferOwnership extends TdFunction {
-
-  /// Checks whether the current session can be used to transfer a chat ownership to another user
+/// **CanTransferOwnership** *(canTransferOwnership)* - TDLib function
+///
+/// Checks whether the current session can be used to transfer a chat ownership to another user.
+///
+/// [CanTransferOwnershipResult] is returned on completion.
+final class CanTransferOwnership extends TdFunction {
+  
+  /// **CanTransferOwnership** *(canTransferOwnership)* - TDLib function
+  ///
+  /// Checks whether the current session can be used to transfer a chat ownership to another user.
+  ///
+  /// [CanTransferOwnershipResult] is returned on completion.
   const CanTransferOwnership();
   
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   CanTransferOwnership copyWith() => const CanTransferOwnership();
 
-  static const CONSTRUCTOR = 'canTransferOwnership';
-  
+  static const String objectType = 'canTransferOwnership';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

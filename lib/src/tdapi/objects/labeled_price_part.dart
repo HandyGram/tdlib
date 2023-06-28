@@ -1,17 +1,28 @@
 part of '../tdapi.dart';
 
-class LabeledPricePart extends TdObject {
-
-  /// Portion of the price of a product (e.g., "delivery cost", "tax amount")
+/// **LabeledPricePart** *(labeledPricePart)* - basic class
+///
+/// Portion of the price of a product (e.g., "delivery cost", "tax amount").
+///
+/// * [label]: Label for this portion of the product price.
+/// * [amount]: Currency amount in the smallest units of the currency.
+final class LabeledPricePart extends TdObject {
+  
+  /// **LabeledPricePart** *(labeledPricePart)* - basic class
+  ///
+  /// Portion of the price of a product (e.g., "delivery cost", "tax amount").
+  ///
+  /// * [label]: Label for this portion of the product price.
+  /// * [amount]: Currency amount in the smallest units of the currency.
   const LabeledPricePart({
     required this.label,
     required this.amount,
   });
   
-  /// [label] Label for this portion of the product price 
+  /// Label for this portion of the product price 
   final String label;
 
-  /// [amount] Currency amount in the smallest units of the currency
+  /// Currency amount in the smallest units of the currency
   final int amount;
   
   /// Parse from a json
@@ -22,13 +33,14 @@ class LabeledPricePart extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "label": label,
       "amount": amount,
-    };
-  }
+		};
+	}
+
   
   LabeledPricePart copyWith({
     String? label,
@@ -38,8 +50,11 @@ class LabeledPricePart extends TdObject {
     amount: amount ?? this.amount,
   );
 
-  static const CONSTRUCTOR = 'labeledPricePart';
-  
+  static const String objectType = 'labeledPricePart';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

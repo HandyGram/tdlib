@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class GetRecentStickers extends TdFunction {
-
-  /// Returns a list of recently used stickers
+/// **GetRecentStickers** *(getRecentStickers)* - TDLib function
+///
+/// Returns a list of recently used stickers.
+///
+/// * [isAttached]: Pass true to return stickers and masks that were recently attached to photos or video files; pass false to return recently sent stickers.
+///
+/// [Stickers] is returned on completion.
+final class GetRecentStickers extends TdFunction {
+  
+  /// **GetRecentStickers** *(getRecentStickers)* - TDLib function
+  ///
+  /// Returns a list of recently used stickers.
+  ///
+  /// * [isAttached]: Pass true to return stickers and masks that were recently attached to photos or video files; pass false to return recently sent stickers.
+  ///
+  /// [Stickers] is returned on completion.
   const GetRecentStickers({
     required this.isAttached,
   });
   
-  /// [isAttached] Pass true to return stickers and masks that were recently attached to photos or video files; pass false to return recently sent stickers
+  /// Pass true to return stickers and masks that were recently attached to photos or video files; pass false to return recently sent stickers
   final bool isAttached;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "is_attached": isAttached,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetRecentStickers copyWith({
     bool? isAttached,
@@ -25,8 +39,11 @@ class GetRecentStickers extends TdFunction {
     isAttached: isAttached ?? this.isAttached,
   );
 
-  static const CONSTRUCTOR = 'getRecentStickers';
-  
+  static const String objectType = 'getRecentStickers';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

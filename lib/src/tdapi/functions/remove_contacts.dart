@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class RemoveContacts extends TdFunction {
-
-  /// Removes users from the contact list
+/// **RemoveContacts** *(removeContacts)* - TDLib function
+///
+/// Removes users from the contact list.
+///
+/// * [userIds]: Identifiers of users to be deleted.
+///
+/// [Ok] is returned on completion.
+final class RemoveContacts extends TdFunction {
+  
+  /// **RemoveContacts** *(removeContacts)* - TDLib function
+  ///
+  /// Removes users from the contact list.
+  ///
+  /// * [userIds]: Identifiers of users to be deleted.
+  ///
+  /// [Ok] is returned on completion.
   const RemoveContacts({
     required this.userIds,
   });
   
-  /// [userIds] Identifiers of users to be deleted
+  /// Identifiers of users to be deleted
   final List<int> userIds;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "user_ids": userIds.map((i) => i).toList(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   RemoveContacts copyWith({
     List<int>? userIds,
@@ -25,8 +39,11 @@ class RemoveContacts extends TdFunction {
     userIds: userIds ?? this.userIds,
   );
 
-  static const CONSTRUCTOR = 'removeContacts';
-  
+  static const String objectType = 'removeContacts';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

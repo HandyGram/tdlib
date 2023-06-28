@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class GetMarkdownText extends TdFunction {
-
-  /// Replaces text entities with Markdown formatting in a human-friendly format. Entities that can't be represented in Markdown unambiguously are kept as is. Can be called synchronously
+/// **GetMarkdownText** *(getMarkdownText)* - TDLib function
+///
+/// Replaces text entities with Markdown formatting in a human-friendly format. Entities that can't be represented in Markdown unambiguously are kept as is. Can be called synchronously.
+///
+/// * [text]: The text.
+///
+/// [FormattedText] is returned on completion.
+final class GetMarkdownText extends TdFunction {
+  
+  /// **GetMarkdownText** *(getMarkdownText)* - TDLib function
+  ///
+  /// Replaces text entities with Markdown formatting in a human-friendly format. Entities that can't be represented in Markdown unambiguously are kept as is. Can be called synchronously.
+  ///
+  /// * [text]: The text.
+  ///
+  /// [FormattedText] is returned on completion.
   const GetMarkdownText({
     required this.text,
   });
   
-  /// [text] The text
+  /// The text
   final FormattedText text;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "text": text.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetMarkdownText copyWith({
     FormattedText? text,
@@ -25,8 +39,11 @@ class GetMarkdownText extends TdFunction {
     text: text ?? this.text,
   );
 
-  static const CONSTRUCTOR = 'getMarkdownText';
-  
+  static const String objectType = 'getMarkdownText';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

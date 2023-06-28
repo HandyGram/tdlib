@@ -1,52 +1,68 @@
 part of '../tdapi.dart';
 
-class CheckChatUsernameResult extends TdObject {
-
-  /// Represents result of checking whether a username can be set for a chat
+/// **CheckChatUsernameResult** *(checkChatUsernameResult)* - parent
+///
+/// Represents result of checking whether a username can be set for a chat.
+sealed class CheckChatUsernameResult extends TdObject {
+  
+  /// **CheckChatUsernameResult** *(checkChatUsernameResult)* - parent
+  ///
+  /// Represents result of checking whether a username can be set for a chat.
   const CheckChatUsernameResult();
   
   /// a CheckChatUsernameResult return type can be :
   /// * [CheckChatUsernameResultOk]
   /// * [CheckChatUsernameResultUsernameInvalid]
   /// * [CheckChatUsernameResultUsernameOccupied]
-  /// * [CheckChatUsernameResultPublicChatsTooMuch]
+  /// * [CheckChatUsernameResultUsernamePurchasable]
+  /// * [CheckChatUsernameResultPublicChatsTooMany]
   /// * [CheckChatUsernameResultPublicGroupsUnavailable]
   factory CheckChatUsernameResult.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case CheckChatUsernameResultOk.CONSTRUCTOR:
+      case CheckChatUsernameResultOk.objectType:
         return CheckChatUsernameResultOk.fromJson(json);
-      case CheckChatUsernameResultUsernameInvalid.CONSTRUCTOR:
+      case CheckChatUsernameResultUsernameInvalid.objectType:
         return CheckChatUsernameResultUsernameInvalid.fromJson(json);
-      case CheckChatUsernameResultUsernameOccupied.CONSTRUCTOR:
+      case CheckChatUsernameResultUsernameOccupied.objectType:
         return CheckChatUsernameResultUsernameOccupied.fromJson(json);
-      case CheckChatUsernameResultPublicChatsTooMuch.CONSTRUCTOR:
-        return CheckChatUsernameResultPublicChatsTooMuch.fromJson(json);
-      case CheckChatUsernameResultPublicGroupsUnavailable.CONSTRUCTOR:
+      case CheckChatUsernameResultUsernamePurchasable.objectType:
+        return CheckChatUsernameResultUsernamePurchasable.fromJson(json);
+      case CheckChatUsernameResultPublicChatsTooMany.objectType:
+        return CheckChatUsernameResultPublicChatsTooMany.fromJson(json);
+      case CheckChatUsernameResultPublicGroupsUnavailable.objectType:
         return CheckChatUsernameResultPublicGroupsUnavailable.fromJson(json);
       default:
-        return const CheckChatUsernameResult();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of CheckChatUsernameResult)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  CheckChatUsernameResult copyWith() => const CheckChatUsernameResult();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'checkChatUsernameResult';
   
+  CheckChatUsernameResult copyWith();
+
+  static const String objectType = 'checkChatUsernameResult';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class CheckChatUsernameResultOk extends CheckChatUsernameResult {
-
-  /// The username can be set
+/// **CheckChatUsernameResultOk** *(checkChatUsernameResultOk)* - child of CheckChatUsernameResult
+///
+/// The username can be set.
+final class CheckChatUsernameResultOk extends CheckChatUsernameResult {
+  
+  /// **CheckChatUsernameResultOk** *(checkChatUsernameResultOk)* - child of CheckChatUsernameResult
+  ///
+  /// The username can be set.
   const CheckChatUsernameResultOk({
     this.extra,
     this.clientId,
@@ -68,11 +84,12 @@ class CheckChatUsernameResultOk extends CheckChatUsernameResult {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   CheckChatUsernameResultOk copyWith({
@@ -83,16 +100,24 @@ class CheckChatUsernameResultOk extends CheckChatUsernameResult {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'checkChatUsernameResultOk';
-  
+  static const String objectType = 'checkChatUsernameResultOk';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class CheckChatUsernameResultUsernameInvalid extends CheckChatUsernameResult {
-
-  /// The username is invalid
+/// **CheckChatUsernameResultUsernameInvalid** *(checkChatUsernameResultUsernameInvalid)* - child of CheckChatUsernameResult
+///
+/// The username is invalid.
+final class CheckChatUsernameResultUsernameInvalid extends CheckChatUsernameResult {
+  
+  /// **CheckChatUsernameResultUsernameInvalid** *(checkChatUsernameResultUsernameInvalid)* - child of CheckChatUsernameResult
+  ///
+  /// The username is invalid.
   const CheckChatUsernameResultUsernameInvalid({
     this.extra,
     this.clientId,
@@ -114,11 +139,12 @@ class CheckChatUsernameResultUsernameInvalid extends CheckChatUsernameResult {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   CheckChatUsernameResultUsernameInvalid copyWith({
@@ -129,16 +155,24 @@ class CheckChatUsernameResultUsernameInvalid extends CheckChatUsernameResult {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'checkChatUsernameResultUsernameInvalid';
-  
+  static const String objectType = 'checkChatUsernameResultUsernameInvalid';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class CheckChatUsernameResultUsernameOccupied extends CheckChatUsernameResult {
-
-  /// The username is occupied
+/// **CheckChatUsernameResultUsernameOccupied** *(checkChatUsernameResultUsernameOccupied)* - child of CheckChatUsernameResult
+///
+/// The username is occupied.
+final class CheckChatUsernameResultUsernameOccupied extends CheckChatUsernameResult {
+  
+  /// **CheckChatUsernameResultUsernameOccupied** *(checkChatUsernameResultUsernameOccupied)* - child of CheckChatUsernameResult
+  ///
+  /// The username is occupied.
   const CheckChatUsernameResultUsernameOccupied({
     this.extra,
     this.clientId,
@@ -160,11 +194,12 @@ class CheckChatUsernameResultUsernameOccupied extends CheckChatUsernameResult {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   CheckChatUsernameResultUsernameOccupied copyWith({
@@ -175,17 +210,25 @@ class CheckChatUsernameResultUsernameOccupied extends CheckChatUsernameResult {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'checkChatUsernameResultUsernameOccupied';
-  
+  static const String objectType = 'checkChatUsernameResultUsernameOccupied';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class CheckChatUsernameResultPublicChatsTooMuch extends CheckChatUsernameResult {
-
-  /// The user has too many chats with username, one of them must be made private first
-  const CheckChatUsernameResultPublicChatsTooMuch({
+/// **CheckChatUsernameResultUsernamePurchasable** *(checkChatUsernameResultUsernamePurchasable)* - child of CheckChatUsernameResult
+///
+/// The username can be purchased at fragment.com.
+final class CheckChatUsernameResultUsernamePurchasable extends CheckChatUsernameResult {
+  
+  /// **CheckChatUsernameResultUsernamePurchasable** *(checkChatUsernameResultUsernamePurchasable)* - child of CheckChatUsernameResult
+  ///
+  /// The username can be purchased at fragment.com.
+  const CheckChatUsernameResultUsernamePurchasable({
     this.extra,
     this.clientId,
   });
@@ -199,38 +242,102 @@ class CheckChatUsernameResultPublicChatsTooMuch extends CheckChatUsernameResult 
   final int? clientId;
   
   /// Parse from a json
-  factory CheckChatUsernameResultPublicChatsTooMuch.fromJson(Map<String, dynamic> json) => CheckChatUsernameResultPublicChatsTooMuch(
+  factory CheckChatUsernameResultUsernamePurchasable.fromJson(Map<String, dynamic> json) => CheckChatUsernameResultUsernamePurchasable(
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
-  CheckChatUsernameResultPublicChatsTooMuch copyWith({
+  CheckChatUsernameResultUsernamePurchasable copyWith({
     dynamic extra,
     int? clientId,
-  }) => CheckChatUsernameResultPublicChatsTooMuch(
+  }) => CheckChatUsernameResultUsernamePurchasable(
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'checkChatUsernameResultPublicChatsTooMuch';
-  
+  static const String objectType = 'checkChatUsernameResultUsernamePurchasable';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class CheckChatUsernameResultPublicGroupsUnavailable extends CheckChatUsernameResult {
+/// **CheckChatUsernameResultPublicChatsTooMany** *(checkChatUsernameResultPublicChatsTooMany)* - child of CheckChatUsernameResult
+///
+/// The user has too many chats with username, one of them must be made private first.
+final class CheckChatUsernameResultPublicChatsTooMany extends CheckChatUsernameResult {
+  
+  /// **CheckChatUsernameResultPublicChatsTooMany** *(checkChatUsernameResultPublicChatsTooMany)* - child of CheckChatUsernameResult
+  ///
+  /// The user has too many chats with username, one of them must be made private first.
+  const CheckChatUsernameResultPublicChatsTooMany({
+    this.extra,
+    this.clientId,
+  });
+  
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
 
-  /// The user can't be a member of a public supergroup
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory CheckChatUsernameResultPublicChatsTooMany.fromJson(Map<String, dynamic> json) => CheckChatUsernameResultPublicChatsTooMany(
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  
+  @override
+  CheckChatUsernameResultPublicChatsTooMany copyWith({
+    dynamic extra,
+    int? clientId,
+  }) => CheckChatUsernameResultPublicChatsTooMany(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  static const String objectType = 'checkChatUsernameResultPublicChatsTooMany';
+
+  @override
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **CheckChatUsernameResultPublicGroupsUnavailable** *(checkChatUsernameResultPublicGroupsUnavailable)* - child of CheckChatUsernameResult
+///
+/// The user can't be a member of a public supergroup.
+final class CheckChatUsernameResultPublicGroupsUnavailable extends CheckChatUsernameResult {
+  
+  /// **CheckChatUsernameResultPublicGroupsUnavailable** *(checkChatUsernameResultPublicGroupsUnavailable)* - child of CheckChatUsernameResult
+  ///
+  /// The user can't be a member of a public supergroup.
   const CheckChatUsernameResultPublicGroupsUnavailable({
     this.extra,
     this.clientId,
@@ -252,11 +359,12 @@ class CheckChatUsernameResultPublicGroupsUnavailable extends CheckChatUsernameRe
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   CheckChatUsernameResultPublicGroupsUnavailable copyWith({
@@ -267,8 +375,11 @@ class CheckChatUsernameResultPublicGroupsUnavailable extends CheckChatUsernameRe
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'checkChatUsernameResultPublicGroupsUnavailable';
-  
+  static const String objectType = 'checkChatUsernameResultPublicGroupsUnavailable';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

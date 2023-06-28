@@ -1,8 +1,19 @@
 part of '../tdapi.dart';
 
-class BotCommands extends TdObject {
-
-  /// Contains a list of bot commands
+/// **BotCommands** *(botCommands)* - basic class
+///
+/// Contains a list of bot commands.
+///
+/// * [botUserId]: Bot's user identifier.
+/// * [commands]: List of bot commands.
+final class BotCommands extends TdObject {
+  
+  /// **BotCommands** *(botCommands)* - basic class
+  ///
+  /// Contains a list of bot commands.
+  ///
+  /// * [botUserId]: Bot's user identifier.
+  /// * [commands]: List of bot commands.
   const BotCommands({
     required this.botUserId,
     required this.commands,
@@ -10,10 +21,10 @@ class BotCommands extends TdObject {
     this.clientId,
   });
   
-  /// [botUserId] Bot's user identifier 
+  /// Bot's user identifier 
   final int botUserId;
 
-  /// [commands] List of bot commands
+  /// List of bot commands
   final List<BotCommand> commands;
 
   /// [extra] callback sign
@@ -34,13 +45,14 @@ class BotCommands extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "bot_user_id": botUserId,
       "commands": commands.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   BotCommands copyWith({
     int? botUserId,
@@ -54,8 +66,11 @@ class BotCommands extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'botCommands';
-  
+  static const String objectType = 'botCommands';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

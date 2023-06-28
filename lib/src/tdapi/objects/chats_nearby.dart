@@ -1,8 +1,19 @@
 part of '../tdapi.dart';
 
-class ChatsNearby extends TdObject {
-
-  /// Represents a list of chats located nearby
+/// **ChatsNearby** *(chatsNearby)* - basic class
+///
+/// Represents a list of chats located nearby.
+///
+/// * [usersNearby]: List of users nearby.
+/// * [supergroupsNearby]: List of location-based supergroups nearby.
+final class ChatsNearby extends TdObject {
+  
+  /// **ChatsNearby** *(chatsNearby)* - basic class
+  ///
+  /// Represents a list of chats located nearby.
+  ///
+  /// * [usersNearby]: List of users nearby.
+  /// * [supergroupsNearby]: List of location-based supergroups nearby.
   const ChatsNearby({
     required this.usersNearby,
     required this.supergroupsNearby,
@@ -10,10 +21,10 @@ class ChatsNearby extends TdObject {
     this.clientId,
   });
   
-  /// [usersNearby] List of users nearby 
+  /// List of users nearby 
   final List<ChatNearby> usersNearby;
 
-  /// [supergroupsNearby] List of location-based supergroups nearby
+  /// List of location-based supergroups nearby
   final List<ChatNearby> supergroupsNearby;
 
   /// [extra] callback sign
@@ -34,13 +45,14 @@ class ChatsNearby extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "users_nearby": usersNearby.map((i) => i.toJson()).toList(),
       "supergroups_nearby": supergroupsNearby.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   ChatsNearby copyWith({
     List<ChatNearby>? usersNearby,
@@ -54,8 +66,11 @@ class ChatsNearby extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'chatsNearby';
-  
+  static const String objectType = 'chatsNearby';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

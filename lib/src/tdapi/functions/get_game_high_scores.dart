@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class GetGameHighScores extends TdFunction {
-
-  /// Returns the high scores for a game and some part of the high score table in the range of the specified user; for bots only
+/// **GetGameHighScores** *(getGameHighScores)* - TDLib function
+///
+/// Returns the high scores for a game and some part of the high score table in the range of the specified user; for bots only.
+///
+/// * [chatId]: The chat that contains the message with the game.
+/// * [messageId]: Identifier of the message.
+/// * [userId]: User identifier.
+///
+/// [GameHighScores] is returned on completion.
+final class GetGameHighScores extends TdFunction {
+  
+  /// **GetGameHighScores** *(getGameHighScores)* - TDLib function
+  ///
+  /// Returns the high scores for a game and some part of the high score table in the range of the specified user; for bots only.
+  ///
+  /// * [chatId]: The chat that contains the message with the game.
+  /// * [messageId]: Identifier of the message.
+  /// * [userId]: User identifier.
+  ///
+  /// [GameHighScores] is returned on completion.
   const GetGameHighScores({
     required this.chatId,
     required this.messageId,
     required this.userId,
   });
   
-  /// [chatId] The chat that contains the message with the game 
+  /// The chat that contains the message with the game 
   final int chatId;
 
-  /// [messageId] Identifier of the message 
+  /// Identifier of the message 
   final int messageId;
 
-  /// [userId] User identifier
+  /// User identifier
   final int userId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "message_id": messageId,
       "user_id": userId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetGameHighScores copyWith({
     int? chatId,
@@ -39,8 +57,11 @@ class GetGameHighScores extends TdFunction {
     userId: userId ?? this.userId,
   );
 
-  static const CONSTRUCTOR = 'getGameHighScores';
-  
+  static const String objectType = 'getGameHighScores';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

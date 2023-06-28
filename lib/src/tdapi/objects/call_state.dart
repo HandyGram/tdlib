@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class CallState extends TdObject {
-
-  /// Describes the current call state
+/// **CallState** *(callState)* - parent
+///
+/// Describes the current call state.
+sealed class CallState extends TdObject {
+  
+  /// **CallState** *(callState)* - parent
+  ///
+  /// Describes the current call state.
   const CallState();
   
   /// a CallState return type can be :
@@ -14,51 +19,65 @@ class CallState extends TdObject {
   /// * [CallStateError]
   factory CallState.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case CallStatePending.CONSTRUCTOR:
+      case CallStatePending.objectType:
         return CallStatePending.fromJson(json);
-      case CallStateExchangingKeys.CONSTRUCTOR:
+      case CallStateExchangingKeys.objectType:
         return CallStateExchangingKeys.fromJson(json);
-      case CallStateReady.CONSTRUCTOR:
+      case CallStateReady.objectType:
         return CallStateReady.fromJson(json);
-      case CallStateHangingUp.CONSTRUCTOR:
+      case CallStateHangingUp.objectType:
         return CallStateHangingUp.fromJson(json);
-      case CallStateDiscarded.CONSTRUCTOR:
+      case CallStateDiscarded.objectType:
         return CallStateDiscarded.fromJson(json);
-      case CallStateError.CONSTRUCTOR:
+      case CallStateError.objectType:
         return CallStateError.fromJson(json);
       default:
-        return const CallState();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of CallState)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  CallState copyWith() => const CallState();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'callState';
   
+  CallState copyWith();
+
+  static const String objectType = 'callState';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class CallStatePending extends CallState {
-
-  /// The call is pending, waiting to be accepted by a user
+/// **CallStatePending** *(callStatePending)* - child of CallState
+///
+/// The call is pending, waiting to be accepted by a user.
+///
+/// * [isCreated]: True, if the call has already been created by the server.
+/// * [isReceived]: True, if the call has already been received by the other party.
+final class CallStatePending extends CallState {
+  
+  /// **CallStatePending** *(callStatePending)* - child of CallState
+  ///
+  /// The call is pending, waiting to be accepted by a user.
+  ///
+  /// * [isCreated]: True, if the call has already been created by the server.
+  /// * [isReceived]: True, if the call has already been received by the other party.
   const CallStatePending({
     required this.isCreated,
     required this.isReceived,
   });
   
-  /// [isCreated] True, if the call has already been created by the server 
+  /// True, if the call has already been created by the server 
   final bool isCreated;
 
-  /// [isReceived] True, if the call has already been received by the other party
+  /// True, if the call has already been received by the other party
   final bool isReceived;
   
   /// Parse from a json
@@ -69,13 +88,14 @@ class CallStatePending extends CallState {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "is_created": isCreated,
       "is_received": isReceived,
-    };
-  }
+		};
+	}
+
   
   @override
   CallStatePending copyWith({
@@ -86,41 +106,72 @@ class CallStatePending extends CallState {
     isReceived: isReceived ?? this.isReceived,
   );
 
-  static const CONSTRUCTOR = 'callStatePending';
-  
+  static const String objectType = 'callStatePending';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class CallStateExchangingKeys extends CallState {
-
-  /// The call has been answered and encryption keys are being exchanged
+/// **CallStateExchangingKeys** *(callStateExchangingKeys)* - child of CallState
+///
+/// The call has been answered and encryption keys are being exchanged.
+final class CallStateExchangingKeys extends CallState {
+  
+  /// **CallStateExchangingKeys** *(callStateExchangingKeys)* - child of CallState
+  ///
+  /// The call has been answered and encryption keys are being exchanged.
   const CallStateExchangingKeys();
   
   /// Parse from a json
   factory CallStateExchangingKeys.fromJson(Map<String, dynamic> json) => const CallStateExchangingKeys();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   CallStateExchangingKeys copyWith() => const CallStateExchangingKeys();
 
-  static const CONSTRUCTOR = 'callStateExchangingKeys';
-  
+  static const String objectType = 'callStateExchangingKeys';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class CallStateReady extends CallState {
-
-  /// The call is ready to use
+/// **CallStateReady** *(callStateReady)* - child of CallState
+///
+/// The call is ready to use.
+///
+/// * [protocol]: Call protocols supported by the peer.
+/// * [servers]: List of available call servers.
+/// * [config]: A JSON-encoded call config.
+/// * [encryptionKey]: Call encryption key.
+/// * [emojis]: Encryption key emojis fingerprint.
+/// * [allowP2p]: True, if peer-to-peer connection is allowed by users privacy settings.
+final class CallStateReady extends CallState {
+  
+  /// **CallStateReady** *(callStateReady)* - child of CallState
+  ///
+  /// The call is ready to use.
+  ///
+  /// * [protocol]: Call protocols supported by the peer.
+  /// * [servers]: List of available call servers.
+  /// * [config]: A JSON-encoded call config.
+  /// * [encryptionKey]: Call encryption key.
+  /// * [emojis]: Encryption key emojis fingerprint.
+  /// * [allowP2p]: True, if peer-to-peer connection is allowed by users privacy settings.
   const CallStateReady({
     required this.protocol,
     required this.servers,
@@ -130,22 +181,22 @@ class CallStateReady extends CallState {
     required this.allowP2p,
   });
   
-  /// [protocol] Call protocols supported by the peer 
+  /// Call protocols supported by the peer
   final CallProtocol protocol;
 
-  /// [servers] List of available call servers 
+  /// List of available call servers
   final List<CallServer> servers;
 
-  /// [config] A JSON-encoded call config 
+  /// A JSON-encoded call config
   final String config;
 
-  /// [encryptionKey] Call encryption key 
+  /// Call encryption key
   final String encryptionKey;
 
-  /// [emojis] Encryption key emojis fingerprint 
+  /// Encryption key emojis fingerprint
   final List<String> emojis;
 
-  /// [allowP2p] True, if peer-to-peer connection is allowed by users privacy settings
+  /// True, if peer-to-peer connection is allowed by users privacy settings
   final bool allowP2p;
   
   /// Parse from a json
@@ -160,17 +211,18 @@ class CallStateReady extends CallState {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "protocol": protocol.toJson(),
       "servers": servers.map((i) => i.toJson()).toList(),
       "config": config,
       "encryption_key": encryptionKey,
       "emojis": emojis.map((i) => i).toList(),
       "allow_p2p": allowP2p,
-    };
-  }
+		};
+	}
+
   
   @override
   CallStateReady copyWith({
@@ -189,100 +241,148 @@ class CallStateReady extends CallState {
     allowP2p: allowP2p ?? this.allowP2p,
   );
 
-  static const CONSTRUCTOR = 'callStateReady';
-  
+  static const String objectType = 'callStateReady';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class CallStateHangingUp extends CallState {
-
-  /// The call is hanging up after discardCall has been called
+/// **CallStateHangingUp** *(callStateHangingUp)* - child of CallState
+///
+/// The call is hanging up after discardCall has been called.
+final class CallStateHangingUp extends CallState {
+  
+  /// **CallStateHangingUp** *(callStateHangingUp)* - child of CallState
+  ///
+  /// The call is hanging up after discardCall has been called.
   const CallStateHangingUp();
   
   /// Parse from a json
   factory CallStateHangingUp.fromJson(Map<String, dynamic> json) => const CallStateHangingUp();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   CallStateHangingUp copyWith() => const CallStateHangingUp();
 
-  static const CONSTRUCTOR = 'callStateHangingUp';
-  
+  static const String objectType = 'callStateHangingUp';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class CallStateDiscarded extends CallState {
-
-  /// The call has ended successfully
+/// **CallStateDiscarded** *(callStateDiscarded)* - child of CallState
+///
+/// The call has ended successfully.
+///
+/// * [reason]: The reason, why the call has ended.
+/// * [needRating]: True, if the call rating must be sent to the server.
+/// * [needDebugInformation]: True, if the call debug information must be sent to the server.
+/// * [needLog]: True, if the call log must be sent to the server.
+final class CallStateDiscarded extends CallState {
+  
+  /// **CallStateDiscarded** *(callStateDiscarded)* - child of CallState
+  ///
+  /// The call has ended successfully.
+  ///
+  /// * [reason]: The reason, why the call has ended.
+  /// * [needRating]: True, if the call rating must be sent to the server.
+  /// * [needDebugInformation]: True, if the call debug information must be sent to the server.
+  /// * [needLog]: True, if the call log must be sent to the server.
   const CallStateDiscarded({
     required this.reason,
     required this.needRating,
     required this.needDebugInformation,
+    required this.needLog,
   });
   
-  /// [reason] The reason, why the call has ended 
+  /// The reason, why the call has ended
   final CallDiscardReason reason;
 
-  /// [needRating] True, if the call rating must be sent to the server 
+  /// True, if the call rating must be sent to the server
   final bool needRating;
 
-  /// [needDebugInformation] True, if the call debug information must be sent to the server
+  /// True, if the call debug information must be sent to the server
   final bool needDebugInformation;
+
+  /// True, if the call log must be sent to the server
+  final bool needLog;
   
   /// Parse from a json
   factory CallStateDiscarded.fromJson(Map<String, dynamic> json) => CallStateDiscarded(
     reason: CallDiscardReason.fromJson(json['reason']),
     needRating: json['need_rating'],
     needDebugInformation: json['need_debug_information'],
+    needLog: json['need_log'],
   );
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "reason": reason.toJson(),
       "need_rating": needRating,
       "need_debug_information": needDebugInformation,
-    };
-  }
+      "need_log": needLog,
+		};
+	}
+
   
   @override
   CallStateDiscarded copyWith({
     CallDiscardReason? reason,
     bool? needRating,
     bool? needDebugInformation,
+    bool? needLog,
   }) => CallStateDiscarded(
     reason: reason ?? this.reason,
     needRating: needRating ?? this.needRating,
     needDebugInformation: needDebugInformation ?? this.needDebugInformation,
+    needLog: needLog ?? this.needLog,
   );
 
-  static const CONSTRUCTOR = 'callStateDiscarded';
-  
+  static const String objectType = 'callStateDiscarded';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class CallStateError extends CallState {
-
-  /// The call has ended with an error
+/// **CallStateError** *(callStateError)* - child of CallState
+///
+/// The call has ended with an error.
+///
+/// * [error]: Error. An error with the code 4005000 will be returned if an outgoing call is missed because of an expired timeout.
+final class CallStateError extends CallState {
+  
+  /// **CallStateError** *(callStateError)* - child of CallState
+  ///
+  /// The call has ended with an error.
+  ///
+  /// * [error]: Error. An error with the code 4005000 will be returned if an outgoing call is missed because of an expired timeout.
   const CallStateError({
     required this.error,
   });
   
-  /// [error] Error. An error with the code 4005000 will be returned if an outgoing call is missed because of an expired timeout
+  /// Error. An error with the code 4005000 will be returned if an outgoing call is missed because of an expired timeout
   final TdError error;
   
   /// Parse from a json
@@ -292,12 +392,13 @@ class CallStateError extends CallState {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "error": error.toJson(),
-    };
-  }
+		};
+	}
+
   
   @override
   CallStateError copyWith({
@@ -306,8 +407,11 @@ class CallStateError extends CallState {
     error: error ?? this.error,
   );
 
-  static const CONSTRUCTOR = 'callStateError';
-  
+  static const String objectType = 'callStateError';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

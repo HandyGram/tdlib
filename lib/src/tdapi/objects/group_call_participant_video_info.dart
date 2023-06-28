@@ -1,21 +1,34 @@
 part of '../tdapi.dart';
 
-class GroupCallParticipantVideoInfo extends TdObject {
-
-  /// Contains information about a group call participant's video channel
+/// **GroupCallParticipantVideoInfo** *(groupCallParticipantVideoInfo)* - basic class
+///
+/// Contains information about a group call participant's video channel.
+///
+/// * [sourceGroups]: List of synchronization source groups of the video.
+/// * [endpointId]: Video channel endpoint identifier.
+/// * [isPaused]: True, if the video is paused. This flag needs to be ignored, if new video frames are received.
+final class GroupCallParticipantVideoInfo extends TdObject {
+  
+  /// **GroupCallParticipantVideoInfo** *(groupCallParticipantVideoInfo)* - basic class
+  ///
+  /// Contains information about a group call participant's video channel.
+  ///
+  /// * [sourceGroups]: List of synchronization source groups of the video.
+  /// * [endpointId]: Video channel endpoint identifier.
+  /// * [isPaused]: True, if the video is paused. This flag needs to be ignored, if new video frames are received.
   const GroupCallParticipantVideoInfo({
     required this.sourceGroups,
     required this.endpointId,
     required this.isPaused,
   });
   
-  /// [sourceGroups] List of synchronization source groups of the video 
+  /// List of synchronization source groups of the video
   final List<GroupCallVideoSourceGroup> sourceGroups;
 
-  /// [endpointId] Video channel endpoint identifier
+  /// Video channel endpoint identifier
   final String endpointId;
 
-  /// [isPaused] True if the video is paused. This flag needs to be ignored, if new video frames are received
+  /// True, if the video is paused. This flag needs to be ignored, if new video frames are received
   final bool isPaused;
   
   /// Parse from a json
@@ -27,14 +40,15 @@ class GroupCallParticipantVideoInfo extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "source_groups": sourceGroups.map((i) => i.toJson()).toList(),
       "endpoint_id": endpointId,
       "is_paused": isPaused,
-    };
-  }
+		};
+	}
+
   
   GroupCallParticipantVideoInfo copyWith({
     List<GroupCallVideoSourceGroup>? sourceGroups,
@@ -46,8 +60,11 @@ class GroupCallParticipantVideoInfo extends TdObject {
     isPaused: isPaused ?? this.isPaused,
   );
 
-  static const CONSTRUCTOR = 'groupCallParticipantVideoInfo';
-  
+  static const String objectType = 'groupCallParticipantVideoInfo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

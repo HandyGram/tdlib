@@ -1,15 +1,24 @@
 part of '../tdapi.dart';
 
-class Count extends TdObject {
-
-  /// Contains a counter
+/// **Count** *(count)* - basic class
+///
+/// Contains a counter.
+///
+/// * [count]: Count.
+final class Count extends TdObject {
+  
+  /// **Count** *(count)* - basic class
+  ///
+  /// Contains a counter.
+  ///
+  /// * [count]: Count.
   const Count({
     required this.count,
     this.extra,
     this.clientId,
   });
   
-  /// [count] Count
+  /// Count
   final int count;
 
   /// [extra] callback sign
@@ -29,12 +38,13 @@ class Count extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "count": count,
-    };
-  }
+		};
+	}
+
   
   Count copyWith({
     int? count,
@@ -46,8 +56,11 @@ class Count extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'count';
-  
+  static const String objectType = 'count';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

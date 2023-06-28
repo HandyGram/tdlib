@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class MessageForwardOrigin extends TdObject {
-
-  /// Contains information about the origin of a forwarded message
+/// **MessageForwardOrigin** *(messageForwardOrigin)* - parent
+///
+/// Contains information about the origin of a forwarded message.
+sealed class MessageForwardOrigin extends TdObject {
+  
+  /// **MessageForwardOrigin** *(messageForwardOrigin)* - parent
+  ///
+  /// Contains information about the origin of a forwarded message.
   const MessageForwardOrigin();
   
   /// a MessageForwardOrigin return type can be :
@@ -13,45 +18,57 @@ class MessageForwardOrigin extends TdObject {
   /// * [MessageForwardOriginMessageImport]
   factory MessageForwardOrigin.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case MessageForwardOriginUser.CONSTRUCTOR:
+      case MessageForwardOriginUser.objectType:
         return MessageForwardOriginUser.fromJson(json);
-      case MessageForwardOriginChat.CONSTRUCTOR:
+      case MessageForwardOriginChat.objectType:
         return MessageForwardOriginChat.fromJson(json);
-      case MessageForwardOriginHiddenUser.CONSTRUCTOR:
+      case MessageForwardOriginHiddenUser.objectType:
         return MessageForwardOriginHiddenUser.fromJson(json);
-      case MessageForwardOriginChannel.CONSTRUCTOR:
+      case MessageForwardOriginChannel.objectType:
         return MessageForwardOriginChannel.fromJson(json);
-      case MessageForwardOriginMessageImport.CONSTRUCTOR:
+      case MessageForwardOriginMessageImport.objectType:
         return MessageForwardOriginMessageImport.fromJson(json);
       default:
-        return const MessageForwardOrigin();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of MessageForwardOrigin)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  MessageForwardOrigin copyWith() => const MessageForwardOrigin();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'messageForwardOrigin';
   
+  MessageForwardOrigin copyWith();
+
+  static const String objectType = 'messageForwardOrigin';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class MessageForwardOriginUser extends MessageForwardOrigin {
-
-  /// The message was originally sent by a known user
+/// **MessageForwardOriginUser** *(messageForwardOriginUser)* - child of MessageForwardOrigin
+///
+/// The message was originally sent by a known user.
+///
+/// * [senderUserId]: Identifier of the user that originally sent the message.
+final class MessageForwardOriginUser extends MessageForwardOrigin {
+  
+  /// **MessageForwardOriginUser** *(messageForwardOriginUser)* - child of MessageForwardOrigin
+  ///
+  /// The message was originally sent by a known user.
+  ///
+  /// * [senderUserId]: Identifier of the user that originally sent the message.
   const MessageForwardOriginUser({
     required this.senderUserId,
   });
   
-  /// [senderUserId] Identifier of the user that originally sent the message
+  /// Identifier of the user that originally sent the message
   final int senderUserId;
   
   /// Parse from a json
@@ -61,12 +78,13 @@ class MessageForwardOriginUser extends MessageForwardOrigin {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "sender_user_id": senderUserId,
-    };
-  }
+		};
+	}
+
   
   @override
   MessageForwardOriginUser copyWith({
@@ -75,25 +93,39 @@ class MessageForwardOriginUser extends MessageForwardOrigin {
     senderUserId: senderUserId ?? this.senderUserId,
   );
 
-  static const CONSTRUCTOR = 'messageForwardOriginUser';
-  
+  static const String objectType = 'messageForwardOriginUser';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class MessageForwardOriginChat extends MessageForwardOrigin {
-
-  /// The message was originally sent on behalf of a chat
+/// **MessageForwardOriginChat** *(messageForwardOriginChat)* - child of MessageForwardOrigin
+///
+/// The message was originally sent on behalf of a chat.
+///
+/// * [senderChatId]: Identifier of the chat that originally sent the message.
+/// * [authorSignature]: For messages originally sent by an anonymous chat administrator, original message author signature.
+final class MessageForwardOriginChat extends MessageForwardOrigin {
+  
+  /// **MessageForwardOriginChat** *(messageForwardOriginChat)* - child of MessageForwardOrigin
+  ///
+  /// The message was originally sent on behalf of a chat.
+  ///
+  /// * [senderChatId]: Identifier of the chat that originally sent the message.
+  /// * [authorSignature]: For messages originally sent by an anonymous chat administrator, original message author signature.
   const MessageForwardOriginChat({
     required this.senderChatId,
     required this.authorSignature,
   });
   
-  /// [senderChatId] Identifier of the chat that originally sent the message
+  /// Identifier of the chat that originally sent the message
   final int senderChatId;
 
-  /// [authorSignature] For messages originally sent by an anonymous chat administrator, original message author signature
+  /// For messages originally sent by an anonymous chat administrator, original message author signature
   final String authorSignature;
   
   /// Parse from a json
@@ -104,13 +136,14 @@ class MessageForwardOriginChat extends MessageForwardOrigin {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "sender_chat_id": senderChatId,
       "author_signature": authorSignature,
-    };
-  }
+		};
+	}
+
   
   @override
   MessageForwardOriginChat copyWith({
@@ -121,21 +154,33 @@ class MessageForwardOriginChat extends MessageForwardOrigin {
     authorSignature: authorSignature ?? this.authorSignature,
   );
 
-  static const CONSTRUCTOR = 'messageForwardOriginChat';
-  
+  static const String objectType = 'messageForwardOriginChat';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class MessageForwardOriginHiddenUser extends MessageForwardOrigin {
-
-  /// The message was originally sent by a user, which is hidden by their privacy settings
+/// **MessageForwardOriginHiddenUser** *(messageForwardOriginHiddenUser)* - child of MessageForwardOrigin
+///
+/// The message was originally sent by a user, which is hidden by their privacy settings.
+///
+/// * [senderName]: Name of the sender.
+final class MessageForwardOriginHiddenUser extends MessageForwardOrigin {
+  
+  /// **MessageForwardOriginHiddenUser** *(messageForwardOriginHiddenUser)* - child of MessageForwardOrigin
+  ///
+  /// The message was originally sent by a user, which is hidden by their privacy settings.
+  ///
+  /// * [senderName]: Name of the sender.
   const MessageForwardOriginHiddenUser({
     required this.senderName,
   });
   
-  /// [senderName] Name of the sender
+  /// Name of the sender
   final String senderName;
   
   /// Parse from a json
@@ -145,12 +190,13 @@ class MessageForwardOriginHiddenUser extends MessageForwardOrigin {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "sender_name": senderName,
-    };
-  }
+		};
+	}
+
   
   @override
   MessageForwardOriginHiddenUser copyWith({
@@ -159,29 +205,45 @@ class MessageForwardOriginHiddenUser extends MessageForwardOrigin {
     senderName: senderName ?? this.senderName,
   );
 
-  static const CONSTRUCTOR = 'messageForwardOriginHiddenUser';
-  
+  static const String objectType = 'messageForwardOriginHiddenUser';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class MessageForwardOriginChannel extends MessageForwardOrigin {
-
-  /// The message was originally a post in a channel
+/// **MessageForwardOriginChannel** *(messageForwardOriginChannel)* - child of MessageForwardOrigin
+///
+/// The message was originally a post in a channel.
+///
+/// * [chatId]: Identifier of the chat from which the message was originally forwarded.
+/// * [messageId]: Message identifier of the original message.
+/// * [authorSignature]: Original post author signature.
+final class MessageForwardOriginChannel extends MessageForwardOrigin {
+  
+  /// **MessageForwardOriginChannel** *(messageForwardOriginChannel)* - child of MessageForwardOrigin
+  ///
+  /// The message was originally a post in a channel.
+  ///
+  /// * [chatId]: Identifier of the chat from which the message was originally forwarded.
+  /// * [messageId]: Message identifier of the original message.
+  /// * [authorSignature]: Original post author signature.
   const MessageForwardOriginChannel({
     required this.chatId,
     required this.messageId,
     required this.authorSignature,
   });
   
-  /// [chatId] Identifier of the chat from which the message was originally forwarded
+  /// Identifier of the chat from which the message was originally forwarded
   final int chatId;
 
-  /// [messageId] Message identifier of the original message
+  /// Message identifier of the original message
   final int messageId;
 
-  /// [authorSignature] Original post author signature
+  /// Original post author signature
   final String authorSignature;
   
   /// Parse from a json
@@ -193,14 +255,15 @@ class MessageForwardOriginChannel extends MessageForwardOrigin {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "message_id": messageId,
       "author_signature": authorSignature,
-    };
-  }
+		};
+	}
+
   
   @override
   MessageForwardOriginChannel copyWith({
@@ -213,21 +276,33 @@ class MessageForwardOriginChannel extends MessageForwardOrigin {
     authorSignature: authorSignature ?? this.authorSignature,
   );
 
-  static const CONSTRUCTOR = 'messageForwardOriginChannel';
-  
+  static const String objectType = 'messageForwardOriginChannel';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class MessageForwardOriginMessageImport extends MessageForwardOrigin {
-
-  /// The message was imported from an exported message history
+/// **MessageForwardOriginMessageImport** *(messageForwardOriginMessageImport)* - child of MessageForwardOrigin
+///
+/// The message was imported from an exported message history.
+///
+/// * [senderName]: Name of the sender.
+final class MessageForwardOriginMessageImport extends MessageForwardOrigin {
+  
+  /// **MessageForwardOriginMessageImport** *(messageForwardOriginMessageImport)* - child of MessageForwardOrigin
+  ///
+  /// The message was imported from an exported message history.
+  ///
+  /// * [senderName]: Name of the sender.
   const MessageForwardOriginMessageImport({
     required this.senderName,
   });
   
-  /// [senderName] Name of the sender
+  /// Name of the sender
   final String senderName;
   
   /// Parse from a json
@@ -237,12 +312,13 @@ class MessageForwardOriginMessageImport extends MessageForwardOrigin {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "sender_name": senderName,
-    };
-  }
+		};
+	}
+
   
   @override
   MessageForwardOriginMessageImport copyWith({
@@ -251,8 +327,11 @@ class MessageForwardOriginMessageImport extends MessageForwardOrigin {
     senderName: senderName ?? this.senderName,
   );
 
-  static const CONSTRUCTOR = 'messageForwardOriginMessageImport';
-  
+  static const String objectType = 'messageForwardOriginMessageImport';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

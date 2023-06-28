@@ -1,15 +1,44 @@
 part of '../tdapi.dart';
 
-class PaymentReceipt extends TdObject {
-
-  /// Contains information about a successful payment
+/// **PaymentReceipt** *(paymentReceipt)* - basic class
+///
+/// Contains information about a successful payment.
+///
+/// * [title]: Product title.
+/// * [description]: Product description.
+/// * [photo]: Product photo; may be null *(optional)*.
+/// * [date]: Point in time (Unix timestamp) when the payment was made.
+/// * [sellerBotUserId]: User identifier of the seller bot.
+/// * [paymentProviderUserId]: User identifier of the payment provider bot.
+/// * [invoice]: Information about the invoice.
+/// * [orderInfo]: Order information; may be null *(optional)*.
+/// * [shippingOption]: Chosen shipping option; may be null *(optional)*.
+/// * [credentialsTitle]: Title of the saved credentials chosen by the buyer.
+/// * [tipAmount]: The amount of tip chosen by the buyer in the smallest units of the currency.
+final class PaymentReceipt extends TdObject {
+  
+  /// **PaymentReceipt** *(paymentReceipt)* - basic class
+  ///
+  /// Contains information about a successful payment.
+  ///
+  /// * [title]: Product title.
+  /// * [description]: Product description.
+  /// * [photo]: Product photo; may be null *(optional)*.
+  /// * [date]: Point in time (Unix timestamp) when the payment was made.
+  /// * [sellerBotUserId]: User identifier of the seller bot.
+  /// * [paymentProviderUserId]: User identifier of the payment provider bot.
+  /// * [invoice]: Information about the invoice.
+  /// * [orderInfo]: Order information; may be null *(optional)*.
+  /// * [shippingOption]: Chosen shipping option; may be null *(optional)*.
+  /// * [credentialsTitle]: Title of the saved credentials chosen by the buyer.
+  /// * [tipAmount]: The amount of tip chosen by the buyer in the smallest units of the currency.
   const PaymentReceipt({
     required this.title,
     required this.description,
     this.photo,
     required this.date,
     required this.sellerBotUserId,
-    required this.paymentsProviderUserId,
+    required this.paymentProviderUserId,
     required this.invoice,
     this.orderInfo,
     this.shippingOption,
@@ -19,37 +48,37 @@ class PaymentReceipt extends TdObject {
     this.clientId,
   });
   
-  /// [title] Product title
+  /// Product title
   final String title;
 
-  /// [description] Product description
-  final String description;
+  /// Product description
+  final FormattedText description;
 
-  /// [photo] Product photo; may be null
+  /// Product photo; may be null
   final Photo? photo;
 
-  /// [date] Point in time (Unix timestamp) when the payment was made
+  /// Point in time (Unix timestamp) when the payment was made
   final int date;
 
-  /// [sellerBotUserId] User identifier of the seller bot
+  /// User identifier of the seller bot
   final int sellerBotUserId;
 
-  /// [paymentsProviderUserId] User identifier of the payment provider bot
-  final int paymentsProviderUserId;
+  /// User identifier of the payment provider bot
+  final int paymentProviderUserId;
 
-  /// [invoice] Information about the invoice
+  /// Information about the invoice
   final Invoice invoice;
 
-  /// [orderInfo] Order information; may be null
+  /// Order information; may be null
   final OrderInfo? orderInfo;
 
-  /// [shippingOption] Chosen shipping option; may be null
+  /// Chosen shipping option; may be null
   final ShippingOption? shippingOption;
 
-  /// [credentialsTitle] Title of the saved credentials chosen by the buyer
+  /// Title of the saved credentials chosen by the buyer
   final String credentialsTitle;
 
-  /// [tipAmount] The amount of tip chosen by the buyer in the smallest units of the currency
+  /// The amount of tip chosen by the buyer in the smallest units of the currency
   final int tipAmount;
 
   /// [extra] callback sign
@@ -63,11 +92,11 @@ class PaymentReceipt extends TdObject {
   /// Parse from a json
   factory PaymentReceipt.fromJson(Map<String, dynamic> json) => PaymentReceipt(
     title: json['title'],
-    description: json['description'],
+    description: FormattedText.fromJson(json['description']),
     photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
     date: json['date'],
     sellerBotUserId: json['seller_bot_user_id'],
-    paymentsProviderUserId: json['payments_provider_user_id'],
+    paymentProviderUserId: json['payment_provider_user_id'],
     invoice: Invoice.fromJson(json['invoice']),
     orderInfo: json['order_info'] == null ? null : OrderInfo.fromJson(json['order_info']),
     shippingOption: json['shipping_option'] == null ? null : ShippingOption.fromJson(json['shipping_option']),
@@ -79,30 +108,31 @@ class PaymentReceipt extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "title": title,
-      "description": description,
+      "description": description.toJson(),
       "photo": photo?.toJson(),
       "date": date,
       "seller_bot_user_id": sellerBotUserId,
-      "payments_provider_user_id": paymentsProviderUserId,
+      "payment_provider_user_id": paymentProviderUserId,
       "invoice": invoice.toJson(),
       "order_info": orderInfo?.toJson(),
       "shipping_option": shippingOption?.toJson(),
       "credentials_title": credentialsTitle,
       "tip_amount": tipAmount,
-    };
-  }
+		};
+	}
+
   
   PaymentReceipt copyWith({
     String? title,
-    String? description,
+    FormattedText? description,
     Photo? photo,
     int? date,
     int? sellerBotUserId,
-    int? paymentsProviderUserId,
+    int? paymentProviderUserId,
     Invoice? invoice,
     OrderInfo? orderInfo,
     ShippingOption? shippingOption,
@@ -116,7 +146,7 @@ class PaymentReceipt extends TdObject {
     photo: photo ?? this.photo,
     date: date ?? this.date,
     sellerBotUserId: sellerBotUserId ?? this.sellerBotUserId,
-    paymentsProviderUserId: paymentsProviderUserId ?? this.paymentsProviderUserId,
+    paymentProviderUserId: paymentProviderUserId ?? this.paymentProviderUserId,
     invoice: invoice ?? this.invoice,
     orderInfo: orderInfo ?? this.orderInfo,
     shippingOption: shippingOption ?? this.shippingOption,
@@ -126,8 +156,11 @@ class PaymentReceipt extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'paymentReceipt';
-  
+  static const String objectType = 'paymentReceipt';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

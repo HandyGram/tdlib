@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class GetMessages extends TdFunction {
-
-  /// Returns information about messages. If a message is not found, returns null on the corresponding position of the result
+/// **GetMessages** *(getMessages)* - TDLib function
+///
+/// Returns information about messages. If a message is not found, returns null on the corresponding position of the result.
+///
+/// * [chatId]: Identifier of the chat the messages belong to.
+/// * [messageIds]: Identifiers of the messages to get.
+///
+/// [Messages] is returned on completion.
+final class GetMessages extends TdFunction {
+  
+  /// **GetMessages** *(getMessages)* - TDLib function
+  ///
+  /// Returns information about messages. If a message is not found, returns null on the corresponding position of the result.
+  ///
+  /// * [chatId]: Identifier of the chat the messages belong to.
+  /// * [messageIds]: Identifiers of the messages to get.
+  ///
+  /// [Messages] is returned on completion.
   const GetMessages({
     required this.chatId,
     required this.messageIds,
   });
   
-  /// [chatId] Identifier of the chat the messages belong to 
+  /// Identifier of the chat the messages belong to 
   final int chatId;
 
-  /// [messageIds] Identifiers of the messages to get
+  /// Identifiers of the messages to get
   final List<int> messageIds;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "message_ids": messageIds.map((i) => i).toList(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetMessages copyWith({
     int? chatId,
@@ -32,8 +48,11 @@ class GetMessages extends TdFunction {
     messageIds: messageIds ?? this.messageIds,
   );
 
-  static const CONSTRUCTOR = 'getMessages';
-  
+  static const String objectType = 'getMessages';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class GetLogTagVerbosityLevel extends TdFunction {
-
-  /// Returns current verbosity level for a specified TDLib internal log tag. Can be called synchronously
+/// **GetLogTagVerbosityLevel** *(getLogTagVerbosityLevel)* - TDLib function
+///
+/// Returns current verbosity level for a specified TDLib internal log tag. Can be called synchronously.
+///
+/// * [tag]: Logging tag to change verbosity level.
+///
+/// [LogVerbosityLevel] is returned on completion.
+final class GetLogTagVerbosityLevel extends TdFunction {
+  
+  /// **GetLogTagVerbosityLevel** *(getLogTagVerbosityLevel)* - TDLib function
+  ///
+  /// Returns current verbosity level for a specified TDLib internal log tag. Can be called synchronously.
+  ///
+  /// * [tag]: Logging tag to change verbosity level.
+  ///
+  /// [LogVerbosityLevel] is returned on completion.
   const GetLogTagVerbosityLevel({
     required this.tag,
   });
   
-  /// [tag] Logging tag to change verbosity level
+  /// Logging tag to change verbosity level
   final String tag;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "tag": tag,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetLogTagVerbosityLevel copyWith({
     String? tag,
@@ -25,8 +39,11 @@ class GetLogTagVerbosityLevel extends TdFunction {
     tag: tag ?? this.tag,
   );
 
-  static const CONSTRUCTOR = 'getLogTagVerbosityLevel';
-  
+  static const String objectType = 'getLogTagVerbosityLevel';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

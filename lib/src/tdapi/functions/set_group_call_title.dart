@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class SetGroupCallTitle extends TdFunction {
-
-  /// Sets group call title. Requires groupCall.can_be_managed group call flag
+/// **SetGroupCallTitle** *(setGroupCallTitle)* - TDLib function
+///
+/// Sets group call title. Requires groupCall.can_be_managed group call flag.
+///
+/// * [groupCallId]: Group call identifier.
+/// * [title]: New group call title; 1-64 characters.
+///
+/// [Ok] is returned on completion.
+final class SetGroupCallTitle extends TdFunction {
+  
+  /// **SetGroupCallTitle** *(setGroupCallTitle)* - TDLib function
+  ///
+  /// Sets group call title. Requires groupCall.can_be_managed group call flag.
+  ///
+  /// * [groupCallId]: Group call identifier.
+  /// * [title]: New group call title; 1-64 characters.
+  ///
+  /// [Ok] is returned on completion.
   const SetGroupCallTitle({
     required this.groupCallId,
     required this.title,
   });
   
-  /// [groupCallId] Group call identifier 
+  /// Group call identifier 
   final int groupCallId;
 
-  /// [title] New group call title; 1-64 characters
+  /// New group call title; 1-64 characters
   final String title;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "group_call_id": groupCallId,
       "title": title,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SetGroupCallTitle copyWith({
     int? groupCallId,
@@ -32,8 +48,11 @@ class SetGroupCallTitle extends TdFunction {
     title: title ?? this.title,
   );
 
-  static const CONSTRUCTOR = 'setGroupCallTitle';
-  
+  static const String objectType = 'setGroupCallTitle';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

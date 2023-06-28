@@ -1,23 +1,36 @@
 part of '../tdapi.dart';
 
-class ResendChangePhoneNumberCode extends TdFunction {
-
-  /// Re-sends the authentication code sent to confirm a new phone number for the current user. Works only if the previously received authenticationCodeInfo next_code_type was not null and the server-specified timeout has passed
+/// **ResendChangePhoneNumberCode** *(resendChangePhoneNumberCode)* - TDLib function
+///
+/// Resends the authentication code sent to confirm a new phone number for the current user. Works only if the previously received authenticationCodeInfo next_code_type was not null and the server-specified timeout has passed.
+///
+/// [AuthenticationCodeInfo] is returned on completion.
+final class ResendChangePhoneNumberCode extends TdFunction {
+  
+  /// **ResendChangePhoneNumberCode** *(resendChangePhoneNumberCode)* - TDLib function
+  ///
+  /// Resends the authentication code sent to confirm a new phone number for the current user. Works only if the previously received authenticationCodeInfo next_code_type was not null and the server-specified timeout has passed.
+  ///
+  /// [AuthenticationCodeInfo] is returned on completion.
   const ResendChangePhoneNumberCode();
   
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   ResendChangePhoneNumberCode copyWith() => const ResendChangePhoneNumberCode();
 
-  static const CONSTRUCTOR = 'resendChangePhoneNumberCode';
-  
+  static const String objectType = 'resendChangePhoneNumberCode';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

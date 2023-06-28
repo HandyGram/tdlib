@@ -1,8 +1,23 @@
 part of '../tdapi.dart';
 
-class StorageStatisticsByChat extends TdObject {
-
-  /// Contains the storage usage statistics for a specific chat
+/// **StorageStatisticsByChat** *(storageStatisticsByChat)* - basic class
+///
+/// Contains the storage usage statistics for a specific chat.
+///
+/// * [chatId]: Chat identifier; 0 if none.
+/// * [size]: Total size of the files in the chat, in bytes.
+/// * [count]: Total number of files in the chat.
+/// * [byFileType]: Statistics split by file types.
+final class StorageStatisticsByChat extends TdObject {
+  
+  /// **StorageStatisticsByChat** *(storageStatisticsByChat)* - basic class
+  ///
+  /// Contains the storage usage statistics for a specific chat.
+  ///
+  /// * [chatId]: Chat identifier; 0 if none.
+  /// * [size]: Total size of the files in the chat, in bytes.
+  /// * [count]: Total number of files in the chat.
+  /// * [byFileType]: Statistics split by file types.
   const StorageStatisticsByChat({
     required this.chatId,
     required this.size,
@@ -10,16 +25,16 @@ class StorageStatisticsByChat extends TdObject {
     required this.byFileType,
   });
   
-  /// [chatId] Chat identifier; 0 if none 
+  /// Chat identifier; 0 if none
   final int chatId;
 
-  /// [size] Total size of the files in the chat, in bytes 
+  /// Total size of the files in the chat, in bytes
   final int size;
 
-  /// [count] Total number of files in the chat 
+  /// Total number of files in the chat
   final int count;
 
-  /// [byFileType] Statistics split by file types
+  /// Statistics split by file types
   final List<StorageStatisticsByFileType> byFileType;
   
   /// Parse from a json
@@ -32,15 +47,16 @@ class StorageStatisticsByChat extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "size": size,
       "count": count,
       "by_file_type": byFileType.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   StorageStatisticsByChat copyWith({
     int? chatId,
@@ -54,8 +70,11 @@ class StorageStatisticsByChat extends TdObject {
     byFileType: byFileType ?? this.byFileType,
   );
 
-  static const CONSTRUCTOR = 'storageStatisticsByChat';
-  
+  static const String objectType = 'storageStatisticsByChat';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

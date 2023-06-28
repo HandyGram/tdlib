@@ -1,8 +1,31 @@
 part of '../tdapi.dart';
 
-class SendMessage extends TdFunction {
-
-  /// Sends a message. Returns the sent message
+/// **SendMessage** *(sendMessage)* - TDLib function
+///
+/// Sends a message. Returns the sent message.
+///
+/// * [chatId]: Target chat.
+/// * [messageThreadId]: If not 0, a message thread identifier in which the message will be sent.
+/// * [replyToMessageId]: Identifier of the replied message; 0 if none.
+/// * [options]: Options to be used to send the message; pass null to use default options *(optional)*.
+/// * [replyMarkup]: Markup for replying to the message; pass null if none; for bots only *(optional)*.
+/// * [inputMessageContent]: The content of the message to be sent.
+///
+/// [Message] is returned on completion.
+final class SendMessage extends TdFunction {
+  
+  /// **SendMessage** *(sendMessage)* - TDLib function
+  ///
+  /// Sends a message. Returns the sent message.
+  ///
+  /// * [chatId]: Target chat.
+  /// * [messageThreadId]: If not 0, a message thread identifier in which the message will be sent.
+  /// * [replyToMessageId]: Identifier of the replied message; 0 if none.
+  /// * [options]: Options to be used to send the message; pass null to use default options *(optional)*.
+  /// * [replyMarkup]: Markup for replying to the message; pass null if none; for bots only *(optional)*.
+  /// * [inputMessageContent]: The content of the message to be sent.
+  ///
+  /// [Message] is returned on completion.
   const SendMessage({
     required this.chatId,
     required this.messageThreadId,
@@ -12,28 +35,28 @@ class SendMessage extends TdFunction {
     required this.inputMessageContent,
   });
   
-  /// [chatId] Target chat
+  /// Target chat
   final int chatId;
 
-  /// [messageThreadId] If not 0, a message thread identifier in which the message will be sent
+  /// If not 0, a message thread identifier in which the message will be sent
   final int messageThreadId;
 
-  /// [replyToMessageId] Identifier of the message to reply to or 0
+  /// Identifier of the replied message; 0 if none
   final int replyToMessageId;
 
-  /// [options] Options to be used to send the message; pass null to use default options
+  /// Options to be used to send the message; pass null to use default options
   final MessageSendOptions? options;
 
-  /// [replyMarkup] Markup for replying to the message; pass null if none; for bots only
+  /// Markup for replying to the message; pass null if none; for bots only
   final ReplyMarkup? replyMarkup;
 
-  /// [inputMessageContent] The content of the message to be sent
+  /// The content of the message to be sent
   final InputMessageContent inputMessageContent;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "message_thread_id": messageThreadId,
       "reply_to_message_id": replyToMessageId,
@@ -41,8 +64,9 @@ class SendMessage extends TdFunction {
       "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SendMessage copyWith({
     int? chatId,
@@ -60,8 +84,11 @@ class SendMessage extends TdFunction {
     inputMessageContent: inputMessageContent ?? this.inputMessageContent,
   );
 
-  static const CONSTRUCTOR = 'sendMessage';
-  
+  static const String objectType = 'sendMessage';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

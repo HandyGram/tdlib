@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class StartGroupCallScreenSharing extends TdFunction {
-
-  /// Starts screen sharing in a joined group call. Returns join response payload for tgcalls
+/// **StartGroupCallScreenSharing** *(startGroupCallScreenSharing)* - TDLib function
+///
+/// Starts screen sharing in a joined group call. Returns join response payload for tgcalls.
+///
+/// * [groupCallId]: Group call identifier.
+/// * [audioSourceId]: Screen sharing audio channel synchronization source identifier; received from tgcalls.
+/// * [payload]: Group call join payload; received from tgcalls.
+///
+/// [Text] is returned on completion.
+final class StartGroupCallScreenSharing extends TdFunction {
+  
+  /// **StartGroupCallScreenSharing** *(startGroupCallScreenSharing)* - TDLib function
+  ///
+  /// Starts screen sharing in a joined group call. Returns join response payload for tgcalls.
+  ///
+  /// * [groupCallId]: Group call identifier.
+  /// * [audioSourceId]: Screen sharing audio channel synchronization source identifier; received from tgcalls.
+  /// * [payload]: Group call join payload; received from tgcalls.
+  ///
+  /// [Text] is returned on completion.
   const StartGroupCallScreenSharing({
     required this.groupCallId,
     required this.audioSourceId,
     required this.payload,
   });
   
-  /// [groupCallId] Group call identifier
+  /// Group call identifier
   final int groupCallId;
 
-  /// [audioSourceId] Screen sharing audio channel synchronization source identifier; received from tgcalls
+  /// Screen sharing audio channel synchronization source identifier; received from tgcalls
   final int audioSourceId;
 
-  /// [payload] Group call join payload; received from tgcalls
+  /// Group call join payload; received from tgcalls
   final String payload;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "group_call_id": groupCallId,
       "audio_source_id": audioSourceId,
       "payload": payload,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   StartGroupCallScreenSharing copyWith({
     int? groupCallId,
@@ -39,8 +57,11 @@ class StartGroupCallScreenSharing extends TdFunction {
     payload: payload ?? this.payload,
   );
 
-  static const CONSTRUCTOR = 'startGroupCallScreenSharing';
-  
+  static const String objectType = 'startGroupCallScreenSharing';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,46 +1,58 @@
 part of '../tdapi.dart';
 
-class GetPaymentForm extends TdFunction {
-
-  /// Returns an invoice payment form. This method must be called when the user presses inlineKeyboardButtonBuy
+/// **GetPaymentForm** *(getPaymentForm)* - TDLib function
+///
+/// Returns an invoice payment form. This method must be called when the user presses inlineKeyboardButtonBuy.
+///
+/// * [inputInvoice]: The invoice.
+/// * [theme]: Preferred payment form theme; pass null to use the default theme *(optional)*.
+///
+/// [PaymentForm] is returned on completion.
+final class GetPaymentForm extends TdFunction {
+  
+  /// **GetPaymentForm** *(getPaymentForm)* - TDLib function
+  ///
+  /// Returns an invoice payment form. This method must be called when the user presses inlineKeyboardButtonBuy.
+  ///
+  /// * [inputInvoice]: The invoice.
+  /// * [theme]: Preferred payment form theme; pass null to use the default theme *(optional)*.
+  ///
+  /// [PaymentForm] is returned on completion.
   const GetPaymentForm({
-    required this.chatId,
-    required this.messageId,
+    required this.inputInvoice,
     this.theme,
   });
   
-  /// [chatId] Chat identifier of the Invoice message
-  final int chatId;
+  /// The invoice
+  final InputInvoice inputInvoice;
 
-  /// [messageId] Message identifier
-  final int messageId;
-
-  /// [theme] Preferred payment form theme; pass null to use the default theme
-  final PaymentFormTheme? theme;
+  /// Preferred payment form theme; pass null to use the default theme
+  final ThemeParameters? theme;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "chat_id": chatId,
-      "message_id": messageId,
+		return {
+			"@type": objectType,
+      "input_invoice": inputInvoice.toJson(),
       "theme": theme?.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetPaymentForm copyWith({
-    int? chatId,
-    int? messageId,
-    PaymentFormTheme? theme,
+    InputInvoice? inputInvoice,
+    ThemeParameters? theme,
   }) => GetPaymentForm(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
+    inputInvoice: inputInvoice ?? this.inputInvoice,
     theme: theme ?? this.theme,
   );
 
-  static const CONSTRUCTOR = 'getPaymentForm';
-  
+  static const String objectType = 'getPaymentForm';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

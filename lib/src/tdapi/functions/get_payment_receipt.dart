@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class GetPaymentReceipt extends TdFunction {
-
-  /// Returns information about a successful payment
+/// **GetPaymentReceipt** *(getPaymentReceipt)* - TDLib function
+///
+/// Returns information about a successful payment.
+///
+/// * [chatId]: Chat identifier of the messagePaymentSuccessful message.
+/// * [messageId]: Message identifier.
+///
+/// [PaymentReceipt] is returned on completion.
+final class GetPaymentReceipt extends TdFunction {
+  
+  /// **GetPaymentReceipt** *(getPaymentReceipt)* - TDLib function
+  ///
+  /// Returns information about a successful payment.
+  ///
+  /// * [chatId]: Chat identifier of the messagePaymentSuccessful message.
+  /// * [messageId]: Message identifier.
+  ///
+  /// [PaymentReceipt] is returned on completion.
   const GetPaymentReceipt({
     required this.chatId,
     required this.messageId,
   });
   
-  /// [chatId] Chat identifier of the PaymentSuccessful message 
+  /// Chat identifier of the messagePaymentSuccessful message 
   final int chatId;
 
-  /// [messageId] Message identifier
+  /// Message identifier
   final int messageId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "message_id": messageId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetPaymentReceipt copyWith({
     int? chatId,
@@ -32,8 +48,11 @@ class GetPaymentReceipt extends TdFunction {
     messageId: messageId ?? this.messageId,
   );
 
-  static const CONSTRUCTOR = 'getPaymentReceipt';
-  
+  static const String objectType = 'getPaymentReceipt';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

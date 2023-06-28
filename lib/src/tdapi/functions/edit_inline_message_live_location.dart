@@ -1,8 +1,29 @@
 part of '../tdapi.dart';
 
-class EditInlineMessageLiveLocation extends TdFunction {
-
-  /// Edits the content of a live location in an inline message sent via a bot; for bots only
+/// **EditInlineMessageLiveLocation** *(editInlineMessageLiveLocation)* - TDLib function
+///
+/// Edits the content of a live location in an inline message sent via a bot; for bots only.
+///
+/// * [inlineMessageId]: Inline message identifier.
+/// * [replyMarkup]: The new message reply markup; pass null if none *(optional)*.
+/// * [location]: New location content of the message; pass null to stop sharing the live location *(optional)*.
+/// * [heading]: The new direction in which the location moves, in degrees; 1-360. Pass 0 if unknown.
+/// * [proximityAlertRadius]: The new maximum distance for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled.
+///
+/// [Ok] is returned on completion.
+final class EditInlineMessageLiveLocation extends TdFunction {
+  
+  /// **EditInlineMessageLiveLocation** *(editInlineMessageLiveLocation)* - TDLib function
+  ///
+  /// Edits the content of a live location in an inline message sent via a bot; for bots only.
+  ///
+  /// * [inlineMessageId]: Inline message identifier.
+  /// * [replyMarkup]: The new message reply markup; pass null if none *(optional)*.
+  /// * [location]: New location content of the message; pass null to stop sharing the live location *(optional)*.
+  /// * [heading]: The new direction in which the location moves, in degrees; 1-360. Pass 0 if unknown.
+  /// * [proximityAlertRadius]: The new maximum distance for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled.
+  ///
+  /// [Ok] is returned on completion.
   const EditInlineMessageLiveLocation({
     required this.inlineMessageId,
     this.replyMarkup,
@@ -11,33 +32,34 @@ class EditInlineMessageLiveLocation extends TdFunction {
     required this.proximityAlertRadius,
   });
   
-  /// [inlineMessageId] Inline message identifier
+  /// Inline message identifier
   final String inlineMessageId;
 
-  /// [replyMarkup] The new message reply markup; pass null if none
+  /// The new message reply markup; pass null if none
   final ReplyMarkup? replyMarkup;
 
-  /// [location] New location content of the message; pass null to stop sharing the live location
+  /// New location content of the message; pass null to stop sharing the live location
   final Location? location;
 
-  /// [heading] The new direction in which the location moves, in degrees; 1-360. Pass 0 if unknown
+  /// The new direction in which the location moves, in degrees; 1-360. Pass 0 if unknown
   final int heading;
 
-  /// [proximityAlertRadius] The new maximum distance for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled
+  /// The new maximum distance for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled
   final int proximityAlertRadius;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "inline_message_id": inlineMessageId,
       "reply_markup": replyMarkup?.toJson(),
       "location": location?.toJson(),
       "heading": heading,
       "proximity_alert_radius": proximityAlertRadius,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   EditInlineMessageLiveLocation copyWith({
     String? inlineMessageId,
@@ -53,8 +75,11 @@ class EditInlineMessageLiveLocation extends TdFunction {
     proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
   );
 
-  static const CONSTRUCTOR = 'editInlineMessageLiveLocation';
-  
+  static const String objectType = 'editInlineMessageLiveLocation';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

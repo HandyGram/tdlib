@@ -1,8 +1,25 @@
 part of '../tdapi.dart';
 
-class BasicGroup extends TdObject {
-
-  /// Represents a basic group of 0-200 users (must be upgraded to a supergroup to accommodate more than 200 users)
+/// **BasicGroup** *(basicGroup)* - basic class
+///
+/// Represents a basic group of 0-200 users (must be upgraded to a supergroup to accommodate more than 200 users).
+///
+/// * [id]: Group identifier.
+/// * [memberCount]: Number of members in the group.
+/// * [status]: Status of the current user in the group.
+/// * [isActive]: True, if the group is active.
+/// * [upgradedToSupergroupId]: Identifier of the supergroup to which this group was upgraded; 0 if none.
+final class BasicGroup extends TdObject {
+  
+  /// **BasicGroup** *(basicGroup)* - basic class
+  ///
+  /// Represents a basic group of 0-200 users (must be upgraded to a supergroup to accommodate more than 200 users).
+  ///
+  /// * [id]: Group identifier.
+  /// * [memberCount]: Number of members in the group.
+  /// * [status]: Status of the current user in the group.
+  /// * [isActive]: True, if the group is active.
+  /// * [upgradedToSupergroupId]: Identifier of the supergroup to which this group was upgraded; 0 if none.
   const BasicGroup({
     required this.id,
     required this.memberCount,
@@ -13,19 +30,19 @@ class BasicGroup extends TdObject {
     this.clientId,
   });
   
-  /// [id] Group identifier
+  /// Group identifier
   final int id;
 
-  /// [memberCount] Number of members in the group
+  /// Number of members in the group
   final int memberCount;
 
-  /// [status] Status of the current user in the group
+  /// Status of the current user in the group
   final ChatMemberStatus status;
 
-  /// [isActive] True, if the group is active
+  /// True, if the group is active
   final bool isActive;
 
-  /// [upgradedToSupergroupId] Identifier of the supergroup to which this group was upgraded; 0 if none
+  /// Identifier of the supergroup to which this group was upgraded; 0 if none
   final int upgradedToSupergroupId;
 
   /// [extra] callback sign
@@ -49,16 +66,17 @@ class BasicGroup extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "id": id,
       "member_count": memberCount,
       "status": status.toJson(),
       "is_active": isActive,
       "upgraded_to_supergroup_id": upgradedToSupergroupId,
-    };
-  }
+		};
+	}
+
   
   BasicGroup copyWith({
     int? id,
@@ -78,8 +96,11 @@ class BasicGroup extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'basicGroup';
-  
+  static const String objectType = 'basicGroup';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

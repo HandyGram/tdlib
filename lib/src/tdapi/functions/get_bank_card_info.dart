@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class GetBankCardInfo extends TdFunction {
-
-  /// Returns information about a bank card
+/// **GetBankCardInfo** *(getBankCardInfo)* - TDLib function
+///
+/// Returns information about a bank card.
+///
+/// * [bankCardNumber]: The bank card number.
+///
+/// [BankCardInfo] is returned on completion.
+final class GetBankCardInfo extends TdFunction {
+  
+  /// **GetBankCardInfo** *(getBankCardInfo)* - TDLib function
+  ///
+  /// Returns information about a bank card.
+  ///
+  /// * [bankCardNumber]: The bank card number.
+  ///
+  /// [BankCardInfo] is returned on completion.
   const GetBankCardInfo({
     required this.bankCardNumber,
   });
   
-  /// [bankCardNumber] The bank card number
+  /// The bank card number
   final String bankCardNumber;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "bank_card_number": bankCardNumber,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetBankCardInfo copyWith({
     String? bankCardNumber,
@@ -25,8 +39,11 @@ class GetBankCardInfo extends TdFunction {
     bankCardNumber: bankCardNumber ?? this.bankCardNumber,
   );
 
-  static const CONSTRUCTOR = 'getBankCardInfo';
-  
+  static const String objectType = 'getBankCardInfo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

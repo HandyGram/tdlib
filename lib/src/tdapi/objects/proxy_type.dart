@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class ProxyType extends TdObject {
-
-  /// Describes the type of a proxy server
+/// **ProxyType** *(proxyType)* - parent
+///
+/// Describes the type of a proxy server.
+sealed class ProxyType extends TdObject {
+  
+  /// **ProxyType** *(proxyType)* - parent
+  ///
+  /// Describes the type of a proxy server.
   const ProxyType();
   
   /// a ProxyType return type can be :
@@ -11,45 +16,59 @@ class ProxyType extends TdObject {
   /// * [ProxyTypeMtproto]
   factory ProxyType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case ProxyTypeSocks5.CONSTRUCTOR:
+      case ProxyTypeSocks5.objectType:
         return ProxyTypeSocks5.fromJson(json);
-      case ProxyTypeHttp.CONSTRUCTOR:
+      case ProxyTypeHttp.objectType:
         return ProxyTypeHttp.fromJson(json);
-      case ProxyTypeMtproto.CONSTRUCTOR:
+      case ProxyTypeMtproto.objectType:
         return ProxyTypeMtproto.fromJson(json);
       default:
-        return const ProxyType();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of ProxyType)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  ProxyType copyWith() => const ProxyType();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'proxyType';
   
+  ProxyType copyWith();
+
+  static const String objectType = 'proxyType';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ProxyTypeSocks5 extends ProxyType {
-
-  /// A SOCKS5 proxy server
+/// **ProxyTypeSocks5** *(proxyTypeSocks5)* - child of ProxyType
+///
+/// A SOCKS5 proxy server.
+///
+/// * [username]: Username for logging in; may be empty.
+/// * [password]: Password for logging in; may be empty.
+final class ProxyTypeSocks5 extends ProxyType {
+  
+  /// **ProxyTypeSocks5** *(proxyTypeSocks5)* - child of ProxyType
+  ///
+  /// A SOCKS5 proxy server.
+  ///
+  /// * [username]: Username for logging in; may be empty.
+  /// * [password]: Password for logging in; may be empty.
   const ProxyTypeSocks5({
     required this.username,
     required this.password,
   });
   
-  /// [username] Username for logging in; may be empty 
+  /// Username for logging in; may be empty 
   final String username;
 
-  /// [password] Password for logging in; may be empty
+  /// Password for logging in; may be empty
   final String password;
   
   /// Parse from a json
@@ -60,13 +79,14 @@ class ProxyTypeSocks5 extends ProxyType {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "username": username,
       "password": password,
-    };
-  }
+		};
+	}
+
   
   @override
   ProxyTypeSocks5 copyWith({
@@ -77,29 +97,45 @@ class ProxyTypeSocks5 extends ProxyType {
     password: password ?? this.password,
   );
 
-  static const CONSTRUCTOR = 'proxyTypeSocks5';
-  
+  static const String objectType = 'proxyTypeSocks5';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ProxyTypeHttp extends ProxyType {
-
-  /// A HTTP transparent proxy server
+/// **ProxyTypeHttp** *(proxyTypeHttp)* - child of ProxyType
+///
+/// A HTTP transparent proxy server.
+///
+/// * [username]: Username for logging in; may be empty.
+/// * [password]: Password for logging in; may be empty.
+/// * [httpOnly]: Pass true if the proxy supports only HTTP requests and doesn't support transparent TCP connections via HTTP CONNECT method.
+final class ProxyTypeHttp extends ProxyType {
+  
+  /// **ProxyTypeHttp** *(proxyTypeHttp)* - child of ProxyType
+  ///
+  /// A HTTP transparent proxy server.
+  ///
+  /// * [username]: Username for logging in; may be empty.
+  /// * [password]: Password for logging in; may be empty.
+  /// * [httpOnly]: Pass true if the proxy supports only HTTP requests and doesn't support transparent TCP connections via HTTP CONNECT method.
   const ProxyTypeHttp({
     required this.username,
     required this.password,
     required this.httpOnly,
   });
   
-  /// [username] Username for logging in; may be empty 
+  /// Username for logging in; may be empty 
   final String username;
 
-  /// [password] Password for logging in; may be empty 
+  /// Password for logging in; may be empty 
   final String password;
 
-  /// [httpOnly] Pass true if the proxy supports only HTTP requests and doesn't support transparent TCP connections via HTTP CONNECT method
+  /// Pass true if the proxy supports only HTTP requests and doesn't support transparent TCP connections via HTTP CONNECT method
   final bool httpOnly;
   
   /// Parse from a json
@@ -111,14 +147,15 @@ class ProxyTypeHttp extends ProxyType {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "username": username,
       "password": password,
       "http_only": httpOnly,
-    };
-  }
+		};
+	}
+
   
   @override
   ProxyTypeHttp copyWith({
@@ -131,21 +168,33 @@ class ProxyTypeHttp extends ProxyType {
     httpOnly: httpOnly ?? this.httpOnly,
   );
 
-  static const CONSTRUCTOR = 'proxyTypeHttp';
-  
+  static const String objectType = 'proxyTypeHttp';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ProxyTypeMtproto extends ProxyType {
-
-  /// An MTProto proxy server
+/// **ProxyTypeMtproto** *(proxyTypeMtproto)* - child of ProxyType
+///
+/// An MTProto proxy server.
+///
+/// * [secret]: The proxy's secret in hexadecimal encoding.
+final class ProxyTypeMtproto extends ProxyType {
+  
+  /// **ProxyTypeMtproto** *(proxyTypeMtproto)* - child of ProxyType
+  ///
+  /// An MTProto proxy server.
+  ///
+  /// * [secret]: The proxy's secret in hexadecimal encoding.
   const ProxyTypeMtproto({
     required this.secret,
   });
   
-  /// [secret] The proxy's secret in hexadecimal encoding
+  /// The proxy's secret in hexadecimal encoding
   final String secret;
   
   /// Parse from a json
@@ -155,12 +204,13 @@ class ProxyTypeMtproto extends ProxyType {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "secret": secret,
-    };
-  }
+		};
+	}
+
   
   @override
   ProxyTypeMtproto copyWith({
@@ -169,8 +219,11 @@ class ProxyTypeMtproto extends ProxyType {
     secret: secret ?? this.secret,
   );
 
-  static const CONSTRUCTOR = 'proxyTypeMtproto';
-  
+  static const String objectType = 'proxyTypeMtproto';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

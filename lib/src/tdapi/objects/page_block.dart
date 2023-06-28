@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class PageBlock extends TdObject {
-
-  /// Describes a block of an instant view web page
+/// **PageBlock** *(pageBlock)* - parent
+///
+/// Describes a block of an instant view web page.
+sealed class PageBlock extends TdObject {
+  
+  /// **PageBlock** *(pageBlock)* - parent
+  ///
+  /// Describes a block of an instant view web page.
   const PageBlock();
   
   /// a PageBlock return type can be :
@@ -37,93 +42,105 @@ class PageBlock extends TdObject {
   /// * [PageBlockMap]
   factory PageBlock.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case PageBlockTitle.CONSTRUCTOR:
+      case PageBlockTitle.objectType:
         return PageBlockTitle.fromJson(json);
-      case PageBlockSubtitle.CONSTRUCTOR:
+      case PageBlockSubtitle.objectType:
         return PageBlockSubtitle.fromJson(json);
-      case PageBlockAuthorDate.CONSTRUCTOR:
+      case PageBlockAuthorDate.objectType:
         return PageBlockAuthorDate.fromJson(json);
-      case PageBlockHeader.CONSTRUCTOR:
+      case PageBlockHeader.objectType:
         return PageBlockHeader.fromJson(json);
-      case PageBlockSubheader.CONSTRUCTOR:
+      case PageBlockSubheader.objectType:
         return PageBlockSubheader.fromJson(json);
-      case PageBlockKicker.CONSTRUCTOR:
+      case PageBlockKicker.objectType:
         return PageBlockKicker.fromJson(json);
-      case PageBlockParagraph.CONSTRUCTOR:
+      case PageBlockParagraph.objectType:
         return PageBlockParagraph.fromJson(json);
-      case PageBlockPreformatted.CONSTRUCTOR:
+      case PageBlockPreformatted.objectType:
         return PageBlockPreformatted.fromJson(json);
-      case PageBlockFooter.CONSTRUCTOR:
+      case PageBlockFooter.objectType:
         return PageBlockFooter.fromJson(json);
-      case PageBlockDivider.CONSTRUCTOR:
+      case PageBlockDivider.objectType:
         return PageBlockDivider.fromJson(json);
-      case PageBlockAnchor.CONSTRUCTOR:
+      case PageBlockAnchor.objectType:
         return PageBlockAnchor.fromJson(json);
-      case PageBlockList.CONSTRUCTOR:
+      case PageBlockList.objectType:
         return PageBlockList.fromJson(json);
-      case PageBlockBlockQuote.CONSTRUCTOR:
+      case PageBlockBlockQuote.objectType:
         return PageBlockBlockQuote.fromJson(json);
-      case PageBlockPullQuote.CONSTRUCTOR:
+      case PageBlockPullQuote.objectType:
         return PageBlockPullQuote.fromJson(json);
-      case PageBlockAnimation.CONSTRUCTOR:
+      case PageBlockAnimation.objectType:
         return PageBlockAnimation.fromJson(json);
-      case PageBlockAudio.CONSTRUCTOR:
+      case PageBlockAudio.objectType:
         return PageBlockAudio.fromJson(json);
-      case PageBlockPhoto.CONSTRUCTOR:
+      case PageBlockPhoto.objectType:
         return PageBlockPhoto.fromJson(json);
-      case PageBlockVideo.CONSTRUCTOR:
+      case PageBlockVideo.objectType:
         return PageBlockVideo.fromJson(json);
-      case PageBlockVoiceNote.CONSTRUCTOR:
+      case PageBlockVoiceNote.objectType:
         return PageBlockVoiceNote.fromJson(json);
-      case PageBlockCover.CONSTRUCTOR:
+      case PageBlockCover.objectType:
         return PageBlockCover.fromJson(json);
-      case PageBlockEmbedded.CONSTRUCTOR:
+      case PageBlockEmbedded.objectType:
         return PageBlockEmbedded.fromJson(json);
-      case PageBlockEmbeddedPost.CONSTRUCTOR:
+      case PageBlockEmbeddedPost.objectType:
         return PageBlockEmbeddedPost.fromJson(json);
-      case PageBlockCollage.CONSTRUCTOR:
+      case PageBlockCollage.objectType:
         return PageBlockCollage.fromJson(json);
-      case PageBlockSlideshow.CONSTRUCTOR:
+      case PageBlockSlideshow.objectType:
         return PageBlockSlideshow.fromJson(json);
-      case PageBlockChatLink.CONSTRUCTOR:
+      case PageBlockChatLink.objectType:
         return PageBlockChatLink.fromJson(json);
-      case PageBlockTable.CONSTRUCTOR:
+      case PageBlockTable.objectType:
         return PageBlockTable.fromJson(json);
-      case PageBlockDetails.CONSTRUCTOR:
+      case PageBlockDetails.objectType:
         return PageBlockDetails.fromJson(json);
-      case PageBlockRelatedArticles.CONSTRUCTOR:
+      case PageBlockRelatedArticles.objectType:
         return PageBlockRelatedArticles.fromJson(json);
-      case PageBlockMap.CONSTRUCTOR:
+      case PageBlockMap.objectType:
         return PageBlockMap.fromJson(json);
       default:
-        return const PageBlock();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of PageBlock)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  PageBlock copyWith() => const PageBlock();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'pageBlock';
   
+  PageBlock copyWith();
+
+  static const String objectType = 'pageBlock';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockTitle extends PageBlock {
-
-  /// The title of a page
+/// **PageBlockTitle** *(pageBlockTitle)* - child of PageBlock
+///
+/// The title of a page.
+///
+/// * [title]: Title.
+final class PageBlockTitle extends PageBlock {
+  
+  /// **PageBlockTitle** *(pageBlockTitle)* - child of PageBlock
+  ///
+  /// The title of a page.
+  ///
+  /// * [title]: Title.
   const PageBlockTitle({
     required this.title,
   });
   
-  /// [title] Title
+  /// Title
   final RichText title;
   
   /// Parse from a json
@@ -133,12 +150,13 @@ class PageBlockTitle extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "title": title.toJson(),
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockTitle copyWith({
@@ -147,21 +165,33 @@ class PageBlockTitle extends PageBlock {
     title: title ?? this.title,
   );
 
-  static const CONSTRUCTOR = 'pageBlockTitle';
-  
+  static const String objectType = 'pageBlockTitle';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockSubtitle extends PageBlock {
-
-  /// The subtitle of a page
+/// **PageBlockSubtitle** *(pageBlockSubtitle)* - child of PageBlock
+///
+/// The subtitle of a page.
+///
+/// * [subtitle]: Subtitle.
+final class PageBlockSubtitle extends PageBlock {
+  
+  /// **PageBlockSubtitle** *(pageBlockSubtitle)* - child of PageBlock
+  ///
+  /// The subtitle of a page.
+  ///
+  /// * [subtitle]: Subtitle.
   const PageBlockSubtitle({
     required this.subtitle,
   });
   
-  /// [subtitle] Subtitle
+  /// Subtitle
   final RichText subtitle;
   
   /// Parse from a json
@@ -171,12 +201,13 @@ class PageBlockSubtitle extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "subtitle": subtitle.toJson(),
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockSubtitle copyWith({
@@ -185,25 +216,39 @@ class PageBlockSubtitle extends PageBlock {
     subtitle: subtitle ?? this.subtitle,
   );
 
-  static const CONSTRUCTOR = 'pageBlockSubtitle';
-  
+  static const String objectType = 'pageBlockSubtitle';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockAuthorDate extends PageBlock {
-
-  /// The author and publishing date of a page
+/// **PageBlockAuthorDate** *(pageBlockAuthorDate)* - child of PageBlock
+///
+/// The author and publishing date of a page.
+///
+/// * [author]: Author.
+/// * [publishDate]: Point in time (Unix timestamp) when the article was published; 0 if unknown.
+final class PageBlockAuthorDate extends PageBlock {
+  
+  /// **PageBlockAuthorDate** *(pageBlockAuthorDate)* - child of PageBlock
+  ///
+  /// The author and publishing date of a page.
+  ///
+  /// * [author]: Author.
+  /// * [publishDate]: Point in time (Unix timestamp) when the article was published; 0 if unknown.
   const PageBlockAuthorDate({
     required this.author,
     required this.publishDate,
   });
   
-  /// [author] Author 
+  /// Author 
   final RichText author;
 
-  /// [publishDate] Point in time (Unix timestamp) when the article was published; 0 if unknown
+  /// Point in time (Unix timestamp) when the article was published; 0 if unknown
   final int publishDate;
   
   /// Parse from a json
@@ -214,13 +259,14 @@ class PageBlockAuthorDate extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "author": author.toJson(),
       "publish_date": publishDate,
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockAuthorDate copyWith({
@@ -231,21 +277,33 @@ class PageBlockAuthorDate extends PageBlock {
     publishDate: publishDate ?? this.publishDate,
   );
 
-  static const CONSTRUCTOR = 'pageBlockAuthorDate';
-  
+  static const String objectType = 'pageBlockAuthorDate';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockHeader extends PageBlock {
-
-  /// A header
+/// **PageBlockHeader** *(pageBlockHeader)* - child of PageBlock
+///
+/// A header.
+///
+/// * [header]: Header.
+final class PageBlockHeader extends PageBlock {
+  
+  /// **PageBlockHeader** *(pageBlockHeader)* - child of PageBlock
+  ///
+  /// A header.
+  ///
+  /// * [header]: Header.
   const PageBlockHeader({
     required this.header,
   });
   
-  /// [header] Header
+  /// Header
   final RichText header;
   
   /// Parse from a json
@@ -255,12 +313,13 @@ class PageBlockHeader extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "header": header.toJson(),
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockHeader copyWith({
@@ -269,21 +328,33 @@ class PageBlockHeader extends PageBlock {
     header: header ?? this.header,
   );
 
-  static const CONSTRUCTOR = 'pageBlockHeader';
-  
+  static const String objectType = 'pageBlockHeader';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockSubheader extends PageBlock {
-
-  /// A subheader
+/// **PageBlockSubheader** *(pageBlockSubheader)* - child of PageBlock
+///
+/// A subheader.
+///
+/// * [subheader]: Subheader.
+final class PageBlockSubheader extends PageBlock {
+  
+  /// **PageBlockSubheader** *(pageBlockSubheader)* - child of PageBlock
+  ///
+  /// A subheader.
+  ///
+  /// * [subheader]: Subheader.
   const PageBlockSubheader({
     required this.subheader,
   });
   
-  /// [subheader] Subheader
+  /// Subheader
   final RichText subheader;
   
   /// Parse from a json
@@ -293,12 +364,13 @@ class PageBlockSubheader extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "subheader": subheader.toJson(),
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockSubheader copyWith({
@@ -307,21 +379,33 @@ class PageBlockSubheader extends PageBlock {
     subheader: subheader ?? this.subheader,
   );
 
-  static const CONSTRUCTOR = 'pageBlockSubheader';
-  
+  static const String objectType = 'pageBlockSubheader';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockKicker extends PageBlock {
-
-  /// A kicker
+/// **PageBlockKicker** *(pageBlockKicker)* - child of PageBlock
+///
+/// A kicker.
+///
+/// * [kicker]: Kicker.
+final class PageBlockKicker extends PageBlock {
+  
+  /// **PageBlockKicker** *(pageBlockKicker)* - child of PageBlock
+  ///
+  /// A kicker.
+  ///
+  /// * [kicker]: Kicker.
   const PageBlockKicker({
     required this.kicker,
   });
   
-  /// [kicker] Kicker
+  /// Kicker
   final RichText kicker;
   
   /// Parse from a json
@@ -331,12 +415,13 @@ class PageBlockKicker extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "kicker": kicker.toJson(),
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockKicker copyWith({
@@ -345,21 +430,33 @@ class PageBlockKicker extends PageBlock {
     kicker: kicker ?? this.kicker,
   );
 
-  static const CONSTRUCTOR = 'pageBlockKicker';
-  
+  static const String objectType = 'pageBlockKicker';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockParagraph extends PageBlock {
-
-  /// A text paragraph
+/// **PageBlockParagraph** *(pageBlockParagraph)* - child of PageBlock
+///
+/// A text paragraph.
+///
+/// * [text]: Paragraph text.
+final class PageBlockParagraph extends PageBlock {
+  
+  /// **PageBlockParagraph** *(pageBlockParagraph)* - child of PageBlock
+  ///
+  /// A text paragraph.
+  ///
+  /// * [text]: Paragraph text.
   const PageBlockParagraph({
     required this.text,
   });
   
-  /// [text] Paragraph text
+  /// Paragraph text
   final RichText text;
   
   /// Parse from a json
@@ -369,12 +466,13 @@ class PageBlockParagraph extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "text": text.toJson(),
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockParagraph copyWith({
@@ -383,25 +481,39 @@ class PageBlockParagraph extends PageBlock {
     text: text ?? this.text,
   );
 
-  static const CONSTRUCTOR = 'pageBlockParagraph';
-  
+  static const String objectType = 'pageBlockParagraph';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockPreformatted extends PageBlock {
-
-  /// A preformatted text paragraph
+/// **PageBlockPreformatted** *(pageBlockPreformatted)* - child of PageBlock
+///
+/// A preformatted text paragraph.
+///
+/// * [text]: Paragraph text.
+/// * [language]: Programming language for which the text needs to be formatted.
+final class PageBlockPreformatted extends PageBlock {
+  
+  /// **PageBlockPreformatted** *(pageBlockPreformatted)* - child of PageBlock
+  ///
+  /// A preformatted text paragraph.
+  ///
+  /// * [text]: Paragraph text.
+  /// * [language]: Programming language for which the text needs to be formatted.
   const PageBlockPreformatted({
     required this.text,
     required this.language,
   });
   
-  /// [text] Paragraph text 
+  /// Paragraph text 
   final RichText text;
 
-  /// [language] Programming language for which the text needs to be formatted
+  /// Programming language for which the text needs to be formatted
   final String language;
   
   /// Parse from a json
@@ -412,13 +524,14 @@ class PageBlockPreformatted extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "text": text.toJson(),
       "language": language,
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockPreformatted copyWith({
@@ -429,21 +542,33 @@ class PageBlockPreformatted extends PageBlock {
     language: language ?? this.language,
   );
 
-  static const CONSTRUCTOR = 'pageBlockPreformatted';
-  
+  static const String objectType = 'pageBlockPreformatted';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockFooter extends PageBlock {
-
-  /// The footer of a page
+/// **PageBlockFooter** *(pageBlockFooter)* - child of PageBlock
+///
+/// The footer of a page.
+///
+/// * [footer]: Footer.
+final class PageBlockFooter extends PageBlock {
+  
+  /// **PageBlockFooter** *(pageBlockFooter)* - child of PageBlock
+  ///
+  /// The footer of a page.
+  ///
+  /// * [footer]: Footer.
   const PageBlockFooter({
     required this.footer,
   });
   
-  /// [footer] Footer
+  /// Footer
   final RichText footer;
   
   /// Parse from a json
@@ -453,12 +578,13 @@ class PageBlockFooter extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "footer": footer.toJson(),
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockFooter copyWith({
@@ -467,46 +593,67 @@ class PageBlockFooter extends PageBlock {
     footer: footer ?? this.footer,
   );
 
-  static const CONSTRUCTOR = 'pageBlockFooter';
-  
+  static const String objectType = 'pageBlockFooter';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockDivider extends PageBlock {
-
-  /// An empty block separating a page
+/// **PageBlockDivider** *(pageBlockDivider)* - child of PageBlock
+///
+/// An empty block separating a page.
+final class PageBlockDivider extends PageBlock {
+  
+  /// **PageBlockDivider** *(pageBlockDivider)* - child of PageBlock
+  ///
+  /// An empty block separating a page.
   const PageBlockDivider();
   
   /// Parse from a json
   factory PageBlockDivider.fromJson(Map<String, dynamic> json) => const PageBlockDivider();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   PageBlockDivider copyWith() => const PageBlockDivider();
 
-  static const CONSTRUCTOR = 'pageBlockDivider';
-  
+  static const String objectType = 'pageBlockDivider';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockAnchor extends PageBlock {
-
-  /// An invisible anchor on a page, which can be used in a URL to open the page from the specified anchor
+/// **PageBlockAnchor** *(pageBlockAnchor)* - child of PageBlock
+///
+/// An invisible anchor on a page, which can be used in a URL to open the page from the specified anchor.
+///
+/// * [name]: Name of the anchor.
+final class PageBlockAnchor extends PageBlock {
+  
+  /// **PageBlockAnchor** *(pageBlockAnchor)* - child of PageBlock
+  ///
+  /// An invisible anchor on a page, which can be used in a URL to open the page from the specified anchor.
+  ///
+  /// * [name]: Name of the anchor.
   const PageBlockAnchor({
     required this.name,
   });
   
-  /// [name] Name of the anchor
+  /// Name of the anchor
   final String name;
   
   /// Parse from a json
@@ -516,12 +663,13 @@ class PageBlockAnchor extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "name": name,
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockAnchor copyWith({
@@ -530,21 +678,33 @@ class PageBlockAnchor extends PageBlock {
     name: name ?? this.name,
   );
 
-  static const CONSTRUCTOR = 'pageBlockAnchor';
-  
+  static const String objectType = 'pageBlockAnchor';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockList extends PageBlock {
-
-  /// A list of data blocks
+/// **PageBlockList** *(pageBlockList)* - child of PageBlock
+///
+/// A list of data blocks.
+///
+/// * [items]: The items of the list.
+final class PageBlockList extends PageBlock {
+  
+  /// **PageBlockList** *(pageBlockList)* - child of PageBlock
+  ///
+  /// A list of data blocks.
+  ///
+  /// * [items]: The items of the list.
   const PageBlockList({
     required this.items,
   });
   
-  /// [items] The items of the list
+  /// The items of the list
   final List<PageBlockListItem> items;
   
   /// Parse from a json
@@ -554,12 +714,13 @@ class PageBlockList extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "items": items.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockList copyWith({
@@ -568,25 +729,39 @@ class PageBlockList extends PageBlock {
     items: items ?? this.items,
   );
 
-  static const CONSTRUCTOR = 'pageBlockList';
-  
+  static const String objectType = 'pageBlockList';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockBlockQuote extends PageBlock {
-
-  /// A block quote
+/// **PageBlockBlockQuote** *(pageBlockBlockQuote)* - child of PageBlock
+///
+/// A block quote.
+///
+/// * [text]: Quote text.
+/// * [credit]: Quote credit.
+final class PageBlockBlockQuote extends PageBlock {
+  
+  /// **PageBlockBlockQuote** *(pageBlockBlockQuote)* - child of PageBlock
+  ///
+  /// A block quote.
+  ///
+  /// * [text]: Quote text.
+  /// * [credit]: Quote credit.
   const PageBlockBlockQuote({
     required this.text,
     required this.credit,
   });
   
-  /// [text] Quote text 
+  /// Quote text
   final RichText text;
 
-  /// [credit] Quote credit
+  /// Quote credit
   final RichText credit;
   
   /// Parse from a json
@@ -597,13 +772,14 @@ class PageBlockBlockQuote extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "text": text.toJson(),
       "credit": credit.toJson(),
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockBlockQuote copyWith({
@@ -614,25 +790,39 @@ class PageBlockBlockQuote extends PageBlock {
     credit: credit ?? this.credit,
   );
 
-  static const CONSTRUCTOR = 'pageBlockBlockQuote';
-  
+  static const String objectType = 'pageBlockBlockQuote';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockPullQuote extends PageBlock {
-
-  /// A pull quote
+/// **PageBlockPullQuote** *(pageBlockPullQuote)* - child of PageBlock
+///
+/// A pull quote.
+///
+/// * [text]: Quote text.
+/// * [credit]: Quote credit.
+final class PageBlockPullQuote extends PageBlock {
+  
+  /// **PageBlockPullQuote** *(pageBlockPullQuote)* - child of PageBlock
+  ///
+  /// A pull quote.
+  ///
+  /// * [text]: Quote text.
+  /// * [credit]: Quote credit.
   const PageBlockPullQuote({
     required this.text,
     required this.credit,
   });
   
-  /// [text] Quote text 
+  /// Quote text
   final RichText text;
 
-  /// [credit] Quote credit
+  /// Quote credit
   final RichText credit;
   
   /// Parse from a json
@@ -643,13 +833,14 @@ class PageBlockPullQuote extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "text": text.toJson(),
       "credit": credit.toJson(),
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockPullQuote copyWith({
@@ -660,29 +851,45 @@ class PageBlockPullQuote extends PageBlock {
     credit: credit ?? this.credit,
   );
 
-  static const CONSTRUCTOR = 'pageBlockPullQuote';
-  
+  static const String objectType = 'pageBlockPullQuote';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockAnimation extends PageBlock {
-
-  /// An animation
+/// **PageBlockAnimation** *(pageBlockAnimation)* - child of PageBlock
+///
+/// An animation.
+///
+/// * [animation]: Animation file; may be null *(optional)*.
+/// * [caption]: Animation caption.
+/// * [needAutoplay]: True, if the animation must be played automatically.
+final class PageBlockAnimation extends PageBlock {
+  
+  /// **PageBlockAnimation** *(pageBlockAnimation)* - child of PageBlock
+  ///
+  /// An animation.
+  ///
+  /// * [animation]: Animation file; may be null *(optional)*.
+  /// * [caption]: Animation caption.
+  /// * [needAutoplay]: True, if the animation must be played automatically.
   const PageBlockAnimation({
     this.animation,
     required this.caption,
     required this.needAutoplay,
   });
   
-  /// [animation] Animation file; may be null 
+  /// Animation file; may be null
   final Animation? animation;
 
-  /// [caption] Animation caption 
+  /// Animation caption
   final PageBlockCaption caption;
 
-  /// [needAutoplay] True, if the animation must be played automatically
+  /// True, if the animation must be played automatically
   final bool needAutoplay;
   
   /// Parse from a json
@@ -694,14 +901,15 @@ class PageBlockAnimation extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "animation": animation?.toJson(),
       "caption": caption.toJson(),
       "need_autoplay": needAutoplay,
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockAnimation copyWith({
@@ -714,25 +922,39 @@ class PageBlockAnimation extends PageBlock {
     needAutoplay: needAutoplay ?? this.needAutoplay,
   );
 
-  static const CONSTRUCTOR = 'pageBlockAnimation';
-  
+  static const String objectType = 'pageBlockAnimation';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockAudio extends PageBlock {
-
-  /// An audio file
+/// **PageBlockAudio** *(pageBlockAudio)* - child of PageBlock
+///
+/// An audio file.
+///
+/// * [audio]: Audio file; may be null *(optional)*.
+/// * [caption]: Audio file caption.
+final class PageBlockAudio extends PageBlock {
+  
+  /// **PageBlockAudio** *(pageBlockAudio)* - child of PageBlock
+  ///
+  /// An audio file.
+  ///
+  /// * [audio]: Audio file; may be null *(optional)*.
+  /// * [caption]: Audio file caption.
   const PageBlockAudio({
     this.audio,
     required this.caption,
   });
   
-  /// [audio] Audio file; may be null 
+  /// Audio file; may be null
   final Audio? audio;
 
-  /// [caption] Audio file caption
+  /// Audio file caption
   final PageBlockCaption caption;
   
   /// Parse from a json
@@ -743,13 +965,14 @@ class PageBlockAudio extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "audio": audio?.toJson(),
       "caption": caption.toJson(),
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockAudio copyWith({
@@ -760,29 +983,45 @@ class PageBlockAudio extends PageBlock {
     caption: caption ?? this.caption,
   );
 
-  static const CONSTRUCTOR = 'pageBlockAudio';
-  
+  static const String objectType = 'pageBlockAudio';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockPhoto extends PageBlock {
-
-  /// A photo
+/// **PageBlockPhoto** *(pageBlockPhoto)* - child of PageBlock
+///
+/// A photo.
+///
+/// * [photo]: Photo file; may be null *(optional)*.
+/// * [caption]: Photo caption.
+/// * [url]: URL that needs to be opened when the photo is clicked.
+final class PageBlockPhoto extends PageBlock {
+  
+  /// **PageBlockPhoto** *(pageBlockPhoto)* - child of PageBlock
+  ///
+  /// A photo.
+  ///
+  /// * [photo]: Photo file; may be null *(optional)*.
+  /// * [caption]: Photo caption.
+  /// * [url]: URL that needs to be opened when the photo is clicked.
   const PageBlockPhoto({
     this.photo,
     required this.caption,
     required this.url,
   });
   
-  /// [photo] Photo file; may be null 
+  /// Photo file; may be null
   final Photo? photo;
 
-  /// [caption] Photo caption 
+  /// Photo caption
   final PageBlockCaption caption;
 
-  /// [url] URL that needs to be opened when the photo is clicked
+  /// URL that needs to be opened when the photo is clicked
   final String url;
   
   /// Parse from a json
@@ -794,14 +1033,15 @@ class PageBlockPhoto extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "photo": photo?.toJson(),
       "caption": caption.toJson(),
       "url": url,
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockPhoto copyWith({
@@ -814,16 +1054,34 @@ class PageBlockPhoto extends PageBlock {
     url: url ?? this.url,
   );
 
-  static const CONSTRUCTOR = 'pageBlockPhoto';
-  
+  static const String objectType = 'pageBlockPhoto';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockVideo extends PageBlock {
-
-  /// A video
+/// **PageBlockVideo** *(pageBlockVideo)* - child of PageBlock
+///
+/// A video.
+///
+/// * [video]: Video file; may be null *(optional)*.
+/// * [caption]: Video caption.
+/// * [needAutoplay]: True, if the video must be played automatically.
+/// * [isLooped]: True, if the video must be looped.
+final class PageBlockVideo extends PageBlock {
+  
+  /// **PageBlockVideo** *(pageBlockVideo)* - child of PageBlock
+  ///
+  /// A video.
+  ///
+  /// * [video]: Video file; may be null *(optional)*.
+  /// * [caption]: Video caption.
+  /// * [needAutoplay]: True, if the video must be played automatically.
+  /// * [isLooped]: True, if the video must be looped.
   const PageBlockVideo({
     this.video,
     required this.caption,
@@ -831,16 +1089,16 @@ class PageBlockVideo extends PageBlock {
     required this.isLooped,
   });
   
-  /// [video] Video file; may be null 
+  /// Video file; may be null
   final Video? video;
 
-  /// [caption] Video caption 
+  /// Video caption
   final PageBlockCaption caption;
 
-  /// [needAutoplay] True, if the video must be played automatically 
+  /// True, if the video must be played automatically
   final bool needAutoplay;
 
-  /// [isLooped] True, if the video must be looped
+  /// True, if the video must be looped
   final bool isLooped;
   
   /// Parse from a json
@@ -853,15 +1111,16 @@ class PageBlockVideo extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "video": video?.toJson(),
       "caption": caption.toJson(),
       "need_autoplay": needAutoplay,
       "is_looped": isLooped,
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockVideo copyWith({
@@ -876,25 +1135,39 @@ class PageBlockVideo extends PageBlock {
     isLooped: isLooped ?? this.isLooped,
   );
 
-  static const CONSTRUCTOR = 'pageBlockVideo';
-  
+  static const String objectType = 'pageBlockVideo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockVoiceNote extends PageBlock {
-
-  /// A voice note
+/// **PageBlockVoiceNote** *(pageBlockVoiceNote)* - child of PageBlock
+///
+/// A voice note.
+///
+/// * [voiceNote]: Voice note; may be null *(optional)*.
+/// * [caption]: Voice note caption.
+final class PageBlockVoiceNote extends PageBlock {
+  
+  /// **PageBlockVoiceNote** *(pageBlockVoiceNote)* - child of PageBlock
+  ///
+  /// A voice note.
+  ///
+  /// * [voiceNote]: Voice note; may be null *(optional)*.
+  /// * [caption]: Voice note caption.
   const PageBlockVoiceNote({
     this.voiceNote,
     required this.caption,
   });
   
-  /// [voiceNote] Voice note; may be null 
+  /// Voice note; may be null
   final VoiceNote? voiceNote;
 
-  /// [caption] Voice note caption
+  /// Voice note caption
   final PageBlockCaption caption;
   
   /// Parse from a json
@@ -905,13 +1178,14 @@ class PageBlockVoiceNote extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "voice_note": voiceNote?.toJson(),
       "caption": caption.toJson(),
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockVoiceNote copyWith({
@@ -922,21 +1196,33 @@ class PageBlockVoiceNote extends PageBlock {
     caption: caption ?? this.caption,
   );
 
-  static const CONSTRUCTOR = 'pageBlockVoiceNote';
-  
+  static const String objectType = 'pageBlockVoiceNote';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockCover extends PageBlock {
-
-  /// A page cover
+/// **PageBlockCover** *(pageBlockCover)* - child of PageBlock
+///
+/// A page cover.
+///
+/// * [cover]: Cover.
+final class PageBlockCover extends PageBlock {
+  
+  /// **PageBlockCover** *(pageBlockCover)* - child of PageBlock
+  ///
+  /// A page cover.
+  ///
+  /// * [cover]: Cover.
   const PageBlockCover({
     required this.cover,
   });
   
-  /// [cover] Cover
+  /// Cover
   final PageBlock cover;
   
   /// Parse from a json
@@ -946,12 +1232,13 @@ class PageBlockCover extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "cover": cover.toJson(),
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockCover copyWith({
@@ -960,16 +1247,42 @@ class PageBlockCover extends PageBlock {
     cover: cover ?? this.cover,
   );
 
-  static const CONSTRUCTOR = 'pageBlockCover';
-  
+  static const String objectType = 'pageBlockCover';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockEmbedded extends PageBlock {
-
-  /// An embedded web page
+/// **PageBlockEmbedded** *(pageBlockEmbedded)* - child of PageBlock
+///
+/// An embedded web page.
+///
+/// * [url]: Web page URL, if available.
+/// * [html]: HTML-markup of the embedded page.
+/// * [posterPhoto]: Poster photo, if available; may be null *(optional)*.
+/// * [width]: Block width; 0 if unknown.
+/// * [height]: Block height; 0 if unknown.
+/// * [caption]: Block caption.
+/// * [isFullWidth]: True, if the block must be full width.
+/// * [allowScrolling]: True, if scrolling needs to be allowed.
+final class PageBlockEmbedded extends PageBlock {
+  
+  /// **PageBlockEmbedded** *(pageBlockEmbedded)* - child of PageBlock
+  ///
+  /// An embedded web page.
+  ///
+  /// * [url]: Web page URL, if available.
+  /// * [html]: HTML-markup of the embedded page.
+  /// * [posterPhoto]: Poster photo, if available; may be null *(optional)*.
+  /// * [width]: Block width; 0 if unknown.
+  /// * [height]: Block height; 0 if unknown.
+  /// * [caption]: Block caption.
+  /// * [isFullWidth]: True, if the block must be full width.
+  /// * [allowScrolling]: True, if scrolling needs to be allowed.
   const PageBlockEmbedded({
     required this.url,
     required this.html,
@@ -981,28 +1294,28 @@ class PageBlockEmbedded extends PageBlock {
     required this.allowScrolling,
   });
   
-  /// [url] Web page URL, if available 
+  /// Web page URL, if available
   final String url;
 
-  /// [html] HTML-markup of the embedded page 
+  /// HTML-markup of the embedded page
   final String html;
 
-  /// [posterPhoto] Poster photo, if available; may be null 
+  /// Poster photo, if available; may be null
   final Photo? posterPhoto;
 
-  /// [width] Block width; 0 if unknown 
+  /// Block width; 0 if unknown
   final int width;
 
-  /// [height] Block height; 0 if unknown 
+  /// Block height; 0 if unknown
   final int height;
 
-  /// [caption] Block caption 
+  /// Block caption
   final PageBlockCaption caption;
 
-  /// [isFullWidth] True, if the block must be full width 
+  /// True, if the block must be full width
   final bool isFullWidth;
 
-  /// [allowScrolling] True, if scrolling needs to be allowed
+  /// True, if scrolling needs to be allowed
   final bool allowScrolling;
   
   /// Parse from a json
@@ -1019,9 +1332,9 @@ class PageBlockEmbedded extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "url": url,
       "html": html,
       "poster_photo": posterPhoto?.toJson(),
@@ -1030,8 +1343,9 @@ class PageBlockEmbedded extends PageBlock {
       "caption": caption.toJson(),
       "is_full_width": isFullWidth,
       "allow_scrolling": allowScrolling,
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockEmbedded copyWith({
@@ -1054,16 +1368,38 @@ class PageBlockEmbedded extends PageBlock {
     allowScrolling: allowScrolling ?? this.allowScrolling,
   );
 
-  static const CONSTRUCTOR = 'pageBlockEmbedded';
-  
+  static const String objectType = 'pageBlockEmbedded';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockEmbeddedPost extends PageBlock {
-
-  /// An embedded post
+/// **PageBlockEmbeddedPost** *(pageBlockEmbeddedPost)* - child of PageBlock
+///
+/// An embedded post.
+///
+/// * [url]: Web page URL.
+/// * [author]: Post author.
+/// * [authorPhoto]: Post author photo; may be null *(optional)*.
+/// * [date]: Point in time (Unix timestamp) when the post was created; 0 if unknown.
+/// * [pageBlocks]: Post content.
+/// * [caption]: Post caption.
+final class PageBlockEmbeddedPost extends PageBlock {
+  
+  /// **PageBlockEmbeddedPost** *(pageBlockEmbeddedPost)* - child of PageBlock
+  ///
+  /// An embedded post.
+  ///
+  /// * [url]: Web page URL.
+  /// * [author]: Post author.
+  /// * [authorPhoto]: Post author photo; may be null *(optional)*.
+  /// * [date]: Point in time (Unix timestamp) when the post was created; 0 if unknown.
+  /// * [pageBlocks]: Post content.
+  /// * [caption]: Post caption.
   const PageBlockEmbeddedPost({
     required this.url,
     required this.author,
@@ -1073,22 +1409,22 @@ class PageBlockEmbeddedPost extends PageBlock {
     required this.caption,
   });
   
-  /// [url] Web page URL 
+  /// Web page URL
   final String url;
 
-  /// [author] Post author 
+  /// Post author
   final String author;
 
-  /// [authorPhoto] Post author photo; may be null 
+  /// Post author photo; may be null
   final Photo? authorPhoto;
 
-  /// [date] Point in time (Unix timestamp) when the post was created; 0 if unknown 
+  /// Point in time (Unix timestamp) when the post was created; 0 if unknown
   final int date;
 
-  /// [pageBlocks] Post content 
+  /// Post content
   final List<PageBlock> pageBlocks;
 
-  /// [caption] Post caption
+  /// Post caption
   final PageBlockCaption caption;
   
   /// Parse from a json
@@ -1103,17 +1439,18 @@ class PageBlockEmbeddedPost extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "url": url,
       "author": author,
       "author_photo": authorPhoto?.toJson(),
       "date": date,
       "page_blocks": pageBlocks.map((i) => i.toJson()).toList(),
       "caption": caption.toJson(),
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockEmbeddedPost copyWith({
@@ -1132,25 +1469,39 @@ class PageBlockEmbeddedPost extends PageBlock {
     caption: caption ?? this.caption,
   );
 
-  static const CONSTRUCTOR = 'pageBlockEmbeddedPost';
-  
+  static const String objectType = 'pageBlockEmbeddedPost';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockCollage extends PageBlock {
-
-  /// A collage
+/// **PageBlockCollage** *(pageBlockCollage)* - child of PageBlock
+///
+/// A collage.
+///
+/// * [pageBlocks]: Collage item contents.
+/// * [caption]: Block caption.
+final class PageBlockCollage extends PageBlock {
+  
+  /// **PageBlockCollage** *(pageBlockCollage)* - child of PageBlock
+  ///
+  /// A collage.
+  ///
+  /// * [pageBlocks]: Collage item contents.
+  /// * [caption]: Block caption.
   const PageBlockCollage({
     required this.pageBlocks,
     required this.caption,
   });
   
-  /// [pageBlocks] Collage item contents 
+  /// Collage item contents
   final List<PageBlock> pageBlocks;
 
-  /// [caption] Block caption
+  /// Block caption
   final PageBlockCaption caption;
   
   /// Parse from a json
@@ -1161,13 +1512,14 @@ class PageBlockCollage extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "page_blocks": pageBlocks.map((i) => i.toJson()).toList(),
       "caption": caption.toJson(),
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockCollage copyWith({
@@ -1178,25 +1530,39 @@ class PageBlockCollage extends PageBlock {
     caption: caption ?? this.caption,
   );
 
-  static const CONSTRUCTOR = 'pageBlockCollage';
-  
+  static const String objectType = 'pageBlockCollage';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockSlideshow extends PageBlock {
-
-  /// A slideshow
+/// **PageBlockSlideshow** *(pageBlockSlideshow)* - child of PageBlock
+///
+/// A slideshow.
+///
+/// * [pageBlocks]: Slideshow item contents.
+/// * [caption]: Block caption.
+final class PageBlockSlideshow extends PageBlock {
+  
+  /// **PageBlockSlideshow** *(pageBlockSlideshow)* - child of PageBlock
+  ///
+  /// A slideshow.
+  ///
+  /// * [pageBlocks]: Slideshow item contents.
+  /// * [caption]: Block caption.
   const PageBlockSlideshow({
     required this.pageBlocks,
     required this.caption,
   });
   
-  /// [pageBlocks] Slideshow item contents 
+  /// Slideshow item contents
   final List<PageBlock> pageBlocks;
 
-  /// [caption] Block caption
+  /// Block caption
   final PageBlockCaption caption;
   
   /// Parse from a json
@@ -1207,13 +1573,14 @@ class PageBlockSlideshow extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "page_blocks": pageBlocks.map((i) => i.toJson()).toList(),
       "caption": caption.toJson(),
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockSlideshow copyWith({
@@ -1224,29 +1591,45 @@ class PageBlockSlideshow extends PageBlock {
     caption: caption ?? this.caption,
   );
 
-  static const CONSTRUCTOR = 'pageBlockSlideshow';
-  
+  static const String objectType = 'pageBlockSlideshow';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockChatLink extends PageBlock {
-
-  /// A link to a chat
+/// **PageBlockChatLink** *(pageBlockChatLink)* - child of PageBlock
+///
+/// A link to a chat.
+///
+/// * [title]: Chat title.
+/// * [photo]: Chat photo; may be null *(optional)*.
+/// * [username]: Chat username by which all other information about the chat can be resolved.
+final class PageBlockChatLink extends PageBlock {
+  
+  /// **PageBlockChatLink** *(pageBlockChatLink)* - child of PageBlock
+  ///
+  /// A link to a chat.
+  ///
+  /// * [title]: Chat title.
+  /// * [photo]: Chat photo; may be null *(optional)*.
+  /// * [username]: Chat username by which all other information about the chat can be resolved.
   const PageBlockChatLink({
     required this.title,
     this.photo,
     required this.username,
   });
   
-  /// [title] Chat title 
+  /// Chat title
   final String title;
 
-  /// [photo] Chat photo; may be null 
+  /// Chat photo; may be null
   final ChatPhotoInfo? photo;
 
-  /// [username] Chat username, by which all other information about the chat can be resolved
+  /// Chat username by which all other information about the chat can be resolved
   final String username;
   
   /// Parse from a json
@@ -1258,14 +1641,15 @@ class PageBlockChatLink extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "title": title,
       "photo": photo?.toJson(),
       "username": username,
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockChatLink copyWith({
@@ -1278,16 +1662,34 @@ class PageBlockChatLink extends PageBlock {
     username: username ?? this.username,
   );
 
-  static const CONSTRUCTOR = 'pageBlockChatLink';
-  
+  static const String objectType = 'pageBlockChatLink';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockTable extends PageBlock {
-
-  /// A table
+/// **PageBlockTable** *(pageBlockTable)* - child of PageBlock
+///
+/// A table.
+///
+/// * [caption]: Table caption.
+/// * [cells]: Table cells.
+/// * [isBordered]: True, if the table is bordered.
+/// * [isStriped]: True, if the table is striped.
+final class PageBlockTable extends PageBlock {
+  
+  /// **PageBlockTable** *(pageBlockTable)* - child of PageBlock
+  ///
+  /// A table.
+  ///
+  /// * [caption]: Table caption.
+  /// * [cells]: Table cells.
+  /// * [isBordered]: True, if the table is bordered.
+  /// * [isStriped]: True, if the table is striped.
   const PageBlockTable({
     required this.caption,
     required this.cells,
@@ -1295,16 +1697,16 @@ class PageBlockTable extends PageBlock {
     required this.isStriped,
   });
   
-  /// [caption] Table caption 
+  /// Table caption
   final RichText caption;
 
-  /// [cells] Table cells 
+  /// Table cells
   final List<List<PageBlockTableCell>> cells;
 
-  /// [isBordered] True, if the table is bordered 
+  /// True, if the table is bordered
   final bool isBordered;
 
-  /// [isStriped] True, if the table is striped
+  /// True, if the table is striped
   final bool isStriped;
   
   /// Parse from a json
@@ -1317,15 +1719,16 @@ class PageBlockTable extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "caption": caption.toJson(),
       "cells": cells.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
       "is_bordered": isBordered,
       "is_striped": isStriped,
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockTable copyWith({
@@ -1340,29 +1743,45 @@ class PageBlockTable extends PageBlock {
     isStriped: isStriped ?? this.isStriped,
   );
 
-  static const CONSTRUCTOR = 'pageBlockTable';
-  
+  static const String objectType = 'pageBlockTable';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockDetails extends PageBlock {
-
-  /// A collapsible block
+/// **PageBlockDetails** *(pageBlockDetails)* - child of PageBlock
+///
+/// A collapsible block.
+///
+/// * [header]: Always visible heading for the block.
+/// * [pageBlocks]: Block contents.
+/// * [isOpen]: True, if the block is open by default.
+final class PageBlockDetails extends PageBlock {
+  
+  /// **PageBlockDetails** *(pageBlockDetails)* - child of PageBlock
+  ///
+  /// A collapsible block.
+  ///
+  /// * [header]: Always visible heading for the block.
+  /// * [pageBlocks]: Block contents.
+  /// * [isOpen]: True, if the block is open by default.
   const PageBlockDetails({
     required this.header,
     required this.pageBlocks,
     required this.isOpen,
   });
   
-  /// [header] Always visible heading for the block 
+  /// Always visible heading for the block
   final RichText header;
 
-  /// [pageBlocks] Block contents 
+  /// Block contents
   final List<PageBlock> pageBlocks;
 
-  /// [isOpen] True, if the block is open by default
+  /// True, if the block is open by default
   final bool isOpen;
   
   /// Parse from a json
@@ -1374,14 +1793,15 @@ class PageBlockDetails extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "header": header.toJson(),
       "page_blocks": pageBlocks.map((i) => i.toJson()).toList(),
       "is_open": isOpen,
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockDetails copyWith({
@@ -1394,25 +1814,39 @@ class PageBlockDetails extends PageBlock {
     isOpen: isOpen ?? this.isOpen,
   );
 
-  static const CONSTRUCTOR = 'pageBlockDetails';
-  
+  static const String objectType = 'pageBlockDetails';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockRelatedArticles extends PageBlock {
-
-  /// Related articles
+/// **PageBlockRelatedArticles** *(pageBlockRelatedArticles)* - child of PageBlock
+///
+/// Related articles.
+///
+/// * [header]: Block header.
+/// * [articles]: List of related articles.
+final class PageBlockRelatedArticles extends PageBlock {
+  
+  /// **PageBlockRelatedArticles** *(pageBlockRelatedArticles)* - child of PageBlock
+  ///
+  /// Related articles.
+  ///
+  /// * [header]: Block header.
+  /// * [articles]: List of related articles.
   const PageBlockRelatedArticles({
     required this.header,
     required this.articles,
   });
   
-  /// [header] Block header 
+  /// Block header
   final RichText header;
 
-  /// [articles] List of related articles
+  /// List of related articles
   final List<PageBlockRelatedArticle> articles;
   
   /// Parse from a json
@@ -1423,13 +1857,14 @@ class PageBlockRelatedArticles extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "header": header.toJson(),
       "articles": articles.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockRelatedArticles copyWith({
@@ -1440,16 +1875,36 @@ class PageBlockRelatedArticles extends PageBlock {
     articles: articles ?? this.articles,
   );
 
-  static const CONSTRUCTOR = 'pageBlockRelatedArticles';
-  
+  static const String objectType = 'pageBlockRelatedArticles';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class PageBlockMap extends PageBlock {
-
-  /// A map
+/// **PageBlockMap** *(pageBlockMap)* - child of PageBlock
+///
+/// A map.
+///
+/// * [location]: Location of the map center.
+/// * [zoom]: Map zoom level.
+/// * [width]: Map width.
+/// * [height]: Map height.
+/// * [caption]: Block caption.
+final class PageBlockMap extends PageBlock {
+  
+  /// **PageBlockMap** *(pageBlockMap)* - child of PageBlock
+  ///
+  /// A map.
+  ///
+  /// * [location]: Location of the map center.
+  /// * [zoom]: Map zoom level.
+  /// * [width]: Map width.
+  /// * [height]: Map height.
+  /// * [caption]: Block caption.
   const PageBlockMap({
     required this.location,
     required this.zoom,
@@ -1458,19 +1913,19 @@ class PageBlockMap extends PageBlock {
     required this.caption,
   });
   
-  /// [location] Location of the map center 
+  /// Location of the map center
   final Location location;
 
-  /// [zoom] Map zoom level 
+  /// Map zoom level
   final int zoom;
 
-  /// [width] Map width 
+  /// Map width
   final int width;
 
-  /// [height] Map height 
+  /// Map height
   final int height;
 
-  /// [caption] Block caption
+  /// Block caption
   final PageBlockCaption caption;
   
   /// Parse from a json
@@ -1484,16 +1939,17 @@ class PageBlockMap extends PageBlock {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "location": location.toJson(),
       "zoom": zoom,
       "width": width,
       "height": height,
       "caption": caption.toJson(),
-    };
-  }
+		};
+	}
+
   
   @override
   PageBlockMap copyWith({
@@ -1510,8 +1966,11 @@ class PageBlockMap extends PageBlock {
     caption: caption ?? this.caption,
   );
 
-  static const CONSTRUCTOR = 'pageBlockMap';
-  
+  static const String objectType = 'pageBlockMap';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

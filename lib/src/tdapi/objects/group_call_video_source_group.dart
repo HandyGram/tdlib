@@ -1,17 +1,28 @@
 part of '../tdapi.dart';
 
-class GroupCallVideoSourceGroup extends TdObject {
-
-  /// Describes a group of video synchronization source identifiers
+/// **GroupCallVideoSourceGroup** *(groupCallVideoSourceGroup)* - basic class
+///
+/// Describes a group of video synchronization source identifiers.
+///
+/// * [semantics]: The semantics of sources, one of "SIM" or "FgroupCallVideoSourceGroup".
+/// * [sourceIds]: The list of synchronization source identifiers.
+final class GroupCallVideoSourceGroup extends TdObject {
+  
+  /// **GroupCallVideoSourceGroup** *(groupCallVideoSourceGroup)* - basic class
+  ///
+  /// Describes a group of video synchronization source identifiers.
+  ///
+  /// * [semantics]: The semantics of sources, one of "SIM" or "FgroupCallVideoSourceGroup".
+  /// * [sourceIds]: The list of synchronization source identifiers.
   const GroupCallVideoSourceGroup({
     required this.semantics,
     required this.sourceIds,
   });
   
-  /// [semantics] The semantics of sources, one of "SIM" or "FgroupCallVideoSourceGroup" 
+  /// The semantics of sources, one of "SIM" or "FgroupCallVideoSourceGroup" 
   final String semantics;
 
-  /// [sourceIds] The list of synchronization source identifiers
+  /// The list of synchronization source identifiers
   final List<int> sourceIds;
   
   /// Parse from a json
@@ -22,13 +33,14 @@ class GroupCallVideoSourceGroup extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "semantics": semantics,
       "source_ids": sourceIds.map((i) => i).toList(),
-    };
-  }
+		};
+	}
+
   
   GroupCallVideoSourceGroup copyWith({
     String? semantics,
@@ -38,8 +50,11 @@ class GroupCallVideoSourceGroup extends TdObject {
     sourceIds: sourceIds ?? this.sourceIds,
   );
 
-  static const CONSTRUCTOR = 'groupCallVideoSourceGroup';
-  
+  static const String objectType = 'groupCallVideoSourceGroup';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

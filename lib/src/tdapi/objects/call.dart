@@ -1,8 +1,25 @@
 part of '../tdapi.dart';
 
-class Call extends TdObject {
-
-  /// Describes a call
+/// **Call** *(call)* - basic class
+///
+/// Describes a call.
+///
+/// * [id]: Call identifier, not persistent.
+/// * [userId]: Peer user identifier.
+/// * [isOutgoing]: True, if the call is outgoing.
+/// * [isVideo]: True, if the call is a video call.
+/// * [state]: Call state.
+final class Call extends TdObject {
+  
+  /// **Call** *(call)* - basic class
+  ///
+  /// Describes a call.
+  ///
+  /// * [id]: Call identifier, not persistent.
+  /// * [userId]: Peer user identifier.
+  /// * [isOutgoing]: True, if the call is outgoing.
+  /// * [isVideo]: True, if the call is a video call.
+  /// * [state]: Call state.
   const Call({
     required this.id,
     required this.userId,
@@ -11,19 +28,19 @@ class Call extends TdObject {
     required this.state,
   });
   
-  /// [id] Call identifier, not persistent 
+  /// Call identifier, not persistent
   final int id;
 
-  /// [userId] Peer user identifier 
+  /// Peer user identifier
   final int userId;
 
-  /// [isOutgoing] True, if the call is outgoing 
+  /// True, if the call is outgoing
   final bool isOutgoing;
 
-  /// [isVideo] True, if the call is a video call 
+  /// True, if the call is a video call
   final bool isVideo;
 
-  /// [state] Call state
+  /// Call state
   final CallState state;
   
   /// Parse from a json
@@ -37,16 +54,17 @@ class Call extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "id": id,
       "user_id": userId,
       "is_outgoing": isOutgoing,
       "is_video": isVideo,
       "state": state.toJson(),
-    };
-  }
+		};
+	}
+
   
   Call copyWith({
     int? id,
@@ -62,8 +80,11 @@ class Call extends TdObject {
     state: state ?? this.state,
   );
 
-  static const CONSTRUCTOR = 'call';
-  
+  static const String objectType = 'call';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,21 +1,34 @@
 part of '../tdapi.dart';
 
-class InputPassportElementError extends TdObject {
-
-  /// Contains the description of an error in a Telegram Passport element; for bots only
+/// **InputPassportElementError** *(inputPassportElementError)* - basic class
+///
+/// Contains the description of an error in a Telegram Passport element; for bots only.
+///
+/// * [type]: Type of Telegram Passport element that has the error.
+/// * [message]: Error message.
+/// * [source]: Error source.
+final class InputPassportElementError extends TdObject {
+  
+  /// **InputPassportElementError** *(inputPassportElementError)* - basic class
+  ///
+  /// Contains the description of an error in a Telegram Passport element; for bots only.
+  ///
+  /// * [type]: Type of Telegram Passport element that has the error.
+  /// * [message]: Error message.
+  /// * [source]: Error source.
   const InputPassportElementError({
     required this.type,
     required this.message,
     required this.source,
   });
   
-  /// [type] Type of Telegram Passport element that has the error 
+  /// Type of Telegram Passport element that has the error 
   final PassportElementType type;
 
-  /// [message] Error message 
+  /// Error message 
   final String message;
 
-  /// [source] Error source
+  /// Error source
   final InputPassportElementErrorSource source;
   
   /// Parse from a json
@@ -27,14 +40,15 @@ class InputPassportElementError extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "type": type.toJson(),
       "message": message,
       "source": source.toJson(),
-    };
-  }
+		};
+	}
+
   
   InputPassportElementError copyWith({
     PassportElementType? type,
@@ -46,8 +60,11 @@ class InputPassportElementError extends TdObject {
     source: source ?? this.source,
   );
 
-  static const CONSTRUCTOR = 'inputPassportElementError';
-  
+  static const String objectType = 'inputPassportElementError';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

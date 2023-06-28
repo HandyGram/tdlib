@@ -1,8 +1,25 @@
 part of '../tdapi.dart';
 
-class CountryInfo extends TdObject {
-
-  /// Contains information about a country
+/// **CountryInfo** *(countryInfo)* - basic class
+///
+/// Contains information about a country.
+///
+/// * [countryCode]: A two-letter ISO 3166-1 alpha-2 country code.
+/// * [name]: Native name of the country.
+/// * [englishName]: English name of the country.
+/// * [isHidden]: True, if the country must be hidden from the list of all countries.
+/// * [callingCodes]: List of country calling codes.
+final class CountryInfo extends TdObject {
+  
+  /// **CountryInfo** *(countryInfo)* - basic class
+  ///
+  /// Contains information about a country.
+  ///
+  /// * [countryCode]: A two-letter ISO 3166-1 alpha-2 country code.
+  /// * [name]: Native name of the country.
+  /// * [englishName]: English name of the country.
+  /// * [isHidden]: True, if the country must be hidden from the list of all countries.
+  /// * [callingCodes]: List of country calling codes.
   const CountryInfo({
     required this.countryCode,
     required this.name,
@@ -11,19 +28,19 @@ class CountryInfo extends TdObject {
     required this.callingCodes,
   });
   
-  /// [countryCode] A two-letter ISO 3166-1 alpha-2 country code
+  /// A two-letter ISO 3166-1 alpha-2 country code
   final String countryCode;
 
-  /// [name] Native name of the country
+  /// Native name of the country
   final String name;
 
-  /// [englishName] English name of the country
+  /// English name of the country
   final String englishName;
 
-  /// [isHidden] True, if the country must be hidden from the list of all countries
+  /// True, if the country must be hidden from the list of all countries
   final bool isHidden;
 
-  /// [callingCodes] List of country calling codes
+  /// List of country calling codes
   final List<String> callingCodes;
   
   /// Parse from a json
@@ -37,16 +54,17 @@ class CountryInfo extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "country_code": countryCode,
       "name": name,
       "english_name": englishName,
       "is_hidden": isHidden,
       "calling_codes": callingCodes.map((i) => i).toList(),
-    };
-  }
+		};
+	}
+
   
   CountryInfo copyWith({
     String? countryCode,
@@ -62,8 +80,11 @@ class CountryInfo extends TdObject {
     callingCodes: callingCodes ?? this.callingCodes,
   );
 
-  static const CONSTRUCTOR = 'countryInfo';
-  
+  static const String objectType = 'countryInfo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

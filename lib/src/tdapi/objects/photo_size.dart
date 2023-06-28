@@ -1,8 +1,25 @@
 part of '../tdapi.dart';
 
-class PhotoSize extends TdObject {
-
-  /// Describes an image in JPEG format
+/// **PhotoSize** *(photoSize)* - basic class
+///
+/// Describes an image in JPEG format.
+///
+/// * [type]: Image type (see https://core.telegram.org/constructor/photoSize).
+/// * [photo]: Information about the image file.
+/// * [width]: Image width.
+/// * [height]: Image height.
+/// * [progressiveSizes]: Sizes of progressive JPEG file prefixes, which can be used to preliminarily show the image; in bytes.
+final class PhotoSize extends TdObject {
+  
+  /// **PhotoSize** *(photoSize)* - basic class
+  ///
+  /// Describes an image in JPEG format.
+  ///
+  /// * [type]: Image type (see https://core.telegram.org/constructor/photoSize).
+  /// * [photo]: Information about the image file.
+  /// * [width]: Image width.
+  /// * [height]: Image height.
+  /// * [progressiveSizes]: Sizes of progressive JPEG file prefixes, which can be used to preliminarily show the image; in bytes.
   const PhotoSize({
     required this.type,
     required this.photo,
@@ -11,19 +28,19 @@ class PhotoSize extends TdObject {
     required this.progressiveSizes,
   });
   
-  /// [type] Image type (see https://core.telegram.org/constructor/photoSize)
+  /// Image type (see https://core.telegram.org/constructor/photoSize)
   final String type;
 
-  /// [photo] Information about the image file
+  /// Information about the image file
   final File photo;
 
-  /// [width] Image width 
+  /// Image width
   final int width;
 
-  /// [height] Image height
+  /// Image height
   final int height;
 
-  /// [progressiveSizes] Sizes of progressive JPEG file prefixes, which can be used to preliminarily show the image; in bytes
+  /// Sizes of progressive JPEG file prefixes, which can be used to preliminarily show the image; in bytes
   final List<int> progressiveSizes;
   
   /// Parse from a json
@@ -37,16 +54,17 @@ class PhotoSize extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "type": type,
       "photo": photo.toJson(),
       "width": width,
       "height": height,
       "progressive_sizes": progressiveSizes.map((i) => i).toList(),
-    };
-  }
+		};
+	}
+
   
   PhotoSize copyWith({
     String? type,
@@ -62,8 +80,11 @@ class PhotoSize extends TdObject {
     progressiveSizes: progressiveSizes ?? this.progressiveSizes,
   );
 
-  static const CONSTRUCTOR = 'photoSize';
-  
+  static const String objectType = 'photoSize';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

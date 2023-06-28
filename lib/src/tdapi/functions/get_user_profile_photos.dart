@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class GetUserProfilePhotos extends TdFunction {
-
-  /// Returns the profile photos of a user. The result of this query may be outdated: some photos might have been deleted already
+/// **GetUserProfilePhotos** *(getUserProfilePhotos)* - TDLib function
+///
+/// Returns the profile photos of a user. Personal and public photo aren't returned.
+///
+/// * [userId]: User identifier.
+/// * [offset]: The number of photos to skip; must be non-negative.
+/// * [limit]: The maximum number of photos to be returned; up to 100.
+///
+/// [ChatPhotos] is returned on completion.
+final class GetUserProfilePhotos extends TdFunction {
+  
+  /// **GetUserProfilePhotos** *(getUserProfilePhotos)* - TDLib function
+  ///
+  /// Returns the profile photos of a user. Personal and public photo aren't returned.
+  ///
+  /// * [userId]: User identifier.
+  /// * [offset]: The number of photos to skip; must be non-negative.
+  /// * [limit]: The maximum number of photos to be returned; up to 100.
+  ///
+  /// [ChatPhotos] is returned on completion.
   const GetUserProfilePhotos({
     required this.userId,
     required this.offset,
     required this.limit,
   });
   
-  /// [userId] User identifier 
+  /// User identifier 
   final int userId;
 
-  /// [offset] The number of photos to skip; must be non-negative 
+  /// The number of photos to skip; must be non-negative 
   final int offset;
 
-  /// [limit] The maximum number of photos to be returned; up to 100
+  /// The maximum number of photos to be returned; up to 100
   final int limit;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "user_id": userId,
       "offset": offset,
       "limit": limit,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetUserProfilePhotos copyWith({
     int? userId,
@@ -39,8 +57,11 @@ class GetUserProfilePhotos extends TdFunction {
     limit: limit ?? this.limit,
   );
 
-  static const CONSTRUCTOR = 'getUserProfilePhotos';
-  
+  static const String objectType = 'getUserProfilePhotos';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

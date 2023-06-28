@@ -1,8 +1,27 @@
 part of '../tdapi.dart';
 
-class EditMessageMedia extends TdFunction {
-
-  /// Edits the content of a message with an animation, an audio, a document, a photo or a video, including message caption. If only the caption needs to be edited, use editMessageCaption instead.. The media can't be edited if the message was set to self-destruct or to a self-destructing media. The type of message content in an album can't be changed with exception of replacing a photo with a video or vice versa. Returns the edited message after the edit is completed on the server side
+/// **EditMessageMedia** *(editMessageMedia)* - TDLib function
+///
+/// Edits the content of a message with an animation, an audio, a document, a photo or a video, including message caption. If only the caption needs to be edited, use editMessageCaption instead.. The media can't be edited if the message was set to self-destruct or to a self-destructing media. The type of message content in an album can't be changed with exception of replacing a photo with a video or vice versa. Returns the edited message after the edit is completed on the server side.
+///
+/// * [chatId]: The chat the message belongs to.
+/// * [messageId]: Identifier of the message.
+/// * [replyMarkup]: The new message reply markup; pass null if none; for bots only *(optional)*.
+/// * [inputMessageContent]: New content of the message. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto or inputMessageVideo.
+///
+/// [Message] is returned on completion.
+final class EditMessageMedia extends TdFunction {
+  
+  /// **EditMessageMedia** *(editMessageMedia)* - TDLib function
+  ///
+  /// Edits the content of a message with an animation, an audio, a document, a photo or a video, including message caption. If only the caption needs to be edited, use editMessageCaption instead.. The media can't be edited if the message was set to self-destruct or to a self-destructing media. The type of message content in an album can't be changed with exception of replacing a photo with a video or vice versa. Returns the edited message after the edit is completed on the server side.
+  ///
+  /// * [chatId]: The chat the message belongs to.
+  /// * [messageId]: Identifier of the message.
+  /// * [replyMarkup]: The new message reply markup; pass null if none; for bots only *(optional)*.
+  /// * [inputMessageContent]: New content of the message. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto or inputMessageVideo.
+  ///
+  /// [Message] is returned on completion.
   const EditMessageMedia({
     required this.chatId,
     required this.messageId,
@@ -10,29 +29,30 @@ class EditMessageMedia extends TdFunction {
     required this.inputMessageContent,
   });
   
-  /// [chatId] The chat the message belongs to
+  /// The chat the message belongs to
   final int chatId;
 
-  /// [messageId] Identifier of the message
+  /// Identifier of the message
   final int messageId;
 
-  /// [replyMarkup] The new message reply markup; pass null if none; for bots only
+  /// The new message reply markup; pass null if none; for bots only
   final ReplyMarkup? replyMarkup;
 
-  /// [inputMessageContent] New content of the message. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto or inputMessageVideo
+  /// New content of the message. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto or inputMessageVideo
   final InputMessageContent inputMessageContent;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "message_id": messageId,
       "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   EditMessageMedia copyWith({
     int? chatId,
@@ -46,8 +66,11 @@ class EditMessageMedia extends TdFunction {
     inputMessageContent: inputMessageContent ?? this.inputMessageContent,
   );
 
-  static const CONSTRUCTOR = 'editMessageMedia';
-  
+  static const String objectType = 'editMessageMedia';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

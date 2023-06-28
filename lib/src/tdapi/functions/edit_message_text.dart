@@ -1,8 +1,27 @@
 part of '../tdapi.dart';
 
-class EditMessageText extends TdFunction {
-
-  /// Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side
+/// **EditMessageText** *(editMessageText)* - TDLib function
+///
+/// Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side.
+///
+/// * [chatId]: The chat the message belongs to.
+/// * [messageId]: Identifier of the message.
+/// * [replyMarkup]: The new message reply markup; pass null if none; for bots only *(optional)*.
+/// * [inputMessageContent]: New text content of the message. Must be of type inputMessageText.
+///
+/// [Message] is returned on completion.
+final class EditMessageText extends TdFunction {
+  
+  /// **EditMessageText** *(editMessageText)* - TDLib function
+  ///
+  /// Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side.
+  ///
+  /// * [chatId]: The chat the message belongs to.
+  /// * [messageId]: Identifier of the message.
+  /// * [replyMarkup]: The new message reply markup; pass null if none; for bots only *(optional)*.
+  /// * [inputMessageContent]: New text content of the message. Must be of type inputMessageText.
+  ///
+  /// [Message] is returned on completion.
   const EditMessageText({
     required this.chatId,
     required this.messageId,
@@ -10,29 +29,30 @@ class EditMessageText extends TdFunction {
     required this.inputMessageContent,
   });
   
-  /// [chatId] The chat the message belongs to
+  /// The chat the message belongs to
   final int chatId;
 
-  /// [messageId] Identifier of the message
+  /// Identifier of the message
   final int messageId;
 
-  /// [replyMarkup] The new message reply markup; pass null if none; for bots only
+  /// The new message reply markup; pass null if none; for bots only
   final ReplyMarkup? replyMarkup;
 
-  /// [inputMessageContent] New text content of the message. Must be of type inputMessageText
+  /// New text content of the message. Must be of type inputMessageText
   final InputMessageContent inputMessageContent;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "message_id": messageId,
       "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   EditMessageText copyWith({
     int? chatId,
@@ -46,8 +66,11 @@ class EditMessageText extends TdFunction {
     inputMessageContent: inputMessageContent ?? this.inputMessageContent,
   );
 
-  static const CONSTRUCTOR = 'editMessageText';
-  
+  static const String objectType = 'editMessageText';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

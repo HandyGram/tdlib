@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class GetLocalizationTargetInfo extends TdFunction {
-
-  /// Returns information about the current localization target. This is an offline request if only_local is true. Can be called before authorization
+/// **GetLocalizationTargetInfo** *(getLocalizationTargetInfo)* - TDLib function
+///
+/// Returns information about the current localization target. This is an offline request if only_local is true. Can be called before authorization.
+///
+/// * [onlyLocal]: Pass true to get only locally available information without sending network requests.
+///
+/// [LocalizationTargetInfo] is returned on completion.
+final class GetLocalizationTargetInfo extends TdFunction {
+  
+  /// **GetLocalizationTargetInfo** *(getLocalizationTargetInfo)* - TDLib function
+  ///
+  /// Returns information about the current localization target. This is an offline request if only_local is true. Can be called before authorization.
+  ///
+  /// * [onlyLocal]: Pass true to get only locally available information without sending network requests.
+  ///
+  /// [LocalizationTargetInfo] is returned on completion.
   const GetLocalizationTargetInfo({
     required this.onlyLocal,
   });
   
-  /// [onlyLocal] If true, returns only locally available information without sending network requests
+  /// Pass true to get only locally available information without sending network requests
   final bool onlyLocal;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "only_local": onlyLocal,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetLocalizationTargetInfo copyWith({
     bool? onlyLocal,
@@ -25,8 +39,11 @@ class GetLocalizationTargetInfo extends TdFunction {
     onlyLocal: onlyLocal ?? this.onlyLocal,
   );
 
-  static const CONSTRUCTOR = 'getLocalizationTargetInfo';
-  
+  static const String objectType = 'getLocalizationTargetInfo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

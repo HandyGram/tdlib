@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class GetStorageStatistics extends TdFunction {
-
-  /// Returns storage usage statistics. Can be called before authorization
+/// **GetStorageStatistics** *(getStorageStatistics)* - TDLib function
+///
+/// Returns storage usage statistics. Can be called before authorization.
+///
+/// * [chatLimit]: The maximum number of chats with the largest storage usage for which separate statistics need to be returned. All other chats will be grouped in entries with chat_id == 0. If the chat info database is not used, the chat_limit is ignored and is always set to 0.
+///
+/// [StorageStatistics] is returned on completion.
+final class GetStorageStatistics extends TdFunction {
+  
+  /// **GetStorageStatistics** *(getStorageStatistics)* - TDLib function
+  ///
+  /// Returns storage usage statistics. Can be called before authorization.
+  ///
+  /// * [chatLimit]: The maximum number of chats with the largest storage usage for which separate statistics need to be returned. All other chats will be grouped in entries with chat_id == 0. If the chat info database is not used, the chat_limit is ignored and is always set to 0.
+  ///
+  /// [StorageStatistics] is returned on completion.
   const GetStorageStatistics({
     required this.chatLimit,
   });
   
-  /// [chatLimit] The maximum number of chats with the largest storage usage for which separate statistics need to be returned. All other chats will be grouped in entries with chat_id == 0. If the chat info database is not used, the chat_limit is ignored and is always set to 0
+  /// The maximum number of chats with the largest storage usage for which separate statistics need to be returned. All other chats will be grouped in entries with chat_id == 0. If the chat info database is not used, the chat_limit is ignored and is always set to 0
   final int chatLimit;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_limit": chatLimit,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetStorageStatistics copyWith({
     int? chatLimit,
@@ -25,8 +39,11 @@ class GetStorageStatistics extends TdFunction {
     chatLimit: chatLimit ?? this.chatLimit,
   );
 
-  static const CONSTRUCTOR = 'getStorageStatistics';
-  
+  static const String objectType = 'getStorageStatistics';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

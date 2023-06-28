@@ -1,17 +1,28 @@
 part of '../tdapi.dart';
 
-class PageBlockCaption extends TdObject {
-
-  /// Contains a caption of an instant view web page block, consisting of a text and a trailing credit
+/// **PageBlockCaption** *(pageBlockCaption)* - basic class
+///
+/// Contains a caption of an instant view web page block, consisting of a text and a trailing credit.
+///
+/// * [text]: Content of the caption.
+/// * [credit]: Block credit (like HTML tag <cite>).
+final class PageBlockCaption extends TdObject {
+  
+  /// **PageBlockCaption** *(pageBlockCaption)* - basic class
+  ///
+  /// Contains a caption of an instant view web page block, consisting of a text and a trailing credit.
+  ///
+  /// * [text]: Content of the caption.
+  /// * [credit]: Block credit (like HTML tag <cite>).
   const PageBlockCaption({
     required this.text,
     required this.credit,
   });
   
-  /// [text] Content of the caption 
+  /// Content of the caption 
   final RichText text;
 
-  /// [credit] Block credit (like HTML tag <cite>)
+  /// Block credit (like HTML tag <cite>)
   final RichText credit;
   
   /// Parse from a json
@@ -22,13 +33,14 @@ class PageBlockCaption extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "text": text.toJson(),
       "credit": credit.toJson(),
-    };
-  }
+		};
+	}
+
   
   PageBlockCaption copyWith({
     RichText? text,
@@ -38,8 +50,11 @@ class PageBlockCaption extends TdObject {
     credit: credit ?? this.credit,
   );
 
-  static const CONSTRUCTOR = 'pageBlockCaption';
-  
+  static const String objectType = 'pageBlockCaption';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

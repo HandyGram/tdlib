@@ -1,8 +1,27 @@
 part of '../tdapi.dart';
 
-class GetPassportAuthorizationForm extends TdFunction {
-
-  /// Returns a Telegram Passport authorization form for sharing data with a service
+/// **GetPassportAuthorizationForm** *(getPassportAuthorizationForm)* - TDLib function
+///
+/// Returns a Telegram Passport authorization form for sharing data with a service.
+///
+/// * [botUserId]: User identifier of the service's bot.
+/// * [scope]: Telegram Passport element types requested by the service.
+/// * [publicKey]: Service's public key.
+/// * [nonce]: Unique request identifier provided by the service.
+///
+/// [PassportAuthorizationForm] is returned on completion.
+final class GetPassportAuthorizationForm extends TdFunction {
+  
+  /// **GetPassportAuthorizationForm** *(getPassportAuthorizationForm)* - TDLib function
+  ///
+  /// Returns a Telegram Passport authorization form for sharing data with a service.
+  ///
+  /// * [botUserId]: User identifier of the service's bot.
+  /// * [scope]: Telegram Passport element types requested by the service.
+  /// * [publicKey]: Service's public key.
+  /// * [nonce]: Unique request identifier provided by the service.
+  ///
+  /// [PassportAuthorizationForm] is returned on completion.
   const GetPassportAuthorizationForm({
     required this.botUserId,
     required this.scope,
@@ -10,29 +29,30 @@ class GetPassportAuthorizationForm extends TdFunction {
     required this.nonce,
   });
   
-  /// [botUserId] User identifier of the service's bot 
+  /// User identifier of the service's bot
   final int botUserId;
 
-  /// [scope] Telegram Passport element types requested by the service 
+  /// Telegram Passport element types requested by the service
   final String scope;
 
-  /// [publicKey] Service's public key 
+  /// Service's public key
   final String publicKey;
 
-  /// [nonce] Unique request identifier provided by the service
+  /// Unique request identifier provided by the service
   final String nonce;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "bot_user_id": botUserId,
       "scope": scope,
       "public_key": publicKey,
       "nonce": nonce,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetPassportAuthorizationForm copyWith({
     int? botUserId,
@@ -46,8 +66,11 @@ class GetPassportAuthorizationForm extends TdFunction {
     nonce: nonce ?? this.nonce,
   );
 
-  static const CONSTRUCTOR = 'getPassportAuthorizationForm';
-  
+  static const String objectType = 'getPassportAuthorizationForm';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

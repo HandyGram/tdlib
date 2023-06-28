@@ -1,23 +1,36 @@
 part of '../tdapi.dart';
 
-class GetTemporaryPasswordState extends TdFunction {
-
-  /// Returns information about the current temporary password
+/// **GetTemporaryPasswordState** *(getTemporaryPasswordState)* - TDLib function
+///
+/// Returns information about the current temporary password.
+///
+/// [TemporaryPasswordState] is returned on completion.
+final class GetTemporaryPasswordState extends TdFunction {
+  
+  /// **GetTemporaryPasswordState** *(getTemporaryPasswordState)* - TDLib function
+  ///
+  /// Returns information about the current temporary password.
+  ///
+  /// [TemporaryPasswordState] is returned on completion.
   const GetTemporaryPasswordState();
   
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetTemporaryPasswordState copyWith() => const GetTemporaryPasswordState();
 
-  static const CONSTRUCTOR = 'getTemporaryPasswordState';
-  
+  static const String objectType = 'getTemporaryPasswordState';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

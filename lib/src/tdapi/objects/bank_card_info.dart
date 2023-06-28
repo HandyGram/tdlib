@@ -1,8 +1,19 @@
 part of '../tdapi.dart';
 
-class BankCardInfo extends TdObject {
-
-  /// Information about a bank card
+/// **BankCardInfo** *(bankCardInfo)* - basic class
+///
+/// Information about a bank card.
+///
+/// * [title]: Title of the bank card description.
+/// * [actions]: Actions that can be done with the bank card number.
+final class BankCardInfo extends TdObject {
+  
+  /// **BankCardInfo** *(bankCardInfo)* - basic class
+  ///
+  /// Information about a bank card.
+  ///
+  /// * [title]: Title of the bank card description.
+  /// * [actions]: Actions that can be done with the bank card number.
   const BankCardInfo({
     required this.title,
     required this.actions,
@@ -10,10 +21,10 @@ class BankCardInfo extends TdObject {
     this.clientId,
   });
   
-  /// [title] Title of the bank card description 
+  /// Title of the bank card description 
   final String title;
 
-  /// [actions] Actions that can be done with the bank card number
+  /// Actions that can be done with the bank card number
   final List<BankCardActionOpenUrl> actions;
 
   /// [extra] callback sign
@@ -34,13 +45,14 @@ class BankCardInfo extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "title": title,
       "actions": actions.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   BankCardInfo copyWith({
     String? title,
@@ -54,8 +66,11 @@ class BankCardInfo extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'bankCardInfo';
-  
+  static const String objectType = 'bankCardInfo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class GetBasicGroup extends TdFunction {
-
-  /// Returns information about a basic group by its identifier. This is an offline request if the current user is not a bot
+/// **GetBasicGroup** *(getBasicGroup)* - TDLib function
+///
+/// Returns information about a basic group by its identifier. This is an offline request if the current user is not a bot.
+///
+/// * [basicGroupId]: Basic group identifier.
+///
+/// [BasicGroup] is returned on completion.
+final class GetBasicGroup extends TdFunction {
+  
+  /// **GetBasicGroup** *(getBasicGroup)* - TDLib function
+  ///
+  /// Returns information about a basic group by its identifier. This is an offline request if the current user is not a bot.
+  ///
+  /// * [basicGroupId]: Basic group identifier.
+  ///
+  /// [BasicGroup] is returned on completion.
   const GetBasicGroup({
     required this.basicGroupId,
   });
   
-  /// [basicGroupId] Basic group identifier
+  /// Basic group identifier
   final int basicGroupId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "basic_group_id": basicGroupId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetBasicGroup copyWith({
     int? basicGroupId,
@@ -25,8 +39,11 @@ class GetBasicGroup extends TdFunction {
     basicGroupId: basicGroupId ?? this.basicGroupId,
   );
 
-  static const CONSTRUCTOR = 'getBasicGroup';
-  
+  static const String objectType = 'getBasicGroup';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class RemoveRecentlyFoundChat extends TdFunction {
-
-  /// Removes a chat from the list of recently found chats
+/// **RemoveRecentlyFoundChat** *(removeRecentlyFoundChat)* - TDLib function
+///
+/// Removes a chat from the list of recently found chats.
+///
+/// * [chatId]: Identifier of the chat to be removed.
+///
+/// [Ok] is returned on completion.
+final class RemoveRecentlyFoundChat extends TdFunction {
+  
+  /// **RemoveRecentlyFoundChat** *(removeRecentlyFoundChat)* - TDLib function
+  ///
+  /// Removes a chat from the list of recently found chats.
+  ///
+  /// * [chatId]: Identifier of the chat to be removed.
+  ///
+  /// [Ok] is returned on completion.
   const RemoveRecentlyFoundChat({
     required this.chatId,
   });
   
-  /// [chatId] Identifier of the chat to be removed
+  /// Identifier of the chat to be removed
   final int chatId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   RemoveRecentlyFoundChat copyWith({
     int? chatId,
@@ -25,8 +39,11 @@ class RemoveRecentlyFoundChat extends TdFunction {
     chatId: chatId ?? this.chatId,
   );
 
-  static const CONSTRUCTOR = 'removeRecentlyFoundChat';
-  
+  static const String objectType = 'removeRecentlyFoundChat';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

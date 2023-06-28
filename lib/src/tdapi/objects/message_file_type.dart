@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class MessageFileType extends TdObject {
-
-  /// Contains information about a file with messages exported from another app
+/// **MessageFileType** *(messageFileType)* - parent
+///
+/// Contains information about a file with messages exported from another app.
+sealed class MessageFileType extends TdObject {
+  
+  /// **MessageFileType** *(messageFileType)* - parent
+  ///
+  /// Contains information about a file with messages exported from another app.
   const MessageFileType();
   
   /// a MessageFileType return type can be :
@@ -11,43 +16,55 @@ class MessageFileType extends TdObject {
   /// * [MessageFileTypeUnknown]
   factory MessageFileType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case MessageFileTypePrivate.CONSTRUCTOR:
+      case MessageFileTypePrivate.objectType:
         return MessageFileTypePrivate.fromJson(json);
-      case MessageFileTypeGroup.CONSTRUCTOR:
+      case MessageFileTypeGroup.objectType:
         return MessageFileTypeGroup.fromJson(json);
-      case MessageFileTypeUnknown.CONSTRUCTOR:
+      case MessageFileTypeUnknown.objectType:
         return MessageFileTypeUnknown.fromJson(json);
       default:
-        return const MessageFileType();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of MessageFileType)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  MessageFileType copyWith() => const MessageFileType();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'messageFileType';
   
+  MessageFileType copyWith();
+
+  static const String objectType = 'messageFileType';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class MessageFileTypePrivate extends MessageFileType {
-
-  /// The messages was exported from a private chat
+/// **MessageFileTypePrivate** *(messageFileTypePrivate)* - child of MessageFileType
+///
+/// The messages was exported from a private chat.
+///
+/// * [name]: Name of the other party; may be empty if unrecognized.
+final class MessageFileTypePrivate extends MessageFileType {
+  
+  /// **MessageFileTypePrivate** *(messageFileTypePrivate)* - child of MessageFileType
+  ///
+  /// The messages was exported from a private chat.
+  ///
+  /// * [name]: Name of the other party; may be empty if unrecognized.
   const MessageFileTypePrivate({
     required this.name,
     this.extra,
     this.clientId,
   });
   
-  /// [name] Name of the other party; may be empty if unrecognized
+  /// Name of the other party; may be empty if unrecognized
   final String name;
 
   /// [extra] callback sign
@@ -67,12 +84,13 @@ class MessageFileTypePrivate extends MessageFileType {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "name": name,
-    };
-  }
+		};
+	}
+
   
   @override
   MessageFileTypePrivate copyWith({
@@ -85,23 +103,35 @@ class MessageFileTypePrivate extends MessageFileType {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'messageFileTypePrivate';
-  
+  static const String objectType = 'messageFileTypePrivate';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class MessageFileTypeGroup extends MessageFileType {
-
-  /// The messages was exported from a group chat
+/// **MessageFileTypeGroup** *(messageFileTypeGroup)* - child of MessageFileType
+///
+/// The messages was exported from a group chat.
+///
+/// * [title]: Title of the group chat; may be empty if unrecognized.
+final class MessageFileTypeGroup extends MessageFileType {
+  
+  /// **MessageFileTypeGroup** *(messageFileTypeGroup)* - child of MessageFileType
+  ///
+  /// The messages was exported from a group chat.
+  ///
+  /// * [title]: Title of the group chat; may be empty if unrecognized.
   const MessageFileTypeGroup({
     required this.title,
     this.extra,
     this.clientId,
   });
   
-  /// [title] Title of the group chat; may be empty if unrecognized
+  /// Title of the group chat; may be empty if unrecognized
   final String title;
 
   /// [extra] callback sign
@@ -121,12 +151,13 @@ class MessageFileTypeGroup extends MessageFileType {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "title": title,
-    };
-  }
+		};
+	}
+
   
   @override
   MessageFileTypeGroup copyWith({
@@ -139,16 +170,24 @@ class MessageFileTypeGroup extends MessageFileType {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'messageFileTypeGroup';
-  
+  static const String objectType = 'messageFileTypeGroup';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class MessageFileTypeUnknown extends MessageFileType {
-
-  /// The messages was exported from a chat of unknown type
+/// **MessageFileTypeUnknown** *(messageFileTypeUnknown)* - child of MessageFileType
+///
+/// The messages was exported from a chat of unknown type.
+final class MessageFileTypeUnknown extends MessageFileType {
+  
+  /// **MessageFileTypeUnknown** *(messageFileTypeUnknown)* - child of MessageFileType
+  ///
+  /// The messages was exported from a chat of unknown type.
   const MessageFileTypeUnknown({
     this.extra,
     this.clientId,
@@ -170,11 +209,12 @@ class MessageFileTypeUnknown extends MessageFileType {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   MessageFileTypeUnknown copyWith({
@@ -185,8 +225,11 @@ class MessageFileTypeUnknown extends MessageFileType {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'messageFileTypeUnknown';
-  
+  static const String objectType = 'messageFileTypeUnknown';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

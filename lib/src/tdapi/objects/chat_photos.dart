@@ -1,8 +1,19 @@
 part of '../tdapi.dart';
 
-class ChatPhotos extends TdObject {
-
-  /// Contains a list of chat or user profile photos
+/// **ChatPhotos** *(chatPhotos)* - basic class
+///
+/// Contains a list of chat or user profile photos.
+///
+/// * [totalCount]: Total number of photos.
+/// * [photos]: List of photos.
+final class ChatPhotos extends TdObject {
+  
+  /// **ChatPhotos** *(chatPhotos)* - basic class
+  ///
+  /// Contains a list of chat or user profile photos.
+  ///
+  /// * [totalCount]: Total number of photos.
+  /// * [photos]: List of photos.
   const ChatPhotos({
     required this.totalCount,
     required this.photos,
@@ -10,10 +21,10 @@ class ChatPhotos extends TdObject {
     this.clientId,
   });
   
-  /// [totalCount] Total number of photos 
+  /// Total number of photos 
   final int totalCount;
 
-  /// [photos] List of photos
+  /// List of photos
   final List<ChatPhoto> photos;
 
   /// [extra] callback sign
@@ -34,13 +45,14 @@ class ChatPhotos extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "total_count": totalCount,
       "photos": photos.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   ChatPhotos copyWith({
     int? totalCount,
@@ -54,8 +66,11 @@ class ChatPhotos extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'chatPhotos';
-  
+  static const String objectType = 'chatPhotos';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

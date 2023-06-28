@@ -1,8 +1,21 @@
 part of '../tdapi.dart';
 
-class StorageStatistics extends TdObject {
-
-  /// Contains the exact storage usage statistics split by chats and file type
+/// **StorageStatistics** *(storageStatistics)* - basic class
+///
+/// Contains the exact storage usage statistics split by chats and file type.
+///
+/// * [size]: Total size of files, in bytes.
+/// * [count]: Total number of files.
+/// * [byChat]: Statistics split by chats.
+final class StorageStatistics extends TdObject {
+  
+  /// **StorageStatistics** *(storageStatistics)* - basic class
+  ///
+  /// Contains the exact storage usage statistics split by chats and file type.
+  ///
+  /// * [size]: Total size of files, in bytes.
+  /// * [count]: Total number of files.
+  /// * [byChat]: Statistics split by chats.
   const StorageStatistics({
     required this.size,
     required this.count,
@@ -11,13 +24,13 @@ class StorageStatistics extends TdObject {
     this.clientId,
   });
   
-  /// [size] Total size of files, in bytes 
+  /// Total size of files, in bytes
   final int size;
 
-  /// [count] Total number of files 
+  /// Total number of files
   final int count;
 
-  /// [byChat] Statistics split by chats
+  /// Statistics split by chats
   final List<StorageStatisticsByChat> byChat;
 
   /// [extra] callback sign
@@ -39,14 +52,15 @@ class StorageStatistics extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "size": size,
       "count": count,
       "by_chat": byChat.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   StorageStatistics copyWith({
     int? size,
@@ -62,8 +76,11 @@ class StorageStatistics extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'storageStatistics';
-  
+  static const String objectType = 'storageStatistics';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class DeleteMessages extends TdFunction {
-
-  /// Deletes messages
+/// **DeleteMessages** *(deleteMessages)* - TDLib function
+///
+/// Deletes messages.
+///
+/// * [chatId]: Chat identifier.
+/// * [messageIds]: Identifiers of the messages to be deleted.
+/// * [revoke]: Pass true to delete messages for all chat members. Always true for supergroups, channels and secret chats.
+///
+/// [Ok] is returned on completion.
+final class DeleteMessages extends TdFunction {
+  
+  /// **DeleteMessages** *(deleteMessages)* - TDLib function
+  ///
+  /// Deletes messages.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [messageIds]: Identifiers of the messages to be deleted.
+  /// * [revoke]: Pass true to delete messages for all chat members. Always true for supergroups, channels and secret chats.
+  ///
+  /// [Ok] is returned on completion.
   const DeleteMessages({
     required this.chatId,
     required this.messageIds,
     required this.revoke,
   });
   
-  /// [chatId] Chat identifier 
+  /// Chat identifier 
   final int chatId;
 
-  /// [messageIds] Identifiers of the messages to be deleted 
+  /// Identifiers of the messages to be deleted 
   final List<int> messageIds;
 
-  /// [revoke] Pass true to delete messages for all chat members. Always true for supergroups, channels and secret chats
+  /// Pass true to delete messages for all chat members. Always true for supergroups, channels and secret chats
   final bool revoke;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "message_ids": messageIds.map((i) => i).toList(),
       "revoke": revoke,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   DeleteMessages copyWith({
     int? chatId,
@@ -39,8 +57,11 @@ class DeleteMessages extends TdFunction {
     revoke: revoke ?? this.revoke,
   );
 
-  static const CONSTRUCTOR = 'deleteMessages';
-  
+  static const String objectType = 'deleteMessages';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

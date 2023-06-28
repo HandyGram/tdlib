@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class GetFileMimeType extends TdFunction {
-
-  /// Returns the MIME type of a file, guessed by its extension. Returns an empty string on failure. Can be called synchronously
+/// **GetFileMimeType** *(getFileMimeType)* - TDLib function
+///
+/// Returns the MIME type of a file, guessed by its extension. Returns an empty string on failure. Can be called synchronously.
+///
+/// * [fileName]: The name of the file or path to the file.
+///
+/// [Text] is returned on completion.
+final class GetFileMimeType extends TdFunction {
+  
+  /// **GetFileMimeType** *(getFileMimeType)* - TDLib function
+  ///
+  /// Returns the MIME type of a file, guessed by its extension. Returns an empty string on failure. Can be called synchronously.
+  ///
+  /// * [fileName]: The name of the file or path to the file.
+  ///
+  /// [Text] is returned on completion.
   const GetFileMimeType({
     required this.fileName,
   });
   
-  /// [fileName] The name of the file or path to the file
+  /// The name of the file or path to the file
   final String fileName;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "file_name": fileName,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetFileMimeType copyWith({
     String? fileName,
@@ -25,8 +39,11 @@ class GetFileMimeType extends TdFunction {
     fileName: fileName ?? this.fileName,
   );
 
-  static const CONSTRUCTOR = 'getFileMimeType';
-  
+  static const String objectType = 'getFileMimeType';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

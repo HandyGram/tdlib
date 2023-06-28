@@ -1,21 +1,34 @@
 part of '../tdapi.dart';
 
-class MessagePosition extends TdObject {
-
-  /// Contains information about a message in a specific position
+/// **MessagePosition** *(messagePosition)* - basic class
+///
+/// Contains information about a message in a specific position.
+///
+/// * [position]: 0-based message position in the full list of suitable messages.
+/// * [messageId]: Message identifier.
+/// * [date]: Point in time (Unix timestamp) when the message was sent.
+final class MessagePosition extends TdObject {
+  
+  /// **MessagePosition** *(messagePosition)* - basic class
+  ///
+  /// Contains information about a message in a specific position.
+  ///
+  /// * [position]: 0-based message position in the full list of suitable messages.
+  /// * [messageId]: Message identifier.
+  /// * [date]: Point in time (Unix timestamp) when the message was sent.
   const MessagePosition({
     required this.position,
     required this.messageId,
     required this.date,
   });
   
-  /// [position] 0-based message position in the full list of suitable messages 
+  /// 0-based message position in the full list of suitable messages 
   final int position;
 
-  /// [messageId] Message identifier 
+  /// Message identifier 
   final int messageId;
 
-  /// [date] Point in time (Unix timestamp) when the message was sent
+  /// Point in time (Unix timestamp) when the message was sent
   final int date;
   
   /// Parse from a json
@@ -27,14 +40,15 @@ class MessagePosition extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "position": position,
       "message_id": messageId,
       "date": date,
-    };
-  }
+		};
+	}
+
   
   MessagePosition copyWith({
     int? position,
@@ -46,8 +60,11 @@ class MessagePosition extends TdObject {
     date: date ?? this.date,
   );
 
-  static const CONSTRUCTOR = 'messagePosition';
-  
+  static const String objectType = 'messagePosition';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

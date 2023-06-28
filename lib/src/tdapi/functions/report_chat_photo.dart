@@ -1,8 +1,27 @@
 part of '../tdapi.dart';
 
-class ReportChatPhoto extends TdFunction {
-
-  /// Reports a chat photo to the Telegram moderators. A chat photo can be reported only if chat.can_be_reported
+/// **ReportChatPhoto** *(reportChatPhoto)* - TDLib function
+///
+/// Reports a chat photo to the Telegram moderators. A chat photo can be reported only if chat.can_be_reported.
+///
+/// * [chatId]: Chat identifier.
+/// * [fileId]: Identifier of the photo to report. Only full photos from chatPhoto can be reported.
+/// * [reason]: The reason for reporting the chat photo.
+/// * [text]: Additional report details; 0-1024 characters.
+///
+/// [Ok] is returned on completion.
+final class ReportChatPhoto extends TdFunction {
+  
+  /// **ReportChatPhoto** *(reportChatPhoto)* - TDLib function
+  ///
+  /// Reports a chat photo to the Telegram moderators. A chat photo can be reported only if chat.can_be_reported.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [fileId]: Identifier of the photo to report. Only full photos from chatPhoto can be reported.
+  /// * [reason]: The reason for reporting the chat photo.
+  /// * [text]: Additional report details; 0-1024 characters.
+  ///
+  /// [Ok] is returned on completion.
   const ReportChatPhoto({
     required this.chatId,
     required this.fileId,
@@ -10,29 +29,30 @@ class ReportChatPhoto extends TdFunction {
     required this.text,
   });
   
-  /// [chatId] Chat identifier
+  /// Chat identifier
   final int chatId;
 
-  /// [fileId] Identifier of the photo to report. Only full photos from chatPhoto can be reported 
+  /// Identifier of the photo to report. Only full photos from chatPhoto can be reported
   final int fileId;
 
-  /// [reason] The reason for reporting the chat photo 
+  /// The reason for reporting the chat photo
   final ChatReportReason reason;
 
-  /// [text] Additional report details; 0-1024 characters
+  /// Additional report details; 0-1024 characters
   final String text;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "file_id": fileId,
       "reason": reason.toJson(),
       "text": text,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   ReportChatPhoto copyWith({
     int? chatId,
@@ -46,8 +66,11 @@ class ReportChatPhoto extends TdFunction {
     text: text ?? this.text,
   );
 
-  static const CONSTRUCTOR = 'reportChatPhoto';
-  
+  static const String objectType = 'reportChatPhoto';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

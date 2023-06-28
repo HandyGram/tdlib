@@ -1,8 +1,19 @@
 part of '../tdapi.dart';
 
-class PassportElementsWithErrors extends TdObject {
-
-  /// Contains information about a Telegram Passport elements and corresponding errors
+/// **PassportElementsWithErrors** *(passportElementsWithErrors)* - basic class
+///
+/// Contains information about a Telegram Passport elements and corresponding errors.
+///
+/// * [elements]: Telegram Passport elements.
+/// * [errors]: Errors in the elements that are already available.
+final class PassportElementsWithErrors extends TdObject {
+  
+  /// **PassportElementsWithErrors** *(passportElementsWithErrors)* - basic class
+  ///
+  /// Contains information about a Telegram Passport elements and corresponding errors.
+  ///
+  /// * [elements]: Telegram Passport elements.
+  /// * [errors]: Errors in the elements that are already available.
   const PassportElementsWithErrors({
     required this.elements,
     required this.errors,
@@ -10,10 +21,10 @@ class PassportElementsWithErrors extends TdObject {
     this.clientId,
   });
   
-  /// [elements] Telegram Passport elements 
+  /// Telegram Passport elements 
   final List<PassportElement> elements;
 
-  /// [errors] Errors in the elements that are already available
+  /// Errors in the elements that are already available
   final List<PassportElementError> errors;
 
   /// [extra] callback sign
@@ -34,13 +45,14 @@ class PassportElementsWithErrors extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "elements": elements.map((i) => i.toJson()).toList(),
       "errors": errors.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   PassportElementsWithErrors copyWith({
     List<PassportElement>? elements,
@@ -54,8 +66,11 @@ class PassportElementsWithErrors extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'passportElementsWithErrors';
-  
+  static const String objectType = 'passportElementsWithErrors';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

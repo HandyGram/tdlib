@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class ToggleSupergroupSignMessages extends TdFunction {
-
-  /// Toggles whether sender signature is added to sent messages in a channel; requires can_change_info administrator right
+/// **ToggleSupergroupSignMessages** *(toggleSupergroupSignMessages)* - TDLib function
+///
+/// Toggles whether sender signature is added to sent messages in a channel; requires can_change_info administrator right.
+///
+/// * [supergroupId]: Identifier of the channel.
+/// * [signMessages]: New value of sign_messages.
+///
+/// [Ok] is returned on completion.
+final class ToggleSupergroupSignMessages extends TdFunction {
+  
+  /// **ToggleSupergroupSignMessages** *(toggleSupergroupSignMessages)* - TDLib function
+  ///
+  /// Toggles whether sender signature is added to sent messages in a channel; requires can_change_info administrator right.
+  ///
+  /// * [supergroupId]: Identifier of the channel.
+  /// * [signMessages]: New value of sign_messages.
+  ///
+  /// [Ok] is returned on completion.
   const ToggleSupergroupSignMessages({
     required this.supergroupId,
     required this.signMessages,
   });
   
-  /// [supergroupId] Identifier of the channel 
+  /// Identifier of the channel 
   final int supergroupId;
 
-  /// [signMessages] New value of sign_messages
+  /// New value of sign_messages
   final bool signMessages;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "supergroup_id": supergroupId,
       "sign_messages": signMessages,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   ToggleSupergroupSignMessages copyWith({
     int? supergroupId,
@@ -32,8 +48,11 @@ class ToggleSupergroupSignMessages extends TdFunction {
     signMessages: signMessages ?? this.signMessages,
   );
 
-  static const CONSTRUCTOR = 'toggleSupergroupSignMessages';
-  
+  static const String objectType = 'toggleSupergroupSignMessages';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

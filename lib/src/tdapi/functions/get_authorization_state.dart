@@ -1,23 +1,36 @@
 part of '../tdapi.dart';
 
-class GetAuthorizationState extends TdFunction {
-
-  /// Returns the current authorization state; this is an offline request. For informational purposes only. Use updateAuthorizationState instead to maintain the current authorization state. Can be called before initialization
+/// **GetAuthorizationState** *(getAuthorizationState)* - TDLib function
+///
+/// Returns the current authorization state; this is an offline request. For informational purposes only. Use updateAuthorizationState instead to maintain the current authorization state. Can be called before initialization.
+///
+/// [AuthorizationState] is returned on completion.
+final class GetAuthorizationState extends TdFunction {
+  
+  /// **GetAuthorizationState** *(getAuthorizationState)* - TDLib function
+  ///
+  /// Returns the current authorization state; this is an offline request. For informational purposes only. Use updateAuthorizationState instead to maintain the current authorization state. Can be called before initialization.
+  ///
+  /// [AuthorizationState] is returned on completion.
   const GetAuthorizationState();
   
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetAuthorizationState copyWith() => const GetAuthorizationState();
 
-  static const CONSTRUCTOR = 'getAuthorizationState';
-  
+  static const String objectType = 'getAuthorizationState';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

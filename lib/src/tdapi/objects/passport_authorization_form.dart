@@ -1,8 +1,21 @@
 part of '../tdapi.dart';
 
-class PassportAuthorizationForm extends TdObject {
-
-  /// Contains information about a Telegram Passport authorization form that was requested
+/// **PassportAuthorizationForm** *(passportAuthorizationForm)* - basic class
+///
+/// Contains information about a Telegram Passport authorization form that was requested.
+///
+/// * [id]: Unique identifier of the authorization form.
+/// * [requiredElements]: Telegram Passport elements that must be provided to complete the form.
+/// * [privacyPolicyUrl]: URL for the privacy policy of the service; may be empty.
+final class PassportAuthorizationForm extends TdObject {
+  
+  /// **PassportAuthorizationForm** *(passportAuthorizationForm)* - basic class
+  ///
+  /// Contains information about a Telegram Passport authorization form that was requested.
+  ///
+  /// * [id]: Unique identifier of the authorization form.
+  /// * [requiredElements]: Telegram Passport elements that must be provided to complete the form.
+  /// * [privacyPolicyUrl]: URL for the privacy policy of the service; may be empty.
   const PassportAuthorizationForm({
     required this.id,
     required this.requiredElements,
@@ -11,13 +24,13 @@ class PassportAuthorizationForm extends TdObject {
     this.clientId,
   });
   
-  /// [id] Unique identifier of the authorization form
+  /// Unique identifier of the authorization form
   final int id;
 
-  /// [requiredElements] Telegram Passport elements that must be provided to complete the form
+  /// Telegram Passport elements that must be provided to complete the form
   final List<PassportRequiredElement> requiredElements;
 
-  /// [privacyPolicyUrl] URL for the privacy policy of the service; may be empty
+  /// URL for the privacy policy of the service; may be empty
   final String privacyPolicyUrl;
 
   /// [extra] callback sign
@@ -39,14 +52,15 @@ class PassportAuthorizationForm extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "id": id,
       "required_elements": requiredElements.map((i) => i.toJson()).toList(),
       "privacy_policy_url": privacyPolicyUrl,
-    };
-  }
+		};
+	}
+
   
   PassportAuthorizationForm copyWith({
     int? id,
@@ -62,8 +76,11 @@ class PassportAuthorizationForm extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'passportAuthorizationForm';
-  
+  static const String objectType = 'passportAuthorizationForm';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class CreateNewSecretChat extends TdFunction {
-
-  /// Creates a new secret chat. Returns the newly created chat
+/// **CreateNewSecretChat** *(createNewSecretChat)* - TDLib function
+///
+/// Creates a new secret chat. Returns the newly created chat.
+///
+/// * [userId]: Identifier of the target user.
+///
+/// [Chat] is returned on completion.
+final class CreateNewSecretChat extends TdFunction {
+  
+  /// **CreateNewSecretChat** *(createNewSecretChat)* - TDLib function
+  ///
+  /// Creates a new secret chat. Returns the newly created chat.
+  ///
+  /// * [userId]: Identifier of the target user.
+  ///
+  /// [Chat] is returned on completion.
   const CreateNewSecretChat({
     required this.userId,
   });
   
-  /// [userId] Identifier of the target user
+  /// Identifier of the target user
   final int userId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "user_id": userId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   CreateNewSecretChat copyWith({
     int? userId,
@@ -25,8 +39,11 @@ class CreateNewSecretChat extends TdFunction {
     userId: userId ?? this.userId,
   );
 
-  static const CONSTRUCTOR = 'createNewSecretChat';
-  
+  static const String objectType = 'createNewSecretChat';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

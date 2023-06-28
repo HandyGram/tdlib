@@ -1,8 +1,19 @@
 part of '../tdapi.dart';
 
-class ValidatedOrderInfo extends TdObject {
-
-  /// Contains a temporary identifier of validated order information, which is stored for one hour. Also contains the available shipping options
+/// **ValidatedOrderInfo** *(validatedOrderInfo)* - basic class
+///
+/// Contains a temporary identifier of validated order information, which is stored for one hour, and the available shipping options.
+///
+/// * [orderInfoId]: Temporary identifier of the order information.
+/// * [shippingOptions]: Available shipping options.
+final class ValidatedOrderInfo extends TdObject {
+  
+  /// **ValidatedOrderInfo** *(validatedOrderInfo)* - basic class
+  ///
+  /// Contains a temporary identifier of validated order information, which is stored for one hour, and the available shipping options.
+  ///
+  /// * [orderInfoId]: Temporary identifier of the order information.
+  /// * [shippingOptions]: Available shipping options.
   const ValidatedOrderInfo({
     required this.orderInfoId,
     required this.shippingOptions,
@@ -10,10 +21,10 @@ class ValidatedOrderInfo extends TdObject {
     this.clientId,
   });
   
-  /// [orderInfoId] Temporary identifier of the order information 
+  /// Temporary identifier of the order information 
   final String orderInfoId;
 
-  /// [shippingOptions] Available shipping options
+  /// Available shipping options
   final List<ShippingOption> shippingOptions;
 
   /// [extra] callback sign
@@ -34,13 +45,14 @@ class ValidatedOrderInfo extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "order_info_id": orderInfoId,
       "shipping_options": shippingOptions.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   ValidatedOrderInfo copyWith({
     String? orderInfoId,
@@ -54,8 +66,11 @@ class ValidatedOrderInfo extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'validatedOrderInfo';
-  
+  static const String objectType = 'validatedOrderInfo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

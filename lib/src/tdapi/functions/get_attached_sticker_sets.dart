@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class GetAttachedStickerSets extends TdFunction {
-
-  /// Returns a list of sticker sets attached to a file. Currently, only photos and videos can have attached sticker sets
+/// **GetAttachedStickerSets** *(getAttachedStickerSets)* - TDLib function
+///
+/// Returns a list of sticker sets attached to a file, including regular, mask, and emoji sticker sets. Currently, only animations, photos, and videos can have attached sticker sets.
+///
+/// * [fileId]: File identifier.
+///
+/// [StickerSets] is returned on completion.
+final class GetAttachedStickerSets extends TdFunction {
+  
+  /// **GetAttachedStickerSets** *(getAttachedStickerSets)* - TDLib function
+  ///
+  /// Returns a list of sticker sets attached to a file, including regular, mask, and emoji sticker sets. Currently, only animations, photos, and videos can have attached sticker sets.
+  ///
+  /// * [fileId]: File identifier.
+  ///
+  /// [StickerSets] is returned on completion.
   const GetAttachedStickerSets({
     required this.fileId,
   });
   
-  /// [fileId] File identifier
+  /// File identifier
   final int fileId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "file_id": fileId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetAttachedStickerSets copyWith({
     int? fileId,
@@ -25,8 +39,11 @@ class GetAttachedStickerSets extends TdFunction {
     fileId: fileId ?? this.fileId,
   );
 
-  static const CONSTRUCTOR = 'getAttachedStickerSets';
-  
+  static const String objectType = 'getAttachedStickerSets';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

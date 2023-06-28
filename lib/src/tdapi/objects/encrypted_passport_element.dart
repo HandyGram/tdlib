@@ -1,8 +1,33 @@
 part of '../tdapi.dart';
 
-class EncryptedPassportElement extends TdObject {
-
-  /// Contains information about an encrypted Telegram Passport element; for bots only
+/// **EncryptedPassportElement** *(encryptedPassportElement)* - basic class
+///
+/// Contains information about an encrypted Telegram Passport element; for bots only.
+///
+/// * [type]: Type of Telegram Passport element.
+/// * [data]: Encrypted JSON-encoded data about the user.
+/// * [frontSide]: The front side of an identity document.
+/// * [reverseSide]: The reverse side of an identity document; may be null *(optional)*.
+/// * [selfie]: Selfie with the document; may be null *(optional)*.
+/// * [translation]: List of files containing a certified English translation of the document.
+/// * [files]: List of attached files.
+/// * [value]: Unencrypted data, phone number or email address.
+/// * [hash]: Hash of the entire element.
+final class EncryptedPassportElement extends TdObject {
+  
+  /// **EncryptedPassportElement** *(encryptedPassportElement)* - basic class
+  ///
+  /// Contains information about an encrypted Telegram Passport element; for bots only.
+  ///
+  /// * [type]: Type of Telegram Passport element.
+  /// * [data]: Encrypted JSON-encoded data about the user.
+  /// * [frontSide]: The front side of an identity document.
+  /// * [reverseSide]: The reverse side of an identity document; may be null *(optional)*.
+  /// * [selfie]: Selfie with the document; may be null *(optional)*.
+  /// * [translation]: List of files containing a certified English translation of the document.
+  /// * [files]: List of attached files.
+  /// * [value]: Unencrypted data, phone number or email address.
+  /// * [hash]: Hash of the entire element.
   const EncryptedPassportElement({
     required this.type,
     required this.data,
@@ -15,31 +40,31 @@ class EncryptedPassportElement extends TdObject {
     required this.hash,
   });
   
-  /// [type] Type of Telegram Passport element 
+  /// Type of Telegram Passport element
   final PassportElementType type;
 
-  /// [data] Encrypted JSON-encoded data about the user 
+  /// Encrypted JSON-encoded data about the user
   final String data;
 
-  /// [frontSide] The front side of an identity document 
+  /// The front side of an identity document
   final DatedFile frontSide;
 
-  /// [reverseSide] The reverse side of an identity document; may be null 
+  /// The reverse side of an identity document; may be null
   final DatedFile? reverseSide;
 
-  /// [selfie] Selfie with the document; may be null 
+  /// Selfie with the document; may be null
   final DatedFile? selfie;
 
-  /// [translation] List of files containing a certified English translation of the document 
+  /// List of files containing a certified English translation of the document
   final List<DatedFile> translation;
 
-  /// [files] List of attached files 
+  /// List of attached files
   final List<DatedFile> files;
 
-  /// [value] Unencrypted data, phone number or email address 
+  /// Unencrypted data, phone number or email address
   final String value;
 
-  /// [hash] Hash of the entire element
+  /// Hash of the entire element
   final String hash;
   
   /// Parse from a json
@@ -57,9 +82,9 @@ class EncryptedPassportElement extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "type": type.toJson(),
       "data": data,
       "front_side": frontSide.toJson(),
@@ -69,8 +94,9 @@ class EncryptedPassportElement extends TdObject {
       "files": files.map((i) => i.toJson()).toList(),
       "value": value,
       "hash": hash,
-    };
-  }
+		};
+	}
+
   
   EncryptedPassportElement copyWith({
     PassportElementType? type,
@@ -94,8 +120,11 @@ class EncryptedPassportElement extends TdObject {
     hash: hash ?? this.hash,
   );
 
-  static const CONSTRUCTOR = 'encryptedPassportElement';
-  
+  static const String objectType = 'encryptedPassportElement';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

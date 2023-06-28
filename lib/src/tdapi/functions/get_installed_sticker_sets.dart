@@ -1,32 +1,49 @@
 part of '../tdapi.dart';
 
-class GetInstalledStickerSets extends TdFunction {
-
-  /// Returns a list of installed sticker sets
+/// **GetInstalledStickerSets** *(getInstalledStickerSets)* - TDLib function
+///
+/// Returns a list of installed sticker sets.
+///
+/// * [stickerType]: Type of the sticker sets to return.
+///
+/// [StickerSets] is returned on completion.
+final class GetInstalledStickerSets extends TdFunction {
+  
+  /// **GetInstalledStickerSets** *(getInstalledStickerSets)* - TDLib function
+  ///
+  /// Returns a list of installed sticker sets.
+  ///
+  /// * [stickerType]: Type of the sticker sets to return.
+  ///
+  /// [StickerSets] is returned on completion.
   const GetInstalledStickerSets({
-    required this.isMasks,
+    required this.stickerType,
   });
   
-  /// [isMasks] Pass true to return mask sticker sets; pass false to return ordinary sticker sets
-  final bool isMasks;
+  /// Type of the sticker sets to return
+  final StickerType stickerType;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "is_masks": isMasks,
+		return {
+			"@type": objectType,
+      "sticker_type": stickerType.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetInstalledStickerSets copyWith({
-    bool? isMasks,
+    StickerType? stickerType,
   }) => GetInstalledStickerSets(
-    isMasks: isMasks ?? this.isMasks,
+    stickerType: stickerType ?? this.stickerType,
   );
 
-  static const CONSTRUCTOR = 'getInstalledStickerSets';
-  
+  static const String objectType = 'getInstalledStickerSets';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

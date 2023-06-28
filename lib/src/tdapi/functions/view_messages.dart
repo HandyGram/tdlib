@@ -1,53 +1,76 @@
 part of '../tdapi.dart';
 
-class ViewMessages extends TdFunction {
-
-  /// Informs TDLib that messages are being viewed by the user. Sponsored messages must be marked as viewed only when the entire text of the message is shown on the screen (excluding the button). Many useful activities depend on whether the messages are currently being viewed or not (e.g., marking messages as read, incrementing a view counter, updating a view counter, removing deleted messages in supergroups and channels)
+/// **ViewMessages** *(viewMessages)* - TDLib function
+///
+/// Informs TDLib that messages are being viewed by the user. Sponsored messages must be marked as viewed only when the entire text of the message is shown on the screen (excluding the button).. Many useful activities depend on whether the messages are currently being viewed or not (e.g., marking messages as read, incrementing a view counter, updating a view counter, removing deleted messages in supergroups and channels).
+///
+/// * [chatId]: Chat identifier.
+/// * [messageIds]: The identifiers of the messages being viewed.
+/// * [source]: Source of the message view; pass null to guess the source based on chat open state *(optional)*.
+/// * [forceRead]: Pass true to mark as read the specified messages even the chat is closed.
+///
+/// [Ok] is returned on completion.
+final class ViewMessages extends TdFunction {
+  
+  /// **ViewMessages** *(viewMessages)* - TDLib function
+  ///
+  /// Informs TDLib that messages are being viewed by the user. Sponsored messages must be marked as viewed only when the entire text of the message is shown on the screen (excluding the button).. Many useful activities depend on whether the messages are currently being viewed or not (e.g., marking messages as read, incrementing a view counter, updating a view counter, removing deleted messages in supergroups and channels).
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [messageIds]: The identifiers of the messages being viewed.
+  /// * [source]: Source of the message view; pass null to guess the source based on chat open state *(optional)*.
+  /// * [forceRead]: Pass true to mark as read the specified messages even the chat is closed.
+  ///
+  /// [Ok] is returned on completion.
   const ViewMessages({
     required this.chatId,
-    required this.messageThreadId,
     required this.messageIds,
+    this.source,
     required this.forceRead,
   });
   
-  /// [chatId] Chat identifier
+  /// Chat identifier
   final int chatId;
 
-  /// [messageThreadId] If not 0, a message thread identifier in which the messages are being viewed
-  final int messageThreadId;
-
-  /// [messageIds] The identifiers of the messages being viewed
+  /// The identifiers of the messages being viewed
   final List<int> messageIds;
 
-  /// [forceRead] True, if messages in closed chats must be marked as read by the request
+  /// Source of the message view; pass null to guess the source based on chat open state
+  final MessageSource? source;
+
+  /// Pass true to mark as read the specified messages even the chat is closed
   final bool forceRead;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
-      "message_thread_id": messageThreadId,
       "message_ids": messageIds.map((i) => i).toList(),
+      "source": source?.toJson(),
       "force_read": forceRead,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   ViewMessages copyWith({
     int? chatId,
-    int? messageThreadId,
     List<int>? messageIds,
+    MessageSource? source,
     bool? forceRead,
   }) => ViewMessages(
     chatId: chatId ?? this.chatId,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
     messageIds: messageIds ?? this.messageIds,
+    source: source ?? this.source,
     forceRead: forceRead ?? this.forceRead,
   );
 
-  static const CONSTRUCTOR = 'viewMessages';
-  
+  static const String objectType = 'viewMessages';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

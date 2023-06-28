@@ -1,15 +1,24 @@
 part of '../tdapi.dart';
 
-class CustomRequestResult extends TdObject {
-
-  /// Contains the result of a custom request
+/// **CustomRequestResult** *(customRequestResult)* - basic class
+///
+/// Contains the result of a custom request.
+///
+/// * [result]: A JSON-serialized result.
+final class CustomRequestResult extends TdObject {
+  
+  /// **CustomRequestResult** *(customRequestResult)* - basic class
+  ///
+  /// Contains the result of a custom request.
+  ///
+  /// * [result]: A JSON-serialized result.
   const CustomRequestResult({
     required this.result,
     this.extra,
     this.clientId,
   });
   
-  /// [result] A JSON-serialized result
+  /// A JSON-serialized result
   final String result;
 
   /// [extra] callback sign
@@ -29,12 +38,13 @@ class CustomRequestResult extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "result": result,
-    };
-  }
+		};
+	}
+
   
   CustomRequestResult copyWith({
     String? result,
@@ -46,8 +56,11 @@ class CustomRequestResult extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'customRequestResult';
-  
+  static const String objectType = 'customRequestResult';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

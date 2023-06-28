@@ -1,15 +1,24 @@
 part of '../tdapi.dart';
 
-class ChatInviteLinkCounts extends TdObject {
-
-  /// Contains a list of chat invite link counts
+/// **ChatInviteLinkCounts** *(chatInviteLinkCounts)* - basic class
+///
+/// Contains a list of chat invite link counts.
+///
+/// * [inviteLinkCounts]: List of invite link counts.
+final class ChatInviteLinkCounts extends TdObject {
+  
+  /// **ChatInviteLinkCounts** *(chatInviteLinkCounts)* - basic class
+  ///
+  /// Contains a list of chat invite link counts.
+  ///
+  /// * [inviteLinkCounts]: List of invite link counts.
   const ChatInviteLinkCounts({
     required this.inviteLinkCounts,
     this.extra,
     this.clientId,
   });
   
-  /// [inviteLinkCounts] List of invite link counts
+  /// List of invite link counts
   final List<ChatInviteLinkCount> inviteLinkCounts;
 
   /// [extra] callback sign
@@ -29,12 +38,13 @@ class ChatInviteLinkCounts extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "invite_link_counts": inviteLinkCounts.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   ChatInviteLinkCounts copyWith({
     List<ChatInviteLinkCount>? inviteLinkCounts,
@@ -46,8 +56,11 @@ class ChatInviteLinkCounts extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'chatInviteLinkCounts';
-  
+  static const String objectType = 'chatInviteLinkCounts';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

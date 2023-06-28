@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class GetDeepLinkInfo extends TdFunction {
-
-  /// Returns information about a tg:// deep link. Use "tg://need_update_for_some_feature" or "tg:some_unsupported_feature" for testing. Returns a 404 error for unknown links. Can be called before authorization
+/// **GetDeepLinkInfo** *(getDeepLinkInfo)* - TDLib function
+///
+/// Returns information about a tg:// deep link. Use "tg://need_update_for_some_feature" or "tg:some_unsupported_feature" for testing. Returns a 404 error for unknown links. Can be called before authorization.
+///
+/// * [link]: The link.
+///
+/// [DeepLinkInfo] is returned on completion.
+final class GetDeepLinkInfo extends TdFunction {
+  
+  /// **GetDeepLinkInfo** *(getDeepLinkInfo)* - TDLib function
+  ///
+  /// Returns information about a tg:// deep link. Use "tg://need_update_for_some_feature" or "tg:some_unsupported_feature" for testing. Returns a 404 error for unknown links. Can be called before authorization.
+  ///
+  /// * [link]: The link.
+  ///
+  /// [DeepLinkInfo] is returned on completion.
   const GetDeepLinkInfo({
     required this.link,
   });
   
-  /// [link] The link
+  /// The link
   final String link;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "link": link,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetDeepLinkInfo copyWith({
     String? link,
@@ -25,8 +39,11 @@ class GetDeepLinkInfo extends TdFunction {
     link: link ?? this.link,
   );
 
-  static const CONSTRUCTOR = 'getDeepLinkInfo';
-  
+  static const String objectType = 'getDeepLinkInfo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

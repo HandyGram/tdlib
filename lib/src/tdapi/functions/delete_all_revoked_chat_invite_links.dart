@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class DeleteAllRevokedChatInviteLinks extends TdFunction {
-
-  /// Deletes all revoked chat invite links created by a given chat administrator. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links
+/// **DeleteAllRevokedChatInviteLinks** *(deleteAllRevokedChatInviteLinks)* - TDLib function
+///
+/// Deletes all revoked chat invite links created by a given chat administrator. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links.
+///
+/// * [chatId]: Chat identifier.
+/// * [creatorUserId]: User identifier of a chat administrator, which links will be deleted. Must be an identifier of the current user for non-owner.
+///
+/// [Ok] is returned on completion.
+final class DeleteAllRevokedChatInviteLinks extends TdFunction {
+  
+  /// **DeleteAllRevokedChatInviteLinks** *(deleteAllRevokedChatInviteLinks)* - TDLib function
+  ///
+  /// Deletes all revoked chat invite links created by a given chat administrator. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [creatorUserId]: User identifier of a chat administrator, which links will be deleted. Must be an identifier of the current user for non-owner.
+  ///
+  /// [Ok] is returned on completion.
   const DeleteAllRevokedChatInviteLinks({
     required this.chatId,
     required this.creatorUserId,
   });
   
-  /// [chatId] Chat identifier
+  /// Chat identifier
   final int chatId;
 
-  /// [creatorUserId] User identifier of a chat administrator, which links will be deleted. Must be an identifier of the current user for non-owner
+  /// User identifier of a chat administrator, which links will be deleted. Must be an identifier of the current user for non-owner
   final int creatorUserId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "creator_user_id": creatorUserId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   DeleteAllRevokedChatInviteLinks copyWith({
     int? chatId,
@@ -32,8 +48,11 @@ class DeleteAllRevokedChatInviteLinks extends TdFunction {
     creatorUserId: creatorUserId ?? this.creatorUserId,
   );
 
-  static const CONSTRUCTOR = 'deleteAllRevokedChatInviteLinks';
-  
+  static const String objectType = 'deleteAllRevokedChatInviteLinks';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

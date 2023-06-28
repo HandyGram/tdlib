@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class LeaveGroupCall extends TdFunction {
-
-  /// Leaves a group call
+/// **LeaveGroupCall** *(leaveGroupCall)* - TDLib function
+///
+/// Leaves a group call.
+///
+/// * [groupCallId]: Group call identifier.
+///
+/// [Ok] is returned on completion.
+final class LeaveGroupCall extends TdFunction {
+  
+  /// **LeaveGroupCall** *(leaveGroupCall)* - TDLib function
+  ///
+  /// Leaves a group call.
+  ///
+  /// * [groupCallId]: Group call identifier.
+  ///
+  /// [Ok] is returned on completion.
   const LeaveGroupCall({
     required this.groupCallId,
   });
   
-  /// [groupCallId] Group call identifier
+  /// Group call identifier
   final int groupCallId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "group_call_id": groupCallId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   LeaveGroupCall copyWith({
     int? groupCallId,
@@ -25,8 +39,11 @@ class LeaveGroupCall extends TdFunction {
     groupCallId: groupCallId ?? this.groupCallId,
   );
 
-  static const CONSTRUCTOR = 'leaveGroupCall';
-  
+  static const String objectType = 'leaveGroupCall';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

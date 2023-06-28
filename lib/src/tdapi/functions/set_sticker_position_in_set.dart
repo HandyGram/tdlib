@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class SetStickerPositionInSet extends TdFunction {
-
-  /// Changes the position of a sticker in the set to which it belongs; for bots only. The sticker set must have been created by the bot
+/// **SetStickerPositionInSet** *(setStickerPositionInSet)* - TDLib function
+///
+/// Changes the position of a sticker in the set to which it belongs; for bots only. The sticker set must have been created by the bot.
+///
+/// * [sticker]: Sticker.
+/// * [position]: New position of the sticker in the set, 0-based.
+///
+/// [Ok] is returned on completion.
+final class SetStickerPositionInSet extends TdFunction {
+  
+  /// **SetStickerPositionInSet** *(setStickerPositionInSet)* - TDLib function
+  ///
+  /// Changes the position of a sticker in the set to which it belongs; for bots only. The sticker set must have been created by the bot.
+  ///
+  /// * [sticker]: Sticker.
+  /// * [position]: New position of the sticker in the set, 0-based.
+  ///
+  /// [Ok] is returned on completion.
   const SetStickerPositionInSet({
     required this.sticker,
     required this.position,
   });
   
-  /// [sticker] Sticker
+  /// Sticker
   final InputFile sticker;
 
-  /// [position] New position of the sticker in the set, zero-based
+  /// New position of the sticker in the set, 0-based
   final int position;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "sticker": sticker.toJson(),
       "position": position,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SetStickerPositionInSet copyWith({
     InputFile? sticker,
@@ -32,8 +48,11 @@ class SetStickerPositionInSet extends TdFunction {
     position: position ?? this.position,
   );
 
-  static const CONSTRUCTOR = 'setStickerPositionInSet';
-  
+  static const String objectType = 'setStickerPositionInSet';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

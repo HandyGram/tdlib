@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class CheckChatUsername extends TdFunction {
-
-  /// Checks whether a username can be set for a chat
+/// **CheckChatUsername** *(checkChatUsername)* - TDLib function
+///
+/// Checks whether a username can be set for a chat.
+///
+/// * [chatId]: Chat identifier; must be identifier of a supergroup chat, or a channel chat, or a private chat with self, or zero if the chat is being created.
+/// * [username]: Username to be checked.
+///
+/// [CheckChatUsernameResult] is returned on completion.
+final class CheckChatUsername extends TdFunction {
+  
+  /// **CheckChatUsername** *(checkChatUsername)* - TDLib function
+  ///
+  /// Checks whether a username can be set for a chat.
+  ///
+  /// * [chatId]: Chat identifier; must be identifier of a supergroup chat, or a channel chat, or a private chat with self, or zero if the chat is being created.
+  /// * [username]: Username to be checked.
+  ///
+  /// [CheckChatUsernameResult] is returned on completion.
   const CheckChatUsername({
     required this.chatId,
     required this.username,
   });
   
-  /// [chatId] Chat identifier; must be identifier of a supergroup chat, or a channel chat, or a private chat with self, or zero if the chat is being created 
+  /// Chat identifier; must be identifier of a supergroup chat, or a channel chat, or a private chat with self, or zero if the chat is being created 
   final int chatId;
 
-  /// [username] Username to be checked
+  /// Username to be checked
   final String username;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "username": username,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   CheckChatUsername copyWith({
     int? chatId,
@@ -32,8 +48,11 @@ class CheckChatUsername extends TdFunction {
     username: username ?? this.username,
   );
 
-  static const CONSTRUCTOR = 'checkChatUsername';
-  
+  static const String objectType = 'checkChatUsername';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

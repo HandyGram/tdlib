@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class LeaveChat extends TdFunction {
-
-  /// Removes the current user from chat members. Private and secret chats can't be left using this method
+/// **LeaveChat** *(leaveChat)* - TDLib function
+///
+/// Removes the current user from chat members. Private and secret chats can't be left using this method.
+///
+/// * [chatId]: Chat identifier.
+///
+/// [Ok] is returned on completion.
+final class LeaveChat extends TdFunction {
+  
+  /// **LeaveChat** *(leaveChat)* - TDLib function
+  ///
+  /// Removes the current user from chat members. Private and secret chats can't be left using this method.
+  ///
+  /// * [chatId]: Chat identifier.
+  ///
+  /// [Ok] is returned on completion.
   const LeaveChat({
     required this.chatId,
   });
   
-  /// [chatId] Chat identifier
+  /// Chat identifier
   final int chatId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   LeaveChat copyWith({
     int? chatId,
@@ -25,8 +39,11 @@ class LeaveChat extends TdFunction {
     chatId: chatId ?? this.chatId,
   );
 
-  static const CONSTRUCTOR = 'leaveChat';
-  
+  static const String objectType = 'leaveChat';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

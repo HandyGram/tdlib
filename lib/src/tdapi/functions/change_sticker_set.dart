@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class ChangeStickerSet extends TdFunction {
-
-  /// Installs/uninstalls or activates/archives a sticker set
+/// **ChangeStickerSet** *(changeStickerSet)* - TDLib function
+///
+/// Installs/uninstalls or activates/archives a sticker set.
+///
+/// * [setId]: Identifier of the sticker set.
+/// * [isInstalled]: The new value of is_installed.
+/// * [isArchived]: The new value of is_archived. A sticker set can't be installed and archived simultaneously.
+///
+/// [Ok] is returned on completion.
+final class ChangeStickerSet extends TdFunction {
+  
+  /// **ChangeStickerSet** *(changeStickerSet)* - TDLib function
+  ///
+  /// Installs/uninstalls or activates/archives a sticker set.
+  ///
+  /// * [setId]: Identifier of the sticker set.
+  /// * [isInstalled]: The new value of is_installed.
+  /// * [isArchived]: The new value of is_archived. A sticker set can't be installed and archived simultaneously.
+  ///
+  /// [Ok] is returned on completion.
   const ChangeStickerSet({
     required this.setId,
     required this.isInstalled,
     required this.isArchived,
   });
   
-  /// [setId] Identifier of the sticker set 
+  /// Identifier of the sticker set 
   final int setId;
 
-  /// [isInstalled] The new value of is_installed 
+  /// The new value of is_installed 
   final bool isInstalled;
 
-  /// [isArchived] The new value of is_archived. A sticker set can't be installed and archived simultaneously
+  /// The new value of is_archived. A sticker set can't be installed and archived simultaneously
   final bool isArchived;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "set_id": setId,
       "is_installed": isInstalled,
       "is_archived": isArchived,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   ChangeStickerSet copyWith({
     int? setId,
@@ -39,8 +57,11 @@ class ChangeStickerSet extends TdFunction {
     isArchived: isArchived ?? this.isArchived,
   );
 
-  static const CONSTRUCTOR = 'changeStickerSet';
-  
+  static const String objectType = 'changeStickerSet';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

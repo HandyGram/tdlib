@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class CancelDownloadFile extends TdFunction {
-
-  /// Stops the downloading of a file. If a file has already been downloaded, does nothing
+/// **CancelDownloadFile** *(cancelDownloadFile)* - TDLib function
+///
+/// Stops the downloading of a file. If a file has already been downloaded, does nothing.
+///
+/// * [fileId]: Identifier of a file to stop downloading.
+/// * [onlyIfPending]: Pass true to stop downloading only if it hasn't been started, i.e. request hasn't been sent to server.
+///
+/// [Ok] is returned on completion.
+final class CancelDownloadFile extends TdFunction {
+  
+  /// **CancelDownloadFile** *(cancelDownloadFile)* - TDLib function
+  ///
+  /// Stops the downloading of a file. If a file has already been downloaded, does nothing.
+  ///
+  /// * [fileId]: Identifier of a file to stop downloading.
+  /// * [onlyIfPending]: Pass true to stop downloading only if it hasn't been started, i.e. request hasn't been sent to server.
+  ///
+  /// [Ok] is returned on completion.
   const CancelDownloadFile({
     required this.fileId,
     required this.onlyIfPending,
   });
   
-  /// [fileId] Identifier of a file to stop downloading 
+  /// Identifier of a file to stop downloading 
   final int fileId;
 
-  /// [onlyIfPending] Pass true to stop downloading only if it hasn't been started, i.e. request hasn't been sent to server
+  /// Pass true to stop downloading only if it hasn't been started, i.e. request hasn't been sent to server
   final bool onlyIfPending;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "file_id": fileId,
       "only_if_pending": onlyIfPending,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   CancelDownloadFile copyWith({
     int? fileId,
@@ -32,8 +48,11 @@ class CancelDownloadFile extends TdFunction {
     onlyIfPending: onlyIfPending ?? this.onlyIfPending,
   );
 
-  static const CONSTRUCTOR = 'cancelDownloadFile';
-  
+  static const String objectType = 'cancelDownloadFile';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

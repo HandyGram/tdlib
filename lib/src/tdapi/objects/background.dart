@@ -1,8 +1,27 @@
 part of '../tdapi.dart';
 
-class Background extends TdObject {
-
-  /// Describes a chat background
+/// **Background** *(background)* - basic class
+///
+/// Describes a chat background.
+///
+/// * [id]: Unique background identifier.
+/// * [isDefault]: True, if this is one of default backgrounds.
+/// * [isDark]: True, if the background is dark and is recommended to be used with dark theme.
+/// * [name]: Unique background name.
+/// * [document]: Document with the background; may be null. Null only for filled backgrounds *(optional)*.
+/// * [type]: Type of the background.
+final class Background extends TdObject {
+  
+  /// **Background** *(background)* - basic class
+  ///
+  /// Describes a chat background.
+  ///
+  /// * [id]: Unique background identifier.
+  /// * [isDefault]: True, if this is one of default backgrounds.
+  /// * [isDark]: True, if the background is dark and is recommended to be used with dark theme.
+  /// * [name]: Unique background name.
+  /// * [document]: Document with the background; may be null. Null only for filled backgrounds *(optional)*.
+  /// * [type]: Type of the background.
   const Background({
     required this.id,
     required this.isDefault,
@@ -14,22 +33,22 @@ class Background extends TdObject {
     this.clientId,
   });
   
-  /// [id] Unique background identifier
+  /// Unique background identifier
   final int id;
 
-  /// [isDefault] True, if this is one of default backgrounds
+  /// True, if this is one of default backgrounds
   final bool isDefault;
 
-  /// [isDark] True, if the background is dark and is recommended to be used with dark theme
+  /// True, if the background is dark and is recommended to be used with dark theme
   final bool isDark;
 
-  /// [name] Unique background name
+  /// Unique background name
   final String name;
 
-  /// [document] Document with the background; may be null. Null only for filled backgrounds
+  /// Document with the background; may be null. Null only for filled backgrounds
   final Document? document;
 
-  /// [type] Type of the background
+  /// Type of the background
   final BackgroundType type;
 
   /// [extra] callback sign
@@ -54,17 +73,18 @@ class Background extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "id": id,
       "is_default": isDefault,
       "is_dark": isDark,
       "name": name,
       "document": document?.toJson(),
       "type": type.toJson(),
-    };
-  }
+		};
+	}
+
   
   Background copyWith({
     int? id,
@@ -86,8 +106,11 @@ class Background extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'background';
-  
+  static const String objectType = 'background';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

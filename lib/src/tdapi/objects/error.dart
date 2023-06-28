@@ -1,8 +1,19 @@
 part of '../tdapi.dart';
 
-class TdError extends TdObject {
-
-  /// An object of this type can be returned on every function call, in case of an error
+/// **TdError** *(error)* - basic class
+///
+/// An object of this type can be returned on every function call, in case of an error.
+///
+/// * [code]: Error code; subject to future changes. If the error code is 406, the error message must not be processed in any way and must not be displayed to the user.
+/// * [message]: Error message; subject to future changes.
+final class TdError extends TdObject {
+  
+  /// **TdError** *(error)* - basic class
+  ///
+  /// An object of this type can be returned on every function call, in case of an error.
+  ///
+  /// * [code]: Error code; subject to future changes. If the error code is 406, the error message must not be processed in any way and must not be displayed to the user.
+  /// * [message]: Error message; subject to future changes.
   const TdError({
     required this.code,
     required this.message,
@@ -10,10 +21,10 @@ class TdError extends TdObject {
     this.clientId,
   });
   
-  /// [code] Error code; subject to future changes. If the error code is 406, the error message must not be processed in any way and must not be displayed to the user
+  /// Error code; subject to future changes. If the error code is 406, the error message must not be processed in any way and must not be displayed to the user
   final int code;
 
-  /// [message] Error message; subject to future changes
+  /// Error message; subject to future changes
   final String message;
 
   /// [extra] callback sign
@@ -34,13 +45,14 @@ class TdError extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "code": code,
       "message": message,
-    };
-  }
+		};
+	}
+
   
   TdError copyWith({
     int? code,
@@ -54,8 +66,11 @@ class TdError extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'error';
-  
+  static const String objectType = 'error';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

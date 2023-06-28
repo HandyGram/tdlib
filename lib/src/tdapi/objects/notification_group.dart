@@ -1,8 +1,25 @@
 part of '../tdapi.dart';
 
-class NotificationGroup extends TdObject {
-
-  /// Describes a group of notifications
+/// **NotificationGroup** *(notificationGroup)* - basic class
+///
+/// Describes a group of notifications.
+///
+/// * [id]: Unique persistent auto-incremented from 1 identifier of the notification group.
+/// * [type]: Type of the group.
+/// * [chatId]: Identifier of a chat to which all notifications in the group belong.
+/// * [totalCount]: Total number of active notifications in the group.
+/// * [notifications]: The list of active notifications.
+final class NotificationGroup extends TdObject {
+  
+  /// **NotificationGroup** *(notificationGroup)* - basic class
+  ///
+  /// Describes a group of notifications.
+  ///
+  /// * [id]: Unique persistent auto-incremented from 1 identifier of the notification group.
+  /// * [type]: Type of the group.
+  /// * [chatId]: Identifier of a chat to which all notifications in the group belong.
+  /// * [totalCount]: Total number of active notifications in the group.
+  /// * [notifications]: The list of active notifications.
   const NotificationGroup({
     required this.id,
     required this.type,
@@ -11,19 +28,19 @@ class NotificationGroup extends TdObject {
     required this.notifications,
   });
   
-  /// [id] Unique persistent auto-incremented from 1 identifier of the notification group 
+  /// Unique persistent auto-incremented from 1 identifier of the notification group
   final int id;
 
-  /// [type] Type of the group
+  /// Type of the group
   final NotificationGroupType type;
 
-  /// [chatId] Identifier of a chat to which all notifications in the group belong
+  /// Identifier of a chat to which all notifications in the group belong
   final int chatId;
 
-  /// [totalCount] Total number of active notifications in the group
+  /// Total number of active notifications in the group
   final int totalCount;
 
-  /// [notifications] The list of active notifications
+  /// The list of active notifications
   final List<Notification> notifications;
   
   /// Parse from a json
@@ -37,16 +54,17 @@ class NotificationGroup extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "id": id,
       "type": type.toJson(),
       "chat_id": chatId,
       "total_count": totalCount,
       "notifications": notifications.map((i) => i.toJson()).toList(),
-    };
-  }
+		};
+	}
+
   
   NotificationGroup copyWith({
     int? id,
@@ -62,8 +80,11 @@ class NotificationGroup extends TdObject {
     notifications: notifications ?? this.notifications,
   );
 
-  static const CONSTRUCTOR = 'notificationGroup';
-  
+  static const String objectType = 'notificationGroup';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

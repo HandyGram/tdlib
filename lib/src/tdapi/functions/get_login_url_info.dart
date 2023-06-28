@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class GetLoginUrlInfo extends TdFunction {
-
-  /// Returns information about a button of type inlineKeyboardButtonTypeLoginUrl. The method needs to be called when the user presses the button
+/// **GetLoginUrlInfo** *(getLoginUrlInfo)* - TDLib function
+///
+/// Returns information about a button of type inlineKeyboardButtonTypeLoginUrl. The method needs to be called when the user presses the button.
+///
+/// * [chatId]: Chat identifier of the message with the button.
+/// * [messageId]: Message identifier of the message with the button.
+/// * [buttonId]: Button identifier.
+///
+/// [LoginUrlInfo] is returned on completion.
+final class GetLoginUrlInfo extends TdFunction {
+  
+  /// **GetLoginUrlInfo** *(getLoginUrlInfo)* - TDLib function
+  ///
+  /// Returns information about a button of type inlineKeyboardButtonTypeLoginUrl. The method needs to be called when the user presses the button.
+  ///
+  /// * [chatId]: Chat identifier of the message with the button.
+  /// * [messageId]: Message identifier of the message with the button.
+  /// * [buttonId]: Button identifier.
+  ///
+  /// [LoginUrlInfo] is returned on completion.
   const GetLoginUrlInfo({
     required this.chatId,
     required this.messageId,
     required this.buttonId,
   });
   
-  /// [chatId] Chat identifier of the message with the button
+  /// Chat identifier of the message with the button
   final int chatId;
 
-  /// [messageId] Message identifier of the message with the button 
+  /// Message identifier of the message with the button
   final int messageId;
 
-  /// [buttonId] Button identifier
+  /// Button identifier
   final int buttonId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "message_id": messageId,
       "button_id": buttonId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetLoginUrlInfo copyWith({
     int? chatId,
@@ -39,8 +57,11 @@ class GetLoginUrlInfo extends TdFunction {
     buttonId: buttonId ?? this.buttonId,
   );
 
-  static const CONSTRUCTOR = 'getLoginUrlInfo';
-  
+  static const String objectType = 'getLoginUrlInfo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

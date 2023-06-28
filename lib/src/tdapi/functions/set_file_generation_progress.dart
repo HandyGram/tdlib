@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class SetFileGenerationProgress extends TdFunction {
-
-  /// Informs TDLib on a file generation progress
+/// **SetFileGenerationProgress** *(setFileGenerationProgress)* - TDLib function
+///
+/// Informs TDLib on a file generation progress.
+///
+/// * [generationId]: The identifier of the generation process.
+/// * [expectedSize]: Expected size of the generated file, in bytes; 0 if unknown.
+/// * [localPrefixSize]: The number of bytes already generated.
+///
+/// [Ok] is returned on completion.
+final class SetFileGenerationProgress extends TdFunction {
+  
+  /// **SetFileGenerationProgress** *(setFileGenerationProgress)* - TDLib function
+  ///
+  /// Informs TDLib on a file generation progress.
+  ///
+  /// * [generationId]: The identifier of the generation process.
+  /// * [expectedSize]: Expected size of the generated file, in bytes; 0 if unknown.
+  /// * [localPrefixSize]: The number of bytes already generated.
+  ///
+  /// [Ok] is returned on completion.
   const SetFileGenerationProgress({
     required this.generationId,
     required this.expectedSize,
     required this.localPrefixSize,
   });
   
-  /// [generationId] The identifier of the generation process
+  /// The identifier of the generation process
   final int generationId;
 
-  /// [expectedSize] Expected size of the generated file, in bytes; 0 if unknown
+  /// Expected size of the generated file, in bytes; 0 if unknown
   final int expectedSize;
 
-  /// [localPrefixSize] The number of bytes already generated
+  /// The number of bytes already generated
   final int localPrefixSize;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "generation_id": generationId,
       "expected_size": expectedSize,
       "local_prefix_size": localPrefixSize,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SetFileGenerationProgress copyWith({
     int? generationId,
@@ -39,8 +57,11 @@ class SetFileGenerationProgress extends TdFunction {
     localPrefixSize: localPrefixSize ?? this.localPrefixSize,
   );
 
-  static const CONSTRUCTOR = 'setFileGenerationProgress';
-  
+  static const String objectType = 'setFileGenerationProgress';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

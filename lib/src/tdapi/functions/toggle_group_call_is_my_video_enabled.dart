@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class ToggleGroupCallIsMyVideoEnabled extends TdFunction {
-
-  /// Toggles whether current user's video is enabled
+/// **ToggleGroupCallIsMyVideoEnabled** *(toggleGroupCallIsMyVideoEnabled)* - TDLib function
+///
+/// Toggles whether current user's video is enabled.
+///
+/// * [groupCallId]: Group call identifier.
+/// * [isMyVideoEnabled]: Pass true if the current user's video is enabled.
+///
+/// [Ok] is returned on completion.
+final class ToggleGroupCallIsMyVideoEnabled extends TdFunction {
+  
+  /// **ToggleGroupCallIsMyVideoEnabled** *(toggleGroupCallIsMyVideoEnabled)* - TDLib function
+  ///
+  /// Toggles whether current user's video is enabled.
+  ///
+  /// * [groupCallId]: Group call identifier.
+  /// * [isMyVideoEnabled]: Pass true if the current user's video is enabled.
+  ///
+  /// [Ok] is returned on completion.
   const ToggleGroupCallIsMyVideoEnabled({
     required this.groupCallId,
     required this.isMyVideoEnabled,
   });
   
-  /// [groupCallId] Group call identifier 
+  /// Group call identifier 
   final int groupCallId;
 
-  /// [isMyVideoEnabled] Pass true if the current user's video is enabled
+  /// Pass true if the current user's video is enabled
   final bool isMyVideoEnabled;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "group_call_id": groupCallId,
       "is_my_video_enabled": isMyVideoEnabled,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   ToggleGroupCallIsMyVideoEnabled copyWith({
     int? groupCallId,
@@ -32,8 +48,11 @@ class ToggleGroupCallIsMyVideoEnabled extends TdFunction {
     isMyVideoEnabled: isMyVideoEnabled ?? this.isMyVideoEnabled,
   );
 
-  static const CONSTRUCTOR = 'toggleGroupCallIsMyVideoEnabled';
-  
+  static const String objectType = 'toggleGroupCallIsMyVideoEnabled';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

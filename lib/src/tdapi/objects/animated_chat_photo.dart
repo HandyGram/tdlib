@@ -1,21 +1,34 @@
 part of '../tdapi.dart';
 
-class AnimatedChatPhoto extends TdObject {
-
-  /// Animated variant of a chat photo in MPEG4 format
+/// **AnimatedChatPhoto** *(animatedChatPhoto)* - basic class
+///
+/// Animated variant of a chat photo in MPEG4 format.
+///
+/// * [length]: Animation width and height.
+/// * [file]: Information about the animation file.
+/// * [mainFrameTimestamp]: Timestamp of the frame, used as a static chat photo.
+final class AnimatedChatPhoto extends TdObject {
+  
+  /// **AnimatedChatPhoto** *(animatedChatPhoto)* - basic class
+  ///
+  /// Animated variant of a chat photo in MPEG4 format.
+  ///
+  /// * [length]: Animation width and height.
+  /// * [file]: Information about the animation file.
+  /// * [mainFrameTimestamp]: Timestamp of the frame, used as a static chat photo.
   const AnimatedChatPhoto({
     required this.length,
     required this.file,
     required this.mainFrameTimestamp,
   });
   
-  /// [length] Animation width and height
+  /// Animation width and height
   final int length;
 
-  /// [file] Information about the animation file
+  /// Information about the animation file
   final File file;
 
-  /// [mainFrameTimestamp] Timestamp of the frame, used as a static chat photo
+  /// Timestamp of the frame, used as a static chat photo
   final double mainFrameTimestamp;
   
   /// Parse from a json
@@ -27,14 +40,15 @@ class AnimatedChatPhoto extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "length": length,
       "file": file.toJson(),
       "main_frame_timestamp": mainFrameTimestamp,
-    };
-  }
+		};
+	}
+
   
   AnimatedChatPhoto copyWith({
     int? length,
@@ -46,8 +60,11 @@ class AnimatedChatPhoto extends TdObject {
     mainFrameTimestamp: mainFrameTimestamp ?? this.mainFrameTimestamp,
   );
 
-  static const CONSTRUCTOR = 'animatedChatPhoto';
-  
+  static const String objectType = 'animatedChatPhoto';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

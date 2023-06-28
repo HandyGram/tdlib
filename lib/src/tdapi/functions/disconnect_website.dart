@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class DisconnectWebsite extends TdFunction {
-
-  /// Disconnects website from the current user's Telegram account
+/// **DisconnectWebsite** *(disconnectWebsite)* - TDLib function
+///
+/// Disconnects website from the current user's Telegram account.
+///
+/// * [websiteId]: Website identifier.
+///
+/// [Ok] is returned on completion.
+final class DisconnectWebsite extends TdFunction {
+  
+  /// **DisconnectWebsite** *(disconnectWebsite)* - TDLib function
+  ///
+  /// Disconnects website from the current user's Telegram account.
+  ///
+  /// * [websiteId]: Website identifier.
+  ///
+  /// [Ok] is returned on completion.
   const DisconnectWebsite({
     required this.websiteId,
   });
   
-  /// [websiteId] Website identifier
+  /// Website identifier
   final int websiteId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "website_id": websiteId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   DisconnectWebsite copyWith({
     int? websiteId,
@@ -25,8 +39,11 @@ class DisconnectWebsite extends TdFunction {
     websiteId: websiteId ?? this.websiteId,
   );
 
-  static const CONSTRUCTOR = 'disconnectWebsite';
-  
+  static const String objectType = 'disconnectWebsite';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

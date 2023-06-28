@@ -1,23 +1,36 @@
 part of '../tdapi.dart';
 
-class ResetBackgrounds extends TdFunction {
-
-  /// Resets list of installed backgrounds to its default value
+/// **ResetBackgrounds** *(resetBackgrounds)* - TDLib function
+///
+/// Resets list of installed backgrounds to its default value.
+///
+/// [Ok] is returned on completion.
+final class ResetBackgrounds extends TdFunction {
+  
+  /// **ResetBackgrounds** *(resetBackgrounds)* - TDLib function
+  ///
+  /// Resets list of installed backgrounds to its default value.
+  ///
+  /// [Ok] is returned on completion.
   const ResetBackgrounds();
   
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   ResetBackgrounds copyWith() => const ResetBackgrounds();
 
-  static const CONSTRUCTOR = 'resetBackgrounds';
-  
+  static const String objectType = 'resetBackgrounds';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

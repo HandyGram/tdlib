@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class CheckPhoneNumberConfirmationCode extends TdFunction {
-
-  /// Checks phone number confirmation code
+/// **CheckPhoneNumberConfirmationCode** *(checkPhoneNumberConfirmationCode)* - TDLib function
+///
+/// Checks phone number confirmation code.
+///
+/// * [code]: Confirmation code to check.
+///
+/// [Ok] is returned on completion.
+final class CheckPhoneNumberConfirmationCode extends TdFunction {
+  
+  /// **CheckPhoneNumberConfirmationCode** *(checkPhoneNumberConfirmationCode)* - TDLib function
+  ///
+  /// Checks phone number confirmation code.
+  ///
+  /// * [code]: Confirmation code to check.
+  ///
+  /// [Ok] is returned on completion.
   const CheckPhoneNumberConfirmationCode({
     required this.code,
   });
   
-  /// [code] Confirmation code to check
+  /// Confirmation code to check
   final String code;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "code": code,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   CheckPhoneNumberConfirmationCode copyWith({
     String? code,
@@ -25,8 +39,11 @@ class CheckPhoneNumberConfirmationCode extends TdFunction {
     code: code ?? this.code,
   );
 
-  static const CONSTRUCTOR = 'checkPhoneNumberConfirmationCode';
-  
+  static const String objectType = 'checkPhoneNumberConfirmationCode';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

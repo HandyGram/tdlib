@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class GetUserPrivacySettingRules extends TdFunction {
-
-  /// Returns the current privacy settings
+/// **GetUserPrivacySettingRules** *(getUserPrivacySettingRules)* - TDLib function
+///
+/// Returns the current privacy settings.
+///
+/// * [setting]: The privacy setting.
+///
+/// [UserPrivacySettingRules] is returned on completion.
+final class GetUserPrivacySettingRules extends TdFunction {
+  
+  /// **GetUserPrivacySettingRules** *(getUserPrivacySettingRules)* - TDLib function
+  ///
+  /// Returns the current privacy settings.
+  ///
+  /// * [setting]: The privacy setting.
+  ///
+  /// [UserPrivacySettingRules] is returned on completion.
   const GetUserPrivacySettingRules({
     required this.setting,
   });
   
-  /// [setting] The privacy setting
+  /// The privacy setting
   final UserPrivacySetting setting;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "setting": setting.toJson(),
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetUserPrivacySettingRules copyWith({
     UserPrivacySetting? setting,
@@ -25,8 +39,11 @@ class GetUserPrivacySettingRules extends TdFunction {
     setting: setting ?? this.setting,
   );
 
-  static const CONSTRUCTOR = 'getUserPrivacySettingRules';
-  
+  static const String objectType = 'getUserPrivacySettingRules';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

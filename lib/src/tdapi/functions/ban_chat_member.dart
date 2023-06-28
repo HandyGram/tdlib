@@ -1,8 +1,27 @@
 part of '../tdapi.dart';
 
-class BanChatMember extends TdFunction {
-
-  /// Bans a member in a chat. Members can't be banned in private or secret chats. In supergroups and channels, the user will not be able to return to the group on their own using invite links, etc., unless unbanned first
+/// **BanChatMember** *(banChatMember)* - TDLib function
+///
+/// Bans a member in a chat. Members can't be banned in private or secret chats. In supergroups and channels, the user will not be able to return to the group on their own using invite links, etc., unless unbanned first.
+///
+/// * [chatId]: Chat identifier.
+/// * [memberId]: Member identifier.
+/// * [bannedUntilDate]: Point in time (Unix timestamp) when the user will be unbanned; 0 if never. If the user is banned for more than 366 days or for less than 30 seconds from the current time, the user is considered to be banned forever. Ignored in basic groups and if a chat is banned.
+/// * [revokeMessages]: Pass true to delete all messages in the chat for the user that is being removed. Always true for supergroups and channels.
+///
+/// [Ok] is returned on completion.
+final class BanChatMember extends TdFunction {
+  
+  /// **BanChatMember** *(banChatMember)* - TDLib function
+  ///
+  /// Bans a member in a chat. Members can't be banned in private or secret chats. In supergroups and channels, the user will not be able to return to the group on their own using invite links, etc., unless unbanned first.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [memberId]: Member identifier.
+  /// * [bannedUntilDate]: Point in time (Unix timestamp) when the user will be unbanned; 0 if never. If the user is banned for more than 366 days or for less than 30 seconds from the current time, the user is considered to be banned forever. Ignored in basic groups and if a chat is banned.
+  /// * [revokeMessages]: Pass true to delete all messages in the chat for the user that is being removed. Always true for supergroups and channels.
+  ///
+  /// [Ok] is returned on completion.
   const BanChatMember({
     required this.chatId,
     required this.memberId,
@@ -10,29 +29,30 @@ class BanChatMember extends TdFunction {
     required this.revokeMessages,
   });
   
-  /// [chatId] Chat identifier
+  /// Chat identifier
   final int chatId;
 
-  /// [memberId] Member identifier
+  /// Member identifier
   final MessageSender memberId;
 
-  /// [bannedUntilDate] Point in time (Unix timestamp) when the user will be unbanned; 0 if never. If the user is banned for more than 366 days or for less than 30 seconds from the current time, the user is considered to be banned forever. Ignored in basic groups and if a chat is banned
+  /// Point in time (Unix timestamp) when the user will be unbanned; 0 if never. If the user is banned for more than 366 days or for less than 30 seconds from the current time, the user is considered to be banned forever. Ignored in basic groups and if a chat is banned
   final int bannedUntilDate;
 
-  /// [revokeMessages] Pass true to delete all messages in the chat for the user that is being removed. Always true for supergroups and channels
+  /// Pass true to delete all messages in the chat for the user that is being removed. Always true for supergroups and channels
   final bool revokeMessages;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "member_id": memberId.toJson(),
       "banned_until_date": bannedUntilDate,
       "revoke_messages": revokeMessages,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   BanChatMember copyWith({
     int? chatId,
@@ -46,8 +66,11 @@ class BanChatMember extends TdFunction {
     revokeMessages: revokeMessages ?? this.revokeMessages,
   );
 
-  static const CONSTRUCTOR = 'banChatMember';
-  
+  static const String objectType = 'banChatMember';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

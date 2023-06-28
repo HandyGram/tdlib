@@ -1,6 +1,8 @@
 import 'dart:io';
 
-const tdApiDir = 'lib/src/tdapi';
+const bool isTestRun = false;
+
+const tdApiDir = isTestRun ? "test_tdapi" : 'lib/src/tdapi';
 final tdApiFile = File('$tdApiDir/tdapi.dart');
 final functionsDir = Directory("$tdApiDir/functions");
 final objectsDir = Directory("$tdApiDir/objects");
@@ -27,8 +29,14 @@ final fieldsRegx = RegExp(r'^(\w+) (.*)?= (\w+);$');
 
 final List<TlObject> _objects = [];
 
+class ReplacementData {
+  final String from;
+  final String to;
+  const ReplacementData(this.from, this.to);
+}
+
 class DartTdDocumentationGenerator {
-  String schemePath = 'data/td_api.tl';
+  String schemePath = '${Directory.current.path}/data/td_api.tl';
   int skipLines = 13;
   String mainPart = 'part of \'../tdapi.dart\';';
 
@@ -70,7 +78,7 @@ class DartTdDocumentationGenerator {
         final classData = classRegx.firstMatch(line)!;
         final className = classData.group(1);
         final classDes = classData.group(2);
-        _objects.add(TlObject(className!, classDes!, 'classes'));
+        _objects.add(TlObject(className!, className, classDes!, 'classes'));
         continue;
       }
 
@@ -130,7 +138,7 @@ class DartTdDocumentationGenerator {
 
         // store class data and reset class and variables descriptions.
         _objects.add(TlObject(
-            upperFirstChar(className), classDescription, section!,
+            upperFirstChar(className), className, classDescription, section!,
             variablesDescriptions: variablesDescriptions,
             argsData: args,
             returnType: classReturnType!));
@@ -146,34 +154,45 @@ class DartTdDocumentationGenerator {
     _objects.where((TlObject obj) => obj.isParent).forEach((TlObject cls) {
       final children = _objects.where((TlObject element) =>
           cls.name == element.returnType && element.hasParent);
-      children.forEach((TlObject child) {
+      for (var child in children) {
         child.relevantObjects.add(cls.name);
         cls.relevantObjects.add(child.name);
-      });
+      }
     });
     _objects.where((TlObject obj) => obj.isFunction).forEach((TlObject func) {
       final results =
           _objects.where((TlObject element) => func.returnType == element.name);
-      results.forEach((TlObject result) {
+      for (var result in results) {
         if (result.isParent) {
           func.relevantObjects.addAll(result.relevantObjects);
         } else {
           func.relevantObjects.add(result.name);
         }
-      });
+      }
     });
   }
 
   /// check variables by arguments
   void validationVariables() {
-    _objects.forEach((obj) => obj.makeVariablesList());
+    for (var obj in _objects) {
+      obj.makeVariablesList();
+    }
   }
+
+  String genDescription(TlObject obj, String className, String parent,
+          bool hasFactory, bool needToTab) =>
+      "**$className** *(${lowerFirstChar(obj.name)})* - "
+      "${obj.isFunction ? "TDLib function" : obj.isParent ? "parent" : obj.hasParent ? "child of $parent" : "basic class"}"
+      "\n${needToTab ? '  ' : ''}///\n${needToTab ? '  ' : ''}/// "
+      "${obj.description.trim()}${obj.description.trim().endsWith(".") ? "" : "."}"
+      "${hasFactory ? '' : obj.variables.isNotEmpty ? '\n${needToTab ? '  ' : ''}///\n${needToTab ? '  ' : ''}/// ${obj.variables.map((o) => '* [${o.argName}]: ${o.description.trim()}${o.optional ? " *(optional)*" : ""}${o.description.trim().endsWith(".") ? "" : "."}').join('\n${needToTab ? '  ' : ''}/// ')}' : ''}"
+      "${obj.isFunction ? "\n${needToTab ? '  ' : ''}///\n${needToTab ? '  ' : ''}/// [${obj.returnType}] is returned on completion." : ""}";
 
   /// final step
   /// write data to file
   void writeToFile() {
     tdApiFile.writeAsStringSync(
-        'import \'dart:convert\' show json;\n\npart \'object.dart\';\npart \'function.dart\';\n\n');
+        'import \'dart:convert\' show json, jsonEncode;\n\npart \'object.dart\';\npart \'function.dart\';\n\n');
     if (functionsDir.existsSync()) functionsDir.deleteSync(recursive: true);
     functionsDir.createSync(recursive: true);
 
@@ -181,7 +200,7 @@ class DartTdDocumentationGenerator {
     objectsDir.createSync(recursive: true);
 
     for (final obj in _objects) {
-      final temple = File('generator/main_class.tmpl').readAsStringSync();
+      final temple = File('generator/class.tmpl').readAsStringSync();
       final snakeName = snakeCase(obj.name);
       final folderName = sectionFolder(obj.type);
       var finalDir = '$tdApiDir/$folderName/$snakeName.dart';
@@ -200,26 +219,32 @@ class DartTdDocumentationGenerator {
       if (obj.isParent) {
         hasFactory = true;
         fromJsonFields.add('switch(json["@type"]) {');
-        obj.relevantObjects.forEach((String? relevantObject) {
-          fromJsonFields.add('  case $relevantObject.CONSTRUCTOR:');
+        for (var relevantObject in obj.relevantObjects) {
+          fromJsonFields.add('  case $relevantObject.objectType:');
           fromJsonFields.add('    return $relevantObject.fromJson(json);');
           // extra = '\n\n  @override\n  dynamic get extra => null;\n\n  @override\n  int? get clientId => null;';
-        });
+        }
         fromJsonFields.add('  default:');
-        fromJsonFields.add('    return const ${obj.name}();');
+        fromJsonFields.add(
+          '    throw FormatException(\n'
+          '          "Unknown object \${json["@type"]} (expected child of ${obj.name})",\n'
+          '          json,\n'
+          '        );',
+        );
         fromJsonFields.add('}');
       } else {
-        toJsonFields.add('"@type": CONSTRUCTOR,');
-        obj.variables.forEach((variable) {
+        toJsonFields.add('"@type": objectType,');
+        for (var variable in obj.variables) {
           variables.add(
-              '/// [${variable.argName}] ${variable.description}\n  final ${variable.optional ? variable.type + "?" : variable.type} ${variable.argName};');
-          arguments.add((variable.optional ? '' : 'required ') +
-              'this.${variable.argName}');
+              '/// ${variable.description}\n  final ${variable.optional ? "${variable.type}?" : variable.type} ${variable.argName};');
+          arguments.add(
+              '${variable.optional ? '' : 'required '}this.${variable.argName}');
           fromJsonFields.add('${variable.argName}: ${variable.read},');
           toJsonFields.add('\n      "${variable.name}": ${variable.write},');
           copyWithFields.add('${variable.type}? ${variable.argName},');
-          copyWithReturnFields.add('${variable.argName}: ${variable.argName} ?? this.${variable.argName},');
-        });
+          copyWithReturnFields.add(
+              '${variable.argName}: ${variable.argName} ?? this.${variable.argName},');
+        }
         if (obj.isFunction) {
           fromJsonFields = [];
           parent = 'TdFunction';
@@ -241,7 +266,8 @@ class DartTdDocumentationGenerator {
           }
           if (_objects.any(
               (e) => e.isFunction && e.relevantObjects.contains(obj.name))) {
-            variables.add('/// [extra] callback sign\n  @override\n  final dynamic extra;');
+            variables.add(
+                '/// [extra] callback sign\n  @override\n  final dynamic extra;');
             arguments.add('this.extra');
             fromJsonFields.add('extra: json[\'@extra\'],');
             copyWithFields.add('dynamic extra,');
@@ -262,70 +288,102 @@ class DartTdDocumentationGenerator {
             mode: FileMode.append); // todo: Even Functions?
       }
 
-      final objFile = File(finalDir);
-      final stringObj = temple
-          //.replaceAll('PART', '')
-          .replaceAll('PART', objectPart)
-          .replaceAll('PARENT', parent)
-          .replaceAll('VARIABLES',
-              variables.isNotEmpty ? '\n  ' + variables.join('\n\n  ') : '')
-          .replaceAll('EXTRA', extra)
-          .replaceAll('DESCRIPTION', obj.description)
-          // + (hasFactory
+      String className = obj.name == 'Error' ? 'TdError' : obj.name;
 
-
-
-          //     ? ''
-          //     : (obj.variables.isNotEmpty
-          //         ? '. \n  /// ${obj.variables.map((o) => '[${o.argName}] ${o.description}').join('. \n  /// ')}'
-          //         : ''))
-          .replaceAll(
-              'ARGUMENTS',
-              arguments.isEmpty
-                  ? ''
-                  : '{\n    ${arguments.join(',\n    ')},\n  }')
-          .replaceAll(
-              'FROM_JSON',
-              obj.isFunction
-                  ? ''
-                  : """${variables.isNotEmpty || extra.isNotEmpty ? '\n  ' : ''}/// DOC
-  factory CLASS_NAME.fromJson(Map<String, dynamic> json) FROM_JSON
+      List<ReplacementData> replacements = [
+        ReplacementData('PART', objectPart),
+        ReplacementData('PARENT', parent),
+        ReplacementData(
+          'VARIABLES',
+          variables.isNotEmpty ? '\n  ${variables.join('\n\n  ')}' : '',
+        ),
+        ReplacementData('EXTRA', extra),
+        ReplacementData('CLASS_MODIFIER', obj.isParent ? "sealed" : "final"),
+        ReplacementData('CLASS_NAME', className),
+        ReplacementData(
+          'DESCRIPTION1',
+          genDescription(obj, className, parent, hasFactory, false),
+        ),
+        ReplacementData(
+          'DESCRIPTION2',
+          genDescription(obj, className, parent, hasFactory, true),
+        ),
+        ReplacementData(
+          'ARGUMENTS',
+          arguments.isEmpty ? '' : '{\n    ${arguments.join(',\n    ')},\n  }',
+        ),
+        ReplacementData(
+          'FROM_JSON',
+          obj.isFunction
+              ? ''
+              : """${variables.isNotEmpty || extra.isNotEmpty ? '\n  ' : ''}/// DOC
+  factory $className.fromJson(Map<String, dynamic> json) FROM_JSON
   """
-                      .replaceAll(
-                          'DOC',
-                          hasFactory
-                              ? ('a ${obj.name} return type can be :\n  /// * [' +
-                                  obj.relevantObjects.join(']\n  /// * [') +
-                                  ']')
-                              : 'Parse from a json')
-                      .replaceAll(
-                          'FROM_JSON',
-                          fromJsonFields.isEmpty
-                              ? '=> const CLASS_NAME();'
-                              : obj.isParent
-                                  ? ' {\n    ${fromJsonFields.join('\n    ')}\n  }'
-                                  : '=> CLASS_NAME(\n    ${fromJsonFields.join('\n    ')}\n  );\n  '))
-      .replaceAll('COPY_FIELDS', copyWithFields.isEmpty ? '' : '{\n    ${copyWithFields.join('\n    ')}\n  }')
-      .replaceAll('COPY_RETUEN', copyWithReturnFields.isEmpty ? 'const CLASS_NAME()' : 'CLASS_NAME(\n    ${copyWithReturnFields.join('\n    ')}\n  )')
-      .replaceAll('COPY_OVERRIDE', obj.hasParent ? '\n  @override' : '')
-      
-      
-          .replaceAll('CLASS_NAME', obj.name == 'Error' ? 'TdError' : obj.name)
-          .replaceAll('TO_JSON', toJsonFields.join(''))
-          .replaceAll('ID', lowerFirstChar(obj.name));
+                  .replaceAll(
+                      'DOC',
+                      hasFactory
+                          ? ('a ${obj.name} return type can be :\n  /// * [${obj.relevantObjects.join(']\n  /// * [')}]')
+                          : 'Parse from a json')
+                  .replaceAll(
+                      'FROM_JSON',
+                      fromJsonFields.isEmpty
+                          ? '=> const $className();'
+                          : obj.isParent
+                              ? ' {\n    ${fromJsonFields.join('\n    ')}\n  }'
+                              : '=> $className(\n    ${fromJsonFields.join('\n    ')}\n  );\n  '),
+        ),
+        ReplacementData(
+          'COPY_FIELDS',
+          copyWithFields.isEmpty
+              ? ''
+              : '{\n    ${copyWithFields.join('\n    ')}\n  }',
+        ),
+        ReplacementData('COPY_OVERRIDE', obj.hasParent ? '\n  @override' : ''),
+        ReplacementData('ID', lowerFirstChar(obj.name)),
+        ReplacementData(
+          'JSON_ARGS',
+          obj.isFunction ? '[dynamic extra]' : '',
+        ),
+      ];
 
+      // There should be only factory and constructor in parent class,
+      // also placeholder toJson and fromJson.
+      if (obj.isParent) {
+        replacements.add(const ReplacementData('TO_JSON', ';'));
+        replacements.add(const ReplacementData('COPY_RETURN', ''));
+      } else {
+        replacements.add(
+          ReplacementData('TO_JSON',
+              ' {\n\t\treturn {\n\t\t\t${toJsonFields.join('')}\n\t\t};\n\t}'),
+        );
+        replacements.add(
+          ReplacementData(
+            'COPY_RETURN',
+            copyWithReturnFields.isEmpty
+                ? ' => const $className()'
+                : ' => $className(\n    ${copyWithReturnFields.join('\n    ')}\n  )',
+          ),
+        );
+      }
+
+      final objFile = File(finalDir);
+      var stringObj = temple;
+      for (var entry in replacements) {
+        stringObj = stringObj.replaceAll(entry.from, entry.to);
+      }
+      objFile.parent.createSync(recursive: true);
       objFile.writeAsStringSync(stringObj, mode: writeMode);
       //tdApiFile.writeAsStringSync(stringObj, mode: FileMode.append);
     }
 
-    final convertorTemple = File('generator/convertor.tmpl').readAsStringSync();
+    final converterTemple = File('generator/converter.tmpl').readAsStringSync();
     var cases = '';
-    _objects.where((obj) => !obj.isFunction).forEach((obj) {
+    _objects.where((obj) => !obj.isFunction && !obj.isParent).forEach((obj) {
       cases +=
           '\n    case \'${lowerFirstChar(obj.name)}\': return ${obj.name == 'Error' ? 'TdError' : obj.name}.fromJson(newJson);';
     });
     tdApiFile.writeAsStringSync(
-      convertorTemple.replaceAll('CASES', cases),
+      converterTemple.replaceAll('CASES', cases),
       mode: FileMode.append,
     );
     //_objects.where((obj) => !obj.hasParent && _objects.any((func) => func.relevantObjects.contains(obj.name))).forEach((obj){
@@ -339,6 +397,7 @@ class DartTdDocumentationGenerator {
 }
 
 void main() {
+  Directory(tdApiDir).createSync();
   return DartTdDocumentationGenerator().generate();
 }
 
@@ -385,13 +444,14 @@ class TlObject {
   final String name;
   final String description;
   final String type;
+  final String tgName;
   late List<String> relevantObjects;
   late List<String> variablesDescriptions;
   late Map<String, String> argsData;
   late List<TlObjectArg> variables;
   final String returnType;
 
-  TlObject(this.name, this.description, this.type,
+  TlObject(this.name, this.tgName, this.description, this.type,
       {this.returnType = '',
       List<String>? variablesDescriptions,
       Map<String, String>? argsData,
@@ -412,7 +472,7 @@ class TlObject {
   bool get hasParent => !isFunction && name != returnType && !isParent;
 
   void makeVariablesList() {
-    variablesDescriptions.forEach((variableData) {
+    for (var variableData in variablesDescriptions) {
       final splitVariableData = variableData.split(' ');
       final variableName = splitVariableData[0] == 'param_description'
           ? 'description'
@@ -422,7 +482,7 @@ class TlObject {
       final obj =
           TlObjectArg(variableName, variableDescription, tlType: variableType);
       variables.add(obj);
-    });
+    }
   }
 }
 
@@ -439,7 +499,8 @@ class TlObjectArg {
     this.argName = argName ?? lowerFirstChar(camelCase(name));
     type = getType(tlType);
     if (type == 'Error') type = 'TdError';
-    optional = (description.contains('may be null') || description.contains("pass null")) &
+    optional = (description.contains('may be null') ||
+            description.contains("pass null")) &
         !description
             .contains('List of'); // null list fiedls are just empty listes.
     read = getRead(name, type,
@@ -493,8 +554,8 @@ class TlObjectArg {
       readFromJson =
           'TYPE.from(($pattern ?? []).map(($itemName) => ${getRead(name, subType, pattern: itemName, itemName: 'innerItem')}).toList())';
     } else {
-      readFromJson = (optional ? '$pattern == null ? null : ' : '') +
-          'TYPE.fromJson($pattern)';
+      readFromJson =
+          '${optional ? '$pattern == null ? null : ' : ''}TYPE.fromJson($pattern)';
     }
     return readFromJson
         .replaceAll('PLACE', 'json[\'$name\']')
@@ -511,7 +572,7 @@ class TlObjectArg {
       writeToJson =
           '.map(($itemName) => ${getWrite(itemName, subType, itemName: '${itemName}i', isList: true)}).toList()';
     } else if (!isList) {
-      writeToJson = (optional ? '?' : '') + '.toJson()';
+      writeToJson = '${optional ? '?' : ''}.toJson()';
     } else {
       writeToJson = '.toJson()';
     }

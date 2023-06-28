@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class ToggleChatDefaultDisableNotification extends TdFunction {
-
-  /// Changes the value of the default disable_notification parameter, used when a message is sent to a chat
+/// **ToggleChatDefaultDisableNotification** *(toggleChatDefaultDisableNotification)* - TDLib function
+///
+/// Changes the value of the default disable_notification parameter, used when a message is sent to a chat.
+///
+/// * [chatId]: Chat identifier.
+/// * [defaultDisableNotification]: New value of default_disable_notification.
+///
+/// [Ok] is returned on completion.
+final class ToggleChatDefaultDisableNotification extends TdFunction {
+  
+  /// **ToggleChatDefaultDisableNotification** *(toggleChatDefaultDisableNotification)* - TDLib function
+  ///
+  /// Changes the value of the default disable_notification parameter, used when a message is sent to a chat.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [defaultDisableNotification]: New value of default_disable_notification.
+  ///
+  /// [Ok] is returned on completion.
   const ToggleChatDefaultDisableNotification({
     required this.chatId,
     required this.defaultDisableNotification,
   });
   
-  /// [chatId] Chat identifier 
+  /// Chat identifier 
   final int chatId;
 
-  /// [defaultDisableNotification] New value of default_disable_notification
+  /// New value of default_disable_notification
   final bool defaultDisableNotification;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "default_disable_notification": defaultDisableNotification,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   ToggleChatDefaultDisableNotification copyWith({
     int? chatId,
@@ -32,8 +48,11 @@ class ToggleChatDefaultDisableNotification extends TdFunction {
     defaultDisableNotification: defaultDisableNotification ?? this.defaultDisableNotification,
   );
 
-  static const CONSTRUCTOR = 'toggleChatDefaultDisableNotification';
-  
+  static const String objectType = 'toggleChatDefaultDisableNotification';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class ClearAllDraftMessages extends TdFunction {
-
-  /// Clears draft messages in all chats
+/// **ClearAllDraftMessages** *(clearAllDraftMessages)* - TDLib function
+///
+/// Clears message drafts in all chats.
+///
+/// * [excludeSecretChats]: Pass true to keep local message drafts in secret chats.
+///
+/// [Ok] is returned on completion.
+final class ClearAllDraftMessages extends TdFunction {
+  
+  /// **ClearAllDraftMessages** *(clearAllDraftMessages)* - TDLib function
+  ///
+  /// Clears message drafts in all chats.
+  ///
+  /// * [excludeSecretChats]: Pass true to keep local message drafts in secret chats.
+  ///
+  /// [Ok] is returned on completion.
   const ClearAllDraftMessages({
     required this.excludeSecretChats,
   });
   
-  /// [excludeSecretChats] If true, local draft messages in secret chats will not be cleared
+  /// Pass true to keep local message drafts in secret chats
   final bool excludeSecretChats;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "exclude_secret_chats": excludeSecretChats,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   ClearAllDraftMessages copyWith({
     bool? excludeSecretChats,
@@ -25,8 +39,11 @@ class ClearAllDraftMessages extends TdFunction {
     excludeSecretChats: excludeSecretChats ?? this.excludeSecretChats,
   );
 
-  static const CONSTRUCTOR = 'clearAllDraftMessages';
-  
+  static const String objectType = 'clearAllDraftMessages';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

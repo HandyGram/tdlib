@@ -1,17 +1,28 @@
 part of '../tdapi.dart';
 
-class DatedFile extends TdObject {
-
-  /// File with the date it was uploaded
+/// **DatedFile** *(datedFile)* - basic class
+///
+/// File with the date it was uploaded.
+///
+/// * [file]: The file.
+/// * [date]: Point in time (Unix timestamp) when the file was uploaded.
+final class DatedFile extends TdObject {
+  
+  /// **DatedFile** *(datedFile)* - basic class
+  ///
+  /// File with the date it was uploaded.
+  ///
+  /// * [file]: The file.
+  /// * [date]: Point in time (Unix timestamp) when the file was uploaded.
   const DatedFile({
     required this.file,
     required this.date,
   });
   
-  /// [file] The file 
+  /// The file 
   final File file;
 
-  /// [date] Point in time (Unix timestamp) when the file was uploaded
+  /// Point in time (Unix timestamp) when the file was uploaded
   final int date;
   
   /// Parse from a json
@@ -22,13 +33,14 @@ class DatedFile extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "file": file.toJson(),
       "date": date,
-    };
-  }
+		};
+	}
+
   
   DatedFile copyWith({
     File? file,
@@ -38,8 +50,11 @@ class DatedFile extends TdObject {
     date: date ?? this.date,
   );
 
-  static const CONSTRUCTOR = 'datedFile';
-  
+  static const String objectType = 'datedFile';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

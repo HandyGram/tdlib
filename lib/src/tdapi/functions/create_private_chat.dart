@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class CreatePrivateChat extends TdFunction {
-
-  /// Returns an existing chat corresponding to a given user
+/// **CreatePrivateChat** *(createPrivateChat)* - TDLib function
+///
+/// Returns an existing chat corresponding to a given user.
+///
+/// * [userId]: User identifier.
+/// * [force]: Pass true to create the chat without a network request. In this case all information about the chat except its type, title and photo can be incorrect.
+///
+/// [Chat] is returned on completion.
+final class CreatePrivateChat extends TdFunction {
+  
+  /// **CreatePrivateChat** *(createPrivateChat)* - TDLib function
+  ///
+  /// Returns an existing chat corresponding to a given user.
+  ///
+  /// * [userId]: User identifier.
+  /// * [force]: Pass true to create the chat without a network request. In this case all information about the chat except its type, title and photo can be incorrect.
+  ///
+  /// [Chat] is returned on completion.
   const CreatePrivateChat({
     required this.userId,
     required this.force,
   });
   
-  /// [userId] User identifier 
+  /// User identifier 
   final int userId;
 
-  /// [force] If true, the chat will be created without network request. In this case all information about the chat except its type, title and photo can be incorrect
+  /// Pass true to create the chat without a network request. In this case all information about the chat except its type, title and photo can be incorrect
   final bool force;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "user_id": userId,
       "force": force,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   CreatePrivateChat copyWith({
     int? userId,
@@ -32,8 +48,11 @@ class CreatePrivateChat extends TdFunction {
     force: force ?? this.force,
   );
 
-  static const CONSTRUCTOR = 'createPrivateChat';
-  
+  static const String objectType = 'createPrivateChat';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

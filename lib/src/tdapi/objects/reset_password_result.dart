@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class ResetPasswordResult extends TdObject {
-
-  /// Represents result of 2-step verification password reset
+/// **ResetPasswordResult** *(resetPasswordResult)* - parent
+///
+/// Represents result of 2-step verification password reset.
+sealed class ResetPasswordResult extends TdObject {
+  
+  /// **ResetPasswordResult** *(resetPasswordResult)* - parent
+  ///
+  /// Represents result of 2-step verification password reset.
   const ResetPasswordResult();
   
   /// a ResetPasswordResult return type can be :
@@ -11,36 +16,44 @@ class ResetPasswordResult extends TdObject {
   /// * [ResetPasswordResultDeclined]
   factory ResetPasswordResult.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case ResetPasswordResultOk.CONSTRUCTOR:
+      case ResetPasswordResultOk.objectType:
         return ResetPasswordResultOk.fromJson(json);
-      case ResetPasswordResultPending.CONSTRUCTOR:
+      case ResetPasswordResultPending.objectType:
         return ResetPasswordResultPending.fromJson(json);
-      case ResetPasswordResultDeclined.CONSTRUCTOR:
+      case ResetPasswordResultDeclined.objectType:
         return ResetPasswordResultDeclined.fromJson(json);
       default:
-        return const ResetPasswordResult();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of ResetPasswordResult)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  ResetPasswordResult copyWith() => const ResetPasswordResult();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'resetPasswordResult';
   
+  ResetPasswordResult copyWith();
+
+  static const String objectType = 'resetPasswordResult';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ResetPasswordResultOk extends ResetPasswordResult {
-
-  /// The password was reset
+/// **ResetPasswordResultOk** *(resetPasswordResultOk)* - child of ResetPasswordResult
+///
+/// The password was reset.
+final class ResetPasswordResultOk extends ResetPasswordResult {
+  
+  /// **ResetPasswordResultOk** *(resetPasswordResultOk)* - child of ResetPasswordResult
+  ///
+  /// The password was reset.
   const ResetPasswordResultOk({
     this.extra,
     this.clientId,
@@ -62,11 +75,12 @@ class ResetPasswordResultOk extends ResetPasswordResult {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   ResetPasswordResultOk copyWith({
@@ -77,23 +91,35 @@ class ResetPasswordResultOk extends ResetPasswordResult {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'resetPasswordResultOk';
-  
+  static const String objectType = 'resetPasswordResultOk';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ResetPasswordResultPending extends ResetPasswordResult {
-
-  /// The password reset request is pending
+/// **ResetPasswordResultPending** *(resetPasswordResultPending)* - child of ResetPasswordResult
+///
+/// The password reset request is pending.
+///
+/// * [pendingResetDate]: Point in time (Unix timestamp) after which the password can be reset immediately using resetPassword.
+final class ResetPasswordResultPending extends ResetPasswordResult {
+  
+  /// **ResetPasswordResultPending** *(resetPasswordResultPending)* - child of ResetPasswordResult
+  ///
+  /// The password reset request is pending.
+  ///
+  /// * [pendingResetDate]: Point in time (Unix timestamp) after which the password can be reset immediately using resetPassword.
   const ResetPasswordResultPending({
     required this.pendingResetDate,
     this.extra,
     this.clientId,
   });
   
-  /// [pendingResetDate] Point in time (Unix timestamp) after which the password can be reset immediately using resetPassword
+  /// Point in time (Unix timestamp) after which the password can be reset immediately using resetPassword
   final int pendingResetDate;
 
   /// [extra] callback sign
@@ -113,12 +139,13 @@ class ResetPasswordResultPending extends ResetPasswordResult {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "pending_reset_date": pendingResetDate,
-    };
-  }
+		};
+	}
+
   
   @override
   ResetPasswordResultPending copyWith({
@@ -131,23 +158,35 @@ class ResetPasswordResultPending extends ResetPasswordResult {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'resetPasswordResultPending';
-  
+  static const String objectType = 'resetPasswordResultPending';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class ResetPasswordResultDeclined extends ResetPasswordResult {
-
-  /// The password reset request was declined
+/// **ResetPasswordResultDeclined** *(resetPasswordResultDeclined)* - child of ResetPasswordResult
+///
+/// The password reset request was declined.
+///
+/// * [retryDate]: Point in time (Unix timestamp) when the password reset can be retried.
+final class ResetPasswordResultDeclined extends ResetPasswordResult {
+  
+  /// **ResetPasswordResultDeclined** *(resetPasswordResultDeclined)* - child of ResetPasswordResult
+  ///
+  /// The password reset request was declined.
+  ///
+  /// * [retryDate]: Point in time (Unix timestamp) when the password reset can be retried.
   const ResetPasswordResultDeclined({
     required this.retryDate,
     this.extra,
     this.clientId,
   });
   
-  /// [retryDate] Point in time (Unix timestamp) when the password reset can be retried
+  /// Point in time (Unix timestamp) when the password reset can be retried
   final int retryDate;
 
   /// [extra] callback sign
@@ -167,12 +206,13 @@ class ResetPasswordResultDeclined extends ResetPasswordResult {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "retry_date": retryDate,
-    };
-  }
+		};
+	}
+
   
   @override
   ResetPasswordResultDeclined copyWith({
@@ -185,8 +225,11 @@ class ResetPasswordResultDeclined extends ResetPasswordResult {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'resetPasswordResultDeclined';
-  
+  static const String objectType = 'resetPasswordResultDeclined';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

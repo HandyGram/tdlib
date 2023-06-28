@@ -1,8 +1,23 @@
 part of '../tdapi.dart';
 
-class ChatPosition extends TdObject {
-
-  /// Describes a position of a chat in a chat list
+/// **ChatPosition** *(chatPosition)* - basic class
+///
+/// Describes a position of a chat in a chat list.
+///
+/// * [list]: The chat list.
+/// * [order]: A parameter used to determine order of the chat in the chat list. Chats must be sorted by the pair (order, chat.id) in descending order.
+/// * [isPinned]: True, if the chat is pinned in the chat list.
+/// * [source]: Source of the chat in the chat list; may be null *(optional)*.
+final class ChatPosition extends TdObject {
+  
+  /// **ChatPosition** *(chatPosition)* - basic class
+  ///
+  /// Describes a position of a chat in a chat list.
+  ///
+  /// * [list]: The chat list.
+  /// * [order]: A parameter used to determine order of the chat in the chat list. Chats must be sorted by the pair (order, chat.id) in descending order.
+  /// * [isPinned]: True, if the chat is pinned in the chat list.
+  /// * [source]: Source of the chat in the chat list; may be null *(optional)*.
   const ChatPosition({
     required this.list,
     required this.order,
@@ -10,16 +25,16 @@ class ChatPosition extends TdObject {
     this.source,
   });
   
-  /// [list] The chat list
+  /// The chat list
   final ChatList list;
 
-  /// [order] A parameter used to determine order of the chat in the chat list. Chats must be sorted by the pair (order, chat.id) in descending order
+  /// A parameter used to determine order of the chat in the chat list. Chats must be sorted by the pair (order, chat.id) in descending order
   final int order;
 
-  /// [isPinned] True, if the chat is pinned in the chat list
+  /// True, if the chat is pinned in the chat list
   final bool isPinned;
 
-  /// [source] Source of the chat in the chat list; may be null
+  /// Source of the chat in the chat list; may be null
   final ChatSource? source;
   
   /// Parse from a json
@@ -32,15 +47,16 @@ class ChatPosition extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "list": list.toJson(),
       "order": order,
       "is_pinned": isPinned,
       "source": source?.toJson(),
-    };
-  }
+		};
+	}
+
   
   ChatPosition copyWith({
     ChatList? list,
@@ -54,8 +70,11 @@ class ChatPosition extends TdObject {
     source: source ?? this.source,
   );
 
-  static const CONSTRUCTOR = 'chatPosition';
-  
+  static const String objectType = 'chatPosition';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

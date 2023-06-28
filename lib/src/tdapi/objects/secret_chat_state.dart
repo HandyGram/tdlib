@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class SecretChatState extends TdObject {
-
-  /// Describes the current secret chat state
+/// **SecretChatState** *(secretChatState)* - parent
+///
+/// Describes the current secret chat state.
+sealed class SecretChatState extends TdObject {
+  
+  /// **SecretChatState** *(secretChatState)* - parent
+  ///
+  /// Describes the current secret chat state.
   const SecretChatState();
   
   /// a SecretChatState return type can be :
@@ -11,103 +16,133 @@ class SecretChatState extends TdObject {
   /// * [SecretChatStateClosed]
   factory SecretChatState.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case SecretChatStatePending.CONSTRUCTOR:
+      case SecretChatStatePending.objectType:
         return SecretChatStatePending.fromJson(json);
-      case SecretChatStateReady.CONSTRUCTOR:
+      case SecretChatStateReady.objectType:
         return SecretChatStateReady.fromJson(json);
-      case SecretChatStateClosed.CONSTRUCTOR:
+      case SecretChatStateClosed.objectType:
         return SecretChatStateClosed.fromJson(json);
       default:
-        return const SecretChatState();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of SecretChatState)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  SecretChatState copyWith() => const SecretChatState();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'secretChatState';
   
+  SecretChatState copyWith();
+
+  static const String objectType = 'secretChatState';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class SecretChatStatePending extends SecretChatState {
-
-  /// The secret chat is not yet created; waiting for the other user to get online
+/// **SecretChatStatePending** *(secretChatStatePending)* - child of SecretChatState
+///
+/// The secret chat is not yet created; waiting for the other user to get online.
+final class SecretChatStatePending extends SecretChatState {
+  
+  /// **SecretChatStatePending** *(secretChatStatePending)* - child of SecretChatState
+  ///
+  /// The secret chat is not yet created; waiting for the other user to get online.
   const SecretChatStatePending();
   
   /// Parse from a json
   factory SecretChatStatePending.fromJson(Map<String, dynamic> json) => const SecretChatStatePending();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   SecretChatStatePending copyWith() => const SecretChatStatePending();
 
-  static const CONSTRUCTOR = 'secretChatStatePending';
-  
+  static const String objectType = 'secretChatStatePending';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class SecretChatStateReady extends SecretChatState {
-
-  /// The secret chat is ready to use
+/// **SecretChatStateReady** *(secretChatStateReady)* - child of SecretChatState
+///
+/// The secret chat is ready to use.
+final class SecretChatStateReady extends SecretChatState {
+  
+  /// **SecretChatStateReady** *(secretChatStateReady)* - child of SecretChatState
+  ///
+  /// The secret chat is ready to use.
   const SecretChatStateReady();
   
   /// Parse from a json
   factory SecretChatStateReady.fromJson(Map<String, dynamic> json) => const SecretChatStateReady();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   SecretChatStateReady copyWith() => const SecretChatStateReady();
 
-  static const CONSTRUCTOR = 'secretChatStateReady';
-  
+  static const String objectType = 'secretChatStateReady';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class SecretChatStateClosed extends SecretChatState {
-
-  /// The secret chat is closed
+/// **SecretChatStateClosed** *(secretChatStateClosed)* - child of SecretChatState
+///
+/// The secret chat is closed.
+final class SecretChatStateClosed extends SecretChatState {
+  
+  /// **SecretChatStateClosed** *(secretChatStateClosed)* - child of SecretChatState
+  ///
+  /// The secret chat is closed.
   const SecretChatStateClosed();
   
   /// Parse from a json
   factory SecretChatStateClosed.fromJson(Map<String, dynamic> json) => const SecretChatStateClosed();
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
-  }
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
   
   @override
   SecretChatStateClosed copyWith() => const SecretChatStateClosed();
 
-  static const CONSTRUCTOR = 'secretChatStateClosed';
-  
+  static const String objectType = 'secretChatStateClosed';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

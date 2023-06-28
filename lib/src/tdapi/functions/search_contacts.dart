@@ -1,28 +1,44 @@
 part of '../tdapi.dart';
 
-class SearchContacts extends TdFunction {
-
-  /// Searches for the specified query in the first names, last names and usernames of the known user contacts
+/// **SearchContacts** *(searchContacts)* - TDLib function
+///
+/// Searches for the specified query in the first names, last names and usernames of the known user contacts.
+///
+/// * [query]: Query to search for; may be empty to return all contacts.
+/// * [limit]: The maximum number of users to be returned.
+///
+/// [Users] is returned on completion.
+final class SearchContacts extends TdFunction {
+  
+  /// **SearchContacts** *(searchContacts)* - TDLib function
+  ///
+  /// Searches for the specified query in the first names, last names and usernames of the known user contacts.
+  ///
+  /// * [query]: Query to search for; may be empty to return all contacts.
+  /// * [limit]: The maximum number of users to be returned.
+  ///
+  /// [Users] is returned on completion.
   const SearchContacts({
     required this.query,
     required this.limit,
   });
   
-  /// [query] Query to search for; may be empty to return all contacts 
+  /// Query to search for; may be empty to return all contacts
   final String query;
 
-  /// [limit] The maximum number of users to be returned
+  /// The maximum number of users to be returned
   final int limit;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "query": query,
       "limit": limit,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   SearchContacts copyWith({
     String? query,
@@ -32,8 +48,11 @@ class SearchContacts extends TdFunction {
     limit: limit ?? this.limit,
   );
 
-  static const CONSTRUCTOR = 'searchContacts';
-  
+  static const String objectType = 'searchContacts';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

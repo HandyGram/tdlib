@@ -1,15 +1,24 @@
 part of '../tdapi.dart';
 
-class Emojis extends TdObject {
-
-  /// Represents a list of emoji
+/// **Emojis** *(emojis)* - basic class
+///
+/// Represents a list of emoji.
+///
+/// * [emojis]: List of emojis.
+final class Emojis extends TdObject {
+  
+  /// **Emojis** *(emojis)* - basic class
+  ///
+  /// Represents a list of emoji.
+  ///
+  /// * [emojis]: List of emojis.
   const Emojis({
     required this.emojis,
     this.extra,
     this.clientId,
   });
   
-  /// [emojis] List of emojis
+  /// List of emojis
   final List<String> emojis;
 
   /// [extra] callback sign
@@ -29,12 +38,13 @@ class Emojis extends TdObject {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "emojis": emojis.map((i) => i).toList(),
-    };
-  }
+		};
+	}
+
   
   Emojis copyWith({
     List<String>? emojis,
@@ -46,8 +56,11 @@ class Emojis extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
-  static const CONSTRUCTOR = 'emojis';
-  
+  static const String objectType = 'emojis';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

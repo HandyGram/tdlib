@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class GetGroupsInCommon extends TdFunction {
-
-  /// Returns a list of common group chats with a given user. Chats are sorted by their type and creation date
+/// **GetGroupsInCommon** *(getGroupsInCommon)* - TDLib function
+///
+/// Returns a list of common group chats with a given user. Chats are sorted by their type and creation date.
+///
+/// * [userId]: User identifier.
+/// * [offsetChatId]: Chat identifier starting from which to return chats; use 0 for the first request.
+/// * [limit]: The maximum number of chats to be returned; up to 100.
+///
+/// [Chats] is returned on completion.
+final class GetGroupsInCommon extends TdFunction {
+  
+  /// **GetGroupsInCommon** *(getGroupsInCommon)* - TDLib function
+  ///
+  /// Returns a list of common group chats with a given user. Chats are sorted by their type and creation date.
+  ///
+  /// * [userId]: User identifier.
+  /// * [offsetChatId]: Chat identifier starting from which to return chats; use 0 for the first request.
+  /// * [limit]: The maximum number of chats to be returned; up to 100.
+  ///
+  /// [Chats] is returned on completion.
   const GetGroupsInCommon({
     required this.userId,
     required this.offsetChatId,
     required this.limit,
   });
   
-  /// [userId] User identifier 
+  /// User identifier
   final int userId;
 
-  /// [offsetChatId] Chat identifier starting from which to return chats; use 0 for the first request 
+  /// Chat identifier starting from which to return chats; use 0 for the first request
   final int offsetChatId;
 
-  /// [limit] The maximum number of chats to be returned; up to 100
+  /// The maximum number of chats to be returned; up to 100
   final int limit;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "user_id": userId,
       "offset_chat_id": offsetChatId,
       "limit": limit,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetGroupsInCommon copyWith({
     int? userId,
@@ -39,8 +57,11 @@ class GetGroupsInCommon extends TdFunction {
     limit: limit ?? this.limit,
   );
 
-  static const CONSTRUCTOR = 'getGroupsInCommon';
-  
+  static const String objectType = 'getGroupsInCommon';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

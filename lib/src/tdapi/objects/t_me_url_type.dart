@@ -1,8 +1,13 @@
 part of '../tdapi.dart';
 
-class TMeUrlType extends TdObject {
-
-  /// Describes the type of a URL linking to an internal Telegram entity
+/// **TMeUrlType** *(tMeUrlType)* - parent
+///
+/// Describes the type of a URL linking to an internal Telegram entity.
+sealed class TMeUrlType extends TdObject {
+  
+  /// **TMeUrlType** *(tMeUrlType)* - parent
+  ///
+  /// Describes the type of a URL linking to an internal Telegram entity.
   const TMeUrlType();
   
   /// a TMeUrlType return type can be :
@@ -12,43 +17,55 @@ class TMeUrlType extends TdObject {
   /// * [TMeUrlTypeStickerSet]
   factory TMeUrlType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case TMeUrlTypeUser.CONSTRUCTOR:
+      case TMeUrlTypeUser.objectType:
         return TMeUrlTypeUser.fromJson(json);
-      case TMeUrlTypeSupergroup.CONSTRUCTOR:
+      case TMeUrlTypeSupergroup.objectType:
         return TMeUrlTypeSupergroup.fromJson(json);
-      case TMeUrlTypeChatInvite.CONSTRUCTOR:
+      case TMeUrlTypeChatInvite.objectType:
         return TMeUrlTypeChatInvite.fromJson(json);
-      case TMeUrlTypeStickerSet.CONSTRUCTOR:
+      case TMeUrlTypeStickerSet.objectType:
         return TMeUrlTypeStickerSet.fromJson(json);
       default:
-        return const TMeUrlType();
+        throw FormatException(
+          "Unknown object ${json["@type"]} (expected child of TMeUrlType)",
+          json,
+        );
     }
   }
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
-  }
-  
-  TMeUrlType copyWith() => const TMeUrlType();
+  Map<String, dynamic> toJson();
 
-  static const CONSTRUCTOR = 'tMeUrlType';
   
+  TMeUrlType copyWith();
+
+  static const String objectType = 'tMeUrlType';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class TMeUrlTypeUser extends TMeUrlType {
-
-  /// A URL linking to a user
+/// **TMeUrlTypeUser** *(tMeUrlTypeUser)* - child of TMeUrlType
+///
+/// A URL linking to a user.
+///
+/// * [userId]: Identifier of the user.
+final class TMeUrlTypeUser extends TMeUrlType {
+  
+  /// **TMeUrlTypeUser** *(tMeUrlTypeUser)* - child of TMeUrlType
+  ///
+  /// A URL linking to a user.
+  ///
+  /// * [userId]: Identifier of the user.
   const TMeUrlTypeUser({
     required this.userId,
   });
   
-  /// [userId] Identifier of the user
+  /// Identifier of the user
   final int userId;
   
   /// Parse from a json
@@ -58,12 +75,13 @@ class TMeUrlTypeUser extends TMeUrlType {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "user_id": userId,
-    };
-  }
+		};
+	}
+
   
   @override
   TMeUrlTypeUser copyWith({
@@ -72,21 +90,33 @@ class TMeUrlTypeUser extends TMeUrlType {
     userId: userId ?? this.userId,
   );
 
-  static const CONSTRUCTOR = 'tMeUrlTypeUser';
-  
+  static const String objectType = 'tMeUrlTypeUser';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class TMeUrlTypeSupergroup extends TMeUrlType {
-
-  /// A URL linking to a public supergroup or channel
+/// **TMeUrlTypeSupergroup** *(tMeUrlTypeSupergroup)* - child of TMeUrlType
+///
+/// A URL linking to a public supergroup or channel.
+///
+/// * [supergroupId]: Identifier of the supergroup or channel.
+final class TMeUrlTypeSupergroup extends TMeUrlType {
+  
+  /// **TMeUrlTypeSupergroup** *(tMeUrlTypeSupergroup)* - child of TMeUrlType
+  ///
+  /// A URL linking to a public supergroup or channel.
+  ///
+  /// * [supergroupId]: Identifier of the supergroup or channel.
   const TMeUrlTypeSupergroup({
     required this.supergroupId,
   });
   
-  /// [supergroupId] Identifier of the supergroup or channel
+  /// Identifier of the supergroup or channel
   final int supergroupId;
   
   /// Parse from a json
@@ -96,12 +126,13 @@ class TMeUrlTypeSupergroup extends TMeUrlType {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "supergroup_id": supergroupId,
-    };
-  }
+		};
+	}
+
   
   @override
   TMeUrlTypeSupergroup copyWith({
@@ -110,21 +141,33 @@ class TMeUrlTypeSupergroup extends TMeUrlType {
     supergroupId: supergroupId ?? this.supergroupId,
   );
 
-  static const CONSTRUCTOR = 'tMeUrlTypeSupergroup';
-  
+  static const String objectType = 'tMeUrlTypeSupergroup';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class TMeUrlTypeChatInvite extends TMeUrlType {
-
-  /// A chat invite link
+/// **TMeUrlTypeChatInvite** *(tMeUrlTypeChatInvite)* - child of TMeUrlType
+///
+/// A chat invite link.
+///
+/// * [info]: Information about the chat invite link.
+final class TMeUrlTypeChatInvite extends TMeUrlType {
+  
+  /// **TMeUrlTypeChatInvite** *(tMeUrlTypeChatInvite)* - child of TMeUrlType
+  ///
+  /// A chat invite link.
+  ///
+  /// * [info]: Information about the chat invite link.
   const TMeUrlTypeChatInvite({
     required this.info,
   });
   
-  /// [info] Chat invite link info
+  /// Information about the chat invite link
   final ChatInviteLinkInfo info;
   
   /// Parse from a json
@@ -134,12 +177,13 @@ class TMeUrlTypeChatInvite extends TMeUrlType {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "info": info.toJson(),
-    };
-  }
+		};
+	}
+
   
   @override
   TMeUrlTypeChatInvite copyWith({
@@ -148,21 +192,33 @@ class TMeUrlTypeChatInvite extends TMeUrlType {
     info: info ?? this.info,
   );
 
-  static const CONSTRUCTOR = 'tMeUrlTypeChatInvite';
-  
+  static const String objectType = 'tMeUrlTypeChatInvite';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
 
 
-class TMeUrlTypeStickerSet extends TMeUrlType {
-
-  /// A URL linking to a sticker set
+/// **TMeUrlTypeStickerSet** *(tMeUrlTypeStickerSet)* - child of TMeUrlType
+///
+/// A URL linking to a sticker set.
+///
+/// * [stickerSetId]: Identifier of the sticker set.
+final class TMeUrlTypeStickerSet extends TMeUrlType {
+  
+  /// **TMeUrlTypeStickerSet** *(tMeUrlTypeStickerSet)* - child of TMeUrlType
+  ///
+  /// A URL linking to a sticker set.
+  ///
+  /// * [stickerSetId]: Identifier of the sticker set.
   const TMeUrlTypeStickerSet({
     required this.stickerSetId,
   });
   
-  /// [stickerSetId] Identifier of the sticker set
+  /// Identifier of the sticker set
   final int stickerSetId;
   
   /// Parse from a json
@@ -172,12 +228,13 @@ class TMeUrlTypeStickerSet extends TMeUrlType {
   
   
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
       "sticker_set_id": stickerSetId,
-    };
-  }
+		};
+	}
+
   
   @override
   TMeUrlTypeStickerSet copyWith({
@@ -186,8 +243,11 @@ class TMeUrlTypeStickerSet extends TMeUrlType {
     stickerSetId: stickerSetId ?? this.stickerSetId,
   );
 
-  static const CONSTRUCTOR = 'tMeUrlTypeStickerSet';
-  
+  static const String objectType = 'tMeUrlTypeStickerSet';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

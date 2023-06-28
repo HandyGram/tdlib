@@ -1,33 +1,51 @@
 part of '../tdapi.dart';
 
-class GetStatisticalGraph extends TdFunction {
-
-  /// Loads an asynchronous or a zoomed in statistical graph
+/// **GetStatisticalGraph** *(getStatisticalGraph)* - TDLib function
+///
+/// Loads an asynchronous or a zoomed in statistical graph.
+///
+/// * [chatId]: Chat identifier.
+/// * [token]: The token for graph loading.
+/// * [x]: X-value for zoomed in graph or 0 otherwise.
+///
+/// [StatisticalGraph] is returned on completion.
+final class GetStatisticalGraph extends TdFunction {
+  
+  /// **GetStatisticalGraph** *(getStatisticalGraph)* - TDLib function
+  ///
+  /// Loads an asynchronous or a zoomed in statistical graph.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [token]: The token for graph loading.
+  /// * [x]: X-value for zoomed in graph or 0 otherwise.
+  ///
+  /// [StatisticalGraph] is returned on completion.
   const GetStatisticalGraph({
     required this.chatId,
     required this.token,
     required this.x,
   });
   
-  /// [chatId] Chat identifier 
+  /// Chat identifier 
   final int chatId;
 
-  /// [token] The token for graph loading 
+  /// The token for graph loading 
   final String token;
 
-  /// [x] X-value for zoomed in graph or 0 otherwise
+  /// X-value for zoomed in graph or 0 otherwise
   final int x;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "chat_id": chatId,
       "token": token,
       "x": x,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetStatisticalGraph copyWith({
     int? chatId,
@@ -39,8 +57,11 @@ class GetStatisticalGraph extends TdFunction {
     x: x ?? this.x,
   );
 
-  static const CONSTRUCTOR = 'getStatisticalGraph';
-  
+  static const String objectType = 'getStatisticalGraph';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }

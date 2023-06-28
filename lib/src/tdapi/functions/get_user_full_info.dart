@@ -1,23 +1,37 @@
 part of '../tdapi.dart';
 
-class GetUserFullInfo extends TdFunction {
-
-  /// Returns full information about a user by their identifier
+/// **GetUserFullInfo** *(getUserFullInfo)* - TDLib function
+///
+/// Returns full information about a user by their identifier.
+///
+/// * [userId]: User identifier.
+///
+/// [UserFullInfo] is returned on completion.
+final class GetUserFullInfo extends TdFunction {
+  
+  /// **GetUserFullInfo** *(getUserFullInfo)* - TDLib function
+  ///
+  /// Returns full information about a user by their identifier.
+  ///
+  /// * [userId]: User identifier.
+  ///
+  /// [UserFullInfo] is returned on completion.
   const GetUserFullInfo({
     required this.userId,
   });
   
-  /// [userId] User identifier
+  /// User identifier
   final int userId;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
+		return {
+			"@type": objectType,
       "user_id": userId,
       "@extra": extra,
-    };
-  }
+		};
+	}
+
   
   GetUserFullInfo copyWith({
     int? userId,
@@ -25,8 +39,11 @@ class GetUserFullInfo extends TdFunction {
     userId: userId ?? this.userId,
   );
 
-  static const CONSTRUCTOR = 'getUserFullInfo';
-  
+  static const String objectType = 'getUserFullInfo';
+
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String toString() => jsonEncode(toJson());
+
+  @override
+  String get instanceType => objectType;
 }
