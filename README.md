@@ -11,7 +11,7 @@ This plugin is a complete TDLib's JSON interface binding package to help you cre
 ## Installation
 [Install](https://pub.dev/packages/handy_tdlib/versions/2.0.0/install) the plugin by running the following command from the project root:
 ```
-flutter pub add tdlib
+flutter pub add handy_tdlib
 ```
 
 ## Initialization
@@ -21,9 +21,9 @@ To initialize tdlib plugin, call the `initialize` method on the `TdPlugin` class
 
 Since this is an asynchronous operation, the main function can be modified to ensure initialization is complete before running the application.
 
-Import `tdlib` plugin:
+Import `handy_tdlib` plugin:
 ```dart
-import 'package:tdlib/tdlib.dart';
+import 'package:handy_tdlib/handy_tdlib.dart';
 ```
 Next, within the `main` function, initialize `TdPlugin`:
 
