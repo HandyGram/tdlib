@@ -1,8 +1,13 @@
-TdObject? convertToObject(String? query) {
-  if (query == null) return null;
-  final newJson = json.decode(query);
-  switch (newJson['@type']) {
+TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
+  if (parsed == null) return null;
+  switch (parsed['@type']) {
     CASES
     default: return null;
   }
+}
+
+TdObject? convertJsonToObject(String? query) {
+  if (query == null) return null;
+  final parsed = json.decode(query);
+  return convertMapToObject(parsed);
 }

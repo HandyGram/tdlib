@@ -380,7 +380,7 @@ class DartTdDocumentationGenerator {
     var cases = '';
     _objects.where((obj) => !obj.isFunction && !obj.isParent).forEach((obj) {
       cases +=
-          '\n    case \'${lowerFirstChar(obj.name)}\': return ${obj.name == 'Error' ? 'TdError' : obj.name}.fromJson(newJson);';
+          '\n    case \'${lowerFirstChar(obj.name)}\': return ${obj.name == 'Error' ? 'TdError' : obj.name}.fromJson(parsed);';
     });
     tdApiFile.writeAsStringSync(
       converterTemple.replaceAll('CASES', cases),

@@ -1,3 +1,19 @@
+## 2.0.2
+* Introduce convertJsonToObject and convertMapToObject
+* Removed td_json_client.dart
+
+## 2.0.1
+* Correct README a bit
+* Fix exports in tdlib.dart
+
+## 2.0.0
+* New Dart 3 features support: final and sealed classes
+* Reworked plugin architecture to more developer-friendly one
+* More things are documented now
+* Dropped all platforms but android
+* Removed EventSubject class (why did it even exist?)
+* Removed td_client library - it's redundant
+
 ## 1.5.9
 * Support null safety
 * Add Support for IOS, macOs, Windows and Web.
