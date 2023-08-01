@@ -1,3 +1,6 @@
+## 2.0.3
+* Fixed Gradle errors
+
 ## 2.0.2
 * Introduce convertJsonToObject and convertMapToObject
 * Removed td_json_client.dart
