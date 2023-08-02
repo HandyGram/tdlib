@@ -53,6 +53,7 @@ final class Call extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -65,7 +66,14 @@ final class Call extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Call identifier, not persistent
+  /// * [user_id]: Peer user identifier
+  /// * [is_outgoing]: True, if the call is outgoing
+  /// * [is_video]: True, if the call is a video call
+  /// * [state]: Call state
   Call copyWith({
     int? id,
     int? userId,
@@ -80,11 +88,14 @@ final class Call extends TdObject {
     state: state ?? this.state,
   );
 
+  /// TDLib object type
   static const String objectType = 'call';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

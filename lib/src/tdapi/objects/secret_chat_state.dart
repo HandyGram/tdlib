@@ -30,17 +30,21 @@ sealed class SecretChatState extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   SecretChatState copyWith();
 
+  /// TDLib object type
   static const String objectType = 'secretChatState';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -59,6 +63,7 @@ final class SecretChatStatePending extends SecretChatState {
   /// Parse from a json
   factory SecretChatStatePending.fromJson(Map<String, dynamic> json) => const SecretChatStatePending();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -66,15 +71,18 @@ final class SecretChatStatePending extends SecretChatState {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SecretChatStatePending copyWith() => const SecretChatStatePending();
 
+  /// TDLib object type
   static const String objectType = 'secretChatStatePending';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -93,6 +101,7 @@ final class SecretChatStateReady extends SecretChatState {
   /// Parse from a json
   factory SecretChatStateReady.fromJson(Map<String, dynamic> json) => const SecretChatStateReady();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -100,15 +109,18 @@ final class SecretChatStateReady extends SecretChatState {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SecretChatStateReady copyWith() => const SecretChatStateReady();
 
+  /// TDLib object type
   static const String objectType = 'secretChatStateReady';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -127,6 +139,7 @@ final class SecretChatStateClosed extends SecretChatState {
   /// Parse from a json
   factory SecretChatStateClosed.fromJson(Map<String, dynamic> json) => const SecretChatStateClosed();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -134,15 +147,18 @@ final class SecretChatStateClosed extends SecretChatState {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SecretChatStateClosed copyWith() => const SecretChatStateClosed();
 
+  /// TDLib object type
   static const String objectType = 'secretChatStateClosed';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

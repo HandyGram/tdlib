@@ -39,6 +39,7 @@ final class DownloadedFileCounts extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class DownloadedFileCounts extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [active_count]: Number of active file downloads found, including paused
+  /// * [paused_count]: Number of paused file downloads found
+  /// * [completed_count]: Number of completed file downloads found
   DownloadedFileCounts copyWith({
     int? activeCount,
     int? pausedCount,
@@ -60,11 +66,14 @@ final class DownloadedFileCounts extends TdObject {
     completedCount: completedCount ?? this.completedCount,
   );
 
+  /// TDLib object type
   static const String objectType = 'downloadedFileCounts';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

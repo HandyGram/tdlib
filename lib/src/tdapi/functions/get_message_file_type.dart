@@ -23,6 +23,7 @@ final class GetMessageFileType extends TdFunction {
   /// Beginning of the message file; up to 100 first lines
   final String messageFileHead;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetMessageFileType extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [message_file_head]: Beginning of the message file; up to 100 first lines
   GetMessageFileType copyWith({
     String? messageFileHead,
   }) => GetMessageFileType(
     messageFileHead: messageFileHead ?? this.messageFileHead,
   );
 
+  /// TDLib object type
   static const String objectType = 'getMessageFileType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

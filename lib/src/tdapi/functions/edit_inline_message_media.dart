@@ -35,6 +35,7 @@ final class EditInlineMessageMedia extends TdFunction {
   /// New content of the message. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto or inputMessageVideo
   final InputMessageContent inputMessageContent;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class EditInlineMessageMedia extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [inline_message_id]: Inline message identifier
+  /// * [reply_markup]: The new message reply markup; pass null if none; for bots only
+  /// * [input_message_content]: New content of the message. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto or inputMessageVideo
   EditInlineMessageMedia copyWith({
     String? inlineMessageId,
     ReplyMarkup? replyMarkup,
@@ -57,11 +63,14 @@ final class EditInlineMessageMedia extends TdFunction {
     inputMessageContent: inputMessageContent ?? this.inputMessageContent,
   );
 
+  /// TDLib object type
   static const String objectType = 'editInlineMessageMedia';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

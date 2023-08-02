@@ -29,6 +29,7 @@ final class SetChatAvailableReactions extends TdFunction {
   /// Reactions available in the chat. All emoji reactions must be active
   final ChatAvailableReactions availableReactions;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetChatAvailableReactions extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat 
+  /// * [available_reactions]: Reactions available in the chat. All emoji reactions must be active
   SetChatAvailableReactions copyWith({
     int? chatId,
     ChatAvailableReactions? availableReactions,
@@ -48,11 +53,14 @@ final class SetChatAvailableReactions extends TdFunction {
     availableReactions: availableReactions ?? this.availableReactions,
   );
 
+  /// TDLib object type
   static const String objectType = 'setChatAvailableReactions';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

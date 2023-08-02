@@ -44,6 +44,7 @@ final class ChatsNearby extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -53,7 +54,11 @@ final class ChatsNearby extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [users_nearby]: List of users nearby 
+  /// * [supergroups_nearby]: List of location-based supergroups nearby
   ChatsNearby copyWith({
     List<ChatNearby>? usersNearby,
     List<ChatNearby>? supergroupsNearby,
@@ -66,11 +71,14 @@ final class ChatsNearby extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatsNearby';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

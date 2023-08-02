@@ -29,6 +29,7 @@ final class ToggleChatDefaultDisableNotification extends TdFunction {
   /// New value of default_disable_notification
   final bool defaultDisableNotification;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ToggleChatDefaultDisableNotification extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [default_disable_notification]: New value of default_disable_notification
   ToggleChatDefaultDisableNotification copyWith({
     int? chatId,
     bool? defaultDisableNotification,
@@ -48,11 +53,14 @@ final class ToggleChatDefaultDisableNotification extends TdFunction {
     defaultDisableNotification: defaultDisableNotification ?? this.defaultDisableNotification,
   );
 
+  /// TDLib object type
   static const String objectType = 'toggleChatDefaultDisableNotification';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

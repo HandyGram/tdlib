@@ -23,6 +23,7 @@ final class GetEmojiReaction extends TdFunction {
   /// Text representation of the reaction
   final String emoji;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetEmojiReaction extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [emoji]: Text representation of the reaction
   GetEmojiReaction copyWith({
     String? emoji,
   }) => GetEmojiReaction(
     emoji: emoji ?? this.emoji,
   );
 
+  /// TDLib object type
   static const String objectType = 'getEmojiReaction';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

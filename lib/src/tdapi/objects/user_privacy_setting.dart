@@ -48,17 +48,21 @@ sealed class UserPrivacySetting extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   UserPrivacySetting copyWith();
 
+  /// TDLib object type
   static const String objectType = 'userPrivacySetting';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -77,6 +81,7 @@ final class UserPrivacySettingShowStatus extends UserPrivacySetting {
   /// Parse from a json
   factory UserPrivacySettingShowStatus.fromJson(Map<String, dynamic> json) => const UserPrivacySettingShowStatus();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -84,15 +89,18 @@ final class UserPrivacySettingShowStatus extends UserPrivacySetting {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   UserPrivacySettingShowStatus copyWith() => const UserPrivacySettingShowStatus();
 
+  /// TDLib object type
   static const String objectType = 'userPrivacySettingShowStatus';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -111,6 +119,7 @@ final class UserPrivacySettingShowProfilePhoto extends UserPrivacySetting {
   /// Parse from a json
   factory UserPrivacySettingShowProfilePhoto.fromJson(Map<String, dynamic> json) => const UserPrivacySettingShowProfilePhoto();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -118,15 +127,18 @@ final class UserPrivacySettingShowProfilePhoto extends UserPrivacySetting {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   UserPrivacySettingShowProfilePhoto copyWith() => const UserPrivacySettingShowProfilePhoto();
 
+  /// TDLib object type
   static const String objectType = 'userPrivacySettingShowProfilePhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -145,6 +157,7 @@ final class UserPrivacySettingShowLinkInForwardedMessages extends UserPrivacySet
   /// Parse from a json
   factory UserPrivacySettingShowLinkInForwardedMessages.fromJson(Map<String, dynamic> json) => const UserPrivacySettingShowLinkInForwardedMessages();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -152,15 +165,18 @@ final class UserPrivacySettingShowLinkInForwardedMessages extends UserPrivacySet
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   UserPrivacySettingShowLinkInForwardedMessages copyWith() => const UserPrivacySettingShowLinkInForwardedMessages();
 
+  /// TDLib object type
   static const String objectType = 'userPrivacySettingShowLinkInForwardedMessages';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -179,6 +195,7 @@ final class UserPrivacySettingShowPhoneNumber extends UserPrivacySetting {
   /// Parse from a json
   factory UserPrivacySettingShowPhoneNumber.fromJson(Map<String, dynamic> json) => const UserPrivacySettingShowPhoneNumber();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -186,15 +203,18 @@ final class UserPrivacySettingShowPhoneNumber extends UserPrivacySetting {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   UserPrivacySettingShowPhoneNumber copyWith() => const UserPrivacySettingShowPhoneNumber();
 
+  /// TDLib object type
   static const String objectType = 'userPrivacySettingShowPhoneNumber';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -213,6 +233,7 @@ final class UserPrivacySettingAllowChatInvites extends UserPrivacySetting {
   /// Parse from a json
   factory UserPrivacySettingAllowChatInvites.fromJson(Map<String, dynamic> json) => const UserPrivacySettingAllowChatInvites();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -220,15 +241,18 @@ final class UserPrivacySettingAllowChatInvites extends UserPrivacySetting {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   UserPrivacySettingAllowChatInvites copyWith() => const UserPrivacySettingAllowChatInvites();
 
+  /// TDLib object type
   static const String objectType = 'userPrivacySettingAllowChatInvites';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -247,6 +271,7 @@ final class UserPrivacySettingAllowCalls extends UserPrivacySetting {
   /// Parse from a json
   factory UserPrivacySettingAllowCalls.fromJson(Map<String, dynamic> json) => const UserPrivacySettingAllowCalls();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -254,15 +279,18 @@ final class UserPrivacySettingAllowCalls extends UserPrivacySetting {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   UserPrivacySettingAllowCalls copyWith() => const UserPrivacySettingAllowCalls();
 
+  /// TDLib object type
   static const String objectType = 'userPrivacySettingAllowCalls';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -281,6 +309,7 @@ final class UserPrivacySettingAllowPeerToPeerCalls extends UserPrivacySetting {
   /// Parse from a json
   factory UserPrivacySettingAllowPeerToPeerCalls.fromJson(Map<String, dynamic> json) => const UserPrivacySettingAllowPeerToPeerCalls();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -288,15 +317,18 @@ final class UserPrivacySettingAllowPeerToPeerCalls extends UserPrivacySetting {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   UserPrivacySettingAllowPeerToPeerCalls copyWith() => const UserPrivacySettingAllowPeerToPeerCalls();
 
+  /// TDLib object type
   static const String objectType = 'userPrivacySettingAllowPeerToPeerCalls';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -315,6 +347,7 @@ final class UserPrivacySettingAllowFindingByPhoneNumber extends UserPrivacySetti
   /// Parse from a json
   factory UserPrivacySettingAllowFindingByPhoneNumber.fromJson(Map<String, dynamic> json) => const UserPrivacySettingAllowFindingByPhoneNumber();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -322,15 +355,18 @@ final class UserPrivacySettingAllowFindingByPhoneNumber extends UserPrivacySetti
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   UserPrivacySettingAllowFindingByPhoneNumber copyWith() => const UserPrivacySettingAllowFindingByPhoneNumber();
 
+  /// TDLib object type
   static const String objectType = 'userPrivacySettingAllowFindingByPhoneNumber';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -349,6 +385,7 @@ final class UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages extends User
   /// Parse from a json
   factory UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages.fromJson(Map<String, dynamic> json) => const UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -356,15 +393,18 @@ final class UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages extends User
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages copyWith() => const UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages();
 
+  /// TDLib object type
   static const String objectType = 'userPrivacySettingAllowPrivateVoiceAndVideoNoteMessages';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

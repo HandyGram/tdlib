@@ -27,17 +27,21 @@ sealed class AccessHashType extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   AccessHashType copyWith();
 
+  /// TDLib object type
   static const String objectType = 'accessHashType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -56,6 +60,7 @@ final class AccessHashTypeUser extends AccessHashType {
   /// Parse from a json
   factory AccessHashTypeUser.fromJson(Map<String, dynamic> json) => const AccessHashTypeUser();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -63,15 +68,18 @@ final class AccessHashTypeUser extends AccessHashType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   AccessHashTypeUser copyWith() => const AccessHashTypeUser();
 
+  /// TDLib object type
   static const String objectType = 'accessHashTypeUser';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -90,6 +98,7 @@ final class AccessHashTypeChannel extends AccessHashType {
   /// Parse from a json
   factory AccessHashTypeChannel.fromJson(Map<String, dynamic> json) => const AccessHashTypeChannel();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -97,15 +106,18 @@ final class AccessHashTypeChannel extends AccessHashType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   AccessHashTypeChannel copyWith() => const AccessHashTypeChannel();
 
+  /// TDLib object type
   static const String objectType = 'accessHashTypeChannel';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

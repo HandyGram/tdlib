@@ -30,17 +30,21 @@ sealed class PaymentProvider extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   PaymentProvider copyWith();
 
+  /// TDLib object type
   static const String objectType = 'paymentProvider';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -71,6 +75,7 @@ final class PaymentProviderSmartGlocal extends PaymentProvider {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -79,7 +84,10 @@ final class PaymentProviderSmartGlocal extends PaymentProvider {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [public_token]: Public payment token
   @override
   PaymentProviderSmartGlocal copyWith({
     String? publicToken,
@@ -87,11 +95,14 @@ final class PaymentProviderSmartGlocal extends PaymentProvider {
     publicToken: publicToken ?? this.publicToken,
   );
 
+  /// TDLib object type
   static const String objectType = 'paymentProviderSmartGlocal';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -143,6 +154,7 @@ final class PaymentProviderStripe extends PaymentProvider {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -154,7 +166,13 @@ final class PaymentProviderStripe extends PaymentProvider {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [publishable_key]: Stripe API publishable key
+  /// * [need_country]: True, if the user country must be provided
+  /// * [need_postal_code]: True, if the user ZIP/postal code must be provided
+  /// * [need_cardholder_name]: True, if the cardholder name must be provided
   @override
   PaymentProviderStripe copyWith({
     String? publishableKey,
@@ -168,11 +186,14 @@ final class PaymentProviderStripe extends PaymentProvider {
     needCardholderName: needCardholderName ?? this.needCardholderName,
   );
 
+  /// TDLib object type
   static const String objectType = 'paymentProviderStripe';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -203,6 +224,7 @@ final class PaymentProviderOther extends PaymentProvider {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -211,7 +233,10 @@ final class PaymentProviderOther extends PaymentProvider {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [url]: Payment form URL
   @override
   PaymentProviderOther copyWith({
     String? url,
@@ -219,11 +244,14 @@ final class PaymentProviderOther extends PaymentProvider {
     url: url ?? this.url,
   );
 
+  /// TDLib object type
   static const String objectType = 'paymentProviderOther';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

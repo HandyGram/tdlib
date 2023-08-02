@@ -29,6 +29,7 @@ final class SetChatPermissions extends TdFunction {
   /// New non-administrator members permissions in the chat
   final ChatPermissions permissions;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetChatPermissions extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [permissions]: New non-administrator members permissions in the chat
   SetChatPermissions copyWith({
     int? chatId,
     ChatPermissions? permissions,
@@ -48,11 +53,14 @@ final class SetChatPermissions extends TdFunction {
     permissions: permissions ?? this.permissions,
   );
 
+  /// TDLib object type
   static const String objectType = 'setChatPermissions';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

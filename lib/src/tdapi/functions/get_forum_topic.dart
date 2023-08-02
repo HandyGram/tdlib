@@ -29,6 +29,7 @@ final class GetForumTopic extends TdFunction {
   /// Message thread identifier of the forum topic
   final int messageThreadId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class GetForumTopic extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat 
+  /// * [message_thread_id]: Message thread identifier of the forum topic
   GetForumTopic copyWith({
     int? chatId,
     int? messageThreadId,
@@ -48,11 +53,14 @@ final class GetForumTopic extends TdFunction {
     messageThreadId: messageThreadId ?? this.messageThreadId,
   );
 
+  /// TDLib object type
   static const String objectType = 'getForumTopic';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -39,6 +39,7 @@ final class ChatStatisticsMessageInteractionInfo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class ChatStatisticsMessageInteractionInfo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [message_id]: Message identifier
+  /// * [view_count]: Number of times the message was viewed
+  /// * [forward_count]: Number of times the message was forwarded
   ChatStatisticsMessageInteractionInfo copyWith({
     int? messageId,
     int? viewCount,
@@ -60,11 +66,14 @@ final class ChatStatisticsMessageInteractionInfo extends TdObject {
     forwardCount: forwardCount ?? this.forwardCount,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatStatisticsMessageInteractionInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

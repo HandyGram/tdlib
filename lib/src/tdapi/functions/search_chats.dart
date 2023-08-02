@@ -29,6 +29,7 @@ final class SearchChats extends TdFunction {
   /// The maximum number of chats to be returned
   final int limit;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SearchChats extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [query]: Query to search for. If the query is empty, returns up to 50 recently found chats
+  /// * [limit]: The maximum number of chats to be returned
   SearchChats copyWith({
     String? query,
     int? limit,
@@ -48,11 +53,14 @@ final class SearchChats extends TdFunction {
     limit: limit ?? this.limit,
   );
 
+  /// TDLib object type
   static const String objectType = 'searchChats';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

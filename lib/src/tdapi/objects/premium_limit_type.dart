@@ -57,17 +57,21 @@ sealed class PremiumLimitType extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   PremiumLimitType copyWith();
 
+  /// TDLib object type
   static const String objectType = 'premiumLimitType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -86,6 +90,7 @@ final class PremiumLimitTypeSupergroupCount extends PremiumLimitType {
   /// Parse from a json
   factory PremiumLimitTypeSupergroupCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeSupergroupCount();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -93,15 +98,18 @@ final class PremiumLimitTypeSupergroupCount extends PremiumLimitType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumLimitTypeSupergroupCount copyWith() => const PremiumLimitTypeSupergroupCount();
 
+  /// TDLib object type
   static const String objectType = 'premiumLimitTypeSupergroupCount';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -120,6 +128,7 @@ final class PremiumLimitTypePinnedChatCount extends PremiumLimitType {
   /// Parse from a json
   factory PremiumLimitTypePinnedChatCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypePinnedChatCount();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -127,15 +136,18 @@ final class PremiumLimitTypePinnedChatCount extends PremiumLimitType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumLimitTypePinnedChatCount copyWith() => const PremiumLimitTypePinnedChatCount();
 
+  /// TDLib object type
   static const String objectType = 'premiumLimitTypePinnedChatCount';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -154,6 +166,7 @@ final class PremiumLimitTypeCreatedPublicChatCount extends PremiumLimitType {
   /// Parse from a json
   factory PremiumLimitTypeCreatedPublicChatCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeCreatedPublicChatCount();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -161,15 +174,18 @@ final class PremiumLimitTypeCreatedPublicChatCount extends PremiumLimitType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumLimitTypeCreatedPublicChatCount copyWith() => const PremiumLimitTypeCreatedPublicChatCount();
 
+  /// TDLib object type
   static const String objectType = 'premiumLimitTypeCreatedPublicChatCount';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -188,6 +204,7 @@ final class PremiumLimitTypeSavedAnimationCount extends PremiumLimitType {
   /// Parse from a json
   factory PremiumLimitTypeSavedAnimationCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeSavedAnimationCount();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -195,15 +212,18 @@ final class PremiumLimitTypeSavedAnimationCount extends PremiumLimitType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumLimitTypeSavedAnimationCount copyWith() => const PremiumLimitTypeSavedAnimationCount();
 
+  /// TDLib object type
   static const String objectType = 'premiumLimitTypeSavedAnimationCount';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -222,6 +242,7 @@ final class PremiumLimitTypeFavoriteStickerCount extends PremiumLimitType {
   /// Parse from a json
   factory PremiumLimitTypeFavoriteStickerCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeFavoriteStickerCount();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -229,15 +250,18 @@ final class PremiumLimitTypeFavoriteStickerCount extends PremiumLimitType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumLimitTypeFavoriteStickerCount copyWith() => const PremiumLimitTypeFavoriteStickerCount();
 
+  /// TDLib object type
   static const String objectType = 'premiumLimitTypeFavoriteStickerCount';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -256,6 +280,7 @@ final class PremiumLimitTypeChatFolderCount extends PremiumLimitType {
   /// Parse from a json
   factory PremiumLimitTypeChatFolderCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeChatFolderCount();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -263,15 +288,18 @@ final class PremiumLimitTypeChatFolderCount extends PremiumLimitType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumLimitTypeChatFolderCount copyWith() => const PremiumLimitTypeChatFolderCount();
 
+  /// TDLib object type
   static const String objectType = 'premiumLimitTypeChatFolderCount';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -290,6 +318,7 @@ final class PremiumLimitTypeChatFolderChosenChatCount extends PremiumLimitType {
   /// Parse from a json
   factory PremiumLimitTypeChatFolderChosenChatCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeChatFolderChosenChatCount();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -297,15 +326,18 @@ final class PremiumLimitTypeChatFolderChosenChatCount extends PremiumLimitType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumLimitTypeChatFolderChosenChatCount copyWith() => const PremiumLimitTypeChatFolderChosenChatCount();
 
+  /// TDLib object type
   static const String objectType = 'premiumLimitTypeChatFolderChosenChatCount';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -324,6 +356,7 @@ final class PremiumLimitTypePinnedArchivedChatCount extends PremiumLimitType {
   /// Parse from a json
   factory PremiumLimitTypePinnedArchivedChatCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypePinnedArchivedChatCount();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -331,15 +364,18 @@ final class PremiumLimitTypePinnedArchivedChatCount extends PremiumLimitType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumLimitTypePinnedArchivedChatCount copyWith() => const PremiumLimitTypePinnedArchivedChatCount();
 
+  /// TDLib object type
   static const String objectType = 'premiumLimitTypePinnedArchivedChatCount';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -358,6 +394,7 @@ final class PremiumLimitTypeCaptionLength extends PremiumLimitType {
   /// Parse from a json
   factory PremiumLimitTypeCaptionLength.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeCaptionLength();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -365,15 +402,18 @@ final class PremiumLimitTypeCaptionLength extends PremiumLimitType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumLimitTypeCaptionLength copyWith() => const PremiumLimitTypeCaptionLength();
 
+  /// TDLib object type
   static const String objectType = 'premiumLimitTypeCaptionLength';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -392,6 +432,7 @@ final class PremiumLimitTypeBioLength extends PremiumLimitType {
   /// Parse from a json
   factory PremiumLimitTypeBioLength.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeBioLength();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -399,15 +440,18 @@ final class PremiumLimitTypeBioLength extends PremiumLimitType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumLimitTypeBioLength copyWith() => const PremiumLimitTypeBioLength();
 
+  /// TDLib object type
   static const String objectType = 'premiumLimitTypeBioLength';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -426,6 +470,7 @@ final class PremiumLimitTypeChatFolderInviteLinkCount extends PremiumLimitType {
   /// Parse from a json
   factory PremiumLimitTypeChatFolderInviteLinkCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeChatFolderInviteLinkCount();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -433,15 +478,18 @@ final class PremiumLimitTypeChatFolderInviteLinkCount extends PremiumLimitType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumLimitTypeChatFolderInviteLinkCount copyWith() => const PremiumLimitTypeChatFolderInviteLinkCount();
 
+  /// TDLib object type
   static const String objectType = 'premiumLimitTypeChatFolderInviteLinkCount';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -460,6 +508,7 @@ final class PremiumLimitTypeShareableChatFolderCount extends PremiumLimitType {
   /// Parse from a json
   factory PremiumLimitTypeShareableChatFolderCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeShareableChatFolderCount();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -467,15 +516,18 @@ final class PremiumLimitTypeShareableChatFolderCount extends PremiumLimitType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumLimitTypeShareableChatFolderCount copyWith() => const PremiumLimitTypeShareableChatFolderCount();
 
+  /// TDLib object type
   static const String objectType = 'premiumLimitTypeShareableChatFolderCount';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

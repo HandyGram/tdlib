@@ -23,6 +23,7 @@ final class SetAlarm extends TdFunction {
   /// Number of seconds before the function returns
   final double seconds;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class SetAlarm extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [seconds]: Number of seconds before the function returns
   SetAlarm copyWith({
     double? seconds,
   }) => SetAlarm(
     seconds: seconds ?? this.seconds,
   );
 
+  /// TDLib object type
   static const String objectType = 'setAlarm';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -29,6 +29,7 @@ final class SetPassportElementErrors extends TdFunction {
   /// The errors
   final List<InputPassportElementError> errors;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetPassportElementErrors extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: User identifier 
+  /// * [errors]: The errors
   SetPassportElementErrors copyWith({
     int? userId,
     List<InputPassportElementError>? errors,
@@ -48,11 +53,14 @@ final class SetPassportElementErrors extends TdFunction {
     errors: errors ?? this.errors,
   );
 
+  /// TDLib object type
   static const String objectType = 'setPassportElementErrors';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -32,6 +32,7 @@ final class ChatBackground extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -41,7 +42,11 @@ final class ChatBackground extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [background]: The background 
+  /// * [dark_theme_dimming]: Dimming of the background in dark themes, as a percentage; 0-100
   ChatBackground copyWith({
     Background? background,
     int? darkThemeDimming,
@@ -50,11 +55,14 @@ final class ChatBackground extends TdObject {
     darkThemeDimming: darkThemeDimming ?? this.darkThemeDimming,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatBackground';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

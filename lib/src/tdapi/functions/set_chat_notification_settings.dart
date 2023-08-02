@@ -29,6 +29,7 @@ final class SetChatNotificationSettings extends TdFunction {
   /// New notification settings for the chat. If the chat is muted for more than 366 days, it is considered to be muted forever
   final ChatNotificationSettings notificationSettings;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetChatNotificationSettings extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [notification_settings]: New notification settings for the chat. If the chat is muted for more than 366 days, it is considered to be muted forever
   SetChatNotificationSettings copyWith({
     int? chatId,
     ChatNotificationSettings? notificationSettings,
@@ -48,11 +53,14 @@ final class SetChatNotificationSettings extends TdFunction {
     notificationSettings: notificationSettings ?? this.notificationSettings,
   );
 
+  /// TDLib object type
   static const String objectType = 'setChatNotificationSettings';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

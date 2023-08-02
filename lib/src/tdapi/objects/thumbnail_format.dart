@@ -42,17 +42,21 @@ sealed class ThumbnailFormat extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   ThumbnailFormat copyWith();
 
+  /// TDLib object type
   static const String objectType = 'thumbnailFormat';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -71,6 +75,7 @@ final class ThumbnailFormatJpeg extends ThumbnailFormat {
   /// Parse from a json
   factory ThumbnailFormatJpeg.fromJson(Map<String, dynamic> json) => const ThumbnailFormatJpeg();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -78,15 +83,18 @@ final class ThumbnailFormatJpeg extends ThumbnailFormat {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ThumbnailFormatJpeg copyWith() => const ThumbnailFormatJpeg();
 
+  /// TDLib object type
   static const String objectType = 'thumbnailFormatJpeg';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -105,6 +113,7 @@ final class ThumbnailFormatGif extends ThumbnailFormat {
   /// Parse from a json
   factory ThumbnailFormatGif.fromJson(Map<String, dynamic> json) => const ThumbnailFormatGif();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -112,15 +121,18 @@ final class ThumbnailFormatGif extends ThumbnailFormat {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ThumbnailFormatGif copyWith() => const ThumbnailFormatGif();
 
+  /// TDLib object type
   static const String objectType = 'thumbnailFormatGif';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -139,6 +151,7 @@ final class ThumbnailFormatMpeg4 extends ThumbnailFormat {
   /// Parse from a json
   factory ThumbnailFormatMpeg4.fromJson(Map<String, dynamic> json) => const ThumbnailFormatMpeg4();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -146,15 +159,18 @@ final class ThumbnailFormatMpeg4 extends ThumbnailFormat {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ThumbnailFormatMpeg4 copyWith() => const ThumbnailFormatMpeg4();
 
+  /// TDLib object type
   static const String objectType = 'thumbnailFormatMpeg4';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -173,6 +189,7 @@ final class ThumbnailFormatPng extends ThumbnailFormat {
   /// Parse from a json
   factory ThumbnailFormatPng.fromJson(Map<String, dynamic> json) => const ThumbnailFormatPng();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -180,15 +197,18 @@ final class ThumbnailFormatPng extends ThumbnailFormat {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ThumbnailFormatPng copyWith() => const ThumbnailFormatPng();
 
+  /// TDLib object type
   static const String objectType = 'thumbnailFormatPng';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -207,6 +227,7 @@ final class ThumbnailFormatTgs extends ThumbnailFormat {
   /// Parse from a json
   factory ThumbnailFormatTgs.fromJson(Map<String, dynamic> json) => const ThumbnailFormatTgs();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -214,15 +235,18 @@ final class ThumbnailFormatTgs extends ThumbnailFormat {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ThumbnailFormatTgs copyWith() => const ThumbnailFormatTgs();
 
+  /// TDLib object type
   static const String objectType = 'thumbnailFormatTgs';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -241,6 +265,7 @@ final class ThumbnailFormatWebm extends ThumbnailFormat {
   /// Parse from a json
   factory ThumbnailFormatWebm.fromJson(Map<String, dynamic> json) => const ThumbnailFormatWebm();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -248,15 +273,18 @@ final class ThumbnailFormatWebm extends ThumbnailFormat {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ThumbnailFormatWebm copyWith() => const ThumbnailFormatWebm();
 
+  /// TDLib object type
   static const String objectType = 'thumbnailFormatWebm';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -275,6 +303,7 @@ final class ThumbnailFormatWebp extends ThumbnailFormat {
   /// Parse from a json
   factory ThumbnailFormatWebp.fromJson(Map<String, dynamic> json) => const ThumbnailFormatWebp();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -282,15 +311,18 @@ final class ThumbnailFormatWebp extends ThumbnailFormat {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ThumbnailFormatWebp copyWith() => const ThumbnailFormatWebp();
 
+  /// TDLib object type
   static const String objectType = 'thumbnailFormatWebp';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

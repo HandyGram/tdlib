@@ -35,6 +35,7 @@ final class ToggleSupergroupUsernameIsActive extends TdFunction {
   /// Pass true to activate the username; pass false to disable it
   final bool isActive;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class ToggleSupergroupUsernameIsActive extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [supergroup_id]: Identifier of the supergroup or channel
+  /// * [username]: The username to change
+  /// * [is_active]: Pass true to activate the username; pass false to disable it
   ToggleSupergroupUsernameIsActive copyWith({
     int? supergroupId,
     String? username,
@@ -57,11 +63,14 @@ final class ToggleSupergroupUsernameIsActive extends TdFunction {
     isActive: isActive ?? this.isActive,
   );
 
+  /// TDLib object type
   static const String objectType = 'toggleSupergroupUsernameIsActive';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -30,17 +30,21 @@ sealed class StickerFullType extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   StickerFullType copyWith();
 
+  /// TDLib object type
   static const String objectType = 'stickerFullType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -71,6 +75,7 @@ final class StickerFullTypeRegular extends StickerFullType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -79,7 +84,10 @@ final class StickerFullTypeRegular extends StickerFullType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [premium_animation]: Premium animation of the sticker; may be null. If present, only Telegram Premium users can use the sticker
   @override
   StickerFullTypeRegular copyWith({
     File? premiumAnimation,
@@ -87,11 +95,14 @@ final class StickerFullTypeRegular extends StickerFullType {
     premiumAnimation: premiumAnimation ?? this.premiumAnimation,
   );
 
+  /// TDLib object type
   static const String objectType = 'stickerFullTypeRegular';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -122,6 +133,7 @@ final class StickerFullTypeMask extends StickerFullType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -130,7 +142,10 @@ final class StickerFullTypeMask extends StickerFullType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [mask_position]: Position where the mask is placed; may be null
   @override
   StickerFullTypeMask copyWith({
     MaskPosition? maskPosition,
@@ -138,11 +153,14 @@ final class StickerFullTypeMask extends StickerFullType {
     maskPosition: maskPosition ?? this.maskPosition,
   );
 
+  /// TDLib object type
   static const String objectType = 'stickerFullTypeMask';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -180,6 +198,7 @@ final class StickerFullTypeCustomEmoji extends StickerFullType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -189,7 +208,11 @@ final class StickerFullTypeCustomEmoji extends StickerFullType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [custom_emoji_id]: Identifier of the custom emoji
+  /// * [needs_repainting]: True, if the sticker must be repainted to a text color in messages, the color of the Telegram Premium badge in emoji status, white color on chat photos, or another appropriate color in other places
   @override
   StickerFullTypeCustomEmoji copyWith({
     int? customEmojiId,
@@ -199,11 +222,14 @@ final class StickerFullTypeCustomEmoji extends StickerFullType {
     needsRepainting: needsRepainting ?? this.needsRepainting,
   );
 
+  /// TDLib object type
   static const String objectType = 'stickerFullTypeCustomEmoji';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

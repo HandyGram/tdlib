@@ -36,17 +36,21 @@ sealed class ConnectionState extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   ConnectionState copyWith();
 
+  /// TDLib object type
   static const String objectType = 'connectionState';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -65,6 +69,7 @@ final class ConnectionStateWaitingForNetwork extends ConnectionState {
   /// Parse from a json
   factory ConnectionStateWaitingForNetwork.fromJson(Map<String, dynamic> json) => const ConnectionStateWaitingForNetwork();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -72,15 +77,18 @@ final class ConnectionStateWaitingForNetwork extends ConnectionState {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ConnectionStateWaitingForNetwork copyWith() => const ConnectionStateWaitingForNetwork();
 
+  /// TDLib object type
   static const String objectType = 'connectionStateWaitingForNetwork';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -99,6 +107,7 @@ final class ConnectionStateConnectingToProxy extends ConnectionState {
   /// Parse from a json
   factory ConnectionStateConnectingToProxy.fromJson(Map<String, dynamic> json) => const ConnectionStateConnectingToProxy();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -106,15 +115,18 @@ final class ConnectionStateConnectingToProxy extends ConnectionState {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ConnectionStateConnectingToProxy copyWith() => const ConnectionStateConnectingToProxy();
 
+  /// TDLib object type
   static const String objectType = 'connectionStateConnectingToProxy';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -133,6 +145,7 @@ final class ConnectionStateConnecting extends ConnectionState {
   /// Parse from a json
   factory ConnectionStateConnecting.fromJson(Map<String, dynamic> json) => const ConnectionStateConnecting();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -140,15 +153,18 @@ final class ConnectionStateConnecting extends ConnectionState {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ConnectionStateConnecting copyWith() => const ConnectionStateConnecting();
 
+  /// TDLib object type
   static const String objectType = 'connectionStateConnecting';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -167,6 +183,7 @@ final class ConnectionStateUpdating extends ConnectionState {
   /// Parse from a json
   factory ConnectionStateUpdating.fromJson(Map<String, dynamic> json) => const ConnectionStateUpdating();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -174,15 +191,18 @@ final class ConnectionStateUpdating extends ConnectionState {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ConnectionStateUpdating copyWith() => const ConnectionStateUpdating();
 
+  /// TDLib object type
   static const String objectType = 'connectionStateUpdating';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -201,6 +221,7 @@ final class ConnectionStateReady extends ConnectionState {
   /// Parse from a json
   factory ConnectionStateReady.fromJson(Map<String, dynamic> json) => const ConnectionStateReady();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -208,15 +229,18 @@ final class ConnectionStateReady extends ConnectionState {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ConnectionStateReady copyWith() => const ConnectionStateReady();
 
+  /// TDLib object type
   static const String objectType = 'connectionStateReady';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

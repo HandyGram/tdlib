@@ -39,6 +39,7 @@ final class Minithumbnail extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class Minithumbnail extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [width]: Thumbnail width, usually doesn't exceed 40 
+  /// * [height]: Thumbnail height, usually doesn't exceed 40 
+  /// * [data]: The thumbnail in JPEG format
   Minithumbnail copyWith({
     int? width,
     int? height,
@@ -60,11 +66,14 @@ final class Minithumbnail extends TdObject {
     data: data ?? this.data,
   );
 
+  /// TDLib object type
   static const String objectType = 'minithumbnail';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

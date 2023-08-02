@@ -100,6 +100,7 @@ final class ForumTopic extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -117,7 +118,19 @@ final class ForumTopic extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [info]: Basic information about the topic
+  /// * [last_message]: Last message in the topic; may be null if unknown
+  /// * [is_pinned]: True, if the topic is pinned in the topic list
+  /// * [unread_count]: Number of unread messages in the topic
+  /// * [last_read_inbox_message_id]: Identifier of the last read incoming message
+  /// * [last_read_outbox_message_id]: Identifier of the last read outgoing message
+  /// * [unread_mention_count]: Number of unread messages with a mention/reply in the topic
+  /// * [unread_reaction_count]: Number of messages with unread reactions in the topic
+  /// * [notification_settings]: Notification settings for the topic
+  /// * [draft_message]: A draft of a message in the topic; may be null
   ForumTopic copyWith({
     ForumTopicInfo? info,
     Message? lastMessage,
@@ -146,11 +159,14 @@ final class ForumTopic extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'forumTopic';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

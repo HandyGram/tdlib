@@ -27,17 +27,21 @@ sealed class MessageSender extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   MessageSender copyWith();
 
+  /// TDLib object type
   static const String objectType = 'messageSender';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -68,6 +72,7 @@ final class MessageSenderUser extends MessageSender {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -76,7 +81,10 @@ final class MessageSenderUser extends MessageSender {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: Identifier of the user that sent the message
   @override
   MessageSenderUser copyWith({
     int? userId,
@@ -84,11 +92,14 @@ final class MessageSenderUser extends MessageSender {
     userId: userId ?? this.userId,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageSenderUser';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -119,6 +130,7 @@ final class MessageSenderChat extends MessageSender {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -127,7 +139,10 @@ final class MessageSenderChat extends MessageSender {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat that sent the message
   @override
   MessageSenderChat copyWith({
     int? chatId,
@@ -135,11 +150,14 @@ final class MessageSenderChat extends MessageSender {
     chatId: chatId ?? this.chatId,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageSenderChat';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

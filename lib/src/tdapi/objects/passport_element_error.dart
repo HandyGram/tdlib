@@ -39,6 +39,7 @@ final class PassportElementError extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class PassportElementError extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [type]: Type of the Telegram Passport element which has the error 
+  /// * [message]: Error message 
+  /// * [source]: Error source
   PassportElementError copyWith({
     PassportElementType? type,
     String? message,
@@ -60,11 +66,14 @@ final class PassportElementError extends TdObject {
     source: source ?? this.source,
   );
 
+  /// TDLib object type
   static const String objectType = 'passportElementError';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

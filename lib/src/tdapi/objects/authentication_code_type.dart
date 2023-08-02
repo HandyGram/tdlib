@@ -45,17 +45,21 @@ sealed class AuthenticationCodeType extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   AuthenticationCodeType copyWith();
 
+  /// TDLib object type
   static const String objectType = 'authenticationCodeType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -86,6 +90,7 @@ final class AuthenticationCodeTypeTelegramMessage extends AuthenticationCodeType
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -94,7 +99,10 @@ final class AuthenticationCodeTypeTelegramMessage extends AuthenticationCodeType
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [length]: Length of the code
   @override
   AuthenticationCodeTypeTelegramMessage copyWith({
     int? length,
@@ -102,11 +110,14 @@ final class AuthenticationCodeTypeTelegramMessage extends AuthenticationCodeType
     length: length ?? this.length,
   );
 
+  /// TDLib object type
   static const String objectType = 'authenticationCodeTypeTelegramMessage';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -137,6 +148,7 @@ final class AuthenticationCodeTypeSms extends AuthenticationCodeType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -145,7 +157,10 @@ final class AuthenticationCodeTypeSms extends AuthenticationCodeType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [length]: Length of the code
   @override
   AuthenticationCodeTypeSms copyWith({
     int? length,
@@ -153,11 +168,14 @@ final class AuthenticationCodeTypeSms extends AuthenticationCodeType {
     length: length ?? this.length,
   );
 
+  /// TDLib object type
   static const String objectType = 'authenticationCodeTypeSms';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -188,6 +206,7 @@ final class AuthenticationCodeTypeCall extends AuthenticationCodeType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -196,7 +215,10 @@ final class AuthenticationCodeTypeCall extends AuthenticationCodeType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [length]: Length of the code
   @override
   AuthenticationCodeTypeCall copyWith({
     int? length,
@@ -204,11 +226,14 @@ final class AuthenticationCodeTypeCall extends AuthenticationCodeType {
     length: length ?? this.length,
   );
 
+  /// TDLib object type
   static const String objectType = 'authenticationCodeTypeCall';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -239,6 +264,7 @@ final class AuthenticationCodeTypeFlashCall extends AuthenticationCodeType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -247,7 +273,10 @@ final class AuthenticationCodeTypeFlashCall extends AuthenticationCodeType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [pattern]: Pattern of the phone number from which the call will be made
   @override
   AuthenticationCodeTypeFlashCall copyWith({
     String? pattern,
@@ -255,11 +284,14 @@ final class AuthenticationCodeTypeFlashCall extends AuthenticationCodeType {
     pattern: pattern ?? this.pattern,
   );
 
+  /// TDLib object type
   static const String objectType = 'authenticationCodeTypeFlashCall';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -297,6 +329,7 @@ final class AuthenticationCodeTypeMissedCall extends AuthenticationCodeType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -306,7 +339,11 @@ final class AuthenticationCodeTypeMissedCall extends AuthenticationCodeType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [phone_number_prefix]: Prefix of the phone number from which the call will be made
+  /// * [length]: Number of digits in the code, excluding the prefix
   @override
   AuthenticationCodeTypeMissedCall copyWith({
     String? phoneNumberPrefix,
@@ -316,11 +353,14 @@ final class AuthenticationCodeTypeMissedCall extends AuthenticationCodeType {
     length: length ?? this.length,
   );
 
+  /// TDLib object type
   static const String objectType = 'authenticationCodeTypeMissedCall';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -358,6 +398,7 @@ final class AuthenticationCodeTypeFragment extends AuthenticationCodeType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -367,7 +408,11 @@ final class AuthenticationCodeTypeFragment extends AuthenticationCodeType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [url]: URL to open to receive the code
+  /// * [length]: Length of the code
   @override
   AuthenticationCodeTypeFragment copyWith({
     String? url,
@@ -377,11 +422,14 @@ final class AuthenticationCodeTypeFragment extends AuthenticationCodeType {
     length: length ?? this.length,
   );
 
+  /// TDLib object type
   static const String objectType = 'authenticationCodeTypeFragment';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -419,6 +467,7 @@ final class AuthenticationCodeTypeFirebaseAndroid extends AuthenticationCodeType
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -428,7 +477,11 @@ final class AuthenticationCodeTypeFirebaseAndroid extends AuthenticationCodeType
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [nonce]: Nonce to pass to the SafetyNet Attestation API
+  /// * [length]: Length of the code
   @override
   AuthenticationCodeTypeFirebaseAndroid copyWith({
     String? nonce,
@@ -438,11 +491,14 @@ final class AuthenticationCodeTypeFirebaseAndroid extends AuthenticationCodeType
     length: length ?? this.length,
   );
 
+  /// TDLib object type
   static const String objectType = 'authenticationCodeTypeFirebaseAndroid';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -487,6 +543,7 @@ final class AuthenticationCodeTypeFirebaseIos extends AuthenticationCodeType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -497,7 +554,12 @@ final class AuthenticationCodeTypeFirebaseIos extends AuthenticationCodeType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [receipt]: Receipt of successful application token validation to compare with receipt from push notification
+  /// * [push_timeout]: Time after the next authentication method is supposed to be used if verification push notification isn't received, in seconds
+  /// * [length]: Length of the code
   @override
   AuthenticationCodeTypeFirebaseIos copyWith({
     String? receipt,
@@ -509,11 +571,14 @@ final class AuthenticationCodeTypeFirebaseIos extends AuthenticationCodeType {
     length: length ?? this.length,
   );
 
+  /// TDLib object type
   static const String objectType = 'authenticationCodeTypeFirebaseIos';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

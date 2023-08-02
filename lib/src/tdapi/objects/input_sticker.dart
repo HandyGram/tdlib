@@ -46,6 +46,7 @@ final class InputSticker extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -57,7 +58,13 @@ final class InputSticker extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sticker]: File with the sticker; must fit in a 512x512 square. For WEBP stickers the file must be in WEBP or PNG format, which will be converted to WEBP server-side.. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements
+  /// * [emojis]: String with 1-20 emoji corresponding to the sticker
+  /// * [mask_position]: Position where the mask is placed; pass null if not specified
+  /// * [keywords]: List of up to 20 keywords with total length up to 64 characters, which can be used to find the sticker
   InputSticker copyWith({
     InputFile? sticker,
     String? emojis,
@@ -70,11 +77,14 @@ final class InputSticker extends TdObject {
     keywords: keywords ?? this.keywords,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputSticker';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

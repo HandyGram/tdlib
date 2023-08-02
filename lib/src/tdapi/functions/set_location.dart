@@ -23,6 +23,7 @@ final class SetLocation extends TdFunction {
   /// The new location of the user
   final Location location;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class SetLocation extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [location]: The new location of the user
   SetLocation copyWith({
     Location? location,
   }) => SetLocation(
     location: location ?? this.location,
   );
 
+  /// TDLib object type
   static const String objectType = 'setLocation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

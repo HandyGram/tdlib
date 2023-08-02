@@ -41,6 +41,7 @@ final class GetWebAppUrl extends TdFunction {
   /// Short name of the application; 0-64 English letters, digits, and underscores
   final String applicationName;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -53,7 +54,13 @@ final class GetWebAppUrl extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [bot_user_id]: Identifier of the target bot
+  /// * [url]: The URL from the keyboardButtonTypeWebApp or inlineQueryResultsButtonTypeWebApp button
+  /// * [theme]: Preferred Web App theme; pass null to use the default theme
+  /// * [application_name]: Short name of the application; 0-64 English letters, digits, and underscores
   GetWebAppUrl copyWith({
     int? botUserId,
     String? url,
@@ -66,11 +73,14 @@ final class GetWebAppUrl extends TdFunction {
     applicationName: applicationName ?? this.applicationName,
   );
 
+  /// TDLib object type
   static const String objectType = 'getWebAppUrl';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

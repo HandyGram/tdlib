@@ -53,6 +53,7 @@ final class Contact extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -65,7 +66,14 @@ final class Contact extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [phone_number]: Phone number of the user
+  /// * [first_name]: First name of the user; 1-255 characters in length
+  /// * [last_name]: Last name of the user
+  /// * [vcard]: Additional data about the user in a form of vCard; 0-2048 bytes in length
+  /// * [user_id]: Identifier of the user, if known; 0 otherwise
   Contact copyWith({
     String? phoneNumber,
     String? firstName,
@@ -80,11 +88,14 @@ final class Contact extends TdObject {
     userId: userId ?? this.userId,
   );
 
+  /// TDLib object type
   static const String objectType = 'contact';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -36,17 +36,21 @@ sealed class MessageForwardOrigin extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   MessageForwardOrigin copyWith();
 
+  /// TDLib object type
   static const String objectType = 'messageForwardOrigin';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -77,6 +81,7 @@ final class MessageForwardOriginUser extends MessageForwardOrigin {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -85,7 +90,10 @@ final class MessageForwardOriginUser extends MessageForwardOrigin {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sender_user_id]: Identifier of the user that originally sent the message
   @override
   MessageForwardOriginUser copyWith({
     int? senderUserId,
@@ -93,11 +101,14 @@ final class MessageForwardOriginUser extends MessageForwardOrigin {
     senderUserId: senderUserId ?? this.senderUserId,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageForwardOriginUser';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -135,6 +146,7 @@ final class MessageForwardOriginChat extends MessageForwardOrigin {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -144,7 +156,11 @@ final class MessageForwardOriginChat extends MessageForwardOrigin {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sender_chat_id]: Identifier of the chat that originally sent the message
+  /// * [author_signature]: For messages originally sent by an anonymous chat administrator, original message author signature
   @override
   MessageForwardOriginChat copyWith({
     int? senderChatId,
@@ -154,11 +170,14 @@ final class MessageForwardOriginChat extends MessageForwardOrigin {
     authorSignature: authorSignature ?? this.authorSignature,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageForwardOriginChat';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -189,6 +208,7 @@ final class MessageForwardOriginHiddenUser extends MessageForwardOrigin {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -197,7 +217,10 @@ final class MessageForwardOriginHiddenUser extends MessageForwardOrigin {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sender_name]: Name of the sender
   @override
   MessageForwardOriginHiddenUser copyWith({
     String? senderName,
@@ -205,11 +228,14 @@ final class MessageForwardOriginHiddenUser extends MessageForwardOrigin {
     senderName: senderName ?? this.senderName,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageForwardOriginHiddenUser';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -254,6 +280,7 @@ final class MessageForwardOriginChannel extends MessageForwardOrigin {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -264,7 +291,12 @@ final class MessageForwardOriginChannel extends MessageForwardOrigin {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat from which the message was originally forwarded
+  /// * [message_id]: Message identifier of the original message
+  /// * [author_signature]: Original post author signature
   @override
   MessageForwardOriginChannel copyWith({
     int? chatId,
@@ -276,11 +308,14 @@ final class MessageForwardOriginChannel extends MessageForwardOrigin {
     authorSignature: authorSignature ?? this.authorSignature,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageForwardOriginChannel';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -311,6 +346,7 @@ final class MessageForwardOriginMessageImport extends MessageForwardOrigin {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -319,7 +355,10 @@ final class MessageForwardOriginMessageImport extends MessageForwardOrigin {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sender_name]: Name of the sender
   @override
   MessageForwardOriginMessageImport copyWith({
     String? senderName,
@@ -327,11 +366,14 @@ final class MessageForwardOriginMessageImport extends MessageForwardOrigin {
     senderName: senderName ?? this.senderName,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageForwardOriginMessageImport';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

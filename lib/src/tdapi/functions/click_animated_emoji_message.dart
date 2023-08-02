@@ -29,6 +29,7 @@ final class ClickAnimatedEmojiMessage extends TdFunction {
   /// Identifier of the clicked message
   final int messageId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ClickAnimatedEmojiMessage extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier of the message 
+  /// * [message_id]: Identifier of the clicked message
   ClickAnimatedEmojiMessage copyWith({
     int? chatId,
     int? messageId,
@@ -48,11 +53,14 @@ final class ClickAnimatedEmojiMessage extends TdFunction {
     messageId: messageId ?? this.messageId,
   );
 
+  /// TDLib object type
   static const String objectType = 'clickAnimatedEmojiMessage';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

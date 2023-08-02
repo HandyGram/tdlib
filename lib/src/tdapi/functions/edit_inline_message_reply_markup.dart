@@ -29,6 +29,7 @@ final class EditInlineMessageReplyMarkup extends TdFunction {
   /// The new message reply markup; pass null if none
   final ReplyMarkup? replyMarkup;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class EditInlineMessageReplyMarkup extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [inline_message_id]: Inline message identifier
+  /// * [reply_markup]: The new message reply markup; pass null if none
   EditInlineMessageReplyMarkup copyWith({
     String? inlineMessageId,
     ReplyMarkup? replyMarkup,
@@ -48,11 +53,14 @@ final class EditInlineMessageReplyMarkup extends TdFunction {
     replyMarkup: replyMarkup ?? this.replyMarkup,
   );
 
+  /// TDLib object type
   static const String objectType = 'editInlineMessageReplyMarkup';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

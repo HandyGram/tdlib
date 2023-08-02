@@ -29,6 +29,7 @@ final class AddLogMessage extends TdFunction {
   /// Text of a message to log
   final String text;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class AddLogMessage extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [verbosity_level]: The minimum verbosity level needed for the message to be logged; 0-1023
+  /// * [text]: Text of a message to log
   AddLogMessage copyWith({
     int? verbosityLevel,
     String? text,
@@ -48,11 +53,14 @@ final class AddLogMessage extends TdFunction {
     text: text ?? this.text,
   );
 
+  /// TDLib object type
   static const String objectType = 'addLogMessage';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

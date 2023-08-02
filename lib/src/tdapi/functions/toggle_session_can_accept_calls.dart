@@ -29,6 +29,7 @@ final class ToggleSessionCanAcceptCalls extends TdFunction {
   /// Pass true to allow accepting incoming calls by the session; pass false otherwise
   final bool canAcceptCalls;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ToggleSessionCanAcceptCalls extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [session_id]: Session identifier 
+  /// * [can_accept_calls]: Pass true to allow accepting incoming calls by the session; pass false otherwise
   ToggleSessionCanAcceptCalls copyWith({
     int? sessionId,
     bool? canAcceptCalls,
@@ -48,11 +53,14 @@ final class ToggleSessionCanAcceptCalls extends TdFunction {
     canAcceptCalls: canAcceptCalls ?? this.canAcceptCalls,
   );
 
+  /// TDLib object type
   static const String objectType = 'toggleSessionCanAcceptCalls';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

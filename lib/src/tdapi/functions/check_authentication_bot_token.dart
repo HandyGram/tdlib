@@ -23,6 +23,7 @@ final class CheckAuthenticationBotToken extends TdFunction {
   /// The bot token
   final String token;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class CheckAuthenticationBotToken extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [token]: The bot token
   CheckAuthenticationBotToken copyWith({
     String? token,
   }) => CheckAuthenticationBotToken(
     token: token ?? this.token,
   );
 
+  /// TDLib object type
   static const String objectType = 'checkAuthenticationBotToken';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

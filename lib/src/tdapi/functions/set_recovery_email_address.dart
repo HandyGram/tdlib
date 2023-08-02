@@ -29,6 +29,7 @@ final class SetRecoveryEmailAddress extends TdFunction {
   /// New recovery email address
   final String newRecoveryEmailAddress;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetRecoveryEmailAddress extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [password]: The 2-step verification password of the current user
+  /// * [new_recovery_email_address]: New recovery email address
   SetRecoveryEmailAddress copyWith({
     String? password,
     String? newRecoveryEmailAddress,
@@ -48,11 +53,14 @@ final class SetRecoveryEmailAddress extends TdFunction {
     newRecoveryEmailAddress: newRecoveryEmailAddress ?? this.newRecoveryEmailAddress,
   );
 
+  /// TDLib object type
   static const String objectType = 'setRecoveryEmailAddress';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

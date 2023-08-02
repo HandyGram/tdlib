@@ -44,6 +44,7 @@ final class NetworkStatistics extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -53,7 +54,11 @@ final class NetworkStatistics extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [since_date]: Point in time (Unix timestamp) from which the statistics are collected 
+  /// * [entries]: Network statistics entries
   NetworkStatistics copyWith({
     int? sinceDate,
     List<NetworkStatisticsEntry>? entries,
@@ -66,11 +71,14 @@ final class NetworkStatistics extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'networkStatistics';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

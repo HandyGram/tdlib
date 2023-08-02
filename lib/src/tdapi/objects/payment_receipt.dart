@@ -107,6 +107,7 @@ final class PaymentReceipt extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -125,7 +126,20 @@ final class PaymentReceipt extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [title]: Product title
+  /// * [description]: Product description
+  /// * [photo]: Product photo; may be null
+  /// * [date]: Point in time (Unix timestamp) when the payment was made
+  /// * [seller_bot_user_id]: User identifier of the seller bot
+  /// * [payment_provider_user_id]: User identifier of the payment provider bot
+  /// * [invoice]: Information about the invoice
+  /// * [order_info]: Order information; may be null
+  /// * [shipping_option]: Chosen shipping option; may be null
+  /// * [credentials_title]: Title of the saved credentials chosen by the buyer
+  /// * [tip_amount]: The amount of tip chosen by the buyer in the smallest units of the currency
   PaymentReceipt copyWith({
     String? title,
     FormattedText? description,
@@ -156,11 +170,14 @@ final class PaymentReceipt extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'paymentReceipt';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

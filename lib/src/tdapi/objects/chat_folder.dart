@@ -128,6 +128,7 @@ final class ChatFolder extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -149,7 +150,23 @@ final class ChatFolder extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [title]: The title of the folder; 1-12 characters without line feeds
+  /// * [icon]: The chosen icon for the chat folder; may be null. If null, use getChatFolderDefaultIconName to get default icon name for the folder
+  /// * [is_shareable]: True, if at least one link has been created for the folder
+  /// * [pinned_chat_ids]: The chat identifiers of pinned chats in the folder. There can be up to getOption("chat_folder_chosen_chat_count_max") pinned and always included non-secret chats and the same number of secret chats, but the limit can be increased with Telegram Premium
+  /// * [included_chat_ids]: The chat identifiers of always included chats in the folder. There can be up to getOption("chat_folder_chosen_chat_count_max") pinned and always included non-secret chats and the same number of secret chats, but the limit can be increased with Telegram Premium
+  /// * [excluded_chat_ids]: The chat identifiers of always excluded chats in the folder. There can be up to getOption("chat_folder_chosen_chat_count_max") always excluded non-secret chats and the same number of secret chats, but the limit can be increased with Telegram Premium
+  /// * [exclude_muted]: True, if muted chats need to be excluded
+  /// * [exclude_read]: True, if read chats need to be excluded
+  /// * [exclude_archived]: True, if archived chats need to be excluded
+  /// * [include_contacts]: True, if contacts need to be included
+  /// * [include_non_contacts]: True, if non-contact users need to be included
+  /// * [include_bots]: True, if bots need to be included
+  /// * [include_groups]: True, if basic groups and supergroups need to be included
+  /// * [include_channels]: True, if channels need to be included
   ChatFolder copyWith({
     String? title,
     ChatFolderIcon? icon,
@@ -186,11 +203,14 @@ final class ChatFolder extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatFolder';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

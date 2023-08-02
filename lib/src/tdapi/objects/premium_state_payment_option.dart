@@ -46,6 +46,7 @@ final class PremiumStatePaymentOption extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -57,7 +58,13 @@ final class PremiumStatePaymentOption extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [payment_option]: Information about the payment option
+  /// * [is_current]: True, if this is the currently used Telegram Premium subscription option
+  /// * [is_upgrade]: True, if the payment option can be used to upgrade the existing Telegram Premium subscription
+  /// * [last_transaction_id]: Identifier of the last in-store transaction for the currently used option
   PremiumStatePaymentOption copyWith({
     PremiumPaymentOption? paymentOption,
     bool? isCurrent,
@@ -70,11 +77,14 @@ final class PremiumStatePaymentOption extends TdObject {
     lastTransactionId: lastTransactionId ?? this.lastTransactionId,
   );
 
+  /// TDLib object type
   static const String objectType = 'premiumStatePaymentOption';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

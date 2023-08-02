@@ -23,6 +23,7 @@ final class UpgradeBasicGroupChatToSupergroupChat extends TdFunction {
   /// Identifier of the chat to upgrade
   final int chatId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class UpgradeBasicGroupChatToSupergroupChat extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat to upgrade
   UpgradeBasicGroupChatToSupergroupChat copyWith({
     int? chatId,
   }) => UpgradeBasicGroupChatToSupergroupChat(
     chatId: chatId ?? this.chatId,
   );
 
+  /// TDLib object type
   static const String objectType = 'upgradeBasicGroupChatToSupergroupChat';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

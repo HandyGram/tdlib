@@ -41,6 +41,7 @@ final class GetChatSparseMessagePositions extends TdFunction {
   /// The expected number of message positions to be returned; 50-2000. A smaller number of positions can be returned, if there are not enough appropriate messages
   final int limit;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -53,7 +54,13 @@ final class GetChatSparseMessagePositions extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat in which to return information about message positions
+  /// * [filter]: Filter for message content. Filters searchMessagesFilterEmpty, searchMessagesFilterMention, searchMessagesFilterUnreadMention, and searchMessagesFilterUnreadReaction are unsupported in this function
+  /// * [from_message_id]: The message identifier from which to return information about message positions
+  /// * [limit]: The expected number of message positions to be returned; 50-2000. A smaller number of positions can be returned, if there are not enough appropriate messages
   GetChatSparseMessagePositions copyWith({
     int? chatId,
     SearchMessagesFilter? filter,
@@ -66,11 +73,14 @@ final class GetChatSparseMessagePositions extends TdFunction {
     limit: limit ?? this.limit,
   );
 
+  /// TDLib object type
   static const String objectType = 'getChatSparseMessagePositions';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -28,6 +28,7 @@ final class Ok extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -35,7 +36,7 @@ final class Ok extends TdObject {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   Ok copyWith({
     dynamic extra,
     int? clientId,
@@ -44,11 +45,14 @@ final class Ok extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'ok';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

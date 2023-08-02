@@ -23,6 +23,7 @@ final class GetJsonValue extends TdFunction {
   /// The JSON-serialized string
   final String json;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetJsonValue extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [json]: The JSON-serialized string
   GetJsonValue copyWith({
     String? json,
   }) => GetJsonValue(
     json: json ?? this.json,
   );
 
+  /// TDLib object type
   static const String objectType = 'getJsonValue';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

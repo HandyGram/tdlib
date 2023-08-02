@@ -32,6 +32,7 @@ final class BotCommand extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -41,7 +42,11 @@ final class BotCommand extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [command]: Text of the bot command 
+  /// * [description]: Description of the bot command
   BotCommand copyWith({
     String? command,
     String? description,
@@ -50,11 +55,14 @@ final class BotCommand extends TdObject {
     description: description ?? this.description,
   );
 
+  /// TDLib object type
   static const String objectType = 'botCommand';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

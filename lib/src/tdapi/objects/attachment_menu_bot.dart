@@ -149,6 +149,7 @@ final class AttachmentMenuBot extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -173,7 +174,26 @@ final class AttachmentMenuBot extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [bot_user_id]: User identifier of the bot added to attachment menu
+  /// * [supports_self_chat]: True, if the bot supports opening from attachment menu in the chat with the bot
+  /// * [supports_user_chats]: True, if the bot supports opening from attachment menu in private chats with ordinary users
+  /// * [supports_bot_chats]: True, if the bot supports opening from attachment menu in private chats with other bots
+  /// * [supports_group_chats]: True, if the bot supports opening from attachment menu in basic group and supergroup chats
+  /// * [supports_channel_chats]: True, if the bot supports opening from attachment menu in channel chats
+  /// * [supports_settings]: True, if the bot supports "settings_button_pressed" event
+  /// * [request_write_access]: True, if the user must be asked for the permission to the bot to send them messages
+  /// * [name]: Name for the bot in attachment menu
+  /// * [name_color]: Color to highlight selected name of the bot if appropriate; may be null
+  /// * [default_icon]: Default attachment menu icon for the bot in SVG format; may be null
+  /// * [ios_static_icon]: Attachment menu icon for the bot in SVG format for the official iOS app; may be null
+  /// * [ios_animated_icon]: Attachment menu icon for the bot in TGS format for the official iOS app; may be null
+  /// * [android_icon]: Attachment menu icon for the bot in TGS format for the official Android app; may be null
+  /// * [macos_icon]: Attachment menu icon for the bot in TGS format for the official native macOS app; may be null
+  /// * [icon_color]: Color to highlight selected icon of the bot if appropriate; may be null
+  /// * [web_app_placeholder]: Default placeholder for opened Web Apps in SVG format; may be null
   AttachmentMenuBot copyWith({
     int? botUserId,
     bool? supportsSelfChat,
@@ -216,11 +236,14 @@ final class AttachmentMenuBot extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'attachmentMenuBot';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

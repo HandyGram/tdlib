@@ -39,17 +39,21 @@ sealed class UserStatus extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   UserStatus copyWith();
 
+  /// TDLib object type
   static const String objectType = 'userStatus';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -68,6 +72,7 @@ final class UserStatusEmpty extends UserStatus {
   /// Parse from a json
   factory UserStatusEmpty.fromJson(Map<String, dynamic> json) => const UserStatusEmpty();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -75,15 +80,18 @@ final class UserStatusEmpty extends UserStatus {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   UserStatusEmpty copyWith() => const UserStatusEmpty();
 
+  /// TDLib object type
   static const String objectType = 'userStatusEmpty';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -114,6 +122,7 @@ final class UserStatusOnline extends UserStatus {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -122,7 +131,10 @@ final class UserStatusOnline extends UserStatus {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [expires]: Point in time (Unix timestamp) when the user's online status will expire
   @override
   UserStatusOnline copyWith({
     int? expires,
@@ -130,11 +142,14 @@ final class UserStatusOnline extends UserStatus {
     expires: expires ?? this.expires,
   );
 
+  /// TDLib object type
   static const String objectType = 'userStatusOnline';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -165,6 +180,7 @@ final class UserStatusOffline extends UserStatus {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -173,7 +189,10 @@ final class UserStatusOffline extends UserStatus {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [was_online]: Point in time (Unix timestamp) when the user was last online
   @override
   UserStatusOffline copyWith({
     int? wasOnline,
@@ -181,11 +200,14 @@ final class UserStatusOffline extends UserStatus {
     wasOnline: wasOnline ?? this.wasOnline,
   );
 
+  /// TDLib object type
   static const String objectType = 'userStatusOffline';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -204,6 +226,7 @@ final class UserStatusRecently extends UserStatus {
   /// Parse from a json
   factory UserStatusRecently.fromJson(Map<String, dynamic> json) => const UserStatusRecently();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -211,15 +234,18 @@ final class UserStatusRecently extends UserStatus {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   UserStatusRecently copyWith() => const UserStatusRecently();
 
+  /// TDLib object type
   static const String objectType = 'userStatusRecently';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -238,6 +264,7 @@ final class UserStatusLastWeek extends UserStatus {
   /// Parse from a json
   factory UserStatusLastWeek.fromJson(Map<String, dynamic> json) => const UserStatusLastWeek();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -245,15 +272,18 @@ final class UserStatusLastWeek extends UserStatus {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   UserStatusLastWeek copyWith() => const UserStatusLastWeek();
 
+  /// TDLib object type
   static const String objectType = 'userStatusLastWeek';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -272,6 +302,7 @@ final class UserStatusLastMonth extends UserStatus {
   /// Parse from a json
   factory UserStatusLastMonth.fromJson(Map<String, dynamic> json) => const UserStatusLastMonth();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -279,15 +310,18 @@ final class UserStatusLastMonth extends UserStatus {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   UserStatusLastMonth copyWith() => const UserStatusLastMonth();
 
+  /// TDLib object type
   static const String objectType = 'userStatusLastMonth';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

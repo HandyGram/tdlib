@@ -29,6 +29,7 @@ final class LoadGroupCallParticipants extends TdFunction {
   /// The maximum number of participants to load; up to 100
   final int limit;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class LoadGroupCallParticipants extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [group_call_id]: Group call identifier. The group call must be previously received through getGroupCall and must be joined or being joined
+  /// * [limit]: The maximum number of participants to load; up to 100
   LoadGroupCallParticipants copyWith({
     int? groupCallId,
     int? limit,
@@ -48,11 +53,14 @@ final class LoadGroupCallParticipants extends TdFunction {
     limit: limit ?? this.limit,
   );
 
+  /// TDLib object type
   static const String objectType = 'loadGroupCallParticipants';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

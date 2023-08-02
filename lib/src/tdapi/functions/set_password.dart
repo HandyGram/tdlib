@@ -47,6 +47,7 @@ final class SetPassword extends TdFunction {
   /// New recovery email address; may be empty
   final String newRecoveryEmailAddress;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -60,7 +61,14 @@ final class SetPassword extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [old_password]: Previous 2-step verification password of the user
+  /// * [new_password]: New 2-step verification password of the user; may be empty to remove the password
+  /// * [new_hint]: New password hint; may be empty
+  /// * [set_recovery_email_address]: Pass true to change also the recovery email address
+  /// * [new_recovery_email_address]: New recovery email address; may be empty
   SetPassword copyWith({
     String? oldPassword,
     String? newPassword,
@@ -75,11 +83,14 @@ final class SetPassword extends TdFunction {
     newRecoveryEmailAddress: newRecoveryEmailAddress ?? this.newRecoveryEmailAddress,
   );
 
+  /// TDLib object type
   static const String objectType = 'setPassword';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

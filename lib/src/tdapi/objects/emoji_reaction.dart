@@ -100,6 +100,7 @@ final class EmojiReaction extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -117,7 +118,19 @@ final class EmojiReaction extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [emoji]: Text representation of the reaction
+  /// * [title]: Reaction title
+  /// * [is_active]: True, if the reaction can be added to new messages and enabled in chats
+  /// * [static_icon]: Static icon for the reaction
+  /// * [appear_animation]: Appear animation for the reaction
+  /// * [select_animation]: Select animation for the reaction
+  /// * [activate_animation]: Activate animation for the reaction
+  /// * [effect_animation]: Effect animation for the reaction
+  /// * [around_animation]: Around animation for the reaction; may be null
+  /// * [center_animation]: Center animation for the reaction; may be null
   EmojiReaction copyWith({
     String? emoji,
     String? title,
@@ -146,11 +159,14 @@ final class EmojiReaction extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'emojiReaction';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -23,6 +23,7 @@ final class ViewPremiumFeature extends TdFunction {
   /// The viewed premium feature
   final PremiumFeature feature;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class ViewPremiumFeature extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [feature]: The viewed premium feature
   ViewPremiumFeature copyWith({
     PremiumFeature? feature,
   }) => ViewPremiumFeature(
     feature: feature ?? this.feature,
   );
 
+  /// TDLib object type
   static const String objectType = 'viewPremiumFeature';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

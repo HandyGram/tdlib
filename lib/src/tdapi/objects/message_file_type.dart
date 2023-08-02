@@ -30,17 +30,21 @@ sealed class MessageFileType extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   MessageFileType copyWith();
 
+  /// TDLib object type
   static const String objectType = 'messageFileType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -83,6 +87,7 @@ final class MessageFileTypePrivate extends MessageFileType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -91,7 +96,10 @@ final class MessageFileTypePrivate extends MessageFileType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [name]: Name of the other party; may be empty if unrecognized
   @override
   MessageFileTypePrivate copyWith({
     String? name,
@@ -103,11 +111,14 @@ final class MessageFileTypePrivate extends MessageFileType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageFileTypePrivate';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -150,6 +161,7 @@ final class MessageFileTypeGroup extends MessageFileType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -158,7 +170,10 @@ final class MessageFileTypeGroup extends MessageFileType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [title]: Title of the group chat; may be empty if unrecognized
   @override
   MessageFileTypeGroup copyWith({
     String? title,
@@ -170,11 +185,14 @@ final class MessageFileTypeGroup extends MessageFileType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageFileTypeGroup';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -208,6 +226,7 @@ final class MessageFileTypeUnknown extends MessageFileType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -215,7 +234,7 @@ final class MessageFileTypeUnknown extends MessageFileType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   MessageFileTypeUnknown copyWith({
     dynamic extra,
@@ -225,11 +244,14 @@ final class MessageFileTypeUnknown extends MessageFileType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageFileTypeUnknown';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

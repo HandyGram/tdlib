@@ -39,6 +39,7 @@ final class AnimatedChatPhoto extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class AnimatedChatPhoto extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [length]: Animation width and height
+  /// * [file]: Information about the animation file
+  /// * [main_frame_timestamp]: Timestamp of the frame, used as a static chat photo
   AnimatedChatPhoto copyWith({
     int? length,
     File? file,
@@ -60,11 +66,14 @@ final class AnimatedChatPhoto extends TdObject {
     mainFrameTimestamp: mainFrameTimestamp ?? this.mainFrameTimestamp,
   );
 
+  /// TDLib object type
   static const String objectType = 'animatedChatPhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

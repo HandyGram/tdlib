@@ -23,6 +23,7 @@ final class SearchPublicChats extends TdFunction {
   /// Query to search for
   final String query;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class SearchPublicChats extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [query]: Query to search for
   SearchPublicChats copyWith({
     String? query,
   }) => SearchPublicChats(
     query: query ?? this.query,
   );
 
+  /// TDLib object type
   static const String objectType = 'searchPublicChats';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

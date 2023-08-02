@@ -23,6 +23,7 @@ final class SharePhoneNumber extends TdFunction {
   /// Identifier of the user with whom to share the phone number. The user must be a mutual contact
   final int userId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class SharePhoneNumber extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: Identifier of the user with whom to share the phone number. The user must be a mutual contact
   SharePhoneNumber copyWith({
     int? userId,
   }) => SharePhoneNumber(
     userId: userId ?? this.userId,
   );
 
+  /// TDLib object type
   static const String objectType = 'sharePhoneNumber';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

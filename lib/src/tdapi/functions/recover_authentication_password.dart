@@ -35,6 +35,7 @@ final class RecoverAuthenticationPassword extends TdFunction {
   /// New password hint; may be empty
   final String newHint;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class RecoverAuthenticationPassword extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [recovery_code]: Recovery code to check
+  /// * [new_password]: New 2-step verification password of the user; may be empty to remove the password
+  /// * [new_hint]: New password hint; may be empty
   RecoverAuthenticationPassword copyWith({
     String? recoveryCode,
     String? newPassword,
@@ -57,11 +63,14 @@ final class RecoverAuthenticationPassword extends TdFunction {
     newHint: newHint ?? this.newHint,
   );
 
+  /// TDLib object type
   static const String objectType = 'recoverAuthenticationPassword';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

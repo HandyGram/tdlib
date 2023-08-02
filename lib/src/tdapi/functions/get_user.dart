@@ -23,6 +23,7 @@ final class GetUser extends TdFunction {
   /// User identifier
   final int userId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetUser extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: User identifier
   GetUser copyWith({
     int? userId,
   }) => GetUser(
     userId: userId ?? this.userId,
   );
 
+  /// TDLib object type
   static const String objectType = 'getUser';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -30,17 +30,21 @@ sealed class EmailAddressAuthentication extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   EmailAddressAuthentication copyWith();
 
+  /// TDLib object type
   static const String objectType = 'emailAddressAuthentication';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -71,6 +75,7 @@ final class EmailAddressAuthenticationCode extends EmailAddressAuthentication {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -79,7 +84,10 @@ final class EmailAddressAuthenticationCode extends EmailAddressAuthentication {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [code]: The code
   @override
   EmailAddressAuthenticationCode copyWith({
     String? code,
@@ -87,11 +95,14 @@ final class EmailAddressAuthenticationCode extends EmailAddressAuthentication {
     code: code ?? this.code,
   );
 
+  /// TDLib object type
   static const String objectType = 'emailAddressAuthenticationCode';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -122,6 +133,7 @@ final class EmailAddressAuthenticationAppleId extends EmailAddressAuthentication
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -130,7 +142,10 @@ final class EmailAddressAuthenticationAppleId extends EmailAddressAuthentication
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [token]: The token
   @override
   EmailAddressAuthenticationAppleId copyWith({
     String? token,
@@ -138,11 +153,14 @@ final class EmailAddressAuthenticationAppleId extends EmailAddressAuthentication
     token: token ?? this.token,
   );
 
+  /// TDLib object type
   static const String objectType = 'emailAddressAuthenticationAppleId';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -173,6 +191,7 @@ final class EmailAddressAuthenticationGoogleId extends EmailAddressAuthenticatio
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -181,7 +200,10 @@ final class EmailAddressAuthenticationGoogleId extends EmailAddressAuthenticatio
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [token]: The token
   @override
   EmailAddressAuthenticationGoogleId copyWith({
     String? token,
@@ -189,11 +211,14 @@ final class EmailAddressAuthenticationGoogleId extends EmailAddressAuthenticatio
     token: token ?? this.token,
   );
 
+  /// TDLib object type
   static const String objectType = 'emailAddressAuthenticationGoogleId';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

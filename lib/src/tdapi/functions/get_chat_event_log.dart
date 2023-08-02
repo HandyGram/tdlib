@@ -53,6 +53,7 @@ final class GetChatEventLog extends TdFunction {
   /// User identifiers by which to filter events. By default, events relating to all users will be returned
   final List<int> userIds;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -67,7 +68,15 @@ final class GetChatEventLog extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [query]: Search query by which to filter events
+  /// * [from_event_id]: Identifier of an event from which to return results. Use 0 to get results from the latest events
+  /// * [limit]: The maximum number of events to return; up to 100
+  /// * [filters]: The types of events to return; pass null to get chat events of all types
+  /// * [user_ids]: User identifiers by which to filter events. By default, events relating to all users will be returned
   GetChatEventLog copyWith({
     int? chatId,
     String? query,
@@ -84,11 +93,14 @@ final class GetChatEventLog extends TdFunction {
     userIds: userIds ?? this.userIds,
   );
 
+  /// TDLib object type
   static const String objectType = 'getChatEventLog';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

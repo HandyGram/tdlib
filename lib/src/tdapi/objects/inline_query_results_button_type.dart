@@ -27,17 +27,21 @@ sealed class InlineQueryResultsButtonType extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   InlineQueryResultsButtonType copyWith();
 
+  /// TDLib object type
   static const String objectType = 'inlineQueryResultsButtonType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -68,6 +72,7 @@ final class InlineQueryResultsButtonTypeStartBot extends InlineQueryResultsButto
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -76,7 +81,10 @@ final class InlineQueryResultsButtonTypeStartBot extends InlineQueryResultsButto
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [parameter]: The parameter for the bot start message
   @override
   InlineQueryResultsButtonTypeStartBot copyWith({
     String? parameter,
@@ -84,11 +92,14 @@ final class InlineQueryResultsButtonTypeStartBot extends InlineQueryResultsButto
     parameter: parameter ?? this.parameter,
   );
 
+  /// TDLib object type
   static const String objectType = 'inlineQueryResultsButtonTypeStartBot';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -119,6 +130,7 @@ final class InlineQueryResultsButtonTypeWebApp extends InlineQueryResultsButtonT
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -127,7 +139,10 @@ final class InlineQueryResultsButtonTypeWebApp extends InlineQueryResultsButtonT
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [url]: An HTTP URL to pass to getWebAppUrl
   @override
   InlineQueryResultsButtonTypeWebApp copyWith({
     String? url,
@@ -135,11 +150,14 @@ final class InlineQueryResultsButtonTypeWebApp extends InlineQueryResultsButtonT
     url: url ?? this.url,
   );
 
+  /// TDLib object type
   static const String objectType = 'inlineQueryResultsButtonTypeWebApp';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

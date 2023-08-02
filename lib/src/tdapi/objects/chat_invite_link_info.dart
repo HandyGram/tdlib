@@ -100,6 +100,7 @@ final class ChatInviteLinkInfo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -117,7 +118,19 @@ final class ChatInviteLinkInfo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier of the invite link; 0 if the user has no access to the chat before joining
+  /// * [accessible_for]: If non-zero, the amount of time for which read access to the chat will remain available, in seconds
+  /// * [type]: Type of the chat
+  /// * [title]: Title of the chat
+  /// * [photo]: Chat photo; may be null
+  /// * [description]: Chat description
+  /// * [member_count]: Number of members in the chat
+  /// * [member_user_ids]: User identifiers of some chat members that may be known to the current user
+  /// * [creates_join_request]: True, if the link only creates join request
+  /// * [is_public]: True, if the chat is a public supergroup or channel, i.e. it has a username or it is a location-based supergroup
   ChatInviteLinkInfo copyWith({
     int? chatId,
     int? accessibleFor,
@@ -146,11 +159,14 @@ final class ChatInviteLinkInfo extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatInviteLinkInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

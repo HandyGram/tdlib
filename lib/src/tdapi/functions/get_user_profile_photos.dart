@@ -35,6 +35,7 @@ final class GetUserProfilePhotos extends TdFunction {
   /// The maximum number of photos to be returned; up to 100
   final int limit;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class GetUserProfilePhotos extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: User identifier 
+  /// * [offset]: The number of photos to skip; must be non-negative 
+  /// * [limit]: The maximum number of photos to be returned; up to 100
   GetUserProfilePhotos copyWith({
     int? userId,
     int? offset,
@@ -57,11 +63,14 @@ final class GetUserProfilePhotos extends TdFunction {
     limit: limit ?? this.limit,
   );
 
+  /// TDLib object type
   static const String objectType = 'getUserProfilePhotos';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -32,6 +32,7 @@ final class DateRange extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -41,7 +42,11 @@ final class DateRange extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [start_date]: Point in time (Unix timestamp) at which the date range begins 
+  /// * [end_date]: Point in time (Unix timestamp) at which the date range ends
   DateRange copyWith({
     int? startDate,
     int? endDate,
@@ -50,11 +55,14 @@ final class DateRange extends TdObject {
     endDate: endDate ?? this.endDate,
   );
 
+  /// TDLib object type
   static const String objectType = 'dateRange';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -23,6 +23,7 @@ final class EndGroupCall extends TdFunction {
   /// Group call identifier
   final int groupCallId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class EndGroupCall extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [group_call_id]: Group call identifier
   EndGroupCall copyWith({
     int? groupCallId,
   }) => EndGroupCall(
     groupCallId: groupCallId ?? this.groupCallId,
   );
 
+  /// TDLib object type
   static const String objectType = 'endGroupCall';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

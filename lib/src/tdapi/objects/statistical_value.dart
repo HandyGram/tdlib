@@ -39,6 +39,7 @@ final class StatisticalValue extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class StatisticalValue extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [value]: The current value 
+  /// * [previous_value]: The value for the previous day 
+  /// * [growth_rate_percentage]: The growth rate of the value, as a percentage
   StatisticalValue copyWith({
     double? value,
     double? previousValue,
@@ -60,11 +66,14 @@ final class StatisticalValue extends TdObject {
     growthRatePercentage: growthRatePercentage ?? this.growthRatePercentage,
   );
 
+  /// TDLib object type
   static const String objectType = 'statisticalValue';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

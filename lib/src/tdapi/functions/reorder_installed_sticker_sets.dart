@@ -29,6 +29,7 @@ final class ReorderInstalledStickerSets extends TdFunction {
   /// Identifiers of installed sticker sets in the new correct order
   final List<int> stickerSetIds;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ReorderInstalledStickerSets extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sticker_type]: Type of the sticker sets to reorder 
+  /// * [sticker_set_ids]: Identifiers of installed sticker sets in the new correct order
   ReorderInstalledStickerSets copyWith({
     StickerType? stickerType,
     List<int>? stickerSetIds,
@@ -48,11 +53,14 @@ final class ReorderInstalledStickerSets extends TdFunction {
     stickerSetIds: stickerSetIds ?? this.stickerSetIds,
   );
 
+  /// TDLib object type
   static const String objectType = 'reorderInstalledStickerSets';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

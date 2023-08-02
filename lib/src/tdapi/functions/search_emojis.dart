@@ -35,6 +35,7 @@ final class SearchEmojis extends TdFunction {
   /// List of possible IETF language tags of the user's input language; may be empty if unknown
   final List<String> inputLanguageCodes;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class SearchEmojis extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Text to search for
+  /// * [exact_match]: Pass true if only emojis, which exactly match the text, needs to be returned
+  /// * [input_language_codes]: List of possible IETF language tags of the user's input language; may be empty if unknown
   SearchEmojis copyWith({
     String? text,
     bool? exactMatch,
@@ -57,11 +63,14 @@ final class SearchEmojis extends TdFunction {
     inputLanguageCodes: inputLanguageCodes ?? this.inputLanguageCodes,
   );
 
+  /// TDLib object type
   static const String objectType = 'searchEmojis';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

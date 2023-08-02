@@ -23,6 +23,7 @@ final class SetDatabaseEncryptionKey extends TdFunction {
   /// New encryption key
   final String newEncryptionKey;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class SetDatabaseEncryptionKey extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [new_encryption_key]: New encryption key
   SetDatabaseEncryptionKey copyWith({
     String? newEncryptionKey,
   }) => SetDatabaseEncryptionKey(
     newEncryptionKey: newEncryptionKey ?? this.newEncryptionKey,
   );
 
+  /// TDLib object type
   static const String objectType = 'setDatabaseEncryptionKey';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

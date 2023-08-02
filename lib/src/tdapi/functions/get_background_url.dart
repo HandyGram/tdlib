@@ -29,6 +29,7 @@ final class GetBackgroundUrl extends TdFunction {
   /// Background type
   final BackgroundType type;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class GetBackgroundUrl extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [name]: Background name 
+  /// * [type]: Background type
   GetBackgroundUrl copyWith({
     String? name,
     BackgroundType? type,
@@ -48,11 +53,14 @@ final class GetBackgroundUrl extends TdFunction {
     type: type ?? this.type,
   );
 
+  /// TDLib object type
   static const String objectType = 'getBackgroundUrl';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

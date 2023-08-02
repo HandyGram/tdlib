@@ -32,6 +32,7 @@ final class MessageViewer extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -41,7 +42,11 @@ final class MessageViewer extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: User identifier of the viewer 
+  /// * [view_date]: Approximate point in time (Unix timestamp) when the message was viewed
   MessageViewer copyWith({
     int? userId,
     int? viewDate,
@@ -50,11 +55,14 @@ final class MessageViewer extends TdObject {
     viewDate: viewDate ?? this.viewDate,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageViewer';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -46,6 +46,7 @@ final class MessageInteractionInfo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -57,7 +58,13 @@ final class MessageInteractionInfo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [view_count]: Number of times the message was viewed
+  /// * [forward_count]: Number of times the message was forwarded
+  /// * [reply_info]: Information about direct or indirect replies to the message; may be null. Currently, available only in channels with a discussion supergroup and discussion supergroups for messages, which are not replies itself
+  /// * [reactions]: The list of reactions added to the message
   MessageInteractionInfo copyWith({
     int? viewCount,
     int? forwardCount,
@@ -70,11 +77,14 @@ final class MessageInteractionInfo extends TdObject {
     reactions: reactions ?? this.reactions,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageInteractionInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

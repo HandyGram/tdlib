@@ -29,6 +29,7 @@ final class SetMenuButton extends TdFunction {
   /// New menu button
   final BotMenuButton menuButton;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetMenuButton extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: Identifier of the user or 0 to set menu button for all users
+  /// * [menu_button]: New menu button
   SetMenuButton copyWith({
     int? userId,
     BotMenuButton? menuButton,
@@ -48,11 +53,14 @@ final class SetMenuButton extends TdFunction {
     menuButton: menuButton ?? this.menuButton,
   );
 
+  /// TDLib object type
   static const String objectType = 'setMenuButton';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

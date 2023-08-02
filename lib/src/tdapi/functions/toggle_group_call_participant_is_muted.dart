@@ -35,6 +35,7 @@ final class ToggleGroupCallParticipantIsMuted extends TdFunction {
   /// Pass true to mute the user; pass false to unmute the them
   final bool isMuted;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class ToggleGroupCallParticipantIsMuted extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [group_call_id]: Group call identifier
+  /// * [participant_id]: Participant identifier
+  /// * [is_muted]: Pass true to mute the user; pass false to unmute the them
   ToggleGroupCallParticipantIsMuted copyWith({
     int? groupCallId,
     MessageSender? participantId,
@@ -57,11 +63,14 @@ final class ToggleGroupCallParticipantIsMuted extends TdFunction {
     isMuted: isMuted ?? this.isMuted,
   );
 
+  /// TDLib object type
   static const String objectType = 'toggleGroupCallParticipantIsMuted';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

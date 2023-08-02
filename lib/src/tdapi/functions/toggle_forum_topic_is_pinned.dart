@@ -35,6 +35,7 @@ final class ToggleForumTopicIsPinned extends TdFunction {
   /// Pass true to pin the topic; pass false to unpin it
   final bool isPinned;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class ToggleForumTopicIsPinned extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [message_thread_id]: Message thread identifier of the forum topic
+  /// * [is_pinned]: Pass true to pin the topic; pass false to unpin it
   ToggleForumTopicIsPinned copyWith({
     int? chatId,
     int? messageThreadId,
@@ -57,11 +63,14 @@ final class ToggleForumTopicIsPinned extends TdFunction {
     isPinned: isPinned ?? this.isPinned,
   );
 
+  /// TDLib object type
   static const String objectType = 'toggleForumTopicIsPinned';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

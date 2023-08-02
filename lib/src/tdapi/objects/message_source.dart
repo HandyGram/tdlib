@@ -48,17 +48,21 @@ sealed class MessageSource extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   MessageSource copyWith();
 
+  /// TDLib object type
   static const String objectType = 'messageSource';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -77,6 +81,7 @@ final class MessageSourceChatHistory extends MessageSource {
   /// Parse from a json
   factory MessageSourceChatHistory.fromJson(Map<String, dynamic> json) => const MessageSourceChatHistory();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -84,15 +89,18 @@ final class MessageSourceChatHistory extends MessageSource {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   MessageSourceChatHistory copyWith() => const MessageSourceChatHistory();
 
+  /// TDLib object type
   static const String objectType = 'messageSourceChatHistory';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -111,6 +119,7 @@ final class MessageSourceMessageThreadHistory extends MessageSource {
   /// Parse from a json
   factory MessageSourceMessageThreadHistory.fromJson(Map<String, dynamic> json) => const MessageSourceMessageThreadHistory();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -118,15 +127,18 @@ final class MessageSourceMessageThreadHistory extends MessageSource {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   MessageSourceMessageThreadHistory copyWith() => const MessageSourceMessageThreadHistory();
 
+  /// TDLib object type
   static const String objectType = 'messageSourceMessageThreadHistory';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -145,6 +157,7 @@ final class MessageSourceForumTopicHistory extends MessageSource {
   /// Parse from a json
   factory MessageSourceForumTopicHistory.fromJson(Map<String, dynamic> json) => const MessageSourceForumTopicHistory();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -152,15 +165,18 @@ final class MessageSourceForumTopicHistory extends MessageSource {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   MessageSourceForumTopicHistory copyWith() => const MessageSourceForumTopicHistory();
 
+  /// TDLib object type
   static const String objectType = 'messageSourceForumTopicHistory';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -179,6 +195,7 @@ final class MessageSourceHistoryPreview extends MessageSource {
   /// Parse from a json
   factory MessageSourceHistoryPreview.fromJson(Map<String, dynamic> json) => const MessageSourceHistoryPreview();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -186,15 +203,18 @@ final class MessageSourceHistoryPreview extends MessageSource {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   MessageSourceHistoryPreview copyWith() => const MessageSourceHistoryPreview();
 
+  /// TDLib object type
   static const String objectType = 'messageSourceHistoryPreview';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -213,6 +233,7 @@ final class MessageSourceChatList extends MessageSource {
   /// Parse from a json
   factory MessageSourceChatList.fromJson(Map<String, dynamic> json) => const MessageSourceChatList();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -220,15 +241,18 @@ final class MessageSourceChatList extends MessageSource {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   MessageSourceChatList copyWith() => const MessageSourceChatList();
 
+  /// TDLib object type
   static const String objectType = 'messageSourceChatList';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -247,6 +271,7 @@ final class MessageSourceSearch extends MessageSource {
   /// Parse from a json
   factory MessageSourceSearch.fromJson(Map<String, dynamic> json) => const MessageSourceSearch();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -254,15 +279,18 @@ final class MessageSourceSearch extends MessageSource {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   MessageSourceSearch copyWith() => const MessageSourceSearch();
 
+  /// TDLib object type
   static const String objectType = 'messageSourceSearch';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -281,6 +309,7 @@ final class MessageSourceChatEventLog extends MessageSource {
   /// Parse from a json
   factory MessageSourceChatEventLog.fromJson(Map<String, dynamic> json) => const MessageSourceChatEventLog();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -288,15 +317,18 @@ final class MessageSourceChatEventLog extends MessageSource {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   MessageSourceChatEventLog copyWith() => const MessageSourceChatEventLog();
 
+  /// TDLib object type
   static const String objectType = 'messageSourceChatEventLog';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -315,6 +347,7 @@ final class MessageSourceNotification extends MessageSource {
   /// Parse from a json
   factory MessageSourceNotification.fromJson(Map<String, dynamic> json) => const MessageSourceNotification();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -322,15 +355,18 @@ final class MessageSourceNotification extends MessageSource {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   MessageSourceNotification copyWith() => const MessageSourceNotification();
 
+  /// TDLib object type
   static const String objectType = 'messageSourceNotification';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -349,6 +385,7 @@ final class MessageSourceOther extends MessageSource {
   /// Parse from a json
   factory MessageSourceOther.fromJson(Map<String, dynamic> json) => const MessageSourceOther();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -356,15 +393,18 @@ final class MessageSourceOther extends MessageSource {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   MessageSourceOther copyWith() => const MessageSourceOther();
 
+  /// TDLib object type
   static const String objectType = 'messageSourceOther';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

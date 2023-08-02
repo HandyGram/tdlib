@@ -88,6 +88,7 @@ final class PersonalDetails extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -105,7 +106,19 @@ final class PersonalDetails extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [first_name]: First name of the user written in English; 1-255 characters
+  /// * [middle_name]: Middle name of the user written in English; 0-255 characters
+  /// * [last_name]: Last name of the user written in English; 1-255 characters
+  /// * [native_first_name]: Native first name of the user; 1-255 characters
+  /// * [native_middle_name]: Native middle name of the user; 0-255 characters
+  /// * [native_last_name]: Native last name of the user; 1-255 characters
+  /// * [birthdate]: Birthdate of the user
+  /// * [gender]: Gender of the user, "male" or "female"
+  /// * [country_code]: A two-letter ISO 3166-1 alpha-2 country code of the user's country
+  /// * [residence_country_code]: A two-letter ISO 3166-1 alpha-2 country code of the user's residence country
   PersonalDetails copyWith({
     String? firstName,
     String? middleName,
@@ -130,11 +143,14 @@ final class PersonalDetails extends TdObject {
     residenceCountryCode: residenceCountryCode ?? this.residenceCountryCode,
   );
 
+  /// TDLib object type
   static const String objectType = 'personalDetails';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -23,6 +23,7 @@ final class EditCustomLanguagePackInfo extends TdFunction {
   /// New information about the custom local language pack
   final LanguagePackInfo info;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class EditCustomLanguagePackInfo extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [info]: New information about the custom local language pack
   EditCustomLanguagePackInfo copyWith({
     LanguagePackInfo? info,
   }) => EditCustomLanguagePackInfo(
     info: info ?? this.info,
   );
 
+  /// TDLib object type
   static const String objectType = 'editCustomLanguagePackInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -29,6 +29,7 @@ final class ReorderSupergroupActiveUsernames extends TdFunction {
   /// The new order of active usernames. All currently active usernames must be specified
   final List<String> usernames;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ReorderSupergroupActiveUsernames extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [supergroup_id]: Identifier of the supergroup or channel 
+  /// * [usernames]: The new order of active usernames. All currently active usernames must be specified
   ReorderSupergroupActiveUsernames copyWith({
     int? supergroupId,
     List<String>? usernames,
@@ -48,11 +53,14 @@ final class ReorderSupergroupActiveUsernames extends TdFunction {
     usernames: usernames ?? this.usernames,
   );
 
+  /// TDLib object type
   static const String objectType = 'reorderSupergroupActiveUsernames';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

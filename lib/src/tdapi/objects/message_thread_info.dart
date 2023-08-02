@@ -72,6 +72,7 @@ final class MessageThreadInfo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -85,7 +86,15 @@ final class MessageThreadInfo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat to which the message thread belongs
+  /// * [message_thread_id]: Message thread identifier, unique within the chat
+  /// * [reply_info]: Information about the message thread; may be null for forum topic threads
+  /// * [unread_message_count]: Approximate number of unread messages in the message thread
+  /// * [messages]: The messages from which the thread starts. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id)
+  /// * [draft_message]: A draft of a message in the message thread; may be null
   MessageThreadInfo copyWith({
     int? chatId,
     int? messageThreadId,
@@ -106,11 +115,14 @@ final class MessageThreadInfo extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageThreadInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

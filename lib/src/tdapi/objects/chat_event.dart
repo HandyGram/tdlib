@@ -46,6 +46,7 @@ final class ChatEvent extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -57,7 +58,13 @@ final class ChatEvent extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Chat event identifier
+  /// * [date]: Point in time (Unix timestamp) when the event happened
+  /// * [member_id]: Identifier of the user or chat who performed the action
+  /// * [action]: The action
   ChatEvent copyWith({
     int? id,
     int? date,
@@ -70,11 +77,14 @@ final class ChatEvent extends TdObject {
     action: action ?? this.action,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatEvent';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

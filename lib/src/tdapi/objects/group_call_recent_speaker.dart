@@ -32,6 +32,7 @@ final class GroupCallRecentSpeaker extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -41,7 +42,11 @@ final class GroupCallRecentSpeaker extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [participant_id]: Group call participant identifier 
+  /// * [is_speaking]: True, is the user has spoken recently
   GroupCallRecentSpeaker copyWith({
     MessageSender? participantId,
     bool? isSpeaking,
@@ -50,11 +55,14 @@ final class GroupCallRecentSpeaker extends TdObject {
     isSpeaking: isSpeaking ?? this.isSpeaking,
   );
 
+  /// TDLib object type
   static const String objectType = 'groupCallRecentSpeaker';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

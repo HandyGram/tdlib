@@ -135,17 +135,21 @@ sealed class InternalLinkType extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   InternalLinkType copyWith();
 
+  /// TDLib object type
   static const String objectType = 'internalLinkType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -179,6 +183,7 @@ final class InternalLinkTypeActiveSessions extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -186,7 +191,7 @@ final class InternalLinkTypeActiveSessions extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   InternalLinkTypeActiveSessions copyWith({
     dynamic extra,
@@ -196,11 +201,14 @@ final class InternalLinkTypeActiveSessions extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeActiveSessions';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -257,6 +265,7 @@ final class InternalLinkTypeAttachmentMenuBot extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -267,7 +276,12 @@ final class InternalLinkTypeAttachmentMenuBot extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [target_chat]: Target chat to be opened
+  /// * [bot_username]: Username of the bot
+  /// * [url]: URL to be passed to openWebApp
   @override
   InternalLinkTypeAttachmentMenuBot copyWith({
     TargetChat? targetChat,
@@ -283,11 +297,14 @@ final class InternalLinkTypeAttachmentMenuBot extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeAttachmentMenuBot';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -330,6 +347,7 @@ final class InternalLinkTypeAuthenticationCode extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -338,7 +356,10 @@ final class InternalLinkTypeAuthenticationCode extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [code]: The authentication code
   @override
   InternalLinkTypeAuthenticationCode copyWith({
     String? code,
@@ -350,11 +371,14 @@ final class InternalLinkTypeAuthenticationCode extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeAuthenticationCode';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -397,6 +421,7 @@ final class InternalLinkTypeBackground extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -405,7 +430,10 @@ final class InternalLinkTypeBackground extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [background_name]: Name of the background
   @override
   InternalLinkTypeBackground copyWith({
     String? backgroundName,
@@ -417,11 +445,14 @@ final class InternalLinkTypeBackground extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeBackground';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -471,6 +502,7 @@ final class InternalLinkTypeBotAddToChannel extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -480,7 +512,11 @@ final class InternalLinkTypeBotAddToChannel extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [bot_username]: Username of the bot
+  /// * [administrator_rights]: Expected administrator rights for the bot
   @override
   InternalLinkTypeBotAddToChannel copyWith({
     String? botUsername,
@@ -494,11 +530,14 @@ final class InternalLinkTypeBotAddToChannel extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeBotAddToChannel';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -555,6 +594,7 @@ final class InternalLinkTypeBotStart extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -565,7 +605,12 @@ final class InternalLinkTypeBotStart extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [bot_username]: Username of the bot
+  /// * [start_parameter]: The parameter to be passed to sendBotStartMessage
+  /// * [autostart]: True, if sendBotStartMessage must be called automatically without showing the START button
   @override
   InternalLinkTypeBotStart copyWith({
     String? botUsername,
@@ -581,11 +626,14 @@ final class InternalLinkTypeBotStart extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeBotStart';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -642,6 +690,7 @@ final class InternalLinkTypeBotStartInGroup extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -652,7 +701,12 @@ final class InternalLinkTypeBotStartInGroup extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [bot_username]: Username of the bot
+  /// * [start_parameter]: The parameter to be passed to sendBotStartMessage
+  /// * [administrator_rights]: Expected administrator rights for the bot; may be null
   @override
   InternalLinkTypeBotStartInGroup copyWith({
     String? botUsername,
@@ -668,11 +722,14 @@ final class InternalLinkTypeBotStartInGroup extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeBotStartInGroup';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -706,6 +763,7 @@ final class InternalLinkTypeChangePhoneNumber extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -713,7 +771,7 @@ final class InternalLinkTypeChangePhoneNumber extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   InternalLinkTypeChangePhoneNumber copyWith({
     dynamic extra,
@@ -723,11 +781,14 @@ final class InternalLinkTypeChangePhoneNumber extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeChangePhoneNumber';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -770,6 +831,7 @@ final class InternalLinkTypeChatFolderInvite extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -778,7 +840,10 @@ final class InternalLinkTypeChatFolderInvite extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [invite_link]: Internal representation of the invite link
   @override
   InternalLinkTypeChatFolderInvite copyWith({
     String? inviteLink,
@@ -790,11 +855,14 @@ final class InternalLinkTypeChatFolderInvite extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeChatFolderInvite';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -828,6 +896,7 @@ final class InternalLinkTypeChatFolderSettings extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -835,7 +904,7 @@ final class InternalLinkTypeChatFolderSettings extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   InternalLinkTypeChatFolderSettings copyWith({
     dynamic extra,
@@ -845,11 +914,14 @@ final class InternalLinkTypeChatFolderSettings extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeChatFolderSettings';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -892,6 +964,7 @@ final class InternalLinkTypeChatInvite extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -900,7 +973,10 @@ final class InternalLinkTypeChatInvite extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [invite_link]: Internal representation of the invite link
   @override
   InternalLinkTypeChatInvite copyWith({
     String? inviteLink,
@@ -912,11 +988,14 @@ final class InternalLinkTypeChatInvite extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeChatInvite';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -950,6 +1029,7 @@ final class InternalLinkTypeDefaultMessageAutoDeleteTimerSettings extends Intern
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -957,7 +1037,7 @@ final class InternalLinkTypeDefaultMessageAutoDeleteTimerSettings extends Intern
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   InternalLinkTypeDefaultMessageAutoDeleteTimerSettings copyWith({
     dynamic extra,
@@ -967,11 +1047,14 @@ final class InternalLinkTypeDefaultMessageAutoDeleteTimerSettings extends Intern
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeDefaultMessageAutoDeleteTimerSettings';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1005,6 +1088,7 @@ final class InternalLinkTypeEditProfileSettings extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1012,7 +1096,7 @@ final class InternalLinkTypeEditProfileSettings extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   InternalLinkTypeEditProfileSettings copyWith({
     dynamic extra,
@@ -1022,11 +1106,14 @@ final class InternalLinkTypeEditProfileSettings extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeEditProfileSettings';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1076,6 +1163,7 @@ final class InternalLinkTypeGame extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1085,7 +1173,11 @@ final class InternalLinkTypeGame extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [bot_username]: Username of the bot that owns the game
+  /// * [game_short_name]: Short name of the game
   @override
   InternalLinkTypeGame copyWith({
     String? botUsername,
@@ -1099,11 +1191,14 @@ final class InternalLinkTypeGame extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeGame';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1153,6 +1248,7 @@ final class InternalLinkTypeInstantView extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1162,7 +1258,11 @@ final class InternalLinkTypeInstantView extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [url]: URL to be passed to getWebPageInstantView 
+  /// * [fallback_url]: An URL to open if getWebPageInstantView fails
   @override
   InternalLinkTypeInstantView copyWith({
     String? url,
@@ -1176,11 +1276,14 @@ final class InternalLinkTypeInstantView extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeInstantView';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1223,6 +1326,7 @@ final class InternalLinkTypeInvoice extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1231,7 +1335,10 @@ final class InternalLinkTypeInvoice extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [invoice_name]: Name of the invoice
   @override
   InternalLinkTypeInvoice copyWith({
     String? invoiceName,
@@ -1243,11 +1350,14 @@ final class InternalLinkTypeInvoice extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeInvoice';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1290,6 +1400,7 @@ final class InternalLinkTypeLanguagePack extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1298,7 +1409,10 @@ final class InternalLinkTypeLanguagePack extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [language_pack_id]: Language pack identifier
   @override
   InternalLinkTypeLanguagePack copyWith({
     String? languagePackId,
@@ -1310,11 +1424,14 @@ final class InternalLinkTypeLanguagePack extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeLanguagePack';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1348,6 +1465,7 @@ final class InternalLinkTypeLanguageSettings extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1355,7 +1473,7 @@ final class InternalLinkTypeLanguageSettings extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   InternalLinkTypeLanguageSettings copyWith({
     dynamic extra,
@@ -1365,11 +1483,14 @@ final class InternalLinkTypeLanguageSettings extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeLanguageSettings';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1412,6 +1533,7 @@ final class InternalLinkTypeMessage extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1420,7 +1542,10 @@ final class InternalLinkTypeMessage extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [url]: URL to be passed to getMessageLinkInfo
   @override
   InternalLinkTypeMessage copyWith({
     String? url,
@@ -1432,11 +1557,14 @@ final class InternalLinkTypeMessage extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeMessage';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1486,6 +1614,7 @@ final class InternalLinkTypeMessageDraft extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1495,7 +1624,11 @@ final class InternalLinkTypeMessageDraft extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Message draft text
+  /// * [contains_link]: True, if the first line of the text contains a link. If true, the input field needs to be focused and the text after the link must be selected
   @override
   InternalLinkTypeMessageDraft copyWith({
     FormattedText? text,
@@ -1509,11 +1642,14 @@ final class InternalLinkTypeMessageDraft extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeMessageDraft';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1584,6 +1720,7 @@ final class InternalLinkTypePassportDataRequest extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1596,7 +1733,14 @@ final class InternalLinkTypePassportDataRequest extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [bot_user_id]: User identifier of the service's bot
+  /// * [scope]: Telegram Passport element types requested by the service
+  /// * [public_key]: Service's public key
+  /// * [nonce]: Unique request identifier provided by the service
+  /// * [callback_url]: An HTTP URL to open once the request is finished, canceled, or failed with the parameters tg_passport=success, tg_passport=cancel, or tg_passport=error&error=... respectively.. If empty, then onActivityResult method must be used to return response on Android, or the link tgbot{bot_user_id}://passport/success or tgbot{bot_user_id}://passport/cancel must be opened otherwise
   @override
   InternalLinkTypePassportDataRequest copyWith({
     int? botUserId,
@@ -1616,11 +1760,14 @@ final class InternalLinkTypePassportDataRequest extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypePassportDataRequest';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1670,6 +1817,7 @@ final class InternalLinkTypePhoneNumberConfirmation extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1679,7 +1827,11 @@ final class InternalLinkTypePhoneNumberConfirmation extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [hash]: Hash value from the link
+  /// * [phone_number]: Phone number value from the link
   @override
   InternalLinkTypePhoneNumberConfirmation copyWith({
     String? hash,
@@ -1693,11 +1845,14 @@ final class InternalLinkTypePhoneNumberConfirmation extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypePhoneNumberConfirmation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1740,6 +1895,7 @@ final class InternalLinkTypePremiumFeatures extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1748,7 +1904,10 @@ final class InternalLinkTypePremiumFeatures extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [referrer]: Referrer specified in the link
   @override
   InternalLinkTypePremiumFeatures copyWith({
     String? referrer,
@@ -1760,11 +1919,14 @@ final class InternalLinkTypePremiumFeatures extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypePremiumFeatures';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1798,6 +1960,7 @@ final class InternalLinkTypePrivacyAndSecuritySettings extends InternalLinkType 
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1805,7 +1968,7 @@ final class InternalLinkTypePrivacyAndSecuritySettings extends InternalLinkType 
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   InternalLinkTypePrivacyAndSecuritySettings copyWith({
     dynamic extra,
@@ -1815,11 +1978,14 @@ final class InternalLinkTypePrivacyAndSecuritySettings extends InternalLinkType 
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypePrivacyAndSecuritySettings';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1876,6 +2042,7 @@ final class InternalLinkTypeProxy extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1886,7 +2053,12 @@ final class InternalLinkTypeProxy extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [server]: Proxy server IP address
+  /// * [port]: Proxy server port
+  /// * [type]: Type of the proxy
   @override
   InternalLinkTypeProxy copyWith({
     String? server,
@@ -1902,11 +2074,14 @@ final class InternalLinkTypeProxy extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeProxy';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1949,6 +2124,7 @@ final class InternalLinkTypePublicChat extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1957,7 +2133,10 @@ final class InternalLinkTypePublicChat extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_username]: Username of the chat
   @override
   InternalLinkTypePublicChat copyWith({
     String? chatUsername,
@@ -1969,11 +2148,14 @@ final class InternalLinkTypePublicChat extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypePublicChat';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2007,6 +2189,7 @@ final class InternalLinkTypeQrCodeAuthentication extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2014,7 +2197,7 @@ final class InternalLinkTypeQrCodeAuthentication extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   InternalLinkTypeQrCodeAuthentication copyWith({
     dynamic extra,
@@ -2024,11 +2207,14 @@ final class InternalLinkTypeQrCodeAuthentication extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeQrCodeAuthentication';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2062,6 +2248,7 @@ final class InternalLinkTypeRestorePurchases extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2069,7 +2256,7 @@ final class InternalLinkTypeRestorePurchases extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   InternalLinkTypeRestorePurchases copyWith({
     dynamic extra,
@@ -2079,11 +2266,14 @@ final class InternalLinkTypeRestorePurchases extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeRestorePurchases';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2117,6 +2307,7 @@ final class InternalLinkTypeSettings extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2124,7 +2315,7 @@ final class InternalLinkTypeSettings extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   InternalLinkTypeSettings copyWith({
     dynamic extra,
@@ -2134,11 +2325,14 @@ final class InternalLinkTypeSettings extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeSettings';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2188,6 +2382,7 @@ final class InternalLinkTypeStickerSet extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2197,7 +2392,11 @@ final class InternalLinkTypeStickerSet extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sticker_set_name]: Name of the sticker set
+  /// * [expect_custom_emoji]: True, if the sticker set is expected to contain custom emoji
   @override
   InternalLinkTypeStickerSet copyWith({
     String? stickerSetName,
@@ -2211,11 +2410,14 @@ final class InternalLinkTypeStickerSet extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeStickerSet';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2258,6 +2460,7 @@ final class InternalLinkTypeTheme extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2266,7 +2469,10 @@ final class InternalLinkTypeTheme extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [theme_name]: Name of the theme
   @override
   InternalLinkTypeTheme copyWith({
     String? themeName,
@@ -2278,11 +2484,14 @@ final class InternalLinkTypeTheme extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeTheme';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2316,6 +2525,7 @@ final class InternalLinkTypeThemeSettings extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2323,7 +2533,7 @@ final class InternalLinkTypeThemeSettings extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   InternalLinkTypeThemeSettings copyWith({
     dynamic extra,
@@ -2333,11 +2543,14 @@ final class InternalLinkTypeThemeSettings extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeThemeSettings';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2380,6 +2593,7 @@ final class InternalLinkTypeUnknownDeepLink extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2388,7 +2602,10 @@ final class InternalLinkTypeUnknownDeepLink extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [link]: Link to be passed to getDeepLinkInfo
   @override
   InternalLinkTypeUnknownDeepLink copyWith({
     String? link,
@@ -2400,11 +2617,14 @@ final class InternalLinkTypeUnknownDeepLink extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeUnknownDeepLink';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2438,6 +2658,7 @@ final class InternalLinkTypeUnsupportedProxy extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2445,7 +2666,7 @@ final class InternalLinkTypeUnsupportedProxy extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   InternalLinkTypeUnsupportedProxy copyWith({
     dynamic extra,
@@ -2455,11 +2676,14 @@ final class InternalLinkTypeUnsupportedProxy extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeUnsupportedProxy';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2502,6 +2726,7 @@ final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2510,7 +2735,10 @@ final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [phone_number]: Phone number of the user
   @override
   InternalLinkTypeUserPhoneNumber copyWith({
     String? phoneNumber,
@@ -2522,11 +2750,14 @@ final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeUserPhoneNumber';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2569,6 +2800,7 @@ final class InternalLinkTypeUserToken extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2577,7 +2809,10 @@ final class InternalLinkTypeUserToken extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [token]: The token
   @override
   InternalLinkTypeUserToken copyWith({
     String? token,
@@ -2589,11 +2824,14 @@ final class InternalLinkTypeUserToken extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeUserToken';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2650,6 +2888,7 @@ final class InternalLinkTypeVideoChat extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2660,7 +2899,12 @@ final class InternalLinkTypeVideoChat extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_username]: Username of the chat with the video chat
+  /// * [invite_hash]: If non-empty, invite hash to be used to join the video chat without being muted by administrators
+  /// * [is_live_stream]: True, if the video chat is expected to be a live stream in a channel or a broadcast group
   @override
   InternalLinkTypeVideoChat copyWith({
     String? chatUsername,
@@ -2676,11 +2920,14 @@ final class InternalLinkTypeVideoChat extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeVideoChat';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2737,6 +2984,7 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2747,7 +2995,12 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [bot_username]: Username of the bot that owns the Web App
+  /// * [web_app_short_name]: Short name of the Web App
+  /// * [start_parameter]: Start parameter to be passed to getWebAppLinkUrl
   @override
   InternalLinkTypeWebApp copyWith({
     String? botUsername,
@@ -2763,11 +3016,14 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'internalLinkTypeWebApp';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

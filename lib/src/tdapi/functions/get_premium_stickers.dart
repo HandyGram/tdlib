@@ -23,6 +23,7 @@ final class GetPremiumStickers extends TdFunction {
   /// The maximum number of stickers to be returned; 0-100
   final int limit;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetPremiumStickers extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [limit]: The maximum number of stickers to be returned; 0-100
   GetPremiumStickers copyWith({
     int? limit,
   }) => GetPremiumStickers(
     limit: limit ?? this.limit,
   );
 
+  /// TDLib object type
   static const String objectType = 'getPremiumStickers';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

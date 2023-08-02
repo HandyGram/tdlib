@@ -23,6 +23,7 @@ final class GetBasicGroupFullInfo extends TdFunction {
   /// Basic group identifier
   final int basicGroupId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetBasicGroupFullInfo extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [basic_group_id]: Basic group identifier
   GetBasicGroupFullInfo copyWith({
     int? basicGroupId,
   }) => GetBasicGroupFullInfo(
     basicGroupId: basicGroupId ?? this.basicGroupId,
   );
 
+  /// TDLib object type
   static const String objectType = 'getBasicGroupFullInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

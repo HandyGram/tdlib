@@ -37,6 +37,7 @@ final class TestVectorStringObject extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -45,7 +46,10 @@ final class TestVectorStringObject extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [value]: Vector of objects
   TestVectorStringObject copyWith({
     List<TestString>? value,
     dynamic extra,
@@ -56,11 +60,14 @@ final class TestVectorStringObject extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'testVectorStringObject';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

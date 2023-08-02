@@ -32,6 +32,7 @@ final class RecommendedChatFolder extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -41,7 +42,11 @@ final class RecommendedChatFolder extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [folder]: The chat folder 
+  /// * [description]: Chat folder description
   RecommendedChatFolder copyWith({
     ChatFolder? folder,
     String? description,
@@ -50,11 +55,14 @@ final class RecommendedChatFolder extends TdObject {
     description: description ?? this.description,
   );
 
+  /// TDLib object type
   static const String objectType = 'recommendedChatFolder';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

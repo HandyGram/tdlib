@@ -33,17 +33,21 @@ sealed class MaskPoint extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   MaskPoint copyWith();
 
+  /// TDLib object type
   static const String objectType = 'maskPoint';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -62,6 +66,7 @@ final class MaskPointForehead extends MaskPoint {
   /// Parse from a json
   factory MaskPointForehead.fromJson(Map<String, dynamic> json) => const MaskPointForehead();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -69,15 +74,18 @@ final class MaskPointForehead extends MaskPoint {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   MaskPointForehead copyWith() => const MaskPointForehead();
 
+  /// TDLib object type
   static const String objectType = 'maskPointForehead';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -96,6 +104,7 @@ final class MaskPointEyes extends MaskPoint {
   /// Parse from a json
   factory MaskPointEyes.fromJson(Map<String, dynamic> json) => const MaskPointEyes();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -103,15 +112,18 @@ final class MaskPointEyes extends MaskPoint {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   MaskPointEyes copyWith() => const MaskPointEyes();
 
+  /// TDLib object type
   static const String objectType = 'maskPointEyes';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -130,6 +142,7 @@ final class MaskPointMouth extends MaskPoint {
   /// Parse from a json
   factory MaskPointMouth.fromJson(Map<String, dynamic> json) => const MaskPointMouth();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -137,15 +150,18 @@ final class MaskPointMouth extends MaskPoint {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   MaskPointMouth copyWith() => const MaskPointMouth();
 
+  /// TDLib object type
   static const String objectType = 'maskPointMouth';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -164,6 +180,7 @@ final class MaskPointChin extends MaskPoint {
   /// Parse from a json
   factory MaskPointChin.fromJson(Map<String, dynamic> json) => const MaskPointChin();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -171,15 +188,18 @@ final class MaskPointChin extends MaskPoint {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   MaskPointChin copyWith() => const MaskPointChin();
 
+  /// TDLib object type
   static const String objectType = 'maskPointChin';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

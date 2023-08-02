@@ -29,6 +29,7 @@ final class InviteGroupCallParticipants extends TdFunction {
   /// User identifiers. At most 10 users can be invited simultaneously
   final List<int> userIds;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class InviteGroupCallParticipants extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [group_call_id]: Group call identifier
+  /// * [user_ids]: User identifiers. At most 10 users can be invited simultaneously
   InviteGroupCallParticipants copyWith({
     int? groupCallId,
     List<int>? userIds,
@@ -48,11 +53,14 @@ final class InviteGroupCallParticipants extends TdFunction {
     userIds: userIds ?? this.userIds,
   );
 
+  /// TDLib object type
   static const String objectType = 'inviteGroupCallParticipants';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

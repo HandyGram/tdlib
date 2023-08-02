@@ -100,6 +100,7 @@ final class Sticker extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -117,7 +118,19 @@ final class Sticker extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique sticker identifier within the set; 0 if none
+  /// * [set_id]: Identifier of the sticker set to which the sticker belongs; 0 if none
+  /// * [width]: Sticker width; as defined by the sender
+  /// * [height]: Sticker height; as defined by the sender
+  /// * [emoji]: Emoji corresponding to the sticker
+  /// * [format]: Sticker format
+  /// * [full_type]: Sticker's full type
+  /// * [outline]: Sticker's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner
+  /// * [thumbnail]: Sticker thumbnail in WEBP or JPEG format; may be null
+  /// * [sticker]: File containing the sticker
   Sticker copyWith({
     int? id,
     int? setId,
@@ -146,11 +159,14 @@ final class Sticker extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'sticker';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

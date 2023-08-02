@@ -23,6 +23,7 @@ final class SetAccountTtl extends TdFunction {
   /// New account TTL
   final AccountTtl ttl;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class SetAccountTtl extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [ttl]: New account TTL
   SetAccountTtl copyWith({
     AccountTtl? ttl,
   }) => SetAccountTtl(
     ttl: ttl ?? this.ttl,
   );
 
+  /// TDLib object type
   static const String objectType = 'setAccountTtl';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

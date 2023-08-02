@@ -35,6 +35,7 @@ final class UploadStickerFile extends TdFunction {
   /// File file to upload; must fit in a 512x512 square. For WEBP stickers the file must be in WEBP or PNG format, which will be converted to WEBP server-side.. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements
   final InputFile sticker;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class UploadStickerFile extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: Sticker file owner; ignored for regular users
+  /// * [sticker_format]: Sticker format
+  /// * [sticker]: File file to upload; must fit in a 512x512 square. For WEBP stickers the file must be in WEBP or PNG format, which will be converted to WEBP server-side.. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements
   UploadStickerFile copyWith({
     int? userId,
     StickerFormat? stickerFormat,
@@ -57,11 +63,14 @@ final class UploadStickerFile extends TdFunction {
     sticker: sticker ?? this.sticker,
   );
 
+  /// TDLib object type
   static const String objectType = 'uploadStickerFile';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

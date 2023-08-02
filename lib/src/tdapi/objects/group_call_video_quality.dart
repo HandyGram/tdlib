@@ -30,17 +30,21 @@ sealed class GroupCallVideoQuality extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   GroupCallVideoQuality copyWith();
 
+  /// TDLib object type
   static const String objectType = 'groupCallVideoQuality';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -59,6 +63,7 @@ final class GroupCallVideoQualityThumbnail extends GroupCallVideoQuality {
   /// Parse from a json
   factory GroupCallVideoQualityThumbnail.fromJson(Map<String, dynamic> json) => const GroupCallVideoQualityThumbnail();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -66,15 +71,18 @@ final class GroupCallVideoQualityThumbnail extends GroupCallVideoQuality {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   GroupCallVideoQualityThumbnail copyWith() => const GroupCallVideoQualityThumbnail();
 
+  /// TDLib object type
   static const String objectType = 'groupCallVideoQualityThumbnail';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -93,6 +101,7 @@ final class GroupCallVideoQualityMedium extends GroupCallVideoQuality {
   /// Parse from a json
   factory GroupCallVideoQualityMedium.fromJson(Map<String, dynamic> json) => const GroupCallVideoQualityMedium();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -100,15 +109,18 @@ final class GroupCallVideoQualityMedium extends GroupCallVideoQuality {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   GroupCallVideoQualityMedium copyWith() => const GroupCallVideoQualityMedium();
 
+  /// TDLib object type
   static const String objectType = 'groupCallVideoQualityMedium';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -127,6 +139,7 @@ final class GroupCallVideoQualityFull extends GroupCallVideoQuality {
   /// Parse from a json
   factory GroupCallVideoQualityFull.fromJson(Map<String, dynamic> json) => const GroupCallVideoQualityFull();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -134,15 +147,18 @@ final class GroupCallVideoQualityFull extends GroupCallVideoQuality {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   GroupCallVideoQualityFull copyWith() => const GroupCallVideoQualityFull();
 
+  /// TDLib object type
   static const String objectType = 'groupCallVideoQualityFull';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

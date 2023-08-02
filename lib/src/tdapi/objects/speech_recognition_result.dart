@@ -30,17 +30,21 @@ sealed class SpeechRecognitionResult extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   SpeechRecognitionResult copyWith();
 
+  /// TDLib object type
   static const String objectType = 'speechRecognitionResult';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -71,6 +75,7 @@ final class SpeechRecognitionResultPending extends SpeechRecognitionResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -79,7 +84,10 @@ final class SpeechRecognitionResultPending extends SpeechRecognitionResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [partial_text]: Partially recognized text
   @override
   SpeechRecognitionResultPending copyWith({
     String? partialText,
@@ -87,11 +95,14 @@ final class SpeechRecognitionResultPending extends SpeechRecognitionResult {
     partialText: partialText ?? this.partialText,
   );
 
+  /// TDLib object type
   static const String objectType = 'speechRecognitionResultPending';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -122,6 +133,7 @@ final class SpeechRecognitionResultText extends SpeechRecognitionResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -130,7 +142,10 @@ final class SpeechRecognitionResultText extends SpeechRecognitionResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Recognized text
   @override
   SpeechRecognitionResultText copyWith({
     String? text,
@@ -138,11 +153,14 @@ final class SpeechRecognitionResultText extends SpeechRecognitionResult {
     text: text ?? this.text,
   );
 
+  /// TDLib object type
   static const String objectType = 'speechRecognitionResultText';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -173,6 +191,7 @@ final class SpeechRecognitionResultError extends SpeechRecognitionResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -181,7 +200,10 @@ final class SpeechRecognitionResultError extends SpeechRecognitionResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [error]: Recognition error
   @override
   SpeechRecognitionResultError copyWith({
     TdError? error,
@@ -189,11 +211,14 @@ final class SpeechRecognitionResultError extends SpeechRecognitionResult {
     error: error ?? this.error,
   );
 
+  /// TDLib object type
   static const String objectType = 'speechRecognitionResultError';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

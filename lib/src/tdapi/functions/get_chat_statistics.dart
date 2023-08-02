@@ -29,6 +29,7 @@ final class GetChatStatistics extends TdFunction {
   /// Pass true if a dark theme is used by the application
   final bool isDark;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class GetChatStatistics extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [is_dark]: Pass true if a dark theme is used by the application
   GetChatStatistics copyWith({
     int? chatId,
     bool? isDark,
@@ -48,11 +53,14 @@ final class GetChatStatistics extends TdFunction {
     isDark: isDark ?? this.isDark,
   );
 
+  /// TDLib object type
   static const String objectType = 'getChatStatistics';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

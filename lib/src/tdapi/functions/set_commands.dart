@@ -35,6 +35,7 @@ final class SetCommands extends TdFunction {
   /// List of the bot's commands
   final List<BotCommand> commands;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class SetCommands extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [scope]: The scope to which the commands are relevant; pass null to change commands in the default bot command scope
+  /// * [language_code]: A two-letter ISO 639-1 language code. If empty, the commands will be applied to all users from the given scope, for which language there are no dedicated commands
+  /// * [commands]: List of the bot's commands
   SetCommands copyWith({
     BotCommandScope? scope,
     String? languageCode,
@@ -57,11 +63,14 @@ final class SetCommands extends TdFunction {
     commands: commands ?? this.commands,
   );
 
+  /// TDLib object type
   static const String objectType = 'setCommands';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

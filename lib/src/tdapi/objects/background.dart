@@ -72,6 +72,7 @@ final class Background extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -85,7 +86,15 @@ final class Background extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique background identifier
+  /// * [is_default]: True, if this is one of default backgrounds
+  /// * [is_dark]: True, if the background is dark and is recommended to be used with dark theme
+  /// * [name]: Unique background name
+  /// * [document]: Document with the background; may be null. Null only for filled backgrounds
+  /// * [type]: Type of the background
   Background copyWith({
     int? id,
     bool? isDefault,
@@ -106,11 +115,14 @@ final class Background extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'background';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

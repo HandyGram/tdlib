@@ -29,6 +29,7 @@ final class SetChatMessageAutoDeleteTime extends TdFunction {
   /// New time value, in seconds; unless the chat is secret, it must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically
   final int messageAutoDeleteTime;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetChatMessageAutoDeleteTime extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [message_auto_delete_time]: New time value, in seconds; unless the chat is secret, it must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically
   SetChatMessageAutoDeleteTime copyWith({
     int? chatId,
     int? messageAutoDeleteTime,
@@ -48,11 +53,14 @@ final class SetChatMessageAutoDeleteTime extends TdFunction {
     messageAutoDeleteTime: messageAutoDeleteTime ?? this.messageAutoDeleteTime,
   );
 
+  /// TDLib object type
   static const String objectType = 'setChatMessageAutoDeleteTime';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

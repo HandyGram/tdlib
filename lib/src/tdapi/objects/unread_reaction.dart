@@ -39,6 +39,7 @@ final class UnreadReaction extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class UnreadReaction extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [type]: Type of the reaction
+  /// * [sender_id]: Identifier of the sender, added the reaction
+  /// * [is_big]: True, if the reaction was added with a big animation
   UnreadReaction copyWith({
     ReactionType? type,
     MessageSender? senderId,
@@ -60,11 +66,14 @@ final class UnreadReaction extends TdObject {
     isBig: isBig ?? this.isBig,
   );
 
+  /// TDLib object type
   static const String objectType = 'unreadReaction';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

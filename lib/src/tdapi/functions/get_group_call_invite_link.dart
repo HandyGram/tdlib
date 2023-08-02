@@ -29,6 +29,7 @@ final class GetGroupCallInviteLink extends TdFunction {
   /// Pass true if the invite link needs to contain an invite hash, passing which to joinGroupCall would allow the invited user to unmute themselves. Requires groupCall.can_be_managed group call flag
   final bool canSelfUnmute;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class GetGroupCallInviteLink extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [group_call_id]: Group call identifier
+  /// * [can_self_unmute]: Pass true if the invite link needs to contain an invite hash, passing which to joinGroupCall would allow the invited user to unmute themselves. Requires groupCall.can_be_managed group call flag
   GetGroupCallInviteLink copyWith({
     int? groupCallId,
     bool? canSelfUnmute,
@@ -48,11 +53,14 @@ final class GetGroupCallInviteLink extends TdFunction {
     canSelfUnmute: canSelfUnmute ?? this.canSelfUnmute,
   );
 
+  /// TDLib object type
   static const String objectType = 'getGroupCallInviteLink';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -29,6 +29,7 @@ final class ToggleDownloadIsPaused extends TdFunction {
   /// Pass true if the download is paused
   final bool isPaused;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ToggleDownloadIsPaused extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [file_id]: Identifier of the downloaded file
+  /// * [is_paused]: Pass true if the download is paused
   ToggleDownloadIsPaused copyWith({
     int? fileId,
     bool? isPaused,
@@ -48,11 +53,14 @@ final class ToggleDownloadIsPaused extends TdFunction {
     isPaused: isPaused ?? this.isPaused,
   );
 
+  /// TDLib object type
   static const String objectType = 'toggleDownloadIsPaused';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

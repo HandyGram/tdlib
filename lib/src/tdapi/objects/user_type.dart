@@ -33,17 +33,21 @@ sealed class UserType extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   UserType copyWith();
 
+  /// TDLib object type
   static const String objectType = 'userType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -62,6 +66,7 @@ final class UserTypeRegular extends UserType {
   /// Parse from a json
   factory UserTypeRegular.fromJson(Map<String, dynamic> json) => const UserTypeRegular();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -69,15 +74,18 @@ final class UserTypeRegular extends UserType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   UserTypeRegular copyWith() => const UserTypeRegular();
 
+  /// TDLib object type
   static const String objectType = 'userTypeRegular';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -96,6 +104,7 @@ final class UserTypeDeleted extends UserType {
   /// Parse from a json
   factory UserTypeDeleted.fromJson(Map<String, dynamic> json) => const UserTypeDeleted();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -103,15 +112,18 @@ final class UserTypeDeleted extends UserType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   UserTypeDeleted copyWith() => const UserTypeDeleted();
 
+  /// TDLib object type
   static const String objectType = 'userTypeDeleted';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -184,6 +196,7 @@ final class UserTypeBot extends UserType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -198,7 +211,16 @@ final class UserTypeBot extends UserType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [can_be_edited]: True, if the bot is owned by the current user and can be edited using the methods toggleBotUsernameIsActive, reorderBotActiveUsernames, setBotProfilePhoto, setBotName, setBotInfoDescription, and setBotInfoShortDescription
+  /// * [can_join_groups]: True, if the bot can be invited to basic group and supergroup chats
+  /// * [can_read_all_group_messages]: True, if the bot can read all messages in basic group or supergroup chats and not just those addressed to the bot. In private and channel chats a bot can always read all messages
+  /// * [is_inline]: True, if the bot supports inline queries
+  /// * [inline_query_placeholder]: Placeholder for inline queries (displayed on the application input field)
+  /// * [need_location]: True, if the location of the user is expected to be sent with every inline query to this bot
+  /// * [can_be_added_to_attachment_menu]: True, if the bot can be added to attachment menu
   @override
   UserTypeBot copyWith({
     bool? canBeEdited,
@@ -218,11 +240,14 @@ final class UserTypeBot extends UserType {
     canBeAddedToAttachmentMenu: canBeAddedToAttachmentMenu ?? this.canBeAddedToAttachmentMenu,
   );
 
+  /// TDLib object type
   static const String objectType = 'userTypeBot';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -241,6 +266,7 @@ final class UserTypeUnknown extends UserType {
   /// Parse from a json
   factory UserTypeUnknown.fromJson(Map<String, dynamic> json) => const UserTypeUnknown();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -248,15 +274,18 @@ final class UserTypeUnknown extends UserType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   UserTypeUnknown copyWith() => const UserTypeUnknown();
 
+  /// TDLib object type
   static const String objectType = 'userTypeUnknown';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

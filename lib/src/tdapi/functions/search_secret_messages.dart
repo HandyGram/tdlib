@@ -47,6 +47,7 @@ final class SearchSecretMessages extends TdFunction {
   /// Additional filter for messages to search; pass null to search for all messages
   final SearchMessagesFilter? filter;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -60,7 +61,14 @@ final class SearchSecretMessages extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat in which to search. Specify 0 to search in all secret chats
+  /// * [query]: Query to search for. If empty, searchChatMessages must be used instead
+  /// * [offset]: Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
+  /// * [limit]: The maximum number of messages to be returned; up to 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
+  /// * [filter]: Additional filter for messages to search; pass null to search for all messages
   SearchSecretMessages copyWith({
     int? chatId,
     String? query,
@@ -75,11 +83,14 @@ final class SearchSecretMessages extends TdFunction {
     filter: filter ?? this.filter,
   );
 
+  /// TDLib object type
   static const String objectType = 'searchSecretMessages';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

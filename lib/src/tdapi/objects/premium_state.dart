@@ -51,6 +51,7 @@ final class PremiumState extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -61,7 +62,12 @@ final class PremiumState extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [state]: Text description of the state of the current Premium subscription; may be empty if the current user has no Telegram Premium subscription
+  /// * [payment_options]: The list of available options for buying Telegram Premium
+  /// * [animations]: The list of available promotion animations for Premium features
   PremiumState copyWith({
     FormattedText? state,
     List<PremiumStatePaymentOption>? paymentOptions,
@@ -76,11 +82,14 @@ final class PremiumState extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'premiumState';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

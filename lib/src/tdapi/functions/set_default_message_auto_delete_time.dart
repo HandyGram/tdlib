@@ -23,6 +23,7 @@ final class SetDefaultMessageAutoDeleteTime extends TdFunction {
   /// New default message auto-delete time; must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically
   final MessageAutoDeleteTime messageAutoDeleteTime;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class SetDefaultMessageAutoDeleteTime extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [message_auto_delete_time]: New default message auto-delete time; must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically
   SetDefaultMessageAutoDeleteTime copyWith({
     MessageAutoDeleteTime? messageAutoDeleteTime,
   }) => SetDefaultMessageAutoDeleteTime(
     messageAutoDeleteTime: messageAutoDeleteTime ?? this.messageAutoDeleteTime,
   );
 
+  /// TDLib object type
   static const String objectType = 'setDefaultMessageAutoDeleteTime';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

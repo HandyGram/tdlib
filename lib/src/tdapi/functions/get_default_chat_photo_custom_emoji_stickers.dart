@@ -15,6 +15,7 @@ final class GetDefaultChatPhotoCustomEmojiStickers extends TdFunction {
   const GetDefaultChatPhotoCustomEmojiStickers();
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -23,14 +24,17 @@ final class GetDefaultChatPhotoCustomEmojiStickers extends TdFunction {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   GetDefaultChatPhotoCustomEmojiStickers copyWith() => const GetDefaultChatPhotoCustomEmojiStickers();
 
+  /// TDLib object type
   static const String objectType = 'getDefaultChatPhotoCustomEmojiStickers';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

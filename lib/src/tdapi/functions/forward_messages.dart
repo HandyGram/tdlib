@@ -65,6 +65,7 @@ final class ForwardMessages extends TdFunction {
   /// Pass true to get fake messages instead of actually forwarding them
   final bool onlyPreview;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -81,7 +82,17 @@ final class ForwardMessages extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat to which to forward messages
+  /// * [message_thread_id]: If not 0, a message thread identifier in which the message will be sent; for forum threads only
+  /// * [from_chat_id]: Identifier of the chat from which to forward messages
+  /// * [message_ids]: Identifiers of the messages to forward. Message identifiers must be in a strictly increasing order. At most 100 messages can be forwarded simultaneously
+  /// * [options]: Options to be used to send the messages; pass null to use default options
+  /// * [send_copy]: Pass true to copy content of the messages without reference to the original sender. Always true if the messages are forwarded to a secret chat or are local
+  /// * [remove_caption]: Pass true to remove media captions of message copies. Ignored if send_copy is false
+  /// * [only_preview]: Pass true to get fake messages instead of actually forwarding them
   ForwardMessages copyWith({
     int? chatId,
     int? messageThreadId,
@@ -102,11 +113,14 @@ final class ForwardMessages extends TdFunction {
     onlyPreview: onlyPreview ?? this.onlyPreview,
   );
 
+  /// TDLib object type
   static const String objectType = 'forwardMessages';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

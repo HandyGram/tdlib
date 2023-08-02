@@ -35,6 +35,7 @@ final class ChangeStickerSet extends TdFunction {
   /// The new value of is_archived. A sticker set can't be installed and archived simultaneously
   final bool isArchived;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class ChangeStickerSet extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [set_id]: Identifier of the sticker set 
+  /// * [is_installed]: The new value of is_installed 
+  /// * [is_archived]: The new value of is_archived. A sticker set can't be installed and archived simultaneously
   ChangeStickerSet copyWith({
     int? setId,
     bool? isInstalled,
@@ -57,11 +63,14 @@ final class ChangeStickerSet extends TdFunction {
     isArchived: isArchived ?? this.isArchived,
   );
 
+  /// TDLib object type
   static const String objectType = 'changeStickerSet';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

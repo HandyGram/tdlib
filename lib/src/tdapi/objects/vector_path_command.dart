@@ -27,17 +27,21 @@ sealed class VectorPathCommand extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   VectorPathCommand copyWith();
 
+  /// TDLib object type
   static const String objectType = 'vectorPathCommand';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -68,6 +72,7 @@ final class VectorPathCommandLine extends VectorPathCommand {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -76,7 +81,10 @@ final class VectorPathCommandLine extends VectorPathCommand {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [end_point]: The end point of the straight line
   @override
   VectorPathCommandLine copyWith({
     Point? endPoint,
@@ -84,11 +92,14 @@ final class VectorPathCommandLine extends VectorPathCommand {
     endPoint: endPoint ?? this.endPoint,
   );
 
+  /// TDLib object type
   static const String objectType = 'vectorPathCommandLine';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -107,6 +118,7 @@ final class VectorPathCommandCubicBezierCurve extends VectorPathCommand {
   /// Parse from a json
   factory VectorPathCommandCubicBezierCurve.fromJson(Map<String, dynamic> json) => const VectorPathCommandCubicBezierCurve();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -114,15 +126,18 @@ final class VectorPathCommandCubicBezierCurve extends VectorPathCommand {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   VectorPathCommandCubicBezierCurve copyWith() => const VectorPathCommandCubicBezierCurve();
 
+  /// TDLib object type
   static const String objectType = 'vectorPathCommandCubicBezierCurve';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

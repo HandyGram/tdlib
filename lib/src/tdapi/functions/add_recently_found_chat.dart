@@ -23,6 +23,7 @@ final class AddRecentlyFoundChat extends TdFunction {
   /// Identifier of the chat to add
   final int chatId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class AddRecentlyFoundChat extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat to add
   AddRecentlyFoundChat copyWith({
     int? chatId,
   }) => AddRecentlyFoundChat(
     chatId: chatId ?? this.chatId,
   );
 
+  /// TDLib object type
   static const String objectType = 'addRecentlyFoundChat';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -29,6 +29,7 @@ final class AddChatMembers extends TdFunction {
   /// Identifiers of the users to be added to the chat. The maximum number of added users is 20 for supergroups and 100 for channels
   final List<int> userIds;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class AddChatMembers extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [user_ids]: Identifiers of the users to be added to the chat. The maximum number of added users is 20 for supergroups and 100 for channels
   AddChatMembers copyWith({
     int? chatId,
     List<int>? userIds,
@@ -48,11 +53,14 @@ final class AddChatMembers extends TdFunction {
     userIds: userIds ?? this.userIds,
   );
 
+  /// TDLib object type
   static const String objectType = 'addChatMembers';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -23,6 +23,7 @@ final class RemoveContacts extends TdFunction {
   /// Identifiers of users to be deleted
   final List<int> userIds;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class RemoveContacts extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_ids]: Identifiers of users to be deleted
   RemoveContacts copyWith({
     List<int>? userIds,
   }) => RemoveContacts(
     userIds: userIds ?? this.userIds,
   );
 
+  /// TDLib object type
   static const String objectType = 'removeContacts';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -29,6 +29,7 @@ final class ToggleSessionCanAcceptSecretChats extends TdFunction {
   /// Pass true to allow accepting secret chats by the session; pass false otherwise
   final bool canAcceptSecretChats;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ToggleSessionCanAcceptSecretChats extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [session_id]: Session identifier 
+  /// * [can_accept_secret_chats]: Pass true to allow accepting secret chats by the session; pass false otherwise
   ToggleSessionCanAcceptSecretChats copyWith({
     int? sessionId,
     bool? canAcceptSecretChats,
@@ -48,11 +53,14 @@ final class ToggleSessionCanAcceptSecretChats extends TdFunction {
     canAcceptSecretChats: canAcceptSecretChats ?? this.canAcceptSecretChats,
   );
 
+  /// TDLib object type
   static const String objectType = 'toggleSessionCanAcceptSecretChats';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

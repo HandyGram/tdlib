@@ -53,6 +53,7 @@ final class EditMessageLiveLocation extends TdFunction {
   /// The new maximum distance for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled
   final int proximityAlertRadius;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -67,7 +68,15 @@ final class EditMessageLiveLocation extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: The chat the message belongs to
+  /// * [message_id]: Identifier of the message
+  /// * [reply_markup]: The new message reply markup; pass null if none; for bots only
+  /// * [location]: New location content of the message; pass null to stop sharing the live location
+  /// * [heading]: The new direction in which the location moves, in degrees; 1-360. Pass 0 if unknown
+  /// * [proximity_alert_radius]: The new maximum distance for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled
   EditMessageLiveLocation copyWith({
     int? chatId,
     int? messageId,
@@ -84,11 +93,14 @@ final class EditMessageLiveLocation extends TdFunction {
     proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
   );
 
+  /// TDLib object type
   static const String objectType = 'editMessageLiveLocation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

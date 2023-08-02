@@ -32,6 +32,7 @@ final class ChatStatisticsInviterInfo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -41,7 +42,11 @@ final class ChatStatisticsInviterInfo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: User identifier
+  /// * [added_member_count]: Number of new members invited by the user
   ChatStatisticsInviterInfo copyWith({
     int? userId,
     int? addedMemberCount,
@@ -50,11 +55,14 @@ final class ChatStatisticsInviterInfo extends TdObject {
     addedMemberCount: addedMemberCount ?? this.addedMemberCount,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatStatisticsInviterInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

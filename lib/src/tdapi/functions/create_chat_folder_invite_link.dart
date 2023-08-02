@@ -35,6 +35,7 @@ final class CreateChatFolderInviteLink extends TdFunction {
   /// Identifiers of chats to be accessible by the invite link. Use getChatsForChatFolderInviteLink to get suitable chats. Basic groups will be automatically converted to supergroups before link creation
   final List<int> chatIds;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class CreateChatFolderInviteLink extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_folder_id]: Chat folder identifier
+  /// * [name]: Name of the link; 0-32 characters
+  /// * [chat_ids]: Identifiers of chats to be accessible by the invite link. Use getChatsForChatFolderInviteLink to get suitable chats. Basic groups will be automatically converted to supergroups before link creation
   CreateChatFolderInviteLink copyWith({
     int? chatFolderId,
     String? name,
@@ -57,11 +63,14 @@ final class CreateChatFolderInviteLink extends TdFunction {
     chatIds: chatIds ?? this.chatIds,
   );
 
+  /// TDLib object type
   static const String objectType = 'createChatFolderInviteLink';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

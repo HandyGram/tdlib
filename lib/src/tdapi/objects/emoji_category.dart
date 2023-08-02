@@ -39,6 +39,7 @@ final class EmojiCategory extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class EmojiCategory extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [name]: Name of the category
+  /// * [icon]: Custom emoji sticker, which represents icon of the category
+  /// * [emojis]: List of emojis in the category
   EmojiCategory copyWith({
     String? name,
     Sticker? icon,
@@ -60,11 +66,14 @@ final class EmojiCategory extends TdObject {
     emojis: emojis ?? this.emojis,
   );
 
+  /// TDLib object type
   static const String objectType = 'emojiCategory';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

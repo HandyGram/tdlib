@@ -32,6 +32,7 @@ final class TMeUrl extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -41,7 +42,11 @@ final class TMeUrl extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [url]: URL 
+  /// * [type]: Type of the URL
   TMeUrl copyWith({
     String? url,
     TMeUrlType? type,
@@ -50,11 +55,14 @@ final class TMeUrl extends TdObject {
     type: type ?? this.type,
   );
 
+  /// TDLib object type
   static const String objectType = 'tMeUrl';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

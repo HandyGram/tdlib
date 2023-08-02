@@ -29,6 +29,7 @@ final class ReorderChatFolders extends TdFunction {
   /// Position of the main chat list among chat folders, 0-based. Can be non-zero only for Premium users
   final int mainChatListPosition;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ReorderChatFolders extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_folder_ids]: Identifiers of chat folders in the new correct order 
+  /// * [main_chat_list_position]: Position of the main chat list among chat folders, 0-based. Can be non-zero only for Premium users
   ReorderChatFolders copyWith({
     List<int>? chatFolderIds,
     int? mainChatListPosition,
@@ -48,11 +53,14 @@ final class ReorderChatFolders extends TdFunction {
     mainChatListPosition: mainChatListPosition ?? this.mainChatListPosition,
   );
 
+  /// TDLib object type
   static const String objectType = 'reorderChatFolders';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

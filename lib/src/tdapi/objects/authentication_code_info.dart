@@ -58,6 +58,7 @@ final class AuthenticationCodeInfo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -69,7 +70,13 @@ final class AuthenticationCodeInfo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [phone_number]: A phone number that is being authenticated
+  /// * [type]: The way the code was sent to the user
+  /// * [next_type]: The way the next code will be sent to the user; may be null
+  /// * [timeout]: Timeout before the code can be re-sent, in seconds
   AuthenticationCodeInfo copyWith({
     String? phoneNumber,
     AuthenticationCodeType? type,
@@ -86,11 +93,14 @@ final class AuthenticationCodeInfo extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'authenticationCodeInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

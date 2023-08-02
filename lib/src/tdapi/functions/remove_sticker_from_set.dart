@@ -23,6 +23,7 @@ final class RemoveStickerFromSet extends TdFunction {
   /// Sticker
   final InputFile sticker;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class RemoveStickerFromSet extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sticker]: Sticker
   RemoveStickerFromSet copyWith({
     InputFile? sticker,
   }) => RemoveStickerFromSet(
     sticker: sticker ?? this.sticker,
   );
 
+  /// TDLib object type
   static const String objectType = 'removeStickerFromSet';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

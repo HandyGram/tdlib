@@ -23,6 +23,7 @@ final class GetPremiumFeatures extends TdFunction {
   /// Source of the request; pass null if the method is called from some non-standard source
   final PremiumSource? source;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetPremiumFeatures extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [source]: Source of the request; pass null if the method is called from some non-standard source
   GetPremiumFeatures copyWith({
     PremiumSource? source,
   }) => GetPremiumFeatures(
     source: source ?? this.source,
   );
 
+  /// TDLib object type
   static const String objectType = 'getPremiumFeatures';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

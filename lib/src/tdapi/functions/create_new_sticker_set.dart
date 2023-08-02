@@ -65,6 +65,7 @@ final class CreateNewStickerSet extends TdFunction {
   /// Source of the sticker set; may be empty if unknown
   final String source;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -81,7 +82,17 @@ final class CreateNewStickerSet extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: Sticker set owner; ignored for regular users
+  /// * [title]: Sticker set title; 1-64 characters
+  /// * [name]: Sticker set name. Can contain only English letters, digits and underscores. Must end with *"_by_
+  /// * [sticker_format]: Format of the stickers in the set
+  /// * [sticker_type]: Type of the stickers in the set
+  /// * [needs_repainting]: Pass true if stickers in the sticker set must be repainted; for custom emoji sticker sets only
+  /// * [stickers]: List of stickers to be added to the set; must be non-empty. All stickers must have the same format. For TGS stickers, uploadStickerFile must be used before the sticker is shown
+  /// * [source]: Source of the sticker set; may be empty if unknown
   CreateNewStickerSet copyWith({
     int? userId,
     String? title,
@@ -102,11 +113,14 @@ final class CreateNewStickerSet extends TdFunction {
     source: source ?? this.source,
   );
 
+  /// TDLib object type
   static const String objectType = 'createNewStickerSet';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -35,6 +35,7 @@ final class SetGroupCallParticipantIsSpeaking extends TdFunction {
   /// Pass true if the user is speaking
   final bool isSpeaking;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class SetGroupCallParticipantIsSpeaking extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [group_call_id]: Group call identifier
+  /// * [audio_source]: Group call participant's synchronization audio source identifier, or 0 for the current user
+  /// * [is_speaking]: Pass true if the user is speaking
   SetGroupCallParticipantIsSpeaking copyWith({
     int? groupCallId,
     int? audioSource,
@@ -57,11 +63,14 @@ final class SetGroupCallParticipantIsSpeaking extends TdFunction {
     isSpeaking: isSpeaking ?? this.isSpeaking,
   );
 
+  /// TDLib object type
   static const String objectType = 'setGroupCallParticipantIsSpeaking';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

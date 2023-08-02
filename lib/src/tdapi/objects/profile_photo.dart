@@ -60,6 +60,7 @@ final class ProfilePhoto extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -73,7 +74,15 @@ final class ProfilePhoto extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Photo identifier; 0 for an empty photo. Can be used to find a photo in a list of user profile photos
+  /// * [small]: A small (160x160) user profile photo. The file can be downloaded only before the photo is changed
+  /// * [big]: A big (640x640) user profile photo. The file can be downloaded only before the photo is changed
+  /// * [minithumbnail]: User profile photo minithumbnail; may be null
+  /// * [has_animation]: True, if the photo has animated variant
+  /// * [is_personal]: True, if the photo is visible only for the current user
   ProfilePhoto copyWith({
     int? id,
     File? small,
@@ -90,11 +99,14 @@ final class ProfilePhoto extends TdObject {
     isPersonal: isPersonal ?? this.isPersonal,
   );
 
+  /// TDLib object type
   static const String objectType = 'profilePhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

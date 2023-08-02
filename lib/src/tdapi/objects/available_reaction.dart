@@ -32,6 +32,7 @@ final class AvailableReaction extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -41,7 +42,11 @@ final class AvailableReaction extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [type]: Type of the reaction 
+  /// * [needs_premium]: True, if Telegram Premium is needed to send the reaction
   AvailableReaction copyWith({
     ReactionType? type,
     bool? needsPremium,
@@ -50,11 +55,14 @@ final class AvailableReaction extends TdObject {
     needsPremium: needsPremium ?? this.needsPremium,
   );
 
+  /// TDLib object type
   static const String objectType = 'availableReaction';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

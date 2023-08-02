@@ -35,6 +35,7 @@ final class SendBotStartMessage extends TdFunction {
   /// A hidden parameter sent to the bot for deep linking purposes (https://core.telegram.org/bots#deep-linking)
   final String parameter;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class SendBotStartMessage extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [bot_user_id]: Identifier of the bot
+  /// * [chat_id]: Identifier of the target chat
+  /// * [parameter]: A hidden parameter sent to the bot for deep linking purposes (https://core.telegram.org/bots#deep-linking)
   SendBotStartMessage copyWith({
     int? botUserId,
     int? chatId,
@@ -57,11 +63,14 @@ final class SendBotStartMessage extends TdFunction {
     parameter: parameter ?? this.parameter,
   );
 
+  /// TDLib object type
   static const String objectType = 'sendBotStartMessage';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

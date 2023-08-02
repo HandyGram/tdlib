@@ -35,6 +35,7 @@ final class EditInlineMessageCaption extends TdFunction {
   /// New message content caption; pass null to remove caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class EditInlineMessageCaption extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [inline_message_id]: Inline message identifier
+  /// * [reply_markup]: The new message reply markup; pass null if none
+  /// * [caption]: New message content caption; pass null to remove caption; 0-getOption("message_caption_length_max") characters
   EditInlineMessageCaption copyWith({
     String? inlineMessageId,
     ReplyMarkup? replyMarkup,
@@ -57,11 +63,14 @@ final class EditInlineMessageCaption extends TdFunction {
     caption: caption ?? this.caption,
   );
 
+  /// TDLib object type
   static const String objectType = 'editInlineMessageCaption';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

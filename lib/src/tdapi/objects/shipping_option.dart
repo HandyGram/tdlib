@@ -39,6 +39,7 @@ final class ShippingOption extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class ShippingOption extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Shipping option identifier
+  /// * [title]: Option title
+  /// * [price_parts]: A list of objects used to calculate the total shipping costs
   ShippingOption copyWith({
     String? id,
     String? title,
@@ -60,11 +66,14 @@ final class ShippingOption extends TdObject {
     priceParts: priceParts ?? this.priceParts,
   );
 
+  /// TDLib object type
   static const String objectType = 'shippingOption';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

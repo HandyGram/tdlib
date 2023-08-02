@@ -41,6 +41,7 @@ final class EditMessageCaption extends TdFunction {
   /// New message content caption; 0-getOption("message_caption_length_max") characters; pass null to remove caption
   final FormattedText? caption;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -53,7 +54,13 @@ final class EditMessageCaption extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: The chat the message belongs to
+  /// * [message_id]: Identifier of the message
+  /// * [reply_markup]: The new message reply markup; pass null if none; for bots only
+  /// * [caption]: New message content caption; 0-getOption("message_caption_length_max") characters; pass null to remove caption
   EditMessageCaption copyWith({
     int? chatId,
     int? messageId,
@@ -66,11 +73,14 @@ final class EditMessageCaption extends TdFunction {
     caption: caption ?? this.caption,
   );
 
+  /// TDLib object type
   static const String objectType = 'editMessageCaption';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

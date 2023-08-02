@@ -41,6 +41,7 @@ final class ReportChatPhoto extends TdFunction {
   /// Additional report details; 0-1024 characters
   final String text;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -53,7 +54,13 @@ final class ReportChatPhoto extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [file_id]: Identifier of the photo to report. Only full photos from chatPhoto can be reported
+  /// * [reason]: The reason for reporting the chat photo
+  /// * [text]: Additional report details; 0-1024 characters
   ReportChatPhoto copyWith({
     int? chatId,
     int? fileId,
@@ -66,11 +73,14 @@ final class ReportChatPhoto extends TdFunction {
     text: text ?? this.text,
   );
 
+  /// TDLib object type
   static const String objectType = 'reportChatPhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

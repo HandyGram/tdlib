@@ -30,17 +30,21 @@ sealed class PageBlockVerticalAlignment extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   PageBlockVerticalAlignment copyWith();
 
+  /// TDLib object type
   static const String objectType = 'pageBlockVerticalAlignment';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -59,6 +63,7 @@ final class PageBlockVerticalAlignmentTop extends PageBlockVerticalAlignment {
   /// Parse from a json
   factory PageBlockVerticalAlignmentTop.fromJson(Map<String, dynamic> json) => const PageBlockVerticalAlignmentTop();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -66,15 +71,18 @@ final class PageBlockVerticalAlignmentTop extends PageBlockVerticalAlignment {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PageBlockVerticalAlignmentTop copyWith() => const PageBlockVerticalAlignmentTop();
 
+  /// TDLib object type
   static const String objectType = 'pageBlockVerticalAlignmentTop';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -93,6 +101,7 @@ final class PageBlockVerticalAlignmentMiddle extends PageBlockVerticalAlignment 
   /// Parse from a json
   factory PageBlockVerticalAlignmentMiddle.fromJson(Map<String, dynamic> json) => const PageBlockVerticalAlignmentMiddle();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -100,15 +109,18 @@ final class PageBlockVerticalAlignmentMiddle extends PageBlockVerticalAlignment 
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PageBlockVerticalAlignmentMiddle copyWith() => const PageBlockVerticalAlignmentMiddle();
 
+  /// TDLib object type
   static const String objectType = 'pageBlockVerticalAlignmentMiddle';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -127,6 +139,7 @@ final class PageBlockVerticalAlignmentBottom extends PageBlockVerticalAlignment 
   /// Parse from a json
   factory PageBlockVerticalAlignmentBottom.fromJson(Map<String, dynamic> json) => const PageBlockVerticalAlignmentBottom();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -134,15 +147,18 @@ final class PageBlockVerticalAlignmentBottom extends PageBlockVerticalAlignment 
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PageBlockVerticalAlignmentBottom copyWith() => const PageBlockVerticalAlignmentBottom();
 
+  /// TDLib object type
   static const String objectType = 'pageBlockVerticalAlignmentBottom';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

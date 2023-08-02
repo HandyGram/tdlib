@@ -29,6 +29,7 @@ final class ToggleSupergroupJoinToSendMessages extends TdFunction {
   /// New value of join_to_send_messages
   final bool joinToSendMessages;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ToggleSupergroupJoinToSendMessages extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [supergroup_id]: Identifier of the supergroup 
+  /// * [join_to_send_messages]: New value of join_to_send_messages
   ToggleSupergroupJoinToSendMessages copyWith({
     int? supergroupId,
     bool? joinToSendMessages,
@@ -48,11 +53,14 @@ final class ToggleSupergroupJoinToSendMessages extends TdFunction {
     joinToSendMessages: joinToSendMessages ?? this.joinToSendMessages,
   );
 
+  /// TDLib object type
   static const String objectType = 'toggleSupergroupJoinToSendMessages';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

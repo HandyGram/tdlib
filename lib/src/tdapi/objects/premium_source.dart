@@ -33,17 +33,21 @@ sealed class PremiumSource extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   PremiumSource copyWith();
 
+  /// TDLib object type
   static const String objectType = 'premiumSource';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -74,6 +78,7 @@ final class PremiumSourceLimitExceeded extends PremiumSource {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -82,7 +87,10 @@ final class PremiumSourceLimitExceeded extends PremiumSource {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [limit_type]: Type of the exceeded limit
   @override
   PremiumSourceLimitExceeded copyWith({
     PremiumLimitType? limitType,
@@ -90,11 +98,14 @@ final class PremiumSourceLimitExceeded extends PremiumSource {
     limitType: limitType ?? this.limitType,
   );
 
+  /// TDLib object type
   static const String objectType = 'premiumSourceLimitExceeded';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -125,6 +136,7 @@ final class PremiumSourceFeature extends PremiumSource {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -133,7 +145,10 @@ final class PremiumSourceFeature extends PremiumSource {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [feature]: The used feature
   @override
   PremiumSourceFeature copyWith({
     PremiumFeature? feature,
@@ -141,11 +156,14 @@ final class PremiumSourceFeature extends PremiumSource {
     feature: feature ?? this.feature,
   );
 
+  /// TDLib object type
   static const String objectType = 'premiumSourceFeature';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -176,6 +194,7 @@ final class PremiumSourceLink extends PremiumSource {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -184,7 +203,10 @@ final class PremiumSourceLink extends PremiumSource {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [referrer]: The referrer from the link
   @override
   PremiumSourceLink copyWith({
     String? referrer,
@@ -192,11 +214,14 @@ final class PremiumSourceLink extends PremiumSource {
     referrer: referrer ?? this.referrer,
   );
 
+  /// TDLib object type
   static const String objectType = 'premiumSourceLink';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -215,6 +240,7 @@ final class PremiumSourceSettings extends PremiumSource {
   /// Parse from a json
   factory PremiumSourceSettings.fromJson(Map<String, dynamic> json) => const PremiumSourceSettings();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -222,15 +248,18 @@ final class PremiumSourceSettings extends PremiumSource {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumSourceSettings copyWith() => const PremiumSourceSettings();
 
+  /// TDLib object type
   static const String objectType = 'premiumSourceSettings';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

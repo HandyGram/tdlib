@@ -46,6 +46,7 @@ final class MaskPosition extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -57,7 +58,13 @@ final class MaskPosition extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [point]: Part of the face, relative to which the mask is placed
+  /// * [x_shift]: Shift by X-axis measured in widths of the mask scaled to the face size, from left to right. (For example, -1.0 will place the mask just to the left of the default mask position)
+  /// * [y_shift]: Shift by Y-axis measured in heights of the mask scaled to the face size, from top to bottom. (For example, 1.0 will place the mask just below the default mask position)
+  /// * [scale]: Mask scaling coefficient. (For example, 2.0 means a doubled size)
   MaskPosition copyWith({
     MaskPoint? point,
     double? xShift,
@@ -70,11 +77,14 @@ final class MaskPosition extends TdObject {
     scale: scale ?? this.scale,
   );
 
+  /// TDLib object type
   static const String objectType = 'maskPosition';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

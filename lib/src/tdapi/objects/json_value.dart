@@ -39,17 +39,21 @@ sealed class JsonValue extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   JsonValue copyWith();
 
+  /// TDLib object type
   static const String objectType = 'jsonValue';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -83,6 +87,7 @@ final class JsonValueNull extends JsonValue {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -90,7 +95,7 @@ final class JsonValueNull extends JsonValue {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   JsonValueNull copyWith({
     dynamic extra,
@@ -100,11 +105,14 @@ final class JsonValueNull extends JsonValue {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'jsonValueNull';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -147,6 +155,7 @@ final class JsonValueBoolean extends JsonValue {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -155,7 +164,10 @@ final class JsonValueBoolean extends JsonValue {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [value]: The value
   @override
   JsonValueBoolean copyWith({
     bool? value,
@@ -167,11 +179,14 @@ final class JsonValueBoolean extends JsonValue {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'jsonValueBoolean';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -214,6 +229,7 @@ final class JsonValueNumber extends JsonValue {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -222,7 +238,10 @@ final class JsonValueNumber extends JsonValue {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [value]: The value
   @override
   JsonValueNumber copyWith({
     double? value,
@@ -234,11 +253,14 @@ final class JsonValueNumber extends JsonValue {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'jsonValueNumber';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -281,6 +303,7 @@ final class JsonValueString extends JsonValue {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -289,7 +312,10 @@ final class JsonValueString extends JsonValue {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [value]: The value
   @override
   JsonValueString copyWith({
     String? value,
@@ -301,11 +327,14 @@ final class JsonValueString extends JsonValue {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'jsonValueString';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -348,6 +377,7 @@ final class JsonValueArray extends JsonValue {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -356,7 +386,10 @@ final class JsonValueArray extends JsonValue {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [values]: The list of array elements
   @override
   JsonValueArray copyWith({
     List<JsonValue>? values,
@@ -368,11 +401,14 @@ final class JsonValueArray extends JsonValue {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'jsonValueArray';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -415,6 +451,7 @@ final class JsonValueObject extends JsonValue {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -423,7 +460,10 @@ final class JsonValueObject extends JsonValue {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [members]: The list of object members
   @override
   JsonValueObject copyWith({
     List<JsonObjectMember>? members,
@@ -435,11 +475,14 @@ final class JsonValueObject extends JsonValue {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'jsonValueObject';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

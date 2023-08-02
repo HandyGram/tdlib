@@ -88,6 +88,7 @@ final class ChatNotificationSettings extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -105,7 +106,19 @@ final class ChatNotificationSettings extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [use_default_mute_for]: If true, mute_for is ignored and the value for the relevant type of chat or the forum chat is used instead
+  /// * [mute_for]: Time left before notifications will be unmuted, in seconds
+  /// * [use_default_sound]: If true, the value for the relevant type of chat or the forum chat is used instead of sound_id
+  /// * [sound_id]: Identifier of the notification sound to be played; 0 if sound is disabled
+  /// * [use_default_show_preview]: If true, show_preview is ignored and the value for the relevant type of chat or the forum chat is used instead
+  /// * [show_preview]: True, if message content must be displayed in notifications
+  /// * [use_default_disable_pinned_message_notifications]: If true, disable_pinned_message_notifications is ignored and the value for the relevant type of chat or the forum chat is used instead
+  /// * [disable_pinned_message_notifications]: If true, notifications for incoming pinned messages will be created as for an ordinary unread message
+  /// * [use_default_disable_mention_notifications]: If true, disable_mention_notifications is ignored and the value for the relevant type of chat or the forum chat is used instead
+  /// * [disable_mention_notifications]: If true, notifications for messages with mentions will be created as for an ordinary unread message
   ChatNotificationSettings copyWith({
     bool? useDefaultMuteFor,
     int? muteFor,
@@ -130,11 +143,14 @@ final class ChatNotificationSettings extends TdObject {
     disableMentionNotifications: disableMentionNotifications ?? this.disableMentionNotifications,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatNotificationSettings';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

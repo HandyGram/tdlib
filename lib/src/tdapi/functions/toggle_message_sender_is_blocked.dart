@@ -29,6 +29,7 @@ final class ToggleMessageSenderIsBlocked extends TdFunction {
   /// New value of is_blocked
   final bool isBlocked;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ToggleMessageSenderIsBlocked extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sender_id]: Identifier of a message sender to block/unblock 
+  /// * [is_blocked]: New value of is_blocked
   ToggleMessageSenderIsBlocked copyWith({
     MessageSender? senderId,
     bool? isBlocked,
@@ -48,11 +53,14 @@ final class ToggleMessageSenderIsBlocked extends TdFunction {
     isBlocked: isBlocked ?? this.isBlocked,
   );
 
+  /// TDLib object type
   static const String objectType = 'toggleMessageSenderIsBlocked';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

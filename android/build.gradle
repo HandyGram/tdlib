@@ -1,5 +1,5 @@
-group 'org.naji.td.tdlib'
-version '1.0'
+group 'org.naji.td.handy_tdlib'
+version '2.0'
 
 buildscript {
     repositories {
@@ -8,7 +8,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.0'
+        classpath 'com.android.tools.build:gradle:7.3.1'
     }
 }
 
@@ -24,10 +24,21 @@ apply plugin: 'com.android.library'
 android {
     compileSdkVersion 33
 
+    // Conditional for compatibility with AGP <4.2.
+    if (project.android.hasProperty('namespace')) {
+        namespace 'org.naji.td.handy_tdlib'
+    }
+
     defaultConfig {
         minSdkVersion 19
         ndk {
             abiFilters  'armeabi-v7a','arm64-v8a','x86','x86_64'
+        }
+    }
+
+    sourceSets {
+        main {
+            jni.srcDirs = ["src/main/jniLibs"]
         }
     }
 

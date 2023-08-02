@@ -29,6 +29,7 @@ final class SendCustomRequest extends TdFunction {
   /// JSON-serialized method parameters
   final String parameters;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SendCustomRequest extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [method]: The method name 
+  /// * [parameters]: JSON-serialized method parameters
   SendCustomRequest copyWith({
     String? method,
     String? parameters,
@@ -48,11 +53,14 @@ final class SendCustomRequest extends TdFunction {
     parameters: parameters ?? this.parameters,
   );
 
+  /// TDLib object type
   static const String objectType = 'sendCustomRequest';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

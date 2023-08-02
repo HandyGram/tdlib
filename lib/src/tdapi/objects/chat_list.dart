@@ -30,17 +30,21 @@ sealed class ChatList extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   ChatList copyWith();
 
+  /// TDLib object type
   static const String objectType = 'chatList';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -59,6 +63,7 @@ final class ChatListMain extends ChatList {
   /// Parse from a json
   factory ChatListMain.fromJson(Map<String, dynamic> json) => const ChatListMain();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -66,15 +71,18 @@ final class ChatListMain extends ChatList {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ChatListMain copyWith() => const ChatListMain();
 
+  /// TDLib object type
   static const String objectType = 'chatListMain';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -93,6 +101,7 @@ final class ChatListArchive extends ChatList {
   /// Parse from a json
   factory ChatListArchive.fromJson(Map<String, dynamic> json) => const ChatListArchive();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -100,15 +109,18 @@ final class ChatListArchive extends ChatList {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ChatListArchive copyWith() => const ChatListArchive();
 
+  /// TDLib object type
   static const String objectType = 'chatListArchive';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -139,6 +151,7 @@ final class ChatListFolder extends ChatList {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -147,7 +160,10 @@ final class ChatListFolder extends ChatList {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_folder_id]: Chat folder identifier
   @override
   ChatListFolder copyWith({
     int? chatFolderId,
@@ -155,11 +171,14 @@ final class ChatListFolder extends ChatList {
     chatFolderId: chatFolderId ?? this.chatFolderId,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatListFolder';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

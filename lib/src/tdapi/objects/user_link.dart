@@ -44,6 +44,7 @@ final class UserLink extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -53,7 +54,11 @@ final class UserLink extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [url]: The URL 
+  /// * [expires_in]: Left time for which the link is valid, in seconds; 0 if the link is a public username link
   UserLink copyWith({
     String? url,
     int? expiresIn,
@@ -66,11 +71,14 @@ final class UserLink extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'userLink';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

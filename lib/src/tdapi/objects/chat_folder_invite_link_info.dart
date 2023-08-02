@@ -51,6 +51,7 @@ final class ChatFolderInviteLinkInfo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -61,7 +62,12 @@ final class ChatFolderInviteLinkInfo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_folder_info]: Basic information about the chat folder; chat folder identifier will be 0 if the user didn't have the chat folder yet
+  /// * [missing_chat_ids]: Identifiers of the chats from the link, which aren't added to the folder yet
+  /// * [added_chat_ids]: Identifiers of the chats from the link, which are added to the folder already
   ChatFolderInviteLinkInfo copyWith({
     ChatFolderInfo? chatFolderInfo,
     List<int>? missingChatIds,
@@ -76,11 +82,14 @@ final class ChatFolderInviteLinkInfo extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatFolderInviteLinkInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

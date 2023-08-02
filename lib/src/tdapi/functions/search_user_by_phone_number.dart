@@ -23,6 +23,7 @@ final class SearchUserByPhoneNumber extends TdFunction {
   /// Phone number to search for
   final String phoneNumber;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class SearchUserByPhoneNumber extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [phone_number]: Phone number to search for
   SearchUserByPhoneNumber copyWith({
     String? phoneNumber,
   }) => SearchUserByPhoneNumber(
     phoneNumber: phoneNumber ?? this.phoneNumber,
   );
 
+  /// TDLib object type
   static const String objectType = 'searchUserByPhoneNumber';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

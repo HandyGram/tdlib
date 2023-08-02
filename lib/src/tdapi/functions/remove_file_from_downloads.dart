@@ -29,6 +29,7 @@ final class RemoveFileFromDownloads extends TdFunction {
   /// Pass true to delete the file from the TDLib file cache
   final bool deleteFromCache;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class RemoveFileFromDownloads extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [file_id]: Identifier of the downloaded file 
+  /// * [delete_from_cache]: Pass true to delete the file from the TDLib file cache
   RemoveFileFromDownloads copyWith({
     int? fileId,
     bool? deleteFromCache,
@@ -48,11 +53,14 @@ final class RemoveFileFromDownloads extends TdFunction {
     deleteFromCache: deleteFromCache ?? this.deleteFromCache,
   );
 
+  /// TDLib object type
   static const String objectType = 'removeFileFromDownloads';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

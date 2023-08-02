@@ -27,17 +27,21 @@ sealed class InputInvoice extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   InputInvoice copyWith();
 
+  /// TDLib object type
   static const String objectType = 'inputInvoice';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -75,6 +79,7 @@ final class InputInvoiceMessage extends InputInvoice {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -84,7 +89,11 @@ final class InputInvoiceMessage extends InputInvoice {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier of the message 
+  /// * [message_id]: Message identifier
   @override
   InputInvoiceMessage copyWith({
     int? chatId,
@@ -94,11 +103,14 @@ final class InputInvoiceMessage extends InputInvoice {
     messageId: messageId ?? this.messageId,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputInvoiceMessage';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -129,6 +141,7 @@ final class InputInvoiceName extends InputInvoice {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -137,7 +150,10 @@ final class InputInvoiceName extends InputInvoice {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [name]: Name of the invoice
   @override
   InputInvoiceName copyWith({
     String? name,
@@ -145,11 +161,14 @@ final class InputInvoiceName extends InputInvoice {
     name: name ?? this.name,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputInvoiceName';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

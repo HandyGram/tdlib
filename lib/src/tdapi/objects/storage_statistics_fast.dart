@@ -65,6 +65,7 @@ final class StorageStatisticsFast extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -77,7 +78,14 @@ final class StorageStatisticsFast extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [files_size]: Approximate total size of files, in bytes
+  /// * [file_count]: Approximate number of files
+  /// * [database_size]: Size of the database
+  /// * [language_pack_database_size]: Size of the language pack database
+  /// * [log_size]: Size of the TDLib internal log
   StorageStatisticsFast copyWith({
     int? filesSize,
     int? fileCount,
@@ -96,11 +104,14 @@ final class StorageStatisticsFast extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'storageStatisticsFast';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

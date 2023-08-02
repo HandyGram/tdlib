@@ -35,6 +35,7 @@ final class SendWebAppData extends TdFunction {
   /// The data
   final String data;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class SendWebAppData extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [bot_user_id]: Identifier of the target bot
+  /// * [button_text]: Text of the keyboardButtonTypeWebApp button, which opened the Web App
+  /// * [data]: The data
   SendWebAppData copyWith({
     int? botUserId,
     String? buttonText,
@@ -57,11 +63,14 @@ final class SendWebAppData extends TdFunction {
     data: data ?? this.data,
   );
 
+  /// TDLib object type
   static const String objectType = 'sendWebAppData';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

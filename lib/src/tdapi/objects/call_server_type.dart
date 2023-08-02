@@ -27,17 +27,21 @@ sealed class CallServerType extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   CallServerType copyWith();
 
+  /// TDLib object type
   static const String objectType = 'callServerType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -75,6 +79,7 @@ final class CallServerTypeTelegramReflector extends CallServerType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -84,7 +89,11 @@ final class CallServerTypeTelegramReflector extends CallServerType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [peer_tag]: A peer tag to be used with the reflector 
+  /// * [is_tcp]: True, if the server uses TCP instead of UDP
   @override
   CallServerTypeTelegramReflector copyWith({
     String? peerTag,
@@ -94,11 +103,14 @@ final class CallServerTypeTelegramReflector extends CallServerType {
     isTcp: isTcp ?? this.isTcp,
   );
 
+  /// TDLib object type
   static const String objectType = 'callServerTypeTelegramReflector';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -150,6 +162,7 @@ final class CallServerTypeWebrtc extends CallServerType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -161,7 +174,13 @@ final class CallServerTypeWebrtc extends CallServerType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [username]: Username to be used for authentication
+  /// * [password]: Authentication password
+  /// * [supports_turn]: True, if the server supports TURN
+  /// * [supports_stun]: True, if the server supports STUN
   @override
   CallServerTypeWebrtc copyWith({
     String? username,
@@ -175,11 +194,14 @@ final class CallServerTypeWebrtc extends CallServerType {
     supportsStun: supportsStun ?? this.supportsStun,
   );
 
+  /// TDLib object type
   static const String objectType = 'callServerTypeWebrtc';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

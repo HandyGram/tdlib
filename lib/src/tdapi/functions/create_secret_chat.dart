@@ -23,6 +23,7 @@ final class CreateSecretChat extends TdFunction {
   /// Secret chat identifier
   final int secretChatId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class CreateSecretChat extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [secret_chat_id]: Secret chat identifier
   CreateSecretChat copyWith({
     int? secretChatId,
   }) => CreateSecretChat(
     secretChatId: secretChatId ?? this.secretChatId,
   );
 
+  /// TDLib object type
   static const String objectType = 'createSecretChat';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

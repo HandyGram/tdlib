@@ -47,6 +47,7 @@ final class AddLocalMessage extends TdFunction {
   /// The content of the message to be added
   final InputMessageContent inputMessageContent;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -60,7 +61,14 @@ final class AddLocalMessage extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Target chat
+  /// * [sender_id]: Identifier of the sender of the message
+  /// * [reply_to_message_id]: Identifier of the replied message; 0 if none
+  /// * [disable_notification]: Pass true to disable notification for the message
+  /// * [input_message_content]: The content of the message to be added
   AddLocalMessage copyWith({
     int? chatId,
     MessageSender? senderId,
@@ -75,11 +83,14 @@ final class AddLocalMessage extends TdFunction {
     inputMessageContent: inputMessageContent ?? this.inputMessageContent,
   );
 
+  /// TDLib object type
   static const String objectType = 'addLocalMessage';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -114,17 +114,21 @@ sealed class PushMessageContent extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   PushMessageContent copyWith();
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContent';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -155,6 +159,7 @@ final class PushMessageContentHidden extends PushMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -163,7 +168,10 @@ final class PushMessageContentHidden extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [is_pinned]: True, if the message is a pinned message with the specified content
   @override
   PushMessageContentHidden copyWith({
     bool? isPinned,
@@ -171,11 +179,14 @@ final class PushMessageContentHidden extends PushMessageContent {
     isPinned: isPinned ?? this.isPinned,
   );
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentHidden';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -220,6 +231,7 @@ final class PushMessageContentAnimation extends PushMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -230,7 +242,12 @@ final class PushMessageContentAnimation extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [animation]: Message content; may be null 
+  /// * [caption]: Animation caption 
+  /// * [is_pinned]: True, if the message is a pinned message with the specified content
   @override
   PushMessageContentAnimation copyWith({
     Animation? animation,
@@ -242,11 +259,14 @@ final class PushMessageContentAnimation extends PushMessageContent {
     isPinned: isPinned ?? this.isPinned,
   );
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentAnimation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -284,6 +304,7 @@ final class PushMessageContentAudio extends PushMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -293,7 +314,11 @@ final class PushMessageContentAudio extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [audio]: Message content; may be null 
+  /// * [is_pinned]: True, if the message is a pinned message with the specified content
   @override
   PushMessageContentAudio copyWith({
     Audio? audio,
@@ -303,11 +328,14 @@ final class PushMessageContentAudio extends PushMessageContent {
     isPinned: isPinned ?? this.isPinned,
   );
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentAudio';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -345,6 +373,7 @@ final class PushMessageContentContact extends PushMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -354,7 +383,11 @@ final class PushMessageContentContact extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [name]: Contact's name 
+  /// * [is_pinned]: True, if the message is a pinned message with the specified content
   @override
   PushMessageContentContact copyWith({
     String? name,
@@ -364,11 +397,14 @@ final class PushMessageContentContact extends PushMessageContent {
     isPinned: isPinned ?? this.isPinned,
   );
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentContact';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -387,6 +423,7 @@ final class PushMessageContentContactRegistered extends PushMessageContent {
   /// Parse from a json
   factory PushMessageContentContactRegistered.fromJson(Map<String, dynamic> json) => const PushMessageContentContactRegistered();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -394,15 +431,18 @@ final class PushMessageContentContactRegistered extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PushMessageContentContactRegistered copyWith() => const PushMessageContentContactRegistered();
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentContactRegistered';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -440,6 +480,7 @@ final class PushMessageContentDocument extends PushMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -449,7 +490,11 @@ final class PushMessageContentDocument extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [document]: Message content; may be null 
+  /// * [is_pinned]: True, if the message is a pinned message with the specified content
   @override
   PushMessageContentDocument copyWith({
     Document? document,
@@ -459,11 +504,14 @@ final class PushMessageContentDocument extends PushMessageContent {
     isPinned: isPinned ?? this.isPinned,
   );
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentDocument';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -501,6 +549,7 @@ final class PushMessageContentGame extends PushMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -510,7 +559,11 @@ final class PushMessageContentGame extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [title]: Game title, empty for pinned game message 
+  /// * [is_pinned]: True, if the message is a pinned message with the specified content
   @override
   PushMessageContentGame copyWith({
     String? title,
@@ -520,11 +573,14 @@ final class PushMessageContentGame extends PushMessageContent {
     isPinned: isPinned ?? this.isPinned,
   );
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentGame';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -569,6 +625,7 @@ final class PushMessageContentGameScore extends PushMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -579,7 +636,12 @@ final class PushMessageContentGameScore extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [title]: Game title, empty for pinned message 
+  /// * [score]: New score, 0 for pinned message 
+  /// * [is_pinned]: True, if the message is a pinned message with the specified content
   @override
   PushMessageContentGameScore copyWith({
     String? title,
@@ -591,11 +653,14 @@ final class PushMessageContentGameScore extends PushMessageContent {
     isPinned: isPinned ?? this.isPinned,
   );
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentGameScore';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -633,6 +698,7 @@ final class PushMessageContentInvoice extends PushMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -642,7 +708,11 @@ final class PushMessageContentInvoice extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [price]: Product price 
+  /// * [is_pinned]: True, if the message is a pinned message with the specified content
   @override
   PushMessageContentInvoice copyWith({
     String? price,
@@ -652,11 +722,14 @@ final class PushMessageContentInvoice extends PushMessageContent {
     isPinned: isPinned ?? this.isPinned,
   );
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentInvoice';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -694,6 +767,7 @@ final class PushMessageContentLocation extends PushMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -703,7 +777,11 @@ final class PushMessageContentLocation extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [is_live]: True, if the location is live 
+  /// * [is_pinned]: True, if the message is a pinned message with the specified content
   @override
   PushMessageContentLocation copyWith({
     bool? isLive,
@@ -713,11 +791,14 @@ final class PushMessageContentLocation extends PushMessageContent {
     isPinned: isPinned ?? this.isPinned,
   );
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentLocation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -769,6 +850,7 @@ final class PushMessageContentPhoto extends PushMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -780,7 +862,13 @@ final class PushMessageContentPhoto extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [photo]: Message content; may be null
+  /// * [caption]: Photo caption
+  /// * [is_secret]: True, if the photo is secret
+  /// * [is_pinned]: True, if the message is a pinned message with the specified content
   @override
   PushMessageContentPhoto copyWith({
     Photo? photo,
@@ -794,11 +882,14 @@ final class PushMessageContentPhoto extends PushMessageContent {
     isPinned: isPinned ?? this.isPinned,
   );
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentPhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -843,6 +934,7 @@ final class PushMessageContentPoll extends PushMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -853,7 +945,12 @@ final class PushMessageContentPoll extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [question]: Poll question
+  /// * [is_regular]: True, if the poll is regular and not in quiz mode
+  /// * [is_pinned]: True, if the message is a pinned message with the specified content
   @override
   PushMessageContentPoll copyWith({
     String? question,
@@ -865,11 +962,14 @@ final class PushMessageContentPoll extends PushMessageContent {
     isPinned: isPinned ?? this.isPinned,
   );
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentPoll';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -888,6 +988,7 @@ final class PushMessageContentScreenshotTaken extends PushMessageContent {
   /// Parse from a json
   factory PushMessageContentScreenshotTaken.fromJson(Map<String, dynamic> json) => const PushMessageContentScreenshotTaken();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -895,15 +996,18 @@ final class PushMessageContentScreenshotTaken extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PushMessageContentScreenshotTaken copyWith() => const PushMessageContentScreenshotTaken();
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentScreenshotTaken';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -948,6 +1052,7 @@ final class PushMessageContentSticker extends PushMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -958,7 +1063,12 @@ final class PushMessageContentSticker extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sticker]: Message content; may be null
+  /// * [emoji]: Emoji corresponding to the sticker; may be empty
+  /// * [is_pinned]: True, if the message is a pinned message with the specified content
   @override
   PushMessageContentSticker copyWith({
     Sticker? sticker,
@@ -970,11 +1080,14 @@ final class PushMessageContentSticker extends PushMessageContent {
     isPinned: isPinned ?? this.isPinned,
   );
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentSticker';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1012,6 +1125,7 @@ final class PushMessageContentText extends PushMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1021,7 +1135,11 @@ final class PushMessageContentText extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Message text 
+  /// * [is_pinned]: True, if the message is a pinned message with the specified content
   @override
   PushMessageContentText copyWith({
     String? text,
@@ -1031,11 +1149,14 @@ final class PushMessageContentText extends PushMessageContent {
     isPinned: isPinned ?? this.isPinned,
   );
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentText';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1087,6 +1208,7 @@ final class PushMessageContentVideo extends PushMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1098,7 +1220,13 @@ final class PushMessageContentVideo extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [video]: Message content; may be null
+  /// * [caption]: Video caption
+  /// * [is_secret]: True, if the video is secret
+  /// * [is_pinned]: True, if the message is a pinned message with the specified content
   @override
   PushMessageContentVideo copyWith({
     Video? video,
@@ -1112,11 +1240,14 @@ final class PushMessageContentVideo extends PushMessageContent {
     isPinned: isPinned ?? this.isPinned,
   );
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentVideo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1154,6 +1285,7 @@ final class PushMessageContentVideoNote extends PushMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1163,7 +1295,11 @@ final class PushMessageContentVideoNote extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [video_note]: Message content; may be null 
+  /// * [is_pinned]: True, if the message is a pinned message with the specified content
   @override
   PushMessageContentVideoNote copyWith({
     VideoNote? videoNote,
@@ -1173,11 +1309,14 @@ final class PushMessageContentVideoNote extends PushMessageContent {
     isPinned: isPinned ?? this.isPinned,
   );
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentVideoNote';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1215,6 +1354,7 @@ final class PushMessageContentVoiceNote extends PushMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1224,7 +1364,11 @@ final class PushMessageContentVoiceNote extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [voice_note]: Message content; may be null 
+  /// * [is_pinned]: True, if the message is a pinned message with the specified content
   @override
   PushMessageContentVoiceNote copyWith({
     VoiceNote? voiceNote,
@@ -1234,11 +1378,14 @@ final class PushMessageContentVoiceNote extends PushMessageContent {
     isPinned: isPinned ?? this.isPinned,
   );
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentVoiceNote';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1257,6 +1404,7 @@ final class PushMessageContentBasicGroupChatCreate extends PushMessageContent {
   /// Parse from a json
   factory PushMessageContentBasicGroupChatCreate.fromJson(Map<String, dynamic> json) => const PushMessageContentBasicGroupChatCreate();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1264,15 +1412,18 @@ final class PushMessageContentBasicGroupChatCreate extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PushMessageContentBasicGroupChatCreate copyWith() => const PushMessageContentBasicGroupChatCreate();
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentBasicGroupChatCreate';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1317,6 +1468,7 @@ final class PushMessageContentChatAddMembers extends PushMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1327,7 +1479,12 @@ final class PushMessageContentChatAddMembers extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [member_name]: Name of the added member
+  /// * [is_current_user]: True, if the current user was added to the group
+  /// * [is_returned]: True, if the user has returned to the group themselves
   @override
   PushMessageContentChatAddMembers copyWith({
     String? memberName,
@@ -1339,11 +1496,14 @@ final class PushMessageContentChatAddMembers extends PushMessageContent {
     isReturned: isReturned ?? this.isReturned,
   );
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentChatAddMembers';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1362,6 +1522,7 @@ final class PushMessageContentChatChangePhoto extends PushMessageContent {
   /// Parse from a json
   factory PushMessageContentChatChangePhoto.fromJson(Map<String, dynamic> json) => const PushMessageContentChatChangePhoto();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1369,15 +1530,18 @@ final class PushMessageContentChatChangePhoto extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PushMessageContentChatChangePhoto copyWith() => const PushMessageContentChatChangePhoto();
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentChatChangePhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1408,6 +1572,7 @@ final class PushMessageContentChatChangeTitle extends PushMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1416,7 +1581,10 @@ final class PushMessageContentChatChangeTitle extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [title]: New chat title
   @override
   PushMessageContentChatChangeTitle copyWith({
     String? title,
@@ -1424,11 +1592,14 @@ final class PushMessageContentChatChangeTitle extends PushMessageContent {
     title: title ?? this.title,
   );
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentChatChangeTitle';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1459,6 +1630,7 @@ final class PushMessageContentChatSetBackground extends PushMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1467,7 +1639,10 @@ final class PushMessageContentChatSetBackground extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [is_same]: True, if the set background is the same as the background of the current user
   @override
   PushMessageContentChatSetBackground copyWith({
     bool? isSame,
@@ -1475,11 +1650,14 @@ final class PushMessageContentChatSetBackground extends PushMessageContent {
     isSame: isSame ?? this.isSame,
   );
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentChatSetBackground';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1510,6 +1688,7 @@ final class PushMessageContentChatSetTheme extends PushMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1518,7 +1697,10 @@ final class PushMessageContentChatSetTheme extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [theme_name]: If non-empty, name of a new theme, set for the chat. Otherwise, the chat theme was reset to the default one
   @override
   PushMessageContentChatSetTheme copyWith({
     String? themeName,
@@ -1526,11 +1708,14 @@ final class PushMessageContentChatSetTheme extends PushMessageContent {
     themeName: themeName ?? this.themeName,
   );
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentChatSetTheme';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1575,6 +1760,7 @@ final class PushMessageContentChatDeleteMember extends PushMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1585,7 +1771,12 @@ final class PushMessageContentChatDeleteMember extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [member_name]: Name of the deleted member
+  /// * [is_current_user]: True, if the current user was deleted from the group
+  /// * [is_left]: True, if the user has left the group themselves
   @override
   PushMessageContentChatDeleteMember copyWith({
     String? memberName,
@@ -1597,11 +1788,14 @@ final class PushMessageContentChatDeleteMember extends PushMessageContent {
     isLeft: isLeft ?? this.isLeft,
   );
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentChatDeleteMember';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1620,6 +1814,7 @@ final class PushMessageContentChatJoinByLink extends PushMessageContent {
   /// Parse from a json
   factory PushMessageContentChatJoinByLink.fromJson(Map<String, dynamic> json) => const PushMessageContentChatJoinByLink();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1627,15 +1822,18 @@ final class PushMessageContentChatJoinByLink extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PushMessageContentChatJoinByLink copyWith() => const PushMessageContentChatJoinByLink();
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentChatJoinByLink';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1654,6 +1852,7 @@ final class PushMessageContentChatJoinByRequest extends PushMessageContent {
   /// Parse from a json
   factory PushMessageContentChatJoinByRequest.fromJson(Map<String, dynamic> json) => const PushMessageContentChatJoinByRequest();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1661,15 +1860,18 @@ final class PushMessageContentChatJoinByRequest extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PushMessageContentChatJoinByRequest copyWith() => const PushMessageContentChatJoinByRequest();
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentChatJoinByRequest';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1700,6 +1902,7 @@ final class PushMessageContentRecurringPayment extends PushMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1708,7 +1911,10 @@ final class PushMessageContentRecurringPayment extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [amount]: The paid amount
   @override
   PushMessageContentRecurringPayment copyWith({
     String? amount,
@@ -1716,11 +1922,14 @@ final class PushMessageContentRecurringPayment extends PushMessageContent {
     amount: amount ?? this.amount,
   );
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentRecurringPayment';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1739,6 +1948,7 @@ final class PushMessageContentSuggestProfilePhoto extends PushMessageContent {
   /// Parse from a json
   factory PushMessageContentSuggestProfilePhoto.fromJson(Map<String, dynamic> json) => const PushMessageContentSuggestProfilePhoto();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1746,15 +1956,18 @@ final class PushMessageContentSuggestProfilePhoto extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PushMessageContentSuggestProfilePhoto copyWith() => const PushMessageContentSuggestProfilePhoto();
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentSuggestProfilePhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1785,6 +1998,7 @@ final class PushMessageContentMessageForwards extends PushMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1793,7 +2007,10 @@ final class PushMessageContentMessageForwards extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [total_count]: Number of forwarded messages
   @override
   PushMessageContentMessageForwards copyWith({
     int? totalCount,
@@ -1801,11 +2018,14 @@ final class PushMessageContentMessageForwards extends PushMessageContent {
     totalCount: totalCount ?? this.totalCount,
   );
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentMessageForwards';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1864,6 +2084,7 @@ final class PushMessageContentMediaAlbum extends PushMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1876,7 +2097,14 @@ final class PushMessageContentMediaAlbum extends PushMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [total_count]: Number of messages in the album
+  /// * [has_photos]: True, if the album has at least one photo
+  /// * [has_videos]: True, if the album has at least one video file
+  /// * [has_audios]: True, if the album has at least one audio file
+  /// * [has_documents]: True, if the album has at least one document
   @override
   PushMessageContentMediaAlbum copyWith({
     int? totalCount,
@@ -1892,11 +2120,14 @@ final class PushMessageContentMediaAlbum extends PushMessageContent {
     hasDocuments: hasDocuments ?? this.hasDocuments,
   );
 
+  /// TDLib object type
   static const String objectType = 'pushMessageContentMediaAlbum';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

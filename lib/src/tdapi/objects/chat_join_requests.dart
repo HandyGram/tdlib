@@ -44,6 +44,7 @@ final class ChatJoinRequests extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -53,7 +54,11 @@ final class ChatJoinRequests extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [total_count]: Approximate total number of requests found 
+  /// * [requests]: List of the requests
   ChatJoinRequests copyWith({
     int? totalCount,
     List<ChatJoinRequest>? requests,
@@ -66,11 +71,14 @@ final class ChatJoinRequests extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatJoinRequests';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

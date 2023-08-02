@@ -65,6 +65,7 @@ final class BasicGroup extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -77,7 +78,14 @@ final class BasicGroup extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Group identifier
+  /// * [member_count]: Number of members in the group
+  /// * [status]: Status of the current user in the group
+  /// * [is_active]: True, if the group is active
+  /// * [upgraded_to_supergroup_id]: Identifier of the supergroup to which this group was upgraded; 0 if none
   BasicGroup copyWith({
     int? id,
     int? memberCount,
@@ -96,11 +104,14 @@ final class BasicGroup extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'basicGroup';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -29,6 +29,7 @@ final class AddChatFolderByInviteLink extends TdFunction {
   /// Identifiers of the chats added to the chat folder. The chats are automatically joined if they aren't joined yet
   final List<int> chatIds;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class AddChatFolderByInviteLink extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [invite_link]: Invite link for the chat folder 
+  /// * [chat_ids]: Identifiers of the chats added to the chat folder. The chats are automatically joined if they aren't joined yet
   AddChatFolderByInviteLink copyWith({
     String? inviteLink,
     List<int>? chatIds,
@@ -48,11 +53,14 @@ final class AddChatFolderByInviteLink extends TdFunction {
     chatIds: chatIds ?? this.chatIds,
   );
 
+  /// TDLib object type
   static const String objectType = 'addChatFolderByInviteLink';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

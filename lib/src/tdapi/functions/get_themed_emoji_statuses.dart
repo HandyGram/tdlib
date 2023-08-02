@@ -15,6 +15,7 @@ final class GetThemedEmojiStatuses extends TdFunction {
   const GetThemedEmojiStatuses();
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -23,14 +24,17 @@ final class GetThemedEmojiStatuses extends TdFunction {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   GetThemedEmojiStatuses copyWith() => const GetThemedEmojiStatuses();
 
+  /// TDLib object type
   static const String objectType = 'getThemedEmojiStatuses';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

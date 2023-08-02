@@ -47,6 +47,7 @@ final class GetMessageLink extends TdFunction {
   /// Pass true to create a link to the message as a channel post comment, in a message thread, or a forum topic
   final bool inMessageThread;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -60,7 +61,14 @@ final class GetMessageLink extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat to which the message belongs
+  /// * [message_id]: Identifier of the message
+  /// * [media_timestamp]: If not 0, timestamp from which the video/audio/video note/voice note playing must start, in seconds. The media can be in the message content or in its web page preview
+  /// * [for_album]: Pass true to create a link for the whole media album
+  /// * [in_message_thread]: Pass true to create a link to the message as a channel post comment, in a message thread, or a forum topic
   GetMessageLink copyWith({
     int? chatId,
     int? messageId,
@@ -75,11 +83,14 @@ final class GetMessageLink extends TdFunction {
     inMessageThread: inMessageThread ?? this.inMessageThread,
   );
 
+  /// TDLib object type
   static const String objectType = 'getMessageLink';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

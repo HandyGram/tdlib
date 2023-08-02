@@ -46,6 +46,7 @@ final class PassportSuitableElement extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -57,7 +58,13 @@ final class PassportSuitableElement extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [type]: Type of the element
+  /// * [is_selfie_required]: True, if a selfie is required with the identity document
+  /// * [is_translation_required]: True, if a certified English translation is required with the document
+  /// * [is_native_name_required]: True, if personal details must include the user's name in the language of their country of residence
   PassportSuitableElement copyWith({
     PassportElementType? type,
     bool? isSelfieRequired,
@@ -70,11 +77,14 @@ final class PassportSuitableElement extends TdObject {
     isNativeNameRequired: isNativeNameRequired ?? this.isNativeNameRequired,
   );
 
+  /// TDLib object type
   static const String objectType = 'passportSuitableElement';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

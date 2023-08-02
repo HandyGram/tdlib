@@ -35,6 +35,7 @@ final class WriteGeneratedFilePart extends TdFunction {
   /// The data to write
   final String data;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class WriteGeneratedFilePart extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [generation_id]: The identifier of the generation process
+  /// * [offset]: The offset from which to write the data to the file
+  /// * [data]: The data to write
   WriteGeneratedFilePart copyWith({
     int? generationId,
     int? offset,
@@ -57,11 +63,14 @@ final class WriteGeneratedFilePart extends TdFunction {
     data: data ?? this.data,
   );
 
+  /// TDLib object type
   static const String objectType = 'writeGeneratedFilePart';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

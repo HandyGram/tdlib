@@ -23,6 +23,7 @@ final class SetNetworkType extends TdFunction {
   /// The new network type; pass null to set network type to networkTypeOther
   final NetworkType? type;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class SetNetworkType extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [type]: The new network type; pass null to set network type to networkTypeOther
   SetNetworkType copyWith({
     NetworkType? type,
   }) => SetNetworkType(
     type: type ?? this.type,
   );
 
+  /// TDLib object type
   static const String objectType = 'setNetworkType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

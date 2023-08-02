@@ -35,6 +35,7 @@ final class GetStatisticalGraph extends TdFunction {
   /// X-value for zoomed in graph or 0 otherwise
   final int x;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class GetStatisticalGraph extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [token]: The token for graph loading 
+  /// * [x]: X-value for zoomed in graph or 0 otherwise
   GetStatisticalGraph copyWith({
     int? chatId,
     String? token,
@@ -57,11 +63,14 @@ final class GetStatisticalGraph extends TdFunction {
     x: x ?? this.x,
   );
 
+  /// TDLib object type
   static const String objectType = 'getStatisticalGraph';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

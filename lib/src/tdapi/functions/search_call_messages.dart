@@ -35,6 +35,7 @@ final class SearchCallMessages extends TdFunction {
   /// Pass true to search only for messages with missed/declined calls
   final bool onlyMissed;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class SearchCallMessages extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [offset]: Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
+  /// * [limit]: The maximum number of messages to be returned; up to 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
+  /// * [only_missed]: Pass true to search only for messages with missed/declined calls
   SearchCallMessages copyWith({
     String? offset,
     int? limit,
@@ -57,11 +63,14 @@ final class SearchCallMessages extends TdFunction {
     onlyMissed: onlyMissed ?? this.onlyMissed,
   );
 
+  /// TDLib object type
   static const String objectType = 'searchCallMessages';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -58,6 +58,7 @@ final class InlineQueryResults extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -69,7 +70,13 @@ final class InlineQueryResults extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [inline_query_id]: Unique identifier of the inline query
+  /// * [button]: Button to be shown above inline query results; may be null
+  /// * [results]: Results of the query
+  /// * [next_offset]: The offset for the next request. If empty, there are no more results
   InlineQueryResults copyWith({
     int? inlineQueryId,
     InlineQueryResultsButton? button,
@@ -86,11 +93,14 @@ final class InlineQueryResults extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'inlineQueryResults';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

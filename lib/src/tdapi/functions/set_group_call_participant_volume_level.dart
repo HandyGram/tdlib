@@ -35,6 +35,7 @@ final class SetGroupCallParticipantVolumeLevel extends TdFunction {
   /// New participant's volume level; 1-20000 in hundreds of percents
   final int volumeLevel;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class SetGroupCallParticipantVolumeLevel extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [group_call_id]: Group call identifier
+  /// * [participant_id]: Participant identifier
+  /// * [volume_level]: New participant's volume level; 1-20000 in hundreds of percents
   SetGroupCallParticipantVolumeLevel copyWith({
     int? groupCallId,
     MessageSender? participantId,
@@ -57,11 +63,14 @@ final class SetGroupCallParticipantVolumeLevel extends TdFunction {
     volumeLevel: volumeLevel ?? this.volumeLevel,
   );
 
+  /// TDLib object type
   static const String objectType = 'setGroupCallParticipantVolumeLevel';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

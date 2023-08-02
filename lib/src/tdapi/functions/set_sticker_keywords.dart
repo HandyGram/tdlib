@@ -29,6 +29,7 @@ final class SetStickerKeywords extends TdFunction {
   /// List of up to 20 keywords with total length up to 64 characters, which can be used to find the sticker
   final List<String> keywords;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetStickerKeywords extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sticker]: Sticker
+  /// * [keywords]: List of up to 20 keywords with total length up to 64 characters, which can be used to find the sticker
   SetStickerKeywords copyWith({
     InputFile? sticker,
     List<String>? keywords,
@@ -48,11 +53,14 @@ final class SetStickerKeywords extends TdFunction {
     keywords: keywords ?? this.keywords,
   );
 
+  /// TDLib object type
   static const String objectType = 'setStickerKeywords';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

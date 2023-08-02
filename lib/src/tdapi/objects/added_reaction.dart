@@ -39,6 +39,7 @@ final class AddedReaction extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class AddedReaction extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [type]: Type of the reaction 
+  /// * [sender_id]: Identifier of the chat member, applied the reaction 
+  /// * [date]: Point in time (Unix timestamp) when the reaction was added
   AddedReaction copyWith({
     ReactionType? type,
     MessageSender? senderId,
@@ -60,11 +66,14 @@ final class AddedReaction extends TdObject {
     date: date ?? this.date,
   );
 
+  /// TDLib object type
   static const String objectType = 'addedReaction';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

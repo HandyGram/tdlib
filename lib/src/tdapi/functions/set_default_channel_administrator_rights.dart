@@ -23,6 +23,7 @@ final class SetDefaultChannelAdministratorRights extends TdFunction {
   /// Default administrator rights for adding the bot to channels; may be null
   final ChatAdministratorRights? defaultChannelAdministratorRights;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class SetDefaultChannelAdministratorRights extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [default_channel_administrator_rights]: Default administrator rights for adding the bot to channels; may be null
   SetDefaultChannelAdministratorRights copyWith({
     ChatAdministratorRights? defaultChannelAdministratorRights,
   }) => SetDefaultChannelAdministratorRights(
     defaultChannelAdministratorRights: defaultChannelAdministratorRights ?? this.defaultChannelAdministratorRights,
   );
 
+  /// TDLib object type
   static const String objectType = 'setDefaultChannelAdministratorRights';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

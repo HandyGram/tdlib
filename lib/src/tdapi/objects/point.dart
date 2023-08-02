@@ -32,6 +32,7 @@ final class Point extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -41,7 +42,11 @@ final class Point extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [x]: The point's first coordinate 
+  /// * [y]: The point's second coordinate
   Point copyWith({
     double? x,
     double? y,
@@ -50,11 +55,14 @@ final class Point extends TdObject {
     y: y ?? this.y,
   );
 
+  /// TDLib object type
   static const String objectType = 'point';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

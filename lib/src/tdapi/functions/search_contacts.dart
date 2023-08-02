@@ -29,6 +29,7 @@ final class SearchContacts extends TdFunction {
   /// The maximum number of users to be returned
   final int limit;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SearchContacts extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [query]: Query to search for; may be empty to return all contacts
+  /// * [limit]: The maximum number of users to be returned
   SearchContacts copyWith({
     String? query,
     int? limit,
@@ -48,11 +53,14 @@ final class SearchContacts extends TdFunction {
     limit: limit ?? this.limit,
   );
 
+  /// TDLib object type
   static const String objectType = 'searchContacts';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -57,17 +57,21 @@ sealed class AuthorizationState extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   AuthorizationState copyWith();
 
+  /// TDLib object type
   static const String objectType = 'authorizationState';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -101,6 +105,7 @@ final class AuthorizationStateWaitTdlibParameters extends AuthorizationState {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -108,7 +113,7 @@ final class AuthorizationStateWaitTdlibParameters extends AuthorizationState {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   AuthorizationStateWaitTdlibParameters copyWith({
     dynamic extra,
@@ -118,11 +123,14 @@ final class AuthorizationStateWaitTdlibParameters extends AuthorizationState {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'authorizationStateWaitTdlibParameters';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -156,6 +164,7 @@ final class AuthorizationStateWaitPhoneNumber extends AuthorizationState {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -163,7 +172,7 @@ final class AuthorizationStateWaitPhoneNumber extends AuthorizationState {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   AuthorizationStateWaitPhoneNumber copyWith({
     dynamic extra,
@@ -173,11 +182,14 @@ final class AuthorizationStateWaitPhoneNumber extends AuthorizationState {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'authorizationStateWaitPhoneNumber';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -227,6 +239,7 @@ final class AuthorizationStateWaitEmailAddress extends AuthorizationState {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -236,7 +249,11 @@ final class AuthorizationStateWaitEmailAddress extends AuthorizationState {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [allow_apple_id]: True, if authorization through Apple authorizationStateWaitEmailAddress is allowed
+  /// * [allow_google_id]: True, if authorization through Google authorizationStateWaitEmailAddress is allowed
   @override
   AuthorizationStateWaitEmailAddress copyWith({
     bool? allowAppleId,
@@ -250,11 +267,14 @@ final class AuthorizationStateWaitEmailAddress extends AuthorizationState {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'authorizationStateWaitEmailAddress';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -318,6 +338,7 @@ final class AuthorizationStateWaitEmailCode extends AuthorizationState {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -329,7 +350,13 @@ final class AuthorizationStateWaitEmailCode extends AuthorizationState {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [allow_apple_id]: True, if authorization through Apple authorizationStateWaitEmailCode is allowed
+  /// * [allow_google_id]: True, if authorization through Google authorizationStateWaitEmailCode is allowed
+  /// * [code_info]: Information about the sent authentication code
+  /// * [email_address_reset_state]: Reset state of the email address; may be null if the email address can't be reset
   @override
   AuthorizationStateWaitEmailCode copyWith({
     bool? allowAppleId,
@@ -347,11 +374,14 @@ final class AuthorizationStateWaitEmailCode extends AuthorizationState {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'authorizationStateWaitEmailCode';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -394,6 +424,7 @@ final class AuthorizationStateWaitCode extends AuthorizationState {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -402,7 +433,10 @@ final class AuthorizationStateWaitCode extends AuthorizationState {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [code_info]: Information about the authorization code that was sent
   @override
   AuthorizationStateWaitCode copyWith({
     AuthenticationCodeInfo? codeInfo,
@@ -414,11 +448,14 @@ final class AuthorizationStateWaitCode extends AuthorizationState {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'authorizationStateWaitCode';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -461,6 +498,7 @@ final class AuthorizationStateWaitOtherDeviceConfirmation extends AuthorizationS
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -469,7 +507,10 @@ final class AuthorizationStateWaitOtherDeviceConfirmation extends AuthorizationS
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [link]: A tg:// URL for the QR code. The link will be updated frequently
   @override
   AuthorizationStateWaitOtherDeviceConfirmation copyWith({
     String? link,
@@ -481,11 +522,14 @@ final class AuthorizationStateWaitOtherDeviceConfirmation extends AuthorizationS
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'authorizationStateWaitOtherDeviceConfirmation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -528,6 +572,7 @@ final class AuthorizationStateWaitRegistration extends AuthorizationState {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -536,7 +581,10 @@ final class AuthorizationStateWaitRegistration extends AuthorizationState {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [terms_of_service]: Telegram terms of service
   @override
   AuthorizationStateWaitRegistration copyWith({
     TermsOfService? termsOfService,
@@ -548,11 +596,14 @@ final class AuthorizationStateWaitRegistration extends AuthorizationState {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'authorizationStateWaitRegistration';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -616,6 +667,7 @@ final class AuthorizationStateWaitPassword extends AuthorizationState {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -627,7 +679,13 @@ final class AuthorizationStateWaitPassword extends AuthorizationState {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [password_hint]: Hint for the password; may be empty
+  /// * [has_recovery_email_address]: True, if a recovery email address has been set up
+  /// * [has_passport_data]: True, if some Telegram Passport elements were saved
+  /// * [recovery_email_address_pattern]: Pattern of the email address to which the recovery email was sent; empty until a recovery email has been sent
   @override
   AuthorizationStateWaitPassword copyWith({
     String? passwordHint,
@@ -645,11 +703,14 @@ final class AuthorizationStateWaitPassword extends AuthorizationState {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'authorizationStateWaitPassword';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -683,6 +744,7 @@ final class AuthorizationStateReady extends AuthorizationState {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -690,7 +752,7 @@ final class AuthorizationStateReady extends AuthorizationState {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   AuthorizationStateReady copyWith({
     dynamic extra,
@@ -700,11 +762,14 @@ final class AuthorizationStateReady extends AuthorizationState {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'authorizationStateReady';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -738,6 +803,7 @@ final class AuthorizationStateLoggingOut extends AuthorizationState {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -745,7 +811,7 @@ final class AuthorizationStateLoggingOut extends AuthorizationState {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   AuthorizationStateLoggingOut copyWith({
     dynamic extra,
@@ -755,11 +821,14 @@ final class AuthorizationStateLoggingOut extends AuthorizationState {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'authorizationStateLoggingOut';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -793,6 +862,7 @@ final class AuthorizationStateClosing extends AuthorizationState {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -800,7 +870,7 @@ final class AuthorizationStateClosing extends AuthorizationState {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   AuthorizationStateClosing copyWith({
     dynamic extra,
@@ -810,11 +880,14 @@ final class AuthorizationStateClosing extends AuthorizationState {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'authorizationStateClosing';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -848,6 +921,7 @@ final class AuthorizationStateClosed extends AuthorizationState {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -855,7 +929,7 @@ final class AuthorizationStateClosed extends AuthorizationState {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   AuthorizationStateClosed copyWith({
     dynamic extra,
@@ -865,11 +939,14 @@ final class AuthorizationStateClosed extends AuthorizationState {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'authorizationStateClosed';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -47,6 +47,7 @@ final class DiscardCall extends TdFunction {
   /// Identifier of the connection used during the call
   final int connectionId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -60,7 +61,14 @@ final class DiscardCall extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [call_id]: Call identifier
+  /// * [is_disconnected]: Pass true if the user was disconnected
+  /// * [duration]: The call duration, in seconds
+  /// * [is_video]: Pass true if the call was a video call
+  /// * [connection_id]: Identifier of the connection used during the call
   DiscardCall copyWith({
     int? callId,
     bool? isDisconnected,
@@ -75,11 +83,14 @@ final class DiscardCall extends TdFunction {
     connectionId: connectionId ?? this.connectionId,
   );
 
+  /// TDLib object type
   static const String objectType = 'discardCall';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

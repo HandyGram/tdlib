@@ -81,6 +81,7 @@ final class Audio extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -97,7 +98,18 @@ final class Audio extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [duration]: Duration of the audio, in seconds; as defined by the sender
+  /// * [title]: Title of the audio; as defined by the sender
+  /// * [performer]: Performer of the audio; as defined by the sender
+  /// * [file_name]: Original name of the file; as defined by the sender
+  /// * [mime_type]: The MIME type of the file; as defined by the sender
+  /// * [album_cover_minithumbnail]: The minithumbnail of the album cover; may be null
+  /// * [album_cover_thumbnail]: The thumbnail of the album cover in JPEG format; as defined by the sender. The full size thumbnail is supposed to be extracted from the downloaded audio file; may be null
+  /// * [external_album_covers]: Album cover variants to use if the downloaded audio file contains no album cover. Provided thumbnail dimensions are approximate
+  /// * [audio]: File containing the audio
   Audio copyWith({
     int? duration,
     String? title,
@@ -120,11 +132,14 @@ final class Audio extends TdObject {
     audio: audio ?? this.audio,
   );
 
+  /// TDLib object type
   static const String objectType = 'audio';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -23,6 +23,7 @@ final class SearchBackground extends TdFunction {
   /// The name of the background
   final String name;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class SearchBackground extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [name]: The name of the background
   SearchBackground copyWith({
     String? name,
   }) => SearchBackground(
     name: name ?? this.name,
   );
 
+  /// TDLib object type
   static const String objectType = 'searchBackground';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

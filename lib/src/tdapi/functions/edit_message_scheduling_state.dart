@@ -35,6 +35,7 @@ final class EditMessageSchedulingState extends TdFunction {
   /// The new message scheduling state; pass null to send the message immediately
   final MessageSchedulingState? schedulingState;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class EditMessageSchedulingState extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: The chat the message belongs to
+  /// * [message_id]: Identifier of the message
+  /// * [scheduling_state]: The new message scheduling state; pass null to send the message immediately
   EditMessageSchedulingState copyWith({
     int? chatId,
     int? messageId,
@@ -57,11 +63,14 @@ final class EditMessageSchedulingState extends TdFunction {
     schedulingState: schedulingState ?? this.schedulingState,
   );
 
+  /// TDLib object type
   static const String objectType = 'editMessageSchedulingState';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

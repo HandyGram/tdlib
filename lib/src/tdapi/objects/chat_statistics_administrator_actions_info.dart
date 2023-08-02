@@ -46,6 +46,7 @@ final class ChatStatisticsAdministratorActionsInfo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -57,7 +58,13 @@ final class ChatStatisticsAdministratorActionsInfo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: Administrator user identifier
+  /// * [deleted_message_count]: Number of messages deleted by the administrator
+  /// * [banned_user_count]: Number of users banned by the administrator
+  /// * [restricted_user_count]: Number of users restricted by the administrator
   ChatStatisticsAdministratorActionsInfo copyWith({
     int? userId,
     int? deletedMessageCount,
@@ -70,11 +77,14 @@ final class ChatStatisticsAdministratorActionsInfo extends TdObject {
     restrictedUserCount: restrictedUserCount ?? this.restrictedUserCount,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatStatisticsAdministratorActionsInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

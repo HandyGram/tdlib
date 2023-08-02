@@ -29,6 +29,7 @@ final class DeleteChatFolderInviteLink extends TdFunction {
   /// Invite link to be deleted
   final String inviteLink;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class DeleteChatFolderInviteLink extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_folder_id]: Chat folder identifier
+  /// * [invite_link]: Invite link to be deleted
   DeleteChatFolderInviteLink copyWith({
     int? chatFolderId,
     String? inviteLink,
@@ -48,11 +53,14 @@ final class DeleteChatFolderInviteLink extends TdFunction {
     inviteLink: inviteLink ?? this.inviteLink,
   );
 
+  /// TDLib object type
   static const String objectType = 'deleteChatFolderInviteLink';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

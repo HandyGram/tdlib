@@ -35,6 +35,7 @@ final class SaveApplicationLogEvent extends TdFunction {
   /// The log event data
   final JsonValue data;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class SaveApplicationLogEvent extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [type]: Event type 
+  /// * [chat_id]: Optional chat identifier, associated with the event 
+  /// * [data]: The log event data
   SaveApplicationLogEvent copyWith({
     String? type,
     int? chatId,
@@ -57,11 +63,14 @@ final class SaveApplicationLogEvent extends TdFunction {
     data: data ?? this.data,
   );
 
+  /// TDLib object type
   static const String objectType = 'saveApplicationLogEvent';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

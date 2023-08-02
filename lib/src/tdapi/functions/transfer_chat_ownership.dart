@@ -35,6 +35,7 @@ final class TransferChatOwnership extends TdFunction {
   /// The 2-step verification password of the current user
   final String password;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class TransferChatOwnership extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [user_id]: Identifier of the user to which transfer the ownership. The ownership can't be transferred to a bot or to a deleted user
+  /// * [password]: The 2-step verification password of the current user
   TransferChatOwnership copyWith({
     int? chatId,
     int? userId,
@@ -57,11 +63,14 @@ final class TransferChatOwnership extends TdFunction {
     password: password ?? this.password,
   );
 
+  /// TDLib object type
   static const String objectType = 'transferChatOwnership';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

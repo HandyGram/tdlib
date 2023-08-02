@@ -53,6 +53,7 @@ final class CallProtocol extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -65,7 +66,14 @@ final class CallProtocol extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [udp_p2p]: True, if UDP peer-to-peer connections are supported
+  /// * [udp_reflector]: True, if connection through UDP reflectors is supported
+  /// * [min_layer]: The minimum supported API layer; use 65
+  /// * [max_layer]: The maximum supported API layer; use 65
+  /// * [library_versions]: List of supported tgcalls versions
   CallProtocol copyWith({
     bool? udpP2p,
     bool? udpReflector,
@@ -80,11 +88,14 @@ final class CallProtocol extends TdObject {
     libraryVersions: libraryVersions ?? this.libraryVersions,
   );
 
+  /// TDLib object type
   static const String objectType = 'callProtocol';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

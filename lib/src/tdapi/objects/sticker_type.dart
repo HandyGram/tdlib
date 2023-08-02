@@ -30,17 +30,21 @@ sealed class StickerType extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   StickerType copyWith();
 
+  /// TDLib object type
   static const String objectType = 'stickerType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -59,6 +63,7 @@ final class StickerTypeRegular extends StickerType {
   /// Parse from a json
   factory StickerTypeRegular.fromJson(Map<String, dynamic> json) => const StickerTypeRegular();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -66,15 +71,18 @@ final class StickerTypeRegular extends StickerType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   StickerTypeRegular copyWith() => const StickerTypeRegular();
 
+  /// TDLib object type
   static const String objectType = 'stickerTypeRegular';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -93,6 +101,7 @@ final class StickerTypeMask extends StickerType {
   /// Parse from a json
   factory StickerTypeMask.fromJson(Map<String, dynamic> json) => const StickerTypeMask();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -100,15 +109,18 @@ final class StickerTypeMask extends StickerType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   StickerTypeMask copyWith() => const StickerTypeMask();
 
+  /// TDLib object type
   static const String objectType = 'stickerTypeMask';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -127,6 +139,7 @@ final class StickerTypeCustomEmoji extends StickerType {
   /// Parse from a json
   factory StickerTypeCustomEmoji.fromJson(Map<String, dynamic> json) => const StickerTypeCustomEmoji();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -134,15 +147,18 @@ final class StickerTypeCustomEmoji extends StickerType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   StickerTypeCustomEmoji copyWith() => const StickerTypeCustomEmoji();
 
+  /// TDLib object type
   static const String objectType = 'stickerTypeCustomEmoji';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

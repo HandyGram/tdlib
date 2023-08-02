@@ -109,6 +109,7 @@ final class ChatEventLogFilters extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -129,7 +130,22 @@ final class ChatEventLogFilters extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [message_edits]: True, if message edits need to be returned
+  /// * [message_deletions]: True, if message deletions need to be returned
+  /// * [message_pins]: True, if pin/unpin events need to be returned
+  /// * [member_joins]: True, if members joining events need to be returned
+  /// * [member_leaves]: True, if members leaving events need to be returned
+  /// * [member_invites]: True, if invited member events need to be returned
+  /// * [member_promotions]: True, if member promotion/demotion events need to be returned
+  /// * [member_restrictions]: True, if member restricted/unrestricted/banned/unbanned events need to be returned
+  /// * [info_changes]: True, if changes in chat information need to be returned
+  /// * [setting_changes]: True, if changes in chat settings need to be returned
+  /// * [invite_link_changes]: True, if changes to invite links need to be returned
+  /// * [video_chat_changes]: True, if video chat actions need to be returned
+  /// * [forum_changes]: True, if forum-related actions need to be returned
   ChatEventLogFilters copyWith({
     bool? messageEdits,
     bool? messageDeletions,
@@ -160,11 +176,14 @@ final class ChatEventLogFilters extends TdObject {
     forumChanges: forumChanges ?? this.forumChanges,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatEventLogFilters';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

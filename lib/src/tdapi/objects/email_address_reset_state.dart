@@ -27,17 +27,21 @@ sealed class EmailAddressResetState extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   EmailAddressResetState copyWith();
 
+  /// TDLib object type
   static const String objectType = 'emailAddressResetState';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -68,6 +72,7 @@ final class EmailAddressResetStateAvailable extends EmailAddressResetState {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -76,7 +81,10 @@ final class EmailAddressResetStateAvailable extends EmailAddressResetState {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [wait_period]: Time required to wait before the email address can be reset; 0 if the user is subscribed to Telegram Premium
   @override
   EmailAddressResetStateAvailable copyWith({
     int? waitPeriod,
@@ -84,11 +92,14 @@ final class EmailAddressResetStateAvailable extends EmailAddressResetState {
     waitPeriod: waitPeriod ?? this.waitPeriod,
   );
 
+  /// TDLib object type
   static const String objectType = 'emailAddressResetStateAvailable';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -119,6 +130,7 @@ final class EmailAddressResetStatePending extends EmailAddressResetState {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -127,7 +139,10 @@ final class EmailAddressResetStatePending extends EmailAddressResetState {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [reset_in]: Left time before the email address will be reset, in seconds. updateAuthorizationState is not sent when this field changes
   @override
   EmailAddressResetStatePending copyWith({
     int? resetIn,
@@ -135,11 +150,14 @@ final class EmailAddressResetStatePending extends EmailAddressResetState {
     resetIn: resetIn ?? this.resetIn,
   );
 
+  /// TDLib object type
   static const String objectType = 'emailAddressResetStatePending';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

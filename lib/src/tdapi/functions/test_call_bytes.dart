@@ -23,6 +23,7 @@ final class TestCallBytes extends TdFunction {
   /// Bytes to return
   final String x;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class TestCallBytes extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [x]: Bytes to return
   TestCallBytes copyWith({
     String? x,
   }) => TestCallBytes(
     x: x ?? this.x,
   );
 
+  /// TDLib object type
   static const String objectType = 'testCallBytes';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -32,6 +32,7 @@ final class BankCardActionOpenUrl extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -41,7 +42,11 @@ final class BankCardActionOpenUrl extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Action text 
+  /// * [url]: The URL to be opened
   BankCardActionOpenUrl copyWith({
     String? text,
     String? url,
@@ -50,11 +55,14 @@ final class BankCardActionOpenUrl extends TdObject {
     url: url ?? this.url,
   );
 
+  /// TDLib object type
   static const String objectType = 'bankCardActionOpenUrl';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

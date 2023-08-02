@@ -71,6 +71,7 @@ final class OptimizeStorage extends TdFunction {
   /// Same as in getStorageStatistics. Affects only returned statistics
   final int chatLimit;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -88,7 +89,18 @@ final class OptimizeStorage extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [size]: Limit on the total size of files after deletion, in bytes. Pass -1 to use the default limit
+  /// * [ttl]: Limit on the time that has passed since the last time a file was accessed (or creation time for some filesystems). Pass -1 to use the default limit
+  /// * [count]: Limit on the total number of files after deletion. Pass -1 to use the default limit
+  /// * [immunity_delay]: The amount of time after the creation of a file during which it can't be deleted, in seconds. Pass -1 to use the default value
+  /// * [file_types]: If non-empty, only files with the given types are considered. By default, all types except thumbnails, profile photos, stickers and wallpapers are deleted
+  /// * [chat_ids]: If non-empty, only files from the given chats are considered. Use 0 as chat identifier to delete files not belonging to any chat (e.g., profile photos)
+  /// * [exclude_chat_ids]: If non-empty, files from the given chats are excluded. Use 0 as chat identifier to exclude all files not belonging to any chat (e.g., profile photos)
+  /// * [return_deleted_file_statistics]: Pass true if statistics about the files that were deleted must be returned instead of the whole storage usage statistics. Affects only returned statistics
+  /// * [chat_limit]: Same as in getStorageStatistics. Affects only returned statistics
   OptimizeStorage copyWith({
     int? size,
     int? ttl,
@@ -111,11 +123,14 @@ final class OptimizeStorage extends TdFunction {
     chatLimit: chatLimit ?? this.chatLimit,
   );
 
+  /// TDLib object type
   static const String objectType = 'optimizeStorage';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -29,6 +29,7 @@ final class ParseTextEntities extends TdFunction {
   /// Text parse mode
   final TextParseMode parseMode;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ParseTextEntities extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: The text to parse 
+  /// * [parse_mode]: Text parse mode
   ParseTextEntities copyWith({
     String? text,
     TextParseMode? parseMode,
@@ -48,11 +53,14 @@ final class ParseTextEntities extends TdFunction {
     parseMode: parseMode ?? this.parseMode,
   );
 
+  /// TDLib object type
   static const String objectType = 'parseTextEntities';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

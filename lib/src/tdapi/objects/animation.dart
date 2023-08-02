@@ -81,6 +81,7 @@ final class Animation extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -97,7 +98,18 @@ final class Animation extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [duration]: Duration of the animation, in seconds; as defined by the sender
+  /// * [width]: Width of the animation
+  /// * [height]: Height of the animation
+  /// * [file_name]: Original name of the file; as defined by the sender
+  /// * [mime_type]: MIME type of the file, usually "image/gif" or "video/mp4"
+  /// * [has_stickers]: True, if stickers were added to the animation. The list of corresponding sticker set can be received using getAttachedStickerSets
+  /// * [minithumbnail]: Animation minithumbnail; may be null
+  /// * [thumbnail]: Animation thumbnail in JPEG or MPEG4 format; may be null
+  /// * [animation]: File containing the animation
   Animation copyWith({
     int? duration,
     int? width,
@@ -120,11 +132,14 @@ final class Animation extends TdObject {
     animation: animation ?? this.animation,
   );
 
+  /// TDLib object type
   static const String objectType = 'animation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

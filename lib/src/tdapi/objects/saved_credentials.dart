@@ -32,6 +32,7 @@ final class SavedCredentials extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -41,7 +42,11 @@ final class SavedCredentials extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the saved credentials 
+  /// * [title]: Title of the saved credentials
   SavedCredentials copyWith({
     String? id,
     String? title,
@@ -50,11 +55,14 @@ final class SavedCredentials extends TdObject {
     title: title ?? this.title,
   );
 
+  /// TDLib object type
   static const String objectType = 'savedCredentials';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

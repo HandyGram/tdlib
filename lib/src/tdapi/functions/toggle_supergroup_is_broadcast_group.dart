@@ -23,6 +23,7 @@ final class ToggleSupergroupIsBroadcastGroup extends TdFunction {
   /// Identifier of the supergroup
   final int supergroupId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class ToggleSupergroupIsBroadcastGroup extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [supergroup_id]: Identifier of the supergroup
   ToggleSupergroupIsBroadcastGroup copyWith({
     int? supergroupId,
   }) => ToggleSupergroupIsBroadcastGroup(
     supergroupId: supergroupId ?? this.supergroupId,
   );
 
+  /// TDLib object type
   static const String objectType = 'toggleSupergroupIsBroadcastGroup';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

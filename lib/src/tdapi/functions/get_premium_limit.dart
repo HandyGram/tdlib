@@ -23,6 +23,7 @@ final class GetPremiumLimit extends TdFunction {
   /// Type of the limit
   final PremiumLimitType limitType;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetPremiumLimit extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [limit_type]: Type of the limit
   GetPremiumLimit copyWith({
     PremiumLimitType? limitType,
   }) => GetPremiumLimit(
     limitType: limitType ?? this.limitType,
   );
 
+  /// TDLib object type
   static const String objectType = 'getPremiumLimit';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

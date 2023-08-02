@@ -39,6 +39,7 @@ final class DraftMessage extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class DraftMessage extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [reply_to_message_id]: Identifier of the replied message; 0 if none
+  /// * [date]: Point in time (Unix timestamp) when the draft was created
+  /// * [input_message_text]: Content of the message draft; must be of the type inputMessageText
   DraftMessage copyWith({
     int? replyToMessageId,
     int? date,
@@ -60,11 +66,14 @@ final class DraftMessage extends TdObject {
     inputMessageText: inputMessageText ?? this.inputMessageText,
   );
 
+  /// TDLib object type
   static const String objectType = 'draftMessage';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

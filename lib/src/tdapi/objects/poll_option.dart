@@ -53,6 +53,7 @@ final class PollOption extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -65,7 +66,14 @@ final class PollOption extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Option text; 1-100 characters
+  /// * [voter_count]: Number of voters for this option, available only for closed or voted polls
+  /// * [vote_percentage]: The percentage of votes for this option; 0-100
+  /// * [is_chosen]: True, if the option was chosen by the user
+  /// * [is_being_chosen]: True, if the option is being chosen by a pending setPollAnswer request
   PollOption copyWith({
     String? text,
     int? voterCount,
@@ -80,11 +88,14 @@ final class PollOption extends TdObject {
     isBeingChosen: isBeingChosen ?? this.isBeingChosen,
   );
 
+  /// TDLib object type
   static const String objectType = 'pollOption';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

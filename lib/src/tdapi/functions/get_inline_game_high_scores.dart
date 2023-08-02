@@ -29,6 +29,7 @@ final class GetInlineGameHighScores extends TdFunction {
   /// User identifier
   final int userId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class GetInlineGameHighScores extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [inline_message_id]: Inline message identifier 
+  /// * [user_id]: User identifier
   GetInlineGameHighScores copyWith({
     String? inlineMessageId,
     int? userId,
@@ -48,11 +53,14 @@ final class GetInlineGameHighScores extends TdFunction {
     userId: userId ?? this.userId,
   );
 
+  /// TDLib object type
   static const String objectType = 'getInlineGameHighScores';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -144,6 +144,7 @@ final class GroupCallParticipant extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -169,7 +170,27 @@ final class GroupCallParticipant extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [participant_id]: Identifier of the group call participant
+  /// * [audio_source_id]: User's audio channel synchronization source identifier
+  /// * [screen_sharing_audio_source_id]: User's screen sharing audio channel synchronization source identifier
+  /// * [video_info]: Information about user's video channel; may be null if there is no active video
+  /// * [screen_sharing_video_info]: Information about user's screen sharing video channel; may be null if there is no active screen sharing video
+  /// * [bio]: The participant user's bio or the participant chat's description
+  /// * [is_current_user]: True, if the participant is the current user
+  /// * [is_speaking]: True, if the participant is speaking as set by setGroupCallParticipantIsSpeaking
+  /// * [is_hand_raised]: True, if the participant hand is raised
+  /// * [can_be_muted_for_all_users]: True, if the current user can mute the participant for all other group call participants
+  /// * [can_be_unmuted_for_all_users]: True, if the current user can allow the participant to unmute themselves or unmute the participant (if the participant is the current user)
+  /// * [can_be_muted_for_current_user]: True, if the current user can mute the participant only for self
+  /// * [can_be_unmuted_for_current_user]: True, if the current user can unmute the participant for self
+  /// * [is_muted_for_all_users]: True, if the participant is muted for all users
+  /// * [is_muted_for_current_user]: True, if the participant is muted for the current user
+  /// * [can_unmute_self]: True, if the participant is muted for all users, but can unmute themselves
+  /// * [volume_level]: Participant's volume level; 1-20000 in hundreds of percents
+  /// * [order]: User's order in the group call participant list. Orders must be compared lexicographically. The bigger is order, the higher is user in the list. If order is empty, the user must be removed from the participant list
   GroupCallParticipant copyWith({
     MessageSender? participantId,
     int? audioSourceId,
@@ -210,11 +231,14 @@ final class GroupCallParticipant extends TdObject {
     order: order ?? this.order,
   );
 
+  /// TDLib object type
   static const String objectType = 'groupCallParticipant';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

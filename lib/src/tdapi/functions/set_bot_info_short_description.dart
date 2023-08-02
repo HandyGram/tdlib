@@ -35,6 +35,7 @@ final class SetBotInfoShortDescription extends TdFunction {
   /// New bot's short description on the specified language
   final String shortDescription;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class SetBotInfoShortDescription extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [bot_user_id]: Identifier of the target bot
+  /// * [language_code]: A two-letter ISO 639-1 language code. If empty, the short description will be shown to all users for whose languages there is no dedicated description
+  /// * [short_description]: New bot's short description on the specified language
   SetBotInfoShortDescription copyWith({
     int? botUserId,
     String? languageCode,
@@ -57,11 +63,14 @@ final class SetBotInfoShortDescription extends TdFunction {
     shortDescription: shortDescription ?? this.shortDescription,
   );
 
+  /// TDLib object type
   static const String objectType = 'setBotInfoShortDescription';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

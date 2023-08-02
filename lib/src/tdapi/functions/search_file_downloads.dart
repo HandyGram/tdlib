@@ -47,6 +47,7 @@ final class SearchFileDownloads extends TdFunction {
   /// The maximum number of files to be returned
   final int limit;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -60,7 +61,14 @@ final class SearchFileDownloads extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [query]: Query to search for; may be empty to return all downloaded files
+  /// * [only_active]: Pass true to search only for active downloads, including paused
+  /// * [only_completed]: Pass true to search only for completed downloads
+  /// * [offset]: Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
+  /// * [limit]: The maximum number of files to be returned
   SearchFileDownloads copyWith({
     String? query,
     bool? onlyActive,
@@ -75,11 +83,14 @@ final class SearchFileDownloads extends TdFunction {
     limit: limit ?? this.limit,
   );
 
+  /// TDLib object type
   static const String objectType = 'searchFileDownloads';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

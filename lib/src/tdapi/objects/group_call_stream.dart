@@ -39,6 +39,7 @@ final class GroupCallStream extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class GroupCallStream extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [channel_id]: Identifier of an audio/video channel
+  /// * [scale]: Scale of segment durations in the stream. The duration is 1000/(2**scale) milliseconds
+  /// * [time_offset]: Point in time when the stream currently ends; Unix timestamp in milliseconds
   GroupCallStream copyWith({
     int? channelId,
     int? scale,
@@ -60,11 +66,14 @@ final class GroupCallStream extends TdObject {
     timeOffset: timeOffset ?? this.timeOffset,
   );
 
+  /// TDLib object type
   static const String objectType = 'groupCallStream';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

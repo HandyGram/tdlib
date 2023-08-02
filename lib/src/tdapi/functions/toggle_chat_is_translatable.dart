@@ -29,6 +29,7 @@ final class ToggleChatIsTranslatable extends TdFunction {
   /// New value of is_translatable
   final bool isTranslatable;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ToggleChatIsTranslatable extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [is_translatable]: New value of is_translatable
   ToggleChatIsTranslatable copyWith({
     int? chatId,
     bool? isTranslatable,
@@ -48,11 +53,14 @@ final class ToggleChatIsTranslatable extends TdFunction {
     isTranslatable: isTranslatable ?? this.isTranslatable,
   );
 
+  /// TDLib object type
   static const String objectType = 'toggleChatIsTranslatable';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

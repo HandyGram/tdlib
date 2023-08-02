@@ -23,6 +23,7 @@ final class GetOption extends TdFunction {
   /// The name of the option
   final String name;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetOption extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [name]: The name of the option
   GetOption copyWith({
     String? name,
   }) => GetOption(
     name: name ?? this.name,
   );
 
+  /// TDLib object type
   static const String objectType = 'getOption';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

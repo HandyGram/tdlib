@@ -66,17 +66,21 @@ sealed class ChatAction extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   ChatAction copyWith();
 
+  /// TDLib object type
   static const String objectType = 'chatAction';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -95,6 +99,7 @@ final class ChatActionTyping extends ChatAction {
   /// Parse from a json
   factory ChatActionTyping.fromJson(Map<String, dynamic> json) => const ChatActionTyping();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -102,15 +107,18 @@ final class ChatActionTyping extends ChatAction {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ChatActionTyping copyWith() => const ChatActionTyping();
 
+  /// TDLib object type
   static const String objectType = 'chatActionTyping';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -129,6 +137,7 @@ final class ChatActionRecordingVideo extends ChatAction {
   /// Parse from a json
   factory ChatActionRecordingVideo.fromJson(Map<String, dynamic> json) => const ChatActionRecordingVideo();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -136,15 +145,18 @@ final class ChatActionRecordingVideo extends ChatAction {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ChatActionRecordingVideo copyWith() => const ChatActionRecordingVideo();
 
+  /// TDLib object type
   static const String objectType = 'chatActionRecordingVideo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -175,6 +187,7 @@ final class ChatActionUploadingVideo extends ChatAction {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -183,7 +196,10 @@ final class ChatActionUploadingVideo extends ChatAction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [progress]: Upload progress, as a percentage
   @override
   ChatActionUploadingVideo copyWith({
     int? progress,
@@ -191,11 +207,14 @@ final class ChatActionUploadingVideo extends ChatAction {
     progress: progress ?? this.progress,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatActionUploadingVideo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -214,6 +233,7 @@ final class ChatActionRecordingVoiceNote extends ChatAction {
   /// Parse from a json
   factory ChatActionRecordingVoiceNote.fromJson(Map<String, dynamic> json) => const ChatActionRecordingVoiceNote();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -221,15 +241,18 @@ final class ChatActionRecordingVoiceNote extends ChatAction {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ChatActionRecordingVoiceNote copyWith() => const ChatActionRecordingVoiceNote();
 
+  /// TDLib object type
   static const String objectType = 'chatActionRecordingVoiceNote';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -260,6 +283,7 @@ final class ChatActionUploadingVoiceNote extends ChatAction {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -268,7 +292,10 @@ final class ChatActionUploadingVoiceNote extends ChatAction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [progress]: Upload progress, as a percentage
   @override
   ChatActionUploadingVoiceNote copyWith({
     int? progress,
@@ -276,11 +303,14 @@ final class ChatActionUploadingVoiceNote extends ChatAction {
     progress: progress ?? this.progress,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatActionUploadingVoiceNote';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -311,6 +341,7 @@ final class ChatActionUploadingPhoto extends ChatAction {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -319,7 +350,10 @@ final class ChatActionUploadingPhoto extends ChatAction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [progress]: Upload progress, as a percentage
   @override
   ChatActionUploadingPhoto copyWith({
     int? progress,
@@ -327,11 +361,14 @@ final class ChatActionUploadingPhoto extends ChatAction {
     progress: progress ?? this.progress,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatActionUploadingPhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -362,6 +399,7 @@ final class ChatActionUploadingDocument extends ChatAction {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -370,7 +408,10 @@ final class ChatActionUploadingDocument extends ChatAction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [progress]: Upload progress, as a percentage
   @override
   ChatActionUploadingDocument copyWith({
     int? progress,
@@ -378,11 +419,14 @@ final class ChatActionUploadingDocument extends ChatAction {
     progress: progress ?? this.progress,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatActionUploadingDocument';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -401,6 +445,7 @@ final class ChatActionChoosingSticker extends ChatAction {
   /// Parse from a json
   factory ChatActionChoosingSticker.fromJson(Map<String, dynamic> json) => const ChatActionChoosingSticker();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -408,15 +453,18 @@ final class ChatActionChoosingSticker extends ChatAction {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ChatActionChoosingSticker copyWith() => const ChatActionChoosingSticker();
 
+  /// TDLib object type
   static const String objectType = 'chatActionChoosingSticker';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -435,6 +483,7 @@ final class ChatActionChoosingLocation extends ChatAction {
   /// Parse from a json
   factory ChatActionChoosingLocation.fromJson(Map<String, dynamic> json) => const ChatActionChoosingLocation();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -442,15 +491,18 @@ final class ChatActionChoosingLocation extends ChatAction {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ChatActionChoosingLocation copyWith() => const ChatActionChoosingLocation();
 
+  /// TDLib object type
   static const String objectType = 'chatActionChoosingLocation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -469,6 +521,7 @@ final class ChatActionChoosingContact extends ChatAction {
   /// Parse from a json
   factory ChatActionChoosingContact.fromJson(Map<String, dynamic> json) => const ChatActionChoosingContact();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -476,15 +529,18 @@ final class ChatActionChoosingContact extends ChatAction {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ChatActionChoosingContact copyWith() => const ChatActionChoosingContact();
 
+  /// TDLib object type
   static const String objectType = 'chatActionChoosingContact';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -503,6 +559,7 @@ final class ChatActionStartPlayingGame extends ChatAction {
   /// Parse from a json
   factory ChatActionStartPlayingGame.fromJson(Map<String, dynamic> json) => const ChatActionStartPlayingGame();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -510,15 +567,18 @@ final class ChatActionStartPlayingGame extends ChatAction {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ChatActionStartPlayingGame copyWith() => const ChatActionStartPlayingGame();
 
+  /// TDLib object type
   static const String objectType = 'chatActionStartPlayingGame';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -537,6 +597,7 @@ final class ChatActionRecordingVideoNote extends ChatAction {
   /// Parse from a json
   factory ChatActionRecordingVideoNote.fromJson(Map<String, dynamic> json) => const ChatActionRecordingVideoNote();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -544,15 +605,18 @@ final class ChatActionRecordingVideoNote extends ChatAction {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ChatActionRecordingVideoNote copyWith() => const ChatActionRecordingVideoNote();
 
+  /// TDLib object type
   static const String objectType = 'chatActionRecordingVideoNote';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -583,6 +647,7 @@ final class ChatActionUploadingVideoNote extends ChatAction {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -591,7 +656,10 @@ final class ChatActionUploadingVideoNote extends ChatAction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [progress]: Upload progress, as a percentage
   @override
   ChatActionUploadingVideoNote copyWith({
     int? progress,
@@ -599,11 +667,14 @@ final class ChatActionUploadingVideoNote extends ChatAction {
     progress: progress ?? this.progress,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatActionUploadingVideoNote';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -634,6 +705,7 @@ final class ChatActionWatchingAnimations extends ChatAction {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -642,7 +714,10 @@ final class ChatActionWatchingAnimations extends ChatAction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [emoji]: The animated emoji
   @override
   ChatActionWatchingAnimations copyWith({
     String? emoji,
@@ -650,11 +725,14 @@ final class ChatActionWatchingAnimations extends ChatAction {
     emoji: emoji ?? this.emoji,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatActionWatchingAnimations';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -673,6 +751,7 @@ final class ChatActionCancel extends ChatAction {
   /// Parse from a json
   factory ChatActionCancel.fromJson(Map<String, dynamic> json) => const ChatActionCancel();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -680,15 +759,18 @@ final class ChatActionCancel extends ChatAction {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ChatActionCancel copyWith() => const ChatActionCancel();
 
+  /// TDLib object type
   static const String objectType = 'chatActionCancel';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

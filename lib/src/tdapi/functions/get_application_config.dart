@@ -15,6 +15,7 @@ final class GetApplicationConfig extends TdFunction {
   const GetApplicationConfig();
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -23,14 +24,17 @@ final class GetApplicationConfig extends TdFunction {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   GetApplicationConfig copyWith() => const GetApplicationConfig();
 
+  /// TDLib object type
   static const String objectType = 'getApplicationConfig';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

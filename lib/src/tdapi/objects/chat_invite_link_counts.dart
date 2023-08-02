@@ -37,6 +37,7 @@ final class ChatInviteLinkCounts extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -45,7 +46,10 @@ final class ChatInviteLinkCounts extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [invite_link_counts]: List of invite link counts
   ChatInviteLinkCounts copyWith({
     List<ChatInviteLinkCount>? inviteLinkCounts,
     dynamic extra,
@@ -56,11 +60,14 @@ final class ChatInviteLinkCounts extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatInviteLinkCounts';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

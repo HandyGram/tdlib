@@ -60,17 +60,21 @@ sealed class InputPassportElement extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   InputPassportElement copyWith();
 
+  /// TDLib object type
   static const String objectType = 'inputPassportElement';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -101,6 +105,7 @@ final class InputPassportElementPersonalDetails extends InputPassportElement {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -109,7 +114,10 @@ final class InputPassportElementPersonalDetails extends InputPassportElement {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [personal_details]: Personal details of the user
   @override
   InputPassportElementPersonalDetails copyWith({
     PersonalDetails? personalDetails,
@@ -117,11 +125,14 @@ final class InputPassportElementPersonalDetails extends InputPassportElement {
     personalDetails: personalDetails ?? this.personalDetails,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputPassportElementPersonalDetails';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -152,6 +163,7 @@ final class InputPassportElementPassport extends InputPassportElement {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -160,7 +172,10 @@ final class InputPassportElementPassport extends InputPassportElement {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [passport]: The passport to be saved
   @override
   InputPassportElementPassport copyWith({
     InputIdentityDocument? passport,
@@ -168,11 +183,14 @@ final class InputPassportElementPassport extends InputPassportElement {
     passport: passport ?? this.passport,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputPassportElementPassport';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -203,6 +221,7 @@ final class InputPassportElementDriverLicense extends InputPassportElement {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -211,7 +230,10 @@ final class InputPassportElementDriverLicense extends InputPassportElement {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [driver_license]: The driver license to be saved
   @override
   InputPassportElementDriverLicense copyWith({
     InputIdentityDocument? driverLicense,
@@ -219,11 +241,14 @@ final class InputPassportElementDriverLicense extends InputPassportElement {
     driverLicense: driverLicense ?? this.driverLicense,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputPassportElementDriverLicense';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -254,6 +279,7 @@ final class InputPassportElementIdentityCard extends InputPassportElement {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -262,7 +288,10 @@ final class InputPassportElementIdentityCard extends InputPassportElement {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [identity_card]: The identity card to be saved
   @override
   InputPassportElementIdentityCard copyWith({
     InputIdentityDocument? identityCard,
@@ -270,11 +299,14 @@ final class InputPassportElementIdentityCard extends InputPassportElement {
     identityCard: identityCard ?? this.identityCard,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputPassportElementIdentityCard';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -305,6 +337,7 @@ final class InputPassportElementInternalPassport extends InputPassportElement {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -313,7 +346,10 @@ final class InputPassportElementInternalPassport extends InputPassportElement {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [internal_passport]: The internal passport to be saved
   @override
   InputPassportElementInternalPassport copyWith({
     InputIdentityDocument? internalPassport,
@@ -321,11 +357,14 @@ final class InputPassportElementInternalPassport extends InputPassportElement {
     internalPassport: internalPassport ?? this.internalPassport,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputPassportElementInternalPassport';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -356,6 +395,7 @@ final class InputPassportElementAddress extends InputPassportElement {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -364,7 +404,10 @@ final class InputPassportElementAddress extends InputPassportElement {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [address]: The address to be saved
   @override
   InputPassportElementAddress copyWith({
     Address? address,
@@ -372,11 +415,14 @@ final class InputPassportElementAddress extends InputPassportElement {
     address: address ?? this.address,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputPassportElementAddress';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -407,6 +453,7 @@ final class InputPassportElementUtilityBill extends InputPassportElement {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -415,7 +462,10 @@ final class InputPassportElementUtilityBill extends InputPassportElement {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [utility_bill]: The utility bill to be saved
   @override
   InputPassportElementUtilityBill copyWith({
     InputPersonalDocument? utilityBill,
@@ -423,11 +473,14 @@ final class InputPassportElementUtilityBill extends InputPassportElement {
     utilityBill: utilityBill ?? this.utilityBill,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputPassportElementUtilityBill';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -458,6 +511,7 @@ final class InputPassportElementBankStatement extends InputPassportElement {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -466,7 +520,10 @@ final class InputPassportElementBankStatement extends InputPassportElement {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [bank_statement]: The bank statement to be saved
   @override
   InputPassportElementBankStatement copyWith({
     InputPersonalDocument? bankStatement,
@@ -474,11 +531,14 @@ final class InputPassportElementBankStatement extends InputPassportElement {
     bankStatement: bankStatement ?? this.bankStatement,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputPassportElementBankStatement';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -509,6 +569,7 @@ final class InputPassportElementRentalAgreement extends InputPassportElement {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -517,7 +578,10 @@ final class InputPassportElementRentalAgreement extends InputPassportElement {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [rental_agreement]: The rental agreement to be saved
   @override
   InputPassportElementRentalAgreement copyWith({
     InputPersonalDocument? rentalAgreement,
@@ -525,11 +589,14 @@ final class InputPassportElementRentalAgreement extends InputPassportElement {
     rentalAgreement: rentalAgreement ?? this.rentalAgreement,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputPassportElementRentalAgreement';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -560,6 +627,7 @@ final class InputPassportElementPassportRegistration extends InputPassportElemen
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -568,7 +636,10 @@ final class InputPassportElementPassportRegistration extends InputPassportElemen
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [passport_registration]: The passport registration page to be saved
   @override
   InputPassportElementPassportRegistration copyWith({
     InputPersonalDocument? passportRegistration,
@@ -576,11 +647,14 @@ final class InputPassportElementPassportRegistration extends InputPassportElemen
     passportRegistration: passportRegistration ?? this.passportRegistration,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputPassportElementPassportRegistration';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -611,6 +685,7 @@ final class InputPassportElementTemporaryRegistration extends InputPassportEleme
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -619,7 +694,10 @@ final class InputPassportElementTemporaryRegistration extends InputPassportEleme
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [temporary_registration]: The temporary registration document to be saved
   @override
   InputPassportElementTemporaryRegistration copyWith({
     InputPersonalDocument? temporaryRegistration,
@@ -627,11 +705,14 @@ final class InputPassportElementTemporaryRegistration extends InputPassportEleme
     temporaryRegistration: temporaryRegistration ?? this.temporaryRegistration,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputPassportElementTemporaryRegistration';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -662,6 +743,7 @@ final class InputPassportElementPhoneNumber extends InputPassportElement {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -670,7 +752,10 @@ final class InputPassportElementPhoneNumber extends InputPassportElement {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [phone_number]: The phone number to be saved
   @override
   InputPassportElementPhoneNumber copyWith({
     String? phoneNumber,
@@ -678,11 +763,14 @@ final class InputPassportElementPhoneNumber extends InputPassportElement {
     phoneNumber: phoneNumber ?? this.phoneNumber,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputPassportElementPhoneNumber';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -713,6 +801,7 @@ final class InputPassportElementEmailAddress extends InputPassportElement {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -721,7 +810,10 @@ final class InputPassportElementEmailAddress extends InputPassportElement {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [email_address]: The email address to be saved
   @override
   InputPassportElementEmailAddress copyWith({
     String? emailAddress,
@@ -729,11 +821,14 @@ final class InputPassportElementEmailAddress extends InputPassportElement {
     emailAddress: emailAddress ?? this.emailAddress,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputPassportElementEmailAddress';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -53,6 +53,7 @@ final class MessageReplyInfo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -65,7 +66,14 @@ final class MessageReplyInfo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [reply_count]: Number of times the message was directly or indirectly replied
+  /// * [recent_replier_ids]: Identifiers of at most 3 recent repliers to the message; available in channels with a discussion supergroup. The users and chats are expected to be inaccessible: only their photo and name will be available
+  /// * [last_read_inbox_message_id]: Identifier of the last read incoming reply to the message
+  /// * [last_read_outbox_message_id]: Identifier of the last read outgoing reply to the message
+  /// * [last_message_id]: Identifier of the last reply to the message
   MessageReplyInfo copyWith({
     int? replyCount,
     List<MessageSender>? recentReplierIds,
@@ -80,11 +88,14 @@ final class MessageReplyInfo extends TdObject {
     lastMessageId: lastMessageId ?? this.lastMessageId,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageReplyInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

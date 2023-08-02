@@ -29,6 +29,7 @@ final class GetLanguagePackStrings extends TdFunction {
   /// Language pack keys of the strings to be returned; leave empty to request all available strings
   final List<String> keys;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class GetLanguagePackStrings extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [language_pack_id]: Language pack identifier of the strings to be returned
+  /// * [keys]: Language pack keys of the strings to be returned; leave empty to request all available strings
   GetLanguagePackStrings copyWith({
     String? languagePackId,
     List<String>? keys,
@@ -48,11 +53,14 @@ final class GetLanguagePackStrings extends TdFunction {
     keys: keys ?? this.keys,
   );
 
+  /// TDLib object type
   static const String objectType = 'getLanguagePackStrings';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

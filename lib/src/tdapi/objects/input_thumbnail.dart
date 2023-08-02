@@ -39,6 +39,7 @@ final class InputThumbnail extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class InputThumbnail extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [thumbnail]: Thumbnail file to send. Sending thumbnails by file_id is currently not supported
+  /// * [width]: Thumbnail width, usually shouldn't exceed 320. Use 0 if unknown
+  /// * [height]: Thumbnail height, usually shouldn't exceed 320. Use 0 if unknown
   InputThumbnail copyWith({
     InputFile? thumbnail,
     int? width,
@@ -60,11 +66,14 @@ final class InputThumbnail extends TdObject {
     height: height ?? this.height,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputThumbnail';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

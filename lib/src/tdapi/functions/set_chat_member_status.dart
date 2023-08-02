@@ -35,6 +35,7 @@ final class SetChatMemberStatus extends TdFunction {
   /// The new status of the member in the chat
   final ChatMemberStatus status;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class SetChatMemberStatus extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [member_id]: Member identifier. Chats can be only banned and unbanned in supergroups and channels
+  /// * [status]: The new status of the member in the chat
   SetChatMemberStatus copyWith({
     int? chatId,
     MessageSender? memberId,
@@ -57,11 +63,14 @@ final class SetChatMemberStatus extends TdFunction {
     status: status ?? this.status,
   );
 
+  /// TDLib object type
   static const String objectType = 'setChatMemberStatus';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

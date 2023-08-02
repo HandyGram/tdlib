@@ -57,17 +57,21 @@ sealed class InlineQueryResult extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   InlineQueryResult copyWith();
 
+  /// TDLib object type
   static const String objectType = 'inlineQueryResult';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -133,6 +137,7 @@ final class InlineQueryResultArticle extends InlineQueryResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -146,7 +151,15 @@ final class InlineQueryResultArticle extends InlineQueryResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the query result
+  /// * [url]: URL of the result, if it exists
+  /// * [hide_url]: True, if the URL must be not shown
+  /// * [title]: Title of the result
+  /// * [description]: A short description of the result
+  /// * [thumbnail]: Result thumbnail in JPEG format; may be null
   @override
   InlineQueryResultArticle copyWith({
     String? id,
@@ -164,11 +177,14 @@ final class InlineQueryResultArticle extends InlineQueryResult {
     thumbnail: thumbnail ?? this.thumbnail,
   );
 
+  /// TDLib object type
   static const String objectType = 'inlineQueryResultArticle';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -213,6 +229,7 @@ final class InlineQueryResultContact extends InlineQueryResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -223,7 +240,12 @@ final class InlineQueryResultContact extends InlineQueryResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the query result
+  /// * [contact]: A user contact
+  /// * [thumbnail]: Result thumbnail in JPEG format; may be null
   @override
   InlineQueryResultContact copyWith({
     String? id,
@@ -235,11 +257,14 @@ final class InlineQueryResultContact extends InlineQueryResult {
     thumbnail: thumbnail ?? this.thumbnail,
   );
 
+  /// TDLib object type
   static const String objectType = 'inlineQueryResultContact';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -291,6 +316,7 @@ final class InlineQueryResultLocation extends InlineQueryResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -302,7 +328,13 @@ final class InlineQueryResultLocation extends InlineQueryResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the query result
+  /// * [location]: Location result
+  /// * [title]: Title of the result
+  /// * [thumbnail]: Result thumbnail in JPEG format; may be null
   @override
   InlineQueryResultLocation copyWith({
     String? id,
@@ -316,11 +348,14 @@ final class InlineQueryResultLocation extends InlineQueryResult {
     thumbnail: thumbnail ?? this.thumbnail,
   );
 
+  /// TDLib object type
   static const String objectType = 'inlineQueryResultLocation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -365,6 +400,7 @@ final class InlineQueryResultVenue extends InlineQueryResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -375,7 +411,12 @@ final class InlineQueryResultVenue extends InlineQueryResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the query result
+  /// * [venue]: Venue result
+  /// * [thumbnail]: Result thumbnail in JPEG format; may be null
   @override
   InlineQueryResultVenue copyWith({
     String? id,
@@ -387,11 +428,14 @@ final class InlineQueryResultVenue extends InlineQueryResult {
     thumbnail: thumbnail ?? this.thumbnail,
   );
 
+  /// TDLib object type
   static const String objectType = 'inlineQueryResultVenue';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -429,6 +473,7 @@ final class InlineQueryResultGame extends InlineQueryResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -438,7 +483,11 @@ final class InlineQueryResultGame extends InlineQueryResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the query result
+  /// * [game]: Game result
   @override
   InlineQueryResultGame copyWith({
     String? id,
@@ -448,11 +497,14 @@ final class InlineQueryResultGame extends InlineQueryResult {
     game: game ?? this.game,
   );
 
+  /// TDLib object type
   static const String objectType = 'inlineQueryResultGame';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -497,6 +549,7 @@ final class InlineQueryResultAnimation extends InlineQueryResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -507,7 +560,12 @@ final class InlineQueryResultAnimation extends InlineQueryResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the query result
+  /// * [animation]: Animation file
+  /// * [title]: Animation title
   @override
   InlineQueryResultAnimation copyWith({
     String? id,
@@ -519,11 +577,14 @@ final class InlineQueryResultAnimation extends InlineQueryResult {
     title: title ?? this.title,
   );
 
+  /// TDLib object type
   static const String objectType = 'inlineQueryResultAnimation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -561,6 +622,7 @@ final class InlineQueryResultAudio extends InlineQueryResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -570,7 +632,11 @@ final class InlineQueryResultAudio extends InlineQueryResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the query result
+  /// * [audio]: Audio file
   @override
   InlineQueryResultAudio copyWith({
     String? id,
@@ -580,11 +646,14 @@ final class InlineQueryResultAudio extends InlineQueryResult {
     audio: audio ?? this.audio,
   );
 
+  /// TDLib object type
   static const String objectType = 'inlineQueryResultAudio';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -636,6 +705,7 @@ final class InlineQueryResultDocument extends InlineQueryResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -647,7 +717,13 @@ final class InlineQueryResultDocument extends InlineQueryResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the query result
+  /// * [document]: Document
+  /// * [title]: Document title
+  /// * [description]: Document description
   @override
   InlineQueryResultDocument copyWith({
     String? id,
@@ -661,11 +737,14 @@ final class InlineQueryResultDocument extends InlineQueryResult {
     description: description ?? this.description,
   );
 
+  /// TDLib object type
   static const String objectType = 'inlineQueryResultDocument';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -717,6 +796,7 @@ final class InlineQueryResultPhoto extends InlineQueryResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -728,7 +808,13 @@ final class InlineQueryResultPhoto extends InlineQueryResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the query result
+  /// * [photo]: Photo
+  /// * [title]: Title of the result, if known
+  /// * [description]: A short description of the result, if known
   @override
   InlineQueryResultPhoto copyWith({
     String? id,
@@ -742,11 +828,14 @@ final class InlineQueryResultPhoto extends InlineQueryResult {
     description: description ?? this.description,
   );
 
+  /// TDLib object type
   static const String objectType = 'inlineQueryResultPhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -784,6 +873,7 @@ final class InlineQueryResultSticker extends InlineQueryResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -793,7 +883,11 @@ final class InlineQueryResultSticker extends InlineQueryResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the query result
+  /// * [sticker]: Sticker
   @override
   InlineQueryResultSticker copyWith({
     String? id,
@@ -803,11 +897,14 @@ final class InlineQueryResultSticker extends InlineQueryResult {
     sticker: sticker ?? this.sticker,
   );
 
+  /// TDLib object type
   static const String objectType = 'inlineQueryResultSticker';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -859,6 +956,7 @@ final class InlineQueryResultVideo extends InlineQueryResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -870,7 +968,13 @@ final class InlineQueryResultVideo extends InlineQueryResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the query result
+  /// * [video]: Video
+  /// * [title]: Title of the video
+  /// * [description]: Description of the video
   @override
   InlineQueryResultVideo copyWith({
     String? id,
@@ -884,11 +988,14 @@ final class InlineQueryResultVideo extends InlineQueryResult {
     description: description ?? this.description,
   );
 
+  /// TDLib object type
   static const String objectType = 'inlineQueryResultVideo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -933,6 +1040,7 @@ final class InlineQueryResultVoiceNote extends InlineQueryResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -943,7 +1051,12 @@ final class InlineQueryResultVoiceNote extends InlineQueryResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the query result
+  /// * [voice_note]: Voice note
+  /// * [title]: Title of the voice note
   @override
   InlineQueryResultVoiceNote copyWith({
     String? id,
@@ -955,11 +1068,14 @@ final class InlineQueryResultVoiceNote extends InlineQueryResult {
     title: title ?? this.title,
   );
 
+  /// TDLib object type
   static const String objectType = 'inlineQueryResultVoiceNote';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

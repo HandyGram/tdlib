@@ -23,6 +23,7 @@ final class SearchUserByToken extends TdFunction {
   /// Token to search for
   final String token;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class SearchUserByToken extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [token]: Token to search for
   SearchUserByToken copyWith({
     String? token,
   }) => SearchUserByToken(
     token: token ?? this.token,
   );
 
+  /// TDLib object type
   static const String objectType = 'searchUserByToken';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

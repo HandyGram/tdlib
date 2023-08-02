@@ -35,6 +35,7 @@ final class AnswerShippingQuery extends TdFunction {
   /// An error message, empty on success
   final String errorMessage;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class AnswerShippingQuery extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [shipping_query_id]: Identifier of the shipping query 
+  /// * [shipping_options]: Available shipping options 
+  /// * [error_message]: An error message, empty on success
   AnswerShippingQuery copyWith({
     int? shippingQueryId,
     List<ShippingOption>? shippingOptions,
@@ -57,11 +63,14 @@ final class AnswerShippingQuery extends TdFunction {
     errorMessage: errorMessage ?? this.errorMessage,
   );
 
+  /// TDLib object type
   static const String objectType = 'answerShippingQuery';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

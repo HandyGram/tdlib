@@ -29,6 +29,7 @@ final class ReportSupergroupAntiSpamFalsePositive extends TdFunction {
   /// Identifier of the erroneously deleted message
   final int messageId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ReportSupergroupAntiSpamFalsePositive extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [supergroup_id]: Supergroup identifier
+  /// * [message_id]: Identifier of the erroneously deleted message
   ReportSupergroupAntiSpamFalsePositive copyWith({
     int? supergroupId,
     int? messageId,
@@ -48,11 +53,14 @@ final class ReportSupergroupAntiSpamFalsePositive extends TdFunction {
     messageId: messageId ?? this.messageId,
   );
 
+  /// TDLib object type
   static const String objectType = 'reportSupergroupAntiSpamFalsePositive';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

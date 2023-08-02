@@ -23,6 +23,7 @@ final class CheckChatFolderInviteLink extends TdFunction {
   /// Invite link to be checked
   final String inviteLink;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class CheckChatFolderInviteLink extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [invite_link]: Invite link to be checked
   CheckChatFolderInviteLink copyWith({
     String? inviteLink,
   }) => CheckChatFolderInviteLink(
     inviteLink: inviteLink ?? this.inviteLink,
   );
 
+  /// TDLib object type
   static const String objectType = 'checkChatFolderInviteLink';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

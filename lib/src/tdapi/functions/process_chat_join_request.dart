@@ -35,6 +35,7 @@ final class ProcessChatJoinRequest extends TdFunction {
   /// Pass true to approve the request; pass false to decline it
   final bool approve;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class ProcessChatJoinRequest extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [user_id]: Identifier of the user that sent the request 
+  /// * [approve]: Pass true to approve the request; pass false to decline it
   ProcessChatJoinRequest copyWith({
     int? chatId,
     int? userId,
@@ -57,11 +63,14 @@ final class ProcessChatJoinRequest extends TdFunction {
     approve: approve ?? this.approve,
   );
 
+  /// TDLib object type
   static const String objectType = 'processChatJoinRequest';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

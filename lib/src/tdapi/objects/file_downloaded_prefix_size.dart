@@ -37,6 +37,7 @@ final class FileDownloadedPrefixSize extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -45,7 +46,10 @@ final class FileDownloadedPrefixSize extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [size]: The prefix size, in bytes
   FileDownloadedPrefixSize copyWith({
     int? size,
     dynamic extra,
@@ -56,11 +60,14 @@ final class FileDownloadedPrefixSize extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'fileDownloadedPrefixSize';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

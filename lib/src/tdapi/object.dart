@@ -1,16 +1,23 @@
 part of 'tdapi.dart';
 
-sealed class TdObject<T> {
-  /// callback sign
+/// Base object in this plugin. Use convertMapToObject() or
+/// convertJsonToObject() to get an object from TDLib JSON.
+sealed class TdObject {
+  /// A sign from TDLib update
   dynamic get extra => null;
 
-  /// client identifier
+  /// Client ID, from which this object was received
   int? get clientId => null;
 
-  /// object type
+  /// TDLib object type for current class instance
   String get instanceType => "object";
 
+  /// Unused constructor
   const TdObject();
+
+  /// Construct model from TDLib JSON
   TdObject.fromJson(Map<String, dynamic> json);
+
+  /// Convert model to TDLib JSON format
   Map<String, dynamic> toJson();
 }

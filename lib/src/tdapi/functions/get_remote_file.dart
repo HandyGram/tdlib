@@ -29,6 +29,7 @@ final class GetRemoteFile extends TdFunction {
   /// File type; pass null if unknown
   final FileType? fileType;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class GetRemoteFile extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [remote_file_id]: Remote identifier of the file to get
+  /// * [file_type]: File type; pass null if unknown
   GetRemoteFile copyWith({
     String? remoteFileId,
     FileType? fileType,
@@ -48,11 +53,14 @@ final class GetRemoteFile extends TdFunction {
     fileType: fileType ?? this.fileType,
   );
 
+  /// TDLib object type
   static const String objectType = 'getRemoteFile';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

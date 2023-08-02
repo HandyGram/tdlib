@@ -23,6 +23,7 @@ final class GetMenuButton extends TdFunction {
   /// Identifier of the user or 0 to get the default menu button
   final int userId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetMenuButton extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: Identifier of the user or 0 to get the default menu button
   GetMenuButton copyWith({
     int? userId,
   }) => GetMenuButton(
     userId: userId ?? this.userId,
   );
 
+  /// TDLib object type
   static const String objectType = 'getMenuButton';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

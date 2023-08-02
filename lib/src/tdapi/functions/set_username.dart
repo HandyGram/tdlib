@@ -23,6 +23,7 @@ final class SetUsername extends TdFunction {
   /// The new value of the username. Use an empty string to remove the username. The username can't be completely removed if there is another active or disabled username
   final String username;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class SetUsername extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [username]: The new value of the username. Use an empty string to remove the username. The username can't be completely removed if there is another active or disabled username
   SetUsername copyWith({
     String? username,
   }) => SetUsername(
     username: username ?? this.username,
   );
 
+  /// TDLib object type
   static const String objectType = 'setUsername';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -53,6 +53,7 @@ final class FileDownload extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -65,7 +66,14 @@ final class FileDownload extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [file_id]: File identifier
+  /// * [message]: The message with the file
+  /// * [add_date]: Point in time (Unix timestamp) when the file was added to the download list
+  /// * [complete_date]: Point in time (Unix timestamp) when the file downloading was completed; 0 if the file downloading isn't completed
+  /// * [is_paused]: True, if downloading of the file is paused
   FileDownload copyWith({
     int? fileId,
     Message? message,
@@ -80,11 +88,14 @@ final class FileDownload extends TdObject {
     isPaused: isPaused ?? this.isPaused,
   );
 
+  /// TDLib object type
   static const String objectType = 'fileDownload';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

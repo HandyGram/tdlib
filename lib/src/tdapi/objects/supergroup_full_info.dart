@@ -205,6 +205,7 @@ final class SupergroupFullInfo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -237,7 +238,34 @@ final class SupergroupFullInfo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [photo]: Chat photo; may be null if empty or unknown. If non-null, then it is the same photo as in chat.photo
+  /// * [description]: Supergroup or channel description
+  /// * [member_count]: Number of members in the supergroup or channel; 0 if unknown
+  /// * [administrator_count]: Number of privileged users in the supergroup or channel; 0 if unknown
+  /// * [restricted_count]: Number of restricted users in the supergroup; 0 if unknown
+  /// * [banned_count]: Number of users banned from chat; 0 if unknown
+  /// * [linked_chat_id]: Chat identifier of a discussion group for the channel, or a channel, for which the supergroup is the designated discussion group; 0 if none or unknown
+  /// * [slow_mode_delay]: Delay between consecutive sent messages for non-administrator supergroup members, in seconds
+  /// * [slow_mode_delay_expires_in]: Time left before next message can be sent in the supergroup, in seconds. An updateSupergroupFullInfo update is not triggered when value of this field changes, but both new and old values are non-zero
+  /// * [can_get_members]: True, if members of the chat can be retrieved via getSupergroupMembers or searchChatMembers
+  /// * [has_hidden_members]: True, if non-administrators can receive only administrators and bots using getSupergroupMembers or searchChatMembers
+  /// * [can_hide_members]: True, if non-administrators and non-bots can be hidden in responses to getSupergroupMembers and searchChatMembers for non-administrators
+  /// * [can_set_username]: True, if the chat username can be changed
+  /// * [can_set_sticker_set]: True, if the supergroup sticker set can be changed
+  /// * [can_set_location]: True, if the supergroup location can be changed
+  /// * [can_get_statistics]: True, if the supergroup or channel statistics are available
+  /// * [can_toggle_aggressive_anti_spam]: True, if aggressive anti-spam checks can be enabled or disabled in the supergroup
+  /// * [is_all_history_available]: True, if new chat members will have access to old messages. In public, discussion, of forum groups and all channels, old messages are always available,. so this option affects only private non-forum supergroups without a linked chat. The value of this field is only available to chat administrators
+  /// * [has_aggressive_anti_spam_enabled]: True, if aggressive anti-spam checks are enabled in the supergroup. The value of this field is only available to chat administrators
+  /// * [sticker_set_id]: Identifier of the supergroup sticker set; 0 if none
+  /// * [location]: Location to which the supergroup is connected; may be null
+  /// * [invite_link]: Primary invite link for the chat; may be null. For chat administrators with can_invite_users right only
+  /// * [bot_commands]: List of commands of bots in the group
+  /// * [upgraded_from_basic_group_id]: Identifier of the basic group from which supergroup was upgraded; 0 if none
+  /// * [upgraded_from_max_message_id]: Identifier of the last message in the basic group from which supergroup was upgraded; 0 if none
   SupergroupFullInfo copyWith({
     ChatPhoto? photo,
     String? description,
@@ -296,11 +324,14 @@ final class SupergroupFullInfo extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'supergroupFullInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

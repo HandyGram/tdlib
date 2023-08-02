@@ -53,6 +53,7 @@ final class MessageForwardInfo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -65,7 +66,14 @@ final class MessageForwardInfo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [origin]: Origin of a forwarded message
+  /// * [date]: Point in time (Unix timestamp) when the message was originally sent
+  /// * [public_service_announcement_type]: The type of a public service announcement for the forwarded message
+  /// * [from_chat_id]: For messages forwarded to the chat with the current user (Saved Messages), to the Replies bot chat, or to the channel's discussion group, the identifier of the chat from which the message was forwarded last time; 0 if unknown
+  /// * [from_message_id]: For messages forwarded to the chat with the current user (Saved Messages), to the Replies bot chat, or to the channel's discussion group, the identifier of the original message from which the new message was forwarded last time; 0 if unknown
   MessageForwardInfo copyWith({
     MessageForwardOrigin? origin,
     int? date,
@@ -80,11 +88,14 @@ final class MessageForwardInfo extends TdObject {
     fromMessageId: fromMessageId ?? this.fromMessageId,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageForwardInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

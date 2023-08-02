@@ -58,6 +58,7 @@ final class ChatFolderInfo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -69,7 +70,13 @@ final class ChatFolderInfo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique chat folder identifier
+  /// * [title]: The title of the folder; 1-12 characters without line feeds
+  /// * [icon]: The chosen or default icon for the chat folder
+  /// * [has_my_invite_links]: True, if the chat folder has invite links created by the current user
   ChatFolderInfo copyWith({
     int? id,
     String? title,
@@ -86,11 +93,14 @@ final class ChatFolderInfo extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatFolderInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

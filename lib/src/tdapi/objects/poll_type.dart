@@ -27,17 +27,21 @@ sealed class PollType extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   PollType copyWith();
 
+  /// TDLib object type
   static const String objectType = 'pollType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -68,6 +72,7 @@ final class PollTypeRegular extends PollType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -76,7 +81,10 @@ final class PollTypeRegular extends PollType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [allow_multiple_answers]: True, if multiple answer options can be chosen simultaneously
   @override
   PollTypeRegular copyWith({
     bool? allowMultipleAnswers,
@@ -84,11 +92,14 @@ final class PollTypeRegular extends PollType {
     allowMultipleAnswers: allowMultipleAnswers ?? this.allowMultipleAnswers,
   );
 
+  /// TDLib object type
   static const String objectType = 'pollTypeRegular';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -126,6 +137,7 @@ final class PollTypeQuiz extends PollType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -135,7 +147,11 @@ final class PollTypeQuiz extends PollType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [correct_option_id]: 0-based identifier of the correct answer option; -1 for a yet unanswered poll
+  /// * [explanation]: Text that is shown when the user chooses an incorrect answer or taps on the lamp icon; 0-200 characters with at most 2 line feeds; empty for a yet unanswered poll
   @override
   PollTypeQuiz copyWith({
     int? correctOptionId,
@@ -145,11 +161,14 @@ final class PollTypeQuiz extends PollType {
     explanation: explanation ?? this.explanation,
   );
 
+  /// TDLib object type
   static const String objectType = 'pollTypeQuiz';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

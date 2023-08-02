@@ -29,6 +29,7 @@ final class SetCustomEmojiStickerSetThumbnail extends TdFunction {
   /// Identifier of the custom emoji from the sticker set, which will be set as sticker set thumbnail; pass 0 to remove the sticker set thumbnail
   final int customEmojiId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetCustomEmojiStickerSetThumbnail extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [name]: Sticker set name
+  /// * [custom_emoji_id]: Identifier of the custom emoji from the sticker set, which will be set as sticker set thumbnail; pass 0 to remove the sticker set thumbnail
   SetCustomEmojiStickerSetThumbnail copyWith({
     String? name,
     int? customEmojiId,
@@ -48,11 +53,14 @@ final class SetCustomEmojiStickerSetThumbnail extends TdFunction {
     customEmojiId: customEmojiId ?? this.customEmojiId,
   );
 
+  /// TDLib object type
   static const String objectType = 'setCustomEmojiStickerSetThumbnail';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

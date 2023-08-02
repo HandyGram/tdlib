@@ -30,17 +30,21 @@ sealed class InputBackground extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   InputBackground copyWith();
 
+  /// TDLib object type
   static const String objectType = 'inputBackground';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -71,6 +75,7 @@ final class InputBackgroundLocal extends InputBackground {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -79,7 +84,10 @@ final class InputBackgroundLocal extends InputBackground {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [background]: Background file to use. Only inputFileLocal and inputFileGenerated are supported. The file must be in JPEG format for wallpapers and in PNG format for patterns
   @override
   InputBackgroundLocal copyWith({
     InputFile? background,
@@ -87,11 +95,14 @@ final class InputBackgroundLocal extends InputBackground {
     background: background ?? this.background,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputBackgroundLocal';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -122,6 +133,7 @@ final class InputBackgroundRemote extends InputBackground {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -130,7 +142,10 @@ final class InputBackgroundRemote extends InputBackground {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [background_id]: The background identifier
   @override
   InputBackgroundRemote copyWith({
     int? backgroundId,
@@ -138,11 +153,14 @@ final class InputBackgroundRemote extends InputBackground {
     backgroundId: backgroundId ?? this.backgroundId,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputBackgroundRemote';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -173,6 +191,7 @@ final class InputBackgroundPrevious extends InputBackground {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -181,7 +200,10 @@ final class InputBackgroundPrevious extends InputBackground {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [message_id]: Identifier of the message with the background
   @override
   InputBackgroundPrevious copyWith({
     int? messageId,
@@ -189,11 +211,14 @@ final class InputBackgroundPrevious extends InputBackground {
     messageId: messageId ?? this.messageId,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputBackgroundPrevious';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

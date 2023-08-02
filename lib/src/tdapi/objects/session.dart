@@ -156,6 +156,7 @@ final class Session extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -181,7 +182,27 @@ final class Session extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Session identifier
+  /// * [is_current]: True, if this session is the current session
+  /// * [is_password_pending]: True, if a 2-step verification password is needed to complete authorization of the session
+  /// * [can_accept_secret_chats]: True, if incoming secret chats can be accepted by the session
+  /// * [can_accept_calls]: True, if incoming calls can be accepted by the session
+  /// * [type]: Session type based on the system and application version, which can be used to display a corresponding icon
+  /// * [api_id]: Telegram API identifier, as provided by the application
+  /// * [application_name]: Name of the application, as provided by the application
+  /// * [application_version]: The version of the application, as provided by the application
+  /// * [is_official_application]: True, if the application is an official application or uses the api_id of an official application
+  /// * [device_model]: Model of the device the application has been run or is running on, as provided by the application
+  /// * [platform]: Operating system the application has been run or is running on, as provided by the application
+  /// * [system_version]: Version of the operating system the application has been run or is running on, as provided by the application
+  /// * [log_in_date]: Point in time (Unix timestamp) when the user has logged in
+  /// * [last_active_date]: Point in time (Unix timestamp) when the session was last used
+  /// * [ip]: IP address from which the session was created, in human-readable format
+  /// * [country]: A two-letter country code for the country from which the session was created, based on the IP address
+  /// * [region]: Region code from which the session was created, based on the IP address
   Session copyWith({
     int? id,
     bool? isCurrent,
@@ -226,11 +247,14 @@ final class Session extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'session';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

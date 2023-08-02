@@ -41,6 +41,7 @@ final class GetStickers extends TdFunction {
   /// Chat identifier for which to return stickers. Available custom emoji stickers may be different for different chats
   final int chatId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -53,7 +54,13 @@ final class GetStickers extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sticker_type]: Type of the stickers to return
+  /// * [query]: Search query; a space-separated list of emoji or a keyword prefix. If empty, returns all known installed stickers
+  /// * [limit]: The maximum number of stickers to be returned
+  /// * [chat_id]: Chat identifier for which to return stickers. Available custom emoji stickers may be different for different chats
   GetStickers copyWith({
     StickerType? stickerType,
     String? query,
@@ -66,11 +73,14 @@ final class GetStickers extends TdFunction {
     chatId: chatId ?? this.chatId,
   );
 
+  /// TDLib object type
   static const String objectType = 'getStickers';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

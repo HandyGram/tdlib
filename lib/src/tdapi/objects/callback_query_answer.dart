@@ -51,6 +51,7 @@ final class CallbackQueryAnswer extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -61,7 +62,12 @@ final class CallbackQueryAnswer extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Text of the answer 
+  /// * [show_alert]: True, if an alert must be shown to the user instead of a toast notification 
+  /// * [url]: URL to be opened
   CallbackQueryAnswer copyWith({
     String? text,
     bool? showAlert,
@@ -76,11 +82,14 @@ final class CallbackQueryAnswer extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'callbackQueryAnswer';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

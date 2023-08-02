@@ -51,6 +51,7 @@ final class FoundWebApp extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -61,7 +62,12 @@ final class FoundWebApp extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [web_app]: The Web App
+  /// * [request_write_access]: True, if the user must be asked for the permission to the bot to send them messages
+  /// * [skip_confirmation]: True, if there is no need to show an ordinary open URL confirmation before opening the Web App. The field must be ignored and confirmation must be shown anyway if the Web App link was hidden
   FoundWebApp copyWith({
     WebApp? webApp,
     bool? requestWriteAccess,
@@ -76,11 +82,14 @@ final class FoundWebApp extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'foundWebApp';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

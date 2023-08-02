@@ -53,6 +53,7 @@ final class SendPaymentForm extends TdFunction {
   /// Chosen by the user amount of tip in the smallest units of the currency
   final int tipAmount;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -67,7 +68,15 @@ final class SendPaymentForm extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [input_invoice]: The invoice
+  /// * [payment_form_id]: Payment form identifier returned by getPaymentForm
+  /// * [order_info_id]: Identifier returned by validateOrderInfo, or an empty string
+  /// * [shipping_option_id]: Identifier of a chosen shipping option, if applicable
+  /// * [credentials]: The credentials chosen by user for payment
+  /// * [tip_amount]: Chosen by the user amount of tip in the smallest units of the currency
   SendPaymentForm copyWith({
     InputInvoice? inputInvoice,
     int? paymentFormId,
@@ -84,11 +93,14 @@ final class SendPaymentForm extends TdFunction {
     tipAmount: tipAmount ?? this.tipAmount,
   );
 
+  /// TDLib object type
   static const String objectType = 'sendPaymentForm';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -39,6 +39,7 @@ final class ChatAdministrator extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class ChatAdministrator extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: User identifier of the administrator 
+  /// * [custom_title]: Custom title of the administrator 
+  /// * [is_owner]: True, if the user is the owner of the chat
   ChatAdministrator copyWith({
     int? userId,
     String? customTitle,
@@ -60,11 +66,14 @@ final class ChatAdministrator extends TdObject {
     isOwner: isOwner ?? this.isOwner,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatAdministrator';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

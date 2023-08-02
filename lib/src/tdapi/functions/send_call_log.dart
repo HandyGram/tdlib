@@ -29,6 +29,7 @@ final class SendCallLog extends TdFunction {
   /// Call log file. Only inputFileLocal and inputFileGenerated are supported
   final InputFile logFile;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SendCallLog extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [call_id]: Call identifier 
+  /// * [log_file]: Call log file. Only inputFileLocal and inputFileGenerated are supported
   SendCallLog copyWith({
     int? callId,
     InputFile? logFile,
@@ -48,11 +53,14 @@ final class SendCallLog extends TdFunction {
     logFile: logFile ?? this.logFile,
   );
 
+  /// TDLib object type
   static const String objectType = 'sendCallLog';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

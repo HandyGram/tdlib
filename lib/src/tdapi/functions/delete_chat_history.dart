@@ -35,6 +35,7 @@ final class DeleteChatHistory extends TdFunction {
   /// Pass true to delete chat history for all users
   final bool revoke;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class DeleteChatHistory extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [remove_from_chat_list]: Pass true to remove the chat from all chat lists
+  /// * [revoke]: Pass true to delete chat history for all users
   DeleteChatHistory copyWith({
     int? chatId,
     bool? removeFromChatList,
@@ -57,11 +63,14 @@ final class DeleteChatHistory extends TdFunction {
     revoke: revoke ?? this.revoke,
   );
 
+  /// TDLib object type
   static const String objectType = 'deleteChatHistory';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

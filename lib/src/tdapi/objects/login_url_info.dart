@@ -27,17 +27,21 @@ sealed class LoginUrlInfo extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   LoginUrlInfo copyWith();
 
+  /// TDLib object type
   static const String objectType = 'loginUrlInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -87,6 +91,7 @@ final class LoginUrlInfoOpen extends LoginUrlInfo {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -96,7 +101,11 @@ final class LoginUrlInfoOpen extends LoginUrlInfo {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [url]: The URL to open 
+  /// * [skip_confirmation]: True, if there is no need to show an ordinary open URL confirmation
   @override
   LoginUrlInfoOpen copyWith({
     String? url,
@@ -110,11 +119,14 @@ final class LoginUrlInfoOpen extends LoginUrlInfo {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'loginUrlInfoOpen';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -178,6 +190,7 @@ final class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -189,7 +202,13 @@ final class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [url]: An HTTP URL to be opened
+  /// * [domain]: A domain of the URL
+  /// * [bot_user_id]: User identifier of a bot linked with the website
+  /// * [request_write_access]: True, if the user must be asked for the permission to the bot to send them messages
   @override
   LoginUrlInfoRequestConfirmation copyWith({
     String? url,
@@ -207,11 +226,14 @@ final class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'loginUrlInfoRequestConfirmation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

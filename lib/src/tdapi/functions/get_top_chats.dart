@@ -29,6 +29,7 @@ final class GetTopChats extends TdFunction {
   /// The maximum number of chats to be returned; up to 30
   final int limit;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class GetTopChats extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [category]: Category of chats to be returned 
+  /// * [limit]: The maximum number of chats to be returned; up to 30
   GetTopChats copyWith({
     TopChatCategory? category,
     int? limit,
@@ -48,11 +53,14 @@ final class GetTopChats extends TdFunction {
     limit: limit ?? this.limit,
   );
 
+  /// TDLib object type
   static const String objectType = 'getTopChats';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

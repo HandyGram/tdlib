@@ -121,6 +121,7 @@ final class LanguagePackInfo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -141,7 +142,22 @@ final class LanguagePackInfo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique language pack identifier
+  /// * [base_language_pack_id]: Identifier of a base language pack; may be empty. If a string is missed in the language pack, then it must be fetched from base language pack. Unsupported in custom language packs
+  /// * [name]: Language name
+  /// * [native_name]: Name of the language in that language
+  /// * [plural_code]: A language code to be used to apply plural forms. See https://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html for more information
+  /// * [is_official]: True, if the language pack is official
+  /// * [is_rtl]: True, if the language pack strings are RTL
+  /// * [is_beta]: True, if the language pack is a beta language pack
+  /// * [is_installed]: True, if the language pack is installed by the current user
+  /// * [total_string_count]: Total number of non-deleted strings from the language pack
+  /// * [translated_string_count]: Total number of translated strings from the language pack
+  /// * [local_string_count]: Total number of non-deleted strings from the language pack available locally
+  /// * [translation_url]: Link to language translation interface; empty for custom local language packs
   LanguagePackInfo copyWith({
     String? id,
     String? baseLanguagePackId,
@@ -176,11 +192,14 @@ final class LanguagePackInfo extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'languagePackInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

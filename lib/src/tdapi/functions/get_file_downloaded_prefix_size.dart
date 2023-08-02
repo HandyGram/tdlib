@@ -29,6 +29,7 @@ final class GetFileDownloadedPrefixSize extends TdFunction {
   /// Offset from which downloaded prefix size needs to be calculated
   final int offset;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class GetFileDownloadedPrefixSize extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [file_id]: Identifier of the file 
+  /// * [offset]: Offset from which downloaded prefix size needs to be calculated
   GetFileDownloadedPrefixSize copyWith({
     int? fileId,
     int? offset,
@@ -48,11 +53,14 @@ final class GetFileDownloadedPrefixSize extends TdFunction {
     offset: offset ?? this.offset,
   );
 
+  /// TDLib object type
   static const String objectType = 'getFileDownloadedPrefixSize';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -39,6 +39,7 @@ final class GameHighScore extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class GameHighScore extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [position]: Position in the high score table 
+  /// * [user_id]: User identifier 
+  /// * [score]: User score
   GameHighScore copyWith({
     int? position,
     int? userId,
@@ -60,11 +66,14 @@ final class GameHighScore extends TdObject {
     score: score ?? this.score,
   );
 
+  /// TDLib object type
   static const String objectType = 'gameHighScore';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

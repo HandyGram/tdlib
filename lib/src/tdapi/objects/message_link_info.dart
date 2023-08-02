@@ -72,6 +72,7 @@ final class MessageLinkInfo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -85,7 +86,15 @@ final class MessageLinkInfo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [is_public]: True, if the link is a public link for a message or a forum topic in a chat
+  /// * [chat_id]: If found, identifier of the chat to which the link points, 0 otherwise
+  /// * [message_thread_id]: If found, identifier of the message thread in which to open the message, or a forum topic to open if the message is missing
+  /// * [message]: If found, the linked message; may be null
+  /// * [media_timestamp]: Timestamp from which the video/audio/video note/voice note playing must start, in seconds; 0 if not specified. The media can be in the message content or in its web page preview
+  /// * [for_album]: True, if the whole media album to which the message belongs is linked
   MessageLinkInfo copyWith({
     bool? isPublic,
     int? chatId,
@@ -106,11 +115,14 @@ final class MessageLinkInfo extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageLinkInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -35,6 +35,7 @@ final class SetPollAnswer extends TdFunction {
   /// 0-based identifiers of answer options, chosen by the user. User can choose more than 1 answer option only is the poll allows multiple answers
   final List<int> optionIds;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class SetPollAnswer extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat to which the poll belongs
+  /// * [message_id]: Identifier of the message containing the poll
+  /// * [option_ids]: 0-based identifiers of answer options, chosen by the user. User can choose more than 1 answer option only is the poll allows multiple answers
   SetPollAnswer copyWith({
     int? chatId,
     int? messageId,
@@ -57,11 +63,14 @@ final class SetPollAnswer extends TdFunction {
     optionIds: optionIds ?? this.optionIds,
   );
 
+  /// TDLib object type
   static const String objectType = 'setPollAnswer';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

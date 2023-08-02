@@ -23,6 +23,7 @@ final class DeleteFile extends TdFunction {
   /// Identifier of the file to delete
   final int fileId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class DeleteFile extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [file_id]: Identifier of the file to delete
   DeleteFile copyWith({
     int? fileId,
   }) => DeleteFile(
     fileId: fileId ?? this.fileId,
   );
 
+  /// TDLib object type
   static const String objectType = 'deleteFile';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

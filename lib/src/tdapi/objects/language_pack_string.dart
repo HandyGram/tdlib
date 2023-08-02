@@ -32,6 +32,7 @@ final class LanguagePackString extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -41,7 +42,11 @@ final class LanguagePackString extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [key]: String key 
+  /// * [value]: String value; pass null if the string needs to be taken from the built-in English language pack
   LanguagePackString copyWith({
     String? key,
     LanguagePackStringValue? value,
@@ -50,11 +55,14 @@ final class LanguagePackString extends TdObject {
     value: value ?? this.value,
   );
 
+  /// TDLib object type
   static const String objectType = 'languagePackString';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

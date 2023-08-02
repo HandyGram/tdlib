@@ -59,6 +59,7 @@ final class SearchMessages extends TdFunction {
   /// If not 0, the maximum date of the messages to return
   final int maxDate;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -74,7 +75,16 @@ final class SearchMessages extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_list]: Chat list in which to search messages; pass null to search in all chats regardless of their chat list. Only Main and Archive chat lists are supported
+  /// * [query]: Query to search for
+  /// * [offset]: Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
+  /// * [limit]: The maximum number of messages to be returned; up to 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
+  /// * [filter]: Additional filter for messages to search; pass null to search for all messages. Filters searchMessagesFilterMention, searchMessagesFilterUnreadMention, searchMessagesFilterUnreadReaction, searchMessagesFilterFailedToSend, and searchMessagesFilterPinned are unsupported in this function
+  /// * [min_date]: If not 0, the minimum date of the messages to return
+  /// * [max_date]: If not 0, the maximum date of the messages to return
   SearchMessages copyWith({
     ChatList? chatList,
     String? query,
@@ -93,11 +103,14 @@ final class SearchMessages extends TdFunction {
     maxDate: maxDate ?? this.maxDate,
   );
 
+  /// TDLib object type
   static const String objectType = 'searchMessages';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

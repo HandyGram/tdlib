@@ -23,6 +23,7 @@ final class SendAuthenticationFirebaseSms extends TdFunction {
   /// SafetyNet Attestation API token for the Android application, or secret from push notification for the iOS application
   final String token;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class SendAuthenticationFirebaseSms extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [token]: SafetyNet Attestation API token for the Android application, or secret from push notification for the iOS application
   SendAuthenticationFirebaseSms copyWith({
     String? token,
   }) => SendAuthenticationFirebaseSms(
     token: token ?? this.token,
   );
 
+  /// TDLib object type
   static const String objectType = 'sendAuthenticationFirebaseSms';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

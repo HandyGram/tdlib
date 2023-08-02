@@ -39,6 +39,7 @@ final class TextEntity extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class TextEntity extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [offset]: Offset of the entity, in UTF-16 code units 
+  /// * [length]: Length of the entity, in UTF-16 code units 
+  /// * [type]: Type of the entity
   TextEntity copyWith({
     int? offset,
     int? length,
@@ -60,11 +66,14 @@ final class TextEntity extends TdObject {
     type: type ?? this.type,
   );
 
+  /// TDLib object type
   static const String objectType = 'textEntity';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

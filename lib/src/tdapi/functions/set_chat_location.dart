@@ -29,6 +29,7 @@ final class SetChatLocation extends TdFunction {
   /// New location for the chat; must be valid and not null
   final ChatLocation location;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetChatLocation extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [location]: New location for the chat; must be valid and not null
   SetChatLocation copyWith({
     int? chatId,
     ChatLocation? location,
@@ -48,11 +53,14 @@ final class SetChatLocation extends TdFunction {
     location: location ?? this.location,
   );
 
+  /// TDLib object type
   static const String objectType = 'setChatLocation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

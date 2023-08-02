@@ -29,6 +29,7 @@ final class AnswerWebAppQuery extends TdFunction {
   /// The result of the query
   final InputInlineQueryResult result;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class AnswerWebAppQuery extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [web_app_query_id]: Identifier of the Web App query
+  /// * [result]: The result of the query
   AnswerWebAppQuery copyWith({
     String? webAppQueryId,
     InputInlineQueryResult? result,
@@ -48,11 +53,14 @@ final class AnswerWebAppQuery extends TdFunction {
     result: result ?? this.result,
   );
 
+  /// TDLib object type
   static const String objectType = 'answerWebAppQuery';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

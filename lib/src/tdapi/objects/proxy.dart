@@ -72,6 +72,7 @@ final class Proxy extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -85,7 +86,15 @@ final class Proxy extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the proxy
+  /// * [server]: Proxy server IP address
+  /// * [port]: Proxy server port
+  /// * [last_used_date]: Point in time (Unix timestamp) when the proxy was last used; 0 if never
+  /// * [is_enabled]: True, if the proxy is enabled now
+  /// * [type]: Type of the proxy
   Proxy copyWith({
     int? id,
     String? server,
@@ -106,11 +115,14 @@ final class Proxy extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'proxy';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

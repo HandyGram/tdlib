@@ -27,17 +27,21 @@ sealed class ReactionType extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   ReactionType copyWith();
 
+  /// TDLib object type
   static const String objectType = 'reactionType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -68,6 +72,7 @@ final class ReactionTypeEmoji extends ReactionType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -76,7 +81,10 @@ final class ReactionTypeEmoji extends ReactionType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [emoji]: Text representation of the reaction
   @override
   ReactionTypeEmoji copyWith({
     String? emoji,
@@ -84,11 +92,14 @@ final class ReactionTypeEmoji extends ReactionType {
     emoji: emoji ?? this.emoji,
   );
 
+  /// TDLib object type
   static const String objectType = 'reactionTypeEmoji';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -119,6 +130,7 @@ final class ReactionTypeCustomEmoji extends ReactionType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -127,7 +139,10 @@ final class ReactionTypeCustomEmoji extends ReactionType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [custom_emoji_id]: Unique identifier of the custom emoji
   @override
   ReactionTypeCustomEmoji copyWith({
     int? customEmojiId,
@@ -135,11 +150,14 @@ final class ReactionTypeCustomEmoji extends ReactionType {
     customEmojiId: customEmojiId ?? this.customEmojiId,
   );
 
+  /// TDLib object type
   static const String objectType = 'reactionTypeCustomEmoji';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -47,6 +47,7 @@ final class GetGroupCallStreamSegment extends TdFunction {
   /// Video quality as received from tgcalls; pass null to get the worst available quality
   final GroupCallVideoQuality? videoQuality;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -60,7 +61,14 @@ final class GetGroupCallStreamSegment extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [group_call_id]: Group call identifier
+  /// * [time_offset]: Point in time when the stream segment begins; Unix timestamp in milliseconds
+  /// * [scale]: Segment duration scale; 0-1. Segment's duration is 1000/(2**scale) milliseconds
+  /// * [channel_id]: Identifier of an audio/video channel to get as received from tgcalls
+  /// * [video_quality]: Video quality as received from tgcalls; pass null to get the worst available quality
   GetGroupCallStreamSegment copyWith({
     int? groupCallId,
     int? timeOffset,
@@ -75,11 +83,14 @@ final class GetGroupCallStreamSegment extends TdFunction {
     videoQuality: videoQuality ?? this.videoQuality,
   );
 
+  /// TDLib object type
   static const String objectType = 'getGroupCallStreamSegment';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

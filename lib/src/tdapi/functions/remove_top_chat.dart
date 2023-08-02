@@ -29,6 +29,7 @@ final class RemoveTopChat extends TdFunction {
   /// Chat identifier
   final int chatId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class RemoveTopChat extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [category]: Category of frequently used chats 
+  /// * [chat_id]: Chat identifier
   RemoveTopChat copyWith({
     TopChatCategory? category,
     int? chatId,
@@ -48,11 +53,14 @@ final class RemoveTopChat extends TdFunction {
     chatId: chatId ?? this.chatId,
   );
 
+  /// TDLib object type
   static const String objectType = 'removeTopChat';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

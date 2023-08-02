@@ -44,6 +44,7 @@ final class TemporaryPasswordState extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -53,7 +54,11 @@ final class TemporaryPasswordState extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [has_password]: True, if a temporary password is available 
+  /// * [valid_for]: Time left before the temporary password expires, in seconds
   TemporaryPasswordState copyWith({
     bool? hasPassword,
     int? validFor,
@@ -66,11 +71,14 @@ final class TemporaryPasswordState extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'temporaryPasswordState';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

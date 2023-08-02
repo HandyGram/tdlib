@@ -47,6 +47,7 @@ final class AddMessageReaction extends TdFunction {
   /// Pass true if the reaction needs to be added to recent reactions
   final bool updateRecentReactions;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -60,7 +61,14 @@ final class AddMessageReaction extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat to which the message belongs
+  /// * [message_id]: Identifier of the message
+  /// * [reaction_type]: Type of the reaction to add
+  /// * [is_big]: Pass true if the reaction is added with a big animation
+  /// * [update_recent_reactions]: Pass true if the reaction needs to be added to recent reactions
   AddMessageReaction copyWith({
     int? chatId,
     int? messageId,
@@ -75,11 +83,14 @@ final class AddMessageReaction extends TdFunction {
     updateRecentReactions: updateRecentReactions ?? this.updateRecentReactions,
   );
 
+  /// TDLib object type
   static const String objectType = 'addMessageReaction';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

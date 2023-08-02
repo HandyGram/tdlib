@@ -29,6 +29,7 @@ final class SetAutosaveSettings extends TdFunction {
   /// New autosave settings for the scope; pass null to set autosave settings to default
   final ScopeAutosaveSettings? settings;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetAutosaveSettings extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [scope]: Autosave settings scope 
+  /// * [settings]: New autosave settings for the scope; pass null to set autosave settings to default
   SetAutosaveSettings copyWith({
     AutosaveSettingsScope? scope,
     ScopeAutosaveSettings? settings,
@@ -48,11 +53,14 @@ final class SetAutosaveSettings extends TdFunction {
     settings: settings ?? this.settings,
   );
 
+  /// TDLib object type
   static const String objectType = 'setAutosaveSettings';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

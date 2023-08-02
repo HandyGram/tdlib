@@ -47,6 +47,7 @@ final class TestProxy extends TdFunction {
   /// The maximum overall timeout for the request
   final double timeout;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -60,7 +61,14 @@ final class TestProxy extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [server]: Proxy server IP address
+  /// * [port]: Proxy server port
+  /// * [type]: Proxy type
+  /// * [dc_id]: Identifier of a datacenter with which to test connection
+  /// * [timeout]: The maximum overall timeout for the request
   TestProxy copyWith({
     String? server,
     int? port,
@@ -75,11 +83,14 @@ final class TestProxy extends TdFunction {
     timeout: timeout ?? this.timeout,
   );
 
+  /// TDLib object type
   static const String objectType = 'testProxy';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -29,6 +29,7 @@ final class CheckChatUsername extends TdFunction {
   /// Username to be checked
   final String username;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class CheckChatUsername extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier; must be identifier of a supergroup chat, or a channel chat, or a private chat with self, or zero if the chat is being created 
+  /// * [username]: Username to be checked
   CheckChatUsername copyWith({
     int? chatId,
     String? username,
@@ -48,11 +53,14 @@ final class CheckChatUsername extends TdFunction {
     username: username ?? this.username,
   );
 
+  /// TDLib object type
   static const String objectType = 'checkChatUsername';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

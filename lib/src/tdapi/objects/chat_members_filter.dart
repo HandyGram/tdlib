@@ -42,17 +42,21 @@ sealed class ChatMembersFilter extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   ChatMembersFilter copyWith();
 
+  /// TDLib object type
   static const String objectType = 'chatMembersFilter';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -71,6 +75,7 @@ final class ChatMembersFilterContacts extends ChatMembersFilter {
   /// Parse from a json
   factory ChatMembersFilterContacts.fromJson(Map<String, dynamic> json) => const ChatMembersFilterContacts();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -78,15 +83,18 @@ final class ChatMembersFilterContacts extends ChatMembersFilter {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ChatMembersFilterContacts copyWith() => const ChatMembersFilterContacts();
 
+  /// TDLib object type
   static const String objectType = 'chatMembersFilterContacts';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -105,6 +113,7 @@ final class ChatMembersFilterAdministrators extends ChatMembersFilter {
   /// Parse from a json
   factory ChatMembersFilterAdministrators.fromJson(Map<String, dynamic> json) => const ChatMembersFilterAdministrators();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -112,15 +121,18 @@ final class ChatMembersFilterAdministrators extends ChatMembersFilter {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ChatMembersFilterAdministrators copyWith() => const ChatMembersFilterAdministrators();
 
+  /// TDLib object type
   static const String objectType = 'chatMembersFilterAdministrators';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -139,6 +151,7 @@ final class ChatMembersFilterMembers extends ChatMembersFilter {
   /// Parse from a json
   factory ChatMembersFilterMembers.fromJson(Map<String, dynamic> json) => const ChatMembersFilterMembers();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -146,15 +159,18 @@ final class ChatMembersFilterMembers extends ChatMembersFilter {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ChatMembersFilterMembers copyWith() => const ChatMembersFilterMembers();
 
+  /// TDLib object type
   static const String objectType = 'chatMembersFilterMembers';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -185,6 +201,7 @@ final class ChatMembersFilterMention extends ChatMembersFilter {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -193,7 +210,10 @@ final class ChatMembersFilterMention extends ChatMembersFilter {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [message_thread_id]: If non-zero, the identifier of the current message thread
   @override
   ChatMembersFilterMention copyWith({
     int? messageThreadId,
@@ -201,11 +221,14 @@ final class ChatMembersFilterMention extends ChatMembersFilter {
     messageThreadId: messageThreadId ?? this.messageThreadId,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatMembersFilterMention';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -224,6 +247,7 @@ final class ChatMembersFilterRestricted extends ChatMembersFilter {
   /// Parse from a json
   factory ChatMembersFilterRestricted.fromJson(Map<String, dynamic> json) => const ChatMembersFilterRestricted();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -231,15 +255,18 @@ final class ChatMembersFilterRestricted extends ChatMembersFilter {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ChatMembersFilterRestricted copyWith() => const ChatMembersFilterRestricted();
 
+  /// TDLib object type
   static const String objectType = 'chatMembersFilterRestricted';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -258,6 +285,7 @@ final class ChatMembersFilterBanned extends ChatMembersFilter {
   /// Parse from a json
   factory ChatMembersFilterBanned.fromJson(Map<String, dynamic> json) => const ChatMembersFilterBanned();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -265,15 +293,18 @@ final class ChatMembersFilterBanned extends ChatMembersFilter {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ChatMembersFilterBanned copyWith() => const ChatMembersFilterBanned();
 
+  /// TDLib object type
   static const String objectType = 'chatMembersFilterBanned';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -292,6 +323,7 @@ final class ChatMembersFilterBots extends ChatMembersFilter {
   /// Parse from a json
   factory ChatMembersFilterBots.fromJson(Map<String, dynamic> json) => const ChatMembersFilterBots();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -299,15 +331,18 @@ final class ChatMembersFilterBots extends ChatMembersFilter {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ChatMembersFilterBots copyWith() => const ChatMembersFilterBots();
 
+  /// TDLib object type
   static const String objectType = 'chatMembersFilterBots';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

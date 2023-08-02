@@ -44,6 +44,7 @@ final class BankCardInfo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -53,7 +54,11 @@ final class BankCardInfo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [title]: Title of the bank card description 
+  /// * [actions]: Actions that can be done with the bank card number
   BankCardInfo copyWith({
     String? title,
     List<BankCardActionOpenUrl>? actions,
@@ -66,11 +71,14 @@ final class BankCardInfo extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'bankCardInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

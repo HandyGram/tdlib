@@ -35,6 +35,7 @@ final class SetChatDraftMessage extends TdFunction {
   /// New draft message; pass null to remove the draft
   final DraftMessage? draftMessage;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class SetChatDraftMessage extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [message_thread_id]: If not 0, a message thread identifier in which the draft was changed 
+  /// * [draft_message]: New draft message; pass null to remove the draft
   SetChatDraftMessage copyWith({
     int? chatId,
     int? messageThreadId,
@@ -57,11 +63,14 @@ final class SetChatDraftMessage extends TdFunction {
     draftMessage: draftMessage ?? this.draftMessage,
   );
 
+  /// TDLib object type
   static const String objectType = 'setChatDraftMessage';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

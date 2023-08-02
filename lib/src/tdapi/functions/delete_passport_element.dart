@@ -23,6 +23,7 @@ final class DeletePassportElement extends TdFunction {
   /// Element type
   final PassportElementType type;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class DeletePassportElement extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [type]: Element type
   DeletePassportElement copyWith({
     PassportElementType? type,
   }) => DeletePassportElement(
     type: type ?? this.type,
   );
 
+  /// TDLib object type
   static const String objectType = 'deletePassportElement';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

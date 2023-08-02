@@ -1002,6 +1002,7 @@ part 'functions/test_proxy.dart';
 part 'functions/test_get_difference.dart';
 part 'functions/test_use_update.dart';
 part 'functions/test_return_error.dart';
+/// Convert decoded JSON (Map<String, dynamic>) to TdObject
 TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
   if (parsed == null) return null;
   switch (parsed['@type']) {
@@ -2206,6 +2207,7 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
   }
 }
 
+/// Convert encoded JSON to TdObject
 TdObject? convertJsonToObject(String? query) {
   if (query == null) return null;
   final parsed = json.decode(query);

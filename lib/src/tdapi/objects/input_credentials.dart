@@ -33,17 +33,21 @@ sealed class InputCredentials extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   InputCredentials copyWith();
 
+  /// TDLib object type
   static const String objectType = 'inputCredentials';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -74,6 +78,7 @@ final class InputCredentialsSaved extends InputCredentials {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -82,7 +87,10 @@ final class InputCredentialsSaved extends InputCredentials {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [saved_credentials_id]: Identifier of the saved credentials
   @override
   InputCredentialsSaved copyWith({
     String? savedCredentialsId,
@@ -90,11 +98,14 @@ final class InputCredentialsSaved extends InputCredentials {
     savedCredentialsId: savedCredentialsId ?? this.savedCredentialsId,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputCredentialsSaved';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -132,6 +143,7 @@ final class InputCredentialsNew extends InputCredentials {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -141,7 +153,11 @@ final class InputCredentialsNew extends InputCredentials {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [data]: JSON-encoded data with the credential identifier from the payment provider 
+  /// * [allow_save]: True, if the credential identifier can be saved on the server side
   @override
   InputCredentialsNew copyWith({
     String? data,
@@ -151,11 +167,14 @@ final class InputCredentialsNew extends InputCredentials {
     allowSave: allowSave ?? this.allowSave,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputCredentialsNew';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -186,6 +205,7 @@ final class InputCredentialsApplePay extends InputCredentials {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -194,7 +214,10 @@ final class InputCredentialsApplePay extends InputCredentials {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [data]: JSON-encoded data with the credential identifier
   @override
   InputCredentialsApplePay copyWith({
     String? data,
@@ -202,11 +225,14 @@ final class InputCredentialsApplePay extends InputCredentials {
     data: data ?? this.data,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputCredentialsApplePay';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -237,6 +263,7 @@ final class InputCredentialsGooglePay extends InputCredentials {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -245,7 +272,10 @@ final class InputCredentialsGooglePay extends InputCredentials {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [data]: JSON-encoded data with the credential identifier
   @override
   InputCredentialsGooglePay copyWith({
     String? data,
@@ -253,11 +283,14 @@ final class InputCredentialsGooglePay extends InputCredentials {
     data: data ?? this.data,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputCredentialsGooglePay';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

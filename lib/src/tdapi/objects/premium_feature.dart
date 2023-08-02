@@ -66,17 +66,21 @@ sealed class PremiumFeature extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   PremiumFeature copyWith();
 
+  /// TDLib object type
   static const String objectType = 'premiumFeature';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -95,6 +99,7 @@ final class PremiumFeatureIncreasedLimits extends PremiumFeature {
   /// Parse from a json
   factory PremiumFeatureIncreasedLimits.fromJson(Map<String, dynamic> json) => const PremiumFeatureIncreasedLimits();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -102,15 +107,18 @@ final class PremiumFeatureIncreasedLimits extends PremiumFeature {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumFeatureIncreasedLimits copyWith() => const PremiumFeatureIncreasedLimits();
 
+  /// TDLib object type
   static const String objectType = 'premiumFeatureIncreasedLimits';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -129,6 +137,7 @@ final class PremiumFeatureIncreasedUploadFileSize extends PremiumFeature {
   /// Parse from a json
   factory PremiumFeatureIncreasedUploadFileSize.fromJson(Map<String, dynamic> json) => const PremiumFeatureIncreasedUploadFileSize();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -136,15 +145,18 @@ final class PremiumFeatureIncreasedUploadFileSize extends PremiumFeature {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumFeatureIncreasedUploadFileSize copyWith() => const PremiumFeatureIncreasedUploadFileSize();
 
+  /// TDLib object type
   static const String objectType = 'premiumFeatureIncreasedUploadFileSize';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -163,6 +175,7 @@ final class PremiumFeatureImprovedDownloadSpeed extends PremiumFeature {
   /// Parse from a json
   factory PremiumFeatureImprovedDownloadSpeed.fromJson(Map<String, dynamic> json) => const PremiumFeatureImprovedDownloadSpeed();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -170,15 +183,18 @@ final class PremiumFeatureImprovedDownloadSpeed extends PremiumFeature {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumFeatureImprovedDownloadSpeed copyWith() => const PremiumFeatureImprovedDownloadSpeed();
 
+  /// TDLib object type
   static const String objectType = 'premiumFeatureImprovedDownloadSpeed';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -197,6 +213,7 @@ final class PremiumFeatureVoiceRecognition extends PremiumFeature {
   /// Parse from a json
   factory PremiumFeatureVoiceRecognition.fromJson(Map<String, dynamic> json) => const PremiumFeatureVoiceRecognition();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -204,15 +221,18 @@ final class PremiumFeatureVoiceRecognition extends PremiumFeature {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumFeatureVoiceRecognition copyWith() => const PremiumFeatureVoiceRecognition();
 
+  /// TDLib object type
   static const String objectType = 'premiumFeatureVoiceRecognition';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -231,6 +251,7 @@ final class PremiumFeatureDisabledAds extends PremiumFeature {
   /// Parse from a json
   factory PremiumFeatureDisabledAds.fromJson(Map<String, dynamic> json) => const PremiumFeatureDisabledAds();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -238,15 +259,18 @@ final class PremiumFeatureDisabledAds extends PremiumFeature {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumFeatureDisabledAds copyWith() => const PremiumFeatureDisabledAds();
 
+  /// TDLib object type
   static const String objectType = 'premiumFeatureDisabledAds';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -265,6 +289,7 @@ final class PremiumFeatureUniqueReactions extends PremiumFeature {
   /// Parse from a json
   factory PremiumFeatureUniqueReactions.fromJson(Map<String, dynamic> json) => const PremiumFeatureUniqueReactions();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -272,15 +297,18 @@ final class PremiumFeatureUniqueReactions extends PremiumFeature {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumFeatureUniqueReactions copyWith() => const PremiumFeatureUniqueReactions();
 
+  /// TDLib object type
   static const String objectType = 'premiumFeatureUniqueReactions';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -299,6 +327,7 @@ final class PremiumFeatureUniqueStickers extends PremiumFeature {
   /// Parse from a json
   factory PremiumFeatureUniqueStickers.fromJson(Map<String, dynamic> json) => const PremiumFeatureUniqueStickers();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -306,15 +335,18 @@ final class PremiumFeatureUniqueStickers extends PremiumFeature {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumFeatureUniqueStickers copyWith() => const PremiumFeatureUniqueStickers();
 
+  /// TDLib object type
   static const String objectType = 'premiumFeatureUniqueStickers';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -333,6 +365,7 @@ final class PremiumFeatureCustomEmoji extends PremiumFeature {
   /// Parse from a json
   factory PremiumFeatureCustomEmoji.fromJson(Map<String, dynamic> json) => const PremiumFeatureCustomEmoji();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -340,15 +373,18 @@ final class PremiumFeatureCustomEmoji extends PremiumFeature {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumFeatureCustomEmoji copyWith() => const PremiumFeatureCustomEmoji();
 
+  /// TDLib object type
   static const String objectType = 'premiumFeatureCustomEmoji';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -367,6 +403,7 @@ final class PremiumFeatureAdvancedChatManagement extends PremiumFeature {
   /// Parse from a json
   factory PremiumFeatureAdvancedChatManagement.fromJson(Map<String, dynamic> json) => const PremiumFeatureAdvancedChatManagement();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -374,15 +411,18 @@ final class PremiumFeatureAdvancedChatManagement extends PremiumFeature {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumFeatureAdvancedChatManagement copyWith() => const PremiumFeatureAdvancedChatManagement();
 
+  /// TDLib object type
   static const String objectType = 'premiumFeatureAdvancedChatManagement';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -401,6 +441,7 @@ final class PremiumFeatureProfileBadge extends PremiumFeature {
   /// Parse from a json
   factory PremiumFeatureProfileBadge.fromJson(Map<String, dynamic> json) => const PremiumFeatureProfileBadge();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -408,15 +449,18 @@ final class PremiumFeatureProfileBadge extends PremiumFeature {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumFeatureProfileBadge copyWith() => const PremiumFeatureProfileBadge();
 
+  /// TDLib object type
   static const String objectType = 'premiumFeatureProfileBadge';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -435,6 +479,7 @@ final class PremiumFeatureEmojiStatus extends PremiumFeature {
   /// Parse from a json
   factory PremiumFeatureEmojiStatus.fromJson(Map<String, dynamic> json) => const PremiumFeatureEmojiStatus();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -442,15 +487,18 @@ final class PremiumFeatureEmojiStatus extends PremiumFeature {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumFeatureEmojiStatus copyWith() => const PremiumFeatureEmojiStatus();
 
+  /// TDLib object type
   static const String objectType = 'premiumFeatureEmojiStatus';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -469,6 +517,7 @@ final class PremiumFeatureAnimatedProfilePhoto extends PremiumFeature {
   /// Parse from a json
   factory PremiumFeatureAnimatedProfilePhoto.fromJson(Map<String, dynamic> json) => const PremiumFeatureAnimatedProfilePhoto();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -476,15 +525,18 @@ final class PremiumFeatureAnimatedProfilePhoto extends PremiumFeature {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumFeatureAnimatedProfilePhoto copyWith() => const PremiumFeatureAnimatedProfilePhoto();
 
+  /// TDLib object type
   static const String objectType = 'premiumFeatureAnimatedProfilePhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -503,6 +555,7 @@ final class PremiumFeatureForumTopicIcon extends PremiumFeature {
   /// Parse from a json
   factory PremiumFeatureForumTopicIcon.fromJson(Map<String, dynamic> json) => const PremiumFeatureForumTopicIcon();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -510,15 +563,18 @@ final class PremiumFeatureForumTopicIcon extends PremiumFeature {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumFeatureForumTopicIcon copyWith() => const PremiumFeatureForumTopicIcon();
 
+  /// TDLib object type
   static const String objectType = 'premiumFeatureForumTopicIcon';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -537,6 +593,7 @@ final class PremiumFeatureAppIcons extends PremiumFeature {
   /// Parse from a json
   factory PremiumFeatureAppIcons.fromJson(Map<String, dynamic> json) => const PremiumFeatureAppIcons();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -544,15 +601,18 @@ final class PremiumFeatureAppIcons extends PremiumFeature {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumFeatureAppIcons copyWith() => const PremiumFeatureAppIcons();
 
+  /// TDLib object type
   static const String objectType = 'premiumFeatureAppIcons';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -571,6 +631,7 @@ final class PremiumFeatureRealTimeChatTranslation extends PremiumFeature {
   /// Parse from a json
   factory PremiumFeatureRealTimeChatTranslation.fromJson(Map<String, dynamic> json) => const PremiumFeatureRealTimeChatTranslation();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -578,15 +639,18 @@ final class PremiumFeatureRealTimeChatTranslation extends PremiumFeature {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PremiumFeatureRealTimeChatTranslation copyWith() => const PremiumFeatureRealTimeChatTranslation();
 
+  /// TDLib object type
   static const String objectType = 'premiumFeatureRealTimeChatTranslation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

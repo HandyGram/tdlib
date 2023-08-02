@@ -35,6 +35,7 @@ final class CreateCall extends TdFunction {
   /// Pass true to create a video call
   final bool isVideo;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class CreateCall extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: Identifier of the user to be called 
+  /// * [protocol]: The call protocols supported by the application 
+  /// * [is_video]: Pass true to create a video call
   CreateCall copyWith({
     int? userId,
     CallProtocol? protocol,
@@ -57,11 +63,14 @@ final class CreateCall extends TdFunction {
     isVideo: isVideo ?? this.isVideo,
   );
 
+  /// TDLib object type
   static const String objectType = 'createCall';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

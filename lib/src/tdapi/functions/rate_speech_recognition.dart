@@ -35,6 +35,7 @@ final class RateSpeechRecognition extends TdFunction {
   /// Pass true if the speech recognition is good
   final bool isGood;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class RateSpeechRecognition extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat to which the message belongs 
+  /// * [message_id]: Identifier of the message 
+  /// * [is_good]: Pass true if the speech recognition is good
   RateSpeechRecognition copyWith({
     int? chatId,
     int? messageId,
@@ -57,11 +63,14 @@ final class RateSpeechRecognition extends TdFunction {
     isGood: isGood ?? this.isGood,
   );
 
+  /// TDLib object type
   static const String objectType = 'rateSpeechRecognition';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

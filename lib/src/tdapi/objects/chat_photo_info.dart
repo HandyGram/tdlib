@@ -53,6 +53,7 @@ final class ChatPhotoInfo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -65,7 +66,14 @@ final class ChatPhotoInfo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [small]: A small (160x160) chat photo variant in JPEG format. The file can be downloaded only before the photo is changed
+  /// * [big]: A big (640x640) chat photo variant in JPEG format. The file can be downloaded only before the photo is changed
+  /// * [minithumbnail]: Chat photo minithumbnail; may be null
+  /// * [has_animation]: True, if the photo has animated variant
+  /// * [is_personal]: True, if the photo is visible only for the current user
   ChatPhotoInfo copyWith({
     File? small,
     File? big,
@@ -80,11 +88,14 @@ final class ChatPhotoInfo extends TdObject {
     isPersonal: isPersonal ?? this.isPersonal,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatPhotoInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

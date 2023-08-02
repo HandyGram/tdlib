@@ -29,6 +29,7 @@ final class DeleteAccount extends TdFunction {
   /// The 2-step verification password of the current user. If not specified, account deletion can be canceled within one week
   final String password;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class DeleteAccount extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [reason]: The reason why the account was deleted; optional
+  /// * [password]: The 2-step verification password of the current user. If not specified, account deletion can be canceled within one week
   DeleteAccount copyWith({
     String? reason,
     String? password,
@@ -48,11 +53,14 @@ final class DeleteAccount extends TdFunction {
     password: password ?? this.password,
   );
 
+  /// TDLib object type
   static const String objectType = 'deleteAccount';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

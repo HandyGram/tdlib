@@ -35,6 +35,7 @@ final class StartGroupCallScreenSharing extends TdFunction {
   /// Group call join payload; received from tgcalls
   final String payload;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class StartGroupCallScreenSharing extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [group_call_id]: Group call identifier
+  /// * [audio_source_id]: Screen sharing audio channel synchronization source identifier; received from tgcalls
+  /// * [payload]: Group call join payload; received from tgcalls
   StartGroupCallScreenSharing copyWith({
     int? groupCallId,
     int? audioSourceId,
@@ -57,11 +63,14 @@ final class StartGroupCallScreenSharing extends TdFunction {
     payload: payload ?? this.payload,
   );
 
+  /// TDLib object type
   static const String objectType = 'startGroupCallScreenSharing';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

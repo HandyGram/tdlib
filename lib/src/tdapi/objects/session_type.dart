@@ -72,17 +72,21 @@ sealed class SessionType extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   SessionType copyWith();
 
+  /// TDLib object type
   static const String objectType = 'sessionType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -101,6 +105,7 @@ final class SessionTypeAndroid extends SessionType {
   /// Parse from a json
   factory SessionTypeAndroid.fromJson(Map<String, dynamic> json) => const SessionTypeAndroid();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -108,15 +113,18 @@ final class SessionTypeAndroid extends SessionType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SessionTypeAndroid copyWith() => const SessionTypeAndroid();
 
+  /// TDLib object type
   static const String objectType = 'sessionTypeAndroid';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -135,6 +143,7 @@ final class SessionTypeApple extends SessionType {
   /// Parse from a json
   factory SessionTypeApple.fromJson(Map<String, dynamic> json) => const SessionTypeApple();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -142,15 +151,18 @@ final class SessionTypeApple extends SessionType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SessionTypeApple copyWith() => const SessionTypeApple();
 
+  /// TDLib object type
   static const String objectType = 'sessionTypeApple';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -169,6 +181,7 @@ final class SessionTypeBrave extends SessionType {
   /// Parse from a json
   factory SessionTypeBrave.fromJson(Map<String, dynamic> json) => const SessionTypeBrave();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -176,15 +189,18 @@ final class SessionTypeBrave extends SessionType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SessionTypeBrave copyWith() => const SessionTypeBrave();
 
+  /// TDLib object type
   static const String objectType = 'sessionTypeBrave';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -203,6 +219,7 @@ final class SessionTypeChrome extends SessionType {
   /// Parse from a json
   factory SessionTypeChrome.fromJson(Map<String, dynamic> json) => const SessionTypeChrome();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -210,15 +227,18 @@ final class SessionTypeChrome extends SessionType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SessionTypeChrome copyWith() => const SessionTypeChrome();
 
+  /// TDLib object type
   static const String objectType = 'sessionTypeChrome';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -237,6 +257,7 @@ final class SessionTypeEdge extends SessionType {
   /// Parse from a json
   factory SessionTypeEdge.fromJson(Map<String, dynamic> json) => const SessionTypeEdge();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -244,15 +265,18 @@ final class SessionTypeEdge extends SessionType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SessionTypeEdge copyWith() => const SessionTypeEdge();
 
+  /// TDLib object type
   static const String objectType = 'sessionTypeEdge';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -271,6 +295,7 @@ final class SessionTypeFirefox extends SessionType {
   /// Parse from a json
   factory SessionTypeFirefox.fromJson(Map<String, dynamic> json) => const SessionTypeFirefox();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -278,15 +303,18 @@ final class SessionTypeFirefox extends SessionType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SessionTypeFirefox copyWith() => const SessionTypeFirefox();
 
+  /// TDLib object type
   static const String objectType = 'sessionTypeFirefox';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -305,6 +333,7 @@ final class SessionTypeIpad extends SessionType {
   /// Parse from a json
   factory SessionTypeIpad.fromJson(Map<String, dynamic> json) => const SessionTypeIpad();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -312,15 +341,18 @@ final class SessionTypeIpad extends SessionType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SessionTypeIpad copyWith() => const SessionTypeIpad();
 
+  /// TDLib object type
   static const String objectType = 'sessionTypeIpad';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -339,6 +371,7 @@ final class SessionTypeIphone extends SessionType {
   /// Parse from a json
   factory SessionTypeIphone.fromJson(Map<String, dynamic> json) => const SessionTypeIphone();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -346,15 +379,18 @@ final class SessionTypeIphone extends SessionType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SessionTypeIphone copyWith() => const SessionTypeIphone();
 
+  /// TDLib object type
   static const String objectType = 'sessionTypeIphone';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -373,6 +409,7 @@ final class SessionTypeLinux extends SessionType {
   /// Parse from a json
   factory SessionTypeLinux.fromJson(Map<String, dynamic> json) => const SessionTypeLinux();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -380,15 +417,18 @@ final class SessionTypeLinux extends SessionType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SessionTypeLinux copyWith() => const SessionTypeLinux();
 
+  /// TDLib object type
   static const String objectType = 'sessionTypeLinux';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -407,6 +447,7 @@ final class SessionTypeMac extends SessionType {
   /// Parse from a json
   factory SessionTypeMac.fromJson(Map<String, dynamic> json) => const SessionTypeMac();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -414,15 +455,18 @@ final class SessionTypeMac extends SessionType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SessionTypeMac copyWith() => const SessionTypeMac();
 
+  /// TDLib object type
   static const String objectType = 'sessionTypeMac';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -441,6 +485,7 @@ final class SessionTypeOpera extends SessionType {
   /// Parse from a json
   factory SessionTypeOpera.fromJson(Map<String, dynamic> json) => const SessionTypeOpera();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -448,15 +493,18 @@ final class SessionTypeOpera extends SessionType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SessionTypeOpera copyWith() => const SessionTypeOpera();
 
+  /// TDLib object type
   static const String objectType = 'sessionTypeOpera';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -475,6 +523,7 @@ final class SessionTypeSafari extends SessionType {
   /// Parse from a json
   factory SessionTypeSafari.fromJson(Map<String, dynamic> json) => const SessionTypeSafari();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -482,15 +531,18 @@ final class SessionTypeSafari extends SessionType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SessionTypeSafari copyWith() => const SessionTypeSafari();
 
+  /// TDLib object type
   static const String objectType = 'sessionTypeSafari';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -509,6 +561,7 @@ final class SessionTypeUbuntu extends SessionType {
   /// Parse from a json
   factory SessionTypeUbuntu.fromJson(Map<String, dynamic> json) => const SessionTypeUbuntu();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -516,15 +569,18 @@ final class SessionTypeUbuntu extends SessionType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SessionTypeUbuntu copyWith() => const SessionTypeUbuntu();
 
+  /// TDLib object type
   static const String objectType = 'sessionTypeUbuntu';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -543,6 +599,7 @@ final class SessionTypeUnknown extends SessionType {
   /// Parse from a json
   factory SessionTypeUnknown.fromJson(Map<String, dynamic> json) => const SessionTypeUnknown();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -550,15 +607,18 @@ final class SessionTypeUnknown extends SessionType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SessionTypeUnknown copyWith() => const SessionTypeUnknown();
 
+  /// TDLib object type
   static const String objectType = 'sessionTypeUnknown';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -577,6 +637,7 @@ final class SessionTypeVivaldi extends SessionType {
   /// Parse from a json
   factory SessionTypeVivaldi.fromJson(Map<String, dynamic> json) => const SessionTypeVivaldi();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -584,15 +645,18 @@ final class SessionTypeVivaldi extends SessionType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SessionTypeVivaldi copyWith() => const SessionTypeVivaldi();
 
+  /// TDLib object type
   static const String objectType = 'sessionTypeVivaldi';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -611,6 +675,7 @@ final class SessionTypeWindows extends SessionType {
   /// Parse from a json
   factory SessionTypeWindows.fromJson(Map<String, dynamic> json) => const SessionTypeWindows();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -618,15 +683,18 @@ final class SessionTypeWindows extends SessionType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SessionTypeWindows copyWith() => const SessionTypeWindows();
 
+  /// TDLib object type
   static const String objectType = 'sessionTypeWindows';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -645,6 +713,7 @@ final class SessionTypeXbox extends SessionType {
   /// Parse from a json
   factory SessionTypeXbox.fromJson(Map<String, dynamic> json) => const SessionTypeXbox();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -652,15 +721,18 @@ final class SessionTypeXbox extends SessionType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SessionTypeXbox copyWith() => const SessionTypeXbox();
 
+  /// TDLib object type
   static const String objectType = 'sessionTypeXbox';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

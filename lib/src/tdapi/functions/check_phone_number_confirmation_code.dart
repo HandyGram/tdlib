@@ -23,6 +23,7 @@ final class CheckPhoneNumberConfirmationCode extends TdFunction {
   /// Confirmation code to check
   final String code;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class CheckPhoneNumberConfirmationCode extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [code]: Confirmation code to check
   CheckPhoneNumberConfirmationCode copyWith({
     String? code,
   }) => CheckPhoneNumberConfirmationCode(
     code: code ?? this.code,
   );
 
+  /// TDLib object type
   static const String objectType = 'checkPhoneNumberConfirmationCode';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

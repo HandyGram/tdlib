@@ -27,17 +27,21 @@ sealed class TextParseMode extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   TextParseMode copyWith();
 
+  /// TDLib object type
   static const String objectType = 'textParseMode';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -68,6 +72,7 @@ final class TextParseModeMarkdown extends TextParseMode {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -76,7 +81,10 @@ final class TextParseModeMarkdown extends TextParseMode {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [version]: Version of the parser: 0 or 1 - Telegram Bot API "Markdown" parse mode, 2 - Telegram Bot API "MarkdownV2" parse mode
   @override
   TextParseModeMarkdown copyWith({
     int? version,
@@ -84,11 +92,14 @@ final class TextParseModeMarkdown extends TextParseMode {
     version: version ?? this.version,
   );
 
+  /// TDLib object type
   static const String objectType = 'textParseModeMarkdown';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -107,6 +118,7 @@ final class TextParseModeHTML extends TextParseMode {
   /// Parse from a json
   factory TextParseModeHTML.fromJson(Map<String, dynamic> json) => const TextParseModeHTML();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -114,15 +126,18 @@ final class TextParseModeHTML extends TextParseMode {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   TextParseModeHTML copyWith() => const TextParseModeHTML();
 
+  /// TDLib object type
   static const String objectType = 'textParseModeHTML';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

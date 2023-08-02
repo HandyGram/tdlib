@@ -39,17 +39,21 @@ sealed class ChatMemberStatus extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   ChatMemberStatus copyWith();
 
+  /// TDLib object type
   static const String objectType = 'chatMemberStatus';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -94,6 +98,7 @@ final class ChatMemberStatusCreator extends ChatMemberStatus {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -104,7 +109,12 @@ final class ChatMemberStatusCreator extends ChatMemberStatus {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [custom_title]: A custom title of the owner; 0-16 characters without emojis; applicable to supergroups only
+  /// * [is_anonymous]: True, if the creator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only
+  /// * [is_member]: True, if the user is a member of the chat
   @override
   ChatMemberStatusCreator copyWith({
     String? customTitle,
@@ -116,11 +126,14 @@ final class ChatMemberStatusCreator extends ChatMemberStatus {
     isMember: isMember ?? this.isMember,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatMemberStatusCreator';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -165,6 +178,7 @@ final class ChatMemberStatusAdministrator extends ChatMemberStatus {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -175,7 +189,12 @@ final class ChatMemberStatusAdministrator extends ChatMemberStatus {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [custom_title]: A custom title of the administrator; 0-16 characters without emojis; applicable to supergroups only
+  /// * [can_be_edited]: True, if the current user can edit the administrator privileges for the called user
+  /// * [rights]: Rights of the administrator
   @override
   ChatMemberStatusAdministrator copyWith({
     String? customTitle,
@@ -187,11 +206,14 @@ final class ChatMemberStatusAdministrator extends ChatMemberStatus {
     rights: rights ?? this.rights,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatMemberStatusAdministrator';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -210,6 +232,7 @@ final class ChatMemberStatusMember extends ChatMemberStatus {
   /// Parse from a json
   factory ChatMemberStatusMember.fromJson(Map<String, dynamic> json) => const ChatMemberStatusMember();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -217,15 +240,18 @@ final class ChatMemberStatusMember extends ChatMemberStatus {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ChatMemberStatusMember copyWith() => const ChatMemberStatusMember();
 
+  /// TDLib object type
   static const String objectType = 'chatMemberStatusMember';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -270,6 +296,7 @@ final class ChatMemberStatusRestricted extends ChatMemberStatus {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -280,7 +307,12 @@ final class ChatMemberStatusRestricted extends ChatMemberStatus {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [is_member]: True, if the user is a member of the chat
+  /// * [restricted_until_date]: Point in time (Unix timestamp) when restrictions will be lifted from the user; 0 if never. If the user is restricted for more than 366 days or for less than 30 seconds from the current time, the user is considered to be restricted forever
+  /// * [permissions]: User permissions in the chat
   @override
   ChatMemberStatusRestricted copyWith({
     bool? isMember,
@@ -292,11 +324,14 @@ final class ChatMemberStatusRestricted extends ChatMemberStatus {
     permissions: permissions ?? this.permissions,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatMemberStatusRestricted';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -315,6 +350,7 @@ final class ChatMemberStatusLeft extends ChatMemberStatus {
   /// Parse from a json
   factory ChatMemberStatusLeft.fromJson(Map<String, dynamic> json) => const ChatMemberStatusLeft();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -322,15 +358,18 @@ final class ChatMemberStatusLeft extends ChatMemberStatus {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ChatMemberStatusLeft copyWith() => const ChatMemberStatusLeft();
 
+  /// TDLib object type
   static const String objectType = 'chatMemberStatusLeft';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -361,6 +400,7 @@ final class ChatMemberStatusBanned extends ChatMemberStatus {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -369,7 +409,10 @@ final class ChatMemberStatusBanned extends ChatMemberStatus {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [banned_until_date]: Point in time (Unix timestamp) when the user will be unbanned; 0 if never. If the user is banned for more than 366 days or for less than 30 seconds from the current time, the user is considered to be banned forever. Always 0 in basic groups
   @override
   ChatMemberStatusBanned copyWith({
     int? bannedUntilDate,
@@ -377,11 +420,14 @@ final class ChatMemberStatusBanned extends ChatMemberStatus {
     bannedUntilDate: bannedUntilDate ?? this.bannedUntilDate,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatMemberStatusBanned';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

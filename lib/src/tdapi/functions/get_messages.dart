@@ -29,6 +29,7 @@ final class GetMessages extends TdFunction {
   /// Identifiers of the messages to get
   final List<int> messageIds;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class GetMessages extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat the messages belong to 
+  /// * [message_ids]: Identifiers of the messages to get
   GetMessages copyWith({
     int? chatId,
     List<int>? messageIds,
@@ -48,11 +53,14 @@ final class GetMessages extends TdFunction {
     messageIds: messageIds ?? this.messageIds,
   );
 
+  /// TDLib object type
   static const String objectType = 'getMessages';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

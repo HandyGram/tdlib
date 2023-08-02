@@ -32,6 +32,7 @@ final class ChatMessageSender extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -41,7 +42,11 @@ final class ChatMessageSender extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sender]: Available message senders 
+  /// * [needs_premium]: True, if Telegram Premium is needed to use the message sender
   ChatMessageSender copyWith({
     MessageSender? sender,
     bool? needsPremium,
@@ -50,11 +55,14 @@ final class ChatMessageSender extends TdObject {
     needsPremium: needsPremium ?? this.needsPremium,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatMessageSender';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

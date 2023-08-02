@@ -41,6 +41,7 @@ final class BlockMessageSenderFromReplies extends TdFunction {
   /// Pass true to report the sender to the Telegram moderators
   final bool reportSpam;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -53,7 +54,13 @@ final class BlockMessageSenderFromReplies extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [message_id]: The identifier of an incoming message in the Replies chat
+  /// * [delete_message]: Pass true to delete the message
+  /// * [delete_all_messages]: Pass true to delete all messages from the same sender
+  /// * [report_spam]: Pass true to report the sender to the Telegram moderators
   BlockMessageSenderFromReplies copyWith({
     int? messageId,
     bool? deleteMessage,
@@ -66,11 +73,14 @@ final class BlockMessageSenderFromReplies extends TdFunction {
     reportSpam: reportSpam ?? this.reportSpam,
   );
 
+  /// TDLib object type
   static const String objectType = 'blockMessageSenderFromReplies';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

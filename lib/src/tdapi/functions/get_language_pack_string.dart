@@ -41,6 +41,7 @@ final class GetLanguagePackString extends TdFunction {
   /// Language pack key of the string to be returned
   final String key;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -53,7 +54,13 @@ final class GetLanguagePackString extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [language_pack_database_path]: Path to the language pack database in which strings are stored
+  /// * [localization_target]: Localization target to which the language pack belongs
+  /// * [language_pack_id]: Language pack identifier
+  /// * [key]: Language pack key of the string to be returned
   GetLanguagePackString copyWith({
     String? languagePackDatabasePath,
     String? localizationTarget,
@@ -66,11 +73,14 @@ final class GetLanguagePackString extends TdFunction {
     key: key ?? this.key,
   );
 
+  /// TDLib object type
   static const String objectType = 'getLanguagePackString';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

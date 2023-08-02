@@ -23,6 +23,7 @@ final class CheckCreatedPublicChatsLimit extends TdFunction {
   /// Type of the public chats, for which to check the limit
   final PublicChatType type;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class CheckCreatedPublicChatsLimit extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [type]: Type of the public chats, for which to check the limit
   CheckCreatedPublicChatsLimit copyWith({
     PublicChatType? type,
   }) => CheckCreatedPublicChatsLimit(
     type: type ?? this.type,
   );
 
+  /// TDLib object type
   static const String objectType = 'checkCreatedPublicChatsLimit';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

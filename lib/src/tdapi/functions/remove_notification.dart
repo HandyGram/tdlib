@@ -29,6 +29,7 @@ final class RemoveNotification extends TdFunction {
   /// Identifier of removed notification
   final int notificationId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class RemoveNotification extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [notification_group_id]: Identifier of notification group to which the notification belongs 
+  /// * [notification_id]: Identifier of removed notification
   RemoveNotification copyWith({
     int? notificationGroupId,
     int? notificationId,
@@ -48,11 +53,14 @@ final class RemoveNotification extends TdFunction {
     notificationId: notificationId ?? this.notificationId,
   );
 
+  /// TDLib object type
   static const String objectType = 'removeNotification';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

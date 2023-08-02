@@ -42,17 +42,21 @@ sealed class KeyboardButtonType extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   KeyboardButtonType copyWith();
 
+  /// TDLib object type
   static const String objectType = 'keyboardButtonType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -71,6 +75,7 @@ final class KeyboardButtonTypeText extends KeyboardButtonType {
   /// Parse from a json
   factory KeyboardButtonTypeText.fromJson(Map<String, dynamic> json) => const KeyboardButtonTypeText();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -78,15 +83,18 @@ final class KeyboardButtonTypeText extends KeyboardButtonType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   KeyboardButtonTypeText copyWith() => const KeyboardButtonTypeText();
 
+  /// TDLib object type
   static const String objectType = 'keyboardButtonTypeText';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -105,6 +113,7 @@ final class KeyboardButtonTypeRequestPhoneNumber extends KeyboardButtonType {
   /// Parse from a json
   factory KeyboardButtonTypeRequestPhoneNumber.fromJson(Map<String, dynamic> json) => const KeyboardButtonTypeRequestPhoneNumber();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -112,15 +121,18 @@ final class KeyboardButtonTypeRequestPhoneNumber extends KeyboardButtonType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   KeyboardButtonTypeRequestPhoneNumber copyWith() => const KeyboardButtonTypeRequestPhoneNumber();
 
+  /// TDLib object type
   static const String objectType = 'keyboardButtonTypeRequestPhoneNumber';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -139,6 +151,7 @@ final class KeyboardButtonTypeRequestLocation extends KeyboardButtonType {
   /// Parse from a json
   factory KeyboardButtonTypeRequestLocation.fromJson(Map<String, dynamic> json) => const KeyboardButtonTypeRequestLocation();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -146,15 +159,18 @@ final class KeyboardButtonTypeRequestLocation extends KeyboardButtonType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   KeyboardButtonTypeRequestLocation copyWith() => const KeyboardButtonTypeRequestLocation();
 
+  /// TDLib object type
   static const String objectType = 'keyboardButtonTypeRequestLocation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -192,6 +208,7 @@ final class KeyboardButtonTypeRequestPoll extends KeyboardButtonType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -201,7 +218,11 @@ final class KeyboardButtonTypeRequestPoll extends KeyboardButtonType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [force_regular]: If true, only regular polls must be allowed to create 
+  /// * [force_quiz]: If true, only polls in quiz mode must be allowed to create
   @override
   KeyboardButtonTypeRequestPoll copyWith({
     bool? forceRegular,
@@ -211,11 +232,14 @@ final class KeyboardButtonTypeRequestPoll extends KeyboardButtonType {
     forceQuiz: forceQuiz ?? this.forceQuiz,
   );
 
+  /// TDLib object type
   static const String objectType = 'keyboardButtonTypeRequestPoll';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -274,6 +298,7 @@ final class KeyboardButtonTypeRequestUser extends KeyboardButtonType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -286,7 +311,14 @@ final class KeyboardButtonTypeRequestUser extends KeyboardButtonType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique button identifier
+  /// * [restrict_user_is_bot]: True, if the shared user must or must not be a bot
+  /// * [user_is_bot]: True, if the shared user must be a bot; otherwise, the shared user must no be a bot. Ignored if restrict_user_is_bot is false
+  /// * [restrict_user_is_premium]: True, if the shared user must or must not be a Telegram Premium user
+  /// * [user_is_premium]: True, if the shared user must be a Telegram Premium user; otherwise, the shared user must no be a Telegram Premium user. Ignored if restrict_user_is_premium is false
   @override
   KeyboardButtonTypeRequestUser copyWith({
     int? id,
@@ -302,11 +334,14 @@ final class KeyboardButtonTypeRequestUser extends KeyboardButtonType {
     userIsPremium: userIsPremium ?? this.userIsPremium,
   );
 
+  /// TDLib object type
   static const String objectType = 'keyboardButtonTypeRequestUser';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -400,6 +435,7 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -417,7 +453,19 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique button identifier
+  /// * [chat_is_channel]: True, if the chat must be a channel; otherwise, a basic group or a supergroup chat is shared
+  /// * [restrict_chat_is_forum]: True, if the chat must or must not be a forum supergroup
+  /// * [chat_is_forum]: True, if the chat must be a forum supergroup; otherwise, the chat must not be a forum supergroup. Ignored if restrict_chat_is_forum is false
+  /// * [restrict_chat_has_username]: True, if the chat must or must not have a username
+  /// * [chat_has_username]: True, if the chat must have a username; otherwise, the chat must not have a username. Ignored if restrict_chat_has_username is false
+  /// * [chat_is_created]: True, if the chat must be created by the current user
+  /// * [user_administrator_rights]: Expected user administrator rights in the chat; may be null if they aren't restricted
+  /// * [bot_administrator_rights]: Expected bot administrator rights in the chat; may be null if they aren't restricted
+  /// * [bot_is_member]: True, if the bot must be a member of the chat; for basic group and supergroup chats only
   @override
   KeyboardButtonTypeRequestChat copyWith({
     int? id,
@@ -443,11 +491,14 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
     botIsMember: botIsMember ?? this.botIsMember,
   );
 
+  /// TDLib object type
   static const String objectType = 'keyboardButtonTypeRequestChat';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -478,6 +529,7 @@ final class KeyboardButtonTypeWebApp extends KeyboardButtonType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -486,7 +538,10 @@ final class KeyboardButtonTypeWebApp extends KeyboardButtonType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [url]: An HTTP URL to pass to getWebAppUrl
   @override
   KeyboardButtonTypeWebApp copyWith({
     String? url,
@@ -494,11 +549,14 @@ final class KeyboardButtonTypeWebApp extends KeyboardButtonType {
     url: url ?? this.url,
   );
 
+  /// TDLib object type
   static const String objectType = 'keyboardButtonTypeWebApp';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

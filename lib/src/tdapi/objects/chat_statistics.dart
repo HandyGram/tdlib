@@ -27,17 +27,21 @@ sealed class ChatStatistics extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   ChatStatistics copyWith();
 
+  /// TDLib object type
   static const String objectType = 'chatStatistics';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -185,6 +189,7 @@ final class ChatStatisticsSupergroup extends ChatStatistics {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -208,7 +213,25 @@ final class ChatStatisticsSupergroup extends ChatStatistics {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [period]: A period to which the statistics applies
+  /// * [member_count]: Number of members in the chat
+  /// * [message_count]: Number of messages sent to the chat
+  /// * [viewer_count]: Number of users who viewed messages in the chat
+  /// * [sender_count]: Number of users who sent messages to the chat
+  /// * [member_count_graph]: A graph containing number of members in the chat
+  /// * [join_graph]: A graph containing number of members joined and left the chat
+  /// * [join_by_source_graph]: A graph containing number of new member joins per source
+  /// * [language_graph]: A graph containing distribution of active users per language
+  /// * [message_content_graph]: A graph containing distribution of sent messages by content type
+  /// * [action_graph]: A graph containing number of different actions in the chat
+  /// * [day_graph]: A graph containing distribution of message views per hour
+  /// * [week_graph]: A graph containing distribution of message views per day of week
+  /// * [top_senders]: List of users sent most messages in the last week
+  /// * [top_administrators]: List of most active administrators in the last week
+  /// * [top_inviters]: List of most active inviters of new members in the last week
   @override
   ChatStatisticsSupergroup copyWith({
     DateRange? period,
@@ -250,11 +273,14 @@ final class ChatStatisticsSupergroup extends ChatStatistics {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatStatisticsSupergroup';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -395,6 +421,7 @@ final class ChatStatisticsChannel extends ChatStatistics {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -417,7 +444,24 @@ final class ChatStatisticsChannel extends ChatStatistics {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [period]: A period to which the statistics applies
+  /// * [member_count]: Number of members in the chat
+  /// * [mean_view_count]: Mean number of times the recently sent messages was viewed
+  /// * [mean_share_count]: Mean number of times the recently sent messages was shared
+  /// * [enabled_notifications_percentage]: A percentage of users with enabled notifications for the chat
+  /// * [member_count_graph]: A graph containing number of members in the chat
+  /// * [join_graph]: A graph containing number of members joined and left the chat
+  /// * [mute_graph]: A graph containing number of members muted and unmuted the chat
+  /// * [view_count_by_hour_graph]: A graph containing number of message views in a given hour in the last two weeks
+  /// * [view_count_by_source_graph]: A graph containing number of message views per source
+  /// * [join_by_source_graph]: A graph containing number of new member joins per source
+  /// * [language_graph]: A graph containing number of users viewed chat messages per language
+  /// * [message_interaction_graph]: A graph containing number of chat message views and shares
+  /// * [instant_view_interaction_graph]: A graph containing number of views of associated with the chat instant views
+  /// * [recent_message_interactions]: Detailed statistics about number of views and shares of recently sent messages
   @override
   ChatStatisticsChannel copyWith({
     DateRange? period,
@@ -457,11 +501,14 @@ final class ChatStatisticsChannel extends ChatStatistics {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatStatisticsChannel';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

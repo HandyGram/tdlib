@@ -60,6 +60,7 @@ final class MessageSendOptions extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -73,7 +74,15 @@ final class MessageSendOptions extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [disable_notification]: Pass true to disable notification for the message
+  /// * [from_background]: Pass true if the message is sent from the background
+  /// * [protect_content]: Pass true if the content of the message must be protected from forwarding and saving; for bots only
+  /// * [update_order_of_installed_sticker_sets]: Pass true if the user explicitly chosen a sticker or a custom emoji from an installed sticker set; applicable only to sendMessage and sendMessageAlbum
+  /// * [scheduling_state]: Message scheduling state; pass null to send message immediately. Messages sent to a secret chat, live location messages and self-destructing messages can't be scheduled
+  /// * [sending_id]: Non-persistent identifier, which will be returned back in messageSendingStatePending object and can be used to match sent messages and corresponding updateNewMessage updates
   MessageSendOptions copyWith({
     bool? disableNotification,
     bool? fromBackground,
@@ -90,11 +99,14 @@ final class MessageSendOptions extends TdObject {
     sendingId: sendingId ?? this.sendingId,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageSendOptions';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

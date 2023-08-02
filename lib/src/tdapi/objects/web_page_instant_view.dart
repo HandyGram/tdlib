@@ -72,6 +72,7 @@ final class WebPageInstantView extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -85,7 +86,15 @@ final class WebPageInstantView extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [page_blocks]: Content of the web page
+  /// * [view_count]: Number of the instant view views; 0 if unknown
+  /// * [version]: Version of the instant view; currently, can be 1 or 2
+  /// * [is_rtl]: True, if the instant view must be shown from right to left
+  /// * [is_full]: True, if the instant view contains the full page. A network request might be needed to get the full web page instant view
+  /// * [feedback_link]: An internal link to be opened to leave feedback about the instant view
   WebPageInstantView copyWith({
     List<PageBlock>? pageBlocks,
     int? viewCount,
@@ -106,11 +115,14 @@ final class WebPageInstantView extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'webPageInstantView';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

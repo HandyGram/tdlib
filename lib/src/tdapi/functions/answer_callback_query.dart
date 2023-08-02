@@ -47,6 +47,7 @@ final class AnswerCallbackQuery extends TdFunction {
   /// Time during which the result of the query can be cached, in seconds
   final int cacheTime;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -60,7 +61,14 @@ final class AnswerCallbackQuery extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [callback_query_id]: Identifier of the callback query
+  /// * [text]: Text of the answer
+  /// * [show_alert]: Pass true to show an alert to the user instead of a toast notification
+  /// * [url]: URL to be opened
+  /// * [cache_time]: Time during which the result of the query can be cached, in seconds
   AnswerCallbackQuery copyWith({
     int? callbackQueryId,
     String? text,
@@ -75,11 +83,14 @@ final class AnswerCallbackQuery extends TdFunction {
     cacheTime: cacheTime ?? this.cacheTime,
   );
 
+  /// TDLib object type
   static const String objectType = 'answerCallbackQuery';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

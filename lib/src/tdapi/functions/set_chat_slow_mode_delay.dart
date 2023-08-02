@@ -29,6 +29,7 @@ final class SetChatSlowModeDelay extends TdFunction {
   /// New slow mode delay for the chat, in seconds; must be one of 0, 10, 30, 60, 300, 900, 3600
   final int slowModeDelay;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetChatSlowModeDelay extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [slow_mode_delay]: New slow mode delay for the chat, in seconds; must be one of 0, 10, 30, 60, 300, 900, 3600
   SetChatSlowModeDelay copyWith({
     int? chatId,
     int? slowModeDelay,
@@ -48,11 +53,14 @@ final class SetChatSlowModeDelay extends TdFunction {
     slowModeDelay: slowModeDelay ?? this.slowModeDelay,
   );
 
+  /// TDLib object type
   static const String objectType = 'setChatSlowModeDelay';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -32,6 +32,7 @@ final class PaymentOption extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -41,7 +42,11 @@ final class PaymentOption extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [title]: Title for the payment option 
+  /// * [url]: Payment form URL to be opened in a web view
   PaymentOption copyWith({
     String? title,
     String? url,
@@ -50,11 +55,14 @@ final class PaymentOption extends TdObject {
     url: url ?? this.url,
   );
 
+  /// TDLib object type
   static const String objectType = 'paymentOption';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

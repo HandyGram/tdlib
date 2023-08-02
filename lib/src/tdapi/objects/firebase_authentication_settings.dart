@@ -27,17 +27,21 @@ sealed class FirebaseAuthenticationSettings extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   FirebaseAuthenticationSettings copyWith();
 
+  /// TDLib object type
   static const String objectType = 'firebaseAuthenticationSettings';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -56,6 +60,7 @@ final class FirebaseAuthenticationSettingsAndroid extends FirebaseAuthentication
   /// Parse from a json
   factory FirebaseAuthenticationSettingsAndroid.fromJson(Map<String, dynamic> json) => const FirebaseAuthenticationSettingsAndroid();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -63,15 +68,18 @@ final class FirebaseAuthenticationSettingsAndroid extends FirebaseAuthentication
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   FirebaseAuthenticationSettingsAndroid copyWith() => const FirebaseAuthenticationSettingsAndroid();
 
+  /// TDLib object type
   static const String objectType = 'firebaseAuthenticationSettingsAndroid';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -109,6 +117,7 @@ final class FirebaseAuthenticationSettingsIos extends FirebaseAuthenticationSett
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -118,7 +127,11 @@ final class FirebaseAuthenticationSettingsIos extends FirebaseAuthenticationSett
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [device_token]: Device token from Apple Push Notification service 
+  /// * [is_app_sandbox]: True, if App Sandbox is enabled
   @override
   FirebaseAuthenticationSettingsIos copyWith({
     String? deviceToken,
@@ -128,11 +141,14 @@ final class FirebaseAuthenticationSettingsIos extends FirebaseAuthenticationSett
     isAppSandbox: isAppSandbox ?? this.isAppSandbox,
   );
 
+  /// TDLib object type
   static const String objectType = 'firebaseAuthenticationSettingsIos';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

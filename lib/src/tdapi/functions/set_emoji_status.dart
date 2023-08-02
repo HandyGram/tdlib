@@ -29,6 +29,7 @@ final class SetEmojiStatus extends TdFunction {
   /// Duration of the status, in seconds; pass 0 to keep the status active until it will be changed manually
   final int duration;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetEmojiStatus extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [emoji_status]: New emoji status; pass null to switch to the default badge
+  /// * [duration]: Duration of the status, in seconds; pass 0 to keep the status active until it will be changed manually
   SetEmojiStatus copyWith({
     EmojiStatus? emojiStatus,
     int? duration,
@@ -48,11 +53,14 @@ final class SetEmojiStatus extends TdFunction {
     duration: duration ?? this.duration,
   );
 
+  /// TDLib object type
   static const String objectType = 'setEmojiStatus';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

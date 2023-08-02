@@ -44,6 +44,7 @@ final class Sessions extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -53,7 +54,11 @@ final class Sessions extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sessions]: List of sessions 
+  /// * [inactive_session_ttl_days]: Number of days of inactivity before sessions will automatically be terminated; 1-366 days
   Sessions copyWith({
     List<Session>? sessions,
     int? inactiveSessionTtlDays,
@@ -66,11 +71,14 @@ final class Sessions extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'sessions';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -108,17 +108,21 @@ sealed class PageBlock extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   PageBlock copyWith();
 
+  /// TDLib object type
   static const String objectType = 'pageBlock';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -149,6 +153,7 @@ final class PageBlockTitle extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -157,7 +162,10 @@ final class PageBlockTitle extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [title]: Title
   @override
   PageBlockTitle copyWith({
     RichText? title,
@@ -165,11 +173,14 @@ final class PageBlockTitle extends PageBlock {
     title: title ?? this.title,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockTitle';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -200,6 +211,7 @@ final class PageBlockSubtitle extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -208,7 +220,10 @@ final class PageBlockSubtitle extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [subtitle]: Subtitle
   @override
   PageBlockSubtitle copyWith({
     RichText? subtitle,
@@ -216,11 +231,14 @@ final class PageBlockSubtitle extends PageBlock {
     subtitle: subtitle ?? this.subtitle,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockSubtitle';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -258,6 +276,7 @@ final class PageBlockAuthorDate extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -267,7 +286,11 @@ final class PageBlockAuthorDate extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [author]: Author 
+  /// * [publish_date]: Point in time (Unix timestamp) when the article was published; 0 if unknown
   @override
   PageBlockAuthorDate copyWith({
     RichText? author,
@@ -277,11 +300,14 @@ final class PageBlockAuthorDate extends PageBlock {
     publishDate: publishDate ?? this.publishDate,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockAuthorDate';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -312,6 +338,7 @@ final class PageBlockHeader extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -320,7 +347,10 @@ final class PageBlockHeader extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [header]: Header
   @override
   PageBlockHeader copyWith({
     RichText? header,
@@ -328,11 +358,14 @@ final class PageBlockHeader extends PageBlock {
     header: header ?? this.header,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockHeader';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -363,6 +396,7 @@ final class PageBlockSubheader extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -371,7 +405,10 @@ final class PageBlockSubheader extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [subheader]: Subheader
   @override
   PageBlockSubheader copyWith({
     RichText? subheader,
@@ -379,11 +416,14 @@ final class PageBlockSubheader extends PageBlock {
     subheader: subheader ?? this.subheader,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockSubheader';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -414,6 +454,7 @@ final class PageBlockKicker extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -422,7 +463,10 @@ final class PageBlockKicker extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [kicker]: Kicker
   @override
   PageBlockKicker copyWith({
     RichText? kicker,
@@ -430,11 +474,14 @@ final class PageBlockKicker extends PageBlock {
     kicker: kicker ?? this.kicker,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockKicker';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -465,6 +512,7 @@ final class PageBlockParagraph extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -473,7 +521,10 @@ final class PageBlockParagraph extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Paragraph text
   @override
   PageBlockParagraph copyWith({
     RichText? text,
@@ -481,11 +532,14 @@ final class PageBlockParagraph extends PageBlock {
     text: text ?? this.text,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockParagraph';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -523,6 +577,7 @@ final class PageBlockPreformatted extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -532,7 +587,11 @@ final class PageBlockPreformatted extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Paragraph text 
+  /// * [language]: Programming language for which the text needs to be formatted
   @override
   PageBlockPreformatted copyWith({
     RichText? text,
@@ -542,11 +601,14 @@ final class PageBlockPreformatted extends PageBlock {
     language: language ?? this.language,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockPreformatted';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -577,6 +639,7 @@ final class PageBlockFooter extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -585,7 +648,10 @@ final class PageBlockFooter extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [footer]: Footer
   @override
   PageBlockFooter copyWith({
     RichText? footer,
@@ -593,11 +659,14 @@ final class PageBlockFooter extends PageBlock {
     footer: footer ?? this.footer,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockFooter';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -616,6 +685,7 @@ final class PageBlockDivider extends PageBlock {
   /// Parse from a json
   factory PageBlockDivider.fromJson(Map<String, dynamic> json) => const PageBlockDivider();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -623,15 +693,18 @@ final class PageBlockDivider extends PageBlock {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PageBlockDivider copyWith() => const PageBlockDivider();
 
+  /// TDLib object type
   static const String objectType = 'pageBlockDivider';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -662,6 +735,7 @@ final class PageBlockAnchor extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -670,7 +744,10 @@ final class PageBlockAnchor extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [name]: Name of the anchor
   @override
   PageBlockAnchor copyWith({
     String? name,
@@ -678,11 +755,14 @@ final class PageBlockAnchor extends PageBlock {
     name: name ?? this.name,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockAnchor';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -713,6 +793,7 @@ final class PageBlockList extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -721,7 +802,10 @@ final class PageBlockList extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [items]: The items of the list
   @override
   PageBlockList copyWith({
     List<PageBlockListItem>? items,
@@ -729,11 +813,14 @@ final class PageBlockList extends PageBlock {
     items: items ?? this.items,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockList';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -771,6 +858,7 @@ final class PageBlockBlockQuote extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -780,7 +868,11 @@ final class PageBlockBlockQuote extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Quote text
+  /// * [credit]: Quote credit
   @override
   PageBlockBlockQuote copyWith({
     RichText? text,
@@ -790,11 +882,14 @@ final class PageBlockBlockQuote extends PageBlock {
     credit: credit ?? this.credit,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockBlockQuote';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -832,6 +927,7 @@ final class PageBlockPullQuote extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -841,7 +937,11 @@ final class PageBlockPullQuote extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Quote text
+  /// * [credit]: Quote credit
   @override
   PageBlockPullQuote copyWith({
     RichText? text,
@@ -851,11 +951,14 @@ final class PageBlockPullQuote extends PageBlock {
     credit: credit ?? this.credit,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockPullQuote';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -900,6 +1003,7 @@ final class PageBlockAnimation extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -910,7 +1014,12 @@ final class PageBlockAnimation extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [animation]: Animation file; may be null
+  /// * [caption]: Animation caption
+  /// * [need_autoplay]: True, if the animation must be played automatically
   @override
   PageBlockAnimation copyWith({
     Animation? animation,
@@ -922,11 +1031,14 @@ final class PageBlockAnimation extends PageBlock {
     needAutoplay: needAutoplay ?? this.needAutoplay,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockAnimation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -964,6 +1076,7 @@ final class PageBlockAudio extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -973,7 +1086,11 @@ final class PageBlockAudio extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [audio]: Audio file; may be null
+  /// * [caption]: Audio file caption
   @override
   PageBlockAudio copyWith({
     Audio? audio,
@@ -983,11 +1100,14 @@ final class PageBlockAudio extends PageBlock {
     caption: caption ?? this.caption,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockAudio';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1032,6 +1152,7 @@ final class PageBlockPhoto extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1042,7 +1163,12 @@ final class PageBlockPhoto extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [photo]: Photo file; may be null
+  /// * [caption]: Photo caption
+  /// * [url]: URL that needs to be opened when the photo is clicked
   @override
   PageBlockPhoto copyWith({
     Photo? photo,
@@ -1054,11 +1180,14 @@ final class PageBlockPhoto extends PageBlock {
     url: url ?? this.url,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockPhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1110,6 +1239,7 @@ final class PageBlockVideo extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1121,7 +1251,13 @@ final class PageBlockVideo extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [video]: Video file; may be null
+  /// * [caption]: Video caption
+  /// * [need_autoplay]: True, if the video must be played automatically
+  /// * [is_looped]: True, if the video must be looped
   @override
   PageBlockVideo copyWith({
     Video? video,
@@ -1135,11 +1271,14 @@ final class PageBlockVideo extends PageBlock {
     isLooped: isLooped ?? this.isLooped,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockVideo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1177,6 +1316,7 @@ final class PageBlockVoiceNote extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1186,7 +1326,11 @@ final class PageBlockVoiceNote extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [voice_note]: Voice note; may be null
+  /// * [caption]: Voice note caption
   @override
   PageBlockVoiceNote copyWith({
     VoiceNote? voiceNote,
@@ -1196,11 +1340,14 @@ final class PageBlockVoiceNote extends PageBlock {
     caption: caption ?? this.caption,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockVoiceNote';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1231,6 +1378,7 @@ final class PageBlockCover extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1239,7 +1387,10 @@ final class PageBlockCover extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [cover]: Cover
   @override
   PageBlockCover copyWith({
     PageBlock? cover,
@@ -1247,11 +1398,14 @@ final class PageBlockCover extends PageBlock {
     cover: cover ?? this.cover,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockCover';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1331,6 +1485,7 @@ final class PageBlockEmbedded extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1346,7 +1501,17 @@ final class PageBlockEmbedded extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [url]: Web page URL, if available
+  /// * [html]: HTML-markup of the embedded page
+  /// * [poster_photo]: Poster photo, if available; may be null
+  /// * [width]: Block width; 0 if unknown
+  /// * [height]: Block height; 0 if unknown
+  /// * [caption]: Block caption
+  /// * [is_full_width]: True, if the block must be full width
+  /// * [allow_scrolling]: True, if scrolling needs to be allowed
   @override
   PageBlockEmbedded copyWith({
     String? url,
@@ -1368,11 +1533,14 @@ final class PageBlockEmbedded extends PageBlock {
     allowScrolling: allowScrolling ?? this.allowScrolling,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockEmbedded';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1438,6 +1606,7 @@ final class PageBlockEmbeddedPost extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1451,7 +1620,15 @@ final class PageBlockEmbeddedPost extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [url]: Web page URL
+  /// * [author]: Post author
+  /// * [author_photo]: Post author photo; may be null
+  /// * [date]: Point in time (Unix timestamp) when the post was created; 0 if unknown
+  /// * [page_blocks]: Post content
+  /// * [caption]: Post caption
   @override
   PageBlockEmbeddedPost copyWith({
     String? url,
@@ -1469,11 +1646,14 @@ final class PageBlockEmbeddedPost extends PageBlock {
     caption: caption ?? this.caption,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockEmbeddedPost';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1511,6 +1691,7 @@ final class PageBlockCollage extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1520,7 +1701,11 @@ final class PageBlockCollage extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [page_blocks]: Collage item contents
+  /// * [caption]: Block caption
   @override
   PageBlockCollage copyWith({
     List<PageBlock>? pageBlocks,
@@ -1530,11 +1715,14 @@ final class PageBlockCollage extends PageBlock {
     caption: caption ?? this.caption,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockCollage';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1572,6 +1760,7 @@ final class PageBlockSlideshow extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1581,7 +1770,11 @@ final class PageBlockSlideshow extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [page_blocks]: Slideshow item contents
+  /// * [caption]: Block caption
   @override
   PageBlockSlideshow copyWith({
     List<PageBlock>? pageBlocks,
@@ -1591,11 +1784,14 @@ final class PageBlockSlideshow extends PageBlock {
     caption: caption ?? this.caption,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockSlideshow';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1640,6 +1836,7 @@ final class PageBlockChatLink extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1650,7 +1847,12 @@ final class PageBlockChatLink extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [title]: Chat title
+  /// * [photo]: Chat photo; may be null
+  /// * [username]: Chat username by which all other information about the chat can be resolved
   @override
   PageBlockChatLink copyWith({
     String? title,
@@ -1662,11 +1864,14 @@ final class PageBlockChatLink extends PageBlock {
     username: username ?? this.username,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockChatLink';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1718,6 +1923,7 @@ final class PageBlockTable extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1729,7 +1935,13 @@ final class PageBlockTable extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [caption]: Table caption
+  /// * [cells]: Table cells
+  /// * [is_bordered]: True, if the table is bordered
+  /// * [is_striped]: True, if the table is striped
   @override
   PageBlockTable copyWith({
     RichText? caption,
@@ -1743,11 +1955,14 @@ final class PageBlockTable extends PageBlock {
     isStriped: isStriped ?? this.isStriped,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockTable';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1792,6 +2007,7 @@ final class PageBlockDetails extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1802,7 +2018,12 @@ final class PageBlockDetails extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [header]: Always visible heading for the block
+  /// * [page_blocks]: Block contents
+  /// * [is_open]: True, if the block is open by default
   @override
   PageBlockDetails copyWith({
     RichText? header,
@@ -1814,11 +2035,14 @@ final class PageBlockDetails extends PageBlock {
     isOpen: isOpen ?? this.isOpen,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockDetails';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1856,6 +2080,7 @@ final class PageBlockRelatedArticles extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1865,7 +2090,11 @@ final class PageBlockRelatedArticles extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [header]: Block header
+  /// * [articles]: List of related articles
   @override
   PageBlockRelatedArticles copyWith({
     RichText? header,
@@ -1875,11 +2104,14 @@ final class PageBlockRelatedArticles extends PageBlock {
     articles: articles ?? this.articles,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockRelatedArticles';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1938,6 +2170,7 @@ final class PageBlockMap extends PageBlock {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1950,7 +2183,14 @@ final class PageBlockMap extends PageBlock {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [location]: Location of the map center
+  /// * [zoom]: Map zoom level
+  /// * [width]: Map width
+  /// * [height]: Map height
+  /// * [caption]: Block caption
   @override
   PageBlockMap copyWith({
     Location? location,
@@ -1966,11 +2206,14 @@ final class PageBlockMap extends PageBlock {
     caption: caption ?? this.caption,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockMap';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

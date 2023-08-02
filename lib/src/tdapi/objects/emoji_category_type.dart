@@ -30,17 +30,21 @@ sealed class EmojiCategoryType extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   EmojiCategoryType copyWith();
 
+  /// TDLib object type
   static const String objectType = 'emojiCategoryType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -59,6 +63,7 @@ final class EmojiCategoryTypeDefault extends EmojiCategoryType {
   /// Parse from a json
   factory EmojiCategoryTypeDefault.fromJson(Map<String, dynamic> json) => const EmojiCategoryTypeDefault();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -66,15 +71,18 @@ final class EmojiCategoryTypeDefault extends EmojiCategoryType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   EmojiCategoryTypeDefault copyWith() => const EmojiCategoryTypeDefault();
 
+  /// TDLib object type
   static const String objectType = 'emojiCategoryTypeDefault';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -93,6 +101,7 @@ final class EmojiCategoryTypeEmojiStatus extends EmojiCategoryType {
   /// Parse from a json
   factory EmojiCategoryTypeEmojiStatus.fromJson(Map<String, dynamic> json) => const EmojiCategoryTypeEmojiStatus();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -100,15 +109,18 @@ final class EmojiCategoryTypeEmojiStatus extends EmojiCategoryType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   EmojiCategoryTypeEmojiStatus copyWith() => const EmojiCategoryTypeEmojiStatus();
 
+  /// TDLib object type
   static const String objectType = 'emojiCategoryTypeEmojiStatus';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -127,6 +139,7 @@ final class EmojiCategoryTypeChatPhoto extends EmojiCategoryType {
   /// Parse from a json
   factory EmojiCategoryTypeChatPhoto.fromJson(Map<String, dynamic> json) => const EmojiCategoryTypeChatPhoto();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -134,15 +147,18 @@ final class EmojiCategoryTypeChatPhoto extends EmojiCategoryType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   EmojiCategoryTypeChatPhoto copyWith() => const EmojiCategoryTypeChatPhoto();
 
+  /// TDLib object type
   static const String objectType = 'emojiCategoryTypeChatPhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

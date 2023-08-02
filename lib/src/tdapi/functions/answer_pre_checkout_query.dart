@@ -29,6 +29,7 @@ final class AnswerPreCheckoutQuery extends TdFunction {
   /// An error message, empty on success
   final String errorMessage;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class AnswerPreCheckoutQuery extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [pre_checkout_query_id]: Identifier of the pre-checkout query 
+  /// * [error_message]: An error message, empty on success
   AnswerPreCheckoutQuery copyWith({
     int? preCheckoutQueryId,
     String? errorMessage,
@@ -48,11 +53,14 @@ final class AnswerPreCheckoutQuery extends TdFunction {
     errorMessage: errorMessage ?? this.errorMessage,
   );
 
+  /// TDLib object type
   static const String objectType = 'answerPreCheckoutQuery';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

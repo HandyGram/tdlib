@@ -36,17 +36,21 @@ sealed class NetworkType extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   NetworkType copyWith();
 
+  /// TDLib object type
   static const String objectType = 'networkType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -65,6 +69,7 @@ final class NetworkTypeNone extends NetworkType {
   /// Parse from a json
   factory NetworkTypeNone.fromJson(Map<String, dynamic> json) => const NetworkTypeNone();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -72,15 +77,18 @@ final class NetworkTypeNone extends NetworkType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   NetworkTypeNone copyWith() => const NetworkTypeNone();
 
+  /// TDLib object type
   static const String objectType = 'networkTypeNone';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -99,6 +107,7 @@ final class NetworkTypeMobile extends NetworkType {
   /// Parse from a json
   factory NetworkTypeMobile.fromJson(Map<String, dynamic> json) => const NetworkTypeMobile();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -106,15 +115,18 @@ final class NetworkTypeMobile extends NetworkType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   NetworkTypeMobile copyWith() => const NetworkTypeMobile();
 
+  /// TDLib object type
   static const String objectType = 'networkTypeMobile';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -133,6 +145,7 @@ final class NetworkTypeMobileRoaming extends NetworkType {
   /// Parse from a json
   factory NetworkTypeMobileRoaming.fromJson(Map<String, dynamic> json) => const NetworkTypeMobileRoaming();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -140,15 +153,18 @@ final class NetworkTypeMobileRoaming extends NetworkType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   NetworkTypeMobileRoaming copyWith() => const NetworkTypeMobileRoaming();
 
+  /// TDLib object type
   static const String objectType = 'networkTypeMobileRoaming';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -167,6 +183,7 @@ final class NetworkTypeWiFi extends NetworkType {
   /// Parse from a json
   factory NetworkTypeWiFi.fromJson(Map<String, dynamic> json) => const NetworkTypeWiFi();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -174,15 +191,18 @@ final class NetworkTypeWiFi extends NetworkType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   NetworkTypeWiFi copyWith() => const NetworkTypeWiFi();
 
+  /// TDLib object type
   static const String objectType = 'networkTypeWiFi';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -201,6 +221,7 @@ final class NetworkTypeOther extends NetworkType {
   /// Parse from a json
   factory NetworkTypeOther.fromJson(Map<String, dynamic> json) => const NetworkTypeOther();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -208,15 +229,18 @@ final class NetworkTypeOther extends NetworkType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   NetworkTypeOther copyWith() => const NetworkTypeOther();
 
+  /// TDLib object type
   static const String objectType = 'networkTypeOther';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -27,17 +27,21 @@ sealed class MessageSendingState extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   MessageSendingState copyWith();
 
+  /// TDLib object type
   static const String objectType = 'messageSendingState';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -68,6 +72,7 @@ final class MessageSendingStatePending extends MessageSendingState {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -76,7 +81,10 @@ final class MessageSendingStatePending extends MessageSendingState {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sending_id]: Non-persistent message sending identifier, specified by the application
   @override
   MessageSendingStatePending copyWith({
     int? sendingId,
@@ -84,11 +92,14 @@ final class MessageSendingStatePending extends MessageSendingState {
     sendingId: sendingId ?? this.sendingId,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageSendingStatePending';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -147,6 +158,7 @@ final class MessageSendingStateFailed extends MessageSendingState {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -159,7 +171,14 @@ final class MessageSendingStateFailed extends MessageSendingState {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [error_code]: An error code; 0 if unknown
+  /// * [error_message]: Error message
+  /// * [can_retry]: True, if the message can be re-sent
+  /// * [need_another_sender]: True, if the message can be re-sent only on behalf of a different sender
+  /// * [retry_after]: Time left before the message can be re-sent, in seconds. No update is sent when this field changes
   @override
   MessageSendingStateFailed copyWith({
     int? errorCode,
@@ -175,11 +194,14 @@ final class MessageSendingStateFailed extends MessageSendingState {
     retryAfter: retryAfter ?? this.retryAfter,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageSendingStateFailed';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

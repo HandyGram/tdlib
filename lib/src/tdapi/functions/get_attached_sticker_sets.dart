@@ -23,6 +23,7 @@ final class GetAttachedStickerSets extends TdFunction {
   /// File identifier
   final int fileId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetAttachedStickerSets extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [file_id]: File identifier
   GetAttachedStickerSets copyWith({
     int? fileId,
   }) => GetAttachedStickerSets(
     fileId: fileId ?? this.fileId,
   );
 
+  /// TDLib object type
   static const String objectType = 'getAttachedStickerSets';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

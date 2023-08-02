@@ -23,6 +23,7 @@ final class AddSavedNotificationSound extends TdFunction {
   /// Notification sound file to add
   final InputFile sound;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class AddSavedNotificationSound extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sound]: Notification sound file to add
   AddSavedNotificationSound copyWith({
     InputFile? sound,
   }) => AddSavedNotificationSound(
     sound: sound ?? this.sound,
   );
 
+  /// TDLib object type
   static const String objectType = 'addSavedNotificationSound';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -29,6 +29,7 @@ final class ToggleSupergroupSignMessages extends TdFunction {
   /// New value of sign_messages
   final bool signMessages;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ToggleSupergroupSignMessages extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [supergroup_id]: Identifier of the channel 
+  /// * [sign_messages]: New value of sign_messages
   ToggleSupergroupSignMessages copyWith({
     int? supergroupId,
     bool? signMessages,
@@ -48,11 +53,14 @@ final class ToggleSupergroupSignMessages extends TdFunction {
     signMessages: signMessages ?? this.signMessages,
   );
 
+  /// TDLib object type
   static const String objectType = 'toggleSupergroupSignMessages';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

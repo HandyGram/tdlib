@@ -23,6 +23,7 @@ final class GetMemoryStatistics extends TdFunction {
   /// Full memory statistics calculation
   final bool full;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetMemoryStatistics extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [full]: Full memory statistics calculation
   GetMemoryStatistics copyWith({
     bool? full,
   }) => GetMemoryStatistics(
     full: full ?? this.full,
   );
 
+  /// TDLib object type
   static const String objectType = 'getMemoryStatistics';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

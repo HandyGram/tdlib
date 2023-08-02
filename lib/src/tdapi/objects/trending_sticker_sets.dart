@@ -51,6 +51,7 @@ final class TrendingStickerSets extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -61,7 +62,12 @@ final class TrendingStickerSets extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [total_count]: Approximate total number of trending sticker sets 
+  /// * [sets]: List of trending sticker sets 
+  /// * [is_premium]: True, if the list contains sticker sets with premium stickers
   TrendingStickerSets copyWith({
     int? totalCount,
     List<StickerSetInfo>? sets,
@@ -76,11 +82,14 @@ final class TrendingStickerSets extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'trendingStickerSets';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

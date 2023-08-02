@@ -29,6 +29,7 @@ final class EditChatFolder extends TdFunction {
   /// The edited chat folder
   final ChatFolder folder;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class EditChatFolder extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_folder_id]: Chat folder identifier 
+  /// * [folder]: The edited chat folder
   EditChatFolder copyWith({
     int? chatFolderId,
     ChatFolder? folder,
@@ -48,11 +53,14 @@ final class EditChatFolder extends TdFunction {
     folder: folder ?? this.folder,
   );
 
+  /// TDLib object type
   static const String objectType = 'editChatFolder';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

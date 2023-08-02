@@ -59,6 +59,7 @@ final class OpenWebApp extends TdFunction {
   /// Identifier of the replied message for the message sent by the Web App; 0 if none
   final int replyToMessageId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -74,7 +75,16 @@ final class OpenWebApp extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat in which the Web App is opened. The Web App can't be opened in secret chats
+  /// * [bot_user_id]: Identifier of the bot, providing the Web App
+  /// * [url]: The URL from an inlineKeyboardButtonTypeWebApp button, a botMenuButton button, or an internalLinkTypeAttachmentMenuBot link, or an empty string otherwise
+  /// * [theme]: Preferred Web App theme; pass null to use the default theme
+  /// * [application_name]: Short name of the application; 0-64 English letters, digits, and underscores
+  /// * [message_thread_id]: If not 0, a message thread identifier in which the message will be sent
+  /// * [reply_to_message_id]: Identifier of the replied message for the message sent by the Web App; 0 if none
   OpenWebApp copyWith({
     int? chatId,
     int? botUserId,
@@ -93,11 +103,14 @@ final class OpenWebApp extends TdFunction {
     replyToMessageId: replyToMessageId ?? this.replyToMessageId,
   );
 
+  /// TDLib object type
   static const String objectType = 'openWebApp';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

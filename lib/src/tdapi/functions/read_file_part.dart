@@ -35,6 +35,7 @@ final class ReadFilePart extends TdFunction {
   /// Number of bytes to read. An error will be returned if there are not enough bytes available in the file from the specified position. Pass 0 to read all available data from the specified position
   final int count;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class ReadFilePart extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [file_id]: Identifier of the file. The file must be located in the TDLib file cache
+  /// * [offset]: The offset from which to read the file
+  /// * [count]: Number of bytes to read. An error will be returned if there are not enough bytes available in the file from the specified position. Pass 0 to read all available data from the specified position
   ReadFilePart copyWith({
     int? fileId,
     int? offset,
@@ -57,11 +63,14 @@ final class ReadFilePart extends TdFunction {
     count: count ?? this.count,
   );
 
+  /// TDLib object type
   static const String objectType = 'readFilePart';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

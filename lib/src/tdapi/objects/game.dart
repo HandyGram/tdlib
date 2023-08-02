@@ -67,6 +67,7 @@ final class Game extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -81,7 +82,16 @@ final class Game extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique game identifier
+  /// * [short_name]: Game short name
+  /// * [title]: Game title
+  /// * [text]: Game text, usually containing scoreboards for a game
+  /// * [description]: Game description
+  /// * [photo]: Game photo
+  /// * [animation]: Game animation; may be null
   Game copyWith({
     int? id,
     String? shortName,
@@ -100,11 +110,14 @@ final class Game extends TdObject {
     animation: animation ?? this.animation,
   );
 
+  /// TDLib object type
   static const String objectType = 'game';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -29,6 +29,7 @@ final class ProcessChatFolderNewChats extends TdFunction {
   /// Identifiers of the new chats, which are added to the chat folder. The chats are automatically joined if they aren't joined yet
   final List<int> addedChatIds;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ProcessChatFolderNewChats extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_folder_id]: Chat folder identifier 
+  /// * [added_chat_ids]: Identifiers of the new chats, which are added to the chat folder. The chats are automatically joined if they aren't joined yet
   ProcessChatFolderNewChats copyWith({
     int? chatFolderId,
     List<int>? addedChatIds,
@@ -48,11 +53,14 @@ final class ProcessChatFolderNewChats extends TdFunction {
     addedChatIds: addedChatIds ?? this.addedChatIds,
   );
 
+  /// TDLib object type
   static const String objectType = 'processChatFolderNewChats';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

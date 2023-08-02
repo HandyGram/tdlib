@@ -53,6 +53,7 @@ final class NotificationGroup extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -65,7 +66,14 @@ final class NotificationGroup extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique persistent auto-incremented from 1 identifier of the notification group
+  /// * [type]: Type of the group
+  /// * [chat_id]: Identifier of a chat to which all notifications in the group belong
+  /// * [total_count]: Total number of active notifications in the group
+  /// * [notifications]: The list of active notifications
   NotificationGroup copyWith({
     int? id,
     NotificationGroupType? type,
@@ -80,11 +88,14 @@ final class NotificationGroup extends TdObject {
     notifications: notifications ?? this.notifications,
   );
 
+  /// TDLib object type
   static const String objectType = 'notificationGroup';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

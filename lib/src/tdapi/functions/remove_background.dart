@@ -23,6 +23,7 @@ final class RemoveBackground extends TdFunction {
   /// The background identifier
   final int backgroundId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class RemoveBackground extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [background_id]: The background identifier
   RemoveBackground copyWith({
     int? backgroundId,
   }) => RemoveBackground(
     backgroundId: backgroundId ?? this.backgroundId,
   );
 
+  /// TDLib object type
   static const String objectType = 'removeBackground';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

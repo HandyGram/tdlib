@@ -29,6 +29,7 @@ final class ToggleGroupCallEnabledStartNotification extends TdFunction {
   /// New value of the enabled_start_notification setting
   final bool enabledStartNotification;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ToggleGroupCallEnabledStartNotification extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [group_call_id]: Group call identifier
+  /// * [enabled_start_notification]: New value of the enabled_start_notification setting
   ToggleGroupCallEnabledStartNotification copyWith({
     int? groupCallId,
     bool? enabledStartNotification,
@@ -48,11 +53,14 @@ final class ToggleGroupCallEnabledStartNotification extends TdFunction {
     enabledStartNotification: enabledStartNotification ?? this.enabledStartNotification,
   );
 
+  /// TDLib object type
   static const String objectType = 'toggleGroupCallEnabledStartNotification';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

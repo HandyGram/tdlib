@@ -51,6 +51,7 @@ final class AddedReactions extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -61,7 +62,12 @@ final class AddedReactions extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [total_count]: The total number of found reactions 
+  /// * [reactions]: The list of added reactions 
+  /// * [next_offset]: The offset for the next request. If empty, there are no more results
   AddedReactions copyWith({
     int? totalCount,
     List<AddedReaction>? reactions,
@@ -76,11 +82,14 @@ final class AddedReactions extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'addedReactions';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -88,6 +88,7 @@ final class Video extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -105,7 +106,19 @@ final class Video extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [duration]: Duration of the video, in seconds; as defined by the sender
+  /// * [width]: Video width; as defined by the sender
+  /// * [height]: Video height; as defined by the sender
+  /// * [file_name]: Original name of the file; as defined by the sender
+  /// * [mime_type]: MIME type of the file; as defined by the sender
+  /// * [has_stickers]: True, if stickers were added to the video. The list of corresponding sticker sets can be received using getAttachedStickerSets
+  /// * [supports_streaming]: True, if the video is supposed to be streamed
+  /// * [minithumbnail]: Video minithumbnail; may be null
+  /// * [thumbnail]: Video thumbnail in JPEG or MPEG4 format; as defined by the sender; may be null
+  /// * [video]: File containing the video
   Video copyWith({
     int? duration,
     int? width,
@@ -130,11 +143,14 @@ final class Video extends TdObject {
     video: video ?? this.video,
   );
 
+  /// TDLib object type
   static const String objectType = 'video';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

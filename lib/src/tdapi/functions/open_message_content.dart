@@ -29,6 +29,7 @@ final class OpenMessageContent extends TdFunction {
   /// Identifier of the message with the opened content
   final int messageId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class OpenMessageContent extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier of the message
+  /// * [message_id]: Identifier of the message with the opened content
   OpenMessageContent copyWith({
     int? chatId,
     int? messageId,
@@ -48,11 +53,14 @@ final class OpenMessageContent extends TdFunction {
     messageId: messageId ?? this.messageId,
   );
 
+  /// TDLib object type
   static const String objectType = 'openMessageContent';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

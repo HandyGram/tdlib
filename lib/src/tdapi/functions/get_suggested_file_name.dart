@@ -29,6 +29,7 @@ final class GetSuggestedFileName extends TdFunction {
   /// Directory in which the file is supposed to be saved
   final String directory;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class GetSuggestedFileName extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [file_id]: Identifier of the file 
+  /// * [directory]: Directory in which the file is supposed to be saved
   GetSuggestedFileName copyWith({
     int? fileId,
     String? directory,
@@ -48,11 +53,14 @@ final class GetSuggestedFileName extends TdFunction {
     directory: directory ?? this.directory,
   );
 
+  /// TDLib object type
   static const String objectType = 'getSuggestedFileName';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

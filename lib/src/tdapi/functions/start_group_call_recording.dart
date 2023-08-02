@@ -41,6 +41,7 @@ final class StartGroupCallRecording extends TdFunction {
   /// Pass true to use portrait orientation for video instead of landscape one
   final bool usePortraitOrientation;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -53,7 +54,13 @@ final class StartGroupCallRecording extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [group_call_id]: Group call identifier
+  /// * [title]: Group call recording title; 0-64 characters
+  /// * [record_video]: Pass true to record a video file instead of an audio file
+  /// * [use_portrait_orientation]: Pass true to use portrait orientation for video instead of landscape one
   StartGroupCallRecording copyWith({
     int? groupCallId,
     String? title,
@@ -66,11 +73,14 @@ final class StartGroupCallRecording extends TdFunction {
     usePortraitOrientation: usePortraitOrientation ?? this.usePortraitOrientation,
   );
 
+  /// TDLib object type
   static const String objectType = 'startGroupCallRecording';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

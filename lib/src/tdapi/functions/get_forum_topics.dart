@@ -53,6 +53,7 @@ final class GetForumTopics extends TdFunction {
   /// The maximum number of forum topics to be returned; up to 100. For optimal performance, the number of returned forum topics is chosen by TDLib and can be smaller than the specified limit
   final int limit;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -67,7 +68,15 @@ final class GetForumTopics extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the forum chat
+  /// * [query]: Query to search for in the forum topic's name
+  /// * [offset_date]: The date starting from which the results need to be fetched. Use 0 or any date in the future to get results from the last topic
+  /// * [offset_message_id]: The message identifier of the last message in the last found topic, or 0 for the first request
+  /// * [offset_message_thread_id]: The message thread identifier of the last found topic, or 0 for the first request
+  /// * [limit]: The maximum number of forum topics to be returned; up to 100. For optimal performance, the number of returned forum topics is chosen by TDLib and can be smaller than the specified limit
   GetForumTopics copyWith({
     int? chatId,
     String? query,
@@ -84,11 +93,14 @@ final class GetForumTopics extends TdFunction {
     limit: limit ?? this.limit,
   );
 
+  /// TDLib object type
   static const String objectType = 'getForumTopics';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -39,6 +39,7 @@ final class Usernames extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class Usernames extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [active_usernames]: List of active usernames; the first one must be shown as the primary username. The order of active usernames can be changed with reorderActiveUsernames, reorderBotActiveUsernames or reorderSupergroupActiveUsernames
+  /// * [disabled_usernames]: List of currently disabled usernames; the username can be activated with toggleUsernameIsActive, toggleBotUsernameIsActive, or toggleSupergroupUsernameIsActive
+  /// * [editable_username]: The active username, which can be changed with setUsername or setSupergroupUsername
   Usernames copyWith({
     List<String>? activeUsernames,
     List<String>? disabledUsernames,
@@ -60,11 +66,14 @@ final class Usernames extends TdObject {
     editableUsername: editableUsername ?? this.editableUsername,
   );
 
+  /// TDLib object type
   static const String objectType = 'usernames';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

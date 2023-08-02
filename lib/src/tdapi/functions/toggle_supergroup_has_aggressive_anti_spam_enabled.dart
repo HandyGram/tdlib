@@ -29,6 +29,7 @@ final class ToggleSupergroupHasAggressiveAntiSpamEnabled extends TdFunction {
   /// The new value of has_aggressive_anti_spam_enabled
   final bool hasAggressiveAntiSpamEnabled;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ToggleSupergroupHasAggressiveAntiSpamEnabled extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [supergroup_id]: The identifier of the supergroup, which isn't a broadcast group
+  /// * [has_aggressive_anti_spam_enabled]: The new value of has_aggressive_anti_spam_enabled
   ToggleSupergroupHasAggressiveAntiSpamEnabled copyWith({
     int? supergroupId,
     bool? hasAggressiveAntiSpamEnabled,
@@ -48,11 +53,14 @@ final class ToggleSupergroupHasAggressiveAntiSpamEnabled extends TdFunction {
     hasAggressiveAntiSpamEnabled: hasAggressiveAntiSpamEnabled ?? this.hasAggressiveAntiSpamEnabled,
   );
 
+  /// TDLib object type
   static const String objectType = 'toggleSupergroupHasAggressiveAntiSpamEnabled';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

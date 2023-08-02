@@ -35,6 +35,7 @@ final class GetMessageEmbeddingCode extends TdFunction {
   /// Pass true to return an HTML code for embedding of the whole media album
   final bool forAlbum;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class GetMessageEmbeddingCode extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat to which the message belongs
+  /// * [message_id]: Identifier of the message
+  /// * [for_album]: Pass true to return an HTML code for embedding of the whole media album
   GetMessageEmbeddingCode copyWith({
     int? chatId,
     int? messageId,
@@ -57,11 +63,14 @@ final class GetMessageEmbeddingCode extends TdFunction {
     forAlbum: forAlbum ?? this.forAlbum,
   );
 
+  /// TDLib object type
   static const String objectType = 'getMessageEmbeddingCode';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -65,6 +65,7 @@ final class AnimatedEmoji extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -77,7 +78,14 @@ final class AnimatedEmoji extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sticker]: Sticker for the emoji; may be null if yet unknown for a custom emoji. If the sticker is a custom emoji, it can have arbitrary format different from stickerFormatTgs
+  /// * [sticker_width]: Expected width of the sticker, which can be used if the sticker is null
+  /// * [sticker_height]: Expected height of the sticker, which can be used if the sticker is null
+  /// * [fitzpatrick_type]: Emoji modifier fitzpatrick type; 0-6; 0 if none
+  /// * [sound]: File containing the sound to be played when the sticker is clicked; may be null. The sound is encoded with the Opus codec, and stored inside an OGG container
   AnimatedEmoji copyWith({
     Sticker? sticker,
     int? stickerWidth,
@@ -96,11 +104,14 @@ final class AnimatedEmoji extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'animatedEmoji';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

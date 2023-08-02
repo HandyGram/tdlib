@@ -29,6 +29,7 @@ final class RemoveNotificationGroup extends TdFunction {
   /// The maximum identifier of removed notifications
   final int maxNotificationId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class RemoveNotificationGroup extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [notification_group_id]: Notification group identifier 
+  /// * [max_notification_id]: The maximum identifier of removed notifications
   RemoveNotificationGroup copyWith({
     int? notificationGroupId,
     int? maxNotificationId,
@@ -48,11 +53,14 @@ final class RemoveNotificationGroup extends TdFunction {
     maxNotificationId: maxNotificationId ?? this.maxNotificationId,
   );
 
+  /// TDLib object type
   static const String objectType = 'removeNotificationGroup';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

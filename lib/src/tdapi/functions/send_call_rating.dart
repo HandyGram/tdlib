@@ -41,6 +41,7 @@ final class SendCallRating extends TdFunction {
   /// List of the exact types of problems with the call, specified by the user
   final List<CallProblem> problems;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -53,7 +54,13 @@ final class SendCallRating extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [call_id]: Call identifier
+  /// * [rating]: Call rating; 1-5
+  /// * [comment]: An optional user comment if the rating is less than 5
+  /// * [problems]: List of the exact types of problems with the call, specified by the user
   SendCallRating copyWith({
     int? callId,
     int? rating,
@@ -66,11 +73,14 @@ final class SendCallRating extends TdFunction {
     problems: problems ?? this.problems,
   );
 
+  /// TDLib object type
   static const String objectType = 'sendCallRating';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

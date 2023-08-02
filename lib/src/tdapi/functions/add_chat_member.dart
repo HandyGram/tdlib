@@ -35,6 +35,7 @@ final class AddChatMember extends TdFunction {
   /// The number of earlier messages from the chat to be forwarded to the new member; up to 100. Ignored for supergroups and channels, or if the added user is a bot
   final int forwardLimit;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class AddChatMember extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [user_id]: Identifier of the user
+  /// * [forward_limit]: The number of earlier messages from the chat to be forwarded to the new member; up to 100. Ignored for supergroups and channels, or if the added user is a bot
   AddChatMember copyWith({
     int? chatId,
     int? userId,
@@ -57,11 +63,14 @@ final class AddChatMember extends TdFunction {
     forwardLimit: forwardLimit ?? this.forwardLimit,
   );
 
+  /// TDLib object type
   static const String objectType = 'addChatMember';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

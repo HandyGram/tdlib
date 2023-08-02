@@ -29,6 +29,7 @@ final class GetChatNotificationSettingsExceptions extends TdFunction {
   /// Pass true to include in the response chats with only non-default sound
   final bool compareSound;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class GetChatNotificationSettingsExceptions extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [scope]: If specified, only chats from the scope will be returned; pass null to return chats from all scopes
+  /// * [compare_sound]: Pass true to include in the response chats with only non-default sound
   GetChatNotificationSettingsExceptions copyWith({
     NotificationSettingsScope? scope,
     bool? compareSound,
@@ -48,11 +53,14 @@ final class GetChatNotificationSettingsExceptions extends TdFunction {
     compareSound: compareSound ?? this.compareSound,
   );
 
+  /// TDLib object type
   static const String objectType = 'getChatNotificationSettingsExceptions';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

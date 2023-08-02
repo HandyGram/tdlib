@@ -25,6 +25,7 @@ final class ClosedVectorPath extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -33,18 +34,24 @@ final class ClosedVectorPath extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [commands]: List of vector path commands
   ClosedVectorPath copyWith({
     List<VectorPathCommand>? commands,
   }) => ClosedVectorPath(
     commands: commands ?? this.commands,
   );
 
+  /// TDLib object type
   static const String objectType = 'closedVectorPath';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

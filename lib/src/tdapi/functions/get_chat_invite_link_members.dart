@@ -41,6 +41,7 @@ final class GetChatInviteLinkMembers extends TdFunction {
   /// The maximum number of chat members to return; up to 100
   final int limit;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -53,7 +54,13 @@ final class GetChatInviteLinkMembers extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [invite_link]: Invite link for which to return chat members
+  /// * [offset_member]: A chat member from which to return next chat members; pass null to get results from the beginning
+  /// * [limit]: The maximum number of chat members to return; up to 100
   GetChatInviteLinkMembers copyWith({
     int? chatId,
     String? inviteLink,
@@ -66,11 +73,14 @@ final class GetChatInviteLinkMembers extends TdFunction {
     limit: limit ?? this.limit,
   );
 
+  /// TDLib object type
   static const String objectType = 'getChatInviteLinkMembers';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

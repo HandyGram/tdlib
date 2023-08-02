@@ -67,6 +67,7 @@ final class ThemeParameters extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -81,7 +82,16 @@ final class ThemeParameters extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [background_color]: A color of the background in the RGB24 format
+  /// * [secondary_background_color]: A secondary color for the background in the RGB24 format
+  /// * [text_color]: A color of text in the RGB24 format
+  /// * [hint_color]: A color of hints in the RGB24 format
+  /// * [link_color]: A color of links in the RGB24 format
+  /// * [button_color]: A color of the buttons in the RGB24 format
+  /// * [button_text_color]: A color of text on the buttons in the RGB24 format
   ThemeParameters copyWith({
     int? backgroundColor,
     int? secondaryBackgroundColor,
@@ -100,11 +110,14 @@ final class ThemeParameters extends TdObject {
     buttonTextColor: buttonTextColor ?? this.buttonTextColor,
   );
 
+  /// TDLib object type
   static const String objectType = 'themeParameters';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

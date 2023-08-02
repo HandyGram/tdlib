@@ -30,17 +30,21 @@ sealed class ResetPasswordResult extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   ResetPasswordResult copyWith();
 
+  /// TDLib object type
   static const String objectType = 'resetPasswordResult';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -74,6 +78,7 @@ final class ResetPasswordResultOk extends ResetPasswordResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -81,7 +86,7 @@ final class ResetPasswordResultOk extends ResetPasswordResult {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ResetPasswordResultOk copyWith({
     dynamic extra,
@@ -91,11 +96,14 @@ final class ResetPasswordResultOk extends ResetPasswordResult {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'resetPasswordResultOk';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -138,6 +146,7 @@ final class ResetPasswordResultPending extends ResetPasswordResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -146,7 +155,10 @@ final class ResetPasswordResultPending extends ResetPasswordResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [pending_reset_date]: Point in time (Unix timestamp) after which the password can be reset immediately using resetPassword
   @override
   ResetPasswordResultPending copyWith({
     int? pendingResetDate,
@@ -158,11 +170,14 @@ final class ResetPasswordResultPending extends ResetPasswordResult {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'resetPasswordResultPending';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -205,6 +220,7 @@ final class ResetPasswordResultDeclined extends ResetPasswordResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -213,7 +229,10 @@ final class ResetPasswordResultDeclined extends ResetPasswordResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [retry_date]: Point in time (Unix timestamp) when the password reset can be retried
   @override
   ResetPasswordResultDeclined copyWith({
     int? retryDate,
@@ -225,11 +244,14 @@ final class ResetPasswordResultDeclined extends ResetPasswordResult {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'resetPasswordResultDeclined';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

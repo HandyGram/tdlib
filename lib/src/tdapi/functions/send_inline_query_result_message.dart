@@ -59,6 +59,7 @@ final class SendInlineQueryResultMessage extends TdFunction {
   /// Pass true to hide the bot, via which the message is sent. Can be used only for bots getOption("animation_search_bot_username"), getOption("photo_search_bot_username"), and getOption("venue_search_bot_username")
   final bool hideViaBot;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -74,7 +75,16 @@ final class SendInlineQueryResultMessage extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Target chat
+  /// * [message_thread_id]: If not 0, a message thread identifier in which the message will be sent
+  /// * [reply_to_message_id]: Identifier of a replied message; 0 if none
+  /// * [options]: Options to be used to send the message; pass null to use default options
+  /// * [query_id]: Identifier of the inline query
+  /// * [result_id]: Identifier of the inline result
+  /// * [hide_via_bot]: Pass true to hide the bot, via which the message is sent. Can be used only for bots getOption("animation_search_bot_username"), getOption("photo_search_bot_username"), and getOption("venue_search_bot_username")
   SendInlineQueryResultMessage copyWith({
     int? chatId,
     int? messageThreadId,
@@ -93,11 +103,14 @@ final class SendInlineQueryResultMessage extends TdFunction {
     hideViaBot: hideViaBot ?? this.hideViaBot,
   );
 
+  /// TDLib object type
   static const String objectType = 'sendInlineQueryResultMessage';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

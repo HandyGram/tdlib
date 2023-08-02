@@ -23,6 +23,7 @@ final class JoinChatByInviteLink extends TdFunction {
   /// Invite link to use
   final String inviteLink;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class JoinChatByInviteLink extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [invite_link]: Invite link to use
   JoinChatByInviteLink copyWith({
     String? inviteLink,
   }) => JoinChatByInviteLink(
     inviteLink: inviteLink ?? this.inviteLink,
   );
 
+  /// TDLib object type
   static const String objectType = 'joinChatByInviteLink';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

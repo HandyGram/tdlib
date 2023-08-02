@@ -29,6 +29,7 @@ final class SearchHashtags extends TdFunction {
   /// The maximum number of hashtags to be returned
   final int limit;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SearchHashtags extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [prefix]: Hashtag prefix to search for 
+  /// * [limit]: The maximum number of hashtags to be returned
   SearchHashtags copyWith({
     String? prefix,
     int? limit,
@@ -48,11 +53,14 @@ final class SearchHashtags extends TdFunction {
     limit: limit ?? this.limit,
   );
 
+  /// TDLib object type
   static const String objectType = 'searchHashtags';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

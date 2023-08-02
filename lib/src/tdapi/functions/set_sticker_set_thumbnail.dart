@@ -35,6 +35,7 @@ final class SetStickerSetThumbnail extends TdFunction {
   /// Thumbnail to set in PNG, TGS, or WEBM format; pass null to remove the sticker set thumbnail. Thumbnail format must match the format of stickers in the set
   final InputFile? thumbnail;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class SetStickerSetThumbnail extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: Sticker set owner
+  /// * [name]: Sticker set name
+  /// * [thumbnail]: Thumbnail to set in PNG, TGS, or WEBM format; pass null to remove the sticker set thumbnail. Thumbnail format must match the format of stickers in the set
   SetStickerSetThumbnail copyWith({
     int? userId,
     String? name,
@@ -57,11 +63,14 @@ final class SetStickerSetThumbnail extends TdFunction {
     thumbnail: thumbnail ?? this.thumbnail,
   );
 
+  /// TDLib object type
   static const String objectType = 'setStickerSetThumbnail';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

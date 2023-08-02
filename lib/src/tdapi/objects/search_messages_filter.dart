@@ -72,17 +72,21 @@ sealed class SearchMessagesFilter extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   SearchMessagesFilter copyWith();
 
+  /// TDLib object type
   static const String objectType = 'searchMessagesFilter';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -101,6 +105,7 @@ final class SearchMessagesFilterEmpty extends SearchMessagesFilter {
   /// Parse from a json
   factory SearchMessagesFilterEmpty.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterEmpty();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -108,15 +113,18 @@ final class SearchMessagesFilterEmpty extends SearchMessagesFilter {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SearchMessagesFilterEmpty copyWith() => const SearchMessagesFilterEmpty();
 
+  /// TDLib object type
   static const String objectType = 'searchMessagesFilterEmpty';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -135,6 +143,7 @@ final class SearchMessagesFilterAnimation extends SearchMessagesFilter {
   /// Parse from a json
   factory SearchMessagesFilterAnimation.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterAnimation();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -142,15 +151,18 @@ final class SearchMessagesFilterAnimation extends SearchMessagesFilter {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SearchMessagesFilterAnimation copyWith() => const SearchMessagesFilterAnimation();
 
+  /// TDLib object type
   static const String objectType = 'searchMessagesFilterAnimation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -169,6 +181,7 @@ final class SearchMessagesFilterAudio extends SearchMessagesFilter {
   /// Parse from a json
   factory SearchMessagesFilterAudio.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterAudio();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -176,15 +189,18 @@ final class SearchMessagesFilterAudio extends SearchMessagesFilter {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SearchMessagesFilterAudio copyWith() => const SearchMessagesFilterAudio();
 
+  /// TDLib object type
   static const String objectType = 'searchMessagesFilterAudio';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -203,6 +219,7 @@ final class SearchMessagesFilterDocument extends SearchMessagesFilter {
   /// Parse from a json
   factory SearchMessagesFilterDocument.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterDocument();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -210,15 +227,18 @@ final class SearchMessagesFilterDocument extends SearchMessagesFilter {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SearchMessagesFilterDocument copyWith() => const SearchMessagesFilterDocument();
 
+  /// TDLib object type
   static const String objectType = 'searchMessagesFilterDocument';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -237,6 +257,7 @@ final class SearchMessagesFilterPhoto extends SearchMessagesFilter {
   /// Parse from a json
   factory SearchMessagesFilterPhoto.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterPhoto();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -244,15 +265,18 @@ final class SearchMessagesFilterPhoto extends SearchMessagesFilter {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SearchMessagesFilterPhoto copyWith() => const SearchMessagesFilterPhoto();
 
+  /// TDLib object type
   static const String objectType = 'searchMessagesFilterPhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -271,6 +295,7 @@ final class SearchMessagesFilterVideo extends SearchMessagesFilter {
   /// Parse from a json
   factory SearchMessagesFilterVideo.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterVideo();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -278,15 +303,18 @@ final class SearchMessagesFilterVideo extends SearchMessagesFilter {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SearchMessagesFilterVideo copyWith() => const SearchMessagesFilterVideo();
 
+  /// TDLib object type
   static const String objectType = 'searchMessagesFilterVideo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -305,6 +333,7 @@ final class SearchMessagesFilterVoiceNote extends SearchMessagesFilter {
   /// Parse from a json
   factory SearchMessagesFilterVoiceNote.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterVoiceNote();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -312,15 +341,18 @@ final class SearchMessagesFilterVoiceNote extends SearchMessagesFilter {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SearchMessagesFilterVoiceNote copyWith() => const SearchMessagesFilterVoiceNote();
 
+  /// TDLib object type
   static const String objectType = 'searchMessagesFilterVoiceNote';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -339,6 +371,7 @@ final class SearchMessagesFilterPhotoAndVideo extends SearchMessagesFilter {
   /// Parse from a json
   factory SearchMessagesFilterPhotoAndVideo.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterPhotoAndVideo();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -346,15 +379,18 @@ final class SearchMessagesFilterPhotoAndVideo extends SearchMessagesFilter {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SearchMessagesFilterPhotoAndVideo copyWith() => const SearchMessagesFilterPhotoAndVideo();
 
+  /// TDLib object type
   static const String objectType = 'searchMessagesFilterPhotoAndVideo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -373,6 +409,7 @@ final class SearchMessagesFilterUrl extends SearchMessagesFilter {
   /// Parse from a json
   factory SearchMessagesFilterUrl.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterUrl();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -380,15 +417,18 @@ final class SearchMessagesFilterUrl extends SearchMessagesFilter {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SearchMessagesFilterUrl copyWith() => const SearchMessagesFilterUrl();
 
+  /// TDLib object type
   static const String objectType = 'searchMessagesFilterUrl';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -407,6 +447,7 @@ final class SearchMessagesFilterChatPhoto extends SearchMessagesFilter {
   /// Parse from a json
   factory SearchMessagesFilterChatPhoto.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterChatPhoto();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -414,15 +455,18 @@ final class SearchMessagesFilterChatPhoto extends SearchMessagesFilter {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SearchMessagesFilterChatPhoto copyWith() => const SearchMessagesFilterChatPhoto();
 
+  /// TDLib object type
   static const String objectType = 'searchMessagesFilterChatPhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -441,6 +485,7 @@ final class SearchMessagesFilterVideoNote extends SearchMessagesFilter {
   /// Parse from a json
   factory SearchMessagesFilterVideoNote.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterVideoNote();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -448,15 +493,18 @@ final class SearchMessagesFilterVideoNote extends SearchMessagesFilter {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SearchMessagesFilterVideoNote copyWith() => const SearchMessagesFilterVideoNote();
 
+  /// TDLib object type
   static const String objectType = 'searchMessagesFilterVideoNote';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -475,6 +523,7 @@ final class SearchMessagesFilterVoiceAndVideoNote extends SearchMessagesFilter {
   /// Parse from a json
   factory SearchMessagesFilterVoiceAndVideoNote.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterVoiceAndVideoNote();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -482,15 +531,18 @@ final class SearchMessagesFilterVoiceAndVideoNote extends SearchMessagesFilter {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SearchMessagesFilterVoiceAndVideoNote copyWith() => const SearchMessagesFilterVoiceAndVideoNote();
 
+  /// TDLib object type
   static const String objectType = 'searchMessagesFilterVoiceAndVideoNote';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -509,6 +561,7 @@ final class SearchMessagesFilterMention extends SearchMessagesFilter {
   /// Parse from a json
   factory SearchMessagesFilterMention.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterMention();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -516,15 +569,18 @@ final class SearchMessagesFilterMention extends SearchMessagesFilter {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SearchMessagesFilterMention copyWith() => const SearchMessagesFilterMention();
 
+  /// TDLib object type
   static const String objectType = 'searchMessagesFilterMention';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -543,6 +599,7 @@ final class SearchMessagesFilterUnreadMention extends SearchMessagesFilter {
   /// Parse from a json
   factory SearchMessagesFilterUnreadMention.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterUnreadMention();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -550,15 +607,18 @@ final class SearchMessagesFilterUnreadMention extends SearchMessagesFilter {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SearchMessagesFilterUnreadMention copyWith() => const SearchMessagesFilterUnreadMention();
 
+  /// TDLib object type
   static const String objectType = 'searchMessagesFilterUnreadMention';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -577,6 +637,7 @@ final class SearchMessagesFilterUnreadReaction extends SearchMessagesFilter {
   /// Parse from a json
   factory SearchMessagesFilterUnreadReaction.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterUnreadReaction();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -584,15 +645,18 @@ final class SearchMessagesFilterUnreadReaction extends SearchMessagesFilter {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SearchMessagesFilterUnreadReaction copyWith() => const SearchMessagesFilterUnreadReaction();
 
+  /// TDLib object type
   static const String objectType = 'searchMessagesFilterUnreadReaction';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -611,6 +675,7 @@ final class SearchMessagesFilterFailedToSend extends SearchMessagesFilter {
   /// Parse from a json
   factory SearchMessagesFilterFailedToSend.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterFailedToSend();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -618,15 +683,18 @@ final class SearchMessagesFilterFailedToSend extends SearchMessagesFilter {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SearchMessagesFilterFailedToSend copyWith() => const SearchMessagesFilterFailedToSend();
 
+  /// TDLib object type
   static const String objectType = 'searchMessagesFilterFailedToSend';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -645,6 +713,7 @@ final class SearchMessagesFilterPinned extends SearchMessagesFilter {
   /// Parse from a json
   factory SearchMessagesFilterPinned.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterPinned();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -652,15 +721,18 @@ final class SearchMessagesFilterPinned extends SearchMessagesFilter {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SearchMessagesFilterPinned copyWith() => const SearchMessagesFilterPinned();
 
+  /// TDLib object type
   static const String objectType = 'searchMessagesFilterPinned';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

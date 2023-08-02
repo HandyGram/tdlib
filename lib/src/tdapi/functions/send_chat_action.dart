@@ -35,6 +35,7 @@ final class SendChatAction extends TdFunction {
   /// The action description; pass null to cancel the currently active action
   final ChatAction? action;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class SendChatAction extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [message_thread_id]: If not 0, a message thread identifier in which the action was performed 
+  /// * [action]: The action description; pass null to cancel the currently active action
   SendChatAction copyWith({
     int? chatId,
     int? messageThreadId,
@@ -57,11 +63,14 @@ final class SendChatAction extends TdFunction {
     action: action ?? this.action,
   );
 
+  /// TDLib object type
   static const String objectType = 'sendChatAction';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

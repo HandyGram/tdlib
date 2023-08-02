@@ -29,6 +29,7 @@ final class ToggleGeneralForumTopicIsHidden extends TdFunction {
   /// Pass true to hide and close the General topic; pass false to unhide it
   final bool isHidden;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ToggleGeneralForumTopicIsHidden extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat
+  /// * [is_hidden]: Pass true to hide and close the General topic; pass false to unhide it
   ToggleGeneralForumTopicIsHidden copyWith({
     int? chatId,
     bool? isHidden,
@@ -48,11 +53,14 @@ final class ToggleGeneralForumTopicIsHidden extends TdFunction {
     isHidden: isHidden ?? this.isHidden,
   );
 
+  /// TDLib object type
   static const String objectType = 'toggleGeneralForumTopicIsHidden';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

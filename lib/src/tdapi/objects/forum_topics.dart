@@ -65,6 +65,7 @@ final class ForumTopics extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -77,7 +78,14 @@ final class ForumTopics extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [total_count]: Approximate total number of forum topics found
+  /// * [topics]: List of forum topics
+  /// * [next_offset_date]: Offset date for the next getForumTopics request
+  /// * [next_offset_message_id]: Offset message identifier for the next getForumTopics request
+  /// * [next_offset_message_thread_id]: Offset message thread identifier for the next getForumTopics request
   ForumTopics copyWith({
     int? totalCount,
     List<ForumTopic>? topics,
@@ -96,11 +104,14 @@ final class ForumTopics extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'forumTopics';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

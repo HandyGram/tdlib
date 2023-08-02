@@ -72,6 +72,7 @@ final class NotificationSound extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -85,7 +86,15 @@ final class NotificationSound extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the notification sound
+  /// * [duration]: Duration of the sound, in seconds
+  /// * [date]: Point in time (Unix timestamp) when the sound was created
+  /// * [title]: Title of the notification sound
+  /// * [data]: Arbitrary data, defined while the sound was uploaded
+  /// * [sound]: File containing the sound
   NotificationSound copyWith({
     int? id,
     int? duration,
@@ -106,11 +115,14 @@ final class NotificationSound extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'notificationSound';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -15,6 +15,7 @@ final class DisableProxy extends TdFunction {
   const DisableProxy();
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -23,14 +24,17 @@ final class DisableProxy extends TdFunction {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   DisableProxy copyWith() => const DisableProxy();
 
+  /// TDLib object type
   static const String objectType = 'disableProxy';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

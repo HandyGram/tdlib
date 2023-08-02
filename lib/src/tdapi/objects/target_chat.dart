@@ -30,17 +30,21 @@ sealed class TargetChat extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   TargetChat copyWith();
 
+  /// TDLib object type
   static const String objectType = 'targetChat';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -59,6 +63,7 @@ final class TargetChatCurrent extends TargetChat {
   /// Parse from a json
   factory TargetChatCurrent.fromJson(Map<String, dynamic> json) => const TargetChatCurrent();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -66,15 +71,18 @@ final class TargetChatCurrent extends TargetChat {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   TargetChatCurrent copyWith() => const TargetChatCurrent();
 
+  /// TDLib object type
   static const String objectType = 'targetChatCurrent';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -126,6 +134,7 @@ final class TargetChatChosen extends TargetChat {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -137,7 +146,13 @@ final class TargetChatChosen extends TargetChat {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [allow_user_chats]: True, if private chats with ordinary users are allowed
+  /// * [allow_bot_chats]: True, if private chats with other bots are allowed
+  /// * [allow_group_chats]: True, if basic group and supergroup chats are allowed
+  /// * [allow_channel_chats]: True, if channel chats are allowed
   @override
   TargetChatChosen copyWith({
     bool? allowUserChats,
@@ -151,11 +166,14 @@ final class TargetChatChosen extends TargetChat {
     allowChannelChats: allowChannelChats ?? this.allowChannelChats,
   );
 
+  /// TDLib object type
   static const String objectType = 'targetChatChosen';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -186,6 +204,7 @@ final class TargetChatInternalLink extends TargetChat {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -194,7 +213,10 @@ final class TargetChatInternalLink extends TargetChat {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [link]: An internal link pointing to the chat
   @override
   TargetChatInternalLink copyWith({
     InternalLinkType? link,
@@ -202,11 +224,14 @@ final class TargetChatInternalLink extends TargetChat {
     link: link ?? this.link,
   );
 
+  /// TDLib object type
   static const String objectType = 'targetChatInternalLink';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -23,6 +23,7 @@ final class HideSuggestedAction extends TdFunction {
   /// Suggested action to hide
   final SuggestedAction action;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class HideSuggestedAction extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [action]: Suggested action to hide
   HideSuggestedAction copyWith({
     SuggestedAction? action,
   }) => HideSuggestedAction(
     action: action ?? this.action,
   );
 
+  /// TDLib object type
   static const String objectType = 'hideSuggestedAction';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

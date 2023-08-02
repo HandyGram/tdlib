@@ -23,6 +23,7 @@ final class GetRecentStickers extends TdFunction {
   /// Pass true to return stickers and masks that were recently attached to photos or video files; pass false to return recently sent stickers
   final bool isAttached;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetRecentStickers extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [is_attached]: Pass true to return stickers and masks that were recently attached to photos or video files; pass false to return recently sent stickers
   GetRecentStickers copyWith({
     bool? isAttached,
   }) => GetRecentStickers(
     isAttached: isAttached ?? this.isAttached,
   );
 
+  /// TDLib object type
   static const String objectType = 'getRecentStickers';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

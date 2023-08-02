@@ -35,6 +35,7 @@ final class GetMessageAvailableReactions extends TdFunction {
   /// Number of reaction per row, 5-25
   final int rowSize;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class GetMessageAvailableReactions extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat to which the message belongs
+  /// * [message_id]: Identifier of the message
+  /// * [row_size]: Number of reaction per row, 5-25
   GetMessageAvailableReactions copyWith({
     int? chatId,
     int? messageId,
@@ -57,11 +63,14 @@ final class GetMessageAvailableReactions extends TdFunction {
     rowSize: rowSize ?? this.rowSize,
   );
 
+  /// TDLib object type
   static const String objectType = 'getMessageAvailableReactions';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

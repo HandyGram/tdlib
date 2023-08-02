@@ -23,6 +23,7 @@ final class GetDeepLinkInfo extends TdFunction {
   /// The link
   final String link;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetDeepLinkInfo extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [link]: The link
   GetDeepLinkInfo copyWith({
     String? link,
   }) => GetDeepLinkInfo(
     link: link ?? this.link,
   );
 
+  /// TDLib object type
   static const String objectType = 'getDeepLinkInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

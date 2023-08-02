@@ -41,6 +41,7 @@ final class BanChatMember extends TdFunction {
   /// Pass true to delete all messages in the chat for the user that is being removed. Always true for supergroups and channels
   final bool revokeMessages;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -53,7 +54,13 @@ final class BanChatMember extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [member_id]: Member identifier
+  /// * [banned_until_date]: Point in time (Unix timestamp) when the user will be unbanned; 0 if never. If the user is banned for more than 366 days or for less than 30 seconds from the current time, the user is considered to be banned forever. Ignored in basic groups and if a chat is banned
+  /// * [revoke_messages]: Pass true to delete all messages in the chat for the user that is being removed. Always true for supergroups and channels
   BanChatMember copyWith({
     int? chatId,
     MessageSender? memberId,
@@ -66,11 +73,14 @@ final class BanChatMember extends TdFunction {
     revokeMessages: revokeMessages ?? this.revokeMessages,
   );
 
+  /// TDLib object type
   static const String objectType = 'banChatMember';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

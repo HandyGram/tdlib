@@ -39,6 +39,7 @@ final class EncryptedCredentials extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class EncryptedCredentials extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [data]: The encrypted credentials 
+  /// * [hash]: The decrypted data hash 
+  /// * [secret]: Secret for data decryption, encrypted with the service's public key
   EncryptedCredentials copyWith({
     String? data,
     String? hash,
@@ -60,11 +66,14 @@ final class EncryptedCredentials extends TdObject {
     secret: secret ?? this.secret,
   );
 
+  /// TDLib object type
   static const String objectType = 'encryptedCredentials';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

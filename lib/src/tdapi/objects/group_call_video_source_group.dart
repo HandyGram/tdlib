@@ -32,6 +32,7 @@ final class GroupCallVideoSourceGroup extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -41,7 +42,11 @@ final class GroupCallVideoSourceGroup extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [semantics]: The semantics of sources, one of "SIM" or "FgroupCallVideoSourceGroup" 
+  /// * [source_ids]: The list of synchronization source identifiers
   GroupCallVideoSourceGroup copyWith({
     String? semantics,
     List<int>? sourceIds,
@@ -50,11 +55,14 @@ final class GroupCallVideoSourceGroup extends TdObject {
     sourceIds: sourceIds ?? this.sourceIds,
   );
 
+  /// TDLib object type
   static const String objectType = 'groupCallVideoSourceGroup';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -44,6 +44,7 @@ final class EmailAddressAuthenticationCodeInfo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -53,7 +54,11 @@ final class EmailAddressAuthenticationCodeInfo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [email_address_pattern]: Pattern of the email address to which an authentication code was sent
+  /// * [length]: Length of the code; 0 if unknown
   EmailAddressAuthenticationCodeInfo copyWith({
     String? emailAddressPattern,
     int? length,
@@ -66,11 +71,14 @@ final class EmailAddressAuthenticationCodeInfo extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'emailAddressAuthenticationCodeInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

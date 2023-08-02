@@ -35,6 +35,7 @@ final class ToggleBotIsAddedToAttachmentMenu extends TdFunction {
   /// Pass true if the current user allowed the bot to send them messages. Ignored if is_added is false
   final bool allowWriteAccess;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class ToggleBotIsAddedToAttachmentMenu extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [bot_user_id]: Bot's user identifier
+  /// * [is_added]: Pass true to add the bot to attachment menu; pass false to remove the bot from attachment menu
+  /// * [allow_write_access]: Pass true if the current user allowed the bot to send them messages. Ignored if is_added is false
   ToggleBotIsAddedToAttachmentMenu copyWith({
     int? botUserId,
     bool? isAdded,
@@ -57,11 +63,14 @@ final class ToggleBotIsAddedToAttachmentMenu extends TdFunction {
     allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
   );
 
+  /// TDLib object type
   static const String objectType = 'toggleBotIsAddedToAttachmentMenu';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

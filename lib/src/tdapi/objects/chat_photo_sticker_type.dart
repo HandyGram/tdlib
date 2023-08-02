@@ -27,17 +27,21 @@ sealed class ChatPhotoStickerType extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   ChatPhotoStickerType copyWith();
 
+  /// TDLib object type
   static const String objectType = 'chatPhotoStickerType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -75,6 +79,7 @@ final class ChatPhotoStickerTypeRegularOrMask extends ChatPhotoStickerType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -84,7 +89,11 @@ final class ChatPhotoStickerTypeRegularOrMask extends ChatPhotoStickerType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sticker_set_id]: Sticker set identifier
+  /// * [sticker_id]: Identifier of the sticker in the set
   @override
   ChatPhotoStickerTypeRegularOrMask copyWith({
     int? stickerSetId,
@@ -94,11 +103,14 @@ final class ChatPhotoStickerTypeRegularOrMask extends ChatPhotoStickerType {
     stickerId: stickerId ?? this.stickerId,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatPhotoStickerTypeRegularOrMask';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -129,6 +141,7 @@ final class ChatPhotoStickerTypeCustomEmoji extends ChatPhotoStickerType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -137,7 +150,10 @@ final class ChatPhotoStickerTypeCustomEmoji extends ChatPhotoStickerType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [custom_emoji_id]: Identifier of the custom emoji
   @override
   ChatPhotoStickerTypeCustomEmoji copyWith({
     int? customEmojiId,
@@ -145,11 +161,14 @@ final class ChatPhotoStickerTypeCustomEmoji extends ChatPhotoStickerType {
     customEmojiId: customEmojiId ?? this.customEmojiId,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatPhotoStickerTypeCustomEmoji';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -35,6 +35,7 @@ final class SetForumTopicNotificationSettings extends TdFunction {
   /// New notification settings for the forum topic. If the topic is muted for more than 366 days, it is considered to be muted forever
   final ChatNotificationSettings notificationSettings;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class SetForumTopicNotificationSettings extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [message_thread_id]: Message thread identifier of the forum topic
+  /// * [notification_settings]: New notification settings for the forum topic. If the topic is muted for more than 366 days, it is considered to be muted forever
   SetForumTopicNotificationSettings copyWith({
     int? chatId,
     int? messageThreadId,
@@ -57,11 +63,14 @@ final class SetForumTopicNotificationSettings extends TdFunction {
     notificationSettings: notificationSettings ?? this.notificationSettings,
   );
 
+  /// TDLib object type
   static const String objectType = 'setForumTopicNotificationSettings';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -53,6 +53,7 @@ final class SetGameScore extends TdFunction {
   /// Pass true to update the score even if it decreases. If the score is 0, the user will be deleted from the high score table
   final bool force;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -67,7 +68,15 @@ final class SetGameScore extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: The chat to which the message with the game belongs
+  /// * [message_id]: Identifier of the message
+  /// * [edit_message]: Pass true to edit the game message to include the current scoreboard
+  /// * [user_id]: User identifier
+  /// * [score]: The new score
+  /// * [force]: Pass true to update the score even if it decreases. If the score is 0, the user will be deleted from the high score table
   SetGameScore copyWith({
     int? chatId,
     int? messageId,
@@ -84,11 +93,14 @@ final class SetGameScore extends TdFunction {
     force: force ?? this.force,
   );
 
+  /// TDLib object type
   static const String objectType = 'setGameScore';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

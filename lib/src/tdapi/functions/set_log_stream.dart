@@ -23,6 +23,7 @@ final class SetLogStream extends TdFunction {
   /// New log stream
   final LogStream logStream;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class SetLogStream extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [log_stream]: New log stream
   SetLogStream copyWith({
     LogStream? logStream,
   }) => SetLogStream(
     logStream: logStream ?? this.logStream,
   );
 
+  /// TDLib object type
   static const String objectType = 'setLogStream';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

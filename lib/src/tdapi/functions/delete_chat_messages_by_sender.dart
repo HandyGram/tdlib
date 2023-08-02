@@ -29,6 +29,7 @@ final class DeleteChatMessagesBySender extends TdFunction {
   /// Identifier of the sender of messages to delete
   final MessageSender senderId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class DeleteChatMessagesBySender extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [sender_id]: Identifier of the sender of messages to delete
   DeleteChatMessagesBySender copyWith({
     int? chatId,
     MessageSender? senderId,
@@ -48,11 +53,14 @@ final class DeleteChatMessagesBySender extends TdFunction {
     senderId: senderId ?? this.senderId,
   );
 
+  /// TDLib object type
   static const String objectType = 'deleteChatMessagesBySender';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

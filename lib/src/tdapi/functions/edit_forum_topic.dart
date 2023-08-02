@@ -47,6 +47,7 @@ final class EditForumTopic extends TdFunction {
   /// Identifier of the new custom emoji for topic icon; pass 0 to remove the custom emoji. Ignored if edit_icon_custom_emoji is false. Telegram Premium users can use any custom emoji, other users can use only a custom emoji returned by getForumTopicDefaultIcons
   final int iconCustomEmojiId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -60,7 +61,14 @@ final class EditForumTopic extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat
+  /// * [message_thread_id]: Message thread identifier of the forum topic
+  /// * [name]: New name of the topic; 0-128 characters. If empty, the previous topic name is kept
+  /// * [edit_icon_custom_emoji]: Pass true to edit the icon of the topic. Icon of the General topic can't be edited
+  /// * [icon_custom_emoji_id]: Identifier of the new custom emoji for topic icon; pass 0 to remove the custom emoji. Ignored if edit_icon_custom_emoji is false. Telegram Premium users can use any custom emoji, other users can use only a custom emoji returned by getForumTopicDefaultIcons
   EditForumTopic copyWith({
     int? chatId,
     int? messageThreadId,
@@ -75,11 +83,14 @@ final class EditForumTopic extends TdFunction {
     iconCustomEmojiId: iconCustomEmojiId ?? this.iconCustomEmojiId,
   );
 
+  /// TDLib object type
   static const String objectType = 'editForumTopic';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

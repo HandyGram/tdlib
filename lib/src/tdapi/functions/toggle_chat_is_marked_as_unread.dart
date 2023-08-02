@@ -29,6 +29,7 @@ final class ToggleChatIsMarkedAsUnread extends TdFunction {
   /// New value of is_marked_as_unread
   final bool isMarkedAsUnread;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ToggleChatIsMarkedAsUnread extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [is_marked_as_unread]: New value of is_marked_as_unread
   ToggleChatIsMarkedAsUnread copyWith({
     int? chatId,
     bool? isMarkedAsUnread,
@@ -48,11 +53,14 @@ final class ToggleChatIsMarkedAsUnread extends TdFunction {
     isMarkedAsUnread: isMarkedAsUnread ?? this.isMarkedAsUnread,
   );
 
+  /// TDLib object type
   static const String objectType = 'toggleChatIsMarkedAsUnread';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -113,6 +113,7 @@ final class SetTdlibParameters extends TdFunction {
   /// Pass true to ignore original file names for downloaded files. Otherwise, downloaded files are saved under names as close as possible to the original name
   final bool ignoreFileNames;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -137,7 +138,25 @@ final class SetTdlibParameters extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [use_test_dc]: Pass true to use Telegram test environment instead of the production environment
+  /// * [database_directory]: The path to the directory for the persistent database; if empty, the current working directory will be used
+  /// * [files_directory]: The path to the directory for storing files; if empty, database_directory will be used
+  /// * [database_encryption_key]: Encryption key for the database. If the encryption key is invalid, then an error with code 401 will be returned
+  /// * [use_file_database]: Pass true to keep information about downloaded and uploaded files between application restarts
+  /// * [use_chat_info_database]: Pass true to keep cache of users, basic groups, supergroups, channels and secret chats between restarts. Implies use_file_database
+  /// * [use_message_database]: Pass true to keep cache of chats and messages between restarts. Implies use_chat_info_database
+  /// * [use_secret_chats]: Pass true to enable support for secret chats
+  /// * [api_id]: Application identifier for Telegram API access, which can be obtained at https://my.telegram.org
+  /// * [api_hash]: Application identifier hash for Telegram API access, which can be obtained at https://my.telegram.org
+  /// * [system_language_code]: IETF language tag of the user's operating system language; must be non-empty
+  /// * [device_model]: Model of the device the application is being run on; must be non-empty
+  /// * [system_version]: Version of the operating system the application is being run on. If empty, the version is automatically detected by TDLib
+  /// * [application_version]: Application version; must be non-empty
+  /// * [enable_storage_optimizer]: Pass true to automatically delete old files in background
+  /// * [ignore_file_names]: Pass true to ignore original file names for downloaded files. Otherwise, downloaded files are saved under names as close as possible to the original name
   SetTdlibParameters copyWith({
     bool? useTestDc,
     String? databaseDirectory,
@@ -174,11 +193,14 @@ final class SetTdlibParameters extends TdFunction {
     ignoreFileNames: ignoreFileNames ?? this.ignoreFileNames,
   );
 
+  /// TDLib object type
   static const String objectType = 'setTdlibParameters';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

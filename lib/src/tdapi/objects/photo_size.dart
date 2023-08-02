@@ -53,6 +53,7 @@ final class PhotoSize extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -65,7 +66,14 @@ final class PhotoSize extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [type]: Image type (see https://core.telegram.org/constructor/photoSize)
+  /// * [photo]: Information about the image file
+  /// * [width]: Image width
+  /// * [height]: Image height
+  /// * [progressive_sizes]: Sizes of progressive JPEG file prefixes, which can be used to preliminarily show the image; in bytes
   PhotoSize copyWith({
     String? type,
     File? photo,
@@ -80,11 +88,14 @@ final class PhotoSize extends TdObject {
     progressiveSizes: progressiveSizes ?? this.progressiveSizes,
   );
 
+  /// TDLib object type
   static const String objectType = 'photoSize';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

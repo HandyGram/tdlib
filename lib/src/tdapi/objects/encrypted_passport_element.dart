@@ -81,6 +81,7 @@ final class EncryptedPassportElement extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -97,7 +98,18 @@ final class EncryptedPassportElement extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [type]: Type of Telegram Passport element
+  /// * [data]: Encrypted JSON-encoded data about the user
+  /// * [front_side]: The front side of an identity document
+  /// * [reverse_side]: The reverse side of an identity document; may be null
+  /// * [selfie]: Selfie with the document; may be null
+  /// * [translation]: List of files containing a certified English translation of the document
+  /// * [files]: List of attached files
+  /// * [value]: Unencrypted data, phone number or email address
+  /// * [hash]: Hash of the entire element
   EncryptedPassportElement copyWith({
     PassportElementType? type,
     String? data,
@@ -120,11 +132,14 @@ final class EncryptedPassportElement extends TdObject {
     hash: hash ?? this.hash,
   );
 
+  /// TDLib object type
   static const String objectType = 'encryptedPassportElement';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

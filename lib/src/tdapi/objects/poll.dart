@@ -88,6 +88,7 @@ final class Poll extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -105,7 +106,19 @@ final class Poll extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique poll identifier
+  /// * [question]: Poll question; 1-300 characters
+  /// * [options]: List of poll answer options
+  /// * [total_voter_count]: Total number of voters, participating in the poll
+  /// * [recent_voter_user_ids]: User identifiers of recent voters, if the poll is non-anonymous
+  /// * [is_anonymous]: True, if the poll is anonymous
+  /// * [type]: Type of the poll
+  /// * [open_period]: Amount of time the poll will be active after creation, in seconds
+  /// * [close_date]: Point in time (Unix timestamp) when the poll will automatically be closed
+  /// * [is_closed]: True, if the poll is closed
   Poll copyWith({
     int? id,
     String? question,
@@ -130,11 +143,14 @@ final class Poll extends TdObject {
     isClosed: isClosed ?? this.isClosed,
   );
 
+  /// TDLib object type
   static const String objectType = 'poll';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

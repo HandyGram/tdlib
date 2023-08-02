@@ -41,6 +41,7 @@ final class ViewMessages extends TdFunction {
   /// Pass true to mark as read the specified messages even the chat is closed
   final bool forceRead;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -53,7 +54,13 @@ final class ViewMessages extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [message_ids]: The identifiers of the messages being viewed
+  /// * [source]: Source of the message view; pass null to guess the source based on chat open state
+  /// * [force_read]: Pass true to mark as read the specified messages even the chat is closed
   ViewMessages copyWith({
     int? chatId,
     List<int>? messageIds,
@@ -66,11 +73,14 @@ final class ViewMessages extends TdFunction {
     forceRead: forceRead ?? this.forceRead,
   );
 
+  /// TDLib object type
   static const String objectType = 'viewMessages';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

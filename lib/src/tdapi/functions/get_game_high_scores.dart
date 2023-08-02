@@ -35,6 +35,7 @@ final class GetGameHighScores extends TdFunction {
   /// User identifier
   final int userId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class GetGameHighScores extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: The chat that contains the message with the game 
+  /// * [message_id]: Identifier of the message 
+  /// * [user_id]: User identifier
   GetGameHighScores copyWith({
     int? chatId,
     int? messageId,
@@ -57,11 +63,14 @@ final class GetGameHighScores extends TdFunction {
     userId: userId ?? this.userId,
   );
 
+  /// TDLib object type
   static const String objectType = 'getGameHighScores';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

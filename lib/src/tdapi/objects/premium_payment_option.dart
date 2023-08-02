@@ -60,6 +60,7 @@ final class PremiumPaymentOption extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -73,7 +74,15 @@ final class PremiumPaymentOption extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [currency]: ISO 4217 currency code for Telegram Premium subscription payment
+  /// * [amount]: The amount to pay, in the smallest units of the currency
+  /// * [discount_percentage]: The discount associated with this option, as a percentage
+  /// * [month_count]: Number of month the Telegram Premium subscription will be active
+  /// * [store_product_id]: Identifier of the store product associated with the option
+  /// * [payment_link]: An internal link to be opened for buying Telegram Premium to the user if store payment isn't possible; may be null if direct payment isn't available
   PremiumPaymentOption copyWith({
     String? currency,
     int? amount,
@@ -90,11 +99,14 @@ final class PremiumPaymentOption extends TdObject {
     paymentLink: paymentLink ?? this.paymentLink,
   );
 
+  /// TDLib object type
   static const String objectType = 'premiumPaymentOption';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -23,6 +23,7 @@ final class ViewTrendingStickerSets extends TdFunction {
   /// Identifiers of viewed trending sticker sets
   final List<int> stickerSetIds;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class ViewTrendingStickerSets extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sticker_set_ids]: Identifiers of viewed trending sticker sets
   ViewTrendingStickerSets copyWith({
     List<int>? stickerSetIds,
   }) => ViewTrendingStickerSets(
     stickerSetIds: stickerSetIds ?? this.stickerSetIds,
   );
 
+  /// TDLib object type
   static const String objectType = 'viewTrendingStickerSets';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

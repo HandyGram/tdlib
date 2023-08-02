@@ -39,6 +39,7 @@ final class AccessHash extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class AccessHash extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [type]: Access hash type
+  /// * [access_hash]: Access hash
   AccessHash copyWith({
     int? chatId,
     AccessHashType? type,
@@ -60,11 +66,14 @@ final class AccessHash extends TdObject {
     accessHash: accessHash ?? this.accessHash,
   );
 
+  /// TDLib object type
   static const String objectType = 'accessHash';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

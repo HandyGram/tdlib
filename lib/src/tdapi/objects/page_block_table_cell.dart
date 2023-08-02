@@ -60,6 +60,7 @@ final class PageBlockTableCell extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -73,7 +74,15 @@ final class PageBlockTableCell extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Cell text; may be null. If the text is null, then the cell must be invisible
+  /// * [is_header]: True, if it is a header cell
+  /// * [colspan]: The number of columns the cell spans
+  /// * [rowspan]: The number of rows the cell spans
+  /// * [align]: Horizontal cell content alignment
+  /// * [valign]: Vertical cell content alignment
   PageBlockTableCell copyWith({
     RichText? text,
     bool? isHeader,
@@ -90,11 +99,14 @@ final class PageBlockTableCell extends TdObject {
     valign: valign ?? this.valign,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockTableCell';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

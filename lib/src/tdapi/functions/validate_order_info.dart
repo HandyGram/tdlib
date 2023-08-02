@@ -35,6 +35,7 @@ final class ValidateOrderInfo extends TdFunction {
   /// Pass true to save the order information
   final bool allowSave;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class ValidateOrderInfo extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [input_invoice]: The invoice
+  /// * [order_info]: The order information, provided by the user; pass null if empty
+  /// * [allow_save]: Pass true to save the order information
   ValidateOrderInfo copyWith({
     InputInvoice? inputInvoice,
     OrderInfo? orderInfo,
@@ -57,11 +63,14 @@ final class ValidateOrderInfo extends TdFunction {
     allowSave: allowSave ?? this.allowSave,
   );
 
+  /// TDLib object type
   static const String objectType = 'validateOrderInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

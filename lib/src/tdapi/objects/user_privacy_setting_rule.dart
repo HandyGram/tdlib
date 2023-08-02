@@ -45,17 +45,21 @@ sealed class UserPrivacySettingRule extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   UserPrivacySettingRule copyWith();
 
+  /// TDLib object type
   static const String objectType = 'userPrivacySettingRule';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -74,6 +78,7 @@ final class UserPrivacySettingRuleAllowAll extends UserPrivacySettingRule {
   /// Parse from a json
   factory UserPrivacySettingRuleAllowAll.fromJson(Map<String, dynamic> json) => const UserPrivacySettingRuleAllowAll();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -81,15 +86,18 @@ final class UserPrivacySettingRuleAllowAll extends UserPrivacySettingRule {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   UserPrivacySettingRuleAllowAll copyWith() => const UserPrivacySettingRuleAllowAll();
 
+  /// TDLib object type
   static const String objectType = 'userPrivacySettingRuleAllowAll';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -108,6 +116,7 @@ final class UserPrivacySettingRuleAllowContacts extends UserPrivacySettingRule {
   /// Parse from a json
   factory UserPrivacySettingRuleAllowContacts.fromJson(Map<String, dynamic> json) => const UserPrivacySettingRuleAllowContacts();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -115,15 +124,18 @@ final class UserPrivacySettingRuleAllowContacts extends UserPrivacySettingRule {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   UserPrivacySettingRuleAllowContacts copyWith() => const UserPrivacySettingRuleAllowContacts();
 
+  /// TDLib object type
   static const String objectType = 'userPrivacySettingRuleAllowContacts';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -154,6 +166,7 @@ final class UserPrivacySettingRuleAllowUsers extends UserPrivacySettingRule {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -162,7 +175,10 @@ final class UserPrivacySettingRuleAllowUsers extends UserPrivacySettingRule {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_ids]: The user identifiers, total number of users in all rules must not exceed 1000
   @override
   UserPrivacySettingRuleAllowUsers copyWith({
     List<int>? userIds,
@@ -170,11 +186,14 @@ final class UserPrivacySettingRuleAllowUsers extends UserPrivacySettingRule {
     userIds: userIds ?? this.userIds,
   );
 
+  /// TDLib object type
   static const String objectType = 'userPrivacySettingRuleAllowUsers';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -205,6 +224,7 @@ final class UserPrivacySettingRuleAllowChatMembers extends UserPrivacySettingRul
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -213,7 +233,10 @@ final class UserPrivacySettingRuleAllowChatMembers extends UserPrivacySettingRul
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_ids]: The chat identifiers, total number of chats in all rules must not exceed 20
   @override
   UserPrivacySettingRuleAllowChatMembers copyWith({
     List<int>? chatIds,
@@ -221,11 +244,14 @@ final class UserPrivacySettingRuleAllowChatMembers extends UserPrivacySettingRul
     chatIds: chatIds ?? this.chatIds,
   );
 
+  /// TDLib object type
   static const String objectType = 'userPrivacySettingRuleAllowChatMembers';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -244,6 +270,7 @@ final class UserPrivacySettingRuleRestrictAll extends UserPrivacySettingRule {
   /// Parse from a json
   factory UserPrivacySettingRuleRestrictAll.fromJson(Map<String, dynamic> json) => const UserPrivacySettingRuleRestrictAll();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -251,15 +278,18 @@ final class UserPrivacySettingRuleRestrictAll extends UserPrivacySettingRule {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   UserPrivacySettingRuleRestrictAll copyWith() => const UserPrivacySettingRuleRestrictAll();
 
+  /// TDLib object type
   static const String objectType = 'userPrivacySettingRuleRestrictAll';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -278,6 +308,7 @@ final class UserPrivacySettingRuleRestrictContacts extends UserPrivacySettingRul
   /// Parse from a json
   factory UserPrivacySettingRuleRestrictContacts.fromJson(Map<String, dynamic> json) => const UserPrivacySettingRuleRestrictContacts();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -285,15 +316,18 @@ final class UserPrivacySettingRuleRestrictContacts extends UserPrivacySettingRul
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   UserPrivacySettingRuleRestrictContacts copyWith() => const UserPrivacySettingRuleRestrictContacts();
 
+  /// TDLib object type
   static const String objectType = 'userPrivacySettingRuleRestrictContacts';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -324,6 +358,7 @@ final class UserPrivacySettingRuleRestrictUsers extends UserPrivacySettingRule {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -332,7 +367,10 @@ final class UserPrivacySettingRuleRestrictUsers extends UserPrivacySettingRule {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_ids]: The user identifiers, total number of users in all rules must not exceed 1000
   @override
   UserPrivacySettingRuleRestrictUsers copyWith({
     List<int>? userIds,
@@ -340,11 +378,14 @@ final class UserPrivacySettingRuleRestrictUsers extends UserPrivacySettingRule {
     userIds: userIds ?? this.userIds,
   );
 
+  /// TDLib object type
   static const String objectType = 'userPrivacySettingRuleRestrictUsers';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -375,6 +416,7 @@ final class UserPrivacySettingRuleRestrictChatMembers extends UserPrivacySetting
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -383,7 +425,10 @@ final class UserPrivacySettingRuleRestrictChatMembers extends UserPrivacySetting
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_ids]: The chat identifiers, total number of chats in all rules must not exceed 20
   @override
   UserPrivacySettingRuleRestrictChatMembers copyWith({
     List<int>? chatIds,
@@ -391,11 +436,14 @@ final class UserPrivacySettingRuleRestrictChatMembers extends UserPrivacySetting
     chatIds: chatIds ?? this.chatIds,
   );
 
+  /// TDLib object type
   static const String objectType = 'userPrivacySettingRuleRestrictChatMembers';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

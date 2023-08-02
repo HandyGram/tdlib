@@ -45,17 +45,21 @@ sealed class SupergroupMembersFilter extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   SupergroupMembersFilter copyWith();
 
+  /// TDLib object type
   static const String objectType = 'supergroupMembersFilter';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -74,6 +78,7 @@ final class SupergroupMembersFilterRecent extends SupergroupMembersFilter {
   /// Parse from a json
   factory SupergroupMembersFilterRecent.fromJson(Map<String, dynamic> json) => const SupergroupMembersFilterRecent();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -81,15 +86,18 @@ final class SupergroupMembersFilterRecent extends SupergroupMembersFilter {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SupergroupMembersFilterRecent copyWith() => const SupergroupMembersFilterRecent();
 
+  /// TDLib object type
   static const String objectType = 'supergroupMembersFilterRecent';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -120,6 +128,7 @@ final class SupergroupMembersFilterContacts extends SupergroupMembersFilter {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -128,7 +137,10 @@ final class SupergroupMembersFilterContacts extends SupergroupMembersFilter {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [query]: Query to search for
   @override
   SupergroupMembersFilterContacts copyWith({
     String? query,
@@ -136,11 +148,14 @@ final class SupergroupMembersFilterContacts extends SupergroupMembersFilter {
     query: query ?? this.query,
   );
 
+  /// TDLib object type
   static const String objectType = 'supergroupMembersFilterContacts';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -159,6 +174,7 @@ final class SupergroupMembersFilterAdministrators extends SupergroupMembersFilte
   /// Parse from a json
   factory SupergroupMembersFilterAdministrators.fromJson(Map<String, dynamic> json) => const SupergroupMembersFilterAdministrators();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -166,15 +182,18 @@ final class SupergroupMembersFilterAdministrators extends SupergroupMembersFilte
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SupergroupMembersFilterAdministrators copyWith() => const SupergroupMembersFilterAdministrators();
 
+  /// TDLib object type
   static const String objectType = 'supergroupMembersFilterAdministrators';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -205,6 +224,7 @@ final class SupergroupMembersFilterSearch extends SupergroupMembersFilter {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -213,7 +233,10 @@ final class SupergroupMembersFilterSearch extends SupergroupMembersFilter {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [query]: Query to search for
   @override
   SupergroupMembersFilterSearch copyWith({
     String? query,
@@ -221,11 +244,14 @@ final class SupergroupMembersFilterSearch extends SupergroupMembersFilter {
     query: query ?? this.query,
   );
 
+  /// TDLib object type
   static const String objectType = 'supergroupMembersFilterSearch';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -256,6 +282,7 @@ final class SupergroupMembersFilterRestricted extends SupergroupMembersFilter {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -264,7 +291,10 @@ final class SupergroupMembersFilterRestricted extends SupergroupMembersFilter {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [query]: Query to search for
   @override
   SupergroupMembersFilterRestricted copyWith({
     String? query,
@@ -272,11 +302,14 @@ final class SupergroupMembersFilterRestricted extends SupergroupMembersFilter {
     query: query ?? this.query,
   );
 
+  /// TDLib object type
   static const String objectType = 'supergroupMembersFilterRestricted';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -307,6 +340,7 @@ final class SupergroupMembersFilterBanned extends SupergroupMembersFilter {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -315,7 +349,10 @@ final class SupergroupMembersFilterBanned extends SupergroupMembersFilter {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [query]: Query to search for
   @override
   SupergroupMembersFilterBanned copyWith({
     String? query,
@@ -323,11 +360,14 @@ final class SupergroupMembersFilterBanned extends SupergroupMembersFilter {
     query: query ?? this.query,
   );
 
+  /// TDLib object type
   static const String objectType = 'supergroupMembersFilterBanned';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -365,6 +405,7 @@ final class SupergroupMembersFilterMention extends SupergroupMembersFilter {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -374,7 +415,11 @@ final class SupergroupMembersFilterMention extends SupergroupMembersFilter {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [query]: Query to search for 
+  /// * [message_thread_id]: If non-zero, the identifier of the current message thread
   @override
   SupergroupMembersFilterMention copyWith({
     String? query,
@@ -384,11 +429,14 @@ final class SupergroupMembersFilterMention extends SupergroupMembersFilter {
     messageThreadId: messageThreadId ?? this.messageThreadId,
   );
 
+  /// TDLib object type
   static const String objectType = 'supergroupMembersFilterMention';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -407,6 +455,7 @@ final class SupergroupMembersFilterBots extends SupergroupMembersFilter {
   /// Parse from a json
   factory SupergroupMembersFilterBots.fromJson(Map<String, dynamic> json) => const SupergroupMembersFilterBots();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -414,15 +463,18 @@ final class SupergroupMembersFilterBots extends SupergroupMembersFilter {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SupergroupMembersFilterBots copyWith() => const SupergroupMembersFilterBots();
 
+  /// TDLib object type
   static const String objectType = 'supergroupMembersFilterBots';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

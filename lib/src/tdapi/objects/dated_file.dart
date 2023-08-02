@@ -32,6 +32,7 @@ final class DatedFile extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -41,7 +42,11 @@ final class DatedFile extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [file]: The file 
+  /// * [date]: Point in time (Unix timestamp) when the file was uploaded
   DatedFile copyWith({
     File? file,
     int? date,
@@ -50,11 +55,14 @@ final class DatedFile extends TdObject {
     date: date ?? this.date,
   );
 
+  /// TDLib object type
   static const String objectType = 'datedFile';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

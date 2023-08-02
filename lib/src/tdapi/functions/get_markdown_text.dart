@@ -23,6 +23,7 @@ final class GetMarkdownText extends TdFunction {
   /// The text
   final FormattedText text;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetMarkdownText extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: The text
   GetMarkdownText copyWith({
     FormattedText? text,
   }) => GetMarkdownText(
     text: text ?? this.text,
   );
 
+  /// TDLib object type
   static const String objectType = 'getMarkdownText';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

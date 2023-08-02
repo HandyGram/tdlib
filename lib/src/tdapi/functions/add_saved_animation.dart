@@ -23,6 +23,7 @@ final class AddSavedAnimation extends TdFunction {
   /// The animation file to be added. Only animations known to the server (i.e., successfully sent via a message) can be added to the list
   final InputFile animation;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class AddSavedAnimation extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [animation]: The animation file to be added. Only animations known to the server (i.e., successfully sent via a message) can be added to the list
   AddSavedAnimation copyWith({
     InputFile? animation,
   }) => AddSavedAnimation(
     animation: animation ?? this.animation,
   );
 
+  /// TDLib object type
   static const String objectType = 'addSavedAnimation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

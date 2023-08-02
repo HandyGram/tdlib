@@ -23,6 +23,7 @@ final class GetLanguagePackInfo extends TdFunction {
   /// Language pack identifier
   final String languagePackId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetLanguagePackInfo extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [language_pack_id]: Language pack identifier
   GetLanguagePackInfo copyWith({
     String? languagePackId,
   }) => GetLanguagePackInfo(
     languagePackId: languagePackId ?? this.languagePackId,
   );
 
+  /// TDLib object type
   static const String objectType = 'getLanguagePackInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -58,6 +58,7 @@ final class AvailableReactions extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -69,7 +70,13 @@ final class AvailableReactions extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [top_reactions]: List of reactions to be shown at the top
+  /// * [recent_reactions]: List of recently used reactions
+  /// * [popular_reactions]: List of popular reactions
+  /// * [allow_custom_emoji]: True, if custom emoji reactions could be added by Telegram Premium subscribers
   AvailableReactions copyWith({
     List<AvailableReaction>? topReactions,
     List<AvailableReaction>? recentReactions,
@@ -86,11 +93,14 @@ final class AvailableReactions extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'availableReactions';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

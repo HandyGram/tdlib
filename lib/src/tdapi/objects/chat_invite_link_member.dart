@@ -46,6 +46,7 @@ final class ChatInviteLinkMember extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -57,7 +58,13 @@ final class ChatInviteLinkMember extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: User identifier
+  /// * [joined_chat_date]: Point in time (Unix timestamp) when the user joined the chat
+  /// * [via_chat_folder_invite_link]: True, if the user has joined the chat using an invite link for a chat folder
+  /// * [approver_user_id]: User identifier of the chat administrator, approved user join request
   ChatInviteLinkMember copyWith({
     int? userId,
     int? joinedChatDate,
@@ -70,11 +77,14 @@ final class ChatInviteLinkMember extends TdObject {
     approverUserId: approverUserId ?? this.approverUserId,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatInviteLinkMember';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -29,6 +29,7 @@ final class SetVideoChatDefaultParticipant extends TdFunction {
   /// Default group call participant identifier to join the video chats
   final MessageSender defaultParticipantId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetVideoChatDefaultParticipant extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [default_participant_id]: Default group call participant identifier to join the video chats
   SetVideoChatDefaultParticipant copyWith({
     int? chatId,
     MessageSender? defaultParticipantId,
@@ -48,11 +53,14 @@ final class SetVideoChatDefaultParticipant extends TdFunction {
     defaultParticipantId: defaultParticipantId ?? this.defaultParticipantId,
   );
 
+  /// TDLib object type
   static const String objectType = 'setVideoChatDefaultParticipant';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

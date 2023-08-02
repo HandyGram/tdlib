@@ -27,17 +27,21 @@ sealed class StorePaymentPurpose extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   StorePaymentPurpose copyWith();
 
+  /// TDLib object type
   static const String objectType = 'storePaymentPurpose';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -75,6 +79,7 @@ final class StorePaymentPurposePremiumSubscription extends StorePaymentPurpose {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -84,7 +89,11 @@ final class StorePaymentPurposePremiumSubscription extends StorePaymentPurpose {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [is_restore]: Pass true if this is a restore of a Telegram Premium purchase; only for App Store 
+  /// * [is_upgrade]: Pass true if this is an upgrade from a monthly subscription to early subscription; only for App Store
   @override
   StorePaymentPurposePremiumSubscription copyWith({
     bool? isRestore,
@@ -94,11 +103,14 @@ final class StorePaymentPurposePremiumSubscription extends StorePaymentPurpose {
     isUpgrade: isUpgrade ?? this.isUpgrade,
   );
 
+  /// TDLib object type
   static const String objectType = 'storePaymentPurposePremiumSubscription';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -143,6 +155,7 @@ final class StorePaymentPurposeGiftedPremium extends StorePaymentPurpose {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -153,7 +166,12 @@ final class StorePaymentPurposeGiftedPremium extends StorePaymentPurpose {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: Identifier of the user for which Premium was gifted 
+  /// * [currency]: ISO 4217 currency code of the payment currency 
+  /// * [amount]: Paid amount, in the smallest units of the currency
   @override
   StorePaymentPurposeGiftedPremium copyWith({
     int? userId,
@@ -165,11 +183,14 @@ final class StorePaymentPurposeGiftedPremium extends StorePaymentPurpose {
     amount: amount ?? this.amount,
   );
 
+  /// TDLib object type
   static const String objectType = 'storePaymentPurposeGiftedPremium';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

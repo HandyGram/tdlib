@@ -35,6 +35,7 @@ final class DeleteMessages extends TdFunction {
   /// Pass true to delete messages for all chat members. Always true for supergroups, channels and secret chats
   final bool revoke;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class DeleteMessages extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [message_ids]: Identifiers of the messages to be deleted 
+  /// * [revoke]: Pass true to delete messages for all chat members. Always true for supergroups, channels and secret chats
   DeleteMessages copyWith({
     int? chatId,
     List<int>? messageIds,
@@ -57,11 +63,14 @@ final class DeleteMessages extends TdFunction {
     revoke: revoke ?? this.revoke,
   );
 
+  /// TDLib object type
   static const String objectType = 'deleteMessages';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

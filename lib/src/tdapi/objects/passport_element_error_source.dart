@@ -48,17 +48,21 @@ sealed class PassportElementErrorSource extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   PassportElementErrorSource copyWith();
 
+  /// TDLib object type
   static const String objectType = 'passportElementErrorSource';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -77,6 +81,7 @@ final class PassportElementErrorSourceUnspecified extends PassportElementErrorSo
   /// Parse from a json
   factory PassportElementErrorSourceUnspecified.fromJson(Map<String, dynamic> json) => const PassportElementErrorSourceUnspecified();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -84,15 +89,18 @@ final class PassportElementErrorSourceUnspecified extends PassportElementErrorSo
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PassportElementErrorSourceUnspecified copyWith() => const PassportElementErrorSourceUnspecified();
 
+  /// TDLib object type
   static const String objectType = 'passportElementErrorSourceUnspecified';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -123,6 +131,7 @@ final class PassportElementErrorSourceDataField extends PassportElementErrorSour
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -131,7 +140,10 @@ final class PassportElementErrorSourceDataField extends PassportElementErrorSour
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [field_name]: Field name
   @override
   PassportElementErrorSourceDataField copyWith({
     String? fieldName,
@@ -139,11 +151,14 @@ final class PassportElementErrorSourceDataField extends PassportElementErrorSour
     fieldName: fieldName ?? this.fieldName,
   );
 
+  /// TDLib object type
   static const String objectType = 'passportElementErrorSourceDataField';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -162,6 +177,7 @@ final class PassportElementErrorSourceFrontSide extends PassportElementErrorSour
   /// Parse from a json
   factory PassportElementErrorSourceFrontSide.fromJson(Map<String, dynamic> json) => const PassportElementErrorSourceFrontSide();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -169,15 +185,18 @@ final class PassportElementErrorSourceFrontSide extends PassportElementErrorSour
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PassportElementErrorSourceFrontSide copyWith() => const PassportElementErrorSourceFrontSide();
 
+  /// TDLib object type
   static const String objectType = 'passportElementErrorSourceFrontSide';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -196,6 +215,7 @@ final class PassportElementErrorSourceReverseSide extends PassportElementErrorSo
   /// Parse from a json
   factory PassportElementErrorSourceReverseSide.fromJson(Map<String, dynamic> json) => const PassportElementErrorSourceReverseSide();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -203,15 +223,18 @@ final class PassportElementErrorSourceReverseSide extends PassportElementErrorSo
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PassportElementErrorSourceReverseSide copyWith() => const PassportElementErrorSourceReverseSide();
 
+  /// TDLib object type
   static const String objectType = 'passportElementErrorSourceReverseSide';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -230,6 +253,7 @@ final class PassportElementErrorSourceSelfie extends PassportElementErrorSource 
   /// Parse from a json
   factory PassportElementErrorSourceSelfie.fromJson(Map<String, dynamic> json) => const PassportElementErrorSourceSelfie();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -237,15 +261,18 @@ final class PassportElementErrorSourceSelfie extends PassportElementErrorSource 
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PassportElementErrorSourceSelfie copyWith() => const PassportElementErrorSourceSelfie();
 
+  /// TDLib object type
   static const String objectType = 'passportElementErrorSourceSelfie';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -276,6 +303,7 @@ final class PassportElementErrorSourceTranslationFile extends PassportElementErr
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -284,7 +312,10 @@ final class PassportElementErrorSourceTranslationFile extends PassportElementErr
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [file_index]: Index of a file with the error
   @override
   PassportElementErrorSourceTranslationFile copyWith({
     int? fileIndex,
@@ -292,11 +323,14 @@ final class PassportElementErrorSourceTranslationFile extends PassportElementErr
     fileIndex: fileIndex ?? this.fileIndex,
   );
 
+  /// TDLib object type
   static const String objectType = 'passportElementErrorSourceTranslationFile';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -315,6 +349,7 @@ final class PassportElementErrorSourceTranslationFiles extends PassportElementEr
   /// Parse from a json
   factory PassportElementErrorSourceTranslationFiles.fromJson(Map<String, dynamic> json) => const PassportElementErrorSourceTranslationFiles();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -322,15 +357,18 @@ final class PassportElementErrorSourceTranslationFiles extends PassportElementEr
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PassportElementErrorSourceTranslationFiles copyWith() => const PassportElementErrorSourceTranslationFiles();
 
+  /// TDLib object type
   static const String objectType = 'passportElementErrorSourceTranslationFiles';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -361,6 +399,7 @@ final class PassportElementErrorSourceFile extends PassportElementErrorSource {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -369,7 +408,10 @@ final class PassportElementErrorSourceFile extends PassportElementErrorSource {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [file_index]: Index of a file with the error
   @override
   PassportElementErrorSourceFile copyWith({
     int? fileIndex,
@@ -377,11 +419,14 @@ final class PassportElementErrorSourceFile extends PassportElementErrorSource {
     fileIndex: fileIndex ?? this.fileIndex,
   );
 
+  /// TDLib object type
   static const String objectType = 'passportElementErrorSourceFile';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -400,6 +445,7 @@ final class PassportElementErrorSourceFiles extends PassportElementErrorSource {
   /// Parse from a json
   factory PassportElementErrorSourceFiles.fromJson(Map<String, dynamic> json) => const PassportElementErrorSourceFiles();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -407,15 +453,18 @@ final class PassportElementErrorSourceFiles extends PassportElementErrorSource {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PassportElementErrorSourceFiles copyWith() => const PassportElementErrorSourceFiles();
 
+  /// TDLib object type
   static const String objectType = 'passportElementErrorSourceFiles';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -32,6 +32,7 @@ final class PersonalDocument extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -41,7 +42,11 @@ final class PersonalDocument extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [files]: List of files containing the pages of the document 
+  /// * [translation]: List of files containing a certified English translation of the document
   PersonalDocument copyWith({
     List<DatedFile>? files,
     List<DatedFile>? translation,
@@ -50,11 +55,14 @@ final class PersonalDocument extends TdObject {
     translation: translation ?? this.translation,
   );
 
+  /// TDLib object type
   static const String objectType = 'personalDocument';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

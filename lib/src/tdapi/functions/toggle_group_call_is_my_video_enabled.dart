@@ -29,6 +29,7 @@ final class ToggleGroupCallIsMyVideoEnabled extends TdFunction {
   /// Pass true if the current user's video is enabled
   final bool isMyVideoEnabled;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ToggleGroupCallIsMyVideoEnabled extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [group_call_id]: Group call identifier 
+  /// * [is_my_video_enabled]: Pass true if the current user's video is enabled
   ToggleGroupCallIsMyVideoEnabled copyWith({
     int? groupCallId,
     bool? isMyVideoEnabled,
@@ -48,11 +53,14 @@ final class ToggleGroupCallIsMyVideoEnabled extends TdFunction {
     isMyVideoEnabled: isMyVideoEnabled ?? this.isMyVideoEnabled,
   );
 
+  /// TDLib object type
   static const String objectType = 'toggleGroupCallIsMyVideoEnabled';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

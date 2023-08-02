@@ -30,17 +30,21 @@ sealed class LanguagePackStringValue extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   LanguagePackStringValue copyWith();
 
+  /// TDLib object type
   static const String objectType = 'languagePackStringValue';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -83,6 +87,7 @@ final class LanguagePackStringValueOrdinary extends LanguagePackStringValue {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -91,7 +96,10 @@ final class LanguagePackStringValueOrdinary extends LanguagePackStringValue {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [value]: String value
   @override
   LanguagePackStringValueOrdinary copyWith({
     String? value,
@@ -103,11 +111,14 @@ final class LanguagePackStringValueOrdinary extends LanguagePackStringValue {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'languagePackStringValueOrdinary';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -185,6 +196,7 @@ final class LanguagePackStringValuePluralized extends LanguagePackStringValue {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -198,7 +210,15 @@ final class LanguagePackStringValuePluralized extends LanguagePackStringValue {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [zero_value]: Value for zero objects
+  /// * [one_value]: Value for one object
+  /// * [two_value]: Value for two objects
+  /// * [few_value]: Value for few objects
+  /// * [many_value]: Value for many objects
+  /// * [other_value]: Default value
   @override
   LanguagePackStringValuePluralized copyWith({
     String? zeroValue,
@@ -220,11 +240,14 @@ final class LanguagePackStringValuePluralized extends LanguagePackStringValue {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'languagePackStringValuePluralized';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -258,6 +281,7 @@ final class LanguagePackStringValueDeleted extends LanguagePackStringValue {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -265,7 +289,7 @@ final class LanguagePackStringValueDeleted extends LanguagePackStringValue {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   LanguagePackStringValueDeleted copyWith({
     dynamic extra,
@@ -275,11 +299,14 @@ final class LanguagePackStringValueDeleted extends LanguagePackStringValue {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'languagePackStringValueDeleted';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

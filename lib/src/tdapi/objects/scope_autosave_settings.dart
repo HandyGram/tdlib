@@ -39,6 +39,7 @@ final class ScopeAutosaveSettings extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class ScopeAutosaveSettings extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [autosave_photos]: True, if photo autosave is enabled
+  /// * [autosave_videos]: True, if video autosave is enabled
+  /// * [max_video_file_size]: The maximum size of a video file to be autosaved, in bytes; 512 KB - 4000 MB
   ScopeAutosaveSettings copyWith({
     bool? autosavePhotos,
     bool? autosaveVideos,
@@ -60,11 +66,14 @@ final class ScopeAutosaveSettings extends TdObject {
     maxVideoFileSize: maxVideoFileSize ?? this.maxVideoFileSize,
   );
 
+  /// TDLib object type
   static const String objectType = 'scopeAutosaveSettings';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

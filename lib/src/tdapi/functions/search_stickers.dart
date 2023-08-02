@@ -35,6 +35,7 @@ final class SearchStickers extends TdFunction {
   /// The maximum number of stickers to be returned; 0-100
   final int limit;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class SearchStickers extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sticker_type]: Type of the stickers to return
+  /// * [emojis]: Space-separated list of emoji to search for; must be non-empty
+  /// * [limit]: The maximum number of stickers to be returned; 0-100
   SearchStickers copyWith({
     StickerType? stickerType,
     String? emojis,
@@ -57,11 +63,14 @@ final class SearchStickers extends TdFunction {
     limit: limit ?? this.limit,
   );
 
+  /// TDLib object type
   static const String objectType = 'searchStickers';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

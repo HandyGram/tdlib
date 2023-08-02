@@ -1,3 +1,15 @@
+## 2.1.0
+* *API changes*: TdObject has lost type argument
+* *API changes*: tdlib.dart -> client.dart
+* *API changes*: td_api.dart -> api.dart
+* *API changes*: created lib/handy_tdlib.dart to match plugin best practices
+* Switched plugin type to ffiPlugin
+* Added more documentation for generated methods
+* Better copyWith documentation
+* Updated Android Gradle Plugin to 7.3.1
+* Rebranded package to org.naji.td.handy_tdlib for better separation between this fork and original plugin
+* TdObject and TdFunction documentation reworked
+
 ## 2.0.3
 * Fixed Gradle errors
 

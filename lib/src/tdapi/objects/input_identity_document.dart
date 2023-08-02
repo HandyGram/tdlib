@@ -60,6 +60,7 @@ final class InputIdentityDocument extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -73,7 +74,15 @@ final class InputIdentityDocument extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [number]: Document number; 1-24 characters
+  /// * [expiry_date]: Document expiry date; pass null if not applicable
+  /// * [front_side]: Front side of the document
+  /// * [reverse_side]: Reverse side of the document; only for driver license and identity card; pass null otherwise
+  /// * [selfie]: Selfie with the document; pass null if unavailable
+  /// * [translation]: List of files containing a certified English translation of the document
   InputIdentityDocument copyWith({
     String? number,
     Date? expiryDate,
@@ -90,11 +99,14 @@ final class InputIdentityDocument extends TdObject {
     translation: translation ?? this.translation,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputIdentityDocument';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

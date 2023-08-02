@@ -30,17 +30,21 @@ sealed class BackgroundFill extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   BackgroundFill copyWith();
 
+  /// TDLib object type
   static const String objectType = 'backgroundFill';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -71,6 +75,7 @@ final class BackgroundFillSolid extends BackgroundFill {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -79,7 +84,10 @@ final class BackgroundFillSolid extends BackgroundFill {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [color]: A color of the background in the RGB24 format
   @override
   BackgroundFillSolid copyWith({
     int? color,
@@ -87,11 +95,14 @@ final class BackgroundFillSolid extends BackgroundFill {
     color: color ?? this.color,
   );
 
+  /// TDLib object type
   static const String objectType = 'backgroundFillSolid';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -136,6 +147,7 @@ final class BackgroundFillGradient extends BackgroundFill {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -146,7 +158,12 @@ final class BackgroundFillGradient extends BackgroundFill {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [top_color]: A top color of the background in the RGB24 format
+  /// * [bottom_color]: A bottom color of the background in the RGB24 format
+  /// * [rotation_angle]: Clockwise rotation angle of the gradient, in degrees; 0-359. Must always be divisible by 45
   @override
   BackgroundFillGradient copyWith({
     int? topColor,
@@ -158,11 +175,14 @@ final class BackgroundFillGradient extends BackgroundFill {
     rotationAngle: rotationAngle ?? this.rotationAngle,
   );
 
+  /// TDLib object type
   static const String objectType = 'backgroundFillGradient';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -193,6 +213,7 @@ final class BackgroundFillFreeformGradient extends BackgroundFill {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -201,7 +222,10 @@ final class BackgroundFillFreeformGradient extends BackgroundFill {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [colors]: A list of 3 or 4 colors of the freeform gradients in the RGB24 format
   @override
   BackgroundFillFreeformGradient copyWith({
     List<int>? colors,
@@ -209,11 +233,14 @@ final class BackgroundFillFreeformGradient extends BackgroundFill {
     colors: colors ?? this.colors,
   );
 
+  /// TDLib object type
   static const String objectType = 'backgroundFillFreeformGradient';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

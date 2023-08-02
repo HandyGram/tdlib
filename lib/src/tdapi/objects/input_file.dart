@@ -33,17 +33,21 @@ sealed class InputFile extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   InputFile copyWith();
 
+  /// TDLib object type
   static const String objectType = 'inputFile';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -74,6 +78,7 @@ final class InputFileId extends InputFile {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -82,7 +87,10 @@ final class InputFileId extends InputFile {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique file identifier
   @override
   InputFileId copyWith({
     int? id,
@@ -90,11 +98,14 @@ final class InputFileId extends InputFile {
     id: id ?? this.id,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputFileId';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -125,6 +136,7 @@ final class InputFileRemote extends InputFile {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -133,7 +145,10 @@ final class InputFileRemote extends InputFile {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Remote file identifier
   @override
   InputFileRemote copyWith({
     String? id,
@@ -141,11 +156,14 @@ final class InputFileRemote extends InputFile {
     id: id ?? this.id,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputFileRemote';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -176,6 +194,7 @@ final class InputFileLocal extends InputFile {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -184,7 +203,10 @@ final class InputFileLocal extends InputFile {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [path]: Local path to the file
   @override
   InputFileLocal copyWith({
     String? path,
@@ -192,11 +214,14 @@ final class InputFileLocal extends InputFile {
     path: path ?? this.path,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputFileLocal';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -241,6 +266,7 @@ final class InputFileGenerated extends InputFile {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -251,7 +277,12 @@ final class InputFileGenerated extends InputFile {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [original_path]: Local path to a file from which the file is generated; may be empty if there is no such file
+  /// * [conversion]: String specifying the conversion applied to the original file; must be persistent across application restarts. Conversions beginning with '#' are reserved for internal TDLib usage
+  /// * [expected_size]: Expected size of the generated file, in bytes; 0 if unknown
   @override
   InputFileGenerated copyWith({
     String? originalPath,
@@ -263,11 +294,14 @@ final class InputFileGenerated extends InputFile {
     expectedSize: expectedSize ?? this.expectedSize,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputFileGenerated';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

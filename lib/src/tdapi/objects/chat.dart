@@ -261,6 +261,7 @@ final class Chat extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -301,7 +302,42 @@ final class Chat extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Chat unique identifier
+  /// * [type]: Type of the chat
+  /// * [title]: Chat title
+  /// * [photo]: Chat photo; may be null
+  /// * [permissions]: Actions that non-administrator chat members are allowed to take in the chat
+  /// * [last_message]: Last message in the chat; may be null
+  /// * [positions]: Positions of the chat in chat lists
+  /// * [message_sender_id]: Identifier of a user or chat that is selected to send messages in the chat; may be null if the user can't change message sender
+  /// * [has_protected_content]: True, if chat content can't be saved locally, forwarded, or copied
+  /// * [is_translatable]: True, if translation of all messages in the chat must be suggested to the user
+  /// * [is_marked_as_unread]: True, if the chat is marked as unread
+  /// * [is_blocked]: True, if the chat is blocked by the current user and private messages from the chat can't be received
+  /// * [has_scheduled_messages]: True, if the chat has scheduled messages
+  /// * [can_be_deleted_only_for_self]: True, if the chat messages can be deleted only for the current user while other users will continue to see the messages
+  /// * [can_be_deleted_for_all_users]: True, if the chat messages can be deleted for all users
+  /// * [can_be_reported]: True, if the chat can be reported to Telegram moderators through reportChat or reportChatPhoto
+  /// * [default_disable_notification]: Default value of the disable_notification parameter, used when a message is sent to the chat
+  /// * [unread_count]: Number of unread messages in the chat
+  /// * [last_read_inbox_message_id]: Identifier of the last read incoming message
+  /// * [last_read_outbox_message_id]: Identifier of the last read outgoing message
+  /// * [unread_mention_count]: Number of unread messages with a mention/reply in the chat
+  /// * [unread_reaction_count]: Number of messages with unread reactions in the chat
+  /// * [notification_settings]: Notification settings for the chat
+  /// * [available_reactions]: Types of reaction, available in the chat
+  /// * [message_auto_delete_time]: Current message auto-delete or self-destruct timer setting for the chat, in seconds; 0 if disabled. Self-destruct timer in secret chats starts after the message or its content is viewed. Auto-delete timer in other chats starts from the send date
+  /// * [background]: Background set for the chat; may be null if none
+  /// * [theme_name]: If non-empty, name of a theme, set for the chat
+  /// * [action_bar]: Information about actions which must be possible to do through the chat action bar; may be null
+  /// * [video_chat]: Information about video chat of the chat
+  /// * [pending_join_requests]: Information about pending join requests; may be null
+  /// * [reply_markup_message_id]: Identifier of the message from which reply markup needs to be used; 0 if there is no default custom reply markup in the chat
+  /// * [draft_message]: A draft of a message in the chat; may be null
+  /// * [client_data]: Application-specific data associated with the chat. (For example, the chat scroll position or local chat notification settings can be stored here.) Persistent if the message database is used
   Chat copyWith({
     int? id,
     ChatType? type,
@@ -376,11 +412,14 @@ final class Chat extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'chat';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

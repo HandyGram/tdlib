@@ -29,6 +29,7 @@ final class GetWebPageInstantView extends TdFunction {
   /// Pass true to get full instant view for the web page
   final bool forceFull;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class GetWebPageInstantView extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [url]: The web page URL 
+  /// * [force_full]: Pass true to get full instant view for the web page
   GetWebPageInstantView copyWith({
     String? url,
     bool? forceFull,
@@ -48,11 +53,14 @@ final class GetWebPageInstantView extends TdFunction {
     forceFull: forceFull ?? this.forceFull,
   );
 
+  /// TDLib object type
   static const String objectType = 'getWebPageInstantView';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

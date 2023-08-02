@@ -41,6 +41,7 @@ final class GetChatMessagePosition extends TdFunction {
   /// If not 0, only messages in the specified thread will be considered; supergroups only
   final int messageThreadId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -53,7 +54,13 @@ final class GetChatMessagePosition extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat in which to find message position
+  /// * [message_id]: Message identifier
+  /// * [filter]: Filter for message content; searchMessagesFilterEmpty, searchMessagesFilterUnreadMention, searchMessagesFilterUnreadReaction, and searchMessagesFilterFailedToSend are unsupported in this function
+  /// * [message_thread_id]: If not 0, only messages in the specified thread will be considered; supergroups only
   GetChatMessagePosition copyWith({
     int? chatId,
     int? messageId,
@@ -66,11 +73,14 @@ final class GetChatMessagePosition extends TdFunction {
     messageThreadId: messageThreadId ?? this.messageThreadId,
   );
 
+  /// TDLib object type
   static const String objectType = 'getChatMessagePosition';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

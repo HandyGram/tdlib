@@ -35,6 +35,7 @@ final class ToggleBotUsernameIsActive extends TdFunction {
   /// Pass true to activate the username; pass false to disable it
   final bool isActive;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class ToggleBotUsernameIsActive extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [bot_user_id]: Identifier of the target bot
+  /// * [username]: The username to change
+  /// * [is_active]: Pass true to activate the username; pass false to disable it
   ToggleBotUsernameIsActive copyWith({
     int? botUserId,
     String? username,
@@ -57,11 +63,14 @@ final class ToggleBotUsernameIsActive extends TdFunction {
     isActive: isActive ?? this.isActive,
   );
 
+  /// TDLib object type
   static const String objectType = 'toggleBotUsernameIsActive';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

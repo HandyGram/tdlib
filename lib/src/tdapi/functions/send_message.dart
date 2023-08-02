@@ -53,6 +53,7 @@ final class SendMessage extends TdFunction {
   /// The content of the message to be sent
   final InputMessageContent inputMessageContent;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -67,7 +68,15 @@ final class SendMessage extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Target chat
+  /// * [message_thread_id]: If not 0, a message thread identifier in which the message will be sent
+  /// * [reply_to_message_id]: Identifier of the replied message; 0 if none
+  /// * [options]: Options to be used to send the message; pass null to use default options
+  /// * [reply_markup]: Markup for replying to the message; pass null if none; for bots only
+  /// * [input_message_content]: The content of the message to be sent
   SendMessage copyWith({
     int? chatId,
     int? messageThreadId,
@@ -84,11 +93,14 @@ final class SendMessage extends TdFunction {
     inputMessageContent: inputMessageContent ?? this.inputMessageContent,
   );
 
+  /// TDLib object type
   static const String objectType = 'sendMessage';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -29,6 +29,7 @@ final class ToggleSupergroupJoinByRequest extends TdFunction {
   /// New value of join_by_request
   final bool joinByRequest;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ToggleSupergroupJoinByRequest extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [supergroup_id]: Identifier of the channel 
+  /// * [join_by_request]: New value of join_by_request
   ToggleSupergroupJoinByRequest copyWith({
     int? supergroupId,
     bool? joinByRequest,
@@ -48,11 +53,14 @@ final class ToggleSupergroupJoinByRequest extends TdFunction {
     joinByRequest: joinByRequest ?? this.joinByRequest,
   );
 
+  /// TDLib object type
   static const String objectType = 'toggleSupergroupJoinByRequest';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -25,6 +25,7 @@ final class PassportRequiredElement extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -33,18 +34,24 @@ final class PassportRequiredElement extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [suitable_elements]: List of Telegram Passport elements any of which is enough to provide
   PassportRequiredElement copyWith({
     List<PassportSuitableElement>? suitableElements,
   }) => PassportRequiredElement(
     suitableElements: suitableElements ?? this.suitableElements,
   );
 
+  /// TDLib object type
   static const String objectType = 'passportRequiredElement';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

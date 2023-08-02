@@ -32,6 +32,7 @@ final class ForumTopicIcon extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -41,7 +42,11 @@ final class ForumTopicIcon extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [color]: Color of the topic icon in RGB format 
+  /// * [custom_emoji_id]: Unique identifier of the custom emoji shown on the topic icon; 0 if none
   ForumTopicIcon copyWith({
     int? color,
     int? customEmojiId,
@@ -50,11 +55,14 @@ final class ForumTopicIcon extends TdObject {
     customEmojiId: customEmojiId ?? this.customEmojiId,
   );
 
+  /// TDLib object type
   static const String objectType = 'forumTopicIcon';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

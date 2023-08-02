@@ -15,6 +15,7 @@ final class GetFavoriteStickers extends TdFunction {
   const GetFavoriteStickers();
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -23,14 +24,17 @@ final class GetFavoriteStickers extends TdFunction {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   GetFavoriteStickers copyWith() => const GetFavoriteStickers();
 
+  /// TDLib object type
   static const String objectType = 'getFavoriteStickers';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

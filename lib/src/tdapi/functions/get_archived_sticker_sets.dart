@@ -35,6 +35,7 @@ final class GetArchivedStickerSets extends TdFunction {
   /// The maximum number of sticker sets to return; up to 100
   final int limit;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class GetArchivedStickerSets extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sticker_type]: Type of the sticker sets to return 
+  /// * [offset_sticker_set_id]: Identifier of the sticker set from which to return the result 
+  /// * [limit]: The maximum number of sticker sets to return; up to 100
   GetArchivedStickerSets copyWith({
     StickerType? stickerType,
     int? offsetStickerSetId,
@@ -57,11 +63,14 @@ final class GetArchivedStickerSets extends TdFunction {
     limit: limit ?? this.limit,
   );
 
+  /// TDLib object type
   static const String objectType = 'getArchivedStickerSets';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -44,6 +44,7 @@ final class DeepLinkInfo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -53,7 +54,11 @@ final class DeepLinkInfo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Text to be shown to the user 
+  /// * [need_update_application]: True, if the user must be asked to update the application
   DeepLinkInfo copyWith({
     FormattedText? text,
     bool? needUpdateApplication,
@@ -66,11 +71,14 @@ final class DeepLinkInfo extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'deepLinkInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

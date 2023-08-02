@@ -35,6 +35,7 @@ final class CreateNewBasicGroupChat extends TdFunction {
   /// Message auto-delete time value, in seconds; must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically
   final int messageAutoDeleteTime;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class CreateNewBasicGroupChat extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_ids]: Identifiers of users to be added to the basic group; may be empty to create a basic group without other members
+  /// * [title]: Title of the new basic group; 1-128 characters
+  /// * [message_auto_delete_time]: Message auto-delete time value, in seconds; must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically
   CreateNewBasicGroupChat copyWith({
     List<int>? userIds,
     String? title,
@@ -57,11 +63,14 @@ final class CreateNewBasicGroupChat extends TdFunction {
     messageAutoDeleteTime: messageAutoDeleteTime ?? this.messageAutoDeleteTime,
   );
 
+  /// TDLib object type
   static const String objectType = 'createNewBasicGroupChat';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -29,6 +29,7 @@ final class SuggestUserProfilePhoto extends TdFunction {
   /// Profile photo to suggest; inputChatPhotoPrevious isn't supported in this function
   final InputChatPhoto photo;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SuggestUserProfilePhoto extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: User identifier 
+  /// * [photo]: Profile photo to suggest; inputChatPhotoPrevious isn't supported in this function
   SuggestUserProfilePhoto copyWith({
     int? userId,
     InputChatPhoto? photo,
@@ -48,11 +53,14 @@ final class SuggestUserProfilePhoto extends TdFunction {
     photo: photo ?? this.photo,
   );
 
+  /// TDLib object type
   static const String objectType = 'suggestUserProfilePhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

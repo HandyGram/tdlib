@@ -41,6 +41,7 @@ final class SearchChatMembers extends TdFunction {
   /// The type of users to search for; pass null to search among all chat members
   final ChatMembersFilter? filter;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -53,7 +54,13 @@ final class SearchChatMembers extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [query]: Query to search for
+  /// * [limit]: The maximum number of users to be returned; up to 200
+  /// * [filter]: The type of users to search for; pass null to search among all chat members
   SearchChatMembers copyWith({
     int? chatId,
     String? query,
@@ -66,11 +73,14 @@ final class SearchChatMembers extends TdFunction {
     filter: filter ?? this.filter,
   );
 
+  /// TDLib object type
   static const String objectType = 'searchChatMembers';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

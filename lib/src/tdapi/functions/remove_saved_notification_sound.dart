@@ -23,6 +23,7 @@ final class RemoveSavedNotificationSound extends TdFunction {
   /// Identifier of the notification sound
   final int notificationSoundId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class RemoveSavedNotificationSound extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [notification_sound_id]: Identifier of the notification sound
   RemoveSavedNotificationSound copyWith({
     int? notificationSoundId,
   }) => RemoveSavedNotificationSound(
     notificationSoundId: notificationSoundId ?? this.notificationSoundId,
   );
 
+  /// TDLib object type
   static const String objectType = 'removeSavedNotificationSound';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

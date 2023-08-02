@@ -29,6 +29,7 @@ final class SetPassportElement extends TdFunction {
   /// The 2-step verification password of the current user
   final String password;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetPassportElement extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [element]: Input Telegram Passport element
+  /// * [password]: The 2-step verification password of the current user
   SetPassportElement copyWith({
     InputPassportElement? element,
     String? password,
@@ -48,11 +53,14 @@ final class SetPassportElement extends TdFunction {
     password: password ?? this.password,
   );
 
+  /// TDLib object type
   static const String objectType = 'setPassportElement';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

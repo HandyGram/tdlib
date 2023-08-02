@@ -102,6 +102,7 @@ final class BotInfo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -121,7 +122,21 @@ final class BotInfo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [short_description]: The text that is shown on the bot's profile page and is sent together with the link when users share the bot
+  /// * [description]: The text shown in the chat with the bot if the chat is empty
+  /// * [photo]: Photo shown in the chat with the bot if the chat is empty; may be null
+  /// * [animation]: Animation shown in the chat with the bot if the chat is empty; may be null
+  /// * [menu_button]: Information about a button to show instead of the bot commands menu button; may be null if ordinary bot commands menu must be shown
+  /// * [commands]: List of the bot commands
+  /// * [default_group_administrator_rights]: Default administrator rights for adding the bot to basic group and supergroup chats; may be null
+  /// * [default_channel_administrator_rights]: Default administrator rights for adding the bot to channels; may be null
+  /// * [edit_commands_link]: The internal link, which can be used to edit bot commands; may be null
+  /// * [edit_description_link]: The internal link, which can be used to edit bot description; may be null
+  /// * [edit_description_media_link]: The internal link, which can be used to edit the photo or animation shown in the chat with the bot if the chat is empty; may be null
+  /// * [edit_settings_link]: The internal link, which can be used to edit bot settings; may be null
   BotInfo copyWith({
     String? shortDescription,
     String? description,
@@ -150,11 +165,14 @@ final class BotInfo extends TdObject {
     editSettingsLink: editSettingsLink ?? this.editSettingsLink,
   );
 
+  /// TDLib object type
   static const String objectType = 'botInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

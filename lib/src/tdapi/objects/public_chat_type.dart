@@ -27,17 +27,21 @@ sealed class PublicChatType extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   PublicChatType copyWith();
 
+  /// TDLib object type
   static const String objectType = 'publicChatType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -56,6 +60,7 @@ final class PublicChatTypeHasUsername extends PublicChatType {
   /// Parse from a json
   factory PublicChatTypeHasUsername.fromJson(Map<String, dynamic> json) => const PublicChatTypeHasUsername();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -63,15 +68,18 @@ final class PublicChatTypeHasUsername extends PublicChatType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PublicChatTypeHasUsername copyWith() => const PublicChatTypeHasUsername();
 
+  /// TDLib object type
   static const String objectType = 'publicChatTypeHasUsername';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -90,6 +98,7 @@ final class PublicChatTypeIsLocationBased extends PublicChatType {
   /// Parse from a json
   factory PublicChatTypeIsLocationBased.fromJson(Map<String, dynamic> json) => const PublicChatTypeIsLocationBased();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -97,15 +106,18 @@ final class PublicChatTypeIsLocationBased extends PublicChatType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   PublicChatTypeIsLocationBased copyWith() => const PublicChatTypeIsLocationBased();
 
+  /// TDLib object type
   static const String objectType = 'publicChatTypeIsLocationBased';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

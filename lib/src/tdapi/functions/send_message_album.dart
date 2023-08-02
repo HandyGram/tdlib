@@ -53,6 +53,7 @@ final class SendMessageAlbum extends TdFunction {
   /// Pass true to get fake messages instead of actually sending them
   final bool onlyPreview;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -67,7 +68,15 @@ final class SendMessageAlbum extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Target chat
+  /// * [message_thread_id]: If not 0, a message thread identifier in which the messages will be sent
+  /// * [reply_to_message_id]: Identifier of a replied message; 0 if none
+  /// * [options]: Options to be used to send the messages; pass null to use default options
+  /// * [input_message_contents]: Contents of messages to be sent. At most 10 messages can be added to an album
+  /// * [only_preview]: Pass true to get fake messages instead of actually sending them
   SendMessageAlbum copyWith({
     int? chatId,
     int? messageThreadId,
@@ -84,11 +93,14 @@ final class SendMessageAlbum extends TdFunction {
     onlyPreview: onlyPreview ?? this.onlyPreview,
   );
 
+  /// TDLib object type
   static const String objectType = 'sendMessageAlbum';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

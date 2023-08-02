@@ -23,6 +23,7 @@ final class DeleteLanguagePack extends TdFunction {
   /// Identifier of the language pack to delete
   final String languagePackId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class DeleteLanguagePack extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [language_pack_id]: Identifier of the language pack to delete
   DeleteLanguagePack copyWith({
     String? languagePackId,
   }) => DeleteLanguagePack(
     languagePackId: languagePackId ?? this.languagePackId,
   );
 
+  /// TDLib object type
   static const String objectType = 'deleteLanguagePack';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

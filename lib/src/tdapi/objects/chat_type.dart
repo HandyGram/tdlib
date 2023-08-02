@@ -33,17 +33,21 @@ sealed class ChatType extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   ChatType copyWith();
 
+  /// TDLib object type
   static const String objectType = 'chatType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -74,6 +78,7 @@ final class ChatTypePrivate extends ChatType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -82,7 +87,10 @@ final class ChatTypePrivate extends ChatType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: User identifier
   @override
   ChatTypePrivate copyWith({
     int? userId,
@@ -90,11 +98,14 @@ final class ChatTypePrivate extends ChatType {
     userId: userId ?? this.userId,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatTypePrivate';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -125,6 +136,7 @@ final class ChatTypeBasicGroup extends ChatType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -133,7 +145,10 @@ final class ChatTypeBasicGroup extends ChatType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [basic_group_id]: Basic group identifier
   @override
   ChatTypeBasicGroup copyWith({
     int? basicGroupId,
@@ -141,11 +156,14 @@ final class ChatTypeBasicGroup extends ChatType {
     basicGroupId: basicGroupId ?? this.basicGroupId,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatTypeBasicGroup';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -183,6 +201,7 @@ final class ChatTypeSupergroup extends ChatType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -192,7 +211,11 @@ final class ChatTypeSupergroup extends ChatType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [supergroup_id]: Supergroup or channel identifier 
+  /// * [is_channel]: True, if the supergroup is a channel
   @override
   ChatTypeSupergroup copyWith({
     int? supergroupId,
@@ -202,11 +225,14 @@ final class ChatTypeSupergroup extends ChatType {
     isChannel: isChannel ?? this.isChannel,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatTypeSupergroup';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -244,6 +270,7 @@ final class ChatTypeSecret extends ChatType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -253,7 +280,11 @@ final class ChatTypeSecret extends ChatType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [secret_chat_id]: Secret chat identifier 
+  /// * [user_id]: User identifier of the secret chat peer
   @override
   ChatTypeSecret copyWith({
     int? secretChatId,
@@ -263,11 +294,14 @@ final class ChatTypeSecret extends ChatType {
     userId: userId ?? this.userId,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatTypeSecret';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

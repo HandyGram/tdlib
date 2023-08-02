@@ -23,6 +23,7 @@ final class TestReturnError extends TdFunction {
   /// The error to be returned
   final TdError error;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class TestReturnError extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [error]: The error to be returned
   TestReturnError copyWith({
     TdError? error,
   }) => TestReturnError(
     error: error ?? this.error,
   );
 
+  /// TDLib object type
   static const String objectType = 'testReturnError';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

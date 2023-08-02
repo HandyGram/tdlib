@@ -39,17 +39,21 @@ sealed class CallState extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   CallState copyWith();
 
+  /// TDLib object type
   static const String objectType = 'callState';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -87,6 +91,7 @@ final class CallStatePending extends CallState {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -96,7 +101,11 @@ final class CallStatePending extends CallState {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [is_created]: True, if the call has already been created by the server 
+  /// * [is_received]: True, if the call has already been received by the other party
   @override
   CallStatePending copyWith({
     bool? isCreated,
@@ -106,11 +115,14 @@ final class CallStatePending extends CallState {
     isReceived: isReceived ?? this.isReceived,
   );
 
+  /// TDLib object type
   static const String objectType = 'callStatePending';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -129,6 +141,7 @@ final class CallStateExchangingKeys extends CallState {
   /// Parse from a json
   factory CallStateExchangingKeys.fromJson(Map<String, dynamic> json) => const CallStateExchangingKeys();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -136,15 +149,18 @@ final class CallStateExchangingKeys extends CallState {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   CallStateExchangingKeys copyWith() => const CallStateExchangingKeys();
 
+  /// TDLib object type
   static const String objectType = 'callStateExchangingKeys';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -210,6 +226,7 @@ final class CallStateReady extends CallState {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -223,7 +240,15 @@ final class CallStateReady extends CallState {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [protocol]: Call protocols supported by the peer
+  /// * [servers]: List of available call servers
+  /// * [config]: A JSON-encoded call config
+  /// * [encryption_key]: Call encryption key
+  /// * [emojis]: Encryption key emojis fingerprint
+  /// * [allow_p2p]: True, if peer-to-peer connection is allowed by users privacy settings
   @override
   CallStateReady copyWith({
     CallProtocol? protocol,
@@ -241,11 +266,14 @@ final class CallStateReady extends CallState {
     allowP2p: allowP2p ?? this.allowP2p,
   );
 
+  /// TDLib object type
   static const String objectType = 'callStateReady';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -264,6 +292,7 @@ final class CallStateHangingUp extends CallState {
   /// Parse from a json
   factory CallStateHangingUp.fromJson(Map<String, dynamic> json) => const CallStateHangingUp();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -271,15 +300,18 @@ final class CallStateHangingUp extends CallState {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   CallStateHangingUp copyWith() => const CallStateHangingUp();
 
+  /// TDLib object type
   static const String objectType = 'callStateHangingUp';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -331,6 +363,7 @@ final class CallStateDiscarded extends CallState {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -342,7 +375,13 @@ final class CallStateDiscarded extends CallState {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [reason]: The reason, why the call has ended
+  /// * [need_rating]: True, if the call rating must be sent to the server
+  /// * [need_debug_information]: True, if the call debug information must be sent to the server
+  /// * [need_log]: True, if the call log must be sent to the server
   @override
   CallStateDiscarded copyWith({
     CallDiscardReason? reason,
@@ -356,11 +395,14 @@ final class CallStateDiscarded extends CallState {
     needLog: needLog ?? this.needLog,
   );
 
+  /// TDLib object type
   static const String objectType = 'callStateDiscarded';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -391,6 +433,7 @@ final class CallStateError extends CallState {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -399,7 +442,10 @@ final class CallStateError extends CallState {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [error]: Error. An error with the code 4005000 will be returned if an outgoing call is missed because of an expired timeout
   @override
   CallStateError copyWith({
     TdError? error,
@@ -407,11 +453,14 @@ final class CallStateError extends CallState {
     error: error ?? this.error,
   );
 
+  /// TDLib object type
   static const String objectType = 'callStateError';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -29,6 +29,7 @@ final class AddChatToList extends TdFunction {
   /// The chat list. Use getChatListsToAddChat to get suitable chat lists
   final ChatList chatList;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class AddChatToList extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [chat_list]: The chat list. Use getChatListsToAddChat to get suitable chat lists
   AddChatToList copyWith({
     int? chatId,
     ChatList? chatList,
@@ -48,11 +53,14 @@ final class AddChatToList extends TdFunction {
     chatList: chatList ?? this.chatList,
   );
 
+  /// TDLib object type
   static const String objectType = 'addChatToList';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

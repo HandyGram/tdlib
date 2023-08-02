@@ -29,6 +29,7 @@ final class SendCallDebugInformation extends TdFunction {
   /// Debug information in application-specific format
   final String debugInformation;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SendCallDebugInformation extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [call_id]: Call identifier 
+  /// * [debug_information]: Debug information in application-specific format
   SendCallDebugInformation copyWith({
     int? callId,
     String? debugInformation,
@@ -48,11 +53,14 @@ final class SendCallDebugInformation extends TdFunction {
     debugInformation: debugInformation ?? this.debugInformation,
   );
 
+  /// TDLib object type
   static const String objectType = 'sendCallDebugInformation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -116,6 +116,7 @@ final class ChatPermissions extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -137,7 +138,23 @@ final class ChatPermissions extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [can_send_basic_messages]: True, if the user can send text messages, contacts, invoices, locations, and venues
+  /// * [can_send_audios]: True, if the user can send music files
+  /// * [can_send_documents]: True, if the user can send documents
+  /// * [can_send_photos]: True, if the user can send audio photos
+  /// * [can_send_videos]: True, if the user can send audio videos
+  /// * [can_send_video_notes]: True, if the user can send video notes
+  /// * [can_send_voice_notes]: True, if the user can send voice notes
+  /// * [can_send_polls]: True, if the user can send polls
+  /// * [can_send_other_messages]: True, if the user can send animations, games, stickers, and dice and use inline bots
+  /// * [can_add_web_page_previews]: True, if the user may add a web page preview to their messages
+  /// * [can_change_info]: True, if the user can change the chat title, photo, and other settings
+  /// * [can_invite_users]: True, if the user can invite new users to the chat
+  /// * [can_pin_messages]: True, if the user can pin messages
+  /// * [can_manage_topics]: True, if the user can manage topics
   ChatPermissions copyWith({
     bool? canSendBasicMessages,
     bool? canSendAudios,
@@ -170,11 +187,14 @@ final class ChatPermissions extends TdObject {
     canManageTopics: canManageTopics ?? this.canManageTopics,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatPermissions';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -29,6 +29,7 @@ final class AssignAppStoreTransaction extends TdFunction {
   /// Transaction purpose
   final StorePaymentPurpose purpose;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class AssignAppStoreTransaction extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [receipt]: App Store receipt 
+  /// * [purpose]: Transaction purpose
   AssignAppStoreTransaction copyWith({
     String? receipt,
     StorePaymentPurpose? purpose,
@@ -48,11 +53,14 @@ final class AssignAppStoreTransaction extends TdFunction {
     purpose: purpose ?? this.purpose,
   );
 
+  /// TDLib object type
   static const String objectType = 'assignAppStoreTransaction';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

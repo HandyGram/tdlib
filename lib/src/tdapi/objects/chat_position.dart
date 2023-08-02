@@ -46,6 +46,7 @@ final class ChatPosition extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -57,7 +58,13 @@ final class ChatPosition extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [list]: The chat list
+  /// * [order]: A parameter used to determine order of the chat in the chat list. Chats must be sorted by the pair (order, chat.id) in descending order
+  /// * [is_pinned]: True, if the chat is pinned in the chat list
+  /// * [source]: Source of the chat in the chat list; may be null
   ChatPosition copyWith({
     ChatList? list,
     int? order,
@@ -70,11 +77,14 @@ final class ChatPosition extends TdObject {
     source: source ?? this.source,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatPosition';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

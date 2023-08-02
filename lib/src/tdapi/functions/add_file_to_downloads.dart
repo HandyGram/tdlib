@@ -41,6 +41,7 @@ final class AddFileToDownloads extends TdFunction {
   /// Priority of the download (1-32). The higher the priority, the earlier the file will be downloaded. If the priorities of two files are equal, then the last one for which downloadFile/addFileToDownloads was called will be downloaded first
   final int priority;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -53,7 +54,13 @@ final class AddFileToDownloads extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [file_id]: Identifier of the file to download
+  /// * [chat_id]: Chat identifier of the message with the file
+  /// * [message_id]: Message identifier
+  /// * [priority]: Priority of the download (1-32). The higher the priority, the earlier the file will be downloaded. If the priorities of two files are equal, then the last one for which downloadFile/addFileToDownloads was called will be downloaded first
   AddFileToDownloads copyWith({
     int? fileId,
     int? chatId,
@@ -66,11 +73,14 @@ final class AddFileToDownloads extends TdFunction {
     priority: priority ?? this.priority,
   );
 
+  /// TDLib object type
   static const String objectType = 'addFileToDownloads';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

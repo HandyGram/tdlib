@@ -29,6 +29,7 @@ final class AnswerCustomQuery extends TdFunction {
   /// JSON-serialized answer to the query
   final String data;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class AnswerCustomQuery extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [custom_query_id]: Identifier of a custom query 
+  /// * [data]: JSON-serialized answer to the query
   AnswerCustomQuery copyWith({
     int? customQueryId,
     String? data,
@@ -48,11 +53,14 @@ final class AnswerCustomQuery extends TdFunction {
     data: data ?? this.data,
   );
 
+  /// TDLib object type
   static const String objectType = 'answerCustomQuery';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -23,6 +23,7 @@ final class DeleteStickerSet extends TdFunction {
   /// Sticker set name
   final String name;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class DeleteStickerSet extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [name]: Sticker set name
   DeleteStickerSet copyWith({
     String? name,
   }) => DeleteStickerSet(
     name: name ?? this.name,
   );
 
+  /// TDLib object type
   static const String objectType = 'deleteStickerSet';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

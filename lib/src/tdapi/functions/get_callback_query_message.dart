@@ -35,6 +35,7 @@ final class GetCallbackQueryMessage extends TdFunction {
   /// Identifier of the callback query
   final int callbackQueryId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class GetCallbackQueryMessage extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat the message belongs to 
+  /// * [message_id]: Message identifier 
+  /// * [callback_query_id]: Identifier of the callback query
   GetCallbackQueryMessage copyWith({
     int? chatId,
     int? messageId,
@@ -57,11 +63,14 @@ final class GetCallbackQueryMessage extends TdFunction {
     callbackQueryId: callbackQueryId ?? this.callbackQueryId,
   );
 
+  /// TDLib object type
   static const String objectType = 'getCallbackQueryMessage';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

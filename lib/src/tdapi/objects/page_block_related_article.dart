@@ -60,6 +60,7 @@ final class PageBlockRelatedArticle extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -73,7 +74,15 @@ final class PageBlockRelatedArticle extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [url]: Related article URL
+  /// * [title]: Article title; may be empty
+  /// * [description]: Article description; may be empty
+  /// * [photo]: Article photo; may be null
+  /// * [author]: Article author; may be empty
+  /// * [publish_date]: Point in time (Unix timestamp) when the article was published; 0 if unknown
   PageBlockRelatedArticle copyWith({
     String? url,
     String? title,
@@ -90,11 +99,14 @@ final class PageBlockRelatedArticle extends TdObject {
     publishDate: publishDate ?? this.publishDate,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockRelatedArticle';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

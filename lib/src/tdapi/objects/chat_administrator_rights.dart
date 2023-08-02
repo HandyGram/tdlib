@@ -102,6 +102,7 @@ final class ChatAdministratorRights extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -121,7 +122,21 @@ final class ChatAdministratorRights extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [can_manage_chat]: True, if the administrator can get chat event log, get chat statistics, get message statistics in channels, get channel members, see anonymous administrators in supergroups and ignore slow mode. Implied by any other privilege; applicable to supergroups and channels only
+  /// * [can_change_info]: True, if the administrator can change the chat title, photo, and other settings
+  /// * [can_post_messages]: True, if the administrator can create channel posts; applicable to channels only
+  /// * [can_edit_messages]: True, if the administrator can edit messages of other users and pin messages; applicable to channels only
+  /// * [can_delete_messages]: True, if the administrator can delete messages of other users
+  /// * [can_invite_users]: True, if the administrator can invite new users to the chat
+  /// * [can_restrict_members]: True, if the administrator can restrict, ban, or unban chat members; always true for channels
+  /// * [can_pin_messages]: True, if the administrator can pin messages; applicable to basic groups and supergroups only
+  /// * [can_manage_topics]: True, if the administrator can manage topics; applicable to forum supergroups only
+  /// * [can_promote_members]: True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that were directly or indirectly promoted by them
+  /// * [can_manage_video_chats]: True, if the administrator can manage video chats
+  /// * [is_anonymous]: True, if the administrator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only
   ChatAdministratorRights copyWith({
     bool? canManageChat,
     bool? canChangeInfo,
@@ -150,11 +165,14 @@ final class ChatAdministratorRights extends TdObject {
     isAnonymous: isAnonymous ?? this.isAnonymous,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatAdministratorRights';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

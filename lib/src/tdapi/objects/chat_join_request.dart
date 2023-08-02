@@ -39,6 +39,7 @@ final class ChatJoinRequest extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class ChatJoinRequest extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: User identifier 
+  /// * [date]: Point in time (Unix timestamp) when the user sent the join request 
+  /// * [bio]: A short bio of the user
   ChatJoinRequest copyWith({
     int? userId,
     int? date,
@@ -60,11 +66,14 @@ final class ChatJoinRequest extends TdObject {
     bio: bio ?? this.bio,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatJoinRequest';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

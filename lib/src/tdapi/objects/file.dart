@@ -65,6 +65,7 @@ final class File extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -77,7 +78,14 @@ final class File extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique file identifier
+  /// * [size]: File size, in bytes; 0 if unknown
+  /// * [expected_size]: Approximate file size in bytes in case the exact file size is unknown. Can be used to show download/upload progress
+  /// * [local]: Information about the local copy of the file
+  /// * [remote]: Information about the remote copy of the file
   File copyWith({
     int? id,
     int? size,
@@ -96,11 +104,14 @@ final class File extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'file';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

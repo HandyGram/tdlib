@@ -29,6 +29,7 @@ final class SendCallSignalingData extends TdFunction {
   /// The data
   final String data;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SendCallSignalingData extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [call_id]: Call identifier 
+  /// * [data]: The data
   SendCallSignalingData copyWith({
     int? callId,
     String? data,
@@ -48,11 +53,14 @@ final class SendCallSignalingData extends TdFunction {
     data: data ?? this.data,
   );
 
+  /// TDLib object type
   static const String objectType = 'sendCallSignalingData';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

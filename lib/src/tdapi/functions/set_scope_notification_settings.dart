@@ -29,6 +29,7 @@ final class SetScopeNotificationSettings extends TdFunction {
   /// The new notification settings for the given scope
   final ScopeNotificationSettings notificationSettings;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetScopeNotificationSettings extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [scope]: Types of chats for which to change the notification settings 
+  /// * [notification_settings]: The new notification settings for the given scope
   SetScopeNotificationSettings copyWith({
     NotificationSettingsScope? scope,
     ScopeNotificationSettings? notificationSettings,
@@ -48,11 +53,14 @@ final class SetScopeNotificationSettings extends TdFunction {
     notificationSettings: notificationSettings ?? this.notificationSettings,
   );
 
+  /// TDLib object type
   static const String objectType = 'setScopeNotificationSettings';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

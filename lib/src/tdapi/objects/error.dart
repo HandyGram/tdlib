@@ -44,6 +44,7 @@ final class TdError extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -53,7 +54,11 @@ final class TdError extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [code]: Error code; subject to future changes. If the error code is 406, the error message must not be processed in any way and must not be displayed to the user
+  /// * [message]: Error message; subject to future changes
   TdError copyWith({
     int? code,
     String? message,
@@ -66,11 +71,14 @@ final class TdError extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'error';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

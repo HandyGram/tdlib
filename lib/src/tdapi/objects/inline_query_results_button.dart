@@ -32,6 +32,7 @@ final class InlineQueryResultsButton extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -41,7 +42,11 @@ final class InlineQueryResultsButton extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: The text of the button 
+  /// * [type]: Type of the button
   InlineQueryResultsButton copyWith({
     String? text,
     InlineQueryResultsButtonType? type,
@@ -50,11 +55,14 @@ final class InlineQueryResultsButton extends TdObject {
     type: type ?? this.type,
   );
 
+  /// TDLib object type
   static const String objectType = 'inlineQueryResultsButton';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

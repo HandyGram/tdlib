@@ -29,6 +29,7 @@ final class SetBotUpdatesStatus extends TdFunction {
   /// The last error message
   final String errorMessage;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetBotUpdatesStatus extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [pending_update_count]: The number of pending updates 
+  /// * [error_message]: The last error message
   SetBotUpdatesStatus copyWith({
     int? pendingUpdateCount,
     String? errorMessage,
@@ -48,11 +53,14 @@ final class SetBotUpdatesStatus extends TdFunction {
     errorMessage: errorMessage ?? this.errorMessage,
   );
 
+  /// TDLib object type
   static const String objectType = 'setBotUpdatesStatus';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

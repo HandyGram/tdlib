@@ -23,6 +23,7 @@ final class SendEmailAddressVerificationCode extends TdFunction {
   /// Email address
   final String emailAddress;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class SendEmailAddressVerificationCode extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [email_address]: Email address
   SendEmailAddressVerificationCode copyWith({
     String? emailAddress,
   }) => SendEmailAddressVerificationCode(
     emailAddress: emailAddress ?? this.emailAddress,
   );
 
+  /// TDLib object type
   static const String objectType = 'sendEmailAddressVerificationCode';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

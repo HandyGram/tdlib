@@ -44,6 +44,7 @@ final class MessageCalendar extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -53,7 +54,11 @@ final class MessageCalendar extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [total_count]: Total number of found messages 
+  /// * [days]: Information about messages sent
   MessageCalendar copyWith({
     int? totalCount,
     List<MessageCalendarDay>? days,
@@ -66,11 +71,14 @@ final class MessageCalendar extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageCalendar';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

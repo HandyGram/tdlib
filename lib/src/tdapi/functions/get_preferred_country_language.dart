@@ -23,6 +23,7 @@ final class GetPreferredCountryLanguage extends TdFunction {
   /// A two-letter ISO 3166-1 alpha-2 country code
   final String countryCode;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetPreferredCountryLanguage extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [country_code]: A two-letter ISO 3166-1 alpha-2 country code
   GetPreferredCountryLanguage copyWith({
     String? countryCode,
   }) => GetPreferredCountryLanguage(
     countryCode: countryCode ?? this.countryCode,
   );
 
+  /// TDLib object type
   static const String objectType = 'getPreferredCountryLanguage';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

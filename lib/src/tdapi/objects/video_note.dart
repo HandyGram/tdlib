@@ -67,6 +67,7 @@ final class VideoNote extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -81,7 +82,16 @@ final class VideoNote extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [duration]: Duration of the video, in seconds; as defined by the sender
+  /// * [waveform]: A waveform representation of the video note's audio in 5-bit format; may be empty if unknown
+  /// * [length]: Video width and height; as defined by the sender
+  /// * [minithumbnail]: Video minithumbnail; may be null
+  /// * [thumbnail]: Video thumbnail in JPEG format; as defined by the sender; may be null
+  /// * [speech_recognition_result]: Result of speech recognition in the video note; may be null
+  /// * [video]: File containing the video
   VideoNote copyWith({
     int? duration,
     String? waveform,
@@ -100,11 +110,14 @@ final class VideoNote extends TdObject {
     video: video ?? this.video,
   );
 
+  /// TDLib object type
   static const String objectType = 'videoNote';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

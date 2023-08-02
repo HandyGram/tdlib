@@ -23,6 +23,7 @@ final class ProcessPushNotification extends TdFunction {
   /// JSON-encoded push notification payload with all fields sent by the server, and "google.sent_time" and "google.notification.sound" fields added
   final String payload;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class ProcessPushNotification extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [payload]: JSON-encoded push notification payload with all fields sent by the server, and "google.sent_time" and "google.notification.sound" fields added
   ProcessPushNotification copyWith({
     String? payload,
   }) => ProcessPushNotification(
     payload: payload ?? this.payload,
   );
 
+  /// TDLib object type
   static const String objectType = 'processPushNotification';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

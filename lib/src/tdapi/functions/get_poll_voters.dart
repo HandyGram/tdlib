@@ -47,6 +47,7 @@ final class GetPollVoters extends TdFunction {
   /// The maximum number of users to be returned; must be positive and can't be greater than 50. For optimal performance, the number of returned users is chosen by TDLib and can be smaller than the specified limit, even if the end of the voter list has not been reached
   final int limit;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -60,7 +61,14 @@ final class GetPollVoters extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat to which the poll belongs
+  /// * [message_id]: Identifier of the message containing the poll
+  /// * [option_id]: 0-based identifier of the answer option
+  /// * [offset]: Number of users to skip in the result; must be non-negative
+  /// * [limit]: The maximum number of users to be returned; must be positive and can't be greater than 50. For optimal performance, the number of returned users is chosen by TDLib and can be smaller than the specified limit, even if the end of the voter list has not been reached
   GetPollVoters copyWith({
     int? chatId,
     int? messageId,
@@ -75,11 +83,14 @@ final class GetPollVoters extends TdFunction {
     limit: limit ?? this.limit,
   );
 
+  /// TDLib object type
   static const String objectType = 'getPollVoters';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

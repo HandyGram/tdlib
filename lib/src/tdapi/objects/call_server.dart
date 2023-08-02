@@ -53,6 +53,7 @@ final class CallServer extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -65,7 +66,14 @@ final class CallServer extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Server identifier
+  /// * [ip_address]: Server IPv4 address
+  /// * [ipv6_address]: Server IPv6 address
+  /// * [port]: Server port number
+  /// * [type]: Server type
   CallServer copyWith({
     int? id,
     String? ipAddress,
@@ -80,11 +88,14 @@ final class CallServer extends TdObject {
     type: type ?? this.type,
   );
 
+  /// TDLib object type
   static const String objectType = 'callServer';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

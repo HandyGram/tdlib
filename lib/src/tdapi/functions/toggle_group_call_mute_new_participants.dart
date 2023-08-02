@@ -29,6 +29,7 @@ final class ToggleGroupCallMuteNewParticipants extends TdFunction {
   /// New value of the mute_new_participants setting
   final bool muteNewParticipants;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ToggleGroupCallMuteNewParticipants extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [group_call_id]: Group call identifier
+  /// * [mute_new_participants]: New value of the mute_new_participants setting
   ToggleGroupCallMuteNewParticipants copyWith({
     int? groupCallId,
     bool? muteNewParticipants,
@@ -48,11 +53,14 @@ final class ToggleGroupCallMuteNewParticipants extends TdFunction {
     muteNewParticipants: muteNewParticipants ?? this.muteNewParticipants,
   );
 
+  /// TDLib object type
   static const String objectType = 'toggleGroupCallMuteNewParticipants';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

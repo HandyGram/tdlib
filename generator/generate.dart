@@ -338,7 +338,13 @@ class DartTdDocumentationGenerator {
               ? ''
               : '{\n    ${copyWithFields.join('\n    ')}\n  }',
         ),
-        ReplacementData('COPY_OVERRIDE', obj.hasParent ? '\n  @override' : ''),
+        ReplacementData(
+            'COPY_OVERRIDE',
+            "/// ${obj.variables.isEmpty ? "Copy instance with no modifications." : """Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * ${obj.variables.map((e) => "[${e.name}]: ${e.description}").join('\n  /// * ')}"""}"
+                "${obj.hasParent ? '\n  @override' : ''}"),
         ReplacementData('ID', lowerFirstChar(obj.name)),
         ReplacementData(
           'JSON_ARGS',

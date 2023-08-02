@@ -41,6 +41,7 @@ final class AssignGooglePlayTransaction extends TdFunction {
   /// Transaction purpose
   final StorePaymentPurpose purpose;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -53,7 +54,13 @@ final class AssignGooglePlayTransaction extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [package_name]: Application package name
+  /// * [store_product_id]: Identifier of the purchased store product
+  /// * [purchase_token]: Google Play purchase token
+  /// * [purpose]: Transaction purpose
   AssignGooglePlayTransaction copyWith({
     String? packageName,
     String? storeProductId,
@@ -66,11 +73,14 @@ final class AssignGooglePlayTransaction extends TdFunction {
     purpose: purpose ?? this.purpose,
   );
 
+  /// TDLib object type
   static const String objectType = 'assignGooglePlayTransaction';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

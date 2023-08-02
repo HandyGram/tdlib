@@ -23,6 +23,7 @@ final class RequestQrCodeAuthentication extends TdFunction {
   /// List of user identifiers of other users currently using the application
   final List<int> otherUserIds;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class RequestQrCodeAuthentication extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [other_user_ids]: List of user identifiers of other users currently using the application
   RequestQrCodeAuthentication copyWith({
     List<int>? otherUserIds,
   }) => RequestQrCodeAuthentication(
     otherUserIds: otherUserIds ?? this.otherUserIds,
   );
 
+  /// TDLib object type
   static const String objectType = 'requestQrCodeAuthentication';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

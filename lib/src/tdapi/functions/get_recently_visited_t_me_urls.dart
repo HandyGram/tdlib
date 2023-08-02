@@ -23,6 +23,7 @@ final class GetRecentlyVisitedTMeUrls extends TdFunction {
   /// Google Play referrer to identify the user
   final String referrer;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetRecentlyVisitedTMeUrls extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [referrer]: Google Play referrer to identify the user
   GetRecentlyVisitedTMeUrls copyWith({
     String? referrer,
   }) => GetRecentlyVisitedTMeUrls(
     referrer: referrer ?? this.referrer,
   );
 
+  /// TDLib object type
   static const String objectType = 'getRecentlyVisitedTMeUrls';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

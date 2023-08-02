@@ -23,6 +23,7 @@ final class SetAuthenticationEmailAddress extends TdFunction {
   /// The email address of the user
   final String emailAddress;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class SetAuthenticationEmailAddress extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [email_address]: The email address of the user
   SetAuthenticationEmailAddress copyWith({
     String? emailAddress,
   }) => SetAuthenticationEmailAddress(
     emailAddress: emailAddress ?? this.emailAddress,
   );
 
+  /// TDLib object type
   static const String objectType = 'setAuthenticationEmailAddress';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

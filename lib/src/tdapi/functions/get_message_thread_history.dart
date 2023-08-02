@@ -47,6 +47,7 @@ final class GetMessageThreadHistory extends TdFunction {
   /// The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset.. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
   final int limit;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -60,7 +61,14 @@ final class GetMessageThreadHistory extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [message_id]: Message identifier, which thread history needs to be returned
+  /// * [from_message_id]: Identifier of the message starting from which history must be fetched; use 0 to get results from the last message
+  /// * [offset]: Specify 0 to get results from exactly the from_message_id or a negative offset up to 99 to get additionally some newer messages
+  /// * [limit]: The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset.. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
   GetMessageThreadHistory copyWith({
     int? chatId,
     int? messageId,
@@ -75,11 +83,14 @@ final class GetMessageThreadHistory extends TdFunction {
     limit: limit ?? this.limit,
   );
 
+  /// TDLib object type
   static const String objectType = 'getMessageThreadHistory';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

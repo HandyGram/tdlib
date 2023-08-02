@@ -39,6 +39,7 @@ final class GroupCallParticipantVideoInfo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class GroupCallParticipantVideoInfo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [source_groups]: List of synchronization source groups of the video
+  /// * [endpoint_id]: Video channel endpoint identifier
+  /// * [is_paused]: True, if the video is paused. This flag needs to be ignored, if new video frames are received
   GroupCallParticipantVideoInfo copyWith({
     List<GroupCallVideoSourceGroup>? sourceGroups,
     String? endpointId,
@@ -60,11 +66,14 @@ final class GroupCallParticipantVideoInfo extends TdObject {
     isPaused: isPaused ?? this.isPaused,
   );
 
+  /// TDLib object type
   static const String objectType = 'groupCallParticipantVideoInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

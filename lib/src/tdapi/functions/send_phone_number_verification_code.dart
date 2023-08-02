@@ -29,6 +29,7 @@ final class SendPhoneNumberVerificationCode extends TdFunction {
   /// Settings for the authentication of the user's phone number; pass null to use default settings
   final PhoneNumberAuthenticationSettings? settings;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SendPhoneNumberVerificationCode extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [phone_number]: The phone number of the user, in international format
+  /// * [settings]: Settings for the authentication of the user's phone number; pass null to use default settings
   SendPhoneNumberVerificationCode copyWith({
     String? phoneNumber,
     PhoneNumberAuthenticationSettings? settings,
@@ -48,11 +53,14 @@ final class SendPhoneNumberVerificationCode extends TdFunction {
     settings: settings ?? this.settings,
   );
 
+  /// TDLib object type
   static const String objectType = 'sendPhoneNumberVerificationCode';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

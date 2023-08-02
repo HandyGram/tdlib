@@ -79,6 +79,7 @@ final class PasswordState extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -93,7 +94,16 @@ final class PasswordState extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [has_password]: True, if a 2-step verification password is set
+  /// * [password_hint]: Hint for the password; may be empty
+  /// * [has_recovery_email_address]: True, if a recovery email is set
+  /// * [has_passport_data]: True, if some Telegram Passport elements were saved
+  /// * [recovery_email_address_code_info]: Information about the recovery email address to which the confirmation email was sent; may be null
+  /// * [login_email_address_pattern]: Pattern of the email address set up for logging in
+  /// * [pending_reset_date]: If not 0, point in time (Unix timestamp) after which the 2-step verification password can be reset immediately using resetPassword
   PasswordState copyWith({
     bool? hasPassword,
     String? passwordHint,
@@ -116,11 +126,14 @@ final class PasswordState extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'passwordState';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

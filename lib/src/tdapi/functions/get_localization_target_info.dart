@@ -23,6 +23,7 @@ final class GetLocalizationTargetInfo extends TdFunction {
   /// Pass true to get only locally available information without sending network requests
   final bool onlyLocal;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetLocalizationTargetInfo extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [only_local]: Pass true to get only locally available information without sending network requests
   GetLocalizationTargetInfo copyWith({
     bool? onlyLocal,
   }) => GetLocalizationTargetInfo(
     onlyLocal: onlyLocal ?? this.onlyLocal,
   );
 
+  /// TDLib object type
   static const String objectType = 'getLocalizationTargetInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

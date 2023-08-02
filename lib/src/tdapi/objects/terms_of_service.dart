@@ -39,6 +39,7 @@ final class TermsOfService extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class TermsOfService extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Text of the terms of service 
+  /// * [min_user_age]: The minimum age of a user to be able to accept the terms; 0 if age isn't restricted 
+  /// * [show_popup]: True, if a blocking popup with terms of service must be shown to the user
   TermsOfService copyWith({
     FormattedText? text,
     int? minUserAge,
@@ -60,11 +66,14 @@ final class TermsOfService extends TdObject {
     showPopup: showPopup ?? this.showPopup,
   );
 
+  /// TDLib object type
   static const String objectType = 'termsOfService';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -53,6 +53,7 @@ final class AnswerInlineQuery extends TdFunction {
   /// Offset for the next inline query; pass an empty string if there are no more results
   final String nextOffset;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -67,7 +68,15 @@ final class AnswerInlineQuery extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [inline_query_id]: Identifier of the inline query
+  /// * [is_personal]: Pass true if results may be cached and returned only for the user that sent the query. By default, results may be returned to any user who sends the same query
+  /// * [button]: Button to be shown above inline query results; pass null if none
+  /// * [results]: The results of the query
+  /// * [cache_time]: Allowed time to cache the results of the query, in seconds
+  /// * [next_offset]: Offset for the next inline query; pass an empty string if there are no more results
   AnswerInlineQuery copyWith({
     int? inlineQueryId,
     bool? isPersonal,
@@ -84,11 +93,14 @@ final class AnswerInlineQuery extends TdFunction {
     nextOffset: nextOffset ?? this.nextOffset,
   );
 
+  /// TDLib object type
   static const String objectType = 'answerInlineQuery';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

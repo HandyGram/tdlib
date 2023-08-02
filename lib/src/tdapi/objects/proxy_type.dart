@@ -30,17 +30,21 @@ sealed class ProxyType extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   ProxyType copyWith();
 
+  /// TDLib object type
   static const String objectType = 'proxyType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -78,6 +82,7 @@ final class ProxyTypeSocks5 extends ProxyType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -87,7 +92,11 @@ final class ProxyTypeSocks5 extends ProxyType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [username]: Username for logging in; may be empty 
+  /// * [password]: Password for logging in; may be empty
   @override
   ProxyTypeSocks5 copyWith({
     String? username,
@@ -97,11 +106,14 @@ final class ProxyTypeSocks5 extends ProxyType {
     password: password ?? this.password,
   );
 
+  /// TDLib object type
   static const String objectType = 'proxyTypeSocks5';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -146,6 +158,7 @@ final class ProxyTypeHttp extends ProxyType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -156,7 +169,12 @@ final class ProxyTypeHttp extends ProxyType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [username]: Username for logging in; may be empty 
+  /// * [password]: Password for logging in; may be empty 
+  /// * [http_only]: Pass true if the proxy supports only HTTP requests and doesn't support transparent TCP connections via HTTP CONNECT method
   @override
   ProxyTypeHttp copyWith({
     String? username,
@@ -168,11 +186,14 @@ final class ProxyTypeHttp extends ProxyType {
     httpOnly: httpOnly ?? this.httpOnly,
   );
 
+  /// TDLib object type
   static const String objectType = 'proxyTypeHttp';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -203,6 +224,7 @@ final class ProxyTypeMtproto extends ProxyType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -211,7 +233,10 @@ final class ProxyTypeMtproto extends ProxyType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [secret]: The proxy's secret in hexadecimal encoding
   @override
   ProxyTypeMtproto copyWith({
     String? secret,
@@ -219,11 +244,14 @@ final class ProxyTypeMtproto extends ProxyType {
     secret: secret ?? this.secret,
   );
 
+  /// TDLib object type
   static const String objectType = 'proxyTypeMtproto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

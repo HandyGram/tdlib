@@ -177,6 +177,7 @@ final class WebPage extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -205,7 +206,30 @@ final class WebPage extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [url]: Original URL of the link
+  /// * [display_url]: URL to display
+  /// * [type]: Type of the web page. Can be: article, photo, audio, video, document, profile, app, or something else
+  /// * [site_name]: Short name of the site (e.g., Google Docs, App Store)
+  /// * [title]: Title of the content
+  /// * [description]: Description of the content
+  /// * [photo]: Image representing the content; may be null
+  /// * [embed_url]: URL to show in the embedded preview
+  /// * [embed_type]: MIME type of the embedded preview, (e.g., text/html or video/mp4)
+  /// * [embed_width]: Width of the embedded preview
+  /// * [embed_height]: Height of the embedded preview
+  /// * [duration]: Duration of the content, in seconds
+  /// * [author]: Author of the content
+  /// * [animation]: Preview of the content as an animation, if available; may be null
+  /// * [audio]: Preview of the content as an audio file, if available; may be null
+  /// * [document]: Preview of the content as a document, if available; may be null
+  /// * [sticker]: Preview of the content as a sticker for small WEBP files, if available; may be null
+  /// * [video]: Preview of the content as a video, if available; may be null
+  /// * [video_note]: Preview of the content as a video note, if available; may be null
+  /// * [voice_note]: Preview of the content as a voice note, if available; may be null
+  /// * [instant_view_version]: Version of web page instant view (currently, can be 1 or 2); 0 if none
   WebPage copyWith({
     String? url,
     String? displayUrl,
@@ -256,11 +280,14 @@ final class WebPage extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'webPage';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -29,6 +29,7 @@ final class GetPaymentForm extends TdFunction {
   /// Preferred payment form theme; pass null to use the default theme
   final ThemeParameters? theme;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class GetPaymentForm extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [input_invoice]: The invoice
+  /// * [theme]: Preferred payment form theme; pass null to use the default theme
   GetPaymentForm copyWith({
     InputInvoice? inputInvoice,
     ThemeParameters? theme,
@@ -48,11 +53,14 @@ final class GetPaymentForm extends TdFunction {
     theme: theme ?? this.theme,
   );
 
+  /// TDLib object type
   static const String objectType = 'getPaymentForm';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

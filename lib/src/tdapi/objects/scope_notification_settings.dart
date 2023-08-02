@@ -65,6 +65,7 @@ final class ScopeNotificationSettings extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -77,7 +78,14 @@ final class ScopeNotificationSettings extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [mute_for]: Time left before notifications will be unmuted, in seconds
+  /// * [sound_id]: Identifier of the notification sound to be played; 0 if sound is disabled
+  /// * [show_preview]: True, if message content must be displayed in notifications
+  /// * [disable_pinned_message_notifications]: True, if notifications for incoming pinned messages will be created as for an ordinary unread message
+  /// * [disable_mention_notifications]: True, if notifications for messages with mentions will be created as for an ordinary unread message
   ScopeNotificationSettings copyWith({
     int? muteFor,
     int? soundId,
@@ -96,11 +104,14 @@ final class ScopeNotificationSettings extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'scopeNotificationSettings';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

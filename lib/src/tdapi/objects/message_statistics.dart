@@ -37,6 +37,7 @@ final class MessageStatistics extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -45,7 +46,10 @@ final class MessageStatistics extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [message_interaction_graph]: A graph containing number of message views and shares
   MessageStatistics copyWith({
     StatisticalGraph? messageInteractionGraph,
     dynamic extra,
@@ -56,11 +60,14 @@ final class MessageStatistics extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageStatistics';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -29,6 +29,7 @@ final class CreateBasicGroupChat extends TdFunction {
   /// Pass true to create the chat without a network request. In this case all information about the chat except its type, title and photo can be incorrect
   final bool force;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class CreateBasicGroupChat extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [basic_group_id]: Basic group identifier 
+  /// * [force]: Pass true to create the chat without a network request. In this case all information about the chat except its type, title and photo can be incorrect
   CreateBasicGroupChat copyWith({
     int? basicGroupId,
     bool? force,
@@ -48,11 +53,14 @@ final class CreateBasicGroupChat extends TdFunction {
     force: force ?? this.force,
   );
 
+  /// TDLib object type
   static const String objectType = 'createBasicGroupChat';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

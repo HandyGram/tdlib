@@ -29,6 +29,7 @@ final class RevokeChatInviteLink extends TdFunction {
   /// Invite link to be revoked
   final String inviteLink;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class RevokeChatInviteLink extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [invite_link]: Invite link to be revoked
   RevokeChatInviteLink copyWith({
     int? chatId,
     String? inviteLink,
@@ -48,11 +53,14 @@ final class RevokeChatInviteLink extends TdFunction {
     inviteLink: inviteLink ?? this.inviteLink,
   );
 
+  /// TDLib object type
   static const String objectType = 'revokeChatInviteLink';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

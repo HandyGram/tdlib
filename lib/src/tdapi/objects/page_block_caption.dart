@@ -32,6 +32,7 @@ final class PageBlockCaption extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -41,7 +42,11 @@ final class PageBlockCaption extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Content of the caption 
+  /// * [credit]: Block credit (like HTML tag <cite>)
   PageBlockCaption copyWith({
     RichText? text,
     RichText? credit,
@@ -50,11 +55,14 @@ final class PageBlockCaption extends TdObject {
     credit: credit ?? this.credit,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockCaption';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

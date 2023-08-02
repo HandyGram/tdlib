@@ -39,6 +39,7 @@ final class Location extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class Location extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [latitude]: Latitude of the location in degrees; as defined by the sender
+  /// * [longitude]: Longitude of the location, in degrees; as defined by the sender
+  /// * [horizontal_accuracy]: The estimated horizontal accuracy of the location, in meters; as defined by the sender. 0 if unknown
   Location copyWith({
     double? latitude,
     double? longitude,
@@ -60,11 +66,14 @@ final class Location extends TdObject {
     horizontalAccuracy: horizontalAccuracy ?? this.horizontalAccuracy,
   );
 
+  /// TDLib object type
   static const String objectType = 'location';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

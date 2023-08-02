@@ -156,6 +156,7 @@ final class Supergroup extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -181,7 +182,27 @@ final class Supergroup extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Supergroup or channel identifier
+  /// * [usernames]: Usernames of the supergroup or channel; may be null
+  /// * [date]: Point in time (Unix timestamp) when the current user joined, or the point in time when the supergroup or channel was created, in case the user is not a member
+  /// * [status]: Status of the current user in the supergroup or channel; custom title will always be empty
+  /// * [member_count]: Number of members in the supergroup or channel; 0 if unknown. Currently, it is guaranteed to be known only if the supergroup or channel was received. through searchPublicChats, searchChatsNearby, getInactiveSupergroupChats, getSuitableDiscussionChats, getGroupsInCommon, getUserPrivacySettingRules, or in chatFolderInviteLinkInfo.missing_chat_ids
+  /// * [has_linked_chat]: True, if the channel has a discussion group, or the supergroup is the designated discussion group for a channel
+  /// * [has_location]: True, if the supergroup is connected to a location, i.e. the supergroup is a location-based supergroup
+  /// * [sign_messages]: True, if messages sent to the channel need to contain information about the sender. This field is only applicable to channels
+  /// * [join_to_send_messages]: True, if users need to join the supergroup before they can send messages. Always true for channels and non-discussion supergroups
+  /// * [join_by_request]: True, if all users directly joining the supergroup need to be approved by supergroup administrators. Always false for channels and supergroups without username, location, or a linked chat
+  /// * [is_slow_mode_enabled]: True, if the slow mode is enabled in the supergroup
+  /// * [is_channel]: True, if the supergroup is a channel
+  /// * [is_broadcast_group]: True, if the supergroup is a broadcast group, i.e. only administrators can send messages and there is no limit on the number of members
+  /// * [is_forum]: True, if the supergroup must be shown as a forum by default
+  /// * [is_verified]: True, if the supergroup or channel is verified
+  /// * [restriction_reason]: If non-empty, contains a human-readable description of the reason why access to this supergroup or channel must be restricted
+  /// * [is_scam]: True, if many users reported this supergroup or channel as a scam
+  /// * [is_fake]: True, if many users reported this supergroup or channel as a fake account
   Supergroup copyWith({
     int? id,
     Usernames? usernames,
@@ -226,11 +247,14 @@ final class Supergroup extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'supergroup';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

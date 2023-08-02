@@ -29,6 +29,7 @@ final class RegisterUser extends TdFunction {
   /// The last name of the user; 0-64 characters
   final String lastName;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class RegisterUser extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [first_name]: The first name of the user; 1-64 characters
+  /// * [last_name]: The last name of the user; 0-64 characters
   RegisterUser copyWith({
     String? firstName,
     String? lastName,
@@ -48,11 +53,14 @@ final class RegisterUser extends TdFunction {
     lastName: lastName ?? this.lastName,
   );
 
+  /// TDLib object type
   static const String objectType = 'registerUser';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

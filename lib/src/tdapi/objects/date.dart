@@ -39,6 +39,7 @@ final class Date extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class Date extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [day]: Day of the month; 1-31 
+  /// * [month]: Month; 1-12 
+  /// * [year]: Year; 1-9999
   Date copyWith({
     int? day,
     int? month,
@@ -60,11 +66,14 @@ final class Date extends TdObject {
     year: year ?? this.year,
   );
 
+  /// TDLib object type
   static const String objectType = 'date';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

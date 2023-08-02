@@ -53,6 +53,7 @@ final class ThemeSettings extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -65,7 +66,14 @@ final class ThemeSettings extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [accent_color]: Theme accent color in ARGB format
+  /// * [background]: The background to be used in chats; may be null
+  /// * [outgoing_message_fill]: The fill to be used as a background for outgoing messages
+  /// * [animate_outgoing_message_fill]: If true, the freeform gradient fill needs to be animated on every sent message
+  /// * [outgoing_message_accent_color]: Accent color of outgoing messages in ARGB format
   ThemeSettings copyWith({
     int? accentColor,
     Background? background,
@@ -80,11 +88,14 @@ final class ThemeSettings extends TdObject {
     outgoingMessageAccentColor: outgoingMessageAccentColor ?? this.outgoingMessageAccentColor,
   );
 
+  /// TDLib object type
   static const String objectType = 'themeSettings';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

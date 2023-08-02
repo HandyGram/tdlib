@@ -81,17 +81,21 @@ sealed class TextEntityType extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   TextEntityType copyWith();
 
+  /// TDLib object type
   static const String objectType = 'textEntityType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -110,6 +114,7 @@ final class TextEntityTypeMention extends TextEntityType {
   /// Parse from a json
   factory TextEntityTypeMention.fromJson(Map<String, dynamic> json) => const TextEntityTypeMention();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -117,15 +122,18 @@ final class TextEntityTypeMention extends TextEntityType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   TextEntityTypeMention copyWith() => const TextEntityTypeMention();
 
+  /// TDLib object type
   static const String objectType = 'textEntityTypeMention';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -144,6 +152,7 @@ final class TextEntityTypeHashtag extends TextEntityType {
   /// Parse from a json
   factory TextEntityTypeHashtag.fromJson(Map<String, dynamic> json) => const TextEntityTypeHashtag();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -151,15 +160,18 @@ final class TextEntityTypeHashtag extends TextEntityType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   TextEntityTypeHashtag copyWith() => const TextEntityTypeHashtag();
 
+  /// TDLib object type
   static const String objectType = 'textEntityTypeHashtag';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -178,6 +190,7 @@ final class TextEntityTypeCashtag extends TextEntityType {
   /// Parse from a json
   factory TextEntityTypeCashtag.fromJson(Map<String, dynamic> json) => const TextEntityTypeCashtag();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -185,15 +198,18 @@ final class TextEntityTypeCashtag extends TextEntityType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   TextEntityTypeCashtag copyWith() => const TextEntityTypeCashtag();
 
+  /// TDLib object type
   static const String objectType = 'textEntityTypeCashtag';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -212,6 +228,7 @@ final class TextEntityTypeBotCommand extends TextEntityType {
   /// Parse from a json
   factory TextEntityTypeBotCommand.fromJson(Map<String, dynamic> json) => const TextEntityTypeBotCommand();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -219,15 +236,18 @@ final class TextEntityTypeBotCommand extends TextEntityType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   TextEntityTypeBotCommand copyWith() => const TextEntityTypeBotCommand();
 
+  /// TDLib object type
   static const String objectType = 'textEntityTypeBotCommand';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -246,6 +266,7 @@ final class TextEntityTypeUrl extends TextEntityType {
   /// Parse from a json
   factory TextEntityTypeUrl.fromJson(Map<String, dynamic> json) => const TextEntityTypeUrl();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -253,15 +274,18 @@ final class TextEntityTypeUrl extends TextEntityType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   TextEntityTypeUrl copyWith() => const TextEntityTypeUrl();
 
+  /// TDLib object type
   static const String objectType = 'textEntityTypeUrl';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -280,6 +304,7 @@ final class TextEntityTypeEmailAddress extends TextEntityType {
   /// Parse from a json
   factory TextEntityTypeEmailAddress.fromJson(Map<String, dynamic> json) => const TextEntityTypeEmailAddress();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -287,15 +312,18 @@ final class TextEntityTypeEmailAddress extends TextEntityType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   TextEntityTypeEmailAddress copyWith() => const TextEntityTypeEmailAddress();
 
+  /// TDLib object type
   static const String objectType = 'textEntityTypeEmailAddress';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -314,6 +342,7 @@ final class TextEntityTypePhoneNumber extends TextEntityType {
   /// Parse from a json
   factory TextEntityTypePhoneNumber.fromJson(Map<String, dynamic> json) => const TextEntityTypePhoneNumber();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -321,15 +350,18 @@ final class TextEntityTypePhoneNumber extends TextEntityType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   TextEntityTypePhoneNumber copyWith() => const TextEntityTypePhoneNumber();
 
+  /// TDLib object type
   static const String objectType = 'textEntityTypePhoneNumber';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -348,6 +380,7 @@ final class TextEntityTypeBankCardNumber extends TextEntityType {
   /// Parse from a json
   factory TextEntityTypeBankCardNumber.fromJson(Map<String, dynamic> json) => const TextEntityTypeBankCardNumber();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -355,15 +388,18 @@ final class TextEntityTypeBankCardNumber extends TextEntityType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   TextEntityTypeBankCardNumber copyWith() => const TextEntityTypeBankCardNumber();
 
+  /// TDLib object type
   static const String objectType = 'textEntityTypeBankCardNumber';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -382,6 +418,7 @@ final class TextEntityTypeBold extends TextEntityType {
   /// Parse from a json
   factory TextEntityTypeBold.fromJson(Map<String, dynamic> json) => const TextEntityTypeBold();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -389,15 +426,18 @@ final class TextEntityTypeBold extends TextEntityType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   TextEntityTypeBold copyWith() => const TextEntityTypeBold();
 
+  /// TDLib object type
   static const String objectType = 'textEntityTypeBold';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -416,6 +456,7 @@ final class TextEntityTypeItalic extends TextEntityType {
   /// Parse from a json
   factory TextEntityTypeItalic.fromJson(Map<String, dynamic> json) => const TextEntityTypeItalic();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -423,15 +464,18 @@ final class TextEntityTypeItalic extends TextEntityType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   TextEntityTypeItalic copyWith() => const TextEntityTypeItalic();
 
+  /// TDLib object type
   static const String objectType = 'textEntityTypeItalic';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -450,6 +494,7 @@ final class TextEntityTypeUnderline extends TextEntityType {
   /// Parse from a json
   factory TextEntityTypeUnderline.fromJson(Map<String, dynamic> json) => const TextEntityTypeUnderline();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -457,15 +502,18 @@ final class TextEntityTypeUnderline extends TextEntityType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   TextEntityTypeUnderline copyWith() => const TextEntityTypeUnderline();
 
+  /// TDLib object type
   static const String objectType = 'textEntityTypeUnderline';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -484,6 +532,7 @@ final class TextEntityTypeStrikethrough extends TextEntityType {
   /// Parse from a json
   factory TextEntityTypeStrikethrough.fromJson(Map<String, dynamic> json) => const TextEntityTypeStrikethrough();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -491,15 +540,18 @@ final class TextEntityTypeStrikethrough extends TextEntityType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   TextEntityTypeStrikethrough copyWith() => const TextEntityTypeStrikethrough();
 
+  /// TDLib object type
   static const String objectType = 'textEntityTypeStrikethrough';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -518,6 +570,7 @@ final class TextEntityTypeSpoiler extends TextEntityType {
   /// Parse from a json
   factory TextEntityTypeSpoiler.fromJson(Map<String, dynamic> json) => const TextEntityTypeSpoiler();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -525,15 +578,18 @@ final class TextEntityTypeSpoiler extends TextEntityType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   TextEntityTypeSpoiler copyWith() => const TextEntityTypeSpoiler();
 
+  /// TDLib object type
   static const String objectType = 'textEntityTypeSpoiler';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -552,6 +608,7 @@ final class TextEntityTypeCode extends TextEntityType {
   /// Parse from a json
   factory TextEntityTypeCode.fromJson(Map<String, dynamic> json) => const TextEntityTypeCode();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -559,15 +616,18 @@ final class TextEntityTypeCode extends TextEntityType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   TextEntityTypeCode copyWith() => const TextEntityTypeCode();
 
+  /// TDLib object type
   static const String objectType = 'textEntityTypeCode';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -586,6 +646,7 @@ final class TextEntityTypePre extends TextEntityType {
   /// Parse from a json
   factory TextEntityTypePre.fromJson(Map<String, dynamic> json) => const TextEntityTypePre();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -593,15 +654,18 @@ final class TextEntityTypePre extends TextEntityType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   TextEntityTypePre copyWith() => const TextEntityTypePre();
 
+  /// TDLib object type
   static const String objectType = 'textEntityTypePre';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -632,6 +696,7 @@ final class TextEntityTypePreCode extends TextEntityType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -640,7 +705,10 @@ final class TextEntityTypePreCode extends TextEntityType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [language]: Programming language of the code; as defined by the sender
   @override
   TextEntityTypePreCode copyWith({
     String? language,
@@ -648,11 +716,14 @@ final class TextEntityTypePreCode extends TextEntityType {
     language: language ?? this.language,
   );
 
+  /// TDLib object type
   static const String objectType = 'textEntityTypePreCode';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -683,6 +754,7 @@ final class TextEntityTypeTextUrl extends TextEntityType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -691,7 +763,10 @@ final class TextEntityTypeTextUrl extends TextEntityType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [url]: HTTP or tg:// URL to be opened when the link is clicked
   @override
   TextEntityTypeTextUrl copyWith({
     String? url,
@@ -699,11 +774,14 @@ final class TextEntityTypeTextUrl extends TextEntityType {
     url: url ?? this.url,
   );
 
+  /// TDLib object type
   static const String objectType = 'textEntityTypeTextUrl';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -734,6 +812,7 @@ final class TextEntityTypeMentionName extends TextEntityType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -742,7 +821,10 @@ final class TextEntityTypeMentionName extends TextEntityType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: Identifier of the mentioned user
   @override
   TextEntityTypeMentionName copyWith({
     int? userId,
@@ -750,11 +832,14 @@ final class TextEntityTypeMentionName extends TextEntityType {
     userId: userId ?? this.userId,
   );
 
+  /// TDLib object type
   static const String objectType = 'textEntityTypeMentionName';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -785,6 +870,7 @@ final class TextEntityTypeCustomEmoji extends TextEntityType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -793,7 +879,10 @@ final class TextEntityTypeCustomEmoji extends TextEntityType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [custom_emoji_id]: Unique identifier of the custom emoji
   @override
   TextEntityTypeCustomEmoji copyWith({
     int? customEmojiId,
@@ -801,11 +890,14 @@ final class TextEntityTypeCustomEmoji extends TextEntityType {
     customEmojiId: customEmojiId ?? this.customEmojiId,
   );
 
+  /// TDLib object type
   static const String objectType = 'textEntityTypeCustomEmoji';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -836,6 +928,7 @@ final class TextEntityTypeMediaTimestamp extends TextEntityType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -844,7 +937,10 @@ final class TextEntityTypeMediaTimestamp extends TextEntityType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [media_timestamp]: Timestamp from which a video/audio/video note/voice note playing must start, in seconds. The media can be in the content or the web page preview of the current message, or in the same places in the replied message
   @override
   TextEntityTypeMediaTimestamp copyWith({
     int? mediaTimestamp,
@@ -852,11 +948,14 @@ final class TextEntityTypeMediaTimestamp extends TextEntityType {
     mediaTimestamp: mediaTimestamp ?? this.mediaTimestamp,
   );
 
+  /// TDLib object type
   static const String objectType = 'textEntityTypeMediaTimestamp';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -51,6 +51,7 @@ final class PassportAuthorizationForm extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -61,7 +62,12 @@ final class PassportAuthorizationForm extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the authorization form
+  /// * [required_elements]: Telegram Passport elements that must be provided to complete the form
+  /// * [privacy_policy_url]: URL for the privacy policy of the service; may be empty
   PassportAuthorizationForm copyWith({
     int? id,
     List<PassportRequiredElement>? requiredElements,
@@ -76,11 +82,14 @@ final class PassportAuthorizationForm extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'passportAuthorizationForm';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

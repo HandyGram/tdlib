@@ -23,6 +23,7 @@ final class EnableProxy extends TdFunction {
   /// Proxy identifier
   final int proxyId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class EnableProxy extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [proxy_id]: Proxy identifier
   EnableProxy copyWith({
     int? proxyId,
   }) => EnableProxy(
     proxyId: proxyId ?? this.proxyId,
   );
 
+  /// TDLib object type
   static const String objectType = 'enableProxy';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

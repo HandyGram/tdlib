@@ -29,6 +29,7 @@ final class GetPhoneNumberInfoSync extends TdFunction {
   /// The phone number prefix
   final String phoneNumberPrefix;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class GetPhoneNumberInfoSync extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [language_code]: A two-letter ISO 639-1 language code for country information localization
+  /// * [phone_number_prefix]: The phone number prefix
   GetPhoneNumberInfoSync copyWith({
     String? languageCode,
     String? phoneNumberPrefix,
@@ -48,11 +53,14 @@ final class GetPhoneNumberInfoSync extends TdFunction {
     phoneNumberPrefix: phoneNumberPrefix ?? this.phoneNumberPrefix,
   );
 
+  /// TDLib object type
   static const String objectType = 'getPhoneNumberInfoSync';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

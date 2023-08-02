@@ -23,6 +23,7 @@ final class ClearAllDraftMessages extends TdFunction {
   /// Pass true to keep local message drafts in secret chats
   final bool excludeSecretChats;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class ClearAllDraftMessages extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [exclude_secret_chats]: Pass true to keep local message drafts in secret chats
   ClearAllDraftMessages copyWith({
     bool? excludeSecretChats,
   }) => ClearAllDraftMessages(
     excludeSecretChats: excludeSecretChats ?? this.excludeSecretChats,
   );
 
+  /// TDLib object type
   static const String objectType = 'clearAllDraftMessages';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

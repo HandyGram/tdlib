@@ -35,6 +35,7 @@ final class AddStickerToSet extends TdFunction {
   /// Sticker to add to the set
   final InputSticker sticker;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class AddStickerToSet extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: Sticker set owner
+  /// * [name]: Sticker set name
+  /// * [sticker]: Sticker to add to the set
   AddStickerToSet copyWith({
     int? userId,
     String? name,
@@ -57,11 +63,14 @@ final class AddStickerToSet extends TdFunction {
     sticker: sticker ?? this.sticker,
   );
 
+  /// TDLib object type
   static const String objectType = 'addStickerToSet';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

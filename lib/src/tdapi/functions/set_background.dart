@@ -35,6 +35,7 @@ final class SetBackground extends TdFunction {
   /// Pass true if the background is changed for a dark theme
   final bool forDarkTheme;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class SetBackground extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [background]: The input background to use; pass null to create a new filled background or to remove the current background
+  /// * [type]: Background type; pass null to use the default type of the remote background or to remove the current background
+  /// * [for_dark_theme]: Pass true if the background is changed for a dark theme
   SetBackground copyWith({
     InputBackground? background,
     BackgroundType? type,
@@ -57,11 +63,14 @@ final class SetBackground extends TdFunction {
     forDarkTheme: forDarkTheme ?? this.forDarkTheme,
   );
 
+  /// TDLib object type
   static const String objectType = 'setBackground';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

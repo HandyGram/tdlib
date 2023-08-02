@@ -29,6 +29,7 @@ final class SetLogTagVerbosityLevel extends TdFunction {
   /// New verbosity level; 1-1024
   final int newVerbosityLevel;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetLogTagVerbosityLevel extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [tag]: Logging tag to change verbosity level
+  /// * [new_verbosity_level]: New verbosity level; 1-1024
   SetLogTagVerbosityLevel copyWith({
     String? tag,
     int? newVerbosityLevel,
@@ -48,11 +53,14 @@ final class SetLogTagVerbosityLevel extends TdFunction {
     newVerbosityLevel: newVerbosityLevel ?? this.newVerbosityLevel,
   );
 
+  /// TDLib object type
   static const String objectType = 'setLogTagVerbosityLevel';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

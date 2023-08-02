@@ -23,6 +23,7 @@ final class GetBankCardInfo extends TdFunction {
   /// The bank card number
   final String bankCardNumber;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetBankCardInfo extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [bank_card_number]: The bank card number
   GetBankCardInfo copyWith({
     String? bankCardNumber,
   }) => GetBankCardInfo(
     bankCardNumber: bankCardNumber ?? this.bankCardNumber,
   );
 
+  /// TDLib object type
   static const String objectType = 'getBankCardInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

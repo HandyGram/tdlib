@@ -29,6 +29,7 @@ final class ToggleChatHasProtectedContent extends TdFunction {
   /// New value of has_protected_content
   final bool hasProtectedContent;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ToggleChatHasProtectedContent extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [has_protected_content]: New value of has_protected_content
   ToggleChatHasProtectedContent copyWith({
     int? chatId,
     bool? hasProtectedContent,
@@ -48,11 +53,14 @@ final class ToggleChatHasProtectedContent extends TdFunction {
     hasProtectedContent: hasProtectedContent ?? this.hasProtectedContent,
   );
 
+  /// TDLib object type
   static const String objectType = 'toggleChatHasProtectedContent';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

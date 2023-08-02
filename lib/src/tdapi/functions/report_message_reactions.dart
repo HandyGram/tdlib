@@ -35,6 +35,7 @@ final class ReportMessageReactions extends TdFunction {
   /// Identifier of the sender, which added the reaction
   final MessageSender senderId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class ReportMessageReactions extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [message_id]: Message identifier
+  /// * [sender_id]: Identifier of the sender, which added the reaction
   ReportMessageReactions copyWith({
     int? chatId,
     int? messageId,
@@ -57,11 +63,14 @@ final class ReportMessageReactions extends TdFunction {
     senderId: senderId ?? this.senderId,
   );
 
+  /// TDLib object type
   static const String objectType = 'reportMessageReactions';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

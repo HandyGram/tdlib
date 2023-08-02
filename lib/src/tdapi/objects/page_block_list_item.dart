@@ -32,6 +32,7 @@ final class PageBlockListItem extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -41,7 +42,11 @@ final class PageBlockListItem extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [label]: Item label 
+  /// * [page_blocks]: Item blocks
   PageBlockListItem copyWith({
     String? label,
     List<PageBlock>? pageBlocks,
@@ -50,11 +55,14 @@ final class PageBlockListItem extends TdObject {
     pageBlocks: pageBlocks ?? this.pageBlocks,
   );
 
+  /// TDLib object type
   static const String objectType = 'pageBlockListItem';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

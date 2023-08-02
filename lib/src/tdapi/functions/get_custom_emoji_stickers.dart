@@ -23,6 +23,7 @@ final class GetCustomEmojiStickers extends TdFunction {
   /// Identifiers of custom emoji stickers. At most 200 custom emoji stickers can be received simultaneously
   final List<int> customEmojiIds;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetCustomEmojiStickers extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [custom_emoji_ids]: Identifiers of custom emoji stickers. At most 200 custom emoji stickers can be received simultaneously
   GetCustomEmojiStickers copyWith({
     List<int>? customEmojiIds,
   }) => GetCustomEmojiStickers(
     customEmojiIds: customEmojiIds ?? this.customEmojiIds,
   );
 
+  /// TDLib object type
   static const String objectType = 'getCustomEmojiStickers';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

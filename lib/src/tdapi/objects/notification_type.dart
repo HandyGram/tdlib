@@ -33,17 +33,21 @@ sealed class NotificationType extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   NotificationType copyWith();
 
+  /// TDLib object type
   static const String objectType = 'notificationType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -81,6 +85,7 @@ final class NotificationTypeNewMessage extends NotificationType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -90,7 +95,11 @@ final class NotificationTypeNewMessage extends NotificationType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [message]: The message 
+  /// * [show_preview]: True, if message content must be displayed in notifications
   @override
   NotificationTypeNewMessage copyWith({
     Message? message,
@@ -100,11 +109,14 @@ final class NotificationTypeNewMessage extends NotificationType {
     showPreview: showPreview ?? this.showPreview,
   );
 
+  /// TDLib object type
   static const String objectType = 'notificationTypeNewMessage';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -123,6 +135,7 @@ final class NotificationTypeNewSecretChat extends NotificationType {
   /// Parse from a json
   factory NotificationTypeNewSecretChat.fromJson(Map<String, dynamic> json) => const NotificationTypeNewSecretChat();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -130,15 +143,18 @@ final class NotificationTypeNewSecretChat extends NotificationType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   NotificationTypeNewSecretChat copyWith() => const NotificationTypeNewSecretChat();
 
+  /// TDLib object type
   static const String objectType = 'notificationTypeNewSecretChat';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -169,6 +185,7 @@ final class NotificationTypeNewCall extends NotificationType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -177,7 +194,10 @@ final class NotificationTypeNewCall extends NotificationType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [call_id]: Call identifier
   @override
   NotificationTypeNewCall copyWith({
     int? callId,
@@ -185,11 +205,14 @@ final class NotificationTypeNewCall extends NotificationType {
     callId: callId ?? this.callId,
   );
 
+  /// TDLib object type
   static const String objectType = 'notificationTypeNewCall';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -248,6 +271,7 @@ final class NotificationTypeNewPushMessage extends NotificationType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -260,7 +284,14 @@ final class NotificationTypeNewPushMessage extends NotificationType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [message_id]: The message identifier. The message will not be available in the chat history, but the notificationTypeNewPushMessage can be used in viewMessages, or as reply_to_message_id
+  /// * [sender_id]: Identifier of the sender of the message. Corresponding user or chat may be inaccessible
+  /// * [sender_name]: Name of the sender
+  /// * [is_outgoing]: True, if the message is outgoing
+  /// * [content]: Push message content
   @override
   NotificationTypeNewPushMessage copyWith({
     int? messageId,
@@ -276,11 +307,14 @@ final class NotificationTypeNewPushMessage extends NotificationType {
     content: content ?? this.content,
   );
 
+  /// TDLib object type
   static const String objectType = 'notificationTypeNewPushMessage';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

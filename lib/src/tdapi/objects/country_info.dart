@@ -53,6 +53,7 @@ final class CountryInfo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -65,7 +66,14 @@ final class CountryInfo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [country_code]: A two-letter ISO 3166-1 alpha-2 country code
+  /// * [name]: Native name of the country
+  /// * [english_name]: English name of the country
+  /// * [is_hidden]: True, if the country must be hidden from the list of all countries
+  /// * [calling_codes]: List of country calling codes
   CountryInfo copyWith({
     String? countryCode,
     String? name,
@@ -80,11 +88,14 @@ final class CountryInfo extends TdObject {
     callingCodes: callingCodes ?? this.callingCodes,
   );
 
+  /// TDLib object type
   static const String objectType = 'countryInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

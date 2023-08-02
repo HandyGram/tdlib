@@ -29,6 +29,7 @@ final class RemoveRecentSticker extends TdFunction {
   /// Sticker file to delete
   final InputFile sticker;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class RemoveRecentSticker extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [is_attached]: Pass true to remove the sticker from the list of stickers recently attached to photo or video files; pass false to remove the sticker from the list of recently sent stickers 
+  /// * [sticker]: Sticker file to delete
   RemoveRecentSticker copyWith({
     bool? isAttached,
     InputFile? sticker,
@@ -48,11 +53,14 @@ final class RemoveRecentSticker extends TdFunction {
     sticker: sticker ?? this.sticker,
   );
 
+  /// TDLib object type
   static const String objectType = 'removeRecentSticker';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

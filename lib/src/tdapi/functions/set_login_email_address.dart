@@ -23,6 +23,7 @@ final class SetLoginEmailAddress extends TdFunction {
   /// New login email address
   final String newLoginEmailAddress;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class SetLoginEmailAddress extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [new_login_email_address]: New login email address
   SetLoginEmailAddress copyWith({
     String? newLoginEmailAddress,
   }) => SetLoginEmailAddress(
     newLoginEmailAddress: newLoginEmailAddress ?? this.newLoginEmailAddress,
   );
 
+  /// TDLib object type
   static const String objectType = 'setLoginEmailAddress';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

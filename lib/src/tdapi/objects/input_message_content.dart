@@ -72,17 +72,21 @@ sealed class InputMessageContent extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   InputMessageContent copyWith();
 
+  /// TDLib object type
   static const String objectType = 'inputMessageContent';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -127,6 +131,7 @@ final class InputMessageText extends InputMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -137,7 +142,12 @@ final class InputMessageText extends InputMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Formatted text to be sent; 1-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually
+  /// * [disable_web_page_preview]: True, if rich web page previews for URLs in the message text must be disabled
+  /// * [clear_draft]: True, if a chat message draft must be deleted
   @override
   InputMessageText copyWith({
     FormattedText? text,
@@ -149,11 +159,14 @@ final class InputMessageText extends InputMessageContent {
     clearDraft: clearDraft ?? this.clearDraft,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputMessageText';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -233,6 +246,7 @@ final class InputMessageAnimation extends InputMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -248,7 +262,17 @@ final class InputMessageAnimation extends InputMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [animation]: Animation file to be sent
+  /// * [thumbnail]: Animation thumbnail; pass null to skip thumbnail uploading
+  /// * [added_sticker_file_ids]: File identifiers of the stickers added to the animation, if applicable
+  /// * [duration]: Duration of the animation, in seconds
+  /// * [width]: Width of the animation; may be replaced by the server
+  /// * [height]: Height of the animation; may be replaced by the server
+  /// * [caption]: Animation caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
+  /// * [has_spoiler]: True, if the animation preview must be covered by a spoiler animation; not supported in secret chats
   @override
   InputMessageAnimation copyWith({
     InputFile? animation,
@@ -270,11 +294,14 @@ final class InputMessageAnimation extends InputMessageContent {
     hasSpoiler: hasSpoiler ?? this.hasSpoiler,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputMessageAnimation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -340,6 +367,7 @@ final class InputMessageAudio extends InputMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -353,7 +381,15 @@ final class InputMessageAudio extends InputMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [audio]: Audio file to be sent
+  /// * [album_cover_thumbnail]: Thumbnail of the cover for the album; pass null to skip thumbnail uploading
+  /// * [duration]: Duration of the audio, in seconds; may be replaced by the server
+  /// * [title]: Title of the audio; 0-64 characters; may be replaced by the server
+  /// * [performer]: Performer of the audio; 0-64 characters, may be replaced by the server
+  /// * [caption]: Audio caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   @override
   InputMessageAudio copyWith({
     InputFile? audio,
@@ -371,11 +407,14 @@ final class InputMessageAudio extends InputMessageContent {
     caption: caption ?? this.caption,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputMessageAudio';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -427,6 +466,7 @@ final class InputMessageDocument extends InputMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -438,7 +478,13 @@ final class InputMessageDocument extends InputMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [document]: Document to be sent
+  /// * [thumbnail]: Document thumbnail; pass null to skip thumbnail uploading
+  /// * [disable_content_type_detection]: If true, automatic file type detection will be disabled and the document will always be sent as file. Always true for files sent to secret chats
+  /// * [caption]: Document caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   @override
   InputMessageDocument copyWith({
     InputFile? document,
@@ -452,11 +498,14 @@ final class InputMessageDocument extends InputMessageContent {
     caption: caption ?? this.caption,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputMessageDocument';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -536,6 +585,7 @@ final class InputMessagePhoto extends InputMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -551,7 +601,17 @@ final class InputMessagePhoto extends InputMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [photo]: Photo to send. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20
+  /// * [thumbnail]: Photo thumbnail to be sent; pass null to skip thumbnail uploading. The thumbnail is sent to the other party only in secret chats
+  /// * [added_sticker_file_ids]: File identifiers of the stickers added to the photo, if applicable
+  /// * [width]: Photo width
+  /// * [height]: Photo height
+  /// * [caption]: Photo caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
+  /// * [self_destruct_time]: Photo self-destruct time, in seconds (0-60). A non-zero self-destruct time can be specified only in private chats
+  /// * [has_spoiler]: True, if the photo preview must be covered by a spoiler animation; not supported in secret chats
   @override
   InputMessagePhoto copyWith({
     InputFile? photo,
@@ -573,11 +633,14 @@ final class InputMessagePhoto extends InputMessageContent {
     hasSpoiler: hasSpoiler ?? this.hasSpoiler,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputMessagePhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -636,6 +699,7 @@ final class InputMessageSticker extends InputMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -648,7 +712,14 @@ final class InputMessageSticker extends InputMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sticker]: Sticker to be sent
+  /// * [thumbnail]: Sticker thumbnail; pass null to skip thumbnail uploading
+  /// * [width]: Sticker width
+  /// * [height]: Sticker height
+  /// * [emoji]: Emoji used to choose the sticker
   @override
   InputMessageSticker copyWith({
     InputFile? sticker,
@@ -664,11 +735,14 @@ final class InputMessageSticker extends InputMessageContent {
     emoji: emoji ?? this.emoji,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputMessageSticker';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -762,6 +836,7 @@ final class InputMessageVideo extends InputMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -779,7 +854,19 @@ final class InputMessageVideo extends InputMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [video]: Video to be sent
+  /// * [thumbnail]: Video thumbnail; pass null to skip thumbnail uploading
+  /// * [added_sticker_file_ids]: File identifiers of the stickers added to the video, if applicable
+  /// * [duration]: Duration of the video, in seconds
+  /// * [width]: Video width
+  /// * [height]: Video height
+  /// * [supports_streaming]: True, if the video is supposed to be streamed
+  /// * [caption]: Video caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
+  /// * [self_destruct_time]: Video self-destruct time, in seconds (0-60). A non-zero self-destruct time can be specified only in private chats
+  /// * [has_spoiler]: True, if the video preview must be covered by a spoiler animation; not supported in secret chats
   @override
   InputMessageVideo copyWith({
     InputFile? video,
@@ -805,11 +892,14 @@ final class InputMessageVideo extends InputMessageContent {
     hasSpoiler: hasSpoiler ?? this.hasSpoiler,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputMessageVideo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -861,6 +951,7 @@ final class InputMessageVideoNote extends InputMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -872,7 +963,13 @@ final class InputMessageVideoNote extends InputMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [video_note]: Video note to be sent
+  /// * [thumbnail]: Video thumbnail; pass null to skip thumbnail uploading
+  /// * [duration]: Duration of the video, in seconds
+  /// * [length]: Video width and height; must be positive and not greater than 640
   @override
   InputMessageVideoNote copyWith({
     InputFile? videoNote,
@@ -886,11 +983,14 @@ final class InputMessageVideoNote extends InputMessageContent {
     length: length ?? this.length,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputMessageVideoNote';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -942,6 +1042,7 @@ final class InputMessageVoiceNote extends InputMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -953,7 +1054,13 @@ final class InputMessageVoiceNote extends InputMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [voice_note]: Voice note to be sent
+  /// * [duration]: Duration of the voice note, in seconds
+  /// * [waveform]: Waveform representation of the voice note in 5-bit format
+  /// * [caption]: Voice note caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   @override
   InputMessageVoiceNote copyWith({
     InputFile? voiceNote,
@@ -967,11 +1074,14 @@ final class InputMessageVoiceNote extends InputMessageContent {
     caption: caption ?? this.caption,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputMessageVoiceNote';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1023,6 +1133,7 @@ final class InputMessageLocation extends InputMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1034,7 +1145,13 @@ final class InputMessageLocation extends InputMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [location]: Location to be sent
+  /// * [live_period]: Period for which the location can be updated, in seconds; must be between 60 and 86400 for a live location and 0 otherwise
+  /// * [heading]: For live locations, a direction in which the location moves, in degrees; 1-360. Pass 0 if unknown
+  /// * [proximity_alert_radius]: For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled. Can't be enabled in channels and Saved Messages
   @override
   InputMessageLocation copyWith({
     Location? location,
@@ -1048,11 +1165,14 @@ final class InputMessageLocation extends InputMessageContent {
     proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputMessageLocation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1083,6 +1203,7 @@ final class InputMessageVenue extends InputMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1091,7 +1212,10 @@ final class InputMessageVenue extends InputMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [venue]: Venue to send
   @override
   InputMessageVenue copyWith({
     Venue? venue,
@@ -1099,11 +1223,14 @@ final class InputMessageVenue extends InputMessageContent {
     venue: venue ?? this.venue,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputMessageVenue';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1134,6 +1261,7 @@ final class InputMessageContact extends InputMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1142,7 +1270,10 @@ final class InputMessageContact extends InputMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [contact]: Contact to send
   @override
   InputMessageContact copyWith({
     Contact? contact,
@@ -1150,11 +1281,14 @@ final class InputMessageContact extends InputMessageContent {
     contact: contact ?? this.contact,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputMessageContact';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1192,6 +1326,7 @@ final class InputMessageDice extends InputMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1201,7 +1336,11 @@ final class InputMessageDice extends InputMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [emoji]: Emoji on which the dice throw animation is based 
+  /// * [clear_draft]: True, if the chat message draft must be deleted
   @override
   InputMessageDice copyWith({
     String? emoji,
@@ -1211,11 +1350,14 @@ final class InputMessageDice extends InputMessageContent {
     clearDraft: clearDraft ?? this.clearDraft,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputMessageDice';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1253,6 +1395,7 @@ final class InputMessageGame extends InputMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1262,7 +1405,11 @@ final class InputMessageGame extends InputMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [bot_user_id]: User identifier of the bot that owns the game 
+  /// * [game_short_name]: Short name of the game
   @override
   InputMessageGame copyWith({
     int? botUserId,
@@ -1272,11 +1419,14 @@ final class InputMessageGame extends InputMessageContent {
     gameShortName: gameShortName ?? this.gameShortName,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputMessageGame';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1384,6 +1534,7 @@ final class InputMessageInvoice extends InputMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1403,7 +1554,21 @@ final class InputMessageInvoice extends InputMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [invoice]: Invoice
+  /// * [title]: Product title; 1-32 characters
+  /// * [description]: Product description; 0-255 characters
+  /// * [photo_url]: Product photo URL; optional
+  /// * [photo_size]: Product photo size
+  /// * [photo_width]: Product photo width
+  /// * [photo_height]: Product photo height
+  /// * [payload]: The invoice payload
+  /// * [provider_token]: Payment provider token
+  /// * [provider_data]: JSON-encoded data about the invoice, which will be shared with the payment provider
+  /// * [start_parameter]: Unique invoice bot deep link parameter for the generation of this invoice. If empty, it would be possible to pay directly from forwards of the invoice message
+  /// * [extended_media_content]: The content of extended media attached to the invoice. The content of the message to be sent. Must be one of the following types: inputMessagePhoto, inputMessageVideo
   @override
   InputMessageInvoice copyWith({
     Invoice? invoice,
@@ -1433,11 +1598,14 @@ final class InputMessageInvoice extends InputMessageContent {
     extendedMediaContent: extendedMediaContent ?? this.extendedMediaContent,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputMessageInvoice';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1510,6 +1678,7 @@ final class InputMessagePoll extends InputMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1524,7 +1693,16 @@ final class InputMessagePoll extends InputMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [question]: Poll question; 1-255 characters (up to 300 characters for bots)
+  /// * [options]: List of poll answer options, 2-10 strings 1-100 characters each
+  /// * [is_anonymous]: True, if the poll voters are anonymous. Non-anonymous polls can't be sent or forwarded to channels
+  /// * [type]: Type of the poll
+  /// * [open_period]: Amount of time the poll will be active after creation, in seconds; for bots only
+  /// * [close_date]: Point in time (Unix timestamp) when the poll will automatically be closed; for bots only
+  /// * [is_closed]: True, if the poll needs to be sent already closed; for bots only
   @override
   InputMessagePoll copyWith({
     String? question,
@@ -1544,11 +1722,14 @@ final class InputMessagePoll extends InputMessageContent {
     isClosed: isClosed ?? this.isClosed,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputMessagePoll';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1600,6 +1781,7 @@ final class InputMessageForwarded extends InputMessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1611,7 +1793,13 @@ final class InputMessageForwarded extends InputMessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [from_chat_id]: Identifier for the chat this forwarded message came from
+  /// * [message_id]: Identifier of the message to forward
+  /// * [in_game_share]: True, if a game message is being shared from a launched game; applies only to game messages
+  /// * [copy_options]: Options to be used to copy content of the message without reference to the original sender; pass null to forward the message as usual
   @override
   InputMessageForwarded copyWith({
     int? fromChatId,
@@ -1625,11 +1813,14 @@ final class InputMessageForwarded extends InputMessageContent {
     copyOptions: copyOptions ?? this.copyOptions,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputMessageForwarded';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

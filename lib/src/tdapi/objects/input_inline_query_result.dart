@@ -57,17 +57,21 @@ sealed class InputInlineQueryResult extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   InputInlineQueryResult copyWith();
 
+  /// TDLib object type
   static const String objectType = 'inputInlineQueryResult';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -168,6 +172,7 @@ final class InputInlineQueryResultAnimation extends InputInlineQueryResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -186,7 +191,20 @@ final class InputInlineQueryResultAnimation extends InputInlineQueryResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the query result
+  /// * [title]: Title of the query result
+  /// * [thumbnail_url]: URL of the result thumbnail (JPEG, GIF, or MPEG4), if it exists
+  /// * [thumbnail_mime_type]: MIME type of the video thumbnail. If non-empty, must be one of "image/jpeg", "image/gif" and "video/mp4"
+  /// * [video_url]: The URL of the video file (file size must not exceed 1MB)
+  /// * [video_mime_type]: MIME type of the video file. Must be one of "image/gif" and "video/mp4"
+  /// * [video_duration]: Duration of the video, in seconds
+  /// * [video_width]: Width of the video
+  /// * [video_height]: Height of the video
+  /// * [reply_markup]: The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
+  /// * [input_message_content]: The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageAnimation, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   @override
   InputInlineQueryResultAnimation copyWith({
     String? id,
@@ -214,11 +232,14 @@ final class InputInlineQueryResultAnimation extends InputInlineQueryResult {
     inputMessageContent: inputMessageContent ?? this.inputMessageContent,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputInlineQueryResultAnimation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -312,6 +333,7 @@ final class InputInlineQueryResultArticle extends InputInlineQueryResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -329,7 +351,19 @@ final class InputInlineQueryResultArticle extends InputInlineQueryResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the query result
+  /// * [url]: URL of the result, if it exists
+  /// * [hide_url]: True, if the URL must be not shown
+  /// * [title]: Title of the result
+  /// * [description]: A short description of the result
+  /// * [thumbnail_url]: URL of the result thumbnail, if it exists
+  /// * [thumbnail_width]: Thumbnail width, if known
+  /// * [thumbnail_height]: Thumbnail height, if known
+  /// * [reply_markup]: The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
+  /// * [input_message_content]: The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   @override
   InputInlineQueryResultArticle copyWith({
     String? id,
@@ -355,11 +389,14 @@ final class InputInlineQueryResultArticle extends InputInlineQueryResult {
     inputMessageContent: inputMessageContent ?? this.inputMessageContent,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputInlineQueryResultArticle';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -432,6 +469,7 @@ final class InputInlineQueryResultAudio extends InputInlineQueryResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -446,7 +484,16 @@ final class InputInlineQueryResultAudio extends InputInlineQueryResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the query result
+  /// * [title]: Title of the audio file
+  /// * [performer]: Performer of the audio file
+  /// * [audio_url]: The URL of the audio file
+  /// * [audio_duration]: Audio file duration, in seconds
+  /// * [reply_markup]: The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
+  /// * [input_message_content]: The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageAudio, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   @override
   InputInlineQueryResultAudio copyWith({
     String? id,
@@ -466,11 +513,14 @@ final class InputInlineQueryResultAudio extends InputInlineQueryResult {
     inputMessageContent: inputMessageContent ?? this.inputMessageContent,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputInlineQueryResultAudio';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -543,6 +593,7 @@ final class InputInlineQueryResultContact extends InputInlineQueryResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -557,7 +608,16 @@ final class InputInlineQueryResultContact extends InputInlineQueryResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the query result
+  /// * [contact]: User contact
+  /// * [thumbnail_url]: URL of the result thumbnail, if it exists
+  /// * [thumbnail_width]: Thumbnail width, if known
+  /// * [thumbnail_height]: Thumbnail height, if known
+  /// * [reply_markup]: The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
+  /// * [input_message_content]: The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   @override
   InputInlineQueryResultContact copyWith({
     String? id,
@@ -577,11 +637,14 @@ final class InputInlineQueryResultContact extends InputInlineQueryResult {
     inputMessageContent: inputMessageContent ?? this.inputMessageContent,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputInlineQueryResultContact';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -675,6 +738,7 @@ final class InputInlineQueryResultDocument extends InputInlineQueryResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -692,7 +756,19 @@ final class InputInlineQueryResultDocument extends InputInlineQueryResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the query result
+  /// * [title]: Title of the resulting file
+  /// * [description]: Short description of the result, if known
+  /// * [document_url]: URL of the file
+  /// * [mime_type]: MIME type of the file content; only "application/pdf" and "application/zip" are currently allowed
+  /// * [thumbnail_url]: The URL of the file thumbnail, if it exists
+  /// * [thumbnail_width]: Width of the thumbnail
+  /// * [thumbnail_height]: Height of the thumbnail
+  /// * [reply_markup]: The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
+  /// * [input_message_content]: The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageDocument, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   @override
   InputInlineQueryResultDocument copyWith({
     String? id,
@@ -718,11 +794,14 @@ final class InputInlineQueryResultDocument extends InputInlineQueryResult {
     inputMessageContent: inputMessageContent ?? this.inputMessageContent,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputInlineQueryResultDocument';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -767,6 +846,7 @@ final class InputInlineQueryResultGame extends InputInlineQueryResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -777,7 +857,12 @@ final class InputInlineQueryResultGame extends InputInlineQueryResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the query result
+  /// * [game_short_name]: Short name of the game
+  /// * [reply_markup]: The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
   @override
   InputInlineQueryResultGame copyWith({
     String? id,
@@ -789,11 +874,14 @@ final class InputInlineQueryResultGame extends InputInlineQueryResult {
     replyMarkup: replyMarkup ?? this.replyMarkup,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputInlineQueryResultGame';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -880,6 +968,7 @@ final class InputInlineQueryResultLocation extends InputInlineQueryResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -896,7 +985,18 @@ final class InputInlineQueryResultLocation extends InputInlineQueryResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the query result
+  /// * [location]: Location result
+  /// * [live_period]: Amount of time relative to the message sent time until the location can be updated, in seconds
+  /// * [title]: Title of the result
+  /// * [thumbnail_url]: URL of the result thumbnail, if it exists
+  /// * [thumbnail_width]: Thumbnail width, if known
+  /// * [thumbnail_height]: Thumbnail height, if known
+  /// * [reply_markup]: The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
+  /// * [input_message_content]: The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   @override
   InputInlineQueryResultLocation copyWith({
     String? id,
@@ -920,11 +1020,14 @@ final class InputInlineQueryResultLocation extends InputInlineQueryResult {
     inputMessageContent: inputMessageContent ?? this.inputMessageContent,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputInlineQueryResultLocation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1011,6 +1114,7 @@ final class InputInlineQueryResultPhoto extends InputInlineQueryResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1027,7 +1131,18 @@ final class InputInlineQueryResultPhoto extends InputInlineQueryResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the query result
+  /// * [title]: Title of the result, if known
+  /// * [description]: A short description of the result, if known
+  /// * [thumbnail_url]: URL of the photo thumbnail, if it exists
+  /// * [photo_url]: The URL of the JPEG photo (photo size must not exceed 5MB)
+  /// * [photo_width]: Width of the photo
+  /// * [photo_height]: Height of the photo
+  /// * [reply_markup]: The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
+  /// * [input_message_content]: The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessagePhoto, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   @override
   InputInlineQueryResultPhoto copyWith({
     String? id,
@@ -1051,11 +1166,14 @@ final class InputInlineQueryResultPhoto extends InputInlineQueryResult {
     inputMessageContent: inputMessageContent ?? this.inputMessageContent,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputInlineQueryResultPhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1128,6 +1246,7 @@ final class InputInlineQueryResultSticker extends InputInlineQueryResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1142,7 +1261,16 @@ final class InputInlineQueryResultSticker extends InputInlineQueryResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the query result
+  /// * [thumbnail_url]: URL of the sticker thumbnail, if it exists
+  /// * [sticker_url]: The URL of the WEBP, TGS, or WEBM sticker (sticker file size must not exceed 5MB)
+  /// * [sticker_width]: Width of the sticker
+  /// * [sticker_height]: Height of the sticker
+  /// * [reply_markup]: The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
+  /// * [input_message_content]: The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageSticker, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   @override
   InputInlineQueryResultSticker copyWith({
     String? id,
@@ -1162,11 +1290,14 @@ final class InputInlineQueryResultSticker extends InputInlineQueryResult {
     inputMessageContent: inputMessageContent ?? this.inputMessageContent,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputInlineQueryResultSticker';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1239,6 +1370,7 @@ final class InputInlineQueryResultVenue extends InputInlineQueryResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1253,7 +1385,16 @@ final class InputInlineQueryResultVenue extends InputInlineQueryResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the query result
+  /// * [venue]: Venue result
+  /// * [thumbnail_url]: URL of the result thumbnail, if it exists
+  /// * [thumbnail_width]: Thumbnail width, if known
+  /// * [thumbnail_height]: Thumbnail height, if known
+  /// * [reply_markup]: The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
+  /// * [input_message_content]: The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   @override
   InputInlineQueryResultVenue copyWith({
     String? id,
@@ -1273,11 +1414,14 @@ final class InputInlineQueryResultVenue extends InputInlineQueryResult {
     inputMessageContent: inputMessageContent ?? this.inputMessageContent,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputInlineQueryResultVenue';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1378,6 +1522,7 @@ final class InputInlineQueryResultVideo extends InputInlineQueryResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1396,7 +1541,20 @@ final class InputInlineQueryResultVideo extends InputInlineQueryResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the query result
+  /// * [title]: Title of the result
+  /// * [description]: A short description of the result, if known
+  /// * [thumbnail_url]: The URL of the video thumbnail (JPEG), if it exists
+  /// * [video_url]: URL of the embedded video player or video file
+  /// * [mime_type]: MIME type of the content of the video URL, only "text/html" or "video/mp4" are currently supported
+  /// * [video_width]: Width of the video
+  /// * [video_height]: Height of the video
+  /// * [video_duration]: Video duration, in seconds
+  /// * [reply_markup]: The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
+  /// * [input_message_content]: The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageVideo, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   @override
   InputInlineQueryResultVideo copyWith({
     String? id,
@@ -1424,11 +1582,14 @@ final class InputInlineQueryResultVideo extends InputInlineQueryResult {
     inputMessageContent: inputMessageContent ?? this.inputMessageContent,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputInlineQueryResultVideo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1494,6 +1655,7 @@ final class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1507,7 +1669,15 @@ final class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique identifier of the query result
+  /// * [title]: Title of the voice note
+  /// * [voice_note_url]: The URL of the voice note file
+  /// * [voice_note_duration]: Duration of the voice note, in seconds
+  /// * [reply_markup]: The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
+  /// * [input_message_content]: The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageVoiceNote, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   @override
   InputInlineQueryResultVoiceNote copyWith({
     String? id,
@@ -1525,11 +1695,14 @@ final class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
     inputMessageContent: inputMessageContent ?? this.inputMessageContent,
   );
 
+  /// TDLib object type
   static const String objectType = 'inputInlineQueryResultVoiceNote';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

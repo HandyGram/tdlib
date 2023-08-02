@@ -27,17 +27,21 @@ sealed class NetworkStatisticsEntry extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   NetworkStatisticsEntry copyWith();
 
+  /// TDLib object type
   static const String objectType = 'networkStatisticsEntry';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -89,6 +93,7 @@ final class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -100,7 +105,13 @@ final class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [file_type]: Type of the file the data is part of; pass null if the data isn't related to files
+  /// * [network_type]: Type of the network the data was sent through. Call setNetworkType to maintain the actual network type
+  /// * [sent_bytes]: Total number of bytes sent
+  /// * [received_bytes]: Total number of bytes received
   @override
   NetworkStatisticsEntryFile copyWith({
     FileType? fileType,
@@ -114,11 +125,14 @@ final class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
     receivedBytes: receivedBytes ?? this.receivedBytes,
   );
 
+  /// TDLib object type
   static const String objectType = 'networkStatisticsEntryFile';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -170,6 +184,7 @@ final class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -181,7 +196,13 @@ final class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [network_type]: Type of the network the data was sent through. Call setNetworkType to maintain the actual network type
+  /// * [sent_bytes]: Total number of bytes sent
+  /// * [received_bytes]: Total number of bytes received
+  /// * [duration]: Total call duration, in seconds
   @override
   NetworkStatisticsEntryCall copyWith({
     NetworkType? networkType,
@@ -195,11 +216,14 @@ final class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
     duration: duration ?? this.duration,
   );
 
+  /// TDLib object type
   static const String objectType = 'networkStatisticsEntryCall';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

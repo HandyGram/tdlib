@@ -48,17 +48,21 @@ sealed class CallProblem extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   CallProblem copyWith();
 
+  /// TDLib object type
   static const String objectType = 'callProblem';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -77,6 +81,7 @@ final class CallProblemEcho extends CallProblem {
   /// Parse from a json
   factory CallProblemEcho.fromJson(Map<String, dynamic> json) => const CallProblemEcho();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -84,15 +89,18 @@ final class CallProblemEcho extends CallProblem {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   CallProblemEcho copyWith() => const CallProblemEcho();
 
+  /// TDLib object type
   static const String objectType = 'callProblemEcho';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -111,6 +119,7 @@ final class CallProblemNoise extends CallProblem {
   /// Parse from a json
   factory CallProblemNoise.fromJson(Map<String, dynamic> json) => const CallProblemNoise();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -118,15 +127,18 @@ final class CallProblemNoise extends CallProblem {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   CallProblemNoise copyWith() => const CallProblemNoise();
 
+  /// TDLib object type
   static const String objectType = 'callProblemNoise';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -145,6 +157,7 @@ final class CallProblemInterruptions extends CallProblem {
   /// Parse from a json
   factory CallProblemInterruptions.fromJson(Map<String, dynamic> json) => const CallProblemInterruptions();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -152,15 +165,18 @@ final class CallProblemInterruptions extends CallProblem {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   CallProblemInterruptions copyWith() => const CallProblemInterruptions();
 
+  /// TDLib object type
   static const String objectType = 'callProblemInterruptions';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -179,6 +195,7 @@ final class CallProblemDistortedSpeech extends CallProblem {
   /// Parse from a json
   factory CallProblemDistortedSpeech.fromJson(Map<String, dynamic> json) => const CallProblemDistortedSpeech();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -186,15 +203,18 @@ final class CallProblemDistortedSpeech extends CallProblem {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   CallProblemDistortedSpeech copyWith() => const CallProblemDistortedSpeech();
 
+  /// TDLib object type
   static const String objectType = 'callProblemDistortedSpeech';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -213,6 +233,7 @@ final class CallProblemSilentLocal extends CallProblem {
   /// Parse from a json
   factory CallProblemSilentLocal.fromJson(Map<String, dynamic> json) => const CallProblemSilentLocal();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -220,15 +241,18 @@ final class CallProblemSilentLocal extends CallProblem {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   CallProblemSilentLocal copyWith() => const CallProblemSilentLocal();
 
+  /// TDLib object type
   static const String objectType = 'callProblemSilentLocal';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -247,6 +271,7 @@ final class CallProblemSilentRemote extends CallProblem {
   /// Parse from a json
   factory CallProblemSilentRemote.fromJson(Map<String, dynamic> json) => const CallProblemSilentRemote();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -254,15 +279,18 @@ final class CallProblemSilentRemote extends CallProblem {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   CallProblemSilentRemote copyWith() => const CallProblemSilentRemote();
 
+  /// TDLib object type
   static const String objectType = 'callProblemSilentRemote';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -281,6 +309,7 @@ final class CallProblemDropped extends CallProblem {
   /// Parse from a json
   factory CallProblemDropped.fromJson(Map<String, dynamic> json) => const CallProblemDropped();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -288,15 +317,18 @@ final class CallProblemDropped extends CallProblem {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   CallProblemDropped copyWith() => const CallProblemDropped();
 
+  /// TDLib object type
   static const String objectType = 'callProblemDropped';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -315,6 +347,7 @@ final class CallProblemDistortedVideo extends CallProblem {
   /// Parse from a json
   factory CallProblemDistortedVideo.fromJson(Map<String, dynamic> json) => const CallProblemDistortedVideo();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -322,15 +355,18 @@ final class CallProblemDistortedVideo extends CallProblem {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   CallProblemDistortedVideo copyWith() => const CallProblemDistortedVideo();
 
+  /// TDLib object type
   static const String objectType = 'callProblemDistortedVideo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -349,6 +385,7 @@ final class CallProblemPixelatedVideo extends CallProblem {
   /// Parse from a json
   factory CallProblemPixelatedVideo.fromJson(Map<String, dynamic> json) => const CallProblemPixelatedVideo();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -356,15 +393,18 @@ final class CallProblemPixelatedVideo extends CallProblem {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   CallProblemPixelatedVideo copyWith() => const CallProblemPixelatedVideo();
 
+  /// TDLib object type
   static const String objectType = 'callProblemPixelatedVideo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

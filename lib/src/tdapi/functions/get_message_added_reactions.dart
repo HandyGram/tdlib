@@ -47,6 +47,7 @@ final class GetMessageAddedReactions extends TdFunction {
   /// The maximum number of reactions to be returned; must be positive and can't be greater than 100
   final int limit;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -60,7 +61,14 @@ final class GetMessageAddedReactions extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat to which the message belongs
+  /// * [message_id]: Identifier of the message
+  /// * [reaction_type]: Type of the reactions to return; pass null to return all added reactions
+  /// * [offset]: Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
+  /// * [limit]: The maximum number of reactions to be returned; must be positive and can't be greater than 100
   GetMessageAddedReactions copyWith({
     int? chatId,
     int? messageId,
@@ -75,11 +83,14 @@ final class GetMessageAddedReactions extends TdFunction {
     limit: limit ?? this.limit,
   );
 
+  /// TDLib object type
   static const String objectType = 'getMessageAddedReactions';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

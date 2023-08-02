@@ -177,6 +177,7 @@ final class GroupCall extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -205,7 +206,30 @@ final class GroupCall extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Group call identifier
+  /// * [title]: Group call title
+  /// * [scheduled_start_date]: Point in time (Unix timestamp) when the group call is supposed to be started by an administrator; 0 if it is already active or was ended
+  /// * [enabled_start_notification]: True, if the group call is scheduled and the current user will receive a notification when the group call will start
+  /// * [is_active]: True, if the call is active
+  /// * [is_rtmp_stream]: True, if the chat is an RTMP stream instead of an ordinary video chat
+  /// * [is_joined]: True, if the call is joined
+  /// * [need_rejoin]: True, if user was kicked from the call because of network loss and the call needs to be rejoined
+  /// * [can_be_managed]: True, if the current user can manage the group call
+  /// * [participant_count]: Number of participants in the group call
+  /// * [has_hidden_listeners]: True, if group call participants, which are muted, aren't returned in participant list
+  /// * [loaded_all_participants]: True, if all group call participants are loaded
+  /// * [recent_speakers]: At most 3 recently speaking users in the group call
+  /// * [is_my_video_enabled]: True, if the current user's video is enabled
+  /// * [is_my_video_paused]: True, if the current user's video is paused
+  /// * [can_enable_video]: True, if the current user can broadcast video or share screen
+  /// * [mute_new_participants]: True, if only group call administrators can unmute new participants
+  /// * [can_toggle_mute_new_participants]: True, if the current user can enable or disable mute_new_participants setting
+  /// * [record_duration]: Duration of the ongoing group call recording, in seconds; 0 if none. An updateGroupCall update is not triggered when value of this field changes, but the same recording goes on
+  /// * [is_video_recorded]: True, if a video file is being recorded for the call
+  /// * [duration]: Call duration, in seconds; for ended calls only
   GroupCall copyWith({
     int? id,
     String? title,
@@ -256,11 +280,14 @@ final class GroupCall extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'groupCall';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

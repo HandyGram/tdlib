@@ -23,6 +23,7 @@ final class ReplaceVideoChatRtmpUrl extends TdFunction {
   /// Chat identifier
   final int chatId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class ReplaceVideoChatRtmpUrl extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
   ReplaceVideoChatRtmpUrl copyWith({
     int? chatId,
   }) => ReplaceVideoChatRtmpUrl(
     chatId: chatId ?? this.chatId,
   );
 
+  /// TDLib object type
   static const String objectType = 'replaceVideoChatRtmpUrl';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

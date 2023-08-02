@@ -47,6 +47,7 @@ final class ShareUserWithBot extends TdFunction {
   /// Pass true to check that the user can be shared by the button instead of actually sharing them
   final bool onlyCheck;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -60,7 +61,14 @@ final class ShareUserWithBot extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat with the bot
+  /// * [message_id]: Identifier of the message with the button
+  /// * [button_id]: Identifier of the button
+  /// * [shared_user_id]: Identifier of the shared user
+  /// * [only_check]: Pass true to check that the user can be shared by the button instead of actually sharing them
   ShareUserWithBot copyWith({
     int? chatId,
     int? messageId,
@@ -75,11 +83,14 @@ final class ShareUserWithBot extends TdFunction {
     onlyCheck: onlyCheck ?? this.onlyCheck,
   );
 
+  /// TDLib object type
   static const String objectType = 'shareUserWithBot';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

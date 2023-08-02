@@ -41,6 +41,7 @@ final class DeleteChatMessagesByDate extends TdFunction {
   /// Pass true to delete chat messages for all users; private chats only
   final bool revoke;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -53,7 +54,13 @@ final class DeleteChatMessagesByDate extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [min_date]: The minimum date of the messages to delete
+  /// * [max_date]: The maximum date of the messages to delete
+  /// * [revoke]: Pass true to delete chat messages for all users; private chats only
   DeleteChatMessagesByDate copyWith({
     int? chatId,
     int? minDate,
@@ -66,11 +73,14 @@ final class DeleteChatMessagesByDate extends TdFunction {
     revoke: revoke ?? this.revoke,
   );
 
+  /// TDLib object type
   static const String objectType = 'deleteChatMessagesByDate';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

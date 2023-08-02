@@ -39,6 +39,7 @@ final class ChatStatisticsMessageSenderInfo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class ChatStatisticsMessageSenderInfo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: User identifier
+  /// * [sent_message_count]: Number of sent messages
+  /// * [average_character_count]: Average number of characters in sent messages; 0 if unknown
   ChatStatisticsMessageSenderInfo copyWith({
     int? userId,
     int? sentMessageCount,
@@ -60,11 +66,14 @@ final class ChatStatisticsMessageSenderInfo extends TdObject {
     averageCharacterCount: averageCharacterCount ?? this.averageCharacterCount,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatStatisticsMessageSenderInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

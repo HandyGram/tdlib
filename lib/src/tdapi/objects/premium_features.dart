@@ -51,6 +51,7 @@ final class PremiumFeatures extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -61,7 +62,12 @@ final class PremiumFeatures extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [features]: The list of available features
+  /// * [limits]: The list of limits, increased for Premium users
+  /// * [payment_link]: An internal link to be opened to pay for Telegram Premium if store payment isn't possible; may be null if direct payment isn't available
   PremiumFeatures copyWith({
     List<PremiumFeature>? features,
     List<PremiumLimit>? limits,
@@ -76,11 +82,14 @@ final class PremiumFeatures extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'premiumFeatures';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

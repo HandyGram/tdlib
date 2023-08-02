@@ -41,6 +41,7 @@ final class AddProxy extends TdFunction {
   /// Proxy type
   final ProxyType type;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -53,7 +54,13 @@ final class AddProxy extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [server]: Proxy server IP address
+  /// * [port]: Proxy server port
+  /// * [enable]: Pass true to immediately enable the proxy
+  /// * [type]: Proxy type
   AddProxy copyWith({
     String? server,
     int? port,
@@ -66,11 +73,14 @@ final class AddProxy extends TdFunction {
     type: type ?? this.type,
   );
 
+  /// TDLib object type
   static const String objectType = 'addProxy';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

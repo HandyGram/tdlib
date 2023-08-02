@@ -47,6 +47,7 @@ final class ShareChatWithBot extends TdFunction {
   /// Pass true to check that the chat can be shared by the button instead of actually sharing it. Doesn't check bot_is_member and bot_administrator_rights restrictions.. If the bot must be a member, then all chats from getGroupsInCommon and all chats, where the user can add the bot, are suitable. In the latter case the bot will be automatically added to the chat.. If the bot must be an administrator, then all chats, where the bot already has requested rights or can be added to administrators by the user, are suitable. In the latter case the bot will be automatically granted requested rights
   final bool onlyCheck;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -60,7 +61,14 @@ final class ShareChatWithBot extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat with the bot
+  /// * [message_id]: Identifier of the message with the button
+  /// * [button_id]: Identifier of the button
+  /// * [shared_chat_id]: Identifier of the shared chat
+  /// * [only_check]: Pass true to check that the chat can be shared by the button instead of actually sharing it. Doesn't check bot_is_member and bot_administrator_rights restrictions.. If the bot must be a member, then all chats from getGroupsInCommon and all chats, where the user can add the bot, are suitable. In the latter case the bot will be automatically added to the chat.. If the bot must be an administrator, then all chats, where the bot already has requested rights or can be added to administrators by the user, are suitable. In the latter case the bot will be automatically granted requested rights
   ShareChatWithBot copyWith({
     int? chatId,
     int? messageId,
@@ -75,11 +83,14 @@ final class ShareChatWithBot extends TdFunction {
     onlyCheck: onlyCheck ?? this.onlyCheck,
   );
 
+  /// TDLib object type
   static const String objectType = 'shareChatWithBot';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

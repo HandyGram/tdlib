@@ -23,6 +23,7 @@ final class TestCallVectorIntObject extends TdFunction {
   /// Vector of objects to return
   final List<TestInt> x;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class TestCallVectorIntObject extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [x]: Vector of objects to return
   TestCallVectorIntObject copyWith({
     List<TestInt>? x,
   }) => TestCallVectorIntObject(
     x: x ?? this.x,
   );
 
+  /// TDLib object type
   static const String objectType = 'testCallVectorIntObject';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

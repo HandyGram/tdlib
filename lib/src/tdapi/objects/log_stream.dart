@@ -30,17 +30,21 @@ sealed class LogStream extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   LogStream copyWith();
 
+  /// TDLib object type
   static const String objectType = 'logStream';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -74,6 +78,7 @@ final class LogStreamDefault extends LogStream {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -81,7 +86,7 @@ final class LogStreamDefault extends LogStream {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   LogStreamDefault copyWith({
     dynamic extra,
@@ -91,11 +96,14 @@ final class LogStreamDefault extends LogStream {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'logStreamDefault';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -152,6 +160,7 @@ final class LogStreamFile extends LogStream {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -162,7 +171,12 @@ final class LogStreamFile extends LogStream {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [path]: Path to the file to where the internal TDLib log will be written
+  /// * [max_file_size]: The maximum size of the file to where the internal TDLib log is written before the file will automatically be rotated, in bytes
+  /// * [redirect_stderr]: Pass true to additionally redirect stderr to the log file. Ignored on Windows
   @override
   LogStreamFile copyWith({
     String? path,
@@ -178,11 +192,14 @@ final class LogStreamFile extends LogStream {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'logStreamFile';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -216,6 +233,7 @@ final class LogStreamEmpty extends LogStream {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -223,7 +241,7 @@ final class LogStreamEmpty extends LogStream {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   LogStreamEmpty copyWith({
     dynamic extra,
@@ -233,11 +251,14 @@ final class LogStreamEmpty extends LogStream {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'logStreamEmpty';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -29,6 +29,7 @@ final class UnpinChatMessage extends TdFunction {
   /// Identifier of the removed pinned message
   final int messageId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class UnpinChatMessage extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat 
+  /// * [message_id]: Identifier of the removed pinned message
   UnpinChatMessage copyWith({
     int? chatId,
     int? messageId,
@@ -48,11 +53,14 @@ final class UnpinChatMessage extends TdFunction {
     messageId: messageId ?? this.messageId,
   );
 
+  /// TDLib object type
   static const String objectType = 'unpinChatMessage';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

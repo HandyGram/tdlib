@@ -29,6 +29,7 @@ final class CreateTemporaryPassword extends TdFunction {
   /// Time during which the temporary password will be valid, in seconds; must be between 60 and 86400
   final int validFor;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class CreateTemporaryPassword extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [password]: The 2-step verification password of the current user 
+  /// * [valid_for]: Time during which the temporary password will be valid, in seconds; must be between 60 and 86400
   CreateTemporaryPassword copyWith({
     String? password,
     int? validFor,
@@ -48,11 +53,14 @@ final class CreateTemporaryPassword extends TdFunction {
     validFor: validFor ?? this.validFor,
   );
 
+  /// TDLib object type
   static const String objectType = 'createTemporaryPassword';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

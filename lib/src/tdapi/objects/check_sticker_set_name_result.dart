@@ -30,17 +30,21 @@ sealed class CheckStickerSetNameResult extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   CheckStickerSetNameResult copyWith();
 
+  /// TDLib object type
   static const String objectType = 'checkStickerSetNameResult';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -74,6 +78,7 @@ final class CheckStickerSetNameResultOk extends CheckStickerSetNameResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -81,7 +86,7 @@ final class CheckStickerSetNameResultOk extends CheckStickerSetNameResult {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   CheckStickerSetNameResultOk copyWith({
     dynamic extra,
@@ -91,11 +96,14 @@ final class CheckStickerSetNameResultOk extends CheckStickerSetNameResult {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'checkStickerSetNameResultOk';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -129,6 +137,7 @@ final class CheckStickerSetNameResultNameInvalid extends CheckStickerSetNameResu
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -136,7 +145,7 @@ final class CheckStickerSetNameResultNameInvalid extends CheckStickerSetNameResu
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   CheckStickerSetNameResultNameInvalid copyWith({
     dynamic extra,
@@ -146,11 +155,14 @@ final class CheckStickerSetNameResultNameInvalid extends CheckStickerSetNameResu
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'checkStickerSetNameResultNameInvalid';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -184,6 +196,7 @@ final class CheckStickerSetNameResultNameOccupied extends CheckStickerSetNameRes
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -191,7 +204,7 @@ final class CheckStickerSetNameResultNameOccupied extends CheckStickerSetNameRes
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   CheckStickerSetNameResultNameOccupied copyWith({
     dynamic extra,
@@ -201,11 +214,14 @@ final class CheckStickerSetNameResultNameOccupied extends CheckStickerSetNameRes
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'checkStickerSetNameResultNameOccupied';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

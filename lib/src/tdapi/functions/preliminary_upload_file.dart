@@ -35,6 +35,7 @@ final class PreliminaryUploadFile extends TdFunction {
   /// Priority of the upload (1-32). The higher the priority, the earlier the file will be uploaded. If the priorities of two files are equal, then the first one for which preliminaryUploadFile was called will be uploaded first
   final int priority;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class PreliminaryUploadFile extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [file]: File to upload
+  /// * [file_type]: File type; pass null if unknown
+  /// * [priority]: Priority of the upload (1-32). The higher the priority, the earlier the file will be uploaded. If the priorities of two files are equal, then the first one for which preliminaryUploadFile was called will be uploaded first
   PreliminaryUploadFile copyWith({
     InputFile? file,
     FileType? fileType,
@@ -57,11 +63,14 @@ final class PreliminaryUploadFile extends TdFunction {
     priority: priority ?? this.priority,
   );
 
+  /// TDLib object type
   static const String objectType = 'preliminaryUploadFile';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

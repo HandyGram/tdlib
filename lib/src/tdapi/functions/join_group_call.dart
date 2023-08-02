@@ -59,6 +59,7 @@ final class JoinGroupCall extends TdFunction {
   /// If non-empty, invite hash to be used to join the group call without being muted by administrators
   final String inviteHash;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -74,7 +75,16 @@ final class JoinGroupCall extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [group_call_id]: Group call identifier
+  /// * [participant_id]: Identifier of a group call participant, which will be used to join the call; pass null to join as self; video chats only
+  /// * [audio_source_id]: Caller audio channel synchronization source identifier; received from tgcalls
+  /// * [payload]: Group call join payload; received from tgcalls
+  /// * [is_muted]: Pass true to join the call with muted microphone
+  /// * [is_my_video_enabled]: Pass true if the user's video is enabled
+  /// * [invite_hash]: If non-empty, invite hash to be used to join the group call without being muted by administrators
   JoinGroupCall copyWith({
     int? groupCallId,
     MessageSender? participantId,
@@ -93,11 +103,14 @@ final class JoinGroupCall extends TdFunction {
     inviteHash: inviteHash ?? this.inviteHash,
   );
 
+  /// TDLib object type
   static const String objectType = 'joinGroupCall';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -27,17 +27,21 @@ sealed class MessageSchedulingState extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   MessageSchedulingState copyWith();
 
+  /// TDLib object type
   static const String objectType = 'messageSchedulingState';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -68,6 +72,7 @@ final class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -76,7 +81,10 @@ final class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [send_date]: Date the message will be sent. The date must be within 367 days in the future
   @override
   MessageSchedulingStateSendAtDate copyWith({
     int? sendDate,
@@ -84,11 +92,14 @@ final class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
     sendDate: sendDate ?? this.sendDate,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageSchedulingStateSendAtDate';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -107,6 +118,7 @@ final class MessageSchedulingStateSendWhenOnline extends MessageSchedulingState 
   /// Parse from a json
   factory MessageSchedulingStateSendWhenOnline.fromJson(Map<String, dynamic> json) => const MessageSchedulingStateSendWhenOnline();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -114,15 +126,18 @@ final class MessageSchedulingStateSendWhenOnline extends MessageSchedulingState 
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   MessageSchedulingStateSendWhenOnline copyWith() => const MessageSchedulingStateSendWhenOnline();
 
+  /// TDLib object type
   static const String objectType = 'messageSchedulingStateSendWhenOnline';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

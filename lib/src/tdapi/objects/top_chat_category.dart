@@ -42,17 +42,21 @@ sealed class TopChatCategory extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   TopChatCategory copyWith();
 
+  /// TDLib object type
   static const String objectType = 'topChatCategory';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -71,6 +75,7 @@ final class TopChatCategoryUsers extends TopChatCategory {
   /// Parse from a json
   factory TopChatCategoryUsers.fromJson(Map<String, dynamic> json) => const TopChatCategoryUsers();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -78,15 +83,18 @@ final class TopChatCategoryUsers extends TopChatCategory {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   TopChatCategoryUsers copyWith() => const TopChatCategoryUsers();
 
+  /// TDLib object type
   static const String objectType = 'topChatCategoryUsers';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -105,6 +113,7 @@ final class TopChatCategoryBots extends TopChatCategory {
   /// Parse from a json
   factory TopChatCategoryBots.fromJson(Map<String, dynamic> json) => const TopChatCategoryBots();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -112,15 +121,18 @@ final class TopChatCategoryBots extends TopChatCategory {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   TopChatCategoryBots copyWith() => const TopChatCategoryBots();
 
+  /// TDLib object type
   static const String objectType = 'topChatCategoryBots';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -139,6 +151,7 @@ final class TopChatCategoryGroups extends TopChatCategory {
   /// Parse from a json
   factory TopChatCategoryGroups.fromJson(Map<String, dynamic> json) => const TopChatCategoryGroups();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -146,15 +159,18 @@ final class TopChatCategoryGroups extends TopChatCategory {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   TopChatCategoryGroups copyWith() => const TopChatCategoryGroups();
 
+  /// TDLib object type
   static const String objectType = 'topChatCategoryGroups';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -173,6 +189,7 @@ final class TopChatCategoryChannels extends TopChatCategory {
   /// Parse from a json
   factory TopChatCategoryChannels.fromJson(Map<String, dynamic> json) => const TopChatCategoryChannels();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -180,15 +197,18 @@ final class TopChatCategoryChannels extends TopChatCategory {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   TopChatCategoryChannels copyWith() => const TopChatCategoryChannels();
 
+  /// TDLib object type
   static const String objectType = 'topChatCategoryChannels';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -207,6 +227,7 @@ final class TopChatCategoryInlineBots extends TopChatCategory {
   /// Parse from a json
   factory TopChatCategoryInlineBots.fromJson(Map<String, dynamic> json) => const TopChatCategoryInlineBots();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -214,15 +235,18 @@ final class TopChatCategoryInlineBots extends TopChatCategory {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   TopChatCategoryInlineBots copyWith() => const TopChatCategoryInlineBots();
 
+  /// TDLib object type
   static const String objectType = 'topChatCategoryInlineBots';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -241,6 +265,7 @@ final class TopChatCategoryCalls extends TopChatCategory {
   /// Parse from a json
   factory TopChatCategoryCalls.fromJson(Map<String, dynamic> json) => const TopChatCategoryCalls();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -248,15 +273,18 @@ final class TopChatCategoryCalls extends TopChatCategory {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   TopChatCategoryCalls copyWith() => const TopChatCategoryCalls();
 
+  /// TDLib object type
   static const String objectType = 'topChatCategoryCalls';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -275,6 +303,7 @@ final class TopChatCategoryForwardChats extends TopChatCategory {
   /// Parse from a json
   factory TopChatCategoryForwardChats.fromJson(Map<String, dynamic> json) => const TopChatCategoryForwardChats();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -282,15 +311,18 @@ final class TopChatCategoryForwardChats extends TopChatCategory {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   TopChatCategoryForwardChats copyWith() => const TopChatCategoryForwardChats();
 
+  /// TDLib object type
   static const String objectType = 'topChatCategoryForwardChats';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

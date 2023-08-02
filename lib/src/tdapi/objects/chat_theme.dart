@@ -39,6 +39,7 @@ final class ChatTheme extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class ChatTheme extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [name]: Theme name
+  /// * [light_settings]: Theme settings for a light chat theme
+  /// * [dark_settings]: Theme settings for a dark chat theme
   ChatTheme copyWith({
     String? name,
     ThemeSettings? lightSettings,
@@ -60,11 +66,14 @@ final class ChatTheme extends TdObject {
     darkSettings: darkSettings ?? this.darkSettings,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatTheme';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

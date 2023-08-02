@@ -29,6 +29,7 @@ final class SetProfilePhoto extends TdFunction {
   /// Pass true to set a public photo, which will be visible even the main photo is hidden by privacy settings
   final bool isPublic;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetProfilePhoto extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [photo]: Profile photo to set
+  /// * [is_public]: Pass true to set a public photo, which will be visible even the main photo is hidden by privacy settings
   SetProfilePhoto copyWith({
     InputChatPhoto? photo,
     bool? isPublic,
@@ -48,11 +53,14 @@ final class SetProfilePhoto extends TdFunction {
     isPublic: isPublic ?? this.isPublic,
   );
 
+  /// TDLib object type
   static const String objectType = 'setProfilePhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

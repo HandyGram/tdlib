@@ -39,6 +39,7 @@ final class StorageStatisticsByFileType extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class StorageStatisticsByFileType extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [file_type]: File type
+  /// * [size]: Total size of the files, in bytes
+  /// * [count]: Total number of files
   StorageStatisticsByFileType copyWith({
     FileType? fileType,
     int? size,
@@ -60,11 +66,14 @@ final class StorageStatisticsByFileType extends TdObject {
     count: count ?? this.count,
   );
 
+  /// TDLib object type
   static const String objectType = 'storageStatisticsByFileType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

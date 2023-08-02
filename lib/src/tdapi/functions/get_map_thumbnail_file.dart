@@ -53,6 +53,7 @@ final class GetMapThumbnailFile extends TdFunction {
   /// Identifier of a chat in which the thumbnail will be shown. Use 0 if unknown
   final int chatId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -67,7 +68,15 @@ final class GetMapThumbnailFile extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [location]: Location of the map center
+  /// * [zoom]: Map zoom level; 13-20
+  /// * [width]: Map width in pixels before applying scale; 16-1024
+  /// * [height]: Map height in pixels before applying scale; 16-1024
+  /// * [scale]: Map scale; 1-3
+  /// * [chat_id]: Identifier of a chat in which the thumbnail will be shown. Use 0 if unknown
   GetMapThumbnailFile copyWith({
     Location? location,
     int? zoom,
@@ -84,11 +93,14 @@ final class GetMapThumbnailFile extends TdFunction {
     chatId: chatId ?? this.chatId,
   );
 
+  /// TDLib object type
   static const String objectType = 'getMapThumbnailFile';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

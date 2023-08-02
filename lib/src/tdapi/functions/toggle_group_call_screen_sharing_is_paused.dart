@@ -29,6 +29,7 @@ final class ToggleGroupCallScreenSharingIsPaused extends TdFunction {
   /// Pass true to pause screen sharing; pass false to unpause it
   final bool isPaused;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ToggleGroupCallScreenSharingIsPaused extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [group_call_id]: Group call identifier 
+  /// * [is_paused]: Pass true to pause screen sharing; pass false to unpause it
   ToggleGroupCallScreenSharingIsPaused copyWith({
     int? groupCallId,
     bool? isPaused,
@@ -48,11 +53,14 @@ final class ToggleGroupCallScreenSharingIsPaused extends TdFunction {
     isPaused: isPaused ?? this.isPaused,
   );
 
+  /// TDLib object type
   static const String objectType = 'toggleGroupCallScreenSharingIsPaused';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

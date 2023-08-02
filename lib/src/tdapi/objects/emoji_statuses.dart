@@ -37,6 +37,7 @@ final class EmojiStatuses extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -45,7 +46,10 @@ final class EmojiStatuses extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [emoji_statuses]: The list of emoji statuses
   EmojiStatuses copyWith({
     List<EmojiStatus>? emojiStatuses,
     dynamic extra,
@@ -56,11 +60,14 @@ final class EmojiStatuses extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'emojiStatuses';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

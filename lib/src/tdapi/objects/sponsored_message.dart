@@ -81,6 +81,7 @@ final class SponsoredMessage extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -97,7 +98,18 @@ final class SponsoredMessage extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [message_id]: Message identifier; unique for the chat to which the sponsored message belongs among both ordinary and sponsored messages
+  /// * [is_recommended]: True, if the message needs to be labeled as "recommended" instead of "sponsored"
+  /// * [sponsor_chat_id]: Sponsor chat identifier; 0 if the sponsor chat is accessible through an invite link
+  /// * [sponsor_chat_info]: Information about the sponsor chat; may be null unless sponsor_chat_id == 0
+  /// * [show_chat_photo]: True, if the sponsor's chat photo must be shown
+  /// * [link]: An internal link to be opened when the sponsored message is clicked; may be null if the sponsor chat needs to be opened instead
+  /// * [content]: Content of the message. Currently, can be only of the type messageText
+  /// * [sponsor_info]: If non-empty, information about the sponsor to be shown along with the message
+  /// * [additional_info]: If non-empty, additional information about the sponsored message to be shown along with the message
   SponsoredMessage copyWith({
     int? messageId,
     bool? isRecommended,
@@ -120,11 +132,14 @@ final class SponsoredMessage extends TdObject {
     additionalInfo: additionalInfo ?? this.additionalInfo,
   );
 
+  /// TDLib object type
   static const String objectType = 'sponsoredMessage';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

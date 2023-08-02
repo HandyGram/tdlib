@@ -27,17 +27,21 @@ sealed class DiceStickers extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   DiceStickers copyWith();
 
+  /// TDLib object type
   static const String objectType = 'diceStickers';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -68,6 +72,7 @@ final class DiceStickersRegular extends DiceStickers {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -76,7 +81,10 @@ final class DiceStickersRegular extends DiceStickers {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sticker]: The animated sticker with the dice animation
   @override
   DiceStickersRegular copyWith({
     Sticker? sticker,
@@ -84,11 +92,14 @@ final class DiceStickersRegular extends DiceStickers {
     sticker: sticker ?? this.sticker,
   );
 
+  /// TDLib object type
   static const String objectType = 'diceStickersRegular';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -147,6 +158,7 @@ final class DiceStickersSlotMachine extends DiceStickers {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -159,7 +171,14 @@ final class DiceStickersSlotMachine extends DiceStickers {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [background]: The animated sticker with the slot machine background. The background animation must start playing after all reel animations finish
+  /// * [lever]: The animated sticker with the lever animation. The lever animation must play once in the initial dice state
+  /// * [left_reel]: The animated sticker with the left reel
+  /// * [center_reel]: The animated sticker with the center reel
+  /// * [right_reel]: The animated sticker with the right reel
   @override
   DiceStickersSlotMachine copyWith({
     Sticker? background,
@@ -175,11 +194,14 @@ final class DiceStickersSlotMachine extends DiceStickers {
     rightReel: rightReel ?? this.rightReel,
   );
 
+  /// TDLib object type
   static const String objectType = 'diceStickersSlotMachine';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

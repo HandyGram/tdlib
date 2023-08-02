@@ -29,6 +29,7 @@ final class CancelDownloadFile extends TdFunction {
   /// Pass true to stop downloading only if it hasn't been started, i.e. request hasn't been sent to server
   final bool onlyIfPending;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class CancelDownloadFile extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [file_id]: Identifier of a file to stop downloading 
+  /// * [only_if_pending]: Pass true to stop downloading only if it hasn't been started, i.e. request hasn't been sent to server
   CancelDownloadFile copyWith({
     int? fileId,
     bool? onlyIfPending,
@@ -48,11 +53,14 @@ final class CancelDownloadFile extends TdFunction {
     onlyIfPending: onlyIfPending ?? this.onlyIfPending,
   );
 
+  /// TDLib object type
   static const String objectType = 'cancelDownloadFile';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

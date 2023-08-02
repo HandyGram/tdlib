@@ -351,17 +351,21 @@ sealed class Update extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   Update copyWith();
 
+  /// TDLib object type
   static const String objectType = 'update';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -404,6 +408,7 @@ final class UpdateAuthorizationState extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -412,7 +417,10 @@ final class UpdateAuthorizationState extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [authorization_state]: New authorization state
   @override
   UpdateAuthorizationState copyWith({
     AuthorizationState? authorizationState,
@@ -424,11 +432,14 @@ final class UpdateAuthorizationState extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateAuthorizationState';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -471,6 +482,7 @@ final class UpdateNewMessage extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -479,7 +491,10 @@ final class UpdateNewMessage extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [message]: The new message
   @override
   UpdateNewMessage copyWith({
     Message? message,
@@ -491,11 +506,14 @@ final class UpdateNewMessage extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateNewMessage';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -545,6 +563,7 @@ final class UpdateMessageSendAcknowledged extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -554,7 +573,11 @@ final class UpdateMessageSendAcknowledged extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: The chat identifier of the sent message
+  /// * [message_id]: A temporary message identifier
   @override
   UpdateMessageSendAcknowledged copyWith({
     int? chatId,
@@ -568,11 +591,14 @@ final class UpdateMessageSendAcknowledged extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateMessageSendAcknowledged';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -622,6 +648,7 @@ final class UpdateMessageSendSucceeded extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -631,7 +658,11 @@ final class UpdateMessageSendSucceeded extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [message]: The sent message. Usually only the message identifier, date, and content are changed, but almost all other fields can also change 
+  /// * [old_message_id]: The previous temporary message identifier
   @override
   UpdateMessageSendSucceeded copyWith({
     Message? message,
@@ -645,11 +676,14 @@ final class UpdateMessageSendSucceeded extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateMessageSendSucceeded';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -713,6 +747,7 @@ final class UpdateMessageSendFailed extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -724,7 +759,13 @@ final class UpdateMessageSendFailed extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [message]: The failed to send message
+  /// * [old_message_id]: The previous temporary message identifier
+  /// * [error_code]: An error code
+  /// * [error_message]: Error message
   @override
   UpdateMessageSendFailed copyWith({
     Message? message,
@@ -742,11 +783,14 @@ final class UpdateMessageSendFailed extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateMessageSendFailed';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -803,6 +847,7 @@ final class UpdateMessageContent extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -813,7 +858,12 @@ final class UpdateMessageContent extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [message_id]: Message identifier 
+  /// * [new_content]: New message content
   @override
   UpdateMessageContent copyWith({
     int? chatId,
@@ -829,11 +879,14 @@ final class UpdateMessageContent extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateMessageContent';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -897,6 +950,7 @@ final class UpdateMessageEdited extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -908,7 +962,13 @@ final class UpdateMessageEdited extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [message_id]: Message identifier
+  /// * [edit_date]: Point in time (Unix timestamp) when the message was edited
+  /// * [reply_markup]: New message reply markup; may be null
   @override
   UpdateMessageEdited copyWith({
     int? chatId,
@@ -926,11 +986,14 @@ final class UpdateMessageEdited extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateMessageEdited';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -987,6 +1050,7 @@ final class UpdateMessageIsPinned extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -997,7 +1061,12 @@ final class UpdateMessageIsPinned extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [message_id]: The message identifier 
+  /// * [is_pinned]: True, if the message is pinned
   @override
   UpdateMessageIsPinned copyWith({
     int? chatId,
@@ -1013,11 +1082,14 @@ final class UpdateMessageIsPinned extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateMessageIsPinned';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1074,6 +1146,7 @@ final class UpdateMessageInteractionInfo extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1084,7 +1157,12 @@ final class UpdateMessageInteractionInfo extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [message_id]: Message identifier 
+  /// * [interaction_info]: New information about interactions with the message; may be null
   @override
   UpdateMessageInteractionInfo copyWith({
     int? chatId,
@@ -1100,11 +1178,14 @@ final class UpdateMessageInteractionInfo extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateMessageInteractionInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1154,6 +1235,7 @@ final class UpdateMessageContentOpened extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1163,7 +1245,11 @@ final class UpdateMessageContentOpened extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [message_id]: Message identifier
   @override
   UpdateMessageContentOpened copyWith({
     int? chatId,
@@ -1177,11 +1263,14 @@ final class UpdateMessageContentOpened extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateMessageContentOpened';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1238,6 +1327,7 @@ final class UpdateMessageMentionRead extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1248,7 +1338,12 @@ final class UpdateMessageMentionRead extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [message_id]: Message identifier 
+  /// * [unread_mention_count]: The new number of unread mention messages left in the chat
   @override
   UpdateMessageMentionRead copyWith({
     int? chatId,
@@ -1264,11 +1359,14 @@ final class UpdateMessageMentionRead extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateMessageMentionRead';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1332,6 +1430,7 @@ final class UpdateMessageUnreadReactions extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1343,7 +1442,13 @@ final class UpdateMessageUnreadReactions extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [message_id]: Message identifier
+  /// * [unread_reactions]: The new list of unread reactions
+  /// * [unread_reaction_count]: The new number of messages with unread reactions left in the chat
   @override
   UpdateMessageUnreadReactions copyWith({
     int? chatId,
@@ -1361,11 +1466,14 @@ final class UpdateMessageUnreadReactions extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateMessageUnreadReactions';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1415,6 +1523,7 @@ final class UpdateMessageLiveLocationViewed extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1424,7 +1533,11 @@ final class UpdateMessageLiveLocationViewed extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat with the live location message
+  /// * [message_id]: Identifier of the message with live location
   @override
   UpdateMessageLiveLocationViewed copyWith({
     int? chatId,
@@ -1438,11 +1551,14 @@ final class UpdateMessageLiveLocationViewed extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateMessageLiveLocationViewed';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1485,6 +1601,7 @@ final class UpdateNewChat extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1493,7 +1610,10 @@ final class UpdateNewChat extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat]: The chat
   @override
   UpdateNewChat copyWith({
     Chat? chat,
@@ -1505,11 +1625,14 @@ final class UpdateNewChat extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateNewChat';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1559,6 +1682,7 @@ final class UpdateChatTitle extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1568,7 +1692,11 @@ final class UpdateChatTitle extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [title]: The new chat title
   @override
   UpdateChatTitle copyWith({
     int? chatId,
@@ -1582,11 +1710,14 @@ final class UpdateChatTitle extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatTitle';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1636,6 +1767,7 @@ final class UpdateChatPhoto extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1645,7 +1777,11 @@ final class UpdateChatPhoto extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [photo]: The new chat photo; may be null
   @override
   UpdateChatPhoto copyWith({
     int? chatId,
@@ -1659,11 +1795,14 @@ final class UpdateChatPhoto extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatPhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1713,6 +1852,7 @@ final class UpdateChatPermissions extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1722,7 +1862,11 @@ final class UpdateChatPermissions extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [permissions]: The new chat permissions
   @override
   UpdateChatPermissions copyWith({
     int? chatId,
@@ -1736,11 +1880,14 @@ final class UpdateChatPermissions extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatPermissions';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1797,6 +1944,7 @@ final class UpdateChatLastMessage extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1807,7 +1955,12 @@ final class UpdateChatLastMessage extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [last_message]: The new last message in the chat; may be null
+  /// * [positions]: The new chat positions in the chat lists
   @override
   UpdateChatLastMessage copyWith({
     int? chatId,
@@ -1823,11 +1976,14 @@ final class UpdateChatLastMessage extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatLastMessage';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1877,6 +2033,7 @@ final class UpdateChatPosition extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1886,7 +2043,11 @@ final class UpdateChatPosition extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [position]: New chat position. If new order is 0, then the chat needs to be removed from the list
   @override
   UpdateChatPosition copyWith({
     int? chatId,
@@ -1900,11 +2061,14 @@ final class UpdateChatPosition extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatPosition';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1961,6 +2125,7 @@ final class UpdateChatReadInbox extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1971,7 +2136,12 @@ final class UpdateChatReadInbox extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [last_read_inbox_message_id]: Identifier of the last read incoming message 
+  /// * [unread_count]: The number of unread messages left in the chat
   @override
   UpdateChatReadInbox copyWith({
     int? chatId,
@@ -1987,11 +2157,14 @@ final class UpdateChatReadInbox extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatReadInbox';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2041,6 +2214,7 @@ final class UpdateChatReadOutbox extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2050,7 +2224,11 @@ final class UpdateChatReadOutbox extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [last_read_outbox_message_id]: Identifier of last read outgoing message
   @override
   UpdateChatReadOutbox copyWith({
     int? chatId,
@@ -2064,11 +2242,14 @@ final class UpdateChatReadOutbox extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatReadOutbox';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2118,6 +2299,7 @@ final class UpdateChatActionBar extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2127,7 +2309,11 @@ final class UpdateChatActionBar extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [action_bar]: The new value of the action bar; may be null
   @override
   UpdateChatActionBar copyWith({
     int? chatId,
@@ -2141,11 +2327,14 @@ final class UpdateChatActionBar extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatActionBar';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2195,6 +2384,7 @@ final class UpdateChatAvailableReactions extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2204,7 +2394,11 @@ final class UpdateChatAvailableReactions extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [available_reactions]: The new reactions, available in the chat
   @override
   UpdateChatAvailableReactions copyWith({
     int? chatId,
@@ -2218,11 +2412,14 @@ final class UpdateChatAvailableReactions extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatAvailableReactions';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2279,6 +2476,7 @@ final class UpdateChatDraftMessage extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2289,7 +2487,12 @@ final class UpdateChatDraftMessage extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [draft_message]: The new draft message; may be null
+  /// * [positions]: The new chat positions in the chat lists
   @override
   UpdateChatDraftMessage copyWith({
     int? chatId,
@@ -2305,11 +2508,14 @@ final class UpdateChatDraftMessage extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatDraftMessage';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2359,6 +2565,7 @@ final class UpdateChatMessageSender extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2368,7 +2575,11 @@ final class UpdateChatMessageSender extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [message_sender_id]: New value of message_sender_id; may be null if the user can't change message sender
   @override
   UpdateChatMessageSender copyWith({
     int? chatId,
@@ -2382,11 +2593,14 @@ final class UpdateChatMessageSender extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatMessageSender';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2436,6 +2650,7 @@ final class UpdateChatMessageAutoDeleteTime extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2445,7 +2660,11 @@ final class UpdateChatMessageAutoDeleteTime extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [message_auto_delete_time]: New value of message_auto_delete_time
   @override
   UpdateChatMessageAutoDeleteTime copyWith({
     int? chatId,
@@ -2459,11 +2678,14 @@ final class UpdateChatMessageAutoDeleteTime extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatMessageAutoDeleteTime';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2513,6 +2735,7 @@ final class UpdateChatNotificationSettings extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2522,7 +2745,11 @@ final class UpdateChatNotificationSettings extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [notification_settings]: The new notification settings
   @override
   UpdateChatNotificationSettings copyWith({
     int? chatId,
@@ -2536,11 +2763,14 @@ final class UpdateChatNotificationSettings extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatNotificationSettings';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2590,6 +2820,7 @@ final class UpdateChatPendingJoinRequests extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2599,7 +2830,11 @@ final class UpdateChatPendingJoinRequests extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [pending_join_requests]: The new data about pending join requests; may be null
   @override
   UpdateChatPendingJoinRequests copyWith({
     int? chatId,
@@ -2613,11 +2848,14 @@ final class UpdateChatPendingJoinRequests extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatPendingJoinRequests';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2667,6 +2905,7 @@ final class UpdateChatReplyMarkup extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2676,7 +2915,11 @@ final class UpdateChatReplyMarkup extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [reply_markup_message_id]: Identifier of the message from which reply markup needs to be used; 0 if there is no default custom reply markup in the chat
   @override
   UpdateChatReplyMarkup copyWith({
     int? chatId,
@@ -2690,11 +2933,14 @@ final class UpdateChatReplyMarkup extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatReplyMarkup';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2744,6 +2990,7 @@ final class UpdateChatBackground extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2753,7 +3000,11 @@ final class UpdateChatBackground extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [background]: The new chat background; may be null if background was reset to default
   @override
   UpdateChatBackground copyWith({
     int? chatId,
@@ -2767,11 +3018,14 @@ final class UpdateChatBackground extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatBackground';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2821,6 +3075,7 @@ final class UpdateChatTheme extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2830,7 +3085,11 @@ final class UpdateChatTheme extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [theme_name]: The new name of the chat theme; may be empty if theme was reset to default
   @override
   UpdateChatTheme copyWith({
     int? chatId,
@@ -2844,11 +3103,14 @@ final class UpdateChatTheme extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatTheme';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2898,6 +3160,7 @@ final class UpdateChatUnreadMentionCount extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2907,7 +3170,11 @@ final class UpdateChatUnreadMentionCount extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [unread_mention_count]: The number of unread mention messages left in the chat
   @override
   UpdateChatUnreadMentionCount copyWith({
     int? chatId,
@@ -2921,11 +3188,14 @@ final class UpdateChatUnreadMentionCount extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatUnreadMentionCount';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2975,6 +3245,7 @@ final class UpdateChatUnreadReactionCount extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2984,7 +3255,11 @@ final class UpdateChatUnreadReactionCount extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [unread_reaction_count]: The number of messages with unread reactions left in the chat
   @override
   UpdateChatUnreadReactionCount copyWith({
     int? chatId,
@@ -2998,11 +3273,14 @@ final class UpdateChatUnreadReactionCount extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatUnreadReactionCount';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -3052,6 +3330,7 @@ final class UpdateChatVideoChat extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -3061,7 +3340,11 @@ final class UpdateChatVideoChat extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [video_chat]: New value of video_chat
   @override
   UpdateChatVideoChat copyWith({
     int? chatId,
@@ -3075,11 +3358,14 @@ final class UpdateChatVideoChat extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatVideoChat';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -3129,6 +3415,7 @@ final class UpdateChatDefaultDisableNotification extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -3138,7 +3425,11 @@ final class UpdateChatDefaultDisableNotification extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [default_disable_notification]: The new default_disable_notification value
   @override
   UpdateChatDefaultDisableNotification copyWith({
     int? chatId,
@@ -3152,11 +3443,14 @@ final class UpdateChatDefaultDisableNotification extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatDefaultDisableNotification';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -3206,6 +3500,7 @@ final class UpdateChatHasProtectedContent extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -3215,7 +3510,11 @@ final class UpdateChatHasProtectedContent extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [has_protected_content]: New value of has_protected_content
   @override
   UpdateChatHasProtectedContent copyWith({
     int? chatId,
@@ -3229,11 +3528,14 @@ final class UpdateChatHasProtectedContent extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatHasProtectedContent';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -3283,6 +3585,7 @@ final class UpdateChatIsTranslatable extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -3292,7 +3595,11 @@ final class UpdateChatIsTranslatable extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [is_translatable]: New value of is_translatable
   @override
   UpdateChatIsTranslatable copyWith({
     int? chatId,
@@ -3306,11 +3613,14 @@ final class UpdateChatIsTranslatable extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatIsTranslatable';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -3360,6 +3670,7 @@ final class UpdateChatIsMarkedAsUnread extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -3369,7 +3680,11 @@ final class UpdateChatIsMarkedAsUnread extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [is_marked_as_unread]: New value of is_marked_as_unread
   @override
   UpdateChatIsMarkedAsUnread copyWith({
     int? chatId,
@@ -3383,11 +3698,14 @@ final class UpdateChatIsMarkedAsUnread extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatIsMarkedAsUnread';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -3437,6 +3755,7 @@ final class UpdateChatIsBlocked extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -3446,7 +3765,11 @@ final class UpdateChatIsBlocked extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [is_blocked]: New value of is_blocked
   @override
   UpdateChatIsBlocked copyWith({
     int? chatId,
@@ -3460,11 +3783,14 @@ final class UpdateChatIsBlocked extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatIsBlocked';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -3514,6 +3840,7 @@ final class UpdateChatHasScheduledMessages extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -3523,7 +3850,11 @@ final class UpdateChatHasScheduledMessages extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [has_scheduled_messages]: New value of has_scheduled_messages
   @override
   UpdateChatHasScheduledMessages copyWith({
     int? chatId,
@@ -3537,11 +3868,14 @@ final class UpdateChatHasScheduledMessages extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatHasScheduledMessages';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -3591,6 +3925,7 @@ final class UpdateChatFolders extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -3600,7 +3935,11 @@ final class UpdateChatFolders extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_folders]: The new list of chat folders 
+  /// * [main_chat_list_position]: Position of the main chat list among chat folders, 0-based
   @override
   UpdateChatFolders copyWith({
     List<ChatFolderInfo>? chatFolders,
@@ -3614,11 +3953,14 @@ final class UpdateChatFolders extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatFolders';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -3668,6 +4010,7 @@ final class UpdateChatOnlineMemberCount extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -3677,7 +4020,11 @@ final class UpdateChatOnlineMemberCount extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat
+  /// * [online_member_count]: New number of online members in the chat, or 0 if unknown
   @override
   UpdateChatOnlineMemberCount copyWith({
     int? chatId,
@@ -3691,11 +4038,14 @@ final class UpdateChatOnlineMemberCount extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatOnlineMemberCount';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -3745,6 +4095,7 @@ final class UpdateForumTopicInfo extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -3754,7 +4105,11 @@ final class UpdateForumTopicInfo extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [info]: New information about the topic
   @override
   UpdateForumTopicInfo copyWith({
     int? chatId,
@@ -3768,11 +4123,14 @@ final class UpdateForumTopicInfo extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateForumTopicInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -3822,6 +4180,7 @@ final class UpdateScopeNotificationSettings extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -3831,7 +4190,11 @@ final class UpdateScopeNotificationSettings extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [scope]: Types of chats for which notification settings were updated 
+  /// * [notification_settings]: The new notification settings
   @override
   UpdateScopeNotificationSettings copyWith({
     NotificationSettingsScope? scope,
@@ -3845,11 +4208,14 @@ final class UpdateScopeNotificationSettings extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateScopeNotificationSettings';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -3899,6 +4265,7 @@ final class UpdateNotification extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -3908,7 +4275,11 @@ final class UpdateNotification extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [notification_group_id]: Unique notification group identifier 
+  /// * [notification]: Changed notification
   @override
   UpdateNotification copyWith({
     int? notificationGroupId,
@@ -3922,11 +4293,14 @@ final class UpdateNotification extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateNotification';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -4018,6 +4392,7 @@ final class UpdateNotificationGroup extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -4033,7 +4408,17 @@ final class UpdateNotificationGroup extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [notification_group_id]: Unique notification group identifier
+  /// * [type]: New type of the notification group
+  /// * [chat_id]: Identifier of a chat to which all notifications in the group belong
+  /// * [notification_settings_chat_id]: Chat identifier, which notification settings must be applied to the added notifications
+  /// * [notification_sound_id]: Identifier of the notification sound to be played; 0 if sound is disabled
+  /// * [total_count]: Total number of unread notifications in the group, can be bigger than number of active notifications
+  /// * [added_notifications]: List of added group notifications, sorted by notification updateNotificationGroup
+  /// * [removed_notification_ids]: Identifiers of removed group notifications, sorted by notification updateNotificationGroup
   @override
   UpdateNotificationGroup copyWith({
     int? notificationGroupId,
@@ -4059,11 +4444,14 @@ final class UpdateNotificationGroup extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateNotificationGroup';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -4106,6 +4494,7 @@ final class UpdateActiveNotifications extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -4114,7 +4503,10 @@ final class UpdateActiveNotifications extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [groups]: Lists of active notification groups
   @override
   UpdateActiveNotifications copyWith({
     List<NotificationGroup>? groups,
@@ -4126,11 +4518,14 @@ final class UpdateActiveNotifications extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateActiveNotifications';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -4180,6 +4575,7 @@ final class UpdateHavePendingNotifications extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -4189,7 +4585,11 @@ final class UpdateHavePendingNotifications extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [have_delayed_notifications]: True, if there are some delayed notification updates, which will be sent soon
+  /// * [have_unreceived_notifications]: True, if there can be some yet unreceived notifications, which are being fetched from the server
   @override
   UpdateHavePendingNotifications copyWith({
     bool? haveDelayedNotifications,
@@ -4203,11 +4603,14 @@ final class UpdateHavePendingNotifications extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateHavePendingNotifications';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -4271,6 +4674,7 @@ final class UpdateDeleteMessages extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -4282,7 +4686,13 @@ final class UpdateDeleteMessages extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [message_ids]: Identifiers of the deleted messages
+  /// * [is_permanent]: True, if the messages are permanently deleted by a user (as opposed to just becoming inaccessible)
+  /// * [from_cache]: True, if the messages are deleted only from the cache and can possibly be retrieved again in the future
   @override
   UpdateDeleteMessages copyWith({
     int? chatId,
@@ -4300,11 +4710,14 @@ final class UpdateDeleteMessages extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateDeleteMessages';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -4368,6 +4781,7 @@ final class UpdateChatAction extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -4379,7 +4793,13 @@ final class UpdateChatAction extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [message_thread_id]: If not 0, a message thread identifier in which the action was performed
+  /// * [sender_id]: Identifier of a message sender performing the action
+  /// * [action]: The action
   @override
   UpdateChatAction copyWith({
     int? chatId,
@@ -4397,11 +4817,14 @@ final class UpdateChatAction extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatAction';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -4451,6 +4874,7 @@ final class UpdateUserStatus extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -4460,7 +4884,11 @@ final class UpdateUserStatus extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: User identifier 
+  /// * [status]: New status of the user
   @override
   UpdateUserStatus copyWith({
     int? userId,
@@ -4474,11 +4902,14 @@ final class UpdateUserStatus extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateUserStatus';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -4521,6 +4952,7 @@ final class UpdateUser extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -4529,7 +4961,10 @@ final class UpdateUser extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user]: New data about the user
   @override
   UpdateUser copyWith({
     User? user,
@@ -4541,11 +4976,14 @@ final class UpdateUser extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateUser';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -4588,6 +5026,7 @@ final class UpdateAccessHash extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -4596,7 +5035,10 @@ final class UpdateAccessHash extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [access_hash]: Access hash
   @override
   UpdateAccessHash copyWith({
     AccessHash? accessHash,
@@ -4608,11 +5050,14 @@ final class UpdateAccessHash extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateAccessHash';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -4655,6 +5100,7 @@ final class UpdateBasicGroup extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -4663,7 +5109,10 @@ final class UpdateBasicGroup extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [basic_group]: New data about the group
   @override
   UpdateBasicGroup copyWith({
     BasicGroup? basicGroup,
@@ -4675,11 +5124,14 @@ final class UpdateBasicGroup extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateBasicGroup';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -4722,6 +5174,7 @@ final class UpdateSupergroup extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -4730,7 +5183,10 @@ final class UpdateSupergroup extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [supergroup]: New data about the supergroup
   @override
   UpdateSupergroup copyWith({
     Supergroup? supergroup,
@@ -4742,11 +5198,14 @@ final class UpdateSupergroup extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateSupergroup';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -4789,6 +5248,7 @@ final class UpdateSecretChat extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -4797,7 +5257,10 @@ final class UpdateSecretChat extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [secret_chat]: New data about the secret chat
   @override
   UpdateSecretChat copyWith({
     SecretChat? secretChat,
@@ -4809,11 +5272,14 @@ final class UpdateSecretChat extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateSecretChat';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -4863,6 +5329,7 @@ final class UpdateUserFullInfo extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -4872,7 +5339,11 @@ final class UpdateUserFullInfo extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: User identifier 
+  /// * [user_full_info]: New full information about the user
   @override
   UpdateUserFullInfo copyWith({
     int? userId,
@@ -4886,11 +5357,14 @@ final class UpdateUserFullInfo extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateUserFullInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -4940,6 +5414,7 @@ final class UpdateBasicGroupFullInfo extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -4949,7 +5424,11 @@ final class UpdateBasicGroupFullInfo extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [basic_group_id]: Identifier of a basic group 
+  /// * [basic_group_full_info]: New full information about the group
   @override
   UpdateBasicGroupFullInfo copyWith({
     int? basicGroupId,
@@ -4963,11 +5442,14 @@ final class UpdateBasicGroupFullInfo extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateBasicGroupFullInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -5017,6 +5499,7 @@ final class UpdateSupergroupFullInfo extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -5026,7 +5509,11 @@ final class UpdateSupergroupFullInfo extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [supergroup_id]: Identifier of the supergroup or channel 
+  /// * [supergroup_full_info]: New full information about the supergroup
   @override
   UpdateSupergroupFullInfo copyWith({
     int? supergroupId,
@@ -5040,11 +5527,14 @@ final class UpdateSupergroupFullInfo extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateSupergroupFullInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -5094,6 +5584,7 @@ final class UpdateServiceNotification extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -5103,7 +5594,11 @@ final class UpdateServiceNotification extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [type]: Notification type. If type begins with "AUTH_KEY_DROP_", then two buttons "Cancel" and "Log out" must be shown under notification; if user presses the second, all local data must be destroyed using Destroy method
+  /// * [content]: Notification content
   @override
   UpdateServiceNotification copyWith({
     String? type,
@@ -5117,11 +5612,14 @@ final class UpdateServiceNotification extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateServiceNotification';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -5164,6 +5662,7 @@ final class UpdateFile extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -5172,7 +5671,10 @@ final class UpdateFile extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [file]: New data about the file
   @override
   UpdateFile copyWith({
     File? file,
@@ -5184,11 +5686,14 @@ final class UpdateFile extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateFile';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -5252,6 +5757,7 @@ final class UpdateFileGenerationStart extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -5263,7 +5769,13 @@ final class UpdateFileGenerationStart extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [generation_id]: Unique identifier for the generation process
+  /// * [original_path]: The path to a file from which a new file is generated; may be empty
+  /// * [destination_path]: The path to a file that must be created and where the new file is generated
+  /// * [conversion]: String specifying the conversion applied to the original file. If conversion is "#url#" than original_path contains an HTTP/HTTPS URL of a file, which must be downloaded by the application
   @override
   UpdateFileGenerationStart copyWith({
     int? generationId,
@@ -5281,11 +5793,14 @@ final class UpdateFileGenerationStart extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateFileGenerationStart';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -5328,6 +5843,7 @@ final class UpdateFileGenerationStop extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -5336,7 +5852,10 @@ final class UpdateFileGenerationStop extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [generation_id]: Unique identifier for the generation process
   @override
   UpdateFileGenerationStop copyWith({
     int? generationId,
@@ -5348,11 +5867,14 @@ final class UpdateFileGenerationStop extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateFileGenerationStop';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -5409,6 +5931,7 @@ final class UpdateFileDownloads extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -5419,7 +5942,12 @@ final class UpdateFileDownloads extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [total_size]: Total size of files in the file download list, in bytes
+  /// * [total_count]: Total number of files in the file download list
+  /// * [downloaded_size]: Total downloaded size of files in the file download list, in bytes
   @override
   UpdateFileDownloads copyWith({
     int? totalSize,
@@ -5435,11 +5963,14 @@ final class UpdateFileDownloads extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateFileDownloads';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -5489,6 +6020,7 @@ final class UpdateFileAddedToDownloads extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -5498,7 +6030,11 @@ final class UpdateFileAddedToDownloads extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [file_download]: The added file download 
+  /// * [counts]: New number of being downloaded and recently downloaded files found
   @override
   UpdateFileAddedToDownloads copyWith({
     FileDownload? fileDownload,
@@ -5512,11 +6048,14 @@ final class UpdateFileAddedToDownloads extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateFileAddedToDownloads';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -5580,6 +6119,7 @@ final class UpdateFileDownload extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -5591,7 +6131,13 @@ final class UpdateFileDownload extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [file_id]: File identifier
+  /// * [complete_date]: Point in time (Unix timestamp) when the file downloading was completed; 0 if the file downloading isn't completed
+  /// * [is_paused]: True, if downloading of the file is paused
+  /// * [counts]: New number of being downloaded and recently downloaded files found
   @override
   UpdateFileDownload copyWith({
     int? fileId,
@@ -5609,11 +6155,14 @@ final class UpdateFileDownload extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateFileDownload';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -5663,6 +6212,7 @@ final class UpdateFileRemovedFromDownloads extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -5672,7 +6222,11 @@ final class UpdateFileRemovedFromDownloads extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [file_id]: File identifier 
+  /// * [counts]: New number of being downloaded and recently downloaded files found
   @override
   UpdateFileRemovedFromDownloads copyWith({
     int? fileId,
@@ -5686,11 +6240,14 @@ final class UpdateFileRemovedFromDownloads extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateFileRemovedFromDownloads';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -5733,6 +6290,7 @@ final class UpdateCall extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -5741,7 +6299,10 @@ final class UpdateCall extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [call]: New data about a call
   @override
   UpdateCall copyWith({
     Call? call,
@@ -5753,11 +6314,14 @@ final class UpdateCall extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateCall';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -5800,6 +6364,7 @@ final class UpdateGroupCall extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -5808,7 +6373,10 @@ final class UpdateGroupCall extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [group_call]: New data about a group call
   @override
   UpdateGroupCall copyWith({
     GroupCall? groupCall,
@@ -5820,11 +6388,14 @@ final class UpdateGroupCall extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateGroupCall';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -5874,6 +6445,7 @@ final class UpdateGroupCallParticipant extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -5883,7 +6455,11 @@ final class UpdateGroupCallParticipant extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [group_call_id]: Identifier of group call
+  /// * [participant]: New data about a participant
   @override
   UpdateGroupCallParticipant copyWith({
     int? groupCallId,
@@ -5897,11 +6473,14 @@ final class UpdateGroupCallParticipant extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateGroupCallParticipant';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -5951,6 +6530,7 @@ final class UpdateNewCallSignalingData extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -5960,7 +6540,11 @@ final class UpdateNewCallSignalingData extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [call_id]: The call identifier 
+  /// * [data]: The data
   @override
   UpdateNewCallSignalingData copyWith({
     int? callId,
@@ -5974,11 +6558,14 @@ final class UpdateNewCallSignalingData extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateNewCallSignalingData';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -6028,6 +6615,7 @@ final class UpdateUserPrivacySettingRules extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -6037,7 +6625,11 @@ final class UpdateUserPrivacySettingRules extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [setting]: The privacy setting 
+  /// * [rules]: New privacy rules
   @override
   UpdateUserPrivacySettingRules copyWith({
     UserPrivacySetting? setting,
@@ -6051,11 +6643,14 @@ final class UpdateUserPrivacySettingRules extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateUserPrivacySettingRules';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -6112,6 +6707,7 @@ final class UpdateUnreadMessageCount extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -6122,7 +6718,12 @@ final class UpdateUnreadMessageCount extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_list]: The chat list with changed number of unread messages
+  /// * [unread_count]: Total number of unread messages
+  /// * [unread_unmuted_count]: Total number of unread messages in unmuted chats
   @override
   UpdateUnreadMessageCount copyWith({
     ChatList? chatList,
@@ -6138,11 +6739,14 @@ final class UpdateUnreadMessageCount extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateUnreadMessageCount';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -6220,6 +6824,7 @@ final class UpdateUnreadChatCount extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -6233,7 +6838,15 @@ final class UpdateUnreadChatCount extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_list]: The chat list with changed number of unread messages
+  /// * [total_count]: Approximate total number of chats in the chat list
+  /// * [unread_count]: Total number of unread chats
+  /// * [unread_unmuted_count]: Total number of unread unmuted chats
+  /// * [marked_as_unread_count]: Total number of chats marked as unread
+  /// * [marked_as_unread_unmuted_count]: Total number of unmuted chats marked as unread
   @override
   UpdateUnreadChatCount copyWith({
     ChatList? chatList,
@@ -6255,11 +6868,14 @@ final class UpdateUnreadChatCount extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateUnreadChatCount';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -6309,6 +6925,7 @@ final class UpdateOption extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -6318,7 +6935,11 @@ final class UpdateOption extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [name]: The option name 
+  /// * [value]: The new option value
   @override
   UpdateOption copyWith({
     String? name,
@@ -6332,11 +6953,14 @@ final class UpdateOption extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateOption';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -6379,6 +7003,7 @@ final class UpdateStickerSet extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -6387,7 +7012,10 @@ final class UpdateStickerSet extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sticker_set]: The sticker set
   @override
   UpdateStickerSet copyWith({
     StickerSet? stickerSet,
@@ -6399,11 +7027,14 @@ final class UpdateStickerSet extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateStickerSet';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -6453,6 +7084,7 @@ final class UpdateInstalledStickerSets extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -6462,7 +7094,11 @@ final class UpdateInstalledStickerSets extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sticker_type]: Type of the affected stickers 
+  /// * [sticker_set_ids]: The new list of installed ordinary sticker sets
   @override
   UpdateInstalledStickerSets copyWith({
     StickerType? stickerType,
@@ -6476,11 +7112,14 @@ final class UpdateInstalledStickerSets extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateInstalledStickerSets';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -6530,6 +7169,7 @@ final class UpdateTrendingStickerSets extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -6539,7 +7179,11 @@ final class UpdateTrendingStickerSets extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sticker_type]: Type of the affected stickers 
+  /// * [sticker_sets]: The prefix of the list of trending sticker sets with the newest trending sticker sets
   @override
   UpdateTrendingStickerSets copyWith({
     StickerType? stickerType,
@@ -6553,11 +7197,14 @@ final class UpdateTrendingStickerSets extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateTrendingStickerSets';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -6607,6 +7254,7 @@ final class UpdateRecentStickers extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -6616,7 +7264,11 @@ final class UpdateRecentStickers extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [is_attached]: True, if the list of stickers attached to photo or video files was updated; otherwise, the list of sent stickers is updated 
+  /// * [sticker_ids]: The new list of file identifiers of recently used stickers
   @override
   UpdateRecentStickers copyWith({
     bool? isAttached,
@@ -6630,11 +7282,14 @@ final class UpdateRecentStickers extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateRecentStickers';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -6677,6 +7332,7 @@ final class UpdateFavoriteStickers extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -6685,7 +7341,10 @@ final class UpdateFavoriteStickers extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sticker_ids]: The new list of file identifiers of favorite stickers
   @override
   UpdateFavoriteStickers copyWith({
     List<int>? stickerIds,
@@ -6697,11 +7356,14 @@ final class UpdateFavoriteStickers extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateFavoriteStickers';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -6744,6 +7406,7 @@ final class UpdateSavedAnimations extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -6752,7 +7415,10 @@ final class UpdateSavedAnimations extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [animation_ids]: The new list of file identifiers of saved animations
   @override
   UpdateSavedAnimations copyWith({
     List<int>? animationIds,
@@ -6764,11 +7430,14 @@ final class UpdateSavedAnimations extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateSavedAnimations';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -6811,6 +7480,7 @@ final class UpdateSavedNotificationSounds extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -6819,7 +7489,10 @@ final class UpdateSavedNotificationSounds extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [notification_sound_ids]: The new list of identifiers of saved notification sounds
   @override
   UpdateSavedNotificationSounds copyWith({
     List<int>? notificationSoundIds,
@@ -6831,11 +7504,14 @@ final class UpdateSavedNotificationSounds extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateSavedNotificationSounds';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -6885,6 +7561,7 @@ final class UpdateSelectedBackground extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -6894,7 +7571,11 @@ final class UpdateSelectedBackground extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [for_dark_theme]: True, if background for dark theme has changed 
+  /// * [background]: The new selected background; may be null
   @override
   UpdateSelectedBackground copyWith({
     bool? forDarkTheme,
@@ -6908,11 +7589,14 @@ final class UpdateSelectedBackground extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateSelectedBackground';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -6955,6 +7639,7 @@ final class UpdateChatThemes extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -6963,7 +7648,10 @@ final class UpdateChatThemes extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_themes]: The new list of chat themes
   @override
   UpdateChatThemes copyWith({
     List<ChatTheme>? chatThemes,
@@ -6975,11 +7663,14 @@ final class UpdateChatThemes extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatThemes';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -7036,6 +7727,7 @@ final class UpdateLanguagePackStrings extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -7046,7 +7738,12 @@ final class UpdateLanguagePackStrings extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [localization_target]: Localization target to which the language pack belongs 
+  /// * [language_pack_id]: Identifier of the updated language pack 
+  /// * [strings]: List of changed language pack strings; empty if all strings have changed
   @override
   UpdateLanguagePackStrings copyWith({
     String? localizationTarget,
@@ -7062,11 +7759,14 @@ final class UpdateLanguagePackStrings extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateLanguagePackStrings';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -7109,6 +7809,7 @@ final class UpdateConnectionState extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -7117,7 +7818,10 @@ final class UpdateConnectionState extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [state]: The new connection state
   @override
   UpdateConnectionState copyWith({
     ConnectionState? state,
@@ -7129,11 +7833,14 @@ final class UpdateConnectionState extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateConnectionState';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -7183,6 +7890,7 @@ final class UpdateTermsOfService extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -7192,7 +7900,11 @@ final class UpdateTermsOfService extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [terms_of_service_id]: Identifier of the terms of service 
+  /// * [terms_of_service]: The new terms of service
   @override
   UpdateTermsOfService copyWith({
     String? termsOfServiceId,
@@ -7206,11 +7918,14 @@ final class UpdateTermsOfService extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateTermsOfService';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -7253,6 +7968,7 @@ final class UpdateUsersNearby extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -7261,7 +7977,10 @@ final class UpdateUsersNearby extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [users_nearby]: The new list of users nearby
   @override
   UpdateUsersNearby copyWith({
     List<ChatNearby>? usersNearby,
@@ -7273,11 +7992,14 @@ final class UpdateUsersNearby extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateUsersNearby';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -7320,6 +8042,7 @@ final class UpdateAttachmentMenuBots extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -7328,7 +8051,10 @@ final class UpdateAttachmentMenuBots extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [bots]: The new list of bots added to attachment menu. The bots must not be shown on scheduled messages screen
   @override
   UpdateAttachmentMenuBots copyWith({
     List<AttachmentMenuBot>? bots,
@@ -7340,11 +8066,14 @@ final class UpdateAttachmentMenuBots extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateAttachmentMenuBots';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -7387,6 +8116,7 @@ final class UpdateWebAppMessageSent extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -7395,7 +8125,10 @@ final class UpdateWebAppMessageSent extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [web_app_launch_id]: Identifier of Web App launch
   @override
   UpdateWebAppMessageSent copyWith({
     int? webAppLaunchId,
@@ -7407,11 +8140,14 @@ final class UpdateWebAppMessageSent extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateWebAppMessageSent';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -7454,6 +8190,7 @@ final class UpdateActiveEmojiReactions extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -7462,7 +8199,10 @@ final class UpdateActiveEmojiReactions extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [emojis]: The new list of active emoji reactions
   @override
   UpdateActiveEmojiReactions copyWith({
     List<String>? emojis,
@@ -7474,11 +8214,14 @@ final class UpdateActiveEmojiReactions extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateActiveEmojiReactions';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -7521,6 +8264,7 @@ final class UpdateDefaultReactionType extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -7529,7 +8273,10 @@ final class UpdateDefaultReactionType extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [reaction_type]: The new type of the default reaction
   @override
   UpdateDefaultReactionType copyWith({
     ReactionType? reactionType,
@@ -7541,11 +8288,14 @@ final class UpdateDefaultReactionType extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateDefaultReactionType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -7588,6 +8338,7 @@ final class UpdateDiceEmojis extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -7596,7 +8347,10 @@ final class UpdateDiceEmojis extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [emojis]: The new list of supported dice emojis
   @override
   UpdateDiceEmojis copyWith({
     List<String>? emojis,
@@ -7608,11 +8362,14 @@ final class UpdateDiceEmojis extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateDiceEmojis';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -7669,6 +8426,7 @@ final class UpdateAnimatedEmojiMessageClicked extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -7679,7 +8437,12 @@ final class UpdateAnimatedEmojiMessageClicked extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [message_id]: Message identifier
+  /// * [sticker]: The animated sticker to be played
   @override
   UpdateAnimatedEmojiMessageClicked copyWith({
     int? chatId,
@@ -7695,11 +8458,14 @@ final class UpdateAnimatedEmojiMessageClicked extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateAnimatedEmojiMessageClicked';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -7749,6 +8515,7 @@ final class UpdateAnimationSearchParameters extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -7758,7 +8525,11 @@ final class UpdateAnimationSearchParameters extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [provider]: Name of the animation search provider 
+  /// * [emojis]: The new list of emojis suggested for searching
   @override
   UpdateAnimationSearchParameters copyWith({
     String? provider,
@@ -7772,11 +8543,14 @@ final class UpdateAnimationSearchParameters extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateAnimationSearchParameters';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -7826,6 +8600,7 @@ final class UpdateSuggestedActions extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -7835,7 +8610,11 @@ final class UpdateSuggestedActions extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [added_actions]: Added suggested actions 
+  /// * [removed_actions]: Removed suggested actions
   @override
   UpdateSuggestedActions copyWith({
     List<SuggestedAction>? addedActions,
@@ -7849,11 +8628,14 @@ final class UpdateSuggestedActions extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateSuggestedActions';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -7903,6 +8685,7 @@ final class UpdateAddChatMembersPrivacyForbidden extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -7912,7 +8695,11 @@ final class UpdateAddChatMembersPrivacyForbidden extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [user_ids]: Identifiers of users, which weren't added because of their privacy settings
   @override
   UpdateAddChatMembersPrivacyForbidden copyWith({
     int? chatId,
@@ -7926,11 +8713,14 @@ final class UpdateAddChatMembersPrivacyForbidden extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateAddChatMembersPrivacyForbidden';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -7980,6 +8770,7 @@ final class UpdateAutosaveSettings extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -7989,7 +8780,11 @@ final class UpdateAutosaveSettings extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [scope]: Type of chats for which autosave settings were updated 
+  /// * [settings]: The new autosave settings; may be null if the settings are reset to default
   @override
   UpdateAutosaveSettings copyWith({
     AutosaveSettingsScope? scope,
@@ -8003,11 +8798,14 @@ final class UpdateAutosaveSettings extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateAutosaveSettings';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -8085,6 +8883,7 @@ final class UpdateNewInlineQuery extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -8098,7 +8897,15 @@ final class UpdateNewInlineQuery extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique query identifier
+  /// * [sender_user_id]: Identifier of the user who sent the query
+  /// * [user_location]: User location; may be null
+  /// * [chat_type]: The type of the chat from which the query originated; may be null if unknown
+  /// * [query]: Text of the query
+  /// * [offset]: Offset of the first entry to return
   @override
   UpdateNewInlineQuery copyWith({
     int? id,
@@ -8120,11 +8927,14 @@ final class UpdateNewInlineQuery extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateNewInlineQuery';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -8195,6 +9005,7 @@ final class UpdateNewChosenInlineResult extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -8207,7 +9018,14 @@ final class UpdateNewChosenInlineResult extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sender_user_id]: Identifier of the user who sent the query
+  /// * [user_location]: User location; may be null
+  /// * [query]: Text of the query
+  /// * [result_id]: Identifier of the chosen result
+  /// * [inline_message_id]: Identifier of the sent inline message, if known
   @override
   UpdateNewChosenInlineResult copyWith({
     int? senderUserId,
@@ -8227,11 +9045,14 @@ final class UpdateNewChosenInlineResult extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateNewChosenInlineResult';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -8309,6 +9130,7 @@ final class UpdateNewCallbackQuery extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -8322,7 +9144,15 @@ final class UpdateNewCallbackQuery extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique query identifier
+  /// * [sender_user_id]: Identifier of the user who sent the query
+  /// * [chat_id]: Identifier of the chat where the query was sent
+  /// * [message_id]: Identifier of the message from which the query originated
+  /// * [chat_instance]: Identifier that uniquely corresponds to the chat to which the message was sent
+  /// * [payload]: Query payload
   @override
   UpdateNewCallbackQuery copyWith({
     int? id,
@@ -8344,11 +9174,14 @@ final class UpdateNewCallbackQuery extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateNewCallbackQuery';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -8419,6 +9252,7 @@ final class UpdateNewInlineCallbackQuery extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -8431,7 +9265,14 @@ final class UpdateNewInlineCallbackQuery extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique query identifier
+  /// * [sender_user_id]: Identifier of the user who sent the query
+  /// * [inline_message_id]: Identifier of the inline message from which the query originated
+  /// * [chat_instance]: An identifier uniquely corresponding to the chat a message was sent to
+  /// * [payload]: Query payload
   @override
   UpdateNewInlineCallbackQuery copyWith({
     int? id,
@@ -8451,11 +9292,14 @@ final class UpdateNewInlineCallbackQuery extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateNewInlineCallbackQuery';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -8519,6 +9363,7 @@ final class UpdateNewShippingQuery extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -8530,7 +9375,13 @@ final class UpdateNewShippingQuery extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique query identifier
+  /// * [sender_user_id]: Identifier of the user who sent the query
+  /// * [invoice_payload]: Invoice payload
+  /// * [shipping_address]: User shipping address
   @override
   UpdateNewShippingQuery copyWith({
     int? id,
@@ -8548,11 +9399,14 @@ final class UpdateNewShippingQuery extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateNewShippingQuery';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -8637,6 +9491,7 @@ final class UpdateNewPreCheckoutQuery extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -8651,7 +9506,16 @@ final class UpdateNewPreCheckoutQuery extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique query identifier
+  /// * [sender_user_id]: Identifier of the user who sent the query
+  /// * [currency]: Currency for the product price
+  /// * [total_amount]: Total price for the product, in the smallest units of the currency
+  /// * [invoice_payload]: Invoice payload
+  /// * [shipping_option_id]: Identifier of a shipping option chosen by the user; may be empty if not applicable
+  /// * [order_info]: Information about the order; may be null
   @override
   UpdateNewPreCheckoutQuery copyWith({
     int? id,
@@ -8675,11 +9539,14 @@ final class UpdateNewPreCheckoutQuery extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateNewPreCheckoutQuery';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -8722,6 +9589,7 @@ final class UpdateNewCustomEvent extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -8730,7 +9598,10 @@ final class UpdateNewCustomEvent extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [event]: A JSON-serialized event
   @override
   UpdateNewCustomEvent copyWith({
     String? event,
@@ -8742,11 +9613,14 @@ final class UpdateNewCustomEvent extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateNewCustomEvent';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -8803,6 +9677,7 @@ final class UpdateNewCustomQuery extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -8813,7 +9688,12 @@ final class UpdateNewCustomQuery extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: The query identifier 
+  /// * [data]: JSON-serialized query data 
+  /// * [timeout]: Query timeout
   @override
   UpdateNewCustomQuery copyWith({
     int? id,
@@ -8829,11 +9709,14 @@ final class UpdateNewCustomQuery extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateNewCustomQuery';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -8876,6 +9759,7 @@ final class UpdatePoll extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -8884,7 +9768,10 @@ final class UpdatePoll extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [poll]: New data about the poll
   @override
   UpdatePoll copyWith({
     Poll? poll,
@@ -8896,11 +9783,14 @@ final class UpdatePoll extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updatePoll';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -8957,6 +9847,7 @@ final class UpdatePollAnswer extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -8967,7 +9858,12 @@ final class UpdatePollAnswer extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [poll_id]: Unique poll identifier 
+  /// * [user_id]: The user, who changed the answer to the poll 
+  /// * [option_ids]: 0-based identifiers of answer options, chosen by the user
   @override
   UpdatePollAnswer copyWith({
     int? pollId,
@@ -8983,11 +9879,14 @@ final class UpdatePollAnswer extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updatePollAnswer';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -9072,6 +9971,7 @@ final class UpdateChatMember extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -9086,7 +9986,16 @@ final class UpdateChatMember extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [actor_user_id]: Identifier of the user, changing the rights
+  /// * [date]: Point in time (Unix timestamp) when the user rights was changed
+  /// * [invite_link]: If user has joined the chat using an invite link, the invite link; may be null
+  /// * [via_chat_folder_invite_link]: True, if the user has joined the chat using an invite link for a chat folder
+  /// * [old_chat_member]: Previous chat member
+  /// * [new_chat_member]: New chat member
   @override
   UpdateChatMember copyWith({
     int? chatId,
@@ -9110,11 +10019,14 @@ final class UpdateChatMember extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateChatMember';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -9178,6 +10090,7 @@ final class UpdateNewChatJoinRequest extends Update {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -9189,7 +10102,13 @@ final class UpdateNewChatJoinRequest extends Update {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [request]: Join request
+  /// * [user_chat_id]: Chat identifier of the private chat with the user
+  /// * [invite_link]: The invite link, which was used to send join request; may be null
   @override
   UpdateNewChatJoinRequest copyWith({
     int? chatId,
@@ -9207,11 +10126,14 @@ final class UpdateNewChatJoinRequest extends Update {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'updateNewChatJoinRequest';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

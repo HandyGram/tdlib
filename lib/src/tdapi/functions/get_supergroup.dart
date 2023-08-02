@@ -23,6 +23,7 @@ final class GetSupergroup extends TdFunction {
   /// Supergroup or channel identifier
   final int supergroupId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetSupergroup extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [supergroup_id]: Supergroup or channel identifier
   GetSupergroup copyWith({
     int? supergroupId,
   }) => GetSupergroup(
     supergroupId: supergroupId ?? this.supergroupId,
   );
 
+  /// TDLib object type
   static const String objectType = 'getSupergroup';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

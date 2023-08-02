@@ -23,6 +23,7 @@ final class CheckAuthenticationEmailCode extends TdFunction {
   /// Email address authentication to check
   final EmailAddressAuthentication code;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class CheckAuthenticationEmailCode extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [code]: Email address authentication to check
   CheckAuthenticationEmailCode copyWith({
     EmailAddressAuthentication? code,
   }) => CheckAuthenticationEmailCode(
     code: code ?? this.code,
   );
 
+  /// TDLib object type
   static const String objectType = 'checkAuthenticationEmailCode';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

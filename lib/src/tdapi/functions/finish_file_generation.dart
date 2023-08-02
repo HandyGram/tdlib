@@ -29,6 +29,7 @@ final class FinishFileGeneration extends TdFunction {
   /// If passed, the file generation has failed and must be terminated; pass null if the file generation succeeded
   final TdError? error;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class FinishFileGeneration extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [generation_id]: The identifier of the generation process
+  /// * [error]: If passed, the file generation has failed and must be terminated; pass null if the file generation succeeded
   FinishFileGeneration copyWith({
     int? generationId,
     TdError? error,
@@ -48,11 +53,14 @@ final class FinishFileGeneration extends TdFunction {
     error: error ?? this.error,
   );
 
+  /// TDLib object type
   static const String objectType = 'finishFileGeneration';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

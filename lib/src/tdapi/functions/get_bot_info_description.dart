@@ -29,6 +29,7 @@ final class GetBotInfoDescription extends TdFunction {
   /// A two-letter ISO 639-1 language code or an empty string
   final String languageCode;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class GetBotInfoDescription extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [bot_user_id]: Identifier of the target bot
+  /// * [language_code]: A two-letter ISO 639-1 language code or an empty string
   GetBotInfoDescription copyWith({
     int? botUserId,
     String? languageCode,
@@ -48,11 +53,14 @@ final class GetBotInfoDescription extends TdFunction {
     languageCode: languageCode ?? this.languageCode,
   );
 
+  /// TDLib object type
   static const String objectType = 'getBotInfoDescription';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

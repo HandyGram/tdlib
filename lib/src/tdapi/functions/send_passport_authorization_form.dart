@@ -29,6 +29,7 @@ final class SendPassportAuthorizationForm extends TdFunction {
   /// Types of Telegram Passport elements chosen by user to complete the authorization form
   final List<PassportElementType> types;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SendPassportAuthorizationForm extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [authorization_form_id]: Authorization form identifier
+  /// * [types]: Types of Telegram Passport elements chosen by user to complete the authorization form
   SendPassportAuthorizationForm copyWith({
     int? authorizationFormId,
     List<PassportElementType>? types,
@@ -48,11 +53,14 @@ final class SendPassportAuthorizationForm extends TdFunction {
     types: types ?? this.types,
   );
 
+  /// TDLib object type
   static const String objectType = 'sendPassportAuthorizationForm';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

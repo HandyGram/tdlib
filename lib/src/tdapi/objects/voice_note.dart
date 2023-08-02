@@ -53,6 +53,7 @@ final class VoiceNote extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -65,7 +66,14 @@ final class VoiceNote extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [duration]: Duration of the voice note, in seconds; as defined by the sender
+  /// * [waveform]: A waveform representation of the voice note in 5-bit format
+  /// * [mime_type]: MIME type of the file; as defined by the sender
+  /// * [speech_recognition_result]: Result of speech recognition in the voice note; may be null
+  /// * [voice]: File containing the voice note
   VoiceNote copyWith({
     int? duration,
     String? waveform,
@@ -80,11 +88,14 @@ final class VoiceNote extends TdObject {
     voice: voice ?? this.voice,
   );
 
+  /// TDLib object type
   static const String objectType = 'voiceNote';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -29,6 +29,7 @@ final class GetCommands extends TdFunction {
   /// A two-letter ISO 639-1 language code or an empty string
   final String languageCode;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class GetCommands extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [scope]: The scope to which the commands are relevant; pass null to get commands in the default bot command scope
+  /// * [language_code]: A two-letter ISO 639-1 language code or an empty string
   GetCommands copyWith({
     BotCommandScope? scope,
     String? languageCode,
@@ -48,11 +53,14 @@ final class GetCommands extends TdFunction {
     languageCode: languageCode ?? this.languageCode,
   );
 
+  /// TDLib object type
   static const String objectType = 'getCommands';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

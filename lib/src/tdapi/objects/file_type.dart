@@ -72,17 +72,21 @@ sealed class FileType extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   FileType copyWith();
 
+  /// TDLib object type
   static const String objectType = 'fileType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -101,6 +105,7 @@ final class FileTypeNone extends FileType {
   /// Parse from a json
   factory FileTypeNone.fromJson(Map<String, dynamic> json) => const FileTypeNone();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -108,15 +113,18 @@ final class FileTypeNone extends FileType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   FileTypeNone copyWith() => const FileTypeNone();
 
+  /// TDLib object type
   static const String objectType = 'fileTypeNone';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -135,6 +143,7 @@ final class FileTypeAnimation extends FileType {
   /// Parse from a json
   factory FileTypeAnimation.fromJson(Map<String, dynamic> json) => const FileTypeAnimation();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -142,15 +151,18 @@ final class FileTypeAnimation extends FileType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   FileTypeAnimation copyWith() => const FileTypeAnimation();
 
+  /// TDLib object type
   static const String objectType = 'fileTypeAnimation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -169,6 +181,7 @@ final class FileTypeAudio extends FileType {
   /// Parse from a json
   factory FileTypeAudio.fromJson(Map<String, dynamic> json) => const FileTypeAudio();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -176,15 +189,18 @@ final class FileTypeAudio extends FileType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   FileTypeAudio copyWith() => const FileTypeAudio();
 
+  /// TDLib object type
   static const String objectType = 'fileTypeAudio';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -203,6 +219,7 @@ final class FileTypeDocument extends FileType {
   /// Parse from a json
   factory FileTypeDocument.fromJson(Map<String, dynamic> json) => const FileTypeDocument();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -210,15 +227,18 @@ final class FileTypeDocument extends FileType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   FileTypeDocument copyWith() => const FileTypeDocument();
 
+  /// TDLib object type
   static const String objectType = 'fileTypeDocument';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -237,6 +257,7 @@ final class FileTypeNotificationSound extends FileType {
   /// Parse from a json
   factory FileTypeNotificationSound.fromJson(Map<String, dynamic> json) => const FileTypeNotificationSound();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -244,15 +265,18 @@ final class FileTypeNotificationSound extends FileType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   FileTypeNotificationSound copyWith() => const FileTypeNotificationSound();
 
+  /// TDLib object type
   static const String objectType = 'fileTypeNotificationSound';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -271,6 +295,7 @@ final class FileTypePhoto extends FileType {
   /// Parse from a json
   factory FileTypePhoto.fromJson(Map<String, dynamic> json) => const FileTypePhoto();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -278,15 +303,18 @@ final class FileTypePhoto extends FileType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   FileTypePhoto copyWith() => const FileTypePhoto();
 
+  /// TDLib object type
   static const String objectType = 'fileTypePhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -305,6 +333,7 @@ final class FileTypeProfilePhoto extends FileType {
   /// Parse from a json
   factory FileTypeProfilePhoto.fromJson(Map<String, dynamic> json) => const FileTypeProfilePhoto();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -312,15 +341,18 @@ final class FileTypeProfilePhoto extends FileType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   FileTypeProfilePhoto copyWith() => const FileTypeProfilePhoto();
 
+  /// TDLib object type
   static const String objectType = 'fileTypeProfilePhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -339,6 +371,7 @@ final class FileTypeSecret extends FileType {
   /// Parse from a json
   factory FileTypeSecret.fromJson(Map<String, dynamic> json) => const FileTypeSecret();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -346,15 +379,18 @@ final class FileTypeSecret extends FileType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   FileTypeSecret copyWith() => const FileTypeSecret();
 
+  /// TDLib object type
   static const String objectType = 'fileTypeSecret';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -373,6 +409,7 @@ final class FileTypeSecretThumbnail extends FileType {
   /// Parse from a json
   factory FileTypeSecretThumbnail.fromJson(Map<String, dynamic> json) => const FileTypeSecretThumbnail();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -380,15 +417,18 @@ final class FileTypeSecretThumbnail extends FileType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   FileTypeSecretThumbnail copyWith() => const FileTypeSecretThumbnail();
 
+  /// TDLib object type
   static const String objectType = 'fileTypeSecretThumbnail';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -407,6 +447,7 @@ final class FileTypeSecure extends FileType {
   /// Parse from a json
   factory FileTypeSecure.fromJson(Map<String, dynamic> json) => const FileTypeSecure();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -414,15 +455,18 @@ final class FileTypeSecure extends FileType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   FileTypeSecure copyWith() => const FileTypeSecure();
 
+  /// TDLib object type
   static const String objectType = 'fileTypeSecure';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -441,6 +485,7 @@ final class FileTypeSticker extends FileType {
   /// Parse from a json
   factory FileTypeSticker.fromJson(Map<String, dynamic> json) => const FileTypeSticker();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -448,15 +493,18 @@ final class FileTypeSticker extends FileType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   FileTypeSticker copyWith() => const FileTypeSticker();
 
+  /// TDLib object type
   static const String objectType = 'fileTypeSticker';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -475,6 +523,7 @@ final class FileTypeThumbnail extends FileType {
   /// Parse from a json
   factory FileTypeThumbnail.fromJson(Map<String, dynamic> json) => const FileTypeThumbnail();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -482,15 +531,18 @@ final class FileTypeThumbnail extends FileType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   FileTypeThumbnail copyWith() => const FileTypeThumbnail();
 
+  /// TDLib object type
   static const String objectType = 'fileTypeThumbnail';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -509,6 +561,7 @@ final class FileTypeUnknown extends FileType {
   /// Parse from a json
   factory FileTypeUnknown.fromJson(Map<String, dynamic> json) => const FileTypeUnknown();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -516,15 +569,18 @@ final class FileTypeUnknown extends FileType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   FileTypeUnknown copyWith() => const FileTypeUnknown();
 
+  /// TDLib object type
   static const String objectType = 'fileTypeUnknown';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -543,6 +599,7 @@ final class FileTypeVideo extends FileType {
   /// Parse from a json
   factory FileTypeVideo.fromJson(Map<String, dynamic> json) => const FileTypeVideo();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -550,15 +607,18 @@ final class FileTypeVideo extends FileType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   FileTypeVideo copyWith() => const FileTypeVideo();
 
+  /// TDLib object type
   static const String objectType = 'fileTypeVideo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -577,6 +637,7 @@ final class FileTypeVideoNote extends FileType {
   /// Parse from a json
   factory FileTypeVideoNote.fromJson(Map<String, dynamic> json) => const FileTypeVideoNote();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -584,15 +645,18 @@ final class FileTypeVideoNote extends FileType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   FileTypeVideoNote copyWith() => const FileTypeVideoNote();
 
+  /// TDLib object type
   static const String objectType = 'fileTypeVideoNote';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -611,6 +675,7 @@ final class FileTypeVoiceNote extends FileType {
   /// Parse from a json
   factory FileTypeVoiceNote.fromJson(Map<String, dynamic> json) => const FileTypeVoiceNote();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -618,15 +683,18 @@ final class FileTypeVoiceNote extends FileType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   FileTypeVoiceNote copyWith() => const FileTypeVoiceNote();
 
+  /// TDLib object type
   static const String objectType = 'fileTypeVoiceNote';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -645,6 +713,7 @@ final class FileTypeWallpaper extends FileType {
   /// Parse from a json
   factory FileTypeWallpaper.fromJson(Map<String, dynamic> json) => const FileTypeWallpaper();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -652,15 +721,18 @@ final class FileTypeWallpaper extends FileType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   FileTypeWallpaper copyWith() => const FileTypeWallpaper();
 
+  /// TDLib object type
   static const String objectType = 'fileTypeWallpaper';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

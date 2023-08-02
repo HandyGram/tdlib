@@ -59,6 +59,7 @@ final class CreateNewSupergroupChat extends TdFunction {
   /// Pass true to create a supergroup for importing messages using importMessage
   final bool forImport;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -74,7 +75,16 @@ final class CreateNewSupergroupChat extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [title]: Title of the new chat; 1-128 characters
+  /// * [is_forum]: Pass true to create a forum supergroup chat
+  /// * [is_channel]: Pass true to create a channel chat; ignored if a forum is created
+  /// * [description]: Chat description; 0-255 characters
+  /// * [location]: Chat location if a location-based supergroup is being created; pass null to create an ordinary supergroup chat
+  /// * [message_auto_delete_time]: Message auto-delete time value, in seconds; must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically
+  /// * [for_import]: Pass true to create a supergroup for importing messages using importMessage
   CreateNewSupergroupChat copyWith({
     String? title,
     bool? isForum,
@@ -93,11 +103,14 @@ final class CreateNewSupergroupChat extends TdFunction {
     forImport: forImport ?? this.forImport,
   );
 
+  /// TDLib object type
   static const String objectType = 'createNewSupergroupChat';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

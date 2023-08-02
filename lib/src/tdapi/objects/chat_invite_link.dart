@@ -114,6 +114,7 @@ final class ChatInviteLink extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -133,7 +134,21 @@ final class ChatInviteLink extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [invite_link]: Chat invite link
+  /// * [name]: Name of the link
+  /// * [creator_user_id]: User identifier of an administrator created the link
+  /// * [date]: Point in time (Unix timestamp) when the link was created
+  /// * [edit_date]: Point in time (Unix timestamp) when the link was last edited; 0 if never or unknown
+  /// * [expiration_date]: Point in time (Unix timestamp) when the link will expire; 0 if never
+  /// * [member_limit]: The maximum number of members, which can join the chat using the link simultaneously; 0 if not limited. Always 0 if the link requires approval
+  /// * [member_count]: Number of chat members, which joined the chat using the link
+  /// * [pending_join_request_count]: Number of pending join requests created using this link
+  /// * [creates_join_request]: True, if the link only creates join request. If true, total number of joining members will be unlimited
+  /// * [is_primary]: True, if the link is primary. Primary invite link can't have name, expiration date, or usage limit. There is exactly one primary invite link for each administrator with can_invite_users right at a given time
+  /// * [is_revoked]: True, if the link was revoked
   ChatInviteLink copyWith({
     String? inviteLink,
     String? name,
@@ -166,11 +181,14 @@ final class ChatInviteLink extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatInviteLink';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

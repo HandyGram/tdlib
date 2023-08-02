@@ -23,6 +23,7 @@ final class SearchStickerSet extends TdFunction {
   /// Name of the sticker set
   final String name;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class SearchStickerSet extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [name]: Name of the sticker set
   SearchStickerSet copyWith({
     String? name,
   }) => SearchStickerSet(
     name: name ?? this.name,
   );
 
+  /// TDLib object type
   static const String objectType = 'searchStickerSet';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

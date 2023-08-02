@@ -67,6 +67,7 @@ final class ChatPhoto extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -81,7 +82,16 @@ final class ChatPhoto extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Unique photo identifier
+  /// * [added_date]: Point in time (Unix timestamp) when the photo has been added
+  /// * [minithumbnail]: Photo minithumbnail; may be null
+  /// * [sizes]: Available variants of the photo in JPEG format, in different size
+  /// * [animation]: A big (up to 1280x1280) animated variant of the photo in MPEG4 format; may be null
+  /// * [small_animation]: A small (160x160) animated variant of the photo in MPEG4 format; may be null even the big animation is available
+  /// * [sticker]: Sticker-based version of the chat photo; may be null
   ChatPhoto copyWith({
     int? id,
     int? addedDate,
@@ -100,11 +110,14 @@ final class ChatPhoto extends TdObject {
     sticker: sticker ?? this.sticker,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatPhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -23,6 +23,7 @@ final class ConfirmQrCodeAuthentication extends TdFunction {
   /// A link from a QR code. The link must be scanned by the in-app camera
   final String link;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class ConfirmQrCodeAuthentication extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [link]: A link from a QR code. The link must be scanned by the in-app camera
   ConfirmQrCodeAuthentication copyWith({
     String? link,
   }) => ConfirmQrCodeAuthentication(
     link: link ?? this.link,
   );
 
+  /// TDLib object type
   static const String objectType = 'confirmQrCodeAuthentication';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

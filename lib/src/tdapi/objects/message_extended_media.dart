@@ -33,17 +33,21 @@ sealed class MessageExtendedMedia extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   MessageExtendedMedia copyWith();
 
+  /// TDLib object type
   static const String objectType = 'messageExtendedMedia';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -102,6 +106,7 @@ final class MessageExtendedMediaPreview extends MessageExtendedMedia {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -114,7 +119,14 @@ final class MessageExtendedMediaPreview extends MessageExtendedMedia {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [width]: Media width; 0 if unknown
+  /// * [height]: Media height; 0 if unknown
+  /// * [duration]: Media duration; 0 if unknown
+  /// * [minithumbnail]: Media minithumbnail; may be null
+  /// * [caption]: Media caption
   @override
   MessageExtendedMediaPreview copyWith({
     int? width,
@@ -130,11 +142,14 @@ final class MessageExtendedMediaPreview extends MessageExtendedMedia {
     caption: caption ?? this.caption,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageExtendedMediaPreview';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -172,6 +187,7 @@ final class MessageExtendedMediaPhoto extends MessageExtendedMedia {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -181,7 +197,11 @@ final class MessageExtendedMediaPhoto extends MessageExtendedMedia {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [photo]: The photo 
+  /// * [caption]: Photo caption
   @override
   MessageExtendedMediaPhoto copyWith({
     Photo? photo,
@@ -191,11 +211,14 @@ final class MessageExtendedMediaPhoto extends MessageExtendedMedia {
     caption: caption ?? this.caption,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageExtendedMediaPhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -233,6 +256,7 @@ final class MessageExtendedMediaVideo extends MessageExtendedMedia {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -242,7 +266,11 @@ final class MessageExtendedMediaVideo extends MessageExtendedMedia {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [video]: The video 
+  /// * [caption]: Photo caption
   @override
   MessageExtendedMediaVideo copyWith({
     Video? video,
@@ -252,11 +280,14 @@ final class MessageExtendedMediaVideo extends MessageExtendedMedia {
     caption: caption ?? this.caption,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageExtendedMediaVideo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -287,6 +318,7 @@ final class MessageExtendedMediaUnsupported extends MessageExtendedMedia {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -295,7 +327,10 @@ final class MessageExtendedMediaUnsupported extends MessageExtendedMedia {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [caption]: Media caption
   @override
   MessageExtendedMediaUnsupported copyWith({
     FormattedText? caption,
@@ -303,11 +338,14 @@ final class MessageExtendedMediaUnsupported extends MessageExtendedMedia {
     caption: caption ?? this.caption,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageExtendedMediaUnsupported';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

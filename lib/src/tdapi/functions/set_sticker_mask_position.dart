@@ -29,6 +29,7 @@ final class SetStickerMaskPosition extends TdFunction {
   /// Position where the mask is placed; pass null to remove mask position
   final MaskPosition? maskPosition;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetStickerMaskPosition extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sticker]: Sticker
+  /// * [mask_position]: Position where the mask is placed; pass null to remove mask position
   SetStickerMaskPosition copyWith({
     InputFile? sticker,
     MaskPosition? maskPosition,
@@ -48,11 +53,14 @@ final class SetStickerMaskPosition extends TdFunction {
     maskPosition: maskPosition ?? this.maskPosition,
   );
 
+  /// TDLib object type
   static const String objectType = 'setStickerMaskPosition';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

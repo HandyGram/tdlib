@@ -30,17 +30,21 @@ sealed class CallbackQueryPayload extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   CallbackQueryPayload copyWith();
 
+  /// TDLib object type
   static const String objectType = 'callbackQueryPayload';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -71,6 +75,7 @@ final class CallbackQueryPayloadData extends CallbackQueryPayload {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -79,7 +84,10 @@ final class CallbackQueryPayloadData extends CallbackQueryPayload {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [data]: Data that was attached to the callback button
   @override
   CallbackQueryPayloadData copyWith({
     String? data,
@@ -87,11 +95,14 @@ final class CallbackQueryPayloadData extends CallbackQueryPayload {
     data: data ?? this.data,
   );
 
+  /// TDLib object type
   static const String objectType = 'callbackQueryPayloadData';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -129,6 +140,7 @@ final class CallbackQueryPayloadDataWithPassword extends CallbackQueryPayload {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -138,7 +150,11 @@ final class CallbackQueryPayloadDataWithPassword extends CallbackQueryPayload {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [password]: The 2-step verification password for the current user 
+  /// * [data]: Data that was attached to the callback button
   @override
   CallbackQueryPayloadDataWithPassword copyWith({
     String? password,
@@ -148,11 +164,14 @@ final class CallbackQueryPayloadDataWithPassword extends CallbackQueryPayload {
     data: data ?? this.data,
   );
 
+  /// TDLib object type
   static const String objectType = 'callbackQueryPayloadDataWithPassword';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -183,6 +202,7 @@ final class CallbackQueryPayloadGame extends CallbackQueryPayload {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -191,7 +211,10 @@ final class CallbackQueryPayloadGame extends CallbackQueryPayload {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [game_short_name]: A short name of the game that was attached to the callback button
   @override
   CallbackQueryPayloadGame copyWith({
     String? gameShortName,
@@ -199,11 +222,14 @@ final class CallbackQueryPayloadGame extends CallbackQueryPayload {
     gameShortName: gameShortName ?? this.gameShortName,
   );
 
+  /// TDLib object type
   static const String objectType = 'callbackQueryPayloadGame';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

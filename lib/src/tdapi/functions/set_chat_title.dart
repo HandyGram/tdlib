@@ -29,6 +29,7 @@ final class SetChatTitle extends TdFunction {
   /// New title of the chat; 1-128 characters
   final String title;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetChatTitle extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [title]: New title of the chat; 1-128 characters
   SetChatTitle copyWith({
     int? chatId,
     String? title,
@@ -48,11 +53,14 @@ final class SetChatTitle extends TdFunction {
     title: title ?? this.title,
   );
 
+  /// TDLib object type
   static const String objectType = 'setChatTitle';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

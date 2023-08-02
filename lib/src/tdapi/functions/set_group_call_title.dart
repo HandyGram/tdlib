@@ -29,6 +29,7 @@ final class SetGroupCallTitle extends TdFunction {
   /// New group call title; 1-64 characters
   final String title;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetGroupCallTitle extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [group_call_id]: Group call identifier 
+  /// * [title]: New group call title; 1-64 characters
   SetGroupCallTitle copyWith({
     int? groupCallId,
     String? title,
@@ -48,11 +53,14 @@ final class SetGroupCallTitle extends TdFunction {
     title: title ?? this.title,
   );
 
+  /// TDLib object type
   static const String objectType = 'setGroupCallTitle';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

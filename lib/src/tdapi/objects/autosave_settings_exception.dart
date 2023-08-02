@@ -32,6 +32,7 @@ final class AutosaveSettingsException extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -41,7 +42,11 @@ final class AutosaveSettingsException extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [settings]: Autosave settings for the chat
   AutosaveSettingsException copyWith({
     int? chatId,
     ScopeAutosaveSettings? settings,
@@ -50,11 +55,14 @@ final class AutosaveSettingsException extends TdObject {
     settings: settings ?? this.settings,
   );
 
+  /// TDLib object type
   static const String objectType = 'autosaveSettingsException';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

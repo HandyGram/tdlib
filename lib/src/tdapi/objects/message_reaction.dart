@@ -46,6 +46,7 @@ final class MessageReaction extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -57,7 +58,13 @@ final class MessageReaction extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [type]: Type of the reaction
+  /// * [total_count]: Number of times the reaction was added
+  /// * [is_chosen]: True, if the reaction is chosen by the current user
+  /// * [recent_sender_ids]: Identifiers of at most 3 recent message senders, added the reaction; available in private, basic group and supergroup chats
   MessageReaction copyWith({
     ReactionType? type,
     int? totalCount,
@@ -70,11 +77,14 @@ final class MessageReaction extends TdObject {
     recentSenderIds: recentSenderIds ?? this.recentSenderIds,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageReaction';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

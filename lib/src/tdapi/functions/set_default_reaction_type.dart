@@ -23,6 +23,7 @@ final class SetDefaultReactionType extends TdFunction {
   /// New type of the default reaction
   final ReactionType reactionType;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class SetDefaultReactionType extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [reaction_type]: New type of the default reaction
   SetDefaultReactionType copyWith({
     ReactionType? reactionType,
   }) => SetDefaultReactionType(
     reactionType: reactionType ?? this.reactionType,
   );
 
+  /// TDLib object type
   static const String objectType = 'setDefaultReactionType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -53,6 +53,7 @@ final class WebApp extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -65,7 +66,14 @@ final class WebApp extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [short_name]: Web App short name
+  /// * [title]: Web App title
+  /// * [description]: Web App description
+  /// * [photo]: Web App photo
+  /// * [animation]: Web App animation; may be null
   WebApp copyWith({
     String? shortName,
     String? title,
@@ -80,11 +88,14 @@ final class WebApp extends TdObject {
     animation: animation ?? this.animation,
   );
 
+  /// TDLib object type
   static const String objectType = 'webApp';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -41,6 +41,7 @@ final class CreateVideoChat extends TdFunction {
   /// Pass true to create an RTMP stream instead of an ordinary video chat; requires creator privileges
   final bool isRtmpStream;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -53,7 +54,13 @@ final class CreateVideoChat extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of a chat in which the video chat will be created
+  /// * [title]: Group call title; if empty, chat title will be used
+  /// * [start_date]: Point in time (Unix timestamp) when the group call is supposed to be started by an administrator; 0 to start the video chat immediately. The date must be at least 10 seconds and at most 8 days in the future
+  /// * [is_rtmp_stream]: Pass true to create an RTMP stream instead of an ordinary video chat; requires creator privileges
   CreateVideoChat copyWith({
     int? chatId,
     String? title,
@@ -66,11 +73,14 @@ final class CreateVideoChat extends TdFunction {
     isRtmpStream: isRtmpStream ?? this.isRtmpStream,
   );
 
+  /// TDLib object type
   static const String objectType = 'createVideoChat';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -29,6 +29,7 @@ final class SetBotProfilePhoto extends TdFunction {
   /// Profile photo to set; pass null to delete the chat photo
   final InputChatPhoto? photo;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetBotProfilePhoto extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [bot_user_id]: Identifier of the target bot 
+  /// * [photo]: Profile photo to set; pass null to delete the chat photo
   SetBotProfilePhoto copyWith({
     int? botUserId,
     InputChatPhoto? photo,
@@ -48,11 +53,14 @@ final class SetBotProfilePhoto extends TdFunction {
     photo: photo ?? this.photo,
   );
 
+  /// TDLib object type
   static const String objectType = 'setBotProfilePhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

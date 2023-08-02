@@ -44,6 +44,7 @@ final class ValidatedOrderInfo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -53,7 +54,11 @@ final class ValidatedOrderInfo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [order_info_id]: Temporary identifier of the order information 
+  /// * [shipping_options]: Available shipping options
   ValidatedOrderInfo copyWith({
     String? orderInfoId,
     List<ShippingOption>? shippingOptions,
@@ -66,11 +71,14 @@ final class ValidatedOrderInfo extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'validatedOrderInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -204,17 +204,21 @@ sealed class MessageContent extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   MessageContent copyWith();
 
+  /// TDLib object type
   static const String objectType = 'messageContent';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -252,6 +256,7 @@ final class MessageText extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -261,7 +266,11 @@ final class MessageText extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Text of the message 
+  /// * [web_page]: A preview of the web page that's mentioned in the text; may be null
   @override
   MessageText copyWith({
     FormattedText? text,
@@ -271,11 +280,14 @@ final class MessageText extends MessageContent {
     webPage: webPage ?? this.webPage,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageText';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -327,6 +339,7 @@ final class MessageAnimation extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -338,7 +351,13 @@ final class MessageAnimation extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [animation]: The animation description
+  /// * [caption]: Animation caption
+  /// * [has_spoiler]: True, if the animation preview must be covered by a spoiler animation
+  /// * [is_secret]: True, if the animation thumbnail must be blurred and the animation must be shown only while tapped
   @override
   MessageAnimation copyWith({
     Animation? animation,
@@ -352,11 +371,14 @@ final class MessageAnimation extends MessageContent {
     isSecret: isSecret ?? this.isSecret,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageAnimation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -394,6 +416,7 @@ final class MessageAudio extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -403,7 +426,11 @@ final class MessageAudio extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [audio]: The audio description 
+  /// * [caption]: Audio caption
   @override
   MessageAudio copyWith({
     Audio? audio,
@@ -413,11 +440,14 @@ final class MessageAudio extends MessageContent {
     caption: caption ?? this.caption,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageAudio';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -455,6 +485,7 @@ final class MessageDocument extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -464,7 +495,11 @@ final class MessageDocument extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [document]: The document description 
+  /// * [caption]: Document caption
   @override
   MessageDocument copyWith({
     Document? document,
@@ -474,11 +509,14 @@ final class MessageDocument extends MessageContent {
     caption: caption ?? this.caption,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageDocument';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -530,6 +568,7 @@ final class MessagePhoto extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -541,7 +580,13 @@ final class MessagePhoto extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [photo]: The photo
+  /// * [caption]: Photo caption
+  /// * [has_spoiler]: True, if the photo preview must be covered by a spoiler animation
+  /// * [is_secret]: True, if the photo must be blurred and must be shown only while tapped
   @override
   MessagePhoto copyWith({
     Photo? photo,
@@ -555,11 +600,14 @@ final class MessagePhoto extends MessageContent {
     isSecret: isSecret ?? this.isSecret,
   );
 
+  /// TDLib object type
   static const String objectType = 'messagePhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -578,6 +626,7 @@ final class MessageExpiredPhoto extends MessageContent {
   /// Parse from a json
   factory MessageExpiredPhoto.fromJson(Map<String, dynamic> json) => const MessageExpiredPhoto();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -585,15 +634,18 @@ final class MessageExpiredPhoto extends MessageContent {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   MessageExpiredPhoto copyWith() => const MessageExpiredPhoto();
 
+  /// TDLib object type
   static const String objectType = 'messageExpiredPhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -631,6 +683,7 @@ final class MessageSticker extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -640,7 +693,11 @@ final class MessageSticker extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sticker]: The sticker description 
+  /// * [is_premium]: True, if premium animation of the sticker must be played
   @override
   MessageSticker copyWith({
     Sticker? sticker,
@@ -650,11 +707,14 @@ final class MessageSticker extends MessageContent {
     isPremium: isPremium ?? this.isPremium,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageSticker';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -706,6 +766,7 @@ final class MessageVideo extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -717,7 +778,13 @@ final class MessageVideo extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [video]: The video description
+  /// * [caption]: Video caption
+  /// * [has_spoiler]: True, if the video preview must be covered by a spoiler animation
+  /// * [is_secret]: True, if the video thumbnail must be blurred and the video must be shown only while tapped
   @override
   MessageVideo copyWith({
     Video? video,
@@ -731,11 +798,14 @@ final class MessageVideo extends MessageContent {
     isSecret: isSecret ?? this.isSecret,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageVideo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -754,6 +824,7 @@ final class MessageExpiredVideo extends MessageContent {
   /// Parse from a json
   factory MessageExpiredVideo.fromJson(Map<String, dynamic> json) => const MessageExpiredVideo();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -761,15 +832,18 @@ final class MessageExpiredVideo extends MessageContent {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   MessageExpiredVideo copyWith() => const MessageExpiredVideo();
 
+  /// TDLib object type
   static const String objectType = 'messageExpiredVideo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -814,6 +888,7 @@ final class MessageVideoNote extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -824,7 +899,12 @@ final class MessageVideoNote extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [video_note]: The video note description 
+  /// * [is_viewed]: True, if at least one of the recipients has viewed the video note 
+  /// * [is_secret]: True, if the video note thumbnail must be blurred and the video note must be shown only while tapped
   @override
   MessageVideoNote copyWith({
     VideoNote? videoNote,
@@ -836,11 +916,14 @@ final class MessageVideoNote extends MessageContent {
     isSecret: isSecret ?? this.isSecret,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageVideoNote';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -885,6 +968,7 @@ final class MessageVoiceNote extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -895,7 +979,12 @@ final class MessageVoiceNote extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [voice_note]: The voice note description 
+  /// * [caption]: Voice note caption 
+  /// * [is_listened]: True, if at least one of the recipients has listened to the voice note
   @override
   MessageVoiceNote copyWith({
     VoiceNote? voiceNote,
@@ -907,11 +996,14 @@ final class MessageVoiceNote extends MessageContent {
     isListened: isListened ?? this.isListened,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageVoiceNote';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -970,6 +1062,7 @@ final class MessageLocation extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -982,7 +1075,14 @@ final class MessageLocation extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [location]: The location description
+  /// * [live_period]: Time relative to the message send date, for which the location can be updated, in seconds
+  /// * [expires_in]: Left time for which the location can be updated, in seconds. updateMessageContent is not sent when this field changes
+  /// * [heading]: For live locations, a direction in which the location moves, in degrees; 1-360. If 0 the direction is unknown
+  /// * [proximity_alert_radius]: For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). 0 if the notification is disabled. Available only to the message sender
   @override
   MessageLocation copyWith({
     Location? location,
@@ -998,11 +1098,14 @@ final class MessageLocation extends MessageContent {
     proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageLocation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1033,6 +1136,7 @@ final class MessageVenue extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1041,7 +1145,10 @@ final class MessageVenue extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [venue]: The venue description
   @override
   MessageVenue copyWith({
     Venue? venue,
@@ -1049,11 +1156,14 @@ final class MessageVenue extends MessageContent {
     venue: venue ?? this.venue,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageVenue';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1084,6 +1194,7 @@ final class MessageContact extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1092,7 +1203,10 @@ final class MessageContact extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [contact]: The contact description
   @override
   MessageContact copyWith({
     Contact? contact,
@@ -1100,11 +1214,14 @@ final class MessageContact extends MessageContent {
     contact: contact ?? this.contact,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageContact';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1142,6 +1259,7 @@ final class MessageAnimatedEmoji extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1151,7 +1269,11 @@ final class MessageAnimatedEmoji extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [animated_emoji]: The animated emoji 
+  /// * [emoji]: The corresponding emoji
   @override
   MessageAnimatedEmoji copyWith({
     AnimatedEmoji? animatedEmoji,
@@ -1161,11 +1283,14 @@ final class MessageAnimatedEmoji extends MessageContent {
     emoji: emoji ?? this.emoji,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageAnimatedEmoji';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1224,6 +1349,7 @@ final class MessageDice extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1236,7 +1362,14 @@ final class MessageDice extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [initial_state]: The animated stickers with the initial dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known
+  /// * [final_state]: The animated stickers with the final dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known
+  /// * [emoji]: Emoji on which the dice throw animation is based
+  /// * [value]: The dice value. If the value is 0, the dice don't have final state yet
+  /// * [success_animation_frame_number]: Number of frame after which a success animation like a shower of confetti needs to be shown on updateMessageSendSucceeded
   @override
   MessageDice copyWith({
     DiceStickers? initialState,
@@ -1252,11 +1385,14 @@ final class MessageDice extends MessageContent {
     successAnimationFrameNumber: successAnimationFrameNumber ?? this.successAnimationFrameNumber,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageDice';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1287,6 +1423,7 @@ final class MessageGame extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1295,7 +1432,10 @@ final class MessageGame extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [game]: The game description
   @override
   MessageGame copyWith({
     Game? game,
@@ -1303,11 +1443,14 @@ final class MessageGame extends MessageContent {
     game: game ?? this.game,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageGame';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1338,6 +1481,7 @@ final class MessagePoll extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1346,7 +1490,10 @@ final class MessagePoll extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [poll]: The poll description
   @override
   MessagePoll copyWith({
     Poll? poll,
@@ -1354,11 +1501,14 @@ final class MessagePoll extends MessageContent {
     poll: poll ?? this.poll,
   );
 
+  /// TDLib object type
   static const String objectType = 'messagePoll';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1452,6 +1602,7 @@ final class MessageInvoice extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1469,7 +1620,19 @@ final class MessageInvoice extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [title]: Product title
+  /// * [description]: Product description
+  /// * [photo]: Product photo; may be null
+  /// * [currency]: Currency for the product price
+  /// * [total_amount]: Product total price in the smallest units of the currency
+  /// * [start_parameter]: Unique invoice bot start_parameter to be passed to getInternalLink
+  /// * [is_test]: True, if the invoice is a test invoice
+  /// * [need_shipping_address]: True, if the shipping address must be specified
+  /// * [receipt_message_id]: The identifier of the message with the receipt, after the product has been purchased
+  /// * [extended_media]: Extended media attached to the invoice; may be null
   @override
   MessageInvoice copyWith({
     String? title,
@@ -1495,11 +1658,14 @@ final class MessageInvoice extends MessageContent {
     extendedMedia: extendedMedia ?? this.extendedMedia,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageInvoice';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1544,6 +1710,7 @@ final class MessageCall extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1554,7 +1721,12 @@ final class MessageCall extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [is_video]: True, if the call was a video call 
+  /// * [discard_reason]: Reason why the call was discarded 
+  /// * [duration]: Call duration, in seconds
   @override
   MessageCall copyWith({
     bool? isVideo,
@@ -1566,11 +1738,14 @@ final class MessageCall extends MessageContent {
     duration: duration ?? this.duration,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageCall';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1608,6 +1783,7 @@ final class MessageVideoChatScheduled extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1617,7 +1793,11 @@ final class MessageVideoChatScheduled extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [group_call_id]: Identifier of the video chat. The video chat can be received through the method getGroupCall 
+  /// * [start_date]: Point in time (Unix timestamp) when the group call is supposed to be started by an administrator
   @override
   MessageVideoChatScheduled copyWith({
     int? groupCallId,
@@ -1627,11 +1807,14 @@ final class MessageVideoChatScheduled extends MessageContent {
     startDate: startDate ?? this.startDate,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageVideoChatScheduled';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1662,6 +1845,7 @@ final class MessageVideoChatStarted extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1670,7 +1854,10 @@ final class MessageVideoChatStarted extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [group_call_id]: Identifier of the video chat. The video chat can be received through the method getGroupCall
   @override
   MessageVideoChatStarted copyWith({
     int? groupCallId,
@@ -1678,11 +1865,14 @@ final class MessageVideoChatStarted extends MessageContent {
     groupCallId: groupCallId ?? this.groupCallId,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageVideoChatStarted';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1713,6 +1903,7 @@ final class MessageVideoChatEnded extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1721,7 +1912,10 @@ final class MessageVideoChatEnded extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [duration]: Call duration, in seconds
   @override
   MessageVideoChatEnded copyWith({
     int? duration,
@@ -1729,11 +1923,14 @@ final class MessageVideoChatEnded extends MessageContent {
     duration: duration ?? this.duration,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageVideoChatEnded';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1771,6 +1968,7 @@ final class MessageInviteVideoChatParticipants extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1780,7 +1978,11 @@ final class MessageInviteVideoChatParticipants extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [group_call_id]: Identifier of the video chat. The video chat can be received through the method getGroupCall 
+  /// * [user_ids]: Invited user identifiers
   @override
   MessageInviteVideoChatParticipants copyWith({
     int? groupCallId,
@@ -1790,11 +1992,14 @@ final class MessageInviteVideoChatParticipants extends MessageContent {
     userIds: userIds ?? this.userIds,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageInviteVideoChatParticipants';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1832,6 +2037,7 @@ final class MessageBasicGroupChatCreate extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1841,7 +2047,11 @@ final class MessageBasicGroupChatCreate extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [title]: Title of the basic group 
+  /// * [member_user_ids]: User identifiers of members in the basic group
   @override
   MessageBasicGroupChatCreate copyWith({
     String? title,
@@ -1851,11 +2061,14 @@ final class MessageBasicGroupChatCreate extends MessageContent {
     memberUserIds: memberUserIds ?? this.memberUserIds,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageBasicGroupChatCreate';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1886,6 +2099,7 @@ final class MessageSupergroupChatCreate extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1894,7 +2108,10 @@ final class MessageSupergroupChatCreate extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [title]: Title of the supergroup or channel
   @override
   MessageSupergroupChatCreate copyWith({
     String? title,
@@ -1902,11 +2119,14 @@ final class MessageSupergroupChatCreate extends MessageContent {
     title: title ?? this.title,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageSupergroupChatCreate';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1937,6 +2157,7 @@ final class MessageChatChangeTitle extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1945,7 +2166,10 @@ final class MessageChatChangeTitle extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [title]: New chat title
   @override
   MessageChatChangeTitle copyWith({
     String? title,
@@ -1953,11 +2177,14 @@ final class MessageChatChangeTitle extends MessageContent {
     title: title ?? this.title,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageChatChangeTitle';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1988,6 +2215,7 @@ final class MessageChatChangePhoto extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1996,7 +2224,10 @@ final class MessageChatChangePhoto extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [photo]: New chat photo
   @override
   MessageChatChangePhoto copyWith({
     ChatPhoto? photo,
@@ -2004,11 +2235,14 @@ final class MessageChatChangePhoto extends MessageContent {
     photo: photo ?? this.photo,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageChatChangePhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2027,6 +2261,7 @@ final class MessageChatDeletePhoto extends MessageContent {
   /// Parse from a json
   factory MessageChatDeletePhoto.fromJson(Map<String, dynamic> json) => const MessageChatDeletePhoto();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2034,15 +2269,18 @@ final class MessageChatDeletePhoto extends MessageContent {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   MessageChatDeletePhoto copyWith() => const MessageChatDeletePhoto();
 
+  /// TDLib object type
   static const String objectType = 'messageChatDeletePhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2073,6 +2311,7 @@ final class MessageChatAddMembers extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2081,7 +2320,10 @@ final class MessageChatAddMembers extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [member_user_ids]: User identifiers of the new members
   @override
   MessageChatAddMembers copyWith({
     List<int>? memberUserIds,
@@ -2089,11 +2331,14 @@ final class MessageChatAddMembers extends MessageContent {
     memberUserIds: memberUserIds ?? this.memberUserIds,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageChatAddMembers';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2112,6 +2357,7 @@ final class MessageChatJoinByLink extends MessageContent {
   /// Parse from a json
   factory MessageChatJoinByLink.fromJson(Map<String, dynamic> json) => const MessageChatJoinByLink();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2119,15 +2365,18 @@ final class MessageChatJoinByLink extends MessageContent {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   MessageChatJoinByLink copyWith() => const MessageChatJoinByLink();
 
+  /// TDLib object type
   static const String objectType = 'messageChatJoinByLink';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2146,6 +2395,7 @@ final class MessageChatJoinByRequest extends MessageContent {
   /// Parse from a json
   factory MessageChatJoinByRequest.fromJson(Map<String, dynamic> json) => const MessageChatJoinByRequest();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2153,15 +2403,18 @@ final class MessageChatJoinByRequest extends MessageContent {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   MessageChatJoinByRequest copyWith() => const MessageChatJoinByRequest();
 
+  /// TDLib object type
   static const String objectType = 'messageChatJoinByRequest';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2192,6 +2445,7 @@ final class MessageChatDeleteMember extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2200,7 +2454,10 @@ final class MessageChatDeleteMember extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: User identifier of the deleted chat member
   @override
   MessageChatDeleteMember copyWith({
     int? userId,
@@ -2208,11 +2465,14 @@ final class MessageChatDeleteMember extends MessageContent {
     userId: userId ?? this.userId,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageChatDeleteMember';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2243,6 +2503,7 @@ final class MessageChatUpgradeTo extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2251,7 +2512,10 @@ final class MessageChatUpgradeTo extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [supergroup_id]: Identifier of the supergroup to which the basic group was upgraded
   @override
   MessageChatUpgradeTo copyWith({
     int? supergroupId,
@@ -2259,11 +2523,14 @@ final class MessageChatUpgradeTo extends MessageContent {
     supergroupId: supergroupId ?? this.supergroupId,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageChatUpgradeTo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2301,6 +2568,7 @@ final class MessageChatUpgradeFrom extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2310,7 +2578,11 @@ final class MessageChatUpgradeFrom extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [title]: Title of the newly created supergroup 
+  /// * [basic_group_id]: The identifier of the original basic group
   @override
   MessageChatUpgradeFrom copyWith({
     String? title,
@@ -2320,11 +2592,14 @@ final class MessageChatUpgradeFrom extends MessageContent {
     basicGroupId: basicGroupId ?? this.basicGroupId,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageChatUpgradeFrom';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2355,6 +2630,7 @@ final class MessagePinMessage extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2363,7 +2639,10 @@ final class MessagePinMessage extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [message_id]: Identifier of the pinned message, can be an identifier of a deleted message or 0
   @override
   MessagePinMessage copyWith({
     int? messageId,
@@ -2371,11 +2650,14 @@ final class MessagePinMessage extends MessageContent {
     messageId: messageId ?? this.messageId,
   );
 
+  /// TDLib object type
   static const String objectType = 'messagePinMessage';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2394,6 +2676,7 @@ final class MessageScreenshotTaken extends MessageContent {
   /// Parse from a json
   factory MessageScreenshotTaken.fromJson(Map<String, dynamic> json) => const MessageScreenshotTaken();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2401,15 +2684,18 @@ final class MessageScreenshotTaken extends MessageContent {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   MessageScreenshotTaken copyWith() => const MessageScreenshotTaken();
 
+  /// TDLib object type
   static const String objectType = 'messageScreenshotTaken';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2447,6 +2733,7 @@ final class MessageChatSetBackground extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2456,7 +2743,11 @@ final class MessageChatSetBackground extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [old_background_message_id]: Identifier of the message with a previously set same background; 0 if none. Can be an identifier of a deleted message 
+  /// * [background]: The new background
   @override
   MessageChatSetBackground copyWith({
     int? oldBackgroundMessageId,
@@ -2466,11 +2757,14 @@ final class MessageChatSetBackground extends MessageContent {
     background: background ?? this.background,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageChatSetBackground';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2501,6 +2795,7 @@ final class MessageChatSetTheme extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2509,7 +2804,10 @@ final class MessageChatSetTheme extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [theme_name]: If non-empty, name of a new theme, set for the chat. Otherwise, chat theme was reset to the default one
   @override
   MessageChatSetTheme copyWith({
     String? themeName,
@@ -2517,11 +2815,14 @@ final class MessageChatSetTheme extends MessageContent {
     themeName: themeName ?? this.themeName,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageChatSetTheme';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2559,6 +2860,7 @@ final class MessageChatSetMessageAutoDeleteTime extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2568,7 +2870,11 @@ final class MessageChatSetMessageAutoDeleteTime extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [message_auto_delete_time]: New value auto-delete or self-destruct time, in seconds; 0 if disabled 
+  /// * [from_user_id]: If not 0, a user identifier, which default setting was automatically applied
   @override
   MessageChatSetMessageAutoDeleteTime copyWith({
     int? messageAutoDeleteTime,
@@ -2578,11 +2884,14 @@ final class MessageChatSetMessageAutoDeleteTime extends MessageContent {
     fromUserId: fromUserId ?? this.fromUserId,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageChatSetMessageAutoDeleteTime';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2620,6 +2929,7 @@ final class MessageForumTopicCreated extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2629,7 +2939,11 @@ final class MessageForumTopicCreated extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [name]: Name of the topic 
+  /// * [icon]: Icon of the topic
   @override
   MessageForumTopicCreated copyWith({
     String? name,
@@ -2639,11 +2953,14 @@ final class MessageForumTopicCreated extends MessageContent {
     icon: icon ?? this.icon,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageForumTopicCreated';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2688,6 +3005,7 @@ final class MessageForumTopicEdited extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2698,7 +3016,12 @@ final class MessageForumTopicEdited extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [name]: If non-empty, the new name of the topic
+  /// * [edit_icon_custom_emoji_id]: True, if icon's custom_emoji_id is changed
+  /// * [icon_custom_emoji_id]: New unique identifier of the custom emoji shown on the topic icon; 0 if none. Must be ignored if edit_icon_custom_emoji_id is false
   @override
   MessageForumTopicEdited copyWith({
     String? name,
@@ -2710,11 +3033,14 @@ final class MessageForumTopicEdited extends MessageContent {
     iconCustomEmojiId: iconCustomEmojiId ?? this.iconCustomEmojiId,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageForumTopicEdited';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2745,6 +3071,7 @@ final class MessageForumTopicIsClosedToggled extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2753,7 +3080,10 @@ final class MessageForumTopicIsClosedToggled extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [is_closed]: True, if the topic was closed; otherwise, the topic was reopened
   @override
   MessageForumTopicIsClosedToggled copyWith({
     bool? isClosed,
@@ -2761,11 +3091,14 @@ final class MessageForumTopicIsClosedToggled extends MessageContent {
     isClosed: isClosed ?? this.isClosed,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageForumTopicIsClosedToggled';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2796,6 +3129,7 @@ final class MessageForumTopicIsHiddenToggled extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2804,7 +3138,10 @@ final class MessageForumTopicIsHiddenToggled extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [is_hidden]: True, if the topic was hidden; otherwise, the topic was unhidden
   @override
   MessageForumTopicIsHiddenToggled copyWith({
     bool? isHidden,
@@ -2812,11 +3149,14 @@ final class MessageForumTopicIsHiddenToggled extends MessageContent {
     isHidden: isHidden ?? this.isHidden,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageForumTopicIsHiddenToggled';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2847,6 +3187,7 @@ final class MessageSuggestProfilePhoto extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2855,7 +3196,10 @@ final class MessageSuggestProfilePhoto extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [photo]: The suggested chat photo. Use the method setProfilePhoto with inputChatPhotoPrevious to apply the photo
   @override
   MessageSuggestProfilePhoto copyWith({
     ChatPhoto? photo,
@@ -2863,11 +3207,14 @@ final class MessageSuggestProfilePhoto extends MessageContent {
     photo: photo ?? this.photo,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageSuggestProfilePhoto';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2898,6 +3245,7 @@ final class MessageCustomServiceAction extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2906,7 +3254,10 @@ final class MessageCustomServiceAction extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Message text to be shown in the chat
   @override
   MessageCustomServiceAction copyWith({
     String? text,
@@ -2914,11 +3265,14 @@ final class MessageCustomServiceAction extends MessageContent {
     text: text ?? this.text,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageCustomServiceAction';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -2963,6 +3317,7 @@ final class MessageGameScore extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -2973,7 +3328,12 @@ final class MessageGameScore extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [game_message_id]: Identifier of the message with the game, can be an identifier of a deleted message 
+  /// * [game_id]: Identifier of the game; may be different from the games presented in the message with the game 
+  /// * [score]: New score
   @override
   MessageGameScore copyWith({
     int? gameMessageId,
@@ -2985,11 +3345,14 @@ final class MessageGameScore extends MessageContent {
     score: score ?? this.score,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageGameScore';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -3062,6 +3425,7 @@ final class MessagePaymentSuccessful extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -3076,7 +3440,16 @@ final class MessagePaymentSuccessful extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [invoice_chat_id]: Identifier of the chat, containing the corresponding invoice message
+  /// * [invoice_message_id]: Identifier of the message with the corresponding invoice; can be 0 or an identifier of a deleted message
+  /// * [currency]: Currency for the price of the product
+  /// * [total_amount]: Total price for the product, in the smallest units of the currency
+  /// * [is_recurring]: True, if this is a recurring payment
+  /// * [is_first_recurring]: True, if this is the first recurring payment
+  /// * [invoice_name]: Name of the invoice; may be empty if unknown
   @override
   MessagePaymentSuccessful copyWith({
     int? invoiceChatId,
@@ -3096,11 +3469,14 @@ final class MessagePaymentSuccessful extends MessageContent {
     invoiceName: invoiceName ?? this.invoiceName,
   );
 
+  /// TDLib object type
   static const String objectType = 'messagePaymentSuccessful';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -3187,6 +3563,7 @@ final class MessagePaymentSuccessfulBot extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -3203,7 +3580,18 @@ final class MessagePaymentSuccessfulBot extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [currency]: Currency for price of the product
+  /// * [total_amount]: Total price for the product, in the smallest units of the currency
+  /// * [is_recurring]: True, if this is a recurring payment
+  /// * [is_first_recurring]: True, if this is the first recurring payment
+  /// * [invoice_payload]: Invoice payload
+  /// * [shipping_option_id]: Identifier of the shipping option chosen by the user; may be empty if not applicable
+  /// * [order_info]: Information about the order; may be null
+  /// * [telegram_payment_charge_id]: Telegram payment identifier
+  /// * [provider_payment_charge_id]: Provider payment identifier
   @override
   MessagePaymentSuccessfulBot copyWith({
     String? currency,
@@ -3227,11 +3615,14 @@ final class MessagePaymentSuccessfulBot extends MessageContent {
     providerPaymentChargeId: providerPaymentChargeId ?? this.providerPaymentChargeId,
   );
 
+  /// TDLib object type
   static const String objectType = 'messagePaymentSuccessfulBot';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -3304,6 +3695,7 @@ final class MessageGiftedPremium extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -3318,7 +3710,16 @@ final class MessageGiftedPremium extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [gifter_user_id]: The identifier of a user that gifted Telegram Premium; 0 if the gift was anonymous
+  /// * [currency]: Currency for the paid amount
+  /// * [amount]: The paid amount, in the smallest units of the currency
+  /// * [cryptocurrency]: Cryptocurrency used to pay for the gift; may be empty if none
+  /// * [cryptocurrency_amount]: The paid amount, in the smallest units of the cryptocurrency
+  /// * [month_count]: Number of month the Telegram Premium subscription will be active
+  /// * [sticker]: A sticker to be shown in the message; may be null if unknown
   @override
   MessageGiftedPremium copyWith({
     int? gifterUserId,
@@ -3338,11 +3739,14 @@ final class MessageGiftedPremium extends MessageContent {
     sticker: sticker ?? this.sticker,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageGiftedPremium';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -3361,6 +3765,7 @@ final class MessageContactRegistered extends MessageContent {
   /// Parse from a json
   factory MessageContactRegistered.fromJson(Map<String, dynamic> json) => const MessageContactRegistered();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -3368,15 +3773,18 @@ final class MessageContactRegistered extends MessageContent {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   MessageContactRegistered copyWith() => const MessageContactRegistered();
 
+  /// TDLib object type
   static const String objectType = 'messageContactRegistered';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -3414,6 +3822,7 @@ final class MessageUserShared extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -3423,7 +3832,11 @@ final class MessageUserShared extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: Identifier of the shared user 
+  /// * [button_id]: Identifier of the keyboard button with the request
   @override
   MessageUserShared copyWith({
     int? userId,
@@ -3433,11 +3846,14 @@ final class MessageUserShared extends MessageContent {
     buttonId: buttonId ?? this.buttonId,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageUserShared';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -3475,6 +3891,7 @@ final class MessageChatShared extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -3484,7 +3901,11 @@ final class MessageChatShared extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the shared chat 
+  /// * [button_id]: Identifier of the keyboard button with the request
   @override
   MessageChatShared copyWith({
     int? chatId,
@@ -3494,11 +3915,14 @@ final class MessageChatShared extends MessageContent {
     buttonId: buttonId ?? this.buttonId,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageChatShared';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -3529,6 +3953,7 @@ final class MessageWebsiteConnected extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -3537,7 +3962,10 @@ final class MessageWebsiteConnected extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [domain_name]: Domain name of the connected website
   @override
   MessageWebsiteConnected copyWith({
     String? domainName,
@@ -3545,11 +3973,14 @@ final class MessageWebsiteConnected extends MessageContent {
     domainName: domainName ?? this.domainName,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageWebsiteConnected';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -3580,6 +4011,7 @@ final class MessageBotWriteAccessAllowed extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -3588,7 +4020,10 @@ final class MessageBotWriteAccessAllowed extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [web_app]: Information about the Web App, which requested the access; may be null if none or the Web App was opened from the attachment menu
   @override
   MessageBotWriteAccessAllowed copyWith({
     WebApp? webApp,
@@ -3596,11 +4031,14 @@ final class MessageBotWriteAccessAllowed extends MessageContent {
     webApp: webApp ?? this.webApp,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageBotWriteAccessAllowed';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -3631,6 +4069,7 @@ final class MessageWebAppDataSent extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -3639,7 +4078,10 @@ final class MessageWebAppDataSent extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [button_text]: Text of the keyboardButtonTypeWebApp button, which opened the Web App
   @override
   MessageWebAppDataSent copyWith({
     String? buttonText,
@@ -3647,11 +4089,14 @@ final class MessageWebAppDataSent extends MessageContent {
     buttonText: buttonText ?? this.buttonText,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageWebAppDataSent';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -3689,6 +4134,7 @@ final class MessageWebAppDataReceived extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -3698,7 +4144,11 @@ final class MessageWebAppDataReceived extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [button_text]: Text of the keyboardButtonTypeWebApp button, which opened the Web App 
+  /// * [data]: The data
   @override
   MessageWebAppDataReceived copyWith({
     String? buttonText,
@@ -3708,11 +4158,14 @@ final class MessageWebAppDataReceived extends MessageContent {
     data: data ?? this.data,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageWebAppDataReceived';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -3743,6 +4196,7 @@ final class MessagePassportDataSent extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -3751,7 +4205,10 @@ final class MessagePassportDataSent extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [types]: List of Telegram Passport element types sent
   @override
   MessagePassportDataSent copyWith({
     List<PassportElementType>? types,
@@ -3759,11 +4216,14 @@ final class MessagePassportDataSent extends MessageContent {
     types: types ?? this.types,
   );
 
+  /// TDLib object type
   static const String objectType = 'messagePassportDataSent';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -3801,6 +4261,7 @@ final class MessagePassportDataReceived extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -3810,7 +4271,11 @@ final class MessagePassportDataReceived extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [elements]: List of received Telegram Passport elements 
+  /// * [credentials]: Encrypted data credentials
   @override
   MessagePassportDataReceived copyWith({
     List<EncryptedPassportElement>? elements,
@@ -3820,11 +4285,14 @@ final class MessagePassportDataReceived extends MessageContent {
     credentials: credentials ?? this.credentials,
   );
 
+  /// TDLib object type
   static const String objectType = 'messagePassportDataReceived';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -3869,6 +4337,7 @@ final class MessageProximityAlertTriggered extends MessageContent {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -3879,7 +4348,12 @@ final class MessageProximityAlertTriggered extends MessageContent {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [traveler_id]: The identifier of a user or chat that triggered the proximity alert 
+  /// * [watcher_id]: The identifier of a user or chat that subscribed for the proximity alert 
+  /// * [distance]: The distance between the users
   @override
   MessageProximityAlertTriggered copyWith({
     MessageSender? travelerId,
@@ -3891,11 +4365,14 @@ final class MessageProximityAlertTriggered extends MessageContent {
     distance: distance ?? this.distance,
   );
 
+  /// TDLib object type
   static const String objectType = 'messageProximityAlertTriggered';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -3914,6 +4391,7 @@ final class MessageUnsupported extends MessageContent {
   /// Parse from a json
   factory MessageUnsupported.fromJson(Map<String, dynamic> json) => const MessageUnsupported();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -3921,15 +4399,18 @@ final class MessageUnsupported extends MessageContent {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   MessageUnsupported copyWith() => const MessageUnsupported();
 
+  /// TDLib object type
   static const String objectType = 'messageUnsupported';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

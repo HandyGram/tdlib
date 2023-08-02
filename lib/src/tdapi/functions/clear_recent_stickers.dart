@@ -23,6 +23,7 @@ final class ClearRecentStickers extends TdFunction {
   /// Pass true to clear the list of stickers recently attached to photo or video files; pass false to clear the list of recently sent stickers
   final bool isAttached;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class ClearRecentStickers extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [is_attached]: Pass true to clear the list of stickers recently attached to photo or video files; pass false to clear the list of recently sent stickers
   ClearRecentStickers copyWith({
     bool? isAttached,
   }) => ClearRecentStickers(
     isAttached: isAttached ?? this.isAttached,
   );
 
+  /// TDLib object type
   static const String objectType = 'clearRecentStickers';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

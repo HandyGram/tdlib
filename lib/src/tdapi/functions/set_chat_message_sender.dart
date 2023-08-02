@@ -29,6 +29,7 @@ final class SetChatMessageSender extends TdFunction {
   /// New message sender for the chat
   final MessageSender messageSenderId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetChatMessageSender extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [message_sender_id]: New message sender for the chat
   SetChatMessageSender copyWith({
     int? chatId,
     MessageSender? messageSenderId,
@@ -48,11 +53,14 @@ final class SetChatMessageSender extends TdFunction {
     messageSenderId: messageSenderId ?? this.messageSenderId,
   );
 
+  /// TDLib object type
   static const String objectType = 'setChatMessageSender';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

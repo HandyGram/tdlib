@@ -41,6 +41,7 @@ final class EditMessageText extends TdFunction {
   /// New text content of the message. Must be of type inputMessageText
   final InputMessageContent inputMessageContent;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -53,7 +54,13 @@ final class EditMessageText extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: The chat the message belongs to
+  /// * [message_id]: Identifier of the message
+  /// * [reply_markup]: The new message reply markup; pass null if none; for bots only
+  /// * [input_message_content]: New text content of the message. Must be of type inputMessageText
   EditMessageText copyWith({
     int? chatId,
     int? messageId,
@@ -66,11 +73,14 @@ final class EditMessageText extends TdFunction {
     inputMessageContent: inputMessageContent ?? this.inputMessageContent,
   );
 
+  /// TDLib object type
   static const String objectType = 'editMessageText';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

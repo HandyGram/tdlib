@@ -27,17 +27,21 @@ sealed class ChatSource extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   ChatSource copyWith();
 
+  /// TDLib object type
   static const String objectType = 'chatSource';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -56,6 +60,7 @@ final class ChatSourceMtprotoProxy extends ChatSource {
   /// Parse from a json
   factory ChatSourceMtprotoProxy.fromJson(Map<String, dynamic> json) => const ChatSourceMtprotoProxy();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -63,15 +68,18 @@ final class ChatSourceMtprotoProxy extends ChatSource {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ChatSourceMtprotoProxy copyWith() => const ChatSourceMtprotoProxy();
 
+  /// TDLib object type
   static const String objectType = 'chatSourceMtprotoProxy';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -109,6 +117,7 @@ final class ChatSourcePublicServiceAnnouncement extends ChatSource {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -118,7 +127,11 @@ final class ChatSourcePublicServiceAnnouncement extends ChatSource {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [type]: The type of the announcement 
+  /// * [text]: The text of the announcement
   @override
   ChatSourcePublicServiceAnnouncement copyWith({
     String? type,
@@ -128,11 +141,14 @@ final class ChatSourcePublicServiceAnnouncement extends ChatSource {
     text: text ?? this.text,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatSourcePublicServiceAnnouncement';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -33,17 +33,21 @@ sealed class NotificationGroupType extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   NotificationGroupType copyWith();
 
+  /// TDLib object type
   static const String objectType = 'notificationGroupType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -62,6 +66,7 @@ final class NotificationGroupTypeMessages extends NotificationGroupType {
   /// Parse from a json
   factory NotificationGroupTypeMessages.fromJson(Map<String, dynamic> json) => const NotificationGroupTypeMessages();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -69,15 +74,18 @@ final class NotificationGroupTypeMessages extends NotificationGroupType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   NotificationGroupTypeMessages copyWith() => const NotificationGroupTypeMessages();
 
+  /// TDLib object type
   static const String objectType = 'notificationGroupTypeMessages';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -96,6 +104,7 @@ final class NotificationGroupTypeMentions extends NotificationGroupType {
   /// Parse from a json
   factory NotificationGroupTypeMentions.fromJson(Map<String, dynamic> json) => const NotificationGroupTypeMentions();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -103,15 +112,18 @@ final class NotificationGroupTypeMentions extends NotificationGroupType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   NotificationGroupTypeMentions copyWith() => const NotificationGroupTypeMentions();
 
+  /// TDLib object type
   static const String objectType = 'notificationGroupTypeMentions';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -130,6 +142,7 @@ final class NotificationGroupTypeSecretChat extends NotificationGroupType {
   /// Parse from a json
   factory NotificationGroupTypeSecretChat.fromJson(Map<String, dynamic> json) => const NotificationGroupTypeSecretChat();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -137,15 +150,18 @@ final class NotificationGroupTypeSecretChat extends NotificationGroupType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   NotificationGroupTypeSecretChat copyWith() => const NotificationGroupTypeSecretChat();
 
+  /// TDLib object type
   static const String objectType = 'notificationGroupTypeSecretChat';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -164,6 +180,7 @@ final class NotificationGroupTypeCalls extends NotificationGroupType {
   /// Parse from a json
   factory NotificationGroupTypeCalls.fromJson(Map<String, dynamic> json) => const NotificationGroupTypeCalls();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -171,15 +188,18 @@ final class NotificationGroupTypeCalls extends NotificationGroupType {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   NotificationGroupTypeCalls copyWith() => const NotificationGroupTypeCalls();
 
+  /// TDLib object type
   static const String objectType = 'notificationGroupTypeCalls';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

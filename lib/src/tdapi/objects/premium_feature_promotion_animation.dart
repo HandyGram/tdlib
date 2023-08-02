@@ -32,6 +32,7 @@ final class PremiumFeaturePromotionAnimation extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -41,7 +42,11 @@ final class PremiumFeaturePromotionAnimation extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [feature]: Premium feature 
+  /// * [animation]: Promotion animation for the feature
   PremiumFeaturePromotionAnimation copyWith({
     PremiumFeature? feature,
     Animation? animation,
@@ -50,11 +55,14 @@ final class PremiumFeaturePromotionAnimation extends TdObject {
     animation: animation ?? this.animation,
   );
 
+  /// TDLib object type
   static const String objectType = 'premiumFeaturePromotionAnimation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -29,6 +29,7 @@ final class GetInternalLink extends TdFunction {
   /// Pass true to create an HTTPS link (only available for some link types); pass false to create a tg: link
   final bool isHttp;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class GetInternalLink extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [type]: Expected type of the link 
+  /// * [is_http]: Pass true to create an HTTPS link (only available for some link types); pass false to create a tg: link
   GetInternalLink copyWith({
     InternalLinkType? type,
     bool? isHttp,
@@ -48,11 +53,14 @@ final class GetInternalLink extends TdFunction {
     isHttp: isHttp ?? this.isHttp,
   );
 
+  /// TDLib object type
   static const String objectType = 'getInternalLink';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

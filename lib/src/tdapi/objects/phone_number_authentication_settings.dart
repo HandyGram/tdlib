@@ -60,6 +60,7 @@ final class PhoneNumberAuthenticationSettings extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -73,7 +74,15 @@ final class PhoneNumberAuthenticationSettings extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [allow_flash_call]: Pass true if the authentication code may be sent via a flash call to the specified phone number
+  /// * [allow_missed_call]: Pass true if the authentication code may be sent via a missed call to the specified phone number
+  /// * [is_current_phone_number]: Pass true if the authenticated phone number is used on the current device
+  /// * [allow_sms_retriever_api]: For official applications only. True, if the application can use Android SMS Retriever API (requires Google Play Services
+  /// * [firebase_authentication_settings]: For official Android and iOS applications only; pass null otherwise. Settings for Firebase Authentication
+  /// * [authentication_tokens]: List of up to 20 authentication tokens, recently received in updateOption("authentication_token") in previously logged out sessions
   PhoneNumberAuthenticationSettings copyWith({
     bool? allowFlashCall,
     bool? allowMissedCall,
@@ -90,11 +99,14 @@ final class PhoneNumberAuthenticationSettings extends TdObject {
     authenticationTokens: authenticationTokens ?? this.authenticationTokens,
   );
 
+  /// TDLib object type
   static const String objectType = 'phoneNumberAuthenticationSettings';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

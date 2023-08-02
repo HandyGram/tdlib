@@ -121,6 +121,7 @@ final class StickerSet extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -141,7 +142,22 @@ final class StickerSet extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Identifier of the sticker set
+  /// * [title]: Title of the sticker set
+  /// * [name]: Name of the sticker set
+  /// * [thumbnail]: Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null. The file can be downloaded only before the thumbnail is changed
+  /// * [thumbnail_outline]: Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner
+  /// * [is_installed]: True, if the sticker set has been installed by the current user
+  /// * [is_archived]: True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously
+  /// * [is_official]: True, if the sticker set is official
+  /// * [sticker_format]: Format of the stickers in the set
+  /// * [sticker_type]: Type of the stickers in the set
+  /// * [is_viewed]: True for already viewed trending sticker sets
+  /// * [stickers]: List of stickers in this set
+  /// * [emojis]: A list of emoji corresponding to the stickers in the same order. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object
   StickerSet copyWith({
     int? id,
     String? title,
@@ -176,11 +192,14 @@ final class StickerSet extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'stickerSet';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

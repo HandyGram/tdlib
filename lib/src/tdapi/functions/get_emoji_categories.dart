@@ -23,6 +23,7 @@ final class GetEmojiCategories extends TdFunction {
   /// Type of emoji categories to return; pass null to get default emoji categories
   final EmojiCategoryType? type;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetEmojiCategories extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [type]: Type of emoji categories to return; pass null to get default emoji categories
   GetEmojiCategories copyWith({
     EmojiCategoryType? type,
   }) => GetEmojiCategories(
     type: type ?? this.type,
   );
 
+  /// TDLib object type
   static const String objectType = 'getEmojiCategories';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

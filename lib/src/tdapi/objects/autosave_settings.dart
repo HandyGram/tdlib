@@ -58,6 +58,7 @@ final class AutosaveSettings extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -69,7 +70,13 @@ final class AutosaveSettings extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [private_chat_settings]: Default autosave settings for private chats
+  /// * [group_settings]: Default autosave settings for basic group and supergroup chats
+  /// * [channel_settings]: Default autosave settings for channel chats
+  /// * [exceptions]: Autosave settings for specific chats
   AutosaveSettings copyWith({
     ScopeAutosaveSettings? privateChatSettings,
     ScopeAutosaveSettings? groupSettings,
@@ -86,11 +93,14 @@ final class AutosaveSettings extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'autosaveSettings';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

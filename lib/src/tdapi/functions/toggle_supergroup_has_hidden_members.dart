@@ -29,6 +29,7 @@ final class ToggleSupergroupHasHiddenMembers extends TdFunction {
   /// New value of has_hidden_members
   final bool hasHiddenMembers;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ToggleSupergroupHasHiddenMembers extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [supergroup_id]: Identifier of the supergroup
+  /// * [has_hidden_members]: New value of has_hidden_members
   ToggleSupergroupHasHiddenMembers copyWith({
     int? supergroupId,
     bool? hasHiddenMembers,
@@ -48,11 +53,14 @@ final class ToggleSupergroupHasHiddenMembers extends TdFunction {
     hasHiddenMembers: hasHiddenMembers ?? this.hasHiddenMembers,
   );
 
+  /// TDLib object type
   static const String objectType = 'toggleSupergroupHasHiddenMembers';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

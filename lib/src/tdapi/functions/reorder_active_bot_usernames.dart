@@ -29,6 +29,7 @@ final class ReorderActiveBotUsernames extends TdFunction {
   /// The new order of active usernames. All currently active usernames must be specified
   final List<String> usernames;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ReorderActiveBotUsernames extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [bot_user_id]: Identifier of the target bot 
+  /// * [usernames]: The new order of active usernames. All currently active usernames must be specified
   ReorderActiveBotUsernames copyWith({
     int? botUserId,
     List<String>? usernames,
@@ -48,11 +53,14 @@ final class ReorderActiveBotUsernames extends TdFunction {
     usernames: usernames ?? this.usernames,
   );
 
+  /// TDLib object type
   static const String objectType = 'reorderActiveBotUsernames';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -30,17 +30,21 @@ sealed class BackgroundType extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   BackgroundType copyWith();
 
+  /// TDLib object type
   static const String objectType = 'backgroundType';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -78,6 +82,7 @@ final class BackgroundTypeWallpaper extends BackgroundType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -87,7 +92,11 @@ final class BackgroundTypeWallpaper extends BackgroundType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [is_blurred]: True, if the wallpaper must be downscaled to fit in 450x450 square and then box-blurred with radius 12
+  /// * [is_moving]: True, if the background needs to be slightly moved when device is tilted
   @override
   BackgroundTypeWallpaper copyWith({
     bool? isBlurred,
@@ -97,11 +106,14 @@ final class BackgroundTypeWallpaper extends BackgroundType {
     isMoving: isMoving ?? this.isMoving,
   );
 
+  /// TDLib object type
   static const String objectType = 'backgroundTypeWallpaper';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -153,6 +165,7 @@ final class BackgroundTypePattern extends BackgroundType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -164,7 +177,13 @@ final class BackgroundTypePattern extends BackgroundType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [fill]: Fill of the background
+  /// * [intensity]: Intensity of the pattern when it is shown above the filled background; 0-100.
+  /// * [is_inverted]: True, if the background fill must be applied only to the pattern itself. All other pixels are black in this case. For dark themes only
+  /// * [is_moving]: True, if the background needs to be slightly moved when device is tilted
   @override
   BackgroundTypePattern copyWith({
     BackgroundFill? fill,
@@ -178,11 +197,14 @@ final class BackgroundTypePattern extends BackgroundType {
     isMoving: isMoving ?? this.isMoving,
   );
 
+  /// TDLib object type
   static const String objectType = 'backgroundTypePattern';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -213,6 +235,7 @@ final class BackgroundTypeFill extends BackgroundType {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -221,7 +244,10 @@ final class BackgroundTypeFill extends BackgroundType {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [fill]: The background fill
   @override
   BackgroundTypeFill copyWith({
     BackgroundFill? fill,
@@ -229,11 +255,14 @@ final class BackgroundTypeFill extends BackgroundType {
     fill: fill ?? this.fill,
   );
 
+  /// TDLib object type
   static const String objectType = 'backgroundTypeFill';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

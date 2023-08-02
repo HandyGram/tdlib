@@ -29,6 +29,7 @@ final class SetPinnedChats extends TdFunction {
   /// The new list of pinned chats
   final List<int> chatIds;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetPinnedChats extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_list]: Chat list in which to change the order of pinned chats 
+  /// * [chat_ids]: The new list of pinned chats
   SetPinnedChats copyWith({
     ChatList? chatList,
     List<int>? chatIds,
@@ -48,11 +53,14 @@ final class SetPinnedChats extends TdFunction {
     chatIds: chatIds ?? this.chatIds,
   );
 
+  /// TDLib object type
   static const String objectType = 'setPinnedChats';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -29,6 +29,7 @@ final class ResendMessages extends TdFunction {
   /// Identifiers of the messages to resend. Message identifiers must be in a strictly increasing order
   final List<int> messageIds;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ResendMessages extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat to send messages
+  /// * [message_ids]: Identifiers of the messages to resend. Message identifiers must be in a strictly increasing order
   ResendMessages copyWith({
     int? chatId,
     List<int>? messageIds,
@@ -48,11 +53,14 @@ final class ResendMessages extends TdFunction {
     messageIds: messageIds ?? this.messageIds,
   );
 
+  /// TDLib object type
   static const String objectType = 'resendMessages';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

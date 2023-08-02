@@ -60,6 +60,7 @@ final class Address extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -73,7 +74,15 @@ final class Address extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [country_code]: A two-letter ISO 3166-1 alpha-2 country code
+  /// * [state]: State, if applicable
+  /// * [city]: City
+  /// * [street_line1]: First line of the address
+  /// * [street_line2]: Second line of the address
+  /// * [postal_code]: Address postal code
   Address copyWith({
     String? countryCode,
     String? state,
@@ -90,11 +99,14 @@ final class Address extends TdObject {
     postalCode: postalCode ?? this.postalCode,
   );
 
+  /// TDLib object type
   static const String objectType = 'address';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

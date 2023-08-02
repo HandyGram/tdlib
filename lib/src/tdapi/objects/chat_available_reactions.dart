@@ -27,17 +27,21 @@ sealed class ChatAvailableReactions extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   ChatAvailableReactions copyWith();
 
+  /// TDLib object type
   static const String objectType = 'chatAvailableReactions';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -56,6 +60,7 @@ final class ChatAvailableReactionsAll extends ChatAvailableReactions {
   /// Parse from a json
   factory ChatAvailableReactionsAll.fromJson(Map<String, dynamic> json) => const ChatAvailableReactionsAll();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -63,15 +68,18 @@ final class ChatAvailableReactionsAll extends ChatAvailableReactions {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   ChatAvailableReactionsAll copyWith() => const ChatAvailableReactionsAll();
 
+  /// TDLib object type
   static const String objectType = 'chatAvailableReactionsAll';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -102,6 +110,7 @@ final class ChatAvailableReactionsSome extends ChatAvailableReactions {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -110,7 +119,10 @@ final class ChatAvailableReactionsSome extends ChatAvailableReactions {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [reactions]: The list of reactions
   @override
   ChatAvailableReactionsSome copyWith({
     List<ReactionType>? reactions,
@@ -118,11 +130,14 @@ final class ChatAvailableReactionsSome extends ChatAvailableReactions {
     reactions: reactions ?? this.reactions,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatAvailableReactionsSome';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

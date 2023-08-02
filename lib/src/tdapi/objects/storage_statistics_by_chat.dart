@@ -46,6 +46,7 @@ final class StorageStatisticsByChat extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -57,7 +58,13 @@ final class StorageStatisticsByChat extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier; 0 if none
+  /// * [size]: Total size of the files in the chat, in bytes
+  /// * [count]: Total number of files in the chat
+  /// * [by_file_type]: Statistics split by file types
   StorageStatisticsByChat copyWith({
     int? chatId,
     int? size,
@@ -70,11 +77,14 @@ final class StorageStatisticsByChat extends TdObject {
     byFileType: byFileType ?? this.byFileType,
   );
 
+  /// TDLib object type
   static const String objectType = 'storageStatisticsByChat';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

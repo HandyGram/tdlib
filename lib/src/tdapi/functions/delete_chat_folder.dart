@@ -29,6 +29,7 @@ final class DeleteChatFolder extends TdFunction {
   /// Identifiers of the chats to leave. The chats must be pinned or always included in the folder
   final List<int> leaveChatIds;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class DeleteChatFolder extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_folder_id]: Chat folder identifier 
+  /// * [leave_chat_ids]: Identifiers of the chats to leave. The chats must be pinned or always included in the folder
   DeleteChatFolder copyWith({
     int? chatFolderId,
     List<int>? leaveChatIds,
@@ -48,11 +53,14 @@ final class DeleteChatFolder extends TdFunction {
     leaveChatIds: leaveChatIds ?? this.leaveChatIds,
   );
 
+  /// TDLib object type
   static const String objectType = 'deleteChatFolder';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

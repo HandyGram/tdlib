@@ -33,17 +33,21 @@ sealed class CanTransferOwnershipResult extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   CanTransferOwnershipResult copyWith();
 
+  /// TDLib object type
   static const String objectType = 'canTransferOwnershipResult';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -77,6 +81,7 @@ final class CanTransferOwnershipResultOk extends CanTransferOwnershipResult {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -84,7 +89,7 @@ final class CanTransferOwnershipResultOk extends CanTransferOwnershipResult {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   CanTransferOwnershipResultOk copyWith({
     dynamic extra,
@@ -94,11 +99,14 @@ final class CanTransferOwnershipResultOk extends CanTransferOwnershipResult {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'canTransferOwnershipResultOk';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -132,6 +140,7 @@ final class CanTransferOwnershipResultPasswordNeeded extends CanTransferOwnershi
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -139,7 +148,7 @@ final class CanTransferOwnershipResultPasswordNeeded extends CanTransferOwnershi
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   CanTransferOwnershipResultPasswordNeeded copyWith({
     dynamic extra,
@@ -149,11 +158,14 @@ final class CanTransferOwnershipResultPasswordNeeded extends CanTransferOwnershi
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'canTransferOwnershipResultPasswordNeeded';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -196,6 +208,7 @@ final class CanTransferOwnershipResultPasswordTooFresh extends CanTransferOwners
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -204,7 +217,10 @@ final class CanTransferOwnershipResultPasswordTooFresh extends CanTransferOwners
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [retry_after]: Time left before the session can be used to transfer ownership of a chat, in seconds
   @override
   CanTransferOwnershipResultPasswordTooFresh copyWith({
     int? retryAfter,
@@ -216,11 +232,14 @@ final class CanTransferOwnershipResultPasswordTooFresh extends CanTransferOwners
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'canTransferOwnershipResultPasswordTooFresh';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -263,6 +282,7 @@ final class CanTransferOwnershipResultSessionTooFresh extends CanTransferOwnersh
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -271,7 +291,10 @@ final class CanTransferOwnershipResultSessionTooFresh extends CanTransferOwnersh
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [retry_after]: Time left before the session can be used to transfer ownership of a chat, in seconds
   @override
   CanTransferOwnershipResultSessionTooFresh copyWith({
     int? retryAfter,
@@ -283,11 +306,14 @@ final class CanTransferOwnershipResultSessionTooFresh extends CanTransferOwnersh
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'canTransferOwnershipResultSessionTooFresh';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

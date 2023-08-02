@@ -109,6 +109,7 @@ final class Invoice extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -129,7 +130,22 @@ final class Invoice extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [currency]: ISO 4217 currency code
+  /// * [price_parts]: A list of objects used to calculate the total price of the product
+  /// * [max_tip_amount]: The maximum allowed amount of tip in the smallest units of the currency
+  /// * [suggested_tip_amounts]: Suggested amounts of tip in the smallest units of the currency
+  /// * [recurring_payment_terms_of_service_url]: An HTTP URL with terms of service for recurring payments. If non-empty, the invoice payment will result in recurring payments and the user must accept the terms of service before allowed to pay
+  /// * [is_test]: True, if the payment is a test payment
+  /// * [need_name]: True, if the user's name is needed for payment
+  /// * [need_phone_number]: True, if the user's phone number is needed for payment
+  /// * [need_email_address]: True, if the user's email address is needed for payment
+  /// * [need_shipping_address]: True, if the user's shipping address is needed for payment
+  /// * [send_phone_number_to_provider]: True, if the user's phone number will be sent to the provider
+  /// * [send_email_address_to_provider]: True, if the user's email address will be sent to the provider
+  /// * [is_flexible]: True, if the total price depends on the shipping method
   Invoice copyWith({
     String? currency,
     List<LabeledPricePart>? priceParts,
@@ -160,11 +176,14 @@ final class Invoice extends TdObject {
     isFlexible: isFlexible ?? this.isFlexible,
   );
 
+  /// TDLib object type
   static const String objectType = 'invoice';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -23,6 +23,7 @@ final class GetEmojiSuggestionsUrl extends TdFunction {
   /// Language code for which the emoji replacements will be suggested
   final String languageCode;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetEmojiSuggestionsUrl extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [language_code]: Language code for which the emoji replacements will be suggested
   GetEmojiSuggestionsUrl copyWith({
     String? languageCode,
   }) => GetEmojiSuggestionsUrl(
     languageCode: languageCode ?? this.languageCode,
   );
 
+  /// TDLib object type
   static const String objectType = 'getEmojiSuggestionsUrl';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

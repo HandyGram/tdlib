@@ -23,6 +23,7 @@ final class SetInactiveSessionTtl extends TdFunction {
   /// New number of days of inactivity before sessions will be automatically terminated; 1-366 days
   final int inactiveSessionTtlDays;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class SetInactiveSessionTtl extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [inactive_session_ttl_days]: New number of days of inactivity before sessions will be automatically terminated; 1-366 days
   SetInactiveSessionTtl copyWith({
     int? inactiveSessionTtlDays,
   }) => SetInactiveSessionTtl(
     inactiveSessionTtlDays: inactiveSessionTtlDays ?? this.inactiveSessionTtlDays,
   );
 
+  /// TDLib object type
   static const String objectType = 'setInactiveSessionTtl';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

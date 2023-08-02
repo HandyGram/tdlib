@@ -29,6 +29,7 @@ final class ReadAllMessageThreadMentions extends TdFunction {
   /// Message thread identifier in which mentions are marked as read
   final int messageThreadId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ReadAllMessageThreadMentions extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [message_thread_id]: Message thread identifier in which mentions are marked as read
   ReadAllMessageThreadMentions copyWith({
     int? chatId,
     int? messageThreadId,
@@ -48,11 +53,14 @@ final class ReadAllMessageThreadMentions extends TdFunction {
     messageThreadId: messageThreadId ?? this.messageThreadId,
   );
 
+  /// TDLib object type
   static const String objectType = 'readAllMessageThreadMentions';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

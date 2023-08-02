@@ -23,6 +23,7 @@ final class GetWebPagePreview extends TdFunction {
   /// Message text with formatting
   final FormattedText text;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetWebPagePreview extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Message text with formatting
   GetWebPagePreview copyWith({
     FormattedText? text,
   }) => GetWebPagePreview(
     text: text ?? this.text,
   );
 
+  /// TDLib object type
   static const String objectType = 'getWebPagePreview';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

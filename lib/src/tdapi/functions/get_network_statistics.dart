@@ -23,6 +23,7 @@ final class GetNetworkStatistics extends TdFunction {
   /// Pass true to get statistics only for the current library launch
   final bool onlyCurrent;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetNetworkStatistics extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [only_current]: Pass true to get statistics only for the current library launch
   GetNetworkStatistics copyWith({
     bool? onlyCurrent,
   }) => GetNetworkStatistics(
     onlyCurrent: onlyCurrent ?? this.onlyCurrent,
   );
 
+  /// TDLib object type
   static const String objectType = 'getNetworkStatistics';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

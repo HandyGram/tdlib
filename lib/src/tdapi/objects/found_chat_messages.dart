@@ -51,6 +51,7 @@ final class FoundChatMessages extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -61,7 +62,12 @@ final class FoundChatMessages extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [total_count]: Approximate total number of messages found; -1 if unknown 
+  /// * [messages]: List of messages 
+  /// * [next_from_message_id]: The offset for the next request. If 0, there are no more results
   FoundChatMessages copyWith({
     int? totalCount,
     List<Message>? messages,
@@ -76,11 +82,14 @@ final class FoundChatMessages extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'foundChatMessages';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

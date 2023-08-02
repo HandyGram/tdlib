@@ -23,6 +23,7 @@ final class CleanFileName extends TdFunction {
   /// File name or path to the file
   final String fileName;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class CleanFileName extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [file_name]: File name or path to the file
   CleanFileName copyWith({
     String? fileName,
   }) => CleanFileName(
     fileName: fileName ?? this.fileName,
   );
 
+  /// TDLib object type
   static const String objectType = 'cleanFileName';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -35,6 +35,7 @@ final class RemoveMessageReaction extends TdFunction {
   /// Type of the reaction to remove
   final ReactionType reactionType;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class RemoveMessageReaction extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat to which the message belongs
+  /// * [message_id]: Identifier of the message
+  /// * [reaction_type]: Type of the reaction to remove
   RemoveMessageReaction copyWith({
     int? chatId,
     int? messageId,
@@ -57,11 +63,14 @@ final class RemoveMessageReaction extends TdFunction {
     reactionType: reactionType ?? this.reactionType,
   );
 
+  /// TDLib object type
   static const String objectType = 'removeMessageReaction';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

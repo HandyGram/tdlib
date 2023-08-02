@@ -59,6 +59,7 @@ final class GetWebAppLinkUrl extends TdFunction {
   /// Pass true if the current user allowed the bot to send them messages
   final bool allowWriteAccess;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -74,7 +75,16 @@ final class GetWebAppLinkUrl extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat in which the link was clicked; pass 0 if none
+  /// * [bot_user_id]: Identifier of the target bot
+  /// * [web_app_short_name]: Short name of the Web App
+  /// * [start_parameter]: Start parameter from internalLinkTypeWebApp
+  /// * [theme]: Preferred Web App theme; pass null to use the default theme
+  /// * [application_name]: Short name of the application; 0-64 English letters, digits, and underscores
+  /// * [allow_write_access]: Pass true if the current user allowed the bot to send them messages
   GetWebAppLinkUrl copyWith({
     int? chatId,
     int? botUserId,
@@ -93,11 +103,14 @@ final class GetWebAppLinkUrl extends TdFunction {
     allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
   );
 
+  /// TDLib object type
   static const String objectType = 'getWebAppLinkUrl';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

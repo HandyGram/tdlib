@@ -30,17 +30,21 @@ sealed class StatisticalGraph extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   StatisticalGraph copyWith();
 
+  /// TDLib object type
   static const String objectType = 'statisticalGraph';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -90,6 +94,7 @@ final class StatisticalGraphData extends StatisticalGraph {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -99,7 +104,11 @@ final class StatisticalGraphData extends StatisticalGraph {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [json_data]: Graph data in JSON format 
+  /// * [zoom_token]: If non-empty, a token which can be used to receive a zoomed in graph
   @override
   StatisticalGraphData copyWith({
     String? jsonData,
@@ -113,11 +122,14 @@ final class StatisticalGraphData extends StatisticalGraph {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'statisticalGraphData';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -160,6 +172,7 @@ final class StatisticalGraphAsync extends StatisticalGraph {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -168,7 +181,10 @@ final class StatisticalGraphAsync extends StatisticalGraph {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [token]: The token to use for data loading
   @override
   StatisticalGraphAsync copyWith({
     String? token,
@@ -180,11 +196,14 @@ final class StatisticalGraphAsync extends StatisticalGraph {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'statisticalGraphAsync';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -227,6 +246,7 @@ final class StatisticalGraphError extends StatisticalGraph {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -235,7 +255,10 @@ final class StatisticalGraphError extends StatisticalGraph {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [error_message]: The error message
   @override
   StatisticalGraphError copyWith({
     String? errorMessage,
@@ -247,11 +270,14 @@ final class StatisticalGraphError extends StatisticalGraph {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'statisticalGraphError';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

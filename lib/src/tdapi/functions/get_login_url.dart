@@ -41,6 +41,7 @@ final class GetLoginUrl extends TdFunction {
   /// Pass true to allow the bot to send messages to the current user
   final bool allowWriteAccess;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -53,7 +54,13 @@ final class GetLoginUrl extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier of the message with the button
+  /// * [message_id]: Message identifier of the message with the button
+  /// * [button_id]: Button identifier
+  /// * [allow_write_access]: Pass true to allow the bot to send messages to the current user
   GetLoginUrl copyWith({
     int? chatId,
     int? messageId,
@@ -66,11 +73,14 @@ final class GetLoginUrl extends TdFunction {
     allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
   );
 
+  /// TDLib object type
   static const String objectType = 'getLoginUrl';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

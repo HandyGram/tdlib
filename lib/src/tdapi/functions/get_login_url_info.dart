@@ -35,6 +35,7 @@ final class GetLoginUrlInfo extends TdFunction {
   /// Button identifier
   final int buttonId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class GetLoginUrlInfo extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier of the message with the button
+  /// * [message_id]: Message identifier of the message with the button
+  /// * [button_id]: Button identifier
   GetLoginUrlInfo copyWith({
     int? chatId,
     int? messageId,
@@ -57,11 +63,14 @@ final class GetLoginUrlInfo extends TdFunction {
     buttonId: buttonId ?? this.buttonId,
   );
 
+  /// TDLib object type
   static const String objectType = 'getLoginUrlInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

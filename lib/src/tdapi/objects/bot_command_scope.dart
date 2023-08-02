@@ -42,17 +42,21 @@ sealed class BotCommandScope extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   BotCommandScope copyWith();
 
+  /// TDLib object type
   static const String objectType = 'botCommandScope';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -71,6 +75,7 @@ final class BotCommandScopeDefault extends BotCommandScope {
   /// Parse from a json
   factory BotCommandScopeDefault.fromJson(Map<String, dynamic> json) => const BotCommandScopeDefault();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -78,15 +83,18 @@ final class BotCommandScopeDefault extends BotCommandScope {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   BotCommandScopeDefault copyWith() => const BotCommandScopeDefault();
 
+  /// TDLib object type
   static const String objectType = 'botCommandScopeDefault';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -105,6 +113,7 @@ final class BotCommandScopeAllPrivateChats extends BotCommandScope {
   /// Parse from a json
   factory BotCommandScopeAllPrivateChats.fromJson(Map<String, dynamic> json) => const BotCommandScopeAllPrivateChats();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -112,15 +121,18 @@ final class BotCommandScopeAllPrivateChats extends BotCommandScope {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   BotCommandScopeAllPrivateChats copyWith() => const BotCommandScopeAllPrivateChats();
 
+  /// TDLib object type
   static const String objectType = 'botCommandScopeAllPrivateChats';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -139,6 +151,7 @@ final class BotCommandScopeAllGroupChats extends BotCommandScope {
   /// Parse from a json
   factory BotCommandScopeAllGroupChats.fromJson(Map<String, dynamic> json) => const BotCommandScopeAllGroupChats();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -146,15 +159,18 @@ final class BotCommandScopeAllGroupChats extends BotCommandScope {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   BotCommandScopeAllGroupChats copyWith() => const BotCommandScopeAllGroupChats();
 
+  /// TDLib object type
   static const String objectType = 'botCommandScopeAllGroupChats';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -173,6 +189,7 @@ final class BotCommandScopeAllChatAdministrators extends BotCommandScope {
   /// Parse from a json
   factory BotCommandScopeAllChatAdministrators.fromJson(Map<String, dynamic> json) => const BotCommandScopeAllChatAdministrators();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -180,15 +197,18 @@ final class BotCommandScopeAllChatAdministrators extends BotCommandScope {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   BotCommandScopeAllChatAdministrators copyWith() => const BotCommandScopeAllChatAdministrators();
 
+  /// TDLib object type
   static const String objectType = 'botCommandScopeAllChatAdministrators';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -219,6 +239,7 @@ final class BotCommandScopeChat extends BotCommandScope {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -227,7 +248,10 @@ final class BotCommandScopeChat extends BotCommandScope {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
   @override
   BotCommandScopeChat copyWith({
     int? chatId,
@@ -235,11 +259,14 @@ final class BotCommandScopeChat extends BotCommandScope {
     chatId: chatId ?? this.chatId,
   );
 
+  /// TDLib object type
   static const String objectType = 'botCommandScopeChat';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -270,6 +297,7 @@ final class BotCommandScopeChatAdministrators extends BotCommandScope {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -278,7 +306,10 @@ final class BotCommandScopeChatAdministrators extends BotCommandScope {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
   @override
   BotCommandScopeChatAdministrators copyWith({
     int? chatId,
@@ -286,11 +317,14 @@ final class BotCommandScopeChatAdministrators extends BotCommandScope {
     chatId: chatId ?? this.chatId,
   );
 
+  /// TDLib object type
   static const String objectType = 'botCommandScopeChatAdministrators';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -328,6 +362,7 @@ final class BotCommandScopeChatMember extends BotCommandScope {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -337,7 +372,11 @@ final class BotCommandScopeChatMember extends BotCommandScope {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [user_id]: User identifier
   @override
   BotCommandScopeChatMember copyWith({
     int? chatId,
@@ -347,11 +386,14 @@ final class BotCommandScopeChatMember extends BotCommandScope {
     userId: userId ?? this.userId,
   );
 
+  /// TDLib object type
   static const String objectType = 'botCommandScopeChatMember';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

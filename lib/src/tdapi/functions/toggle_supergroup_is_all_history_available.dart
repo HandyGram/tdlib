@@ -29,6 +29,7 @@ final class ToggleSupergroupIsAllHistoryAvailable extends TdFunction {
   /// The new value of is_all_history_available
   final bool isAllHistoryAvailable;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ToggleSupergroupIsAllHistoryAvailable extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [supergroup_id]: The identifier of the supergroup 
+  /// * [is_all_history_available]: The new value of is_all_history_available
   ToggleSupergroupIsAllHistoryAvailable copyWith({
     int? supergroupId,
     bool? isAllHistoryAvailable,
@@ -48,11 +53,14 @@ final class ToggleSupergroupIsAllHistoryAvailable extends TdFunction {
     isAllHistoryAvailable: isAllHistoryAvailable ?? this.isAllHistoryAvailable,
   );
 
+  /// TDLib object type
   static const String objectType = 'toggleSupergroupIsAllHistoryAvailable';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

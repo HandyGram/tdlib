@@ -170,6 +170,7 @@ final class User extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -197,7 +198,29 @@ final class User extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: User identifier
+  /// * [first_name]: First name of the user
+  /// * [last_name]: Last name of the user
+  /// * [usernames]: Usernames of the user; may be null
+  /// * [phone_number]: Phone number of the user
+  /// * [status]: Current online status of the user
+  /// * [profile_photo]: Profile photo of the user; may be null
+  /// * [emoji_status]: Emoji status to be shown instead of the default Telegram Premium badge; may be null. For Telegram Premium users only
+  /// * [is_contact]: The user is a contact of the current user
+  /// * [is_mutual_contact]: The user is a contact of the current user and the current user is a contact of the user
+  /// * [is_verified]: True, if the user is verified
+  /// * [is_premium]: True, if the user is a Telegram Premium user
+  /// * [is_support]: True, if the user is Telegram support account
+  /// * [restriction_reason]: If non-empty, it contains a human-readable description of the reason why access to this user must be restricted
+  /// * [is_scam]: True, if many users reported this user as a scam
+  /// * [is_fake]: True, if many users reported this user as a fake account
+  /// * [have_access]: If false, the user is inaccessible, and the only information known about the user is inside this class. Identifier of the user can't be passed to any method
+  /// * [type]: Type of the user
+  /// * [language_code]: IETF language tag of the user's language; only available to bots
+  /// * [added_to_attachment_menu]: True, if the user added the current bot to attachment menu; only available to bots
   User copyWith({
     int? id,
     String? firstName,
@@ -246,11 +269,14 @@ final class User extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'user';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

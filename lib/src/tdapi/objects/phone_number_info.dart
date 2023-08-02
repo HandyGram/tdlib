@@ -58,6 +58,7 @@ final class PhoneNumberInfo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -69,7 +70,13 @@ final class PhoneNumberInfo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [country]: Information about the country to which the phone number belongs; may be null
+  /// * [country_calling_code]: The part of the phone number denoting country calling code or its part
+  /// * [formatted_phone_number]: The phone number without country calling code formatted accordingly to local rules. Expected digits are returned as '-', but even more digits might be entered by the user
+  /// * [is_anonymous]: True, if the phone number was bought on Fragment and isn't tied to a SIM card
   PhoneNumberInfo copyWith({
     CountryInfo? country,
     String? countryCallingCode,
@@ -86,11 +93,14 @@ final class PhoneNumberInfo extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'phoneNumberInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

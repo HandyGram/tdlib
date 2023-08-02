@@ -29,6 +29,7 @@ final class SetStickerPositionInSet extends TdFunction {
   /// New position of the sticker in the set, 0-based
   final int position;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetStickerPositionInSet extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [sticker]: Sticker
+  /// * [position]: New position of the sticker in the set, 0-based
   SetStickerPositionInSet copyWith({
     InputFile? sticker,
     int? position,
@@ -48,11 +53,14 @@ final class SetStickerPositionInSet extends TdFunction {
     position: position ?? this.position,
   );
 
+  /// TDLib object type
   static const String objectType = 'setStickerPositionInSet';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

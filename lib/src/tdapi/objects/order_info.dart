@@ -58,6 +58,7 @@ final class OrderInfo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -69,7 +70,13 @@ final class OrderInfo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [name]: Name of the user
+  /// * [phone_number]: Phone number of the user
+  /// * [email_address]: Email address of the user
+  /// * [shipping_address]: Shipping address for this order; may be null
   OrderInfo copyWith({
     String? name,
     String? phoneNumber,
@@ -86,11 +93,14 @@ final class OrderInfo extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'orderInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

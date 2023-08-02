@@ -39,6 +39,7 @@ final class VideoChat extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class VideoChat extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [group_call_id]: Group call identifier of an active video chat; 0 if none. Full information about the video chat can be received through the method getGroupCall
+  /// * [has_participants]: True, if the video chat has participants
+  /// * [default_participant_id]: Default group call participant identifier to join the video chat; may be null
   VideoChat copyWith({
     int? groupCallId,
     bool? hasParticipants,
@@ -60,11 +66,14 @@ final class VideoChat extends TdObject {
     defaultParticipantId: defaultParticipantId ?? this.defaultParticipantId,
   );
 
+  /// TDLib object type
   static const String objectType = 'videoChat';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

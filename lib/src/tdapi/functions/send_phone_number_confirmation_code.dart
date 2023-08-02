@@ -35,6 +35,7 @@ final class SendPhoneNumberConfirmationCode extends TdFunction {
   /// Settings for the authentication of the user's phone number; pass null to use default settings
   final PhoneNumberAuthenticationSettings? settings;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class SendPhoneNumberConfirmationCode extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [hash]: Hash value from the link
+  /// * [phone_number]: Phone number value from the link
+  /// * [settings]: Settings for the authentication of the user's phone number; pass null to use default settings
   SendPhoneNumberConfirmationCode copyWith({
     String? hash,
     String? phoneNumber,
@@ -57,11 +63,14 @@ final class SendPhoneNumberConfirmationCode extends TdFunction {
     settings: settings ?? this.settings,
   );
 
+  /// TDLib object type
   static const String objectType = 'sendPhoneNumberConfirmationCode';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -39,6 +39,7 @@ final class Photo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class Photo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [has_stickers]: True, if stickers were added to the photo. The list of corresponding sticker sets can be received using getAttachedStickerSets
+  /// * [minithumbnail]: Photo minithumbnail; may be null
+  /// * [sizes]: Available variants of the photo, in different sizes
   Photo copyWith({
     bool? hasStickers,
     Minithumbnail? minithumbnail,
@@ -60,11 +66,14 @@ final class Photo extends TdObject {
     sizes: sizes ?? this.sizes,
   );
 
+  /// TDLib object type
   static const String objectType = 'photo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

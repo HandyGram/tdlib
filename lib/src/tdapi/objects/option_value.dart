@@ -33,17 +33,21 @@ sealed class OptionValue extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   OptionValue copyWith();
 
+  /// TDLib object type
   static const String objectType = 'optionValue';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -86,6 +90,7 @@ final class OptionValueBoolean extends OptionValue {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -94,7 +99,10 @@ final class OptionValueBoolean extends OptionValue {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [value]: The value of the option
   @override
   OptionValueBoolean copyWith({
     bool? value,
@@ -106,11 +114,14 @@ final class OptionValueBoolean extends OptionValue {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'optionValueBoolean';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -144,6 +155,7 @@ final class OptionValueEmpty extends OptionValue {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -151,7 +163,7 @@ final class OptionValueEmpty extends OptionValue {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   OptionValueEmpty copyWith({
     dynamic extra,
@@ -161,11 +173,14 @@ final class OptionValueEmpty extends OptionValue {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'optionValueEmpty';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -208,6 +223,7 @@ final class OptionValueInteger extends OptionValue {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -216,7 +232,10 @@ final class OptionValueInteger extends OptionValue {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [value]: The value of the option
   @override
   OptionValueInteger copyWith({
     int? value,
@@ -228,11 +247,14 @@ final class OptionValueInteger extends OptionValue {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'optionValueInteger';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -275,6 +297,7 @@ final class OptionValueString extends OptionValue {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -283,7 +306,10 @@ final class OptionValueString extends OptionValue {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [value]: The value of the option
   @override
   OptionValueString copyWith({
     String? value,
@@ -295,11 +321,14 @@ final class OptionValueString extends OptionValue {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'optionValueString';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

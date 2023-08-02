@@ -121,6 +121,7 @@ final class PaymentForm extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -141,7 +142,22 @@ final class PaymentForm extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: The payment form identifier
+  /// * [invoice]: Full information about the invoice
+  /// * [seller_bot_user_id]: User identifier of the seller bot
+  /// * [payment_provider_user_id]: User identifier of the payment provider bot
+  /// * [payment_provider]: Information about the payment provider
+  /// * [additional_payment_options]: The list of additional payment options
+  /// * [saved_order_info]: Saved server-side order information; may be null
+  /// * [saved_credentials]: The list of saved payment credentials
+  /// * [can_save_credentials]: True, if the user can choose to save credentials
+  /// * [need_password]: True, if the user will be able to save credentials, if sets up a 2-step verification password
+  /// * [product_title]: Product title
+  /// * [product_description]: Product description
+  /// * [product_photo]: Product photo; may be null
   PaymentForm copyWith({
     int? id,
     Invoice? invoice,
@@ -176,11 +192,14 @@ final class PaymentForm extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'paymentForm';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -41,6 +41,7 @@ final class SetChatBackground extends TdFunction {
   /// Dimming of the background in dark themes, as a percentage; 0-100
   final int darkThemeDimming;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -53,7 +54,13 @@ final class SetChatBackground extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [background]: The input background to use; pass null to create a new filled background or to remove the current background
+  /// * [type]: Background type; pass null to remove the current background
+  /// * [dark_theme_dimming]: Dimming of the background in dark themes, as a percentage; 0-100
   SetChatBackground copyWith({
     int? chatId,
     InputBackground? background,
@@ -66,11 +73,14 @@ final class SetChatBackground extends TdFunction {
     darkThemeDimming: darkThemeDimming ?? this.darkThemeDimming,
   );
 
+  /// TDLib object type
   static const String objectType = 'setChatBackground';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -29,6 +29,7 @@ final class SetOption extends TdFunction {
   /// The new value of the option; pass null to reset option value to a default value
   final OptionValue? value;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetOption extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [name]: The name of the option
+  /// * [value]: The new value of the option; pass null to reset option value to a default value
   SetOption copyWith({
     String? name,
     OptionValue? value,
@@ -48,11 +53,14 @@ final class SetOption extends TdFunction {
     value: value ?? this.value,
   );
 
+  /// TDLib object type
   static const String objectType = 'setOption';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

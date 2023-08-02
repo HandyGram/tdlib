@@ -39,6 +39,7 @@ final class MessagePosition extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -49,7 +50,12 @@ final class MessagePosition extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [position]: 0-based message position in the full list of suitable messages 
+  /// * [message_id]: Message identifier 
+  /// * [date]: Point in time (Unix timestamp) when the message was sent
   MessagePosition copyWith({
     int? position,
     int? messageId,
@@ -60,11 +66,14 @@ final class MessagePosition extends TdObject {
     date: date ?? this.date,
   );
 
+  /// TDLib object type
   static const String objectType = 'messagePosition';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

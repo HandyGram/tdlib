@@ -23,6 +23,7 @@ final class CheckStickerSetName extends TdFunction {
   /// Name to be checked
   final String name;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class CheckStickerSetName extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [name]: Name to be checked
   CheckStickerSetName copyWith({
     String? name,
   }) => CheckStickerSetName(
     name: name ?? this.name,
   );
 
+  /// TDLib object type
   static const String objectType = 'checkStickerSetName';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

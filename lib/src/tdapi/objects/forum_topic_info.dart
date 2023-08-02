@@ -93,6 +93,7 @@ final class ForumTopicInfo extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -109,7 +110,18 @@ final class ForumTopicInfo extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [message_thread_id]: Message thread identifier of the topic
+  /// * [name]: Name of the topic
+  /// * [icon]: Icon of the topic
+  /// * [creation_date]: Date the topic was created
+  /// * [creator_id]: Identifier of the creator of the topic
+  /// * [is_general]: True, if the topic is the General topic list
+  /// * [is_outgoing]: True, if the topic was created by the current user
+  /// * [is_closed]: True, if the topic is closed
+  /// * [is_hidden]: True, if the topic is hidden above the topic list and closed; for General topic only
   ForumTopicInfo copyWith({
     int? messageThreadId,
     String? name,
@@ -136,11 +148,14 @@ final class ForumTopicInfo extends TdObject {
     clientId: clientId ?? this.clientId,
   );
 
+  /// TDLib object type
   static const String objectType = 'forumTopicInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

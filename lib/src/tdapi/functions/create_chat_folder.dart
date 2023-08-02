@@ -23,6 +23,7 @@ final class CreateChatFolder extends TdFunction {
   /// The new chat folder
   final ChatFolder folder;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class CreateChatFolder extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [folder]: The new chat folder
   CreateChatFolder copyWith({
     ChatFolder? folder,
   }) => CreateChatFolder(
     folder: folder ?? this.folder,
   );
 
+  /// TDLib object type
   static const String objectType = 'createChatFolder';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

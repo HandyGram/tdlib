@@ -35,6 +35,7 @@ final class ToggleChatIsPinned extends TdFunction {
   /// Pass true to pin the chat; pass false to unpin it
   final bool isPinned;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -46,7 +47,12 @@ final class ToggleChatIsPinned extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_list]: Chat list in which to change the pinned state of the chat
+  /// * [chat_id]: Chat identifier
+  /// * [is_pinned]: Pass true to pin the chat; pass false to unpin it
   ToggleChatIsPinned copyWith({
     ChatList? chatList,
     int? chatId,
@@ -57,11 +63,14 @@ final class ToggleChatIsPinned extends TdFunction {
     isPinned: isPinned ?? this.isPinned,
   );
 
+  /// TDLib object type
   static const String objectType = 'toggleChatIsPinned';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

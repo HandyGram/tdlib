@@ -23,6 +23,7 @@ final class GetUserPrivacySettingRules extends TdFunction {
   /// The privacy setting
   final UserPrivacySetting setting;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class GetUserPrivacySettingRules extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [setting]: The privacy setting
   GetUserPrivacySettingRules copyWith({
     UserPrivacySetting? setting,
   }) => GetUserPrivacySettingRules(
     setting: setting ?? this.setting,
   );
 
+  /// TDLib object type
   static const String objectType = 'getUserPrivacySettingRules';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

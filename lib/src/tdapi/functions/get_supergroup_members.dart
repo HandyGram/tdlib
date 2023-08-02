@@ -41,6 +41,7 @@ final class GetSupergroupMembers extends TdFunction {
   /// The maximum number of users be returned; up to 200
   final int limit;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -53,7 +54,13 @@ final class GetSupergroupMembers extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [supergroup_id]: Identifier of the supergroup or channel
+  /// * [filter]: The type of users to return; pass null to use supergroupMembersFilterRecent
+  /// * [offset]: Number of users to skip
+  /// * [limit]: The maximum number of users be returned; up to 200
   GetSupergroupMembers copyWith({
     int? supergroupId,
     SupergroupMembersFilter? filter,
@@ -66,11 +73,14 @@ final class GetSupergroupMembers extends TdFunction {
     limit: limit ?? this.limit,
   );
 
+  /// TDLib object type
   static const String objectType = 'getSupergroupMembers';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

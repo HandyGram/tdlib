@@ -29,6 +29,7 @@ final class ReportSupergroupSpam extends TdFunction {
   /// Identifiers of messages to report
   final List<int> messageIds;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class ReportSupergroupSpam extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [supergroup_id]: Supergroup identifier 
+  /// * [message_ids]: Identifiers of messages to report
   ReportSupergroupSpam copyWith({
     int? supergroupId,
     List<int>? messageIds,
@@ -48,11 +53,14 @@ final class ReportSupergroupSpam extends TdFunction {
     messageIds: messageIds ?? this.messageIds,
   );
 
+  /// TDLib object type
   static const String objectType = 'reportSupergroupSpam';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

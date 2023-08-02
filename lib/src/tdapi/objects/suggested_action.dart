@@ -45,17 +45,21 @@ sealed class SuggestedAction extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   SuggestedAction copyWith();
 
+  /// TDLib object type
   static const String objectType = 'suggestedAction';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -74,6 +78,7 @@ final class SuggestedActionEnableArchiveAndMuteNewChats extends SuggestedAction 
   /// Parse from a json
   factory SuggestedActionEnableArchiveAndMuteNewChats.fromJson(Map<String, dynamic> json) => const SuggestedActionEnableArchiveAndMuteNewChats();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -81,15 +86,18 @@ final class SuggestedActionEnableArchiveAndMuteNewChats extends SuggestedAction 
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SuggestedActionEnableArchiveAndMuteNewChats copyWith() => const SuggestedActionEnableArchiveAndMuteNewChats();
 
+  /// TDLib object type
   static const String objectType = 'suggestedActionEnableArchiveAndMuteNewChats';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -108,6 +116,7 @@ final class SuggestedActionCheckPassword extends SuggestedAction {
   /// Parse from a json
   factory SuggestedActionCheckPassword.fromJson(Map<String, dynamic> json) => const SuggestedActionCheckPassword();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -115,15 +124,18 @@ final class SuggestedActionCheckPassword extends SuggestedAction {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SuggestedActionCheckPassword copyWith() => const SuggestedActionCheckPassword();
 
+  /// TDLib object type
   static const String objectType = 'suggestedActionCheckPassword';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -142,6 +154,7 @@ final class SuggestedActionCheckPhoneNumber extends SuggestedAction {
   /// Parse from a json
   factory SuggestedActionCheckPhoneNumber.fromJson(Map<String, dynamic> json) => const SuggestedActionCheckPhoneNumber();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -149,15 +162,18 @@ final class SuggestedActionCheckPhoneNumber extends SuggestedAction {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SuggestedActionCheckPhoneNumber copyWith() => const SuggestedActionCheckPhoneNumber();
 
+  /// TDLib object type
   static const String objectType = 'suggestedActionCheckPhoneNumber';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -176,6 +192,7 @@ final class SuggestedActionViewChecksHint extends SuggestedAction {
   /// Parse from a json
   factory SuggestedActionViewChecksHint.fromJson(Map<String, dynamic> json) => const SuggestedActionViewChecksHint();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -183,15 +200,18 @@ final class SuggestedActionViewChecksHint extends SuggestedAction {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SuggestedActionViewChecksHint copyWith() => const SuggestedActionViewChecksHint();
 
+  /// TDLib object type
   static const String objectType = 'suggestedActionViewChecksHint';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -222,6 +242,7 @@ final class SuggestedActionConvertToBroadcastGroup extends SuggestedAction {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -230,7 +251,10 @@ final class SuggestedActionConvertToBroadcastGroup extends SuggestedAction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [supergroup_id]: Supergroup identifier
   @override
   SuggestedActionConvertToBroadcastGroup copyWith({
     int? supergroupId,
@@ -238,11 +262,14 @@ final class SuggestedActionConvertToBroadcastGroup extends SuggestedAction {
     supergroupId: supergroupId ?? this.supergroupId,
   );
 
+  /// TDLib object type
   static const String objectType = 'suggestedActionConvertToBroadcastGroup';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -273,6 +300,7 @@ final class SuggestedActionSetPassword extends SuggestedAction {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -281,7 +309,10 @@ final class SuggestedActionSetPassword extends SuggestedAction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [authorization_delay]: The number of days to pass between consecutive authorizations if the user declines to set password; if 0, then the user is advised to set the password for security reasons
   @override
   SuggestedActionSetPassword copyWith({
     int? authorizationDelay,
@@ -289,11 +320,14 @@ final class SuggestedActionSetPassword extends SuggestedAction {
     authorizationDelay: authorizationDelay ?? this.authorizationDelay,
   );
 
+  /// TDLib object type
   static const String objectType = 'suggestedActionSetPassword';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -312,6 +346,7 @@ final class SuggestedActionUpgradePremium extends SuggestedAction {
   /// Parse from a json
   factory SuggestedActionUpgradePremium.fromJson(Map<String, dynamic> json) => const SuggestedActionUpgradePremium();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -319,15 +354,18 @@ final class SuggestedActionUpgradePremium extends SuggestedAction {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SuggestedActionUpgradePremium copyWith() => const SuggestedActionUpgradePremium();
 
+  /// TDLib object type
   static const String objectType = 'suggestedActionUpgradePremium';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -346,6 +384,7 @@ final class SuggestedActionSubscribeToAnnualPremium extends SuggestedAction {
   /// Parse from a json
   factory SuggestedActionSubscribeToAnnualPremium.fromJson(Map<String, dynamic> json) => const SuggestedActionSubscribeToAnnualPremium();
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -353,15 +392,18 @@ final class SuggestedActionSubscribeToAnnualPremium extends SuggestedAction {
 		};
 	}
 
-  
+  /// Copy instance with no modifications.
   @override
   SuggestedActionSubscribeToAnnualPremium copyWith() => const SuggestedActionSubscribeToAnnualPremium();
 
+  /// TDLib object type
   static const String objectType = 'suggestedActionSubscribeToAnnualPremium';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

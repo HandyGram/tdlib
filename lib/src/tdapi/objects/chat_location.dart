@@ -32,6 +32,7 @@ final class ChatLocation extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -41,7 +42,11 @@ final class ChatLocation extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [location]: The location 
+  /// * [address]: Location address; 1-64 characters, as defined by the chat owner
   ChatLocation copyWith({
     Location? location,
     String? address,
@@ -50,11 +55,14 @@ final class ChatLocation extends TdObject {
     address: address ?? this.address,
   );
 
+  /// TDLib object type
   static const String objectType = 'chatLocation';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

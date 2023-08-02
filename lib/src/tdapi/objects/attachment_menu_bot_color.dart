@@ -32,6 +32,7 @@ final class AttachmentMenuBotColor extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -41,7 +42,11 @@ final class AttachmentMenuBotColor extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [light_color]: Color in the RGB24 format for light themes 
+  /// * [dark_color]: Color in the RGB24 format for dark themes
   AttachmentMenuBotColor copyWith({
     int? lightColor,
     int? darkColor,
@@ -50,11 +55,14 @@ final class AttachmentMenuBotColor extends TdObject {
     darkColor: darkColor ?? this.darkColor,
   );
 
+  /// TDLib object type
   static const String objectType = 'attachmentMenuBotColor';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

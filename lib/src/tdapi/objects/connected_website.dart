@@ -81,6 +81,7 @@ final class ConnectedWebsite extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -97,7 +98,18 @@ final class ConnectedWebsite extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [id]: Website identifier
+  /// * [domain_name]: The domain name of the website
+  /// * [bot_user_id]: User identifier of a bot linked with the website
+  /// * [browser]: The version of a browser used to log in
+  /// * [platform]: Operating system the browser is running on
+  /// * [log_in_date]: Point in time (Unix timestamp) when the user was logged in
+  /// * [last_active_date]: Point in time (Unix timestamp) when obtained authorization was last used
+  /// * [ip]: IP address from which the user was logged in, in human-readable format
+  /// * [location]: Human-readable description of a country and a region from which the user was logged in, based on the IP address
   ConnectedWebsite copyWith({
     int? id,
     String? domainName,
@@ -120,11 +132,14 @@ final class ConnectedWebsite extends TdObject {
     location: location ?? this.location,
   );
 
+  /// TDLib object type
   static const String objectType = 'connectedWebsite';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

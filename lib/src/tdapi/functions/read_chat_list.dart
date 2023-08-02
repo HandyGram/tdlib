@@ -23,6 +23,7 @@ final class ReadChatList extends TdFunction {
   /// Chat list in which to mark all chats as read
   final ChatList chatList;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class ReadChatList extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_list]: Chat list in which to mark all chats as read
   ReadChatList copyWith({
     ChatList? chatList,
   }) => ReadChatList(
     chatList: chatList ?? this.chatList,
   );
 
+  /// TDLib object type
   static const String objectType = 'readChatList';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

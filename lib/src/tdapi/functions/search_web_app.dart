@@ -29,6 +29,7 @@ final class SearchWebApp extends TdFunction {
   /// Short name of the Web App
   final String webAppShortName;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SearchWebApp extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [bot_user_id]: Identifier of the target bot
+  /// * [web_app_short_name]: Short name of the Web App
   SearchWebApp copyWith({
     int? botUserId,
     String? webAppShortName,
@@ -48,11 +53,14 @@ final class SearchWebApp extends TdFunction {
     webAppShortName: webAppShortName ?? this.webAppShortName,
   );
 
+  /// TDLib object type
   static const String objectType = 'searchWebApp';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

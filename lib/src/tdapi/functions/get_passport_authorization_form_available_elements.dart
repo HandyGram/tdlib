@@ -29,6 +29,7 @@ final class GetPassportAuthorizationFormAvailableElements extends TdFunction {
   /// The 2-step verification password of the current user
   final String password;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class GetPassportAuthorizationFormAvailableElements extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [authorization_form_id]: Authorization form identifier
+  /// * [password]: The 2-step verification password of the current user
   GetPassportAuthorizationFormAvailableElements copyWith({
     int? authorizationFormId,
     String? password,
@@ -48,11 +53,14 @@ final class GetPassportAuthorizationFormAvailableElements extends TdFunction {
     password: password ?? this.password,
   );
 
+  /// TDLib object type
   static const String objectType = 'getPassportAuthorizationFormAvailableElements';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

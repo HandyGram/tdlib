@@ -29,6 +29,7 @@ final class SetAutoDownloadSettings extends TdFunction {
   /// Type of the network for which the new settings are relevant
   final NetworkType type;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetAutoDownloadSettings extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [settings]: New user auto-download settings 
+  /// * [type]: Type of the network for which the new settings are relevant
   SetAutoDownloadSettings copyWith({
     AutoDownloadSettings? settings,
     NetworkType? type,
@@ -48,11 +53,14 @@ final class SetAutoDownloadSettings extends TdFunction {
     type: type ?? this.type,
   );
 
+  /// TDLib object type
   static const String objectType = 'setAutoDownloadSettings';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

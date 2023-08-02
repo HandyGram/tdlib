@@ -53,6 +53,7 @@ final class Document extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -65,7 +66,14 @@ final class Document extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [file_name]: Original name of the file; as defined by the sender
+  /// * [mime_type]: MIME type of the file; as defined by the sender
+  /// * [minithumbnail]: Document minithumbnail; may be null
+  /// * [thumbnail]: Document thumbnail in JPEG or PNG format (PNG will be used only for background patterns); as defined by the sender; may be null
+  /// * [document]: File containing the document
   Document copyWith({
     String? fileName,
     String? mimeType,
@@ -80,11 +88,14 @@ final class Document extends TdObject {
     document: document ?? this.document,
   );
 
+  /// TDLib object type
   static const String objectType = 'document';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

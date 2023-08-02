@@ -23,6 +23,7 @@ final class SetDefaultGroupAdministratorRights extends TdFunction {
   /// Default administrator rights for adding the bot to basic group and supergroup chats; may be null
   final ChatAdministratorRights? defaultGroupAdministratorRights;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -32,18 +33,24 @@ final class SetDefaultGroupAdministratorRights extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [default_group_administrator_rights]: Default administrator rights for adding the bot to basic group and supergroup chats; may be null
   SetDefaultGroupAdministratorRights copyWith({
     ChatAdministratorRights? defaultGroupAdministratorRights,
   }) => SetDefaultGroupAdministratorRights(
     defaultGroupAdministratorRights: defaultGroupAdministratorRights ?? this.defaultGroupAdministratorRights,
   );
 
+  /// TDLib object type
   static const String objectType = 'setDefaultGroupAdministratorRights';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -29,6 +29,7 @@ final class SetUserSupportInfo extends TdFunction {
   /// New information message
   final FormattedText message;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class SetUserSupportInfo extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: User identifier 
+  /// * [message]: New information message
   SetUserSupportInfo copyWith({
     int? userId,
     FormattedText? message,
@@ -48,11 +53,14 @@ final class SetUserSupportInfo extends TdFunction {
     message: message ?? this.message,
   );
 
+  /// TDLib object type
   static const String objectType = 'setUserSupportInfo';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

@@ -72,17 +72,21 @@ sealed class RichText extends TdObject {
     }
   }
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
 
-  
+  /// Copy instance with no modifications.
   RichText copyWith();
 
+  /// TDLib object type
   static const String objectType = 'richText';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -113,6 +117,7 @@ final class RichTextPlain extends RichText {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -121,7 +126,10 @@ final class RichTextPlain extends RichText {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Text
   @override
   RichTextPlain copyWith({
     String? text,
@@ -129,11 +137,14 @@ final class RichTextPlain extends RichText {
     text: text ?? this.text,
   );
 
+  /// TDLib object type
   static const String objectType = 'richTextPlain';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -164,6 +175,7 @@ final class RichTextBold extends RichText {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -172,7 +184,10 @@ final class RichTextBold extends RichText {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Text
   @override
   RichTextBold copyWith({
     RichText? text,
@@ -180,11 +195,14 @@ final class RichTextBold extends RichText {
     text: text ?? this.text,
   );
 
+  /// TDLib object type
   static const String objectType = 'richTextBold';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -215,6 +233,7 @@ final class RichTextItalic extends RichText {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -223,7 +242,10 @@ final class RichTextItalic extends RichText {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Text
   @override
   RichTextItalic copyWith({
     RichText? text,
@@ -231,11 +253,14 @@ final class RichTextItalic extends RichText {
     text: text ?? this.text,
   );
 
+  /// TDLib object type
   static const String objectType = 'richTextItalic';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -266,6 +291,7 @@ final class RichTextUnderline extends RichText {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -274,7 +300,10 @@ final class RichTextUnderline extends RichText {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Text
   @override
   RichTextUnderline copyWith({
     RichText? text,
@@ -282,11 +311,14 @@ final class RichTextUnderline extends RichText {
     text: text ?? this.text,
   );
 
+  /// TDLib object type
   static const String objectType = 'richTextUnderline';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -317,6 +349,7 @@ final class RichTextStrikethrough extends RichText {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -325,7 +358,10 @@ final class RichTextStrikethrough extends RichText {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Text
   @override
   RichTextStrikethrough copyWith({
     RichText? text,
@@ -333,11 +369,14 @@ final class RichTextStrikethrough extends RichText {
     text: text ?? this.text,
   );
 
+  /// TDLib object type
   static const String objectType = 'richTextStrikethrough';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -368,6 +407,7 @@ final class RichTextFixed extends RichText {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -376,7 +416,10 @@ final class RichTextFixed extends RichText {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Text
   @override
   RichTextFixed copyWith({
     RichText? text,
@@ -384,11 +427,14 @@ final class RichTextFixed extends RichText {
     text: text ?? this.text,
   );
 
+  /// TDLib object type
   static const String objectType = 'richTextFixed';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -433,6 +479,7 @@ final class RichTextUrl extends RichText {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -443,7 +490,12 @@ final class RichTextUrl extends RichText {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Text 
+  /// * [url]: URL 
+  /// * [is_cached]: True, if the URL has cached instant view server-side
   @override
   RichTextUrl copyWith({
     RichText? text,
@@ -455,11 +507,14 @@ final class RichTextUrl extends RichText {
     isCached: isCached ?? this.isCached,
   );
 
+  /// TDLib object type
   static const String objectType = 'richTextUrl';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -497,6 +552,7 @@ final class RichTextEmailAddress extends RichText {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -506,7 +562,11 @@ final class RichTextEmailAddress extends RichText {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Text 
+  /// * [email_address]: Email address
   @override
   RichTextEmailAddress copyWith({
     RichText? text,
@@ -516,11 +576,14 @@ final class RichTextEmailAddress extends RichText {
     emailAddress: emailAddress ?? this.emailAddress,
   );
 
+  /// TDLib object type
   static const String objectType = 'richTextEmailAddress';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -551,6 +614,7 @@ final class RichTextSubscript extends RichText {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -559,7 +623,10 @@ final class RichTextSubscript extends RichText {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Text
   @override
   RichTextSubscript copyWith({
     RichText? text,
@@ -567,11 +634,14 @@ final class RichTextSubscript extends RichText {
     text: text ?? this.text,
   );
 
+  /// TDLib object type
   static const String objectType = 'richTextSubscript';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -602,6 +672,7 @@ final class RichTextSuperscript extends RichText {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -610,7 +681,10 @@ final class RichTextSuperscript extends RichText {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Text
   @override
   RichTextSuperscript copyWith({
     RichText? text,
@@ -618,11 +692,14 @@ final class RichTextSuperscript extends RichText {
     text: text ?? this.text,
   );
 
+  /// TDLib object type
   static const String objectType = 'richTextSuperscript';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -653,6 +730,7 @@ final class RichTextMarked extends RichText {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -661,7 +739,10 @@ final class RichTextMarked extends RichText {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Text
   @override
   RichTextMarked copyWith({
     RichText? text,
@@ -669,11 +750,14 @@ final class RichTextMarked extends RichText {
     text: text ?? this.text,
   );
 
+  /// TDLib object type
   static const String objectType = 'richTextMarked';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -711,6 +795,7 @@ final class RichTextPhoneNumber extends RichText {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -720,7 +805,11 @@ final class RichTextPhoneNumber extends RichText {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: Text 
+  /// * [phone_number]: Phone number
   @override
   RichTextPhoneNumber copyWith({
     RichText? text,
@@ -730,11 +819,14 @@ final class RichTextPhoneNumber extends RichText {
     phoneNumber: phoneNumber ?? this.phoneNumber,
   );
 
+  /// TDLib object type
   static const String objectType = 'richTextPhoneNumber';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -779,6 +871,7 @@ final class RichTextIcon extends RichText {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -789,7 +882,12 @@ final class RichTextIcon extends RichText {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [document]: The image represented as a document. The image can be in GIF, JPEG or PNG format
+  /// * [width]: Width of a bounding box in which the image must be shown; 0 if unknown
+  /// * [height]: Height of a bounding box in which the image must be shown; 0 if unknown
   @override
   RichTextIcon copyWith({
     Document? document,
@@ -801,11 +899,14 @@ final class RichTextIcon extends RichText {
     height: height ?? this.height,
   );
 
+  /// TDLib object type
   static const String objectType = 'richTextIcon';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -850,6 +951,7 @@ final class RichTextReference extends RichText {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -860,7 +962,12 @@ final class RichTextReference extends RichText {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: The text 
+  /// * [anchor_name]: The name of a richTextAnchor object, which is the first element of the target richTexts object 
+  /// * [url]: An HTTP URL, opening the reference
   @override
   RichTextReference copyWith({
     RichText? text,
@@ -872,11 +979,14 @@ final class RichTextReference extends RichText {
     url: url ?? this.url,
   );
 
+  /// TDLib object type
   static const String objectType = 'richTextReference';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -907,6 +1017,7 @@ final class RichTextAnchor extends RichText {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -915,7 +1026,10 @@ final class RichTextAnchor extends RichText {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [name]: Anchor name
   @override
   RichTextAnchor copyWith({
     String? name,
@@ -923,11 +1037,14 @@ final class RichTextAnchor extends RichText {
     name: name ?? this.name,
   );
 
+  /// TDLib object type
   static const String objectType = 'richTextAnchor';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -972,6 +1089,7 @@ final class RichTextAnchorLink extends RichText {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -982,7 +1100,12 @@ final class RichTextAnchorLink extends RichText {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [text]: The link text 
+  /// * [anchor_name]: The anchor name. If the name is empty, the link must bring back to top 
+  /// * [url]: An HTTP URL, opening the anchor
   @override
   RichTextAnchorLink copyWith({
     RichText? text,
@@ -994,11 +1117,14 @@ final class RichTextAnchorLink extends RichText {
     url: url ?? this.url,
   );
 
+  /// TDLib object type
   static const String objectType = 'richTextAnchorLink';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
@@ -1029,6 +1155,7 @@ final class RichTexts extends RichText {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -1037,7 +1164,10 @@ final class RichTexts extends RichText {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [texts]: Texts
   @override
   RichTexts copyWith({
     List<RichText>? texts,
@@ -1045,11 +1175,14 @@ final class RichTexts extends RichText {
     texts: texts ?? this.texts,
   );
 
+  /// TDLib object type
   static const String objectType = 'richTexts';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

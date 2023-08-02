@@ -53,6 +53,7 @@ final class GetChatInviteLinks extends TdFunction {
   /// The maximum number of invite links to return; up to 100
   final int limit;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -67,7 +68,15 @@ final class GetChatInviteLinks extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [creator_user_id]: User identifier of a chat administrator. Must be an identifier of the current user for non-owner
+  /// * [is_revoked]: Pass true if revoked links needs to be returned instead of active or expired
+  /// * [offset_date]: Creation date of an invite link starting after which to return invite links; use 0 to get results from the beginning
+  /// * [offset_invite_link]: Invite link starting after which to return invite links; use empty string to get results from the beginning
+  /// * [limit]: The maximum number of invite links to return; up to 100
   GetChatInviteLinks copyWith({
     int? chatId,
     int? creatorUserId,
@@ -84,11 +93,14 @@ final class GetChatInviteLinks extends TdFunction {
     limit: limit ?? this.limit,
   );
 
+  /// TDLib object type
   static const String objectType = 'getChatInviteLinks';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

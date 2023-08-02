@@ -74,6 +74,7 @@ final class AutoDownloadSettings extends TdObject {
   );
   
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
@@ -89,7 +90,17 @@ final class AutoDownloadSettings extends TdObject {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [is_auto_download_enabled]: True, if the auto-download is enabled
+  /// * [max_photo_file_size]: The maximum size of a photo file to be auto-downloaded, in bytes
+  /// * [max_video_file_size]: The maximum size of a video file to be auto-downloaded, in bytes
+  /// * [max_other_file_size]: The maximum size of other file types to be auto-downloaded, in bytes
+  /// * [video_upload_bitrate]: The maximum suggested bitrate for uploaded videos, in kbit/s
+  /// * [preload_large_videos]: True, if the beginning of video files needs to be preloaded for instant playback
+  /// * [preload_next_audio]: True, if the next audio track needs to be preloaded while the user is listening to an audio file
+  /// * [use_less_data_for_calls]: True, if "use less data for calls" option needs to be enabled
   AutoDownloadSettings copyWith({
     bool? isAutoDownloadEnabled,
     int? maxPhotoFileSize,
@@ -110,11 +121,14 @@ final class AutoDownloadSettings extends TdObject {
     useLessDataForCalls: useLessDataForCalls ?? this.useLessDataForCalls,
   );
 
+  /// TDLib object type
   static const String objectType = 'autoDownloadSettings';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }

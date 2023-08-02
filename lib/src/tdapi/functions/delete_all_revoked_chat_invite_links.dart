@@ -29,6 +29,7 @@ final class DeleteAllRevokedChatInviteLinks extends TdFunction {
   /// User identifier of a chat administrator, which links will be deleted. Must be an identifier of the current user for non-owner
   final int creatorUserId;
   
+  /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
@@ -39,7 +40,11 @@ final class DeleteAllRevokedChatInviteLinks extends TdFunction {
 		};
 	}
 
-  
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [creator_user_id]: User identifier of a chat administrator, which links will be deleted. Must be an identifier of the current user for non-owner
   DeleteAllRevokedChatInviteLinks copyWith({
     int? chatId,
     int? creatorUserId,
@@ -48,11 +53,14 @@ final class DeleteAllRevokedChatInviteLinks extends TdFunction {
     creatorUserId: creatorUserId ?? this.creatorUserId,
   );
 
+  /// TDLib object type
   static const String objectType = 'deleteAllRevokedChatInviteLinks';
 
+  /// Convert model to TDLib JSON format, encoded into String.
   @override
   String toString() => jsonEncode(toJson());
 
+  /// TDLib object type for current class instance
   @override
   String get instanceType => objectType;
 }
