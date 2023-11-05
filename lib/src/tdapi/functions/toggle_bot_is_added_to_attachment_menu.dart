@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **ToggleBotIsAddedToAttachmentMenu** *(toggleBotIsAddedToAttachmentMenu)* - TDLib function
 ///
-/// Adds or removes a bot to attachment menu. Bot can be added to attachment menu, only if userTypeBot.can_be_added_to_attachment_menu == true.
+/// Adds or removes a bot to attachment and side menu. Bot can be added to the menu, only if userTypeBot.can_be_added_to_attachment_menu == true.
 ///
 /// * [botUserId]: Bot's user identifier.
 /// * [isAdded]: Pass true to add the bot to attachment menu; pass false to remove the bot from attachment menu.
@@ -13,7 +13,7 @@ final class ToggleBotIsAddedToAttachmentMenu extends TdFunction {
   
   /// **ToggleBotIsAddedToAttachmentMenu** *(toggleBotIsAddedToAttachmentMenu)* - TDLib function
   ///
-  /// Adds or removes a bot to attachment menu. Bot can be added to attachment menu, only if userTypeBot.can_be_added_to_attachment_menu == true.
+  /// Adds or removes a bot to attachment and side menu. Bot can be added to the menu, only if userTypeBot.can_be_added_to_attachment_menu == true.
   ///
   /// * [botUserId]: Bot's user identifier.
   /// * [isAdded]: Pass true to add the bot to attachment menu; pass false to remove the bot from attachment menu.

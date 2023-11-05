@@ -294,7 +294,7 @@ final class ChatStatisticsSupergroup extends ChatStatistics {
 /// * [memberCount]: Number of members in the chat.
 /// * [meanViewCount]: Mean number of times the recently sent messages was viewed.
 /// * [meanShareCount]: Mean number of times the recently sent messages was shared.
-/// * [enabledNotificationsPercentage]: A percentage of users with enabled notifications for the chat.
+/// * [enabledNotificationsPercentage]: A percentage of users with enabled notifications for the chat; 0-100.
 /// * [memberCountGraph]: A graph containing number of members in the chat.
 /// * [joinGraph]: A graph containing number of members joined and left the chat.
 /// * [muteGraph]: A graph containing number of members muted and unmuted the chat.
@@ -315,7 +315,7 @@ final class ChatStatisticsChannel extends ChatStatistics {
   /// * [memberCount]: Number of members in the chat.
   /// * [meanViewCount]: Mean number of times the recently sent messages was viewed.
   /// * [meanShareCount]: Mean number of times the recently sent messages was shared.
-  /// * [enabledNotificationsPercentage]: A percentage of users with enabled notifications for the chat.
+  /// * [enabledNotificationsPercentage]: A percentage of users with enabled notifications for the chat; 0-100.
   /// * [memberCountGraph]: A graph containing number of members in the chat.
   /// * [joinGraph]: A graph containing number of members joined and left the chat.
   /// * [muteGraph]: A graph containing number of members muted and unmuted the chat.
@@ -358,7 +358,7 @@ final class ChatStatisticsChannel extends ChatStatistics {
   /// Mean number of times the recently sent messages was shared
   final StatisticalValue meanShareCount;
 
-  /// A percentage of users with enabled notifications for the chat
+  /// A percentage of users with enabled notifications for the chat; 0-100
   final double enabledNotificationsPercentage;
 
   /// A graph containing number of members in the chat
@@ -451,7 +451,7 @@ final class ChatStatisticsChannel extends ChatStatistics {
   /// * [member_count]: Number of members in the chat
   /// * [mean_view_count]: Mean number of times the recently sent messages was viewed
   /// * [mean_share_count]: Mean number of times the recently sent messages was shared
-  /// * [enabled_notifications_percentage]: A percentage of users with enabled notifications for the chat
+  /// * [enabled_notifications_percentage]: A percentage of users with enabled notifications for the chat; 0-100
   /// * [member_count_graph]: A graph containing number of members in the chat
   /// * [join_graph]: A graph containing number of members joined and left the chat
   /// * [mute_graph]: A graph containing number of members muted and unmuted the chat

@@ -13,7 +13,7 @@ part of '../tdapi.dart';
 /// * [unreadMentionCount]: Number of unread messages with a mention/reply in the topic.
 /// * [unreadReactionCount]: Number of messages with unread reactions in the topic.
 /// * [notificationSettings]: Notification settings for the topic.
-/// * [draftMessage]: A draft of a message in the topic; may be null *(optional)*.
+/// * [draftMessage]: A draft of a message in the topic; may be null if none *(optional)*.
 final class ForumTopic extends TdObject {
   
   /// **ForumTopic** *(forumTopic)* - basic class
@@ -29,7 +29,7 @@ final class ForumTopic extends TdObject {
   /// * [unreadMentionCount]: Number of unread messages with a mention/reply in the topic.
   /// * [unreadReactionCount]: Number of messages with unread reactions in the topic.
   /// * [notificationSettings]: Notification settings for the topic.
-  /// * [draftMessage]: A draft of a message in the topic; may be null *(optional)*.
+  /// * [draftMessage]: A draft of a message in the topic; may be null if none *(optional)*.
   const ForumTopic({
     required this.info,
     this.lastMessage,
@@ -72,7 +72,7 @@ final class ForumTopic extends TdObject {
   /// Notification settings for the topic
   final ChatNotificationSettings notificationSettings;
 
-  /// A draft of a message in the topic; may be null
+  /// A draft of a message in the topic; may be null if none
   final DraftMessage? draftMessage;
 
   /// [extra] callback sign
@@ -130,7 +130,7 @@ final class ForumTopic extends TdObject {
   /// * [unread_mention_count]: Number of unread messages with a mention/reply in the topic
   /// * [unread_reaction_count]: Number of messages with unread reactions in the topic
   /// * [notification_settings]: Notification settings for the topic
-  /// * [draft_message]: A draft of a message in the topic; may be null
+  /// * [draft_message]: A draft of a message in the topic; may be null if none
   ForumTopic copyWith({
     ForumTopicInfo? info,
     Message? lastMessage,

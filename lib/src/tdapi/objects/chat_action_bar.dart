@@ -64,14 +64,14 @@ sealed class ChatActionBar extends TdObject {
 
 /// **ChatActionBarReportSpam** *(chatActionBarReportSpam)* - child of ChatActionBar
 ///
-/// The chat can be reported as spam using the method reportChat with the reason chatReportReasonSpam. If the chat is a private chat with a user with an emoji status, then a notice about emoji status usage must be shown.
+/// The chat can be reported as spam using the method reportChat with the reason reportReasonSpam. If the chat is a private chat with a user with an emoji status, then a notice about emoji status usage must be shown.
 ///
 /// * [canUnarchive]: If true, the chat was automatically archived and can be moved back to the main chat list using addChatToList simultaneously with setting chat notification settings to default using setChatNotificationSettings.
 final class ChatActionBarReportSpam extends ChatActionBar {
   
   /// **ChatActionBarReportSpam** *(chatActionBarReportSpam)* - child of ChatActionBar
   ///
-  /// The chat can be reported as spam using the method reportChat with the reason chatReportReasonSpam. If the chat is a private chat with a user with an emoji status, then a notice about emoji status usage must be shown.
+  /// The chat can be reported as spam using the method reportChat with the reason reportReasonSpam. If the chat is a private chat with a user with an emoji status, then a notice about emoji status usage must be shown.
   ///
   /// * [canUnarchive]: If true, the chat was automatically archived and can be moved back to the main chat list using addChatToList simultaneously with setting chat notification settings to default using setChatNotificationSettings.
   const ChatActionBarReportSpam({
@@ -122,12 +122,12 @@ final class ChatActionBarReportSpam extends ChatActionBar {
 
 /// **ChatActionBarReportUnrelatedLocation** *(chatActionBarReportUnrelatedLocation)* - child of ChatActionBar
 ///
-/// The chat is a location-based supergroup, which can be reported as having unrelated location using the method reportChat with the reason chatReportReasonUnrelatedLocation.
+/// The chat is a location-based supergroup, which can be reported as having unrelated location using the method reportChat with the reason reportReasonUnrelatedLocation.
 final class ChatActionBarReportUnrelatedLocation extends ChatActionBar {
   
   /// **ChatActionBarReportUnrelatedLocation** *(chatActionBarReportUnrelatedLocation)* - child of ChatActionBar
   ///
-  /// The chat is a location-based supergroup, which can be reported as having unrelated location using the method reportChat with the reason chatReportReasonUnrelatedLocation.
+  /// The chat is a location-based supergroup, which can be reported as having unrelated location using the method reportChat with the reason reportReasonUnrelatedLocation.
   const ChatActionBarReportUnrelatedLocation();
   
   /// Parse from a json
@@ -198,7 +198,7 @@ final class ChatActionBarInviteMembers extends ChatActionBar {
 
 /// **ChatActionBarReportAddBlock** *(chatActionBarReportAddBlock)* - child of ChatActionBar
 ///
-/// The chat is a private or secret chat, which can be reported using the method reportChat, or the other user can be blocked using the method toggleMessageSenderIsBlocked,. or the other user can be added to the contact list using the method addContact. If the chat is a private chat with a user with an emoji status, then a notice about emoji status usage must be shown.
+/// The chat is a private or secret chat, which can be reported using the method reportChat, or the other user can be blocked using the method setMessageSenderBlockList,. or the other user can be added to the contact list using the method addContact. If the chat is a private chat with a user with an emoji status, then a notice about emoji status usage must be shown.
 ///
 /// * [canUnarchive]: If true, the chat was automatically archived and can be moved back to the main chat list using addChatToList simultaneously with setting chat notification settings to default using setChatNotificationSettings.
 /// * [distance]: If non-negative, the current user was found by the peer through searchChatsNearby and this is the distance between the users.
@@ -206,7 +206,7 @@ final class ChatActionBarReportAddBlock extends ChatActionBar {
   
   /// **ChatActionBarReportAddBlock** *(chatActionBarReportAddBlock)* - child of ChatActionBar
   ///
-  /// The chat is a private or secret chat, which can be reported using the method reportChat, or the other user can be blocked using the method toggleMessageSenderIsBlocked,. or the other user can be added to the contact list using the method addContact. If the chat is a private chat with a user with an emoji status, then a notice about emoji status usage must be shown.
+  /// The chat is a private or secret chat, which can be reported using the method reportChat, or the other user can be blocked using the method setMessageSenderBlockList,. or the other user can be added to the contact list using the method addContact. If the chat is a private chat with a user with an emoji status, then a notice about emoji status usage must be shown.
   ///
   /// * [canUnarchive]: If true, the chat was automatically archived and can be moved back to the main chat list using addChatToList simultaneously with setting chat notification settings to default using setChatNotificationSettings.
   /// * [distance]: If non-negative, the current user was found by the peer through searchChatsNearby and this is the distance between the users.

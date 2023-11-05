@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **GetTopChats** *(getTopChats)* - TDLib function
 ///
-/// Returns a list of frequently used chats. Supported only if the chat info database is enabled.
+/// Returns a list of frequently used chats.
 ///
 /// * [category]: Category of chats to be returned.
 /// * [limit]: The maximum number of chats to be returned; up to 30.
@@ -12,7 +12,7 @@ final class GetTopChats extends TdFunction {
   
   /// **GetTopChats** *(getTopChats)* - TDLib function
   ///
-  /// Returns a list of frequently used chats. Supported only if the chat info database is enabled.
+  /// Returns a list of frequently used chats.
   ///
   /// * [category]: Category of chats to be returned.
   /// * [limit]: The maximum number of chats to be returned; up to 30.

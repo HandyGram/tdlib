@@ -15,7 +15,6 @@ sealed class MessageForwardOrigin extends TdObject {
   /// * [MessageForwardOriginChat]
   /// * [MessageForwardOriginHiddenUser]
   /// * [MessageForwardOriginChannel]
-  /// * [MessageForwardOriginMessageImport]
   factory MessageForwardOrigin.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
       case MessageForwardOriginUser.objectType:
@@ -26,8 +25,6 @@ sealed class MessageForwardOrigin extends TdObject {
         return MessageForwardOriginHiddenUser.fromJson(json);
       case MessageForwardOriginChannel.objectType:
         return MessageForwardOriginChannel.fromJson(json);
-      case MessageForwardOriginMessageImport.objectType:
-        return MessageForwardOriginMessageImport.fromJson(json);
       default:
         throw FormatException(
           "Unknown object ${json["@type"]} (expected child of MessageForwardOrigin)",
@@ -310,64 +307,6 @@ final class MessageForwardOriginChannel extends MessageForwardOrigin {
 
   /// TDLib object type
   static const String objectType = 'messageForwardOriginChannel';
-
-  /// Convert model to TDLib JSON format, encoded into String.
-  @override
-  String toString() => jsonEncode(toJson());
-
-  /// TDLib object type for current class instance
-  @override
-  String get instanceType => objectType;
-}
-
-
-/// **MessageForwardOriginMessageImport** *(messageForwardOriginMessageImport)* - child of MessageForwardOrigin
-///
-/// The message was imported from an exported message history.
-///
-/// * [senderName]: Name of the sender.
-final class MessageForwardOriginMessageImport extends MessageForwardOrigin {
-  
-  /// **MessageForwardOriginMessageImport** *(messageForwardOriginMessageImport)* - child of MessageForwardOrigin
-  ///
-  /// The message was imported from an exported message history.
-  ///
-  /// * [senderName]: Name of the sender.
-  const MessageForwardOriginMessageImport({
-    required this.senderName,
-  });
-  
-  /// Name of the sender
-  final String senderName;
-  
-  /// Parse from a json
-  factory MessageForwardOriginMessageImport.fromJson(Map<String, dynamic> json) => MessageForwardOriginMessageImport(
-    senderName: json['sender_name'],
-  );
-  
-  
-  /// Convert model to TDLib JSON format
-  @override
-  Map<String, dynamic> toJson() {
-		return {
-			"@type": objectType,
-      "sender_name": senderName,
-		};
-	}
-
-  /// Copy model with modified properties.
-  ///
-  /// Properties:
-  /// * [sender_name]: Name of the sender
-  @override
-  MessageForwardOriginMessageImport copyWith({
-    String? senderName,
-  }) => MessageForwardOriginMessageImport(
-    senderName: senderName ?? this.senderName,
-  );
-
-  /// TDLib object type
-  static const String objectType = 'messageForwardOriginMessageImport';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

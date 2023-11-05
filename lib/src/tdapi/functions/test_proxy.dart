@@ -4,7 +4,7 @@ part of '../tdapi.dart';
 ///
 /// Sends a simple network request to the Telegram servers via proxy; for testing only. Can be called before authorization.
 ///
-/// * [server]: Proxy server IP address.
+/// * [server]: Proxy server domain or IP address.
 /// * [port]: Proxy server port.
 /// * [type]: Proxy type.
 /// * [dcId]: Identifier of a datacenter with which to test connection.
@@ -17,7 +17,7 @@ final class TestProxy extends TdFunction {
   ///
   /// Sends a simple network request to the Telegram servers via proxy; for testing only. Can be called before authorization.
   ///
-  /// * [server]: Proxy server IP address.
+  /// * [server]: Proxy server domain or IP address.
   /// * [port]: Proxy server port.
   /// * [type]: Proxy type.
   /// * [dcId]: Identifier of a datacenter with which to test connection.
@@ -32,7 +32,7 @@ final class TestProxy extends TdFunction {
     required this.timeout,
   });
   
-  /// Proxy server IP address
+  /// Proxy server domain or IP address
   final String server;
 
   /// Proxy server port
@@ -64,7 +64,7 @@ final class TestProxy extends TdFunction {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [server]: Proxy server IP address
+  /// * [server]: Proxy server domain or IP address
   /// * [port]: Proxy server port
   /// * [type]: Proxy type
   /// * [dc_id]: Identifier of a datacenter with which to test connection

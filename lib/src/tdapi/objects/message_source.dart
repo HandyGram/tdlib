@@ -19,6 +19,7 @@ sealed class MessageSource extends TdObject {
   /// * [MessageSourceSearch]
   /// * [MessageSourceChatEventLog]
   /// * [MessageSourceNotification]
+  /// * [MessageSourceScreenshot]
   /// * [MessageSourceOther]
   factory MessageSource.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
@@ -38,6 +39,8 @@ sealed class MessageSource extends TdObject {
         return MessageSourceChatEventLog.fromJson(json);
       case MessageSourceNotification.objectType:
         return MessageSourceNotification.fromJson(json);
+      case MessageSourceScreenshot.objectType:
+        return MessageSourceScreenshot.fromJson(json);
       case MessageSourceOther.objectType:
         return MessageSourceOther.fromJson(json);
       default:
@@ -361,6 +364,44 @@ final class MessageSourceNotification extends MessageSource {
 
   /// TDLib object type
   static const String objectType = 'messageSourceNotification';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **MessageSourceScreenshot** *(messageSourceScreenshot)* - child of MessageSource
+///
+/// The message was screenshotted; the source must be used only if the message content was visible during the screenshot.
+final class MessageSourceScreenshot extends MessageSource {
+  
+  /// **MessageSourceScreenshot** *(messageSourceScreenshot)* - child of MessageSource
+  ///
+  /// The message was screenshotted; the source must be used only if the message content was visible during the screenshot.
+  const MessageSourceScreenshot();
+  
+  /// Parse from a json
+  factory MessageSourceScreenshot.fromJson(Map<String, dynamic> json) => const MessageSourceScreenshot();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  MessageSourceScreenshot copyWith() => const MessageSourceScreenshot();
+
+  /// TDLib object type
+  static const String objectType = 'messageSourceScreenshot';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

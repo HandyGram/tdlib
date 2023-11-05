@@ -24,6 +24,8 @@ part of '../tdapi.dart';
 /// * [video]: Preview of the content as a video, if available; may be null *(optional)*.
 /// * [videoNote]: Preview of the content as a video note, if available; may be null *(optional)*.
 /// * [voiceNote]: Preview of the content as a voice note, if available; may be null *(optional)*.
+/// * [storySenderChatId]: The identifier of the sender of the previewed story; 0 if none.
+/// * [storyId]: The identifier of the previewed story; 0 if none.
 /// * [instantViewVersion]: Version of web page instant view (currently, can be 1 or 2); 0 if none.
 final class WebPage extends TdObject {
   
@@ -51,6 +53,8 @@ final class WebPage extends TdObject {
   /// * [video]: Preview of the content as a video, if available; may be null *(optional)*.
   /// * [videoNote]: Preview of the content as a video note, if available; may be null *(optional)*.
   /// * [voiceNote]: Preview of the content as a voice note, if available; may be null *(optional)*.
+  /// * [storySenderChatId]: The identifier of the sender of the previewed story; 0 if none.
+  /// * [storyId]: The identifier of the previewed story; 0 if none.
   /// * [instantViewVersion]: Version of web page instant view (currently, can be 1 or 2); 0 if none.
   const WebPage({
     required this.url,
@@ -73,6 +77,8 @@ final class WebPage extends TdObject {
     this.video,
     this.videoNote,
     this.voiceNote,
+    required this.storySenderChatId,
+    required this.storyId,
     required this.instantViewVersion,
     this.extra,
     this.clientId,
@@ -138,6 +144,12 @@ final class WebPage extends TdObject {
   /// Preview of the content as a voice note, if available; may be null
   final VoiceNote? voiceNote;
 
+  /// The identifier of the sender of the previewed story; 0 if none
+  final int storySenderChatId;
+
+  /// The identifier of the previewed story; 0 if none
+  final int storyId;
+
   /// Version of web page instant view (currently, can be 1 or 2); 0 if none
   final int instantViewVersion;
 
@@ -171,6 +183,8 @@ final class WebPage extends TdObject {
     video: json['video'] == null ? null : Video.fromJson(json['video']),
     videoNote: json['video_note'] == null ? null : VideoNote.fromJson(json['video_note']),
     voiceNote: json['voice_note'] == null ? null : VoiceNote.fromJson(json['voice_note']),
+    storySenderChatId: json['story_sender_chat_id'] ?? 0,
+    storyId: json['story_id'] ?? 0,
     instantViewVersion: json['instant_view_version'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
@@ -202,6 +216,8 @@ final class WebPage extends TdObject {
       "video": video?.toJson(),
       "video_note": videoNote?.toJson(),
       "voice_note": voiceNote?.toJson(),
+      "story_sender_chat_id": storySenderChatId,
+      "story_id": storyId,
       "instant_view_version": instantViewVersion,
 		};
 	}
@@ -229,6 +245,8 @@ final class WebPage extends TdObject {
   /// * [video]: Preview of the content as a video, if available; may be null
   /// * [video_note]: Preview of the content as a video note, if available; may be null
   /// * [voice_note]: Preview of the content as a voice note, if available; may be null
+  /// * [story_sender_chat_id]: The identifier of the sender of the previewed story; 0 if none
+  /// * [story_id]: The identifier of the previewed story; 0 if none
   /// * [instant_view_version]: Version of web page instant view (currently, can be 1 or 2); 0 if none
   WebPage copyWith({
     String? url,
@@ -251,6 +269,8 @@ final class WebPage extends TdObject {
     Video? video,
     VideoNote? videoNote,
     VoiceNote? voiceNote,
+    int? storySenderChatId,
+    int? storyId,
     int? instantViewVersion,
     dynamic extra,
     int? clientId,
@@ -275,6 +295,8 @@ final class WebPage extends TdObject {
     video: video ?? this.video,
     videoNote: videoNote ?? this.videoNote,
     voiceNote: voiceNote ?? this.voiceNote,
+    storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+    storyId: storyId ?? this.storyId,
     instantViewVersion: instantViewVersion ?? this.instantViewVersion,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,

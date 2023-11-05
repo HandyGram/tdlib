@@ -36,7 +36,7 @@ final class ReportChat extends TdFunction {
   final List<int> messageIds;
 
   /// The reason for reporting the chat
-  final ChatReportReason reason;
+  final ReportReason reason;
 
   /// Additional report details; 0-1024 characters
   final String text;
@@ -64,7 +64,7 @@ final class ReportChat extends TdFunction {
   ReportChat copyWith({
     int? chatId,
     List<int>? messageIds,
-    ChatReportReason? reason,
+    ReportReason? reason,
     String? text,
   }) => ReportChat(
     chatId: chatId ?? this.chatId,

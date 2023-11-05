@@ -19,6 +19,7 @@ sealed class InternalLinkType extends TdObject {
   /// * [InternalLinkTypeBotStart]
   /// * [InternalLinkTypeBotStartInGroup]
   /// * [InternalLinkTypeChangePhoneNumber]
+  /// * [InternalLinkTypeChatBoost]
   /// * [InternalLinkTypeChatFolderInvite]
   /// * [InternalLinkTypeChatFolderSettings]
   /// * [InternalLinkTypeChatInvite]
@@ -40,7 +41,9 @@ sealed class InternalLinkType extends TdObject {
   /// * [InternalLinkTypeQrCodeAuthentication]
   /// * [InternalLinkTypeRestorePurchases]
   /// * [InternalLinkTypeSettings]
+  /// * [InternalLinkTypeSideMenuBot]
   /// * [InternalLinkTypeStickerSet]
+  /// * [InternalLinkTypeStory]
   /// * [InternalLinkTypeTheme]
   /// * [InternalLinkTypeThemeSettings]
   /// * [InternalLinkTypeUnknownDeepLink]
@@ -67,6 +70,8 @@ sealed class InternalLinkType extends TdObject {
         return InternalLinkTypeBotStartInGroup.fromJson(json);
       case InternalLinkTypeChangePhoneNumber.objectType:
         return InternalLinkTypeChangePhoneNumber.fromJson(json);
+      case InternalLinkTypeChatBoost.objectType:
+        return InternalLinkTypeChatBoost.fromJson(json);
       case InternalLinkTypeChatFolderInvite.objectType:
         return InternalLinkTypeChatFolderInvite.fromJson(json);
       case InternalLinkTypeChatFolderSettings.objectType:
@@ -109,8 +114,12 @@ sealed class InternalLinkType extends TdObject {
         return InternalLinkTypeRestorePurchases.fromJson(json);
       case InternalLinkTypeSettings.objectType:
         return InternalLinkTypeSettings.fromJson(json);
+      case InternalLinkTypeSideMenuBot.objectType:
+        return InternalLinkTypeSideMenuBot.fromJson(json);
       case InternalLinkTypeStickerSet.objectType:
         return InternalLinkTypeStickerSet.fromJson(json);
+      case InternalLinkTypeStory.objectType:
+        return InternalLinkTypeStory.fromJson(json);
       case InternalLinkTypeTheme.objectType:
         return InternalLinkTypeTheme.fromJson(json);
       case InternalLinkTypeThemeSettings.objectType:
@@ -216,7 +225,7 @@ final class InternalLinkTypeActiveSessions extends InternalLinkType {
 
 /// **InternalLinkTypeAttachmentMenuBot** *(internalLinkTypeAttachmentMenuBot)* - child of InternalLinkType
 ///
-/// The link is a link to an attachment menu bot to be opened in the specified or a chosen chat. Process given target_chat to open the chat.. Then, call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then, use getAttachmentMenuBot to receive information about the bot.. If the bot isn't added to attachment menu, then user needs to confirm adding the bot to attachment menu. If user confirms adding, then use toggleBotIsAddedToAttachmentMenu to add it.. If the attachment menu bot can't be used in the opened chat, show an error to the user. If the bot is added to attachment menu and can be used in the chat, then use openWebApp with the given URL.
+/// The link is a link to an attachment menu bot to be opened in the specified or a chosen chat. Process given target_chat to open the chat.. Then, call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then, use getAttachmentMenuBot to receive information about the bot.. If the bot isn't added to attachment menu, then show a disclaimer about Mini Apps being a third-party apps, ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu.. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot.. If the attachment menu bot can't be used in the opened chat, show an error to the user. If the bot is added to attachment menu and can be used in the chat, then use openWebApp with the given URL.
 ///
 /// * [targetChat]: Target chat to be opened.
 /// * [botUsername]: Username of the bot.
@@ -225,7 +234,7 @@ final class InternalLinkTypeAttachmentMenuBot extends InternalLinkType {
   
   /// **InternalLinkTypeAttachmentMenuBot** *(internalLinkTypeAttachmentMenuBot)* - child of InternalLinkType
   ///
-  /// The link is a link to an attachment menu bot to be opened in the specified or a chosen chat. Process given target_chat to open the chat.. Then, call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then, use getAttachmentMenuBot to receive information about the bot.. If the bot isn't added to attachment menu, then user needs to confirm adding the bot to attachment menu. If user confirms adding, then use toggleBotIsAddedToAttachmentMenu to add it.. If the attachment menu bot can't be used in the opened chat, show an error to the user. If the bot is added to attachment menu and can be used in the chat, then use openWebApp with the given URL.
+  /// The link is a link to an attachment menu bot to be opened in the specified or a chosen chat. Process given target_chat to open the chat.. Then, call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then, use getAttachmentMenuBot to receive information about the bot.. If the bot isn't added to attachment menu, then show a disclaimer about Mini Apps being a third-party apps, ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu.. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot.. If the attachment menu bot can't be used in the opened chat, show an error to the user. If the bot is added to attachment menu and can be used in the chat, then use openWebApp with the given URL.
   ///
   /// * [targetChat]: Target chat to be opened.
   /// * [botUsername]: Username of the bot.
@@ -783,6 +792,80 @@ final class InternalLinkTypeChangePhoneNumber extends InternalLinkType {
 
   /// TDLib object type
   static const String objectType = 'internalLinkTypeChangePhoneNumber';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **InternalLinkTypeChatBoost** *(internalLinkTypeChatBoost)* - child of InternalLinkType
+///
+/// The link is a link to boost a Telegram chat. Call getChatBoostLinkInfo with the given URL to process the link.. If the chat is found, then call getChatBoostStatus and canBoostChat to get the current boost status and check whether the chat can be boosted.. If the user wants to boost the chat and the chat can be boosted, then call boostChat.
+///
+/// * [url]: URL to be passed to getChatBoostLinkInfo.
+final class InternalLinkTypeChatBoost extends InternalLinkType {
+  
+  /// **InternalLinkTypeChatBoost** *(internalLinkTypeChatBoost)* - child of InternalLinkType
+  ///
+  /// The link is a link to boost a Telegram chat. Call getChatBoostLinkInfo with the given URL to process the link.. If the chat is found, then call getChatBoostStatus and canBoostChat to get the current boost status and check whether the chat can be boosted.. If the user wants to boost the chat and the chat can be boosted, then call boostChat.
+  ///
+  /// * [url]: URL to be passed to getChatBoostLinkInfo.
+  const InternalLinkTypeChatBoost({
+    required this.url,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// URL to be passed to getChatBoostLinkInfo
+  final String url;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory InternalLinkTypeChatBoost.fromJson(Map<String, dynamic> json) => InternalLinkTypeChatBoost(
+    url: json['url'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "url": url,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [url]: URL to be passed to getChatBoostLinkInfo
+  @override
+  InternalLinkTypeChatBoost copyWith({
+    String? url,
+    dynamic extra,
+    int? clientId,
+  }) => InternalLinkTypeChatBoost(
+    url: url ?? this.url,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'internalLinkTypeChatBoost';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1995,7 +2078,7 @@ final class InternalLinkTypePrivacyAndSecuritySettings extends InternalLinkType 
 ///
 /// The link is a link to a proxy. Call addProxy with the given parameters to process the link and add the proxy.
 ///
-/// * [server]: Proxy server IP address.
+/// * [server]: Proxy server domain or IP address.
 /// * [port]: Proxy server port.
 /// * [type]: Type of the proxy.
 final class InternalLinkTypeProxy extends InternalLinkType {
@@ -2004,7 +2087,7 @@ final class InternalLinkTypeProxy extends InternalLinkType {
   ///
   /// The link is a link to a proxy. Call addProxy with the given parameters to process the link and add the proxy.
   ///
-  /// * [server]: Proxy server IP address.
+  /// * [server]: Proxy server domain or IP address.
   /// * [port]: Proxy server port.
   /// * [type]: Type of the proxy.
   const InternalLinkTypeProxy({
@@ -2015,7 +2098,7 @@ final class InternalLinkTypeProxy extends InternalLinkType {
     this.clientId,
   });
   
-  /// Proxy server IP address
+  /// Proxy server domain or IP address
   final String server;
 
   /// Proxy server port
@@ -2056,7 +2139,7 @@ final class InternalLinkTypeProxy extends InternalLinkType {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [server]: Proxy server IP address
+  /// * [server]: Proxy server domain or IP address
   /// * [port]: Proxy server port
   /// * [type]: Type of the proxy
   @override
@@ -2338,6 +2421,91 @@ final class InternalLinkTypeSettings extends InternalLinkType {
 }
 
 
+/// **InternalLinkTypeSideMenuBot** *(internalLinkTypeSideMenuBot)* - child of InternalLinkType
+///
+/// The link is a link to a bot, which can be installed to the side menu. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu.. Then, use getAttachmentMenuBot to receive information about the bot. If the bot isn't added to side menu, then show a disclaimer about Mini Apps being a third-party apps,. ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot.. If the bot is added to side menu, then use getWebAppUrl with the given URL.
+///
+/// * [botUsername]: Username of the bot.
+/// * [url]: URL to be passed to getWebAppUrl.
+final class InternalLinkTypeSideMenuBot extends InternalLinkType {
+  
+  /// **InternalLinkTypeSideMenuBot** *(internalLinkTypeSideMenuBot)* - child of InternalLinkType
+  ///
+  /// The link is a link to a bot, which can be installed to the side menu. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu.. Then, use getAttachmentMenuBot to receive information about the bot. If the bot isn't added to side menu, then show a disclaimer about Mini Apps being a third-party apps,. ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot.. If the bot is added to side menu, then use getWebAppUrl with the given URL.
+  ///
+  /// * [botUsername]: Username of the bot.
+  /// * [url]: URL to be passed to getWebAppUrl.
+  const InternalLinkTypeSideMenuBot({
+    required this.botUsername,
+    required this.url,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// Username of the bot
+  final String botUsername;
+
+  /// URL to be passed to getWebAppUrl
+  final String url;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory InternalLinkTypeSideMenuBot.fromJson(Map<String, dynamic> json) => InternalLinkTypeSideMenuBot(
+    botUsername: json['bot_username'],
+    url: json['url'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "bot_username": botUsername,
+      "url": url,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [bot_username]: Username of the bot
+  /// * [url]: URL to be passed to getWebAppUrl
+  @override
+  InternalLinkTypeSideMenuBot copyWith({
+    String? botUsername,
+    String? url,
+    dynamic extra,
+    int? clientId,
+  }) => InternalLinkTypeSideMenuBot(
+    botUsername: botUsername ?? this.botUsername,
+    url: url ?? this.url,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'internalLinkTypeSideMenuBot';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
 /// **InternalLinkTypeStickerSet** *(internalLinkTypeStickerSet)* - child of InternalLinkType
 ///
 /// The link is a link to a sticker set. Call searchStickerSet with the given sticker set name to process the link and show the sticker set.
@@ -2412,6 +2580,91 @@ final class InternalLinkTypeStickerSet extends InternalLinkType {
 
   /// TDLib object type
   static const String objectType = 'internalLinkTypeStickerSet';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **InternalLinkTypeStory** *(internalLinkTypeStory)* - child of InternalLinkType
+///
+/// The link is a link to a story. Call searchPublicChat with the given sender username, then call getStory with the received chat identifier and the given story identifier.
+///
+/// * [storySenderUsername]: Username of the sender of the story.
+/// * [storyId]: Story identifier.
+final class InternalLinkTypeStory extends InternalLinkType {
+  
+  /// **InternalLinkTypeStory** *(internalLinkTypeStory)* - child of InternalLinkType
+  ///
+  /// The link is a link to a story. Call searchPublicChat with the given sender username, then call getStory with the received chat identifier and the given story identifier.
+  ///
+  /// * [storySenderUsername]: Username of the sender of the story.
+  /// * [storyId]: Story identifier.
+  const InternalLinkTypeStory({
+    required this.storySenderUsername,
+    required this.storyId,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// Username of the sender of the story
+  final String storySenderUsername;
+
+  /// Story identifier
+  final int storyId;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory InternalLinkTypeStory.fromJson(Map<String, dynamic> json) => InternalLinkTypeStory(
+    storySenderUsername: json['story_sender_username'],
+    storyId: json['story_id'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "story_sender_username": storySenderUsername,
+      "story_id": storyId,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [story_sender_username]: Username of the sender of the story
+  /// * [story_id]: Story identifier
+  @override
+  InternalLinkTypeStory copyWith({
+    String? storySenderUsername,
+    int? storyId,
+    dynamic extra,
+    int? clientId,
+  }) => InternalLinkTypeStory(
+    storySenderUsername: storySenderUsername ?? this.storySenderUsername,
+    storyId: storyId ?? this.storyId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'internalLinkTypeStory';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2935,7 +3188,7 @@ final class InternalLinkTypeVideoChat extends InternalLinkType {
 
 /// **InternalLinkTypeWebApp** *(internalLinkTypeWebApp)* - child of InternalLinkType
 ///
-/// The link is a link to a Web App. Call searchPublicChat with the given bot username, check that the user is a bot, then call searchWebApp with the received bot and the given web_app_short_name.. Process received foundWebApp by showing a confirmation dialog if needed, then calling getWebAppLinkUrl and opening the returned URL.
+/// The link is a link to a Web App. Call searchPublicChat with the given bot username, check that the user is a bot, then call searchWebApp with the received bot and the given web_app_short_name.. Process received foundWebApp by showing a confirmation dialog if needed. If the bot can be added to attachment or side menu, but isn't added yet, then show a disclaimer about Mini Apps being a third-party apps. instead of the dialog and ask the user to accept their Terms of service. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot.. Then, call getWebAppLinkUrl and open the returned URL as a Web App.
 ///
 /// * [botUsername]: Username of the bot that owns the Web App.
 /// * [webAppShortName]: Short name of the Web App.
@@ -2944,7 +3197,7 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
   
   /// **InternalLinkTypeWebApp** *(internalLinkTypeWebApp)* - child of InternalLinkType
   ///
-  /// The link is a link to a Web App. Call searchPublicChat with the given bot username, check that the user is a bot, then call searchWebApp with the received bot and the given web_app_short_name.. Process received foundWebApp by showing a confirmation dialog if needed, then calling getWebAppLinkUrl and opening the returned URL.
+  /// The link is a link to a Web App. Call searchPublicChat with the given bot username, check that the user is a bot, then call searchWebApp with the received bot and the given web_app_short_name.. Process received foundWebApp by showing a confirmation dialog if needed. If the bot can be added to attachment or side menu, but isn't added yet, then show a disclaimer about Mini Apps being a third-party apps. instead of the dialog and ask the user to accept their Terms of service. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot.. Then, call getWebAppLinkUrl and open the returned URL as a Web App.
   ///
   /// * [botUsername]: Username of the bot that owns the Web App.
   /// * [webAppShortName]: Short name of the Web App.

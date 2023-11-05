@@ -102,12 +102,12 @@ final class ThumbnailFormatJpeg extends ThumbnailFormat {
 
 /// **ThumbnailFormatGif** *(thumbnailFormatGif)* - child of ThumbnailFormat
 ///
-/// The thumbnail is in static GIF format. It will be used only for some bot inline results.
+/// The thumbnail is in static GIF format. It will be used only for some bot inline query results.
 final class ThumbnailFormatGif extends ThumbnailFormat {
   
   /// **ThumbnailFormatGif** *(thumbnailFormatGif)* - child of ThumbnailFormat
   ///
-  /// The thumbnail is in static GIF format. It will be used only for some bot inline results.
+  /// The thumbnail is in static GIF format. It will be used only for some bot inline query results.
   const ThumbnailFormatGif();
   
   /// Parse from a json

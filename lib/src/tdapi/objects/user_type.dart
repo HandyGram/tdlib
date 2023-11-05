@@ -139,7 +139,7 @@ final class UserTypeDeleted extends UserType {
 /// * [isInline]: True, if the bot supports inline queries.
 /// * [inlineQueryPlaceholder]: Placeholder for inline queries (displayed on the application input field).
 /// * [needLocation]: True, if the location of the user is expected to be sent with every inline query to this bot.
-/// * [canBeAddedToAttachmentMenu]: True, if the bot can be added to attachment menu.
+/// * [canBeAddedToAttachmentMenu]: True, if the bot can be added to attachment or side menu.
 final class UserTypeBot extends UserType {
   
   /// **UserTypeBot** *(userTypeBot)* - child of UserType
@@ -152,7 +152,7 @@ final class UserTypeBot extends UserType {
   /// * [isInline]: True, if the bot supports inline queries.
   /// * [inlineQueryPlaceholder]: Placeholder for inline queries (displayed on the application input field).
   /// * [needLocation]: True, if the location of the user is expected to be sent with every inline query to this bot.
-  /// * [canBeAddedToAttachmentMenu]: True, if the bot can be added to attachment menu.
+  /// * [canBeAddedToAttachmentMenu]: True, if the bot can be added to attachment or side menu.
   const UserTypeBot({
     required this.canBeEdited,
     required this.canJoinGroups,
@@ -181,7 +181,7 @@ final class UserTypeBot extends UserType {
   /// True, if the location of the user is expected to be sent with every inline query to this bot
   final bool needLocation;
 
-  /// True, if the bot can be added to attachment menu
+  /// True, if the bot can be added to attachment or side menu
   final bool canBeAddedToAttachmentMenu;
   
   /// Parse from a json
@@ -220,7 +220,7 @@ final class UserTypeBot extends UserType {
   /// * [is_inline]: True, if the bot supports inline queries
   /// * [inline_query_placeholder]: Placeholder for inline queries (displayed on the application input field)
   /// * [need_location]: True, if the location of the user is expected to be sent with every inline query to this bot
-  /// * [can_be_added_to_attachment_menu]: True, if the bot can be added to attachment menu
+  /// * [can_be_added_to_attachment_menu]: True, if the bot can be added to attachment or side menu
   @override
   UserTypeBot copyWith({
     bool? canBeEdited,

@@ -8,7 +8,7 @@ part of '../tdapi.dart';
 /// * [chatId]: If found, identifier of the chat to which the link points, 0 otherwise.
 /// * [messageThreadId]: If found, identifier of the message thread in which to open the message, or a forum topic to open if the message is missing.
 /// * [message]: If found, the linked message; may be null *(optional)*.
-/// * [mediaTimestamp]: Timestamp from which the video/audio/video note/voice note playing must start, in seconds; 0 if not specified. The media can be in the message content or in its web page preview.
+/// * [mediaTimestamp]: Timestamp from which the video/audio/video note/voice note/story playing must start, in seconds; 0 if not specified. The media can be in the message content or in its web page preview.
 /// * [forAlbum]: True, if the whole media album to which the message belongs is linked.
 final class MessageLinkInfo extends TdObject {
   
@@ -20,7 +20,7 @@ final class MessageLinkInfo extends TdObject {
   /// * [chatId]: If found, identifier of the chat to which the link points, 0 otherwise.
   /// * [messageThreadId]: If found, identifier of the message thread in which to open the message, or a forum topic to open if the message is missing.
   /// * [message]: If found, the linked message; may be null *(optional)*.
-  /// * [mediaTimestamp]: Timestamp from which the video/audio/video note/voice note playing must start, in seconds; 0 if not specified. The media can be in the message content or in its web page preview.
+  /// * [mediaTimestamp]: Timestamp from which the video/audio/video note/voice note/story playing must start, in seconds; 0 if not specified. The media can be in the message content or in its web page preview.
   /// * [forAlbum]: True, if the whole media album to which the message belongs is linked.
   const MessageLinkInfo({
     required this.isPublic,
@@ -45,7 +45,7 @@ final class MessageLinkInfo extends TdObject {
   /// If found, the linked message; may be null
   final Message? message;
 
-  /// Timestamp from which the video/audio/video note/voice note playing must start, in seconds; 0 if not specified. The media can be in the message content or in its web page preview
+  /// Timestamp from which the video/audio/video note/voice note/story playing must start, in seconds; 0 if not specified. The media can be in the message content or in its web page preview
   final int mediaTimestamp;
 
   /// True, if the whole media album to which the message belongs is linked
@@ -93,7 +93,7 @@ final class MessageLinkInfo extends TdObject {
   /// * [chat_id]: If found, identifier of the chat to which the link points, 0 otherwise
   /// * [message_thread_id]: If found, identifier of the message thread in which to open the message, or a forum topic to open if the message is missing
   /// * [message]: If found, the linked message; may be null
-  /// * [media_timestamp]: Timestamp from which the video/audio/video note/voice note playing must start, in seconds; 0 if not specified. The media can be in the message content or in its web page preview
+  /// * [media_timestamp]: Timestamp from which the video/audio/video note/voice note/story playing must start, in seconds; 0 if not specified. The media can be in the message content or in its web page preview
   /// * [for_album]: True, if the whole media album to which the message belongs is linked
   MessageLinkInfo copyWith({
     bool? isPublic,

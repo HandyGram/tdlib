@@ -22,6 +22,8 @@ part of '../tdapi.dart';
 /// * [restrictionReason]: If non-empty, contains a human-readable description of the reason why access to this supergroup or channel must be restricted.
 /// * [isScam]: True, if many users reported this supergroup or channel as a scam.
 /// * [isFake]: True, if many users reported this supergroup or channel as a fake account.
+/// * [hasActiveStories]: True, if the channel has non-expired stories available to the current user.
+/// * [hasUnreadActiveStories]: True, if the channel has unread non-expired stories available to the current user.
 final class Supergroup extends TdObject {
   
   /// **Supergroup** *(supergroup)* - basic class
@@ -46,6 +48,8 @@ final class Supergroup extends TdObject {
   /// * [restrictionReason]: If non-empty, contains a human-readable description of the reason why access to this supergroup or channel must be restricted.
   /// * [isScam]: True, if many users reported this supergroup or channel as a scam.
   /// * [isFake]: True, if many users reported this supergroup or channel as a fake account.
+  /// * [hasActiveStories]: True, if the channel has non-expired stories available to the current user.
+  /// * [hasUnreadActiveStories]: True, if the channel has unread non-expired stories available to the current user.
   const Supergroup({
     required this.id,
     this.usernames,
@@ -65,6 +69,8 @@ final class Supergroup extends TdObject {
     required this.restrictionReason,
     required this.isScam,
     required this.isFake,
+    required this.hasActiveStories,
+    required this.hasUnreadActiveStories,
     this.extra,
     this.clientId,
   });
@@ -123,6 +129,12 @@ final class Supergroup extends TdObject {
   /// True, if many users reported this supergroup or channel as a fake account
   final bool isFake;
 
+  /// True, if the channel has non-expired stories available to the current user
+  final bool hasActiveStories;
+
+  /// True, if the channel has unread non-expired stories available to the current user
+  final bool hasUnreadActiveStories;
+
   /// [extra] callback sign
   @override
   final dynamic extra;
@@ -151,6 +163,8 @@ final class Supergroup extends TdObject {
     restrictionReason: json['restriction_reason'],
     isScam: json['is_scam'],
     isFake: json['is_fake'],
+    hasActiveStories: json['has_active_stories'],
+    hasUnreadActiveStories: json['has_unread_active_stories'],
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -179,6 +193,8 @@ final class Supergroup extends TdObject {
       "restriction_reason": restrictionReason,
       "is_scam": isScam,
       "is_fake": isFake,
+      "has_active_stories": hasActiveStories,
+      "has_unread_active_stories": hasUnreadActiveStories,
 		};
 	}
 
@@ -203,6 +219,8 @@ final class Supergroup extends TdObject {
   /// * [restriction_reason]: If non-empty, contains a human-readable description of the reason why access to this supergroup or channel must be restricted
   /// * [is_scam]: True, if many users reported this supergroup or channel as a scam
   /// * [is_fake]: True, if many users reported this supergroup or channel as a fake account
+  /// * [has_active_stories]: True, if the channel has non-expired stories available to the current user
+  /// * [has_unread_active_stories]: True, if the channel has unread non-expired stories available to the current user
   Supergroup copyWith({
     int? id,
     Usernames? usernames,
@@ -222,6 +240,8 @@ final class Supergroup extends TdObject {
     String? restrictionReason,
     bool? isScam,
     bool? isFake,
+    bool? hasActiveStories,
+    bool? hasUnreadActiveStories,
     dynamic extra,
     int? clientId,
   }) => Supergroup(
@@ -243,6 +263,8 @@ final class Supergroup extends TdObject {
     restrictionReason: restrictionReason ?? this.restrictionReason,
     isScam: isScam ?? this.isScam,
     isFake: isFake ?? this.isFake,
+    hasActiveStories: hasActiveStories ?? this.hasActiveStories,
+    hasUnreadActiveStories: hasUnreadActiveStories ?? this.hasUnreadActiveStories,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
   );

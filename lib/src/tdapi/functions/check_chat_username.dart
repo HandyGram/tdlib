@@ -4,7 +4,7 @@ part of '../tdapi.dart';
 ///
 /// Checks whether a username can be set for a chat.
 ///
-/// * [chatId]: Chat identifier; must be identifier of a supergroup chat, or a channel chat, or a private chat with self, or zero if the chat is being created.
+/// * [chatId]: Chat identifier; must be identifier of a supergroup chat, or a channel chat, or a private chat with self, or 0 if the chat is being created.
 /// * [username]: Username to be checked.
 ///
 /// [CheckChatUsernameResult] is returned on completion.
@@ -14,7 +14,7 @@ final class CheckChatUsername extends TdFunction {
   ///
   /// Checks whether a username can be set for a chat.
   ///
-  /// * [chatId]: Chat identifier; must be identifier of a supergroup chat, or a channel chat, or a private chat with self, or zero if the chat is being created.
+  /// * [chatId]: Chat identifier; must be identifier of a supergroup chat, or a channel chat, or a private chat with self, or 0 if the chat is being created.
   /// * [username]: Username to be checked.
   ///
   /// [CheckChatUsernameResult] is returned on completion.
@@ -23,7 +23,7 @@ final class CheckChatUsername extends TdFunction {
     required this.username,
   });
   
-  /// Chat identifier; must be identifier of a supergroup chat, or a channel chat, or a private chat with self, or zero if the chat is being created 
+  /// Chat identifier; must be identifier of a supergroup chat, or a channel chat, or a private chat with self, or 0 if the chat is being created 
   final int chatId;
 
   /// Username to be checked
@@ -43,7 +43,7 @@ final class CheckChatUsername extends TdFunction {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier; must be identifier of a supergroup chat, or a channel chat, or a private chat with self, or zero if the chat is being created 
+  /// * [chat_id]: Chat identifier; must be identifier of a supergroup chat, or a channel chat, or a private chat with self, or 0 if the chat is being created 
   /// * [username]: Username to be checked
   CheckChatUsername copyWith({
     int? chatId,

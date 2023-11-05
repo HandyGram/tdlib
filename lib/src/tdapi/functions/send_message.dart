@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 ///
 /// * [chatId]: Target chat.
 /// * [messageThreadId]: If not 0, a message thread identifier in which the message will be sent.
-/// * [replyToMessageId]: Identifier of the replied message; 0 if none.
+/// * [replyTo]: Identifier of the replied message or story; pass null if none *(optional)*.
 /// * [options]: Options to be used to send the message; pass null to use default options *(optional)*.
 /// * [replyMarkup]: Markup for replying to the message; pass null if none; for bots only *(optional)*.
 /// * [inputMessageContent]: The content of the message to be sent.
@@ -20,7 +20,7 @@ final class SendMessage extends TdFunction {
   ///
   /// * [chatId]: Target chat.
   /// * [messageThreadId]: If not 0, a message thread identifier in which the message will be sent.
-  /// * [replyToMessageId]: Identifier of the replied message; 0 if none.
+  /// * [replyTo]: Identifier of the replied message or story; pass null if none *(optional)*.
   /// * [options]: Options to be used to send the message; pass null to use default options *(optional)*.
   /// * [replyMarkup]: Markup for replying to the message; pass null if none; for bots only *(optional)*.
   /// * [inputMessageContent]: The content of the message to be sent.
@@ -29,7 +29,7 @@ final class SendMessage extends TdFunction {
   const SendMessage({
     required this.chatId,
     required this.messageThreadId,
-    required this.replyToMessageId,
+    this.replyTo,
     this.options,
     this.replyMarkup,
     required this.inputMessageContent,
@@ -41,8 +41,8 @@ final class SendMessage extends TdFunction {
   /// If not 0, a message thread identifier in which the message will be sent
   final int messageThreadId;
 
-  /// Identifier of the replied message; 0 if none
-  final int replyToMessageId;
+  /// Identifier of the replied message or story; pass null if none
+  final MessageReplyTo? replyTo;
 
   /// Options to be used to send the message; pass null to use default options
   final MessageSendOptions? options;
@@ -60,7 +60,7 @@ final class SendMessage extends TdFunction {
 			"@type": objectType,
       "chat_id": chatId,
       "message_thread_id": messageThreadId,
-      "reply_to_message_id": replyToMessageId,
+      "reply_to": replyTo?.toJson(),
       "options": options?.toJson(),
       "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
@@ -73,21 +73,21 @@ final class SendMessage extends TdFunction {
   /// Properties:
   /// * [chat_id]: Target chat
   /// * [message_thread_id]: If not 0, a message thread identifier in which the message will be sent
-  /// * [reply_to_message_id]: Identifier of the replied message; 0 if none
+  /// * [reply_to]: Identifier of the replied message or story; pass null if none
   /// * [options]: Options to be used to send the message; pass null to use default options
   /// * [reply_markup]: Markup for replying to the message; pass null if none; for bots only
   /// * [input_message_content]: The content of the message to be sent
   SendMessage copyWith({
     int? chatId,
     int? messageThreadId,
-    int? replyToMessageId,
+    MessageReplyTo? replyTo,
     MessageSendOptions? options,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
   }) => SendMessage(
     chatId: chatId ?? this.chatId,
     messageThreadId: messageThreadId ?? this.messageThreadId,
-    replyToMessageId: replyToMessageId ?? this.replyToMessageId,
+    replyTo: replyTo ?? this.replyTo,
     options: options ?? this.options,
     replyMarkup: replyMarkup ?? this.replyMarkup,
     inputMessageContent: inputMessageContent ?? this.inputMessageContent,

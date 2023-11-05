@@ -321,7 +321,7 @@ final class CallStateHangingUp extends CallState {
 ///
 /// The call has ended successfully.
 ///
-/// * [reason]: The reason, why the call has ended.
+/// * [reason]: The reason why the call has ended.
 /// * [needRating]: True, if the call rating must be sent to the server.
 /// * [needDebugInformation]: True, if the call debug information must be sent to the server.
 /// * [needLog]: True, if the call log must be sent to the server.
@@ -331,7 +331,7 @@ final class CallStateDiscarded extends CallState {
   ///
   /// The call has ended successfully.
   ///
-  /// * [reason]: The reason, why the call has ended.
+  /// * [reason]: The reason why the call has ended.
   /// * [needRating]: True, if the call rating must be sent to the server.
   /// * [needDebugInformation]: True, if the call debug information must be sent to the server.
   /// * [needLog]: True, if the call log must be sent to the server.
@@ -342,7 +342,7 @@ final class CallStateDiscarded extends CallState {
     required this.needLog,
   });
   
-  /// The reason, why the call has ended
+  /// The reason why the call has ended
   final CallDiscardReason reason;
 
   /// True, if the call rating must be sent to the server
@@ -378,7 +378,7 @@ final class CallStateDiscarded extends CallState {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [reason]: The reason, why the call has ended
+  /// * [reason]: The reason why the call has ended
   /// * [need_rating]: True, if the call rating must be sent to the server
   /// * [need_debug_information]: True, if the call debug information must be sent to the server
   /// * [need_log]: True, if the call log must be sent to the server

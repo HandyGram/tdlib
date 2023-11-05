@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-/// **ReorderActiveBotUsernames** *(reorderActiveBotUsernames)* - TDLib function
+/// **ReorderBotActiveUsernames** *(reorderBotActiveUsernames)* - TDLib function
 ///
 /// Changes order of active usernames of a bot. Can be called only if userTypeBot.can_be_edited == true.
 ///
@@ -8,9 +8,9 @@ part of '../tdapi.dart';
 /// * [usernames]: The new order of active usernames. All currently active usernames must be specified.
 ///
 /// [Ok] is returned on completion.
-final class ReorderActiveBotUsernames extends TdFunction {
+final class ReorderBotActiveUsernames extends TdFunction {
   
-  /// **ReorderActiveBotUsernames** *(reorderActiveBotUsernames)* - TDLib function
+  /// **ReorderBotActiveUsernames** *(reorderBotActiveUsernames)* - TDLib function
   ///
   /// Changes order of active usernames of a bot. Can be called only if userTypeBot.can_be_edited == true.
   ///
@@ -18,7 +18,7 @@ final class ReorderActiveBotUsernames extends TdFunction {
   /// * [usernames]: The new order of active usernames. All currently active usernames must be specified.
   ///
   /// [Ok] is returned on completion.
-  const ReorderActiveBotUsernames({
+  const ReorderBotActiveUsernames({
     required this.botUserId,
     required this.usernames,
   });
@@ -45,16 +45,16 @@ final class ReorderActiveBotUsernames extends TdFunction {
   /// Properties:
   /// * [bot_user_id]: Identifier of the target bot 
   /// * [usernames]: The new order of active usernames. All currently active usernames must be specified
-  ReorderActiveBotUsernames copyWith({
+  ReorderBotActiveUsernames copyWith({
     int? botUserId,
     List<String>? usernames,
-  }) => ReorderActiveBotUsernames(
+  }) => ReorderBotActiveUsernames(
     botUserId: botUserId ?? this.botUserId,
     usernames: usernames ?? this.usernames,
   );
 
   /// TDLib object type
-  static const String objectType = 'reorderActiveBotUsernames';
+  static const String objectType = 'reorderBotActiveUsernames';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

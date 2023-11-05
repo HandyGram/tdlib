@@ -9,6 +9,7 @@ part of '../tdapi.dart';
 /// * [maxTipAmount]: The maximum allowed amount of tip in the smallest units of the currency.
 /// * [suggestedTipAmounts]: Suggested amounts of tip in the smallest units of the currency.
 /// * [recurringPaymentTermsOfServiceUrl]: An HTTP URL with terms of service for recurring payments. If non-empty, the invoice payment will result in recurring payments and the user must accept the terms of service before allowed to pay.
+/// * [termsOfServiceUrl]: An HTTP URL with terms of service for non-recurring payments. If non-empty, then the user must accept the terms of service before allowed to pay.
 /// * [isTest]: True, if the payment is a test payment.
 /// * [needName]: True, if the user's name is needed for payment.
 /// * [needPhoneNumber]: True, if the user's phone number is needed for payment.
@@ -28,6 +29,7 @@ final class Invoice extends TdObject {
   /// * [maxTipAmount]: The maximum allowed amount of tip in the smallest units of the currency.
   /// * [suggestedTipAmounts]: Suggested amounts of tip in the smallest units of the currency.
   /// * [recurringPaymentTermsOfServiceUrl]: An HTTP URL with terms of service for recurring payments. If non-empty, the invoice payment will result in recurring payments and the user must accept the terms of service before allowed to pay.
+  /// * [termsOfServiceUrl]: An HTTP URL with terms of service for non-recurring payments. If non-empty, then the user must accept the terms of service before allowed to pay.
   /// * [isTest]: True, if the payment is a test payment.
   /// * [needName]: True, if the user's name is needed for payment.
   /// * [needPhoneNumber]: True, if the user's phone number is needed for payment.
@@ -42,6 +44,7 @@ final class Invoice extends TdObject {
     required this.maxTipAmount,
     required this.suggestedTipAmounts,
     required this.recurringPaymentTermsOfServiceUrl,
+    required this.termsOfServiceUrl,
     required this.isTest,
     required this.needName,
     required this.needPhoneNumber,
@@ -66,6 +69,9 @@ final class Invoice extends TdObject {
 
   /// An HTTP URL with terms of service for recurring payments. If non-empty, the invoice payment will result in recurring payments and the user must accept the terms of service before allowed to pay
   final String recurringPaymentTermsOfServiceUrl;
+
+  /// An HTTP URL with terms of service for non-recurring payments. If non-empty, then the user must accept the terms of service before allowed to pay
+  final String termsOfServiceUrl;
 
   /// True, if the payment is a test payment
   final bool isTest;
@@ -98,6 +104,7 @@ final class Invoice extends TdObject {
     maxTipAmount: json['max_tip_amount'],
     suggestedTipAmounts: List<int>.from((json['suggested_tip_amounts'] ?? []).map((item) => item).toList()),
     recurringPaymentTermsOfServiceUrl: json['recurring_payment_terms_of_service_url'],
+    termsOfServiceUrl: json['terms_of_service_url'],
     isTest: json['is_test'],
     needName: json['need_name'],
     needPhoneNumber: json['need_phone_number'],
@@ -119,6 +126,7 @@ final class Invoice extends TdObject {
       "max_tip_amount": maxTipAmount,
       "suggested_tip_amounts": suggestedTipAmounts.map((i) => i).toList(),
       "recurring_payment_terms_of_service_url": recurringPaymentTermsOfServiceUrl,
+      "terms_of_service_url": termsOfServiceUrl,
       "is_test": isTest,
       "need_name": needName,
       "need_phone_number": needPhoneNumber,
@@ -138,6 +146,7 @@ final class Invoice extends TdObject {
   /// * [max_tip_amount]: The maximum allowed amount of tip in the smallest units of the currency
   /// * [suggested_tip_amounts]: Suggested amounts of tip in the smallest units of the currency
   /// * [recurring_payment_terms_of_service_url]: An HTTP URL with terms of service for recurring payments. If non-empty, the invoice payment will result in recurring payments and the user must accept the terms of service before allowed to pay
+  /// * [terms_of_service_url]: An HTTP URL with terms of service for non-recurring payments. If non-empty, then the user must accept the terms of service before allowed to pay
   /// * [is_test]: True, if the payment is a test payment
   /// * [need_name]: True, if the user's name is needed for payment
   /// * [need_phone_number]: True, if the user's phone number is needed for payment
@@ -152,6 +161,7 @@ final class Invoice extends TdObject {
     int? maxTipAmount,
     List<int>? suggestedTipAmounts,
     String? recurringPaymentTermsOfServiceUrl,
+    String? termsOfServiceUrl,
     bool? isTest,
     bool? needName,
     bool? needPhoneNumber,
@@ -166,6 +176,7 @@ final class Invoice extends TdObject {
     maxTipAmount: maxTipAmount ?? this.maxTipAmount,
     suggestedTipAmounts: suggestedTipAmounts ?? this.suggestedTipAmounts,
     recurringPaymentTermsOfServiceUrl: recurringPaymentTermsOfServiceUrl ?? this.recurringPaymentTermsOfServiceUrl,
+    termsOfServiceUrl: termsOfServiceUrl ?? this.termsOfServiceUrl,
     isTest: isTest ?? this.isTest,
     needName: needName ?? this.needName,
     needPhoneNumber: needPhoneNumber ?? this.needPhoneNumber,

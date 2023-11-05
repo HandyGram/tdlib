@@ -13,6 +13,7 @@ sealed class PremiumSource extends TdObject {
   /// a PremiumSource return type can be :
   /// * [PremiumSourceLimitExceeded]
   /// * [PremiumSourceFeature]
+  /// * [PremiumSourceStoryFeature]
   /// * [PremiumSourceLink]
   /// * [PremiumSourceSettings]
   factory PremiumSource.fromJson(Map<String, dynamic> json)  {
@@ -21,6 +22,8 @@ sealed class PremiumSource extends TdObject {
         return PremiumSourceLimitExceeded.fromJson(json);
       case PremiumSourceFeature.objectType:
         return PremiumSourceFeature.fromJson(json);
+      case PremiumSourceStoryFeature.objectType:
+        return PremiumSourceStoryFeature.fromJson(json);
       case PremiumSourceLink.objectType:
         return PremiumSourceLink.fromJson(json);
       case PremiumSourceSettings.objectType:
@@ -158,6 +161,64 @@ final class PremiumSourceFeature extends PremiumSource {
 
   /// TDLib object type
   static const String objectType = 'premiumSourceFeature';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **PremiumSourceStoryFeature** *(premiumSourceStoryFeature)* - child of PremiumSource
+///
+/// A user tried to use a Premium story feature.
+///
+/// * [feature]: The used feature.
+final class PremiumSourceStoryFeature extends PremiumSource {
+  
+  /// **PremiumSourceStoryFeature** *(premiumSourceStoryFeature)* - child of PremiumSource
+  ///
+  /// A user tried to use a Premium story feature.
+  ///
+  /// * [feature]: The used feature.
+  const PremiumSourceStoryFeature({
+    required this.feature,
+  });
+  
+  /// The used feature
+  final PremiumStoryFeature feature;
+  
+  /// Parse from a json
+  factory PremiumSourceStoryFeature.fromJson(Map<String, dynamic> json) => PremiumSourceStoryFeature(
+    feature: PremiumStoryFeature.fromJson(json['feature']),
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "feature": feature.toJson(),
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [feature]: The used feature
+  @override
+  PremiumSourceStoryFeature copyWith({
+    PremiumStoryFeature? feature,
+  }) => PremiumSourceStoryFeature(
+    feature: feature ?? this.feature,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'premiumSourceStoryFeature';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

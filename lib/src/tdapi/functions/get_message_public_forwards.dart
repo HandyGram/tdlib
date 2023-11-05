@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **GetMessagePublicForwards** *(getMessagePublicForwards)* - TDLib function
 ///
-/// Returns forwarded copies of a channel message to different public channels. For optimal performance, the number of returned messages is chosen by TDLib.
+/// Returns forwarded copies of a channel message to different public channels. Can be used only if message.can_get_statistics == true. For optimal performance, the number of returned messages is chosen by TDLib.
 ///
 /// * [chatId]: Chat identifier of the message.
 /// * [messageId]: Message identifier.
@@ -14,7 +14,7 @@ final class GetMessagePublicForwards extends TdFunction {
   
   /// **GetMessagePublicForwards** *(getMessagePublicForwards)* - TDLib function
   ///
-  /// Returns forwarded copies of a channel message to different public channels. For optimal performance, the number of returned messages is chosen by TDLib.
+  /// Returns forwarded copies of a channel message to different public channels. Can be used only if message.can_get_statistics == true. For optimal performance, the number of returned messages is chosen by TDLib.
   ///
   /// * [chatId]: Chat identifier of the message.
   /// * [messageId]: Message identifier.

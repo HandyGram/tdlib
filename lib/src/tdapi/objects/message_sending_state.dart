@@ -109,8 +109,7 @@ final class MessageSendingStatePending extends MessageSendingState {
 ///
 /// The message failed to be sent.
 ///
-/// * [errorCode]: An error code; 0 if unknown.
-/// * [errorMessage]: Error message.
+/// * [error]: The cause of the message sending failure.
 /// * [canRetry]: True, if the message can be re-sent.
 /// * [needAnotherSender]: True, if the message can be re-sent only on behalf of a different sender.
 /// * [retryAfter]: Time left before the message can be re-sent, in seconds. No update is sent when this field changes.
@@ -120,24 +119,19 @@ final class MessageSendingStateFailed extends MessageSendingState {
   ///
   /// The message failed to be sent.
   ///
-  /// * [errorCode]: An error code; 0 if unknown.
-  /// * [errorMessage]: Error message.
+  /// * [error]: The cause of the message sending failure.
   /// * [canRetry]: True, if the message can be re-sent.
   /// * [needAnotherSender]: True, if the message can be re-sent only on behalf of a different sender.
   /// * [retryAfter]: Time left before the message can be re-sent, in seconds. No update is sent when this field changes.
   const MessageSendingStateFailed({
-    required this.errorCode,
-    required this.errorMessage,
+    required this.error,
     required this.canRetry,
     required this.needAnotherSender,
     required this.retryAfter,
   });
   
-  /// An error code; 0 if unknown
-  final int errorCode;
-
-  /// Error message
-  final String errorMessage;
+  /// The cause of the message sending failure
+  final TdError error;
 
   /// True, if the message can be re-sent
   final bool canRetry;
@@ -150,8 +144,7 @@ final class MessageSendingStateFailed extends MessageSendingState {
   
   /// Parse from a json
   factory MessageSendingStateFailed.fromJson(Map<String, dynamic> json) => MessageSendingStateFailed(
-    errorCode: json['error_code'],
-    errorMessage: json['error_message'],
+    error: TdError.fromJson(json['error']),
     canRetry: json['can_retry'],
     needAnotherSender: json['need_another_sender'],
     retryAfter: json['retry_after'],
@@ -163,8 +156,7 @@ final class MessageSendingStateFailed extends MessageSendingState {
   Map<String, dynamic> toJson() {
 		return {
 			"@type": objectType,
-      "error_code": errorCode,
-      "error_message": errorMessage,
+      "error": error.toJson(),
       "can_retry": canRetry,
       "need_another_sender": needAnotherSender,
       "retry_after": retryAfter,
@@ -174,21 +166,18 @@ final class MessageSendingStateFailed extends MessageSendingState {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [error_code]: An error code; 0 if unknown
-  /// * [error_message]: Error message
+  /// * [error]: The cause of the message sending failure
   /// * [can_retry]: True, if the message can be re-sent
   /// * [need_another_sender]: True, if the message can be re-sent only on behalf of a different sender
   /// * [retry_after]: Time left before the message can be re-sent, in seconds. No update is sent when this field changes
   @override
   MessageSendingStateFailed copyWith({
-    int? errorCode,
-    String? errorMessage,
+    TdError? error,
     bool? canRetry,
     bool? needAnotherSender,
     double? retryAfter,
   }) => MessageSendingStateFailed(
-    errorCode: errorCode ?? this.errorCode,
-    errorMessage: errorMessage ?? this.errorMessage,
+    error: error ?? this.error,
     canRetry: canRetry ?? this.canRetry,
     needAnotherSender: needAnotherSender ?? this.needAnotherSender,
     retryAfter: retryAfter ?? this.retryAfter,

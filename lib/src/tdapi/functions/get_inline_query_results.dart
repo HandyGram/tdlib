@@ -8,7 +8,7 @@ part of '../tdapi.dart';
 /// * [chatId]: Identifier of the chat where the query was sent.
 /// * [userLocation]: Location of the user; pass null if unknown or the bot doesn't need user's location *(optional)*.
 /// * [query]: Text of the query.
-/// * [offset]: Offset of the first entry to return.
+/// * [offset]: Offset of the first entry to return; use empty string to get the first chunk of results.
 ///
 /// [InlineQueryResults] is returned on completion.
 final class GetInlineQueryResults extends TdFunction {
@@ -21,7 +21,7 @@ final class GetInlineQueryResults extends TdFunction {
   /// * [chatId]: Identifier of the chat where the query was sent.
   /// * [userLocation]: Location of the user; pass null if unknown or the bot doesn't need user's location *(optional)*.
   /// * [query]: Text of the query.
-  /// * [offset]: Offset of the first entry to return.
+  /// * [offset]: Offset of the first entry to return; use empty string to get the first chunk of results.
   ///
   /// [InlineQueryResults] is returned on completion.
   const GetInlineQueryResults({
@@ -44,7 +44,7 @@ final class GetInlineQueryResults extends TdFunction {
   /// Text of the query
   final String query;
 
-  /// Offset of the first entry to return
+  /// Offset of the first entry to return; use empty string to get the first chunk of results
   final String offset;
   
   /// Convert model to TDLib JSON format
@@ -68,7 +68,7 @@ final class GetInlineQueryResults extends TdFunction {
   /// * [chat_id]: Identifier of the chat where the query was sent
   /// * [user_location]: Location of the user; pass null if unknown or the bot doesn't need user's location
   /// * [query]: Text of the query
-  /// * [offset]: Offset of the first entry to return
+  /// * [offset]: Offset of the first entry to return; use empty string to get the first chunk of results
   GetInlineQueryResults copyWith({
     int? botUserId,
     int? chatId,

@@ -7,7 +7,7 @@ part of '../tdapi.dart';
 /// * [udpP2p]: True, if UDP peer-to-peer connections are supported.
 /// * [udpReflector]: True, if connection through UDP reflectors is supported.
 /// * [minLayer]: The minimum supported API layer; use 65.
-/// * [maxLayer]: The maximum supported API layer; use 65.
+/// * [maxLayer]: The maximum supported API layer; use 92.
 /// * [libraryVersions]: List of supported tgcalls versions.
 final class CallProtocol extends TdObject {
   
@@ -18,7 +18,7 @@ final class CallProtocol extends TdObject {
   /// * [udpP2p]: True, if UDP peer-to-peer connections are supported.
   /// * [udpReflector]: True, if connection through UDP reflectors is supported.
   /// * [minLayer]: The minimum supported API layer; use 65.
-  /// * [maxLayer]: The maximum supported API layer; use 65.
+  /// * [maxLayer]: The maximum supported API layer; use 92.
   /// * [libraryVersions]: List of supported tgcalls versions.
   const CallProtocol({
     required this.udpP2p,
@@ -37,7 +37,7 @@ final class CallProtocol extends TdObject {
   /// The minimum supported API layer; use 65
   final int minLayer;
 
-  /// The maximum supported API layer; use 65
+  /// The maximum supported API layer; use 92
   final int maxLayer;
 
   /// List of supported tgcalls versions
@@ -72,7 +72,7 @@ final class CallProtocol extends TdObject {
   /// * [udp_p2p]: True, if UDP peer-to-peer connections are supported
   /// * [udp_reflector]: True, if connection through UDP reflectors is supported
   /// * [min_layer]: The minimum supported API layer; use 65
-  /// * [max_layer]: The maximum supported API layer; use 65
+  /// * [max_layer]: The maximum supported API layer; use 92
   /// * [library_versions]: List of supported tgcalls versions
   CallProtocol copyWith({
     bool? udpP2p,

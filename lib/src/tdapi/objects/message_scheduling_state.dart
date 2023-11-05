@@ -51,19 +51,19 @@ sealed class MessageSchedulingState extends TdObject {
 ///
 /// The message will be sent at the specified date.
 ///
-/// * [sendDate]: Date the message will be sent. The date must be within 367 days in the future.
+/// * [sendDate]: Point in time (Unix timestamp) when the message will be sent. The date must be within 367 days in the future.
 final class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
   
   /// **MessageSchedulingStateSendAtDate** *(messageSchedulingStateSendAtDate)* - child of MessageSchedulingState
   ///
   /// The message will be sent at the specified date.
   ///
-  /// * [sendDate]: Date the message will be sent. The date must be within 367 days in the future.
+  /// * [sendDate]: Point in time (Unix timestamp) when the message will be sent. The date must be within 367 days in the future.
   const MessageSchedulingStateSendAtDate({
     required this.sendDate,
   });
   
-  /// Date the message will be sent. The date must be within 367 days in the future
+  /// Point in time (Unix timestamp) when the message will be sent. The date must be within 367 days in the future
   final int sendDate;
   
   /// Parse from a json
@@ -84,7 +84,7 @@ final class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [send_date]: Date the message will be sent. The date must be within 367 days in the future
+  /// * [send_date]: Point in time (Unix timestamp) when the message will be sent. The date must be within 367 days in the future
   @override
   MessageSchedulingStateSendAtDate copyWith({
     int? sendDate,

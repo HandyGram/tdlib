@@ -14,6 +14,9 @@ part of '../tdapi.dart';
 /// * [memberUserIds]: User identifiers of some chat members that may be known to the current user.
 /// * [createsJoinRequest]: True, if the link only creates join request.
 /// * [isPublic]: True, if the chat is a public supergroup or channel, i.e. it has a username or it is a location-based supergroup.
+/// * [isVerified]: True, if the chat is verified.
+/// * [isScam]: True, if many users reported this chat as a scam.
+/// * [isFake]: True, if many users reported this chat as a fake account.
 final class ChatInviteLinkInfo extends TdObject {
   
   /// **ChatInviteLinkInfo** *(chatInviteLinkInfo)* - basic class
@@ -30,6 +33,9 @@ final class ChatInviteLinkInfo extends TdObject {
   /// * [memberUserIds]: User identifiers of some chat members that may be known to the current user.
   /// * [createsJoinRequest]: True, if the link only creates join request.
   /// * [isPublic]: True, if the chat is a public supergroup or channel, i.e. it has a username or it is a location-based supergroup.
+  /// * [isVerified]: True, if the chat is verified.
+  /// * [isScam]: True, if many users reported this chat as a scam.
+  /// * [isFake]: True, if many users reported this chat as a fake account.
   const ChatInviteLinkInfo({
     required this.chatId,
     required this.accessibleFor,
@@ -41,6 +47,9 @@ final class ChatInviteLinkInfo extends TdObject {
     required this.memberUserIds,
     required this.createsJoinRequest,
     required this.isPublic,
+    required this.isVerified,
+    required this.isScam,
+    required this.isFake,
     this.extra,
     this.clientId,
   });
@@ -52,7 +61,7 @@ final class ChatInviteLinkInfo extends TdObject {
   final int accessibleFor;
 
   /// Type of the chat
-  final ChatType type;
+  final InviteLinkChatType type;
 
   /// Title of the chat
   final String title;
@@ -75,6 +84,15 @@ final class ChatInviteLinkInfo extends TdObject {
   /// True, if the chat is a public supergroup or channel, i.e. it has a username or it is a location-based supergroup
   final bool isPublic;
 
+  /// True, if the chat is verified
+  final bool isVerified;
+
+  /// True, if many users reported this chat as a scam
+  final bool isScam;
+
+  /// True, if many users reported this chat as a fake account
+  final bool isFake;
+
   /// [extra] callback sign
   @override
   final dynamic extra;
@@ -87,7 +105,7 @@ final class ChatInviteLinkInfo extends TdObject {
   factory ChatInviteLinkInfo.fromJson(Map<String, dynamic> json) => ChatInviteLinkInfo(
     chatId: json['chat_id'],
     accessibleFor: json['accessible_for'],
-    type: ChatType.fromJson(json['type']),
+    type: InviteLinkChatType.fromJson(json['type']),
     title: json['title'],
     photo: json['photo'] == null ? null : ChatPhotoInfo.fromJson(json['photo']),
     description: json['description'],
@@ -95,6 +113,9 @@ final class ChatInviteLinkInfo extends TdObject {
     memberUserIds: List<int>.from((json['member_user_ids'] ?? []).map((item) => item).toList()),
     createsJoinRequest: json['creates_join_request'],
     isPublic: json['is_public'],
+    isVerified: json['is_verified'],
+    isScam: json['is_scam'],
+    isFake: json['is_fake'],
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -115,6 +136,9 @@ final class ChatInviteLinkInfo extends TdObject {
       "member_user_ids": memberUserIds.map((i) => i).toList(),
       "creates_join_request": createsJoinRequest,
       "is_public": isPublic,
+      "is_verified": isVerified,
+      "is_scam": isScam,
+      "is_fake": isFake,
 		};
 	}
 
@@ -131,10 +155,13 @@ final class ChatInviteLinkInfo extends TdObject {
   /// * [member_user_ids]: User identifiers of some chat members that may be known to the current user
   /// * [creates_join_request]: True, if the link only creates join request
   /// * [is_public]: True, if the chat is a public supergroup or channel, i.e. it has a username or it is a location-based supergroup
+  /// * [is_verified]: True, if the chat is verified
+  /// * [is_scam]: True, if many users reported this chat as a scam
+  /// * [is_fake]: True, if many users reported this chat as a fake account
   ChatInviteLinkInfo copyWith({
     int? chatId,
     int? accessibleFor,
-    ChatType? type,
+    InviteLinkChatType? type,
     String? title,
     ChatPhotoInfo? photo,
     String? description,
@@ -142,6 +169,9 @@ final class ChatInviteLinkInfo extends TdObject {
     List<int>? memberUserIds,
     bool? createsJoinRequest,
     bool? isPublic,
+    bool? isVerified,
+    bool? isScam,
+    bool? isFake,
     dynamic extra,
     int? clientId,
   }) => ChatInviteLinkInfo(
@@ -155,6 +185,9 @@ final class ChatInviteLinkInfo extends TdObject {
     memberUserIds: memberUserIds ?? this.memberUserIds,
     createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
     isPublic: isPublic ?? this.isPublic,
+    isVerified: isVerified ?? this.isVerified,
+    isScam: isScam ?? this.isScam,
+    isFake: isFake ?? this.isFake,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
   );

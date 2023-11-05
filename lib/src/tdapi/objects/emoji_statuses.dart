@@ -2,24 +2,24 @@ part of '../tdapi.dart';
 
 /// **EmojiStatuses** *(emojiStatuses)* - basic class
 ///
-/// Contains a list of emoji statuses.
+/// Contains a list of custom emoji identifiers, which can be set as emoji statuses.
 ///
-/// * [emojiStatuses]: The list of emoji statuses.
+/// * [customEmojiIds]: The list of custom emoji identifiers.
 final class EmojiStatuses extends TdObject {
   
   /// **EmojiStatuses** *(emojiStatuses)* - basic class
   ///
-  /// Contains a list of emoji statuses.
+  /// Contains a list of custom emoji identifiers, which can be set as emoji statuses.
   ///
-  /// * [emojiStatuses]: The list of emoji statuses.
+  /// * [customEmojiIds]: The list of custom emoji identifiers.
   const EmojiStatuses({
-    required this.emojiStatuses,
+    required this.customEmojiIds,
     this.extra,
     this.clientId,
   });
   
-  /// The list of emoji statuses
-  final List<EmojiStatus> emojiStatuses;
+  /// The list of custom emoji identifiers
+  final List<int> customEmojiIds;
 
   /// [extra] callback sign
   @override
@@ -31,7 +31,7 @@ final class EmojiStatuses extends TdObject {
   
   /// Parse from a json
   factory EmojiStatuses.fromJson(Map<String, dynamic> json) => EmojiStatuses(
-    emojiStatuses: List<EmojiStatus>.from((json['emoji_statuses'] ?? []).map((item) => EmojiStatus.fromJson(item)).toList()),
+    customEmojiIds: List<int>.from((json['custom_emoji_ids'] ?? []).map((item) => item).toList()),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -42,20 +42,20 @@ final class EmojiStatuses extends TdObject {
   Map<String, dynamic> toJson() {
 		return {
 			"@type": objectType,
-      "emoji_statuses": emojiStatuses.map((i) => i.toJson()).toList(),
+      "custom_emoji_ids": customEmojiIds.map((i) => i).toList(),
 		};
 	}
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [emoji_statuses]: The list of emoji statuses
+  /// * [custom_emoji_ids]: The list of custom emoji identifiers
   EmojiStatuses copyWith({
-    List<EmojiStatus>? emojiStatuses,
+    List<int>? customEmojiIds,
     dynamic extra,
     int? clientId,
   }) => EmojiStatuses(
-    emojiStatuses: emojiStatuses ?? this.emojiStatuses,
+    customEmojiIds: customEmojiIds ?? this.customEmojiIds,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
   );

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 ///
 /// * [groupCallId]: Group call identifier.
 /// * [participantId]: Participant identifier.
-/// * [isMuted]: Pass true to mute the user; pass false to unmute the them.
+/// * [isMuted]: Pass true to mute the user; pass false to unmute them.
 ///
 /// [Ok] is returned on completion.
 final class ToggleGroupCallParticipantIsMuted extends TdFunction {
@@ -17,7 +17,7 @@ final class ToggleGroupCallParticipantIsMuted extends TdFunction {
   ///
   /// * [groupCallId]: Group call identifier.
   /// * [participantId]: Participant identifier.
-  /// * [isMuted]: Pass true to mute the user; pass false to unmute the them.
+  /// * [isMuted]: Pass true to mute the user; pass false to unmute them.
   ///
   /// [Ok] is returned on completion.
   const ToggleGroupCallParticipantIsMuted({
@@ -32,7 +32,7 @@ final class ToggleGroupCallParticipantIsMuted extends TdFunction {
   /// Participant identifier
   final MessageSender participantId;
 
-  /// Pass true to mute the user; pass false to unmute the them
+  /// Pass true to mute the user; pass false to unmute them
   final bool isMuted;
   
   /// Convert model to TDLib JSON format
@@ -52,7 +52,7 @@ final class ToggleGroupCallParticipantIsMuted extends TdFunction {
   /// Properties:
   /// * [group_call_id]: Group call identifier
   /// * [participant_id]: Participant identifier
-  /// * [is_muted]: Pass true to mute the user; pass false to unmute the them
+  /// * [is_muted]: Pass true to mute the user; pass false to unmute them
   ToggleGroupCallParticipantIsMuted copyWith({
     int? groupCallId,
     MessageSender? participantId,

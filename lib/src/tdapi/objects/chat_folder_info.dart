@@ -7,6 +7,7 @@ part of '../tdapi.dart';
 /// * [id]: Unique chat folder identifier.
 /// * [title]: The title of the folder; 1-12 characters without line feeds.
 /// * [icon]: The chosen or default icon for the chat folder.
+/// * [isShareable]: True, if at least one link has been created for the folder.
 /// * [hasMyInviteLinks]: True, if the chat folder has invite links created by the current user.
 final class ChatFolderInfo extends TdObject {
   
@@ -17,11 +18,13 @@ final class ChatFolderInfo extends TdObject {
   /// * [id]: Unique chat folder identifier.
   /// * [title]: The title of the folder; 1-12 characters without line feeds.
   /// * [icon]: The chosen or default icon for the chat folder.
+  /// * [isShareable]: True, if at least one link has been created for the folder.
   /// * [hasMyInviteLinks]: True, if the chat folder has invite links created by the current user.
   const ChatFolderInfo({
     required this.id,
     required this.title,
     required this.icon,
+    required this.isShareable,
     required this.hasMyInviteLinks,
     this.extra,
     this.clientId,
@@ -35,6 +38,9 @@ final class ChatFolderInfo extends TdObject {
 
   /// The chosen or default icon for the chat folder
   final ChatFolderIcon icon;
+
+  /// True, if at least one link has been created for the folder
+  final bool isShareable;
 
   /// True, if the chat folder has invite links created by the current user
   final bool hasMyInviteLinks;
@@ -52,6 +58,7 @@ final class ChatFolderInfo extends TdObject {
     id: json['id'],
     title: json['title'],
     icon: ChatFolderIcon.fromJson(json['icon']),
+    isShareable: json['is_shareable'],
     hasMyInviteLinks: json['has_my_invite_links'],
     extra: json['@extra'],
     clientId: json['@client_id'],
@@ -66,6 +73,7 @@ final class ChatFolderInfo extends TdObject {
       "id": id,
       "title": title,
       "icon": icon.toJson(),
+      "is_shareable": isShareable,
       "has_my_invite_links": hasMyInviteLinks,
 		};
 	}
@@ -76,11 +84,13 @@ final class ChatFolderInfo extends TdObject {
   /// * [id]: Unique chat folder identifier
   /// * [title]: The title of the folder; 1-12 characters without line feeds
   /// * [icon]: The chosen or default icon for the chat folder
+  /// * [is_shareable]: True, if at least one link has been created for the folder
   /// * [has_my_invite_links]: True, if the chat folder has invite links created by the current user
   ChatFolderInfo copyWith({
     int? id,
     String? title,
     ChatFolderIcon? icon,
+    bool? isShareable,
     bool? hasMyInviteLinks,
     dynamic extra,
     int? clientId,
@@ -88,6 +98,7 @@ final class ChatFolderInfo extends TdObject {
     id: id ?? this.id,
     title: title ?? this.title,
     icon: icon ?? this.icon,
+    isShareable: isShareable ?? this.isShareable,
     hasMyInviteLinks: hasMyInviteLinks ?? this.hasMyInviteLinks,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 ///
 /// * [chatId]: Target chat.
 /// * [senderId]: Identifier of the sender of the message.
-/// * [replyToMessageId]: Identifier of the replied message; 0 if none.
+/// * [replyTo]: Identifier of the replied message or story; pass null if none *(optional)*.
 /// * [disableNotification]: Pass true to disable notification for the message.
 /// * [inputMessageContent]: The content of the message to be added.
 ///
@@ -19,7 +19,7 @@ final class AddLocalMessage extends TdFunction {
   ///
   /// * [chatId]: Target chat.
   /// * [senderId]: Identifier of the sender of the message.
-  /// * [replyToMessageId]: Identifier of the replied message; 0 if none.
+  /// * [replyTo]: Identifier of the replied message or story; pass null if none *(optional)*.
   /// * [disableNotification]: Pass true to disable notification for the message.
   /// * [inputMessageContent]: The content of the message to be added.
   ///
@@ -27,7 +27,7 @@ final class AddLocalMessage extends TdFunction {
   const AddLocalMessage({
     required this.chatId,
     required this.senderId,
-    required this.replyToMessageId,
+    this.replyTo,
     required this.disableNotification,
     required this.inputMessageContent,
   });
@@ -38,8 +38,8 @@ final class AddLocalMessage extends TdFunction {
   /// Identifier of the sender of the message
   final MessageSender senderId;
 
-  /// Identifier of the replied message; 0 if none
-  final int replyToMessageId;
+  /// Identifier of the replied message or story; pass null if none
+  final MessageReplyTo? replyTo;
 
   /// Pass true to disable notification for the message
   final bool disableNotification;
@@ -54,7 +54,7 @@ final class AddLocalMessage extends TdFunction {
 			"@type": objectType,
       "chat_id": chatId,
       "sender_id": senderId.toJson(),
-      "reply_to_message_id": replyToMessageId,
+      "reply_to": replyTo?.toJson(),
       "disable_notification": disableNotification,
       "input_message_content": inputMessageContent.toJson(),
       "@extra": extra,
@@ -66,19 +66,19 @@ final class AddLocalMessage extends TdFunction {
   /// Properties:
   /// * [chat_id]: Target chat
   /// * [sender_id]: Identifier of the sender of the message
-  /// * [reply_to_message_id]: Identifier of the replied message; 0 if none
+  /// * [reply_to]: Identifier of the replied message or story; pass null if none
   /// * [disable_notification]: Pass true to disable notification for the message
   /// * [input_message_content]: The content of the message to be added
   AddLocalMessage copyWith({
     int? chatId,
     MessageSender? senderId,
-    int? replyToMessageId,
+    MessageReplyTo? replyTo,
     bool? disableNotification,
     InputMessageContent? inputMessageContent,
   }) => AddLocalMessage(
     chatId: chatId ?? this.chatId,
     senderId: senderId ?? this.senderId,
-    replyToMessageId: replyToMessageId ?? this.replyToMessageId,
+    replyTo: replyTo ?? this.replyTo,
     disableNotification: disableNotification ?? this.disableNotification,
     inputMessageContent: inputMessageContent ?? this.inputMessageContent,
   );

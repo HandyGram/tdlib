@@ -2,10 +2,10 @@ part of '../tdapi.dart';
 
 /// **GetWebAppUrl** *(getWebAppUrl)* - TDLib function
 ///
-/// Returns an HTTPS URL of a Web App to open after keyboardButtonTypeWebApp or inlineQueryResultsButtonTypeWebApp button is pressed.
+/// Returns an HTTPS URL of a Web App to open from the side menu, a keyboardButtonTypeWebApp button, an inlineQueryResultsButtonTypeWebApp button, or an internalLinkTypeSideMenuBot link.
 ///
 /// * [botUserId]: Identifier of the target bot.
-/// * [url]: The URL from the keyboardButtonTypeWebApp or inlineQueryResultsButtonTypeWebApp button.
+/// * [url]: The URL from a keyboardButtonTypeWebApp button, inlineQueryResultsButtonTypeWebApp button, an internalLinkTypeSideMenuBot link, or an empty when the bot is opened from the side menu.
 /// * [theme]: Preferred Web App theme; pass null to use the default theme *(optional)*.
 /// * [applicationName]: Short name of the application; 0-64 English letters, digits, and underscores.
 ///
@@ -14,10 +14,10 @@ final class GetWebAppUrl extends TdFunction {
   
   /// **GetWebAppUrl** *(getWebAppUrl)* - TDLib function
   ///
-  /// Returns an HTTPS URL of a Web App to open after keyboardButtonTypeWebApp or inlineQueryResultsButtonTypeWebApp button is pressed.
+  /// Returns an HTTPS URL of a Web App to open from the side menu, a keyboardButtonTypeWebApp button, an inlineQueryResultsButtonTypeWebApp button, or an internalLinkTypeSideMenuBot link.
   ///
   /// * [botUserId]: Identifier of the target bot.
-  /// * [url]: The URL from the keyboardButtonTypeWebApp or inlineQueryResultsButtonTypeWebApp button.
+  /// * [url]: The URL from a keyboardButtonTypeWebApp button, inlineQueryResultsButtonTypeWebApp button, an internalLinkTypeSideMenuBot link, or an empty when the bot is opened from the side menu.
   /// * [theme]: Preferred Web App theme; pass null to use the default theme *(optional)*.
   /// * [applicationName]: Short name of the application; 0-64 English letters, digits, and underscores.
   ///
@@ -32,7 +32,7 @@ final class GetWebAppUrl extends TdFunction {
   /// Identifier of the target bot
   final int botUserId;
 
-  /// The URL from the keyboardButtonTypeWebApp or inlineQueryResultsButtonTypeWebApp button
+  /// The URL from a keyboardButtonTypeWebApp button, inlineQueryResultsButtonTypeWebApp button, an internalLinkTypeSideMenuBot link, or an empty when the bot is opened from the side menu
   final String url;
 
   /// Preferred Web App theme; pass null to use the default theme
@@ -58,7 +58,7 @@ final class GetWebAppUrl extends TdFunction {
   ///
   /// Properties:
   /// * [bot_user_id]: Identifier of the target bot
-  /// * [url]: The URL from the keyboardButtonTypeWebApp or inlineQueryResultsButtonTypeWebApp button
+  /// * [url]: The URL from a keyboardButtonTypeWebApp button, inlineQueryResultsButtonTypeWebApp button, an internalLinkTypeSideMenuBot link, or an empty when the bot is opened from the side menu
   /// * [theme]: Preferred Web App theme; pass null to use the default theme
   /// * [application_name]: Short name of the application; 0-64 English letters, digits, and underscores
   GetWebAppUrl copyWith({

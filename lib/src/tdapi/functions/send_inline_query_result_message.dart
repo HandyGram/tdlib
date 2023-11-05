@@ -6,10 +6,10 @@ part of '../tdapi.dart';
 ///
 /// * [chatId]: Target chat.
 /// * [messageThreadId]: If not 0, a message thread identifier in which the message will be sent.
-/// * [replyToMessageId]: Identifier of a replied message; 0 if none.
+/// * [replyTo]: Identifier of the replied message or story; pass null if none *(optional)*.
 /// * [options]: Options to be used to send the message; pass null to use default options *(optional)*.
 /// * [queryId]: Identifier of the inline query.
-/// * [resultId]: Identifier of the inline result.
+/// * [resultId]: Identifier of the inline query result.
 /// * [hideViaBot]: Pass true to hide the bot, via which the message is sent. Can be used only for bots getOption("animation_search_bot_username"), getOption("photo_search_bot_username"), and getOption("venue_search_bot_username").
 ///
 /// [Message] is returned on completion.
@@ -21,17 +21,17 @@ final class SendInlineQueryResultMessage extends TdFunction {
   ///
   /// * [chatId]: Target chat.
   /// * [messageThreadId]: If not 0, a message thread identifier in which the message will be sent.
-  /// * [replyToMessageId]: Identifier of a replied message; 0 if none.
+  /// * [replyTo]: Identifier of the replied message or story; pass null if none *(optional)*.
   /// * [options]: Options to be used to send the message; pass null to use default options *(optional)*.
   /// * [queryId]: Identifier of the inline query.
-  /// * [resultId]: Identifier of the inline result.
+  /// * [resultId]: Identifier of the inline query result.
   /// * [hideViaBot]: Pass true to hide the bot, via which the message is sent. Can be used only for bots getOption("animation_search_bot_username"), getOption("photo_search_bot_username"), and getOption("venue_search_bot_username").
   ///
   /// [Message] is returned on completion.
   const SendInlineQueryResultMessage({
     required this.chatId,
     required this.messageThreadId,
-    required this.replyToMessageId,
+    this.replyTo,
     this.options,
     required this.queryId,
     required this.resultId,
@@ -44,8 +44,8 @@ final class SendInlineQueryResultMessage extends TdFunction {
   /// If not 0, a message thread identifier in which the message will be sent
   final int messageThreadId;
 
-  /// Identifier of a replied message; 0 if none
-  final int replyToMessageId;
+  /// Identifier of the replied message or story; pass null if none
+  final MessageReplyTo? replyTo;
 
   /// Options to be used to send the message; pass null to use default options
   final MessageSendOptions? options;
@@ -53,7 +53,7 @@ final class SendInlineQueryResultMessage extends TdFunction {
   /// Identifier of the inline query
   final int queryId;
 
-  /// Identifier of the inline result
+  /// Identifier of the inline query result
   final String resultId;
 
   /// Pass true to hide the bot, via which the message is sent. Can be used only for bots getOption("animation_search_bot_username"), getOption("photo_search_bot_username"), and getOption("venue_search_bot_username")
@@ -66,7 +66,7 @@ final class SendInlineQueryResultMessage extends TdFunction {
 			"@type": objectType,
       "chat_id": chatId,
       "message_thread_id": messageThreadId,
-      "reply_to_message_id": replyToMessageId,
+      "reply_to": replyTo?.toJson(),
       "options": options?.toJson(),
       "query_id": queryId,
       "result_id": resultId,
@@ -80,15 +80,15 @@ final class SendInlineQueryResultMessage extends TdFunction {
   /// Properties:
   /// * [chat_id]: Target chat
   /// * [message_thread_id]: If not 0, a message thread identifier in which the message will be sent
-  /// * [reply_to_message_id]: Identifier of a replied message; 0 if none
+  /// * [reply_to]: Identifier of the replied message or story; pass null if none
   /// * [options]: Options to be used to send the message; pass null to use default options
   /// * [query_id]: Identifier of the inline query
-  /// * [result_id]: Identifier of the inline result
+  /// * [result_id]: Identifier of the inline query result
   /// * [hide_via_bot]: Pass true to hide the bot, via which the message is sent. Can be used only for bots getOption("animation_search_bot_username"), getOption("photo_search_bot_username"), and getOption("venue_search_bot_username")
   SendInlineQueryResultMessage copyWith({
     int? chatId,
     int? messageThreadId,
-    int? replyToMessageId,
+    MessageReplyTo? replyTo,
     MessageSendOptions? options,
     int? queryId,
     String? resultId,
@@ -96,7 +96,7 @@ final class SendInlineQueryResultMessage extends TdFunction {
   }) => SendInlineQueryResultMessage(
     chatId: chatId ?? this.chatId,
     messageThreadId: messageThreadId ?? this.messageThreadId,
-    replyToMessageId: replyToMessageId ?? this.replyToMessageId,
+    replyTo: replyTo ?? this.replyTo,
     options: options ?? this.options,
     queryId: queryId ?? this.queryId,
     resultId: resultId ?? this.resultId,

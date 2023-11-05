@@ -2,30 +2,30 @@ part of '../tdapi.dart';
 
 /// **OpenWebApp** *(openWebApp)* - TDLib function
 ///
-/// Informs TDLib that a Web App is being opened from attachment menu, a botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an inlineKeyboardButtonTypeWebApp button.. For each bot, a confirmation alert about data sent to the bot must be shown once.
+/// Informs TDLib that a Web App is being opened from the attachment menu, a botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an inlineKeyboardButtonTypeWebApp button.. For each bot, a confirmation alert about data sent to the bot must be shown once.
 ///
 /// * [chatId]: Identifier of the chat in which the Web App is opened. The Web App can't be opened in secret chats.
 /// * [botUserId]: Identifier of the bot, providing the Web App.
-/// * [url]: The URL from an inlineKeyboardButtonTypeWebApp button, a botMenuButton button, or an internalLinkTypeAttachmentMenuBot link, or an empty string otherwise.
+/// * [url]: The URL from an inlineKeyboardButtonTypeWebApp button, a botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an empty string otherwise.
 /// * [theme]: Preferred Web App theme; pass null to use the default theme *(optional)*.
 /// * [applicationName]: Short name of the application; 0-64 English letters, digits, and underscores.
 /// * [messageThreadId]: If not 0, a message thread identifier in which the message will be sent.
-/// * [replyToMessageId]: Identifier of the replied message for the message sent by the Web App; 0 if none.
+/// * [replyTo]: Identifier of the replied message or story for the message sent by the Web App; pass null if none *(optional)*.
 ///
 /// [WebAppInfo] is returned on completion.
 final class OpenWebApp extends TdFunction {
   
   /// **OpenWebApp** *(openWebApp)* - TDLib function
   ///
-  /// Informs TDLib that a Web App is being opened from attachment menu, a botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an inlineKeyboardButtonTypeWebApp button.. For each bot, a confirmation alert about data sent to the bot must be shown once.
+  /// Informs TDLib that a Web App is being opened from the attachment menu, a botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an inlineKeyboardButtonTypeWebApp button.. For each bot, a confirmation alert about data sent to the bot must be shown once.
   ///
   /// * [chatId]: Identifier of the chat in which the Web App is opened. The Web App can't be opened in secret chats.
   /// * [botUserId]: Identifier of the bot, providing the Web App.
-  /// * [url]: The URL from an inlineKeyboardButtonTypeWebApp button, a botMenuButton button, or an internalLinkTypeAttachmentMenuBot link, or an empty string otherwise.
+  /// * [url]: The URL from an inlineKeyboardButtonTypeWebApp button, a botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an empty string otherwise.
   /// * [theme]: Preferred Web App theme; pass null to use the default theme *(optional)*.
   /// * [applicationName]: Short name of the application; 0-64 English letters, digits, and underscores.
   /// * [messageThreadId]: If not 0, a message thread identifier in which the message will be sent.
-  /// * [replyToMessageId]: Identifier of the replied message for the message sent by the Web App; 0 if none.
+  /// * [replyTo]: Identifier of the replied message or story for the message sent by the Web App; pass null if none *(optional)*.
   ///
   /// [WebAppInfo] is returned on completion.
   const OpenWebApp({
@@ -35,7 +35,7 @@ final class OpenWebApp extends TdFunction {
     this.theme,
     required this.applicationName,
     required this.messageThreadId,
-    required this.replyToMessageId,
+    this.replyTo,
   });
   
   /// Identifier of the chat in which the Web App is opened. The Web App can't be opened in secret chats
@@ -44,7 +44,7 @@ final class OpenWebApp extends TdFunction {
   /// Identifier of the bot, providing the Web App
   final int botUserId;
 
-  /// The URL from an inlineKeyboardButtonTypeWebApp button, a botMenuButton button, or an internalLinkTypeAttachmentMenuBot link, or an empty string otherwise
+  /// The URL from an inlineKeyboardButtonTypeWebApp button, a botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an empty string otherwise
   final String url;
 
   /// Preferred Web App theme; pass null to use the default theme
@@ -56,8 +56,8 @@ final class OpenWebApp extends TdFunction {
   /// If not 0, a message thread identifier in which the message will be sent
   final int messageThreadId;
 
-  /// Identifier of the replied message for the message sent by the Web App; 0 if none
-  final int replyToMessageId;
+  /// Identifier of the replied message or story for the message sent by the Web App; pass null if none
+  final MessageReplyTo? replyTo;
   
   /// Convert model to TDLib JSON format
   @override
@@ -70,7 +70,7 @@ final class OpenWebApp extends TdFunction {
       "theme": theme?.toJson(),
       "application_name": applicationName,
       "message_thread_id": messageThreadId,
-      "reply_to_message_id": replyToMessageId,
+      "reply_to": replyTo?.toJson(),
       "@extra": extra,
 		};
 	}
@@ -80,11 +80,11 @@ final class OpenWebApp extends TdFunction {
   /// Properties:
   /// * [chat_id]: Identifier of the chat in which the Web App is opened. The Web App can't be opened in secret chats
   /// * [bot_user_id]: Identifier of the bot, providing the Web App
-  /// * [url]: The URL from an inlineKeyboardButtonTypeWebApp button, a botMenuButton button, or an internalLinkTypeAttachmentMenuBot link, or an empty string otherwise
+  /// * [url]: The URL from an inlineKeyboardButtonTypeWebApp button, a botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an empty string otherwise
   /// * [theme]: Preferred Web App theme; pass null to use the default theme
   /// * [application_name]: Short name of the application; 0-64 English letters, digits, and underscores
   /// * [message_thread_id]: If not 0, a message thread identifier in which the message will be sent
-  /// * [reply_to_message_id]: Identifier of the replied message for the message sent by the Web App; 0 if none
+  /// * [reply_to]: Identifier of the replied message or story for the message sent by the Web App; pass null if none
   OpenWebApp copyWith({
     int? chatId,
     int? botUserId,
@@ -92,7 +92,7 @@ final class OpenWebApp extends TdFunction {
     ThemeParameters? theme,
     String? applicationName,
     int? messageThreadId,
-    int? replyToMessageId,
+    MessageReplyTo? replyTo,
   }) => OpenWebApp(
     chatId: chatId ?? this.chatId,
     botUserId: botUserId ?? this.botUserId,
@@ -100,7 +100,7 @@ final class OpenWebApp extends TdFunction {
     theme: theme ?? this.theme,
     applicationName: applicationName ?? this.applicationName,
     messageThreadId: messageThreadId ?? this.messageThreadId,
-    replyToMessageId: replyToMessageId ?? this.replyToMessageId,
+    replyTo: replyTo ?? this.replyTo,
   );
 
   /// TDLib object type

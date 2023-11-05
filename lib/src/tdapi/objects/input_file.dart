@@ -55,14 +55,14 @@ sealed class InputFile extends TdObject {
 
 /// **InputFileId** *(inputFileId)* - child of InputFile
 ///
-/// A file defined by its unique inputFileId.
+/// A file defined by its unique identifier.
 ///
 /// * [id]: Unique file identifier.
 final class InputFileId extends InputFile {
   
   /// **InputFileId** *(inputFileId)* - child of InputFile
   ///
-  /// A file defined by its unique inputFileId.
+  /// A file defined by its unique identifier.
   ///
   /// * [id]: Unique file identifier.
   const InputFileId({
@@ -113,14 +113,14 @@ final class InputFileId extends InputFile {
 
 /// **InputFileRemote** *(inputFileRemote)* - child of InputFile
 ///
-/// A file defined by its remote inputFileRemote. The remote inputFileRemote is guaranteed to be usable only if the corresponding file is still accessible to the user and known to TDLib.. For example, if the file is from a message, then the message must be not deleted and accessible to the user. If the file database is disabled, then the corresponding object with the file must be preloaded by the application.
+/// A file defined by its remote identifier. The remote identifier is guaranteed to be usable only if the corresponding file is still accessible to the user and known to TDLib.. For example, if the file is from a message, then the message must be not deleted and accessible to the user. If the file database is disabled, then the corresponding object with the file must be preloaded by the application.
 ///
 /// * [id]: Remote file identifier.
 final class InputFileRemote extends InputFile {
   
   /// **InputFileRemote** *(inputFileRemote)* - child of InputFile
   ///
-  /// A file defined by its remote inputFileRemote. The remote inputFileRemote is guaranteed to be usable only if the corresponding file is still accessible to the user and known to TDLib.. For example, if the file is from a message, then the message must be not deleted and accessible to the user. If the file database is disabled, then the corresponding object with the file must be preloaded by the application.
+  /// A file defined by its remote identifier. The remote identifier is guaranteed to be usable only if the corresponding file is still accessible to the user and known to TDLib.. For example, if the file is from a message, then the message must be not deleted and accessible to the user. If the file database is disabled, then the corresponding object with the file must be preloaded by the application.
   ///
   /// * [id]: Remote file identifier.
   const InputFileRemote({

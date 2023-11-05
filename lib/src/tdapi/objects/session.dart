@@ -7,6 +7,7 @@ part of '../tdapi.dart';
 /// * [id]: Session identifier.
 /// * [isCurrent]: True, if this session is the current session.
 /// * [isPasswordPending]: True, if a 2-step verification password is needed to complete authorization of the session.
+/// * [isUnconfirmed]: True, if the session wasn't confirmed from another session.
 /// * [canAcceptSecretChats]: True, if incoming secret chats can be accepted by the session.
 /// * [canAcceptCalls]: True, if incoming calls can be accepted by the session.
 /// * [type]: Session type based on the system and application version, which can be used to display a corresponding icon.
@@ -19,9 +20,8 @@ part of '../tdapi.dart';
 /// * [systemVersion]: Version of the operating system the application has been run or is running on, as provided by the application.
 /// * [logInDate]: Point in time (Unix timestamp) when the user has logged in.
 /// * [lastActiveDate]: Point in time (Unix timestamp) when the session was last used.
-/// * [ip]: IP address from which the session was created, in human-readable format.
-/// * [country]: A two-letter country code for the country from which the session was created, based on the IP address.
-/// * [region]: Region code from which the session was created, based on the IP address.
+/// * [ipAddress]: IP address from which the session was created, in human-readable format.
+/// * [location]: A human-readable description of the location from which the session was created, based on the IP address.
 final class Session extends TdObject {
   
   /// **Session** *(session)* - basic class
@@ -31,6 +31,7 @@ final class Session extends TdObject {
   /// * [id]: Session identifier.
   /// * [isCurrent]: True, if this session is the current session.
   /// * [isPasswordPending]: True, if a 2-step verification password is needed to complete authorization of the session.
+  /// * [isUnconfirmed]: True, if the session wasn't confirmed from another session.
   /// * [canAcceptSecretChats]: True, if incoming secret chats can be accepted by the session.
   /// * [canAcceptCalls]: True, if incoming calls can be accepted by the session.
   /// * [type]: Session type based on the system and application version, which can be used to display a corresponding icon.
@@ -43,13 +44,13 @@ final class Session extends TdObject {
   /// * [systemVersion]: Version of the operating system the application has been run or is running on, as provided by the application.
   /// * [logInDate]: Point in time (Unix timestamp) when the user has logged in.
   /// * [lastActiveDate]: Point in time (Unix timestamp) when the session was last used.
-  /// * [ip]: IP address from which the session was created, in human-readable format.
-  /// * [country]: A two-letter country code for the country from which the session was created, based on the IP address.
-  /// * [region]: Region code from which the session was created, based on the IP address.
+  /// * [ipAddress]: IP address from which the session was created, in human-readable format.
+  /// * [location]: A human-readable description of the location from which the session was created, based on the IP address.
   const Session({
     required this.id,
     required this.isCurrent,
     required this.isPasswordPending,
+    required this.isUnconfirmed,
     required this.canAcceptSecretChats,
     required this.canAcceptCalls,
     required this.type,
@@ -62,9 +63,8 @@ final class Session extends TdObject {
     required this.systemVersion,
     required this.logInDate,
     required this.lastActiveDate,
-    required this.ip,
-    required this.country,
-    required this.region,
+    required this.ipAddress,
+    required this.location,
     this.extra,
     this.clientId,
   });
@@ -77,6 +77,9 @@ final class Session extends TdObject {
 
   /// True, if a 2-step verification password is needed to complete authorization of the session
   final bool isPasswordPending;
+
+  /// True, if the session wasn't confirmed from another session
+  final bool isUnconfirmed;
 
   /// True, if incoming secret chats can be accepted by the session
   final bool canAcceptSecretChats;
@@ -115,13 +118,10 @@ final class Session extends TdObject {
   final int lastActiveDate;
 
   /// IP address from which the session was created, in human-readable format
-  final String ip;
+  final String ipAddress;
 
-  /// A two-letter country code for the country from which the session was created, based on the IP address
-  final String country;
-
-  /// Region code from which the session was created, based on the IP address
-  final String region;
+  /// A human-readable description of the location from which the session was created, based on the IP address
+  final String location;
 
   /// [extra] callback sign
   @override
@@ -136,6 +136,7 @@ final class Session extends TdObject {
     id: int.parse(json['id']),
     isCurrent: json['is_current'],
     isPasswordPending: json['is_password_pending'],
+    isUnconfirmed: json['is_unconfirmed'],
     canAcceptSecretChats: json['can_accept_secret_chats'],
     canAcceptCalls: json['can_accept_calls'],
     type: SessionType.fromJson(json['type']),
@@ -148,9 +149,8 @@ final class Session extends TdObject {
     systemVersion: json['system_version'],
     logInDate: json['log_in_date'],
     lastActiveDate: json['last_active_date'],
-    ip: json['ip'],
-    country: json['country'],
-    region: json['region'],
+    ipAddress: json['ip_address'],
+    location: json['location'],
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -164,6 +164,7 @@ final class Session extends TdObject {
       "id": id,
       "is_current": isCurrent,
       "is_password_pending": isPasswordPending,
+      "is_unconfirmed": isUnconfirmed,
       "can_accept_secret_chats": canAcceptSecretChats,
       "can_accept_calls": canAcceptCalls,
       "type": type.toJson(),
@@ -176,9 +177,8 @@ final class Session extends TdObject {
       "system_version": systemVersion,
       "log_in_date": logInDate,
       "last_active_date": lastActiveDate,
-      "ip": ip,
-      "country": country,
-      "region": region,
+      "ip_address": ipAddress,
+      "location": location,
 		};
 	}
 
@@ -188,6 +188,7 @@ final class Session extends TdObject {
   /// * [id]: Session identifier
   /// * [is_current]: True, if this session is the current session
   /// * [is_password_pending]: True, if a 2-step verification password is needed to complete authorization of the session
+  /// * [is_unconfirmed]: True, if the session wasn't confirmed from another session
   /// * [can_accept_secret_chats]: True, if incoming secret chats can be accepted by the session
   /// * [can_accept_calls]: True, if incoming calls can be accepted by the session
   /// * [type]: Session type based on the system and application version, which can be used to display a corresponding icon
@@ -200,13 +201,13 @@ final class Session extends TdObject {
   /// * [system_version]: Version of the operating system the application has been run or is running on, as provided by the application
   /// * [log_in_date]: Point in time (Unix timestamp) when the user has logged in
   /// * [last_active_date]: Point in time (Unix timestamp) when the session was last used
-  /// * [ip]: IP address from which the session was created, in human-readable format
-  /// * [country]: A two-letter country code for the country from which the session was created, based on the IP address
-  /// * [region]: Region code from which the session was created, based on the IP address
+  /// * [ip_address]: IP address from which the session was created, in human-readable format
+  /// * [location]: A human-readable description of the location from which the session was created, based on the IP address
   Session copyWith({
     int? id,
     bool? isCurrent,
     bool? isPasswordPending,
+    bool? isUnconfirmed,
     bool? canAcceptSecretChats,
     bool? canAcceptCalls,
     SessionType? type,
@@ -219,15 +220,15 @@ final class Session extends TdObject {
     String? systemVersion,
     int? logInDate,
     int? lastActiveDate,
-    String? ip,
-    String? country,
-    String? region,
+    String? ipAddress,
+    String? location,
     dynamic extra,
     int? clientId,
   }) => Session(
     id: id ?? this.id,
     isCurrent: isCurrent ?? this.isCurrent,
     isPasswordPending: isPasswordPending ?? this.isPasswordPending,
+    isUnconfirmed: isUnconfirmed ?? this.isUnconfirmed,
     canAcceptSecretChats: canAcceptSecretChats ?? this.canAcceptSecretChats,
     canAcceptCalls: canAcceptCalls ?? this.canAcceptCalls,
     type: type ?? this.type,
@@ -240,9 +241,8 @@ final class Session extends TdObject {
     systemVersion: systemVersion ?? this.systemVersion,
     logInDate: logInDate ?? this.logInDate,
     lastActiveDate: lastActiveDate ?? this.lastActiveDate,
-    ip: ip ?? this.ip,
-    country: country ?? this.country,
-    region: region ?? this.region,
+    ipAddress: ipAddress ?? this.ipAddress,
+    location: location ?? this.location,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
   );

@@ -29,6 +29,7 @@ sealed class MessageContent extends TdObject {
   /// * [MessageDice]
   /// * [MessageGame]
   /// * [MessagePoll]
+  /// * [MessageStory]
   /// * [MessageInvoice]
   /// * [MessageCall]
   /// * [MessageVideoChatScheduled]
@@ -64,7 +65,6 @@ sealed class MessageContent extends TdObject {
   /// * [MessageContactRegistered]
   /// * [MessageUserShared]
   /// * [MessageChatShared]
-  /// * [MessageWebsiteConnected]
   /// * [MessageBotWriteAccessAllowed]
   /// * [MessageWebAppDataSent]
   /// * [MessageWebAppDataReceived]
@@ -110,6 +110,8 @@ sealed class MessageContent extends TdObject {
         return MessageGame.fromJson(json);
       case MessagePoll.objectType:
         return MessagePoll.fromJson(json);
+      case MessageStory.objectType:
+        return MessageStory.fromJson(json);
       case MessageInvoice.objectType:
         return MessageInvoice.fromJson(json);
       case MessageCall.objectType:
@@ -180,8 +182,6 @@ sealed class MessageContent extends TdObject {
         return MessageUserShared.fromJson(json);
       case MessageChatShared.objectType:
         return MessageChatShared.fromJson(json);
-      case MessageWebsiteConnected.objectType:
-        return MessageWebsiteConnected.fromJson(json);
       case MessageBotWriteAccessAllowed.objectType:
         return MessageBotWriteAccessAllowed.fromJson(json);
       case MessageWebAppDataSent.objectType:
@@ -1503,6 +1503,86 @@ final class MessagePoll extends MessageContent {
 
   /// TDLib object type
   static const String objectType = 'messagePoll';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **MessageStory** *(messageStory)* - child of MessageContent
+///
+/// A message with a forwarded story.
+///
+/// * [storySenderChatId]: Identifier of the chat that posted the story.
+/// * [storyId]: Story identifier.
+/// * [viaMention]: True, if the story was automatically forwarded because of a mention of the user.
+final class MessageStory extends MessageContent {
+  
+  /// **MessageStory** *(messageStory)* - child of MessageContent
+  ///
+  /// A message with a forwarded story.
+  ///
+  /// * [storySenderChatId]: Identifier of the chat that posted the story.
+  /// * [storyId]: Story identifier.
+  /// * [viaMention]: True, if the story was automatically forwarded because of a mention of the user.
+  const MessageStory({
+    required this.storySenderChatId,
+    required this.storyId,
+    required this.viaMention,
+  });
+  
+  /// Identifier of the chat that posted the story
+  final int storySenderChatId;
+
+  /// Story identifier
+  final int storyId;
+
+  /// True, if the story was automatically forwarded because of a mention of the user
+  final bool viaMention;
+  
+  /// Parse from a json
+  factory MessageStory.fromJson(Map<String, dynamic> json) => MessageStory(
+    storySenderChatId: json['story_sender_chat_id'],
+    storyId: json['story_id'],
+    viaMention: json['via_mention'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "story_sender_chat_id": storySenderChatId,
+      "story_id": storyId,
+      "via_mention": viaMention,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [story_sender_chat_id]: Identifier of the chat that posted the story
+  /// * [story_id]: Story identifier
+  /// * [via_mention]: True, if the story was automatically forwarded because of a mention of the user
+  @override
+  MessageStory copyWith({
+    int? storySenderChatId,
+    int? storyId,
+    bool? viaMention,
+  }) => MessageStory(
+    storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+    storyId: storyId ?? this.storyId,
+    viaMention: viaMention ?? this.viaMention,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'messageStory';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3928,86 +4008,28 @@ final class MessageChatShared extends MessageContent {
 }
 
 
-/// **MessageWebsiteConnected** *(messageWebsiteConnected)* - child of MessageContent
-///
-/// The current user has connected a website by logging in using Telegram Login Widget on it.
-///
-/// * [domainName]: Domain name of the connected website.
-final class MessageWebsiteConnected extends MessageContent {
-  
-  /// **MessageWebsiteConnected** *(messageWebsiteConnected)* - child of MessageContent
-  ///
-  /// The current user has connected a website by logging in using Telegram Login Widget on it.
-  ///
-  /// * [domainName]: Domain name of the connected website.
-  const MessageWebsiteConnected({
-    required this.domainName,
-  });
-  
-  /// Domain name of the connected website
-  final String domainName;
-  
-  /// Parse from a json
-  factory MessageWebsiteConnected.fromJson(Map<String, dynamic> json) => MessageWebsiteConnected(
-    domainName: json['domain_name'],
-  );
-  
-  
-  /// Convert model to TDLib JSON format
-  @override
-  Map<String, dynamic> toJson() {
-		return {
-			"@type": objectType,
-      "domain_name": domainName,
-		};
-	}
-
-  /// Copy model with modified properties.
-  ///
-  /// Properties:
-  /// * [domain_name]: Domain name of the connected website
-  @override
-  MessageWebsiteConnected copyWith({
-    String? domainName,
-  }) => MessageWebsiteConnected(
-    domainName: domainName ?? this.domainName,
-  );
-
-  /// TDLib object type
-  static const String objectType = 'messageWebsiteConnected';
-
-  /// Convert model to TDLib JSON format, encoded into String.
-  @override
-  String toString() => jsonEncode(toJson());
-
-  /// TDLib object type for current class instance
-  @override
-  String get instanceType => objectType;
-}
-
-
 /// **MessageBotWriteAccessAllowed** *(messageBotWriteAccessAllowed)* - child of MessageContent
 ///
 /// The user allowed the bot to send messages.
 ///
-/// * [webApp]: Information about the Web App, which requested the access; may be null if none or the Web App was opened from the attachment menu *(optional)*.
+/// * [reason]: The reason why the bot was allowed to write messages.
 final class MessageBotWriteAccessAllowed extends MessageContent {
   
   /// **MessageBotWriteAccessAllowed** *(messageBotWriteAccessAllowed)* - child of MessageContent
   ///
   /// The user allowed the bot to send messages.
   ///
-  /// * [webApp]: Information about the Web App, which requested the access; may be null if none or the Web App was opened from the attachment menu *(optional)*.
+  /// * [reason]: The reason why the bot was allowed to write messages.
   const MessageBotWriteAccessAllowed({
-    this.webApp,
+    required this.reason,
   });
   
-  /// Information about the Web App, which requested the access; may be null if none or the Web App was opened from the attachment menu
-  final WebApp? webApp;
+  /// The reason why the bot was allowed to write messages
+  final BotWriteAccessAllowReason reason;
   
   /// Parse from a json
   factory MessageBotWriteAccessAllowed.fromJson(Map<String, dynamic> json) => MessageBotWriteAccessAllowed(
-    webApp: json['web_app'] == null ? null : WebApp.fromJson(json['web_app']),
+    reason: BotWriteAccessAllowReason.fromJson(json['reason']),
   );
   
   
@@ -4016,19 +4038,19 @@ final class MessageBotWriteAccessAllowed extends MessageContent {
   Map<String, dynamic> toJson() {
 		return {
 			"@type": objectType,
-      "web_app": webApp?.toJson(),
+      "reason": reason.toJson(),
 		};
 	}
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [web_app]: Information about the Web App, which requested the access; may be null if none or the Web App was opened from the attachment menu
+  /// * [reason]: The reason why the bot was allowed to write messages
   @override
   MessageBotWriteAccessAllowed copyWith({
-    WebApp? webApp,
+    BotWriteAccessAllowReason? reason,
   }) => MessageBotWriteAccessAllowed(
-    webApp: webApp ?? this.webApp,
+    reason: reason ?? this.reason,
   );
 
   /// TDLib object type
@@ -4380,12 +4402,12 @@ final class MessageProximityAlertTriggered extends MessageContent {
 
 /// **MessageUnsupported** *(messageUnsupported)* - child of MessageContent
 ///
-/// Message content that is not supported in the current TDLib version.
+/// A message content that is not supported in the current TDLib version.
 final class MessageUnsupported extends MessageContent {
   
   /// **MessageUnsupported** *(messageUnsupported)* - child of MessageContent
   ///
-  /// Message content that is not supported in the current TDLib version.
+  /// A message content that is not supported in the current TDLib version.
   const MessageUnsupported();
   
   /// Parse from a json

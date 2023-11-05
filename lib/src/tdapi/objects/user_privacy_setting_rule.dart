@@ -2,12 +2,12 @@ part of '../tdapi.dart';
 
 /// **UserPrivacySettingRule** *(userPrivacySettingRule)* - parent
 ///
-/// Represents a single rule for managing privacy settings.
+/// Represents a single rule for managing user privacy settings.
 sealed class UserPrivacySettingRule extends TdObject {
   
   /// **UserPrivacySettingRule** *(userPrivacySettingRule)* - parent
   ///
-  /// Represents a single rule for managing privacy settings.
+  /// Represents a single rule for managing user privacy settings.
   const UserPrivacySettingRule();
   
   /// a UserPrivacySettingRule return type can be :
@@ -105,12 +105,12 @@ final class UserPrivacySettingRuleAllowAll extends UserPrivacySettingRule {
 
 /// **UserPrivacySettingRuleAllowContacts** *(userPrivacySettingRuleAllowContacts)* - child of UserPrivacySettingRule
 ///
-/// A rule to allow all of a user's contacts to do something.
+/// A rule to allow all contacts of the user to do something.
 final class UserPrivacySettingRuleAllowContacts extends UserPrivacySettingRule {
   
   /// **UserPrivacySettingRuleAllowContacts** *(userPrivacySettingRuleAllowContacts)* - child of UserPrivacySettingRule
   ///
-  /// A rule to allow all of a user's contacts to do something.
+  /// A rule to allow all contacts of the user to do something.
   const UserPrivacySettingRuleAllowContacts();
   
   /// Parse from a json
@@ -297,12 +297,12 @@ final class UserPrivacySettingRuleRestrictAll extends UserPrivacySettingRule {
 
 /// **UserPrivacySettingRuleRestrictContacts** *(userPrivacySettingRuleRestrictContacts)* - child of UserPrivacySettingRule
 ///
-/// A rule to restrict all contacts of a user from doing something.
+/// A rule to restrict all contacts of the user from doing something.
 final class UserPrivacySettingRuleRestrictContacts extends UserPrivacySettingRule {
   
   /// **UserPrivacySettingRuleRestrictContacts** *(userPrivacySettingRuleRestrictContacts)* - child of UserPrivacySettingRule
   ///
-  /// A rule to restrict all contacts of a user from doing something.
+  /// A rule to restrict all contacts of the user from doing something.
   const UserPrivacySettingRuleRestrictContacts();
   
   /// Parse from a json

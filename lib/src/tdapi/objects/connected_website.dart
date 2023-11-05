@@ -11,7 +11,7 @@ part of '../tdapi.dart';
 /// * [platform]: Operating system the browser is running on.
 /// * [logInDate]: Point in time (Unix timestamp) when the user was logged in.
 /// * [lastActiveDate]: Point in time (Unix timestamp) when obtained authorization was last used.
-/// * [ip]: IP address from which the user was logged in, in human-readable format.
+/// * [ipAddress]: IP address from which the user was logged in, in human-readable format.
 /// * [location]: Human-readable description of a country and a region from which the user was logged in, based on the IP address.
 final class ConnectedWebsite extends TdObject {
   
@@ -26,7 +26,7 @@ final class ConnectedWebsite extends TdObject {
   /// * [platform]: Operating system the browser is running on.
   /// * [logInDate]: Point in time (Unix timestamp) when the user was logged in.
   /// * [lastActiveDate]: Point in time (Unix timestamp) when obtained authorization was last used.
-  /// * [ip]: IP address from which the user was logged in, in human-readable format.
+  /// * [ipAddress]: IP address from which the user was logged in, in human-readable format.
   /// * [location]: Human-readable description of a country and a region from which the user was logged in, based on the IP address.
   const ConnectedWebsite({
     required this.id,
@@ -36,7 +36,7 @@ final class ConnectedWebsite extends TdObject {
     required this.platform,
     required this.logInDate,
     required this.lastActiveDate,
-    required this.ip,
+    required this.ipAddress,
     required this.location,
   });
   
@@ -62,7 +62,7 @@ final class ConnectedWebsite extends TdObject {
   final int lastActiveDate;
 
   /// IP address from which the user was logged in, in human-readable format
-  final String ip;
+  final String ipAddress;
 
   /// Human-readable description of a country and a region from which the user was logged in, based on the IP address
   final String location;
@@ -76,7 +76,7 @@ final class ConnectedWebsite extends TdObject {
     platform: json['platform'],
     logInDate: json['log_in_date'],
     lastActiveDate: json['last_active_date'],
-    ip: json['ip'],
+    ipAddress: json['ip_address'],
     location: json['location'],
   );
   
@@ -93,7 +93,7 @@ final class ConnectedWebsite extends TdObject {
       "platform": platform,
       "log_in_date": logInDate,
       "last_active_date": lastActiveDate,
-      "ip": ip,
+      "ip_address": ipAddress,
       "location": location,
 		};
 	}
@@ -108,7 +108,7 @@ final class ConnectedWebsite extends TdObject {
   /// * [platform]: Operating system the browser is running on
   /// * [log_in_date]: Point in time (Unix timestamp) when the user was logged in
   /// * [last_active_date]: Point in time (Unix timestamp) when obtained authorization was last used
-  /// * [ip]: IP address from which the user was logged in, in human-readable format
+  /// * [ip_address]: IP address from which the user was logged in, in human-readable format
   /// * [location]: Human-readable description of a country and a region from which the user was logged in, based on the IP address
   ConnectedWebsite copyWith({
     int? id,
@@ -118,7 +118,7 @@ final class ConnectedWebsite extends TdObject {
     String? platform,
     int? logInDate,
     int? lastActiveDate,
-    String? ip,
+    String? ipAddress,
     String? location,
   }) => ConnectedWebsite(
     id: id ?? this.id,
@@ -128,7 +128,7 @@ final class ConnectedWebsite extends TdObject {
     platform: platform ?? this.platform,
     logInDate: logInDate ?? this.logInDate,
     lastActiveDate: lastActiveDate ?? this.lastActiveDate,
-    ip: ip ?? this.ip,
+    ipAddress: ipAddress ?? this.ipAddress,
     location: location ?? this.location,
   );
 

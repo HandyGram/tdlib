@@ -26,6 +26,8 @@ sealed class PremiumFeature extends TdObject {
   /// * [PremiumFeatureForumTopicIcon]
   /// * [PremiumFeatureAppIcons]
   /// * [PremiumFeatureRealTimeChatTranslation]
+  /// * [PremiumFeatureUpgradedStories]
+  /// * [PremiumFeatureChatBoost]
   factory PremiumFeature.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
       case PremiumFeatureIncreasedLimits.objectType:
@@ -58,6 +60,10 @@ sealed class PremiumFeature extends TdObject {
         return PremiumFeatureAppIcons.fromJson(json);
       case PremiumFeatureRealTimeChatTranslation.objectType:
         return PremiumFeatureRealTimeChatTranslation.fromJson(json);
+      case PremiumFeatureUpgradedStories.objectType:
+        return PremiumFeatureUpgradedStories.fromJson(json);
+      case PremiumFeatureChatBoost.objectType:
+        return PremiumFeatureChatBoost.fromJson(json);
       default:
         throw FormatException(
           "Unknown object ${json["@type"]} (expected child of PremiumFeature)",
@@ -468,12 +474,12 @@ final class PremiumFeatureProfileBadge extends PremiumFeature {
 
 /// **PremiumFeatureEmojiStatus** *(premiumFeatureEmojiStatus)* - child of PremiumFeature
 ///
-/// A emoji status shown along with the user's name.
+/// An emoji status shown along with the user's name.
 final class PremiumFeatureEmojiStatus extends PremiumFeature {
   
   /// **PremiumFeatureEmojiStatus** *(premiumFeatureEmojiStatus)* - child of PremiumFeature
   ///
-  /// A emoji status shown along with the user's name.
+  /// An emoji status shown along with the user's name.
   const PremiumFeatureEmojiStatus();
   
   /// Parse from a json
@@ -645,6 +651,82 @@ final class PremiumFeatureRealTimeChatTranslation extends PremiumFeature {
 
   /// TDLib object type
   static const String objectType = 'premiumFeatureRealTimeChatTranslation';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **PremiumFeatureUpgradedStories** *(premiumFeatureUpgradedStories)* - child of PremiumFeature
+///
+/// Allowed to use many additional features for stories.
+final class PremiumFeatureUpgradedStories extends PremiumFeature {
+  
+  /// **PremiumFeatureUpgradedStories** *(premiumFeatureUpgradedStories)* - child of PremiumFeature
+  ///
+  /// Allowed to use many additional features for stories.
+  const PremiumFeatureUpgradedStories();
+  
+  /// Parse from a json
+  factory PremiumFeatureUpgradedStories.fromJson(Map<String, dynamic> json) => const PremiumFeatureUpgradedStories();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  PremiumFeatureUpgradedStories copyWith() => const PremiumFeatureUpgradedStories();
+
+  /// TDLib object type
+  static const String objectType = 'premiumFeatureUpgradedStories';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **PremiumFeatureChatBoost** *(premiumFeatureChatBoost)* - child of PremiumFeature
+///
+/// The ability to boost chats.
+final class PremiumFeatureChatBoost extends PremiumFeature {
+  
+  /// **PremiumFeatureChatBoost** *(premiumFeatureChatBoost)* - child of PremiumFeature
+  ///
+  /// The ability to boost chats.
+  const PremiumFeatureChatBoost();
+  
+  /// Parse from a json
+  factory PremiumFeatureChatBoost.fromJson(Map<String, dynamic> json) => const PremiumFeatureChatBoost();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  PremiumFeatureChatBoost copyWith() => const PremiumFeatureChatBoost();
+
+  /// TDLib object type
+  static const String objectType = 'premiumFeatureChatBoost';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

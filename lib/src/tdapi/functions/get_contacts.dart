@@ -2,14 +2,14 @@ part of '../tdapi.dart';
 
 /// **GetContacts** *(getContacts)* - TDLib function
 ///
-/// Returns all user contacts.
+/// Returns all contacts of the user.
 ///
 /// [Users] is returned on completion.
 final class GetContacts extends TdFunction {
   
   /// **GetContacts** *(getContacts)* - TDLib function
   ///
-  /// Returns all user contacts.
+  /// Returns all contacts of the user.
   ///
   /// [Users] is returned on completion.
   const GetContacts();

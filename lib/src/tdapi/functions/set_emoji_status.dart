@@ -5,7 +5,6 @@ part of '../tdapi.dart';
 /// Changes the emoji status of the current user; for Telegram Premium users only.
 ///
 /// * [emojiStatus]: New emoji status; pass null to switch to the default badge *(optional)*.
-/// * [duration]: Duration of the status, in seconds; pass 0 to keep the status active until it will be changed manually.
 ///
 /// [Ok] is returned on completion.
 final class SetEmojiStatus extends TdFunction {
@@ -15,19 +14,14 @@ final class SetEmojiStatus extends TdFunction {
   /// Changes the emoji status of the current user; for Telegram Premium users only.
   ///
   /// * [emojiStatus]: New emoji status; pass null to switch to the default badge *(optional)*.
-  /// * [duration]: Duration of the status, in seconds; pass 0 to keep the status active until it will be changed manually.
   ///
   /// [Ok] is returned on completion.
   const SetEmojiStatus({
     this.emojiStatus,
-    required this.duration,
   });
   
   /// New emoji status; pass null to switch to the default badge
   final EmojiStatus? emojiStatus;
-
-  /// Duration of the status, in seconds; pass 0 to keep the status active until it will be changed manually
-  final int duration;
   
   /// Convert model to TDLib JSON format
   @override
@@ -35,7 +29,6 @@ final class SetEmojiStatus extends TdFunction {
 		return {
 			"@type": objectType,
       "emoji_status": emojiStatus?.toJson(),
-      "duration": duration,
       "@extra": extra,
 		};
 	}
@@ -44,13 +37,10 @@ final class SetEmojiStatus extends TdFunction {
   ///
   /// Properties:
   /// * [emoji_status]: New emoji status; pass null to switch to the default badge
-  /// * [duration]: Duration of the status, in seconds; pass 0 to keep the status active until it will be changed manually
   SetEmojiStatus copyWith({
     EmojiStatus? emojiStatus,
-    int? duration,
   }) => SetEmojiStatus(
     emojiStatus: emojiStatus ?? this.emojiStatus,
-    duration: duration ?? this.duration,
   );
 
   /// TDLib object type

@@ -7,6 +7,10 @@ part of '../tdapi.dart';
 /// * [muteFor]: Time left before notifications will be unmuted, in seconds.
 /// * [soundId]: Identifier of the notification sound to be played; 0 if sound is disabled.
 /// * [showPreview]: True, if message content must be displayed in notifications.
+/// * [useDefaultMuteStories]: If true, mute_stories is ignored and story notifications are received only for the first 5 chats from topChatCategoryUsers.
+/// * [muteStories]: True, if story notifications are disabled for the chat.
+/// * [storySoundId]: Identifier of the notification sound to be played for stories; 0 if sound is disabled.
+/// * [showStorySender]: True, if the sender of stories must be displayed in notifications.
 /// * [disablePinnedMessageNotifications]: True, if notifications for incoming pinned messages will be created as for an ordinary unread message.
 /// * [disableMentionNotifications]: True, if notifications for messages with mentions will be created as for an ordinary unread message.
 final class ScopeNotificationSettings extends TdObject {
@@ -18,12 +22,20 @@ final class ScopeNotificationSettings extends TdObject {
   /// * [muteFor]: Time left before notifications will be unmuted, in seconds.
   /// * [soundId]: Identifier of the notification sound to be played; 0 if sound is disabled.
   /// * [showPreview]: True, if message content must be displayed in notifications.
+  /// * [useDefaultMuteStories]: If true, mute_stories is ignored and story notifications are received only for the first 5 chats from topChatCategoryUsers.
+  /// * [muteStories]: True, if story notifications are disabled for the chat.
+  /// * [storySoundId]: Identifier of the notification sound to be played for stories; 0 if sound is disabled.
+  /// * [showStorySender]: True, if the sender of stories must be displayed in notifications.
   /// * [disablePinnedMessageNotifications]: True, if notifications for incoming pinned messages will be created as for an ordinary unread message.
   /// * [disableMentionNotifications]: True, if notifications for messages with mentions will be created as for an ordinary unread message.
   const ScopeNotificationSettings({
     required this.muteFor,
     required this.soundId,
     required this.showPreview,
+    required this.useDefaultMuteStories,
+    required this.muteStories,
+    required this.storySoundId,
+    required this.showStorySender,
     required this.disablePinnedMessageNotifications,
     required this.disableMentionNotifications,
     this.extra,
@@ -38,6 +50,18 @@ final class ScopeNotificationSettings extends TdObject {
 
   /// True, if message content must be displayed in notifications
   final bool showPreview;
+
+  /// If true, mute_stories is ignored and story notifications are received only for the first 5 chats from topChatCategoryUsers
+  final bool useDefaultMuteStories;
+
+  /// True, if story notifications are disabled for the chat
+  final bool muteStories;
+
+  /// Identifier of the notification sound to be played for stories; 0 if sound is disabled
+  final int storySoundId;
+
+  /// True, if the sender of stories must be displayed in notifications
+  final bool showStorySender;
 
   /// True, if notifications for incoming pinned messages will be created as for an ordinary unread message
   final bool disablePinnedMessageNotifications;
@@ -58,6 +82,10 @@ final class ScopeNotificationSettings extends TdObject {
     muteFor: json['mute_for'],
     soundId: int.parse(json['sound_id']),
     showPreview: json['show_preview'],
+    useDefaultMuteStories: json['use_default_mute_stories'],
+    muteStories: json['mute_stories'],
+    storySoundId: int.parse(json['story_sound_id']),
+    showStorySender: json['show_story_sender'],
     disablePinnedMessageNotifications: json['disable_pinned_message_notifications'],
     disableMentionNotifications: json['disable_mention_notifications'],
     extra: json['@extra'],
@@ -73,6 +101,10 @@ final class ScopeNotificationSettings extends TdObject {
       "mute_for": muteFor,
       "sound_id": soundId,
       "show_preview": showPreview,
+      "use_default_mute_stories": useDefaultMuteStories,
+      "mute_stories": muteStories,
+      "story_sound_id": storySoundId,
+      "show_story_sender": showStorySender,
       "disable_pinned_message_notifications": disablePinnedMessageNotifications,
       "disable_mention_notifications": disableMentionNotifications,
 		};
@@ -84,12 +116,20 @@ final class ScopeNotificationSettings extends TdObject {
   /// * [mute_for]: Time left before notifications will be unmuted, in seconds
   /// * [sound_id]: Identifier of the notification sound to be played; 0 if sound is disabled
   /// * [show_preview]: True, if message content must be displayed in notifications
+  /// * [use_default_mute_stories]: If true, mute_stories is ignored and story notifications are received only for the first 5 chats from topChatCategoryUsers
+  /// * [mute_stories]: True, if story notifications are disabled for the chat
+  /// * [story_sound_id]: Identifier of the notification sound to be played for stories; 0 if sound is disabled
+  /// * [show_story_sender]: True, if the sender of stories must be displayed in notifications
   /// * [disable_pinned_message_notifications]: True, if notifications for incoming pinned messages will be created as for an ordinary unread message
   /// * [disable_mention_notifications]: True, if notifications for messages with mentions will be created as for an ordinary unread message
   ScopeNotificationSettings copyWith({
     int? muteFor,
     int? soundId,
     bool? showPreview,
+    bool? useDefaultMuteStories,
+    bool? muteStories,
+    int? storySoundId,
+    bool? showStorySender,
     bool? disablePinnedMessageNotifications,
     bool? disableMentionNotifications,
     dynamic extra,
@@ -98,6 +138,10 @@ final class ScopeNotificationSettings extends TdObject {
     muteFor: muteFor ?? this.muteFor,
     soundId: soundId ?? this.soundId,
     showPreview: showPreview ?? this.showPreview,
+    useDefaultMuteStories: useDefaultMuteStories ?? this.useDefaultMuteStories,
+    muteStories: muteStories ?? this.muteStories,
+    storySoundId: storySoundId ?? this.storySoundId,
+    showStorySender: showStorySender ?? this.showStorySender,
     disablePinnedMessageNotifications: disablePinnedMessageNotifications ?? this.disablePinnedMessageNotifications,
     disableMentionNotifications: disableMentionNotifications ?? this.disableMentionNotifications,
     extra: extra ?? this.extra,

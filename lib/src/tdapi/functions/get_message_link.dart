@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 ///
 /// * [chatId]: Identifier of the chat to which the message belongs.
 /// * [messageId]: Identifier of the message.
-/// * [mediaTimestamp]: If not 0, timestamp from which the video/audio/video note/voice note playing must start, in seconds. The media can be in the message content or in its web page preview.
+/// * [mediaTimestamp]: If not 0, timestamp from which the video/audio/video note/voice note/story playing must start, in seconds. The media can be in the message content or in its web page preview.
 /// * [forAlbum]: Pass true to create a link for the whole media album.
 /// * [inMessageThread]: Pass true to create a link to the message as a channel post comment, in a message thread, or a forum topic.
 ///
@@ -19,7 +19,7 @@ final class GetMessageLink extends TdFunction {
   ///
   /// * [chatId]: Identifier of the chat to which the message belongs.
   /// * [messageId]: Identifier of the message.
-  /// * [mediaTimestamp]: If not 0, timestamp from which the video/audio/video note/voice note playing must start, in seconds. The media can be in the message content or in its web page preview.
+  /// * [mediaTimestamp]: If not 0, timestamp from which the video/audio/video note/voice note/story playing must start, in seconds. The media can be in the message content or in its web page preview.
   /// * [forAlbum]: Pass true to create a link for the whole media album.
   /// * [inMessageThread]: Pass true to create a link to the message as a channel post comment, in a message thread, or a forum topic.
   ///
@@ -38,7 +38,7 @@ final class GetMessageLink extends TdFunction {
   /// Identifier of the message
   final int messageId;
 
-  /// If not 0, timestamp from which the video/audio/video note/voice note playing must start, in seconds. The media can be in the message content or in its web page preview
+  /// If not 0, timestamp from which the video/audio/video note/voice note/story playing must start, in seconds. The media can be in the message content or in its web page preview
   final int mediaTimestamp;
 
   /// Pass true to create a link for the whole media album
@@ -66,7 +66,7 @@ final class GetMessageLink extends TdFunction {
   /// Properties:
   /// * [chat_id]: Identifier of the chat to which the message belongs
   /// * [message_id]: Identifier of the message
-  /// * [media_timestamp]: If not 0, timestamp from which the video/audio/video note/voice note playing must start, in seconds. The media can be in the message content or in its web page preview
+  /// * [media_timestamp]: If not 0, timestamp from which the video/audio/video note/voice note/story playing must start, in seconds. The media can be in the message content or in its web page preview
   /// * [for_album]: Pass true to create a link for the whole media album
   /// * [in_message_thread]: Pass true to create a link to the message as a channel post comment, in a message thread, or a forum topic
   GetMessageLink copyWith({

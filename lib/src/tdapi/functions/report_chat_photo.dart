@@ -36,7 +36,7 @@ final class ReportChatPhoto extends TdFunction {
   final int fileId;
 
   /// The reason for reporting the chat photo
-  final ChatReportReason reason;
+  final ReportReason reason;
 
   /// Additional report details; 0-1024 characters
   final String text;
@@ -64,7 +64,7 @@ final class ReportChatPhoto extends TdFunction {
   ReportChatPhoto copyWith({
     int? chatId,
     int? fileId,
-    ChatReportReason? reason,
+    ReportReason? reason,
     String? text,
   }) => ReportChatPhoto(
     chatId: chatId ?? this.chatId,

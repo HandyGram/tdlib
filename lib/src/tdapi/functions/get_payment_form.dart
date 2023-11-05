@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **GetPaymentForm** *(getPaymentForm)* - TDLib function
 ///
-/// Returns an invoice payment form. This method must be called when the user presses inlineKeyboardButtonBuy.
+/// Returns an invoice payment form. This method must be called when the user presses inline button of the type inlineKeyboardButtonTypeBuy.
 ///
 /// * [inputInvoice]: The invoice.
 /// * [theme]: Preferred payment form theme; pass null to use the default theme *(optional)*.
@@ -12,7 +12,7 @@ final class GetPaymentForm extends TdFunction {
   
   /// **GetPaymentForm** *(getPaymentForm)* - TDLib function
   ///
-  /// Returns an invoice payment form. This method must be called when the user presses inlineKeyboardButtonBuy.
+  /// Returns an invoice payment form. This method must be called when the user presses inline button of the type inlineKeyboardButtonTypeBuy.
   ///
   /// * [inputInvoice]: The invoice.
   /// * [theme]: Preferred payment form theme; pass null to use the default theme *(optional)*.

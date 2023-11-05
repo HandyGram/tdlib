@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 /// Contains information about a proxy server.
 ///
 /// * [id]: Unique identifier of the proxy.
-/// * [server]: Proxy server IP address.
+/// * [server]: Proxy server domain or IP address.
 /// * [port]: Proxy server port.
 /// * [lastUsedDate]: Point in time (Unix timestamp) when the proxy was last used; 0 if never.
 /// * [isEnabled]: True, if the proxy is enabled now.
@@ -17,7 +17,7 @@ final class Proxy extends TdObject {
   /// Contains information about a proxy server.
   ///
   /// * [id]: Unique identifier of the proxy.
-  /// * [server]: Proxy server IP address.
+  /// * [server]: Proxy server domain or IP address.
   /// * [port]: Proxy server port.
   /// * [lastUsedDate]: Point in time (Unix timestamp) when the proxy was last used; 0 if never.
   /// * [isEnabled]: True, if the proxy is enabled now.
@@ -36,7 +36,7 @@ final class Proxy extends TdObject {
   /// Unique identifier of the proxy
   final int id;
 
-  /// Proxy server IP address
+  /// Proxy server domain or IP address
   final String server;
 
   /// Proxy server port
@@ -90,7 +90,7 @@ final class Proxy extends TdObject {
   ///
   /// Properties:
   /// * [id]: Unique identifier of the proxy
-  /// * [server]: Proxy server IP address
+  /// * [server]: Proxy server domain or IP address
   /// * [port]: Proxy server port
   /// * [last_used_date]: Point in time (Unix timestamp) when the proxy was last used; 0 if never
   /// * [is_enabled]: True, if the proxy is enabled now

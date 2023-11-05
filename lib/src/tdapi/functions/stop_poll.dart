@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **StopPoll** *(stopPoll)* - TDLib function
 ///
-/// Stops a poll. A poll in a message can be stopped when the message has can_be_edited flag set.
+/// Stops a poll. A poll in a message can be stopped when the message has can_be_edited flag is set.
 ///
 /// * [chatId]: Identifier of the chat to which the poll belongs.
 /// * [messageId]: Identifier of the message containing the poll.
@@ -13,7 +13,7 @@ final class StopPoll extends TdFunction {
   
   /// **StopPoll** *(stopPoll)* - TDLib function
   ///
-  /// Stops a poll. A poll in a message can be stopped when the message has can_be_edited flag set.
+  /// Stops a poll. A poll in a message can be stopped when the message has can_be_edited flag is set.
   ///
   /// * [chatId]: Identifier of the chat to which the poll belongs.
   /// * [messageId]: Identifier of the message containing the poll.

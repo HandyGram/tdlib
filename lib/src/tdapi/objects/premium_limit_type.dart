@@ -23,6 +23,11 @@ sealed class PremiumLimitType extends TdObject {
   /// * [PremiumLimitTypeBioLength]
   /// * [PremiumLimitTypeChatFolderInviteLinkCount]
   /// * [PremiumLimitTypeShareableChatFolderCount]
+  /// * [PremiumLimitTypeActiveStoryCount]
+  /// * [PremiumLimitTypeWeeklySentStoryCount]
+  /// * [PremiumLimitTypeMonthlySentStoryCount]
+  /// * [PremiumLimitTypeStoryCaptionLength]
+  /// * [PremiumLimitTypeStorySuggestedReactionAreaCount]
   factory PremiumLimitType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
       case PremiumLimitTypeSupergroupCount.objectType:
@@ -49,6 +54,16 @@ sealed class PremiumLimitType extends TdObject {
         return PremiumLimitTypeChatFolderInviteLinkCount.fromJson(json);
       case PremiumLimitTypeShareableChatFolderCount.objectType:
         return PremiumLimitTypeShareableChatFolderCount.fromJson(json);
+      case PremiumLimitTypeActiveStoryCount.objectType:
+        return PremiumLimitTypeActiveStoryCount.fromJson(json);
+      case PremiumLimitTypeWeeklySentStoryCount.objectType:
+        return PremiumLimitTypeWeeklySentStoryCount.fromJson(json);
+      case PremiumLimitTypeMonthlySentStoryCount.objectType:
+        return PremiumLimitTypeMonthlySentStoryCount.fromJson(json);
+      case PremiumLimitTypeStoryCaptionLength.objectType:
+        return PremiumLimitTypeStoryCaptionLength.fromJson(json);
+      case PremiumLimitTypeStorySuggestedReactionAreaCount.objectType:
+        return PremiumLimitTypeStorySuggestedReactionAreaCount.fromJson(json);
       default:
         throw FormatException(
           "Unknown object ${json["@type"]} (expected child of PremiumLimitType)",
@@ -522,6 +537,196 @@ final class PremiumLimitTypeShareableChatFolderCount extends PremiumLimitType {
 
   /// TDLib object type
   static const String objectType = 'premiumLimitTypeShareableChatFolderCount';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **PremiumLimitTypeActiveStoryCount** *(premiumLimitTypeActiveStoryCount)* - child of PremiumLimitType
+///
+/// The maximum number of active stories.
+final class PremiumLimitTypeActiveStoryCount extends PremiumLimitType {
+  
+  /// **PremiumLimitTypeActiveStoryCount** *(premiumLimitTypeActiveStoryCount)* - child of PremiumLimitType
+  ///
+  /// The maximum number of active stories.
+  const PremiumLimitTypeActiveStoryCount();
+  
+  /// Parse from a json
+  factory PremiumLimitTypeActiveStoryCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeActiveStoryCount();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  PremiumLimitTypeActiveStoryCount copyWith() => const PremiumLimitTypeActiveStoryCount();
+
+  /// TDLib object type
+  static const String objectType = 'premiumLimitTypeActiveStoryCount';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **PremiumLimitTypeWeeklySentStoryCount** *(premiumLimitTypeWeeklySentStoryCount)* - child of PremiumLimitType
+///
+/// The maximum number of stories sent per week.
+final class PremiumLimitTypeWeeklySentStoryCount extends PremiumLimitType {
+  
+  /// **PremiumLimitTypeWeeklySentStoryCount** *(premiumLimitTypeWeeklySentStoryCount)* - child of PremiumLimitType
+  ///
+  /// The maximum number of stories sent per week.
+  const PremiumLimitTypeWeeklySentStoryCount();
+  
+  /// Parse from a json
+  factory PremiumLimitTypeWeeklySentStoryCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeWeeklySentStoryCount();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  PremiumLimitTypeWeeklySentStoryCount copyWith() => const PremiumLimitTypeWeeklySentStoryCount();
+
+  /// TDLib object type
+  static const String objectType = 'premiumLimitTypeWeeklySentStoryCount';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **PremiumLimitTypeMonthlySentStoryCount** *(premiumLimitTypeMonthlySentStoryCount)* - child of PremiumLimitType
+///
+/// The maximum number of stories sent per month.
+final class PremiumLimitTypeMonthlySentStoryCount extends PremiumLimitType {
+  
+  /// **PremiumLimitTypeMonthlySentStoryCount** *(premiumLimitTypeMonthlySentStoryCount)* - child of PremiumLimitType
+  ///
+  /// The maximum number of stories sent per month.
+  const PremiumLimitTypeMonthlySentStoryCount();
+  
+  /// Parse from a json
+  factory PremiumLimitTypeMonthlySentStoryCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeMonthlySentStoryCount();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  PremiumLimitTypeMonthlySentStoryCount copyWith() => const PremiumLimitTypeMonthlySentStoryCount();
+
+  /// TDLib object type
+  static const String objectType = 'premiumLimitTypeMonthlySentStoryCount';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **PremiumLimitTypeStoryCaptionLength** *(premiumLimitTypeStoryCaptionLength)* - child of PremiumLimitType
+///
+/// The maximum length of captions of sent stories.
+final class PremiumLimitTypeStoryCaptionLength extends PremiumLimitType {
+  
+  /// **PremiumLimitTypeStoryCaptionLength** *(premiumLimitTypeStoryCaptionLength)* - child of PremiumLimitType
+  ///
+  /// The maximum length of captions of sent stories.
+  const PremiumLimitTypeStoryCaptionLength();
+  
+  /// Parse from a json
+  factory PremiumLimitTypeStoryCaptionLength.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeStoryCaptionLength();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  PremiumLimitTypeStoryCaptionLength copyWith() => const PremiumLimitTypeStoryCaptionLength();
+
+  /// TDLib object type
+  static const String objectType = 'premiumLimitTypeStoryCaptionLength';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **PremiumLimitTypeStorySuggestedReactionAreaCount** *(premiumLimitTypeStorySuggestedReactionAreaCount)* - child of PremiumLimitType
+///
+/// The maximum number of suggested reaction areas on a story.
+final class PremiumLimitTypeStorySuggestedReactionAreaCount extends PremiumLimitType {
+  
+  /// **PremiumLimitTypeStorySuggestedReactionAreaCount** *(premiumLimitTypeStorySuggestedReactionAreaCount)* - child of PremiumLimitType
+  ///
+  /// The maximum number of suggested reaction areas on a story.
+  const PremiumLimitTypeStorySuggestedReactionAreaCount();
+  
+  /// Parse from a json
+  factory PremiumLimitTypeStorySuggestedReactionAreaCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeStorySuggestedReactionAreaCount();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  PremiumLimitTypeStorySuggestedReactionAreaCount copyWith() => const PremiumLimitTypeStorySuggestedReactionAreaCount();
+
+  /// TDLib object type
+  static const String objectType = 'premiumLimitTypeStorySuggestedReactionAreaCount';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

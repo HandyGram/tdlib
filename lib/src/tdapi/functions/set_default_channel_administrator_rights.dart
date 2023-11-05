@@ -4,7 +4,7 @@ part of '../tdapi.dart';
 ///
 /// Sets default administrator rights for adding the bot to channel chats; for bots only.
 ///
-/// * [defaultChannelAdministratorRights]: Default administrator rights for adding the bot to channels; may be null *(optional)*.
+/// * [defaultChannelAdministratorRights]: Default administrator rights for adding the bot to channels; pass null to remove default rights *(optional)*.
 ///
 /// [Ok] is returned on completion.
 final class SetDefaultChannelAdministratorRights extends TdFunction {
@@ -13,14 +13,14 @@ final class SetDefaultChannelAdministratorRights extends TdFunction {
   ///
   /// Sets default administrator rights for adding the bot to channel chats; for bots only.
   ///
-  /// * [defaultChannelAdministratorRights]: Default administrator rights for adding the bot to channels; may be null *(optional)*.
+  /// * [defaultChannelAdministratorRights]: Default administrator rights for adding the bot to channels; pass null to remove default rights *(optional)*.
   ///
   /// [Ok] is returned on completion.
   const SetDefaultChannelAdministratorRights({
     this.defaultChannelAdministratorRights,
   });
   
-  /// Default administrator rights for adding the bot to channels; may be null
+  /// Default administrator rights for adding the bot to channels; pass null to remove default rights
   final ChatAdministratorRights? defaultChannelAdministratorRights;
   
   /// Convert model to TDLib JSON format
@@ -36,7 +36,7 @@ final class SetDefaultChannelAdministratorRights extends TdFunction {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [default_channel_administrator_rights]: Default administrator rights for adding the bot to channels; may be null
+  /// * [default_channel_administrator_rights]: Default administrator rights for adding the bot to channels; pass null to remove default rights
   SetDefaultChannelAdministratorRights copyWith({
     ChatAdministratorRights? defaultChannelAdministratorRights,
   }) => SetDefaultChannelAdministratorRights(

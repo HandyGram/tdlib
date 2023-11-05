@@ -16,15 +16,15 @@ part of '../tdapi.dart';
 /// * [canGetMembers]: True, if members of the chat can be retrieved via getSupergroupMembers or searchChatMembers.
 /// * [hasHiddenMembers]: True, if non-administrators can receive only administrators and bots using getSupergroupMembers or searchChatMembers.
 /// * [canHideMembers]: True, if non-administrators and non-bots can be hidden in responses to getSupergroupMembers and searchChatMembers for non-administrators.
-/// * [canSetUsername]: True, if the chat username can be changed.
 /// * [canSetStickerSet]: True, if the supergroup sticker set can be changed.
 /// * [canSetLocation]: True, if the supergroup location can be changed.
 /// * [canGetStatistics]: True, if the supergroup or channel statistics are available.
 /// * [canToggleAggressiveAntiSpam]: True, if aggressive anti-spam checks can be enabled or disabled in the supergroup.
 /// * [isAllHistoryAvailable]: True, if new chat members will have access to old messages. In public, discussion, of forum groups and all channels, old messages are always available,. so this option affects only private non-forum supergroups without a linked chat. The value of this field is only available to chat administrators.
 /// * [hasAggressiveAntiSpamEnabled]: True, if aggressive anti-spam checks are enabled in the supergroup. The value of this field is only available to chat administrators.
+/// * [hasPinnedStories]: True, if the channel has pinned stories.
 /// * [stickerSetId]: Identifier of the supergroup sticker set; 0 if none.
-/// * [location]: Location to which the supergroup is connected; may be null *(optional)*.
+/// * [location]: Location to which the supergroup is connected; may be null if none *(optional)*.
 /// * [inviteLink]: Primary invite link for the chat; may be null. For chat administrators with can_invite_users right only *(optional)*.
 /// * [botCommands]: List of commands of bots in the group.
 /// * [upgradedFromBasicGroupId]: Identifier of the basic group from which supergroup was upgraded; 0 if none.
@@ -47,15 +47,15 @@ final class SupergroupFullInfo extends TdObject {
   /// * [canGetMembers]: True, if members of the chat can be retrieved via getSupergroupMembers or searchChatMembers.
   /// * [hasHiddenMembers]: True, if non-administrators can receive only administrators and bots using getSupergroupMembers or searchChatMembers.
   /// * [canHideMembers]: True, if non-administrators and non-bots can be hidden in responses to getSupergroupMembers and searchChatMembers for non-administrators.
-  /// * [canSetUsername]: True, if the chat username can be changed.
   /// * [canSetStickerSet]: True, if the supergroup sticker set can be changed.
   /// * [canSetLocation]: True, if the supergroup location can be changed.
   /// * [canGetStatistics]: True, if the supergroup or channel statistics are available.
   /// * [canToggleAggressiveAntiSpam]: True, if aggressive anti-spam checks can be enabled or disabled in the supergroup.
   /// * [isAllHistoryAvailable]: True, if new chat members will have access to old messages. In public, discussion, of forum groups and all channels, old messages are always available,. so this option affects only private non-forum supergroups without a linked chat. The value of this field is only available to chat administrators.
   /// * [hasAggressiveAntiSpamEnabled]: True, if aggressive anti-spam checks are enabled in the supergroup. The value of this field is only available to chat administrators.
+  /// * [hasPinnedStories]: True, if the channel has pinned stories.
   /// * [stickerSetId]: Identifier of the supergroup sticker set; 0 if none.
-  /// * [location]: Location to which the supergroup is connected; may be null *(optional)*.
+  /// * [location]: Location to which the supergroup is connected; may be null if none *(optional)*.
   /// * [inviteLink]: Primary invite link for the chat; may be null. For chat administrators with can_invite_users right only *(optional)*.
   /// * [botCommands]: List of commands of bots in the group.
   /// * [upgradedFromBasicGroupId]: Identifier of the basic group from which supergroup was upgraded; 0 if none.
@@ -73,13 +73,13 @@ final class SupergroupFullInfo extends TdObject {
     required this.canGetMembers,
     required this.hasHiddenMembers,
     required this.canHideMembers,
-    required this.canSetUsername,
     required this.canSetStickerSet,
     required this.canSetLocation,
     required this.canGetStatistics,
     required this.canToggleAggressiveAntiSpam,
     required this.isAllHistoryAvailable,
     required this.hasAggressiveAntiSpamEnabled,
+    required this.hasPinnedStories,
     required this.stickerSetId,
     this.location,
     this.inviteLink,
@@ -126,9 +126,6 @@ final class SupergroupFullInfo extends TdObject {
   /// True, if non-administrators and non-bots can be hidden in responses to getSupergroupMembers and searchChatMembers for non-administrators
   final bool canHideMembers;
 
-  /// True, if the chat username can be changed
-  final bool canSetUsername;
-
   /// True, if the supergroup sticker set can be changed
   final bool canSetStickerSet;
 
@@ -147,10 +144,13 @@ final class SupergroupFullInfo extends TdObject {
   /// True, if aggressive anti-spam checks are enabled in the supergroup. The value of this field is only available to chat administrators
   final bool hasAggressiveAntiSpamEnabled;
 
+  /// True, if the channel has pinned stories
+  final bool hasPinnedStories;
+
   /// Identifier of the supergroup sticker set; 0 if none
   final int stickerSetId;
 
-  /// Location to which the supergroup is connected; may be null
+  /// Location to which the supergroup is connected; may be null if none
   final ChatLocation? location;
 
   /// Primary invite link for the chat; may be null. For chat administrators with can_invite_users right only
@@ -187,13 +187,13 @@ final class SupergroupFullInfo extends TdObject {
     canGetMembers: json['can_get_members'],
     hasHiddenMembers: json['has_hidden_members'],
     canHideMembers: json['can_hide_members'],
-    canSetUsername: json['can_set_username'],
     canSetStickerSet: json['can_set_sticker_set'],
     canSetLocation: json['can_set_location'],
     canGetStatistics: json['can_get_statistics'],
     canToggleAggressiveAntiSpam: json['can_toggle_aggressive_anti_spam'],
     isAllHistoryAvailable: json['is_all_history_available'],
     hasAggressiveAntiSpamEnabled: json['has_aggressive_anti_spam_enabled'],
+    hasPinnedStories: json['has_pinned_stories'],
     stickerSetId: int.tryParse(json['sticker_set_id'] ?? "") ?? 0,
     location: json['location'] == null ? null : ChatLocation.fromJson(json['location']),
     inviteLink: json['invite_link'] == null ? null : ChatInviteLink.fromJson(json['invite_link']),
@@ -222,13 +222,13 @@ final class SupergroupFullInfo extends TdObject {
       "can_get_members": canGetMembers,
       "has_hidden_members": hasHiddenMembers,
       "can_hide_members": canHideMembers,
-      "can_set_username": canSetUsername,
       "can_set_sticker_set": canSetStickerSet,
       "can_set_location": canSetLocation,
       "can_get_statistics": canGetStatistics,
       "can_toggle_aggressive_anti_spam": canToggleAggressiveAntiSpam,
       "is_all_history_available": isAllHistoryAvailable,
       "has_aggressive_anti_spam_enabled": hasAggressiveAntiSpamEnabled,
+      "has_pinned_stories": hasPinnedStories,
       "sticker_set_id": stickerSetId,
       "location": location?.toJson(),
       "invite_link": inviteLink?.toJson(),
@@ -253,15 +253,15 @@ final class SupergroupFullInfo extends TdObject {
   /// * [can_get_members]: True, if members of the chat can be retrieved via getSupergroupMembers or searchChatMembers
   /// * [has_hidden_members]: True, if non-administrators can receive only administrators and bots using getSupergroupMembers or searchChatMembers
   /// * [can_hide_members]: True, if non-administrators and non-bots can be hidden in responses to getSupergroupMembers and searchChatMembers for non-administrators
-  /// * [can_set_username]: True, if the chat username can be changed
   /// * [can_set_sticker_set]: True, if the supergroup sticker set can be changed
   /// * [can_set_location]: True, if the supergroup location can be changed
   /// * [can_get_statistics]: True, if the supergroup or channel statistics are available
   /// * [can_toggle_aggressive_anti_spam]: True, if aggressive anti-spam checks can be enabled or disabled in the supergroup
   /// * [is_all_history_available]: True, if new chat members will have access to old messages. In public, discussion, of forum groups and all channels, old messages are always available,. so this option affects only private non-forum supergroups without a linked chat. The value of this field is only available to chat administrators
   /// * [has_aggressive_anti_spam_enabled]: True, if aggressive anti-spam checks are enabled in the supergroup. The value of this field is only available to chat administrators
+  /// * [has_pinned_stories]: True, if the channel has pinned stories
   /// * [sticker_set_id]: Identifier of the supergroup sticker set; 0 if none
-  /// * [location]: Location to which the supergroup is connected; may be null
+  /// * [location]: Location to which the supergroup is connected; may be null if none
   /// * [invite_link]: Primary invite link for the chat; may be null. For chat administrators with can_invite_users right only
   /// * [bot_commands]: List of commands of bots in the group
   /// * [upgraded_from_basic_group_id]: Identifier of the basic group from which supergroup was upgraded; 0 if none
@@ -279,13 +279,13 @@ final class SupergroupFullInfo extends TdObject {
     bool? canGetMembers,
     bool? hasHiddenMembers,
     bool? canHideMembers,
-    bool? canSetUsername,
     bool? canSetStickerSet,
     bool? canSetLocation,
     bool? canGetStatistics,
     bool? canToggleAggressiveAntiSpam,
     bool? isAllHistoryAvailable,
     bool? hasAggressiveAntiSpamEnabled,
+    bool? hasPinnedStories,
     int? stickerSetId,
     ChatLocation? location,
     ChatInviteLink? inviteLink,
@@ -307,13 +307,13 @@ final class SupergroupFullInfo extends TdObject {
     canGetMembers: canGetMembers ?? this.canGetMembers,
     hasHiddenMembers: hasHiddenMembers ?? this.hasHiddenMembers,
     canHideMembers: canHideMembers ?? this.canHideMembers,
-    canSetUsername: canSetUsername ?? this.canSetUsername,
     canSetStickerSet: canSetStickerSet ?? this.canSetStickerSet,
     canSetLocation: canSetLocation ?? this.canSetLocation,
     canGetStatistics: canGetStatistics ?? this.canGetStatistics,
     canToggleAggressiveAntiSpam: canToggleAggressiveAntiSpam ?? this.canToggleAggressiveAntiSpam,
     isAllHistoryAvailable: isAllHistoryAvailable ?? this.isAllHistoryAvailable,
     hasAggressiveAntiSpamEnabled: hasAggressiveAntiSpamEnabled ?? this.hasAggressiveAntiSpamEnabled,
+    hasPinnedStories: hasPinnedStories ?? this.hasPinnedStories,
     stickerSetId: stickerSetId ?? this.stickerSetId,
     location: location ?? this.location,
     inviteLink: inviteLink ?? this.inviteLink,

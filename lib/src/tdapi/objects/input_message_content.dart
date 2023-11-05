@@ -27,6 +27,7 @@ sealed class InputMessageContent extends TdObject {
   /// * [InputMessageGame]
   /// * [InputMessageInvoice]
   /// * [InputMessagePoll]
+  /// * [InputMessageStory]
   /// * [InputMessageForwarded]
   factory InputMessageContent.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
@@ -62,6 +63,8 @@ sealed class InputMessageContent extends TdObject {
         return InputMessageInvoice.fromJson(json);
       case InputMessagePoll.objectType:
         return InputMessagePoll.fromJson(json);
+      case InputMessageStory.objectType:
+        return InputMessageStory.fromJson(json);
       case InputMessageForwarded.objectType:
         return InputMessageForwarded.fromJson(json);
       default:
@@ -521,7 +524,7 @@ final class InputMessageDocument extends InputMessageContent {
 /// * [width]: Photo width.
 /// * [height]: Photo height.
 /// * [caption]: Photo caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
-/// * [selfDestructTime]: Photo self-destruct time, in seconds (0-60). A non-zero self-destruct time can be specified only in private chats.
+/// * [selfDestructType]: Photo self-destruct type; pass null if none; private chats only *(optional)*.
 /// * [hasSpoiler]: True, if the photo preview must be covered by a spoiler animation; not supported in secret chats.
 final class InputMessagePhoto extends InputMessageContent {
   
@@ -535,7 +538,7 @@ final class InputMessagePhoto extends InputMessageContent {
   /// * [width]: Photo width.
   /// * [height]: Photo height.
   /// * [caption]: Photo caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
-  /// * [selfDestructTime]: Photo self-destruct time, in seconds (0-60). A non-zero self-destruct time can be specified only in private chats.
+  /// * [selfDestructType]: Photo self-destruct type; pass null if none; private chats only *(optional)*.
   /// * [hasSpoiler]: True, if the photo preview must be covered by a spoiler animation; not supported in secret chats.
   const InputMessagePhoto({
     required this.photo,
@@ -544,7 +547,7 @@ final class InputMessagePhoto extends InputMessageContent {
     required this.width,
     required this.height,
     this.caption,
-    required this.selfDestructTime,
+    this.selfDestructType,
     required this.hasSpoiler,
   });
   
@@ -566,8 +569,8 @@ final class InputMessagePhoto extends InputMessageContent {
   /// Photo caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
-  /// Photo self-destruct time, in seconds (0-60). A non-zero self-destruct time can be specified only in private chats
-  final int selfDestructTime;
+  /// Photo self-destruct type; pass null if none; private chats only
+  final MessageSelfDestructType? selfDestructType;
 
   /// True, if the photo preview must be covered by a spoiler animation; not supported in secret chats
   final bool hasSpoiler;
@@ -580,7 +583,7 @@ final class InputMessagePhoto extends InputMessageContent {
     width: json['width'],
     height: json['height'],
     caption: json['caption'] == null ? null : FormattedText.fromJson(json['caption']),
-    selfDestructTime: json['self_destruct_time'],
+    selfDestructType: json['self_destruct_type'] == null ? null : MessageSelfDestructType.fromJson(json['self_destruct_type']),
     hasSpoiler: json['has_spoiler'],
   );
   
@@ -596,7 +599,7 @@ final class InputMessagePhoto extends InputMessageContent {
       "width": width,
       "height": height,
       "caption": caption?.toJson(),
-      "self_destruct_time": selfDestructTime,
+      "self_destruct_type": selfDestructType?.toJson(),
       "has_spoiler": hasSpoiler,
 		};
 	}
@@ -610,7 +613,7 @@ final class InputMessagePhoto extends InputMessageContent {
   /// * [width]: Photo width
   /// * [height]: Photo height
   /// * [caption]: Photo caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
-  /// * [self_destruct_time]: Photo self-destruct time, in seconds (0-60). A non-zero self-destruct time can be specified only in private chats
+  /// * [self_destruct_type]: Photo self-destruct type; pass null if none; private chats only
   /// * [has_spoiler]: True, if the photo preview must be covered by a spoiler animation; not supported in secret chats
   @override
   InputMessagePhoto copyWith({
@@ -620,7 +623,7 @@ final class InputMessagePhoto extends InputMessageContent {
     int? width,
     int? height,
     FormattedText? caption,
-    int? selfDestructTime,
+    MessageSelfDestructType? selfDestructType,
     bool? hasSpoiler,
   }) => InputMessagePhoto(
     photo: photo ?? this.photo,
@@ -629,7 +632,7 @@ final class InputMessagePhoto extends InputMessageContent {
     width: width ?? this.width,
     height: height ?? this.height,
     caption: caption ?? this.caption,
-    selfDestructTime: selfDestructTime ?? this.selfDestructTime,
+    selfDestructType: selfDestructType ?? this.selfDestructType,
     hasSpoiler: hasSpoiler ?? this.hasSpoiler,
   );
 
@@ -760,7 +763,7 @@ final class InputMessageSticker extends InputMessageContent {
 /// * [height]: Video height.
 /// * [supportsStreaming]: True, if the video is supposed to be streamed.
 /// * [caption]: Video caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
-/// * [selfDestructTime]: Video self-destruct time, in seconds (0-60). A non-zero self-destruct time can be specified only in private chats.
+/// * [selfDestructType]: Video self-destruct type; pass null if none; private chats only *(optional)*.
 /// * [hasSpoiler]: True, if the video preview must be covered by a spoiler animation; not supported in secret chats.
 final class InputMessageVideo extends InputMessageContent {
   
@@ -776,7 +779,7 @@ final class InputMessageVideo extends InputMessageContent {
   /// * [height]: Video height.
   /// * [supportsStreaming]: True, if the video is supposed to be streamed.
   /// * [caption]: Video caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
-  /// * [selfDestructTime]: Video self-destruct time, in seconds (0-60). A non-zero self-destruct time can be specified only in private chats.
+  /// * [selfDestructType]: Video self-destruct type; pass null if none; private chats only *(optional)*.
   /// * [hasSpoiler]: True, if the video preview must be covered by a spoiler animation; not supported in secret chats.
   const InputMessageVideo({
     required this.video,
@@ -787,7 +790,7 @@ final class InputMessageVideo extends InputMessageContent {
     required this.height,
     required this.supportsStreaming,
     this.caption,
-    required this.selfDestructTime,
+    this.selfDestructType,
     required this.hasSpoiler,
   });
   
@@ -815,8 +818,8 @@ final class InputMessageVideo extends InputMessageContent {
   /// Video caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
-  /// Video self-destruct time, in seconds (0-60). A non-zero self-destruct time can be specified only in private chats
-  final int selfDestructTime;
+  /// Video self-destruct type; pass null if none; private chats only
+  final MessageSelfDestructType? selfDestructType;
 
   /// True, if the video preview must be covered by a spoiler animation; not supported in secret chats
   final bool hasSpoiler;
@@ -831,7 +834,7 @@ final class InputMessageVideo extends InputMessageContent {
     height: json['height'],
     supportsStreaming: json['supports_streaming'],
     caption: json['caption'] == null ? null : FormattedText.fromJson(json['caption']),
-    selfDestructTime: json['self_destruct_time'],
+    selfDestructType: json['self_destruct_type'] == null ? null : MessageSelfDestructType.fromJson(json['self_destruct_type']),
     hasSpoiler: json['has_spoiler'],
   );
   
@@ -849,7 +852,7 @@ final class InputMessageVideo extends InputMessageContent {
       "height": height,
       "supports_streaming": supportsStreaming,
       "caption": caption?.toJson(),
-      "self_destruct_time": selfDestructTime,
+      "self_destruct_type": selfDestructType?.toJson(),
       "has_spoiler": hasSpoiler,
 		};
 	}
@@ -865,7 +868,7 @@ final class InputMessageVideo extends InputMessageContent {
   /// * [height]: Video height
   /// * [supports_streaming]: True, if the video is supposed to be streamed
   /// * [caption]: Video caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
-  /// * [self_destruct_time]: Video self-destruct time, in seconds (0-60). A non-zero self-destruct time can be specified only in private chats
+  /// * [self_destruct_type]: Video self-destruct type; pass null if none; private chats only
   /// * [has_spoiler]: True, if the video preview must be covered by a spoiler animation; not supported in secret chats
   @override
   InputMessageVideo copyWith({
@@ -877,7 +880,7 @@ final class InputMessageVideo extends InputMessageContent {
     int? height,
     bool? supportsStreaming,
     FormattedText? caption,
-    int? selfDestructTime,
+    MessageSelfDestructType? selfDestructType,
     bool? hasSpoiler,
   }) => InputMessageVideo(
     video: video ?? this.video,
@@ -888,7 +891,7 @@ final class InputMessageVideo extends InputMessageContent {
     height: height ?? this.height,
     supportsStreaming: supportsStreaming ?? this.supportsStreaming,
     caption: caption ?? this.caption,
-    selfDestructTime: selfDestructTime ?? this.selfDestructTime,
+    selfDestructType: selfDestructType ?? this.selfDestructType,
     hasSpoiler: hasSpoiler ?? this.hasSpoiler,
   );
 
@@ -1724,6 +1727,75 @@ final class InputMessagePoll extends InputMessageContent {
 
   /// TDLib object type
   static const String objectType = 'inputMessagePoll';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **InputMessageStory** *(inputMessageStory)* - child of InputMessageContent
+///
+/// A message with a forwarded story. Stories can't be sent to secret chats. A story can be forwarded only if story.can_be_forwarded.
+///
+/// * [storySenderChatId]: Identifier of the chat that posted the story.
+/// * [storyId]: Story identifier.
+final class InputMessageStory extends InputMessageContent {
+  
+  /// **InputMessageStory** *(inputMessageStory)* - child of InputMessageContent
+  ///
+  /// A message with a forwarded story. Stories can't be sent to secret chats. A story can be forwarded only if story.can_be_forwarded.
+  ///
+  /// * [storySenderChatId]: Identifier of the chat that posted the story.
+  /// * [storyId]: Story identifier.
+  const InputMessageStory({
+    required this.storySenderChatId,
+    required this.storyId,
+  });
+  
+  /// Identifier of the chat that posted the story
+  final int storySenderChatId;
+
+  /// Story identifier
+  final int storyId;
+  
+  /// Parse from a json
+  factory InputMessageStory.fromJson(Map<String, dynamic> json) => InputMessageStory(
+    storySenderChatId: json['story_sender_chat_id'],
+    storyId: json['story_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "story_sender_chat_id": storySenderChatId,
+      "story_id": storyId,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [story_sender_chat_id]: Identifier of the chat that posted the story
+  /// * [story_id]: Story identifier
+  @override
+  InputMessageStory copyWith({
+    int? storySenderChatId,
+    int? storyId,
+  }) => InputMessageStory(
+    storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+    storyId: storyId ?? this.storyId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'inputMessageStory';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

@@ -6,12 +6,8 @@ part of '../tdapi.dart';
 ///
 /// * [messageId]: Message identifier; unique for the chat to which the sponsored message belongs among both ordinary and sponsored messages.
 /// * [isRecommended]: True, if the message needs to be labeled as "recommended" instead of "sponsored".
-/// * [sponsorChatId]: Sponsor chat identifier; 0 if the sponsor chat is accessible through an invite link.
-/// * [sponsorChatInfo]: Information about the sponsor chat; may be null unless sponsor_chat_id == 0 *(optional)*.
-/// * [showChatPhoto]: True, if the sponsor's chat photo must be shown.
-/// * [link]: An internal link to be opened when the sponsored message is clicked; may be null if the sponsor chat needs to be opened instead *(optional)*.
 /// * [content]: Content of the message. Currently, can be only of the type messageText.
-/// * [sponsorInfo]: If non-empty, information about the sponsor to be shown along with the message.
+/// * [sponsor]: Information about the sponsor of the message.
 /// * [additionalInfo]: If non-empty, additional information about the sponsored message to be shown along with the message.
 final class SponsoredMessage extends TdObject {
   
@@ -21,22 +17,14 @@ final class SponsoredMessage extends TdObject {
   ///
   /// * [messageId]: Message identifier; unique for the chat to which the sponsored message belongs among both ordinary and sponsored messages.
   /// * [isRecommended]: True, if the message needs to be labeled as "recommended" instead of "sponsored".
-  /// * [sponsorChatId]: Sponsor chat identifier; 0 if the sponsor chat is accessible through an invite link.
-  /// * [sponsorChatInfo]: Information about the sponsor chat; may be null unless sponsor_chat_id == 0 *(optional)*.
-  /// * [showChatPhoto]: True, if the sponsor's chat photo must be shown.
-  /// * [link]: An internal link to be opened when the sponsored message is clicked; may be null if the sponsor chat needs to be opened instead *(optional)*.
   /// * [content]: Content of the message. Currently, can be only of the type messageText.
-  /// * [sponsorInfo]: If non-empty, information about the sponsor to be shown along with the message.
+  /// * [sponsor]: Information about the sponsor of the message.
   /// * [additionalInfo]: If non-empty, additional information about the sponsored message to be shown along with the message.
   const SponsoredMessage({
     required this.messageId,
     required this.isRecommended,
-    required this.sponsorChatId,
-    this.sponsorChatInfo,
-    required this.showChatPhoto,
-    this.link,
     required this.content,
-    required this.sponsorInfo,
+    required this.sponsor,
     required this.additionalInfo,
   });
   
@@ -46,23 +34,11 @@ final class SponsoredMessage extends TdObject {
   /// True, if the message needs to be labeled as "recommended" instead of "sponsored"
   final bool isRecommended;
 
-  /// Sponsor chat identifier; 0 if the sponsor chat is accessible through an invite link
-  final int sponsorChatId;
-
-  /// Information about the sponsor chat; may be null unless sponsor_chat_id == 0
-  final ChatInviteLinkInfo? sponsorChatInfo;
-
-  /// True, if the sponsor's chat photo must be shown
-  final bool showChatPhoto;
-
-  /// An internal link to be opened when the sponsored message is clicked; may be null if the sponsor chat needs to be opened instead
-  final InternalLinkType? link;
-
   /// Content of the message. Currently, can be only of the type messageText
   final MessageContent content;
 
-  /// If non-empty, information about the sponsor to be shown along with the message
-  final String sponsorInfo;
+  /// Information about the sponsor of the message
+  final MessageSponsor sponsor;
 
   /// If non-empty, additional information about the sponsored message to be shown along with the message
   final String additionalInfo;
@@ -71,12 +47,8 @@ final class SponsoredMessage extends TdObject {
   factory SponsoredMessage.fromJson(Map<String, dynamic> json) => SponsoredMessage(
     messageId: json['message_id'],
     isRecommended: json['is_recommended'],
-    sponsorChatId: json['sponsor_chat_id'],
-    sponsorChatInfo: json['sponsor_chat_info'] == null ? null : ChatInviteLinkInfo.fromJson(json['sponsor_chat_info']),
-    showChatPhoto: json['show_chat_photo'],
-    link: json['link'] == null ? null : InternalLinkType.fromJson(json['link']),
     content: MessageContent.fromJson(json['content']),
-    sponsorInfo: json['sponsor_info'],
+    sponsor: MessageSponsor.fromJson(json['sponsor']),
     additionalInfo: json['additional_info'],
   );
   
@@ -88,12 +60,8 @@ final class SponsoredMessage extends TdObject {
 			"@type": objectType,
       "message_id": messageId,
       "is_recommended": isRecommended,
-      "sponsor_chat_id": sponsorChatId,
-      "sponsor_chat_info": sponsorChatInfo?.toJson(),
-      "show_chat_photo": showChatPhoto,
-      "link": link?.toJson(),
       "content": content.toJson(),
-      "sponsor_info": sponsorInfo,
+      "sponsor": sponsor.toJson(),
       "additional_info": additionalInfo,
 		};
 	}
@@ -103,32 +71,20 @@ final class SponsoredMessage extends TdObject {
   /// Properties:
   /// * [message_id]: Message identifier; unique for the chat to which the sponsored message belongs among both ordinary and sponsored messages
   /// * [is_recommended]: True, if the message needs to be labeled as "recommended" instead of "sponsored"
-  /// * [sponsor_chat_id]: Sponsor chat identifier; 0 if the sponsor chat is accessible through an invite link
-  /// * [sponsor_chat_info]: Information about the sponsor chat; may be null unless sponsor_chat_id == 0
-  /// * [show_chat_photo]: True, if the sponsor's chat photo must be shown
-  /// * [link]: An internal link to be opened when the sponsored message is clicked; may be null if the sponsor chat needs to be opened instead
   /// * [content]: Content of the message. Currently, can be only of the type messageText
-  /// * [sponsor_info]: If non-empty, information about the sponsor to be shown along with the message
+  /// * [sponsor]: Information about the sponsor of the message
   /// * [additional_info]: If non-empty, additional information about the sponsored message to be shown along with the message
   SponsoredMessage copyWith({
     int? messageId,
     bool? isRecommended,
-    int? sponsorChatId,
-    ChatInviteLinkInfo? sponsorChatInfo,
-    bool? showChatPhoto,
-    InternalLinkType? link,
     MessageContent? content,
-    String? sponsorInfo,
+    MessageSponsor? sponsor,
     String? additionalInfo,
   }) => SponsoredMessage(
     messageId: messageId ?? this.messageId,
     isRecommended: isRecommended ?? this.isRecommended,
-    sponsorChatId: sponsorChatId ?? this.sponsorChatId,
-    sponsorChatInfo: sponsorChatInfo ?? this.sponsorChatInfo,
-    showChatPhoto: showChatPhoto ?? this.showChatPhoto,
-    link: link ?? this.link,
     content: content ?? this.content,
-    sponsorInfo: sponsorInfo ?? this.sponsorInfo,
+    sponsor: sponsor ?? this.sponsor,
     additionalInfo: additionalInfo ?? this.additionalInfo,
   );
 

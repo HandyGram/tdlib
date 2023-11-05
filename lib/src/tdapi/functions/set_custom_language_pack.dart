@@ -4,7 +4,7 @@ part of '../tdapi.dart';
 ///
 /// Adds or changes a custom local language pack to the current localization target.
 ///
-/// * [info]: Information about the language pack. Language pack setCustomLanguagePack must start with 'X', consist only of English letters, digits and hyphens, and must not exceed 64 characters. Can be called before authorization.
+/// * [info]: Information about the language pack. Language pack identifier must start with 'X', consist only of English letters, digits and hyphens, and must not exceed 64 characters. Can be called before authorization.
 /// * [strings]: Strings of the new language pack.
 ///
 /// [Ok] is returned on completion.
@@ -14,7 +14,7 @@ final class SetCustomLanguagePack extends TdFunction {
   ///
   /// Adds or changes a custom local language pack to the current localization target.
   ///
-  /// * [info]: Information about the language pack. Language pack setCustomLanguagePack must start with 'X', consist only of English letters, digits and hyphens, and must not exceed 64 characters. Can be called before authorization.
+  /// * [info]: Information about the language pack. Language pack identifier must start with 'X', consist only of English letters, digits and hyphens, and must not exceed 64 characters. Can be called before authorization.
   /// * [strings]: Strings of the new language pack.
   ///
   /// [Ok] is returned on completion.
@@ -23,7 +23,7 @@ final class SetCustomLanguagePack extends TdFunction {
     required this.strings,
   });
   
-  /// Information about the language pack. Language pack setCustomLanguagePack must start with 'X', consist only of English letters, digits and hyphens, and must not exceed 64 characters. Can be called before authorization
+  /// Information about the language pack. Language pack identifier must start with 'X', consist only of English letters, digits and hyphens, and must not exceed 64 characters. Can be called before authorization
   final LanguagePackInfo info;
 
   /// Strings of the new language pack
@@ -43,7 +43,7 @@ final class SetCustomLanguagePack extends TdFunction {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [info]: Information about the language pack. Language pack setCustomLanguagePack must start with 'X', consist only of English letters, digits and hyphens, and must not exceed 64 characters. Can be called before authorization
+  /// * [info]: Information about the language pack. Language pack identifier must start with 'X', consist only of English letters, digits and hyphens, and must not exceed 64 characters. Can be called before authorization
   /// * [strings]: Strings of the new language pack
   SetCustomLanguagePack copyWith({
     LanguagePackInfo? info,

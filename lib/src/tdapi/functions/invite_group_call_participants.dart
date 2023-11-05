@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **InviteGroupCallParticipants** *(inviteGroupCallParticipants)* - TDLib function
 ///
-/// Invites users to an active group call. Sends a service message of type messageInviteToGroupCall for video chats.
+/// Invites users to an active group call. Sends a service message of type messageInviteVideoChatParticipants for video chats.
 ///
 /// * [groupCallId]: Group call identifier.
 /// * [userIds]: User identifiers. At most 10 users can be invited simultaneously.
@@ -12,7 +12,7 @@ final class InviteGroupCallParticipants extends TdFunction {
   
   /// **InviteGroupCallParticipants** *(inviteGroupCallParticipants)* - TDLib function
   ///
-  /// Invites users to an active group call. Sends a service message of type messageInviteToGroupCall for video chats.
+  /// Invites users to an active group call. Sends a service message of type messageInviteVideoChatParticipants for video chats.
   ///
   /// * [groupCallId]: Group call identifier.
   /// * [userIds]: User identifiers. At most 10 users can be invited simultaneously.

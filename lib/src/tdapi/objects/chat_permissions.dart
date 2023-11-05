@@ -7,8 +7,8 @@ part of '../tdapi.dart';
 /// * [canSendBasicMessages]: True, if the user can send text messages, contacts, invoices, locations, and venues.
 /// * [canSendAudios]: True, if the user can send music files.
 /// * [canSendDocuments]: True, if the user can send documents.
-/// * [canSendPhotos]: True, if the user can send audio photos.
-/// * [canSendVideos]: True, if the user can send audio videos.
+/// * [canSendPhotos]: True, if the user can send photos.
+/// * [canSendVideos]: True, if the user can send videos.
 /// * [canSendVideoNotes]: True, if the user can send video notes.
 /// * [canSendVoiceNotes]: True, if the user can send voice notes.
 /// * [canSendPolls]: True, if the user can send polls.
@@ -27,8 +27,8 @@ final class ChatPermissions extends TdObject {
   /// * [canSendBasicMessages]: True, if the user can send text messages, contacts, invoices, locations, and venues.
   /// * [canSendAudios]: True, if the user can send music files.
   /// * [canSendDocuments]: True, if the user can send documents.
-  /// * [canSendPhotos]: True, if the user can send audio photos.
-  /// * [canSendVideos]: True, if the user can send audio videos.
+  /// * [canSendPhotos]: True, if the user can send photos.
+  /// * [canSendVideos]: True, if the user can send videos.
   /// * [canSendVideoNotes]: True, if the user can send video notes.
   /// * [canSendVoiceNotes]: True, if the user can send voice notes.
   /// * [canSendPolls]: True, if the user can send polls.
@@ -64,10 +64,10 @@ final class ChatPermissions extends TdObject {
   /// True, if the user can send documents
   final bool canSendDocuments;
 
-  /// True, if the user can send audio photos
+  /// True, if the user can send photos
   final bool canSendPhotos;
 
-  /// True, if the user can send audio videos
+  /// True, if the user can send videos
   final bool canSendVideos;
 
   /// True, if the user can send video notes
@@ -144,8 +144,8 @@ final class ChatPermissions extends TdObject {
   /// * [can_send_basic_messages]: True, if the user can send text messages, contacts, invoices, locations, and venues
   /// * [can_send_audios]: True, if the user can send music files
   /// * [can_send_documents]: True, if the user can send documents
-  /// * [can_send_photos]: True, if the user can send audio photos
-  /// * [can_send_videos]: True, if the user can send audio videos
+  /// * [can_send_photos]: True, if the user can send photos
+  /// * [can_send_videos]: True, if the user can send videos
   /// * [can_send_video_notes]: True, if the user can send video notes
   /// * [can_send_voice_notes]: True, if the user can send voice notes
   /// * [can_send_polls]: True, if the user can send polls

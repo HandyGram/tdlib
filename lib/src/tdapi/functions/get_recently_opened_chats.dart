@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **GetRecentlyOpenedChats** *(getRecentlyOpenedChats)* - TDLib function
 ///
-/// Returns recently opened chats, this is an offline request. Returns chats in the order of last opening.
+/// Returns recently opened chats; this is an offline request. Returns chats in the order of last opening.
 ///
 /// * [limit]: The maximum number of chats to be returned.
 ///
@@ -11,7 +11,7 @@ final class GetRecentlyOpenedChats extends TdFunction {
   
   /// **GetRecentlyOpenedChats** *(getRecentlyOpenedChats)* - TDLib function
   ///
-  /// Returns recently opened chats, this is an offline request. Returns chats in the order of last opening.
+  /// Returns recently opened chats; this is an offline request. Returns chats in the order of last opening.
   ///
   /// * [limit]: The maximum number of chats to be returned.
   ///

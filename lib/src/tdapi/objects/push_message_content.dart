@@ -25,6 +25,7 @@ sealed class PushMessageContent extends TdObject {
   /// * [PushMessageContentPoll]
   /// * [PushMessageContentScreenshotTaken]
   /// * [PushMessageContentSticker]
+  /// * [PushMessageContentStory]
   /// * [PushMessageContentText]
   /// * [PushMessageContentVideo]
   /// * [PushMessageContentVideoNote]
@@ -72,6 +73,8 @@ sealed class PushMessageContent extends TdObject {
         return PushMessageContentScreenshotTaken.fromJson(json);
       case PushMessageContentSticker.objectType:
         return PushMessageContentSticker.fromJson(json);
+      case PushMessageContentStory.objectType:
+        return PushMessageContentStory.fromJson(json);
       case PushMessageContentText.objectType:
         return PushMessageContentText.fromJson(json);
       case PushMessageContentVideo.objectType:
@@ -1082,6 +1085,64 @@ final class PushMessageContentSticker extends PushMessageContent {
 
   /// TDLib object type
   static const String objectType = 'pushMessageContentSticker';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **PushMessageContentStory** *(pushMessageContentStory)* - child of PushMessageContent
+///
+/// A message with a story.
+///
+/// * [isPinned]: True, if the message is a pinned message with the specified content.
+final class PushMessageContentStory extends PushMessageContent {
+  
+  /// **PushMessageContentStory** *(pushMessageContentStory)* - child of PushMessageContent
+  ///
+  /// A message with a story.
+  ///
+  /// * [isPinned]: True, if the message is a pinned message with the specified content.
+  const PushMessageContentStory({
+    required this.isPinned,
+  });
+  
+  /// True, if the message is a pinned message with the specified content
+  final bool isPinned;
+  
+  /// Parse from a json
+  factory PushMessageContentStory.fromJson(Map<String, dynamic> json) => PushMessageContentStory(
+    isPinned: json['is_pinned'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "is_pinned": isPinned,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [is_pinned]: True, if the message is a pinned message with the specified content
+  @override
+  PushMessageContentStory copyWith({
+    bool? isPinned,
+  }) => PushMessageContentStory(
+    isPinned: isPinned ?? this.isPinned,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'pushMessageContentStory';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

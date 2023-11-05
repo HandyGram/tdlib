@@ -17,6 +17,7 @@ sealed class FileType extends TdObject {
   /// * [FileTypeDocument]
   /// * [FileTypeNotificationSound]
   /// * [FileTypePhoto]
+  /// * [FileTypePhotoStory]
   /// * [FileTypeProfilePhoto]
   /// * [FileTypeSecret]
   /// * [FileTypeSecretThumbnail]
@@ -26,6 +27,7 @@ sealed class FileType extends TdObject {
   /// * [FileTypeUnknown]
   /// * [FileTypeVideo]
   /// * [FileTypeVideoNote]
+  /// * [FileTypeVideoStory]
   /// * [FileTypeVoiceNote]
   /// * [FileTypeWallpaper]
   factory FileType.fromJson(Map<String, dynamic> json)  {
@@ -42,6 +44,8 @@ sealed class FileType extends TdObject {
         return FileTypeNotificationSound.fromJson(json);
       case FileTypePhoto.objectType:
         return FileTypePhoto.fromJson(json);
+      case FileTypePhotoStory.objectType:
+        return FileTypePhotoStory.fromJson(json);
       case FileTypeProfilePhoto.objectType:
         return FileTypeProfilePhoto.fromJson(json);
       case FileTypeSecret.objectType:
@@ -60,6 +64,8 @@ sealed class FileType extends TdObject {
         return FileTypeVideo.fromJson(json);
       case FileTypeVideoNote.objectType:
         return FileTypeVideoNote.fromJson(json);
+      case FileTypeVideoStory.objectType:
+        return FileTypeVideoStory.fromJson(json);
       case FileTypeVoiceNote.objectType:
         return FileTypeVoiceNote.fromJson(json);
       case FileTypeWallpaper.objectType:
@@ -309,6 +315,44 @@ final class FileTypePhoto extends FileType {
 
   /// TDLib object type
   static const String objectType = 'fileTypePhoto';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **FileTypePhotoStory** *(fileTypePhotoStory)* - child of FileType
+///
+/// The file is a photo published as a story.
+final class FileTypePhotoStory extends FileType {
+  
+  /// **FileTypePhotoStory** *(fileTypePhotoStory)* - child of FileType
+  ///
+  /// The file is a photo published as a story.
+  const FileTypePhotoStory();
+  
+  /// Parse from a json
+  factory FileTypePhotoStory.fromJson(Map<String, dynamic> json) => const FileTypePhotoStory();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  FileTypePhotoStory copyWith() => const FileTypePhotoStory();
+
+  /// TDLib object type
+  static const String objectType = 'fileTypePhotoStory';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -651,6 +695,44 @@ final class FileTypeVideoNote extends FileType {
 
   /// TDLib object type
   static const String objectType = 'fileTypeVideoNote';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **FileTypeVideoStory** *(fileTypeVideoStory)* - child of FileType
+///
+/// The file is a video published as a story.
+final class FileTypeVideoStory extends FileType {
+  
+  /// **FileTypeVideoStory** *(fileTypeVideoStory)* - child of FileType
+  ///
+  /// The file is a video published as a story.
+  const FileTypeVideoStory();
+  
+  /// Parse from a json
+  factory FileTypeVideoStory.fromJson(Map<String, dynamic> json) => const FileTypeVideoStory();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  FileTypeVideoStory copyWith() => const FileTypeVideoStory();
+
+  /// TDLib object type
+  static const String objectType = 'fileTypeVideoStory';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

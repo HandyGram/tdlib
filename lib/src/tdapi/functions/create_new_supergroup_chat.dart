@@ -10,7 +10,7 @@ part of '../tdapi.dart';
 /// * [description]: Chat description; 0-255 characters.
 /// * [location]: Chat location if a location-based supergroup is being created; pass null to create an ordinary supergroup chat *(optional)*.
 /// * [messageAutoDeleteTime]: Message auto-delete time value, in seconds; must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically.
-/// * [forImport]: Pass true to create a supergroup for importing messages using importMessage.
+/// * [forImport]: Pass true to create a supergroup for importing messages using importMessages.
 ///
 /// [Chat] is returned on completion.
 final class CreateNewSupergroupChat extends TdFunction {
@@ -25,7 +25,7 @@ final class CreateNewSupergroupChat extends TdFunction {
   /// * [description]: Chat description; 0-255 characters.
   /// * [location]: Chat location if a location-based supergroup is being created; pass null to create an ordinary supergroup chat *(optional)*.
   /// * [messageAutoDeleteTime]: Message auto-delete time value, in seconds; must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically.
-  /// * [forImport]: Pass true to create a supergroup for importing messages using importMessage.
+  /// * [forImport]: Pass true to create a supergroup for importing messages using importMessages.
   ///
   /// [Chat] is returned on completion.
   const CreateNewSupergroupChat({
@@ -56,7 +56,7 @@ final class CreateNewSupergroupChat extends TdFunction {
   /// Message auto-delete time value, in seconds; must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically
   final int messageAutoDeleteTime;
 
-  /// Pass true to create a supergroup for importing messages using importMessage
+  /// Pass true to create a supergroup for importing messages using importMessages
   final bool forImport;
   
   /// Convert model to TDLib JSON format
@@ -84,7 +84,7 @@ final class CreateNewSupergroupChat extends TdFunction {
   /// * [description]: Chat description; 0-255 characters
   /// * [location]: Chat location if a location-based supergroup is being created; pass null to create an ordinary supergroup chat
   /// * [message_auto_delete_time]: Message auto-delete time value, in seconds; must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically
-  /// * [for_import]: Pass true to create a supergroup for importing messages using importMessage
+  /// * [for_import]: Pass true to create a supergroup for importing messages using importMessages
   CreateNewSupergroupChat copyWith({
     String? title,
     bool? isForum,

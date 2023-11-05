@@ -7,7 +7,7 @@ part of '../tdapi.dart';
 /// * [messageThreadId]: Message thread identifier of the topic.
 /// * [name]: Name of the topic.
 /// * [icon]: Icon of the topic.
-/// * [creationDate]: Date the topic was created.
+/// * [creationDate]: Point in time (Unix timestamp) when the topic was created.
 /// * [creatorId]: Identifier of the creator of the topic.
 /// * [isGeneral]: True, if the topic is the General topic list.
 /// * [isOutgoing]: True, if the topic was created by the current user.
@@ -22,7 +22,7 @@ final class ForumTopicInfo extends TdObject {
   /// * [messageThreadId]: Message thread identifier of the topic.
   /// * [name]: Name of the topic.
   /// * [icon]: Icon of the topic.
-  /// * [creationDate]: Date the topic was created.
+  /// * [creationDate]: Point in time (Unix timestamp) when the topic was created.
   /// * [creatorId]: Identifier of the creator of the topic.
   /// * [isGeneral]: True, if the topic is the General topic list.
   /// * [isOutgoing]: True, if the topic was created by the current user.
@@ -51,7 +51,7 @@ final class ForumTopicInfo extends TdObject {
   /// Icon of the topic
   final ForumTopicIcon icon;
 
-  /// Date the topic was created
+  /// Point in time (Unix timestamp) when the topic was created
   final int creationDate;
 
   /// Identifier of the creator of the topic
@@ -116,7 +116,7 @@ final class ForumTopicInfo extends TdObject {
   /// * [message_thread_id]: Message thread identifier of the topic
   /// * [name]: Name of the topic
   /// * [icon]: Icon of the topic
-  /// * [creation_date]: Date the topic was created
+  /// * [creation_date]: Point in time (Unix timestamp) when the topic was created
   /// * [creator_id]: Identifier of the creator of the topic
   /// * [is_general]: True, if the topic is the General topic list
   /// * [is_outgoing]: True, if the topic was created by the current user

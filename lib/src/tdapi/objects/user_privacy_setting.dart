@@ -15,6 +15,7 @@ sealed class UserPrivacySetting extends TdObject {
   /// * [UserPrivacySettingShowProfilePhoto]
   /// * [UserPrivacySettingShowLinkInForwardedMessages]
   /// * [UserPrivacySettingShowPhoneNumber]
+  /// * [UserPrivacySettingShowBio]
   /// * [UserPrivacySettingAllowChatInvites]
   /// * [UserPrivacySettingAllowCalls]
   /// * [UserPrivacySettingAllowPeerToPeerCalls]
@@ -30,6 +31,8 @@ sealed class UserPrivacySetting extends TdObject {
         return UserPrivacySettingShowLinkInForwardedMessages.fromJson(json);
       case UserPrivacySettingShowPhoneNumber.objectType:
         return UserPrivacySettingShowPhoneNumber.fromJson(json);
+      case UserPrivacySettingShowBio.objectType:
+        return UserPrivacySettingShowBio.fromJson(json);
       case UserPrivacySettingAllowChatInvites.objectType:
         return UserPrivacySettingAllowChatInvites.fromJson(json);
       case UserPrivacySettingAllowCalls.objectType:
@@ -209,6 +212,44 @@ final class UserPrivacySettingShowPhoneNumber extends UserPrivacySetting {
 
   /// TDLib object type
   static const String objectType = 'userPrivacySettingShowPhoneNumber';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **UserPrivacySettingShowBio** *(userPrivacySettingShowBio)* - child of UserPrivacySetting
+///
+/// A privacy setting for managing whether the user's bio is visible.
+final class UserPrivacySettingShowBio extends UserPrivacySetting {
+  
+  /// **UserPrivacySettingShowBio** *(userPrivacySettingShowBio)* - child of UserPrivacySetting
+  ///
+  /// A privacy setting for managing whether the user's bio is visible.
+  const UserPrivacySettingShowBio();
+  
+  /// Parse from a json
+  factory UserPrivacySettingShowBio.fromJson(Map<String, dynamic> json) => const UserPrivacySettingShowBio();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  UserPrivacySettingShowBio copyWith() => const UserPrivacySettingShowBio();
+
+  /// TDLib object type
+  static const String objectType = 'userPrivacySettingShowBio';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

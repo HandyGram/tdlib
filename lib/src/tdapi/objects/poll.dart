@@ -8,7 +8,7 @@ part of '../tdapi.dart';
 /// * [question]: Poll question; 1-300 characters.
 /// * [options]: List of poll answer options.
 /// * [totalVoterCount]: Total number of voters, participating in the poll.
-/// * [recentVoterUserIds]: User identifiers of recent voters, if the poll is non-anonymous.
+/// * [recentVoterIds]: Identifiers of recent voters, if the poll is non-anonymous.
 /// * [isAnonymous]: True, if the poll is anonymous.
 /// * [type]: Type of the poll.
 /// * [openPeriod]: Amount of time the poll will be active after creation, in seconds.
@@ -24,7 +24,7 @@ final class Poll extends TdObject {
   /// * [question]: Poll question; 1-300 characters.
   /// * [options]: List of poll answer options.
   /// * [totalVoterCount]: Total number of voters, participating in the poll.
-  /// * [recentVoterUserIds]: User identifiers of recent voters, if the poll is non-anonymous.
+  /// * [recentVoterIds]: Identifiers of recent voters, if the poll is non-anonymous.
   /// * [isAnonymous]: True, if the poll is anonymous.
   /// * [type]: Type of the poll.
   /// * [openPeriod]: Amount of time the poll will be active after creation, in seconds.
@@ -35,7 +35,7 @@ final class Poll extends TdObject {
     required this.question,
     required this.options,
     required this.totalVoterCount,
-    required this.recentVoterUserIds,
+    required this.recentVoterIds,
     required this.isAnonymous,
     required this.type,
     required this.openPeriod,
@@ -55,8 +55,8 @@ final class Poll extends TdObject {
   /// Total number of voters, participating in the poll
   final int totalVoterCount;
 
-  /// User identifiers of recent voters, if the poll is non-anonymous
-  final List<int> recentVoterUserIds;
+  /// Identifiers of recent voters, if the poll is non-anonymous
+  final List<MessageSender> recentVoterIds;
 
   /// True, if the poll is anonymous
   final bool isAnonymous;
@@ -79,7 +79,7 @@ final class Poll extends TdObject {
     question: json['question'],
     options: List<PollOption>.from((json['options'] ?? []).map((item) => PollOption.fromJson(item)).toList()),
     totalVoterCount: json['total_voter_count'],
-    recentVoterUserIds: List<int>.from((json['recent_voter_user_ids'] ?? []).map((item) => item).toList()),
+    recentVoterIds: List<MessageSender>.from((json['recent_voter_ids'] ?? []).map((item) => MessageSender.fromJson(item)).toList()),
     isAnonymous: json['is_anonymous'],
     type: PollType.fromJson(json['type']),
     openPeriod: json['open_period'],
@@ -97,7 +97,7 @@ final class Poll extends TdObject {
       "question": question,
       "options": options.map((i) => i.toJson()).toList(),
       "total_voter_count": totalVoterCount,
-      "recent_voter_user_ids": recentVoterUserIds.map((i) => i).toList(),
+      "recent_voter_ids": recentVoterIds.map((i) => i.toJson()).toList(),
       "is_anonymous": isAnonymous,
       "type": type.toJson(),
       "open_period": openPeriod,
@@ -113,7 +113,7 @@ final class Poll extends TdObject {
   /// * [question]: Poll question; 1-300 characters
   /// * [options]: List of poll answer options
   /// * [total_voter_count]: Total number of voters, participating in the poll
-  /// * [recent_voter_user_ids]: User identifiers of recent voters, if the poll is non-anonymous
+  /// * [recent_voter_ids]: Identifiers of recent voters, if the poll is non-anonymous
   /// * [is_anonymous]: True, if the poll is anonymous
   /// * [type]: Type of the poll
   /// * [open_period]: Amount of time the poll will be active after creation, in seconds
@@ -124,7 +124,7 @@ final class Poll extends TdObject {
     String? question,
     List<PollOption>? options,
     int? totalVoterCount,
-    List<int>? recentVoterUserIds,
+    List<MessageSender>? recentVoterIds,
     bool? isAnonymous,
     PollType? type,
     int? openPeriod,
@@ -135,7 +135,7 @@ final class Poll extends TdObject {
     question: question ?? this.question,
     options: options ?? this.options,
     totalVoterCount: totalVoterCount ?? this.totalVoterCount,
-    recentVoterUserIds: recentVoterUserIds ?? this.recentVoterUserIds,
+    recentVoterIds: recentVoterIds ?? this.recentVoterIds,
     isAnonymous: isAnonymous ?? this.isAnonymous,
     type: type ?? this.type,
     openPeriod: openPeriod ?? this.openPeriod,

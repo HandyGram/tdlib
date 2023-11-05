@@ -49,7 +49,7 @@ sealed class Update extends TdObject {
   /// * [UpdateChatHasProtectedContent]
   /// * [UpdateChatIsTranslatable]
   /// * [UpdateChatIsMarkedAsUnread]
-  /// * [UpdateChatIsBlocked]
+  /// * [UpdateChatBlockList]
   /// * [UpdateChatHasScheduledMessages]
   /// * [UpdateChatFolders]
   /// * [UpdateChatOnlineMemberCount]
@@ -85,6 +85,13 @@ sealed class Update extends TdObject {
   /// * [UpdateUserPrivacySettingRules]
   /// * [UpdateUnreadMessageCount]
   /// * [UpdateUnreadChatCount]
+  /// * [UpdateStory]
+  /// * [UpdateStoryDeleted]
+  /// * [UpdateStorySendSucceeded]
+  /// * [UpdateStorySendFailed]
+  /// * [UpdateChatActiveStories]
+  /// * [UpdateStoryListChatCount]
+  /// * [UpdateStoryStealthMode]
   /// * [UpdateOption]
   /// * [UpdateStickerSet]
   /// * [UpdateInstalledStickerSets]
@@ -99,6 +106,7 @@ sealed class Update extends TdObject {
   /// * [UpdateConnectionState]
   /// * [UpdateTermsOfService]
   /// * [UpdateUsersNearby]
+  /// * [UpdateUnconfirmedSession]
   /// * [UpdateAttachmentMenuBots]
   /// * [UpdateWebAppMessageSent]
   /// * [UpdateActiveEmojiReactions]
@@ -199,8 +207,8 @@ sealed class Update extends TdObject {
         return UpdateChatIsTranslatable.fromJson(json);
       case UpdateChatIsMarkedAsUnread.objectType:
         return UpdateChatIsMarkedAsUnread.fromJson(json);
-      case UpdateChatIsBlocked.objectType:
-        return UpdateChatIsBlocked.fromJson(json);
+      case UpdateChatBlockList.objectType:
+        return UpdateChatBlockList.fromJson(json);
       case UpdateChatHasScheduledMessages.objectType:
         return UpdateChatHasScheduledMessages.fromJson(json);
       case UpdateChatFolders.objectType:
@@ -271,6 +279,20 @@ sealed class Update extends TdObject {
         return UpdateUnreadMessageCount.fromJson(json);
       case UpdateUnreadChatCount.objectType:
         return UpdateUnreadChatCount.fromJson(json);
+      case UpdateStory.objectType:
+        return UpdateStory.fromJson(json);
+      case UpdateStoryDeleted.objectType:
+        return UpdateStoryDeleted.fromJson(json);
+      case UpdateStorySendSucceeded.objectType:
+        return UpdateStorySendSucceeded.fromJson(json);
+      case UpdateStorySendFailed.objectType:
+        return UpdateStorySendFailed.fromJson(json);
+      case UpdateChatActiveStories.objectType:
+        return UpdateChatActiveStories.fromJson(json);
+      case UpdateStoryListChatCount.objectType:
+        return UpdateStoryListChatCount.fromJson(json);
+      case UpdateStoryStealthMode.objectType:
+        return UpdateStoryStealthMode.fromJson(json);
       case UpdateOption.objectType:
         return UpdateOption.fromJson(json);
       case UpdateStickerSet.objectType:
@@ -299,6 +321,8 @@ sealed class Update extends TdObject {
         return UpdateTermsOfService.fromJson(json);
       case UpdateUsersNearby.objectType:
         return UpdateUsersNearby.fromJson(json);
+      case UpdateUnconfirmedSession.objectType:
+        return UpdateUnconfirmedSession.fromJson(json);
       case UpdateAttachmentMenuBots.objectType:
         return UpdateAttachmentMenuBots.fromJson(json);
       case UpdateWebAppMessageSent.objectType:
@@ -695,8 +719,7 @@ final class UpdateMessageSendSucceeded extends Update {
 ///
 /// * [message]: The failed to send message.
 /// * [oldMessageId]: The previous temporary message identifier.
-/// * [errorCode]: An error code.
-/// * [errorMessage]: Error message.
+/// * [error]: The cause of the message sending failure.
 final class UpdateMessageSendFailed extends Update {
   
   /// **UpdateMessageSendFailed** *(updateMessageSendFailed)* - child of Update
@@ -705,13 +728,11 @@ final class UpdateMessageSendFailed extends Update {
   ///
   /// * [message]: The failed to send message.
   /// * [oldMessageId]: The previous temporary message identifier.
-  /// * [errorCode]: An error code.
-  /// * [errorMessage]: Error message.
+  /// * [error]: The cause of the message sending failure.
   const UpdateMessageSendFailed({
     required this.message,
     required this.oldMessageId,
-    required this.errorCode,
-    required this.errorMessage,
+    required this.error,
     this.extra,
     this.clientId,
   });
@@ -722,11 +743,8 @@ final class UpdateMessageSendFailed extends Update {
   /// The previous temporary message identifier
   final int oldMessageId;
 
-  /// An error code
-  final int errorCode;
-
-  /// Error message
-  final String errorMessage;
+  /// The cause of the message sending failure
+  final TdError error;
 
   /// [extra] callback sign
   @override
@@ -740,8 +758,7 @@ final class UpdateMessageSendFailed extends Update {
   factory UpdateMessageSendFailed.fromJson(Map<String, dynamic> json) => UpdateMessageSendFailed(
     message: Message.fromJson(json['message']),
     oldMessageId: json['old_message_id'],
-    errorCode: json['error_code'],
-    errorMessage: json['error_message'],
+    error: TdError.fromJson(json['error']),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -754,8 +771,7 @@ final class UpdateMessageSendFailed extends Update {
 			"@type": objectType,
       "message": message.toJson(),
       "old_message_id": oldMessageId,
-      "error_code": errorCode,
-      "error_message": errorMessage,
+      "error": error.toJson(),
 		};
 	}
 
@@ -764,21 +780,18 @@ final class UpdateMessageSendFailed extends Update {
   /// Properties:
   /// * [message]: The failed to send message
   /// * [old_message_id]: The previous temporary message identifier
-  /// * [error_code]: An error code
-  /// * [error_message]: Error message
+  /// * [error]: The cause of the message sending failure
   @override
   UpdateMessageSendFailed copyWith({
     Message? message,
     int? oldMessageId,
-    int? errorCode,
-    String? errorMessage,
+    TdError? error,
     dynamic extra,
     int? clientId,
   }) => UpdateMessageSendFailed(
     message: message ?? this.message,
     oldMessageId: oldMessageId ?? this.oldMessageId,
-    errorCode: errorCode ?? this.errorCode,
-    errorMessage: errorMessage ?? this.errorMessage,
+    error: error ?? this.error,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
   );
@@ -3711,23 +3724,23 @@ final class UpdateChatIsMarkedAsUnread extends Update {
 }
 
 
-/// **UpdateChatIsBlocked** *(updateChatIsBlocked)* - child of Update
+/// **UpdateChatBlockList** *(updateChatBlockList)* - child of Update
 ///
 /// A chat was blocked or unblocked.
 ///
 /// * [chatId]: Chat identifier.
-/// * [isBlocked]: New value of is_blocked.
-final class UpdateChatIsBlocked extends Update {
+/// * [blockList]: Block list to which the chat is added; may be null if none *(optional)*.
+final class UpdateChatBlockList extends Update {
   
-  /// **UpdateChatIsBlocked** *(updateChatIsBlocked)* - child of Update
+  /// **UpdateChatBlockList** *(updateChatBlockList)* - child of Update
   ///
   /// A chat was blocked or unblocked.
   ///
   /// * [chatId]: Chat identifier.
-  /// * [isBlocked]: New value of is_blocked.
-  const UpdateChatIsBlocked({
+  /// * [blockList]: Block list to which the chat is added; may be null if none *(optional)*.
+  const UpdateChatBlockList({
     required this.chatId,
-    required this.isBlocked,
+    this.blockList,
     this.extra,
     this.clientId,
   });
@@ -3735,8 +3748,8 @@ final class UpdateChatIsBlocked extends Update {
   /// Chat identifier 
   final int chatId;
 
-  /// New value of is_blocked
-  final bool isBlocked;
+  /// Block list to which the chat is added; may be null if none
+  final BlockList? blockList;
 
   /// [extra] callback sign
   @override
@@ -3747,9 +3760,9 @@ final class UpdateChatIsBlocked extends Update {
   final int? clientId;
   
   /// Parse from a json
-  factory UpdateChatIsBlocked.fromJson(Map<String, dynamic> json) => UpdateChatIsBlocked(
+  factory UpdateChatBlockList.fromJson(Map<String, dynamic> json) => UpdateChatBlockList(
     chatId: json['chat_id'],
-    isBlocked: json['is_blocked'],
+    blockList: json['block_list'] == null ? null : BlockList.fromJson(json['block_list']),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -3761,7 +3774,7 @@ final class UpdateChatIsBlocked extends Update {
 		return {
 			"@type": objectType,
       "chat_id": chatId,
-      "is_blocked": isBlocked,
+      "block_list": blockList?.toJson(),
 		};
 	}
 
@@ -3769,22 +3782,22 @@ final class UpdateChatIsBlocked extends Update {
   ///
   /// Properties:
   /// * [chat_id]: Chat identifier 
-  /// * [is_blocked]: New value of is_blocked
+  /// * [block_list]: Block list to which the chat is added; may be null if none
   @override
-  UpdateChatIsBlocked copyWith({
+  UpdateChatBlockList copyWith({
     int? chatId,
-    bool? isBlocked,
+    BlockList? blockList,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatIsBlocked(
+  }) => UpdateChatBlockList(
     chatId: chatId ?? this.chatId,
-    isBlocked: isBlocked ?? this.isBlocked,
+    blockList: blockList ?? this.blockList,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatIsBlocked';
+  static const String objectType = 'updateChatBlockList';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -4316,8 +4329,8 @@ final class UpdateNotification extends Update {
 /// * [notificationSettingsChatId]: Chat identifier, which notification settings must be applied to the added notifications.
 /// * [notificationSoundId]: Identifier of the notification sound to be played; 0 if sound is disabled.
 /// * [totalCount]: Total number of unread notifications in the group, can be bigger than number of active notifications.
-/// * [addedNotifications]: List of added group notifications, sorted by notification updateNotificationGroup.
-/// * [removedNotificationIds]: Identifiers of removed group notifications, sorted by notification updateNotificationGroup.
+/// * [addedNotifications]: List of added group notifications, sorted by notification identifier.
+/// * [removedNotificationIds]: Identifiers of removed group notifications, sorted by notification identifier.
 final class UpdateNotificationGroup extends Update {
   
   /// **UpdateNotificationGroup** *(updateNotificationGroup)* - child of Update
@@ -4330,8 +4343,8 @@ final class UpdateNotificationGroup extends Update {
   /// * [notificationSettingsChatId]: Chat identifier, which notification settings must be applied to the added notifications.
   /// * [notificationSoundId]: Identifier of the notification sound to be played; 0 if sound is disabled.
   /// * [totalCount]: Total number of unread notifications in the group, can be bigger than number of active notifications.
-  /// * [addedNotifications]: List of added group notifications, sorted by notification updateNotificationGroup.
-  /// * [removedNotificationIds]: Identifiers of removed group notifications, sorted by notification updateNotificationGroup.
+  /// * [addedNotifications]: List of added group notifications, sorted by notification identifier.
+  /// * [removedNotificationIds]: Identifiers of removed group notifications, sorted by notification identifier.
   const UpdateNotificationGroup({
     required this.notificationGroupId,
     required this.type,
@@ -4363,10 +4376,10 @@ final class UpdateNotificationGroup extends Update {
   /// Total number of unread notifications in the group, can be bigger than number of active notifications
   final int totalCount;
 
-  /// List of added group notifications, sorted by notification updateNotificationGroup
+  /// List of added group notifications, sorted by notification identifier
   final List<Notification> addedNotifications;
 
-  /// Identifiers of removed group notifications, sorted by notification updateNotificationGroup
+  /// Identifiers of removed group notifications, sorted by notification identifier
   final List<int> removedNotificationIds;
 
   /// [extra] callback sign
@@ -4417,8 +4430,8 @@ final class UpdateNotificationGroup extends Update {
   /// * [notification_settings_chat_id]: Chat identifier, which notification settings must be applied to the added notifications
   /// * [notification_sound_id]: Identifier of the notification sound to be played; 0 if sound is disabled
   /// * [total_count]: Total number of unread notifications in the group, can be bigger than number of active notifications
-  /// * [added_notifications]: List of added group notifications, sorted by notification updateNotificationGroup
-  /// * [removed_notification_ids]: Identifiers of removed group notifications, sorted by notification updateNotificationGroup
+  /// * [added_notifications]: List of added group notifications, sorted by notification identifier
+  /// * [removed_notification_ids]: Identifiers of removed group notifications, sorted by notification identifier
   @override
   UpdateNotificationGroup copyWith({
     int? notificationGroupId,
@@ -6881,6 +6894,590 @@ final class UpdateUnreadChatCount extends Update {
 }
 
 
+/// **UpdateStory** *(updateStory)* - child of Update
+///
+/// A story was changed.
+///
+/// * [story]: The new information about the story.
+final class UpdateStory extends Update {
+  
+  /// **UpdateStory** *(updateStory)* - child of Update
+  ///
+  /// A story was changed.
+  ///
+  /// * [story]: The new information about the story.
+  const UpdateStory({
+    required this.story,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// The new information about the story
+  final Story story;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory UpdateStory.fromJson(Map<String, dynamic> json) => UpdateStory(
+    story: Story.fromJson(json['story']),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "story": story.toJson(),
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [story]: The new information about the story
+  @override
+  UpdateStory copyWith({
+    Story? story,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateStory(
+    story: story ?? this.story,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'updateStory';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **UpdateStoryDeleted** *(updateStoryDeleted)* - child of Update
+///
+/// A story became inaccessible.
+///
+/// * [storySenderChatId]: Identifier of the chat that posted the story.
+/// * [storyId]: Story identifier.
+final class UpdateStoryDeleted extends Update {
+  
+  /// **UpdateStoryDeleted** *(updateStoryDeleted)* - child of Update
+  ///
+  /// A story became inaccessible.
+  ///
+  /// * [storySenderChatId]: Identifier of the chat that posted the story.
+  /// * [storyId]: Story identifier.
+  const UpdateStoryDeleted({
+    required this.storySenderChatId,
+    required this.storyId,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// Identifier of the chat that posted the story 
+  final int storySenderChatId;
+
+  /// Story identifier
+  final int storyId;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory UpdateStoryDeleted.fromJson(Map<String, dynamic> json) => UpdateStoryDeleted(
+    storySenderChatId: json['story_sender_chat_id'],
+    storyId: json['story_id'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "story_sender_chat_id": storySenderChatId,
+      "story_id": storyId,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [story_sender_chat_id]: Identifier of the chat that posted the story 
+  /// * [story_id]: Story identifier
+  @override
+  UpdateStoryDeleted copyWith({
+    int? storySenderChatId,
+    int? storyId,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateStoryDeleted(
+    storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+    storyId: storyId ?? this.storyId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'updateStoryDeleted';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **UpdateStorySendSucceeded** *(updateStorySendSucceeded)* - child of Update
+///
+/// A story has been successfully sent.
+///
+/// * [story]: The sent story.
+/// * [oldStoryId]: The previous temporary story identifier.
+final class UpdateStorySendSucceeded extends Update {
+  
+  /// **UpdateStorySendSucceeded** *(updateStorySendSucceeded)* - child of Update
+  ///
+  /// A story has been successfully sent.
+  ///
+  /// * [story]: The sent story.
+  /// * [oldStoryId]: The previous temporary story identifier.
+  const UpdateStorySendSucceeded({
+    required this.story,
+    required this.oldStoryId,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// The sent story 
+  final Story story;
+
+  /// The previous temporary story identifier
+  final int oldStoryId;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory UpdateStorySendSucceeded.fromJson(Map<String, dynamic> json) => UpdateStorySendSucceeded(
+    story: Story.fromJson(json['story']),
+    oldStoryId: json['old_story_id'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "story": story.toJson(),
+      "old_story_id": oldStoryId,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [story]: The sent story 
+  /// * [old_story_id]: The previous temporary story identifier
+  @override
+  UpdateStorySendSucceeded copyWith({
+    Story? story,
+    int? oldStoryId,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateStorySendSucceeded(
+    story: story ?? this.story,
+    oldStoryId: oldStoryId ?? this.oldStoryId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'updateStorySendSucceeded';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **UpdateStorySendFailed** *(updateStorySendFailed)* - child of Update
+///
+/// A story failed to send. If the story sending is canceled, then updateStoryDeleted will be received instead of this update.
+///
+/// * [story]: The failed to send story.
+/// * [error]: The cause of the story sending failure.
+/// * [errorType]: Type of the error; may be null if unknown *(optional)*.
+final class UpdateStorySendFailed extends Update {
+  
+  /// **UpdateStorySendFailed** *(updateStorySendFailed)* - child of Update
+  ///
+  /// A story failed to send. If the story sending is canceled, then updateStoryDeleted will be received instead of this update.
+  ///
+  /// * [story]: The failed to send story.
+  /// * [error]: The cause of the story sending failure.
+  /// * [errorType]: Type of the error; may be null if unknown *(optional)*.
+  const UpdateStorySendFailed({
+    required this.story,
+    required this.error,
+    this.errorType,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// The failed to send story
+  final Story story;
+
+  /// The cause of the story sending failure
+  final TdError error;
+
+  /// Type of the error; may be null if unknown
+  final CanSendStoryResult? errorType;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory UpdateStorySendFailed.fromJson(Map<String, dynamic> json) => UpdateStorySendFailed(
+    story: Story.fromJson(json['story']),
+    error: TdError.fromJson(json['error']),
+    errorType: json['error_type'] == null ? null : CanSendStoryResult.fromJson(json['error_type']),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "story": story.toJson(),
+      "error": error.toJson(),
+      "error_type": errorType?.toJson(),
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [story]: The failed to send story
+  /// * [error]: The cause of the story sending failure
+  /// * [error_type]: Type of the error; may be null if unknown
+  @override
+  UpdateStorySendFailed copyWith({
+    Story? story,
+    TdError? error,
+    CanSendStoryResult? errorType,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateStorySendFailed(
+    story: story ?? this.story,
+    error: error ?? this.error,
+    errorType: errorType ?? this.errorType,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'updateStorySendFailed';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **UpdateChatActiveStories** *(updateChatActiveStories)* - child of Update
+///
+/// The list of active stories posted by a specific chat has changed.
+///
+/// * [activeStories]: The new list of active stories.
+final class UpdateChatActiveStories extends Update {
+  
+  /// **UpdateChatActiveStories** *(updateChatActiveStories)* - child of Update
+  ///
+  /// The list of active stories posted by a specific chat has changed.
+  ///
+  /// * [activeStories]: The new list of active stories.
+  const UpdateChatActiveStories({
+    required this.activeStories,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// The new list of active stories
+  final ChatActiveStories activeStories;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory UpdateChatActiveStories.fromJson(Map<String, dynamic> json) => UpdateChatActiveStories(
+    activeStories: ChatActiveStories.fromJson(json['active_stories']),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "active_stories": activeStories.toJson(),
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [active_stories]: The new list of active stories
+  @override
+  UpdateChatActiveStories copyWith({
+    ChatActiveStories? activeStories,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateChatActiveStories(
+    activeStories: activeStories ?? this.activeStories,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'updateChatActiveStories';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **UpdateStoryListChatCount** *(updateStoryListChatCount)* - child of Update
+///
+/// Number of chats in a story list has changed.
+///
+/// * [storyList]: The story list.
+/// * [chatCount]: Approximate total number of chats with active stories in the list.
+final class UpdateStoryListChatCount extends Update {
+  
+  /// **UpdateStoryListChatCount** *(updateStoryListChatCount)* - child of Update
+  ///
+  /// Number of chats in a story list has changed.
+  ///
+  /// * [storyList]: The story list.
+  /// * [chatCount]: Approximate total number of chats with active stories in the list.
+  const UpdateStoryListChatCount({
+    required this.storyList,
+    required this.chatCount,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// The story list 
+  final StoryList storyList;
+
+  /// Approximate total number of chats with active stories in the list
+  final int chatCount;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory UpdateStoryListChatCount.fromJson(Map<String, dynamic> json) => UpdateStoryListChatCount(
+    storyList: StoryList.fromJson(json['story_list']),
+    chatCount: json['chat_count'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "story_list": storyList.toJson(),
+      "chat_count": chatCount,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [story_list]: The story list 
+  /// * [chat_count]: Approximate total number of chats with active stories in the list
+  @override
+  UpdateStoryListChatCount copyWith({
+    StoryList? storyList,
+    int? chatCount,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateStoryListChatCount(
+    storyList: storyList ?? this.storyList,
+    chatCount: chatCount ?? this.chatCount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'updateStoryListChatCount';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **UpdateStoryStealthMode** *(updateStoryStealthMode)* - child of Update
+///
+/// Story stealth mode settings have changed.
+///
+/// * [activeUntilDate]: Point in time (Unix timestamp) until stealth mode is active; 0 if it is disabled.
+/// * [cooldownUntilDate]: Point in time (Unix timestamp) when stealth mode can be enabled again; 0 if there is no active cooldown.
+final class UpdateStoryStealthMode extends Update {
+  
+  /// **UpdateStoryStealthMode** *(updateStoryStealthMode)* - child of Update
+  ///
+  /// Story stealth mode settings have changed.
+  ///
+  /// * [activeUntilDate]: Point in time (Unix timestamp) until stealth mode is active; 0 if it is disabled.
+  /// * [cooldownUntilDate]: Point in time (Unix timestamp) when stealth mode can be enabled again; 0 if there is no active cooldown.
+  const UpdateStoryStealthMode({
+    required this.activeUntilDate,
+    required this.cooldownUntilDate,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// Point in time (Unix timestamp) until stealth mode is active; 0 if it is disabled
+  final int activeUntilDate;
+
+  /// Point in time (Unix timestamp) when stealth mode can be enabled again; 0 if there is no active cooldown
+  final int cooldownUntilDate;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory UpdateStoryStealthMode.fromJson(Map<String, dynamic> json) => UpdateStoryStealthMode(
+    activeUntilDate: json['active_until_date'],
+    cooldownUntilDate: json['cooldown_until_date'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "active_until_date": activeUntilDate,
+      "cooldown_until_date": cooldownUntilDate,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [active_until_date]: Point in time (Unix timestamp) until stealth mode is active; 0 if it is disabled
+  /// * [cooldown_until_date]: Point in time (Unix timestamp) when stealth mode can be enabled again; 0 if there is no active cooldown
+  @override
+  UpdateStoryStealthMode copyWith({
+    int? activeUntilDate,
+    int? cooldownUntilDate,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateStoryStealthMode(
+    activeUntilDate: activeUntilDate ?? this.activeUntilDate,
+    cooldownUntilDate: cooldownUntilDate ?? this.cooldownUntilDate,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'updateStoryStealthMode';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
 /// **UpdateOption** *(updateOption)* - child of Update
 ///
 /// An option changed its value.
@@ -8005,25 +8602,99 @@ final class UpdateUsersNearby extends Update {
 }
 
 
+/// **UpdateUnconfirmedSession** *(updateUnconfirmedSession)* - child of Update
+///
+/// The first unconfirmed session has changed.
+///
+/// * [session]: The unconfirmed session; may be null if none *(optional)*.
+final class UpdateUnconfirmedSession extends Update {
+  
+  /// **UpdateUnconfirmedSession** *(updateUnconfirmedSession)* - child of Update
+  ///
+  /// The first unconfirmed session has changed.
+  ///
+  /// * [session]: The unconfirmed session; may be null if none *(optional)*.
+  const UpdateUnconfirmedSession({
+    this.session,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// The unconfirmed session; may be null if none
+  final UnconfirmedSession? session;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory UpdateUnconfirmedSession.fromJson(Map<String, dynamic> json) => UpdateUnconfirmedSession(
+    session: json['session'] == null ? null : UnconfirmedSession.fromJson(json['session']),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "session": session?.toJson(),
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [session]: The unconfirmed session; may be null if none
+  @override
+  UpdateUnconfirmedSession copyWith({
+    UnconfirmedSession? session,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateUnconfirmedSession(
+    session: session ?? this.session,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'updateUnconfirmedSession';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
 /// **UpdateAttachmentMenuBots** *(updateAttachmentMenuBots)* - child of Update
 ///
-/// The list of bots added to attachment menu has changed.
+/// The list of bots added to attachment or side menu has changed.
 ///
-/// * [bots]: The new list of bots added to attachment menu. The bots must not be shown on scheduled messages screen.
+/// * [bots]: The new list of bots. The bots must not be shown on scheduled messages screen.
 final class UpdateAttachmentMenuBots extends Update {
   
   /// **UpdateAttachmentMenuBots** *(updateAttachmentMenuBots)* - child of Update
   ///
-  /// The list of bots added to attachment menu has changed.
+  /// The list of bots added to attachment or side menu has changed.
   ///
-  /// * [bots]: The new list of bots added to attachment menu. The bots must not be shown on scheduled messages screen.
+  /// * [bots]: The new list of bots. The bots must not be shown on scheduled messages screen.
   const UpdateAttachmentMenuBots({
     required this.bots,
     this.extra,
     this.clientId,
   });
   
-  /// The new list of bots added to attachment menu. The bots must not be shown on scheduled messages screen
+  /// The new list of bots. The bots must not be shown on scheduled messages screen
   final List<AttachmentMenuBot> bots;
 
   /// [extra] callback sign
@@ -8054,7 +8725,7 @@ final class UpdateAttachmentMenuBots extends Update {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [bots]: The new list of bots added to attachment menu. The bots must not be shown on scheduled messages screen
+  /// * [bots]: The new list of bots. The bots must not be shown on scheduled messages screen
   @override
   UpdateAttachmentMenuBots copyWith({
     List<AttachmentMenuBot>? bots,
@@ -9801,7 +10472,7 @@ final class UpdatePoll extends Update {
 /// A user changed the answer to a poll; for bots only.
 ///
 /// * [pollId]: Unique poll identifier.
-/// * [userId]: The user, who changed the answer to the poll.
+/// * [voterId]: Identifier of the message sender that changed the answer to the poll.
 /// * [optionIds]: 0-based identifiers of answer options, chosen by the user.
 final class UpdatePollAnswer extends Update {
   
@@ -9810,21 +10481,21 @@ final class UpdatePollAnswer extends Update {
   /// A user changed the answer to a poll; for bots only.
   ///
   /// * [pollId]: Unique poll identifier.
-  /// * [userId]: The user, who changed the answer to the poll.
+  /// * [voterId]: Identifier of the message sender that changed the answer to the poll.
   /// * [optionIds]: 0-based identifiers of answer options, chosen by the user.
   const UpdatePollAnswer({
     required this.pollId,
-    required this.userId,
+    required this.voterId,
     required this.optionIds,
     this.extra,
     this.clientId,
   });
   
-  /// Unique poll identifier 
+  /// Unique poll identifier
   final int pollId;
 
-  /// The user, who changed the answer to the poll 
-  final int userId;
+  /// Identifier of the message sender that changed the answer to the poll
+  final MessageSender voterId;
 
   /// 0-based identifiers of answer options, chosen by the user
   final List<int> optionIds;
@@ -9840,7 +10511,7 @@ final class UpdatePollAnswer extends Update {
   /// Parse from a json
   factory UpdatePollAnswer.fromJson(Map<String, dynamic> json) => UpdatePollAnswer(
     pollId: int.parse(json['poll_id']),
-    userId: json['user_id'],
+    voterId: MessageSender.fromJson(json['voter_id']),
     optionIds: List<int>.from((json['option_ids'] ?? []).map((item) => item).toList()),
     extra: json['@extra'],
     clientId: json['@client_id'],
@@ -9853,7 +10524,7 @@ final class UpdatePollAnswer extends Update {
 		return {
 			"@type": objectType,
       "poll_id": pollId,
-      "user_id": userId,
+      "voter_id": voterId.toJson(),
       "option_ids": optionIds.map((i) => i).toList(),
 		};
 	}
@@ -9861,19 +10532,19 @@ final class UpdatePollAnswer extends Update {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [poll_id]: Unique poll identifier 
-  /// * [user_id]: The user, who changed the answer to the poll 
+  /// * [poll_id]: Unique poll identifier
+  /// * [voter_id]: Identifier of the message sender that changed the answer to the poll
   /// * [option_ids]: 0-based identifiers of answer options, chosen by the user
   @override
   UpdatePollAnswer copyWith({
     int? pollId,
-    int? userId,
+    MessageSender? voterId,
     List<int>? optionIds,
     dynamic extra,
     int? clientId,
   }) => UpdatePollAnswer(
     pollId: pollId ?? this.pollId,
-    userId: userId ?? this.userId,
+    voterId: voterId ?? this.voterId,
     optionIds: optionIds ?? this.optionIds,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,

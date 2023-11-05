@@ -1,22 +1,22 @@
 part of '../tdapi.dart';
 
-/// **SendChatScreenshotTakenNotification** *(sendChatScreenshotTakenNotification)* - TDLib function
+/// **CanSendStory** *(canSendStory)* - TDLib function
 ///
-/// Sends a notification about a screenshot taken in a chat. Supported only in private and secret chats.
+/// Checks whether the current user can send a story on behalf of a chat; requires can_post_stories rights for channel chats.
 ///
 /// * [chatId]: Chat identifier.
 ///
-/// [Ok] is returned on completion.
-final class SendChatScreenshotTakenNotification extends TdFunction {
+/// [CanSendStoryResult] is returned on completion.
+final class CanSendStory extends TdFunction {
   
-  /// **SendChatScreenshotTakenNotification** *(sendChatScreenshotTakenNotification)* - TDLib function
+  /// **CanSendStory** *(canSendStory)* - TDLib function
   ///
-  /// Sends a notification about a screenshot taken in a chat. Supported only in private and secret chats.
+  /// Checks whether the current user can send a story on behalf of a chat; requires can_post_stories rights for channel chats.
   ///
   /// * [chatId]: Chat identifier.
   ///
-  /// [Ok] is returned on completion.
-  const SendChatScreenshotTakenNotification({
+  /// [CanSendStoryResult] is returned on completion.
+  const CanSendStory({
     required this.chatId,
   });
   
@@ -37,14 +37,14 @@ final class SendChatScreenshotTakenNotification extends TdFunction {
   ///
   /// Properties:
   /// * [chat_id]: Chat identifier
-  SendChatScreenshotTakenNotification copyWith({
+  CanSendStory copyWith({
     int? chatId,
-  }) => SendChatScreenshotTakenNotification(
+  }) => CanSendStory(
     chatId: chatId ?? this.chatId,
   );
 
   /// TDLib object type
-  static const String objectType = 'sendChatScreenshotTakenNotification';
+  static const String objectType = 'canSendStory';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

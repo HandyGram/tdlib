@@ -7,8 +7,8 @@ part of '../tdapi.dart';
 /// * [id]: Message identifier; unique for the chat to which the message belongs.
 /// * [senderId]: Identifier of the sender of the message.
 /// * [chatId]: Chat identifier.
-/// * [sendingState]: The sending state of the message; may be null *(optional)*.
-/// * [schedulingState]: The scheduling state of the message; may be null *(optional)*.
+/// * [sendingState]: The sending state of the message; may be null if the message isn't being sent and didn't fail to be sent *(optional)*.
+/// * [schedulingState]: The scheduling state of the message; may be null if the message isn't scheduled *(optional)*.
 /// * [isOutgoing]: True, if the message is outgoing.
 /// * [isPinned]: True, if the message is pinned.
 /// * [canBeEdited]: True, if the message can be edited. For live location and poll messages this fields shows whether editMessageLiveLocation or stopPoll can be used with this message by the application.
@@ -28,21 +28,21 @@ part of '../tdapi.dart';
 /// * [containsUnreadMention]: True, if the message contains an unread mention for the current user.
 /// * [date]: Point in time (Unix timestamp) when the message was sent.
 /// * [editDate]: Point in time (Unix timestamp) when the message was last edited.
-/// * [forwardInfo]: Information about the initial message sender; may be null *(optional)*.
-/// * [interactionInfo]: Information about interactions with the message; may be null *(optional)*.
+/// * [forwardInfo]: Information about the initial message sender; may be null if none or unknown *(optional)*.
+/// * [importInfo]: Information about the initial message for messages created with importMessages; may be null if the message isn't imported *(optional)*.
+/// * [interactionInfo]: Information about interactions with the message; may be null if none *(optional)*.
 /// * [unreadReactions]: Information about unread reactions added to the message.
-/// * [replyInChatId]: If non-zero, the identifier of the chat to which the replied message belongs; Currently, only messages in the Replies chat can have different reply_in_chat_id and chat_id.
-/// * [replyToMessageId]: If non-zero, the identifier of the message this message is replying to; can be the identifier of a deleted message.
+/// * [replyTo]: Information about the message or the story this message is replying to; may be null if none *(optional)*.
 /// * [messageThreadId]: If non-zero, the identifier of the message thread the message belongs to; unique within the chat to which the message belongs.
-/// * [selfDestructTime]: The message's self-destruct time, in seconds; 0 if none. TDLib will send updateDeleteMessages or updateMessageContent once the time expires.
-/// * [selfDestructIn]: Time left before the message self-destruct timer expires, in seconds. If the self-destruct timer isn't started yet, equals to the value of the self_destruct_time field.
-/// * [autoDeleteIn]: Time left before the message will be automatically deleted by message_auto_delete_time setting of the chat, in seconds; 0 if never. TDLib will send updateDeleteMessages or updateMessageContent once the time expires.
+/// * [selfDestructType]: The message's self-destruct type; may be null if none *(optional)*.
+/// * [selfDestructIn]: Time left before the message self-destruct timer expires, in seconds; 0 if self-destruction isn't scheduled yet.
+/// * [autoDeleteIn]: Time left before the message will be automatically deleted by message_auto_delete_time setting of the chat, in seconds; 0 if never.
 /// * [viaBotUserId]: If non-zero, the user identifier of the bot through which this message was sent.
 /// * [authorSignature]: For channel posts and anonymous group messages, optional author signature.
 /// * [mediaAlbumId]: Unique identifier of an album this message belongs to. Only audios, documents, photos and videos can be grouped together in albums.
 /// * [restrictionReason]: If non-empty, contains a human-readable description of the reason why access to this message must be restricted.
 /// * [content]: Content of the message.
-/// * [replyMarkup]: Reply markup for the message; may be null *(optional)*.
+/// * [replyMarkup]: Reply markup for the message; may be null if none *(optional)*.
 final class Message extends TdObject {
   
   /// **Message** *(message)* - basic class
@@ -52,8 +52,8 @@ final class Message extends TdObject {
   /// * [id]: Message identifier; unique for the chat to which the message belongs.
   /// * [senderId]: Identifier of the sender of the message.
   /// * [chatId]: Chat identifier.
-  /// * [sendingState]: The sending state of the message; may be null *(optional)*.
-  /// * [schedulingState]: The scheduling state of the message; may be null *(optional)*.
+  /// * [sendingState]: The sending state of the message; may be null if the message isn't being sent and didn't fail to be sent *(optional)*.
+  /// * [schedulingState]: The scheduling state of the message; may be null if the message isn't scheduled *(optional)*.
   /// * [isOutgoing]: True, if the message is outgoing.
   /// * [isPinned]: True, if the message is pinned.
   /// * [canBeEdited]: True, if the message can be edited. For live location and poll messages this fields shows whether editMessageLiveLocation or stopPoll can be used with this message by the application.
@@ -73,21 +73,21 @@ final class Message extends TdObject {
   /// * [containsUnreadMention]: True, if the message contains an unread mention for the current user.
   /// * [date]: Point in time (Unix timestamp) when the message was sent.
   /// * [editDate]: Point in time (Unix timestamp) when the message was last edited.
-  /// * [forwardInfo]: Information about the initial message sender; may be null *(optional)*.
-  /// * [interactionInfo]: Information about interactions with the message; may be null *(optional)*.
+  /// * [forwardInfo]: Information about the initial message sender; may be null if none or unknown *(optional)*.
+  /// * [importInfo]: Information about the initial message for messages created with importMessages; may be null if the message isn't imported *(optional)*.
+  /// * [interactionInfo]: Information about interactions with the message; may be null if none *(optional)*.
   /// * [unreadReactions]: Information about unread reactions added to the message.
-  /// * [replyInChatId]: If non-zero, the identifier of the chat to which the replied message belongs; Currently, only messages in the Replies chat can have different reply_in_chat_id and chat_id.
-  /// * [replyToMessageId]: If non-zero, the identifier of the message this message is replying to; can be the identifier of a deleted message.
+  /// * [replyTo]: Information about the message or the story this message is replying to; may be null if none *(optional)*.
   /// * [messageThreadId]: If non-zero, the identifier of the message thread the message belongs to; unique within the chat to which the message belongs.
-  /// * [selfDestructTime]: The message's self-destruct time, in seconds; 0 if none. TDLib will send updateDeleteMessages or updateMessageContent once the time expires.
-  /// * [selfDestructIn]: Time left before the message self-destruct timer expires, in seconds. If the self-destruct timer isn't started yet, equals to the value of the self_destruct_time field.
-  /// * [autoDeleteIn]: Time left before the message will be automatically deleted by message_auto_delete_time setting of the chat, in seconds; 0 if never. TDLib will send updateDeleteMessages or updateMessageContent once the time expires.
+  /// * [selfDestructType]: The message's self-destruct type; may be null if none *(optional)*.
+  /// * [selfDestructIn]: Time left before the message self-destruct timer expires, in seconds; 0 if self-destruction isn't scheduled yet.
+  /// * [autoDeleteIn]: Time left before the message will be automatically deleted by message_auto_delete_time setting of the chat, in seconds; 0 if never.
   /// * [viaBotUserId]: If non-zero, the user identifier of the bot through which this message was sent.
   /// * [authorSignature]: For channel posts and anonymous group messages, optional author signature.
   /// * [mediaAlbumId]: Unique identifier of an album this message belongs to. Only audios, documents, photos and videos can be grouped together in albums.
   /// * [restrictionReason]: If non-empty, contains a human-readable description of the reason why access to this message must be restricted.
   /// * [content]: Content of the message.
-  /// * [replyMarkup]: Reply markup for the message; may be null *(optional)*.
+  /// * [replyMarkup]: Reply markup for the message; may be null if none *(optional)*.
   const Message({
     required this.id,
     required this.senderId,
@@ -114,12 +114,12 @@ final class Message extends TdObject {
     required this.date,
     required this.editDate,
     this.forwardInfo,
+    this.importInfo,
     this.interactionInfo,
     required this.unreadReactions,
-    required this.replyInChatId,
-    required this.replyToMessageId,
+    this.replyTo,
     required this.messageThreadId,
-    required this.selfDestructTime,
+    this.selfDestructType,
     required this.selfDestructIn,
     required this.autoDeleteIn,
     required this.viaBotUserId,
@@ -141,10 +141,10 @@ final class Message extends TdObject {
   /// Chat identifier
   final int chatId;
 
-  /// The sending state of the message; may be null
+  /// The sending state of the message; may be null if the message isn't being sent and didn't fail to be sent
   final MessageSendingState? sendingState;
 
-  /// The scheduling state of the message; may be null
+  /// The scheduling state of the message; may be null if the message isn't scheduled
   final MessageSchedulingState? schedulingState;
 
   /// True, if the message is outgoing
@@ -204,31 +204,31 @@ final class Message extends TdObject {
   /// Point in time (Unix timestamp) when the message was last edited
   final int editDate;
 
-  /// Information about the initial message sender; may be null
+  /// Information about the initial message sender; may be null if none or unknown
   final MessageForwardInfo? forwardInfo;
 
-  /// Information about interactions with the message; may be null
+  /// Information about the initial message for messages created with importMessages; may be null if the message isn't imported
+  final MessageImportInfo? importInfo;
+
+  /// Information about interactions with the message; may be null if none
   final MessageInteractionInfo? interactionInfo;
 
   /// Information about unread reactions added to the message
   final List<UnreadReaction> unreadReactions;
 
-  /// If non-zero, the identifier of the chat to which the replied message belongs; Currently, only messages in the Replies chat can have different reply_in_chat_id and chat_id
-  final int replyInChatId;
-
-  /// If non-zero, the identifier of the message this message is replying to; can be the identifier of a deleted message
-  final int replyToMessageId;
+  /// Information about the message or the story this message is replying to; may be null if none
+  final MessageReplyTo? replyTo;
 
   /// If non-zero, the identifier of the message thread the message belongs to; unique within the chat to which the message belongs
   final int messageThreadId;
 
-  /// The message's self-destruct time, in seconds; 0 if none. TDLib will send updateDeleteMessages or updateMessageContent once the time expires
-  final int selfDestructTime;
+  /// The message's self-destruct type; may be null if none
+  final MessageSelfDestructType? selfDestructType;
 
-  /// Time left before the message self-destruct timer expires, in seconds. If the self-destruct timer isn't started yet, equals to the value of the self_destruct_time field
+  /// Time left before the message self-destruct timer expires, in seconds; 0 if self-destruction isn't scheduled yet
   final double selfDestructIn;
 
-  /// Time left before the message will be automatically deleted by message_auto_delete_time setting of the chat, in seconds; 0 if never. TDLib will send updateDeleteMessages or updateMessageContent once the time expires
+  /// Time left before the message will be automatically deleted by message_auto_delete_time setting of the chat, in seconds; 0 if never
   final double autoDeleteIn;
 
   /// If non-zero, the user identifier of the bot through which this message was sent
@@ -246,7 +246,7 @@ final class Message extends TdObject {
   /// Content of the message
   final MessageContent content;
 
-  /// Reply markup for the message; may be null
+  /// Reply markup for the message; may be null if none
   final ReplyMarkup? replyMarkup;
 
   /// [extra] callback sign
@@ -284,12 +284,12 @@ final class Message extends TdObject {
     date: json['date'],
     editDate: json['edit_date'],
     forwardInfo: json['forward_info'] == null ? null : MessageForwardInfo.fromJson(json['forward_info']),
+    importInfo: json['import_info'] == null ? null : MessageImportInfo.fromJson(json['import_info']),
     interactionInfo: json['interaction_info'] == null ? null : MessageInteractionInfo.fromJson(json['interaction_info']),
     unreadReactions: List<UnreadReaction>.from((json['unread_reactions'] ?? []).map((item) => UnreadReaction.fromJson(item)).toList()),
-    replyInChatId: json['reply_in_chat_id'],
-    replyToMessageId: json['reply_to_message_id'],
+    replyTo: json['reply_to'] == null ? null : MessageReplyTo.fromJson(json['reply_to']),
     messageThreadId: json['message_thread_id'],
-    selfDestructTime: json['self_destruct_time'] ?? 0,
+    selfDestructType: json['self_destruct_type'] == null ? null : MessageSelfDestructType.fromJson(json['self_destruct_type']),
     selfDestructIn: json['self_destruct_in'],
     autoDeleteIn: json['auto_delete_in'],
     viaBotUserId: json['via_bot_user_id'],
@@ -333,12 +333,12 @@ final class Message extends TdObject {
       "date": date,
       "edit_date": editDate,
       "forward_info": forwardInfo?.toJson(),
+      "import_info": importInfo?.toJson(),
       "interaction_info": interactionInfo?.toJson(),
       "unread_reactions": unreadReactions.map((i) => i.toJson()).toList(),
-      "reply_in_chat_id": replyInChatId,
-      "reply_to_message_id": replyToMessageId,
+      "reply_to": replyTo?.toJson(),
       "message_thread_id": messageThreadId,
-      "self_destruct_time": selfDestructTime,
+      "self_destruct_type": selfDestructType?.toJson(),
       "self_destruct_in": selfDestructIn,
       "auto_delete_in": autoDeleteIn,
       "via_bot_user_id": viaBotUserId,
@@ -356,8 +356,8 @@ final class Message extends TdObject {
   /// * [id]: Message identifier; unique for the chat to which the message belongs
   /// * [sender_id]: Identifier of the sender of the message
   /// * [chat_id]: Chat identifier
-  /// * [sending_state]: The sending state of the message; may be null
-  /// * [scheduling_state]: The scheduling state of the message; may be null
+  /// * [sending_state]: The sending state of the message; may be null if the message isn't being sent and didn't fail to be sent
+  /// * [scheduling_state]: The scheduling state of the message; may be null if the message isn't scheduled
   /// * [is_outgoing]: True, if the message is outgoing
   /// * [is_pinned]: True, if the message is pinned
   /// * [can_be_edited]: True, if the message can be edited. For live location and poll messages this fields shows whether editMessageLiveLocation or stopPoll can be used with this message by the application
@@ -377,21 +377,21 @@ final class Message extends TdObject {
   /// * [contains_unread_mention]: True, if the message contains an unread mention for the current user
   /// * [date]: Point in time (Unix timestamp) when the message was sent
   /// * [edit_date]: Point in time (Unix timestamp) when the message was last edited
-  /// * [forward_info]: Information about the initial message sender; may be null
-  /// * [interaction_info]: Information about interactions with the message; may be null
+  /// * [forward_info]: Information about the initial message sender; may be null if none or unknown
+  /// * [import_info]: Information about the initial message for messages created with importMessages; may be null if the message isn't imported
+  /// * [interaction_info]: Information about interactions with the message; may be null if none
   /// * [unread_reactions]: Information about unread reactions added to the message
-  /// * [reply_in_chat_id]: If non-zero, the identifier of the chat to which the replied message belongs; Currently, only messages in the Replies chat can have different reply_in_chat_id and chat_id
-  /// * [reply_to_message_id]: If non-zero, the identifier of the message this message is replying to; can be the identifier of a deleted message
+  /// * [reply_to]: Information about the message or the story this message is replying to; may be null if none
   /// * [message_thread_id]: If non-zero, the identifier of the message thread the message belongs to; unique within the chat to which the message belongs
-  /// * [self_destruct_time]: The message's self-destruct time, in seconds; 0 if none. TDLib will send updateDeleteMessages or updateMessageContent once the time expires
-  /// * [self_destruct_in]: Time left before the message self-destruct timer expires, in seconds. If the self-destruct timer isn't started yet, equals to the value of the self_destruct_time field
-  /// * [auto_delete_in]: Time left before the message will be automatically deleted by message_auto_delete_time setting of the chat, in seconds; 0 if never. TDLib will send updateDeleteMessages or updateMessageContent once the time expires
+  /// * [self_destruct_type]: The message's self-destruct type; may be null if none
+  /// * [self_destruct_in]: Time left before the message self-destruct timer expires, in seconds; 0 if self-destruction isn't scheduled yet
+  /// * [auto_delete_in]: Time left before the message will be automatically deleted by message_auto_delete_time setting of the chat, in seconds; 0 if never
   /// * [via_bot_user_id]: If non-zero, the user identifier of the bot through which this message was sent
   /// * [author_signature]: For channel posts and anonymous group messages, optional author signature
   /// * [media_album_id]: Unique identifier of an album this message belongs to. Only audios, documents, photos and videos can be grouped together in albums
   /// * [restriction_reason]: If non-empty, contains a human-readable description of the reason why access to this message must be restricted
   /// * [content]: Content of the message
-  /// * [reply_markup]: Reply markup for the message; may be null
+  /// * [reply_markup]: Reply markup for the message; may be null if none
   Message copyWith({
     int? id,
     MessageSender? senderId,
@@ -418,12 +418,12 @@ final class Message extends TdObject {
     int? date,
     int? editDate,
     MessageForwardInfo? forwardInfo,
+    MessageImportInfo? importInfo,
     MessageInteractionInfo? interactionInfo,
     List<UnreadReaction>? unreadReactions,
-    int? replyInChatId,
-    int? replyToMessageId,
+    MessageReplyTo? replyTo,
     int? messageThreadId,
-    int? selfDestructTime,
+    MessageSelfDestructType? selfDestructType,
     double? selfDestructIn,
     double? autoDeleteIn,
     int? viaBotUserId,
@@ -460,12 +460,12 @@ final class Message extends TdObject {
     date: date ?? this.date,
     editDate: editDate ?? this.editDate,
     forwardInfo: forwardInfo ?? this.forwardInfo,
+    importInfo: importInfo ?? this.importInfo,
     interactionInfo: interactionInfo ?? this.interactionInfo,
     unreadReactions: unreadReactions ?? this.unreadReactions,
-    replyInChatId: replyInChatId ?? this.replyInChatId,
-    replyToMessageId: replyToMessageId ?? this.replyToMessageId,
+    replyTo: replyTo ?? this.replyTo,
     messageThreadId: messageThreadId ?? this.messageThreadId,
-    selfDestructTime: selfDestructTime ?? this.selfDestructTime,
+    selfDestructType: selfDestructType ?? this.selfDestructType,
     selfDestructIn: selfDestructIn ?? this.selfDestructIn,
     autoDeleteIn: autoDeleteIn ?? this.autoDeleteIn,
     viaBotUserId: viaBotUserId ?? this.viaBotUserId,

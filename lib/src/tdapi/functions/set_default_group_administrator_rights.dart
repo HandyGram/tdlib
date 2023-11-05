@@ -4,7 +4,7 @@ part of '../tdapi.dart';
 ///
 /// Sets default administrator rights for adding the bot to basic group and supergroup chats; for bots only.
 ///
-/// * [defaultGroupAdministratorRights]: Default administrator rights for adding the bot to basic group and supergroup chats; may be null *(optional)*.
+/// * [defaultGroupAdministratorRights]: Default administrator rights for adding the bot to basic group and supergroup chats; pass null to remove default rights *(optional)*.
 ///
 /// [Ok] is returned on completion.
 final class SetDefaultGroupAdministratorRights extends TdFunction {
@@ -13,14 +13,14 @@ final class SetDefaultGroupAdministratorRights extends TdFunction {
   ///
   /// Sets default administrator rights for adding the bot to basic group and supergroup chats; for bots only.
   ///
-  /// * [defaultGroupAdministratorRights]: Default administrator rights for adding the bot to basic group and supergroup chats; may be null *(optional)*.
+  /// * [defaultGroupAdministratorRights]: Default administrator rights for adding the bot to basic group and supergroup chats; pass null to remove default rights *(optional)*.
   ///
   /// [Ok] is returned on completion.
   const SetDefaultGroupAdministratorRights({
     this.defaultGroupAdministratorRights,
   });
   
-  /// Default administrator rights for adding the bot to basic group and supergroup chats; may be null
+  /// Default administrator rights for adding the bot to basic group and supergroup chats; pass null to remove default rights
   final ChatAdministratorRights? defaultGroupAdministratorRights;
   
   /// Convert model to TDLib JSON format
@@ -36,7 +36,7 @@ final class SetDefaultGroupAdministratorRights extends TdFunction {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [default_group_administrator_rights]: Default administrator rights for adding the bot to basic group and supergroup chats; may be null
+  /// * [default_group_administrator_rights]: Default administrator rights for adding the bot to basic group and supergroup chats; pass null to remove default rights
   SetDefaultGroupAdministratorRights copyWith({
     ChatAdministratorRights? defaultGroupAdministratorRights,
   }) => SetDefaultGroupAdministratorRights(

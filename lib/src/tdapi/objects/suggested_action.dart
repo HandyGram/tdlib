@@ -18,6 +18,7 @@ sealed class SuggestedAction extends TdObject {
   /// * [SuggestedActionConvertToBroadcastGroup]
   /// * [SuggestedActionSetPassword]
   /// * [SuggestedActionUpgradePremium]
+  /// * [SuggestedActionRestorePremium]
   /// * [SuggestedActionSubscribeToAnnualPremium]
   factory SuggestedAction.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
@@ -35,6 +36,8 @@ sealed class SuggestedAction extends TdObject {
         return SuggestedActionSetPassword.fromJson(json);
       case SuggestedActionUpgradePremium.objectType:
         return SuggestedActionUpgradePremium.fromJson(json);
+      case SuggestedActionRestorePremium.objectType:
+        return SuggestedActionRestorePremium.fromJson(json);
       case SuggestedActionSubscribeToAnnualPremium.objectType:
         return SuggestedActionSubscribeToAnnualPremium.fromJson(json);
       default:
@@ -67,12 +70,12 @@ sealed class SuggestedAction extends TdObject {
 
 /// **SuggestedActionEnableArchiveAndMuteNewChats** *(suggestedActionEnableArchiveAndMuteNewChats)* - child of SuggestedAction
 ///
-/// Suggests the user to enable "archive_and_mute_new_chats_from_unknown_users" option.
+/// Suggests the user to enable archive_and_mute_new_chats_from_unknown_users setting in archiveChatListSettings.
 final class SuggestedActionEnableArchiveAndMuteNewChats extends SuggestedAction {
   
   /// **SuggestedActionEnableArchiveAndMuteNewChats** *(suggestedActionEnableArchiveAndMuteNewChats)* - child of SuggestedAction
   ///
-  /// Suggests the user to enable "archive_and_mute_new_chats_from_unknown_users" option.
+  /// Suggests the user to enable archive_and_mute_new_chats_from_unknown_users setting in archiveChatListSettings.
   const SuggestedActionEnableArchiveAndMuteNewChats();
   
   /// Parse from a json
@@ -360,6 +363,44 @@ final class SuggestedActionUpgradePremium extends SuggestedAction {
 
   /// TDLib object type
   static const String objectType = 'suggestedActionUpgradePremium';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **SuggestedActionRestorePremium** *(suggestedActionRestorePremium)* - child of SuggestedAction
+///
+/// Suggests the user to restore a recently expired Premium subscription.
+final class SuggestedActionRestorePremium extends SuggestedAction {
+  
+  /// **SuggestedActionRestorePremium** *(suggestedActionRestorePremium)* - child of SuggestedAction
+  ///
+  /// Suggests the user to restore a recently expired Premium subscription.
+  const SuggestedActionRestorePremium();
+  
+  /// Parse from a json
+  factory SuggestedActionRestorePremium.fromJson(Map<String, dynamic> json) => const SuggestedActionRestorePremium();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  SuggestedActionRestorePremium copyWith() => const SuggestedActionRestorePremium();
+
+  /// TDLib object type
+  static const String objectType = 'suggestedActionRestorePremium';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

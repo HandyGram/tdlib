@@ -4,6 +4,7 @@ part of '../tdapi.dart';
 ///
 /// Returns users and chats that were blocked by the current user.
 ///
+/// * [blockList]: Block list from which to return users.
 /// * [offset]: Number of users and chats to skip in the result; must be non-negative.
 /// * [limit]: The maximum number of users and chats to return; up to 100.
 ///
@@ -14,16 +15,21 @@ final class GetBlockedMessageSenders extends TdFunction {
   ///
   /// Returns users and chats that were blocked by the current user.
   ///
+  /// * [blockList]: Block list from which to return users.
   /// * [offset]: Number of users and chats to skip in the result; must be non-negative.
   /// * [limit]: The maximum number of users and chats to return; up to 100.
   ///
   /// [MessageSenders] is returned on completion.
   const GetBlockedMessageSenders({
+    required this.blockList,
     required this.offset,
     required this.limit,
   });
   
-  /// Number of users and chats to skip in the result; must be non-negative 
+  /// Block list from which to return users
+  final BlockList blockList;
+
+  /// Number of users and chats to skip in the result; must be non-negative
   final int offset;
 
   /// The maximum number of users and chats to return; up to 100
@@ -34,6 +40,7 @@ final class GetBlockedMessageSenders extends TdFunction {
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
 			"@type": objectType,
+      "block_list": blockList.toJson(),
       "offset": offset,
       "limit": limit,
       "@extra": extra,
@@ -43,12 +50,15 @@ final class GetBlockedMessageSenders extends TdFunction {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [offset]: Number of users and chats to skip in the result; must be non-negative 
+  /// * [block_list]: Block list from which to return users
+  /// * [offset]: Number of users and chats to skip in the result; must be non-negative
   /// * [limit]: The maximum number of users and chats to return; up to 100
   GetBlockedMessageSenders copyWith({
+    BlockList? blockList,
     int? offset,
     int? limit,
   }) => GetBlockedMessageSenders(
+    blockList: blockList ?? this.blockList,
     offset: offset ?? this.offset,
     limit: limit ?? this.limit,
   );

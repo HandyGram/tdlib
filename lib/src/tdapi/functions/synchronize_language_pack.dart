@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **SynchronizeLanguagePack** *(synchronizeLanguagePack)* - TDLib function
 ///
-/// Fetches the latest versions of all strings from a language pack in the current localization target from the server. This method doesn't need to be called explicitly for the current used/base language packs. Can be called before authorization.
+/// Fetches the latest versions of all strings from a language pack in the current localization target from the server.. This method doesn't need to be called explicitly for the current used/base language packs. Can be called before authorization.
 ///
 /// * [languagePackId]: Language pack identifier.
 ///
@@ -11,7 +11,7 @@ final class SynchronizeLanguagePack extends TdFunction {
   
   /// **SynchronizeLanguagePack** *(synchronizeLanguagePack)* - TDLib function
   ///
-  /// Fetches the latest versions of all strings from a language pack in the current localization target from the server. This method doesn't need to be called explicitly for the current used/base language packs. Can be called before authorization.
+  /// Fetches the latest versions of all strings from a language pack in the current localization target from the server.. This method doesn't need to be called explicitly for the current used/base language packs. Can be called before authorization.
   ///
   /// * [languagePackId]: Language pack identifier.
   ///

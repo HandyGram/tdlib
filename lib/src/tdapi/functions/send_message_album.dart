@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 ///
 /// * [chatId]: Target chat.
 /// * [messageThreadId]: If not 0, a message thread identifier in which the messages will be sent.
-/// * [replyToMessageId]: Identifier of a replied message; 0 if none.
+/// * [replyTo]: Identifier of the replied message or story; pass null if none *(optional)*.
 /// * [options]: Options to be used to send the messages; pass null to use default options *(optional)*.
 /// * [inputMessageContents]: Contents of messages to be sent. At most 10 messages can be added to an album.
 /// * [onlyPreview]: Pass true to get fake messages instead of actually sending them.
@@ -20,7 +20,7 @@ final class SendMessageAlbum extends TdFunction {
   ///
   /// * [chatId]: Target chat.
   /// * [messageThreadId]: If not 0, a message thread identifier in which the messages will be sent.
-  /// * [replyToMessageId]: Identifier of a replied message; 0 if none.
+  /// * [replyTo]: Identifier of the replied message or story; pass null if none *(optional)*.
   /// * [options]: Options to be used to send the messages; pass null to use default options *(optional)*.
   /// * [inputMessageContents]: Contents of messages to be sent. At most 10 messages can be added to an album.
   /// * [onlyPreview]: Pass true to get fake messages instead of actually sending them.
@@ -29,7 +29,7 @@ final class SendMessageAlbum extends TdFunction {
   const SendMessageAlbum({
     required this.chatId,
     required this.messageThreadId,
-    required this.replyToMessageId,
+    this.replyTo,
     this.options,
     required this.inputMessageContents,
     required this.onlyPreview,
@@ -41,8 +41,8 @@ final class SendMessageAlbum extends TdFunction {
   /// If not 0, a message thread identifier in which the messages will be sent
   final int messageThreadId;
 
-  /// Identifier of a replied message; 0 if none
-  final int replyToMessageId;
+  /// Identifier of the replied message or story; pass null if none
+  final MessageReplyTo? replyTo;
 
   /// Options to be used to send the messages; pass null to use default options
   final MessageSendOptions? options;
@@ -60,7 +60,7 @@ final class SendMessageAlbum extends TdFunction {
 			"@type": objectType,
       "chat_id": chatId,
       "message_thread_id": messageThreadId,
-      "reply_to_message_id": replyToMessageId,
+      "reply_to": replyTo?.toJson(),
       "options": options?.toJson(),
       "input_message_contents": inputMessageContents.map((i) => i.toJson()).toList(),
       "only_preview": onlyPreview,
@@ -73,21 +73,21 @@ final class SendMessageAlbum extends TdFunction {
   /// Properties:
   /// * [chat_id]: Target chat
   /// * [message_thread_id]: If not 0, a message thread identifier in which the messages will be sent
-  /// * [reply_to_message_id]: Identifier of a replied message; 0 if none
+  /// * [reply_to]: Identifier of the replied message or story; pass null if none
   /// * [options]: Options to be used to send the messages; pass null to use default options
   /// * [input_message_contents]: Contents of messages to be sent. At most 10 messages can be added to an album
   /// * [only_preview]: Pass true to get fake messages instead of actually sending them
   SendMessageAlbum copyWith({
     int? chatId,
     int? messageThreadId,
-    int? replyToMessageId,
+    MessageReplyTo? replyTo,
     MessageSendOptions? options,
     List<InputMessageContent>? inputMessageContents,
     bool? onlyPreview,
   }) => SendMessageAlbum(
     chatId: chatId ?? this.chatId,
     messageThreadId: messageThreadId ?? this.messageThreadId,
-    replyToMessageId: replyToMessageId ?? this.replyToMessageId,
+    replyTo: replyTo ?? this.replyTo,
     options: options ?? this.options,
     inputMessageContents: inputMessageContents ?? this.inputMessageContents,
     onlyPreview: onlyPreview ?? this.onlyPreview,

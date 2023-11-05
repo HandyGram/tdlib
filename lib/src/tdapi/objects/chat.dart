@@ -9,13 +9,13 @@ part of '../tdapi.dart';
 /// * [title]: Chat title.
 /// * [photo]: Chat photo; may be null *(optional)*.
 /// * [permissions]: Actions that non-administrator chat members are allowed to take in the chat.
-/// * [lastMessage]: Last message in the chat; may be null *(optional)*.
+/// * [lastMessage]: Last message in the chat; may be null if none or unknown *(optional)*.
 /// * [positions]: Positions of the chat in chat lists.
 /// * [messageSenderId]: Identifier of a user or chat that is selected to send messages in the chat; may be null if the user can't change message sender *(optional)*.
+/// * [blockList]: Block list to which the chat is added; may be null if none *(optional)*.
 /// * [hasProtectedContent]: True, if chat content can't be saved locally, forwarded, or copied.
 /// * [isTranslatable]: True, if translation of all messages in the chat must be suggested to the user.
 /// * [isMarkedAsUnread]: True, if the chat is marked as unread.
-/// * [isBlocked]: True, if the chat is blocked by the current user and private messages from the chat can't be received.
 /// * [hasScheduledMessages]: True, if the chat has scheduled messages.
 /// * [canBeDeletedOnlyForSelf]: True, if the chat messages can be deleted only for the current user while other users will continue to see the messages.
 /// * [canBeDeletedForAllUsers]: True, if the chat messages can be deleted for all users.
@@ -31,11 +31,11 @@ part of '../tdapi.dart';
 /// * [messageAutoDeleteTime]: Current message auto-delete or self-destruct timer setting for the chat, in seconds; 0 if disabled. Self-destruct timer in secret chats starts after the message or its content is viewed. Auto-delete timer in other chats starts from the send date.
 /// * [background]: Background set for the chat; may be null if none *(optional)*.
 /// * [themeName]: If non-empty, name of a theme, set for the chat.
-/// * [actionBar]: Information about actions which must be possible to do through the chat action bar; may be null *(optional)*.
+/// * [actionBar]: Information about actions which must be possible to do through the chat action bar; may be null if none *(optional)*.
 /// * [videoChat]: Information about video chat of the chat.
-/// * [pendingJoinRequests]: Information about pending join requests; may be null *(optional)*.
+/// * [pendingJoinRequests]: Information about pending join requests; may be null if none *(optional)*.
 /// * [replyMarkupMessageId]: Identifier of the message from which reply markup needs to be used; 0 if there is no default custom reply markup in the chat.
-/// * [draftMessage]: A draft of a message in the chat; may be null *(optional)*.
+/// * [draftMessage]: A draft of a message in the chat; may be null if none *(optional)*.
 /// * [clientData]: Application-specific data associated with the chat. (For example, the chat scroll position or local chat notification settings can be stored here.) Persistent if the message database is used.
 final class Chat extends TdObject {
   
@@ -48,13 +48,13 @@ final class Chat extends TdObject {
   /// * [title]: Chat title.
   /// * [photo]: Chat photo; may be null *(optional)*.
   /// * [permissions]: Actions that non-administrator chat members are allowed to take in the chat.
-  /// * [lastMessage]: Last message in the chat; may be null *(optional)*.
+  /// * [lastMessage]: Last message in the chat; may be null if none or unknown *(optional)*.
   /// * [positions]: Positions of the chat in chat lists.
   /// * [messageSenderId]: Identifier of a user or chat that is selected to send messages in the chat; may be null if the user can't change message sender *(optional)*.
+  /// * [blockList]: Block list to which the chat is added; may be null if none *(optional)*.
   /// * [hasProtectedContent]: True, if chat content can't be saved locally, forwarded, or copied.
   /// * [isTranslatable]: True, if translation of all messages in the chat must be suggested to the user.
   /// * [isMarkedAsUnread]: True, if the chat is marked as unread.
-  /// * [isBlocked]: True, if the chat is blocked by the current user and private messages from the chat can't be received.
   /// * [hasScheduledMessages]: True, if the chat has scheduled messages.
   /// * [canBeDeletedOnlyForSelf]: True, if the chat messages can be deleted only for the current user while other users will continue to see the messages.
   /// * [canBeDeletedForAllUsers]: True, if the chat messages can be deleted for all users.
@@ -70,11 +70,11 @@ final class Chat extends TdObject {
   /// * [messageAutoDeleteTime]: Current message auto-delete or self-destruct timer setting for the chat, in seconds; 0 if disabled. Self-destruct timer in secret chats starts after the message or its content is viewed. Auto-delete timer in other chats starts from the send date.
   /// * [background]: Background set for the chat; may be null if none *(optional)*.
   /// * [themeName]: If non-empty, name of a theme, set for the chat.
-  /// * [actionBar]: Information about actions which must be possible to do through the chat action bar; may be null *(optional)*.
+  /// * [actionBar]: Information about actions which must be possible to do through the chat action bar; may be null if none *(optional)*.
   /// * [videoChat]: Information about video chat of the chat.
-  /// * [pendingJoinRequests]: Information about pending join requests; may be null *(optional)*.
+  /// * [pendingJoinRequests]: Information about pending join requests; may be null if none *(optional)*.
   /// * [replyMarkupMessageId]: Identifier of the message from which reply markup needs to be used; 0 if there is no default custom reply markup in the chat.
-  /// * [draftMessage]: A draft of a message in the chat; may be null *(optional)*.
+  /// * [draftMessage]: A draft of a message in the chat; may be null if none *(optional)*.
   /// * [clientData]: Application-specific data associated with the chat. (For example, the chat scroll position or local chat notification settings can be stored here.) Persistent if the message database is used.
   const Chat({
     required this.id,
@@ -85,10 +85,10 @@ final class Chat extends TdObject {
     this.lastMessage,
     required this.positions,
     this.messageSenderId,
+    this.blockList,
     required this.hasProtectedContent,
     required this.isTranslatable,
     required this.isMarkedAsUnread,
-    required this.isBlocked,
     required this.hasScheduledMessages,
     required this.canBeDeletedOnlyForSelf,
     required this.canBeDeletedForAllUsers,
@@ -129,7 +129,7 @@ final class Chat extends TdObject {
   /// Actions that non-administrator chat members are allowed to take in the chat
   final ChatPermissions permissions;
 
-  /// Last message in the chat; may be null
+  /// Last message in the chat; may be null if none or unknown
   final Message? lastMessage;
 
   /// Positions of the chat in chat lists
@@ -137,6 +137,9 @@ final class Chat extends TdObject {
 
   /// Identifier of a user or chat that is selected to send messages in the chat; may be null if the user can't change message sender
   final MessageSender? messageSenderId;
+
+  /// Block list to which the chat is added; may be null if none
+  final BlockList? blockList;
 
   /// True, if chat content can't be saved locally, forwarded, or copied
   final bool hasProtectedContent;
@@ -146,9 +149,6 @@ final class Chat extends TdObject {
 
   /// True, if the chat is marked as unread
   final bool isMarkedAsUnread;
-
-  /// True, if the chat is blocked by the current user and private messages from the chat can't be received
-  final bool isBlocked;
 
   /// True, if the chat has scheduled messages
   final bool hasScheduledMessages;
@@ -195,19 +195,19 @@ final class Chat extends TdObject {
   /// If non-empty, name of a theme, set for the chat
   final String themeName;
 
-  /// Information about actions which must be possible to do through the chat action bar; may be null
+  /// Information about actions which must be possible to do through the chat action bar; may be null if none
   final ChatActionBar? actionBar;
 
   /// Information about video chat of the chat
   final VideoChat videoChat;
 
-  /// Information about pending join requests; may be null
+  /// Information about pending join requests; may be null if none
   final ChatJoinRequestsInfo? pendingJoinRequests;
 
   /// Identifier of the message from which reply markup needs to be used; 0 if there is no default custom reply markup in the chat
   final int replyMarkupMessageId;
 
-  /// A draft of a message in the chat; may be null
+  /// A draft of a message in the chat; may be null if none
   final DraftMessage? draftMessage;
 
   /// Application-specific data associated with the chat. (For example, the chat scroll position or local chat notification settings can be stored here.) Persistent if the message database is used
@@ -231,10 +231,10 @@ final class Chat extends TdObject {
     lastMessage: json['last_message'] == null ? null : Message.fromJson(json['last_message']),
     positions: List<ChatPosition>.from((json['positions'] ?? []).map((item) => ChatPosition.fromJson(item)).toList()),
     messageSenderId: json['message_sender_id'] == null ? null : MessageSender.fromJson(json['message_sender_id']),
+    blockList: json['block_list'] == null ? null : BlockList.fromJson(json['block_list']),
     hasProtectedContent: json['has_protected_content'],
     isTranslatable: json['is_translatable'],
     isMarkedAsUnread: json['is_marked_as_unread'],
-    isBlocked: json['is_blocked'],
     hasScheduledMessages: json['has_scheduled_messages'],
     canBeDeletedOnlyForSelf: json['can_be_deleted_only_for_self'],
     canBeDeletedForAllUsers: json['can_be_deleted_for_all_users'],
@@ -274,10 +274,10 @@ final class Chat extends TdObject {
       "last_message": lastMessage?.toJson(),
       "positions": positions.map((i) => i.toJson()).toList(),
       "message_sender_id": messageSenderId?.toJson(),
+      "block_list": blockList?.toJson(),
       "has_protected_content": hasProtectedContent,
       "is_translatable": isTranslatable,
       "is_marked_as_unread": isMarkedAsUnread,
-      "is_blocked": isBlocked,
       "has_scheduled_messages": hasScheduledMessages,
       "can_be_deleted_only_for_self": canBeDeletedOnlyForSelf,
       "can_be_deleted_for_all_users": canBeDeletedForAllUsers,
@@ -310,13 +310,13 @@ final class Chat extends TdObject {
   /// * [title]: Chat title
   /// * [photo]: Chat photo; may be null
   /// * [permissions]: Actions that non-administrator chat members are allowed to take in the chat
-  /// * [last_message]: Last message in the chat; may be null
+  /// * [last_message]: Last message in the chat; may be null if none or unknown
   /// * [positions]: Positions of the chat in chat lists
   /// * [message_sender_id]: Identifier of a user or chat that is selected to send messages in the chat; may be null if the user can't change message sender
+  /// * [block_list]: Block list to which the chat is added; may be null if none
   /// * [has_protected_content]: True, if chat content can't be saved locally, forwarded, or copied
   /// * [is_translatable]: True, if translation of all messages in the chat must be suggested to the user
   /// * [is_marked_as_unread]: True, if the chat is marked as unread
-  /// * [is_blocked]: True, if the chat is blocked by the current user and private messages from the chat can't be received
   /// * [has_scheduled_messages]: True, if the chat has scheduled messages
   /// * [can_be_deleted_only_for_self]: True, if the chat messages can be deleted only for the current user while other users will continue to see the messages
   /// * [can_be_deleted_for_all_users]: True, if the chat messages can be deleted for all users
@@ -332,11 +332,11 @@ final class Chat extends TdObject {
   /// * [message_auto_delete_time]: Current message auto-delete or self-destruct timer setting for the chat, in seconds; 0 if disabled. Self-destruct timer in secret chats starts after the message or its content is viewed. Auto-delete timer in other chats starts from the send date
   /// * [background]: Background set for the chat; may be null if none
   /// * [theme_name]: If non-empty, name of a theme, set for the chat
-  /// * [action_bar]: Information about actions which must be possible to do through the chat action bar; may be null
+  /// * [action_bar]: Information about actions which must be possible to do through the chat action bar; may be null if none
   /// * [video_chat]: Information about video chat of the chat
-  /// * [pending_join_requests]: Information about pending join requests; may be null
+  /// * [pending_join_requests]: Information about pending join requests; may be null if none
   /// * [reply_markup_message_id]: Identifier of the message from which reply markup needs to be used; 0 if there is no default custom reply markup in the chat
-  /// * [draft_message]: A draft of a message in the chat; may be null
+  /// * [draft_message]: A draft of a message in the chat; may be null if none
   /// * [client_data]: Application-specific data associated with the chat. (For example, the chat scroll position or local chat notification settings can be stored here.) Persistent if the message database is used
   Chat copyWith({
     int? id,
@@ -347,10 +347,10 @@ final class Chat extends TdObject {
     Message? lastMessage,
     List<ChatPosition>? positions,
     MessageSender? messageSenderId,
+    BlockList? blockList,
     bool? hasProtectedContent,
     bool? isTranslatable,
     bool? isMarkedAsUnread,
-    bool? isBlocked,
     bool? hasScheduledMessages,
     bool? canBeDeletedOnlyForSelf,
     bool? canBeDeletedForAllUsers,
@@ -383,10 +383,10 @@ final class Chat extends TdObject {
     lastMessage: lastMessage ?? this.lastMessage,
     positions: positions ?? this.positions,
     messageSenderId: messageSenderId ?? this.messageSenderId,
+    blockList: blockList ?? this.blockList,
     hasProtectedContent: hasProtectedContent ?? this.hasProtectedContent,
     isTranslatable: isTranslatable ?? this.isTranslatable,
     isMarkedAsUnread: isMarkedAsUnread ?? this.isMarkedAsUnread,
-    isBlocked: isBlocked ?? this.isBlocked,
     hasScheduledMessages: hasScheduledMessages ?? this.hasScheduledMessages,
     canBeDeletedOnlyForSelf: canBeDeletedOnlyForSelf ?? this.canBeDeletedOnlyForSelf,
     canBeDeletedForAllUsers: canBeDeletedForAllUsers ?? this.canBeDeletedForAllUsers,

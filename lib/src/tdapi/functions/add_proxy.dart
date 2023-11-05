@@ -4,7 +4,7 @@ part of '../tdapi.dart';
 ///
 /// Adds a proxy server for network requests. Can be called before authorization.
 ///
-/// * [server]: Proxy server IP address.
+/// * [server]: Proxy server domain or IP address.
 /// * [port]: Proxy server port.
 /// * [enable]: Pass true to immediately enable the proxy.
 /// * [type]: Proxy type.
@@ -16,7 +16,7 @@ final class AddProxy extends TdFunction {
   ///
   /// Adds a proxy server for network requests. Can be called before authorization.
   ///
-  /// * [server]: Proxy server IP address.
+  /// * [server]: Proxy server domain or IP address.
   /// * [port]: Proxy server port.
   /// * [enable]: Pass true to immediately enable the proxy.
   /// * [type]: Proxy type.
@@ -29,7 +29,7 @@ final class AddProxy extends TdFunction {
     required this.type,
   });
   
-  /// Proxy server IP address
+  /// Proxy server domain or IP address
   final String server;
 
   /// Proxy server port
@@ -57,7 +57,7 @@ final class AddProxy extends TdFunction {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [server]: Proxy server IP address
+  /// * [server]: Proxy server domain or IP address
   /// * [port]: Proxy server port
   /// * [enable]: Pass true to immediately enable the proxy
   /// * [type]: Proxy type

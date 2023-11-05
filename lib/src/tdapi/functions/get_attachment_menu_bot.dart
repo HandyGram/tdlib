@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **GetAttachmentMenuBot** *(getAttachmentMenuBot)* - TDLib function
 ///
-/// Returns information about a bot that can be added to attachment menu.
+/// Returns information about a bot that can be added to attachment or side menu.
 ///
 /// * [botUserId]: Bot's user identifier.
 ///
@@ -11,7 +11,7 @@ final class GetAttachmentMenuBot extends TdFunction {
   
   /// **GetAttachmentMenuBot** *(getAttachmentMenuBot)* - TDLib function
   ///
-  /// Returns information about a bot that can be added to attachment menu.
+  /// Returns information about a bot that can be added to attachment or side menu.
   ///
   /// * [botUserId]: Bot's user identifier.
   ///

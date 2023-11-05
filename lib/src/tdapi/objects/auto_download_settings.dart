@@ -11,6 +11,7 @@ part of '../tdapi.dart';
 /// * [videoUploadBitrate]: The maximum suggested bitrate for uploaded videos, in kbit/s.
 /// * [preloadLargeVideos]: True, if the beginning of video files needs to be preloaded for instant playback.
 /// * [preloadNextAudio]: True, if the next audio track needs to be preloaded while the user is listening to an audio file.
+/// * [preloadStories]: True, if stories needs to be preloaded.
 /// * [useLessDataForCalls]: True, if "use less data for calls" option needs to be enabled.
 final class AutoDownloadSettings extends TdObject {
   
@@ -25,6 +26,7 @@ final class AutoDownloadSettings extends TdObject {
   /// * [videoUploadBitrate]: The maximum suggested bitrate for uploaded videos, in kbit/s.
   /// * [preloadLargeVideos]: True, if the beginning of video files needs to be preloaded for instant playback.
   /// * [preloadNextAudio]: True, if the next audio track needs to be preloaded while the user is listening to an audio file.
+  /// * [preloadStories]: True, if stories needs to be preloaded.
   /// * [useLessDataForCalls]: True, if "use less data for calls" option needs to be enabled.
   const AutoDownloadSettings({
     required this.isAutoDownloadEnabled,
@@ -34,6 +36,7 @@ final class AutoDownloadSettings extends TdObject {
     required this.videoUploadBitrate,
     required this.preloadLargeVideos,
     required this.preloadNextAudio,
+    required this.preloadStories,
     required this.useLessDataForCalls,
   });
   
@@ -58,6 +61,9 @@ final class AutoDownloadSettings extends TdObject {
   /// True, if the next audio track needs to be preloaded while the user is listening to an audio file
   final bool preloadNextAudio;
 
+  /// True, if stories needs to be preloaded
+  final bool preloadStories;
+
   /// True, if "use less data for calls" option needs to be enabled
   final bool useLessDataForCalls;
   
@@ -70,6 +76,7 @@ final class AutoDownloadSettings extends TdObject {
     videoUploadBitrate: json['video_upload_bitrate'],
     preloadLargeVideos: json['preload_large_videos'],
     preloadNextAudio: json['preload_next_audio'],
+    preloadStories: json['preload_stories'],
     useLessDataForCalls: json['use_less_data_for_calls'],
   );
   
@@ -86,6 +93,7 @@ final class AutoDownloadSettings extends TdObject {
       "video_upload_bitrate": videoUploadBitrate,
       "preload_large_videos": preloadLargeVideos,
       "preload_next_audio": preloadNextAudio,
+      "preload_stories": preloadStories,
       "use_less_data_for_calls": useLessDataForCalls,
 		};
 	}
@@ -100,6 +108,7 @@ final class AutoDownloadSettings extends TdObject {
   /// * [video_upload_bitrate]: The maximum suggested bitrate for uploaded videos, in kbit/s
   /// * [preload_large_videos]: True, if the beginning of video files needs to be preloaded for instant playback
   /// * [preload_next_audio]: True, if the next audio track needs to be preloaded while the user is listening to an audio file
+  /// * [preload_stories]: True, if stories needs to be preloaded
   /// * [use_less_data_for_calls]: True, if "use less data for calls" option needs to be enabled
   AutoDownloadSettings copyWith({
     bool? isAutoDownloadEnabled,
@@ -109,6 +118,7 @@ final class AutoDownloadSettings extends TdObject {
     int? videoUploadBitrate,
     bool? preloadLargeVideos,
     bool? preloadNextAudio,
+    bool? preloadStories,
     bool? useLessDataForCalls,
   }) => AutoDownloadSettings(
     isAutoDownloadEnabled: isAutoDownloadEnabled ?? this.isAutoDownloadEnabled,
@@ -118,6 +128,7 @@ final class AutoDownloadSettings extends TdObject {
     videoUploadBitrate: videoUploadBitrate ?? this.videoUploadBitrate,
     preloadLargeVideos: preloadLargeVideos ?? this.preloadLargeVideos,
     preloadNextAudio: preloadNextAudio ?? this.preloadNextAudio,
+    preloadStories: preloadStories ?? this.preloadStories,
     useLessDataForCalls: useLessDataForCalls ?? this.useLessDataForCalls,
   );
 
