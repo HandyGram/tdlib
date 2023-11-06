@@ -1,0 +1,28 @@
+var classtd_1_1td__api_1_1group_call =
+[
+    [ "groupCall", "classtd_1_1td__api_1_1group_call.html#a33cad2a044e53d184ed9450fc7e75e52", null ],
+    [ "groupCall", "classtd_1_1td__api_1_1group_call.html#a14bc8b5ae2504b3eb4469519bb461172", null ],
+    [ "get_id", "classtd_1_1td__api_1_1group_call.html#a868ea200a4c3e91aa745599abdfd98da", null ],
+    [ "store", "classtd_1_1td__api_1_1group_call.html#a0e4008f6bb6fc602b6e5c246e017406e", null ],
+    [ "can_be_managed_", "classtd_1_1td__api_1_1group_call.html#a226895881c9e5c85a9ed695dc982e6ea", null ],
+    [ "can_enable_video_", "classtd_1_1td__api_1_1group_call.html#aab62ab84a66b2048da64a8b686565f07", null ],
+    [ "can_toggle_mute_new_participants_", "classtd_1_1td__api_1_1group_call.html#ae77bb5b08f519e471ffb6387adb3e991", null ],
+    [ "duration_", "classtd_1_1td__api_1_1group_call.html#a9ad8967d8771bd334ae9b7860aa00526", null ],
+    [ "enabled_start_notification_", "classtd_1_1td__api_1_1group_call.html#a42e9491bd19dad7bb9824202c72d2213", null ],
+    [ "has_hidden_listeners_", "classtd_1_1td__api_1_1group_call.html#a92fbc574215566ef3d4bfbf28b0d025d", null ],
+    [ "id_", "classtd_1_1td__api_1_1group_call.html#a27b746156f38093a4d9b9ef98f557cdb", null ],
+    [ "is_active_", "classtd_1_1td__api_1_1group_call.html#ade91345837b57ea654bbae6eb878821b", null ],
+    [ "is_joined_", "classtd_1_1td__api_1_1group_call.html#a5427e2a6d35ed5b540acd7339ac33fbb", null ],
+    [ "is_my_video_enabled_", "classtd_1_1td__api_1_1group_call.html#af91e30c5c12d4f4758ec82e7e1df9b53", null ],
+    [ "is_my_video_paused_", "classtd_1_1td__api_1_1group_call.html#a09cdf0479d67257675f4e775a6d89201", null ],
+    [ "is_rtmp_stream_", "classtd_1_1td__api_1_1group_call.html#a1a540c09e32e83dec4cead941ce64b2d", null ],
+    [ "is_video_recorded_", "classtd_1_1td__api_1_1group_call.html#a4aad85088636ffb24cb654206eb9f07c", null ],
+    [ "loaded_all_participants_", "classtd_1_1td__api_1_1group_call.html#a6f011c38c7380bcd16500c5172d0135f", null ],
+    [ "mute_new_participants_", "classtd_1_1td__api_1_1group_call.html#add84700ddbc8b8b42fe82a03feaca419", null ],
+    [ "need_rejoin_", "classtd_1_1td__api_1_1group_call.html#a739fb7f41c0d21195cb864d1428a129b", null ],
+    [ "participant_count_", "classtd_1_1td__api_1_1group_call.html#af2cde7965d0b8538f08cf3a26de9a24c", null ],
+    [ "recent_speakers_", "classtd_1_1td__api_1_1group_call.html#a46c97450f15e22fad5d8f16452d49238", null ],
+    [ "record_duration_", "classtd_1_1td__api_1_1group_call.html#ab8fab08a5a032d78be02131b0cbdd1e1", null ],
+    [ "scheduled_start_date_", "classtd_1_1td__api_1_1group_call.html#a07b6531081b3c98f3551ade4b204c42f", null ],
+    [ "title_", "classtd_1_1td__api_1_1group_call.html#a4c9d1c7cdda2d142cac3a00b5f2e2b15", null ]
+];

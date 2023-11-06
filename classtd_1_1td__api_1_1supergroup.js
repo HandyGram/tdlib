@@ -1,0 +1,27 @@
+var classtd_1_1td__api_1_1supergroup =
+[
+    [ "supergroup", "classtd_1_1td__api_1_1supergroup.html#a819efdc274878b205d0779a33a9ce6bd", null ],
+    [ "supergroup", "classtd_1_1td__api_1_1supergroup.html#a9ec409eb57f3066a36ffd4a85801b826", null ],
+    [ "get_id", "classtd_1_1td__api_1_1supergroup.html#ac7b3ae0bbac38c167274bd6ad9058c92", null ],
+    [ "store", "classtd_1_1td__api_1_1supergroup.html#aab8ba0f633c6c10754a8e30bbe5b45fc", null ],
+    [ "date_", "classtd_1_1td__api_1_1supergroup.html#af0b533bf69487c796915f168714c9035", null ],
+    [ "has_active_stories_", "classtd_1_1td__api_1_1supergroup.html#abf549907c157f1a5641835eb33e66737", null ],
+    [ "has_linked_chat_", "classtd_1_1td__api_1_1supergroup.html#a1934ef4a2a74317745380211b3b11252", null ],
+    [ "has_location_", "classtd_1_1td__api_1_1supergroup.html#a33178f4b694ab76422400d5166206742", null ],
+    [ "has_unread_active_stories_", "classtd_1_1td__api_1_1supergroup.html#aaa16877f97e76629908ff3e114b12a27", null ],
+    [ "id_", "classtd_1_1td__api_1_1supergroup.html#a40578cf13b04203a72360a666b98d20c", null ],
+    [ "is_broadcast_group_", "classtd_1_1td__api_1_1supergroup.html#adf1bd460c7d15d6d788ddfcd7ce7e056", null ],
+    [ "is_channel_", "classtd_1_1td__api_1_1supergroup.html#ac74660334cf8d30dafc872398495f03b", null ],
+    [ "is_fake_", "classtd_1_1td__api_1_1supergroup.html#a6076d23084815f16651e023979a33e3d", null ],
+    [ "is_forum_", "classtd_1_1td__api_1_1supergroup.html#a691dc612814be61300e2478c05b4eedd", null ],
+    [ "is_scam_", "classtd_1_1td__api_1_1supergroup.html#a76f8be54f598e8e1ec765d468e0ed4e3", null ],
+    [ "is_slow_mode_enabled_", "classtd_1_1td__api_1_1supergroup.html#aa3ea989f5dabf94c443663003e8eaa52", null ],
+    [ "is_verified_", "classtd_1_1td__api_1_1supergroup.html#a4a739293d49f961c2955a4810eb45128", null ],
+    [ "join_by_request_", "classtd_1_1td__api_1_1supergroup.html#a9cd2a54f5d65427faefbc4e3f9f25553", null ],
+    [ "join_to_send_messages_", "classtd_1_1td__api_1_1supergroup.html#af40343b3c3f48bdd77d077df3a828426", null ],
+    [ "member_count_", "classtd_1_1td__api_1_1supergroup.html#af67d2716510d9fbe1d02ef286b05b748", null ],
+    [ "restriction_reason_", "classtd_1_1td__api_1_1supergroup.html#a59db3e956deff5c04a1a97d88710621e", null ],
+    [ "sign_messages_", "classtd_1_1td__api_1_1supergroup.html#aadd373ea30409db493982a88a9dca81a", null ],
+    [ "status_", "classtd_1_1td__api_1_1supergroup.html#ae608639e1e96de4a31a88e9877501456", null ],
+    [ "usernames_", "classtd_1_1td__api_1_1supergroup.html#acc666f5a809e94150b8dd0372c40c66c", null ]
+];

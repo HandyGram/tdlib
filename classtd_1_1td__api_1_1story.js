@@ -1,0 +1,28 @@
+var classtd_1_1td__api_1_1story =
+[
+    [ "story", "classtd_1_1td__api_1_1story.html#ae9e510027c0994a97b7b038448b7d45d", null ],
+    [ "story", "classtd_1_1td__api_1_1story.html#a794e40ee43f2f79b6ac0e6c21fdd1833", null ],
+    [ "get_id", "classtd_1_1td__api_1_1story.html#ac6e82de9f06b39bb38074cb87a594aaf", null ],
+    [ "store", "classtd_1_1td__api_1_1story.html#aefeffe12c8deecec04975bce269eac6c", null ],
+    [ "areas_", "classtd_1_1td__api_1_1story.html#a835055b8df459a4f9051c7c890d82dad", null ],
+    [ "can_be_deleted_", "classtd_1_1td__api_1_1story.html#acb30ff5dd031cf54deff98349c36c3f5", null ],
+    [ "can_be_edited_", "classtd_1_1td__api_1_1story.html#a825a446f5aefc2c37ef94fd3e1a6fb9e", null ],
+    [ "can_be_forwarded_", "classtd_1_1td__api_1_1story.html#a6ecb65a1a9c42117e75e0e6583ea70f1", null ],
+    [ "can_be_replied_", "classtd_1_1td__api_1_1story.html#a0dfbdc93944eea086dfd2649b42f973f", null ],
+    [ "can_get_viewers_", "classtd_1_1td__api_1_1story.html#a27b8b9cf6fb6e69d119a421729398a8e", null ],
+    [ "can_toggle_is_pinned_", "classtd_1_1td__api_1_1story.html#a8c85e4d32a3013b592c98d16ba5b4723", null ],
+    [ "caption_", "classtd_1_1td__api_1_1story.html#a18a5b8d24220d16ce069b9deae4eff52", null ],
+    [ "chosen_reaction_type_", "classtd_1_1td__api_1_1story.html#a385bb424da3e60ef6f3d2bd44e63c869", null ],
+    [ "content_", "classtd_1_1td__api_1_1story.html#a4a72b27f5e1b11c909b23fd84cfbd89a", null ],
+    [ "date_", "classtd_1_1td__api_1_1story.html#a454a561ab0b6ee538a8f9dd6f445d369", null ],
+    [ "has_expired_viewers_", "classtd_1_1td__api_1_1story.html#a62ed9d98a54c6657377c898d52605bff", null ],
+    [ "id_", "classtd_1_1td__api_1_1story.html#a7da3156c56d0bd6d27302cfcb8c9999d", null ],
+    [ "interaction_info_", "classtd_1_1td__api_1_1story.html#a782b60258cb0ab8815ea4947b8c43360", null ],
+    [ "is_being_edited_", "classtd_1_1td__api_1_1story.html#ad3a33ca106fc6a42c08decd02bd20643", null ],
+    [ "is_being_sent_", "classtd_1_1td__api_1_1story.html#afc63539f432fb8e0954053c4a8ab3e28", null ],
+    [ "is_edited_", "classtd_1_1td__api_1_1story.html#ac0f31d4eb5bcf0a018163e895ef73078", null ],
+    [ "is_pinned_", "classtd_1_1td__api_1_1story.html#a6623af0211df89caed30f561e1bec7ce", null ],
+    [ "is_visible_only_for_self_", "classtd_1_1td__api_1_1story.html#a5b56f8e98df3e891690794111a04b04b", null ],
+    [ "privacy_settings_", "classtd_1_1td__api_1_1story.html#a385efef39b5d3d659070004c51a801b4", null ],
+    [ "sender_chat_id_", "classtd_1_1td__api_1_1story.html#ae384716436ade466a73842818981a46b", null ]
+];
