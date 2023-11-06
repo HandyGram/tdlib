@@ -33,7 +33,7 @@ class TdNativePlugin extends TdPlugin {
   /// return Pointer to the created instance of TDLib.
   late final _TdJsonClientCreate _tdJsonClientCreate =
       _lookup<ffi.NativeFunction<_TdJsonClientCreatePtr>>(
-              '_td_json_client_create')
+              'td_json_client_create')
           .asFunction();
 
   @override
@@ -43,7 +43,7 @@ class TdNativePlugin extends TdPlugin {
   /// [client] The client.
   /// [request] JSON-serialized null-terminated request to TDLib.
   late final _TdJsonClientSend _tdJsonClientSend =
-      _lookup<ffi.NativeFunction<_TdJsonClientSendPtr>>('_td_json_client_send')
+      _lookup<ffi.NativeFunction<_TdJsonClientSendPtr>>('td_json_client_send')
           .asFunction();
 
   @override
@@ -68,7 +68,7 @@ class TdNativePlugin extends TdPlugin {
   /// return JSON-serialized null-terminated incoming update or request response. May be *null* if the timeout expires.
   late final _TdJsonClientReceive _tdJsonClientReceive =
       _lookup<ffi.NativeFunction<_TdJsonClientReceivePtr>>(
-              '_td_json_client_receive')
+              'td_json_client_receive')
           .asFunction();
 
   @override
@@ -94,7 +94,7 @@ class TdNativePlugin extends TdPlugin {
   /// return JSON-serialized null-terminated request response.
   late final _TdJsonClientExecute _tdJsonClientExecute =
       _lookup<ffi.NativeFunction<_TdJsonClientExecutePtr>>(
-              '_td_json_client_execute')
+              'td_json_client_execute')
           .asFunction();
 
   @override
@@ -113,7 +113,7 @@ class TdNativePlugin extends TdPlugin {
   /// [client] The client.
   late final _TdJsonClientDestroy _tdJsonClientDestroy =
       _lookup<ffi.NativeFunction<_TdJsonClientDestroyPtr>>(
-              '_td_json_client_destroy')
+              'td_json_client_destroy')
           .asFunction();
 
   @override
