@@ -1,3 +1,6 @@
+## 2.2.0
+* Updated to TDLib 1.8.20
+
 ## 2.1.0
 * *API changes*: TdObject has lost type argument
 * *API changes*: tdlib.dart -> client.dart
