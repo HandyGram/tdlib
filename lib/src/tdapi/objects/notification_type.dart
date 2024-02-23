@@ -222,7 +222,7 @@ final class NotificationTypeNewCall extends NotificationType {
 ///
 /// New message was received through a push notification.
 ///
-/// * [messageId]: The message identifier. The message will not be available in the chat history, but the identifier can be used in viewMessages, or as a message to reply.
+/// * [messageId]: The message identifier. The message will not be available in the chat history, but the identifier can be used in viewMessages, or as a message to be replied in the same chat.
 /// * [senderId]: Identifier of the sender of the message. Corresponding user or chat may be inaccessible.
 /// * [senderName]: Name of the sender.
 /// * [isOutgoing]: True, if the message is outgoing.
@@ -233,7 +233,7 @@ final class NotificationTypeNewPushMessage extends NotificationType {
   ///
   /// New message was received through a push notification.
   ///
-  /// * [messageId]: The message identifier. The message will not be available in the chat history, but the identifier can be used in viewMessages, or as a message to reply.
+  /// * [messageId]: The message identifier. The message will not be available in the chat history, but the identifier can be used in viewMessages, or as a message to be replied in the same chat.
   /// * [senderId]: Identifier of the sender of the message. Corresponding user or chat may be inaccessible.
   /// * [senderName]: Name of the sender.
   /// * [isOutgoing]: True, if the message is outgoing.
@@ -246,7 +246,7 @@ final class NotificationTypeNewPushMessage extends NotificationType {
     required this.content,
   });
   
-  /// The message identifier. The message will not be available in the chat history, but the identifier can be used in viewMessages, or as a message to reply
+  /// The message identifier. The message will not be available in the chat history, but the identifier can be used in viewMessages, or as a message to be replied in the same chat
   final int messageId;
 
   /// Identifier of the sender of the message. Corresponding user or chat may be inaccessible
@@ -287,7 +287,7 @@ final class NotificationTypeNewPushMessage extends NotificationType {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [message_id]: The message identifier. The message will not be available in the chat history, but the identifier can be used in viewMessages, or as a message to reply
+  /// * [message_id]: The message identifier. The message will not be available in the chat history, but the identifier can be used in viewMessages, or as a message to be replied in the same chat
   /// * [sender_id]: Identifier of the sender of the message. Corresponding user or chat may be inaccessible
   /// * [sender_name]: Name of the sender
   /// * [is_outgoing]: True, if the message is outgoing

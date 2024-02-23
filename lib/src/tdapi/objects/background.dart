@@ -8,7 +8,7 @@ part of '../tdapi.dart';
 /// * [isDefault]: True, if this is one of default backgrounds.
 /// * [isDark]: True, if the background is dark and is recommended to be used with dark theme.
 /// * [name]: Unique background name.
-/// * [document]: Document with the background; may be null. Null only for filled backgrounds *(optional)*.
+/// * [document]: Document with the background; may be null. Null only for filled and chat theme backgrounds *(optional)*.
 /// * [type]: Type of the background.
 final class Background extends TdObject {
   
@@ -20,7 +20,7 @@ final class Background extends TdObject {
   /// * [isDefault]: True, if this is one of default backgrounds.
   /// * [isDark]: True, if the background is dark and is recommended to be used with dark theme.
   /// * [name]: Unique background name.
-  /// * [document]: Document with the background; may be null. Null only for filled backgrounds *(optional)*.
+  /// * [document]: Document with the background; may be null. Null only for filled and chat theme backgrounds *(optional)*.
   /// * [type]: Type of the background.
   const Background({
     required this.id,
@@ -45,7 +45,7 @@ final class Background extends TdObject {
   /// Unique background name
   final String name;
 
-  /// Document with the background; may be null. Null only for filled backgrounds
+  /// Document with the background; may be null. Null only for filled and chat theme backgrounds
   final Document? document;
 
   /// Type of the background
@@ -93,7 +93,7 @@ final class Background extends TdObject {
   /// * [is_default]: True, if this is one of default backgrounds
   /// * [is_dark]: True, if the background is dark and is recommended to be used with dark theme
   /// * [name]: Unique background name
-  /// * [document]: Document with the background; may be null. Null only for filled backgrounds
+  /// * [document]: Document with the background; may be null. Null only for filled and chat theme backgrounds
   /// * [type]: Type of the background
   Background copyWith({
     int? id,

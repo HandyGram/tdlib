@@ -14,6 +14,8 @@ part of '../tdapi.dart';
 /// * [isOfficial]: True, if the sticker set is official.
 /// * [stickerFormat]: Format of the stickers in the set.
 /// * [stickerType]: Type of the stickers in the set.
+/// * [needsRepainting]: True, if stickers in the sticker set are custom emoji that must be repainted; for custom emoji sticker sets only.
+/// * [isAllowedAsChatEmojiStatus]: True, if stickers in the sticker set are custom emoji that can be used as chat emoji status; for custom emoji sticker sets only.
 /// * [isViewed]: True for already viewed trending sticker sets.
 /// * [stickers]: List of stickers in this set.
 /// * [emojis]: A list of emoji corresponding to the stickers in the same order. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object.
@@ -33,6 +35,8 @@ final class StickerSet extends TdObject {
   /// * [isOfficial]: True, if the sticker set is official.
   /// * [stickerFormat]: Format of the stickers in the set.
   /// * [stickerType]: Type of the stickers in the set.
+  /// * [needsRepainting]: True, if stickers in the sticker set are custom emoji that must be repainted; for custom emoji sticker sets only.
+  /// * [isAllowedAsChatEmojiStatus]: True, if stickers in the sticker set are custom emoji that can be used as chat emoji status; for custom emoji sticker sets only.
   /// * [isViewed]: True for already viewed trending sticker sets.
   /// * [stickers]: List of stickers in this set.
   /// * [emojis]: A list of emoji corresponding to the stickers in the same order. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object.
@@ -47,6 +51,8 @@ final class StickerSet extends TdObject {
     required this.isOfficial,
     required this.stickerFormat,
     required this.stickerType,
+    required this.needsRepainting,
+    required this.isAllowedAsChatEmojiStatus,
     required this.isViewed,
     required this.stickers,
     required this.emojis,
@@ -84,6 +90,12 @@ final class StickerSet extends TdObject {
   /// Type of the stickers in the set
   final StickerType stickerType;
 
+  /// True, if stickers in the sticker set are custom emoji that must be repainted; for custom emoji sticker sets only
+  final bool needsRepainting;
+
+  /// True, if stickers in the sticker set are custom emoji that can be used as chat emoji status; for custom emoji sticker sets only
+  final bool isAllowedAsChatEmojiStatus;
+
   /// True for already viewed trending sticker sets
   final bool isViewed;
 
@@ -113,6 +125,8 @@ final class StickerSet extends TdObject {
     isOfficial: json['is_official'],
     stickerFormat: StickerFormat.fromJson(json['sticker_format']),
     stickerType: StickerType.fromJson(json['sticker_type']),
+    needsRepainting: json['needs_repainting'],
+    isAllowedAsChatEmojiStatus: json['is_allowed_as_chat_emoji_status'],
     isViewed: json['is_viewed'],
     stickers: List<Sticker>.from((json['stickers'] ?? []).map((item) => Sticker.fromJson(item)).toList()),
     emojis: List<Emojis>.from((json['emojis'] ?? []).map((item) => Emojis.fromJson(item)).toList()),
@@ -136,6 +150,8 @@ final class StickerSet extends TdObject {
       "is_official": isOfficial,
       "sticker_format": stickerFormat.toJson(),
       "sticker_type": stickerType.toJson(),
+      "needs_repainting": needsRepainting,
+      "is_allowed_as_chat_emoji_status": isAllowedAsChatEmojiStatus,
       "is_viewed": isViewed,
       "stickers": stickers.map((i) => i.toJson()).toList(),
       "emojis": emojis.map((i) => i.toJson()).toList(),
@@ -155,6 +171,8 @@ final class StickerSet extends TdObject {
   /// * [is_official]: True, if the sticker set is official
   /// * [sticker_format]: Format of the stickers in the set
   /// * [sticker_type]: Type of the stickers in the set
+  /// * [needs_repainting]: True, if stickers in the sticker set are custom emoji that must be repainted; for custom emoji sticker sets only
+  /// * [is_allowed_as_chat_emoji_status]: True, if stickers in the sticker set are custom emoji that can be used as chat emoji status; for custom emoji sticker sets only
   /// * [is_viewed]: True for already viewed trending sticker sets
   /// * [stickers]: List of stickers in this set
   /// * [emojis]: A list of emoji corresponding to the stickers in the same order. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object
@@ -169,6 +187,8 @@ final class StickerSet extends TdObject {
     bool? isOfficial,
     StickerFormat? stickerFormat,
     StickerType? stickerType,
+    bool? needsRepainting,
+    bool? isAllowedAsChatEmojiStatus,
     bool? isViewed,
     List<Sticker>? stickers,
     List<Emojis>? emojis,
@@ -185,6 +205,8 @@ final class StickerSet extends TdObject {
     isOfficial: isOfficial ?? this.isOfficial,
     stickerFormat: stickerFormat ?? this.stickerFormat,
     stickerType: stickerType ?? this.stickerType,
+    needsRepainting: needsRepainting ?? this.needsRepainting,
+    isAllowedAsChatEmojiStatus: isAllowedAsChatEmojiStatus ?? this.isAllowedAsChatEmojiStatus,
     isViewed: isViewed ?? this.isViewed,
     stickers: stickers ?? this.stickers,
     emojis: emojis ?? this.emojis,

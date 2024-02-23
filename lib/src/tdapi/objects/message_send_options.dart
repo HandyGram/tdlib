@@ -10,6 +10,7 @@ part of '../tdapi.dart';
 /// * [updateOrderOfInstalledStickerSets]: Pass true if the user explicitly chosen a sticker or a custom emoji from an installed sticker set; applicable only to sendMessage and sendMessageAlbum.
 /// * [schedulingState]: Message scheduling state; pass null to send message immediately. Messages sent to a secret chat, live location messages and self-destructing messages can't be scheduled *(optional)*.
 /// * [sendingId]: Non-persistent identifier, which will be returned back in messageSendingStatePending object and can be used to match sent messages and corresponding updateNewMessage updates.
+/// * [onlyPreview]: Pass true to get a fake message instead of actually sending them.
 final class MessageSendOptions extends TdObject {
   
   /// **MessageSendOptions** *(messageSendOptions)* - basic class
@@ -22,6 +23,7 @@ final class MessageSendOptions extends TdObject {
   /// * [updateOrderOfInstalledStickerSets]: Pass true if the user explicitly chosen a sticker or a custom emoji from an installed sticker set; applicable only to sendMessage and sendMessageAlbum.
   /// * [schedulingState]: Message scheduling state; pass null to send message immediately. Messages sent to a secret chat, live location messages and self-destructing messages can't be scheduled *(optional)*.
   /// * [sendingId]: Non-persistent identifier, which will be returned back in messageSendingStatePending object and can be used to match sent messages and corresponding updateNewMessage updates.
+  /// * [onlyPreview]: Pass true to get a fake message instead of actually sending them.
   const MessageSendOptions({
     required this.disableNotification,
     required this.fromBackground,
@@ -29,6 +31,7 @@ final class MessageSendOptions extends TdObject {
     required this.updateOrderOfInstalledStickerSets,
     this.schedulingState,
     required this.sendingId,
+    required this.onlyPreview,
   });
   
   /// Pass true to disable notification for the message
@@ -48,6 +51,9 @@ final class MessageSendOptions extends TdObject {
 
   /// Non-persistent identifier, which will be returned back in messageSendingStatePending object and can be used to match sent messages and corresponding updateNewMessage updates
   final int sendingId;
+
+  /// Pass true to get a fake message instead of actually sending them
+  final bool onlyPreview;
   
   /// Parse from a json
   factory MessageSendOptions.fromJson(Map<String, dynamic> json) => MessageSendOptions(
@@ -57,6 +63,7 @@ final class MessageSendOptions extends TdObject {
     updateOrderOfInstalledStickerSets: json['update_order_of_installed_sticker_sets'],
     schedulingState: json['scheduling_state'] == null ? null : MessageSchedulingState.fromJson(json['scheduling_state']),
     sendingId: json['sending_id'],
+    onlyPreview: json['only_preview'],
   );
   
   
@@ -71,6 +78,7 @@ final class MessageSendOptions extends TdObject {
       "update_order_of_installed_sticker_sets": updateOrderOfInstalledStickerSets,
       "scheduling_state": schedulingState?.toJson(),
       "sending_id": sendingId,
+      "only_preview": onlyPreview,
 		};
 	}
 
@@ -83,6 +91,7 @@ final class MessageSendOptions extends TdObject {
   /// * [update_order_of_installed_sticker_sets]: Pass true if the user explicitly chosen a sticker or a custom emoji from an installed sticker set; applicable only to sendMessage and sendMessageAlbum
   /// * [scheduling_state]: Message scheduling state; pass null to send message immediately. Messages sent to a secret chat, live location messages and self-destructing messages can't be scheduled
   /// * [sending_id]: Non-persistent identifier, which will be returned back in messageSendingStatePending object and can be used to match sent messages and corresponding updateNewMessage updates
+  /// * [only_preview]: Pass true to get a fake message instead of actually sending them
   MessageSendOptions copyWith({
     bool? disableNotification,
     bool? fromBackground,
@@ -90,6 +99,7 @@ final class MessageSendOptions extends TdObject {
     bool? updateOrderOfInstalledStickerSets,
     MessageSchedulingState? schedulingState,
     int? sendingId,
+    bool? onlyPreview,
   }) => MessageSendOptions(
     disableNotification: disableNotification ?? this.disableNotification,
     fromBackground: fromBackground ?? this.fromBackground,
@@ -97,6 +107,7 @@ final class MessageSendOptions extends TdObject {
     updateOrderOfInstalledStickerSets: updateOrderOfInstalledStickerSets ?? this.updateOrderOfInstalledStickerSets,
     schedulingState: schedulingState ?? this.schedulingState,
     sendingId: sendingId ?? this.sendingId,
+    onlyPreview: onlyPreview ?? this.onlyPreview,
   );
 
   /// TDLib object type

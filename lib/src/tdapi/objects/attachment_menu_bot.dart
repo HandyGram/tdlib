@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 /// * [supportsBotChats]: True, if the bot supports opening from attachment menu in private chats with other bots.
 /// * [supportsGroupChats]: True, if the bot supports opening from attachment menu in basic group and supergroup chats.
 /// * [supportsChannelChats]: True, if the bot supports opening from attachment menu in channel chats.
-/// * [supportsSettings]: True, if the bot supports "settings_button_pressed" event.
 /// * [requestWriteAccess]: True, if the user must be asked for the permission to send messages to the bot.
 /// * [isAdded]: True, if the bot was explicitly added by the user. If the bot isn't added, then on the first bot launch toggleBotIsAddedToAttachmentMenu must be called and the bot must be added or removed.
 /// * [showInAttachmentMenu]: True, if the bot must be shown in the attachment menu.
@@ -40,7 +39,6 @@ final class AttachmentMenuBot extends TdObject {
   /// * [supportsBotChats]: True, if the bot supports opening from attachment menu in private chats with other bots.
   /// * [supportsGroupChats]: True, if the bot supports opening from attachment menu in basic group and supergroup chats.
   /// * [supportsChannelChats]: True, if the bot supports opening from attachment menu in channel chats.
-  /// * [supportsSettings]: True, if the bot supports "settings_button_pressed" event.
   /// * [requestWriteAccess]: True, if the user must be asked for the permission to send messages to the bot.
   /// * [isAdded]: True, if the bot was explicitly added by the user. If the bot isn't added, then on the first bot launch toggleBotIsAddedToAttachmentMenu must be called and the bot must be added or removed.
   /// * [showInAttachmentMenu]: True, if the bot must be shown in the attachment menu.
@@ -65,7 +63,6 @@ final class AttachmentMenuBot extends TdObject {
     required this.supportsBotChats,
     required this.supportsGroupChats,
     required this.supportsChannelChats,
-    required this.supportsSettings,
     required this.requestWriteAccess,
     required this.isAdded,
     required this.showInAttachmentMenu,
@@ -104,9 +101,6 @@ final class AttachmentMenuBot extends TdObject {
 
   /// True, if the bot supports opening from attachment menu in channel chats
   final bool supportsChannelChats;
-
-  /// True, if the bot supports "settings_button_pressed" event
-  final bool supportsSettings;
 
   /// True, if the user must be asked for the permission to send messages to the bot
   final bool requestWriteAccess;
@@ -175,7 +169,6 @@ final class AttachmentMenuBot extends TdObject {
     supportsBotChats: json['supports_bot_chats'],
     supportsGroupChats: json['supports_group_chats'],
     supportsChannelChats: json['supports_channel_chats'],
-    supportsSettings: json['supports_settings'],
     requestWriteAccess: json['request_write_access'],
     isAdded: json['is_added'],
     showInAttachmentMenu: json['show_in_attachment_menu'],
@@ -209,7 +202,6 @@ final class AttachmentMenuBot extends TdObject {
       "supports_bot_chats": supportsBotChats,
       "supports_group_chats": supportsGroupChats,
       "supports_channel_chats": supportsChannelChats,
-      "supports_settings": supportsSettings,
       "request_write_access": requestWriteAccess,
       "is_added": isAdded,
       "show_in_attachment_menu": showInAttachmentMenu,
@@ -239,7 +231,6 @@ final class AttachmentMenuBot extends TdObject {
   /// * [supports_bot_chats]: True, if the bot supports opening from attachment menu in private chats with other bots
   /// * [supports_group_chats]: True, if the bot supports opening from attachment menu in basic group and supergroup chats
   /// * [supports_channel_chats]: True, if the bot supports opening from attachment menu in channel chats
-  /// * [supports_settings]: True, if the bot supports "settings_button_pressed" event
   /// * [request_write_access]: True, if the user must be asked for the permission to send messages to the bot
   /// * [is_added]: True, if the bot was explicitly added by the user. If the bot isn't added, then on the first bot launch toggleBotIsAddedToAttachmentMenu must be called and the bot must be added or removed
   /// * [show_in_attachment_menu]: True, if the bot must be shown in the attachment menu
@@ -264,7 +255,6 @@ final class AttachmentMenuBot extends TdObject {
     bool? supportsBotChats,
     bool? supportsGroupChats,
     bool? supportsChannelChats,
-    bool? supportsSettings,
     bool? requestWriteAccess,
     bool? isAdded,
     bool? showInAttachmentMenu,
@@ -291,7 +281,6 @@ final class AttachmentMenuBot extends TdObject {
     supportsBotChats: supportsBotChats ?? this.supportsBotChats,
     supportsGroupChats: supportsGroupChats ?? this.supportsGroupChats,
     supportsChannelChats: supportsChannelChats ?? this.supportsChannelChats,
-    supportsSettings: supportsSettings ?? this.supportsSettings,
     requestWriteAccess: requestWriteAccess ?? this.requestWriteAccess,
     isAdded: isAdded ?? this.isAdded,
     showInAttachmentMenu: showInAttachmentMenu ?? this.showInAttachmentMenu,

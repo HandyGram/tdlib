@@ -2,20 +2,20 @@ part of '../tdapi.dart';
 
 /// **SetChatAvailableReactions** *(setChatAvailableReactions)* - TDLib function
 ///
-/// Changes reactions, available in a chat. Available for basic groups, supergroups, and channels. Requires can_change_info administrator right.
+/// Changes reactions, available in a chat. Available for basic groups, supergroups, and channels. Requires can_change_info member right.
 ///
 /// * [chatId]: Identifier of the chat.
-/// * [availableReactions]: Reactions available in the chat. All emoji reactions must be active.
+/// * [availableReactions]: Reactions available in the chat. All explicitly specified emoji reactions must be active. In channel chats up to the chat's boost level custom emoji reactions can be explicitly specified.
 ///
 /// [Ok] is returned on completion.
 final class SetChatAvailableReactions extends TdFunction {
   
   /// **SetChatAvailableReactions** *(setChatAvailableReactions)* - TDLib function
   ///
-  /// Changes reactions, available in a chat. Available for basic groups, supergroups, and channels. Requires can_change_info administrator right.
+  /// Changes reactions, available in a chat. Available for basic groups, supergroups, and channels. Requires can_change_info member right.
   ///
   /// * [chatId]: Identifier of the chat.
-  /// * [availableReactions]: Reactions available in the chat. All emoji reactions must be active.
+  /// * [availableReactions]: Reactions available in the chat. All explicitly specified emoji reactions must be active. In channel chats up to the chat's boost level custom emoji reactions can be explicitly specified.
   ///
   /// [Ok] is returned on completion.
   const SetChatAvailableReactions({
@@ -23,10 +23,10 @@ final class SetChatAvailableReactions extends TdFunction {
     required this.availableReactions,
   });
   
-  /// Identifier of the chat 
+  /// Identifier of the chat
   final int chatId;
 
-  /// Reactions available in the chat. All emoji reactions must be active
+  /// Reactions available in the chat. All explicitly specified emoji reactions must be active. In channel chats up to the chat's boost level custom emoji reactions can be explicitly specified
   final ChatAvailableReactions availableReactions;
   
   /// Convert model to TDLib JSON format
@@ -43,8 +43,8 @@ final class SetChatAvailableReactions extends TdFunction {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Identifier of the chat 
-  /// * [available_reactions]: Reactions available in the chat. All emoji reactions must be active
+  /// * [chat_id]: Identifier of the chat
+  /// * [available_reactions]: Reactions available in the chat. All explicitly specified emoji reactions must be active. In channel chats up to the chat's boost level custom emoji reactions can be explicitly specified
   SetChatAvailableReactions copyWith({
     int? chatId,
     ChatAvailableReactions? availableReactions,

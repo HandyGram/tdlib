@@ -112,6 +112,8 @@ final class MessageSendingStatePending extends MessageSendingState {
 /// * [error]: The cause of the message sending failure.
 /// * [canRetry]: True, if the message can be re-sent.
 /// * [needAnotherSender]: True, if the message can be re-sent only on behalf of a different sender.
+/// * [needAnotherReplyQuote]: True, if the message can be re-sent only if another quote is chosen in the message that is replied by the given message.
+/// * [needDropReply]: True, if the message can be re-sent only if the message to be replied is removed. This will be done automatically by resendMessages.
 /// * [retryAfter]: Time left before the message can be re-sent, in seconds. No update is sent when this field changes.
 final class MessageSendingStateFailed extends MessageSendingState {
   
@@ -122,11 +124,15 @@ final class MessageSendingStateFailed extends MessageSendingState {
   /// * [error]: The cause of the message sending failure.
   /// * [canRetry]: True, if the message can be re-sent.
   /// * [needAnotherSender]: True, if the message can be re-sent only on behalf of a different sender.
+  /// * [needAnotherReplyQuote]: True, if the message can be re-sent only if another quote is chosen in the message that is replied by the given message.
+  /// * [needDropReply]: True, if the message can be re-sent only if the message to be replied is removed. This will be done automatically by resendMessages.
   /// * [retryAfter]: Time left before the message can be re-sent, in seconds. No update is sent when this field changes.
   const MessageSendingStateFailed({
     required this.error,
     required this.canRetry,
     required this.needAnotherSender,
+    required this.needAnotherReplyQuote,
+    required this.needDropReply,
     required this.retryAfter,
   });
   
@@ -139,6 +145,12 @@ final class MessageSendingStateFailed extends MessageSendingState {
   /// True, if the message can be re-sent only on behalf of a different sender
   final bool needAnotherSender;
 
+  /// True, if the message can be re-sent only if another quote is chosen in the message that is replied by the given message
+  final bool needAnotherReplyQuote;
+
+  /// True, if the message can be re-sent only if the message to be replied is removed. This will be done automatically by resendMessages
+  final bool needDropReply;
+
   /// Time left before the message can be re-sent, in seconds. No update is sent when this field changes
   final double retryAfter;
   
@@ -147,6 +159,8 @@ final class MessageSendingStateFailed extends MessageSendingState {
     error: TdError.fromJson(json['error']),
     canRetry: json['can_retry'],
     needAnotherSender: json['need_another_sender'],
+    needAnotherReplyQuote: json['need_another_reply_quote'],
+    needDropReply: json['need_drop_reply'],
     retryAfter: json['retry_after'],
   );
   
@@ -159,6 +173,8 @@ final class MessageSendingStateFailed extends MessageSendingState {
       "error": error.toJson(),
       "can_retry": canRetry,
       "need_another_sender": needAnotherSender,
+      "need_another_reply_quote": needAnotherReplyQuote,
+      "need_drop_reply": needDropReply,
       "retry_after": retryAfter,
 		};
 	}
@@ -169,17 +185,23 @@ final class MessageSendingStateFailed extends MessageSendingState {
   /// * [error]: The cause of the message sending failure
   /// * [can_retry]: True, if the message can be re-sent
   /// * [need_another_sender]: True, if the message can be re-sent only on behalf of a different sender
+  /// * [need_another_reply_quote]: True, if the message can be re-sent only if another quote is chosen in the message that is replied by the given message
+  /// * [need_drop_reply]: True, if the message can be re-sent only if the message to be replied is removed. This will be done automatically by resendMessages
   /// * [retry_after]: Time left before the message can be re-sent, in seconds. No update is sent when this field changes
   @override
   MessageSendingStateFailed copyWith({
     TdError? error,
     bool? canRetry,
     bool? needAnotherSender,
+    bool? needAnotherReplyQuote,
+    bool? needDropReply,
     double? retryAfter,
   }) => MessageSendingStateFailed(
     error: error ?? this.error,
     canRetry: canRetry ?? this.canRetry,
     needAnotherSender: needAnotherSender ?? this.needAnotherSender,
+    needAnotherReplyQuote: needAnotherReplyQuote ?? this.needAnotherReplyQuote,
+    needDropReply: needDropReply ?? this.needDropReply,
     retryAfter: retryAfter ?? this.retryAfter,
   );
 

@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **AddChatMember** *(addChatMember)* - TDLib function
 ///
-/// Adds a new member to a chat. Members can't be added to private or secret chats.
+/// Adds a new member to a chat; requires can_invite_users member right. Members can't be added to private or secret chats.
 ///
 /// * [chatId]: Chat identifier.
 /// * [userId]: Identifier of the user.
@@ -13,7 +13,7 @@ final class AddChatMember extends TdFunction {
   
   /// **AddChatMember** *(addChatMember)* - TDLib function
   ///
-  /// Adds a new member to a chat. Members can't be added to private or secret chats.
+  /// Adds a new member to a chat; requires can_invite_users member right. Members can't be added to private or secret chats.
   ///
   /// * [chatId]: Chat identifier.
   /// * [userId]: Identifier of the user.

@@ -2,26 +2,32 @@ part of '../tdapi.dart';
 
 /// **BoostChat** *(boostChat)* - TDLib function
 ///
-/// Boosts a chat.
+/// Boosts a chat and returns the list of available chat boost slots for the current user after the boost.
 ///
 /// * [chatId]: Identifier of the chat.
+/// * [slotIds]: Identifiers of boost slots of the current user from which to apply boosts to the chat.
 ///
-/// [Ok] is returned on completion.
+/// [ChatBoostSlots] is returned on completion.
 final class BoostChat extends TdFunction {
   
   /// **BoostChat** *(boostChat)* - TDLib function
   ///
-  /// Boosts a chat.
+  /// Boosts a chat and returns the list of available chat boost slots for the current user after the boost.
   ///
   /// * [chatId]: Identifier of the chat.
+  /// * [slotIds]: Identifiers of boost slots of the current user from which to apply boosts to the chat.
   ///
-  /// [Ok] is returned on completion.
+  /// [ChatBoostSlots] is returned on completion.
   const BoostChat({
     required this.chatId,
+    required this.slotIds,
   });
   
   /// Identifier of the chat
   final int chatId;
+
+  /// Identifiers of boost slots of the current user from which to apply boosts to the chat
+  final List<int> slotIds;
   
   /// Convert model to TDLib JSON format
   @override
@@ -29,6 +35,7 @@ final class BoostChat extends TdFunction {
 		return {
 			"@type": objectType,
       "chat_id": chatId,
+      "slot_ids": slotIds.map((i) => i).toList(),
       "@extra": extra,
 		};
 	}
@@ -37,10 +44,13 @@ final class BoostChat extends TdFunction {
   ///
   /// Properties:
   /// * [chat_id]: Identifier of the chat
+  /// * [slot_ids]: Identifiers of boost slots of the current user from which to apply boosts to the chat
   BoostChat copyWith({
     int? chatId,
+    List<int>? slotIds,
   }) => BoostChat(
     chatId: chatId ?? this.chatId,
+    slotIds: slotIds ?? this.slotIds,
   );
 
   /// TDLib object type

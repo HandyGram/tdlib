@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 /// Describes a call.
 ///
 /// * [id]: Call identifier, not persistent.
-/// * [userId]: Peer user identifier.
+/// * [userId]: User identifier of the other call participant.
 /// * [isOutgoing]: True, if the call is outgoing.
 /// * [isVideo]: True, if the call is a video call.
 /// * [state]: Call state.
@@ -16,7 +16,7 @@ final class Call extends TdObject {
   /// Describes a call.
   ///
   /// * [id]: Call identifier, not persistent.
-  /// * [userId]: Peer user identifier.
+  /// * [userId]: User identifier of the other call participant.
   /// * [isOutgoing]: True, if the call is outgoing.
   /// * [isVideo]: True, if the call is a video call.
   /// * [state]: Call state.
@@ -31,7 +31,7 @@ final class Call extends TdObject {
   /// Call identifier, not persistent
   final int id;
 
-  /// Peer user identifier
+  /// User identifier of the other call participant
   final int userId;
 
   /// True, if the call is outgoing
@@ -70,7 +70,7 @@ final class Call extends TdObject {
   ///
   /// Properties:
   /// * [id]: Call identifier, not persistent
-  /// * [user_id]: Peer user identifier
+  /// * [user_id]: User identifier of the other call participant
   /// * [is_outgoing]: True, if the call is outgoing
   /// * [is_video]: True, if the call is a video call
   /// * [state]: Call state

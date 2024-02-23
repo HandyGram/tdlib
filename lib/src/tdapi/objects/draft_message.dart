@@ -4,36 +4,36 @@ part of '../tdapi.dart';
 ///
 /// Contains information about a message draft.
 ///
-/// * [replyToMessageId]: Identifier of the replied message; 0 if none.
+/// * [replyTo]: Information about the message to be replied; must be of the type inputMessageReplyToMessage; may be null if none *(optional)*.
 /// * [date]: Point in time (Unix timestamp) when the draft was created.
-/// * [inputMessageText]: Content of the message draft; must be of the type inputMessageText.
+/// * [inputMessageText]: Content of the message draft; must be of the type inputMessageText, inputMessageVideoNote, or inputMessageVoiceNote.
 final class DraftMessage extends TdObject {
   
   /// **DraftMessage** *(draftMessage)* - basic class
   ///
   /// Contains information about a message draft.
   ///
-  /// * [replyToMessageId]: Identifier of the replied message; 0 if none.
+  /// * [replyTo]: Information about the message to be replied; must be of the type inputMessageReplyToMessage; may be null if none *(optional)*.
   /// * [date]: Point in time (Unix timestamp) when the draft was created.
-  /// * [inputMessageText]: Content of the message draft; must be of the type inputMessageText.
+  /// * [inputMessageText]: Content of the message draft; must be of the type inputMessageText, inputMessageVideoNote, or inputMessageVoiceNote.
   const DraftMessage({
-    required this.replyToMessageId,
+    this.replyTo,
     required this.date,
     required this.inputMessageText,
   });
   
-  /// Identifier of the replied message; 0 if none
-  final int replyToMessageId;
+  /// Information about the message to be replied; must be of the type inputMessageReplyToMessage; may be null if none
+  final InputMessageReplyTo? replyTo;
 
   /// Point in time (Unix timestamp) when the draft was created
   final int date;
 
-  /// Content of the message draft; must be of the type inputMessageText
+  /// Content of the message draft; must be of the type inputMessageText, inputMessageVideoNote, or inputMessageVoiceNote
   final InputMessageContent inputMessageText;
   
   /// Parse from a json
   factory DraftMessage.fromJson(Map<String, dynamic> json) => DraftMessage(
-    replyToMessageId: json['reply_to_message_id'] ?? 0,
+    replyTo: json['reply_to'] == null ? null : InputMessageReplyTo.fromJson(json['reply_to']),
     date: json['date'],
     inputMessageText: InputMessageContent.fromJson(json['input_message_text']),
   );
@@ -44,7 +44,7 @@ final class DraftMessage extends TdObject {
   Map<String, dynamic> toJson() {
 		return {
 			"@type": objectType,
-      "reply_to_message_id": replyToMessageId,
+      "reply_to": replyTo?.toJson(),
       "date": date,
       "input_message_text": inputMessageText.toJson(),
 		};
@@ -53,15 +53,15 @@ final class DraftMessage extends TdObject {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [reply_to_message_id]: Identifier of the replied message; 0 if none
+  /// * [reply_to]: Information about the message to be replied; must be of the type inputMessageReplyToMessage; may be null if none
   /// * [date]: Point in time (Unix timestamp) when the draft was created
-  /// * [input_message_text]: Content of the message draft; must be of the type inputMessageText
+  /// * [input_message_text]: Content of the message draft; must be of the type inputMessageText, inputMessageVideoNote, or inputMessageVoiceNote
   DraftMessage copyWith({
-    int? replyToMessageId,
+    InputMessageReplyTo? replyTo,
     int? date,
     InputMessageContent? inputMessageText,
   }) => DraftMessage(
-    replyToMessageId: replyToMessageId ?? this.replyToMessageId,
+    replyTo: replyTo ?? this.replyTo,
     date: date ?? this.date,
     inputMessageText: inputMessageText ?? this.inputMessageText,
   );

@@ -9,8 +9,8 @@ part of '../tdapi.dart';
 /// * [url]: The URL from an inlineKeyboardButtonTypeWebApp button, a botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an empty string otherwise.
 /// * [theme]: Preferred Web App theme; pass null to use the default theme *(optional)*.
 /// * [applicationName]: Short name of the application; 0-64 English letters, digits, and underscores.
-/// * [messageThreadId]: If not 0, a message thread identifier in which the message will be sent.
-/// * [replyTo]: Identifier of the replied message or story for the message sent by the Web App; pass null if none *(optional)*.
+/// * [messageThreadId]: If not 0, the message thread identifier in which the message will be sent.
+/// * [replyTo]: Information about the message or story to be replied in the message sent by the Web App; pass null if none *(optional)*.
 ///
 /// [WebAppInfo] is returned on completion.
 final class OpenWebApp extends TdFunction {
@@ -24,8 +24,8 @@ final class OpenWebApp extends TdFunction {
   /// * [url]: The URL from an inlineKeyboardButtonTypeWebApp button, a botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an empty string otherwise.
   /// * [theme]: Preferred Web App theme; pass null to use the default theme *(optional)*.
   /// * [applicationName]: Short name of the application; 0-64 English letters, digits, and underscores.
-  /// * [messageThreadId]: If not 0, a message thread identifier in which the message will be sent.
-  /// * [replyTo]: Identifier of the replied message or story for the message sent by the Web App; pass null if none *(optional)*.
+  /// * [messageThreadId]: If not 0, the message thread identifier in which the message will be sent.
+  /// * [replyTo]: Information about the message or story to be replied in the message sent by the Web App; pass null if none *(optional)*.
   ///
   /// [WebAppInfo] is returned on completion.
   const OpenWebApp({
@@ -53,11 +53,11 @@ final class OpenWebApp extends TdFunction {
   /// Short name of the application; 0-64 English letters, digits, and underscores
   final String applicationName;
 
-  /// If not 0, a message thread identifier in which the message will be sent
+  /// If not 0, the message thread identifier in which the message will be sent
   final int messageThreadId;
 
-  /// Identifier of the replied message or story for the message sent by the Web App; pass null if none
-  final MessageReplyTo? replyTo;
+  /// Information about the message or story to be replied in the message sent by the Web App; pass null if none
+  final InputMessageReplyTo? replyTo;
   
   /// Convert model to TDLib JSON format
   @override
@@ -83,8 +83,8 @@ final class OpenWebApp extends TdFunction {
   /// * [url]: The URL from an inlineKeyboardButtonTypeWebApp button, a botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an empty string otherwise
   /// * [theme]: Preferred Web App theme; pass null to use the default theme
   /// * [application_name]: Short name of the application; 0-64 English letters, digits, and underscores
-  /// * [message_thread_id]: If not 0, a message thread identifier in which the message will be sent
-  /// * [reply_to]: Identifier of the replied message or story for the message sent by the Web App; pass null if none
+  /// * [message_thread_id]: If not 0, the message thread identifier in which the message will be sent
+  /// * [reply_to]: Information about the message or story to be replied in the message sent by the Web App; pass null if none
   OpenWebApp copyWith({
     int? chatId,
     int? botUserId,
@@ -92,7 +92,7 @@ final class OpenWebApp extends TdFunction {
     ThemeParameters? theme,
     String? applicationName,
     int? messageThreadId,
-    MessageReplyTo? replyTo,
+    InputMessageReplyTo? replyTo,
   }) => OpenWebApp(
     chatId: chatId ?? this.chatId,
     botUserId: botUserId ?? this.botUserId,

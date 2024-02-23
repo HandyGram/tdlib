@@ -15,6 +15,7 @@ part of '../tdapi.dart';
 /// * [hasRestrictedVoiceAndVideoNoteMessages]: True, if voice and video notes can't be sent or forwarded to the user.
 /// * [hasPinnedStories]: True, if the user has pinned stories.
 /// * [needPhoneNumberPrivacyException]: True, if the current user needs to explicitly allow to share their phone number with the user when the method addContact is used.
+/// * [setChatBackground]: True, if the user set chat background for both chat users and it wasn't reverted yet.
 /// * [bio]: A short user bio; may be null for bots *(optional)*.
 /// * [premiumGiftOptions]: The list of available options for gifting Telegram Premium to the user.
 /// * [groupInCommonCount]: Number of group chats where both the other user and the current user are a member; 0 for the current user.
@@ -36,6 +37,7 @@ final class UserFullInfo extends TdObject {
   /// * [hasRestrictedVoiceAndVideoNoteMessages]: True, if voice and video notes can't be sent or forwarded to the user.
   /// * [hasPinnedStories]: True, if the user has pinned stories.
   /// * [needPhoneNumberPrivacyException]: True, if the current user needs to explicitly allow to share their phone number with the user when the method addContact is used.
+  /// * [setChatBackground]: True, if the user set chat background for both chat users and it wasn't reverted yet.
   /// * [bio]: A short user bio; may be null for bots *(optional)*.
   /// * [premiumGiftOptions]: The list of available options for gifting Telegram Premium to the user.
   /// * [groupInCommonCount]: Number of group chats where both the other user and the current user are a member; 0 for the current user.
@@ -52,6 +54,7 @@ final class UserFullInfo extends TdObject {
     required this.hasRestrictedVoiceAndVideoNoteMessages,
     required this.hasPinnedStories,
     required this.needPhoneNumberPrivacyException,
+    required this.setChatBackground,
     this.bio,
     required this.premiumGiftOptions,
     required this.groupInCommonCount,
@@ -93,6 +96,9 @@ final class UserFullInfo extends TdObject {
   /// True, if the current user needs to explicitly allow to share their phone number with the user when the method addContact is used
   final bool needPhoneNumberPrivacyException;
 
+  /// True, if the user set chat background for both chat users and it wasn't reverted yet
+  final bool setChatBackground;
+
   /// A short user bio; may be null for bots
   final FormattedText? bio;
 
@@ -126,6 +132,7 @@ final class UserFullInfo extends TdObject {
     hasRestrictedVoiceAndVideoNoteMessages: json['has_restricted_voice_and_video_note_messages'],
     hasPinnedStories: json['has_pinned_stories'],
     needPhoneNumberPrivacyException: json['need_phone_number_privacy_exception'],
+    setChatBackground: json['set_chat_background'],
     bio: json['bio'] == null ? null : FormattedText.fromJson(json['bio']),
     premiumGiftOptions: List<PremiumPaymentOption>.from((json['premium_gift_options'] ?? []).map((item) => PremiumPaymentOption.fromJson(item)).toList()),
     groupInCommonCount: json['group_in_common_count'],
@@ -151,6 +158,7 @@ final class UserFullInfo extends TdObject {
       "has_restricted_voice_and_video_note_messages": hasRestrictedVoiceAndVideoNoteMessages,
       "has_pinned_stories": hasPinnedStories,
       "need_phone_number_privacy_exception": needPhoneNumberPrivacyException,
+      "set_chat_background": setChatBackground,
       "bio": bio?.toJson(),
       "premium_gift_options": premiumGiftOptions.map((i) => i.toJson()).toList(),
       "group_in_common_count": groupInCommonCount,
@@ -172,6 +180,7 @@ final class UserFullInfo extends TdObject {
   /// * [has_restricted_voice_and_video_note_messages]: True, if voice and video notes can't be sent or forwarded to the user
   /// * [has_pinned_stories]: True, if the user has pinned stories
   /// * [need_phone_number_privacy_exception]: True, if the current user needs to explicitly allow to share their phone number with the user when the method addContact is used
+  /// * [set_chat_background]: True, if the user set chat background for both chat users and it wasn't reverted yet
   /// * [bio]: A short user bio; may be null for bots
   /// * [premium_gift_options]: The list of available options for gifting Telegram Premium to the user
   /// * [group_in_common_count]: Number of group chats where both the other user and the current user are a member; 0 for the current user
@@ -188,6 +197,7 @@ final class UserFullInfo extends TdObject {
     bool? hasRestrictedVoiceAndVideoNoteMessages,
     bool? hasPinnedStories,
     bool? needPhoneNumberPrivacyException,
+    bool? setChatBackground,
     FormattedText? bio,
     List<PremiumPaymentOption>? premiumGiftOptions,
     int? groupInCommonCount,
@@ -206,6 +216,7 @@ final class UserFullInfo extends TdObject {
     hasRestrictedVoiceAndVideoNoteMessages: hasRestrictedVoiceAndVideoNoteMessages ?? this.hasRestrictedVoiceAndVideoNoteMessages,
     hasPinnedStories: hasPinnedStories ?? this.hasPinnedStories,
     needPhoneNumberPrivacyException: needPhoneNumberPrivacyException ?? this.needPhoneNumberPrivacyException,
+    setChatBackground: setChatBackground ?? this.setChatBackground,
     bio: bio ?? this.bio,
     premiumGiftOptions: premiumGiftOptions ?? this.premiumGiftOptions,
     groupInCommonCount: groupInCommonCount ?? this.groupInCommonCount,

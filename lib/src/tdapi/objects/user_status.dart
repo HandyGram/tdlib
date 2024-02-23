@@ -61,12 +61,12 @@ sealed class UserStatus extends TdObject {
 
 /// **UserStatusEmpty** *(userStatusEmpty)* - child of UserStatus
 ///
-/// The user status was never changed.
+/// The user's status has never been changed.
 final class UserStatusEmpty extends UserStatus {
   
   /// **UserStatusEmpty** *(userStatusEmpty)* - child of UserStatus
   ///
-  /// The user status was never changed.
+  /// The user's status has never been changed.
   const UserStatusEmpty();
   
   /// Parse from a json
@@ -216,27 +216,47 @@ final class UserStatusOffline extends UserStatus {
 /// **UserStatusRecently** *(userStatusRecently)* - child of UserStatus
 ///
 /// The user was online recently.
+///
+/// * [byMyPrivacySettings]: Exact user's status is hidden because the current user enabled userPrivacySettingShowStatus privacy setting for the user and has no Telegram Premium.
 final class UserStatusRecently extends UserStatus {
   
   /// **UserStatusRecently** *(userStatusRecently)* - child of UserStatus
   ///
   /// The user was online recently.
-  const UserStatusRecently();
+  ///
+  /// * [byMyPrivacySettings]: Exact user's status is hidden because the current user enabled userPrivacySettingShowStatus privacy setting for the user and has no Telegram Premium.
+  const UserStatusRecently({
+    required this.byMyPrivacySettings,
+  });
+  
+  /// Exact user's status is hidden because the current user enabled userPrivacySettingShowStatus privacy setting for the user and has no Telegram Premium
+  final bool byMyPrivacySettings;
   
   /// Parse from a json
-  factory UserStatusRecently.fromJson(Map<String, dynamic> json) => const UserStatusRecently();
+  factory UserStatusRecently.fromJson(Map<String, dynamic> json) => UserStatusRecently(
+    byMyPrivacySettings: json['by_my_privacy_settings'],
+  );
+  
   
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
 			"@type": objectType,
+      "by_my_privacy_settings": byMyPrivacySettings,
 		};
 	}
 
-  /// Copy instance with no modifications.
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [by_my_privacy_settings]: Exact user's status is hidden because the current user enabled userPrivacySettingShowStatus privacy setting for the user and has no Telegram Premium
   @override
-  UserStatusRecently copyWith() => const UserStatusRecently();
+  UserStatusRecently copyWith({
+    bool? byMyPrivacySettings,
+  }) => UserStatusRecently(
+    byMyPrivacySettings: byMyPrivacySettings ?? this.byMyPrivacySettings,
+  );
 
   /// TDLib object type
   static const String objectType = 'userStatusRecently';
@@ -254,27 +274,47 @@ final class UserStatusRecently extends UserStatus {
 /// **UserStatusLastWeek** *(userStatusLastWeek)* - child of UserStatus
 ///
 /// The user is offline, but was online last week.
+///
+/// * [byMyPrivacySettings]: Exact user's status is hidden because the current user enabled userPrivacySettingShowStatus privacy setting for the user and has no Telegram Premium.
 final class UserStatusLastWeek extends UserStatus {
   
   /// **UserStatusLastWeek** *(userStatusLastWeek)* - child of UserStatus
   ///
   /// The user is offline, but was online last week.
-  const UserStatusLastWeek();
+  ///
+  /// * [byMyPrivacySettings]: Exact user's status is hidden because the current user enabled userPrivacySettingShowStatus privacy setting for the user and has no Telegram Premium.
+  const UserStatusLastWeek({
+    required this.byMyPrivacySettings,
+  });
+  
+  /// Exact user's status is hidden because the current user enabled userPrivacySettingShowStatus privacy setting for the user and has no Telegram Premium
+  final bool byMyPrivacySettings;
   
   /// Parse from a json
-  factory UserStatusLastWeek.fromJson(Map<String, dynamic> json) => const UserStatusLastWeek();
+  factory UserStatusLastWeek.fromJson(Map<String, dynamic> json) => UserStatusLastWeek(
+    byMyPrivacySettings: json['by_my_privacy_settings'],
+  );
+  
   
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
 			"@type": objectType,
+      "by_my_privacy_settings": byMyPrivacySettings,
 		};
 	}
 
-  /// Copy instance with no modifications.
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [by_my_privacy_settings]: Exact user's status is hidden because the current user enabled userPrivacySettingShowStatus privacy setting for the user and has no Telegram Premium
   @override
-  UserStatusLastWeek copyWith() => const UserStatusLastWeek();
+  UserStatusLastWeek copyWith({
+    bool? byMyPrivacySettings,
+  }) => UserStatusLastWeek(
+    byMyPrivacySettings: byMyPrivacySettings ?? this.byMyPrivacySettings,
+  );
 
   /// TDLib object type
   static const String objectType = 'userStatusLastWeek';
@@ -292,27 +332,47 @@ final class UserStatusLastWeek extends UserStatus {
 /// **UserStatusLastMonth** *(userStatusLastMonth)* - child of UserStatus
 ///
 /// The user is offline, but was online last month.
+///
+/// * [byMyPrivacySettings]: Exact user's status is hidden because the current user enabled userPrivacySettingShowStatus privacy setting for the user and has no Telegram Premium.
 final class UserStatusLastMonth extends UserStatus {
   
   /// **UserStatusLastMonth** *(userStatusLastMonth)* - child of UserStatus
   ///
   /// The user is offline, but was online last month.
-  const UserStatusLastMonth();
+  ///
+  /// * [byMyPrivacySettings]: Exact user's status is hidden because the current user enabled userPrivacySettingShowStatus privacy setting for the user and has no Telegram Premium.
+  const UserStatusLastMonth({
+    required this.byMyPrivacySettings,
+  });
+  
+  /// Exact user's status is hidden because the current user enabled userPrivacySettingShowStatus privacy setting for the user and has no Telegram Premium
+  final bool byMyPrivacySettings;
   
   /// Parse from a json
-  factory UserStatusLastMonth.fromJson(Map<String, dynamic> json) => const UserStatusLastMonth();
+  factory UserStatusLastMonth.fromJson(Map<String, dynamic> json) => UserStatusLastMonth(
+    byMyPrivacySettings: json['by_my_privacy_settings'],
+  );
+  
   
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
 		return {
 			"@type": objectType,
+      "by_my_privacy_settings": byMyPrivacySettings,
 		};
 	}
 
-  /// Copy instance with no modifications.
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [by_my_privacy_settings]: Exact user's status is hidden because the current user enabled userPrivacySettingShowStatus privacy setting for the user and has no Telegram Premium
   @override
-  UserStatusLastMonth copyWith() => const UserStatusLastMonth();
+  UserStatusLastMonth copyWith({
+    bool? byMyPrivacySettings,
+  }) => UserStatusLastMonth(
+    byMyPrivacySettings: byMyPrivacySettings ?? this.byMyPrivacySettings,
+  );
 
   /// TDLib object type
   static const String objectType = 'userStatusLastMonth';

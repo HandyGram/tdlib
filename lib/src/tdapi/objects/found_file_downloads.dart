@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 ///
 /// * [totalCounts]: Total number of suitable files, ignoring offset.
 /// * [files]: The list of files.
-/// * [nextOffset]: The offset for the next request. If empty, there are no more results.
+/// * [nextOffset]: The offset for the next request. If empty, then there are no more results.
 final class FoundFileDownloads extends TdObject {
   
   /// **FoundFileDownloads** *(foundFileDownloads)* - basic class
@@ -15,7 +15,7 @@ final class FoundFileDownloads extends TdObject {
   ///
   /// * [totalCounts]: Total number of suitable files, ignoring offset.
   /// * [files]: The list of files.
-  /// * [nextOffset]: The offset for the next request. If empty, there are no more results.
+  /// * [nextOffset]: The offset for the next request. If empty, then there are no more results.
   const FoundFileDownloads({
     required this.totalCounts,
     required this.files,
@@ -30,7 +30,7 @@ final class FoundFileDownloads extends TdObject {
   /// The list of files
   final List<FileDownload> files;
 
-  /// The offset for the next request. If empty, there are no more results
+  /// The offset for the next request. If empty, then there are no more results
   final String nextOffset;
 
   /// [extra] callback sign
@@ -67,7 +67,7 @@ final class FoundFileDownloads extends TdObject {
   /// Properties:
   /// * [total_counts]: Total number of suitable files, ignoring offset
   /// * [files]: The list of files
-  /// * [next_offset]: The offset for the next request. If empty, there are no more results
+  /// * [next_offset]: The offset for the next request. If empty, then there are no more results
   FoundFileDownloads copyWith({
     DownloadedFileCounts? totalCounts,
     List<FileDownload>? files,

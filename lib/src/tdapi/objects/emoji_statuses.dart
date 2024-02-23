@@ -2,14 +2,14 @@ part of '../tdapi.dart';
 
 /// **EmojiStatuses** *(emojiStatuses)* - basic class
 ///
-/// Contains a list of custom emoji identifiers, which can be set as emoji statuses.
+/// Contains a list of custom emoji identifiers for emoji statuses.
 ///
 /// * [customEmojiIds]: The list of custom emoji identifiers.
 final class EmojiStatuses extends TdObject {
   
   /// **EmojiStatuses** *(emojiStatuses)* - basic class
   ///
-  /// Contains a list of custom emoji identifiers, which can be set as emoji statuses.
+  /// Contains a list of custom emoji identifiers for emoji statuses.
   ///
   /// * [customEmojiIds]: The list of custom emoji identifiers.
   const EmojiStatuses({

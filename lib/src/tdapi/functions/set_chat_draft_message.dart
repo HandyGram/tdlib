@@ -5,8 +5,8 @@ part of '../tdapi.dart';
 /// Changes the draft message in a chat.
 ///
 /// * [chatId]: Chat identifier.
-/// * [messageThreadId]: If not 0, a message thread identifier in which the draft was changed.
-/// * [draftMessage]: New draft message; pass null to remove the draft *(optional)*.
+/// * [messageThreadId]: If not 0, the message thread identifier in which the draft was changed.
+/// * [draftMessage]: New draft message; pass null to remove the draft. All files in draft message content must be of the type inputFileLocal. Media thumbnails and captions are ignored *(optional)*.
 ///
 /// [Ok] is returned on completion.
 final class SetChatDraftMessage extends TdFunction {
@@ -16,8 +16,8 @@ final class SetChatDraftMessage extends TdFunction {
   /// Changes the draft message in a chat.
   ///
   /// * [chatId]: Chat identifier.
-  /// * [messageThreadId]: If not 0, a message thread identifier in which the draft was changed.
-  /// * [draftMessage]: New draft message; pass null to remove the draft *(optional)*.
+  /// * [messageThreadId]: If not 0, the message thread identifier in which the draft was changed.
+  /// * [draftMessage]: New draft message; pass null to remove the draft. All files in draft message content must be of the type inputFileLocal. Media thumbnails and captions are ignored *(optional)*.
   ///
   /// [Ok] is returned on completion.
   const SetChatDraftMessage({
@@ -26,13 +26,13 @@ final class SetChatDraftMessage extends TdFunction {
     this.draftMessage,
   });
   
-  /// Chat identifier 
+  /// Chat identifier
   final int chatId;
 
-  /// If not 0, a message thread identifier in which the draft was changed 
+  /// If not 0, the message thread identifier in which the draft was changed
   final int messageThreadId;
 
-  /// New draft message; pass null to remove the draft
+  /// New draft message; pass null to remove the draft. All files in draft message content must be of the type inputFileLocal. Media thumbnails and captions are ignored
   final DraftMessage? draftMessage;
   
   /// Convert model to TDLib JSON format
@@ -50,9 +50,9 @@ final class SetChatDraftMessage extends TdFunction {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
-  /// * [message_thread_id]: If not 0, a message thread identifier in which the draft was changed 
-  /// * [draft_message]: New draft message; pass null to remove the draft
+  /// * [chat_id]: Chat identifier
+  /// * [message_thread_id]: If not 0, the message thread identifier in which the draft was changed
+  /// * [draft_message]: New draft message; pass null to remove the draft. All files in draft message content must be of the type inputFileLocal. Media thumbnails and captions are ignored
   SetChatDraftMessage copyWith({
     int? chatId,
     int? messageThreadId,

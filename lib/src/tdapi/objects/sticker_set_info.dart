@@ -7,13 +7,15 @@ part of '../tdapi.dart';
 /// * [id]: Identifier of the sticker set.
 /// * [title]: Title of the sticker set.
 /// * [name]: Name of the sticker set.
-/// * [thumbnail]: Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null *(optional)*.
+/// * [thumbnail]: Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null. The file can be downloaded only before the thumbnail is changed *(optional)*.
 /// * [thumbnailOutline]: Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner.
 /// * [isInstalled]: True, if the sticker set has been installed by the current user.
 /// * [isArchived]: True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously.
 /// * [isOfficial]: True, if the sticker set is official.
 /// * [stickerFormat]: Format of the stickers in the set.
 /// * [stickerType]: Type of the stickers in the set.
+/// * [needsRepainting]: True, if stickers in the sticker set are custom emoji that must be repainted; for custom emoji sticker sets only.
+/// * [isAllowedAsChatEmojiStatus]: True, if stickers in the sticker set are custom emoji that can be used as chat emoji status; for custom emoji sticker sets only.
 /// * [isViewed]: True for already viewed trending sticker sets.
 /// * [size]: Total number of stickers in the set.
 /// * [covers]: Up to the first 5 stickers from the set, depending on the context. If the application needs more stickers the full sticker set needs to be requested.
@@ -26,13 +28,15 @@ final class StickerSetInfo extends TdObject {
   /// * [id]: Identifier of the sticker set.
   /// * [title]: Title of the sticker set.
   /// * [name]: Name of the sticker set.
-  /// * [thumbnail]: Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null *(optional)*.
+  /// * [thumbnail]: Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null. The file can be downloaded only before the thumbnail is changed *(optional)*.
   /// * [thumbnailOutline]: Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner.
   /// * [isInstalled]: True, if the sticker set has been installed by the current user.
   /// * [isArchived]: True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously.
   /// * [isOfficial]: True, if the sticker set is official.
   /// * [stickerFormat]: Format of the stickers in the set.
   /// * [stickerType]: Type of the stickers in the set.
+  /// * [needsRepainting]: True, if stickers in the sticker set are custom emoji that must be repainted; for custom emoji sticker sets only.
+  /// * [isAllowedAsChatEmojiStatus]: True, if stickers in the sticker set are custom emoji that can be used as chat emoji status; for custom emoji sticker sets only.
   /// * [isViewed]: True for already viewed trending sticker sets.
   /// * [size]: Total number of stickers in the set.
   /// * [covers]: Up to the first 5 stickers from the set, depending on the context. If the application needs more stickers the full sticker set needs to be requested.
@@ -47,6 +51,8 @@ final class StickerSetInfo extends TdObject {
     required this.isOfficial,
     required this.stickerFormat,
     required this.stickerType,
+    required this.needsRepainting,
+    required this.isAllowedAsChatEmojiStatus,
     required this.isViewed,
     required this.size,
     required this.covers,
@@ -61,7 +67,7 @@ final class StickerSetInfo extends TdObject {
   /// Name of the sticker set
   final String name;
 
-  /// Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null
+  /// Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null. The file can be downloaded only before the thumbnail is changed
   final Thumbnail? thumbnail;
 
   /// Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner
@@ -81,6 +87,12 @@ final class StickerSetInfo extends TdObject {
 
   /// Type of the stickers in the set
   final StickerType stickerType;
+
+  /// True, if stickers in the sticker set are custom emoji that must be repainted; for custom emoji sticker sets only
+  final bool needsRepainting;
+
+  /// True, if stickers in the sticker set are custom emoji that can be used as chat emoji status; for custom emoji sticker sets only
+  final bool isAllowedAsChatEmojiStatus;
 
   /// True for already viewed trending sticker sets
   final bool isViewed;
@@ -103,6 +115,8 @@ final class StickerSetInfo extends TdObject {
     isOfficial: json['is_official'],
     stickerFormat: StickerFormat.fromJson(json['sticker_format']),
     stickerType: StickerType.fromJson(json['sticker_type']),
+    needsRepainting: json['needs_repainting'],
+    isAllowedAsChatEmojiStatus: json['is_allowed_as_chat_emoji_status'],
     isViewed: json['is_viewed'],
     size: json['size'],
     covers: List<Sticker>.from((json['covers'] ?? []).map((item) => Sticker.fromJson(item)).toList()),
@@ -124,6 +138,8 @@ final class StickerSetInfo extends TdObject {
       "is_official": isOfficial,
       "sticker_format": stickerFormat.toJson(),
       "sticker_type": stickerType.toJson(),
+      "needs_repainting": needsRepainting,
+      "is_allowed_as_chat_emoji_status": isAllowedAsChatEmojiStatus,
       "is_viewed": isViewed,
       "size": size,
       "covers": covers.map((i) => i.toJson()).toList(),
@@ -136,13 +152,15 @@ final class StickerSetInfo extends TdObject {
   /// * [id]: Identifier of the sticker set
   /// * [title]: Title of the sticker set
   /// * [name]: Name of the sticker set
-  /// * [thumbnail]: Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null
+  /// * [thumbnail]: Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null. The file can be downloaded only before the thumbnail is changed
   /// * [thumbnail_outline]: Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner
   /// * [is_installed]: True, if the sticker set has been installed by the current user
   /// * [is_archived]: True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously
   /// * [is_official]: True, if the sticker set is official
   /// * [sticker_format]: Format of the stickers in the set
   /// * [sticker_type]: Type of the stickers in the set
+  /// * [needs_repainting]: True, if stickers in the sticker set are custom emoji that must be repainted; for custom emoji sticker sets only
+  /// * [is_allowed_as_chat_emoji_status]: True, if stickers in the sticker set are custom emoji that can be used as chat emoji status; for custom emoji sticker sets only
   /// * [is_viewed]: True for already viewed trending sticker sets
   /// * [size]: Total number of stickers in the set
   /// * [covers]: Up to the first 5 stickers from the set, depending on the context. If the application needs more stickers the full sticker set needs to be requested
@@ -157,6 +175,8 @@ final class StickerSetInfo extends TdObject {
     bool? isOfficial,
     StickerFormat? stickerFormat,
     StickerType? stickerType,
+    bool? needsRepainting,
+    bool? isAllowedAsChatEmojiStatus,
     bool? isViewed,
     int? size,
     List<Sticker>? covers,
@@ -171,6 +191,8 @@ final class StickerSetInfo extends TdObject {
     isOfficial: isOfficial ?? this.isOfficial,
     stickerFormat: stickerFormat ?? this.stickerFormat,
     stickerType: stickerType ?? this.stickerType,
+    needsRepainting: needsRepainting ?? this.needsRepainting,
+    isAllowedAsChatEmojiStatus: isAllowedAsChatEmojiStatus ?? this.isAllowedAsChatEmojiStatus,
     isViewed: isViewed ?? this.isViewed,
     size: size ?? this.size,
     covers: covers ?? this.covers,

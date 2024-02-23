@@ -58,12 +58,12 @@ sealed class ConnectionState extends TdObject {
 
 /// **ConnectionStateWaitingForNetwork** *(connectionStateWaitingForNetwork)* - child of ConnectionState
 ///
-/// Currently waiting for the network to become available. Use setNetworkType to change the available network type.
+/// Waiting for the network to become available. Use setNetworkType to change the available network type.
 final class ConnectionStateWaitingForNetwork extends ConnectionState {
   
   /// **ConnectionStateWaitingForNetwork** *(connectionStateWaitingForNetwork)* - child of ConnectionState
   ///
-  /// Currently waiting for the network to become available. Use setNetworkType to change the available network type.
+  /// Waiting for the network to become available. Use setNetworkType to change the available network type.
   const ConnectionStateWaitingForNetwork();
   
   /// Parse from a json
@@ -96,12 +96,12 @@ final class ConnectionStateWaitingForNetwork extends ConnectionState {
 
 /// **ConnectionStateConnectingToProxy** *(connectionStateConnectingToProxy)* - child of ConnectionState
 ///
-/// Currently establishing a connection with a proxy server.
+/// Establishing a connection with a proxy server.
 final class ConnectionStateConnectingToProxy extends ConnectionState {
   
   /// **ConnectionStateConnectingToProxy** *(connectionStateConnectingToProxy)* - child of ConnectionState
   ///
-  /// Currently establishing a connection with a proxy server.
+  /// Establishing a connection with a proxy server.
   const ConnectionStateConnectingToProxy();
   
   /// Parse from a json
@@ -134,12 +134,12 @@ final class ConnectionStateConnectingToProxy extends ConnectionState {
 
 /// **ConnectionStateConnecting** *(connectionStateConnecting)* - child of ConnectionState
 ///
-/// Currently establishing a connection to the Telegram servers.
+/// Establishing a connection to the Telegram servers.
 final class ConnectionStateConnecting extends ConnectionState {
   
   /// **ConnectionStateConnecting** *(connectionStateConnecting)* - child of ConnectionState
   ///
-  /// Currently establishing a connection to the Telegram servers.
+  /// Establishing a connection to the Telegram servers.
   const ConnectionStateConnecting();
   
   /// Parse from a json
@@ -172,12 +172,12 @@ final class ConnectionStateConnecting extends ConnectionState {
 
 /// **ConnectionStateUpdating** *(connectionStateUpdating)* - child of ConnectionState
 ///
-/// Downloading data received while the application was offline.
+/// Downloading data supposed to be received while the application was offline.
 final class ConnectionStateUpdating extends ConnectionState {
   
   /// **ConnectionStateUpdating** *(connectionStateUpdating)* - child of ConnectionState
   ///
-  /// Downloading data received while the application was offline.
+  /// Downloading data supposed to be received while the application was offline.
   const ConnectionStateUpdating();
   
   /// Parse from a json

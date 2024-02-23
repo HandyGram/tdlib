@@ -179,12 +179,12 @@ final class CanSendStoryResultPremiumNeeded extends CanSendStoryResult {
 
 /// **CanSendStoryResultBoostNeeded** *(canSendStoryResultBoostNeeded)* - child of CanSendStoryResult
 ///
-/// The channel chat must be boosted first by Telegram Premium subscribers to post more stories. Call getChatBoostStatus to get current boost status of the chat.
+/// The chat must be boosted first by Telegram Premium subscribers to post more stories. Call getChatBoostStatus to get current boost status of the chat.
 final class CanSendStoryResultBoostNeeded extends CanSendStoryResult {
   
   /// **CanSendStoryResultBoostNeeded** *(canSendStoryResultBoostNeeded)* - child of CanSendStoryResult
   ///
-  /// The channel chat must be boosted first by Telegram Premium subscribers to post more stories. Call getChatBoostStatus to get current boost status of the chat.
+  /// The chat must be boosted first by Telegram Premium subscribers to post more stories. Call getChatBoostStatus to get current boost status of the chat.
   const CanSendStoryResultBoostNeeded({
     this.extra,
     this.clientId,

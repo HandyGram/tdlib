@@ -27,6 +27,7 @@ sealed class TextEntityType extends TdObject {
   /// * [TextEntityTypeCode]
   /// * [TextEntityTypePre]
   /// * [TextEntityTypePreCode]
+  /// * [TextEntityTypeBlockQuote]
   /// * [TextEntityTypeTextUrl]
   /// * [TextEntityTypeMentionName]
   /// * [TextEntityTypeCustomEmoji]
@@ -65,6 +66,8 @@ sealed class TextEntityType extends TdObject {
         return TextEntityTypePre.fromJson(json);
       case TextEntityTypePreCode.objectType:
         return TextEntityTypePreCode.fromJson(json);
+      case TextEntityTypeBlockQuote.objectType:
+        return TextEntityTypeBlockQuote.fromJson(json);
       case TextEntityTypeTextUrl.objectType:
         return TextEntityTypeTextUrl.fromJson(json);
       case TextEntityTypeMentionName.objectType:
@@ -718,6 +721,44 @@ final class TextEntityTypePreCode extends TextEntityType {
 
   /// TDLib object type
   static const String objectType = 'textEntityTypePreCode';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **TextEntityTypeBlockQuote** *(textEntityTypeBlockQuote)* - child of TextEntityType
+///
+/// Text that must be formatted as if inside a blockquote HTML tag.
+final class TextEntityTypeBlockQuote extends TextEntityType {
+  
+  /// **TextEntityTypeBlockQuote** *(textEntityTypeBlockQuote)* - child of TextEntityType
+  ///
+  /// Text that must be formatted as if inside a blockquote HTML tag.
+  const TextEntityTypeBlockQuote();
+  
+  /// Parse from a json
+  factory TextEntityTypeBlockQuote.fromJson(Map<String, dynamic> json) => const TextEntityTypeBlockQuote();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  TextEntityTypeBlockQuote copyWith() => const TextEntityTypeBlockQuote();
+
+  /// TDLib object type
+  static const String objectType = 'textEntityTypeBlockQuote';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

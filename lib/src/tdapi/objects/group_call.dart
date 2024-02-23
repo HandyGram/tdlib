@@ -7,7 +7,7 @@ part of '../tdapi.dart';
 /// * [id]: Group call identifier.
 /// * [title]: Group call title.
 /// * [scheduledStartDate]: Point in time (Unix timestamp) when the group call is supposed to be started by an administrator; 0 if it is already active or was ended.
-/// * [enabledStartNotification]: True, if the group call is scheduled and the current user will receive a notification when the group call will start.
+/// * [enabledStartNotification]: True, if the group call is scheduled and the current user will receive a notification when the group call starts.
 /// * [isActive]: True, if the call is active.
 /// * [isRtmpStream]: True, if the chat is an RTMP stream instead of an ordinary video chat.
 /// * [isJoined]: True, if the call is joined.
@@ -34,7 +34,7 @@ final class GroupCall extends TdObject {
   /// * [id]: Group call identifier.
   /// * [title]: Group call title.
   /// * [scheduledStartDate]: Point in time (Unix timestamp) when the group call is supposed to be started by an administrator; 0 if it is already active or was ended.
-  /// * [enabledStartNotification]: True, if the group call is scheduled and the current user will receive a notification when the group call will start.
+  /// * [enabledStartNotification]: True, if the group call is scheduled and the current user will receive a notification when the group call starts.
   /// * [isActive]: True, if the call is active.
   /// * [isRtmpStream]: True, if the chat is an RTMP stream instead of an ordinary video chat.
   /// * [isJoined]: True, if the call is joined.
@@ -87,7 +87,7 @@ final class GroupCall extends TdObject {
   /// Point in time (Unix timestamp) when the group call is supposed to be started by an administrator; 0 if it is already active or was ended
   final int scheduledStartDate;
 
-  /// True, if the group call is scheduled and the current user will receive a notification when the group call will start
+  /// True, if the group call is scheduled and the current user will receive a notification when the group call starts
   final bool enabledStartNotification;
 
   /// True, if the call is active
@@ -212,7 +212,7 @@ final class GroupCall extends TdObject {
   /// * [id]: Group call identifier
   /// * [title]: Group call title
   /// * [scheduled_start_date]: Point in time (Unix timestamp) when the group call is supposed to be started by an administrator; 0 if it is already active or was ended
-  /// * [enabled_start_notification]: True, if the group call is scheduled and the current user will receive a notification when the group call will start
+  /// * [enabled_start_notification]: True, if the group call is scheduled and the current user will receive a notification when the group call starts
   /// * [is_active]: True, if the call is active
   /// * [is_rtmp_stream]: True, if the chat is an RTMP stream instead of an ordinary video chat
   /// * [is_joined]: True, if the call is joined

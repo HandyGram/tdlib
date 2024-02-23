@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **SetPinnedForumTopics** *(setPinnedForumTopics)* - TDLib function
 ///
-/// Changes the order of pinned forum topics.
+/// Changes the order of pinned forum topics; requires can_manage_topics right in the supergroup.
 ///
 /// * [chatId]: Chat identifier.
 /// * [messageThreadIds]: The new list of pinned forum topics.
@@ -12,7 +12,7 @@ final class SetPinnedForumTopics extends TdFunction {
   
   /// **SetPinnedForumTopics** *(setPinnedForumTopics)* - TDLib function
   ///
-  /// Changes the order of pinned forum topics.
+  /// Changes the order of pinned forum topics; requires can_manage_topics right in the supergroup.
   ///
   /// * [chatId]: Chat identifier.
   /// * [messageThreadIds]: The new list of pinned forum topics.

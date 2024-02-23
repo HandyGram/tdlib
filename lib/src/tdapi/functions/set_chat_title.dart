@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **SetChatTitle** *(setChatTitle)* - TDLib function
 ///
-/// Changes the chat title. Supported only for basic groups, supergroups and channels. Requires can_change_info administrator right.
+/// Changes the chat title. Supported only for basic groups, supergroups and channels. Requires can_change_info member right.
 ///
 /// * [chatId]: Chat identifier.
 /// * [title]: New title of the chat; 1-128 characters.
@@ -12,7 +12,7 @@ final class SetChatTitle extends TdFunction {
   
   /// **SetChatTitle** *(setChatTitle)* - TDLib function
   ///
-  /// Changes the chat title. Supported only for basic groups, supergroups and channels. Requires can_change_info administrator right.
+  /// Changes the chat title. Supported only for basic groups, supergroups and channels. Requires can_change_info member right.
   ///
   /// * [chatId]: Chat identifier.
   /// * [title]: New title of the chat; 1-128 characters.

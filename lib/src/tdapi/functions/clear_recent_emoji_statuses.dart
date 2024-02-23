@@ -2,14 +2,14 @@ part of '../tdapi.dart';
 
 /// **ClearRecentEmojiStatuses** *(clearRecentEmojiStatuses)* - TDLib function
 ///
-/// Clears the list of recently used emoji statuses.
+/// Clears the list of recently used emoji statuses for self status.
 ///
 /// [Ok] is returned on completion.
 final class ClearRecentEmojiStatuses extends TdFunction {
   
   /// **ClearRecentEmojiStatuses** *(clearRecentEmojiStatuses)* - TDLib function
   ///
-  /// Clears the list of recently used emoji statuses.
+  /// Clears the list of recently used emoji statuses for self status.
   ///
   /// [Ok] is returned on completion.
   const ClearRecentEmojiStatuses();

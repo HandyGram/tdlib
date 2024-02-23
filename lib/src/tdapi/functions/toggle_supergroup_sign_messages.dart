@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **ToggleSupergroupSignMessages** *(toggleSupergroupSignMessages)* - TDLib function
 ///
-/// Toggles whether sender signature is added to sent messages in a channel; requires can_change_info administrator right.
+/// Toggles whether sender signature is added to sent messages in a channel; requires can_change_info member right.
 ///
 /// * [supergroupId]: Identifier of the channel.
 /// * [signMessages]: New value of sign_messages.
@@ -12,7 +12,7 @@ final class ToggleSupergroupSignMessages extends TdFunction {
   
   /// **ToggleSupergroupSignMessages** *(toggleSupergroupSignMessages)* - TDLib function
   ///
-  /// Toggles whether sender signature is added to sent messages in a channel; requires can_change_info administrator right.
+  /// Toggles whether sender signature is added to sent messages in a channel; requires can_change_info member right.
   ///
   /// * [supergroupId]: Identifier of the channel.
   /// * [signMessages]: New value of sign_messages.

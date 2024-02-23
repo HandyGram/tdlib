@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **ReplaceVideoChatRtmpUrl** *(replaceVideoChatRtmpUrl)* - TDLib function
 ///
-/// Replaces the current RTMP URL for streaming to the chat; requires creator privileges.
+/// Replaces the current RTMP URL for streaming to the chat; requires owner privileges.
 ///
 /// * [chatId]: Chat identifier.
 ///
@@ -11,7 +11,7 @@ final class ReplaceVideoChatRtmpUrl extends TdFunction {
   
   /// **ReplaceVideoChatRtmpUrl** *(replaceVideoChatRtmpUrl)* - TDLib function
   ///
-  /// Replaces the current RTMP URL for streaming to the chat; requires creator privileges.
+  /// Replaces the current RTMP URL for streaming to the chat; requires owner privileges.
   ///
   /// * [chatId]: Chat identifier.
   ///

@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **CreateForumTopic** *(createForumTopic)* - TDLib function
 ///
-/// Creates a topic in a forum supergroup chat; requires can_manage_topics rights in the supergroup.
+/// Creates a topic in a forum supergroup chat; requires can_manage_topics administrator or can_create_topics member right in the supergroup.
 ///
 /// * [chatId]: Identifier of the chat.
 /// * [name]: Name of the topic; 1-128 characters.
@@ -13,7 +13,7 @@ final class CreateForumTopic extends TdFunction {
   
   /// **CreateForumTopic** *(createForumTopic)* - TDLib function
   ///
-  /// Creates a topic in a forum supergroup chat; requires can_manage_topics rights in the supergroup.
+  /// Creates a topic in a forum supergroup chat; requires can_manage_topics administrator or can_create_topics member right in the supergroup.
   ///
   /// * [chatId]: Identifier of the chat.
   /// * [name]: Name of the topic; 1-128 characters.

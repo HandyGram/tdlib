@@ -2,14 +2,15 @@ part of '../tdapi.dart';
 
 /// **SendStory** *(sendStory)* - TDLib function
 ///
-/// Sends a new story to a chat; requires can_post_stories rights for channel chats. Returns a temporary story.
+/// Sends a new story to a chat; requires can_post_stories right for supergroup and channel chats. Returns a temporary story.
 ///
 /// * [chatId]: Identifier of the chat that will post the story.
 /// * [content]: Content of the story.
 /// * [areas]: Clickable rectangle areas to be shown on the story media; pass null if none *(optional)*.
 /// * [caption]: Story caption; pass null to use an empty caption; 0-getOption("story_caption_length_max") characters *(optional)*.
-/// * [privacySettings]: The privacy settings for the story.
+/// * [privacySettings]: The privacy settings for the story; ignored for stories sent to supergroup and channel chats.
 /// * [activePeriod]: Period after which the story is moved to archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400 for Telegram Premium users, and 86400 otherwise.
+/// * [fromStoryFullId]: Full identifier of the original story, which content was used to create the story.
 /// * [isPinned]: Pass true to keep the story accessible after expiration.
 /// * [protectContent]: Pass true if the content of the story must be protected from forwarding and screenshotting.
 ///
@@ -18,14 +19,15 @@ final class SendStory extends TdFunction {
   
   /// **SendStory** *(sendStory)* - TDLib function
   ///
-  /// Sends a new story to a chat; requires can_post_stories rights for channel chats. Returns a temporary story.
+  /// Sends a new story to a chat; requires can_post_stories right for supergroup and channel chats. Returns a temporary story.
   ///
   /// * [chatId]: Identifier of the chat that will post the story.
   /// * [content]: Content of the story.
   /// * [areas]: Clickable rectangle areas to be shown on the story media; pass null if none *(optional)*.
   /// * [caption]: Story caption; pass null to use an empty caption; 0-getOption("story_caption_length_max") characters *(optional)*.
-  /// * [privacySettings]: The privacy settings for the story.
+  /// * [privacySettings]: The privacy settings for the story; ignored for stories sent to supergroup and channel chats.
   /// * [activePeriod]: Period after which the story is moved to archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400 for Telegram Premium users, and 86400 otherwise.
+  /// * [fromStoryFullId]: Full identifier of the original story, which content was used to create the story.
   /// * [isPinned]: Pass true to keep the story accessible after expiration.
   /// * [protectContent]: Pass true if the content of the story must be protected from forwarding and screenshotting.
   ///
@@ -37,6 +39,7 @@ final class SendStory extends TdFunction {
     this.caption,
     required this.privacySettings,
     required this.activePeriod,
+    required this.fromStoryFullId,
     required this.isPinned,
     required this.protectContent,
   });
@@ -53,11 +56,14 @@ final class SendStory extends TdFunction {
   /// Story caption; pass null to use an empty caption; 0-getOption("story_caption_length_max") characters
   final FormattedText? caption;
 
-  /// The privacy settings for the story
+  /// The privacy settings for the story; ignored for stories sent to supergroup and channel chats
   final StoryPrivacySettings privacySettings;
 
   /// Period after which the story is moved to archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400 for Telegram Premium users, and 86400 otherwise
   final int activePeriod;
+
+  /// Full identifier of the original story, which content was used to create the story
+  final StoryFullId fromStoryFullId;
 
   /// Pass true to keep the story accessible after expiration
   final bool isPinned;
@@ -76,6 +82,7 @@ final class SendStory extends TdFunction {
       "caption": caption?.toJson(),
       "privacy_settings": privacySettings.toJson(),
       "active_period": activePeriod,
+      "from_story_full_id": fromStoryFullId.toJson(),
       "is_pinned": isPinned,
       "protect_content": protectContent,
       "@extra": extra,
@@ -89,8 +96,9 @@ final class SendStory extends TdFunction {
   /// * [content]: Content of the story
   /// * [areas]: Clickable rectangle areas to be shown on the story media; pass null if none
   /// * [caption]: Story caption; pass null to use an empty caption; 0-getOption("story_caption_length_max") characters
-  /// * [privacy_settings]: The privacy settings for the story
+  /// * [privacy_settings]: The privacy settings for the story; ignored for stories sent to supergroup and channel chats
   /// * [active_period]: Period after which the story is moved to archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400 for Telegram Premium users, and 86400 otherwise
+  /// * [from_story_full_id]: Full identifier of the original story, which content was used to create the story
   /// * [is_pinned]: Pass true to keep the story accessible after expiration
   /// * [protect_content]: Pass true if the content of the story must be protected from forwarding and screenshotting
   SendStory copyWith({
@@ -100,6 +108,7 @@ final class SendStory extends TdFunction {
     FormattedText? caption,
     StoryPrivacySettings? privacySettings,
     int? activePeriod,
+    StoryFullId? fromStoryFullId,
     bool? isPinned,
     bool? protectContent,
   }) => SendStory(
@@ -109,6 +118,7 @@ final class SendStory extends TdFunction {
     caption: caption ?? this.caption,
     privacySettings: privacySettings ?? this.privacySettings,
     activePeriod: activePeriod ?? this.activePeriod,
+    fromStoryFullId: fromStoryFullId ?? this.fromStoryFullId,
     isPinned: isPinned ?? this.isPinned,
     protectContent: protectContent ?? this.protectContent,
   );

@@ -9,6 +9,7 @@ part of '../tdapi.dart';
 /// * [type]: Type of the chat.
 /// * [title]: Title of the chat.
 /// * [photo]: Chat photo; may be null *(optional)*.
+/// * [accentColorId]: Identifier of the accent color for chat title and background of chat photo.
 /// * [description]: Chat description.
 /// * [memberCount]: Number of members in the chat.
 /// * [memberUserIds]: User identifiers of some chat members that may be known to the current user.
@@ -28,6 +29,7 @@ final class ChatInviteLinkInfo extends TdObject {
   /// * [type]: Type of the chat.
   /// * [title]: Title of the chat.
   /// * [photo]: Chat photo; may be null *(optional)*.
+  /// * [accentColorId]: Identifier of the accent color for chat title and background of chat photo.
   /// * [description]: Chat description.
   /// * [memberCount]: Number of members in the chat.
   /// * [memberUserIds]: User identifiers of some chat members that may be known to the current user.
@@ -42,6 +44,7 @@ final class ChatInviteLinkInfo extends TdObject {
     required this.type,
     required this.title,
     this.photo,
+    required this.accentColorId,
     required this.description,
     required this.memberCount,
     required this.memberUserIds,
@@ -68,6 +71,9 @@ final class ChatInviteLinkInfo extends TdObject {
 
   /// Chat photo; may be null
   final ChatPhotoInfo? photo;
+
+  /// Identifier of the accent color for chat title and background of chat photo
+  final int accentColorId;
 
   /// Chat description
   final String description;
@@ -108,6 +114,7 @@ final class ChatInviteLinkInfo extends TdObject {
     type: InviteLinkChatType.fromJson(json['type']),
     title: json['title'],
     photo: json['photo'] == null ? null : ChatPhotoInfo.fromJson(json['photo']),
+    accentColorId: json['accent_color_id'],
     description: json['description'],
     memberCount: json['member_count'],
     memberUserIds: List<int>.from((json['member_user_ids'] ?? []).map((item) => item).toList()),
@@ -131,6 +138,7 @@ final class ChatInviteLinkInfo extends TdObject {
       "type": type.toJson(),
       "title": title,
       "photo": photo?.toJson(),
+      "accent_color_id": accentColorId,
       "description": description,
       "member_count": memberCount,
       "member_user_ids": memberUserIds.map((i) => i).toList(),
@@ -150,6 +158,7 @@ final class ChatInviteLinkInfo extends TdObject {
   /// * [type]: Type of the chat
   /// * [title]: Title of the chat
   /// * [photo]: Chat photo; may be null
+  /// * [accent_color_id]: Identifier of the accent color for chat title and background of chat photo
   /// * [description]: Chat description
   /// * [member_count]: Number of members in the chat
   /// * [member_user_ids]: User identifiers of some chat members that may be known to the current user
@@ -164,6 +173,7 @@ final class ChatInviteLinkInfo extends TdObject {
     InviteLinkChatType? type,
     String? title,
     ChatPhotoInfo? photo,
+    int? accentColorId,
     String? description,
     int? memberCount,
     List<int>? memberUserIds,
@@ -180,6 +190,7 @@ final class ChatInviteLinkInfo extends TdObject {
     type: type ?? this.type,
     title: title ?? this.title,
     photo: photo ?? this.photo,
+    accentColorId: accentColorId ?? this.accentColorId,
     description: description ?? this.description,
     memberCount: memberCount ?? this.memberCount,
     memberUserIds: memberUserIds ?? this.memberUserIds,

@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 /// Sends a notification about user activity in a chat.
 ///
 /// * [chatId]: Chat identifier.
-/// * [messageThreadId]: If not 0, a message thread identifier in which the action was performed.
+/// * [messageThreadId]: If not 0, the message thread identifier in which the action was performed.
 /// * [action]: The action description; pass null to cancel the currently active action *(optional)*.
 ///
 /// [Ok] is returned on completion.
@@ -16,7 +16,7 @@ final class SendChatAction extends TdFunction {
   /// Sends a notification about user activity in a chat.
   ///
   /// * [chatId]: Chat identifier.
-  /// * [messageThreadId]: If not 0, a message thread identifier in which the action was performed.
+  /// * [messageThreadId]: If not 0, the message thread identifier in which the action was performed.
   /// * [action]: The action description; pass null to cancel the currently active action *(optional)*.
   ///
   /// [Ok] is returned on completion.
@@ -29,7 +29,7 @@ final class SendChatAction extends TdFunction {
   /// Chat identifier 
   final int chatId;
 
-  /// If not 0, a message thread identifier in which the action was performed 
+  /// If not 0, the message thread identifier in which the action was performed 
   final int messageThreadId;
 
   /// The action description; pass null to cancel the currently active action
@@ -51,7 +51,7 @@ final class SendChatAction extends TdFunction {
   ///
   /// Properties:
   /// * [chat_id]: Chat identifier 
-  /// * [message_thread_id]: If not 0, a message thread identifier in which the action was performed 
+  /// * [message_thread_id]: If not 0, the message thread identifier in which the action was performed 
   /// * [action]: The action description; pass null to cancel the currently active action
   SendChatAction copyWith({
     int? chatId,

@@ -243,7 +243,7 @@ final class ChatTypeSupergroup extends ChatType {
 /// A secret chat with a user.
 ///
 /// * [secretChatId]: Secret chat identifier.
-/// * [userId]: User identifier of the secret chat peer.
+/// * [userId]: User identifier of the other user in the secret chat.
 final class ChatTypeSecret extends ChatType {
   
   /// **ChatTypeSecret** *(chatTypeSecret)* - child of ChatType
@@ -251,7 +251,7 @@ final class ChatTypeSecret extends ChatType {
   /// A secret chat with a user.
   ///
   /// * [secretChatId]: Secret chat identifier.
-  /// * [userId]: User identifier of the secret chat peer.
+  /// * [userId]: User identifier of the other user in the secret chat.
   const ChatTypeSecret({
     required this.secretChatId,
     required this.userId,
@@ -260,7 +260,7 @@ final class ChatTypeSecret extends ChatType {
   /// Secret chat identifier 
   final int secretChatId;
 
-  /// User identifier of the secret chat peer
+  /// User identifier of the other user in the secret chat
   final int userId;
   
   /// Parse from a json
@@ -284,7 +284,7 @@ final class ChatTypeSecret extends ChatType {
   ///
   /// Properties:
   /// * [secret_chat_id]: Secret chat identifier 
-  /// * [user_id]: User identifier of the secret chat peer
+  /// * [user_id]: User identifier of the other user in the secret chat
   @override
   ChatTypeSecret copyWith({
     int? secretChatId,

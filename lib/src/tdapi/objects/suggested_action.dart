@@ -20,6 +20,7 @@ sealed class SuggestedAction extends TdObject {
   /// * [SuggestedActionUpgradePremium]
   /// * [SuggestedActionRestorePremium]
   /// * [SuggestedActionSubscribeToAnnualPremium]
+  /// * [SuggestedActionGiftPremiumForChristmas]
   factory SuggestedAction.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
       case SuggestedActionEnableArchiveAndMuteNewChats.objectType:
@@ -40,6 +41,8 @@ sealed class SuggestedAction extends TdObject {
         return SuggestedActionRestorePremium.fromJson(json);
       case SuggestedActionSubscribeToAnnualPremium.objectType:
         return SuggestedActionSubscribeToAnnualPremium.fromJson(json);
+      case SuggestedActionGiftPremiumForChristmas.objectType:
+        return SuggestedActionGiftPremiumForChristmas.fromJson(json);
       default:
         throw FormatException(
           "Unknown object ${json["@type"]} (expected child of SuggestedAction)",
@@ -439,6 +442,44 @@ final class SuggestedActionSubscribeToAnnualPremium extends SuggestedAction {
 
   /// TDLib object type
   static const String objectType = 'suggestedActionSubscribeToAnnualPremium';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **SuggestedActionGiftPremiumForChristmas** *(suggestedActionGiftPremiumForChristmas)* - child of SuggestedAction
+///
+/// Suggests the user to gift Telegram Premium to friends for Christmas.
+final class SuggestedActionGiftPremiumForChristmas extends SuggestedAction {
+  
+  /// **SuggestedActionGiftPremiumForChristmas** *(suggestedActionGiftPremiumForChristmas)* - child of SuggestedAction
+  ///
+  /// Suggests the user to gift Telegram Premium to friends for Christmas.
+  const SuggestedActionGiftPremiumForChristmas();
+  
+  /// Parse from a json
+  factory SuggestedActionGiftPremiumForChristmas.fromJson(Map<String, dynamic> json) => const SuggestedActionGiftPremiumForChristmas();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  SuggestedActionGiftPremiumForChristmas copyWith() => const SuggestedActionGiftPremiumForChristmas();
+
+  /// TDLib object type
+  static const String objectType = 'suggestedActionGiftPremiumForChristmas';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

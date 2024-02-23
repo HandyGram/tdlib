@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **ToggleGeneralForumTopicIsHidden** *(toggleGeneralForumTopicIsHidden)* - TDLib function
 ///
-/// Toggles whether a General topic is hidden in a forum supergroup chat; requires can_manage_topics administrator right in the supergroup.
+/// Toggles whether a General topic is hidden in a forum supergroup chat; requires can_manage_topics right in the supergroup.
 ///
 /// * [chatId]: Identifier of the chat.
 /// * [isHidden]: Pass true to hide and close the General topic; pass false to unhide it.
@@ -12,7 +12,7 @@ final class ToggleGeneralForumTopicIsHidden extends TdFunction {
   
   /// **ToggleGeneralForumTopicIsHidden** *(toggleGeneralForumTopicIsHidden)* - TDLib function
   ///
-  /// Toggles whether a General topic is hidden in a forum supergroup chat; requires can_manage_topics administrator right in the supergroup.
+  /// Toggles whether a General topic is hidden in a forum supergroup chat; requires can_manage_topics right in the supergroup.
   ///
   /// * [chatId]: Identifier of the chat.
   /// * [isHidden]: Pass true to hide and close the General topic; pass false to unhide it.

@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 /// Constructs a persistent HTTP URL for a background.
 ///
 /// * [name]: Background name.
-/// * [type]: Background type.
+/// * [type]: Background type; backgroundTypeChatTheme isn't supported.
 ///
 /// [HttpUrl] is returned on completion.
 final class GetBackgroundUrl extends TdFunction {
@@ -15,7 +15,7 @@ final class GetBackgroundUrl extends TdFunction {
   /// Constructs a persistent HTTP URL for a background.
   ///
   /// * [name]: Background name.
-  /// * [type]: Background type.
+  /// * [type]: Background type; backgroundTypeChatTheme isn't supported.
   ///
   /// [HttpUrl] is returned on completion.
   const GetBackgroundUrl({
@@ -26,7 +26,7 @@ final class GetBackgroundUrl extends TdFunction {
   /// Background name 
   final String name;
 
-  /// Background type
+  /// Background type; backgroundTypeChatTheme isn't supported
   final BackgroundType type;
   
   /// Convert model to TDLib JSON format
@@ -44,7 +44,7 @@ final class GetBackgroundUrl extends TdFunction {
   ///
   /// Properties:
   /// * [name]: Background name 
-  /// * [type]: Background type
+  /// * [type]: Background type; backgroundTypeChatTheme isn't supported
   GetBackgroundUrl copyWith({
     String? name,
     BackgroundType? type,

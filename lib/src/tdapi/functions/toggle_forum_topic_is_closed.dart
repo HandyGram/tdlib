@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **ToggleForumTopicIsClosed** *(toggleForumTopicIsClosed)* - TDLib function
 ///
-/// Toggles whether a topic is closed in a forum supergroup chat; requires can_manage_topics administrator right in the supergroup unless the user is creator of the topic.
+/// Toggles whether a topic is closed in a forum supergroup chat; requires can_manage_topics right in the supergroup unless the user is creator of the topic.
 ///
 /// * [chatId]: Identifier of the chat.
 /// * [messageThreadId]: Message thread identifier of the forum topic.
@@ -13,7 +13,7 @@ final class ToggleForumTopicIsClosed extends TdFunction {
   
   /// **ToggleForumTopicIsClosed** *(toggleForumTopicIsClosed)* - TDLib function
   ///
-  /// Toggles whether a topic is closed in a forum supergroup chat; requires can_manage_topics administrator right in the supergroup unless the user is creator of the topic.
+  /// Toggles whether a topic is closed in a forum supergroup chat; requires can_manage_topics right in the supergroup unless the user is creator of the topic.
   ///
   /// * [chatId]: Identifier of the chat.
   /// * [messageThreadId]: Message thread identifier of the forum topic.

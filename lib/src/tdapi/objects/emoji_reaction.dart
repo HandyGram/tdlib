@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **EmojiReaction** *(emojiReaction)* - basic class
 ///
-/// Contains information about a emoji reaction.
+/// Contains information about an emoji reaction.
 ///
 /// * [emoji]: Text representation of the reaction.
 /// * [title]: Reaction title.
@@ -18,7 +18,7 @@ final class EmojiReaction extends TdObject {
   
   /// **EmojiReaction** *(emojiReaction)* - basic class
   ///
-  /// Contains information about a emoji reaction.
+  /// Contains information about an emoji reaction.
   ///
   /// * [emoji]: Text representation of the reaction.
   /// * [title]: Reaction title.

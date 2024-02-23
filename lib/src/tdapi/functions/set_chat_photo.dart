@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **SetChatPhoto** *(setChatPhoto)* - TDLib function
 ///
-/// Changes the photo of a chat. Supported only for basic groups, supergroups and channels. Requires can_change_info administrator right.
+/// Changes the photo of a chat. Supported only for basic groups, supergroups and channels. Requires can_change_info member right.
 ///
 /// * [chatId]: Chat identifier.
 /// * [photo]: New chat photo; pass null to delete the chat photo *(optional)*.
@@ -12,7 +12,7 @@ final class SetChatPhoto extends TdFunction {
   
   /// **SetChatPhoto** *(setChatPhoto)* - TDLib function
   ///
-  /// Changes the photo of a chat. Supported only for basic groups, supergroups and channels. Requires can_change_info administrator right.
+  /// Changes the photo of a chat. Supported only for basic groups, supergroups and channels. Requires can_change_info member right.
   ///
   /// * [chatId]: Chat identifier.
   /// * [photo]: New chat photo; pass null to delete the chat photo *(optional)*.

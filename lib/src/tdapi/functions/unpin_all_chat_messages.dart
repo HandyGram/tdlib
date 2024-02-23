@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **UnpinAllChatMessages** *(unpinAllChatMessages)* - TDLib function
 ///
-/// Removes all pinned messages from a chat; requires can_pin_messages rights in the group or can_edit_messages rights in the channel.
+/// Removes all pinned messages from a chat; requires can_pin_messages member right if the chat is a basic group or supergroup, or can_edit_messages administrator right if the chat is a channel.
 ///
 /// * [chatId]: Identifier of the chat.
 ///
@@ -11,7 +11,7 @@ final class UnpinAllChatMessages extends TdFunction {
   
   /// **UnpinAllChatMessages** *(unpinAllChatMessages)* - TDLib function
   ///
-  /// Removes all pinned messages from a chat; requires can_pin_messages rights in the group or can_edit_messages rights in the channel.
+  /// Removes all pinned messages from a chat; requires can_pin_messages member right if the chat is a basic group or supergroup, or can_edit_messages administrator right if the chat is a channel.
   ///
   /// * [chatId]: Identifier of the chat.
   ///

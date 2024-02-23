@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 ///
 /// * [totalCount]: Approximate total number of messages found; -1 if unknown.
 /// * [messages]: List of messages.
-/// * [nextOffset]: The offset for the next request. If empty, there are no more results.
+/// * [nextOffset]: The offset for the next request. If empty, then there are no more results.
 final class FoundMessages extends TdObject {
   
   /// **FoundMessages** *(foundMessages)* - basic class
@@ -15,7 +15,7 @@ final class FoundMessages extends TdObject {
   ///
   /// * [totalCount]: Approximate total number of messages found; -1 if unknown.
   /// * [messages]: List of messages.
-  /// * [nextOffset]: The offset for the next request. If empty, there are no more results.
+  /// * [nextOffset]: The offset for the next request. If empty, then there are no more results.
   const FoundMessages({
     required this.totalCount,
     required this.messages,
@@ -30,7 +30,7 @@ final class FoundMessages extends TdObject {
   /// List of messages 
   final List<Message> messages;
 
-  /// The offset for the next request. If empty, there are no more results
+  /// The offset for the next request. If empty, then there are no more results
   final String nextOffset;
 
   /// [extra] callback sign
@@ -67,7 +67,7 @@ final class FoundMessages extends TdObject {
   /// Properties:
   /// * [total_count]: Approximate total number of messages found; -1 if unknown 
   /// * [messages]: List of messages 
-  /// * [next_offset]: The offset for the next request. If empty, there are no more results
+  /// * [next_offset]: The offset for the next request. If empty, then there are no more results
   FoundMessages copyWith({
     int? totalCount,
     List<Message>? messages,

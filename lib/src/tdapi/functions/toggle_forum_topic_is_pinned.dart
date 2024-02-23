@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **ToggleForumTopicIsPinned** *(toggleForumTopicIsPinned)* - TDLib function
 ///
-/// Changes the pinned state of a forum topic; requires can_manage_topics administrator right in the supergroup. There can be up to getOption("pinned_forum_topic_count_max") pinned forum topics.
+/// Changes the pinned state of a forum topic; requires can_manage_topics right in the supergroup. There can be up to getOption("pinned_forum_topic_count_max") pinned forum topics.
 ///
 /// * [chatId]: Chat identifier.
 /// * [messageThreadId]: Message thread identifier of the forum topic.
@@ -13,7 +13,7 @@ final class ToggleForumTopicIsPinned extends TdFunction {
   
   /// **ToggleForumTopicIsPinned** *(toggleForumTopicIsPinned)* - TDLib function
   ///
-  /// Changes the pinned state of a forum topic; requires can_manage_topics administrator right in the supergroup. There can be up to getOption("pinned_forum_topic_count_max") pinned forum topics.
+  /// Changes the pinned state of a forum topic; requires can_manage_topics right in the supergroup. There can be up to getOption("pinned_forum_topic_count_max") pinned forum topics.
   ///
   /// * [chatId]: Chat identifier.
   /// * [messageThreadId]: Message thread identifier of the forum topic.

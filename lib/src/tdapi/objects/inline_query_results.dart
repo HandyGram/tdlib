@@ -7,7 +7,7 @@ part of '../tdapi.dart';
 /// * [inlineQueryId]: Unique identifier of the inline query.
 /// * [button]: Button to be shown above inline query results; may be null *(optional)*.
 /// * [results]: Results of the query.
-/// * [nextOffset]: The offset for the next request. If empty, there are no more results.
+/// * [nextOffset]: The offset for the next request. If empty, then there are no more results.
 final class InlineQueryResults extends TdObject {
   
   /// **InlineQueryResults** *(inlineQueryResults)* - basic class
@@ -17,7 +17,7 @@ final class InlineQueryResults extends TdObject {
   /// * [inlineQueryId]: Unique identifier of the inline query.
   /// * [button]: Button to be shown above inline query results; may be null *(optional)*.
   /// * [results]: Results of the query.
-  /// * [nextOffset]: The offset for the next request. If empty, there are no more results.
+  /// * [nextOffset]: The offset for the next request. If empty, then there are no more results.
   const InlineQueryResults({
     required this.inlineQueryId,
     this.button,
@@ -36,7 +36,7 @@ final class InlineQueryResults extends TdObject {
   /// Results of the query
   final List<InlineQueryResult> results;
 
-  /// The offset for the next request. If empty, there are no more results
+  /// The offset for the next request. If empty, then there are no more results
   final String nextOffset;
 
   /// [extra] callback sign
@@ -76,7 +76,7 @@ final class InlineQueryResults extends TdObject {
   /// * [inline_query_id]: Unique identifier of the inline query
   /// * [button]: Button to be shown above inline query results; may be null
   /// * [results]: Results of the query
-  /// * [next_offset]: The offset for the next request. If empty, there are no more results
+  /// * [next_offset]: The offset for the next request. If empty, then there are no more results
   InlineQueryResults copyWith({
     int? inlineQueryId,
     InlineQueryResultsButton? button,

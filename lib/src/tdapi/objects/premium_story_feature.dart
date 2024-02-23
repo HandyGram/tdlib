@@ -17,6 +17,7 @@ sealed class PremiumStoryFeature extends TdObject {
   /// * [PremiumStoryFeatureCustomExpirationDuration]
   /// * [PremiumStoryFeatureSaveStories]
   /// * [PremiumStoryFeatureLinksAndFormatting]
+  /// * [PremiumStoryFeatureVideoQuality]
   factory PremiumStoryFeature.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
       case PremiumStoryFeaturePriorityOrder.objectType:
@@ -31,6 +32,8 @@ sealed class PremiumStoryFeature extends TdObject {
         return PremiumStoryFeatureSaveStories.fromJson(json);
       case PremiumStoryFeatureLinksAndFormatting.objectType:
         return PremiumStoryFeatureLinksAndFormatting.fromJson(json);
+      case PremiumStoryFeatureVideoQuality.objectType:
+        return PremiumStoryFeatureVideoQuality.fromJson(json);
       default:
         throw FormatException(
           "Unknown object ${json["@type"]} (expected child of PremiumStoryFeature)",
@@ -61,12 +64,12 @@ sealed class PremiumStoryFeature extends TdObject {
 
 /// **PremiumStoryFeaturePriorityOrder** *(premiumStoryFeaturePriorityOrder)* - child of PremiumStoryFeature
 ///
-/// User stories are displayed before stories of non-premium contacts and channels.
+/// Stories of the current user are displayed before stories of non-Premium contacts, supergroups, and channels.
 final class PremiumStoryFeaturePriorityOrder extends PremiumStoryFeature {
   
   /// **PremiumStoryFeaturePriorityOrder** *(premiumStoryFeaturePriorityOrder)* - child of PremiumStoryFeature
   ///
-  /// User stories are displayed before stories of non-premium contacts and channels.
+  /// Stories of the current user are displayed before stories of non-Premium contacts, supergroups, and channels.
   const PremiumStoryFeaturePriorityOrder();
   
   /// Parse from a json
@@ -276,6 +279,44 @@ final class PremiumStoryFeatureLinksAndFormatting extends PremiumStoryFeature {
 
   /// TDLib object type
   static const String objectType = 'premiumStoryFeatureLinksAndFormatting';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **PremiumStoryFeatureVideoQuality** *(premiumStoryFeatureVideoQuality)* - child of PremiumStoryFeature
+///
+/// The ability to choose better quality for viewed stories.
+final class PremiumStoryFeatureVideoQuality extends PremiumStoryFeature {
+  
+  /// **PremiumStoryFeatureVideoQuality** *(premiumStoryFeatureVideoQuality)* - child of PremiumStoryFeature
+  ///
+  /// The ability to choose better quality for viewed stories.
+  const PremiumStoryFeatureVideoQuality();
+  
+  /// Parse from a json
+  factory PremiumStoryFeatureVideoQuality.fromJson(Map<String, dynamic> json) => const PremiumStoryFeatureVideoQuality();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  PremiumStoryFeatureVideoQuality copyWith() => const PremiumStoryFeatureVideoQuality();
+
+  /// TDLib object type
+  static const String objectType = 'premiumStoryFeatureVideoQuality';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

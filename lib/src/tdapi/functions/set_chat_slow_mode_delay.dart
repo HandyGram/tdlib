@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **SetChatSlowModeDelay** *(setChatSlowModeDelay)* - TDLib function
 ///
-/// Changes the slow mode delay of a chat. Available only for supergroups; requires can_restrict_members rights.
+/// Changes the slow mode delay of a chat. Available only for supergroups; requires can_restrict_members right.
 ///
 /// * [chatId]: Chat identifier.
 /// * [slowModeDelay]: New slow mode delay for the chat, in seconds; must be one of 0, 10, 30, 60, 300, 900, 3600.
@@ -12,7 +12,7 @@ final class SetChatSlowModeDelay extends TdFunction {
   
   /// **SetChatSlowModeDelay** *(setChatSlowModeDelay)* - TDLib function
   ///
-  /// Changes the slow mode delay of a chat. Available only for supergroups; requires can_restrict_members rights.
+  /// Changes the slow mode delay of a chat. Available only for supergroups; requires can_restrict_members right.
   ///
   /// * [chatId]: Chat identifier.
   /// * [slowModeDelay]: New slow mode delay for the chat, in seconds; must be one of 0, 10, 30, 60, 300, 900, 3600.

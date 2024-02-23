@@ -5,8 +5,8 @@ part of '../tdapi.dart';
 /// Sends the result of an inline query as a message. Returns the sent message. Always clears a chat draft message.
 ///
 /// * [chatId]: Target chat.
-/// * [messageThreadId]: If not 0, a message thread identifier in which the message will be sent.
-/// * [replyTo]: Identifier of the replied message or story; pass null if none *(optional)*.
+/// * [messageThreadId]: If not 0, the message thread identifier in which the message will be sent.
+/// * [replyTo]: Information about the message or story to be replied; pass null if none *(optional)*.
 /// * [options]: Options to be used to send the message; pass null to use default options *(optional)*.
 /// * [queryId]: Identifier of the inline query.
 /// * [resultId]: Identifier of the inline query result.
@@ -20,8 +20,8 @@ final class SendInlineQueryResultMessage extends TdFunction {
   /// Sends the result of an inline query as a message. Returns the sent message. Always clears a chat draft message.
   ///
   /// * [chatId]: Target chat.
-  /// * [messageThreadId]: If not 0, a message thread identifier in which the message will be sent.
-  /// * [replyTo]: Identifier of the replied message or story; pass null if none *(optional)*.
+  /// * [messageThreadId]: If not 0, the message thread identifier in which the message will be sent.
+  /// * [replyTo]: Information about the message or story to be replied; pass null if none *(optional)*.
   /// * [options]: Options to be used to send the message; pass null to use default options *(optional)*.
   /// * [queryId]: Identifier of the inline query.
   /// * [resultId]: Identifier of the inline query result.
@@ -41,11 +41,11 @@ final class SendInlineQueryResultMessage extends TdFunction {
   /// Target chat
   final int chatId;
 
-  /// If not 0, a message thread identifier in which the message will be sent
+  /// If not 0, the message thread identifier in which the message will be sent
   final int messageThreadId;
 
-  /// Identifier of the replied message or story; pass null if none
-  final MessageReplyTo? replyTo;
+  /// Information about the message or story to be replied; pass null if none
+  final InputMessageReplyTo? replyTo;
 
   /// Options to be used to send the message; pass null to use default options
   final MessageSendOptions? options;
@@ -79,8 +79,8 @@ final class SendInlineQueryResultMessage extends TdFunction {
   ///
   /// Properties:
   /// * [chat_id]: Target chat
-  /// * [message_thread_id]: If not 0, a message thread identifier in which the message will be sent
-  /// * [reply_to]: Identifier of the replied message or story; pass null if none
+  /// * [message_thread_id]: If not 0, the message thread identifier in which the message will be sent
+  /// * [reply_to]: Information about the message or story to be replied; pass null if none
   /// * [options]: Options to be used to send the message; pass null to use default options
   /// * [query_id]: Identifier of the inline query
   /// * [result_id]: Identifier of the inline query result
@@ -88,7 +88,7 @@ final class SendInlineQueryResultMessage extends TdFunction {
   SendInlineQueryResultMessage copyWith({
     int? chatId,
     int? messageThreadId,
-    MessageReplyTo? replyTo,
+    InputMessageReplyTo? replyTo,
     MessageSendOptions? options,
     int? queryId,
     String? resultId,

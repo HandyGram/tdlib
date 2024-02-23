@@ -5,8 +5,8 @@ part of '../tdapi.dart';
 /// Sends a message. Returns the sent message.
 ///
 /// * [chatId]: Target chat.
-/// * [messageThreadId]: If not 0, a message thread identifier in which the message will be sent.
-/// * [replyTo]: Identifier of the replied message or story; pass null if none *(optional)*.
+/// * [messageThreadId]: If not 0, the message thread identifier in which the message will be sent.
+/// * [replyTo]: Information about the message or story to be replied; pass null if none *(optional)*.
 /// * [options]: Options to be used to send the message; pass null to use default options *(optional)*.
 /// * [replyMarkup]: Markup for replying to the message; pass null if none; for bots only *(optional)*.
 /// * [inputMessageContent]: The content of the message to be sent.
@@ -19,8 +19,8 @@ final class SendMessage extends TdFunction {
   /// Sends a message. Returns the sent message.
   ///
   /// * [chatId]: Target chat.
-  /// * [messageThreadId]: If not 0, a message thread identifier in which the message will be sent.
-  /// * [replyTo]: Identifier of the replied message or story; pass null if none *(optional)*.
+  /// * [messageThreadId]: If not 0, the message thread identifier in which the message will be sent.
+  /// * [replyTo]: Information about the message or story to be replied; pass null if none *(optional)*.
   /// * [options]: Options to be used to send the message; pass null to use default options *(optional)*.
   /// * [replyMarkup]: Markup for replying to the message; pass null if none; for bots only *(optional)*.
   /// * [inputMessageContent]: The content of the message to be sent.
@@ -38,11 +38,11 @@ final class SendMessage extends TdFunction {
   /// Target chat
   final int chatId;
 
-  /// If not 0, a message thread identifier in which the message will be sent
+  /// If not 0, the message thread identifier in which the message will be sent
   final int messageThreadId;
 
-  /// Identifier of the replied message or story; pass null if none
-  final MessageReplyTo? replyTo;
+  /// Information about the message or story to be replied; pass null if none
+  final InputMessageReplyTo? replyTo;
 
   /// Options to be used to send the message; pass null to use default options
   final MessageSendOptions? options;
@@ -72,15 +72,15 @@ final class SendMessage extends TdFunction {
   ///
   /// Properties:
   /// * [chat_id]: Target chat
-  /// * [message_thread_id]: If not 0, a message thread identifier in which the message will be sent
-  /// * [reply_to]: Identifier of the replied message or story; pass null if none
+  /// * [message_thread_id]: If not 0, the message thread identifier in which the message will be sent
+  /// * [reply_to]: Information about the message or story to be replied; pass null if none
   /// * [options]: Options to be used to send the message; pass null to use default options
   /// * [reply_markup]: Markup for replying to the message; pass null if none; for bots only
   /// * [input_message_content]: The content of the message to be sent
   SendMessage copyWith({
     int? chatId,
     int? messageThreadId,
-    MessageReplyTo? replyTo,
+    InputMessageReplyTo? replyTo,
     MessageSendOptions? options,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,

@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **SetStoryReaction** *(setStoryReaction)* - TDLib function
 ///
-/// Changes chosen reaction on a story.
+/// Changes chosen reaction on a story that has already been sent.
 ///
 /// * [storySenderChatId]: The identifier of the sender of the story.
 /// * [storyId]: The identifier of the story.
@@ -14,7 +14,7 @@ final class SetStoryReaction extends TdFunction {
   
   /// **SetStoryReaction** *(setStoryReaction)* - TDLib function
   ///
-  /// Changes chosen reaction on a story.
+  /// Changes chosen reaction on a story that has already been sent.
   ///
   /// * [storySenderChatId]: The identifier of the sender of the story.
   /// * [storyId]: The identifier of the story.

@@ -4,7 +4,7 @@ part of '../tdapi.dart';
 ///
 /// Returns a confirmation text to be shown to the user before starting message import.
 ///
-/// * [chatId]: Identifier of a chat to which the messages will be imported. It must be an identifier of a private chat with a mutual contact or an identifier of a supergroup chat with can_change_info administrator right.
+/// * [chatId]: Identifier of a chat to which the messages will be imported. It must be an identifier of a private chat with a mutual contact or an identifier of a supergroup chat with can_change_info member right.
 ///
 /// [Text] is returned on completion.
 final class GetMessageImportConfirmationText extends TdFunction {
@@ -13,14 +13,14 @@ final class GetMessageImportConfirmationText extends TdFunction {
   ///
   /// Returns a confirmation text to be shown to the user before starting message import.
   ///
-  /// * [chatId]: Identifier of a chat to which the messages will be imported. It must be an identifier of a private chat with a mutual contact or an identifier of a supergroup chat with can_change_info administrator right.
+  /// * [chatId]: Identifier of a chat to which the messages will be imported. It must be an identifier of a private chat with a mutual contact or an identifier of a supergroup chat with can_change_info member right.
   ///
   /// [Text] is returned on completion.
   const GetMessageImportConfirmationText({
     required this.chatId,
   });
   
-  /// Identifier of a chat to which the messages will be imported. It must be an identifier of a private chat with a mutual contact or an identifier of a supergroup chat with can_change_info administrator right
+  /// Identifier of a chat to which the messages will be imported. It must be an identifier of a private chat with a mutual contact or an identifier of a supergroup chat with can_change_info member right
   final int chatId;
   
   /// Convert model to TDLib JSON format
@@ -36,7 +36,7 @@ final class GetMessageImportConfirmationText extends TdFunction {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Identifier of a chat to which the messages will be imported. It must be an identifier of a private chat with a mutual contact or an identifier of a supergroup chat with can_change_info administrator right
+  /// * [chat_id]: Identifier of a chat to which the messages will be imported. It must be an identifier of a private chat with a mutual contact or an identifier of a supergroup chat with can_change_info member right
   GetMessageImportConfirmationText copyWith({
     int? chatId,
   }) => GetMessageImportConfirmationText(

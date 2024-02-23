@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **WebPage** *(webPage)* - basic class
 ///
-/// Describes a web page preview.
+/// Describes a link preview.
 ///
 /// * [url]: Original URL of the link.
 /// * [displayUrl]: URL to display.
@@ -17,6 +17,10 @@ part of '../tdapi.dart';
 /// * [embedHeight]: Height of the embedded preview.
 /// * [duration]: Duration of the content, in seconds.
 /// * [author]: Author of the content.
+/// * [hasLargeMedia]: True, if size of media in the preview can be changed.
+/// * [showLargeMedia]: True, if large media preview must be shown; otherwise, the media preview must be shown small and only the first frame must be shown for videos.
+/// * [skipConfirmation]: True, if there is no need to show an ordinary open URL confirmation, when opening the URL from the preview, because the URL is shown in the message text in clear.
+/// * [showAboveText]: True, if the link preview must be shown above message text; otherwise, the link preview must be shown below the message text.
 /// * [animation]: Preview of the content as an animation, if available; may be null *(optional)*.
 /// * [audio]: Preview of the content as an audio file, if available; may be null *(optional)*.
 /// * [document]: Preview of the content as a document, if available; may be null *(optional)*.
@@ -31,7 +35,7 @@ final class WebPage extends TdObject {
   
   /// **WebPage** *(webPage)* - basic class
   ///
-  /// Describes a web page preview.
+  /// Describes a link preview.
   ///
   /// * [url]: Original URL of the link.
   /// * [displayUrl]: URL to display.
@@ -46,6 +50,10 @@ final class WebPage extends TdObject {
   /// * [embedHeight]: Height of the embedded preview.
   /// * [duration]: Duration of the content, in seconds.
   /// * [author]: Author of the content.
+  /// * [hasLargeMedia]: True, if size of media in the preview can be changed.
+  /// * [showLargeMedia]: True, if large media preview must be shown; otherwise, the media preview must be shown small and only the first frame must be shown for videos.
+  /// * [skipConfirmation]: True, if there is no need to show an ordinary open URL confirmation, when opening the URL from the preview, because the URL is shown in the message text in clear.
+  /// * [showAboveText]: True, if the link preview must be shown above message text; otherwise, the link preview must be shown below the message text.
   /// * [animation]: Preview of the content as an animation, if available; may be null *(optional)*.
   /// * [audio]: Preview of the content as an audio file, if available; may be null *(optional)*.
   /// * [document]: Preview of the content as a document, if available; may be null *(optional)*.
@@ -70,6 +78,10 @@ final class WebPage extends TdObject {
     required this.embedHeight,
     required this.duration,
     required this.author,
+    required this.hasLargeMedia,
+    required this.showLargeMedia,
+    required this.skipConfirmation,
+    required this.showAboveText,
     this.animation,
     this.audio,
     this.document,
@@ -122,6 +134,18 @@ final class WebPage extends TdObject {
 
   /// Author of the content
   final String author;
+
+  /// True, if size of media in the preview can be changed
+  final bool hasLargeMedia;
+
+  /// True, if large media preview must be shown; otherwise, the media preview must be shown small and only the first frame must be shown for videos
+  final bool showLargeMedia;
+
+  /// True, if there is no need to show an ordinary open URL confirmation, when opening the URL from the preview, because the URL is shown in the message text in clear
+  final bool skipConfirmation;
+
+  /// True, if the link preview must be shown above message text; otherwise, the link preview must be shown below the message text
+  final bool showAboveText;
 
   /// Preview of the content as an animation, if available; may be null
   final Animation? animation;
@@ -176,6 +200,10 @@ final class WebPage extends TdObject {
     embedHeight: json['embed_height'],
     duration: json['duration'],
     author: json['author'],
+    hasLargeMedia: json['has_large_media'],
+    showLargeMedia: json['show_large_media'],
+    skipConfirmation: json['skip_confirmation'],
+    showAboveText: json['show_above_text'],
     animation: json['animation'] == null ? null : Animation.fromJson(json['animation']),
     audio: json['audio'] == null ? null : Audio.fromJson(json['audio']),
     document: json['document'] == null ? null : Document.fromJson(json['document']),
@@ -209,6 +237,10 @@ final class WebPage extends TdObject {
       "embed_height": embedHeight,
       "duration": duration,
       "author": author,
+      "has_large_media": hasLargeMedia,
+      "show_large_media": showLargeMedia,
+      "skip_confirmation": skipConfirmation,
+      "show_above_text": showAboveText,
       "animation": animation?.toJson(),
       "audio": audio?.toJson(),
       "document": document?.toJson(),
@@ -238,6 +270,10 @@ final class WebPage extends TdObject {
   /// * [embed_height]: Height of the embedded preview
   /// * [duration]: Duration of the content, in seconds
   /// * [author]: Author of the content
+  /// * [has_large_media]: True, if size of media in the preview can be changed
+  /// * [show_large_media]: True, if large media preview must be shown; otherwise, the media preview must be shown small and only the first frame must be shown for videos
+  /// * [skip_confirmation]: True, if there is no need to show an ordinary open URL confirmation, when opening the URL from the preview, because the URL is shown in the message text in clear
+  /// * [show_above_text]: True, if the link preview must be shown above message text; otherwise, the link preview must be shown below the message text
   /// * [animation]: Preview of the content as an animation, if available; may be null
   /// * [audio]: Preview of the content as an audio file, if available; may be null
   /// * [document]: Preview of the content as a document, if available; may be null
@@ -262,6 +298,10 @@ final class WebPage extends TdObject {
     int? embedHeight,
     int? duration,
     String? author,
+    bool? hasLargeMedia,
+    bool? showLargeMedia,
+    bool? skipConfirmation,
+    bool? showAboveText,
     Animation? animation,
     Audio? audio,
     Document? document,
@@ -288,6 +328,10 @@ final class WebPage extends TdObject {
     embedHeight: embedHeight ?? this.embedHeight,
     duration: duration ?? this.duration,
     author: author ?? this.author,
+    hasLargeMedia: hasLargeMedia ?? this.hasLargeMedia,
+    showLargeMedia: showLargeMedia ?? this.showLargeMedia,
+    skipConfirmation: skipConfirmation ?? this.skipConfirmation,
+    showAboveText: showAboveText ?? this.showAboveText,
     animation: animation ?? this.animation,
     audio: audio ?? this.audio,
     document: document ?? this.document,

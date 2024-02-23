@@ -23,6 +23,8 @@ sealed class PushMessageContent extends TdObject {
   /// * [PushMessageContentLocation]
   /// * [PushMessageContentPhoto]
   /// * [PushMessageContentPoll]
+  /// * [PushMessageContentPremiumGiftCode]
+  /// * [PushMessageContentPremiumGiveaway]
   /// * [PushMessageContentScreenshotTaken]
   /// * [PushMessageContentSticker]
   /// * [PushMessageContentStory]
@@ -69,6 +71,10 @@ sealed class PushMessageContent extends TdObject {
         return PushMessageContentPhoto.fromJson(json);
       case PushMessageContentPoll.objectType:
         return PushMessageContentPoll.fromJson(json);
+      case PushMessageContentPremiumGiftCode.objectType:
+        return PushMessageContentPremiumGiftCode.fromJson(json);
+      case PushMessageContentPremiumGiveaway.objectType:
+        return PushMessageContentPremiumGiveaway.fromJson(json);
       case PushMessageContentScreenshotTaken.objectType:
         return PushMessageContentScreenshotTaken.fromJson(json);
       case PushMessageContentSticker.objectType:
@@ -967,6 +973,144 @@ final class PushMessageContentPoll extends PushMessageContent {
 
   /// TDLib object type
   static const String objectType = 'pushMessageContentPoll';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **PushMessageContentPremiumGiftCode** *(pushMessageContentPremiumGiftCode)* - child of PushMessageContent
+///
+/// A message with a Telegram Premium gift code created for the user.
+///
+/// * [monthCount]: Number of months the Telegram Premium subscription will be active after code activation.
+final class PushMessageContentPremiumGiftCode extends PushMessageContent {
+  
+  /// **PushMessageContentPremiumGiftCode** *(pushMessageContentPremiumGiftCode)* - child of PushMessageContent
+  ///
+  /// A message with a Telegram Premium gift code created for the user.
+  ///
+  /// * [monthCount]: Number of months the Telegram Premium subscription will be active after code activation.
+  const PushMessageContentPremiumGiftCode({
+    required this.monthCount,
+  });
+  
+  /// Number of months the Telegram Premium subscription will be active after code activation
+  final int monthCount;
+  
+  /// Parse from a json
+  factory PushMessageContentPremiumGiftCode.fromJson(Map<String, dynamic> json) => PushMessageContentPremiumGiftCode(
+    monthCount: json['month_count'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "month_count": monthCount,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [month_count]: Number of months the Telegram Premium subscription will be active after code activation
+  @override
+  PushMessageContentPremiumGiftCode copyWith({
+    int? monthCount,
+  }) => PushMessageContentPremiumGiftCode(
+    monthCount: monthCount ?? this.monthCount,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'pushMessageContentPremiumGiftCode';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **PushMessageContentPremiumGiveaway** *(pushMessageContentPremiumGiveaway)* - child of PushMessageContent
+///
+/// A message with a Telegram Premium giveaway.
+///
+/// * [winnerCount]: Number of users which will receive Telegram Premium subscription gift codes; 0 for pinned message.
+/// * [monthCount]: Number of months the Telegram Premium subscription will be active after code activation; 0 for pinned message.
+/// * [isPinned]: True, if the message is a pinned message with the specified content.
+final class PushMessageContentPremiumGiveaway extends PushMessageContent {
+  
+  /// **PushMessageContentPremiumGiveaway** *(pushMessageContentPremiumGiveaway)* - child of PushMessageContent
+  ///
+  /// A message with a Telegram Premium giveaway.
+  ///
+  /// * [winnerCount]: Number of users which will receive Telegram Premium subscription gift codes; 0 for pinned message.
+  /// * [monthCount]: Number of months the Telegram Premium subscription will be active after code activation; 0 for pinned message.
+  /// * [isPinned]: True, if the message is a pinned message with the specified content.
+  const PushMessageContentPremiumGiveaway({
+    required this.winnerCount,
+    required this.monthCount,
+    required this.isPinned,
+  });
+  
+  /// Number of users which will receive Telegram Premium subscription gift codes; 0 for pinned message
+  final int winnerCount;
+
+  /// Number of months the Telegram Premium subscription will be active after code activation; 0 for pinned message
+  final int monthCount;
+
+  /// True, if the message is a pinned message with the specified content
+  final bool isPinned;
+  
+  /// Parse from a json
+  factory PushMessageContentPremiumGiveaway.fromJson(Map<String, dynamic> json) => PushMessageContentPremiumGiveaway(
+    winnerCount: json['winner_count'],
+    monthCount: json['month_count'],
+    isPinned: json['is_pinned'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "winner_count": winnerCount,
+      "month_count": monthCount,
+      "is_pinned": isPinned,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [winner_count]: Number of users which will receive Telegram Premium subscription gift codes; 0 for pinned message
+  /// * [month_count]: Number of months the Telegram Premium subscription will be active after code activation; 0 for pinned message
+  /// * [is_pinned]: True, if the message is a pinned message with the specified content
+  @override
+  PushMessageContentPremiumGiveaway copyWith({
+    int? winnerCount,
+    int? monthCount,
+    bool? isPinned,
+  }) => PushMessageContentPremiumGiveaway(
+    winnerCount: winnerCount ?? this.winnerCount,
+    monthCount: monthCount ?? this.monthCount,
+    isPinned: isPinned ?? this.isPinned,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'pushMessageContentPremiumGiveaway';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

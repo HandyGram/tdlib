@@ -2,9 +2,10 @@ part of '../tdapi.dart';
 
 /// **GetChatBoosts** *(getChatBoosts)* - TDLib function
 ///
-/// Returns list of boosts applied to a chat. The user must be an administrator in the channel chat to get the list of boosts.
+/// Returns list of boosts applied to a chat; requires administrator rights in the chat.
 ///
 /// * [chatId]: Identifier of the chat.
+/// * [onlyGiftCodes]: Pass true to receive only boosts received from gift codes and giveaways created by the chat.
 /// * [offset]: Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results.
 /// * [limit]: The maximum number of boosts to be returned; up to 100. For optimal performance, the number of returned boosts can be smaller than the specified limit.
 ///
@@ -13,21 +14,26 @@ final class GetChatBoosts extends TdFunction {
   
   /// **GetChatBoosts** *(getChatBoosts)* - TDLib function
   ///
-  /// Returns list of boosts applied to a chat. The user must be an administrator in the channel chat to get the list of boosts.
+  /// Returns list of boosts applied to a chat; requires administrator rights in the chat.
   ///
   /// * [chatId]: Identifier of the chat.
+  /// * [onlyGiftCodes]: Pass true to receive only boosts received from gift codes and giveaways created by the chat.
   /// * [offset]: Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results.
   /// * [limit]: The maximum number of boosts to be returned; up to 100. For optimal performance, the number of returned boosts can be smaller than the specified limit.
   ///
   /// [FoundChatBoosts] is returned on completion.
   const GetChatBoosts({
     required this.chatId,
+    required this.onlyGiftCodes,
     required this.offset,
     required this.limit,
   });
   
   /// Identifier of the chat
   final int chatId;
+
+  /// Pass true to receive only boosts received from gift codes and giveaways created by the chat
+  final bool onlyGiftCodes;
 
   /// Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
   final String offset;
@@ -41,6 +47,7 @@ final class GetChatBoosts extends TdFunction {
 		return {
 			"@type": objectType,
       "chat_id": chatId,
+      "only_gift_codes": onlyGiftCodes,
       "offset": offset,
       "limit": limit,
       "@extra": extra,
@@ -51,14 +58,17 @@ final class GetChatBoosts extends TdFunction {
   ///
   /// Properties:
   /// * [chat_id]: Identifier of the chat
+  /// * [only_gift_codes]: Pass true to receive only boosts received from gift codes and giveaways created by the chat
   /// * [offset]: Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
   /// * [limit]: The maximum number of boosts to be returned; up to 100. For optimal performance, the number of returned boosts can be smaller than the specified limit
   GetChatBoosts copyWith({
     int? chatId,
+    bool? onlyGiftCodes,
     String? offset,
     int? limit,
   }) => GetChatBoosts(
     chatId: chatId ?? this.chatId,
+    onlyGiftCodes: onlyGiftCodes ?? this.onlyGiftCodes,
     offset: offset ?? this.offset,
     limit: limit ?? this.limit,
   );

@@ -6,6 +6,7 @@ part of '../tdapi.dart';
 ///
 /// * [firstName]: The first name of the user; 1-64 characters.
 /// * [lastName]: The last name of the user; 0-64 characters.
+/// * [disableNotification]: Pass true to disable notification about the current user joining Telegram for other users that added them to contact list.
 ///
 /// [Ok] is returned on completion.
 final class RegisterUser extends TdFunction {
@@ -16,11 +17,13 @@ final class RegisterUser extends TdFunction {
   ///
   /// * [firstName]: The first name of the user; 1-64 characters.
   /// * [lastName]: The last name of the user; 0-64 characters.
+  /// * [disableNotification]: Pass true to disable notification about the current user joining Telegram for other users that added them to contact list.
   ///
   /// [Ok] is returned on completion.
   const RegisterUser({
     required this.firstName,
     required this.lastName,
+    required this.disableNotification,
   });
   
   /// The first name of the user; 1-64 characters
@@ -28,6 +31,9 @@ final class RegisterUser extends TdFunction {
 
   /// The last name of the user; 0-64 characters
   final String lastName;
+
+  /// Pass true to disable notification about the current user joining Telegram for other users that added them to contact list
+  final bool disableNotification;
   
   /// Convert model to TDLib JSON format
   @override
@@ -36,6 +42,7 @@ final class RegisterUser extends TdFunction {
 			"@type": objectType,
       "first_name": firstName,
       "last_name": lastName,
+      "disable_notification": disableNotification,
       "@extra": extra,
 		};
 	}
@@ -45,12 +52,15 @@ final class RegisterUser extends TdFunction {
   /// Properties:
   /// * [first_name]: The first name of the user; 1-64 characters
   /// * [last_name]: The last name of the user; 0-64 characters
+  /// * [disable_notification]: Pass true to disable notification about the current user joining Telegram for other users that added them to contact list
   RegisterUser copyWith({
     String? firstName,
     String? lastName,
+    bool? disableNotification,
   }) => RegisterUser(
     firstName: firstName ?? this.firstName,
     lastName: lastName ?? this.lastName,
+    disableNotification: disableNotification ?? this.disableNotification,
   );
 
   /// TDLib object type

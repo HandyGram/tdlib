@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 ///
 /// * [chatId]: Target chat.
 /// * [senderId]: Identifier of the sender of the message.
-/// * [replyTo]: Identifier of the replied message or story; pass null if none *(optional)*.
+/// * [replyTo]: Information about the message or story to be replied; pass null if none *(optional)*.
 /// * [disableNotification]: Pass true to disable notification for the message.
 /// * [inputMessageContent]: The content of the message to be added.
 ///
@@ -19,7 +19,7 @@ final class AddLocalMessage extends TdFunction {
   ///
   /// * [chatId]: Target chat.
   /// * [senderId]: Identifier of the sender of the message.
-  /// * [replyTo]: Identifier of the replied message or story; pass null if none *(optional)*.
+  /// * [replyTo]: Information about the message or story to be replied; pass null if none *(optional)*.
   /// * [disableNotification]: Pass true to disable notification for the message.
   /// * [inputMessageContent]: The content of the message to be added.
   ///
@@ -38,8 +38,8 @@ final class AddLocalMessage extends TdFunction {
   /// Identifier of the sender of the message
   final MessageSender senderId;
 
-  /// Identifier of the replied message or story; pass null if none
-  final MessageReplyTo? replyTo;
+  /// Information about the message or story to be replied; pass null if none
+  final InputMessageReplyTo? replyTo;
 
   /// Pass true to disable notification for the message
   final bool disableNotification;
@@ -66,13 +66,13 @@ final class AddLocalMessage extends TdFunction {
   /// Properties:
   /// * [chat_id]: Target chat
   /// * [sender_id]: Identifier of the sender of the message
-  /// * [reply_to]: Identifier of the replied message or story; pass null if none
+  /// * [reply_to]: Information about the message or story to be replied; pass null if none
   /// * [disable_notification]: Pass true to disable notification for the message
   /// * [input_message_content]: The content of the message to be added
   AddLocalMessage copyWith({
     int? chatId,
     MessageSender? senderId,
-    MessageReplyTo? replyTo,
+    InputMessageReplyTo? replyTo,
     bool? disableNotification,
     InputMessageContent? inputMessageContent,
   }) => AddLocalMessage(

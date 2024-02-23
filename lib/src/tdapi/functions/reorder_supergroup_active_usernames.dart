@@ -23,7 +23,7 @@ final class ReorderSupergroupActiveUsernames extends TdFunction {
     required this.usernames,
   });
   
-  /// Identifier of the supergroup or channel 
+  /// Identifier of the supergroup or channel
   final int supergroupId;
 
   /// The new order of active usernames. All currently active usernames must be specified
@@ -43,7 +43,7 @@ final class ReorderSupergroupActiveUsernames extends TdFunction {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [supergroup_id]: Identifier of the supergroup or channel 
+  /// * [supergroup_id]: Identifier of the supergroup or channel
   /// * [usernames]: The new order of active usernames. All currently active usernames must be specified
   ReorderSupergroupActiveUsernames copyWith({
     int? supergroupId,

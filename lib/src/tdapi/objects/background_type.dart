@@ -14,6 +14,7 @@ sealed class BackgroundType extends TdObject {
   /// * [BackgroundTypeWallpaper]
   /// * [BackgroundTypePattern]
   /// * [BackgroundTypeFill]
+  /// * [BackgroundTypeChatTheme]
   factory BackgroundType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
       case BackgroundTypeWallpaper.objectType:
@@ -22,6 +23,8 @@ sealed class BackgroundType extends TdObject {
         return BackgroundTypePattern.fromJson(json);
       case BackgroundTypeFill.objectType:
         return BackgroundTypeFill.fromJson(json);
+      case BackgroundTypeChatTheme.objectType:
+        return BackgroundTypeChatTheme.fromJson(json);
       default:
         throw FormatException(
           "Unknown object ${json["@type"]} (expected child of BackgroundType)",
@@ -257,6 +260,64 @@ final class BackgroundTypeFill extends BackgroundType {
 
   /// TDLib object type
   static const String objectType = 'backgroundTypeFill';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **BackgroundTypeChatTheme** *(backgroundTypeChatTheme)* - child of BackgroundType
+///
+/// A background from a chat theme; can be used only as a chat background in channels.
+///
+/// * [themeName]: Name of the chat theme.
+final class BackgroundTypeChatTheme extends BackgroundType {
+  
+  /// **BackgroundTypeChatTheme** *(backgroundTypeChatTheme)* - child of BackgroundType
+  ///
+  /// A background from a chat theme; can be used only as a chat background in channels.
+  ///
+  /// * [themeName]: Name of the chat theme.
+  const BackgroundTypeChatTheme({
+    required this.themeName,
+  });
+  
+  /// Name of the chat theme
+  final String themeName;
+  
+  /// Parse from a json
+  factory BackgroundTypeChatTheme.fromJson(Map<String, dynamic> json) => BackgroundTypeChatTheme(
+    themeName: json['theme_name'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "theme_name": themeName,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [theme_name]: Name of the chat theme
+  @override
+  BackgroundTypeChatTheme copyWith({
+    String? themeName,
+  }) => BackgroundTypeChatTheme(
+    themeName: themeName ?? this.themeName,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'backgroundTypeChatTheme';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

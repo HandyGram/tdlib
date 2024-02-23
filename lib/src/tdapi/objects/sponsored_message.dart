@@ -8,6 +8,7 @@ part of '../tdapi.dart';
 /// * [isRecommended]: True, if the message needs to be labeled as "recommended" instead of "sponsored".
 /// * [content]: Content of the message. Currently, can be only of the type messageText.
 /// * [sponsor]: Information about the sponsor of the message.
+/// * [buttonText]: If non-empty, text for the message action button.
 /// * [additionalInfo]: If non-empty, additional information about the sponsored message to be shown along with the message.
 final class SponsoredMessage extends TdObject {
   
@@ -19,12 +20,14 @@ final class SponsoredMessage extends TdObject {
   /// * [isRecommended]: True, if the message needs to be labeled as "recommended" instead of "sponsored".
   /// * [content]: Content of the message. Currently, can be only of the type messageText.
   /// * [sponsor]: Information about the sponsor of the message.
+  /// * [buttonText]: If non-empty, text for the message action button.
   /// * [additionalInfo]: If non-empty, additional information about the sponsored message to be shown along with the message.
   const SponsoredMessage({
     required this.messageId,
     required this.isRecommended,
     required this.content,
     required this.sponsor,
+    required this.buttonText,
     required this.additionalInfo,
   });
   
@@ -40,6 +43,9 @@ final class SponsoredMessage extends TdObject {
   /// Information about the sponsor of the message
   final MessageSponsor sponsor;
 
+  /// If non-empty, text for the message action button
+  final String buttonText;
+
   /// If non-empty, additional information about the sponsored message to be shown along with the message
   final String additionalInfo;
   
@@ -49,6 +55,7 @@ final class SponsoredMessage extends TdObject {
     isRecommended: json['is_recommended'],
     content: MessageContent.fromJson(json['content']),
     sponsor: MessageSponsor.fromJson(json['sponsor']),
+    buttonText: json['button_text'],
     additionalInfo: json['additional_info'],
   );
   
@@ -62,6 +69,7 @@ final class SponsoredMessage extends TdObject {
       "is_recommended": isRecommended,
       "content": content.toJson(),
       "sponsor": sponsor.toJson(),
+      "button_text": buttonText,
       "additional_info": additionalInfo,
 		};
 	}
@@ -73,18 +81,21 @@ final class SponsoredMessage extends TdObject {
   /// * [is_recommended]: True, if the message needs to be labeled as "recommended" instead of "sponsored"
   /// * [content]: Content of the message. Currently, can be only of the type messageText
   /// * [sponsor]: Information about the sponsor of the message
+  /// * [button_text]: If non-empty, text for the message action button
   /// * [additional_info]: If non-empty, additional information about the sponsored message to be shown along with the message
   SponsoredMessage copyWith({
     int? messageId,
     bool? isRecommended,
     MessageContent? content,
     MessageSponsor? sponsor,
+    String? buttonText,
     String? additionalInfo,
   }) => SponsoredMessage(
     messageId: messageId ?? this.messageId,
     isRecommended: isRecommended ?? this.isRecommended,
     content: content ?? this.content,
     sponsor: sponsor ?? this.sponsor,
+    buttonText: buttonText ?? this.buttonText,
     additionalInfo: additionalInfo ?? this.additionalInfo,
   );
 

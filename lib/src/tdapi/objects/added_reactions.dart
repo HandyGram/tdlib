@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 ///
 /// * [totalCount]: The total number of found reactions.
 /// * [reactions]: The list of added reactions.
-/// * [nextOffset]: The offset for the next request. If empty, there are no more results.
+/// * [nextOffset]: The offset for the next request. If empty, then there are no more results.
 final class AddedReactions extends TdObject {
   
   /// **AddedReactions** *(addedReactions)* - basic class
@@ -15,7 +15,7 @@ final class AddedReactions extends TdObject {
   ///
   /// * [totalCount]: The total number of found reactions.
   /// * [reactions]: The list of added reactions.
-  /// * [nextOffset]: The offset for the next request. If empty, there are no more results.
+  /// * [nextOffset]: The offset for the next request. If empty, then there are no more results.
   const AddedReactions({
     required this.totalCount,
     required this.reactions,
@@ -30,7 +30,7 @@ final class AddedReactions extends TdObject {
   /// The list of added reactions 
   final List<AddedReaction> reactions;
 
-  /// The offset for the next request. If empty, there are no more results
+  /// The offset for the next request. If empty, then there are no more results
   final String nextOffset;
 
   /// [extra] callback sign
@@ -67,7 +67,7 @@ final class AddedReactions extends TdObject {
   /// Properties:
   /// * [total_count]: The total number of found reactions 
   /// * [reactions]: The list of added reactions 
-  /// * [next_offset]: The offset for the next request. If empty, there are no more results
+  /// * [next_offset]: The offset for the next request. If empty, then there are no more results
   AddedReactions copyWith({
     int? totalCount,
     List<AddedReaction>? reactions,

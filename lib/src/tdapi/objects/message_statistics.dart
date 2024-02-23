@@ -5,6 +5,7 @@ part of '../tdapi.dart';
 /// A detailed statistics about a message.
 ///
 /// * [messageInteractionGraph]: A graph containing number of message views and shares.
+/// * [messageReactionGraph]: A graph containing number of message reactions.
 final class MessageStatistics extends TdObject {
   
   /// **MessageStatistics** *(messageStatistics)* - basic class
@@ -12,14 +13,19 @@ final class MessageStatistics extends TdObject {
   /// A detailed statistics about a message.
   ///
   /// * [messageInteractionGraph]: A graph containing number of message views and shares.
+  /// * [messageReactionGraph]: A graph containing number of message reactions.
   const MessageStatistics({
     required this.messageInteractionGraph,
+    required this.messageReactionGraph,
     this.extra,
     this.clientId,
   });
   
   /// A graph containing number of message views and shares
   final StatisticalGraph messageInteractionGraph;
+
+  /// A graph containing number of message reactions
+  final StatisticalGraph messageReactionGraph;
 
   /// [extra] callback sign
   @override
@@ -32,6 +38,7 @@ final class MessageStatistics extends TdObject {
   /// Parse from a json
   factory MessageStatistics.fromJson(Map<String, dynamic> json) => MessageStatistics(
     messageInteractionGraph: StatisticalGraph.fromJson(json['message_interaction_graph']),
+    messageReactionGraph: StatisticalGraph.fromJson(json['message_reaction_graph']),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -43,6 +50,7 @@ final class MessageStatistics extends TdObject {
 		return {
 			"@type": objectType,
       "message_interaction_graph": messageInteractionGraph.toJson(),
+      "message_reaction_graph": messageReactionGraph.toJson(),
 		};
 	}
 
@@ -50,12 +58,15 @@ final class MessageStatistics extends TdObject {
   ///
   /// Properties:
   /// * [message_interaction_graph]: A graph containing number of message views and shares
+  /// * [message_reaction_graph]: A graph containing number of message reactions
   MessageStatistics copyWith({
     StatisticalGraph? messageInteractionGraph,
+    StatisticalGraph? messageReactionGraph,
     dynamic extra,
     int? clientId,
   }) => MessageStatistics(
     messageInteractionGraph: messageInteractionGraph ?? this.messageInteractionGraph,
+    messageReactionGraph: messageReactionGraph ?? this.messageReactionGraph,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
   );

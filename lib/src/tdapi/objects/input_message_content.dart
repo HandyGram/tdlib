@@ -99,8 +99,8 @@ sealed class InputMessageContent extends TdObject {
 ///
 /// A text message.
 ///
-/// * [text]: Formatted text to be sent; 1-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually.
-/// * [disableWebPagePreview]: True, if rich web page previews for URLs in the message text must be disabled.
+/// * [text]: Formatted text to be sent; 0-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually.
+/// * [linkPreviewOptions]: Options to be used for generation of a link preview; may be null if none; pass null to use default link preview options *(optional)*.
 /// * [clearDraft]: True, if a chat message draft must be deleted.
 final class InputMessageText extends InputMessageContent {
   
@@ -108,20 +108,20 @@ final class InputMessageText extends InputMessageContent {
   ///
   /// A text message.
   ///
-  /// * [text]: Formatted text to be sent; 1-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually.
-  /// * [disableWebPagePreview]: True, if rich web page previews for URLs in the message text must be disabled.
+  /// * [text]: Formatted text to be sent; 0-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually.
+  /// * [linkPreviewOptions]: Options to be used for generation of a link preview; may be null if none; pass null to use default link preview options *(optional)*.
   /// * [clearDraft]: True, if a chat message draft must be deleted.
   const InputMessageText({
     required this.text,
-    required this.disableWebPagePreview,
+    this.linkPreviewOptions,
     required this.clearDraft,
   });
   
-  /// Formatted text to be sent; 1-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually
+  /// Formatted text to be sent; 0-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually
   final FormattedText text;
 
-  /// True, if rich web page previews for URLs in the message text must be disabled
-  final bool disableWebPagePreview;
+  /// Options to be used for generation of a link preview; may be null if none; pass null to use default link preview options
+  final LinkPreviewOptions? linkPreviewOptions;
 
   /// True, if a chat message draft must be deleted
   final bool clearDraft;
@@ -129,7 +129,7 @@ final class InputMessageText extends InputMessageContent {
   /// Parse from a json
   factory InputMessageText.fromJson(Map<String, dynamic> json) => InputMessageText(
     text: FormattedText.fromJson(json['text']),
-    disableWebPagePreview: json['disable_web_page_preview'],
+    linkPreviewOptions: json['link_preview_options'] == null ? null : LinkPreviewOptions.fromJson(json['link_preview_options']),
     clearDraft: json['clear_draft'],
   );
   
@@ -140,7 +140,7 @@ final class InputMessageText extends InputMessageContent {
 		return {
 			"@type": objectType,
       "text": text.toJson(),
-      "disable_web_page_preview": disableWebPagePreview,
+      "link_preview_options": linkPreviewOptions?.toJson(),
       "clear_draft": clearDraft,
 		};
 	}
@@ -148,17 +148,17 @@ final class InputMessageText extends InputMessageContent {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [text]: Formatted text to be sent; 1-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually
-  /// * [disable_web_page_preview]: True, if rich web page previews for URLs in the message text must be disabled
+  /// * [text]: Formatted text to be sent; 0-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually
+  /// * [link_preview_options]: Options to be used for generation of a link preview; may be null if none; pass null to use default link preview options
   /// * [clear_draft]: True, if a chat message draft must be deleted
   @override
   InputMessageText copyWith({
     FormattedText? text,
-    bool? disableWebPagePreview,
+    LinkPreviewOptions? linkPreviewOptions,
     bool? clearDraft,
   }) => InputMessageText(
     text: text ?? this.text,
-    disableWebPagePreview: disableWebPagePreview ?? this.disableWebPagePreview,
+    linkPreviewOptions: linkPreviewOptions ?? this.linkPreviewOptions,
     clearDraft: clearDraft ?? this.clearDraft,
   );
 
@@ -429,7 +429,7 @@ final class InputMessageAudio extends InputMessageContent {
 ///
 /// * [document]: Document to be sent.
 /// * [thumbnail]: Document thumbnail; pass null to skip thumbnail uploading *(optional)*.
-/// * [disableContentTypeDetection]: If true, automatic file type detection will be disabled and the document will always be sent as file. Always true for files sent to secret chats.
+/// * [disableContentTypeDetection]: Pass true to disable automatic file type detection and send the document as a file. Always true for files sent to secret chats.
 /// * [caption]: Document caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
 final class InputMessageDocument extends InputMessageContent {
   
@@ -439,7 +439,7 @@ final class InputMessageDocument extends InputMessageContent {
   ///
   /// * [document]: Document to be sent.
   /// * [thumbnail]: Document thumbnail; pass null to skip thumbnail uploading *(optional)*.
-  /// * [disableContentTypeDetection]: If true, automatic file type detection will be disabled and the document will always be sent as file. Always true for files sent to secret chats.
+  /// * [disableContentTypeDetection]: Pass true to disable automatic file type detection and send the document as a file. Always true for files sent to secret chats.
   /// * [caption]: Document caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
   const InputMessageDocument({
     required this.document,
@@ -454,7 +454,7 @@ final class InputMessageDocument extends InputMessageContent {
   /// Document thumbnail; pass null to skip thumbnail uploading
   final InputThumbnail? thumbnail;
 
-  /// If true, automatic file type detection will be disabled and the document will always be sent as file. Always true for files sent to secret chats
+  /// Pass true to disable automatic file type detection and send the document as a file. Always true for files sent to secret chats
   final bool disableContentTypeDetection;
 
   /// Document caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
@@ -486,7 +486,7 @@ final class InputMessageDocument extends InputMessageContent {
   /// Properties:
   /// * [document]: Document to be sent
   /// * [thumbnail]: Document thumbnail; pass null to skip thumbnail uploading
-  /// * [disable_content_type_detection]: If true, automatic file type detection will be disabled and the document will always be sent as file. Always true for files sent to secret chats
+  /// * [disable_content_type_detection]: Pass true to disable automatic file type detection and send the document as a file. Always true for files sent to secret chats
   /// * [caption]: Document caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   @override
   InputMessageDocument copyWith({
@@ -913,9 +913,10 @@ final class InputMessageVideo extends InputMessageContent {
 /// A video note message.
 ///
 /// * [videoNote]: Video note to be sent.
-/// * [thumbnail]: Video thumbnail; pass null to skip thumbnail uploading *(optional)*.
+/// * [thumbnail]: Video thumbnail; may be null if empty; pass null to skip thumbnail uploading *(optional)*.
 /// * [duration]: Duration of the video, in seconds.
 /// * [length]: Video width and height; must be positive and not greater than 640.
+/// * [selfDestructType]: Video note self-destruct type; may be null if none; pass null if none; private chats only *(optional)*.
 final class InputMessageVideoNote extends InputMessageContent {
   
   /// **InputMessageVideoNote** *(inputMessageVideoNote)* - child of InputMessageContent
@@ -923,20 +924,22 @@ final class InputMessageVideoNote extends InputMessageContent {
   /// A video note message.
   ///
   /// * [videoNote]: Video note to be sent.
-  /// * [thumbnail]: Video thumbnail; pass null to skip thumbnail uploading *(optional)*.
+  /// * [thumbnail]: Video thumbnail; may be null if empty; pass null to skip thumbnail uploading *(optional)*.
   /// * [duration]: Duration of the video, in seconds.
   /// * [length]: Video width and height; must be positive and not greater than 640.
+  /// * [selfDestructType]: Video note self-destruct type; may be null if none; pass null if none; private chats only *(optional)*.
   const InputMessageVideoNote({
     required this.videoNote,
     this.thumbnail,
     required this.duration,
     required this.length,
+    this.selfDestructType,
   });
   
   /// Video note to be sent
   final InputFile videoNote;
 
-  /// Video thumbnail; pass null to skip thumbnail uploading
+  /// Video thumbnail; may be null if empty; pass null to skip thumbnail uploading
   final InputThumbnail? thumbnail;
 
   /// Duration of the video, in seconds
@@ -944,6 +947,9 @@ final class InputMessageVideoNote extends InputMessageContent {
 
   /// Video width and height; must be positive and not greater than 640
   final int length;
+
+  /// Video note self-destruct type; may be null if none; pass null if none; private chats only
+  final MessageSelfDestructType? selfDestructType;
   
   /// Parse from a json
   factory InputMessageVideoNote.fromJson(Map<String, dynamic> json) => InputMessageVideoNote(
@@ -951,6 +957,7 @@ final class InputMessageVideoNote extends InputMessageContent {
     thumbnail: json['thumbnail'] == null ? null : InputThumbnail.fromJson(json['thumbnail']),
     duration: json['duration'],
     length: json['length'],
+    selfDestructType: json['self_destruct_type'] == null ? null : MessageSelfDestructType.fromJson(json['self_destruct_type']),
   );
   
   
@@ -963,6 +970,7 @@ final class InputMessageVideoNote extends InputMessageContent {
       "thumbnail": thumbnail?.toJson(),
       "duration": duration,
       "length": length,
+      "self_destruct_type": selfDestructType?.toJson(),
 		};
 	}
 
@@ -970,20 +978,23 @@ final class InputMessageVideoNote extends InputMessageContent {
   ///
   /// Properties:
   /// * [video_note]: Video note to be sent
-  /// * [thumbnail]: Video thumbnail; pass null to skip thumbnail uploading
+  /// * [thumbnail]: Video thumbnail; may be null if empty; pass null to skip thumbnail uploading
   /// * [duration]: Duration of the video, in seconds
   /// * [length]: Video width and height; must be positive and not greater than 640
+  /// * [self_destruct_type]: Video note self-destruct type; may be null if none; pass null if none; private chats only
   @override
   InputMessageVideoNote copyWith({
     InputFile? videoNote,
     InputThumbnail? thumbnail,
     int? duration,
     int? length,
+    MessageSelfDestructType? selfDestructType,
   }) => InputMessageVideoNote(
     videoNote: videoNote ?? this.videoNote,
     thumbnail: thumbnail ?? this.thumbnail,
     duration: duration ?? this.duration,
     length: length ?? this.length,
+    selfDestructType: selfDestructType ?? this.selfDestructType,
   );
 
   /// TDLib object type
@@ -1006,7 +1017,8 @@ final class InputMessageVideoNote extends InputMessageContent {
 /// * [voiceNote]: Voice note to be sent.
 /// * [duration]: Duration of the voice note, in seconds.
 /// * [waveform]: Waveform representation of the voice note in 5-bit format.
-/// * [caption]: Voice note caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
+/// * [caption]: Voice note caption; may be null if empty; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
+/// * [selfDestructType]: Voice note self-destruct type; may be null if none; pass null if none; private chats only *(optional)*.
 final class InputMessageVoiceNote extends InputMessageContent {
   
   /// **InputMessageVoiceNote** *(inputMessageVoiceNote)* - child of InputMessageContent
@@ -1016,12 +1028,14 @@ final class InputMessageVoiceNote extends InputMessageContent {
   /// * [voiceNote]: Voice note to be sent.
   /// * [duration]: Duration of the voice note, in seconds.
   /// * [waveform]: Waveform representation of the voice note in 5-bit format.
-  /// * [caption]: Voice note caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
+  /// * [caption]: Voice note caption; may be null if empty; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
+  /// * [selfDestructType]: Voice note self-destruct type; may be null if none; pass null if none; private chats only *(optional)*.
   const InputMessageVoiceNote({
     required this.voiceNote,
     required this.duration,
     required this.waveform,
     this.caption,
+    this.selfDestructType,
   });
   
   /// Voice note to be sent
@@ -1033,8 +1047,11 @@ final class InputMessageVoiceNote extends InputMessageContent {
   /// Waveform representation of the voice note in 5-bit format
   final String waveform;
 
-  /// Voice note caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
+  /// Voice note caption; may be null if empty; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
+
+  /// Voice note self-destruct type; may be null if none; pass null if none; private chats only
+  final MessageSelfDestructType? selfDestructType;
   
   /// Parse from a json
   factory InputMessageVoiceNote.fromJson(Map<String, dynamic> json) => InputMessageVoiceNote(
@@ -1042,6 +1059,7 @@ final class InputMessageVoiceNote extends InputMessageContent {
     duration: json['duration'],
     waveform: json['waveform'],
     caption: json['caption'] == null ? null : FormattedText.fromJson(json['caption']),
+    selfDestructType: json['self_destruct_type'] == null ? null : MessageSelfDestructType.fromJson(json['self_destruct_type']),
   );
   
   
@@ -1054,6 +1072,7 @@ final class InputMessageVoiceNote extends InputMessageContent {
       "duration": duration,
       "waveform": waveform,
       "caption": caption?.toJson(),
+      "self_destruct_type": selfDestructType?.toJson(),
 		};
 	}
 
@@ -1063,18 +1082,21 @@ final class InputMessageVoiceNote extends InputMessageContent {
   /// * [voice_note]: Voice note to be sent
   /// * [duration]: Duration of the voice note, in seconds
   /// * [waveform]: Waveform representation of the voice note in 5-bit format
-  /// * [caption]: Voice note caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
+  /// * [caption]: Voice note caption; may be null if empty; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
+  /// * [self_destruct_type]: Voice note self-destruct type; may be null if none; pass null if none; private chats only
   @override
   InputMessageVoiceNote copyWith({
     InputFile? voiceNote,
     int? duration,
     String? waveform,
     FormattedText? caption,
+    MessageSelfDestructType? selfDestructType,
   }) => InputMessageVoiceNote(
     voiceNote: voiceNote ?? this.voiceNote,
     duration: duration ?? this.duration,
     waveform: waveform ?? this.waveform,
     caption: caption ?? this.caption,
+    selfDestructType: selfDestructType ?? this.selfDestructType,
   );
 
   /// TDLib object type
@@ -1812,7 +1834,7 @@ final class InputMessageStory extends InputMessageContent {
 /// A forwarded message.
 ///
 /// * [fromChatId]: Identifier for the chat this forwarded message came from.
-/// * [messageId]: Identifier of the message to forward.
+/// * [messageId]: Identifier of the message to forward. A message can be forwarded only if message.can_be_forwarded.
 /// * [inGameShare]: True, if a game message is being shared from a launched game; applies only to game messages.
 /// * [copyOptions]: Options to be used to copy content of the message without reference to the original sender; pass null to forward the message as usual *(optional)*.
 final class InputMessageForwarded extends InputMessageContent {
@@ -1822,7 +1844,7 @@ final class InputMessageForwarded extends InputMessageContent {
   /// A forwarded message.
   ///
   /// * [fromChatId]: Identifier for the chat this forwarded message came from.
-  /// * [messageId]: Identifier of the message to forward.
+  /// * [messageId]: Identifier of the message to forward. A message can be forwarded only if message.can_be_forwarded.
   /// * [inGameShare]: True, if a game message is being shared from a launched game; applies only to game messages.
   /// * [copyOptions]: Options to be used to copy content of the message without reference to the original sender; pass null to forward the message as usual *(optional)*.
   const InputMessageForwarded({
@@ -1835,7 +1857,7 @@ final class InputMessageForwarded extends InputMessageContent {
   /// Identifier for the chat this forwarded message came from
   final int fromChatId;
 
-  /// Identifier of the message to forward
+  /// Identifier of the message to forward. A message can be forwarded only if message.can_be_forwarded
   final int messageId;
 
   /// True, if a game message is being shared from a launched game; applies only to game messages
@@ -1869,7 +1891,7 @@ final class InputMessageForwarded extends InputMessageContent {
   ///
   /// Properties:
   /// * [from_chat_id]: Identifier for the chat this forwarded message came from
-  /// * [message_id]: Identifier of the message to forward
+  /// * [message_id]: Identifier of the message to forward. A message can be forwarded only if message.can_be_forwarded
   /// * [in_game_share]: True, if a game message is being shared from a launched game; applies only to game messages
   /// * [copy_options]: Options to be used to copy content of the message without reference to the original sender; pass null to forward the message as usual
   @override

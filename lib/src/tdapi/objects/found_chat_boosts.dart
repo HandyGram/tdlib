@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 ///
 /// * [totalCount]: Total number of boosts applied to the chat.
 /// * [boosts]: List of boosts.
-/// * [nextOffset]: The offset for the next request. If empty, there are no more results.
+/// * [nextOffset]: The offset for the next request. If empty, then there are no more results.
 final class FoundChatBoosts extends TdObject {
   
   /// **FoundChatBoosts** *(foundChatBoosts)* - basic class
@@ -15,7 +15,7 @@ final class FoundChatBoosts extends TdObject {
   ///
   /// * [totalCount]: Total number of boosts applied to the chat.
   /// * [boosts]: List of boosts.
-  /// * [nextOffset]: The offset for the next request. If empty, there are no more results.
+  /// * [nextOffset]: The offset for the next request. If empty, then there are no more results.
   const FoundChatBoosts({
     required this.totalCount,
     required this.boosts,
@@ -24,13 +24,13 @@ final class FoundChatBoosts extends TdObject {
     this.clientId,
   });
   
-  /// Total number of boosts applied to the chat 
+  /// Total number of boosts applied to the chat
   final int totalCount;
 
-  /// List of boosts 
+  /// List of boosts
   final List<ChatBoost> boosts;
 
-  /// The offset for the next request. If empty, there are no more results
+  /// The offset for the next request. If empty, then there are no more results
   final String nextOffset;
 
   /// [extra] callback sign
@@ -65,9 +65,9 @@ final class FoundChatBoosts extends TdObject {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [total_count]: Total number of boosts applied to the chat 
-  /// * [boosts]: List of boosts 
-  /// * [next_offset]: The offset for the next request. If empty, there are no more results
+  /// * [total_count]: Total number of boosts applied to the chat
+  /// * [boosts]: List of boosts
+  /// * [next_offset]: The offset for the next request. If empty, then there are no more results
   FoundChatBoosts copyWith({
     int? totalCount,
     List<ChatBoost>? boosts,

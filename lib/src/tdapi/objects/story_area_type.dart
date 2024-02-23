@@ -14,6 +14,7 @@ sealed class StoryAreaType extends TdObject {
   /// * [StoryAreaTypeLocation]
   /// * [StoryAreaTypeVenue]
   /// * [StoryAreaTypeSuggestedReaction]
+  /// * [StoryAreaTypeMessage]
   factory StoryAreaType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
       case StoryAreaTypeLocation.objectType:
@@ -22,6 +23,8 @@ sealed class StoryAreaType extends TdObject {
         return StoryAreaTypeVenue.fromJson(json);
       case StoryAreaTypeSuggestedReaction.objectType:
         return StoryAreaTypeSuggestedReaction.fromJson(json);
+      case StoryAreaTypeMessage.objectType:
+        return StoryAreaTypeMessage.fromJson(json);
       default:
         throw FormatException(
           "Unknown object ${json["@type"]} (expected child of StoryAreaType)",
@@ -246,6 +249,75 @@ final class StoryAreaTypeSuggestedReaction extends StoryAreaType {
 
   /// TDLib object type
   static const String objectType = 'storyAreaTypeSuggestedReaction';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **StoryAreaTypeMessage** *(storyAreaTypeMessage)* - child of StoryAreaType
+///
+/// An area pointing to a message.
+///
+/// * [chatId]: Identifier of the chat with the message.
+/// * [messageId]: Identifier of the message.
+final class StoryAreaTypeMessage extends StoryAreaType {
+  
+  /// **StoryAreaTypeMessage** *(storyAreaTypeMessage)* - child of StoryAreaType
+  ///
+  /// An area pointing to a message.
+  ///
+  /// * [chatId]: Identifier of the chat with the message.
+  /// * [messageId]: Identifier of the message.
+  const StoryAreaTypeMessage({
+    required this.chatId,
+    required this.messageId,
+  });
+  
+  /// Identifier of the chat with the message 
+  final int chatId;
+
+  /// Identifier of the message
+  final int messageId;
+  
+  /// Parse from a json
+  factory StoryAreaTypeMessage.fromJson(Map<String, dynamic> json) => StoryAreaTypeMessage(
+    chatId: json['chat_id'],
+    messageId: json['message_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "chat_id": chatId,
+      "message_id": messageId,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat with the message 
+  /// * [message_id]: Identifier of the message
+  @override
+  StoryAreaTypeMessage copyWith({
+    int? chatId,
+    int? messageId,
+  }) => StoryAreaTypeMessage(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'storyAreaTypeMessage';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

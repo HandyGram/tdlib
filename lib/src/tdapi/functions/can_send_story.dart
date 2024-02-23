@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **CanSendStory** *(canSendStory)* - TDLib function
 ///
-/// Checks whether the current user can send a story on behalf of a chat; requires can_post_stories rights for channel chats.
+/// Checks whether the current user can send a story on behalf of a chat; requires can_post_stories right for supergroup and channel chats.
 ///
 /// * [chatId]: Chat identifier.
 ///
@@ -11,7 +11,7 @@ final class CanSendStory extends TdFunction {
   
   /// **CanSendStory** *(canSendStory)* - TDLib function
   ///
-  /// Checks whether the current user can send a story on behalf of a chat; requires can_post_stories rights for channel chats.
+  /// Checks whether the current user can send a story on behalf of a chat; requires can_post_stories right for supergroup and channel chats.
   ///
   /// * [chatId]: Chat identifier.
   ///

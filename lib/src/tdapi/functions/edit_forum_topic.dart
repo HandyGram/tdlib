@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **EditForumTopic** *(editForumTopic)* - TDLib function
 ///
-/// Edits title and icon of a topic in a forum supergroup chat; requires can_manage_topics administrator right in the supergroup unless the user is creator of the topic.
+/// Edits title and icon of a topic in a forum supergroup chat; requires can_manage_topics right in the supergroup unless the user is creator of the topic.
 ///
 /// * [chatId]: Identifier of the chat.
 /// * [messageThreadId]: Message thread identifier of the forum topic.
@@ -15,7 +15,7 @@ final class EditForumTopic extends TdFunction {
   
   /// **EditForumTopic** *(editForumTopic)* - TDLib function
   ///
-  /// Edits title and icon of a topic in a forum supergroup chat; requires can_manage_topics administrator right in the supergroup unless the user is creator of the topic.
+  /// Edits title and icon of a topic in a forum supergroup chat; requires can_manage_topics right in the supergroup unless the user is creator of the topic.
   ///
   /// * [chatId]: Identifier of the chat.
   /// * [messageThreadId]: Message thread identifier of the forum topic.

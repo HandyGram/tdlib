@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **BanChatMember** *(banChatMember)* - TDLib function
 ///
-/// Bans a member in a chat. Members can't be banned in private or secret chats. In supergroups and channels, the user will not be able to return to the group on their own using invite links, etc., unless unbanned first.
+/// Bans a member in a chat; requires can_restrict_members administrator right. Members can't be banned in private or secret chats. In supergroups and channels, the user will not be able to return to the group on their own using invite links, etc., unless unbanned first.
 ///
 /// * [chatId]: Chat identifier.
 /// * [memberId]: Member identifier.
@@ -14,7 +14,7 @@ final class BanChatMember extends TdFunction {
   
   /// **BanChatMember** *(banChatMember)* - TDLib function
   ///
-  /// Bans a member in a chat. Members can't be banned in private or secret chats. In supergroups and channels, the user will not be able to return to the group on their own using invite links, etc., unless unbanned first.
+  /// Bans a member in a chat; requires can_restrict_members administrator right. Members can't be banned in private or secret chats. In supergroups and channels, the user will not be able to return to the group on their own using invite links, etc., unless unbanned first.
   ///
   /// * [chatId]: Chat identifier.
   /// * [memberId]: Member identifier.

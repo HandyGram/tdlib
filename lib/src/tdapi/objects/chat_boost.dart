@@ -2,32 +2,53 @@ part of '../tdapi.dart';
 
 /// **ChatBoost** *(chatBoost)* - basic class
 ///
-/// Describes a boost of a chat.
+/// Describes a boost applied to a chat.
 ///
-/// * [userId]: Identifier of a user that boosted the chat.
-/// * [expirationDate]: Point in time (Unix timestamp) when the boost will automatically expire if the user will not prolongate their Telegram Premium subscription.
+/// * [id]: Unique identifier of the boost.
+/// * [count]: The number of identical boosts applied.
+/// * [source]: Source of the boost.
+/// * [startDate]: Point in time (Unix timestamp) when the chat was boosted.
+/// * [expirationDate]: Point in time (Unix timestamp) when the boost will expire.
 final class ChatBoost extends TdObject {
   
   /// **ChatBoost** *(chatBoost)* - basic class
   ///
-  /// Describes a boost of a chat.
+  /// Describes a boost applied to a chat.
   ///
-  /// * [userId]: Identifier of a user that boosted the chat.
-  /// * [expirationDate]: Point in time (Unix timestamp) when the boost will automatically expire if the user will not prolongate their Telegram Premium subscription.
+  /// * [id]: Unique identifier of the boost.
+  /// * [count]: The number of identical boosts applied.
+  /// * [source]: Source of the boost.
+  /// * [startDate]: Point in time (Unix timestamp) when the chat was boosted.
+  /// * [expirationDate]: Point in time (Unix timestamp) when the boost will expire.
   const ChatBoost({
-    required this.userId,
+    required this.id,
+    required this.count,
+    required this.source,
+    required this.startDate,
     required this.expirationDate,
   });
   
-  /// Identifier of a user that boosted the chat 
-  final int userId;
+  /// Unique identifier of the boost
+  final String id;
 
-  /// Point in time (Unix timestamp) when the boost will automatically expire if the user will not prolongate their Telegram Premium subscription
+  /// The number of identical boosts applied
+  final int count;
+
+  /// Source of the boost
+  final ChatBoostSource source;
+
+  /// Point in time (Unix timestamp) when the chat was boosted
+  final int startDate;
+
+  /// Point in time (Unix timestamp) when the boost will expire
   final int expirationDate;
   
   /// Parse from a json
   factory ChatBoost.fromJson(Map<String, dynamic> json) => ChatBoost(
-    userId: json['user_id'],
+    id: json['id'],
+    count: json['count'],
+    source: ChatBoostSource.fromJson(json['source']),
+    startDate: json['start_date'],
     expirationDate: json['expiration_date'],
   );
   
@@ -37,7 +58,10 @@ final class ChatBoost extends TdObject {
   Map<String, dynamic> toJson() {
 		return {
 			"@type": objectType,
-      "user_id": userId,
+      "id": id,
+      "count": count,
+      "source": source.toJson(),
+      "start_date": startDate,
       "expiration_date": expirationDate,
 		};
 	}
@@ -45,13 +69,22 @@ final class ChatBoost extends TdObject {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [user_id]: Identifier of a user that boosted the chat 
-  /// * [expiration_date]: Point in time (Unix timestamp) when the boost will automatically expire if the user will not prolongate their Telegram Premium subscription
+  /// * [id]: Unique identifier of the boost
+  /// * [count]: The number of identical boosts applied
+  /// * [source]: Source of the boost
+  /// * [start_date]: Point in time (Unix timestamp) when the chat was boosted
+  /// * [expiration_date]: Point in time (Unix timestamp) when the boost will expire
   ChatBoost copyWith({
-    int? userId,
+    String? id,
+    int? count,
+    ChatBoostSource? source,
+    int? startDate,
     int? expirationDate,
   }) => ChatBoost(
-    userId: userId ?? this.userId,
+    id: id ?? this.id,
+    count: count ?? this.count,
+    source: source ?? this.source,
+    startDate: startDate ?? this.startDate,
     expirationDate: expirationDate ?? this.expirationDate,
   );
 

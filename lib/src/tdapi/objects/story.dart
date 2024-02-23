@@ -6,6 +6,7 @@ part of '../tdapi.dart';
 ///
 /// * [id]: Unique story identifier among stories of the given sender.
 /// * [senderChatId]: Identifier of the chat that posted the story.
+/// * [senderId]: Identifier of the sender of the story; may be null if the story is posted on behalf of the sender_chat_id *(optional)*.
 /// * [date]: Point in time (Unix timestamp) when the story was published.
 /// * [isBeingSent]: True, if the story is being sent by the current user.
 /// * [isBeingEdited]: True, if the story is being edited by the current user.
@@ -17,8 +18,10 @@ part of '../tdapi.dart';
 /// * [canBeForwarded]: True, if the story can be forwarded as a message. Otherwise, screenshots and saving of the story content must be also forbidden.
 /// * [canBeReplied]: True, if the story can be replied in the chat with the story sender.
 /// * [canToggleIsPinned]: True, if the story's is_pinned value can be changed.
-/// * [canGetViewers]: True, if users viewed the story can be received through getStoryViewers.
+/// * [canGetStatistics]: True, if the story statistics are available through getStoryStatistics.
+/// * [canGetInteractions]: True, if interactions with the story can be received through getStoryInteractions.
 /// * [hasExpiredViewers]: True, if users viewed the story can't be received, because the story has expired more than getOption("story_viewers_expiration_delay") seconds ago.
+/// * [repostInfo]: Information about the original story; may be null if the story wasn't reposted *(optional)*.
 /// * [interactionInfo]: Information about interactions with the story; may be null if the story isn't owned or there were no interactions *(optional)*.
 /// * [chosenReactionType]: Type of the chosen reaction; may be null if none *(optional)*.
 /// * [privacySettings]: Privacy rules affecting story visibility; may be approximate for non-owned stories.
@@ -33,6 +36,7 @@ final class Story extends TdObject {
   ///
   /// * [id]: Unique story identifier among stories of the given sender.
   /// * [senderChatId]: Identifier of the chat that posted the story.
+  /// * [senderId]: Identifier of the sender of the story; may be null if the story is posted on behalf of the sender_chat_id *(optional)*.
   /// * [date]: Point in time (Unix timestamp) when the story was published.
   /// * [isBeingSent]: True, if the story is being sent by the current user.
   /// * [isBeingEdited]: True, if the story is being edited by the current user.
@@ -44,8 +48,10 @@ final class Story extends TdObject {
   /// * [canBeForwarded]: True, if the story can be forwarded as a message. Otherwise, screenshots and saving of the story content must be also forbidden.
   /// * [canBeReplied]: True, if the story can be replied in the chat with the story sender.
   /// * [canToggleIsPinned]: True, if the story's is_pinned value can be changed.
-  /// * [canGetViewers]: True, if users viewed the story can be received through getStoryViewers.
+  /// * [canGetStatistics]: True, if the story statistics are available through getStoryStatistics.
+  /// * [canGetInteractions]: True, if interactions with the story can be received through getStoryInteractions.
   /// * [hasExpiredViewers]: True, if users viewed the story can't be received, because the story has expired more than getOption("story_viewers_expiration_delay") seconds ago.
+  /// * [repostInfo]: Information about the original story; may be null if the story wasn't reposted *(optional)*.
   /// * [interactionInfo]: Information about interactions with the story; may be null if the story isn't owned or there were no interactions *(optional)*.
   /// * [chosenReactionType]: Type of the chosen reaction; may be null if none *(optional)*.
   /// * [privacySettings]: Privacy rules affecting story visibility; may be approximate for non-owned stories.
@@ -55,6 +61,7 @@ final class Story extends TdObject {
   const Story({
     required this.id,
     required this.senderChatId,
+    this.senderId,
     required this.date,
     required this.isBeingSent,
     required this.isBeingEdited,
@@ -66,8 +73,10 @@ final class Story extends TdObject {
     required this.canBeForwarded,
     required this.canBeReplied,
     required this.canToggleIsPinned,
-    required this.canGetViewers,
+    required this.canGetStatistics,
+    required this.canGetInteractions,
     required this.hasExpiredViewers,
+    this.repostInfo,
     this.interactionInfo,
     this.chosenReactionType,
     required this.privacySettings,
@@ -83,6 +92,9 @@ final class Story extends TdObject {
 
   /// Identifier of the chat that posted the story
   final int senderChatId;
+
+  /// Identifier of the sender of the story; may be null if the story is posted on behalf of the sender_chat_id
+  final MessageSender? senderId;
 
   /// Point in time (Unix timestamp) when the story was published
   final int date;
@@ -117,11 +129,17 @@ final class Story extends TdObject {
   /// True, if the story's is_pinned value can be changed
   final bool canToggleIsPinned;
 
-  /// True, if users viewed the story can be received through getStoryViewers
-  final bool canGetViewers;
+  /// True, if the story statistics are available through getStoryStatistics
+  final bool canGetStatistics;
+
+  /// True, if interactions with the story can be received through getStoryInteractions
+  final bool canGetInteractions;
 
   /// True, if users viewed the story can't be received, because the story has expired more than getOption("story_viewers_expiration_delay") seconds ago
   final bool hasExpiredViewers;
+
+  /// Information about the original story; may be null if the story wasn't reposted
+  final StoryRepostInfo? repostInfo;
 
   /// Information about interactions with the story; may be null if the story isn't owned or there were no interactions
   final StoryInteractionInfo? interactionInfo;
@@ -153,6 +171,7 @@ final class Story extends TdObject {
   factory Story.fromJson(Map<String, dynamic> json) => Story(
     id: json['id'],
     senderChatId: json['sender_chat_id'],
+    senderId: json['sender_id'] == null ? null : MessageSender.fromJson(json['sender_id']),
     date: json['date'],
     isBeingSent: json['is_being_sent'],
     isBeingEdited: json['is_being_edited'],
@@ -164,8 +183,10 @@ final class Story extends TdObject {
     canBeForwarded: json['can_be_forwarded'],
     canBeReplied: json['can_be_replied'],
     canToggleIsPinned: json['can_toggle_is_pinned'],
-    canGetViewers: json['can_get_viewers'],
+    canGetStatistics: json['can_get_statistics'],
+    canGetInteractions: json['can_get_interactions'],
     hasExpiredViewers: json['has_expired_viewers'],
+    repostInfo: json['repost_info'] == null ? null : StoryRepostInfo.fromJson(json['repost_info']),
     interactionInfo: json['interaction_info'] == null ? null : StoryInteractionInfo.fromJson(json['interaction_info']),
     chosenReactionType: json['chosen_reaction_type'] == null ? null : ReactionType.fromJson(json['chosen_reaction_type']),
     privacySettings: StoryPrivacySettings.fromJson(json['privacy_settings']),
@@ -184,6 +205,7 @@ final class Story extends TdObject {
 			"@type": objectType,
       "id": id,
       "sender_chat_id": senderChatId,
+      "sender_id": senderId?.toJson(),
       "date": date,
       "is_being_sent": isBeingSent,
       "is_being_edited": isBeingEdited,
@@ -195,8 +217,10 @@ final class Story extends TdObject {
       "can_be_forwarded": canBeForwarded,
       "can_be_replied": canBeReplied,
       "can_toggle_is_pinned": canToggleIsPinned,
-      "can_get_viewers": canGetViewers,
+      "can_get_statistics": canGetStatistics,
+      "can_get_interactions": canGetInteractions,
       "has_expired_viewers": hasExpiredViewers,
+      "repost_info": repostInfo?.toJson(),
       "interaction_info": interactionInfo?.toJson(),
       "chosen_reaction_type": chosenReactionType?.toJson(),
       "privacy_settings": privacySettings.toJson(),
@@ -211,6 +235,7 @@ final class Story extends TdObject {
   /// Properties:
   /// * [id]: Unique story identifier among stories of the given sender
   /// * [sender_chat_id]: Identifier of the chat that posted the story
+  /// * [sender_id]: Identifier of the sender of the story; may be null if the story is posted on behalf of the sender_chat_id
   /// * [date]: Point in time (Unix timestamp) when the story was published
   /// * [is_being_sent]: True, if the story is being sent by the current user
   /// * [is_being_edited]: True, if the story is being edited by the current user
@@ -222,8 +247,10 @@ final class Story extends TdObject {
   /// * [can_be_forwarded]: True, if the story can be forwarded as a message. Otherwise, screenshots and saving of the story content must be also forbidden
   /// * [can_be_replied]: True, if the story can be replied in the chat with the story sender
   /// * [can_toggle_is_pinned]: True, if the story's is_pinned value can be changed
-  /// * [can_get_viewers]: True, if users viewed the story can be received through getStoryViewers
+  /// * [can_get_statistics]: True, if the story statistics are available through getStoryStatistics
+  /// * [can_get_interactions]: True, if interactions with the story can be received through getStoryInteractions
   /// * [has_expired_viewers]: True, if users viewed the story can't be received, because the story has expired more than getOption("story_viewers_expiration_delay") seconds ago
+  /// * [repost_info]: Information about the original story; may be null if the story wasn't reposted
   /// * [interaction_info]: Information about interactions with the story; may be null if the story isn't owned or there were no interactions
   /// * [chosen_reaction_type]: Type of the chosen reaction; may be null if none
   /// * [privacy_settings]: Privacy rules affecting story visibility; may be approximate for non-owned stories
@@ -233,6 +260,7 @@ final class Story extends TdObject {
   Story copyWith({
     int? id,
     int? senderChatId,
+    MessageSender? senderId,
     int? date,
     bool? isBeingSent,
     bool? isBeingEdited,
@@ -244,8 +272,10 @@ final class Story extends TdObject {
     bool? canBeForwarded,
     bool? canBeReplied,
     bool? canToggleIsPinned,
-    bool? canGetViewers,
+    bool? canGetStatistics,
+    bool? canGetInteractions,
     bool? hasExpiredViewers,
+    StoryRepostInfo? repostInfo,
     StoryInteractionInfo? interactionInfo,
     ReactionType? chosenReactionType,
     StoryPrivacySettings? privacySettings,
@@ -257,6 +287,7 @@ final class Story extends TdObject {
   }) => Story(
     id: id ?? this.id,
     senderChatId: senderChatId ?? this.senderChatId,
+    senderId: senderId ?? this.senderId,
     date: date ?? this.date,
     isBeingSent: isBeingSent ?? this.isBeingSent,
     isBeingEdited: isBeingEdited ?? this.isBeingEdited,
@@ -268,8 +299,10 @@ final class Story extends TdObject {
     canBeForwarded: canBeForwarded ?? this.canBeForwarded,
     canBeReplied: canBeReplied ?? this.canBeReplied,
     canToggleIsPinned: canToggleIsPinned ?? this.canToggleIsPinned,
-    canGetViewers: canGetViewers ?? this.canGetViewers,
+    canGetStatistics: canGetStatistics ?? this.canGetStatistics,
+    canGetInteractions: canGetInteractions ?? this.canGetInteractions,
     hasExpiredViewers: hasExpiredViewers ?? this.hasExpiredViewers,
+    repostInfo: repostInfo ?? this.repostInfo,
     interactionInfo: interactionInfo ?? this.interactionInfo,
     chosenReactionType: chosenReactionType ?? this.chosenReactionType,
     privacySettings: privacySettings ?? this.privacySettings,

@@ -2,14 +2,14 @@ part of '../tdapi.dart';
 
 /// **GetDefaultEmojiStatuses** *(getDefaultEmojiStatuses)* - TDLib function
 ///
-/// Returns default emoji statuses.
+/// Returns default emoji statuses for self status.
 ///
 /// [EmojiStatuses] is returned on completion.
 final class GetDefaultEmojiStatuses extends TdFunction {
   
   /// **GetDefaultEmojiStatuses** *(getDefaultEmojiStatuses)* - TDLib function
   ///
-  /// Returns default emoji statuses.
+  /// Returns default emoji statuses for self status.
   ///
   /// [EmojiStatuses] is returned on completion.
   const GetDefaultEmojiStatuses();

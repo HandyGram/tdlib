@@ -7,8 +7,8 @@ part of '../tdapi.dart';
 /// * [muteFor]: Time left before notifications will be unmuted, in seconds.
 /// * [soundId]: Identifier of the notification sound to be played; 0 if sound is disabled.
 /// * [showPreview]: True, if message content must be displayed in notifications.
-/// * [useDefaultMuteStories]: If true, mute_stories is ignored and story notifications are received only for the first 5 chats from topChatCategoryUsers.
-/// * [muteStories]: True, if story notifications are disabled for the chat.
+/// * [useDefaultMuteStories]: If true, story notifications are received only for the first 5 chats from topChatCategoryUsers regardless of the value of mute_stories.
+/// * [muteStories]: True, if story notifications are disabled.
 /// * [storySoundId]: Identifier of the notification sound to be played for stories; 0 if sound is disabled.
 /// * [showStorySender]: True, if the sender of stories must be displayed in notifications.
 /// * [disablePinnedMessageNotifications]: True, if notifications for incoming pinned messages will be created as for an ordinary unread message.
@@ -22,8 +22,8 @@ final class ScopeNotificationSettings extends TdObject {
   /// * [muteFor]: Time left before notifications will be unmuted, in seconds.
   /// * [soundId]: Identifier of the notification sound to be played; 0 if sound is disabled.
   /// * [showPreview]: True, if message content must be displayed in notifications.
-  /// * [useDefaultMuteStories]: If true, mute_stories is ignored and story notifications are received only for the first 5 chats from topChatCategoryUsers.
-  /// * [muteStories]: True, if story notifications are disabled for the chat.
+  /// * [useDefaultMuteStories]: If true, story notifications are received only for the first 5 chats from topChatCategoryUsers regardless of the value of mute_stories.
+  /// * [muteStories]: True, if story notifications are disabled.
   /// * [storySoundId]: Identifier of the notification sound to be played for stories; 0 if sound is disabled.
   /// * [showStorySender]: True, if the sender of stories must be displayed in notifications.
   /// * [disablePinnedMessageNotifications]: True, if notifications for incoming pinned messages will be created as for an ordinary unread message.
@@ -51,10 +51,10 @@ final class ScopeNotificationSettings extends TdObject {
   /// True, if message content must be displayed in notifications
   final bool showPreview;
 
-  /// If true, mute_stories is ignored and story notifications are received only for the first 5 chats from topChatCategoryUsers
+  /// If true, story notifications are received only for the first 5 chats from topChatCategoryUsers regardless of the value of mute_stories
   final bool useDefaultMuteStories;
 
-  /// True, if story notifications are disabled for the chat
+  /// True, if story notifications are disabled
   final bool muteStories;
 
   /// Identifier of the notification sound to be played for stories; 0 if sound is disabled
@@ -116,8 +116,8 @@ final class ScopeNotificationSettings extends TdObject {
   /// * [mute_for]: Time left before notifications will be unmuted, in seconds
   /// * [sound_id]: Identifier of the notification sound to be played; 0 if sound is disabled
   /// * [show_preview]: True, if message content must be displayed in notifications
-  /// * [use_default_mute_stories]: If true, mute_stories is ignored and story notifications are received only for the first 5 chats from topChatCategoryUsers
-  /// * [mute_stories]: True, if story notifications are disabled for the chat
+  /// * [use_default_mute_stories]: If true, story notifications are received only for the first 5 chats from topChatCategoryUsers regardless of the value of mute_stories
+  /// * [mute_stories]: True, if story notifications are disabled
   /// * [story_sound_id]: Identifier of the notification sound to be played for stories; 0 if sound is disabled
   /// * [show_story_sender]: True, if the sender of stories must be displayed in notifications
   /// * [disable_pinned_message_notifications]: True, if notifications for incoming pinned messages will be created as for an ordinary unread message

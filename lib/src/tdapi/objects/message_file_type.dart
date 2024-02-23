@@ -52,14 +52,14 @@ sealed class MessageFileType extends TdObject {
 
 /// **MessageFileTypePrivate** *(messageFileTypePrivate)* - child of MessageFileType
 ///
-/// The messages was exported from a private chat.
+/// The messages were exported from a private chat.
 ///
 /// * [name]: Name of the other party; may be empty if unrecognized.
 final class MessageFileTypePrivate extends MessageFileType {
   
   /// **MessageFileTypePrivate** *(messageFileTypePrivate)* - child of MessageFileType
   ///
-  /// The messages was exported from a private chat.
+  /// The messages were exported from a private chat.
   ///
   /// * [name]: Name of the other party; may be empty if unrecognized.
   const MessageFileTypePrivate({
@@ -126,14 +126,14 @@ final class MessageFileTypePrivate extends MessageFileType {
 
 /// **MessageFileTypeGroup** *(messageFileTypeGroup)* - child of MessageFileType
 ///
-/// The messages was exported from a group chat.
+/// The messages were exported from a group chat.
 ///
 /// * [title]: Title of the group chat; may be empty if unrecognized.
 final class MessageFileTypeGroup extends MessageFileType {
   
   /// **MessageFileTypeGroup** *(messageFileTypeGroup)* - child of MessageFileType
   ///
-  /// The messages was exported from a group chat.
+  /// The messages were exported from a group chat.
   ///
   /// * [title]: Title of the group chat; may be empty if unrecognized.
   const MessageFileTypeGroup({
@@ -200,12 +200,12 @@ final class MessageFileTypeGroup extends MessageFileType {
 
 /// **MessageFileTypeUnknown** *(messageFileTypeUnknown)* - child of MessageFileType
 ///
-/// The messages was exported from a chat of unknown type.
+/// The messages were exported from a chat of unknown type.
 final class MessageFileTypeUnknown extends MessageFileType {
   
   /// **MessageFileTypeUnknown** *(messageFileTypeUnknown)* - child of MessageFileType
   ///
-  /// The messages was exported from a chat of unknown type.
+  /// The messages were exported from a chat of unknown type.
   const MessageFileTypeUnknown({
     this.extra,
     this.clientId,

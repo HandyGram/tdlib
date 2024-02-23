@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **ToggleChatIsTranslatable** *(toggleChatIsTranslatable)* - TDLib function
 ///
-/// Changes the translatable state of a chat; for Telegram Premium users only.
+/// Changes the translatable state of a chat.
 ///
 /// * [chatId]: Chat identifier.
 /// * [isTranslatable]: New value of is_translatable.
@@ -12,7 +12,7 @@ final class ToggleChatIsTranslatable extends TdFunction {
   
   /// **ToggleChatIsTranslatable** *(toggleChatIsTranslatable)* - TDLib function
   ///
-  /// Changes the translatable state of a chat; for Telegram Premium users only.
+  /// Changes the translatable state of a chat.
   ///
   /// * [chatId]: Chat identifier.
   /// * [isTranslatable]: New value of is_translatable.

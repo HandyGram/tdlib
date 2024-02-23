@@ -7,7 +7,7 @@ part of '../tdapi.dart';
 /// * [chatId]: Chat identifier.
 /// * [messageId]: Message identifier, which thread history needs to be returned.
 /// * [fromMessageId]: Identifier of the message starting from which history must be fetched; use 0 to get results from the last message.
-/// * [offset]: Specify 0 to get results from exactly the from_message_id or a negative offset up to 99 to get additionally some newer messages.
+/// * [offset]: Specify 0 to get results from exactly the message from_message_id or a negative offset up to 99 to get additionally some newer messages.
 /// * [limit]: The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset.. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
 ///
 /// [Messages] is returned on completion.
@@ -20,7 +20,7 @@ final class GetMessageThreadHistory extends TdFunction {
   /// * [chatId]: Chat identifier.
   /// * [messageId]: Message identifier, which thread history needs to be returned.
   /// * [fromMessageId]: Identifier of the message starting from which history must be fetched; use 0 to get results from the last message.
-  /// * [offset]: Specify 0 to get results from exactly the from_message_id or a negative offset up to 99 to get additionally some newer messages.
+  /// * [offset]: Specify 0 to get results from exactly the message from_message_id or a negative offset up to 99 to get additionally some newer messages.
   /// * [limit]: The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset.. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
   ///
   /// [Messages] is returned on completion.
@@ -41,7 +41,7 @@ final class GetMessageThreadHistory extends TdFunction {
   /// Identifier of the message starting from which history must be fetched; use 0 to get results from the last message
   final int fromMessageId;
 
-  /// Specify 0 to get results from exactly the from_message_id or a negative offset up to 99 to get additionally some newer messages
+  /// Specify 0 to get results from exactly the message from_message_id or a negative offset up to 99 to get additionally some newer messages
   final int offset;
 
   /// The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset.. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
@@ -67,7 +67,7 @@ final class GetMessageThreadHistory extends TdFunction {
   /// * [chat_id]: Chat identifier
   /// * [message_id]: Message identifier, which thread history needs to be returned
   /// * [from_message_id]: Identifier of the message starting from which history must be fetched; use 0 to get results from the last message
-  /// * [offset]: Specify 0 to get results from exactly the from_message_id or a negative offset up to 99 to get additionally some newer messages
+  /// * [offset]: Specify 0 to get results from exactly the message from_message_id or a negative offset up to 99 to get additionally some newer messages
   /// * [limit]: The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset.. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
   GetMessageThreadHistory copyWith({
     int? chatId,

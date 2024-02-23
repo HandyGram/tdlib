@@ -12,6 +12,7 @@ sealed class MessageSponsorType extends TdObject {
   
   /// a MessageSponsorType return type can be :
   /// * [MessageSponsorTypeBot]
+  /// * [MessageSponsorTypeWebApp]
   /// * [MessageSponsorTypePublicChannel]
   /// * [MessageSponsorTypePrivateChannel]
   /// * [MessageSponsorTypeWebsite]
@@ -19,6 +20,8 @@ sealed class MessageSponsorType extends TdObject {
     switch(json["@type"]) {
       case MessageSponsorTypeBot.objectType:
         return MessageSponsorTypeBot.fromJson(json);
+      case MessageSponsorTypeWebApp.objectType:
+        return MessageSponsorTypeWebApp.fromJson(json);
       case MessageSponsorTypePublicChannel.objectType:
         return MessageSponsorTypePublicChannel.fromJson(json);
       case MessageSponsorTypePrivateChannel.objectType:
@@ -111,6 +114,75 @@ final class MessageSponsorTypeBot extends MessageSponsorType {
 
   /// TDLib object type
   static const String objectType = 'messageSponsorTypeBot';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **MessageSponsorTypeWebApp** *(messageSponsorTypeWebApp)* - child of MessageSponsorType
+///
+/// The sponsor is a web app.
+///
+/// * [webAppTitle]: Web App title.
+/// * [link]: An internal link to be opened when the sponsored message is clicked.
+final class MessageSponsorTypeWebApp extends MessageSponsorType {
+  
+  /// **MessageSponsorTypeWebApp** *(messageSponsorTypeWebApp)* - child of MessageSponsorType
+  ///
+  /// The sponsor is a web app.
+  ///
+  /// * [webAppTitle]: Web App title.
+  /// * [link]: An internal link to be opened when the sponsored message is clicked.
+  const MessageSponsorTypeWebApp({
+    required this.webAppTitle,
+    required this.link,
+  });
+  
+  /// Web App title 
+  final String webAppTitle;
+
+  /// An internal link to be opened when the sponsored message is clicked
+  final InternalLinkType link;
+  
+  /// Parse from a json
+  factory MessageSponsorTypeWebApp.fromJson(Map<String, dynamic> json) => MessageSponsorTypeWebApp(
+    webAppTitle: json['web_app_title'],
+    link: InternalLinkType.fromJson(json['link']),
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "web_app_title": webAppTitle,
+      "link": link.toJson(),
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [web_app_title]: Web App title 
+  /// * [link]: An internal link to be opened when the sponsored message is clicked
+  @override
+  MessageSponsorTypeWebApp copyWith({
+    String? webAppTitle,
+    InternalLinkType? link,
+  }) => MessageSponsorTypeWebApp(
+    webAppTitle: webAppTitle ?? this.webAppTitle,
+    link: link ?? this.link,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'messageSponsorTypeWebApp';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

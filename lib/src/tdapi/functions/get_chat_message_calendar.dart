@@ -7,6 +7,7 @@ part of '../tdapi.dart';
 /// * [chatId]: Identifier of the chat in which to return information about messages.
 /// * [filter]: Filter for message content. Filters searchMessagesFilterEmpty, searchMessagesFilterMention, searchMessagesFilterUnreadMention, and searchMessagesFilterUnreadReaction are unsupported in this function.
 /// * [fromMessageId]: The message identifier from which to return information about messages; use 0 to get results from the last message.
+/// * [savedMessagesTopicId]: If not0, only messages in the specified Saved Messages topic will be considered; pass 0 to consider all messages, or for chats other than Saved Messages.
 ///
 /// [MessageCalendar] is returned on completion.
 final class GetChatMessageCalendar extends TdFunction {
@@ -18,12 +19,14 @@ final class GetChatMessageCalendar extends TdFunction {
   /// * [chatId]: Identifier of the chat in which to return information about messages.
   /// * [filter]: Filter for message content. Filters searchMessagesFilterEmpty, searchMessagesFilterMention, searchMessagesFilterUnreadMention, and searchMessagesFilterUnreadReaction are unsupported in this function.
   /// * [fromMessageId]: The message identifier from which to return information about messages; use 0 to get results from the last message.
+  /// * [savedMessagesTopicId]: If not0, only messages in the specified Saved Messages topic will be considered; pass 0 to consider all messages, or for chats other than Saved Messages.
   ///
   /// [MessageCalendar] is returned on completion.
   const GetChatMessageCalendar({
     required this.chatId,
     required this.filter,
     required this.fromMessageId,
+    required this.savedMessagesTopicId,
   });
   
   /// Identifier of the chat in which to return information about messages
@@ -34,6 +37,9 @@ final class GetChatMessageCalendar extends TdFunction {
 
   /// The message identifier from which to return information about messages; use 0 to get results from the last message
   final int fromMessageId;
+
+  /// If not0, only messages in the specified Saved Messages topic will be considered; pass 0 to consider all messages, or for chats other than Saved Messages
+  final int savedMessagesTopicId;
   
   /// Convert model to TDLib JSON format
   @override
@@ -43,6 +49,7 @@ final class GetChatMessageCalendar extends TdFunction {
       "chat_id": chatId,
       "filter": filter.toJson(),
       "from_message_id": fromMessageId,
+      "saved_messages_topic_id": savedMessagesTopicId,
       "@extra": extra,
 		};
 	}
@@ -53,14 +60,17 @@ final class GetChatMessageCalendar extends TdFunction {
   /// * [chat_id]: Identifier of the chat in which to return information about messages
   /// * [filter]: Filter for message content. Filters searchMessagesFilterEmpty, searchMessagesFilterMention, searchMessagesFilterUnreadMention, and searchMessagesFilterUnreadReaction are unsupported in this function
   /// * [from_message_id]: The message identifier from which to return information about messages; use 0 to get results from the last message
+  /// * [saved_messages_topic_id]: If not0, only messages in the specified Saved Messages topic will be considered; pass 0 to consider all messages, or for chats other than Saved Messages
   GetChatMessageCalendar copyWith({
     int? chatId,
     SearchMessagesFilter? filter,
     int? fromMessageId,
+    int? savedMessagesTopicId,
   }) => GetChatMessageCalendar(
     chatId: chatId ?? this.chatId,
     filter: filter ?? this.filter,
     fromMessageId: fromMessageId ?? this.fromMessageId,
+    savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
   );
 
   /// TDLib object type

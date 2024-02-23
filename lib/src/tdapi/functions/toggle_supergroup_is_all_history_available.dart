@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **ToggleSupergroupIsAllHistoryAvailable** *(toggleSupergroupIsAllHistoryAvailable)* - TDLib function
 ///
-/// Toggles whether the message history of a supergroup is available to new members; requires can_change_info administrator right.
+/// Toggles whether the message history of a supergroup is available to new members; requires can_change_info member right.
 ///
 /// * [supergroupId]: The identifier of the supergroup.
 /// * [isAllHistoryAvailable]: The new value of is_all_history_available.
@@ -12,7 +12,7 @@ final class ToggleSupergroupIsAllHistoryAvailable extends TdFunction {
   
   /// **ToggleSupergroupIsAllHistoryAvailable** *(toggleSupergroupIsAllHistoryAvailable)* - TDLib function
   ///
-  /// Toggles whether the message history of a supergroup is available to new members; requires can_change_info administrator right.
+  /// Toggles whether the message history of a supergroup is available to new members; requires can_change_info member right.
   ///
   /// * [supergroupId]: The identifier of the supergroup.
   /// * [isAllHistoryAvailable]: The new value of is_all_history_available.

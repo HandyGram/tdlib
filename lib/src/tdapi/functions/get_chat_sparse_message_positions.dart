@@ -8,6 +8,7 @@ part of '../tdapi.dart';
 /// * [filter]: Filter for message content. Filters searchMessagesFilterEmpty, searchMessagesFilterMention, searchMessagesFilterUnreadMention, and searchMessagesFilterUnreadReaction are unsupported in this function.
 /// * [fromMessageId]: The message identifier from which to return information about message positions.
 /// * [limit]: The expected number of message positions to be returned; 50-2000. A smaller number of positions can be returned, if there are not enough appropriate messages.
+/// * [savedMessagesTopicId]: If not 0, only messages in the specified Saved Messages topic will be considered; pass 0 to consider all messages, or for chats other than Saved Messages.
 ///
 /// [MessagePositions] is returned on completion.
 final class GetChatSparseMessagePositions extends TdFunction {
@@ -20,6 +21,7 @@ final class GetChatSparseMessagePositions extends TdFunction {
   /// * [filter]: Filter for message content. Filters searchMessagesFilterEmpty, searchMessagesFilterMention, searchMessagesFilterUnreadMention, and searchMessagesFilterUnreadReaction are unsupported in this function.
   /// * [fromMessageId]: The message identifier from which to return information about message positions.
   /// * [limit]: The expected number of message positions to be returned; 50-2000. A smaller number of positions can be returned, if there are not enough appropriate messages.
+  /// * [savedMessagesTopicId]: If not 0, only messages in the specified Saved Messages topic will be considered; pass 0 to consider all messages, or for chats other than Saved Messages.
   ///
   /// [MessagePositions] is returned on completion.
   const GetChatSparseMessagePositions({
@@ -27,6 +29,7 @@ final class GetChatSparseMessagePositions extends TdFunction {
     required this.filter,
     required this.fromMessageId,
     required this.limit,
+    required this.savedMessagesTopicId,
   });
   
   /// Identifier of the chat in which to return information about message positions
@@ -40,6 +43,9 @@ final class GetChatSparseMessagePositions extends TdFunction {
 
   /// The expected number of message positions to be returned; 50-2000. A smaller number of positions can be returned, if there are not enough appropriate messages
   final int limit;
+
+  /// If not 0, only messages in the specified Saved Messages topic will be considered; pass 0 to consider all messages, or for chats other than Saved Messages
+  final int savedMessagesTopicId;
   
   /// Convert model to TDLib JSON format
   @override
@@ -50,6 +56,7 @@ final class GetChatSparseMessagePositions extends TdFunction {
       "filter": filter.toJson(),
       "from_message_id": fromMessageId,
       "limit": limit,
+      "saved_messages_topic_id": savedMessagesTopicId,
       "@extra": extra,
 		};
 	}
@@ -61,16 +68,19 @@ final class GetChatSparseMessagePositions extends TdFunction {
   /// * [filter]: Filter for message content. Filters searchMessagesFilterEmpty, searchMessagesFilterMention, searchMessagesFilterUnreadMention, and searchMessagesFilterUnreadReaction are unsupported in this function
   /// * [from_message_id]: The message identifier from which to return information about message positions
   /// * [limit]: The expected number of message positions to be returned; 50-2000. A smaller number of positions can be returned, if there are not enough appropriate messages
+  /// * [saved_messages_topic_id]: If not 0, only messages in the specified Saved Messages topic will be considered; pass 0 to consider all messages, or for chats other than Saved Messages
   GetChatSparseMessagePositions copyWith({
     int? chatId,
     SearchMessagesFilter? filter,
     int? fromMessageId,
     int? limit,
+    int? savedMessagesTopicId,
   }) => GetChatSparseMessagePositions(
     chatId: chatId ?? this.chatId,
     filter: filter ?? this.filter,
     fromMessageId: fromMessageId ?? this.fromMessageId,
     limit: limit ?? this.limit,
+    savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
   );
 
   /// TDLib object type

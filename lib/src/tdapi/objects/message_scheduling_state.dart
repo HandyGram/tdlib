@@ -107,12 +107,12 @@ final class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
 
 /// **MessageSchedulingStateSendWhenOnline** *(messageSchedulingStateSendWhenOnline)* - child of MessageSchedulingState
 ///
-/// The message will be sent when the peer will be online. Applicable to private chats only and when the exact online status of the peer is known.
+/// The message will be sent when the other user is online. Applicable to private chats only and when the exact online status of the other user is known.
 final class MessageSchedulingStateSendWhenOnline extends MessageSchedulingState {
   
   /// **MessageSchedulingStateSendWhenOnline** *(messageSchedulingStateSendWhenOnline)* - child of MessageSchedulingState
   ///
-  /// The message will be sent when the peer will be online. Applicable to private chats only and when the exact online status of the peer is known.
+  /// The message will be sent when the other user is online. Applicable to private chats only and when the exact online status of the other user is known.
   const MessageSchedulingStateSendWhenOnline();
   
   /// Parse from a json

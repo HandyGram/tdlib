@@ -13,12 +13,14 @@ part of '../tdapi.dart';
 /// * [isPinned]: True, if the message is pinned.
 /// * [canBeEdited]: True, if the message can be edited. For live location and poll messages this fields shows whether editMessageLiveLocation or stopPoll can be used with this message by the application.
 /// * [canBeForwarded]: True, if the message can be forwarded.
+/// * [canBeRepliedInAnotherChat]: True, if the message can be replied in another chat or topic.
 /// * [canBeSaved]: True, if content of the message can be saved locally or copied.
 /// * [canBeDeletedOnlyForSelf]: True, if the message can be deleted only for the current user while other users will continue to see it.
 /// * [canBeDeletedForAllUsers]: True, if the message can be deleted for all users.
 /// * [canGetAddedReactions]: True, if the list of added reactions is available through getMessageAddedReactions.
 /// * [canGetStatistics]: True, if the message statistics are available through getMessageStatistics.
 /// * [canGetMessageThread]: True, if information about the message thread is available through getMessageThread and getMessageThreadHistory.
+/// * [canGetReadDate]: True, if read date of the message can be received through getMessageReadDate.
 /// * [canGetViewers]: True, if chat members already viewed the message can be received through getMessageViewers.
 /// * [canGetMediaTimestampLinks]: True, if media timestamp links can be generated for media timestamp entities in the message text, caption or web page description through getMessageLink.
 /// * [canReportReactions]: True, if reactions on the message can be reported through reportMessageReactions.
@@ -34,10 +36,12 @@ part of '../tdapi.dart';
 /// * [unreadReactions]: Information about unread reactions added to the message.
 /// * [replyTo]: Information about the message or the story this message is replying to; may be null if none *(optional)*.
 /// * [messageThreadId]: If non-zero, the identifier of the message thread the message belongs to; unique within the chat to which the message belongs.
+/// * [savedMessagesTopicId]: Identifier of the Saved Messages topic for the message; 0 for messages not from Saved Messages.
 /// * [selfDestructType]: The message's self-destruct type; may be null if none *(optional)*.
 /// * [selfDestructIn]: Time left before the message self-destruct timer expires, in seconds; 0 if self-destruction isn't scheduled yet.
 /// * [autoDeleteIn]: Time left before the message will be automatically deleted by message_auto_delete_time setting of the chat, in seconds; 0 if never.
 /// * [viaBotUserId]: If non-zero, the user identifier of the bot through which this message was sent.
+/// * [senderBoostCount]: Number of times the sender of the message boosted the supergroup at the time the message was sent; 0 if none or unknown. For messages sent by the current user, supergroupFullInfo.my_boost_count must be used instead.
 /// * [authorSignature]: For channel posts and anonymous group messages, optional author signature.
 /// * [mediaAlbumId]: Unique identifier of an album this message belongs to. Only audios, documents, photos and videos can be grouped together in albums.
 /// * [restrictionReason]: If non-empty, contains a human-readable description of the reason why access to this message must be restricted.
@@ -58,12 +62,14 @@ final class Message extends TdObject {
   /// * [isPinned]: True, if the message is pinned.
   /// * [canBeEdited]: True, if the message can be edited. For live location and poll messages this fields shows whether editMessageLiveLocation or stopPoll can be used with this message by the application.
   /// * [canBeForwarded]: True, if the message can be forwarded.
+  /// * [canBeRepliedInAnotherChat]: True, if the message can be replied in another chat or topic.
   /// * [canBeSaved]: True, if content of the message can be saved locally or copied.
   /// * [canBeDeletedOnlyForSelf]: True, if the message can be deleted only for the current user while other users will continue to see it.
   /// * [canBeDeletedForAllUsers]: True, if the message can be deleted for all users.
   /// * [canGetAddedReactions]: True, if the list of added reactions is available through getMessageAddedReactions.
   /// * [canGetStatistics]: True, if the message statistics are available through getMessageStatistics.
   /// * [canGetMessageThread]: True, if information about the message thread is available through getMessageThread and getMessageThreadHistory.
+  /// * [canGetReadDate]: True, if read date of the message can be received through getMessageReadDate.
   /// * [canGetViewers]: True, if chat members already viewed the message can be received through getMessageViewers.
   /// * [canGetMediaTimestampLinks]: True, if media timestamp links can be generated for media timestamp entities in the message text, caption or web page description through getMessageLink.
   /// * [canReportReactions]: True, if reactions on the message can be reported through reportMessageReactions.
@@ -79,10 +85,12 @@ final class Message extends TdObject {
   /// * [unreadReactions]: Information about unread reactions added to the message.
   /// * [replyTo]: Information about the message or the story this message is replying to; may be null if none *(optional)*.
   /// * [messageThreadId]: If non-zero, the identifier of the message thread the message belongs to; unique within the chat to which the message belongs.
+  /// * [savedMessagesTopicId]: Identifier of the Saved Messages topic for the message; 0 for messages not from Saved Messages.
   /// * [selfDestructType]: The message's self-destruct type; may be null if none *(optional)*.
   /// * [selfDestructIn]: Time left before the message self-destruct timer expires, in seconds; 0 if self-destruction isn't scheduled yet.
   /// * [autoDeleteIn]: Time left before the message will be automatically deleted by message_auto_delete_time setting of the chat, in seconds; 0 if never.
   /// * [viaBotUserId]: If non-zero, the user identifier of the bot through which this message was sent.
+  /// * [senderBoostCount]: Number of times the sender of the message boosted the supergroup at the time the message was sent; 0 if none or unknown. For messages sent by the current user, supergroupFullInfo.my_boost_count must be used instead.
   /// * [authorSignature]: For channel posts and anonymous group messages, optional author signature.
   /// * [mediaAlbumId]: Unique identifier of an album this message belongs to. Only audios, documents, photos and videos can be grouped together in albums.
   /// * [restrictionReason]: If non-empty, contains a human-readable description of the reason why access to this message must be restricted.
@@ -98,12 +106,14 @@ final class Message extends TdObject {
     required this.isPinned,
     required this.canBeEdited,
     required this.canBeForwarded,
+    required this.canBeRepliedInAnotherChat,
     required this.canBeSaved,
     required this.canBeDeletedOnlyForSelf,
     required this.canBeDeletedForAllUsers,
     required this.canGetAddedReactions,
     required this.canGetStatistics,
     required this.canGetMessageThread,
+    required this.canGetReadDate,
     required this.canGetViewers,
     required this.canGetMediaTimestampLinks,
     required this.canReportReactions,
@@ -119,10 +129,12 @@ final class Message extends TdObject {
     required this.unreadReactions,
     this.replyTo,
     required this.messageThreadId,
+    required this.savedMessagesTopicId,
     this.selfDestructType,
     required this.selfDestructIn,
     required this.autoDeleteIn,
     required this.viaBotUserId,
+    required this.senderBoostCount,
     required this.authorSignature,
     required this.mediaAlbumId,
     required this.restrictionReason,
@@ -159,6 +171,9 @@ final class Message extends TdObject {
   /// True, if the message can be forwarded
   final bool canBeForwarded;
 
+  /// True, if the message can be replied in another chat or topic
+  final bool canBeRepliedInAnotherChat;
+
   /// True, if content of the message can be saved locally or copied
   final bool canBeSaved;
 
@@ -176,6 +191,9 @@ final class Message extends TdObject {
 
   /// True, if information about the message thread is available through getMessageThread and getMessageThreadHistory
   final bool canGetMessageThread;
+
+  /// True, if read date of the message can be received through getMessageReadDate
+  final bool canGetReadDate;
 
   /// True, if chat members already viewed the message can be received through getMessageViewers
   final bool canGetViewers;
@@ -222,6 +240,9 @@ final class Message extends TdObject {
   /// If non-zero, the identifier of the message thread the message belongs to; unique within the chat to which the message belongs
   final int messageThreadId;
 
+  /// Identifier of the Saved Messages topic for the message; 0 for messages not from Saved Messages
+  final int savedMessagesTopicId;
+
   /// The message's self-destruct type; may be null if none
   final MessageSelfDestructType? selfDestructType;
 
@@ -233,6 +254,9 @@ final class Message extends TdObject {
 
   /// If non-zero, the user identifier of the bot through which this message was sent
   final int viaBotUserId;
+
+  /// Number of times the sender of the message boosted the supergroup at the time the message was sent; 0 if none or unknown. For messages sent by the current user, supergroupFullInfo.my_boost_count must be used instead
+  final int senderBoostCount;
 
   /// For channel posts and anonymous group messages, optional author signature
   final String authorSignature;
@@ -268,12 +292,14 @@ final class Message extends TdObject {
     isPinned: json['is_pinned'],
     canBeEdited: json['can_be_edited'],
     canBeForwarded: json['can_be_forwarded'],
+    canBeRepliedInAnotherChat: json['can_be_replied_in_another_chat'],
     canBeSaved: json['can_be_saved'],
     canBeDeletedOnlyForSelf: json['can_be_deleted_only_for_self'],
     canBeDeletedForAllUsers: json['can_be_deleted_for_all_users'],
     canGetAddedReactions: json['can_get_added_reactions'],
     canGetStatistics: json['can_get_statistics'],
     canGetMessageThread: json['can_get_message_thread'],
+    canGetReadDate: json['can_get_read_date'],
     canGetViewers: json['can_get_viewers'],
     canGetMediaTimestampLinks: json['can_get_media_timestamp_links'],
     canReportReactions: json['can_report_reactions'],
@@ -289,10 +315,12 @@ final class Message extends TdObject {
     unreadReactions: List<UnreadReaction>.from((json['unread_reactions'] ?? []).map((item) => UnreadReaction.fromJson(item)).toList()),
     replyTo: json['reply_to'] == null ? null : MessageReplyTo.fromJson(json['reply_to']),
     messageThreadId: json['message_thread_id'],
+    savedMessagesTopicId: json['saved_messages_topic_id'],
     selfDestructType: json['self_destruct_type'] == null ? null : MessageSelfDestructType.fromJson(json['self_destruct_type']),
     selfDestructIn: json['self_destruct_in'],
     autoDeleteIn: json['auto_delete_in'],
     viaBotUserId: json['via_bot_user_id'],
+    senderBoostCount: json['sender_boost_count'] ?? 0,
     authorSignature: json['author_signature'],
     mediaAlbumId: int.parse(json['media_album_id']),
     restrictionReason: json['restriction_reason'],
@@ -317,12 +345,14 @@ final class Message extends TdObject {
       "is_pinned": isPinned,
       "can_be_edited": canBeEdited,
       "can_be_forwarded": canBeForwarded,
+      "can_be_replied_in_another_chat": canBeRepliedInAnotherChat,
       "can_be_saved": canBeSaved,
       "can_be_deleted_only_for_self": canBeDeletedOnlyForSelf,
       "can_be_deleted_for_all_users": canBeDeletedForAllUsers,
       "can_get_added_reactions": canGetAddedReactions,
       "can_get_statistics": canGetStatistics,
       "can_get_message_thread": canGetMessageThread,
+      "can_get_read_date": canGetReadDate,
       "can_get_viewers": canGetViewers,
       "can_get_media_timestamp_links": canGetMediaTimestampLinks,
       "can_report_reactions": canReportReactions,
@@ -338,10 +368,12 @@ final class Message extends TdObject {
       "unread_reactions": unreadReactions.map((i) => i.toJson()).toList(),
       "reply_to": replyTo?.toJson(),
       "message_thread_id": messageThreadId,
+      "saved_messages_topic_id": savedMessagesTopicId,
       "self_destruct_type": selfDestructType?.toJson(),
       "self_destruct_in": selfDestructIn,
       "auto_delete_in": autoDeleteIn,
       "via_bot_user_id": viaBotUserId,
+      "sender_boost_count": senderBoostCount,
       "author_signature": authorSignature,
       "media_album_id": mediaAlbumId,
       "restriction_reason": restrictionReason,
@@ -362,12 +394,14 @@ final class Message extends TdObject {
   /// * [is_pinned]: True, if the message is pinned
   /// * [can_be_edited]: True, if the message can be edited. For live location and poll messages this fields shows whether editMessageLiveLocation or stopPoll can be used with this message by the application
   /// * [can_be_forwarded]: True, if the message can be forwarded
+  /// * [can_be_replied_in_another_chat]: True, if the message can be replied in another chat or topic
   /// * [can_be_saved]: True, if content of the message can be saved locally or copied
   /// * [can_be_deleted_only_for_self]: True, if the message can be deleted only for the current user while other users will continue to see it
   /// * [can_be_deleted_for_all_users]: True, if the message can be deleted for all users
   /// * [can_get_added_reactions]: True, if the list of added reactions is available through getMessageAddedReactions
   /// * [can_get_statistics]: True, if the message statistics are available through getMessageStatistics
   /// * [can_get_message_thread]: True, if information about the message thread is available through getMessageThread and getMessageThreadHistory
+  /// * [can_get_read_date]: True, if read date of the message can be received through getMessageReadDate
   /// * [can_get_viewers]: True, if chat members already viewed the message can be received through getMessageViewers
   /// * [can_get_media_timestamp_links]: True, if media timestamp links can be generated for media timestamp entities in the message text, caption or web page description through getMessageLink
   /// * [can_report_reactions]: True, if reactions on the message can be reported through reportMessageReactions
@@ -383,10 +417,12 @@ final class Message extends TdObject {
   /// * [unread_reactions]: Information about unread reactions added to the message
   /// * [reply_to]: Information about the message or the story this message is replying to; may be null if none
   /// * [message_thread_id]: If non-zero, the identifier of the message thread the message belongs to; unique within the chat to which the message belongs
+  /// * [saved_messages_topic_id]: Identifier of the Saved Messages topic for the message; 0 for messages not from Saved Messages
   /// * [self_destruct_type]: The message's self-destruct type; may be null if none
   /// * [self_destruct_in]: Time left before the message self-destruct timer expires, in seconds; 0 if self-destruction isn't scheduled yet
   /// * [auto_delete_in]: Time left before the message will be automatically deleted by message_auto_delete_time setting of the chat, in seconds; 0 if never
   /// * [via_bot_user_id]: If non-zero, the user identifier of the bot through which this message was sent
+  /// * [sender_boost_count]: Number of times the sender of the message boosted the supergroup at the time the message was sent; 0 if none or unknown. For messages sent by the current user, supergroupFullInfo.my_boost_count must be used instead
   /// * [author_signature]: For channel posts and anonymous group messages, optional author signature
   /// * [media_album_id]: Unique identifier of an album this message belongs to. Only audios, documents, photos and videos can be grouped together in albums
   /// * [restriction_reason]: If non-empty, contains a human-readable description of the reason why access to this message must be restricted
@@ -402,12 +438,14 @@ final class Message extends TdObject {
     bool? isPinned,
     bool? canBeEdited,
     bool? canBeForwarded,
+    bool? canBeRepliedInAnotherChat,
     bool? canBeSaved,
     bool? canBeDeletedOnlyForSelf,
     bool? canBeDeletedForAllUsers,
     bool? canGetAddedReactions,
     bool? canGetStatistics,
     bool? canGetMessageThread,
+    bool? canGetReadDate,
     bool? canGetViewers,
     bool? canGetMediaTimestampLinks,
     bool? canReportReactions,
@@ -423,10 +461,12 @@ final class Message extends TdObject {
     List<UnreadReaction>? unreadReactions,
     MessageReplyTo? replyTo,
     int? messageThreadId,
+    int? savedMessagesTopicId,
     MessageSelfDestructType? selfDestructType,
     double? selfDestructIn,
     double? autoDeleteIn,
     int? viaBotUserId,
+    int? senderBoostCount,
     String? authorSignature,
     int? mediaAlbumId,
     String? restrictionReason,
@@ -444,12 +484,14 @@ final class Message extends TdObject {
     isPinned: isPinned ?? this.isPinned,
     canBeEdited: canBeEdited ?? this.canBeEdited,
     canBeForwarded: canBeForwarded ?? this.canBeForwarded,
+    canBeRepliedInAnotherChat: canBeRepliedInAnotherChat ?? this.canBeRepliedInAnotherChat,
     canBeSaved: canBeSaved ?? this.canBeSaved,
     canBeDeletedOnlyForSelf: canBeDeletedOnlyForSelf ?? this.canBeDeletedOnlyForSelf,
     canBeDeletedForAllUsers: canBeDeletedForAllUsers ?? this.canBeDeletedForAllUsers,
     canGetAddedReactions: canGetAddedReactions ?? this.canGetAddedReactions,
     canGetStatistics: canGetStatistics ?? this.canGetStatistics,
     canGetMessageThread: canGetMessageThread ?? this.canGetMessageThread,
+    canGetReadDate: canGetReadDate ?? this.canGetReadDate,
     canGetViewers: canGetViewers ?? this.canGetViewers,
     canGetMediaTimestampLinks: canGetMediaTimestampLinks ?? this.canGetMediaTimestampLinks,
     canReportReactions: canReportReactions ?? this.canReportReactions,
@@ -465,10 +507,12 @@ final class Message extends TdObject {
     unreadReactions: unreadReactions ?? this.unreadReactions,
     replyTo: replyTo ?? this.replyTo,
     messageThreadId: messageThreadId ?? this.messageThreadId,
+    savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
     selfDestructType: selfDestructType ?? this.selfDestructType,
     selfDestructIn: selfDestructIn ?? this.selfDestructIn,
     autoDeleteIn: autoDeleteIn ?? this.autoDeleteIn,
     viaBotUserId: viaBotUserId ?? this.viaBotUserId,
+    senderBoostCount: senderBoostCount ?? this.senderBoostCount,
     authorSignature: authorSignature ?? this.authorSignature,
     mediaAlbumId: mediaAlbumId ?? this.mediaAlbumId,
     restrictionReason: restrictionReason ?? this.restrictionReason,

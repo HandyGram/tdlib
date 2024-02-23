@@ -2,26 +2,26 @@ part of '../tdapi.dart';
 
 /// **AddMessageReaction** *(addMessageReaction)* - TDLib function
 ///
-/// Adds a reaction to a message. Use getMessageAvailableReactions to receive the list of available reactions for the message.
+/// Adds a reaction or a tag to a message. Use getMessageAvailableReactions to receive the list of available reactions for the message.
 ///
 /// * [chatId]: Identifier of the chat to which the message belongs.
 /// * [messageId]: Identifier of the message.
 /// * [reactionType]: Type of the reaction to add.
 /// * [isBig]: Pass true if the reaction is added with a big animation.
-/// * [updateRecentReactions]: Pass true if the reaction needs to be added to recent reactions.
+/// * [updateRecentReactions]: Pass true if the reaction needs to be added to recent reactions; tags are never added to the list of recent reactions.
 ///
 /// [Ok] is returned on completion.
 final class AddMessageReaction extends TdFunction {
   
   /// **AddMessageReaction** *(addMessageReaction)* - TDLib function
   ///
-  /// Adds a reaction to a message. Use getMessageAvailableReactions to receive the list of available reactions for the message.
+  /// Adds a reaction or a tag to a message. Use getMessageAvailableReactions to receive the list of available reactions for the message.
   ///
   /// * [chatId]: Identifier of the chat to which the message belongs.
   /// * [messageId]: Identifier of the message.
   /// * [reactionType]: Type of the reaction to add.
   /// * [isBig]: Pass true if the reaction is added with a big animation.
-  /// * [updateRecentReactions]: Pass true if the reaction needs to be added to recent reactions.
+  /// * [updateRecentReactions]: Pass true if the reaction needs to be added to recent reactions; tags are never added to the list of recent reactions.
   ///
   /// [Ok] is returned on completion.
   const AddMessageReaction({
@@ -44,7 +44,7 @@ final class AddMessageReaction extends TdFunction {
   /// Pass true if the reaction is added with a big animation
   final bool isBig;
 
-  /// Pass true if the reaction needs to be added to recent reactions
+  /// Pass true if the reaction needs to be added to recent reactions; tags are never added to the list of recent reactions
   final bool updateRecentReactions;
   
   /// Convert model to TDLib JSON format
@@ -68,7 +68,7 @@ final class AddMessageReaction extends TdFunction {
   /// * [message_id]: Identifier of the message
   /// * [reaction_type]: Type of the reaction to add
   /// * [is_big]: Pass true if the reaction is added with a big animation
-  /// * [update_recent_reactions]: Pass true if the reaction needs to be added to recent reactions
+  /// * [update_recent_reactions]: Pass true if the reaction needs to be added to recent reactions; tags are never added to the list of recent reactions
   AddMessageReaction copyWith({
     int? chatId,
     int? messageId,

@@ -28,6 +28,11 @@ sealed class PremiumFeature extends TdObject {
   /// * [PremiumFeatureRealTimeChatTranslation]
   /// * [PremiumFeatureUpgradedStories]
   /// * [PremiumFeatureChatBoost]
+  /// * [PremiumFeatureAccentColor]
+  /// * [PremiumFeatureBackgroundForBoth]
+  /// * [PremiumFeatureSavedMessagesTags]
+  /// * [PremiumFeatureMessagePrivacy]
+  /// * [PremiumFeatureLastSeenTimes]
   factory PremiumFeature.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
       case PremiumFeatureIncreasedLimits.objectType:
@@ -64,6 +69,16 @@ sealed class PremiumFeature extends TdObject {
         return PremiumFeatureUpgradedStories.fromJson(json);
       case PremiumFeatureChatBoost.objectType:
         return PremiumFeatureChatBoost.fromJson(json);
+      case PremiumFeatureAccentColor.objectType:
+        return PremiumFeatureAccentColor.fromJson(json);
+      case PremiumFeatureBackgroundForBoth.objectType:
+        return PremiumFeatureBackgroundForBoth.fromJson(json);
+      case PremiumFeatureSavedMessagesTags.objectType:
+        return PremiumFeatureSavedMessagesTags.fromJson(json);
+      case PremiumFeatureMessagePrivacy.objectType:
+        return PremiumFeatureMessagePrivacy.fromJson(json);
+      case PremiumFeatureLastSeenTimes.objectType:
+        return PremiumFeatureLastSeenTimes.fromJson(json);
       default:
         throw FormatException(
           "Unknown object ${json["@type"]} (expected child of PremiumFeature)",
@@ -727,6 +742,196 @@ final class PremiumFeatureChatBoost extends PremiumFeature {
 
   /// TDLib object type
   static const String objectType = 'premiumFeatureChatBoost';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **PremiumFeatureAccentColor** *(premiumFeatureAccentColor)* - child of PremiumFeature
+///
+/// The ability to choose accent color for replies and user profile.
+final class PremiumFeatureAccentColor extends PremiumFeature {
+  
+  /// **PremiumFeatureAccentColor** *(premiumFeatureAccentColor)* - child of PremiumFeature
+  ///
+  /// The ability to choose accent color for replies and user profile.
+  const PremiumFeatureAccentColor();
+  
+  /// Parse from a json
+  factory PremiumFeatureAccentColor.fromJson(Map<String, dynamic> json) => const PremiumFeatureAccentColor();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  PremiumFeatureAccentColor copyWith() => const PremiumFeatureAccentColor();
+
+  /// TDLib object type
+  static const String objectType = 'premiumFeatureAccentColor';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **PremiumFeatureBackgroundForBoth** *(premiumFeatureBackgroundForBoth)* - child of PremiumFeature
+///
+/// The ability to set private chat background for both users.
+final class PremiumFeatureBackgroundForBoth extends PremiumFeature {
+  
+  /// **PremiumFeatureBackgroundForBoth** *(premiumFeatureBackgroundForBoth)* - child of PremiumFeature
+  ///
+  /// The ability to set private chat background for both users.
+  const PremiumFeatureBackgroundForBoth();
+  
+  /// Parse from a json
+  factory PremiumFeatureBackgroundForBoth.fromJson(Map<String, dynamic> json) => const PremiumFeatureBackgroundForBoth();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  PremiumFeatureBackgroundForBoth copyWith() => const PremiumFeatureBackgroundForBoth();
+
+  /// TDLib object type
+  static const String objectType = 'premiumFeatureBackgroundForBoth';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **PremiumFeatureSavedMessagesTags** *(premiumFeatureSavedMessagesTags)* - child of PremiumFeature
+///
+/// The ability to use tags in Saved Messages.
+final class PremiumFeatureSavedMessagesTags extends PremiumFeature {
+  
+  /// **PremiumFeatureSavedMessagesTags** *(premiumFeatureSavedMessagesTags)* - child of PremiumFeature
+  ///
+  /// The ability to use tags in Saved Messages.
+  const PremiumFeatureSavedMessagesTags();
+  
+  /// Parse from a json
+  factory PremiumFeatureSavedMessagesTags.fromJson(Map<String, dynamic> json) => const PremiumFeatureSavedMessagesTags();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  PremiumFeatureSavedMessagesTags copyWith() => const PremiumFeatureSavedMessagesTags();
+
+  /// TDLib object type
+  static const String objectType = 'premiumFeatureSavedMessagesTags';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **PremiumFeatureMessagePrivacy** *(premiumFeatureMessagePrivacy)* - child of PremiumFeature
+///
+/// The ability to disallow incoming voice and video note messages in private chats using setUserPrivacySettingRules with userPrivacySettingAllowPrivateVoiceAndVideoNoteMessages. and to restrict incoming messages from non-contacts using setNewChatPrivacySettings.
+final class PremiumFeatureMessagePrivacy extends PremiumFeature {
+  
+  /// **PremiumFeatureMessagePrivacy** *(premiumFeatureMessagePrivacy)* - child of PremiumFeature
+  ///
+  /// The ability to disallow incoming voice and video note messages in private chats using setUserPrivacySettingRules with userPrivacySettingAllowPrivateVoiceAndVideoNoteMessages. and to restrict incoming messages from non-contacts using setNewChatPrivacySettings.
+  const PremiumFeatureMessagePrivacy();
+  
+  /// Parse from a json
+  factory PremiumFeatureMessagePrivacy.fromJson(Map<String, dynamic> json) => const PremiumFeatureMessagePrivacy();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  PremiumFeatureMessagePrivacy copyWith() => const PremiumFeatureMessagePrivacy();
+
+  /// TDLib object type
+  static const String objectType = 'premiumFeatureMessagePrivacy';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **PremiumFeatureLastSeenTimes** *(premiumFeatureLastSeenTimes)* - child of PremiumFeature
+///
+/// The ability to view last seen and read times of other users even they can't view last seen or read time for the current user.
+final class PremiumFeatureLastSeenTimes extends PremiumFeature {
+  
+  /// **PremiumFeatureLastSeenTimes** *(premiumFeatureLastSeenTimes)* - child of PremiumFeature
+  ///
+  /// The ability to view last seen and read times of other users even they can't view last seen or read time for the current user.
+  const PremiumFeatureLastSeenTimes();
+  
+  /// Parse from a json
+  factory PremiumFeatureLastSeenTimes.fromJson(Map<String, dynamic> json) => const PremiumFeatureLastSeenTimes();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  PremiumFeatureLastSeenTimes copyWith() => const PremiumFeatureLastSeenTimes();
+
+  /// TDLib object type
+  static const String objectType = 'premiumFeatureLastSeenTimes';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

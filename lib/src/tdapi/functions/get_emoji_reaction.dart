@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **GetEmojiReaction** *(getEmojiReaction)* - TDLib function
 ///
-/// Returns information about a emoji reaction. Returns a 404 error if the reaction is not found.
+/// Returns information about an emoji reaction. Returns a 404 error if the reaction is not found.
 ///
 /// * [emoji]: Text representation of the reaction.
 ///
@@ -11,7 +11,7 @@ final class GetEmojiReaction extends TdFunction {
   
   /// **GetEmojiReaction** *(getEmojiReaction)* - TDLib function
   ///
-  /// Returns information about a emoji reaction. Returns a 404 error if the reaction is not found.
+  /// Returns information about an emoji reaction. Returns a 404 error if the reaction is not found.
   ///
   /// * [emoji]: Text representation of the reaction.
   ///

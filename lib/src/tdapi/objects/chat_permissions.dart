@@ -4,7 +4,7 @@ part of '../tdapi.dart';
 ///
 /// Describes actions that a user is allowed to take in a chat.
 ///
-/// * [canSendBasicMessages]: True, if the user can send text messages, contacts, invoices, locations, and venues.
+/// * [canSendBasicMessages]: True, if the user can send text messages, contacts, giveaways, giveaway winners, invoices, locations, and venues.
 /// * [canSendAudios]: True, if the user can send music files.
 /// * [canSendDocuments]: True, if the user can send documents.
 /// * [canSendPhotos]: True, if the user can send photos.
@@ -17,14 +17,14 @@ part of '../tdapi.dart';
 /// * [canChangeInfo]: True, if the user can change the chat title, photo, and other settings.
 /// * [canInviteUsers]: True, if the user can invite new users to the chat.
 /// * [canPinMessages]: True, if the user can pin messages.
-/// * [canManageTopics]: True, if the user can manage topics.
+/// * [canCreateTopics]: True, if the user can create topics.
 final class ChatPermissions extends TdObject {
   
   /// **ChatPermissions** *(chatPermissions)* - basic class
   ///
   /// Describes actions that a user is allowed to take in a chat.
   ///
-  /// * [canSendBasicMessages]: True, if the user can send text messages, contacts, invoices, locations, and venues.
+  /// * [canSendBasicMessages]: True, if the user can send text messages, contacts, giveaways, giveaway winners, invoices, locations, and venues.
   /// * [canSendAudios]: True, if the user can send music files.
   /// * [canSendDocuments]: True, if the user can send documents.
   /// * [canSendPhotos]: True, if the user can send photos.
@@ -37,7 +37,7 @@ final class ChatPermissions extends TdObject {
   /// * [canChangeInfo]: True, if the user can change the chat title, photo, and other settings.
   /// * [canInviteUsers]: True, if the user can invite new users to the chat.
   /// * [canPinMessages]: True, if the user can pin messages.
-  /// * [canManageTopics]: True, if the user can manage topics.
+  /// * [canCreateTopics]: True, if the user can create topics.
   const ChatPermissions({
     required this.canSendBasicMessages,
     required this.canSendAudios,
@@ -52,10 +52,10 @@ final class ChatPermissions extends TdObject {
     required this.canChangeInfo,
     required this.canInviteUsers,
     required this.canPinMessages,
-    required this.canManageTopics,
+    required this.canCreateTopics,
   });
   
-  /// True, if the user can send text messages, contacts, invoices, locations, and venues
+  /// True, if the user can send text messages, contacts, giveaways, giveaway winners, invoices, locations, and venues
   final bool canSendBasicMessages;
 
   /// True, if the user can send music files
@@ -94,8 +94,8 @@ final class ChatPermissions extends TdObject {
   /// True, if the user can pin messages
   final bool canPinMessages;
 
-  /// True, if the user can manage topics
-  final bool canManageTopics;
+  /// True, if the user can create topics
+  final bool canCreateTopics;
   
   /// Parse from a json
   factory ChatPermissions.fromJson(Map<String, dynamic> json) => ChatPermissions(
@@ -112,7 +112,7 @@ final class ChatPermissions extends TdObject {
     canChangeInfo: json['can_change_info'],
     canInviteUsers: json['can_invite_users'],
     canPinMessages: json['can_pin_messages'],
-    canManageTopics: json['can_manage_topics'],
+    canCreateTopics: json['can_create_topics'],
   );
   
   
@@ -134,14 +134,14 @@ final class ChatPermissions extends TdObject {
       "can_change_info": canChangeInfo,
       "can_invite_users": canInviteUsers,
       "can_pin_messages": canPinMessages,
-      "can_manage_topics": canManageTopics,
+      "can_create_topics": canCreateTopics,
 		};
 	}
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [can_send_basic_messages]: True, if the user can send text messages, contacts, invoices, locations, and venues
+  /// * [can_send_basic_messages]: True, if the user can send text messages, contacts, giveaways, giveaway winners, invoices, locations, and venues
   /// * [can_send_audios]: True, if the user can send music files
   /// * [can_send_documents]: True, if the user can send documents
   /// * [can_send_photos]: True, if the user can send photos
@@ -154,7 +154,7 @@ final class ChatPermissions extends TdObject {
   /// * [can_change_info]: True, if the user can change the chat title, photo, and other settings
   /// * [can_invite_users]: True, if the user can invite new users to the chat
   /// * [can_pin_messages]: True, if the user can pin messages
-  /// * [can_manage_topics]: True, if the user can manage topics
+  /// * [can_create_topics]: True, if the user can create topics
   ChatPermissions copyWith({
     bool? canSendBasicMessages,
     bool? canSendAudios,
@@ -169,7 +169,7 @@ final class ChatPermissions extends TdObject {
     bool? canChangeInfo,
     bool? canInviteUsers,
     bool? canPinMessages,
-    bool? canManageTopics,
+    bool? canCreateTopics,
   }) => ChatPermissions(
     canSendBasicMessages: canSendBasicMessages ?? this.canSendBasicMessages,
     canSendAudios: canSendAudios ?? this.canSendAudios,
@@ -184,7 +184,7 @@ final class ChatPermissions extends TdObject {
     canChangeInfo: canChangeInfo ?? this.canChangeInfo,
     canInviteUsers: canInviteUsers ?? this.canInviteUsers,
     canPinMessages: canPinMessages ?? this.canPinMessages,
-    canManageTopics: canManageTopics ?? this.canManageTopics,
+    canCreateTopics: canCreateTopics ?? this.canCreateTopics,
   );
 
   /// TDLib object type

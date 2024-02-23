@@ -55,6 +55,7 @@ sealed class PaymentProvider extends TdObject {
 /// Smart Glocal payment provider.
 ///
 /// * [publicToken]: Public payment token.
+/// * [tokenizeUrl]: URL for sending card tokenization requests.
 final class PaymentProviderSmartGlocal extends PaymentProvider {
   
   /// **PaymentProviderSmartGlocal** *(paymentProviderSmartGlocal)* - child of PaymentProvider
@@ -62,16 +63,22 @@ final class PaymentProviderSmartGlocal extends PaymentProvider {
   /// Smart Glocal payment provider.
   ///
   /// * [publicToken]: Public payment token.
+  /// * [tokenizeUrl]: URL for sending card tokenization requests.
   const PaymentProviderSmartGlocal({
     required this.publicToken,
+    required this.tokenizeUrl,
   });
   
-  /// Public payment token
+  /// Public payment token 
   final String publicToken;
+
+  /// URL for sending card tokenization requests
+  final String tokenizeUrl;
   
   /// Parse from a json
   factory PaymentProviderSmartGlocal.fromJson(Map<String, dynamic> json) => PaymentProviderSmartGlocal(
     publicToken: json['public_token'],
+    tokenizeUrl: json['tokenize_url'],
   );
   
   
@@ -81,18 +88,22 @@ final class PaymentProviderSmartGlocal extends PaymentProvider {
 		return {
 			"@type": objectType,
       "public_token": publicToken,
+      "tokenize_url": tokenizeUrl,
 		};
 	}
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [public_token]: Public payment token
+  /// * [public_token]: Public payment token 
+  /// * [tokenize_url]: URL for sending card tokenization requests
   @override
   PaymentProviderSmartGlocal copyWith({
     String? publicToken,
+    String? tokenizeUrl,
   }) => PaymentProviderSmartGlocal(
     publicToken: publicToken ?? this.publicToken,
+    tokenizeUrl: tokenizeUrl ?? this.tokenizeUrl,
   );
 
   /// TDLib object type

@@ -1,1 +1,1 @@
-TDLight API scheme from 1.8.20
+TDLight API scheme from 1.8.25

@@ -35,6 +35,8 @@ sealed class InternalLinkType extends TdObject {
   /// * [InternalLinkTypePassportDataRequest]
   /// * [InternalLinkTypePhoneNumberConfirmation]
   /// * [InternalLinkTypePremiumFeatures]
+  /// * [InternalLinkTypePremiumGift]
+  /// * [InternalLinkTypePremiumGiftCode]
   /// * [InternalLinkTypePrivacyAndSecuritySettings]
   /// * [InternalLinkTypeProxy]
   /// * [InternalLinkTypePublicChat]
@@ -102,6 +104,10 @@ sealed class InternalLinkType extends TdObject {
         return InternalLinkTypePhoneNumberConfirmation.fromJson(json);
       case InternalLinkTypePremiumFeatures.objectType:
         return InternalLinkTypePremiumFeatures.fromJson(json);
+      case InternalLinkTypePremiumGift.objectType:
+        return InternalLinkTypePremiumGift.fromJson(json);
+      case InternalLinkTypePremiumGiftCode.objectType:
+        return InternalLinkTypePremiumGiftCode.fromJson(json);
       case InternalLinkTypePrivacyAndSecuritySettings.objectType:
         return InternalLinkTypePrivacyAndSecuritySettings.fromJson(json);
       case InternalLinkTypeProxy.objectType:
@@ -166,12 +172,12 @@ sealed class InternalLinkType extends TdObject {
 
 /// **InternalLinkTypeActiveSessions** *(internalLinkTypeActiveSessions)* - child of InternalLinkType
 ///
-/// The link is a link to the active sessions section of the application. Use getActiveSessions to handle the link.
+/// The link is a link to the Devices section of the application. Use getActiveSessions to get the list of active sessions and show them to the user.
 final class InternalLinkTypeActiveSessions extends InternalLinkType {
   
   /// **InternalLinkTypeActiveSessions** *(internalLinkTypeActiveSessions)* - child of InternalLinkType
   ///
-  /// The link is a link to the active sessions section of the application. Use getActiveSessions to handle the link.
+  /// The link is a link to the Devices section of the application. Use getActiveSessions to get the list of active sessions and show them to the user.
   const InternalLinkTypeActiveSessions({
     this.extra,
     this.clientId,
@@ -395,14 +401,14 @@ final class InternalLinkTypeAuthenticationCode extends InternalLinkType {
 
 /// **InternalLinkTypeBackground** *(internalLinkTypeBackground)* - child of InternalLinkType
 ///
-/// The link is a link to a background. Call searchBackground with the given background name to process the link.
+/// The link is a link to a background. Call searchBackground with the given background name to process the link. If background is found and the user wants to apply it, then call setDefaultBackground.
 ///
 /// * [backgroundName]: Name of the background.
 final class InternalLinkTypeBackground extends InternalLinkType {
   
   /// **InternalLinkTypeBackground** *(internalLinkTypeBackground)* - child of InternalLinkType
   ///
-  /// The link is a link to a background. Call searchBackground with the given background name to process the link.
+  /// The link is a link to a background. Call searchBackground with the given background name to process the link. If background is found and the user wants to apply it, then call setDefaultBackground.
   ///
   /// * [backgroundName]: Name of the background.
   const InternalLinkTypeBackground({
@@ -805,14 +811,14 @@ final class InternalLinkTypeChangePhoneNumber extends InternalLinkType {
 
 /// **InternalLinkTypeChatBoost** *(internalLinkTypeChatBoost)* - child of InternalLinkType
 ///
-/// The link is a link to boost a Telegram chat. Call getChatBoostLinkInfo with the given URL to process the link.. If the chat is found, then call getChatBoostStatus and canBoostChat to get the current boost status and check whether the chat can be boosted.. If the user wants to boost the chat and the chat can be boosted, then call boostChat.
+/// The link is a link to boost a Telegram chat. Call getChatBoostLinkInfo with the given URL to process the link.. If the chat is found, then call getChatBoostStatus and getAvailableChatBoostSlots to get the current boost status and check whether the chat can be boosted.. If the user wants to boost the chat and the chat can be boosted, then call boostChat.
 ///
 /// * [url]: URL to be passed to getChatBoostLinkInfo.
 final class InternalLinkTypeChatBoost extends InternalLinkType {
   
   /// **InternalLinkTypeChatBoost** *(internalLinkTypeChatBoost)* - child of InternalLinkType
   ///
-  /// The link is a link to boost a Telegram chat. Call getChatBoostLinkInfo with the given URL to process the link.. If the chat is found, then call getChatBoostStatus and canBoostChat to get the current boost status and check whether the chat can be boosted.. If the user wants to boost the chat and the chat can be boosted, then call boostChat.
+  /// The link is a link to boost a Telegram chat. Call getChatBoostLinkInfo with the given URL to process the link.. If the chat is found, then call getChatBoostStatus and getAvailableChatBoostSlots to get the current boost status and check whether the chat can be boosted.. If the user wants to boost the chat and the chat can be boosted, then call boostChat.
   ///
   /// * [url]: URL to be passed to getChatBoostLinkInfo.
   const InternalLinkTypeChatBoost({
@@ -879,14 +885,14 @@ final class InternalLinkTypeChatBoost extends InternalLinkType {
 
 /// **InternalLinkTypeChatFolderInvite** *(internalLinkTypeChatFolderInvite)* - child of InternalLinkType
 ///
-/// The link is an invite link to a chat folder. Call checkChatFolderInviteLink with the given invite link to process the link.
+/// The link is an invite link to a chat folder. Call checkChatFolderInviteLink with the given invite link to process the link.. If the link is valid and the user wants to join the chat folder, then call addChatFolderByInviteLink.
 ///
 /// * [inviteLink]: Internal representation of the invite link.
 final class InternalLinkTypeChatFolderInvite extends InternalLinkType {
   
   /// **InternalLinkTypeChatFolderInvite** *(internalLinkTypeChatFolderInvite)* - child of InternalLinkType
   ///
-  /// The link is an invite link to a chat folder. Call checkChatFolderInviteLink with the given invite link to process the link.
+  /// The link is an invite link to a chat folder. Call checkChatFolderInviteLink with the given invite link to process the link.. If the link is valid and the user wants to join the chat folder, then call addChatFolderByInviteLink.
   ///
   /// * [inviteLink]: Internal representation of the invite link.
   const InternalLinkTypeChatFolderInvite({
@@ -1012,14 +1018,14 @@ final class InternalLinkTypeChatFolderSettings extends InternalLinkType {
 
 /// **InternalLinkTypeChatInvite** *(internalLinkTypeChatInvite)* - child of InternalLinkType
 ///
-/// The link is a chat invite link. Call checkChatInviteLink with the given invite link to process the link.
+/// The link is a chat invite link. Call checkChatInviteLink with the given invite link to process the link.. If the link is valid and the user wants to join the chat, then call joinChatByInviteLink.
 ///
 /// * [inviteLink]: Internal representation of the invite link.
 final class InternalLinkTypeChatInvite extends InternalLinkType {
   
   /// **InternalLinkTypeChatInvite** *(internalLinkTypeChatInvite)* - child of InternalLinkType
   ///
-  /// The link is a chat invite link. Call checkChatInviteLink with the given invite link to process the link.
+  /// The link is a chat invite link. Call checkChatInviteLink with the given invite link to process the link.. If the link is valid and the user wants to join the chat, then call joinChatByInviteLink.
   ///
   /// * [inviteLink]: Internal representation of the invite link.
   const InternalLinkTypeChatInvite({
@@ -1204,7 +1210,7 @@ final class InternalLinkTypeEditProfileSettings extends InternalLinkType {
 
 /// **InternalLinkTypeGame** *(internalLinkTypeGame)* - child of InternalLinkType
 ///
-/// The link is a link to a game. Call searchPublicChat with the given bot username, check that the user is a bot, ask the current user to select a chat to send the game, and then call sendMessage with inputMessageGame.
+/// The link is a link to a game. Call searchPublicChat with the given bot username, check that the user is a bot,. ask the current user to select a chat to send the game, and then call sendMessage with inputMessageGame.
 ///
 /// * [botUsername]: Username of the bot that owns the game.
 /// * [gameShortName]: Short name of the game.
@@ -1212,7 +1218,7 @@ final class InternalLinkTypeGame extends InternalLinkType {
   
   /// **InternalLinkTypeGame** *(internalLinkTypeGame)* - child of InternalLinkType
   ///
-  /// The link is a link to a game. Call searchPublicChat with the given bot username, check that the user is a bot, ask the current user to select a chat to send the game, and then call sendMessage with inputMessageGame.
+  /// The link is a link to a game. Call searchPublicChat with the given bot username, check that the user is a bot,. ask the current user to select a chat to send the game, and then call sendMessage with inputMessageGame.
   ///
   /// * [botUsername]: Username of the bot that owns the game.
   /// * [gameShortName]: Short name of the game.
@@ -1289,7 +1295,7 @@ final class InternalLinkTypeGame extends InternalLinkType {
 
 /// **InternalLinkTypeInstantView** *(internalLinkTypeInstantView)* - child of InternalLinkType
 ///
-/// The link must be opened in an Instant View. Call getWebPageInstantView with the given URL to process the link.
+/// The link must be opened in an Instant View. Call getWebPageInstantView with the given URL to process the link.. If Instant View is found, then show it, otherwise, open the fallback URL in an external browser.
 ///
 /// * [url]: URL to be passed to getWebPageInstantView.
 /// * [fallbackUrl]: An URL to open if getWebPageInstantView fails.
@@ -1297,7 +1303,7 @@ final class InternalLinkTypeInstantView extends InternalLinkType {
   
   /// **InternalLinkTypeInstantView** *(internalLinkTypeInstantView)* - child of InternalLinkType
   ///
-  /// The link must be opened in an Instant View. Call getWebPageInstantView with the given URL to process the link.
+  /// The link must be opened in an Instant View. Call getWebPageInstantView with the given URL to process the link.. If Instant View is found, then show it, otherwise, open the fallback URL in an external browser.
   ///
   /// * [url]: URL to be passed to getWebPageInstantView.
   /// * [fallbackUrl]: An URL to open if getWebPageInstantView fails.
@@ -1308,7 +1314,7 @@ final class InternalLinkTypeInstantView extends InternalLinkType {
     this.clientId,
   });
   
-  /// URL to be passed to getWebPageInstantView 
+  /// URL to be passed to getWebPageInstantView
   final String url;
 
   /// An URL to open if getWebPageInstantView fails
@@ -1344,7 +1350,7 @@ final class InternalLinkTypeInstantView extends InternalLinkType {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [url]: URL to be passed to getWebPageInstantView 
+  /// * [url]: URL to be passed to getWebPageInstantView
   /// * [fallback_url]: An URL to open if getWebPageInstantView fails
   @override
   InternalLinkTypeInstantView copyWith({
@@ -1448,14 +1454,14 @@ final class InternalLinkTypeInvoice extends InternalLinkType {
 
 /// **InternalLinkTypeLanguagePack** *(internalLinkTypeLanguagePack)* - child of InternalLinkType
 ///
-/// The link is a link to a language pack. Call getLanguagePackInfo with the given language pack identifier to process the link.
+/// The link is a link to a language pack. Call getLanguagePackInfo with the given language pack identifier to process the link.. If the language pack is found and the user wants to apply it, then call setOption for the option "language_pack_id".
 ///
 /// * [languagePackId]: Language pack identifier.
 final class InternalLinkTypeLanguagePack extends InternalLinkType {
   
   /// **InternalLinkTypeLanguagePack** *(internalLinkTypeLanguagePack)* - child of InternalLinkType
   ///
-  /// The link is a link to a language pack. Call getLanguagePackInfo with the given language pack identifier to process the link.
+  /// The link is a link to a language pack. Call getLanguagePackInfo with the given language pack identifier to process the link.. If the language pack is found and the user wants to apply it, then call setOption for the option "language_pack_id".
   ///
   /// * [languagePackId]: Language pack identifier.
   const InternalLinkTypeLanguagePack({
@@ -1581,14 +1587,14 @@ final class InternalLinkTypeLanguageSettings extends InternalLinkType {
 
 /// **InternalLinkTypeMessage** *(internalLinkTypeMessage)* - child of InternalLinkType
 ///
-/// The link is a link to a Telegram message or a forum topic. Call getMessageLinkInfo with the given URL to process the link.
+/// The link is a link to a Telegram message or a forum topic. Call getMessageLinkInfo with the given URL to process the link,. and then open received forum topic or chat and show the message there.
 ///
 /// * [url]: URL to be passed to getMessageLinkInfo.
 final class InternalLinkTypeMessage extends InternalLinkType {
   
   /// **InternalLinkTypeMessage** *(internalLinkTypeMessage)* - child of InternalLinkType
   ///
-  /// The link is a link to a Telegram message or a forum topic. Call getMessageLinkInfo with the given URL to process the link.
+  /// The link is a link to a Telegram message or a forum topic. Call getMessageLinkInfo with the given URL to process the link,. and then open received forum topic or chat and show the message there.
   ///
   /// * [url]: URL to be passed to getMessageLinkInfo.
   const InternalLinkTypeMessage({
@@ -1858,7 +1864,7 @@ final class InternalLinkTypePassportDataRequest extends InternalLinkType {
 
 /// **InternalLinkTypePhoneNumberConfirmation** *(internalLinkTypePhoneNumberConfirmation)* - child of InternalLinkType
 ///
-/// The link can be used to confirm ownership of a phone number to prevent account deletion. Call sendPhoneNumberConfirmationCode with the given hash and phone number to process the link.
+/// The link can be used to confirm ownership of a phone number to prevent account deletion. Call sendPhoneNumberConfirmationCode with the given hash and phone number to process the link.. If succeeded, call checkPhoneNumberConfirmationCode to check entered by the user code, or resendPhoneNumberConfirmationCode to resend it.
 ///
 /// * [hash]: Hash value from the link.
 /// * [phoneNumber]: Phone number value from the link.
@@ -1866,7 +1872,7 @@ final class InternalLinkTypePhoneNumberConfirmation extends InternalLinkType {
   
   /// **InternalLinkTypePhoneNumberConfirmation** *(internalLinkTypePhoneNumberConfirmation)* - child of InternalLinkType
   ///
-  /// The link can be used to confirm ownership of a phone number to prevent account deletion. Call sendPhoneNumberConfirmationCode with the given hash and phone number to process the link.
+  /// The link can be used to confirm ownership of a phone number to prevent account deletion. Call sendPhoneNumberConfirmationCode with the given hash and phone number to process the link.. If succeeded, call checkPhoneNumberConfirmationCode to check entered by the user code, or resendPhoneNumberConfirmationCode to resend it.
   ///
   /// * [hash]: Hash value from the link.
   /// * [phoneNumber]: Phone number value from the link.
@@ -2004,6 +2010,154 @@ final class InternalLinkTypePremiumFeatures extends InternalLinkType {
 
   /// TDLib object type
   static const String objectType = 'internalLinkTypePremiumFeatures';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **InternalLinkTypePremiumGift** *(internalLinkTypePremiumGift)* - child of InternalLinkType
+///
+/// The link is a link to the screen for gifting Telegram Premium subscriptions to friends via inputInvoiceTelegram payments or in-store purchases.
+///
+/// * [referrer]: Referrer specified in the link.
+final class InternalLinkTypePremiumGift extends InternalLinkType {
+  
+  /// **InternalLinkTypePremiumGift** *(internalLinkTypePremiumGift)* - child of InternalLinkType
+  ///
+  /// The link is a link to the screen for gifting Telegram Premium subscriptions to friends via inputInvoiceTelegram payments or in-store purchases.
+  ///
+  /// * [referrer]: Referrer specified in the link.
+  const InternalLinkTypePremiumGift({
+    required this.referrer,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// Referrer specified in the link
+  final String referrer;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory InternalLinkTypePremiumGift.fromJson(Map<String, dynamic> json) => InternalLinkTypePremiumGift(
+    referrer: json['referrer'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "referrer": referrer,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [referrer]: Referrer specified in the link
+  @override
+  InternalLinkTypePremiumGift copyWith({
+    String? referrer,
+    dynamic extra,
+    int? clientId,
+  }) => InternalLinkTypePremiumGift(
+    referrer: referrer ?? this.referrer,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'internalLinkTypePremiumGift';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **InternalLinkTypePremiumGiftCode** *(internalLinkTypePremiumGiftCode)* - child of InternalLinkType
+///
+/// The link is a link with a Telegram Premium gift code. Call checkPremiumGiftCode with the given code to process the link.. If the code is valid and the user wants to apply it, then call applyPremiumGiftCode.
+///
+/// * [code]: The Telegram Premium gift code.
+final class InternalLinkTypePremiumGiftCode extends InternalLinkType {
+  
+  /// **InternalLinkTypePremiumGiftCode** *(internalLinkTypePremiumGiftCode)* - child of InternalLinkType
+  ///
+  /// The link is a link with a Telegram Premium gift code. Call checkPremiumGiftCode with the given code to process the link.. If the code is valid and the user wants to apply it, then call applyPremiumGiftCode.
+  ///
+  /// * [code]: The Telegram Premium gift code.
+  const InternalLinkTypePremiumGiftCode({
+    required this.code,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// The Telegram Premium gift code
+  final String code;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory InternalLinkTypePremiumGiftCode.fromJson(Map<String, dynamic> json) => InternalLinkTypePremiumGiftCode(
+    code: json['code'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "code": code,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [code]: The Telegram Premium gift code
+  @override
+  InternalLinkTypePremiumGiftCode copyWith({
+    String? code,
+    dynamic extra,
+    int? clientId,
+  }) => InternalLinkTypePremiumGiftCode(
+    code: code ?? this.code,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'internalLinkTypePremiumGiftCode';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2172,14 +2326,14 @@ final class InternalLinkTypeProxy extends InternalLinkType {
 
 /// **InternalLinkTypePublicChat** *(internalLinkTypePublicChat)* - child of InternalLinkType
 ///
-/// The link is a link to a chat by its username. Call searchPublicChat with the given chat username to process the link.
+/// The link is a link to a chat by its username. Call searchPublicChat with the given chat username to process the link. If the chat is found, open its profile information screen or the chat itself.
 ///
 /// * [chatUsername]: Username of the chat.
 final class InternalLinkTypePublicChat extends InternalLinkType {
   
   /// **InternalLinkTypePublicChat** *(internalLinkTypePublicChat)* - child of InternalLinkType
   ///
-  /// The link is a link to a chat by its username. Call searchPublicChat with the given chat username to process the link.
+  /// The link is a link to a chat by its username. Call searchPublicChat with the given chat username to process the link. If the chat is found, open its profile information screen or the chat itself.
   ///
   /// * [chatUsername]: Username of the chat.
   const InternalLinkTypePublicChat({
@@ -2423,7 +2577,7 @@ final class InternalLinkTypeSettings extends InternalLinkType {
 
 /// **InternalLinkTypeSideMenuBot** *(internalLinkTypeSideMenuBot)* - child of InternalLinkType
 ///
-/// The link is a link to a bot, which can be installed to the side menu. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu.. Then, use getAttachmentMenuBot to receive information about the bot. If the bot isn't added to side menu, then show a disclaimer about Mini Apps being a third-party apps,. ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot.. If the bot is added to side menu, then use getWebAppUrl with the given URL.
+/// The link is a link to a bot, which can be installed to the side menu. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu.. Then, use getAttachmentMenuBot to receive information about the bot. If the bot isn't added to side menu, then show a disclaimer about Mini Apps being a third-party apps,. ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot.. If the bot is added to side menu, then use getWebAppUrl with the given URL and open the returned URL as a Web App.
 ///
 /// * [botUsername]: Username of the bot.
 /// * [url]: URL to be passed to getWebAppUrl.
@@ -2431,7 +2585,7 @@ final class InternalLinkTypeSideMenuBot extends InternalLinkType {
   
   /// **InternalLinkTypeSideMenuBot** *(internalLinkTypeSideMenuBot)* - child of InternalLinkType
   ///
-  /// The link is a link to a bot, which can be installed to the side menu. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu.. Then, use getAttachmentMenuBot to receive information about the bot. If the bot isn't added to side menu, then show a disclaimer about Mini Apps being a third-party apps,. ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot.. If the bot is added to side menu, then use getWebAppUrl with the given URL.
+  /// The link is a link to a bot, which can be installed to the side menu. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu.. Then, use getAttachmentMenuBot to receive information about the bot. If the bot isn't added to side menu, then show a disclaimer about Mini Apps being a third-party apps,. ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot.. If the bot is added to side menu, then use getWebAppUrl with the given URL and open the returned URL as a Web App.
   ///
   /// * [botUsername]: Username of the bot.
   /// * [url]: URL to be passed to getWebAppUrl.
@@ -2508,7 +2662,7 @@ final class InternalLinkTypeSideMenuBot extends InternalLinkType {
 
 /// **InternalLinkTypeStickerSet** *(internalLinkTypeStickerSet)* - child of InternalLinkType
 ///
-/// The link is a link to a sticker set. Call searchStickerSet with the given sticker set name to process the link and show the sticker set.
+/// The link is a link to a sticker set. Call searchStickerSet with the given sticker set name to process the link and show the sticker set.. If the sticker set is found and the user wants to add it, then call changeStickerSet.
 ///
 /// * [stickerSetName]: Name of the sticker set.
 /// * [expectCustomEmoji]: True, if the sticker set is expected to contain custom emoji.
@@ -2516,7 +2670,7 @@ final class InternalLinkTypeStickerSet extends InternalLinkType {
   
   /// **InternalLinkTypeStickerSet** *(internalLinkTypeStickerSet)* - child of InternalLinkType
   ///
-  /// The link is a link to a sticker set. Call searchStickerSet with the given sticker set name to process the link and show the sticker set.
+  /// The link is a link to a sticker set. Call searchStickerSet with the given sticker set name to process the link and show the sticker set.. If the sticker set is found and the user wants to add it, then call changeStickerSet.
   ///
   /// * [stickerSetName]: Name of the sticker set.
   /// * [expectCustomEmoji]: True, if the sticker set is expected to contain custom emoji.
@@ -2593,7 +2747,7 @@ final class InternalLinkTypeStickerSet extends InternalLinkType {
 
 /// **InternalLinkTypeStory** *(internalLinkTypeStory)* - child of InternalLinkType
 ///
-/// The link is a link to a story. Call searchPublicChat with the given sender username, then call getStory with the received chat identifier and the given story identifier.
+/// The link is a link to a story. Call searchPublicChat with the given sender username, then call getStory with the received chat identifier and the given story identifier, then show the story if received.
 ///
 /// * [storySenderUsername]: Username of the sender of the story.
 /// * [storyId]: Story identifier.
@@ -2601,7 +2755,7 @@ final class InternalLinkTypeStory extends InternalLinkType {
   
   /// **InternalLinkTypeStory** *(internalLinkTypeStory)* - child of InternalLinkType
   ///
-  /// The link is a link to a story. Call searchPublicChat with the given sender username, then call getStory with the received chat identifier and the given story identifier.
+  /// The link is a link to a story. Call searchPublicChat with the given sender username, then call getStory with the received chat identifier and the given story identifier, then show the story if received.
   ///
   /// * [storySenderUsername]: Username of the sender of the story.
   /// * [storyId]: Story identifier.
@@ -2944,14 +3098,14 @@ final class InternalLinkTypeUnsupportedProxy extends InternalLinkType {
 
 /// **InternalLinkTypeUserPhoneNumber** *(internalLinkTypeUserPhoneNumber)* - child of InternalLinkType
 ///
-/// The link is a link to a user by its phone number. Call searchUserByPhoneNumber with the given phone number to process the link.
+/// The link is a link to a user by its phone number. Call searchUserByPhoneNumber with the given phone number to process the link.. If the user is found, then call createPrivateChat and open the chat.
 ///
 /// * [phoneNumber]: Phone number of the user.
 final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
   
   /// **InternalLinkTypeUserPhoneNumber** *(internalLinkTypeUserPhoneNumber)* - child of InternalLinkType
   ///
-  /// The link is a link to a user by its phone number. Call searchUserByPhoneNumber with the given phone number to process the link.
+  /// The link is a link to a user by its phone number. Call searchUserByPhoneNumber with the given phone number to process the link.. If the user is found, then call createPrivateChat and open the chat.
   ///
   /// * [phoneNumber]: Phone number of the user.
   const InternalLinkTypeUserPhoneNumber({
@@ -3018,14 +3172,14 @@ final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
 
 /// **InternalLinkTypeUserToken** *(internalLinkTypeUserToken)* - child of InternalLinkType
 ///
-/// The link is a link to a user by a temporary token. Call searchUserByToken with the given token to process the link.
+/// The link is a link to a user by a temporary token. Call searchUserByToken with the given token to process the link.. If the user is found, then call createPrivateChat and open the chat.
 ///
 /// * [token]: The token.
 final class InternalLinkTypeUserToken extends InternalLinkType {
   
   /// **InternalLinkTypeUserToken** *(internalLinkTypeUserToken)* - child of InternalLinkType
   ///
-  /// The link is a link to a user by a temporary token. Call searchUserByToken with the given token to process the link.
+  /// The link is a link to a user by a temporary token. Call searchUserByToken with the given token to process the link.. If the user is found, then call createPrivateChat and open the chat.
   ///
   /// * [token]: The token.
   const InternalLinkTypeUserToken({

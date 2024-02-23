@@ -6,6 +6,7 @@ part of '../tdapi.dart';
 ///
 /// * [chatId]: Identifier of the chat to send messages.
 /// * [messageIds]: Identifiers of the messages to resend. Message identifiers must be in a strictly increasing order.
+/// * [quote]: New manually chosen quote from the message to be replied; pass null if none. Ignored if more than one message is re-sent, or if messageSendingStateFailed.need_another_reply_quote == false *(optional)*.
 ///
 /// [Messages] is returned on completion.
 final class ResendMessages extends TdFunction {
@@ -16,11 +17,13 @@ final class ResendMessages extends TdFunction {
   ///
   /// * [chatId]: Identifier of the chat to send messages.
   /// * [messageIds]: Identifiers of the messages to resend. Message identifiers must be in a strictly increasing order.
+  /// * [quote]: New manually chosen quote from the message to be replied; pass null if none. Ignored if more than one message is re-sent, or if messageSendingStateFailed.need_another_reply_quote == false *(optional)*.
   ///
   /// [Messages] is returned on completion.
   const ResendMessages({
     required this.chatId,
     required this.messageIds,
+    this.quote,
   });
   
   /// Identifier of the chat to send messages
@@ -28,6 +31,9 @@ final class ResendMessages extends TdFunction {
 
   /// Identifiers of the messages to resend. Message identifiers must be in a strictly increasing order
   final List<int> messageIds;
+
+  /// New manually chosen quote from the message to be replied; pass null if none. Ignored if more than one message is re-sent, or if messageSendingStateFailed.need_another_reply_quote == false
+  final InputTextQuote? quote;
   
   /// Convert model to TDLib JSON format
   @override
@@ -36,6 +42,7 @@ final class ResendMessages extends TdFunction {
 			"@type": objectType,
       "chat_id": chatId,
       "message_ids": messageIds.map((i) => i).toList(),
+      "quote": quote?.toJson(),
       "@extra": extra,
 		};
 	}
@@ -45,12 +52,15 @@ final class ResendMessages extends TdFunction {
   /// Properties:
   /// * [chat_id]: Identifier of the chat to send messages
   /// * [message_ids]: Identifiers of the messages to resend. Message identifiers must be in a strictly increasing order
+  /// * [quote]: New manually chosen quote from the message to be replied; pass null if none. Ignored if more than one message is re-sent, or if messageSendingStateFailed.need_another_reply_quote == false
   ResendMessages copyWith({
     int? chatId,
     List<int>? messageIds,
+    InputTextQuote? quote,
   }) => ResendMessages(
     chatId: chatId ?? this.chatId,
     messageIds: messageIds ?? this.messageIds,
+    quote: quote ?? this.quote,
   );
 
   /// TDLib object type

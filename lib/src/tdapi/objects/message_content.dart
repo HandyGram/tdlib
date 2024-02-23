@@ -16,12 +16,14 @@ sealed class MessageContent extends TdObject {
   /// * [MessageAudio]
   /// * [MessageDocument]
   /// * [MessagePhoto]
-  /// * [MessageExpiredPhoto]
   /// * [MessageSticker]
   /// * [MessageVideo]
-  /// * [MessageExpiredVideo]
   /// * [MessageVideoNote]
   /// * [MessageVoiceNote]
+  /// * [MessageExpiredPhoto]
+  /// * [MessageExpiredVideo]
+  /// * [MessageExpiredVideoNote]
+  /// * [MessageExpiredVoiceNote]
   /// * [MessageLocation]
   /// * [MessageVenue]
   /// * [MessageContact]
@@ -52,6 +54,7 @@ sealed class MessageContent extends TdObject {
   /// * [MessageChatSetBackground]
   /// * [MessageChatSetTheme]
   /// * [MessageChatSetMessageAutoDeleteTime]
+  /// * [MessageChatBoost]
   /// * [MessageForumTopicCreated]
   /// * [MessageForumTopicEdited]
   /// * [MessageForumTopicIsClosedToggled]
@@ -62,8 +65,13 @@ sealed class MessageContent extends TdObject {
   /// * [MessagePaymentSuccessful]
   /// * [MessagePaymentSuccessfulBot]
   /// * [MessageGiftedPremium]
+  /// * [MessagePremiumGiftCode]
+  /// * [MessagePremiumGiveawayCreated]
+  /// * [MessagePremiumGiveaway]
+  /// * [MessagePremiumGiveawayCompleted]
+  /// * [MessagePremiumGiveawayWinners]
   /// * [MessageContactRegistered]
-  /// * [MessageUserShared]
+  /// * [MessageUsersShared]
   /// * [MessageChatShared]
   /// * [MessageBotWriteAccessAllowed]
   /// * [MessageWebAppDataSent]
@@ -84,18 +92,22 @@ sealed class MessageContent extends TdObject {
         return MessageDocument.fromJson(json);
       case MessagePhoto.objectType:
         return MessagePhoto.fromJson(json);
-      case MessageExpiredPhoto.objectType:
-        return MessageExpiredPhoto.fromJson(json);
       case MessageSticker.objectType:
         return MessageSticker.fromJson(json);
       case MessageVideo.objectType:
         return MessageVideo.fromJson(json);
-      case MessageExpiredVideo.objectType:
-        return MessageExpiredVideo.fromJson(json);
       case MessageVideoNote.objectType:
         return MessageVideoNote.fromJson(json);
       case MessageVoiceNote.objectType:
         return MessageVoiceNote.fromJson(json);
+      case MessageExpiredPhoto.objectType:
+        return MessageExpiredPhoto.fromJson(json);
+      case MessageExpiredVideo.objectType:
+        return MessageExpiredVideo.fromJson(json);
+      case MessageExpiredVideoNote.objectType:
+        return MessageExpiredVideoNote.fromJson(json);
+      case MessageExpiredVoiceNote.objectType:
+        return MessageExpiredVoiceNote.fromJson(json);
       case MessageLocation.objectType:
         return MessageLocation.fromJson(json);
       case MessageVenue.objectType:
@@ -156,6 +168,8 @@ sealed class MessageContent extends TdObject {
         return MessageChatSetTheme.fromJson(json);
       case MessageChatSetMessageAutoDeleteTime.objectType:
         return MessageChatSetMessageAutoDeleteTime.fromJson(json);
+      case MessageChatBoost.objectType:
+        return MessageChatBoost.fromJson(json);
       case MessageForumTopicCreated.objectType:
         return MessageForumTopicCreated.fromJson(json);
       case MessageForumTopicEdited.objectType:
@@ -176,10 +190,20 @@ sealed class MessageContent extends TdObject {
         return MessagePaymentSuccessfulBot.fromJson(json);
       case MessageGiftedPremium.objectType:
         return MessageGiftedPremium.fromJson(json);
+      case MessagePremiumGiftCode.objectType:
+        return MessagePremiumGiftCode.fromJson(json);
+      case MessagePremiumGiveawayCreated.objectType:
+        return MessagePremiumGiveawayCreated.fromJson(json);
+      case MessagePremiumGiveaway.objectType:
+        return MessagePremiumGiveaway.fromJson(json);
+      case MessagePremiumGiveawayCompleted.objectType:
+        return MessagePremiumGiveawayCompleted.fromJson(json);
+      case MessagePremiumGiveawayWinners.objectType:
+        return MessagePremiumGiveawayWinners.fromJson(json);
       case MessageContactRegistered.objectType:
         return MessageContactRegistered.fromJson(json);
-      case MessageUserShared.objectType:
-        return MessageUserShared.fromJson(json);
+      case MessageUsersShared.objectType:
+        return MessageUsersShared.fromJson(json);
       case MessageChatShared.objectType:
         return MessageChatShared.fromJson(json);
       case MessageBotWriteAccessAllowed.objectType:
@@ -229,7 +253,8 @@ sealed class MessageContent extends TdObject {
 /// A text message.
 ///
 /// * [text]: Text of the message.
-/// * [webPage]: A preview of the web page that's mentioned in the text; may be null *(optional)*.
+/// * [webPage]: A link preview attached to the message; may be null *(optional)*.
+/// * [linkPreviewOptions]: Options which were used for generation of the link preview; may be null if default options were used *(optional)*.
 final class MessageText extends MessageContent {
   
   /// **MessageText** *(messageText)* - child of MessageContent
@@ -237,22 +262,28 @@ final class MessageText extends MessageContent {
   /// A text message.
   ///
   /// * [text]: Text of the message.
-  /// * [webPage]: A preview of the web page that's mentioned in the text; may be null *(optional)*.
+  /// * [webPage]: A link preview attached to the message; may be null *(optional)*.
+  /// * [linkPreviewOptions]: Options which were used for generation of the link preview; may be null if default options were used *(optional)*.
   const MessageText({
     required this.text,
     this.webPage,
+    this.linkPreviewOptions,
   });
   
-  /// Text of the message 
+  /// Text of the message
   final FormattedText text;
 
-  /// A preview of the web page that's mentioned in the text; may be null
+  /// A link preview attached to the message; may be null
   final WebPage? webPage;
+
+  /// Options which were used for generation of the link preview; may be null if default options were used
+  final LinkPreviewOptions? linkPreviewOptions;
   
   /// Parse from a json
   factory MessageText.fromJson(Map<String, dynamic> json) => MessageText(
     text: FormattedText.fromJson(json['text']),
     webPage: json['web_page'] == null ? null : WebPage.fromJson(json['web_page']),
+    linkPreviewOptions: json['link_preview_options'] == null ? null : LinkPreviewOptions.fromJson(json['link_preview_options']),
   );
   
   
@@ -263,21 +294,25 @@ final class MessageText extends MessageContent {
 			"@type": objectType,
       "text": text.toJson(),
       "web_page": webPage?.toJson(),
+      "link_preview_options": linkPreviewOptions?.toJson(),
 		};
 	}
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [text]: Text of the message 
-  /// * [web_page]: A preview of the web page that's mentioned in the text; may be null
+  /// * [text]: Text of the message
+  /// * [web_page]: A link preview attached to the message; may be null
+  /// * [link_preview_options]: Options which were used for generation of the link preview; may be null if default options were used
   @override
   MessageText copyWith({
     FormattedText? text,
     WebPage? webPage,
+    LinkPreviewOptions? linkPreviewOptions,
   }) => MessageText(
     text: text ?? this.text,
     webPage: webPage ?? this.webPage,
+    linkPreviewOptions: linkPreviewOptions ?? this.linkPreviewOptions,
   );
 
   /// TDLib object type
@@ -613,44 +648,6 @@ final class MessagePhoto extends MessageContent {
 }
 
 
-/// **MessageExpiredPhoto** *(messageExpiredPhoto)* - child of MessageContent
-///
-/// A self-destructed photo message.
-final class MessageExpiredPhoto extends MessageContent {
-  
-  /// **MessageExpiredPhoto** *(messageExpiredPhoto)* - child of MessageContent
-  ///
-  /// A self-destructed photo message.
-  const MessageExpiredPhoto();
-  
-  /// Parse from a json
-  factory MessageExpiredPhoto.fromJson(Map<String, dynamic> json) => const MessageExpiredPhoto();
-  
-  /// Convert model to TDLib JSON format
-  @override
-  Map<String, dynamic> toJson() {
-		return {
-			"@type": objectType,
-		};
-	}
-
-  /// Copy instance with no modifications.
-  @override
-  MessageExpiredPhoto copyWith() => const MessageExpiredPhoto();
-
-  /// TDLib object type
-  static const String objectType = 'messageExpiredPhoto';
-
-  /// Convert model to TDLib JSON format, encoded into String.
-  @override
-  String toString() => jsonEncode(toJson());
-
-  /// TDLib object type for current class instance
-  @override
-  String get instanceType => objectType;
-}
-
-
 /// **MessageSticker** *(messageSticker)* - child of MessageContent
 ///
 /// A sticker message.
@@ -811,44 +808,6 @@ final class MessageVideo extends MessageContent {
 }
 
 
-/// **MessageExpiredVideo** *(messageExpiredVideo)* - child of MessageContent
-///
-/// A self-destructed video message.
-final class MessageExpiredVideo extends MessageContent {
-  
-  /// **MessageExpiredVideo** *(messageExpiredVideo)* - child of MessageContent
-  ///
-  /// A self-destructed video message.
-  const MessageExpiredVideo();
-  
-  /// Parse from a json
-  factory MessageExpiredVideo.fromJson(Map<String, dynamic> json) => const MessageExpiredVideo();
-  
-  /// Convert model to TDLib JSON format
-  @override
-  Map<String, dynamic> toJson() {
-		return {
-			"@type": objectType,
-		};
-	}
-
-  /// Copy instance with no modifications.
-  @override
-  MessageExpiredVideo copyWith() => const MessageExpiredVideo();
-
-  /// TDLib object type
-  static const String objectType = 'messageExpiredVideo';
-
-  /// Convert model to TDLib JSON format, encoded into String.
-  @override
-  String toString() => jsonEncode(toJson());
-
-  /// TDLib object type for current class instance
-  @override
-  String get instanceType => objectType;
-}
-
-
 /// **MessageVideoNote** *(messageVideoNote)* - child of MessageContent
 ///
 /// A video note message.
@@ -998,6 +957,158 @@ final class MessageVoiceNote extends MessageContent {
 
   /// TDLib object type
   static const String objectType = 'messageVoiceNote';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **MessageExpiredPhoto** *(messageExpiredPhoto)* - child of MessageContent
+///
+/// A self-destructed photo message.
+final class MessageExpiredPhoto extends MessageContent {
+  
+  /// **MessageExpiredPhoto** *(messageExpiredPhoto)* - child of MessageContent
+  ///
+  /// A self-destructed photo message.
+  const MessageExpiredPhoto();
+  
+  /// Parse from a json
+  factory MessageExpiredPhoto.fromJson(Map<String, dynamic> json) => const MessageExpiredPhoto();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  MessageExpiredPhoto copyWith() => const MessageExpiredPhoto();
+
+  /// TDLib object type
+  static const String objectType = 'messageExpiredPhoto';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **MessageExpiredVideo** *(messageExpiredVideo)* - child of MessageContent
+///
+/// A self-destructed video message.
+final class MessageExpiredVideo extends MessageContent {
+  
+  /// **MessageExpiredVideo** *(messageExpiredVideo)* - child of MessageContent
+  ///
+  /// A self-destructed video message.
+  const MessageExpiredVideo();
+  
+  /// Parse from a json
+  factory MessageExpiredVideo.fromJson(Map<String, dynamic> json) => const MessageExpiredVideo();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  MessageExpiredVideo copyWith() => const MessageExpiredVideo();
+
+  /// TDLib object type
+  static const String objectType = 'messageExpiredVideo';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **MessageExpiredVideoNote** *(messageExpiredVideoNote)* - child of MessageContent
+///
+/// A self-destructed video note message.
+final class MessageExpiredVideoNote extends MessageContent {
+  
+  /// **MessageExpiredVideoNote** *(messageExpiredVideoNote)* - child of MessageContent
+  ///
+  /// A self-destructed video note message.
+  const MessageExpiredVideoNote();
+  
+  /// Parse from a json
+  factory MessageExpiredVideoNote.fromJson(Map<String, dynamic> json) => const MessageExpiredVideoNote();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  MessageExpiredVideoNote copyWith() => const MessageExpiredVideoNote();
+
+  /// TDLib object type
+  static const String objectType = 'messageExpiredVideoNote';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **MessageExpiredVoiceNote** *(messageExpiredVoiceNote)* - child of MessageContent
+///
+/// A self-destructed voice note message.
+final class MessageExpiredVoiceNote extends MessageContent {
+  
+  /// **MessageExpiredVoiceNote** *(messageExpiredVoiceNote)* - child of MessageContent
+  ///
+  /// A self-destructed voice note message.
+  const MessageExpiredVoiceNote();
+  
+  /// Parse from a json
+  factory MessageExpiredVoiceNote.fromJson(Map<String, dynamic> json) => const MessageExpiredVoiceNote();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  MessageExpiredVoiceNote copyWith() => const MessageExpiredVoiceNote();
+
+  /// TDLib object type
+  static const String objectType = 'messageExpiredVoiceNote';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2787,6 +2898,7 @@ final class MessageScreenshotTaken extends MessageContent {
 ///
 /// * [oldBackgroundMessageId]: Identifier of the message with a previously set same background; 0 if none. Can be an identifier of a deleted message.
 /// * [background]: The new background.
+/// * [onlyForSelf]: True, if the background was set only for self.
 final class MessageChatSetBackground extends MessageContent {
   
   /// **MessageChatSetBackground** *(messageChatSetBackground)* - child of MessageContent
@@ -2795,21 +2907,27 @@ final class MessageChatSetBackground extends MessageContent {
   ///
   /// * [oldBackgroundMessageId]: Identifier of the message with a previously set same background; 0 if none. Can be an identifier of a deleted message.
   /// * [background]: The new background.
+  /// * [onlyForSelf]: True, if the background was set only for self.
   const MessageChatSetBackground({
     required this.oldBackgroundMessageId,
     required this.background,
+    required this.onlyForSelf,
   });
   
-  /// Identifier of the message with a previously set same background; 0 if none. Can be an identifier of a deleted message 
+  /// Identifier of the message with a previously set same background; 0 if none. Can be an identifier of a deleted message
   final int oldBackgroundMessageId;
 
   /// The new background
   final ChatBackground background;
+
+  /// True, if the background was set only for self
+  final bool onlyForSelf;
   
   /// Parse from a json
   factory MessageChatSetBackground.fromJson(Map<String, dynamic> json) => MessageChatSetBackground(
     oldBackgroundMessageId: json['old_background_message_id'] ?? 0,
     background: ChatBackground.fromJson(json['background']),
+    onlyForSelf: json['only_for_self'],
   );
   
   
@@ -2820,21 +2938,25 @@ final class MessageChatSetBackground extends MessageContent {
 			"@type": objectType,
       "old_background_message_id": oldBackgroundMessageId,
       "background": background.toJson(),
+      "only_for_self": onlyForSelf,
 		};
 	}
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [old_background_message_id]: Identifier of the message with a previously set same background; 0 if none. Can be an identifier of a deleted message 
+  /// * [old_background_message_id]: Identifier of the message with a previously set same background; 0 if none. Can be an identifier of a deleted message
   /// * [background]: The new background
+  /// * [only_for_self]: True, if the background was set only for self
   @override
   MessageChatSetBackground copyWith({
     int? oldBackgroundMessageId,
     ChatBackground? background,
+    bool? onlyForSelf,
   }) => MessageChatSetBackground(
     oldBackgroundMessageId: oldBackgroundMessageId ?? this.oldBackgroundMessageId,
     background: background ?? this.background,
+    onlyForSelf: onlyForSelf ?? this.onlyForSelf,
   );
 
   /// TDLib object type
@@ -2966,6 +3088,64 @@ final class MessageChatSetMessageAutoDeleteTime extends MessageContent {
 
   /// TDLib object type
   static const String objectType = 'messageChatSetMessageAutoDeleteTime';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **MessageChatBoost** *(messageChatBoost)* - child of MessageContent
+///
+/// The chat was boosted by the sender of the message.
+///
+/// * [boostCount]: Number of times the chat was boosted.
+final class MessageChatBoost extends MessageContent {
+  
+  /// **MessageChatBoost** *(messageChatBoost)* - child of MessageContent
+  ///
+  /// The chat was boosted by the sender of the message.
+  ///
+  /// * [boostCount]: Number of times the chat was boosted.
+  const MessageChatBoost({
+    required this.boostCount,
+  });
+  
+  /// Number of times the chat was boosted
+  final int boostCount;
+  
+  /// Parse from a json
+  factory MessageChatBoost.fromJson(Map<String, dynamic> json) => MessageChatBoost(
+    boostCount: json['boost_count'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "boost_count": boostCount,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [boost_count]: Number of times the chat was boosted
+  @override
+  MessageChatBoost copyWith({
+    int? boostCount,
+  }) => MessageChatBoost(
+    boostCount: boostCount ?? this.boostCount,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'messageChatBoost';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3716,8 +3896,8 @@ final class MessagePaymentSuccessfulBot extends MessageContent {
 /// * [currency]: Currency for the paid amount.
 /// * [amount]: The paid amount, in the smallest units of the currency.
 /// * [cryptocurrency]: Cryptocurrency used to pay for the gift; may be empty if none.
-/// * [cryptocurrencyAmount]: The paid amount, in the smallest units of the cryptocurrency.
-/// * [monthCount]: Number of month the Telegram Premium subscription will be active.
+/// * [cryptocurrencyAmount]: The paid amount, in the smallest units of the cryptocurrency; 0 if none.
+/// * [monthCount]: Number of months the Telegram Premium subscription will be active.
 /// * [sticker]: A sticker to be shown in the message; may be null if unknown *(optional)*.
 final class MessageGiftedPremium extends MessageContent {
   
@@ -3729,8 +3909,8 @@ final class MessageGiftedPremium extends MessageContent {
   /// * [currency]: Currency for the paid amount.
   /// * [amount]: The paid amount, in the smallest units of the currency.
   /// * [cryptocurrency]: Cryptocurrency used to pay for the gift; may be empty if none.
-  /// * [cryptocurrencyAmount]: The paid amount, in the smallest units of the cryptocurrency.
-  /// * [monthCount]: Number of month the Telegram Premium subscription will be active.
+  /// * [cryptocurrencyAmount]: The paid amount, in the smallest units of the cryptocurrency; 0 if none.
+  /// * [monthCount]: Number of months the Telegram Premium subscription will be active.
   /// * [sticker]: A sticker to be shown in the message; may be null if unknown *(optional)*.
   const MessageGiftedPremium({
     required this.gifterUserId,
@@ -3754,10 +3934,10 @@ final class MessageGiftedPremium extends MessageContent {
   /// Cryptocurrency used to pay for the gift; may be empty if none
   final String cryptocurrency;
 
-  /// The paid amount, in the smallest units of the cryptocurrency
+  /// The paid amount, in the smallest units of the cryptocurrency; 0 if none
   final int cryptocurrencyAmount;
 
-  /// Number of month the Telegram Premium subscription will be active
+  /// Number of months the Telegram Premium subscription will be active
   final int monthCount;
 
   /// A sticker to be shown in the message; may be null if unknown
@@ -3769,7 +3949,7 @@ final class MessageGiftedPremium extends MessageContent {
     currency: json['currency'],
     amount: json['amount'],
     cryptocurrency: json['cryptocurrency'],
-    cryptocurrencyAmount: int.parse(json['cryptocurrency_amount']),
+    cryptocurrencyAmount: int.tryParse(json['cryptocurrency_amount'] ?? "") ?? 0,
     monthCount: json['month_count'],
     sticker: json['sticker'] == null ? null : Sticker.fromJson(json['sticker']),
   );
@@ -3797,8 +3977,8 @@ final class MessageGiftedPremium extends MessageContent {
   /// * [currency]: Currency for the paid amount
   /// * [amount]: The paid amount, in the smallest units of the currency
   /// * [cryptocurrency]: Cryptocurrency used to pay for the gift; may be empty if none
-  /// * [cryptocurrency_amount]: The paid amount, in the smallest units of the cryptocurrency
-  /// * [month_count]: Number of month the Telegram Premium subscription will be active
+  /// * [cryptocurrency_amount]: The paid amount, in the smallest units of the cryptocurrency; 0 if none
+  /// * [month_count]: Number of months the Telegram Premium subscription will be active
   /// * [sticker]: A sticker to be shown in the message; may be null if unknown
   @override
   MessageGiftedPremium copyWith({
@@ -3821,6 +4001,540 @@ final class MessageGiftedPremium extends MessageContent {
 
   /// TDLib object type
   static const String objectType = 'messageGiftedPremium';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **MessagePremiumGiftCode** *(messagePremiumGiftCode)* - child of MessageContent
+///
+/// A Telegram Premium gift code was created for the user.
+///
+/// * [creatorId]: Identifier of a chat or a user that created the gift code; may be null if unknown *(optional)*.
+/// * [isFromGiveaway]: True, if the gift code was created for a giveaway.
+/// * [isUnclaimed]: True, if the winner for the corresponding Telegram Premium subscription wasn't chosen.
+/// * [currency]: Currency for the paid amount; empty if unknown.
+/// * [amount]: The paid amount, in the smallest units of the currency; 0 if unknown.
+/// * [cryptocurrency]: Cryptocurrency used to pay for the gift; may be empty if none or unknown.
+/// * [cryptocurrencyAmount]: The paid amount, in the smallest units of the cryptocurrency; 0 if unknown.
+/// * [monthCount]: Number of months the Telegram Premium subscription will be active after code activation.
+/// * [sticker]: A sticker to be shown in the message; may be null if unknown *(optional)*.
+/// * [code]: The gift code.
+final class MessagePremiumGiftCode extends MessageContent {
+  
+  /// **MessagePremiumGiftCode** *(messagePremiumGiftCode)* - child of MessageContent
+  ///
+  /// A Telegram Premium gift code was created for the user.
+  ///
+  /// * [creatorId]: Identifier of a chat or a user that created the gift code; may be null if unknown *(optional)*.
+  /// * [isFromGiveaway]: True, if the gift code was created for a giveaway.
+  /// * [isUnclaimed]: True, if the winner for the corresponding Telegram Premium subscription wasn't chosen.
+  /// * [currency]: Currency for the paid amount; empty if unknown.
+  /// * [amount]: The paid amount, in the smallest units of the currency; 0 if unknown.
+  /// * [cryptocurrency]: Cryptocurrency used to pay for the gift; may be empty if none or unknown.
+  /// * [cryptocurrencyAmount]: The paid amount, in the smallest units of the cryptocurrency; 0 if unknown.
+  /// * [monthCount]: Number of months the Telegram Premium subscription will be active after code activation.
+  /// * [sticker]: A sticker to be shown in the message; may be null if unknown *(optional)*.
+  /// * [code]: The gift code.
+  const MessagePremiumGiftCode({
+    this.creatorId,
+    required this.isFromGiveaway,
+    required this.isUnclaimed,
+    required this.currency,
+    required this.amount,
+    required this.cryptocurrency,
+    required this.cryptocurrencyAmount,
+    required this.monthCount,
+    this.sticker,
+    required this.code,
+  });
+  
+  /// Identifier of a chat or a user that created the gift code; may be null if unknown
+  final MessageSender? creatorId;
+
+  /// True, if the gift code was created for a giveaway
+  final bool isFromGiveaway;
+
+  /// True, if the winner for the corresponding Telegram Premium subscription wasn't chosen
+  final bool isUnclaimed;
+
+  /// Currency for the paid amount; empty if unknown
+  final String currency;
+
+  /// The paid amount, in the smallest units of the currency; 0 if unknown
+  final int amount;
+
+  /// Cryptocurrency used to pay for the gift; may be empty if none or unknown
+  final String cryptocurrency;
+
+  /// The paid amount, in the smallest units of the cryptocurrency; 0 if unknown
+  final int cryptocurrencyAmount;
+
+  /// Number of months the Telegram Premium subscription will be active after code activation
+  final int monthCount;
+
+  /// A sticker to be shown in the message; may be null if unknown
+  final Sticker? sticker;
+
+  /// The gift code
+  final String code;
+  
+  /// Parse from a json
+  factory MessagePremiumGiftCode.fromJson(Map<String, dynamic> json) => MessagePremiumGiftCode(
+    creatorId: json['creator_id'] == null ? null : MessageSender.fromJson(json['creator_id']),
+    isFromGiveaway: json['is_from_giveaway'],
+    isUnclaimed: json['is_unclaimed'],
+    currency: json['currency'],
+    amount: json['amount'],
+    cryptocurrency: json['cryptocurrency'],
+    cryptocurrencyAmount: int.parse(json['cryptocurrency_amount']),
+    monthCount: json['month_count'],
+    sticker: json['sticker'] == null ? null : Sticker.fromJson(json['sticker']),
+    code: json['code'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "creator_id": creatorId?.toJson(),
+      "is_from_giveaway": isFromGiveaway,
+      "is_unclaimed": isUnclaimed,
+      "currency": currency,
+      "amount": amount,
+      "cryptocurrency": cryptocurrency,
+      "cryptocurrency_amount": cryptocurrencyAmount,
+      "month_count": monthCount,
+      "sticker": sticker?.toJson(),
+      "code": code,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [creator_id]: Identifier of a chat or a user that created the gift code; may be null if unknown
+  /// * [is_from_giveaway]: True, if the gift code was created for a giveaway
+  /// * [is_unclaimed]: True, if the winner for the corresponding Telegram Premium subscription wasn't chosen
+  /// * [currency]: Currency for the paid amount; empty if unknown
+  /// * [amount]: The paid amount, in the smallest units of the currency; 0 if unknown
+  /// * [cryptocurrency]: Cryptocurrency used to pay for the gift; may be empty if none or unknown
+  /// * [cryptocurrency_amount]: The paid amount, in the smallest units of the cryptocurrency; 0 if unknown
+  /// * [month_count]: Number of months the Telegram Premium subscription will be active after code activation
+  /// * [sticker]: A sticker to be shown in the message; may be null if unknown
+  /// * [code]: The gift code
+  @override
+  MessagePremiumGiftCode copyWith({
+    MessageSender? creatorId,
+    bool? isFromGiveaway,
+    bool? isUnclaimed,
+    String? currency,
+    int? amount,
+    String? cryptocurrency,
+    int? cryptocurrencyAmount,
+    int? monthCount,
+    Sticker? sticker,
+    String? code,
+  }) => MessagePremiumGiftCode(
+    creatorId: creatorId ?? this.creatorId,
+    isFromGiveaway: isFromGiveaway ?? this.isFromGiveaway,
+    isUnclaimed: isUnclaimed ?? this.isUnclaimed,
+    currency: currency ?? this.currency,
+    amount: amount ?? this.amount,
+    cryptocurrency: cryptocurrency ?? this.cryptocurrency,
+    cryptocurrencyAmount: cryptocurrencyAmount ?? this.cryptocurrencyAmount,
+    monthCount: monthCount ?? this.monthCount,
+    sticker: sticker ?? this.sticker,
+    code: code ?? this.code,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'messagePremiumGiftCode';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **MessagePremiumGiveawayCreated** *(messagePremiumGiveawayCreated)* - child of MessageContent
+///
+/// A Telegram Premium giveaway was created for the chat.
+final class MessagePremiumGiveawayCreated extends MessageContent {
+  
+  /// **MessagePremiumGiveawayCreated** *(messagePremiumGiveawayCreated)* - child of MessageContent
+  ///
+  /// A Telegram Premium giveaway was created for the chat.
+  const MessagePremiumGiveawayCreated();
+  
+  /// Parse from a json
+  factory MessagePremiumGiveawayCreated.fromJson(Map<String, dynamic> json) => const MessagePremiumGiveawayCreated();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  MessagePremiumGiveawayCreated copyWith() => const MessagePremiumGiveawayCreated();
+
+  /// TDLib object type
+  static const String objectType = 'messagePremiumGiveawayCreated';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **MessagePremiumGiveaway** *(messagePremiumGiveaway)* - child of MessageContent
+///
+/// A Telegram Premium giveaway.
+///
+/// * [parameters]: Giveaway parameters.
+/// * [winnerCount]: Number of users which will receive Telegram Premium subscription gift codes.
+/// * [monthCount]: Number of months the Telegram Premium subscription will be active after code activation.
+/// * [sticker]: A sticker to be shown in the message; may be null if unknown *(optional)*.
+final class MessagePremiumGiveaway extends MessageContent {
+  
+  /// **MessagePremiumGiveaway** *(messagePremiumGiveaway)* - child of MessageContent
+  ///
+  /// A Telegram Premium giveaway.
+  ///
+  /// * [parameters]: Giveaway parameters.
+  /// * [winnerCount]: Number of users which will receive Telegram Premium subscription gift codes.
+  /// * [monthCount]: Number of months the Telegram Premium subscription will be active after code activation.
+  /// * [sticker]: A sticker to be shown in the message; may be null if unknown *(optional)*.
+  const MessagePremiumGiveaway({
+    required this.parameters,
+    required this.winnerCount,
+    required this.monthCount,
+    this.sticker,
+  });
+  
+  /// Giveaway parameters
+  final PremiumGiveawayParameters parameters;
+
+  /// Number of users which will receive Telegram Premium subscription gift codes
+  final int winnerCount;
+
+  /// Number of months the Telegram Premium subscription will be active after code activation
+  final int monthCount;
+
+  /// A sticker to be shown in the message; may be null if unknown
+  final Sticker? sticker;
+  
+  /// Parse from a json
+  factory MessagePremiumGiveaway.fromJson(Map<String, dynamic> json) => MessagePremiumGiveaway(
+    parameters: PremiumGiveawayParameters.fromJson(json['parameters']),
+    winnerCount: json['winner_count'],
+    monthCount: json['month_count'],
+    sticker: json['sticker'] == null ? null : Sticker.fromJson(json['sticker']),
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "parameters": parameters.toJson(),
+      "winner_count": winnerCount,
+      "month_count": monthCount,
+      "sticker": sticker?.toJson(),
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [parameters]: Giveaway parameters
+  /// * [winner_count]: Number of users which will receive Telegram Premium subscription gift codes
+  /// * [month_count]: Number of months the Telegram Premium subscription will be active after code activation
+  /// * [sticker]: A sticker to be shown in the message; may be null if unknown
+  @override
+  MessagePremiumGiveaway copyWith({
+    PremiumGiveawayParameters? parameters,
+    int? winnerCount,
+    int? monthCount,
+    Sticker? sticker,
+  }) => MessagePremiumGiveaway(
+    parameters: parameters ?? this.parameters,
+    winnerCount: winnerCount ?? this.winnerCount,
+    monthCount: monthCount ?? this.monthCount,
+    sticker: sticker ?? this.sticker,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'messagePremiumGiveaway';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **MessagePremiumGiveawayCompleted** *(messagePremiumGiveawayCompleted)* - child of MessageContent
+///
+/// A Telegram Premium giveaway without public winners has been completed for the chat.
+///
+/// * [giveawayMessageId]: Identifier of the message with the giveaway; can be 0 if the message was deleted.
+/// * [winnerCount]: Number of winners in the giveaway.
+/// * [unclaimedPrizeCount]: Number of undistributed prizes.
+final class MessagePremiumGiveawayCompleted extends MessageContent {
+  
+  /// **MessagePremiumGiveawayCompleted** *(messagePremiumGiveawayCompleted)* - child of MessageContent
+  ///
+  /// A Telegram Premium giveaway without public winners has been completed for the chat.
+  ///
+  /// * [giveawayMessageId]: Identifier of the message with the giveaway; can be 0 if the message was deleted.
+  /// * [winnerCount]: Number of winners in the giveaway.
+  /// * [unclaimedPrizeCount]: Number of undistributed prizes.
+  const MessagePremiumGiveawayCompleted({
+    required this.giveawayMessageId,
+    required this.winnerCount,
+    required this.unclaimedPrizeCount,
+  });
+  
+  /// Identifier of the message with the giveaway; can be 0 if the message was deleted
+  final int giveawayMessageId;
+
+  /// Number of winners in the giveaway
+  final int winnerCount;
+
+  /// Number of undistributed prizes
+  final int unclaimedPrizeCount;
+  
+  /// Parse from a json
+  factory MessagePremiumGiveawayCompleted.fromJson(Map<String, dynamic> json) => MessagePremiumGiveawayCompleted(
+    giveawayMessageId: json['giveaway_message_id'],
+    winnerCount: json['winner_count'],
+    unclaimedPrizeCount: json['unclaimed_prize_count'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "giveaway_message_id": giveawayMessageId,
+      "winner_count": winnerCount,
+      "unclaimed_prize_count": unclaimedPrizeCount,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [giveaway_message_id]: Identifier of the message with the giveaway; can be 0 if the message was deleted
+  /// * [winner_count]: Number of winners in the giveaway
+  /// * [unclaimed_prize_count]: Number of undistributed prizes
+  @override
+  MessagePremiumGiveawayCompleted copyWith({
+    int? giveawayMessageId,
+    int? winnerCount,
+    int? unclaimedPrizeCount,
+  }) => MessagePremiumGiveawayCompleted(
+    giveawayMessageId: giveawayMessageId ?? this.giveawayMessageId,
+    winnerCount: winnerCount ?? this.winnerCount,
+    unclaimedPrizeCount: unclaimedPrizeCount ?? this.unclaimedPrizeCount,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'messagePremiumGiveawayCompleted';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **MessagePremiumGiveawayWinners** *(messagePremiumGiveawayWinners)* - child of MessageContent
+///
+/// A Telegram Premium giveaway with public winners has been completed for the chat.
+///
+/// * [boostedChatId]: Identifier of the channel chat, which was automatically boosted by the winners of the giveaway for duration of the Premium subscription.
+/// * [giveawayMessageId]: Identifier of the message with the giveaway in the boosted chat.
+/// * [additionalChatCount]: Number of other chats that participated in the giveaway.
+/// * [actualWinnersSelectionDate]: Point in time (Unix timestamp) when the winners were selected. May be bigger than winners selection date specified in parameters of the giveaway.
+/// * [onlyNewMembers]: True, if only new members of the chats were eligible for the giveaway.
+/// * [wasRefunded]: True, if the giveaway was canceled and was fully refunded.
+/// * [monthCount]: Number of months the Telegram Premium subscription will be active after code activation.
+/// * [prizeDescription]: Additional description of the giveaway prize.
+/// * [winnerCount]: Total number of winners in the giveaway.
+/// * [winnerUserIds]: Up to 100 user identifiers of the winners of the giveaway.
+/// * [unclaimedPrizeCount]: Number of undistributed prizes.
+final class MessagePremiumGiveawayWinners extends MessageContent {
+  
+  /// **MessagePremiumGiveawayWinners** *(messagePremiumGiveawayWinners)* - child of MessageContent
+  ///
+  /// A Telegram Premium giveaway with public winners has been completed for the chat.
+  ///
+  /// * [boostedChatId]: Identifier of the channel chat, which was automatically boosted by the winners of the giveaway for duration of the Premium subscription.
+  /// * [giveawayMessageId]: Identifier of the message with the giveaway in the boosted chat.
+  /// * [additionalChatCount]: Number of other chats that participated in the giveaway.
+  /// * [actualWinnersSelectionDate]: Point in time (Unix timestamp) when the winners were selected. May be bigger than winners selection date specified in parameters of the giveaway.
+  /// * [onlyNewMembers]: True, if only new members of the chats were eligible for the giveaway.
+  /// * [wasRefunded]: True, if the giveaway was canceled and was fully refunded.
+  /// * [monthCount]: Number of months the Telegram Premium subscription will be active after code activation.
+  /// * [prizeDescription]: Additional description of the giveaway prize.
+  /// * [winnerCount]: Total number of winners in the giveaway.
+  /// * [winnerUserIds]: Up to 100 user identifiers of the winners of the giveaway.
+  /// * [unclaimedPrizeCount]: Number of undistributed prizes.
+  const MessagePremiumGiveawayWinners({
+    required this.boostedChatId,
+    required this.giveawayMessageId,
+    required this.additionalChatCount,
+    required this.actualWinnersSelectionDate,
+    required this.onlyNewMembers,
+    required this.wasRefunded,
+    required this.monthCount,
+    required this.prizeDescription,
+    required this.winnerCount,
+    required this.winnerUserIds,
+    required this.unclaimedPrizeCount,
+  });
+  
+  /// Identifier of the channel chat, which was automatically boosted by the winners of the giveaway for duration of the Premium subscription
+  final int boostedChatId;
+
+  /// Identifier of the message with the giveaway in the boosted chat
+  final int giveawayMessageId;
+
+  /// Number of other chats that participated in the giveaway
+  final int additionalChatCount;
+
+  /// Point in time (Unix timestamp) when the winners were selected. May be bigger than winners selection date specified in parameters of the giveaway
+  final int actualWinnersSelectionDate;
+
+  /// True, if only new members of the chats were eligible for the giveaway
+  final bool onlyNewMembers;
+
+  /// True, if the giveaway was canceled and was fully refunded
+  final bool wasRefunded;
+
+  /// Number of months the Telegram Premium subscription will be active after code activation
+  final int monthCount;
+
+  /// Additional description of the giveaway prize
+  final String prizeDescription;
+
+  /// Total number of winners in the giveaway
+  final int winnerCount;
+
+  /// Up to 100 user identifiers of the winners of the giveaway
+  final List<int> winnerUserIds;
+
+  /// Number of undistributed prizes
+  final int unclaimedPrizeCount;
+  
+  /// Parse from a json
+  factory MessagePremiumGiveawayWinners.fromJson(Map<String, dynamic> json) => MessagePremiumGiveawayWinners(
+    boostedChatId: json['boosted_chat_id'],
+    giveawayMessageId: json['giveaway_message_id'],
+    additionalChatCount: json['additional_chat_count'],
+    actualWinnersSelectionDate: json['actual_winners_selection_date'],
+    onlyNewMembers: json['only_new_members'],
+    wasRefunded: json['was_refunded'],
+    monthCount: json['month_count'],
+    prizeDescription: json['prize_description'],
+    winnerCount: json['winner_count'],
+    winnerUserIds: List<int>.from((json['winner_user_ids'] ?? []).map((item) => item).toList()),
+    unclaimedPrizeCount: json['unclaimed_prize_count'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "boosted_chat_id": boostedChatId,
+      "giveaway_message_id": giveawayMessageId,
+      "additional_chat_count": additionalChatCount,
+      "actual_winners_selection_date": actualWinnersSelectionDate,
+      "only_new_members": onlyNewMembers,
+      "was_refunded": wasRefunded,
+      "month_count": monthCount,
+      "prize_description": prizeDescription,
+      "winner_count": winnerCount,
+      "winner_user_ids": winnerUserIds.map((i) => i).toList(),
+      "unclaimed_prize_count": unclaimedPrizeCount,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [boosted_chat_id]: Identifier of the channel chat, which was automatically boosted by the winners of the giveaway for duration of the Premium subscription
+  /// * [giveaway_message_id]: Identifier of the message with the giveaway in the boosted chat
+  /// * [additional_chat_count]: Number of other chats that participated in the giveaway
+  /// * [actual_winners_selection_date]: Point in time (Unix timestamp) when the winners were selected. May be bigger than winners selection date specified in parameters of the giveaway
+  /// * [only_new_members]: True, if only new members of the chats were eligible for the giveaway
+  /// * [was_refunded]: True, if the giveaway was canceled and was fully refunded
+  /// * [month_count]: Number of months the Telegram Premium subscription will be active after code activation
+  /// * [prize_description]: Additional description of the giveaway prize
+  /// * [winner_count]: Total number of winners in the giveaway
+  /// * [winner_user_ids]: Up to 100 user identifiers of the winners of the giveaway
+  /// * [unclaimed_prize_count]: Number of undistributed prizes
+  @override
+  MessagePremiumGiveawayWinners copyWith({
+    int? boostedChatId,
+    int? giveawayMessageId,
+    int? additionalChatCount,
+    int? actualWinnersSelectionDate,
+    bool? onlyNewMembers,
+    bool? wasRefunded,
+    int? monthCount,
+    String? prizeDescription,
+    int? winnerCount,
+    List<int>? winnerUserIds,
+    int? unclaimedPrizeCount,
+  }) => MessagePremiumGiveawayWinners(
+    boostedChatId: boostedChatId ?? this.boostedChatId,
+    giveawayMessageId: giveawayMessageId ?? this.giveawayMessageId,
+    additionalChatCount: additionalChatCount ?? this.additionalChatCount,
+    actualWinnersSelectionDate: actualWinnersSelectionDate ?? this.actualWinnersSelectionDate,
+    onlyNewMembers: onlyNewMembers ?? this.onlyNewMembers,
+    wasRefunded: wasRefunded ?? this.wasRefunded,
+    monthCount: monthCount ?? this.monthCount,
+    prizeDescription: prizeDescription ?? this.prizeDescription,
+    winnerCount: winnerCount ?? this.winnerCount,
+    winnerUserIds: winnerUserIds ?? this.winnerUserIds,
+    unclaimedPrizeCount: unclaimedPrizeCount ?? this.unclaimedPrizeCount,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'messagePremiumGiveawayWinners';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3870,34 +4584,34 @@ final class MessageContactRegistered extends MessageContent {
 }
 
 
-/// **MessageUserShared** *(messageUserShared)* - child of MessageContent
+/// **MessageUsersShared** *(messageUsersShared)* - child of MessageContent
 ///
-/// The current user shared a user, which was requested by the bot.
+/// The current user shared users, which were requested by the bot.
 ///
-/// * [userId]: Identifier of the shared user.
+/// * [userIds]: Identifier of the shared users.
 /// * [buttonId]: Identifier of the keyboard button with the request.
-final class MessageUserShared extends MessageContent {
+final class MessageUsersShared extends MessageContent {
   
-  /// **MessageUserShared** *(messageUserShared)* - child of MessageContent
+  /// **MessageUsersShared** *(messageUsersShared)* - child of MessageContent
   ///
-  /// The current user shared a user, which was requested by the bot.
+  /// The current user shared users, which were requested by the bot.
   ///
-  /// * [userId]: Identifier of the shared user.
+  /// * [userIds]: Identifier of the shared users.
   /// * [buttonId]: Identifier of the keyboard button with the request.
-  const MessageUserShared({
-    required this.userId,
+  const MessageUsersShared({
+    required this.userIds,
     required this.buttonId,
   });
   
-  /// Identifier of the shared user 
-  final int userId;
+  /// Identifier of the shared users 
+  final List<int> userIds;
 
   /// Identifier of the keyboard button with the request
   final int buttonId;
   
   /// Parse from a json
-  factory MessageUserShared.fromJson(Map<String, dynamic> json) => MessageUserShared(
-    userId: json['user_id'],
+  factory MessageUsersShared.fromJson(Map<String, dynamic> json) => MessageUsersShared(
+    userIds: List<int>.from((json['user_ids'] ?? []).map((item) => item).toList()),
     buttonId: json['button_id'],
   );
   
@@ -3907,7 +4621,7 @@ final class MessageUserShared extends MessageContent {
   Map<String, dynamic> toJson() {
 		return {
 			"@type": objectType,
-      "user_id": userId,
+      "user_ids": userIds.map((i) => i).toList(),
       "button_id": buttonId,
 		};
 	}
@@ -3915,19 +4629,19 @@ final class MessageUserShared extends MessageContent {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [user_id]: Identifier of the shared user 
+  /// * [user_ids]: Identifier of the shared users 
   /// * [button_id]: Identifier of the keyboard button with the request
   @override
-  MessageUserShared copyWith({
-    int? userId,
+  MessageUsersShared copyWith({
+    List<int>? userIds,
     int? buttonId,
-  }) => MessageUserShared(
-    userId: userId ?? this.userId,
+  }) => MessageUsersShared(
+    userIds: userIds ?? this.userIds,
     buttonId: buttonId ?? this.buttonId,
   );
 
   /// TDLib object type
-  static const String objectType = 'messageUserShared';
+  static const String objectType = 'messageUsersShared';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

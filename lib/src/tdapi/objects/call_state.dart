@@ -170,7 +170,7 @@ final class CallStateExchangingKeys extends CallState {
 ///
 /// The call is ready to use.
 ///
-/// * [protocol]: Call protocols supported by the peer.
+/// * [protocol]: Call protocols supported by the other call participant.
 /// * [servers]: List of available call servers.
 /// * [config]: A JSON-encoded call config.
 /// * [encryptionKey]: Call encryption key.
@@ -182,7 +182,7 @@ final class CallStateReady extends CallState {
   ///
   /// The call is ready to use.
   ///
-  /// * [protocol]: Call protocols supported by the peer.
+  /// * [protocol]: Call protocols supported by the other call participant.
   /// * [servers]: List of available call servers.
   /// * [config]: A JSON-encoded call config.
   /// * [encryptionKey]: Call encryption key.
@@ -197,7 +197,7 @@ final class CallStateReady extends CallState {
     required this.allowP2p,
   });
   
-  /// Call protocols supported by the peer
+  /// Call protocols supported by the other call participant
   final CallProtocol protocol;
 
   /// List of available call servers
@@ -243,7 +243,7 @@ final class CallStateReady extends CallState {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [protocol]: Call protocols supported by the peer
+  /// * [protocol]: Call protocols supported by the other call participant
   /// * [servers]: List of available call servers
   /// * [config]: A JSON-encoded call config
   /// * [encryption_key]: Call encryption key

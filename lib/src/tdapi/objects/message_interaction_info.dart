@@ -7,7 +7,7 @@ part of '../tdapi.dart';
 /// * [viewCount]: Number of times the message was viewed.
 /// * [forwardCount]: Number of times the message was forwarded.
 /// * [replyInfo]: Information about direct or indirect replies to the message; may be null. Currently, available only in channels with a discussion supergroup and discussion supergroups for messages, which are not replies itself *(optional)*.
-/// * [reactions]: The list of reactions added to the message.
+/// * [reactions]: The list of reactions or tags added to the message; may be null *(optional)*.
 final class MessageInteractionInfo extends TdObject {
   
   /// **MessageInteractionInfo** *(messageInteractionInfo)* - basic class
@@ -17,12 +17,12 @@ final class MessageInteractionInfo extends TdObject {
   /// * [viewCount]: Number of times the message was viewed.
   /// * [forwardCount]: Number of times the message was forwarded.
   /// * [replyInfo]: Information about direct or indirect replies to the message; may be null. Currently, available only in channels with a discussion supergroup and discussion supergroups for messages, which are not replies itself *(optional)*.
-  /// * [reactions]: The list of reactions added to the message.
+  /// * [reactions]: The list of reactions or tags added to the message; may be null *(optional)*.
   const MessageInteractionInfo({
     required this.viewCount,
     required this.forwardCount,
     this.replyInfo,
-    required this.reactions,
+    this.reactions,
   });
   
   /// Number of times the message was viewed
@@ -34,15 +34,15 @@ final class MessageInteractionInfo extends TdObject {
   /// Information about direct or indirect replies to the message; may be null. Currently, available only in channels with a discussion supergroup and discussion supergroups for messages, which are not replies itself
   final MessageReplyInfo? replyInfo;
 
-  /// The list of reactions added to the message
-  final List<MessageReaction> reactions;
+  /// The list of reactions or tags added to the message; may be null
+  final MessageReactions? reactions;
   
   /// Parse from a json
   factory MessageInteractionInfo.fromJson(Map<String, dynamic> json) => MessageInteractionInfo(
     viewCount: json['view_count'],
     forwardCount: json['forward_count'],
     replyInfo: json['reply_info'] == null ? null : MessageReplyInfo.fromJson(json['reply_info']),
-    reactions: List<MessageReaction>.from((json['reactions'] ?? []).map((item) => MessageReaction.fromJson(item)).toList()),
+    reactions: json['reactions'] == null ? null : MessageReactions.fromJson(json['reactions']),
   );
   
   
@@ -54,7 +54,7 @@ final class MessageInteractionInfo extends TdObject {
       "view_count": viewCount,
       "forward_count": forwardCount,
       "reply_info": replyInfo?.toJson(),
-      "reactions": reactions.map((i) => i.toJson()).toList(),
+      "reactions": reactions?.toJson(),
 		};
 	}
 
@@ -64,12 +64,12 @@ final class MessageInteractionInfo extends TdObject {
   /// * [view_count]: Number of times the message was viewed
   /// * [forward_count]: Number of times the message was forwarded
   /// * [reply_info]: Information about direct or indirect replies to the message; may be null. Currently, available only in channels with a discussion supergroup and discussion supergroups for messages, which are not replies itself
-  /// * [reactions]: The list of reactions added to the message
+  /// * [reactions]: The list of reactions or tags added to the message; may be null
   MessageInteractionInfo copyWith({
     int? viewCount,
     int? forwardCount,
     MessageReplyInfo? replyInfo,
-    List<MessageReaction>? reactions,
+    MessageReactions? reactions,
   }) => MessageInteractionInfo(
     viewCount: viewCount ?? this.viewCount,
     forwardCount: forwardCount ?? this.forwardCount,

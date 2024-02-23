@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **GetChatBoostLink** *(getChatBoostLink)* - TDLib function
 ///
-/// Returns an HTTPS link to boost the specified channel chat.
+/// Returns an HTTPS link to boost the specified supergroup or channel chat.
 ///
 /// * [chatId]: Identifier of the chat.
 ///
@@ -11,7 +11,7 @@ final class GetChatBoostLink extends TdFunction {
   
   /// **GetChatBoostLink** *(getChatBoostLink)* - TDLib function
   ///
-  /// Returns an HTTPS link to boost the specified channel chat.
+  /// Returns an HTTPS link to boost the specified supergroup or channel chat.
   ///
   /// * [chatId]: Identifier of the chat.
   ///

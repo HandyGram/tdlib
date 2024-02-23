@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **SearchChatMembers** *(searchChatMembers)* - TDLib function
 ///
-/// Searches for a specified query in the first name, last name and usernames of the members of a specified chat. Requires administrator rights in channels.
+/// Searches for a specified query in the first name, last name and usernames of the members of a specified chat. Requires administrator rights if the chat is a channel.
 ///
 /// * [chatId]: Chat identifier.
 /// * [query]: Query to search for.
@@ -14,7 +14,7 @@ final class SearchChatMembers extends TdFunction {
   
   /// **SearchChatMembers** *(searchChatMembers)* - TDLib function
   ///
-  /// Searches for a specified query in the first name, last name and usernames of the members of a specified chat. Requires administrator rights in channels.
+  /// Searches for a specified query in the first name, last name and usernames of the members of a specified chat. Requires administrator rights if the chat is a channel.
   ///
   /// * [chatId]: Chat identifier.
   /// * [query]: Query to search for.

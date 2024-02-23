@@ -27,6 +27,7 @@ sealed class Update extends TdObject {
   /// * [UpdateNewChat]
   /// * [UpdateChatTitle]
   /// * [UpdateChatPhoto]
+  /// * [UpdateChatAccentColors]
   /// * [UpdateChatPermissions]
   /// * [UpdateChatLastMessage]
   /// * [UpdateChatPosition]
@@ -35,6 +36,7 @@ sealed class Update extends TdObject {
   /// * [UpdateChatActionBar]
   /// * [UpdateChatAvailableReactions]
   /// * [UpdateChatDraftMessage]
+  /// * [UpdateChatEmojiStatus]
   /// * [UpdateChatMessageSender]
   /// * [UpdateChatMessageAutoDeleteTime]
   /// * [UpdateChatNotificationSettings]
@@ -49,10 +51,13 @@ sealed class Update extends TdObject {
   /// * [UpdateChatHasProtectedContent]
   /// * [UpdateChatIsTranslatable]
   /// * [UpdateChatIsMarkedAsUnread]
+  /// * [UpdateChatViewAsTopics]
   /// * [UpdateChatBlockList]
   /// * [UpdateChatHasScheduledMessages]
   /// * [UpdateChatFolders]
   /// * [UpdateChatOnlineMemberCount]
+  /// * [UpdateSavedMessagesTopic]
+  /// * [UpdateSavedMessagesTopicCount]
   /// * [UpdateForumTopicInfo]
   /// * [UpdateScopeNotificationSettings]
   /// * [UpdateNotification]
@@ -100,8 +105,10 @@ sealed class Update extends TdObject {
   /// * [UpdateFavoriteStickers]
   /// * [UpdateSavedAnimations]
   /// * [UpdateSavedNotificationSounds]
-  /// * [UpdateSelectedBackground]
+  /// * [UpdateDefaultBackground]
   /// * [UpdateChatThemes]
+  /// * [UpdateAccentColors]
+  /// * [UpdateProfileAccentColors]
   /// * [UpdateLanguagePackStrings]
   /// * [UpdateConnectionState]
   /// * [UpdateTermsOfService]
@@ -111,6 +118,8 @@ sealed class Update extends TdObject {
   /// * [UpdateWebAppMessageSent]
   /// * [UpdateActiveEmojiReactions]
   /// * [UpdateDefaultReactionType]
+  /// * [UpdateSavedMessagesTags]
+  /// * [UpdateSpeechRecognitionTrial]
   /// * [UpdateDiceEmojis]
   /// * [UpdateAnimatedEmojiMessageClicked]
   /// * [UpdateAnimationSearchParameters]
@@ -129,6 +138,9 @@ sealed class Update extends TdObject {
   /// * [UpdatePollAnswer]
   /// * [UpdateChatMember]
   /// * [UpdateNewChatJoinRequest]
+  /// * [UpdateChatBoost]
+  /// * [UpdateMessageReaction]
+  /// * [UpdateMessageReactions]
   factory Update.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
       case UpdateAuthorizationState.objectType:
@@ -163,6 +175,8 @@ sealed class Update extends TdObject {
         return UpdateChatTitle.fromJson(json);
       case UpdateChatPhoto.objectType:
         return UpdateChatPhoto.fromJson(json);
+      case UpdateChatAccentColors.objectType:
+        return UpdateChatAccentColors.fromJson(json);
       case UpdateChatPermissions.objectType:
         return UpdateChatPermissions.fromJson(json);
       case UpdateChatLastMessage.objectType:
@@ -179,6 +193,8 @@ sealed class Update extends TdObject {
         return UpdateChatAvailableReactions.fromJson(json);
       case UpdateChatDraftMessage.objectType:
         return UpdateChatDraftMessage.fromJson(json);
+      case UpdateChatEmojiStatus.objectType:
+        return UpdateChatEmojiStatus.fromJson(json);
       case UpdateChatMessageSender.objectType:
         return UpdateChatMessageSender.fromJson(json);
       case UpdateChatMessageAutoDeleteTime.objectType:
@@ -207,6 +223,8 @@ sealed class Update extends TdObject {
         return UpdateChatIsTranslatable.fromJson(json);
       case UpdateChatIsMarkedAsUnread.objectType:
         return UpdateChatIsMarkedAsUnread.fromJson(json);
+      case UpdateChatViewAsTopics.objectType:
+        return UpdateChatViewAsTopics.fromJson(json);
       case UpdateChatBlockList.objectType:
         return UpdateChatBlockList.fromJson(json);
       case UpdateChatHasScheduledMessages.objectType:
@@ -215,6 +233,10 @@ sealed class Update extends TdObject {
         return UpdateChatFolders.fromJson(json);
       case UpdateChatOnlineMemberCount.objectType:
         return UpdateChatOnlineMemberCount.fromJson(json);
+      case UpdateSavedMessagesTopic.objectType:
+        return UpdateSavedMessagesTopic.fromJson(json);
+      case UpdateSavedMessagesTopicCount.objectType:
+        return UpdateSavedMessagesTopicCount.fromJson(json);
       case UpdateForumTopicInfo.objectType:
         return UpdateForumTopicInfo.fromJson(json);
       case UpdateScopeNotificationSettings.objectType:
@@ -309,10 +331,14 @@ sealed class Update extends TdObject {
         return UpdateSavedAnimations.fromJson(json);
       case UpdateSavedNotificationSounds.objectType:
         return UpdateSavedNotificationSounds.fromJson(json);
-      case UpdateSelectedBackground.objectType:
-        return UpdateSelectedBackground.fromJson(json);
+      case UpdateDefaultBackground.objectType:
+        return UpdateDefaultBackground.fromJson(json);
       case UpdateChatThemes.objectType:
         return UpdateChatThemes.fromJson(json);
+      case UpdateAccentColors.objectType:
+        return UpdateAccentColors.fromJson(json);
+      case UpdateProfileAccentColors.objectType:
+        return UpdateProfileAccentColors.fromJson(json);
       case UpdateLanguagePackStrings.objectType:
         return UpdateLanguagePackStrings.fromJson(json);
       case UpdateConnectionState.objectType:
@@ -331,6 +357,10 @@ sealed class Update extends TdObject {
         return UpdateActiveEmojiReactions.fromJson(json);
       case UpdateDefaultReactionType.objectType:
         return UpdateDefaultReactionType.fromJson(json);
+      case UpdateSavedMessagesTags.objectType:
+        return UpdateSavedMessagesTags.fromJson(json);
+      case UpdateSpeechRecognitionTrial.objectType:
+        return UpdateSpeechRecognitionTrial.fromJson(json);
       case UpdateDiceEmojis.objectType:
         return UpdateDiceEmojis.fromJson(json);
       case UpdateAnimatedEmojiMessageClicked.objectType:
@@ -367,6 +397,12 @@ sealed class Update extends TdObject {
         return UpdateChatMember.fromJson(json);
       case UpdateNewChatJoinRequest.objectType:
         return UpdateNewChatJoinRequest.fromJson(json);
+      case UpdateChatBoost.objectType:
+        return UpdateChatBoost.fromJson(json);
+      case UpdateMessageReaction.objectType:
+        return UpdateMessageReaction.fromJson(json);
+      case UpdateMessageReactions.objectType:
+        return UpdateMessageReactions.fromJson(json);
       default:
         throw FormatException(
           "Unknown object ${json["@type"]} (expected child of Update)",
@@ -545,7 +581,7 @@ final class UpdateNewMessage extends Update {
 
 /// **UpdateMessageSendAcknowledged** *(updateMessageSendAcknowledged)* - child of Update
 ///
-/// A request to send a message has reached the Telegram server. This doesn't mean that the message will be sent successfully or even that the send message request will be processed.. This update will be sent only if the option "use_quick_ack" is set to true. This update may be sent multiple times for the same message.
+/// A request to send a message has reached the Telegram server. This doesn't mean that the message will be sent successfully.. This update is sent only if the option "use_quick_ack" is set to true. This update may be sent multiple times for the same message.
 ///
 /// * [chatId]: The chat identifier of the sent message.
 /// * [messageId]: A temporary message identifier.
@@ -553,7 +589,7 @@ final class UpdateMessageSendAcknowledged extends Update {
   
   /// **UpdateMessageSendAcknowledged** *(updateMessageSendAcknowledged)* - child of Update
   ///
-  /// A request to send a message has reached the Telegram server. This doesn't mean that the message will be sent successfully or even that the send message request will be processed.. This update will be sent only if the option "use_quick_ack" is set to true. This update may be sent multiple times for the same message.
+  /// A request to send a message has reached the Telegram server. This doesn't mean that the message will be sent successfully.. This update is sent only if the option "use_quick_ack" is set to true. This update may be sent multiple times for the same message.
   ///
   /// * [chatId]: The chat identifier of the sent message.
   /// * [messageId]: A temporary message identifier.
@@ -1821,9 +1857,127 @@ final class UpdateChatPhoto extends Update {
 }
 
 
+/// **UpdateChatAccentColors** *(updateChatAccentColors)* - child of Update
+///
+/// Chat accent colors have changed.
+///
+/// * [chatId]: Chat identifier.
+/// * [accentColorId]: The new chat accent color identifier.
+/// * [backgroundCustomEmojiId]: The new identifier of a custom emoji to be shown on the reply header and link preview background; 0 if none.
+/// * [profileAccentColorId]: The new chat profile accent color identifier; -1 if none.
+/// * [profileBackgroundCustomEmojiId]: The new identifier of a custom emoji to be shown on the profile background; 0 if none.
+final class UpdateChatAccentColors extends Update {
+  
+  /// **UpdateChatAccentColors** *(updateChatAccentColors)* - child of Update
+  ///
+  /// Chat accent colors have changed.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [accentColorId]: The new chat accent color identifier.
+  /// * [backgroundCustomEmojiId]: The new identifier of a custom emoji to be shown on the reply header and link preview background; 0 if none.
+  /// * [profileAccentColorId]: The new chat profile accent color identifier; -1 if none.
+  /// * [profileBackgroundCustomEmojiId]: The new identifier of a custom emoji to be shown on the profile background; 0 if none.
+  const UpdateChatAccentColors({
+    required this.chatId,
+    required this.accentColorId,
+    required this.backgroundCustomEmojiId,
+    required this.profileAccentColorId,
+    required this.profileBackgroundCustomEmojiId,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// Chat identifier
+  final int chatId;
+
+  /// The new chat accent color identifier
+  final int accentColorId;
+
+  /// The new identifier of a custom emoji to be shown on the reply header and link preview background; 0 if none
+  final int backgroundCustomEmojiId;
+
+  /// The new chat profile accent color identifier; -1 if none
+  final int profileAccentColorId;
+
+  /// The new identifier of a custom emoji to be shown on the profile background; 0 if none
+  final int profileBackgroundCustomEmojiId;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory UpdateChatAccentColors.fromJson(Map<String, dynamic> json) => UpdateChatAccentColors(
+    chatId: json['chat_id'],
+    accentColorId: json['accent_color_id'],
+    backgroundCustomEmojiId: int.tryParse(json['background_custom_emoji_id'] ?? "") ?? 0,
+    profileAccentColorId: json['profile_accent_color_id'],
+    profileBackgroundCustomEmojiId: int.tryParse(json['profile_background_custom_emoji_id'] ?? "") ?? 0,
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "chat_id": chatId,
+      "accent_color_id": accentColorId,
+      "background_custom_emoji_id": backgroundCustomEmojiId,
+      "profile_accent_color_id": profileAccentColorId,
+      "profile_background_custom_emoji_id": profileBackgroundCustomEmojiId,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [accent_color_id]: The new chat accent color identifier
+  /// * [background_custom_emoji_id]: The new identifier of a custom emoji to be shown on the reply header and link preview background; 0 if none
+  /// * [profile_accent_color_id]: The new chat profile accent color identifier; -1 if none
+  /// * [profile_background_custom_emoji_id]: The new identifier of a custom emoji to be shown on the profile background; 0 if none
+  @override
+  UpdateChatAccentColors copyWith({
+    int? chatId,
+    int? accentColorId,
+    int? backgroundCustomEmojiId,
+    int? profileAccentColorId,
+    int? profileBackgroundCustomEmojiId,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateChatAccentColors(
+    chatId: chatId ?? this.chatId,
+    accentColorId: accentColorId ?? this.accentColorId,
+    backgroundCustomEmojiId: backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
+    profileAccentColorId: profileAccentColorId ?? this.profileAccentColorId,
+    profileBackgroundCustomEmojiId: profileBackgroundCustomEmojiId ?? this.profileBackgroundCustomEmojiId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'updateChatAccentColors';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
 /// **UpdateChatPermissions** *(updateChatPermissions)* - child of Update
 ///
-/// Chat permissions was changed.
+/// Chat permissions were changed.
 ///
 /// * [chatId]: Chat identifier.
 /// * [permissions]: The new chat permissions.
@@ -1831,7 +1985,7 @@ final class UpdateChatPermissions extends Update {
   
   /// **UpdateChatPermissions** *(updateChatPermissions)* - child of Update
   ///
-  /// Chat permissions was changed.
+  /// Chat permissions were changed.
   ///
   /// * [chatId]: Chat identifier.
   /// * [permissions]: The new chat permissions.
@@ -1908,19 +2062,19 @@ final class UpdateChatPermissions extends Update {
 
 /// **UpdateChatLastMessage** *(updateChatLastMessage)* - child of Update
 ///
-/// The last message of a chat was changed. If last_message is null, then the last message in the chat became unknown. Some new unknown messages might be added to the chat in this case.
+/// The last message of a chat was changed.
 ///
 /// * [chatId]: Chat identifier.
-/// * [lastMessage]: The new last message in the chat; may be null *(optional)*.
+/// * [lastMessage]: The new last message in the chat; may be null if the last message became unknown. While the last message is unknown, new messages can be added to the chat without corresponding updateNewMessage update *(optional)*.
 /// * [positions]: The new chat positions in the chat lists.
 final class UpdateChatLastMessage extends Update {
   
   /// **UpdateChatLastMessage** *(updateChatLastMessage)* - child of Update
   ///
-  /// The last message of a chat was changed. If last_message is null, then the last message in the chat became unknown. Some new unknown messages might be added to the chat in this case.
+  /// The last message of a chat was changed.
   ///
   /// * [chatId]: Chat identifier.
-  /// * [lastMessage]: The new last message in the chat; may be null *(optional)*.
+  /// * [lastMessage]: The new last message in the chat; may be null if the last message became unknown. While the last message is unknown, new messages can be added to the chat without corresponding updateNewMessage update *(optional)*.
   /// * [positions]: The new chat positions in the chat lists.
   const UpdateChatLastMessage({
     required this.chatId,
@@ -1933,7 +2087,7 @@ final class UpdateChatLastMessage extends Update {
   /// Chat identifier
   final int chatId;
 
-  /// The new last message in the chat; may be null
+  /// The new last message in the chat; may be null if the last message became unknown. While the last message is unknown, new messages can be added to the chat without corresponding updateNewMessage update
   final Message? lastMessage;
 
   /// The new chat positions in the chat lists
@@ -1972,7 +2126,7 @@ final class UpdateChatLastMessage extends Update {
   ///
   /// Properties:
   /// * [chat_id]: Chat identifier
-  /// * [last_message]: The new last message in the chat; may be null
+  /// * [last_message]: The new last message in the chat; may be null if the last message became unknown. While the last message is unknown, new messages can be added to the chat without corresponding updateNewMessage update
   /// * [positions]: The new chat positions in the chat lists
   @override
   UpdateChatLastMessage copyWith({
@@ -2443,7 +2597,7 @@ final class UpdateChatAvailableReactions extends Update {
 /// A chat draft has changed. Be aware that the update may come in the currently opened chat but with old content of the draft. If the user has changed the content of the draft, this update mustn't be applied.
 ///
 /// * [chatId]: Chat identifier.
-/// * [draftMessage]: The new draft message; may be null *(optional)*.
+/// * [draftMessage]: The new draft message; may be null if none *(optional)*.
 /// * [positions]: The new chat positions in the chat lists.
 final class UpdateChatDraftMessage extends Update {
   
@@ -2452,7 +2606,7 @@ final class UpdateChatDraftMessage extends Update {
   /// A chat draft has changed. Be aware that the update may come in the currently opened chat but with old content of the draft. If the user has changed the content of the draft, this update mustn't be applied.
   ///
   /// * [chatId]: Chat identifier.
-  /// * [draftMessage]: The new draft message; may be null *(optional)*.
+  /// * [draftMessage]: The new draft message; may be null if none *(optional)*.
   /// * [positions]: The new chat positions in the chat lists.
   const UpdateChatDraftMessage({
     required this.chatId,
@@ -2465,7 +2619,7 @@ final class UpdateChatDraftMessage extends Update {
   /// Chat identifier
   final int chatId;
 
-  /// The new draft message; may be null
+  /// The new draft message; may be null if none
   final DraftMessage? draftMessage;
 
   /// The new chat positions in the chat lists
@@ -2504,7 +2658,7 @@ final class UpdateChatDraftMessage extends Update {
   ///
   /// Properties:
   /// * [chat_id]: Chat identifier
-  /// * [draft_message]: The new draft message; may be null
+  /// * [draft_message]: The new draft message; may be null if none
   /// * [positions]: The new chat positions in the chat lists
   @override
   UpdateChatDraftMessage copyWith({
@@ -2523,6 +2677,91 @@ final class UpdateChatDraftMessage extends Update {
 
   /// TDLib object type
   static const String objectType = 'updateChatDraftMessage';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **UpdateChatEmojiStatus** *(updateChatEmojiStatus)* - child of Update
+///
+/// Chat emoji status has changed.
+///
+/// * [chatId]: Chat identifier.
+/// * [emojiStatus]: The new chat emoji status; may be null *(optional)*.
+final class UpdateChatEmojiStatus extends Update {
+  
+  /// **UpdateChatEmojiStatus** *(updateChatEmojiStatus)* - child of Update
+  ///
+  /// Chat emoji status has changed.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [emojiStatus]: The new chat emoji status; may be null *(optional)*.
+  const UpdateChatEmojiStatus({
+    required this.chatId,
+    this.emojiStatus,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// Chat identifier
+  final int chatId;
+
+  /// The new chat emoji status; may be null
+  final EmojiStatus? emojiStatus;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory UpdateChatEmojiStatus.fromJson(Map<String, dynamic> json) => UpdateChatEmojiStatus(
+    chatId: json['chat_id'],
+    emojiStatus: json['emoji_status'] == null ? null : EmojiStatus.fromJson(json['emoji_status']),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "chat_id": chatId,
+      "emoji_status": emojiStatus?.toJson(),
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [emoji_status]: The new chat emoji status; may be null
+  @override
+  UpdateChatEmojiStatus copyWith({
+    int? chatId,
+    EmojiStatus? emojiStatus,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateChatEmojiStatus(
+    chatId: chatId ?? this.chatId,
+    emojiStatus: emojiStatus ?? this.emojiStatus,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'updateChatEmojiStatus';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3724,6 +3963,91 @@ final class UpdateChatIsMarkedAsUnread extends Update {
 }
 
 
+/// **UpdateChatViewAsTopics** *(updateChatViewAsTopics)* - child of Update
+///
+/// A chat default appearance has changed.
+///
+/// * [chatId]: Chat identifier.
+/// * [viewAsTopics]: New value of view_as_topics.
+final class UpdateChatViewAsTopics extends Update {
+  
+  /// **UpdateChatViewAsTopics** *(updateChatViewAsTopics)* - child of Update
+  ///
+  /// A chat default appearance has changed.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [viewAsTopics]: New value of view_as_topics.
+  const UpdateChatViewAsTopics({
+    required this.chatId,
+    required this.viewAsTopics,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// Chat identifier 
+  final int chatId;
+
+  /// New value of view_as_topics
+  final bool viewAsTopics;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory UpdateChatViewAsTopics.fromJson(Map<String, dynamic> json) => UpdateChatViewAsTopics(
+    chatId: json['chat_id'],
+    viewAsTopics: json['view_as_topics'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "chat_id": chatId,
+      "view_as_topics": viewAsTopics,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier 
+  /// * [view_as_topics]: New value of view_as_topics
+  @override
+  UpdateChatViewAsTopics copyWith({
+    int? chatId,
+    bool? viewAsTopics,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateChatViewAsTopics(
+    chatId: chatId ?? this.chatId,
+    viewAsTopics: viewAsTopics ?? this.viewAsTopics,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'updateChatViewAsTopics';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
 /// **UpdateChatBlockList** *(updateChatBlockList)* - child of Update
 ///
 /// A chat was blocked or unblocked.
@@ -3981,7 +4305,7 @@ final class UpdateChatFolders extends Update {
 
 /// **UpdateChatOnlineMemberCount** *(updateChatOnlineMemberCount)* - child of Update
 ///
-/// The number of online group members has changed. This update with non-zero number of online group members is sent only for currently opened chats.. There is no guarantee that it will be sent just after the number of online users has changed.
+/// The number of online group members has changed. This update with non-zero number of online group members is sent only for currently opened chats.. There is no guarantee that it is sent just after the number of online users has changed.
 ///
 /// * [chatId]: Identifier of the chat.
 /// * [onlineMemberCount]: New number of online members in the chat, or 0 if unknown.
@@ -3989,7 +4313,7 @@ final class UpdateChatOnlineMemberCount extends Update {
   
   /// **UpdateChatOnlineMemberCount** *(updateChatOnlineMemberCount)* - child of Update
   ///
-  /// The number of online group members has changed. This update with non-zero number of online group members is sent only for currently opened chats.. There is no guarantee that it will be sent just after the number of online users has changed.
+  /// The number of online group members has changed. This update with non-zero number of online group members is sent only for currently opened chats.. There is no guarantee that it is sent just after the number of online users has changed.
   ///
   /// * [chatId]: Identifier of the chat.
   /// * [onlineMemberCount]: New number of online members in the chat, or 0 if unknown.
@@ -4053,6 +4377,154 @@ final class UpdateChatOnlineMemberCount extends Update {
 
   /// TDLib object type
   static const String objectType = 'updateChatOnlineMemberCount';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **UpdateSavedMessagesTopic** *(updateSavedMessagesTopic)* - child of Update
+///
+/// Basic information about a Saved Messages topic has changed. This update is guaranteed to come before the topic identifier is returned to the application.
+///
+/// * [topic]: New data about the topic.
+final class UpdateSavedMessagesTopic extends Update {
+  
+  /// **UpdateSavedMessagesTopic** *(updateSavedMessagesTopic)* - child of Update
+  ///
+  /// Basic information about a Saved Messages topic has changed. This update is guaranteed to come before the topic identifier is returned to the application.
+  ///
+  /// * [topic]: New data about the topic.
+  const UpdateSavedMessagesTopic({
+    required this.topic,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// New data about the topic
+  final SavedMessagesTopic topic;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory UpdateSavedMessagesTopic.fromJson(Map<String, dynamic> json) => UpdateSavedMessagesTopic(
+    topic: SavedMessagesTopic.fromJson(json['topic']),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "topic": topic.toJson(),
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [topic]: New data about the topic
+  @override
+  UpdateSavedMessagesTopic copyWith({
+    SavedMessagesTopic? topic,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateSavedMessagesTopic(
+    topic: topic ?? this.topic,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'updateSavedMessagesTopic';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **UpdateSavedMessagesTopicCount** *(updateSavedMessagesTopicCount)* - child of Update
+///
+/// Number of Saved Messages topics has changed.
+///
+/// * [topicCount]: Approximate total number of Saved Messages topics.
+final class UpdateSavedMessagesTopicCount extends Update {
+  
+  /// **UpdateSavedMessagesTopicCount** *(updateSavedMessagesTopicCount)* - child of Update
+  ///
+  /// Number of Saved Messages topics has changed.
+  ///
+  /// * [topicCount]: Approximate total number of Saved Messages topics.
+  const UpdateSavedMessagesTopicCount({
+    required this.topicCount,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// Approximate total number of Saved Messages topics
+  final int topicCount;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory UpdateSavedMessagesTopicCount.fromJson(Map<String, dynamic> json) => UpdateSavedMessagesTopicCount(
+    topicCount: json['topic_count'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "topic_count": topicCount,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [topic_count]: Approximate total number of Saved Messages topics
+  @override
+  UpdateSavedMessagesTopicCount copyWith({
+    int? topicCount,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateSavedMessagesTopicCount(
+    topicCount: topicCount ?? this.topicCount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'updateSavedMessagesTopicCount';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -4472,14 +4944,14 @@ final class UpdateNotificationGroup extends Update {
 
 /// **UpdateActiveNotifications** *(updateActiveNotifications)* - child of Update
 ///
-/// Contains active notifications that was shown on previous application launches. This update is sent only if the message database is used. In that case it comes once before any updateNotification and updateNotificationGroup update.
+/// Contains active notifications that were shown on previous application launches. This update is sent only if the message database is used. In that case it comes once before any updateNotification and updateNotificationGroup update.
 ///
 /// * [groups]: Lists of active notification groups.
 final class UpdateActiveNotifications extends Update {
   
   /// **UpdateActiveNotifications** *(updateActiveNotifications)* - child of Update
   ///
-  /// Contains active notifications that was shown on previous application launches. This update is sent only if the message database is used. In that case it comes once before any updateNotification and updateNotificationGroup update.
+  /// Contains active notifications that were shown on previous application launches. This update is sent only if the message database is used. In that case it comes once before any updateNotification and updateNotificationGroup update.
   ///
   /// * [groups]: Lists of active notification groups.
   const UpdateActiveNotifications({
@@ -4741,7 +5213,7 @@ final class UpdateDeleteMessages extends Update {
 /// A message sender activity in the chat has changed.
 ///
 /// * [chatId]: Chat identifier.
-/// * [messageThreadId]: If not 0, a message thread identifier in which the action was performed.
+/// * [messageThreadId]: If not 0, the message thread identifier in which the action was performed.
 /// * [senderId]: Identifier of a message sender performing the action.
 /// * [action]: The action.
 final class UpdateChatAction extends Update {
@@ -4751,7 +5223,7 @@ final class UpdateChatAction extends Update {
   /// A message sender activity in the chat has changed.
   ///
   /// * [chatId]: Chat identifier.
-  /// * [messageThreadId]: If not 0, a message thread identifier in which the action was performed.
+  /// * [messageThreadId]: If not 0, the message thread identifier in which the action was performed.
   /// * [senderId]: Identifier of a message sender performing the action.
   /// * [action]: The action.
   const UpdateChatAction({
@@ -4766,7 +5238,7 @@ final class UpdateChatAction extends Update {
   /// Chat identifier
   final int chatId;
 
-  /// If not 0, a message thread identifier in which the action was performed
+  /// If not 0, the message thread identifier in which the action was performed
   final int messageThreadId;
 
   /// Identifier of a message sender performing the action
@@ -4810,7 +5282,7 @@ final class UpdateChatAction extends Update {
   ///
   /// Properties:
   /// * [chat_id]: Chat identifier
-  /// * [message_thread_id]: If not 0, a message thread identifier in which the action was performed
+  /// * [message_thread_id]: If not 0, the message thread identifier in which the action was performed
   /// * [sender_id]: Identifier of a message sender performing the action
   /// * [action]: The action
   @override
@@ -8042,14 +8514,14 @@ final class UpdateSavedAnimations extends Update {
 
 /// **UpdateSavedNotificationSounds** *(updateSavedNotificationSounds)* - child of Update
 ///
-/// The list of saved notifications sounds was updated. This update may not be sent until information about a notification sound was requested for the first time.
+/// The list of saved notification sounds was updated. This update may not be sent until information about a notification sound was requested for the first time.
 ///
 /// * [notificationSoundIds]: The new list of identifiers of saved notification sounds.
 final class UpdateSavedNotificationSounds extends Update {
   
   /// **UpdateSavedNotificationSounds** *(updateSavedNotificationSounds)* - child of Update
   ///
-  /// The list of saved notifications sounds was updated. This update may not be sent until information about a notification sound was requested for the first time.
+  /// The list of saved notification sounds was updated. This update may not be sent until information about a notification sound was requested for the first time.
   ///
   /// * [notificationSoundIds]: The new list of identifiers of saved notification sounds.
   const UpdateSavedNotificationSounds({
@@ -8114,31 +8586,31 @@ final class UpdateSavedNotificationSounds extends Update {
 }
 
 
-/// **UpdateSelectedBackground** *(updateSelectedBackground)* - child of Update
+/// **UpdateDefaultBackground** *(updateDefaultBackground)* - child of Update
 ///
-/// The selected background has changed.
+/// The default background has changed.
 ///
-/// * [forDarkTheme]: True, if background for dark theme has changed.
-/// * [background]: The new selected background; may be null *(optional)*.
-final class UpdateSelectedBackground extends Update {
+/// * [forDarkTheme]: True, if default background for dark theme has changed.
+/// * [background]: The new default background; may be null *(optional)*.
+final class UpdateDefaultBackground extends Update {
   
-  /// **UpdateSelectedBackground** *(updateSelectedBackground)* - child of Update
+  /// **UpdateDefaultBackground** *(updateDefaultBackground)* - child of Update
   ///
-  /// The selected background has changed.
+  /// The default background has changed.
   ///
-  /// * [forDarkTheme]: True, if background for dark theme has changed.
-  /// * [background]: The new selected background; may be null *(optional)*.
-  const UpdateSelectedBackground({
+  /// * [forDarkTheme]: True, if default background for dark theme has changed.
+  /// * [background]: The new default background; may be null *(optional)*.
+  const UpdateDefaultBackground({
     required this.forDarkTheme,
     this.background,
     this.extra,
     this.clientId,
   });
   
-  /// True, if background for dark theme has changed 
+  /// True, if default background for dark theme has changed 
   final bool forDarkTheme;
 
-  /// The new selected background; may be null
+  /// The new default background; may be null
   final Background? background;
 
   /// [extra] callback sign
@@ -8150,7 +8622,7 @@ final class UpdateSelectedBackground extends Update {
   final int? clientId;
   
   /// Parse from a json
-  factory UpdateSelectedBackground.fromJson(Map<String, dynamic> json) => UpdateSelectedBackground(
+  factory UpdateDefaultBackground.fromJson(Map<String, dynamic> json) => UpdateDefaultBackground(
     forDarkTheme: json['for_dark_theme'],
     background: json['background'] == null ? null : Background.fromJson(json['background']),
     extra: json['@extra'],
@@ -8171,15 +8643,15 @@ final class UpdateSelectedBackground extends Update {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [for_dark_theme]: True, if background for dark theme has changed 
-  /// * [background]: The new selected background; may be null
+  /// * [for_dark_theme]: True, if default background for dark theme has changed 
+  /// * [background]: The new default background; may be null
   @override
-  UpdateSelectedBackground copyWith({
+  UpdateDefaultBackground copyWith({
     bool? forDarkTheme,
     Background? background,
     dynamic extra,
     int? clientId,
-  }) => UpdateSelectedBackground(
+  }) => UpdateDefaultBackground(
     forDarkTheme: forDarkTheme ?? this.forDarkTheme,
     background: background ?? this.background,
     extra: extra ?? this.extra,
@@ -8187,7 +8659,7 @@ final class UpdateSelectedBackground extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateSelectedBackground';
+  static const String objectType = 'updateDefaultBackground';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -8262,6 +8734,176 @@ final class UpdateChatThemes extends Update {
 
   /// TDLib object type
   static const String objectType = 'updateChatThemes';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **UpdateAccentColors** *(updateAccentColors)* - child of Update
+///
+/// The list of supported accent colors has changed.
+///
+/// * [colors]: Information about supported colors; colors with identifiers 0 (red), 1 (orange), 2 (purple/violet), 3 (green), 4 (cyan), 5 (blue), 6 (pink) must always be supported. and aren't included in the list. The exact colors for the accent colors with identifiers 0-6 must be taken from the app theme.
+/// * [availableAccentColorIds]: The list of accent color identifiers, which can be set through setAccentColor and setChatAccentColor. The colors must be shown in the specififed order.
+final class UpdateAccentColors extends Update {
+  
+  /// **UpdateAccentColors** *(updateAccentColors)* - child of Update
+  ///
+  /// The list of supported accent colors has changed.
+  ///
+  /// * [colors]: Information about supported colors; colors with identifiers 0 (red), 1 (orange), 2 (purple/violet), 3 (green), 4 (cyan), 5 (blue), 6 (pink) must always be supported. and aren't included in the list. The exact colors for the accent colors with identifiers 0-6 must be taken from the app theme.
+  /// * [availableAccentColorIds]: The list of accent color identifiers, which can be set through setAccentColor and setChatAccentColor. The colors must be shown in the specififed order.
+  const UpdateAccentColors({
+    required this.colors,
+    required this.availableAccentColorIds,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// Information about supported colors; colors with identifiers 0 (red), 1 (orange), 2 (purple/violet), 3 (green), 4 (cyan), 5 (blue), 6 (pink) must always be supported. and aren't included in the list. The exact colors for the accent colors with identifiers 0-6 must be taken from the app theme
+  final List<AccentColor> colors;
+
+  /// The list of accent color identifiers, which can be set through setAccentColor and setChatAccentColor. The colors must be shown in the specififed order
+  final List<int> availableAccentColorIds;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory UpdateAccentColors.fromJson(Map<String, dynamic> json) => UpdateAccentColors(
+    colors: List<AccentColor>.from((json['colors'] ?? []).map((item) => AccentColor.fromJson(item)).toList()),
+    availableAccentColorIds: List<int>.from((json['available_accent_color_ids'] ?? []).map((item) => item).toList()),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "colors": colors.map((i) => i.toJson()).toList(),
+      "available_accent_color_ids": availableAccentColorIds.map((i) => i).toList(),
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [colors]: Information about supported colors; colors with identifiers 0 (red), 1 (orange), 2 (purple/violet), 3 (green), 4 (cyan), 5 (blue), 6 (pink) must always be supported. and aren't included in the list. The exact colors for the accent colors with identifiers 0-6 must be taken from the app theme
+  /// * [available_accent_color_ids]: The list of accent color identifiers, which can be set through setAccentColor and setChatAccentColor. The colors must be shown in the specififed order
+  @override
+  UpdateAccentColors copyWith({
+    List<AccentColor>? colors,
+    List<int>? availableAccentColorIds,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateAccentColors(
+    colors: colors ?? this.colors,
+    availableAccentColorIds: availableAccentColorIds ?? this.availableAccentColorIds,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'updateAccentColors';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **UpdateProfileAccentColors** *(updateProfileAccentColors)* - child of Update
+///
+/// The list of supported accent colors for user profiles has changed.
+///
+/// * [colors]: Information about supported colors.
+/// * [availableAccentColorIds]: The list of accent color identifiers, which can be set through setProfileAccentColor and setChatProfileAccentColor. The colors must be shown in the specififed order.
+final class UpdateProfileAccentColors extends Update {
+  
+  /// **UpdateProfileAccentColors** *(updateProfileAccentColors)* - child of Update
+  ///
+  /// The list of supported accent colors for user profiles has changed.
+  ///
+  /// * [colors]: Information about supported colors.
+  /// * [availableAccentColorIds]: The list of accent color identifiers, which can be set through setProfileAccentColor and setChatProfileAccentColor. The colors must be shown in the specififed order.
+  const UpdateProfileAccentColors({
+    required this.colors,
+    required this.availableAccentColorIds,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// Information about supported colors
+  final List<ProfileAccentColor> colors;
+
+  /// The list of accent color identifiers, which can be set through setProfileAccentColor and setChatProfileAccentColor. The colors must be shown in the specififed order
+  final List<int> availableAccentColorIds;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory UpdateProfileAccentColors.fromJson(Map<String, dynamic> json) => UpdateProfileAccentColors(
+    colors: List<ProfileAccentColor>.from((json['colors'] ?? []).map((item) => ProfileAccentColor.fromJson(item)).toList()),
+    availableAccentColorIds: List<int>.from((json['available_accent_color_ids'] ?? []).map((item) => item).toList()),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "colors": colors.map((i) => i.toJson()).toList(),
+      "available_accent_color_ids": availableAccentColorIds.map((i) => i).toList(),
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [colors]: Information about supported colors
+  /// * [available_accent_color_ids]: The list of accent color identifiers, which can be set through setProfileAccentColor and setChatProfileAccentColor. The colors must be shown in the specififed order
+  @override
+  UpdateProfileAccentColors copyWith({
+    List<ProfileAccentColor>? colors,
+    List<int>? availableAccentColorIds,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateProfileAccentColors(
+    colors: colors ?? this.colors,
+    availableAccentColorIds: availableAccentColorIds ?? this.availableAccentColorIds,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'updateProfileAccentColors';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -8961,6 +9603,198 @@ final class UpdateDefaultReactionType extends Update {
 
   /// TDLib object type
   static const String objectType = 'updateDefaultReactionType';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **UpdateSavedMessagesTags** *(updateSavedMessagesTags)* - child of Update
+///
+/// Tags used in Saved Messages or a Saved Messages topic have changed.
+///
+/// * [savedMessagesTopicId]: Identifier of Saved Messages topic which tags were changed; 0 if tags for the whole chat has changed.
+/// * [tags]: The new tags.
+final class UpdateSavedMessagesTags extends Update {
+  
+  /// **UpdateSavedMessagesTags** *(updateSavedMessagesTags)* - child of Update
+  ///
+  /// Tags used in Saved Messages or a Saved Messages topic have changed.
+  ///
+  /// * [savedMessagesTopicId]: Identifier of Saved Messages topic which tags were changed; 0 if tags for the whole chat has changed.
+  /// * [tags]: The new tags.
+  const UpdateSavedMessagesTags({
+    required this.savedMessagesTopicId,
+    required this.tags,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// Identifier of Saved Messages topic which tags were changed; 0 if tags for the whole chat has changed
+  final int savedMessagesTopicId;
+
+  /// The new tags
+  final SavedMessagesTags tags;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory UpdateSavedMessagesTags.fromJson(Map<String, dynamic> json) => UpdateSavedMessagesTags(
+    savedMessagesTopicId: json['saved_messages_topic_id'],
+    tags: SavedMessagesTags.fromJson(json['tags']),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "saved_messages_topic_id": savedMessagesTopicId,
+      "tags": tags.toJson(),
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [saved_messages_topic_id]: Identifier of Saved Messages topic which tags were changed; 0 if tags for the whole chat has changed
+  /// * [tags]: The new tags
+  @override
+  UpdateSavedMessagesTags copyWith({
+    int? savedMessagesTopicId,
+    SavedMessagesTags? tags,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateSavedMessagesTags(
+    savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
+    tags: tags ?? this.tags,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'updateSavedMessagesTags';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **UpdateSpeechRecognitionTrial** *(updateSpeechRecognitionTrial)* - child of Update
+///
+/// The parameters of speech recognition without Telegram Premium subscription has changed.
+///
+/// * [maxMediaDuration]: The maximum allowed duration of media for speech recognition without Telegram Premium subscription.
+/// * [weeklyCount]: The total number of allowed speech recognitions per week; 0 if none.
+/// * [leftCount]: Number of left speech recognition attempts this week.
+/// * [nextResetDate]: Point in time (Unix timestamp) when the weekly number of tries will reset; 0 if unknown.
+final class UpdateSpeechRecognitionTrial extends Update {
+  
+  /// **UpdateSpeechRecognitionTrial** *(updateSpeechRecognitionTrial)* - child of Update
+  ///
+  /// The parameters of speech recognition without Telegram Premium subscription has changed.
+  ///
+  /// * [maxMediaDuration]: The maximum allowed duration of media for speech recognition without Telegram Premium subscription.
+  /// * [weeklyCount]: The total number of allowed speech recognitions per week; 0 if none.
+  /// * [leftCount]: Number of left speech recognition attempts this week.
+  /// * [nextResetDate]: Point in time (Unix timestamp) when the weekly number of tries will reset; 0 if unknown.
+  const UpdateSpeechRecognitionTrial({
+    required this.maxMediaDuration,
+    required this.weeklyCount,
+    required this.leftCount,
+    required this.nextResetDate,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// The maximum allowed duration of media for speech recognition without Telegram Premium subscription
+  final int maxMediaDuration;
+
+  /// The total number of allowed speech recognitions per week; 0 if none
+  final int weeklyCount;
+
+  /// Number of left speech recognition attempts this week
+  final int leftCount;
+
+  /// Point in time (Unix timestamp) when the weekly number of tries will reset; 0 if unknown
+  final int nextResetDate;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory UpdateSpeechRecognitionTrial.fromJson(Map<String, dynamic> json) => UpdateSpeechRecognitionTrial(
+    maxMediaDuration: json['max_media_duration'],
+    weeklyCount: json['weekly_count'] ?? 0,
+    leftCount: json['left_count'],
+    nextResetDate: json['next_reset_date'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "max_media_duration": maxMediaDuration,
+      "weekly_count": weeklyCount,
+      "left_count": leftCount,
+      "next_reset_date": nextResetDate,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [max_media_duration]: The maximum allowed duration of media for speech recognition without Telegram Premium subscription
+  /// * [weekly_count]: The total number of allowed speech recognitions per week; 0 if none
+  /// * [left_count]: Number of left speech recognition attempts this week
+  /// * [next_reset_date]: Point in time (Unix timestamp) when the weekly number of tries will reset; 0 if unknown
+  @override
+  UpdateSpeechRecognitionTrial copyWith({
+    int? maxMediaDuration,
+    int? weeklyCount,
+    int? leftCount,
+    int? nextResetDate,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateSpeechRecognitionTrial(
+    maxMediaDuration: maxMediaDuration ?? this.maxMediaDuration,
+    weeklyCount: weeklyCount ?? this.weeklyCount,
+    leftCount: leftCount ?? this.leftCount,
+    nextResetDate: nextResetDate ?? this.nextResetDate,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'updateSpeechRecognitionTrial';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -10569,7 +11403,7 @@ final class UpdatePollAnswer extends Update {
 ///
 /// * [chatId]: Chat identifier.
 /// * [actorUserId]: Identifier of the user, changing the rights.
-/// * [date]: Point in time (Unix timestamp) when the user rights was changed.
+/// * [date]: Point in time (Unix timestamp) when the user rights were changed.
 /// * [inviteLink]: If user has joined the chat using an invite link, the invite link; may be null *(optional)*.
 /// * [viaChatFolderInviteLink]: True, if the user has joined the chat using an invite link for a chat folder.
 /// * [oldChatMember]: Previous chat member.
@@ -10582,7 +11416,7 @@ final class UpdateChatMember extends Update {
   ///
   /// * [chatId]: Chat identifier.
   /// * [actorUserId]: Identifier of the user, changing the rights.
-  /// * [date]: Point in time (Unix timestamp) when the user rights was changed.
+  /// * [date]: Point in time (Unix timestamp) when the user rights were changed.
   /// * [inviteLink]: If user has joined the chat using an invite link, the invite link; may be null *(optional)*.
   /// * [viaChatFolderInviteLink]: True, if the user has joined the chat using an invite link for a chat folder.
   /// * [oldChatMember]: Previous chat member.
@@ -10605,7 +11439,7 @@ final class UpdateChatMember extends Update {
   /// Identifier of the user, changing the rights
   final int actorUserId;
 
-  /// Point in time (Unix timestamp) when the user rights was changed
+  /// Point in time (Unix timestamp) when the user rights were changed
   final int date;
 
   /// If user has joined the chat using an invite link, the invite link; may be null
@@ -10662,7 +11496,7 @@ final class UpdateChatMember extends Update {
   /// Properties:
   /// * [chat_id]: Chat identifier
   /// * [actor_user_id]: Identifier of the user, changing the rights
-  /// * [date]: Point in time (Unix timestamp) when the user rights was changed
+  /// * [date]: Point in time (Unix timestamp) when the user rights were changed
   /// * [invite_link]: If user has joined the chat using an invite link, the invite link; may be null
   /// * [via_chat_folder_invite_link]: True, if the user has joined the chat using an invite link for a chat folder
   /// * [old_chat_member]: Previous chat member
@@ -10799,6 +11633,327 @@ final class UpdateNewChatJoinRequest extends Update {
 
   /// TDLib object type
   static const String objectType = 'updateNewChatJoinRequest';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **UpdateChatBoost** *(updateChatBoost)* - child of Update
+///
+/// A chat boost has changed; for bots only.
+///
+/// * [chatId]: Chat identifier.
+/// * [boost]: New information about the boost.
+final class UpdateChatBoost extends Update {
+  
+  /// **UpdateChatBoost** *(updateChatBoost)* - child of Update
+  ///
+  /// A chat boost has changed; for bots only.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [boost]: New information about the boost.
+  const UpdateChatBoost({
+    required this.chatId,
+    required this.boost,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// Chat identifier
+  final int chatId;
+
+  /// New information about the boost
+  final ChatBoost boost;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory UpdateChatBoost.fromJson(Map<String, dynamic> json) => UpdateChatBoost(
+    chatId: json['chat_id'],
+    boost: ChatBoost.fromJson(json['boost']),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "chat_id": chatId,
+      "boost": boost.toJson(),
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [boost]: New information about the boost
+  @override
+  UpdateChatBoost copyWith({
+    int? chatId,
+    ChatBoost? boost,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateChatBoost(
+    chatId: chatId ?? this.chatId,
+    boost: boost ?? this.boost,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'updateChatBoost';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **UpdateMessageReaction** *(updateMessageReaction)* - child of Update
+///
+/// User changed its reactions on a message with public reactions; for bots only.
+///
+/// * [chatId]: Chat identifier.
+/// * [messageId]: Message identifier.
+/// * [actorId]: Identifier of the user or chat that changed reactions.
+/// * [date]: Point in time (Unix timestamp) when the reactions were changed.
+/// * [oldReactionTypes]: Old list of chosen reactions.
+/// * [newReactionTypes]: New list of chosen reactions.
+final class UpdateMessageReaction extends Update {
+  
+  /// **UpdateMessageReaction** *(updateMessageReaction)* - child of Update
+  ///
+  /// User changed its reactions on a message with public reactions; for bots only.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [messageId]: Message identifier.
+  /// * [actorId]: Identifier of the user or chat that changed reactions.
+  /// * [date]: Point in time (Unix timestamp) when the reactions were changed.
+  /// * [oldReactionTypes]: Old list of chosen reactions.
+  /// * [newReactionTypes]: New list of chosen reactions.
+  const UpdateMessageReaction({
+    required this.chatId,
+    required this.messageId,
+    required this.actorId,
+    required this.date,
+    required this.oldReactionTypes,
+    required this.newReactionTypes,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// Chat identifier
+  final int chatId;
+
+  /// Message identifier
+  final int messageId;
+
+  /// Identifier of the user or chat that changed reactions
+  final MessageSender actorId;
+
+  /// Point in time (Unix timestamp) when the reactions were changed
+  final int date;
+
+  /// Old list of chosen reactions
+  final List<ReactionType> oldReactionTypes;
+
+  /// New list of chosen reactions
+  final List<ReactionType> newReactionTypes;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory UpdateMessageReaction.fromJson(Map<String, dynamic> json) => UpdateMessageReaction(
+    chatId: json['chat_id'],
+    messageId: json['message_id'],
+    actorId: MessageSender.fromJson(json['actor_id']),
+    date: json['date'],
+    oldReactionTypes: List<ReactionType>.from((json['old_reaction_types'] ?? []).map((item) => ReactionType.fromJson(item)).toList()),
+    newReactionTypes: List<ReactionType>.from((json['new_reaction_types'] ?? []).map((item) => ReactionType.fromJson(item)).toList()),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "chat_id": chatId,
+      "message_id": messageId,
+      "actor_id": actorId.toJson(),
+      "date": date,
+      "old_reaction_types": oldReactionTypes.map((i) => i.toJson()).toList(),
+      "new_reaction_types": newReactionTypes.map((i) => i.toJson()).toList(),
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [message_id]: Message identifier
+  /// * [actor_id]: Identifier of the user or chat that changed reactions
+  /// * [date]: Point in time (Unix timestamp) when the reactions were changed
+  /// * [old_reaction_types]: Old list of chosen reactions
+  /// * [new_reaction_types]: New list of chosen reactions
+  @override
+  UpdateMessageReaction copyWith({
+    int? chatId,
+    int? messageId,
+    MessageSender? actorId,
+    int? date,
+    List<ReactionType>? oldReactionTypes,
+    List<ReactionType>? newReactionTypes,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateMessageReaction(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    actorId: actorId ?? this.actorId,
+    date: date ?? this.date,
+    oldReactionTypes: oldReactionTypes ?? this.oldReactionTypes,
+    newReactionTypes: newReactionTypes ?? this.newReactionTypes,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'updateMessageReaction';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **UpdateMessageReactions** *(updateMessageReactions)* - child of Update
+///
+/// Reactions added to a message with anonymous reactions have changed; for bots only.
+///
+/// * [chatId]: Chat identifier.
+/// * [messageId]: Message identifier.
+/// * [date]: Point in time (Unix timestamp) when the reactions were changed.
+/// * [reactions]: The list of reactions added to the message.
+final class UpdateMessageReactions extends Update {
+  
+  /// **UpdateMessageReactions** *(updateMessageReactions)* - child of Update
+  ///
+  /// Reactions added to a message with anonymous reactions have changed; for bots only.
+  ///
+  /// * [chatId]: Chat identifier.
+  /// * [messageId]: Message identifier.
+  /// * [date]: Point in time (Unix timestamp) when the reactions were changed.
+  /// * [reactions]: The list of reactions added to the message.
+  const UpdateMessageReactions({
+    required this.chatId,
+    required this.messageId,
+    required this.date,
+    required this.reactions,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// Chat identifier
+  final int chatId;
+
+  /// Message identifier
+  final int messageId;
+
+  /// Point in time (Unix timestamp) when the reactions were changed
+  final int date;
+
+  /// The list of reactions added to the message
+  final List<MessageReaction> reactions;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory UpdateMessageReactions.fromJson(Map<String, dynamic> json) => UpdateMessageReactions(
+    chatId: json['chat_id'],
+    messageId: json['message_id'],
+    date: json['date'],
+    reactions: List<MessageReaction>.from((json['reactions'] ?? []).map((item) => MessageReaction.fromJson(item)).toList()),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "chat_id": chatId,
+      "message_id": messageId,
+      "date": date,
+      "reactions": reactions.map((i) => i.toJson()).toList(),
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Chat identifier
+  /// * [message_id]: Message identifier
+  /// * [date]: Point in time (Unix timestamp) when the reactions were changed
+  /// * [reactions]: The list of reactions added to the message
+  @override
+  UpdateMessageReactions copyWith({
+    int? chatId,
+    int? messageId,
+    int? date,
+    List<MessageReaction>? reactions,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateMessageReactions(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    date: date ?? this.date,
+    reactions: reactions ?? this.reactions,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'updateMessageReactions';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

@@ -24,7 +24,9 @@ sealed class ChatEventAction extends TdObject {
   /// * [ChatEventMemberPromoted]
   /// * [ChatEventMemberRestricted]
   /// * [ChatEventAvailableReactionsChanged]
+  /// * [ChatEventBackgroundChanged]
   /// * [ChatEventDescriptionChanged]
+  /// * [ChatEventEmojiStatusChanged]
   /// * [ChatEventLinkedChatChanged]
   /// * [ChatEventLocationChanged]
   /// * [ChatEventMessageAutoDeleteTimeChanged]
@@ -32,9 +34,12 @@ sealed class ChatEventAction extends TdObject {
   /// * [ChatEventPhotoChanged]
   /// * [ChatEventSlowModeDelayChanged]
   /// * [ChatEventStickerSetChanged]
+  /// * [ChatEventCustomEmojiStickerSetChanged]
   /// * [ChatEventTitleChanged]
   /// * [ChatEventUsernameChanged]
   /// * [ChatEventActiveUsernamesChanged]
+  /// * [ChatEventAccentColorChanged]
+  /// * [ChatEventProfileAccentColorChanged]
   /// * [ChatEventHasProtectedContentToggled]
   /// * [ChatEventInvitesToggled]
   /// * [ChatEventIsAllHistoryAvailableToggled]
@@ -83,8 +88,12 @@ sealed class ChatEventAction extends TdObject {
         return ChatEventMemberRestricted.fromJson(json);
       case ChatEventAvailableReactionsChanged.objectType:
         return ChatEventAvailableReactionsChanged.fromJson(json);
+      case ChatEventBackgroundChanged.objectType:
+        return ChatEventBackgroundChanged.fromJson(json);
       case ChatEventDescriptionChanged.objectType:
         return ChatEventDescriptionChanged.fromJson(json);
+      case ChatEventEmojiStatusChanged.objectType:
+        return ChatEventEmojiStatusChanged.fromJson(json);
       case ChatEventLinkedChatChanged.objectType:
         return ChatEventLinkedChatChanged.fromJson(json);
       case ChatEventLocationChanged.objectType:
@@ -99,12 +108,18 @@ sealed class ChatEventAction extends TdObject {
         return ChatEventSlowModeDelayChanged.fromJson(json);
       case ChatEventStickerSetChanged.objectType:
         return ChatEventStickerSetChanged.fromJson(json);
+      case ChatEventCustomEmojiStickerSetChanged.objectType:
+        return ChatEventCustomEmojiStickerSetChanged.fromJson(json);
       case ChatEventTitleChanged.objectType:
         return ChatEventTitleChanged.fromJson(json);
       case ChatEventUsernameChanged.objectType:
         return ChatEventUsernameChanged.fromJson(json);
       case ChatEventActiveUsernamesChanged.objectType:
         return ChatEventActiveUsernamesChanged.fromJson(json);
+      case ChatEventAccentColorChanged.objectType:
+        return ChatEventAccentColorChanged.fromJson(json);
+      case ChatEventProfileAccentColorChanged.objectType:
+        return ChatEventProfileAccentColorChanged.fromJson(json);
       case ChatEventHasProtectedContentToggled.objectType:
         return ChatEventHasProtectedContentToggled.fromJson(json);
       case ChatEventInvitesToggled.objectType:
@@ -997,6 +1012,75 @@ final class ChatEventAvailableReactionsChanged extends ChatEventAction {
 }
 
 
+/// **ChatEventBackgroundChanged** *(chatEventBackgroundChanged)* - child of ChatEventAction
+///
+/// The chat background was changed.
+///
+/// * [oldBackground]: Previous background; may be null if none *(optional)*.
+/// * [newBackground]: New background; may be null if none *(optional)*.
+final class ChatEventBackgroundChanged extends ChatEventAction {
+  
+  /// **ChatEventBackgroundChanged** *(chatEventBackgroundChanged)* - child of ChatEventAction
+  ///
+  /// The chat background was changed.
+  ///
+  /// * [oldBackground]: Previous background; may be null if none *(optional)*.
+  /// * [newBackground]: New background; may be null if none *(optional)*.
+  const ChatEventBackgroundChanged({
+    this.oldBackground,
+    this.newBackground,
+  });
+  
+  /// Previous background; may be null if none 
+  final ChatBackground? oldBackground;
+
+  /// New background; may be null if none
+  final ChatBackground? newBackground;
+  
+  /// Parse from a json
+  factory ChatEventBackgroundChanged.fromJson(Map<String, dynamic> json) => ChatEventBackgroundChanged(
+    oldBackground: json['old_background'] == null ? null : ChatBackground.fromJson(json['old_background']),
+    newBackground: json['new_background'] == null ? null : ChatBackground.fromJson(json['new_background']),
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "old_background": oldBackground?.toJson(),
+      "new_background": newBackground?.toJson(),
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [old_background]: Previous background; may be null if none 
+  /// * [new_background]: New background; may be null if none
+  @override
+  ChatEventBackgroundChanged copyWith({
+    ChatBackground? oldBackground,
+    ChatBackground? newBackground,
+  }) => ChatEventBackgroundChanged(
+    oldBackground: oldBackground ?? this.oldBackground,
+    newBackground: newBackground ?? this.newBackground,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'chatEventBackgroundChanged';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
 /// **ChatEventDescriptionChanged** *(chatEventDescriptionChanged)* - child of ChatEventAction
 ///
 /// The chat description was changed.
@@ -1055,6 +1139,75 @@ final class ChatEventDescriptionChanged extends ChatEventAction {
 
   /// TDLib object type
   static const String objectType = 'chatEventDescriptionChanged';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **ChatEventEmojiStatusChanged** *(chatEventEmojiStatusChanged)* - child of ChatEventAction
+///
+/// The chat emoji status was changed.
+///
+/// * [oldEmojiStatus]: Previous emoji status; may be null if none *(optional)*.
+/// * [newEmojiStatus]: New emoji status; may be null if none *(optional)*.
+final class ChatEventEmojiStatusChanged extends ChatEventAction {
+  
+  /// **ChatEventEmojiStatusChanged** *(chatEventEmojiStatusChanged)* - child of ChatEventAction
+  ///
+  /// The chat emoji status was changed.
+  ///
+  /// * [oldEmojiStatus]: Previous emoji status; may be null if none *(optional)*.
+  /// * [newEmojiStatus]: New emoji status; may be null if none *(optional)*.
+  const ChatEventEmojiStatusChanged({
+    this.oldEmojiStatus,
+    this.newEmojiStatus,
+  });
+  
+  /// Previous emoji status; may be null if none 
+  final EmojiStatus? oldEmojiStatus;
+
+  /// New emoji status; may be null if none
+  final EmojiStatus? newEmojiStatus;
+  
+  /// Parse from a json
+  factory ChatEventEmojiStatusChanged.fromJson(Map<String, dynamic> json) => ChatEventEmojiStatusChanged(
+    oldEmojiStatus: json['old_emoji_status'] == null ? null : EmojiStatus.fromJson(json['old_emoji_status']),
+    newEmojiStatus: json['new_emoji_status'] == null ? null : EmojiStatus.fromJson(json['new_emoji_status']),
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "old_emoji_status": oldEmojiStatus?.toJson(),
+      "new_emoji_status": newEmojiStatus?.toJson(),
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [old_emoji_status]: Previous emoji status; may be null if none 
+  /// * [new_emoji_status]: New emoji status; may be null if none
+  @override
+  ChatEventEmojiStatusChanged copyWith({
+    EmojiStatus? oldEmojiStatus,
+    EmojiStatus? newEmojiStatus,
+  }) => ChatEventEmojiStatusChanged(
+    oldEmojiStatus: oldEmojiStatus ?? this.oldEmojiStatus,
+    newEmojiStatus: newEmojiStatus ?? this.newEmojiStatus,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'chatEventEmojiStatusChanged';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1275,7 +1428,7 @@ final class ChatEventMessageAutoDeleteTimeChanged extends ChatEventAction {
 
 /// **ChatEventPermissionsChanged** *(chatEventPermissionsChanged)* - child of ChatEventAction
 ///
-/// The chat permissions was changed.
+/// The chat permissions were changed.
 ///
 /// * [oldPermissions]: Previous chat permissions.
 /// * [newPermissions]: New chat permissions.
@@ -1283,7 +1436,7 @@ final class ChatEventPermissionsChanged extends ChatEventAction {
   
   /// **ChatEventPermissionsChanged** *(chatEventPermissionsChanged)* - child of ChatEventAction
   ///
-  /// The chat permissions was changed.
+  /// The chat permissions were changed.
   ///
   /// * [oldPermissions]: Previous chat permissions.
   /// * [newPermissions]: New chat permissions.
@@ -1549,6 +1702,75 @@ final class ChatEventStickerSetChanged extends ChatEventAction {
 }
 
 
+/// **ChatEventCustomEmojiStickerSetChanged** *(chatEventCustomEmojiStickerSetChanged)* - child of ChatEventAction
+///
+/// The supergroup sticker set with allowed custom emoji was changed.
+///
+/// * [oldStickerSetId]: Previous identifier of the chat sticker set; 0 if none.
+/// * [newStickerSetId]: New identifier of the chat sticker set; 0 if none.
+final class ChatEventCustomEmojiStickerSetChanged extends ChatEventAction {
+  
+  /// **ChatEventCustomEmojiStickerSetChanged** *(chatEventCustomEmojiStickerSetChanged)* - child of ChatEventAction
+  ///
+  /// The supergroup sticker set with allowed custom emoji was changed.
+  ///
+  /// * [oldStickerSetId]: Previous identifier of the chat sticker set; 0 if none.
+  /// * [newStickerSetId]: New identifier of the chat sticker set; 0 if none.
+  const ChatEventCustomEmojiStickerSetChanged({
+    required this.oldStickerSetId,
+    required this.newStickerSetId,
+  });
+  
+  /// Previous identifier of the chat sticker set; 0 if none 
+  final int oldStickerSetId;
+
+  /// New identifier of the chat sticker set; 0 if none
+  final int newStickerSetId;
+  
+  /// Parse from a json
+  factory ChatEventCustomEmojiStickerSetChanged.fromJson(Map<String, dynamic> json) => ChatEventCustomEmojiStickerSetChanged(
+    oldStickerSetId: int.tryParse(json['old_sticker_set_id'] ?? "") ?? 0,
+    newStickerSetId: int.tryParse(json['new_sticker_set_id'] ?? "") ?? 0,
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "old_sticker_set_id": oldStickerSetId,
+      "new_sticker_set_id": newStickerSetId,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [old_sticker_set_id]: Previous identifier of the chat sticker set; 0 if none 
+  /// * [new_sticker_set_id]: New identifier of the chat sticker set; 0 if none
+  @override
+  ChatEventCustomEmojiStickerSetChanged copyWith({
+    int? oldStickerSetId,
+    int? newStickerSetId,
+  }) => ChatEventCustomEmojiStickerSetChanged(
+    oldStickerSetId: oldStickerSetId ?? this.oldStickerSetId,
+    newStickerSetId: newStickerSetId ?? this.newStickerSetId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'chatEventCustomEmojiStickerSetChanged';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
 /// **ChatEventTitleChanged** *(chatEventTitleChanged)* - child of ChatEventAction
 ///
 /// The chat title was changed.
@@ -1745,6 +1967,188 @@ final class ChatEventActiveUsernamesChanged extends ChatEventAction {
 
   /// TDLib object type
   static const String objectType = 'chatEventActiveUsernamesChanged';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **ChatEventAccentColorChanged** *(chatEventAccentColorChanged)* - child of ChatEventAction
+///
+/// The chat accent color or background custom emoji were changed.
+///
+/// * [oldAccentColorId]: Previous identifier of chat accent color.
+/// * [oldBackgroundCustomEmojiId]: Previous identifier of the custom emoji; 0 if none.
+/// * [newAccentColorId]: New identifier of chat accent color.
+/// * [newBackgroundCustomEmojiId]: New identifier of the custom emoji; 0 if none.
+final class ChatEventAccentColorChanged extends ChatEventAction {
+  
+  /// **ChatEventAccentColorChanged** *(chatEventAccentColorChanged)* - child of ChatEventAction
+  ///
+  /// The chat accent color or background custom emoji were changed.
+  ///
+  /// * [oldAccentColorId]: Previous identifier of chat accent color.
+  /// * [oldBackgroundCustomEmojiId]: Previous identifier of the custom emoji; 0 if none.
+  /// * [newAccentColorId]: New identifier of chat accent color.
+  /// * [newBackgroundCustomEmojiId]: New identifier of the custom emoji; 0 if none.
+  const ChatEventAccentColorChanged({
+    required this.oldAccentColorId,
+    required this.oldBackgroundCustomEmojiId,
+    required this.newAccentColorId,
+    required this.newBackgroundCustomEmojiId,
+  });
+  
+  /// Previous identifier of chat accent color
+  final int oldAccentColorId;
+
+  /// Previous identifier of the custom emoji; 0 if none
+  final int oldBackgroundCustomEmojiId;
+
+  /// New identifier of chat accent color
+  final int newAccentColorId;
+
+  /// New identifier of the custom emoji; 0 if none
+  final int newBackgroundCustomEmojiId;
+  
+  /// Parse from a json
+  factory ChatEventAccentColorChanged.fromJson(Map<String, dynamic> json) => ChatEventAccentColorChanged(
+    oldAccentColorId: json['old_accent_color_id'],
+    oldBackgroundCustomEmojiId: int.tryParse(json['old_background_custom_emoji_id'] ?? "") ?? 0,
+    newAccentColorId: json['new_accent_color_id'],
+    newBackgroundCustomEmojiId: int.tryParse(json['new_background_custom_emoji_id'] ?? "") ?? 0,
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "old_accent_color_id": oldAccentColorId,
+      "old_background_custom_emoji_id": oldBackgroundCustomEmojiId,
+      "new_accent_color_id": newAccentColorId,
+      "new_background_custom_emoji_id": newBackgroundCustomEmojiId,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [old_accent_color_id]: Previous identifier of chat accent color
+  /// * [old_background_custom_emoji_id]: Previous identifier of the custom emoji; 0 if none
+  /// * [new_accent_color_id]: New identifier of chat accent color
+  /// * [new_background_custom_emoji_id]: New identifier of the custom emoji; 0 if none
+  @override
+  ChatEventAccentColorChanged copyWith({
+    int? oldAccentColorId,
+    int? oldBackgroundCustomEmojiId,
+    int? newAccentColorId,
+    int? newBackgroundCustomEmojiId,
+  }) => ChatEventAccentColorChanged(
+    oldAccentColorId: oldAccentColorId ?? this.oldAccentColorId,
+    oldBackgroundCustomEmojiId: oldBackgroundCustomEmojiId ?? this.oldBackgroundCustomEmojiId,
+    newAccentColorId: newAccentColorId ?? this.newAccentColorId,
+    newBackgroundCustomEmojiId: newBackgroundCustomEmojiId ?? this.newBackgroundCustomEmojiId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'chatEventAccentColorChanged';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **ChatEventProfileAccentColorChanged** *(chatEventProfileAccentColorChanged)* - child of ChatEventAction
+///
+/// The chat's profile accent color or profile background custom emoji were changed.
+///
+/// * [oldProfileAccentColorId]: Previous identifier of chat's profile accent color; -1 if none.
+/// * [oldProfileBackgroundCustomEmojiId]: Previous identifier of the custom emoji; 0 if none.
+/// * [newProfileAccentColorId]: New identifier of chat's profile accent color; -1 if none.
+/// * [newProfileBackgroundCustomEmojiId]: New identifier of the custom emoji; 0 if none.
+final class ChatEventProfileAccentColorChanged extends ChatEventAction {
+  
+  /// **ChatEventProfileAccentColorChanged** *(chatEventProfileAccentColorChanged)* - child of ChatEventAction
+  ///
+  /// The chat's profile accent color or profile background custom emoji were changed.
+  ///
+  /// * [oldProfileAccentColorId]: Previous identifier of chat's profile accent color; -1 if none.
+  /// * [oldProfileBackgroundCustomEmojiId]: Previous identifier of the custom emoji; 0 if none.
+  /// * [newProfileAccentColorId]: New identifier of chat's profile accent color; -1 if none.
+  /// * [newProfileBackgroundCustomEmojiId]: New identifier of the custom emoji; 0 if none.
+  const ChatEventProfileAccentColorChanged({
+    required this.oldProfileAccentColorId,
+    required this.oldProfileBackgroundCustomEmojiId,
+    required this.newProfileAccentColorId,
+    required this.newProfileBackgroundCustomEmojiId,
+  });
+  
+  /// Previous identifier of chat's profile accent color; -1 if none
+  final int oldProfileAccentColorId;
+
+  /// Previous identifier of the custom emoji; 0 if none
+  final int oldProfileBackgroundCustomEmojiId;
+
+  /// New identifier of chat's profile accent color; -1 if none
+  final int newProfileAccentColorId;
+
+  /// New identifier of the custom emoji; 0 if none
+  final int newProfileBackgroundCustomEmojiId;
+  
+  /// Parse from a json
+  factory ChatEventProfileAccentColorChanged.fromJson(Map<String, dynamic> json) => ChatEventProfileAccentColorChanged(
+    oldProfileAccentColorId: json['old_profile_accent_color_id'],
+    oldProfileBackgroundCustomEmojiId: int.tryParse(json['old_profile_background_custom_emoji_id'] ?? "") ?? 0,
+    newProfileAccentColorId: json['new_profile_accent_color_id'],
+    newProfileBackgroundCustomEmojiId: int.tryParse(json['new_profile_background_custom_emoji_id'] ?? "") ?? 0,
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "old_profile_accent_color_id": oldProfileAccentColorId,
+      "old_profile_background_custom_emoji_id": oldProfileBackgroundCustomEmojiId,
+      "new_profile_accent_color_id": newProfileAccentColorId,
+      "new_profile_background_custom_emoji_id": newProfileBackgroundCustomEmojiId,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [old_profile_accent_color_id]: Previous identifier of chat's profile accent color; -1 if none
+  /// * [old_profile_background_custom_emoji_id]: Previous identifier of the custom emoji; 0 if none
+  /// * [new_profile_accent_color_id]: New identifier of chat's profile accent color; -1 if none
+  /// * [new_profile_background_custom_emoji_id]: New identifier of the custom emoji; 0 if none
+  @override
+  ChatEventProfileAccentColorChanged copyWith({
+    int? oldProfileAccentColorId,
+    int? oldProfileBackgroundCustomEmojiId,
+    int? newProfileAccentColorId,
+    int? newProfileBackgroundCustomEmojiId,
+  }) => ChatEventProfileAccentColorChanged(
+    oldProfileAccentColorId: oldProfileAccentColorId ?? this.oldProfileAccentColorId,
+    oldProfileBackgroundCustomEmojiId: oldProfileBackgroundCustomEmojiId ?? this.oldProfileBackgroundCustomEmojiId,
+    newProfileAccentColorId: newProfileAccentColorId ?? this.newProfileAccentColorId,
+    newProfileBackgroundCustomEmojiId: newProfileBackgroundCustomEmojiId ?? this.newProfileBackgroundCustomEmojiId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'chatEventProfileAccentColorChanged';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

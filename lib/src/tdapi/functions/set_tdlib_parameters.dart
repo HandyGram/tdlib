@@ -18,8 +18,6 @@ part of '../tdapi.dart';
 /// * [deviceModel]: Model of the device the application is being run on; must be non-empty.
 /// * [systemVersion]: Version of the operating system the application is being run on. If empty, the version is automatically detected by TDLib.
 /// * [applicationVersion]: Application version; must be non-empty.
-/// * [enableStorageOptimizer]: Pass true to automatically delete old files in background.
-/// * [ignoreFileNames]: Pass true to ignore original file names for downloaded files. Otherwise, downloaded files are saved under names as close as possible to the original name.
 ///
 /// [Ok] is returned on completion.
 final class SetTdlibParameters extends TdFunction {
@@ -42,8 +40,6 @@ final class SetTdlibParameters extends TdFunction {
   /// * [deviceModel]: Model of the device the application is being run on; must be non-empty.
   /// * [systemVersion]: Version of the operating system the application is being run on. If empty, the version is automatically detected by TDLib.
   /// * [applicationVersion]: Application version; must be non-empty.
-  /// * [enableStorageOptimizer]: Pass true to automatically delete old files in background.
-  /// * [ignoreFileNames]: Pass true to ignore original file names for downloaded files. Otherwise, downloaded files are saved under names as close as possible to the original name.
   ///
   /// [Ok] is returned on completion.
   const SetTdlibParameters({
@@ -61,8 +57,6 @@ final class SetTdlibParameters extends TdFunction {
     required this.deviceModel,
     required this.systemVersion,
     required this.applicationVersion,
-    required this.enableStorageOptimizer,
-    required this.ignoreFileNames,
   });
   
   /// Pass true to use Telegram test environment instead of the production environment
@@ -106,12 +100,6 @@ final class SetTdlibParameters extends TdFunction {
 
   /// Application version; must be non-empty
   final String applicationVersion;
-
-  /// Pass true to automatically delete old files in background
-  final bool enableStorageOptimizer;
-
-  /// Pass true to ignore original file names for downloaded files. Otherwise, downloaded files are saved under names as close as possible to the original name
-  final bool ignoreFileNames;
   
   /// Convert model to TDLib JSON format
   @override
@@ -132,8 +120,6 @@ final class SetTdlibParameters extends TdFunction {
       "device_model": deviceModel,
       "system_version": systemVersion,
       "application_version": applicationVersion,
-      "enable_storage_optimizer": enableStorageOptimizer,
-      "ignore_file_names": ignoreFileNames,
       "@extra": extra,
 		};
 	}
@@ -155,8 +141,6 @@ final class SetTdlibParameters extends TdFunction {
   /// * [device_model]: Model of the device the application is being run on; must be non-empty
   /// * [system_version]: Version of the operating system the application is being run on. If empty, the version is automatically detected by TDLib
   /// * [application_version]: Application version; must be non-empty
-  /// * [enable_storage_optimizer]: Pass true to automatically delete old files in background
-  /// * [ignore_file_names]: Pass true to ignore original file names for downloaded files. Otherwise, downloaded files are saved under names as close as possible to the original name
   SetTdlibParameters copyWith({
     bool? useTestDc,
     String? databaseDirectory,
@@ -172,8 +156,6 @@ final class SetTdlibParameters extends TdFunction {
     String? deviceModel,
     String? systemVersion,
     String? applicationVersion,
-    bool? enableStorageOptimizer,
-    bool? ignoreFileNames,
   }) => SetTdlibParameters(
     useTestDc: useTestDc ?? this.useTestDc,
     databaseDirectory: databaseDirectory ?? this.databaseDirectory,
@@ -189,8 +171,6 @@ final class SetTdlibParameters extends TdFunction {
     deviceModel: deviceModel ?? this.deviceModel,
     systemVersion: systemVersion ?? this.systemVersion,
     applicationVersion: applicationVersion ?? this.applicationVersion,
-    enableStorageOptimizer: enableStorageOptimizer ?? this.enableStorageOptimizer,
-    ignoreFileNames: ignoreFileNames ?? this.ignoreFileNames,
   );
 
   /// TDLib object type

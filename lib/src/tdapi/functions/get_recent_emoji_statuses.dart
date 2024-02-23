@@ -2,14 +2,14 @@ part of '../tdapi.dart';
 
 /// **GetRecentEmojiStatuses** *(getRecentEmojiStatuses)* - TDLib function
 ///
-/// Returns recent emoji statuses.
+/// Returns recent emoji statuses for self status.
 ///
 /// [EmojiStatuses] is returned on completion.
 final class GetRecentEmojiStatuses extends TdFunction {
   
   /// **GetRecentEmojiStatuses** *(getRecentEmojiStatuses)* - TDLib function
   ///
-  /// Returns recent emoji statuses.
+  /// Returns recent emoji statuses for self status.
   ///
   /// [EmojiStatuses] is returned on completion.
   const GetRecentEmojiStatuses();

@@ -19,6 +19,7 @@ sealed class PremiumLimitType extends TdObject {
   /// * [PremiumLimitTypeChatFolderCount]
   /// * [PremiumLimitTypeChatFolderChosenChatCount]
   /// * [PremiumLimitTypePinnedArchivedChatCount]
+  /// * [PremiumLimitTypePinnedSavedMessagesTopicCount]
   /// * [PremiumLimitTypeCaptionLength]
   /// * [PremiumLimitTypeBioLength]
   /// * [PremiumLimitTypeChatFolderInviteLinkCount]
@@ -28,6 +29,7 @@ sealed class PremiumLimitType extends TdObject {
   /// * [PremiumLimitTypeMonthlySentStoryCount]
   /// * [PremiumLimitTypeStoryCaptionLength]
   /// * [PremiumLimitTypeStorySuggestedReactionAreaCount]
+  /// * [PremiumLimitTypeSimilarChatCount]
   factory PremiumLimitType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
       case PremiumLimitTypeSupergroupCount.objectType:
@@ -46,6 +48,8 @@ sealed class PremiumLimitType extends TdObject {
         return PremiumLimitTypeChatFolderChosenChatCount.fromJson(json);
       case PremiumLimitTypePinnedArchivedChatCount.objectType:
         return PremiumLimitTypePinnedArchivedChatCount.fromJson(json);
+      case PremiumLimitTypePinnedSavedMessagesTopicCount.objectType:
+        return PremiumLimitTypePinnedSavedMessagesTopicCount.fromJson(json);
       case PremiumLimitTypeCaptionLength.objectType:
         return PremiumLimitTypeCaptionLength.fromJson(json);
       case PremiumLimitTypeBioLength.objectType:
@@ -64,6 +68,8 @@ sealed class PremiumLimitType extends TdObject {
         return PremiumLimitTypeStoryCaptionLength.fromJson(json);
       case PremiumLimitTypeStorySuggestedReactionAreaCount.objectType:
         return PremiumLimitTypeStorySuggestedReactionAreaCount.fromJson(json);
+      case PremiumLimitTypeSimilarChatCount.objectType:
+        return PremiumLimitTypeSimilarChatCount.fromJson(json);
       default:
         throw FormatException(
           "Unknown object ${json["@type"]} (expected child of PremiumLimitType)",
@@ -385,6 +391,44 @@ final class PremiumLimitTypePinnedArchivedChatCount extends PremiumLimitType {
 
   /// TDLib object type
   static const String objectType = 'premiumLimitTypePinnedArchivedChatCount';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **PremiumLimitTypePinnedSavedMessagesTopicCount** *(premiumLimitTypePinnedSavedMessagesTopicCount)* - child of PremiumLimitType
+///
+/// The maximum number of pinned Saved Messages topics.
+final class PremiumLimitTypePinnedSavedMessagesTopicCount extends PremiumLimitType {
+  
+  /// **PremiumLimitTypePinnedSavedMessagesTopicCount** *(premiumLimitTypePinnedSavedMessagesTopicCount)* - child of PremiumLimitType
+  ///
+  /// The maximum number of pinned Saved Messages topics.
+  const PremiumLimitTypePinnedSavedMessagesTopicCount();
+  
+  /// Parse from a json
+  factory PremiumLimitTypePinnedSavedMessagesTopicCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypePinnedSavedMessagesTopicCount();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  PremiumLimitTypePinnedSavedMessagesTopicCount copyWith() => const PremiumLimitTypePinnedSavedMessagesTopicCount();
+
+  /// TDLib object type
+  static const String objectType = 'premiumLimitTypePinnedSavedMessagesTopicCount';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -727,6 +771,44 @@ final class PremiumLimitTypeStorySuggestedReactionAreaCount extends PremiumLimit
 
   /// TDLib object type
   static const String objectType = 'premiumLimitTypeStorySuggestedReactionAreaCount';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **PremiumLimitTypeSimilarChatCount** *(premiumLimitTypeSimilarChatCount)* - child of PremiumLimitType
+///
+/// The maximum number of received similar chats.
+final class PremiumLimitTypeSimilarChatCount extends PremiumLimitType {
+  
+  /// **PremiumLimitTypeSimilarChatCount** *(premiumLimitTypeSimilarChatCount)* - child of PremiumLimitType
+  ///
+  /// The maximum number of received similar chats.
+  const PremiumLimitTypeSimilarChatCount();
+  
+  /// Parse from a json
+  factory PremiumLimitTypeSimilarChatCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeSimilarChatCount();
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+		};
+	}
+
+  /// Copy instance with no modifications.
+  @override
+  PremiumLimitTypeSimilarChatCount copyWith() => const PremiumLimitTypeSimilarChatCount();
+
+  /// TDLib object type
+  static const String objectType = 'premiumLimitTypeSimilarChatCount';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

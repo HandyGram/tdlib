@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 /// Describes a background set for a specific chat.
 ///
 /// * [background]: The background.
-/// * [darkThemeDimming]: Dimming of the background in dark themes, as a percentage; 0-100.
+/// * [darkThemeDimming]: Dimming of the background in dark themes, as a percentage; 0-100. Applied only to Wallpaper and Fill types of background.
 final class ChatBackground extends TdObject {
   
   /// **ChatBackground** *(chatBackground)* - basic class
@@ -13,7 +13,7 @@ final class ChatBackground extends TdObject {
   /// Describes a background set for a specific chat.
   ///
   /// * [background]: The background.
-  /// * [darkThemeDimming]: Dimming of the background in dark themes, as a percentage; 0-100.
+  /// * [darkThemeDimming]: Dimming of the background in dark themes, as a percentage; 0-100. Applied only to Wallpaper and Fill types of background.
   const ChatBackground({
     required this.background,
     required this.darkThemeDimming,
@@ -22,7 +22,7 @@ final class ChatBackground extends TdObject {
   /// The background 
   final Background background;
 
-  /// Dimming of the background in dark themes, as a percentage; 0-100
+  /// Dimming of the background in dark themes, as a percentage; 0-100. Applied only to Wallpaper and Fill types of background
   final int darkThemeDimming;
   
   /// Parse from a json
@@ -46,7 +46,7 @@ final class ChatBackground extends TdObject {
   ///
   /// Properties:
   /// * [background]: The background 
-  /// * [dark_theme_dimming]: Dimming of the background in dark themes, as a percentage; 0-100
+  /// * [dark_theme_dimming]: Dimming of the background in dark themes, as a percentage; 0-100. Applied only to Wallpaper and Fill types of background
   ChatBackground copyWith({
     Background? background,
     int? darkThemeDimming,

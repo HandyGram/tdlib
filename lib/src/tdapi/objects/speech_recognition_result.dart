@@ -170,19 +170,19 @@ final class SpeechRecognitionResultText extends SpeechRecognitionResult {
 ///
 /// The speech recognition failed.
 ///
-/// * [error]: Recognition error.
+/// * [error]: Recognition error. An error with a message "MSG_VOICE_TOO_LONG" is returned when media duration is too big to be recognized.
 final class SpeechRecognitionResultError extends SpeechRecognitionResult {
   
   /// **SpeechRecognitionResultError** *(speechRecognitionResultError)* - child of SpeechRecognitionResult
   ///
   /// The speech recognition failed.
   ///
-  /// * [error]: Recognition error.
+  /// * [error]: Recognition error. An error with a message "MSG_VOICE_TOO_LONG" is returned when media duration is too big to be recognized.
   const SpeechRecognitionResultError({
     required this.error,
   });
   
-  /// Recognition error
+  /// Recognition error. An error with a message "MSG_VOICE_TOO_LONG" is returned when media duration is too big to be recognized
   final TdError error;
   
   /// Parse from a json
@@ -203,7 +203,7 @@ final class SpeechRecognitionResultError extends SpeechRecognitionResult {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [error]: Recognition error
+  /// * [error]: Recognition error. An error with a message "MSG_VOICE_TOO_LONG" is returned when media duration is too big to be recognized
   @override
   SpeechRecognitionResultError copyWith({
     TdError? error,

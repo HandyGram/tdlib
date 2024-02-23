@@ -1803,6 +1803,7 @@ final class PageBlockSlideshow extends PageBlock {
 ///
 /// * [title]: Chat title.
 /// * [photo]: Chat photo; may be null *(optional)*.
+/// * [accentColorId]: Identifier of the accent color for chat title and background of chat photo.
 /// * [username]: Chat username by which all other information about the chat can be resolved.
 final class PageBlockChatLink extends PageBlock {
   
@@ -1812,10 +1813,12 @@ final class PageBlockChatLink extends PageBlock {
   ///
   /// * [title]: Chat title.
   /// * [photo]: Chat photo; may be null *(optional)*.
+  /// * [accentColorId]: Identifier of the accent color for chat title and background of chat photo.
   /// * [username]: Chat username by which all other information about the chat can be resolved.
   const PageBlockChatLink({
     required this.title,
     this.photo,
+    required this.accentColorId,
     required this.username,
   });
   
@@ -1825,6 +1828,9 @@ final class PageBlockChatLink extends PageBlock {
   /// Chat photo; may be null
   final ChatPhotoInfo? photo;
 
+  /// Identifier of the accent color for chat title and background of chat photo
+  final int accentColorId;
+
   /// Chat username by which all other information about the chat can be resolved
   final String username;
   
@@ -1832,6 +1838,7 @@ final class PageBlockChatLink extends PageBlock {
   factory PageBlockChatLink.fromJson(Map<String, dynamic> json) => PageBlockChatLink(
     title: json['title'],
     photo: json['photo'] == null ? null : ChatPhotoInfo.fromJson(json['photo']),
+    accentColorId: json['accent_color_id'],
     username: json['username'],
   );
   
@@ -1843,6 +1850,7 @@ final class PageBlockChatLink extends PageBlock {
 			"@type": objectType,
       "title": title,
       "photo": photo?.toJson(),
+      "accent_color_id": accentColorId,
       "username": username,
 		};
 	}
@@ -1852,15 +1860,18 @@ final class PageBlockChatLink extends PageBlock {
   /// Properties:
   /// * [title]: Chat title
   /// * [photo]: Chat photo; may be null
+  /// * [accent_color_id]: Identifier of the accent color for chat title and background of chat photo
   /// * [username]: Chat username by which all other information about the chat can be resolved
   @override
   PageBlockChatLink copyWith({
     String? title,
     ChatPhotoInfo? photo,
+    int? accentColorId,
     String? username,
   }) => PageBlockChatLink(
     title: title ?? this.title,
     photo: photo ?? this.photo,
+    accentColorId: accentColorId ?? this.accentColorId,
     username: username ?? this.username,
   );
 

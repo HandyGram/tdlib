@@ -15,6 +15,7 @@ sealed class InputStoryAreaType extends TdObject {
   /// * [InputStoryAreaTypeFoundVenue]
   /// * [InputStoryAreaTypePreviousVenue]
   /// * [InputStoryAreaTypeSuggestedReaction]
+  /// * [InputStoryAreaTypeMessage]
   factory InputStoryAreaType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
       case InputStoryAreaTypeLocation.objectType:
@@ -25,6 +26,8 @@ sealed class InputStoryAreaType extends TdObject {
         return InputStoryAreaTypePreviousVenue.fromJson(json);
       case InputStoryAreaTypeSuggestedReaction.objectType:
         return InputStoryAreaTypeSuggestedReaction.fromJson(json);
+      case InputStoryAreaTypeMessage.objectType:
+        return InputStoryAreaTypeMessage.fromJson(json);
       default:
         throw FormatException(
           "Unknown object ${json["@type"]} (expected child of InputStoryAreaType)",
@@ -318,6 +321,75 @@ final class InputStoryAreaTypeSuggestedReaction extends InputStoryAreaType {
 
   /// TDLib object type
   static const String objectType = 'inputStoryAreaTypeSuggestedReaction';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **InputStoryAreaTypeMessage** *(inputStoryAreaTypeMessage)* - child of InputStoryAreaType
+///
+/// An area pointing to a message.
+///
+/// * [chatId]: Identifier of the chat with the message. Currently, the chat must be a supergroup or a channel chat.
+/// * [messageId]: Identifier of the message. Only successfully sent non-scheduled messages can be specified.
+final class InputStoryAreaTypeMessage extends InputStoryAreaType {
+  
+  /// **InputStoryAreaTypeMessage** *(inputStoryAreaTypeMessage)* - child of InputStoryAreaType
+  ///
+  /// An area pointing to a message.
+  ///
+  /// * [chatId]: Identifier of the chat with the message. Currently, the chat must be a supergroup or a channel chat.
+  /// * [messageId]: Identifier of the message. Only successfully sent non-scheduled messages can be specified.
+  const InputStoryAreaTypeMessage({
+    required this.chatId,
+    required this.messageId,
+  });
+  
+  /// Identifier of the chat with the message. Currently, the chat must be a supergroup or a channel chat
+  final int chatId;
+
+  /// Identifier of the message. Only successfully sent non-scheduled messages can be specified
+  final int messageId;
+  
+  /// Parse from a json
+  factory InputStoryAreaTypeMessage.fromJson(Map<String, dynamic> json) => InputStoryAreaTypeMessage(
+    chatId: json['chat_id'],
+    messageId: json['message_id'],
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "chat_id": chatId,
+      "message_id": messageId,
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [chat_id]: Identifier of the chat with the message. Currently, the chat must be a supergroup or a channel chat
+  /// * [message_id]: Identifier of the message. Only successfully sent non-scheduled messages can be specified
+  @override
+  InputStoryAreaTypeMessage copyWith({
+    int? chatId,
+    int? messageId,
+  }) => InputStoryAreaTypeMessage(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'inputStoryAreaTypeMessage';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

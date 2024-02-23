@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **UnpinAllMessageThreadMessages** *(unpinAllMessageThreadMessages)* - TDLib function
 ///
-/// Removes all pinned messages from a forum topic; requires can_pin_messages rights in the supergroup.
+/// Removes all pinned messages from a forum topic; requires can_pin_messages member right in the supergroup.
 ///
 /// * [chatId]: Identifier of the chat.
 /// * [messageThreadId]: Message thread identifier in which messages will be unpinned.
@@ -12,7 +12,7 @@ final class UnpinAllMessageThreadMessages extends TdFunction {
   
   /// **UnpinAllMessageThreadMessages** *(unpinAllMessageThreadMessages)* - TDLib function
   ///
-  /// Removes all pinned messages from a forum topic; requires can_pin_messages rights in the supergroup.
+  /// Removes all pinned messages from a forum topic; requires can_pin_messages member right in the supergroup.
   ///
   /// * [chatId]: Identifier of the chat.
   /// * [messageThreadId]: Message thread identifier in which messages will be unpinned.

@@ -22,8 +22,11 @@ part of '../tdapi.dart';
 /// * [canToggleAggressiveAntiSpam]: True, if aggressive anti-spam checks can be enabled or disabled in the supergroup.
 /// * [isAllHistoryAvailable]: True, if new chat members will have access to old messages. In public, discussion, of forum groups and all channels, old messages are always available,. so this option affects only private non-forum supergroups without a linked chat. The value of this field is only available to chat administrators.
 /// * [hasAggressiveAntiSpamEnabled]: True, if aggressive anti-spam checks are enabled in the supergroup. The value of this field is only available to chat administrators.
-/// * [hasPinnedStories]: True, if the channel has pinned stories.
-/// * [stickerSetId]: Identifier of the supergroup sticker set; 0 if none.
+/// * [hasPinnedStories]: True, if the supergroup or channel has pinned stories.
+/// * [myBoostCount]: Number of times the current user boosted the supergroup or channel.
+/// * [unrestrictBoostCount]: Number of times the supergroup must be boosted by a user to ignore slow mode and chat permission restrictions; 0 if unspecified.
+/// * [stickerSetId]: Identifier of the supergroup sticker set that must be shown before user sticker sets; 0 if none.
+/// * [customEmojiStickerSetId]: Identifier of the custom emoji sticker set that can be used in the supergroup without Telegram Premium subscription; 0 if none.
 /// * [location]: Location to which the supergroup is connected; may be null if none *(optional)*.
 /// * [inviteLink]: Primary invite link for the chat; may be null. For chat administrators with can_invite_users right only *(optional)*.
 /// * [botCommands]: List of commands of bots in the group.
@@ -53,8 +56,11 @@ final class SupergroupFullInfo extends TdObject {
   /// * [canToggleAggressiveAntiSpam]: True, if aggressive anti-spam checks can be enabled or disabled in the supergroup.
   /// * [isAllHistoryAvailable]: True, if new chat members will have access to old messages. In public, discussion, of forum groups and all channels, old messages are always available,. so this option affects only private non-forum supergroups without a linked chat. The value of this field is only available to chat administrators.
   /// * [hasAggressiveAntiSpamEnabled]: True, if aggressive anti-spam checks are enabled in the supergroup. The value of this field is only available to chat administrators.
-  /// * [hasPinnedStories]: True, if the channel has pinned stories.
-  /// * [stickerSetId]: Identifier of the supergroup sticker set; 0 if none.
+  /// * [hasPinnedStories]: True, if the supergroup or channel has pinned stories.
+  /// * [myBoostCount]: Number of times the current user boosted the supergroup or channel.
+  /// * [unrestrictBoostCount]: Number of times the supergroup must be boosted by a user to ignore slow mode and chat permission restrictions; 0 if unspecified.
+  /// * [stickerSetId]: Identifier of the supergroup sticker set that must be shown before user sticker sets; 0 if none.
+  /// * [customEmojiStickerSetId]: Identifier of the custom emoji sticker set that can be used in the supergroup without Telegram Premium subscription; 0 if none.
   /// * [location]: Location to which the supergroup is connected; may be null if none *(optional)*.
   /// * [inviteLink]: Primary invite link for the chat; may be null. For chat administrators with can_invite_users right only *(optional)*.
   /// * [botCommands]: List of commands of bots in the group.
@@ -80,7 +86,10 @@ final class SupergroupFullInfo extends TdObject {
     required this.isAllHistoryAvailable,
     required this.hasAggressiveAntiSpamEnabled,
     required this.hasPinnedStories,
+    required this.myBoostCount,
+    required this.unrestrictBoostCount,
     required this.stickerSetId,
+    required this.customEmojiStickerSetId,
     this.location,
     this.inviteLink,
     required this.botCommands,
@@ -144,11 +153,20 @@ final class SupergroupFullInfo extends TdObject {
   /// True, if aggressive anti-spam checks are enabled in the supergroup. The value of this field is only available to chat administrators
   final bool hasAggressiveAntiSpamEnabled;
 
-  /// True, if the channel has pinned stories
+  /// True, if the supergroup or channel has pinned stories
   final bool hasPinnedStories;
 
-  /// Identifier of the supergroup sticker set; 0 if none
+  /// Number of times the current user boosted the supergroup or channel
+  final int myBoostCount;
+
+  /// Number of times the supergroup must be boosted by a user to ignore slow mode and chat permission restrictions; 0 if unspecified
+  final int unrestrictBoostCount;
+
+  /// Identifier of the supergroup sticker set that must be shown before user sticker sets; 0 if none
   final int stickerSetId;
+
+  /// Identifier of the custom emoji sticker set that can be used in the supergroup without Telegram Premium subscription; 0 if none
+  final int customEmojiStickerSetId;
 
   /// Location to which the supergroup is connected; may be null if none
   final ChatLocation? location;
@@ -194,7 +212,10 @@ final class SupergroupFullInfo extends TdObject {
     isAllHistoryAvailable: json['is_all_history_available'],
     hasAggressiveAntiSpamEnabled: json['has_aggressive_anti_spam_enabled'],
     hasPinnedStories: json['has_pinned_stories'],
+    myBoostCount: json['my_boost_count'],
+    unrestrictBoostCount: json['unrestrict_boost_count'],
     stickerSetId: int.tryParse(json['sticker_set_id'] ?? "") ?? 0,
+    customEmojiStickerSetId: int.tryParse(json['custom_emoji_sticker_set_id'] ?? "") ?? 0,
     location: json['location'] == null ? null : ChatLocation.fromJson(json['location']),
     inviteLink: json['invite_link'] == null ? null : ChatInviteLink.fromJson(json['invite_link']),
     botCommands: List<BotCommands>.from((json['bot_commands'] ?? []).map((item) => BotCommands.fromJson(item)).toList()),
@@ -229,7 +250,10 @@ final class SupergroupFullInfo extends TdObject {
       "is_all_history_available": isAllHistoryAvailable,
       "has_aggressive_anti_spam_enabled": hasAggressiveAntiSpamEnabled,
       "has_pinned_stories": hasPinnedStories,
+      "my_boost_count": myBoostCount,
+      "unrestrict_boost_count": unrestrictBoostCount,
       "sticker_set_id": stickerSetId,
+      "custom_emoji_sticker_set_id": customEmojiStickerSetId,
       "location": location?.toJson(),
       "invite_link": inviteLink?.toJson(),
       "bot_commands": botCommands.map((i) => i.toJson()).toList(),
@@ -259,8 +283,11 @@ final class SupergroupFullInfo extends TdObject {
   /// * [can_toggle_aggressive_anti_spam]: True, if aggressive anti-spam checks can be enabled or disabled in the supergroup
   /// * [is_all_history_available]: True, if new chat members will have access to old messages. In public, discussion, of forum groups and all channels, old messages are always available,. so this option affects only private non-forum supergroups without a linked chat. The value of this field is only available to chat administrators
   /// * [has_aggressive_anti_spam_enabled]: True, if aggressive anti-spam checks are enabled in the supergroup. The value of this field is only available to chat administrators
-  /// * [has_pinned_stories]: True, if the channel has pinned stories
-  /// * [sticker_set_id]: Identifier of the supergroup sticker set; 0 if none
+  /// * [has_pinned_stories]: True, if the supergroup or channel has pinned stories
+  /// * [my_boost_count]: Number of times the current user boosted the supergroup or channel
+  /// * [unrestrict_boost_count]: Number of times the supergroup must be boosted by a user to ignore slow mode and chat permission restrictions; 0 if unspecified
+  /// * [sticker_set_id]: Identifier of the supergroup sticker set that must be shown before user sticker sets; 0 if none
+  /// * [custom_emoji_sticker_set_id]: Identifier of the custom emoji sticker set that can be used in the supergroup without Telegram Premium subscription; 0 if none
   /// * [location]: Location to which the supergroup is connected; may be null if none
   /// * [invite_link]: Primary invite link for the chat; may be null. For chat administrators with can_invite_users right only
   /// * [bot_commands]: List of commands of bots in the group
@@ -286,7 +313,10 @@ final class SupergroupFullInfo extends TdObject {
     bool? isAllHistoryAvailable,
     bool? hasAggressiveAntiSpamEnabled,
     bool? hasPinnedStories,
+    int? myBoostCount,
+    int? unrestrictBoostCount,
     int? stickerSetId,
+    int? customEmojiStickerSetId,
     ChatLocation? location,
     ChatInviteLink? inviteLink,
     List<BotCommands>? botCommands,
@@ -314,7 +344,10 @@ final class SupergroupFullInfo extends TdObject {
     isAllHistoryAvailable: isAllHistoryAvailable ?? this.isAllHistoryAvailable,
     hasAggressiveAntiSpamEnabled: hasAggressiveAntiSpamEnabled ?? this.hasAggressiveAntiSpamEnabled,
     hasPinnedStories: hasPinnedStories ?? this.hasPinnedStories,
+    myBoostCount: myBoostCount ?? this.myBoostCount,
+    unrestrictBoostCount: unrestrictBoostCount ?? this.unrestrictBoostCount,
     stickerSetId: stickerSetId ?? this.stickerSetId,
+    customEmojiStickerSetId: customEmojiStickerSetId ?? this.customEmojiStickerSetId,
     location: location ?? this.location,
     inviteLink: inviteLink ?? this.inviteLink,
     botCommands: botCommands ?? this.botCommands,

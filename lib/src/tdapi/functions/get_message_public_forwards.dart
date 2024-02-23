@@ -2,26 +2,26 @@ part of '../tdapi.dart';
 
 /// **GetMessagePublicForwards** *(getMessagePublicForwards)* - TDLib function
 ///
-/// Returns forwarded copies of a channel message to different public channels. Can be used only if message.can_get_statistics == true. For optimal performance, the number of returned messages is chosen by TDLib.
+/// Returns forwarded copies of a channel message to different public channels and public reposts as a story. Can be used only if message.can_get_statistics == true. For optimal performance, the number of returned messages and stories is chosen by TDLib.
 ///
 /// * [chatId]: Chat identifier of the message.
 /// * [messageId]: Message identifier.
 /// * [offset]: Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results.
-/// * [limit]: The maximum number of messages to be returned; must be positive and can't be greater than 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
+/// * [limit]: The maximum number of messages and stories to be returned; must be positive and can't be greater than 100. For optimal performance, the number of returned objects is chosen by TDLib and can be smaller than the specified limit.
 ///
-/// [FoundMessages] is returned on completion.
+/// [PublicForwards] is returned on completion.
 final class GetMessagePublicForwards extends TdFunction {
   
   /// **GetMessagePublicForwards** *(getMessagePublicForwards)* - TDLib function
   ///
-  /// Returns forwarded copies of a channel message to different public channels. Can be used only if message.can_get_statistics == true. For optimal performance, the number of returned messages is chosen by TDLib.
+  /// Returns forwarded copies of a channel message to different public channels and public reposts as a story. Can be used only if message.can_get_statistics == true. For optimal performance, the number of returned messages and stories is chosen by TDLib.
   ///
   /// * [chatId]: Chat identifier of the message.
   /// * [messageId]: Message identifier.
   /// * [offset]: Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results.
-  /// * [limit]: The maximum number of messages to be returned; must be positive and can't be greater than 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
+  /// * [limit]: The maximum number of messages and stories to be returned; must be positive and can't be greater than 100. For optimal performance, the number of returned objects is chosen by TDLib and can be smaller than the specified limit.
   ///
-  /// [FoundMessages] is returned on completion.
+  /// [PublicForwards] is returned on completion.
   const GetMessagePublicForwards({
     required this.chatId,
     required this.messageId,
@@ -38,7 +38,7 @@ final class GetMessagePublicForwards extends TdFunction {
   /// Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
   final String offset;
 
-  /// The maximum number of messages to be returned; must be positive and can't be greater than 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
+  /// The maximum number of messages and stories to be returned; must be positive and can't be greater than 100. For optimal performance, the number of returned objects is chosen by TDLib and can be smaller than the specified limit
   final int limit;
   
   /// Convert model to TDLib JSON format
@@ -60,7 +60,7 @@ final class GetMessagePublicForwards extends TdFunction {
   /// * [chat_id]: Chat identifier of the message
   /// * [message_id]: Message identifier
   /// * [offset]: Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
-  /// * [limit]: The maximum number of messages to be returned; must be positive and can't be greater than 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
+  /// * [limit]: The maximum number of messages and stories to be returned; must be positive and can't be greater than 100. For optimal performance, the number of returned objects is chosen by TDLib and can be smaller than the specified limit
   GetMessagePublicForwards copyWith({
     int? chatId,
     int? messageId,

@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **GetChatArchivedStories** *(getChatArchivedStories)* - TDLib function
 ///
-/// Returns the list of all stories posted by the given chat; requires can_edit_stories rights for channel chats.. The stories are returned in a reverse chronological order (i.e., in order of decreasing story_id). For optimal performance, the number of returned stories is chosen by TDLib.
+/// Returns the list of all stories posted by the given chat; requires can_edit_stories right in the chat.. The stories are returned in a reverse chronological order (i.e., in order of decreasing story_id). For optimal performance, the number of returned stories is chosen by TDLib.
 ///
 /// * [chatId]: Chat identifier.
 /// * [fromStoryId]: Identifier of the story starting from which stories must be returned; use 0 to get results from the last story.
@@ -13,7 +13,7 @@ final class GetChatArchivedStories extends TdFunction {
   
   /// **GetChatArchivedStories** *(getChatArchivedStories)* - TDLib function
   ///
-  /// Returns the list of all stories posted by the given chat; requires can_edit_stories rights for channel chats.. The stories are returned in a reverse chronological order (i.e., in order of decreasing story_id). For optimal performance, the number of returned stories is chosen by TDLib.
+  /// Returns the list of all stories posted by the given chat; requires can_edit_stories right in the chat.. The stories are returned in a reverse chronological order (i.e., in order of decreasing story_id). For optimal performance, the number of returned stories is chosen by TDLib.
   ///
   /// * [chatId]: Chat identifier.
   /// * [fromStoryId]: Identifier of the story starting from which stories must be returned; use 0 to get results from the last story.

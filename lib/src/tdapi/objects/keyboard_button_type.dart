@@ -15,7 +15,7 @@ sealed class KeyboardButtonType extends TdObject {
   /// * [KeyboardButtonTypeRequestPhoneNumber]
   /// * [KeyboardButtonTypeRequestLocation]
   /// * [KeyboardButtonTypeRequestPoll]
-  /// * [KeyboardButtonTypeRequestUser]
+  /// * [KeyboardButtonTypeRequestUsers]
   /// * [KeyboardButtonTypeRequestChat]
   /// * [KeyboardButtonTypeWebApp]
   factory KeyboardButtonType.fromJson(Map<String, dynamic> json)  {
@@ -28,8 +28,8 @@ sealed class KeyboardButtonType extends TdObject {
         return KeyboardButtonTypeRequestLocation.fromJson(json);
       case KeyboardButtonTypeRequestPoll.objectType:
         return KeyboardButtonTypeRequestPoll.fromJson(json);
-      case KeyboardButtonTypeRequestUser.objectType:
-        return KeyboardButtonTypeRequestUser.fromJson(json);
+      case KeyboardButtonTypeRequestUsers.objectType:
+        return KeyboardButtonTypeRequestUsers.fromJson(json);
       case KeyboardButtonTypeRequestChat.objectType:
         return KeyboardButtonTypeRequestChat.fromJson(json);
       case KeyboardButtonTypeWebApp.objectType:
@@ -245,56 +245,63 @@ final class KeyboardButtonTypeRequestPoll extends KeyboardButtonType {
 }
 
 
-/// **KeyboardButtonTypeRequestUser** *(keyboardButtonTypeRequestUser)* - child of KeyboardButtonType
+/// **KeyboardButtonTypeRequestUsers** *(keyboardButtonTypeRequestUsers)* - child of KeyboardButtonType
 ///
-/// A button that requests a user to be shared by the current user; available only in private chats. Use the method shareUserWithBot to complete the request.
+/// A button that requests users to be shared by the current user; available only in private chats. Use the method shareUsersWithBot to complete the request.
 ///
 /// * [id]: Unique button identifier.
-/// * [restrictUserIsBot]: True, if the shared user must or must not be a bot.
-/// * [userIsBot]: True, if the shared user must be a bot; otherwise, the shared user must no be a bot. Ignored if restrict_user_is_bot is false.
-/// * [restrictUserIsPremium]: True, if the shared user must or must not be a Telegram Premium user.
-/// * [userIsPremium]: True, if the shared user must be a Telegram Premium user; otherwise, the shared user must no be a Telegram Premium user. Ignored if restrict_user_is_premium is false.
-final class KeyboardButtonTypeRequestUser extends KeyboardButtonType {
+/// * [restrictUserIsBot]: True, if the shared users must or must not be bots.
+/// * [userIsBot]: True, if the shared users must be bots; otherwise, the shared users must not be bots. Ignored if restrict_user_is_bot is false.
+/// * [restrictUserIsPremium]: True, if the shared users must or must not be Telegram Premium users.
+/// * [userIsPremium]: True, if the shared users must be Telegram Premium users; otherwise, the shared users must not be Telegram Premium users. Ignored if restrict_user_is_premium is false.
+/// * [maxQuantity]: The maximum number of users to share.
+final class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
   
-  /// **KeyboardButtonTypeRequestUser** *(keyboardButtonTypeRequestUser)* - child of KeyboardButtonType
+  /// **KeyboardButtonTypeRequestUsers** *(keyboardButtonTypeRequestUsers)* - child of KeyboardButtonType
   ///
-  /// A button that requests a user to be shared by the current user; available only in private chats. Use the method shareUserWithBot to complete the request.
+  /// A button that requests users to be shared by the current user; available only in private chats. Use the method shareUsersWithBot to complete the request.
   ///
   /// * [id]: Unique button identifier.
-  /// * [restrictUserIsBot]: True, if the shared user must or must not be a bot.
-  /// * [userIsBot]: True, if the shared user must be a bot; otherwise, the shared user must no be a bot. Ignored if restrict_user_is_bot is false.
-  /// * [restrictUserIsPremium]: True, if the shared user must or must not be a Telegram Premium user.
-  /// * [userIsPremium]: True, if the shared user must be a Telegram Premium user; otherwise, the shared user must no be a Telegram Premium user. Ignored if restrict_user_is_premium is false.
-  const KeyboardButtonTypeRequestUser({
+  /// * [restrictUserIsBot]: True, if the shared users must or must not be bots.
+  /// * [userIsBot]: True, if the shared users must be bots; otherwise, the shared users must not be bots. Ignored if restrict_user_is_bot is false.
+  /// * [restrictUserIsPremium]: True, if the shared users must or must not be Telegram Premium users.
+  /// * [userIsPremium]: True, if the shared users must be Telegram Premium users; otherwise, the shared users must not be Telegram Premium users. Ignored if restrict_user_is_premium is false.
+  /// * [maxQuantity]: The maximum number of users to share.
+  const KeyboardButtonTypeRequestUsers({
     required this.id,
     required this.restrictUserIsBot,
     required this.userIsBot,
     required this.restrictUserIsPremium,
     required this.userIsPremium,
+    required this.maxQuantity,
   });
   
   /// Unique button identifier
   final int id;
 
-  /// True, if the shared user must or must not be a bot
+  /// True, if the shared users must or must not be bots
   final bool restrictUserIsBot;
 
-  /// True, if the shared user must be a bot; otherwise, the shared user must no be a bot. Ignored if restrict_user_is_bot is false
+  /// True, if the shared users must be bots; otherwise, the shared users must not be bots. Ignored if restrict_user_is_bot is false
   final bool userIsBot;
 
-  /// True, if the shared user must or must not be a Telegram Premium user
+  /// True, if the shared users must or must not be Telegram Premium users
   final bool restrictUserIsPremium;
 
-  /// True, if the shared user must be a Telegram Premium user; otherwise, the shared user must no be a Telegram Premium user. Ignored if restrict_user_is_premium is false
+  /// True, if the shared users must be Telegram Premium users; otherwise, the shared users must not be Telegram Premium users. Ignored if restrict_user_is_premium is false
   final bool userIsPremium;
+
+  /// The maximum number of users to share
+  final int maxQuantity;
   
   /// Parse from a json
-  factory KeyboardButtonTypeRequestUser.fromJson(Map<String, dynamic> json) => KeyboardButtonTypeRequestUser(
+  factory KeyboardButtonTypeRequestUsers.fromJson(Map<String, dynamic> json) => KeyboardButtonTypeRequestUsers(
     id: json['id'],
     restrictUserIsBot: json['restrict_user_is_bot'],
     userIsBot: json['user_is_bot'],
     restrictUserIsPremium: json['restrict_user_is_premium'],
     userIsPremium: json['user_is_premium'],
+    maxQuantity: json['max_quantity'],
   );
   
   
@@ -308,6 +315,7 @@ final class KeyboardButtonTypeRequestUser extends KeyboardButtonType {
       "user_is_bot": userIsBot,
       "restrict_user_is_premium": restrictUserIsPremium,
       "user_is_premium": userIsPremium,
+      "max_quantity": maxQuantity,
 		};
 	}
 
@@ -315,27 +323,30 @@ final class KeyboardButtonTypeRequestUser extends KeyboardButtonType {
   ///
   /// Properties:
   /// * [id]: Unique button identifier
-  /// * [restrict_user_is_bot]: True, if the shared user must or must not be a bot
-  /// * [user_is_bot]: True, if the shared user must be a bot; otherwise, the shared user must no be a bot. Ignored if restrict_user_is_bot is false
-  /// * [restrict_user_is_premium]: True, if the shared user must or must not be a Telegram Premium user
-  /// * [user_is_premium]: True, if the shared user must be a Telegram Premium user; otherwise, the shared user must no be a Telegram Premium user. Ignored if restrict_user_is_premium is false
+  /// * [restrict_user_is_bot]: True, if the shared users must or must not be bots
+  /// * [user_is_bot]: True, if the shared users must be bots; otherwise, the shared users must not be bots. Ignored if restrict_user_is_bot is false
+  /// * [restrict_user_is_premium]: True, if the shared users must or must not be Telegram Premium users
+  /// * [user_is_premium]: True, if the shared users must be Telegram Premium users; otherwise, the shared users must not be Telegram Premium users. Ignored if restrict_user_is_premium is false
+  /// * [max_quantity]: The maximum number of users to share
   @override
-  KeyboardButtonTypeRequestUser copyWith({
+  KeyboardButtonTypeRequestUsers copyWith({
     int? id,
     bool? restrictUserIsBot,
     bool? userIsBot,
     bool? restrictUserIsPremium,
     bool? userIsPremium,
-  }) => KeyboardButtonTypeRequestUser(
+    int? maxQuantity,
+  }) => KeyboardButtonTypeRequestUsers(
     id: id ?? this.id,
     restrictUserIsBot: restrictUserIsBot ?? this.restrictUserIsBot,
     userIsBot: userIsBot ?? this.userIsBot,
     restrictUserIsPremium: restrictUserIsPremium ?? this.restrictUserIsPremium,
     userIsPremium: userIsPremium ?? this.userIsPremium,
+    maxQuantity: maxQuantity ?? this.maxQuantity,
   );
 
   /// TDLib object type
-  static const String objectType = 'keyboardButtonTypeRequestUser';
+  static const String objectType = 'keyboardButtonTypeRequestUsers';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

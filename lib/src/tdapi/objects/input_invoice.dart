@@ -13,12 +13,15 @@ sealed class InputInvoice extends TdObject {
   /// a InputInvoice return type can be :
   /// * [InputInvoiceMessage]
   /// * [InputInvoiceName]
+  /// * [InputInvoiceTelegram]
   factory InputInvoice.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
       case InputInvoiceMessage.objectType:
         return InputInvoiceMessage.fromJson(json);
       case InputInvoiceName.objectType:
         return InputInvoiceName.fromJson(json);
+      case InputInvoiceTelegram.objectType:
+        return InputInvoiceTelegram.fromJson(json);
       default:
         throw FormatException(
           "Unknown object ${json["@type"]} (expected child of InputInvoice)",
@@ -163,6 +166,64 @@ final class InputInvoiceName extends InputInvoice {
 
   /// TDLib object type
   static const String objectType = 'inputInvoiceName';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get instanceType => objectType;
+}
+
+
+/// **InputInvoiceTelegram** *(inputInvoiceTelegram)* - child of InputInvoice
+///
+/// An invoice for a payment toward Telegram; must not be used in the in-store apps.
+///
+/// * [purpose]: Transaction purpose.
+final class InputInvoiceTelegram extends InputInvoice {
+  
+  /// **InputInvoiceTelegram** *(inputInvoiceTelegram)* - child of InputInvoice
+  ///
+  /// An invoice for a payment toward Telegram; must not be used in the in-store apps.
+  ///
+  /// * [purpose]: Transaction purpose.
+  const InputInvoiceTelegram({
+    required this.purpose,
+  });
+  
+  /// Transaction purpose
+  final TelegramPaymentPurpose purpose;
+  
+  /// Parse from a json
+  factory InputInvoiceTelegram.fromJson(Map<String, dynamic> json) => InputInvoiceTelegram(
+    purpose: TelegramPaymentPurpose.fromJson(json['purpose']),
+  );
+  
+  
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+		return {
+			"@type": objectType,
+      "purpose": purpose.toJson(),
+		};
+	}
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [purpose]: Transaction purpose
+  @override
+  InputInvoiceTelegram copyWith({
+    TelegramPaymentPurpose? purpose,
+  }) => InputInvoiceTelegram(
+    purpose: purpose ?? this.purpose,
+  );
+
+  /// TDLib object type
+  static const String objectType = 'inputInvoiceTelegram';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
