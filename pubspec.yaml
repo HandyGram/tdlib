@@ -1,20 +1,20 @@
 name: handy_tdlib
 description: TDLib for Dart. Uses libtdjson. Improved fork of tdlib package by i-Naji
-version: 2.2.0
+version: 2.3.0
 repository: https://github.com/HandyGram/tdlib
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
-  flutter: ">=3.0.0"
+  sdk: ">=3.1.0 <4.0.0"
+  flutter: ">=3.10.0"
 
 dependencies:
   flutter:
     sdk: flutter
   
-  ffi: ^2.0.2
+  ffi: ^2.1.2
 
 dev_dependencies:
-  flutter_lints: ^2.0.2
+  flutter_lints: ^3.0.1
 
 flutter:
   plugin:
@@ -23,7 +23,7 @@ flutter:
         ffiPlugin: true
 
 false_secrets:
-  - /android/src/main/jniLibs/arm64-v8a/libtdjsonandroid.so
-  - /android/src/main/jniLibs/armeabi-v7a/libtdjsonandroid.so
-  - /android/src/main/jniLibs/x86/libtdjsonandroid.so
-  - /android/src/main/jniLibs/x86_64/libtdjsonandroid.so
+  - /android/src/main/jniLibs/arm64-v8a/libtdjson.so
+  - /android/src/main/jniLibs/armeabi-v7a/libtdjson.so
+  - /android/src/main/jniLibs/x86/libtdjson.so
+  - /android/src/main/jniLibs/x86_64/libtdjson.so
