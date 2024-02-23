@@ -1,3 +1,6 @@
+## 2.3.1
+* Statically relinked TDLib
+
 ## 2.3.0
 * *API changes*: changed TdObject and TdFunction type arguments' names
     * objectType -> defaultObjectId
