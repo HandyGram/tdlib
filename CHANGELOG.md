@@ -1,3 +1,10 @@
+## 2.3.0
+* *API changes*: changed TdObject and TdFunction type arguments' names
+    * objectType -> defaultObjectId
+    * instanceType -> currentObjectId
+* Updated to TDLib 1.8.25
+* Refactored TdPlugin (removed TdNativePlugin)
+
 ## 2.2.0
 * Updated to TDLib 1.8.20
 
