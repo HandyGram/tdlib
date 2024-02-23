@@ -15,9 +15,9 @@ sealed class FirebaseAuthenticationSettings extends TdObject {
   /// * [FirebaseAuthenticationSettingsIos]
   factory FirebaseAuthenticationSettings.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case FirebaseAuthenticationSettingsAndroid.objectType:
+      case FirebaseAuthenticationSettingsAndroid.defaultObjectId:
         return FirebaseAuthenticationSettingsAndroid.fromJson(json);
-      case FirebaseAuthenticationSettingsIos.objectType:
+      case FirebaseAuthenticationSettingsIos.defaultObjectId:
         return FirebaseAuthenticationSettingsIos.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class FirebaseAuthenticationSettings extends TdObject {
   FirebaseAuthenticationSettings copyWith();
 
   /// TDLib object type
-  static const String objectType = 'firebaseAuthenticationSettings';
+  static const String defaultObjectId = 'firebaseAuthenticationSettings';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class FirebaseAuthenticationSettings extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -64,7 +64,7 @@ final class FirebaseAuthenticationSettingsAndroid extends FirebaseAuthentication
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -73,7 +73,7 @@ final class FirebaseAuthenticationSettingsAndroid extends FirebaseAuthentication
   FirebaseAuthenticationSettingsAndroid copyWith() => const FirebaseAuthenticationSettingsAndroid();
 
   /// TDLib object type
-  static const String objectType = 'firebaseAuthenticationSettingsAndroid';
+  static const String defaultObjectId = 'firebaseAuthenticationSettingsAndroid';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -81,7 +81,7 @@ final class FirebaseAuthenticationSettingsAndroid extends FirebaseAuthentication
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -121,7 +121,7 @@ final class FirebaseAuthenticationSettingsIos extends FirebaseAuthenticationSett
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "device_token": deviceToken,
       "is_app_sandbox": isAppSandbox,
 		};
@@ -142,7 +142,7 @@ final class FirebaseAuthenticationSettingsIos extends FirebaseAuthenticationSett
   );
 
   /// TDLib object type
-  static const String objectType = 'firebaseAuthenticationSettingsIos';
+  static const String defaultObjectId = 'firebaseAuthenticationSettingsIos';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -150,5 +150,5 @@ final class FirebaseAuthenticationSettingsIos extends FirebaseAuthenticationSett
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

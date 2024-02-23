@@ -33,7 +33,7 @@ final class GetRemoteFile extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "remote_file_id": remoteFileId,
       "file_type": fileType?.toJson(),
       "@extra": extra,
@@ -54,7 +54,7 @@ final class GetRemoteFile extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'getRemoteFile';
+  static const String defaultObjectId = 'getRemoteFile';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -62,5 +62,5 @@ final class GetRemoteFile extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

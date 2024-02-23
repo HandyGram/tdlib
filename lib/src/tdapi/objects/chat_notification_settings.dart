@@ -134,7 +134,7 @@ final class ChatNotificationSettings extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "use_default_mute_for": useDefaultMuteFor,
       "mute_for": muteFor,
       "use_default_sound": useDefaultSound,
@@ -210,7 +210,7 @@ final class ChatNotificationSettings extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatNotificationSettings';
+  static const String defaultObjectId = 'chatNotificationSettings';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -218,5 +218,5 @@ final class ChatNotificationSettings extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

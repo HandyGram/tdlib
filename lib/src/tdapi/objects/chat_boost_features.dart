@@ -90,7 +90,7 @@ final class ChatBoostFeatures extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "features": features.map((i) => i.toJson()).toList(),
       "min_profile_background_custom_emoji_boost_level": minProfileBackgroundCustomEmojiBoostLevel,
       "min_background_custom_emoji_boost_level": minBackgroundCustomEmojiBoostLevel,
@@ -138,7 +138,7 @@ final class ChatBoostFeatures extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatBoostFeatures';
+  static const String defaultObjectId = 'chatBoostFeatures';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -146,5 +146,5 @@ final class ChatBoostFeatures extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

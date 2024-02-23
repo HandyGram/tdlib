@@ -16,11 +16,11 @@ sealed class ResetPasswordResult extends TdObject {
   /// * [ResetPasswordResultDeclined]
   factory ResetPasswordResult.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case ResetPasswordResultOk.objectType:
+      case ResetPasswordResultOk.defaultObjectId:
         return ResetPasswordResultOk.fromJson(json);
-      case ResetPasswordResultPending.objectType:
+      case ResetPasswordResultPending.defaultObjectId:
         return ResetPasswordResultPending.fromJson(json);
-      case ResetPasswordResultDeclined.objectType:
+      case ResetPasswordResultDeclined.defaultObjectId:
         return ResetPasswordResultDeclined.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class ResetPasswordResult extends TdObject {
   ResetPasswordResult copyWith();
 
   /// TDLib object type
-  static const String objectType = 'resetPasswordResult';
+  static const String defaultObjectId = 'resetPasswordResult';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class ResetPasswordResult extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -82,7 +82,7 @@ final class ResetPasswordResultOk extends ResetPasswordResult {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -97,7 +97,7 @@ final class ResetPasswordResultOk extends ResetPasswordResult {
   );
 
   /// TDLib object type
-  static const String objectType = 'resetPasswordResultOk';
+  static const String defaultObjectId = 'resetPasswordResultOk';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -105,7 +105,7 @@ final class ResetPasswordResultOk extends ResetPasswordResult {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -150,7 +150,7 @@ final class ResetPasswordResultPending extends ResetPasswordResult {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "pending_reset_date": pendingResetDate,
 		};
 	}
@@ -171,7 +171,7 @@ final class ResetPasswordResultPending extends ResetPasswordResult {
   );
 
   /// TDLib object type
-  static const String objectType = 'resetPasswordResultPending';
+  static const String defaultObjectId = 'resetPasswordResultPending';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -179,7 +179,7 @@ final class ResetPasswordResultPending extends ResetPasswordResult {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -224,7 +224,7 @@ final class ResetPasswordResultDeclined extends ResetPasswordResult {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "retry_date": retryDate,
 		};
 	}
@@ -245,7 +245,7 @@ final class ResetPasswordResultDeclined extends ResetPasswordResult {
   );
 
   /// TDLib object type
-  static const String objectType = 'resetPasswordResultDeclined';
+  static const String defaultObjectId = 'resetPasswordResultDeclined';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -253,5 +253,5 @@ final class ResetPasswordResultDeclined extends ResetPasswordResult {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

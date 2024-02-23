@@ -33,7 +33,7 @@ final class ReorderBotActiveUsernames extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "bot_user_id": botUserId,
       "usernames": usernames.map((i) => i).toList(),
       "@extra": extra,
@@ -54,7 +54,7 @@ final class ReorderBotActiveUsernames extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'reorderBotActiveUsernames';
+  static const String defaultObjectId = 'reorderBotActiveUsernames';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -62,5 +62,5 @@ final class ReorderBotActiveUsernames extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

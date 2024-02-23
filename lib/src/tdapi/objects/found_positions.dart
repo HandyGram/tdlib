@@ -48,7 +48,7 @@ final class FoundPositions extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "total_count": totalCount,
       "positions": positions.map((i) => i).toList(),
 		};
@@ -72,7 +72,7 @@ final class FoundPositions extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'foundPositions';
+  static const String defaultObjectId = 'foundPositions';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -80,5 +80,5 @@ final class FoundPositions extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

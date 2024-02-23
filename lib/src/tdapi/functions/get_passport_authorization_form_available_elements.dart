@@ -33,7 +33,7 @@ final class GetPassportAuthorizationFormAvailableElements extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "authorization_form_id": authorizationFormId,
       "password": password,
       "@extra": extra,
@@ -54,7 +54,7 @@ final class GetPassportAuthorizationFormAvailableElements extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'getPassportAuthorizationFormAvailableElements';
+  static const String defaultObjectId = 'getPassportAuthorizationFormAvailableElements';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -62,5 +62,5 @@ final class GetPassportAuthorizationFormAvailableElements extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

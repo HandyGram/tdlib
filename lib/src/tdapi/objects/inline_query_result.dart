@@ -25,29 +25,29 @@ sealed class InlineQueryResult extends TdObject {
   /// * [InlineQueryResultVoiceNote]
   factory InlineQueryResult.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case InlineQueryResultArticle.objectType:
+      case InlineQueryResultArticle.defaultObjectId:
         return InlineQueryResultArticle.fromJson(json);
-      case InlineQueryResultContact.objectType:
+      case InlineQueryResultContact.defaultObjectId:
         return InlineQueryResultContact.fromJson(json);
-      case InlineQueryResultLocation.objectType:
+      case InlineQueryResultLocation.defaultObjectId:
         return InlineQueryResultLocation.fromJson(json);
-      case InlineQueryResultVenue.objectType:
+      case InlineQueryResultVenue.defaultObjectId:
         return InlineQueryResultVenue.fromJson(json);
-      case InlineQueryResultGame.objectType:
+      case InlineQueryResultGame.defaultObjectId:
         return InlineQueryResultGame.fromJson(json);
-      case InlineQueryResultAnimation.objectType:
+      case InlineQueryResultAnimation.defaultObjectId:
         return InlineQueryResultAnimation.fromJson(json);
-      case InlineQueryResultAudio.objectType:
+      case InlineQueryResultAudio.defaultObjectId:
         return InlineQueryResultAudio.fromJson(json);
-      case InlineQueryResultDocument.objectType:
+      case InlineQueryResultDocument.defaultObjectId:
         return InlineQueryResultDocument.fromJson(json);
-      case InlineQueryResultPhoto.objectType:
+      case InlineQueryResultPhoto.defaultObjectId:
         return InlineQueryResultPhoto.fromJson(json);
-      case InlineQueryResultSticker.objectType:
+      case InlineQueryResultSticker.defaultObjectId:
         return InlineQueryResultSticker.fromJson(json);
-      case InlineQueryResultVideo.objectType:
+      case InlineQueryResultVideo.defaultObjectId:
         return InlineQueryResultVideo.fromJson(json);
-      case InlineQueryResultVoiceNote.objectType:
+      case InlineQueryResultVoiceNote.defaultObjectId:
         return InlineQueryResultVoiceNote.fromJson(json);
       default:
         throw FormatException(
@@ -65,7 +65,7 @@ sealed class InlineQueryResult extends TdObject {
   InlineQueryResult copyWith();
 
   /// TDLib object type
-  static const String objectType = 'inlineQueryResult';
+  static const String defaultObjectId = 'inlineQueryResult';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -73,7 +73,7 @@ sealed class InlineQueryResult extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -141,7 +141,7 @@ final class InlineQueryResultArticle extends InlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "url": url,
       "hide_url": hideUrl,
@@ -178,7 +178,7 @@ final class InlineQueryResultArticle extends InlineQueryResult {
   );
 
   /// TDLib object type
-  static const String objectType = 'inlineQueryResultArticle';
+  static const String defaultObjectId = 'inlineQueryResultArticle';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -186,7 +186,7 @@ final class InlineQueryResultArticle extends InlineQueryResult {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -233,7 +233,7 @@ final class InlineQueryResultContact extends InlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "contact": contact.toJson(),
       "thumbnail": thumbnail?.toJson(),
@@ -258,7 +258,7 @@ final class InlineQueryResultContact extends InlineQueryResult {
   );
 
   /// TDLib object type
-  static const String objectType = 'inlineQueryResultContact';
+  static const String defaultObjectId = 'inlineQueryResultContact';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -266,7 +266,7 @@ final class InlineQueryResultContact extends InlineQueryResult {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -320,7 +320,7 @@ final class InlineQueryResultLocation extends InlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "location": location.toJson(),
       "title": title,
@@ -349,7 +349,7 @@ final class InlineQueryResultLocation extends InlineQueryResult {
   );
 
   /// TDLib object type
-  static const String objectType = 'inlineQueryResultLocation';
+  static const String defaultObjectId = 'inlineQueryResultLocation';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -357,7 +357,7 @@ final class InlineQueryResultLocation extends InlineQueryResult {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -404,7 +404,7 @@ final class InlineQueryResultVenue extends InlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "venue": venue.toJson(),
       "thumbnail": thumbnail?.toJson(),
@@ -429,7 +429,7 @@ final class InlineQueryResultVenue extends InlineQueryResult {
   );
 
   /// TDLib object type
-  static const String objectType = 'inlineQueryResultVenue';
+  static const String defaultObjectId = 'inlineQueryResultVenue';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -437,7 +437,7 @@ final class InlineQueryResultVenue extends InlineQueryResult {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -477,7 +477,7 @@ final class InlineQueryResultGame extends InlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "game": game.toJson(),
 		};
@@ -498,7 +498,7 @@ final class InlineQueryResultGame extends InlineQueryResult {
   );
 
   /// TDLib object type
-  static const String objectType = 'inlineQueryResultGame';
+  static const String defaultObjectId = 'inlineQueryResultGame';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -506,7 +506,7 @@ final class InlineQueryResultGame extends InlineQueryResult {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -553,7 +553,7 @@ final class InlineQueryResultAnimation extends InlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "animation": animation.toJson(),
       "title": title,
@@ -578,7 +578,7 @@ final class InlineQueryResultAnimation extends InlineQueryResult {
   );
 
   /// TDLib object type
-  static const String objectType = 'inlineQueryResultAnimation';
+  static const String defaultObjectId = 'inlineQueryResultAnimation';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -586,7 +586,7 @@ final class InlineQueryResultAnimation extends InlineQueryResult {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -626,7 +626,7 @@ final class InlineQueryResultAudio extends InlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "audio": audio.toJson(),
 		};
@@ -647,7 +647,7 @@ final class InlineQueryResultAudio extends InlineQueryResult {
   );
 
   /// TDLib object type
-  static const String objectType = 'inlineQueryResultAudio';
+  static const String defaultObjectId = 'inlineQueryResultAudio';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -655,7 +655,7 @@ final class InlineQueryResultAudio extends InlineQueryResult {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -709,7 +709,7 @@ final class InlineQueryResultDocument extends InlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "document": document.toJson(),
       "title": title,
@@ -738,7 +738,7 @@ final class InlineQueryResultDocument extends InlineQueryResult {
   );
 
   /// TDLib object type
-  static const String objectType = 'inlineQueryResultDocument';
+  static const String defaultObjectId = 'inlineQueryResultDocument';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -746,7 +746,7 @@ final class InlineQueryResultDocument extends InlineQueryResult {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -800,7 +800,7 @@ final class InlineQueryResultPhoto extends InlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "photo": photo.toJson(),
       "title": title,
@@ -829,7 +829,7 @@ final class InlineQueryResultPhoto extends InlineQueryResult {
   );
 
   /// TDLib object type
-  static const String objectType = 'inlineQueryResultPhoto';
+  static const String defaultObjectId = 'inlineQueryResultPhoto';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -837,7 +837,7 @@ final class InlineQueryResultPhoto extends InlineQueryResult {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -877,7 +877,7 @@ final class InlineQueryResultSticker extends InlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "sticker": sticker.toJson(),
 		};
@@ -898,7 +898,7 @@ final class InlineQueryResultSticker extends InlineQueryResult {
   );
 
   /// TDLib object type
-  static const String objectType = 'inlineQueryResultSticker';
+  static const String defaultObjectId = 'inlineQueryResultSticker';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -906,7 +906,7 @@ final class InlineQueryResultSticker extends InlineQueryResult {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -960,7 +960,7 @@ final class InlineQueryResultVideo extends InlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "video": video.toJson(),
       "title": title,
@@ -989,7 +989,7 @@ final class InlineQueryResultVideo extends InlineQueryResult {
   );
 
   /// TDLib object type
-  static const String objectType = 'inlineQueryResultVideo';
+  static const String defaultObjectId = 'inlineQueryResultVideo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -997,7 +997,7 @@ final class InlineQueryResultVideo extends InlineQueryResult {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1044,7 +1044,7 @@ final class InlineQueryResultVoiceNote extends InlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "voice_note": voiceNote.toJson(),
       "title": title,
@@ -1069,7 +1069,7 @@ final class InlineQueryResultVoiceNote extends InlineQueryResult {
   );
 
   /// TDLib object type
-  static const String objectType = 'inlineQueryResultVoiceNote';
+  static const String defaultObjectId = 'inlineQueryResultVoiceNote';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1077,5 +1077,5 @@ final class InlineQueryResultVoiceNote extends InlineQueryResult {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

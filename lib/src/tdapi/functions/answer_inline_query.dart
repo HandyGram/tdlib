@@ -57,7 +57,7 @@ final class AnswerInlineQuery extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "inline_query_id": inlineQueryId,
       "is_personal": isPersonal,
       "button": button?.toJson(),
@@ -94,7 +94,7 @@ final class AnswerInlineQuery extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'answerInlineQuery';
+  static const String defaultObjectId = 'answerInlineQuery';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -102,5 +102,5 @@ final class AnswerInlineQuery extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

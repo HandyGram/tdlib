@@ -57,7 +57,7 @@ final class ThemeSettings extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "accent_color": accentColor,
       "background": background?.toJson(),
       "outgoing_message_fill": outgoingMessageFill.toJson(),
@@ -89,7 +89,7 @@ final class ThemeSettings extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'themeSettings';
+  static const String defaultObjectId = 'themeSettings';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -97,5 +97,5 @@ final class ThemeSettings extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

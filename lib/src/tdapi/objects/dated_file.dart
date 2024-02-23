@@ -36,7 +36,7 @@ final class DatedFile extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "file": file.toJson(),
       "date": date,
 		};
@@ -56,7 +56,7 @@ final class DatedFile extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'datedFile';
+  static const String defaultObjectId = 'datedFile';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -64,5 +64,5 @@ final class DatedFile extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

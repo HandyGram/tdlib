@@ -51,7 +51,7 @@ final class AddLocalMessage extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "sender_id": senderId.toJson(),
       "reply_to": replyTo?.toJson(),
@@ -84,7 +84,7 @@ final class AddLocalMessage extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'addLocalMessage';
+  static const String defaultObjectId = 'addLocalMessage';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -92,5 +92,5 @@ final class AddLocalMessage extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

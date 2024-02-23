@@ -19,17 +19,17 @@ sealed class UserStatus extends TdObject {
   /// * [UserStatusLastMonth]
   factory UserStatus.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case UserStatusEmpty.objectType:
+      case UserStatusEmpty.defaultObjectId:
         return UserStatusEmpty.fromJson(json);
-      case UserStatusOnline.objectType:
+      case UserStatusOnline.defaultObjectId:
         return UserStatusOnline.fromJson(json);
-      case UserStatusOffline.objectType:
+      case UserStatusOffline.defaultObjectId:
         return UserStatusOffline.fromJson(json);
-      case UserStatusRecently.objectType:
+      case UserStatusRecently.defaultObjectId:
         return UserStatusRecently.fromJson(json);
-      case UserStatusLastWeek.objectType:
+      case UserStatusLastWeek.defaultObjectId:
         return UserStatusLastWeek.fromJson(json);
-      case UserStatusLastMonth.objectType:
+      case UserStatusLastMonth.defaultObjectId:
         return UserStatusLastMonth.fromJson(json);
       default:
         throw FormatException(
@@ -47,7 +47,7 @@ sealed class UserStatus extends TdObject {
   UserStatus copyWith();
 
   /// TDLib object type
-  static const String objectType = 'userStatus';
+  static const String defaultObjectId = 'userStatus';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -55,7 +55,7 @@ sealed class UserStatus extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -76,7 +76,7 @@ final class UserStatusEmpty extends UserStatus {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -85,7 +85,7 @@ final class UserStatusEmpty extends UserStatus {
   UserStatusEmpty copyWith() => const UserStatusEmpty();
 
   /// TDLib object type
-  static const String objectType = 'userStatusEmpty';
+  static const String defaultObjectId = 'userStatusEmpty';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -93,7 +93,7 @@ final class UserStatusEmpty extends UserStatus {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -126,7 +126,7 @@ final class UserStatusOnline extends UserStatus {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "expires": expires,
 		};
 	}
@@ -143,7 +143,7 @@ final class UserStatusOnline extends UserStatus {
   );
 
   /// TDLib object type
-  static const String objectType = 'userStatusOnline';
+  static const String defaultObjectId = 'userStatusOnline';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -151,7 +151,7 @@ final class UserStatusOnline extends UserStatus {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -184,7 +184,7 @@ final class UserStatusOffline extends UserStatus {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "was_online": wasOnline,
 		};
 	}
@@ -201,7 +201,7 @@ final class UserStatusOffline extends UserStatus {
   );
 
   /// TDLib object type
-  static const String objectType = 'userStatusOffline';
+  static const String defaultObjectId = 'userStatusOffline';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -209,7 +209,7 @@ final class UserStatusOffline extends UserStatus {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -242,7 +242,7 @@ final class UserStatusRecently extends UserStatus {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "by_my_privacy_settings": byMyPrivacySettings,
 		};
 	}
@@ -259,7 +259,7 @@ final class UserStatusRecently extends UserStatus {
   );
 
   /// TDLib object type
-  static const String objectType = 'userStatusRecently';
+  static const String defaultObjectId = 'userStatusRecently';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -267,7 +267,7 @@ final class UserStatusRecently extends UserStatus {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -300,7 +300,7 @@ final class UserStatusLastWeek extends UserStatus {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "by_my_privacy_settings": byMyPrivacySettings,
 		};
 	}
@@ -317,7 +317,7 @@ final class UserStatusLastWeek extends UserStatus {
   );
 
   /// TDLib object type
-  static const String objectType = 'userStatusLastWeek';
+  static const String defaultObjectId = 'userStatusLastWeek';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -325,7 +325,7 @@ final class UserStatusLastWeek extends UserStatus {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -358,7 +358,7 @@ final class UserStatusLastMonth extends UserStatus {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "by_my_privacy_settings": byMyPrivacySettings,
 		};
 	}
@@ -375,7 +375,7 @@ final class UserStatusLastMonth extends UserStatus {
   );
 
   /// TDLib object type
-  static const String objectType = 'userStatusLastMonth';
+  static const String defaultObjectId = 'userStatusLastMonth';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -383,5 +383,5 @@ final class UserStatusLastMonth extends UserStatus {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

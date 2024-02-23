@@ -57,7 +57,7 @@ final class MessageReplyInfo extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "reply_count": replyCount,
       "recent_replier_ids": recentReplierIds.map((i) => i.toJson()).toList(),
       "last_read_inbox_message_id": lastReadInboxMessageId,
@@ -89,7 +89,7 @@ final class MessageReplyInfo extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageReplyInfo';
+  static const String defaultObjectId = 'messageReplyInfo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -97,5 +97,5 @@ final class MessageReplyInfo extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -76,7 +76,7 @@ final class Proxy extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "server": server,
       "port": port,
@@ -116,7 +116,7 @@ final class Proxy extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'proxy';
+  static const String defaultObjectId = 'proxy';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -124,5 +124,5 @@ final class Proxy extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -19,17 +19,17 @@ sealed class CallState extends TdObject {
   /// * [CallStateError]
   factory CallState.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case CallStatePending.objectType:
+      case CallStatePending.defaultObjectId:
         return CallStatePending.fromJson(json);
-      case CallStateExchangingKeys.objectType:
+      case CallStateExchangingKeys.defaultObjectId:
         return CallStateExchangingKeys.fromJson(json);
-      case CallStateReady.objectType:
+      case CallStateReady.defaultObjectId:
         return CallStateReady.fromJson(json);
-      case CallStateHangingUp.objectType:
+      case CallStateHangingUp.defaultObjectId:
         return CallStateHangingUp.fromJson(json);
-      case CallStateDiscarded.objectType:
+      case CallStateDiscarded.defaultObjectId:
         return CallStateDiscarded.fromJson(json);
-      case CallStateError.objectType:
+      case CallStateError.defaultObjectId:
         return CallStateError.fromJson(json);
       default:
         throw FormatException(
@@ -47,7 +47,7 @@ sealed class CallState extends TdObject {
   CallState copyWith();
 
   /// TDLib object type
-  static const String objectType = 'callState';
+  static const String defaultObjectId = 'callState';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -55,7 +55,7 @@ sealed class CallState extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -95,7 +95,7 @@ final class CallStatePending extends CallState {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "is_created": isCreated,
       "is_received": isReceived,
 		};
@@ -116,7 +116,7 @@ final class CallStatePending extends CallState {
   );
 
   /// TDLib object type
-  static const String objectType = 'callStatePending';
+  static const String defaultObjectId = 'callStatePending';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -124,7 +124,7 @@ final class CallStatePending extends CallState {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -145,7 +145,7 @@ final class CallStateExchangingKeys extends CallState {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -154,7 +154,7 @@ final class CallStateExchangingKeys extends CallState {
   CallStateExchangingKeys copyWith() => const CallStateExchangingKeys();
 
   /// TDLib object type
-  static const String objectType = 'callStateExchangingKeys';
+  static const String defaultObjectId = 'callStateExchangingKeys';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -162,7 +162,7 @@ final class CallStateExchangingKeys extends CallState {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -230,7 +230,7 @@ final class CallStateReady extends CallState {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "protocol": protocol.toJson(),
       "servers": servers.map((i) => i.toJson()).toList(),
       "config": config,
@@ -267,7 +267,7 @@ final class CallStateReady extends CallState {
   );
 
   /// TDLib object type
-  static const String objectType = 'callStateReady';
+  static const String defaultObjectId = 'callStateReady';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -275,7 +275,7 @@ final class CallStateReady extends CallState {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -296,7 +296,7 @@ final class CallStateHangingUp extends CallState {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -305,7 +305,7 @@ final class CallStateHangingUp extends CallState {
   CallStateHangingUp copyWith() => const CallStateHangingUp();
 
   /// TDLib object type
-  static const String objectType = 'callStateHangingUp';
+  static const String defaultObjectId = 'callStateHangingUp';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -313,7 +313,7 @@ final class CallStateHangingUp extends CallState {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -367,7 +367,7 @@ final class CallStateDiscarded extends CallState {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "reason": reason.toJson(),
       "need_rating": needRating,
       "need_debug_information": needDebugInformation,
@@ -396,7 +396,7 @@ final class CallStateDiscarded extends CallState {
   );
 
   /// TDLib object type
-  static const String objectType = 'callStateDiscarded';
+  static const String defaultObjectId = 'callStateDiscarded';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -404,7 +404,7 @@ final class CallStateDiscarded extends CallState {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -437,7 +437,7 @@ final class CallStateError extends CallState {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "error": error.toJson(),
 		};
 	}
@@ -454,7 +454,7 @@ final class CallStateError extends CallState {
   );
 
   /// TDLib object type
-  static const String objectType = 'callStateError';
+  static const String defaultObjectId = 'callStateError';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -462,5 +462,5 @@ final class CallStateError extends CallState {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

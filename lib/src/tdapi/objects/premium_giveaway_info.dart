@@ -15,9 +15,9 @@ sealed class PremiumGiveawayInfo extends TdObject {
   /// * [PremiumGiveawayInfoCompleted]
   factory PremiumGiveawayInfo.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case PremiumGiveawayInfoOngoing.objectType:
+      case PremiumGiveawayInfoOngoing.defaultObjectId:
         return PremiumGiveawayInfoOngoing.fromJson(json);
-      case PremiumGiveawayInfoCompleted.objectType:
+      case PremiumGiveawayInfoCompleted.defaultObjectId:
         return PremiumGiveawayInfoCompleted.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class PremiumGiveawayInfo extends TdObject {
   PremiumGiveawayInfo copyWith();
 
   /// TDLib object type
-  static const String objectType = 'premiumGiveawayInfo';
+  static const String defaultObjectId = 'premiumGiveawayInfo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class PremiumGiveawayInfo extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -102,7 +102,7 @@ final class PremiumGiveawayInfoOngoing extends PremiumGiveawayInfo {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "creation_date": creationDate,
       "status": status.toJson(),
       "is_ended": isEnded,
@@ -131,7 +131,7 @@ final class PremiumGiveawayInfoOngoing extends PremiumGiveawayInfo {
   );
 
   /// TDLib object type
-  static const String objectType = 'premiumGiveawayInfoOngoing';
+  static const String defaultObjectId = 'premiumGiveawayInfoOngoing';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -139,7 +139,7 @@ final class PremiumGiveawayInfoOngoing extends PremiumGiveawayInfo {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -219,7 +219,7 @@ final class PremiumGiveawayInfoCompleted extends PremiumGiveawayInfo {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "creation_date": creationDate,
       "actual_winners_selection_date": actualWinnersSelectionDate,
       "was_refunded": wasRefunded,
@@ -260,7 +260,7 @@ final class PremiumGiveawayInfoCompleted extends PremiumGiveawayInfo {
   );
 
   /// TDLib object type
-  static const String objectType = 'premiumGiveawayInfoCompleted';
+  static const String defaultObjectId = 'premiumGiveawayInfoCompleted';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -268,5 +268,5 @@ final class PremiumGiveawayInfoCompleted extends PremiumGiveawayInfo {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

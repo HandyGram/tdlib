@@ -16,11 +16,11 @@ sealed class InputInvoice extends TdObject {
   /// * [InputInvoiceTelegram]
   factory InputInvoice.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case InputInvoiceMessage.objectType:
+      case InputInvoiceMessage.defaultObjectId:
         return InputInvoiceMessage.fromJson(json);
-      case InputInvoiceName.objectType:
+      case InputInvoiceName.defaultObjectId:
         return InputInvoiceName.fromJson(json);
-      case InputInvoiceTelegram.objectType:
+      case InputInvoiceTelegram.defaultObjectId:
         return InputInvoiceTelegram.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class InputInvoice extends TdObject {
   InputInvoice copyWith();
 
   /// TDLib object type
-  static const String objectType = 'inputInvoice';
+  static const String defaultObjectId = 'inputInvoice';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class InputInvoice extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -86,7 +86,7 @@ final class InputInvoiceMessage extends InputInvoice {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
 		};
@@ -107,7 +107,7 @@ final class InputInvoiceMessage extends InputInvoice {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputInvoiceMessage';
+  static const String defaultObjectId = 'inputInvoiceMessage';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -115,7 +115,7 @@ final class InputInvoiceMessage extends InputInvoice {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -148,7 +148,7 @@ final class InputInvoiceName extends InputInvoice {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "name": name,
 		};
 	}
@@ -165,7 +165,7 @@ final class InputInvoiceName extends InputInvoice {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputInvoiceName';
+  static const String defaultObjectId = 'inputInvoiceName';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -173,7 +173,7 @@ final class InputInvoiceName extends InputInvoice {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -206,7 +206,7 @@ final class InputInvoiceTelegram extends InputInvoice {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "purpose": purpose.toJson(),
 		};
 	}
@@ -223,7 +223,7 @@ final class InputInvoiceTelegram extends InputInvoice {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputInvoiceTelegram';
+  static const String defaultObjectId = 'inputInvoiceTelegram';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -231,5 +231,5 @@ final class InputInvoiceTelegram extends InputInvoice {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

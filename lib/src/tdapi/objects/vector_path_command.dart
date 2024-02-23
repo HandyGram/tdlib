@@ -15,9 +15,9 @@ sealed class VectorPathCommand extends TdObject {
   /// * [VectorPathCommandCubicBezierCurve]
   factory VectorPathCommand.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case VectorPathCommandLine.objectType:
+      case VectorPathCommandLine.defaultObjectId:
         return VectorPathCommandLine.fromJson(json);
-      case VectorPathCommandCubicBezierCurve.objectType:
+      case VectorPathCommandCubicBezierCurve.defaultObjectId:
         return VectorPathCommandCubicBezierCurve.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class VectorPathCommand extends TdObject {
   VectorPathCommand copyWith();
 
   /// TDLib object type
-  static const String objectType = 'vectorPathCommand';
+  static const String defaultObjectId = 'vectorPathCommand';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class VectorPathCommand extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -76,7 +76,7 @@ final class VectorPathCommandLine extends VectorPathCommand {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "end_point": endPoint.toJson(),
 		};
 	}
@@ -93,7 +93,7 @@ final class VectorPathCommandLine extends VectorPathCommand {
   );
 
   /// TDLib object type
-  static const String objectType = 'vectorPathCommandLine';
+  static const String defaultObjectId = 'vectorPathCommandLine';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -101,7 +101,7 @@ final class VectorPathCommandLine extends VectorPathCommand {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -122,7 +122,7 @@ final class VectorPathCommandCubicBezierCurve extends VectorPathCommand {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -131,7 +131,7 @@ final class VectorPathCommandCubicBezierCurve extends VectorPathCommand {
   VectorPathCommandCubicBezierCurve copyWith() => const VectorPathCommandCubicBezierCurve();
 
   /// TDLib object type
-  static const String objectType = 'vectorPathCommandCubicBezierCurve';
+  static const String defaultObjectId = 'vectorPathCommandCubicBezierCurve';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -139,5 +139,5 @@ final class VectorPathCommandCubicBezierCurve extends VectorPathCommand {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

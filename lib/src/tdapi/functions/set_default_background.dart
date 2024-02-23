@@ -39,7 +39,7 @@ final class SetDefaultBackground extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "background": background?.toJson(),
       "type": type?.toJson(),
       "for_dark_theme": forDarkTheme,
@@ -64,7 +64,7 @@ final class SetDefaultBackground extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'setDefaultBackground';
+  static const String defaultObjectId = 'setDefaultBackground';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -72,5 +72,5 @@ final class SetDefaultBackground extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

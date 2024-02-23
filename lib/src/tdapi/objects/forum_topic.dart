@@ -104,7 +104,7 @@ final class ForumTopic extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "info": info.toJson(),
       "last_message": lastMessage?.toJson(),
       "is_pinned": isPinned,
@@ -160,7 +160,7 @@ final class ForumTopic extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'forumTopic';
+  static const String defaultObjectId = 'forumTopic';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -168,5 +168,5 @@ final class ForumTopic extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -19,7 +19,7 @@ final class GetReadDatePrivacySettings extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "@extra": extra,
 		};
 	}
@@ -28,7 +28,7 @@ final class GetReadDatePrivacySettings extends TdFunction {
   GetReadDatePrivacySettings copyWith() => const GetReadDatePrivacySettings();
 
   /// TDLib object type
-  static const String objectType = 'getReadDatePrivacySettings';
+  static const String defaultObjectId = 'getReadDatePrivacySettings';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -36,5 +36,5 @@ final class GetReadDatePrivacySettings extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

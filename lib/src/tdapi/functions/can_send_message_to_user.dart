@@ -33,7 +33,7 @@ final class CanSendMessageToUser extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "user_id": userId,
       "only_local": onlyLocal,
       "@extra": extra,
@@ -54,7 +54,7 @@ final class CanSendMessageToUser extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'canSendMessageToUser';
+  static const String defaultObjectId = 'canSendMessageToUser';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -62,5 +62,5 @@ final class CanSendMessageToUser extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

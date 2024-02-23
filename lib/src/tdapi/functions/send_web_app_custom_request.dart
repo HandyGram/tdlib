@@ -39,7 +39,7 @@ final class SendWebAppCustomRequest extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "bot_user_id": botUserId,
       "method": method,
       "parameters": parameters,
@@ -64,7 +64,7 @@ final class SendWebAppCustomRequest extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'sendWebAppCustomRequest';
+  static const String defaultObjectId = 'sendWebAppCustomRequest';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -72,5 +72,5 @@ final class SendWebAppCustomRequest extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

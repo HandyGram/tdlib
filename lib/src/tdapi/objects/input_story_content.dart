@@ -15,9 +15,9 @@ sealed class InputStoryContent extends TdObject {
   /// * [InputStoryContentVideo]
   factory InputStoryContent.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case InputStoryContentPhoto.objectType:
+      case InputStoryContentPhoto.defaultObjectId:
         return InputStoryContentPhoto.fromJson(json);
-      case InputStoryContentVideo.objectType:
+      case InputStoryContentVideo.defaultObjectId:
         return InputStoryContentVideo.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class InputStoryContent extends TdObject {
   InputStoryContent copyWith();
 
   /// TDLib object type
-  static const String objectType = 'inputStoryContent';
+  static const String defaultObjectId = 'inputStoryContent';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class InputStoryContent extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -83,7 +83,7 @@ final class InputStoryContentPhoto extends InputStoryContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "photo": photo.toJson(),
       "added_sticker_file_ids": addedStickerFileIds.map((i) => i).toList(),
 		};
@@ -104,7 +104,7 @@ final class InputStoryContentPhoto extends InputStoryContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputStoryContentPhoto';
+  static const String defaultObjectId = 'inputStoryContentPhoto';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -112,7 +112,7 @@ final class InputStoryContentPhoto extends InputStoryContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -166,7 +166,7 @@ final class InputStoryContentVideo extends InputStoryContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "video": video.toJson(),
       "added_sticker_file_ids": addedStickerFileIds.map((i) => i).toList(),
       "duration": duration,
@@ -195,7 +195,7 @@ final class InputStoryContentVideo extends InputStoryContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputStoryContentVideo';
+  static const String defaultObjectId = 'inputStoryContentVideo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -203,5 +203,5 @@ final class InputStoryContentVideo extends InputStoryContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -33,7 +33,7 @@ final class ToggleGroupCallScreenSharingIsPaused extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "group_call_id": groupCallId,
       "is_paused": isPaused,
       "@extra": extra,
@@ -54,7 +54,7 @@ final class ToggleGroupCallScreenSharingIsPaused extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'toggleGroupCallScreenSharingIsPaused';
+  static const String defaultObjectId = 'toggleGroupCallScreenSharingIsPaused';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -62,5 +62,5 @@ final class ToggleGroupCallScreenSharingIsPaused extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

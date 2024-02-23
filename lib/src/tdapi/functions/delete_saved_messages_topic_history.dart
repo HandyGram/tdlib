@@ -27,7 +27,7 @@ final class DeleteSavedMessagesTopicHistory extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "saved_messages_topic_id": savedMessagesTopicId,
       "@extra": extra,
 		};
@@ -44,7 +44,7 @@ final class DeleteSavedMessagesTopicHistory extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'deleteSavedMessagesTopicHistory';
+  static const String defaultObjectId = 'deleteSavedMessagesTopicHistory';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -52,5 +52,5 @@ final class DeleteSavedMessagesTopicHistory extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

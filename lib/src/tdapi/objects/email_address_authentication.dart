@@ -16,11 +16,11 @@ sealed class EmailAddressAuthentication extends TdObject {
   /// * [EmailAddressAuthenticationGoogleId]
   factory EmailAddressAuthentication.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case EmailAddressAuthenticationCode.objectType:
+      case EmailAddressAuthenticationCode.defaultObjectId:
         return EmailAddressAuthenticationCode.fromJson(json);
-      case EmailAddressAuthenticationAppleId.objectType:
+      case EmailAddressAuthenticationAppleId.defaultObjectId:
         return EmailAddressAuthenticationAppleId.fromJson(json);
-      case EmailAddressAuthenticationGoogleId.objectType:
+      case EmailAddressAuthenticationGoogleId.defaultObjectId:
         return EmailAddressAuthenticationGoogleId.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class EmailAddressAuthentication extends TdObject {
   EmailAddressAuthentication copyWith();
 
   /// TDLib object type
-  static const String objectType = 'emailAddressAuthentication';
+  static const String defaultObjectId = 'emailAddressAuthentication';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class EmailAddressAuthentication extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -79,7 +79,7 @@ final class EmailAddressAuthenticationCode extends EmailAddressAuthentication {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "code": code,
 		};
 	}
@@ -96,7 +96,7 @@ final class EmailAddressAuthenticationCode extends EmailAddressAuthentication {
   );
 
   /// TDLib object type
-  static const String objectType = 'emailAddressAuthenticationCode';
+  static const String defaultObjectId = 'emailAddressAuthenticationCode';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -104,7 +104,7 @@ final class EmailAddressAuthenticationCode extends EmailAddressAuthentication {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -137,7 +137,7 @@ final class EmailAddressAuthenticationAppleId extends EmailAddressAuthentication
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "token": token,
 		};
 	}
@@ -154,7 +154,7 @@ final class EmailAddressAuthenticationAppleId extends EmailAddressAuthentication
   );
 
   /// TDLib object type
-  static const String objectType = 'emailAddressAuthenticationAppleId';
+  static const String defaultObjectId = 'emailAddressAuthenticationAppleId';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -162,7 +162,7 @@ final class EmailAddressAuthenticationAppleId extends EmailAddressAuthentication
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -195,7 +195,7 @@ final class EmailAddressAuthenticationGoogleId extends EmailAddressAuthenticatio
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "token": token,
 		};
 	}
@@ -212,7 +212,7 @@ final class EmailAddressAuthenticationGoogleId extends EmailAddressAuthenticatio
   );
 
   /// TDLib object type
-  static const String objectType = 'emailAddressAuthenticationGoogleId';
+  static const String defaultObjectId = 'emailAddressAuthenticationGoogleId';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -220,5 +220,5 @@ final class EmailAddressAuthenticationGoogleId extends EmailAddressAuthenticatio
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -23,25 +23,25 @@ sealed class ReportReason extends TdObject {
   /// * [ReportReasonCustom]
   factory ReportReason.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case ReportReasonSpam.objectType:
+      case ReportReasonSpam.defaultObjectId:
         return ReportReasonSpam.fromJson(json);
-      case ReportReasonViolence.objectType:
+      case ReportReasonViolence.defaultObjectId:
         return ReportReasonViolence.fromJson(json);
-      case ReportReasonPornography.objectType:
+      case ReportReasonPornography.defaultObjectId:
         return ReportReasonPornography.fromJson(json);
-      case ReportReasonChildAbuse.objectType:
+      case ReportReasonChildAbuse.defaultObjectId:
         return ReportReasonChildAbuse.fromJson(json);
-      case ReportReasonCopyright.objectType:
+      case ReportReasonCopyright.defaultObjectId:
         return ReportReasonCopyright.fromJson(json);
-      case ReportReasonUnrelatedLocation.objectType:
+      case ReportReasonUnrelatedLocation.defaultObjectId:
         return ReportReasonUnrelatedLocation.fromJson(json);
-      case ReportReasonFake.objectType:
+      case ReportReasonFake.defaultObjectId:
         return ReportReasonFake.fromJson(json);
-      case ReportReasonIllegalDrugs.objectType:
+      case ReportReasonIllegalDrugs.defaultObjectId:
         return ReportReasonIllegalDrugs.fromJson(json);
-      case ReportReasonPersonalDetails.objectType:
+      case ReportReasonPersonalDetails.defaultObjectId:
         return ReportReasonPersonalDetails.fromJson(json);
-      case ReportReasonCustom.objectType:
+      case ReportReasonCustom.defaultObjectId:
         return ReportReasonCustom.fromJson(json);
       default:
         throw FormatException(
@@ -59,7 +59,7 @@ sealed class ReportReason extends TdObject {
   ReportReason copyWith();
 
   /// TDLib object type
-  static const String objectType = 'reportReason';
+  static const String defaultObjectId = 'reportReason';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -67,7 +67,7 @@ sealed class ReportReason extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -88,7 +88,7 @@ final class ReportReasonSpam extends ReportReason {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -97,7 +97,7 @@ final class ReportReasonSpam extends ReportReason {
   ReportReasonSpam copyWith() => const ReportReasonSpam();
 
   /// TDLib object type
-  static const String objectType = 'reportReasonSpam';
+  static const String defaultObjectId = 'reportReasonSpam';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -105,7 +105,7 @@ final class ReportReasonSpam extends ReportReason {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -126,7 +126,7 @@ final class ReportReasonViolence extends ReportReason {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -135,7 +135,7 @@ final class ReportReasonViolence extends ReportReason {
   ReportReasonViolence copyWith() => const ReportReasonViolence();
 
   /// TDLib object type
-  static const String objectType = 'reportReasonViolence';
+  static const String defaultObjectId = 'reportReasonViolence';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -143,7 +143,7 @@ final class ReportReasonViolence extends ReportReason {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -164,7 +164,7 @@ final class ReportReasonPornography extends ReportReason {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -173,7 +173,7 @@ final class ReportReasonPornography extends ReportReason {
   ReportReasonPornography copyWith() => const ReportReasonPornography();
 
   /// TDLib object type
-  static const String objectType = 'reportReasonPornography';
+  static const String defaultObjectId = 'reportReasonPornography';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -181,7 +181,7 @@ final class ReportReasonPornography extends ReportReason {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -202,7 +202,7 @@ final class ReportReasonChildAbuse extends ReportReason {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -211,7 +211,7 @@ final class ReportReasonChildAbuse extends ReportReason {
   ReportReasonChildAbuse copyWith() => const ReportReasonChildAbuse();
 
   /// TDLib object type
-  static const String objectType = 'reportReasonChildAbuse';
+  static const String defaultObjectId = 'reportReasonChildAbuse';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -219,7 +219,7 @@ final class ReportReasonChildAbuse extends ReportReason {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -240,7 +240,7 @@ final class ReportReasonCopyright extends ReportReason {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -249,7 +249,7 @@ final class ReportReasonCopyright extends ReportReason {
   ReportReasonCopyright copyWith() => const ReportReasonCopyright();
 
   /// TDLib object type
-  static const String objectType = 'reportReasonCopyright';
+  static const String defaultObjectId = 'reportReasonCopyright';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -257,7 +257,7 @@ final class ReportReasonCopyright extends ReportReason {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -278,7 +278,7 @@ final class ReportReasonUnrelatedLocation extends ReportReason {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -287,7 +287,7 @@ final class ReportReasonUnrelatedLocation extends ReportReason {
   ReportReasonUnrelatedLocation copyWith() => const ReportReasonUnrelatedLocation();
 
   /// TDLib object type
-  static const String objectType = 'reportReasonUnrelatedLocation';
+  static const String defaultObjectId = 'reportReasonUnrelatedLocation';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -295,7 +295,7 @@ final class ReportReasonUnrelatedLocation extends ReportReason {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -316,7 +316,7 @@ final class ReportReasonFake extends ReportReason {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -325,7 +325,7 @@ final class ReportReasonFake extends ReportReason {
   ReportReasonFake copyWith() => const ReportReasonFake();
 
   /// TDLib object type
-  static const String objectType = 'reportReasonFake';
+  static const String defaultObjectId = 'reportReasonFake';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -333,7 +333,7 @@ final class ReportReasonFake extends ReportReason {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -354,7 +354,7 @@ final class ReportReasonIllegalDrugs extends ReportReason {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -363,7 +363,7 @@ final class ReportReasonIllegalDrugs extends ReportReason {
   ReportReasonIllegalDrugs copyWith() => const ReportReasonIllegalDrugs();
 
   /// TDLib object type
-  static const String objectType = 'reportReasonIllegalDrugs';
+  static const String defaultObjectId = 'reportReasonIllegalDrugs';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -371,7 +371,7 @@ final class ReportReasonIllegalDrugs extends ReportReason {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -392,7 +392,7 @@ final class ReportReasonPersonalDetails extends ReportReason {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -401,7 +401,7 @@ final class ReportReasonPersonalDetails extends ReportReason {
   ReportReasonPersonalDetails copyWith() => const ReportReasonPersonalDetails();
 
   /// TDLib object type
-  static const String objectType = 'reportReasonPersonalDetails';
+  static const String defaultObjectId = 'reportReasonPersonalDetails';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -409,7 +409,7 @@ final class ReportReasonPersonalDetails extends ReportReason {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -430,7 +430,7 @@ final class ReportReasonCustom extends ReportReason {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -439,7 +439,7 @@ final class ReportReasonCustom extends ReportReason {
   ReportReasonCustom copyWith() => const ReportReasonCustom();
 
   /// TDLib object type
-  static const String objectType = 'reportReasonCustom';
+  static const String defaultObjectId = 'reportReasonCustom';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -447,5 +447,5 @@ final class ReportReasonCustom extends ReportReason {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -33,7 +33,7 @@ final class ToggleUsernameIsActive extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "username": username,
       "is_active": isActive,
       "@extra": extra,
@@ -54,7 +54,7 @@ final class ToggleUsernameIsActive extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'toggleUsernameIsActive';
+  static const String defaultObjectId = 'toggleUsernameIsActive';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -62,5 +62,5 @@ final class ToggleUsernameIsActive extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

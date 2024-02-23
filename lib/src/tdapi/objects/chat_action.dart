@@ -28,35 +28,35 @@ sealed class ChatAction extends TdObject {
   /// * [ChatActionCancel]
   factory ChatAction.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case ChatActionTyping.objectType:
+      case ChatActionTyping.defaultObjectId:
         return ChatActionTyping.fromJson(json);
-      case ChatActionRecordingVideo.objectType:
+      case ChatActionRecordingVideo.defaultObjectId:
         return ChatActionRecordingVideo.fromJson(json);
-      case ChatActionUploadingVideo.objectType:
+      case ChatActionUploadingVideo.defaultObjectId:
         return ChatActionUploadingVideo.fromJson(json);
-      case ChatActionRecordingVoiceNote.objectType:
+      case ChatActionRecordingVoiceNote.defaultObjectId:
         return ChatActionRecordingVoiceNote.fromJson(json);
-      case ChatActionUploadingVoiceNote.objectType:
+      case ChatActionUploadingVoiceNote.defaultObjectId:
         return ChatActionUploadingVoiceNote.fromJson(json);
-      case ChatActionUploadingPhoto.objectType:
+      case ChatActionUploadingPhoto.defaultObjectId:
         return ChatActionUploadingPhoto.fromJson(json);
-      case ChatActionUploadingDocument.objectType:
+      case ChatActionUploadingDocument.defaultObjectId:
         return ChatActionUploadingDocument.fromJson(json);
-      case ChatActionChoosingSticker.objectType:
+      case ChatActionChoosingSticker.defaultObjectId:
         return ChatActionChoosingSticker.fromJson(json);
-      case ChatActionChoosingLocation.objectType:
+      case ChatActionChoosingLocation.defaultObjectId:
         return ChatActionChoosingLocation.fromJson(json);
-      case ChatActionChoosingContact.objectType:
+      case ChatActionChoosingContact.defaultObjectId:
         return ChatActionChoosingContact.fromJson(json);
-      case ChatActionStartPlayingGame.objectType:
+      case ChatActionStartPlayingGame.defaultObjectId:
         return ChatActionStartPlayingGame.fromJson(json);
-      case ChatActionRecordingVideoNote.objectType:
+      case ChatActionRecordingVideoNote.defaultObjectId:
         return ChatActionRecordingVideoNote.fromJson(json);
-      case ChatActionUploadingVideoNote.objectType:
+      case ChatActionUploadingVideoNote.defaultObjectId:
         return ChatActionUploadingVideoNote.fromJson(json);
-      case ChatActionWatchingAnimations.objectType:
+      case ChatActionWatchingAnimations.defaultObjectId:
         return ChatActionWatchingAnimations.fromJson(json);
-      case ChatActionCancel.objectType:
+      case ChatActionCancel.defaultObjectId:
         return ChatActionCancel.fromJson(json);
       default:
         throw FormatException(
@@ -74,7 +74,7 @@ sealed class ChatAction extends TdObject {
   ChatAction copyWith();
 
   /// TDLib object type
-  static const String objectType = 'chatAction';
+  static const String defaultObjectId = 'chatAction';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -82,7 +82,7 @@ sealed class ChatAction extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -103,7 +103,7 @@ final class ChatActionTyping extends ChatAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -112,7 +112,7 @@ final class ChatActionTyping extends ChatAction {
   ChatActionTyping copyWith() => const ChatActionTyping();
 
   /// TDLib object type
-  static const String objectType = 'chatActionTyping';
+  static const String defaultObjectId = 'chatActionTyping';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -120,7 +120,7 @@ final class ChatActionTyping extends ChatAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -141,7 +141,7 @@ final class ChatActionRecordingVideo extends ChatAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -150,7 +150,7 @@ final class ChatActionRecordingVideo extends ChatAction {
   ChatActionRecordingVideo copyWith() => const ChatActionRecordingVideo();
 
   /// TDLib object type
-  static const String objectType = 'chatActionRecordingVideo';
+  static const String defaultObjectId = 'chatActionRecordingVideo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -158,7 +158,7 @@ final class ChatActionRecordingVideo extends ChatAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -191,7 +191,7 @@ final class ChatActionUploadingVideo extends ChatAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "progress": progress,
 		};
 	}
@@ -208,7 +208,7 @@ final class ChatActionUploadingVideo extends ChatAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatActionUploadingVideo';
+  static const String defaultObjectId = 'chatActionUploadingVideo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -216,7 +216,7 @@ final class ChatActionUploadingVideo extends ChatAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -237,7 +237,7 @@ final class ChatActionRecordingVoiceNote extends ChatAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -246,7 +246,7 @@ final class ChatActionRecordingVoiceNote extends ChatAction {
   ChatActionRecordingVoiceNote copyWith() => const ChatActionRecordingVoiceNote();
 
   /// TDLib object type
-  static const String objectType = 'chatActionRecordingVoiceNote';
+  static const String defaultObjectId = 'chatActionRecordingVoiceNote';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -254,7 +254,7 @@ final class ChatActionRecordingVoiceNote extends ChatAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -287,7 +287,7 @@ final class ChatActionUploadingVoiceNote extends ChatAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "progress": progress,
 		};
 	}
@@ -304,7 +304,7 @@ final class ChatActionUploadingVoiceNote extends ChatAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatActionUploadingVoiceNote';
+  static const String defaultObjectId = 'chatActionUploadingVoiceNote';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -312,7 +312,7 @@ final class ChatActionUploadingVoiceNote extends ChatAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -345,7 +345,7 @@ final class ChatActionUploadingPhoto extends ChatAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "progress": progress,
 		};
 	}
@@ -362,7 +362,7 @@ final class ChatActionUploadingPhoto extends ChatAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatActionUploadingPhoto';
+  static const String defaultObjectId = 'chatActionUploadingPhoto';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -370,7 +370,7 @@ final class ChatActionUploadingPhoto extends ChatAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -403,7 +403,7 @@ final class ChatActionUploadingDocument extends ChatAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "progress": progress,
 		};
 	}
@@ -420,7 +420,7 @@ final class ChatActionUploadingDocument extends ChatAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatActionUploadingDocument';
+  static const String defaultObjectId = 'chatActionUploadingDocument';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -428,7 +428,7 @@ final class ChatActionUploadingDocument extends ChatAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -449,7 +449,7 @@ final class ChatActionChoosingSticker extends ChatAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -458,7 +458,7 @@ final class ChatActionChoosingSticker extends ChatAction {
   ChatActionChoosingSticker copyWith() => const ChatActionChoosingSticker();
 
   /// TDLib object type
-  static const String objectType = 'chatActionChoosingSticker';
+  static const String defaultObjectId = 'chatActionChoosingSticker';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -466,7 +466,7 @@ final class ChatActionChoosingSticker extends ChatAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -487,7 +487,7 @@ final class ChatActionChoosingLocation extends ChatAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -496,7 +496,7 @@ final class ChatActionChoosingLocation extends ChatAction {
   ChatActionChoosingLocation copyWith() => const ChatActionChoosingLocation();
 
   /// TDLib object type
-  static const String objectType = 'chatActionChoosingLocation';
+  static const String defaultObjectId = 'chatActionChoosingLocation';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -504,7 +504,7 @@ final class ChatActionChoosingLocation extends ChatAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -525,7 +525,7 @@ final class ChatActionChoosingContact extends ChatAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -534,7 +534,7 @@ final class ChatActionChoosingContact extends ChatAction {
   ChatActionChoosingContact copyWith() => const ChatActionChoosingContact();
 
   /// TDLib object type
-  static const String objectType = 'chatActionChoosingContact';
+  static const String defaultObjectId = 'chatActionChoosingContact';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -542,7 +542,7 @@ final class ChatActionChoosingContact extends ChatAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -563,7 +563,7 @@ final class ChatActionStartPlayingGame extends ChatAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -572,7 +572,7 @@ final class ChatActionStartPlayingGame extends ChatAction {
   ChatActionStartPlayingGame copyWith() => const ChatActionStartPlayingGame();
 
   /// TDLib object type
-  static const String objectType = 'chatActionStartPlayingGame';
+  static const String defaultObjectId = 'chatActionStartPlayingGame';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -580,7 +580,7 @@ final class ChatActionStartPlayingGame extends ChatAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -601,7 +601,7 @@ final class ChatActionRecordingVideoNote extends ChatAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -610,7 +610,7 @@ final class ChatActionRecordingVideoNote extends ChatAction {
   ChatActionRecordingVideoNote copyWith() => const ChatActionRecordingVideoNote();
 
   /// TDLib object type
-  static const String objectType = 'chatActionRecordingVideoNote';
+  static const String defaultObjectId = 'chatActionRecordingVideoNote';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -618,7 +618,7 @@ final class ChatActionRecordingVideoNote extends ChatAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -651,7 +651,7 @@ final class ChatActionUploadingVideoNote extends ChatAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "progress": progress,
 		};
 	}
@@ -668,7 +668,7 @@ final class ChatActionUploadingVideoNote extends ChatAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatActionUploadingVideoNote';
+  static const String defaultObjectId = 'chatActionUploadingVideoNote';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -676,7 +676,7 @@ final class ChatActionUploadingVideoNote extends ChatAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -709,7 +709,7 @@ final class ChatActionWatchingAnimations extends ChatAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "emoji": emoji,
 		};
 	}
@@ -726,7 +726,7 @@ final class ChatActionWatchingAnimations extends ChatAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatActionWatchingAnimations';
+  static const String defaultObjectId = 'chatActionWatchingAnimations';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -734,7 +734,7 @@ final class ChatActionWatchingAnimations extends ChatAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -755,7 +755,7 @@ final class ChatActionCancel extends ChatAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -764,7 +764,7 @@ final class ChatActionCancel extends ChatAction {
   ChatActionCancel copyWith() => const ChatActionCancel();
 
   /// TDLib object type
-  static const String objectType = 'chatActionCancel';
+  static const String defaultObjectId = 'chatActionCancel';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -772,5 +772,5 @@ final class ChatActionCancel extends ChatAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -43,7 +43,7 @@ final class MessageCopyOptions extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "send_copy": sendCopy,
       "replace_caption": replaceCaption,
       "new_caption": newCaption?.toJson(),
@@ -67,7 +67,7 @@ final class MessageCopyOptions extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageCopyOptions';
+  static const String defaultObjectId = 'messageCopyOptions';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -75,5 +75,5 @@ final class MessageCopyOptions extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

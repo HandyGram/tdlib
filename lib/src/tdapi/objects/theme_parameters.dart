@@ -113,7 +113,7 @@ final class ThemeParameters extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "background_color": backgroundColor,
       "secondary_background_color": secondaryBackgroundColor,
       "header_background_color": headerBackgroundColor,
@@ -177,7 +177,7 @@ final class ThemeParameters extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'themeParameters';
+  static const String defaultObjectId = 'themeParameters';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -185,5 +185,5 @@ final class ThemeParameters extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

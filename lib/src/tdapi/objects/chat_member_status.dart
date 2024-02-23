@@ -19,17 +19,17 @@ sealed class ChatMemberStatus extends TdObject {
   /// * [ChatMemberStatusBanned]
   factory ChatMemberStatus.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case ChatMemberStatusCreator.objectType:
+      case ChatMemberStatusCreator.defaultObjectId:
         return ChatMemberStatusCreator.fromJson(json);
-      case ChatMemberStatusAdministrator.objectType:
+      case ChatMemberStatusAdministrator.defaultObjectId:
         return ChatMemberStatusAdministrator.fromJson(json);
-      case ChatMemberStatusMember.objectType:
+      case ChatMemberStatusMember.defaultObjectId:
         return ChatMemberStatusMember.fromJson(json);
-      case ChatMemberStatusRestricted.objectType:
+      case ChatMemberStatusRestricted.defaultObjectId:
         return ChatMemberStatusRestricted.fromJson(json);
-      case ChatMemberStatusLeft.objectType:
+      case ChatMemberStatusLeft.defaultObjectId:
         return ChatMemberStatusLeft.fromJson(json);
-      case ChatMemberStatusBanned.objectType:
+      case ChatMemberStatusBanned.defaultObjectId:
         return ChatMemberStatusBanned.fromJson(json);
       default:
         throw FormatException(
@@ -47,7 +47,7 @@ sealed class ChatMemberStatus extends TdObject {
   ChatMemberStatus copyWith();
 
   /// TDLib object type
-  static const String objectType = 'chatMemberStatus';
+  static const String defaultObjectId = 'chatMemberStatus';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -55,7 +55,7 @@ sealed class ChatMemberStatus extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -102,7 +102,7 @@ final class ChatMemberStatusCreator extends ChatMemberStatus {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "custom_title": customTitle,
       "is_anonymous": isAnonymous,
       "is_member": isMember,
@@ -127,7 +127,7 @@ final class ChatMemberStatusCreator extends ChatMemberStatus {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatMemberStatusCreator';
+  static const String defaultObjectId = 'chatMemberStatusCreator';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -135,7 +135,7 @@ final class ChatMemberStatusCreator extends ChatMemberStatus {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -182,7 +182,7 @@ final class ChatMemberStatusAdministrator extends ChatMemberStatus {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "custom_title": customTitle,
       "can_be_edited": canBeEdited,
       "rights": rights.toJson(),
@@ -207,7 +207,7 @@ final class ChatMemberStatusAdministrator extends ChatMemberStatus {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatMemberStatusAdministrator';
+  static const String defaultObjectId = 'chatMemberStatusAdministrator';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -215,7 +215,7 @@ final class ChatMemberStatusAdministrator extends ChatMemberStatus {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -236,7 +236,7 @@ final class ChatMemberStatusMember extends ChatMemberStatus {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -245,7 +245,7 @@ final class ChatMemberStatusMember extends ChatMemberStatus {
   ChatMemberStatusMember copyWith() => const ChatMemberStatusMember();
 
   /// TDLib object type
-  static const String objectType = 'chatMemberStatusMember';
+  static const String defaultObjectId = 'chatMemberStatusMember';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -253,7 +253,7 @@ final class ChatMemberStatusMember extends ChatMemberStatus {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -300,7 +300,7 @@ final class ChatMemberStatusRestricted extends ChatMemberStatus {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "is_member": isMember,
       "restricted_until_date": restrictedUntilDate,
       "permissions": permissions.toJson(),
@@ -325,7 +325,7 @@ final class ChatMemberStatusRestricted extends ChatMemberStatus {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatMemberStatusRestricted';
+  static const String defaultObjectId = 'chatMemberStatusRestricted';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -333,7 +333,7 @@ final class ChatMemberStatusRestricted extends ChatMemberStatus {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -354,7 +354,7 @@ final class ChatMemberStatusLeft extends ChatMemberStatus {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -363,7 +363,7 @@ final class ChatMemberStatusLeft extends ChatMemberStatus {
   ChatMemberStatusLeft copyWith() => const ChatMemberStatusLeft();
 
   /// TDLib object type
-  static const String objectType = 'chatMemberStatusLeft';
+  static const String defaultObjectId = 'chatMemberStatusLeft';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -371,7 +371,7 @@ final class ChatMemberStatusLeft extends ChatMemberStatus {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -404,7 +404,7 @@ final class ChatMemberStatusBanned extends ChatMemberStatus {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "banned_until_date": bannedUntilDate,
 		};
 	}
@@ -421,7 +421,7 @@ final class ChatMemberStatusBanned extends ChatMemberStatus {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatMemberStatusBanned';
+  static const String defaultObjectId = 'chatMemberStatusBanned';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -429,5 +429,5 @@ final class ChatMemberStatusBanned extends ChatMemberStatus {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

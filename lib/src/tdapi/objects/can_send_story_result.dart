@@ -19,17 +19,17 @@ sealed class CanSendStoryResult extends TdObject {
   /// * [CanSendStoryResultMonthlyLimitExceeded]
   factory CanSendStoryResult.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case CanSendStoryResultOk.objectType:
+      case CanSendStoryResultOk.defaultObjectId:
         return CanSendStoryResultOk.fromJson(json);
-      case CanSendStoryResultPremiumNeeded.objectType:
+      case CanSendStoryResultPremiumNeeded.defaultObjectId:
         return CanSendStoryResultPremiumNeeded.fromJson(json);
-      case CanSendStoryResultBoostNeeded.objectType:
+      case CanSendStoryResultBoostNeeded.defaultObjectId:
         return CanSendStoryResultBoostNeeded.fromJson(json);
-      case CanSendStoryResultActiveStoryLimitExceeded.objectType:
+      case CanSendStoryResultActiveStoryLimitExceeded.defaultObjectId:
         return CanSendStoryResultActiveStoryLimitExceeded.fromJson(json);
-      case CanSendStoryResultWeeklyLimitExceeded.objectType:
+      case CanSendStoryResultWeeklyLimitExceeded.defaultObjectId:
         return CanSendStoryResultWeeklyLimitExceeded.fromJson(json);
-      case CanSendStoryResultMonthlyLimitExceeded.objectType:
+      case CanSendStoryResultMonthlyLimitExceeded.defaultObjectId:
         return CanSendStoryResultMonthlyLimitExceeded.fromJson(json);
       default:
         throw FormatException(
@@ -47,7 +47,7 @@ sealed class CanSendStoryResult extends TdObject {
   CanSendStoryResult copyWith();
 
   /// TDLib object type
-  static const String objectType = 'canSendStoryResult';
+  static const String defaultObjectId = 'canSendStoryResult';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -55,7 +55,7 @@ sealed class CanSendStoryResult extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -91,7 +91,7 @@ final class CanSendStoryResultOk extends CanSendStoryResult {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -106,7 +106,7 @@ final class CanSendStoryResultOk extends CanSendStoryResult {
   );
 
   /// TDLib object type
-  static const String objectType = 'canSendStoryResultOk';
+  static const String defaultObjectId = 'canSendStoryResultOk';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -114,7 +114,7 @@ final class CanSendStoryResultOk extends CanSendStoryResult {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -150,7 +150,7 @@ final class CanSendStoryResultPremiumNeeded extends CanSendStoryResult {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -165,7 +165,7 @@ final class CanSendStoryResultPremiumNeeded extends CanSendStoryResult {
   );
 
   /// TDLib object type
-  static const String objectType = 'canSendStoryResultPremiumNeeded';
+  static const String defaultObjectId = 'canSendStoryResultPremiumNeeded';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -173,7 +173,7 @@ final class CanSendStoryResultPremiumNeeded extends CanSendStoryResult {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -209,7 +209,7 @@ final class CanSendStoryResultBoostNeeded extends CanSendStoryResult {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -224,7 +224,7 @@ final class CanSendStoryResultBoostNeeded extends CanSendStoryResult {
   );
 
   /// TDLib object type
-  static const String objectType = 'canSendStoryResultBoostNeeded';
+  static const String defaultObjectId = 'canSendStoryResultBoostNeeded';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -232,7 +232,7 @@ final class CanSendStoryResultBoostNeeded extends CanSendStoryResult {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -268,7 +268,7 @@ final class CanSendStoryResultActiveStoryLimitExceeded extends CanSendStoryResul
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -283,7 +283,7 @@ final class CanSendStoryResultActiveStoryLimitExceeded extends CanSendStoryResul
   );
 
   /// TDLib object type
-  static const String objectType = 'canSendStoryResultActiveStoryLimitExceeded';
+  static const String defaultObjectId = 'canSendStoryResultActiveStoryLimitExceeded';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -291,7 +291,7 @@ final class CanSendStoryResultActiveStoryLimitExceeded extends CanSendStoryResul
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -336,7 +336,7 @@ final class CanSendStoryResultWeeklyLimitExceeded extends CanSendStoryResult {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "retry_after": retryAfter,
 		};
 	}
@@ -357,7 +357,7 @@ final class CanSendStoryResultWeeklyLimitExceeded extends CanSendStoryResult {
   );
 
   /// TDLib object type
-  static const String objectType = 'canSendStoryResultWeeklyLimitExceeded';
+  static const String defaultObjectId = 'canSendStoryResultWeeklyLimitExceeded';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -365,7 +365,7 @@ final class CanSendStoryResultWeeklyLimitExceeded extends CanSendStoryResult {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -410,7 +410,7 @@ final class CanSendStoryResultMonthlyLimitExceeded extends CanSendStoryResult {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "retry_after": retryAfter,
 		};
 	}
@@ -431,7 +431,7 @@ final class CanSendStoryResultMonthlyLimitExceeded extends CanSendStoryResult {
   );
 
   /// TDLib object type
-  static const String objectType = 'canSendStoryResultMonthlyLimitExceeded';
+  static const String defaultObjectId = 'canSendStoryResultMonthlyLimitExceeded';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -439,5 +439,5 @@ final class CanSendStoryResultMonthlyLimitExceeded extends CanSendStoryResult {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

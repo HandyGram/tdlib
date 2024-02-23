@@ -83,7 +83,7 @@ final class PasswordState extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "has_password": hasPassword,
       "password_hint": passwordHint,
       "has_recovery_email_address": hasRecoveryEmailAddress,
@@ -127,7 +127,7 @@ final class PasswordState extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'passwordState';
+  static const String defaultObjectId = 'passwordState';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -135,5 +135,5 @@ final class PasswordState extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

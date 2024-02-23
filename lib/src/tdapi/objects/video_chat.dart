@@ -43,7 +43,7 @@ final class VideoChat extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "group_call_id": groupCallId,
       "has_participants": hasParticipants,
       "default_participant_id": defaultParticipantId?.toJson(),
@@ -67,7 +67,7 @@ final class VideoChat extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'videoChat';
+  static const String defaultObjectId = 'videoChat';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -75,5 +75,5 @@ final class VideoChat extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

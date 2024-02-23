@@ -15,9 +15,9 @@ sealed class TextParseMode extends TdObject {
   /// * [TextParseModeHTML]
   factory TextParseMode.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case TextParseModeMarkdown.objectType:
+      case TextParseModeMarkdown.defaultObjectId:
         return TextParseModeMarkdown.fromJson(json);
-      case TextParseModeHTML.objectType:
+      case TextParseModeHTML.defaultObjectId:
         return TextParseModeHTML.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class TextParseMode extends TdObject {
   TextParseMode copyWith();
 
   /// TDLib object type
-  static const String objectType = 'textParseMode';
+  static const String defaultObjectId = 'textParseMode';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class TextParseMode extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -76,7 +76,7 @@ final class TextParseModeMarkdown extends TextParseMode {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "version": version,
 		};
 	}
@@ -93,7 +93,7 @@ final class TextParseModeMarkdown extends TextParseMode {
   );
 
   /// TDLib object type
-  static const String objectType = 'textParseModeMarkdown';
+  static const String defaultObjectId = 'textParseModeMarkdown';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -101,7 +101,7 @@ final class TextParseModeMarkdown extends TextParseMode {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -122,7 +122,7 @@ final class TextParseModeHTML extends TextParseMode {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -131,7 +131,7 @@ final class TextParseModeHTML extends TextParseMode {
   TextParseModeHTML copyWith() => const TextParseModeHTML();
 
   /// TDLib object type
-  static const String objectType = 'textParseModeHTML';
+  static const String defaultObjectId = 'textParseModeHTML';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -139,5 +139,5 @@ final class TextParseModeHTML extends TextParseMode {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

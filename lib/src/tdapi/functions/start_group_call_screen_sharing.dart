@@ -39,7 +39,7 @@ final class StartGroupCallScreenSharing extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "group_call_id": groupCallId,
       "audio_source_id": audioSourceId,
       "payload": payload,
@@ -64,7 +64,7 @@ final class StartGroupCallScreenSharing extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'startGroupCallScreenSharing';
+  static const String defaultObjectId = 'startGroupCallScreenSharing';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -72,5 +72,5 @@ final class StartGroupCallScreenSharing extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

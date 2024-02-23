@@ -76,7 +76,7 @@ final class Background extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "is_default": isDefault,
       "is_dark": isDark,
@@ -116,7 +116,7 @@ final class Background extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'background';
+  static const String defaultObjectId = 'background';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -124,5 +124,5 @@ final class Background extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

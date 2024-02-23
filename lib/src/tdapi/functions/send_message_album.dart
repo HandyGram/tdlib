@@ -51,7 +51,7 @@ final class SendMessageAlbum extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_thread_id": messageThreadId,
       "reply_to": replyTo?.toJson(),
@@ -84,7 +84,7 @@ final class SendMessageAlbum extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'sendMessageAlbum';
+  static const String defaultObjectId = 'sendMessageAlbum';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -92,5 +92,5 @@ final class SendMessageAlbum extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -50,7 +50,7 @@ final class ChatStatisticsAdministratorActionsInfo extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "user_id": userId,
       "deleted_message_count": deletedMessageCount,
       "banned_user_count": bannedUserCount,
@@ -78,7 +78,7 @@ final class ChatStatisticsAdministratorActionsInfo extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatStatisticsAdministratorActionsInfo';
+  static const String defaultObjectId = 'chatStatisticsAdministratorActionsInfo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -86,5 +86,5 @@ final class ChatStatisticsAdministratorActionsInfo extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

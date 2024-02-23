@@ -64,7 +64,7 @@ final class PageBlockRelatedArticle extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "url": url,
       "title": title,
       "description": description,
@@ -100,7 +100,7 @@ final class PageBlockRelatedArticle extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockRelatedArticle';
+  static const String defaultObjectId = 'pageBlockRelatedArticle';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -108,5 +108,5 @@ final class PageBlockRelatedArticle extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

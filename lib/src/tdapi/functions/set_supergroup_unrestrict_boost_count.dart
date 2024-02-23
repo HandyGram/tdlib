@@ -33,7 +33,7 @@ final class SetSupergroupUnrestrictBoostCount extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "supergroup_id": supergroupId,
       "unrestrict_boost_count": unrestrictBoostCount,
       "@extra": extra,
@@ -54,7 +54,7 @@ final class SetSupergroupUnrestrictBoostCount extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'setSupergroupUnrestrictBoostCount';
+  static const String defaultObjectId = 'setSupergroupUnrestrictBoostCount';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -62,5 +62,5 @@ final class SetSupergroupUnrestrictBoostCount extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

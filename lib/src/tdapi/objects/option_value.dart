@@ -17,13 +17,13 @@ sealed class OptionValue extends TdObject {
   /// * [OptionValueString]
   factory OptionValue.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case OptionValueBoolean.objectType:
+      case OptionValueBoolean.defaultObjectId:
         return OptionValueBoolean.fromJson(json);
-      case OptionValueEmpty.objectType:
+      case OptionValueEmpty.defaultObjectId:
         return OptionValueEmpty.fromJson(json);
-      case OptionValueInteger.objectType:
+      case OptionValueInteger.defaultObjectId:
         return OptionValueInteger.fromJson(json);
-      case OptionValueString.objectType:
+      case OptionValueString.defaultObjectId:
         return OptionValueString.fromJson(json);
       default:
         throw FormatException(
@@ -41,7 +41,7 @@ sealed class OptionValue extends TdObject {
   OptionValue copyWith();
 
   /// TDLib object type
-  static const String objectType = 'optionValue';
+  static const String defaultObjectId = 'optionValue';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -49,7 +49,7 @@ sealed class OptionValue extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -94,7 +94,7 @@ final class OptionValueBoolean extends OptionValue {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "value": value,
 		};
 	}
@@ -115,7 +115,7 @@ final class OptionValueBoolean extends OptionValue {
   );
 
   /// TDLib object type
-  static const String objectType = 'optionValueBoolean';
+  static const String defaultObjectId = 'optionValueBoolean';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -123,7 +123,7 @@ final class OptionValueBoolean extends OptionValue {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -159,7 +159,7 @@ final class OptionValueEmpty extends OptionValue {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -174,7 +174,7 @@ final class OptionValueEmpty extends OptionValue {
   );
 
   /// TDLib object type
-  static const String objectType = 'optionValueEmpty';
+  static const String defaultObjectId = 'optionValueEmpty';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -182,7 +182,7 @@ final class OptionValueEmpty extends OptionValue {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -227,7 +227,7 @@ final class OptionValueInteger extends OptionValue {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "value": value,
 		};
 	}
@@ -248,7 +248,7 @@ final class OptionValueInteger extends OptionValue {
   );
 
   /// TDLib object type
-  static const String objectType = 'optionValueInteger';
+  static const String defaultObjectId = 'optionValueInteger';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -256,7 +256,7 @@ final class OptionValueInteger extends OptionValue {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -301,7 +301,7 @@ final class OptionValueString extends OptionValue {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "value": value,
 		};
 	}
@@ -322,7 +322,7 @@ final class OptionValueString extends OptionValue {
   );
 
   /// TDLib object type
-  static const String objectType = 'optionValueString';
+  static const String defaultObjectId = 'optionValueString';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -330,5 +330,5 @@ final class OptionValueString extends OptionValue {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

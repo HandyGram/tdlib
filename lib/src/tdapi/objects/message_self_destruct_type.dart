@@ -15,9 +15,9 @@ sealed class MessageSelfDestructType extends TdObject {
   /// * [MessageSelfDestructTypeImmediately]
   factory MessageSelfDestructType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case MessageSelfDestructTypeTimer.objectType:
+      case MessageSelfDestructTypeTimer.defaultObjectId:
         return MessageSelfDestructTypeTimer.fromJson(json);
-      case MessageSelfDestructTypeImmediately.objectType:
+      case MessageSelfDestructTypeImmediately.defaultObjectId:
         return MessageSelfDestructTypeImmediately.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class MessageSelfDestructType extends TdObject {
   MessageSelfDestructType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'messageSelfDestructType';
+  static const String defaultObjectId = 'messageSelfDestructType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class MessageSelfDestructType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -76,7 +76,7 @@ final class MessageSelfDestructTypeTimer extends MessageSelfDestructType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "self_destruct_time": selfDestructTime,
 		};
 	}
@@ -93,7 +93,7 @@ final class MessageSelfDestructTypeTimer extends MessageSelfDestructType {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageSelfDestructTypeTimer';
+  static const String defaultObjectId = 'messageSelfDestructTypeTimer';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -101,7 +101,7 @@ final class MessageSelfDestructTypeTimer extends MessageSelfDestructType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -122,7 +122,7 @@ final class MessageSelfDestructTypeImmediately extends MessageSelfDestructType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -131,7 +131,7 @@ final class MessageSelfDestructTypeImmediately extends MessageSelfDestructType {
   MessageSelfDestructTypeImmediately copyWith() => const MessageSelfDestructTypeImmediately();
 
   /// TDLib object type
-  static const String objectType = 'messageSelfDestructTypeImmediately';
+  static const String defaultObjectId = 'messageSelfDestructTypeImmediately';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -139,5 +139,5 @@ final class MessageSelfDestructTypeImmediately extends MessageSelfDestructType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

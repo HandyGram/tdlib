@@ -16,11 +16,11 @@ sealed class GroupCallVideoQuality extends TdObject {
   /// * [GroupCallVideoQualityFull]
   factory GroupCallVideoQuality.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case GroupCallVideoQualityThumbnail.objectType:
+      case GroupCallVideoQualityThumbnail.defaultObjectId:
         return GroupCallVideoQualityThumbnail.fromJson(json);
-      case GroupCallVideoQualityMedium.objectType:
+      case GroupCallVideoQualityMedium.defaultObjectId:
         return GroupCallVideoQualityMedium.fromJson(json);
-      case GroupCallVideoQualityFull.objectType:
+      case GroupCallVideoQualityFull.defaultObjectId:
         return GroupCallVideoQualityFull.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class GroupCallVideoQuality extends TdObject {
   GroupCallVideoQuality copyWith();
 
   /// TDLib object type
-  static const String objectType = 'groupCallVideoQuality';
+  static const String defaultObjectId = 'groupCallVideoQuality';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class GroupCallVideoQuality extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -67,7 +67,7 @@ final class GroupCallVideoQualityThumbnail extends GroupCallVideoQuality {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -76,7 +76,7 @@ final class GroupCallVideoQualityThumbnail extends GroupCallVideoQuality {
   GroupCallVideoQualityThumbnail copyWith() => const GroupCallVideoQualityThumbnail();
 
   /// TDLib object type
-  static const String objectType = 'groupCallVideoQualityThumbnail';
+  static const String defaultObjectId = 'groupCallVideoQualityThumbnail';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -84,7 +84,7 @@ final class GroupCallVideoQualityThumbnail extends GroupCallVideoQuality {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -105,7 +105,7 @@ final class GroupCallVideoQualityMedium extends GroupCallVideoQuality {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -114,7 +114,7 @@ final class GroupCallVideoQualityMedium extends GroupCallVideoQuality {
   GroupCallVideoQualityMedium copyWith() => const GroupCallVideoQualityMedium();
 
   /// TDLib object type
-  static const String objectType = 'groupCallVideoQualityMedium';
+  static const String defaultObjectId = 'groupCallVideoQualityMedium';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -122,7 +122,7 @@ final class GroupCallVideoQualityMedium extends GroupCallVideoQuality {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -143,7 +143,7 @@ final class GroupCallVideoQualityFull extends GroupCallVideoQuality {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -152,7 +152,7 @@ final class GroupCallVideoQualityFull extends GroupCallVideoQuality {
   GroupCallVideoQualityFull copyWith() => const GroupCallVideoQualityFull();
 
   /// TDLib object type
-  static const String objectType = 'groupCallVideoQualityFull';
+  static const String defaultObjectId = 'groupCallVideoQualityFull';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -160,5 +160,5 @@ final class GroupCallVideoQualityFull extends GroupCallVideoQuality {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

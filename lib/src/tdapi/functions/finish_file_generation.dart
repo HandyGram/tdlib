@@ -33,7 +33,7 @@ final class FinishFileGeneration extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "generation_id": generationId,
       "error": error?.toJson(),
       "@extra": extra,
@@ -54,7 +54,7 @@ final class FinishFileGeneration extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'finishFileGeneration';
+  static const String defaultObjectId = 'finishFileGeneration';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -62,5 +62,5 @@ final class FinishFileGeneration extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

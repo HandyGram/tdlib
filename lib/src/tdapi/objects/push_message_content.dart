@@ -47,73 +47,73 @@ sealed class PushMessageContent extends TdObject {
   /// * [PushMessageContentMediaAlbum]
   factory PushMessageContent.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case PushMessageContentHidden.objectType:
+      case PushMessageContentHidden.defaultObjectId:
         return PushMessageContentHidden.fromJson(json);
-      case PushMessageContentAnimation.objectType:
+      case PushMessageContentAnimation.defaultObjectId:
         return PushMessageContentAnimation.fromJson(json);
-      case PushMessageContentAudio.objectType:
+      case PushMessageContentAudio.defaultObjectId:
         return PushMessageContentAudio.fromJson(json);
-      case PushMessageContentContact.objectType:
+      case PushMessageContentContact.defaultObjectId:
         return PushMessageContentContact.fromJson(json);
-      case PushMessageContentContactRegistered.objectType:
+      case PushMessageContentContactRegistered.defaultObjectId:
         return PushMessageContentContactRegistered.fromJson(json);
-      case PushMessageContentDocument.objectType:
+      case PushMessageContentDocument.defaultObjectId:
         return PushMessageContentDocument.fromJson(json);
-      case PushMessageContentGame.objectType:
+      case PushMessageContentGame.defaultObjectId:
         return PushMessageContentGame.fromJson(json);
-      case PushMessageContentGameScore.objectType:
+      case PushMessageContentGameScore.defaultObjectId:
         return PushMessageContentGameScore.fromJson(json);
-      case PushMessageContentInvoice.objectType:
+      case PushMessageContentInvoice.defaultObjectId:
         return PushMessageContentInvoice.fromJson(json);
-      case PushMessageContentLocation.objectType:
+      case PushMessageContentLocation.defaultObjectId:
         return PushMessageContentLocation.fromJson(json);
-      case PushMessageContentPhoto.objectType:
+      case PushMessageContentPhoto.defaultObjectId:
         return PushMessageContentPhoto.fromJson(json);
-      case PushMessageContentPoll.objectType:
+      case PushMessageContentPoll.defaultObjectId:
         return PushMessageContentPoll.fromJson(json);
-      case PushMessageContentPremiumGiftCode.objectType:
+      case PushMessageContentPremiumGiftCode.defaultObjectId:
         return PushMessageContentPremiumGiftCode.fromJson(json);
-      case PushMessageContentPremiumGiveaway.objectType:
+      case PushMessageContentPremiumGiveaway.defaultObjectId:
         return PushMessageContentPremiumGiveaway.fromJson(json);
-      case PushMessageContentScreenshotTaken.objectType:
+      case PushMessageContentScreenshotTaken.defaultObjectId:
         return PushMessageContentScreenshotTaken.fromJson(json);
-      case PushMessageContentSticker.objectType:
+      case PushMessageContentSticker.defaultObjectId:
         return PushMessageContentSticker.fromJson(json);
-      case PushMessageContentStory.objectType:
+      case PushMessageContentStory.defaultObjectId:
         return PushMessageContentStory.fromJson(json);
-      case PushMessageContentText.objectType:
+      case PushMessageContentText.defaultObjectId:
         return PushMessageContentText.fromJson(json);
-      case PushMessageContentVideo.objectType:
+      case PushMessageContentVideo.defaultObjectId:
         return PushMessageContentVideo.fromJson(json);
-      case PushMessageContentVideoNote.objectType:
+      case PushMessageContentVideoNote.defaultObjectId:
         return PushMessageContentVideoNote.fromJson(json);
-      case PushMessageContentVoiceNote.objectType:
+      case PushMessageContentVoiceNote.defaultObjectId:
         return PushMessageContentVoiceNote.fromJson(json);
-      case PushMessageContentBasicGroupChatCreate.objectType:
+      case PushMessageContentBasicGroupChatCreate.defaultObjectId:
         return PushMessageContentBasicGroupChatCreate.fromJson(json);
-      case PushMessageContentChatAddMembers.objectType:
+      case PushMessageContentChatAddMembers.defaultObjectId:
         return PushMessageContentChatAddMembers.fromJson(json);
-      case PushMessageContentChatChangePhoto.objectType:
+      case PushMessageContentChatChangePhoto.defaultObjectId:
         return PushMessageContentChatChangePhoto.fromJson(json);
-      case PushMessageContentChatChangeTitle.objectType:
+      case PushMessageContentChatChangeTitle.defaultObjectId:
         return PushMessageContentChatChangeTitle.fromJson(json);
-      case PushMessageContentChatSetBackground.objectType:
+      case PushMessageContentChatSetBackground.defaultObjectId:
         return PushMessageContentChatSetBackground.fromJson(json);
-      case PushMessageContentChatSetTheme.objectType:
+      case PushMessageContentChatSetTheme.defaultObjectId:
         return PushMessageContentChatSetTheme.fromJson(json);
-      case PushMessageContentChatDeleteMember.objectType:
+      case PushMessageContentChatDeleteMember.defaultObjectId:
         return PushMessageContentChatDeleteMember.fromJson(json);
-      case PushMessageContentChatJoinByLink.objectType:
+      case PushMessageContentChatJoinByLink.defaultObjectId:
         return PushMessageContentChatJoinByLink.fromJson(json);
-      case PushMessageContentChatJoinByRequest.objectType:
+      case PushMessageContentChatJoinByRequest.defaultObjectId:
         return PushMessageContentChatJoinByRequest.fromJson(json);
-      case PushMessageContentRecurringPayment.objectType:
+      case PushMessageContentRecurringPayment.defaultObjectId:
         return PushMessageContentRecurringPayment.fromJson(json);
-      case PushMessageContentSuggestProfilePhoto.objectType:
+      case PushMessageContentSuggestProfilePhoto.defaultObjectId:
         return PushMessageContentSuggestProfilePhoto.fromJson(json);
-      case PushMessageContentMessageForwards.objectType:
+      case PushMessageContentMessageForwards.defaultObjectId:
         return PushMessageContentMessageForwards.fromJson(json);
-      case PushMessageContentMediaAlbum.objectType:
+      case PushMessageContentMediaAlbum.defaultObjectId:
         return PushMessageContentMediaAlbum.fromJson(json);
       default:
         throw FormatException(
@@ -131,7 +131,7 @@ sealed class PushMessageContent extends TdObject {
   PushMessageContent copyWith();
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContent';
+  static const String defaultObjectId = 'pushMessageContent';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -139,7 +139,7 @@ sealed class PushMessageContent extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -172,7 +172,7 @@ final class PushMessageContentHidden extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "is_pinned": isPinned,
 		};
 	}
@@ -189,7 +189,7 @@ final class PushMessageContentHidden extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentHidden';
+  static const String defaultObjectId = 'pushMessageContentHidden';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -197,7 +197,7 @@ final class PushMessageContentHidden extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -244,7 +244,7 @@ final class PushMessageContentAnimation extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "animation": animation?.toJson(),
       "caption": caption,
       "is_pinned": isPinned,
@@ -269,7 +269,7 @@ final class PushMessageContentAnimation extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentAnimation';
+  static const String defaultObjectId = 'pushMessageContentAnimation';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -277,7 +277,7 @@ final class PushMessageContentAnimation extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -317,7 +317,7 @@ final class PushMessageContentAudio extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "audio": audio?.toJson(),
       "is_pinned": isPinned,
 		};
@@ -338,7 +338,7 @@ final class PushMessageContentAudio extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentAudio';
+  static const String defaultObjectId = 'pushMessageContentAudio';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -346,7 +346,7 @@ final class PushMessageContentAudio extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -386,7 +386,7 @@ final class PushMessageContentContact extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "name": name,
       "is_pinned": isPinned,
 		};
@@ -407,7 +407,7 @@ final class PushMessageContentContact extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentContact';
+  static const String defaultObjectId = 'pushMessageContentContact';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -415,7 +415,7 @@ final class PushMessageContentContact extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -436,7 +436,7 @@ final class PushMessageContentContactRegistered extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -445,7 +445,7 @@ final class PushMessageContentContactRegistered extends PushMessageContent {
   PushMessageContentContactRegistered copyWith() => const PushMessageContentContactRegistered();
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentContactRegistered';
+  static const String defaultObjectId = 'pushMessageContentContactRegistered';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -453,7 +453,7 @@ final class PushMessageContentContactRegistered extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -493,7 +493,7 @@ final class PushMessageContentDocument extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "document": document?.toJson(),
       "is_pinned": isPinned,
 		};
@@ -514,7 +514,7 @@ final class PushMessageContentDocument extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentDocument';
+  static const String defaultObjectId = 'pushMessageContentDocument';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -522,7 +522,7 @@ final class PushMessageContentDocument extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -562,7 +562,7 @@ final class PushMessageContentGame extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "title": title,
       "is_pinned": isPinned,
 		};
@@ -583,7 +583,7 @@ final class PushMessageContentGame extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentGame';
+  static const String defaultObjectId = 'pushMessageContentGame';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -591,7 +591,7 @@ final class PushMessageContentGame extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -638,7 +638,7 @@ final class PushMessageContentGameScore extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "title": title,
       "score": score,
       "is_pinned": isPinned,
@@ -663,7 +663,7 @@ final class PushMessageContentGameScore extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentGameScore';
+  static const String defaultObjectId = 'pushMessageContentGameScore';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -671,7 +671,7 @@ final class PushMessageContentGameScore extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -711,7 +711,7 @@ final class PushMessageContentInvoice extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "price": price,
       "is_pinned": isPinned,
 		};
@@ -732,7 +732,7 @@ final class PushMessageContentInvoice extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentInvoice';
+  static const String defaultObjectId = 'pushMessageContentInvoice';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -740,7 +740,7 @@ final class PushMessageContentInvoice extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -780,7 +780,7 @@ final class PushMessageContentLocation extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "is_live": isLive,
       "is_pinned": isPinned,
 		};
@@ -801,7 +801,7 @@ final class PushMessageContentLocation extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentLocation';
+  static const String defaultObjectId = 'pushMessageContentLocation';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -809,7 +809,7 @@ final class PushMessageContentLocation extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -863,7 +863,7 @@ final class PushMessageContentPhoto extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "photo": photo?.toJson(),
       "caption": caption,
       "is_secret": isSecret,
@@ -892,7 +892,7 @@ final class PushMessageContentPhoto extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentPhoto';
+  static const String defaultObjectId = 'pushMessageContentPhoto';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -900,7 +900,7 @@ final class PushMessageContentPhoto extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -947,7 +947,7 @@ final class PushMessageContentPoll extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "question": question,
       "is_regular": isRegular,
       "is_pinned": isPinned,
@@ -972,7 +972,7 @@ final class PushMessageContentPoll extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentPoll';
+  static const String defaultObjectId = 'pushMessageContentPoll';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -980,7 +980,7 @@ final class PushMessageContentPoll extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1013,7 +1013,7 @@ final class PushMessageContentPremiumGiftCode extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "month_count": monthCount,
 		};
 	}
@@ -1030,7 +1030,7 @@ final class PushMessageContentPremiumGiftCode extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentPremiumGiftCode';
+  static const String defaultObjectId = 'pushMessageContentPremiumGiftCode';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1038,7 +1038,7 @@ final class PushMessageContentPremiumGiftCode extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1085,7 +1085,7 @@ final class PushMessageContentPremiumGiveaway extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "winner_count": winnerCount,
       "month_count": monthCount,
       "is_pinned": isPinned,
@@ -1110,7 +1110,7 @@ final class PushMessageContentPremiumGiveaway extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentPremiumGiveaway';
+  static const String defaultObjectId = 'pushMessageContentPremiumGiveaway';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1118,7 +1118,7 @@ final class PushMessageContentPremiumGiveaway extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1139,7 +1139,7 @@ final class PushMessageContentScreenshotTaken extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -1148,7 +1148,7 @@ final class PushMessageContentScreenshotTaken extends PushMessageContent {
   PushMessageContentScreenshotTaken copyWith() => const PushMessageContentScreenshotTaken();
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentScreenshotTaken';
+  static const String defaultObjectId = 'pushMessageContentScreenshotTaken';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1156,7 +1156,7 @@ final class PushMessageContentScreenshotTaken extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1203,7 +1203,7 @@ final class PushMessageContentSticker extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "sticker": sticker?.toJson(),
       "emoji": emoji,
       "is_pinned": isPinned,
@@ -1228,7 +1228,7 @@ final class PushMessageContentSticker extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentSticker';
+  static const String defaultObjectId = 'pushMessageContentSticker';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1236,7 +1236,7 @@ final class PushMessageContentSticker extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1269,7 +1269,7 @@ final class PushMessageContentStory extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "is_pinned": isPinned,
 		};
 	}
@@ -1286,7 +1286,7 @@ final class PushMessageContentStory extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentStory';
+  static const String defaultObjectId = 'pushMessageContentStory';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1294,7 +1294,7 @@ final class PushMessageContentStory extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1334,7 +1334,7 @@ final class PushMessageContentText extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text,
       "is_pinned": isPinned,
 		};
@@ -1355,7 +1355,7 @@ final class PushMessageContentText extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentText';
+  static const String defaultObjectId = 'pushMessageContentText';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1363,7 +1363,7 @@ final class PushMessageContentText extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1417,7 +1417,7 @@ final class PushMessageContentVideo extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "video": video?.toJson(),
       "caption": caption,
       "is_secret": isSecret,
@@ -1446,7 +1446,7 @@ final class PushMessageContentVideo extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentVideo';
+  static const String defaultObjectId = 'pushMessageContentVideo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1454,7 +1454,7 @@ final class PushMessageContentVideo extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1494,7 +1494,7 @@ final class PushMessageContentVideoNote extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "video_note": videoNote?.toJson(),
       "is_pinned": isPinned,
 		};
@@ -1515,7 +1515,7 @@ final class PushMessageContentVideoNote extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentVideoNote';
+  static const String defaultObjectId = 'pushMessageContentVideoNote';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1523,7 +1523,7 @@ final class PushMessageContentVideoNote extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1563,7 +1563,7 @@ final class PushMessageContentVoiceNote extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "voice_note": voiceNote?.toJson(),
       "is_pinned": isPinned,
 		};
@@ -1584,7 +1584,7 @@ final class PushMessageContentVoiceNote extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentVoiceNote';
+  static const String defaultObjectId = 'pushMessageContentVoiceNote';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1592,7 +1592,7 @@ final class PushMessageContentVoiceNote extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1613,7 +1613,7 @@ final class PushMessageContentBasicGroupChatCreate extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -1622,7 +1622,7 @@ final class PushMessageContentBasicGroupChatCreate extends PushMessageContent {
   PushMessageContentBasicGroupChatCreate copyWith() => const PushMessageContentBasicGroupChatCreate();
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentBasicGroupChatCreate';
+  static const String defaultObjectId = 'pushMessageContentBasicGroupChatCreate';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1630,7 +1630,7 @@ final class PushMessageContentBasicGroupChatCreate extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1677,7 +1677,7 @@ final class PushMessageContentChatAddMembers extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "member_name": memberName,
       "is_current_user": isCurrentUser,
       "is_returned": isReturned,
@@ -1702,7 +1702,7 @@ final class PushMessageContentChatAddMembers extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentChatAddMembers';
+  static const String defaultObjectId = 'pushMessageContentChatAddMembers';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1710,7 +1710,7 @@ final class PushMessageContentChatAddMembers extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1731,7 +1731,7 @@ final class PushMessageContentChatChangePhoto extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -1740,7 +1740,7 @@ final class PushMessageContentChatChangePhoto extends PushMessageContent {
   PushMessageContentChatChangePhoto copyWith() => const PushMessageContentChatChangePhoto();
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentChatChangePhoto';
+  static const String defaultObjectId = 'pushMessageContentChatChangePhoto';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1748,7 +1748,7 @@ final class PushMessageContentChatChangePhoto extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1781,7 +1781,7 @@ final class PushMessageContentChatChangeTitle extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "title": title,
 		};
 	}
@@ -1798,7 +1798,7 @@ final class PushMessageContentChatChangeTitle extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentChatChangeTitle';
+  static const String defaultObjectId = 'pushMessageContentChatChangeTitle';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1806,7 +1806,7 @@ final class PushMessageContentChatChangeTitle extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1839,7 +1839,7 @@ final class PushMessageContentChatSetBackground extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "is_same": isSame,
 		};
 	}
@@ -1856,7 +1856,7 @@ final class PushMessageContentChatSetBackground extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentChatSetBackground';
+  static const String defaultObjectId = 'pushMessageContentChatSetBackground';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1864,7 +1864,7 @@ final class PushMessageContentChatSetBackground extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1897,7 +1897,7 @@ final class PushMessageContentChatSetTheme extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "theme_name": themeName,
 		};
 	}
@@ -1914,7 +1914,7 @@ final class PushMessageContentChatSetTheme extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentChatSetTheme';
+  static const String defaultObjectId = 'pushMessageContentChatSetTheme';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1922,7 +1922,7 @@ final class PushMessageContentChatSetTheme extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1969,7 +1969,7 @@ final class PushMessageContentChatDeleteMember extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "member_name": memberName,
       "is_current_user": isCurrentUser,
       "is_left": isLeft,
@@ -1994,7 +1994,7 @@ final class PushMessageContentChatDeleteMember extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentChatDeleteMember';
+  static const String defaultObjectId = 'pushMessageContentChatDeleteMember';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2002,7 +2002,7 @@ final class PushMessageContentChatDeleteMember extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2023,7 +2023,7 @@ final class PushMessageContentChatJoinByLink extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -2032,7 +2032,7 @@ final class PushMessageContentChatJoinByLink extends PushMessageContent {
   PushMessageContentChatJoinByLink copyWith() => const PushMessageContentChatJoinByLink();
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentChatJoinByLink';
+  static const String defaultObjectId = 'pushMessageContentChatJoinByLink';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2040,7 +2040,7 @@ final class PushMessageContentChatJoinByLink extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2061,7 +2061,7 @@ final class PushMessageContentChatJoinByRequest extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -2070,7 +2070,7 @@ final class PushMessageContentChatJoinByRequest extends PushMessageContent {
   PushMessageContentChatJoinByRequest copyWith() => const PushMessageContentChatJoinByRequest();
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentChatJoinByRequest';
+  static const String defaultObjectId = 'pushMessageContentChatJoinByRequest';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2078,7 +2078,7 @@ final class PushMessageContentChatJoinByRequest extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2111,7 +2111,7 @@ final class PushMessageContentRecurringPayment extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "amount": amount,
 		};
 	}
@@ -2128,7 +2128,7 @@ final class PushMessageContentRecurringPayment extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentRecurringPayment';
+  static const String defaultObjectId = 'pushMessageContentRecurringPayment';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2136,7 +2136,7 @@ final class PushMessageContentRecurringPayment extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2157,7 +2157,7 @@ final class PushMessageContentSuggestProfilePhoto extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -2166,7 +2166,7 @@ final class PushMessageContentSuggestProfilePhoto extends PushMessageContent {
   PushMessageContentSuggestProfilePhoto copyWith() => const PushMessageContentSuggestProfilePhoto();
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentSuggestProfilePhoto';
+  static const String defaultObjectId = 'pushMessageContentSuggestProfilePhoto';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2174,7 +2174,7 @@ final class PushMessageContentSuggestProfilePhoto extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2207,7 +2207,7 @@ final class PushMessageContentMessageForwards extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "total_count": totalCount,
 		};
 	}
@@ -2224,7 +2224,7 @@ final class PushMessageContentMessageForwards extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentMessageForwards';
+  static const String defaultObjectId = 'pushMessageContentMessageForwards';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2232,7 +2232,7 @@ final class PushMessageContentMessageForwards extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2293,7 +2293,7 @@ final class PushMessageContentMediaAlbum extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "total_count": totalCount,
       "has_photos": hasPhotos,
       "has_videos": hasVideos,
@@ -2326,7 +2326,7 @@ final class PushMessageContentMediaAlbum extends PushMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'pushMessageContentMediaAlbum';
+  static const String defaultObjectId = 'pushMessageContentMediaAlbum';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2334,5 +2334,5 @@ final class PushMessageContentMediaAlbum extends PushMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

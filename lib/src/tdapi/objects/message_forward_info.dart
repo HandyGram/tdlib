@@ -50,7 +50,7 @@ final class MessageForwardInfo extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "origin": origin.toJson(),
       "date": date,
       "source": source?.toJson(),
@@ -78,7 +78,7 @@ final class MessageForwardInfo extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageForwardInfo';
+  static const String defaultObjectId = 'messageForwardInfo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -86,5 +86,5 @@ final class MessageForwardInfo extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

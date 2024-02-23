@@ -30,39 +30,39 @@ sealed class SessionType extends TdObject {
   /// * [SessionTypeXbox]
   factory SessionType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case SessionTypeAndroid.objectType:
+      case SessionTypeAndroid.defaultObjectId:
         return SessionTypeAndroid.fromJson(json);
-      case SessionTypeApple.objectType:
+      case SessionTypeApple.defaultObjectId:
         return SessionTypeApple.fromJson(json);
-      case SessionTypeBrave.objectType:
+      case SessionTypeBrave.defaultObjectId:
         return SessionTypeBrave.fromJson(json);
-      case SessionTypeChrome.objectType:
+      case SessionTypeChrome.defaultObjectId:
         return SessionTypeChrome.fromJson(json);
-      case SessionTypeEdge.objectType:
+      case SessionTypeEdge.defaultObjectId:
         return SessionTypeEdge.fromJson(json);
-      case SessionTypeFirefox.objectType:
+      case SessionTypeFirefox.defaultObjectId:
         return SessionTypeFirefox.fromJson(json);
-      case SessionTypeIpad.objectType:
+      case SessionTypeIpad.defaultObjectId:
         return SessionTypeIpad.fromJson(json);
-      case SessionTypeIphone.objectType:
+      case SessionTypeIphone.defaultObjectId:
         return SessionTypeIphone.fromJson(json);
-      case SessionTypeLinux.objectType:
+      case SessionTypeLinux.defaultObjectId:
         return SessionTypeLinux.fromJson(json);
-      case SessionTypeMac.objectType:
+      case SessionTypeMac.defaultObjectId:
         return SessionTypeMac.fromJson(json);
-      case SessionTypeOpera.objectType:
+      case SessionTypeOpera.defaultObjectId:
         return SessionTypeOpera.fromJson(json);
-      case SessionTypeSafari.objectType:
+      case SessionTypeSafari.defaultObjectId:
         return SessionTypeSafari.fromJson(json);
-      case SessionTypeUbuntu.objectType:
+      case SessionTypeUbuntu.defaultObjectId:
         return SessionTypeUbuntu.fromJson(json);
-      case SessionTypeUnknown.objectType:
+      case SessionTypeUnknown.defaultObjectId:
         return SessionTypeUnknown.fromJson(json);
-      case SessionTypeVivaldi.objectType:
+      case SessionTypeVivaldi.defaultObjectId:
         return SessionTypeVivaldi.fromJson(json);
-      case SessionTypeWindows.objectType:
+      case SessionTypeWindows.defaultObjectId:
         return SessionTypeWindows.fromJson(json);
-      case SessionTypeXbox.objectType:
+      case SessionTypeXbox.defaultObjectId:
         return SessionTypeXbox.fromJson(json);
       default:
         throw FormatException(
@@ -80,7 +80,7 @@ sealed class SessionType extends TdObject {
   SessionType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'sessionType';
+  static const String defaultObjectId = 'sessionType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -88,7 +88,7 @@ sealed class SessionType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -109,7 +109,7 @@ final class SessionTypeAndroid extends SessionType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -118,7 +118,7 @@ final class SessionTypeAndroid extends SessionType {
   SessionTypeAndroid copyWith() => const SessionTypeAndroid();
 
   /// TDLib object type
-  static const String objectType = 'sessionTypeAndroid';
+  static const String defaultObjectId = 'sessionTypeAndroid';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -126,7 +126,7 @@ final class SessionTypeAndroid extends SessionType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -147,7 +147,7 @@ final class SessionTypeApple extends SessionType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -156,7 +156,7 @@ final class SessionTypeApple extends SessionType {
   SessionTypeApple copyWith() => const SessionTypeApple();
 
   /// TDLib object type
-  static const String objectType = 'sessionTypeApple';
+  static const String defaultObjectId = 'sessionTypeApple';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -164,7 +164,7 @@ final class SessionTypeApple extends SessionType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -185,7 +185,7 @@ final class SessionTypeBrave extends SessionType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -194,7 +194,7 @@ final class SessionTypeBrave extends SessionType {
   SessionTypeBrave copyWith() => const SessionTypeBrave();
 
   /// TDLib object type
-  static const String objectType = 'sessionTypeBrave';
+  static const String defaultObjectId = 'sessionTypeBrave';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -202,7 +202,7 @@ final class SessionTypeBrave extends SessionType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -223,7 +223,7 @@ final class SessionTypeChrome extends SessionType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -232,7 +232,7 @@ final class SessionTypeChrome extends SessionType {
   SessionTypeChrome copyWith() => const SessionTypeChrome();
 
   /// TDLib object type
-  static const String objectType = 'sessionTypeChrome';
+  static const String defaultObjectId = 'sessionTypeChrome';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -240,7 +240,7 @@ final class SessionTypeChrome extends SessionType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -261,7 +261,7 @@ final class SessionTypeEdge extends SessionType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -270,7 +270,7 @@ final class SessionTypeEdge extends SessionType {
   SessionTypeEdge copyWith() => const SessionTypeEdge();
 
   /// TDLib object type
-  static const String objectType = 'sessionTypeEdge';
+  static const String defaultObjectId = 'sessionTypeEdge';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -278,7 +278,7 @@ final class SessionTypeEdge extends SessionType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -299,7 +299,7 @@ final class SessionTypeFirefox extends SessionType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -308,7 +308,7 @@ final class SessionTypeFirefox extends SessionType {
   SessionTypeFirefox copyWith() => const SessionTypeFirefox();
 
   /// TDLib object type
-  static const String objectType = 'sessionTypeFirefox';
+  static const String defaultObjectId = 'sessionTypeFirefox';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -316,7 +316,7 @@ final class SessionTypeFirefox extends SessionType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -337,7 +337,7 @@ final class SessionTypeIpad extends SessionType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -346,7 +346,7 @@ final class SessionTypeIpad extends SessionType {
   SessionTypeIpad copyWith() => const SessionTypeIpad();
 
   /// TDLib object type
-  static const String objectType = 'sessionTypeIpad';
+  static const String defaultObjectId = 'sessionTypeIpad';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -354,7 +354,7 @@ final class SessionTypeIpad extends SessionType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -375,7 +375,7 @@ final class SessionTypeIphone extends SessionType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -384,7 +384,7 @@ final class SessionTypeIphone extends SessionType {
   SessionTypeIphone copyWith() => const SessionTypeIphone();
 
   /// TDLib object type
-  static const String objectType = 'sessionTypeIphone';
+  static const String defaultObjectId = 'sessionTypeIphone';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -392,7 +392,7 @@ final class SessionTypeIphone extends SessionType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -413,7 +413,7 @@ final class SessionTypeLinux extends SessionType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -422,7 +422,7 @@ final class SessionTypeLinux extends SessionType {
   SessionTypeLinux copyWith() => const SessionTypeLinux();
 
   /// TDLib object type
-  static const String objectType = 'sessionTypeLinux';
+  static const String defaultObjectId = 'sessionTypeLinux';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -430,7 +430,7 @@ final class SessionTypeLinux extends SessionType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -451,7 +451,7 @@ final class SessionTypeMac extends SessionType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -460,7 +460,7 @@ final class SessionTypeMac extends SessionType {
   SessionTypeMac copyWith() => const SessionTypeMac();
 
   /// TDLib object type
-  static const String objectType = 'sessionTypeMac';
+  static const String defaultObjectId = 'sessionTypeMac';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -468,7 +468,7 @@ final class SessionTypeMac extends SessionType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -489,7 +489,7 @@ final class SessionTypeOpera extends SessionType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -498,7 +498,7 @@ final class SessionTypeOpera extends SessionType {
   SessionTypeOpera copyWith() => const SessionTypeOpera();
 
   /// TDLib object type
-  static const String objectType = 'sessionTypeOpera';
+  static const String defaultObjectId = 'sessionTypeOpera';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -506,7 +506,7 @@ final class SessionTypeOpera extends SessionType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -527,7 +527,7 @@ final class SessionTypeSafari extends SessionType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -536,7 +536,7 @@ final class SessionTypeSafari extends SessionType {
   SessionTypeSafari copyWith() => const SessionTypeSafari();
 
   /// TDLib object type
-  static const String objectType = 'sessionTypeSafari';
+  static const String defaultObjectId = 'sessionTypeSafari';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -544,7 +544,7 @@ final class SessionTypeSafari extends SessionType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -565,7 +565,7 @@ final class SessionTypeUbuntu extends SessionType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -574,7 +574,7 @@ final class SessionTypeUbuntu extends SessionType {
   SessionTypeUbuntu copyWith() => const SessionTypeUbuntu();
 
   /// TDLib object type
-  static const String objectType = 'sessionTypeUbuntu';
+  static const String defaultObjectId = 'sessionTypeUbuntu';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -582,7 +582,7 @@ final class SessionTypeUbuntu extends SessionType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -603,7 +603,7 @@ final class SessionTypeUnknown extends SessionType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -612,7 +612,7 @@ final class SessionTypeUnknown extends SessionType {
   SessionTypeUnknown copyWith() => const SessionTypeUnknown();
 
   /// TDLib object type
-  static const String objectType = 'sessionTypeUnknown';
+  static const String defaultObjectId = 'sessionTypeUnknown';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -620,7 +620,7 @@ final class SessionTypeUnknown extends SessionType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -641,7 +641,7 @@ final class SessionTypeVivaldi extends SessionType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -650,7 +650,7 @@ final class SessionTypeVivaldi extends SessionType {
   SessionTypeVivaldi copyWith() => const SessionTypeVivaldi();
 
   /// TDLib object type
-  static const String objectType = 'sessionTypeVivaldi';
+  static const String defaultObjectId = 'sessionTypeVivaldi';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -658,7 +658,7 @@ final class SessionTypeVivaldi extends SessionType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -679,7 +679,7 @@ final class SessionTypeWindows extends SessionType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -688,7 +688,7 @@ final class SessionTypeWindows extends SessionType {
   SessionTypeWindows copyWith() => const SessionTypeWindows();
 
   /// TDLib object type
-  static const String objectType = 'sessionTypeWindows';
+  static const String defaultObjectId = 'sessionTypeWindows';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -696,7 +696,7 @@ final class SessionTypeWindows extends SessionType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -717,7 +717,7 @@ final class SessionTypeXbox extends SessionType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -726,7 +726,7 @@ final class SessionTypeXbox extends SessionType {
   SessionTypeXbox copyWith() => const SessionTypeXbox();
 
   /// TDLib object type
-  static const String objectType = 'sessionTypeXbox';
+  static const String defaultObjectId = 'sessionTypeXbox';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -734,5 +734,5 @@ final class SessionTypeXbox extends SessionType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

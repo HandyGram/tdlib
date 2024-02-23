@@ -27,7 +27,7 @@ final class GetPremiumGiftCodePaymentOptions extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "boosted_chat_id": boostedChatId,
       "@extra": extra,
 		};
@@ -44,7 +44,7 @@ final class GetPremiumGiftCodePaymentOptions extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'getPremiumGiftCodePaymentOptions';
+  static const String defaultObjectId = 'getPremiumGiftCodePaymentOptions';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -52,5 +52,5 @@ final class GetPremiumGiftCodePaymentOptions extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

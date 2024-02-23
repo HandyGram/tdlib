@@ -18,15 +18,15 @@ sealed class MessageReadDate extends TdObject {
   /// * [MessageReadDateMyPrivacyRestricted]
   factory MessageReadDate.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case MessageReadDateRead.objectType:
+      case MessageReadDateRead.defaultObjectId:
         return MessageReadDateRead.fromJson(json);
-      case MessageReadDateUnread.objectType:
+      case MessageReadDateUnread.defaultObjectId:
         return MessageReadDateUnread.fromJson(json);
-      case MessageReadDateTooOld.objectType:
+      case MessageReadDateTooOld.defaultObjectId:
         return MessageReadDateTooOld.fromJson(json);
-      case MessageReadDateUserPrivacyRestricted.objectType:
+      case MessageReadDateUserPrivacyRestricted.defaultObjectId:
         return MessageReadDateUserPrivacyRestricted.fromJson(json);
-      case MessageReadDateMyPrivacyRestricted.objectType:
+      case MessageReadDateMyPrivacyRestricted.defaultObjectId:
         return MessageReadDateMyPrivacyRestricted.fromJson(json);
       default:
         throw FormatException(
@@ -44,7 +44,7 @@ sealed class MessageReadDate extends TdObject {
   MessageReadDate copyWith();
 
   /// TDLib object type
-  static const String objectType = 'messageReadDate';
+  static const String defaultObjectId = 'messageReadDate';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -52,7 +52,7 @@ sealed class MessageReadDate extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -97,7 +97,7 @@ final class MessageReadDateRead extends MessageReadDate {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "read_date": readDate,
 		};
 	}
@@ -118,7 +118,7 @@ final class MessageReadDateRead extends MessageReadDate {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageReadDateRead';
+  static const String defaultObjectId = 'messageReadDateRead';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -126,7 +126,7 @@ final class MessageReadDateRead extends MessageReadDate {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -162,7 +162,7 @@ final class MessageReadDateUnread extends MessageReadDate {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -177,7 +177,7 @@ final class MessageReadDateUnread extends MessageReadDate {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageReadDateUnread';
+  static const String defaultObjectId = 'messageReadDateUnread';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -185,7 +185,7 @@ final class MessageReadDateUnread extends MessageReadDate {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -221,7 +221,7 @@ final class MessageReadDateTooOld extends MessageReadDate {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -236,7 +236,7 @@ final class MessageReadDateTooOld extends MessageReadDate {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageReadDateTooOld';
+  static const String defaultObjectId = 'messageReadDateTooOld';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -244,7 +244,7 @@ final class MessageReadDateTooOld extends MessageReadDate {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -280,7 +280,7 @@ final class MessageReadDateUserPrivacyRestricted extends MessageReadDate {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -295,7 +295,7 @@ final class MessageReadDateUserPrivacyRestricted extends MessageReadDate {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageReadDateUserPrivacyRestricted';
+  static const String defaultObjectId = 'messageReadDateUserPrivacyRestricted';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -303,7 +303,7 @@ final class MessageReadDateUserPrivacyRestricted extends MessageReadDate {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -339,7 +339,7 @@ final class MessageReadDateMyPrivacyRestricted extends MessageReadDate {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -354,7 +354,7 @@ final class MessageReadDateMyPrivacyRestricted extends MessageReadDate {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageReadDateMyPrivacyRestricted';
+  static const String defaultObjectId = 'messageReadDateMyPrivacyRestricted';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -362,5 +362,5 @@ final class MessageReadDateMyPrivacyRestricted extends MessageReadDate {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -16,11 +16,11 @@ sealed class ChatBoostSource extends TdObject {
   /// * [ChatBoostSourcePremium]
   factory ChatBoostSource.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case ChatBoostSourceGiftCode.objectType:
+      case ChatBoostSourceGiftCode.defaultObjectId:
         return ChatBoostSourceGiftCode.fromJson(json);
-      case ChatBoostSourceGiveaway.objectType:
+      case ChatBoostSourceGiveaway.defaultObjectId:
         return ChatBoostSourceGiveaway.fromJson(json);
-      case ChatBoostSourcePremium.objectType:
+      case ChatBoostSourcePremium.defaultObjectId:
         return ChatBoostSourcePremium.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class ChatBoostSource extends TdObject {
   ChatBoostSource copyWith();
 
   /// TDLib object type
-  static const String objectType = 'chatBoostSource';
+  static const String defaultObjectId = 'chatBoostSource';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class ChatBoostSource extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -86,7 +86,7 @@ final class ChatBoostSourceGiftCode extends ChatBoostSource {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "user_id": userId,
       "gift_code": giftCode,
 		};
@@ -107,7 +107,7 @@ final class ChatBoostSourceGiftCode extends ChatBoostSource {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatBoostSourceGiftCode';
+  static const String defaultObjectId = 'chatBoostSourceGiftCode';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -115,7 +115,7 @@ final class ChatBoostSourceGiftCode extends ChatBoostSource {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -169,7 +169,7 @@ final class ChatBoostSourceGiveaway extends ChatBoostSource {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "user_id": userId,
       "gift_code": giftCode,
       "giveaway_message_id": giveawayMessageId,
@@ -198,7 +198,7 @@ final class ChatBoostSourceGiveaway extends ChatBoostSource {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatBoostSourceGiveaway';
+  static const String defaultObjectId = 'chatBoostSourceGiveaway';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -206,7 +206,7 @@ final class ChatBoostSourceGiveaway extends ChatBoostSource {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -239,7 +239,7 @@ final class ChatBoostSourcePremium extends ChatBoostSource {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "user_id": userId,
 		};
 	}
@@ -256,7 +256,7 @@ final class ChatBoostSourcePremium extends ChatBoostSource {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatBoostSourcePremium';
+  static const String defaultObjectId = 'chatBoostSourcePremium';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -264,5 +264,5 @@ final class ChatBoostSourcePremium extends ChatBoostSource {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

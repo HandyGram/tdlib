@@ -55,7 +55,7 @@ final class FoundFileDownloads extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "total_counts": totalCounts.toJson(),
       "files": files.map((i) => i.toJson()).toList(),
       "next_offset": nextOffset,
@@ -83,7 +83,7 @@ final class FoundFileDownloads extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'foundFileDownloads';
+  static const String defaultObjectId = 'foundFileDownloads';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -91,5 +91,5 @@ final class FoundFileDownloads extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

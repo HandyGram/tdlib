@@ -71,7 +71,7 @@ final class MessageSendOptions extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "disable_notification": disableNotification,
       "from_background": fromBackground,
       "protect_content": protectContent,
@@ -111,7 +111,7 @@ final class MessageSendOptions extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageSendOptions';
+  static const String defaultObjectId = 'messageSendOptions';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -119,5 +119,5 @@ final class MessageSendOptions extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

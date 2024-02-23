@@ -48,7 +48,7 @@ final class BotCommands extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "bot_user_id": botUserId,
       "commands": commands.map((i) => i.toJson()).toList(),
 		};
@@ -72,7 +72,7 @@ final class BotCommands extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'botCommands';
+  static const String defaultObjectId = 'botCommands';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -80,5 +80,5 @@ final class BotCommands extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -43,7 +43,7 @@ final class AccessHash extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "type": type.toJson(),
       "access_hash": accessHash,
@@ -67,7 +67,7 @@ final class AccessHash extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'accessHash';
+  static const String defaultObjectId = 'accessHash';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -75,5 +75,5 @@ final class AccessHash extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -17,13 +17,13 @@ sealed class UserType extends TdObject {
   /// * [UserTypeUnknown]
   factory UserType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case UserTypeRegular.objectType:
+      case UserTypeRegular.defaultObjectId:
         return UserTypeRegular.fromJson(json);
-      case UserTypeDeleted.objectType:
+      case UserTypeDeleted.defaultObjectId:
         return UserTypeDeleted.fromJson(json);
-      case UserTypeBot.objectType:
+      case UserTypeBot.defaultObjectId:
         return UserTypeBot.fromJson(json);
-      case UserTypeUnknown.objectType:
+      case UserTypeUnknown.defaultObjectId:
         return UserTypeUnknown.fromJson(json);
       default:
         throw FormatException(
@@ -41,7 +41,7 @@ sealed class UserType extends TdObject {
   UserType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'userType';
+  static const String defaultObjectId = 'userType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -49,7 +49,7 @@ sealed class UserType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -70,7 +70,7 @@ final class UserTypeRegular extends UserType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -79,7 +79,7 @@ final class UserTypeRegular extends UserType {
   UserTypeRegular copyWith() => const UserTypeRegular();
 
   /// TDLib object type
-  static const String objectType = 'userTypeRegular';
+  static const String defaultObjectId = 'userTypeRegular';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -87,7 +87,7 @@ final class UserTypeRegular extends UserType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -108,7 +108,7 @@ final class UserTypeDeleted extends UserType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -117,7 +117,7 @@ final class UserTypeDeleted extends UserType {
   UserTypeDeleted copyWith() => const UserTypeDeleted();
 
   /// TDLib object type
-  static const String objectType = 'userTypeDeleted';
+  static const String defaultObjectId = 'userTypeDeleted';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -125,7 +125,7 @@ final class UserTypeDeleted extends UserType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -200,7 +200,7 @@ final class UserTypeBot extends UserType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "can_be_edited": canBeEdited,
       "can_join_groups": canJoinGroups,
       "can_read_all_group_messages": canReadAllGroupMessages,
@@ -241,7 +241,7 @@ final class UserTypeBot extends UserType {
   );
 
   /// TDLib object type
-  static const String objectType = 'userTypeBot';
+  static const String defaultObjectId = 'userTypeBot';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -249,7 +249,7 @@ final class UserTypeBot extends UserType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -270,7 +270,7 @@ final class UserTypeUnknown extends UserType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -279,7 +279,7 @@ final class UserTypeUnknown extends UserType {
   UserTypeUnknown copyWith() => const UserTypeUnknown();
 
   /// TDLib object type
-  static const String objectType = 'userTypeUnknown';
+  static const String defaultObjectId = 'userTypeUnknown';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -287,5 +287,5 @@ final class UserTypeUnknown extends UserType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

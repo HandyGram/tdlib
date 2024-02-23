@@ -127,7 +127,7 @@ final class ChatAdministratorRights extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "can_manage_chat": canManageChat,
       "can_change_info": canChangeInfo,
       "can_post_messages": canPostMessages,
@@ -199,7 +199,7 @@ final class ChatAdministratorRights extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatAdministratorRights';
+  static const String defaultObjectId = 'chatAdministratorRights';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -207,5 +207,5 @@ final class ChatAdministratorRights extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

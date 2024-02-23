@@ -19,7 +19,7 @@ final class GetAvailableChatBoostSlots extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "@extra": extra,
 		};
 	}
@@ -28,7 +28,7 @@ final class GetAvailableChatBoostSlots extends TdFunction {
   GetAvailableChatBoostSlots copyWith() => const GetAvailableChatBoostSlots();
 
   /// TDLib object type
-  static const String objectType = 'getAvailableChatBoostSlots';
+  static const String defaultObjectId = 'getAvailableChatBoostSlots';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -36,5 +36,5 @@ final class GetAvailableChatBoostSlots extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

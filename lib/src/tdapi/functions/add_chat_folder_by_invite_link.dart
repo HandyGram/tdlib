@@ -33,7 +33,7 @@ final class AddChatFolderByInviteLink extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "invite_link": inviteLink,
       "chat_ids": chatIds.map((i) => i).toList(),
       "@extra": extra,
@@ -54,7 +54,7 @@ final class AddChatFolderByInviteLink extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'addChatFolderByInviteLink';
+  static const String defaultObjectId = 'addChatFolderByInviteLink';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -62,5 +62,5 @@ final class AddChatFolderByInviteLink extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

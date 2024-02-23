@@ -16,11 +16,11 @@ sealed class PaymentProvider extends TdObject {
   /// * [PaymentProviderOther]
   factory PaymentProvider.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case PaymentProviderSmartGlocal.objectType:
+      case PaymentProviderSmartGlocal.defaultObjectId:
         return PaymentProviderSmartGlocal.fromJson(json);
-      case PaymentProviderStripe.objectType:
+      case PaymentProviderStripe.defaultObjectId:
         return PaymentProviderStripe.fromJson(json);
-      case PaymentProviderOther.objectType:
+      case PaymentProviderOther.defaultObjectId:
         return PaymentProviderOther.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class PaymentProvider extends TdObject {
   PaymentProvider copyWith();
 
   /// TDLib object type
-  static const String objectType = 'paymentProvider';
+  static const String defaultObjectId = 'paymentProvider';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class PaymentProvider extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -86,7 +86,7 @@ final class PaymentProviderSmartGlocal extends PaymentProvider {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "public_token": publicToken,
       "tokenize_url": tokenizeUrl,
 		};
@@ -107,7 +107,7 @@ final class PaymentProviderSmartGlocal extends PaymentProvider {
   );
 
   /// TDLib object type
-  static const String objectType = 'paymentProviderSmartGlocal';
+  static const String defaultObjectId = 'paymentProviderSmartGlocal';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -115,7 +115,7 @@ final class PaymentProviderSmartGlocal extends PaymentProvider {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -169,7 +169,7 @@ final class PaymentProviderStripe extends PaymentProvider {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "publishable_key": publishableKey,
       "need_country": needCountry,
       "need_postal_code": needPostalCode,
@@ -198,7 +198,7 @@ final class PaymentProviderStripe extends PaymentProvider {
   );
 
   /// TDLib object type
-  static const String objectType = 'paymentProviderStripe';
+  static const String defaultObjectId = 'paymentProviderStripe';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -206,7 +206,7 @@ final class PaymentProviderStripe extends PaymentProvider {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -239,7 +239,7 @@ final class PaymentProviderOther extends PaymentProvider {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "url": url,
 		};
 	}
@@ -256,7 +256,7 @@ final class PaymentProviderOther extends PaymentProvider {
   );
 
   /// TDLib object type
-  static const String objectType = 'paymentProviderOther';
+  static const String defaultObjectId = 'paymentProviderOther';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -264,5 +264,5 @@ final class PaymentProviderOther extends PaymentProvider {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

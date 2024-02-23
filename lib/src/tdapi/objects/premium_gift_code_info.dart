@@ -83,7 +83,7 @@ final class PremiumGiftCodeInfo extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "creator_id": creatorId?.toJson(),
       "creation_date": creationDate,
       "is_from_giveaway": isFromGiveaway,
@@ -127,7 +127,7 @@ final class PremiumGiftCodeInfo extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'premiumGiftCodeInfo';
+  static const String defaultObjectId = 'premiumGiftCodeInfo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -135,5 +135,5 @@ final class PremiumGiftCodeInfo extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

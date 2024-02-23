@@ -29,7 +29,7 @@ final class PassportRequiredElement extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "suitable_elements": suitableElements.map((i) => i.toJson()).toList(),
 		};
 	}
@@ -45,7 +45,7 @@ final class PassportRequiredElement extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'passportRequiredElement';
+  static const String defaultObjectId = 'passportRequiredElement';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -53,5 +53,5 @@ final class PassportRequiredElement extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

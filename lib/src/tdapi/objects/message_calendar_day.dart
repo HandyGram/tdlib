@@ -36,7 +36,7 @@ final class MessageCalendarDay extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "total_count": totalCount,
       "message": message.toJson(),
 		};
@@ -56,7 +56,7 @@ final class MessageCalendarDay extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageCalendarDay';
+  static const String defaultObjectId = 'messageCalendarDay';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -64,5 +64,5 @@ final class MessageCalendarDay extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

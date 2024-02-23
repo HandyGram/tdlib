@@ -85,7 +85,7 @@ final class Animation extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "duration": duration,
       "width": width,
       "height": height,
@@ -133,7 +133,7 @@ final class Animation extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'animation';
+  static const String defaultObjectId = 'animation';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -141,5 +141,5 @@ final class Animation extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

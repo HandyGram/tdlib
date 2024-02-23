@@ -43,7 +43,7 @@ final class GroupCallStream extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "channel_id": channelId,
       "scale": scale,
       "time_offset": timeOffset,
@@ -67,7 +67,7 @@ final class GroupCallStream extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'groupCallStream';
+  static const String defaultObjectId = 'groupCallStream';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -75,5 +75,5 @@ final class GroupCallStream extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

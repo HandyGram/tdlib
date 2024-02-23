@@ -15,9 +15,9 @@ sealed class MessageSchedulingState extends TdObject {
   /// * [MessageSchedulingStateSendWhenOnline]
   factory MessageSchedulingState.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case MessageSchedulingStateSendAtDate.objectType:
+      case MessageSchedulingStateSendAtDate.defaultObjectId:
         return MessageSchedulingStateSendAtDate.fromJson(json);
-      case MessageSchedulingStateSendWhenOnline.objectType:
+      case MessageSchedulingStateSendWhenOnline.defaultObjectId:
         return MessageSchedulingStateSendWhenOnline.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class MessageSchedulingState extends TdObject {
   MessageSchedulingState copyWith();
 
   /// TDLib object type
-  static const String objectType = 'messageSchedulingState';
+  static const String defaultObjectId = 'messageSchedulingState';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class MessageSchedulingState extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -76,7 +76,7 @@ final class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "send_date": sendDate,
 		};
 	}
@@ -93,7 +93,7 @@ final class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageSchedulingStateSendAtDate';
+  static const String defaultObjectId = 'messageSchedulingStateSendAtDate';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -101,7 +101,7 @@ final class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -122,7 +122,7 @@ final class MessageSchedulingStateSendWhenOnline extends MessageSchedulingState 
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -131,7 +131,7 @@ final class MessageSchedulingStateSendWhenOnline extends MessageSchedulingState 
   MessageSchedulingStateSendWhenOnline copyWith() => const MessageSchedulingStateSendWhenOnline();
 
   /// TDLib object type
-  static const String objectType = 'messageSchedulingStateSendWhenOnline';
+  static const String defaultObjectId = 'messageSchedulingStateSendWhenOnline';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -139,5 +139,5 @@ final class MessageSchedulingStateSendWhenOnline extends MessageSchedulingState 
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

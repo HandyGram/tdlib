@@ -43,7 +43,7 @@ final class SavedMessagesTag extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "tag": tag.toJson(),
       "label": label,
       "count": count,
@@ -67,7 +67,7 @@ final class SavedMessagesTag extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'savedMessagesTag';
+  static const String defaultObjectId = 'savedMessagesTag';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -75,5 +75,5 @@ final class SavedMessagesTag extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

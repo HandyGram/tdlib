@@ -15,9 +15,9 @@ sealed class PollType extends TdObject {
   /// * [PollTypeQuiz]
   factory PollType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case PollTypeRegular.objectType:
+      case PollTypeRegular.defaultObjectId:
         return PollTypeRegular.fromJson(json);
-      case PollTypeQuiz.objectType:
+      case PollTypeQuiz.defaultObjectId:
         return PollTypeQuiz.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class PollType extends TdObject {
   PollType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'pollType';
+  static const String defaultObjectId = 'pollType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class PollType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -76,7 +76,7 @@ final class PollTypeRegular extends PollType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "allow_multiple_answers": allowMultipleAnswers,
 		};
 	}
@@ -93,7 +93,7 @@ final class PollTypeRegular extends PollType {
   );
 
   /// TDLib object type
-  static const String objectType = 'pollTypeRegular';
+  static const String defaultObjectId = 'pollTypeRegular';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -101,7 +101,7 @@ final class PollTypeRegular extends PollType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -141,7 +141,7 @@ final class PollTypeQuiz extends PollType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "correct_option_id": correctOptionId,
       "explanation": explanation.toJson(),
 		};
@@ -162,7 +162,7 @@ final class PollTypeQuiz extends PollType {
   );
 
   /// TDLib object type
-  static const String objectType = 'pollTypeQuiz';
+  static const String defaultObjectId = 'pollTypeQuiz';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -170,5 +170,5 @@ final class PollTypeQuiz extends PollType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

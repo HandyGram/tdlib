@@ -19,17 +19,17 @@ sealed class CheckChatUsernameResult extends TdObject {
   /// * [CheckChatUsernameResultPublicGroupsUnavailable]
   factory CheckChatUsernameResult.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case CheckChatUsernameResultOk.objectType:
+      case CheckChatUsernameResultOk.defaultObjectId:
         return CheckChatUsernameResultOk.fromJson(json);
-      case CheckChatUsernameResultUsernameInvalid.objectType:
+      case CheckChatUsernameResultUsernameInvalid.defaultObjectId:
         return CheckChatUsernameResultUsernameInvalid.fromJson(json);
-      case CheckChatUsernameResultUsernameOccupied.objectType:
+      case CheckChatUsernameResultUsernameOccupied.defaultObjectId:
         return CheckChatUsernameResultUsernameOccupied.fromJson(json);
-      case CheckChatUsernameResultUsernamePurchasable.objectType:
+      case CheckChatUsernameResultUsernamePurchasable.defaultObjectId:
         return CheckChatUsernameResultUsernamePurchasable.fromJson(json);
-      case CheckChatUsernameResultPublicChatsTooMany.objectType:
+      case CheckChatUsernameResultPublicChatsTooMany.defaultObjectId:
         return CheckChatUsernameResultPublicChatsTooMany.fromJson(json);
-      case CheckChatUsernameResultPublicGroupsUnavailable.objectType:
+      case CheckChatUsernameResultPublicGroupsUnavailable.defaultObjectId:
         return CheckChatUsernameResultPublicGroupsUnavailable.fromJson(json);
       default:
         throw FormatException(
@@ -47,7 +47,7 @@ sealed class CheckChatUsernameResult extends TdObject {
   CheckChatUsernameResult copyWith();
 
   /// TDLib object type
-  static const String objectType = 'checkChatUsernameResult';
+  static const String defaultObjectId = 'checkChatUsernameResult';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -55,7 +55,7 @@ sealed class CheckChatUsernameResult extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -91,7 +91,7 @@ final class CheckChatUsernameResultOk extends CheckChatUsernameResult {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -106,7 +106,7 @@ final class CheckChatUsernameResultOk extends CheckChatUsernameResult {
   );
 
   /// TDLib object type
-  static const String objectType = 'checkChatUsernameResultOk';
+  static const String defaultObjectId = 'checkChatUsernameResultOk';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -114,7 +114,7 @@ final class CheckChatUsernameResultOk extends CheckChatUsernameResult {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -150,7 +150,7 @@ final class CheckChatUsernameResultUsernameInvalid extends CheckChatUsernameResu
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -165,7 +165,7 @@ final class CheckChatUsernameResultUsernameInvalid extends CheckChatUsernameResu
   );
 
   /// TDLib object type
-  static const String objectType = 'checkChatUsernameResultUsernameInvalid';
+  static const String defaultObjectId = 'checkChatUsernameResultUsernameInvalid';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -173,7 +173,7 @@ final class CheckChatUsernameResultUsernameInvalid extends CheckChatUsernameResu
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -209,7 +209,7 @@ final class CheckChatUsernameResultUsernameOccupied extends CheckChatUsernameRes
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -224,7 +224,7 @@ final class CheckChatUsernameResultUsernameOccupied extends CheckChatUsernameRes
   );
 
   /// TDLib object type
-  static const String objectType = 'checkChatUsernameResultUsernameOccupied';
+  static const String defaultObjectId = 'checkChatUsernameResultUsernameOccupied';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -232,7 +232,7 @@ final class CheckChatUsernameResultUsernameOccupied extends CheckChatUsernameRes
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -268,7 +268,7 @@ final class CheckChatUsernameResultUsernamePurchasable extends CheckChatUsername
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -283,7 +283,7 @@ final class CheckChatUsernameResultUsernamePurchasable extends CheckChatUsername
   );
 
   /// TDLib object type
-  static const String objectType = 'checkChatUsernameResultUsernamePurchasable';
+  static const String defaultObjectId = 'checkChatUsernameResultUsernamePurchasable';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -291,7 +291,7 @@ final class CheckChatUsernameResultUsernamePurchasable extends CheckChatUsername
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -327,7 +327,7 @@ final class CheckChatUsernameResultPublicChatsTooMany extends CheckChatUsernameR
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -342,7 +342,7 @@ final class CheckChatUsernameResultPublicChatsTooMany extends CheckChatUsernameR
   );
 
   /// TDLib object type
-  static const String objectType = 'checkChatUsernameResultPublicChatsTooMany';
+  static const String defaultObjectId = 'checkChatUsernameResultPublicChatsTooMany';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -350,7 +350,7 @@ final class CheckChatUsernameResultPublicChatsTooMany extends CheckChatUsernameR
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -386,7 +386,7 @@ final class CheckChatUsernameResultPublicGroupsUnavailable extends CheckChatUser
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -401,7 +401,7 @@ final class CheckChatUsernameResultPublicGroupsUnavailable extends CheckChatUser
   );
 
   /// TDLib object type
-  static const String objectType = 'checkChatUsernameResultPublicGroupsUnavailable';
+  static const String defaultObjectId = 'checkChatUsernameResultPublicGroupsUnavailable';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -409,5 +409,5 @@ final class CheckChatUsernameResultPublicGroupsUnavailable extends CheckChatUser
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

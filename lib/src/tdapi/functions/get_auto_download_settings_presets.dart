@@ -19,7 +19,7 @@ final class GetAutoDownloadSettingsPresets extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "@extra": extra,
 		};
 	}
@@ -28,7 +28,7 @@ final class GetAutoDownloadSettingsPresets extends TdFunction {
   GetAutoDownloadSettingsPresets copyWith() => const GetAutoDownloadSettingsPresets();
 
   /// TDLib object type
-  static const String objectType = 'getAutoDownloadSettingsPresets';
+  static const String defaultObjectId = 'getAutoDownloadSettingsPresets';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -36,5 +36,5 @@ final class GetAutoDownloadSettingsPresets extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

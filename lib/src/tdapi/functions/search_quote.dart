@@ -39,7 +39,7 @@ final class SearchQuote extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text.toJson(),
       "quote": quote.toJson(),
       "quote_position": quotePosition,
@@ -64,7 +64,7 @@ final class SearchQuote extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'searchQuote';
+  static const String defaultObjectId = 'searchQuote';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -72,5 +72,5 @@ final class SearchQuote extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -50,7 +50,7 @@ final class ChatEvent extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "date": date,
       "member_id": memberId.toJson(),
@@ -78,7 +78,7 @@ final class ChatEvent extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEvent';
+  static const String defaultObjectId = 'chatEvent';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -86,5 +86,5 @@ final class ChatEvent extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

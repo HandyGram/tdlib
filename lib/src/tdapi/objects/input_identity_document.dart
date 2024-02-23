@@ -64,7 +64,7 @@ final class InputIdentityDocument extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "number": number,
       "expiration_date": expirationDate?.toJson(),
       "front_side": frontSide.toJson(),
@@ -100,7 +100,7 @@ final class InputIdentityDocument extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputIdentityDocument';
+  static const String defaultObjectId = 'inputIdentityDocument';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -108,5 +108,5 @@ final class InputIdentityDocument extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

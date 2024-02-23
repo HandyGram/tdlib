@@ -50,7 +50,7 @@ final class MaskPosition extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "point": point.toJson(),
       "x_shift": xShift,
       "y_shift": yShift,
@@ -78,7 +78,7 @@ final class MaskPosition extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'maskPosition';
+  static const String defaultObjectId = 'maskPosition';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -86,5 +86,5 @@ final class MaskPosition extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

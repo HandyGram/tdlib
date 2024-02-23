@@ -97,7 +97,7 @@ final class ScopeNotificationSettings extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "mute_for": muteFor,
       "sound_id": soundId,
       "show_preview": showPreview,
@@ -149,7 +149,7 @@ final class ScopeNotificationSettings extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'scopeNotificationSettings';
+  static const String defaultObjectId = 'scopeNotificationSettings';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -157,5 +157,5 @@ final class ScopeNotificationSettings extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

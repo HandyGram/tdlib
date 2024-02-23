@@ -18,15 +18,15 @@ sealed class PremiumGiveawayParticipantStatus extends TdObject {
   /// * [PremiumGiveawayParticipantStatusDisallowedCountry]
   factory PremiumGiveawayParticipantStatus.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case PremiumGiveawayParticipantStatusEligible.objectType:
+      case PremiumGiveawayParticipantStatusEligible.defaultObjectId:
         return PremiumGiveawayParticipantStatusEligible.fromJson(json);
-      case PremiumGiveawayParticipantStatusParticipating.objectType:
+      case PremiumGiveawayParticipantStatusParticipating.defaultObjectId:
         return PremiumGiveawayParticipantStatusParticipating.fromJson(json);
-      case PremiumGiveawayParticipantStatusAlreadyWasMember.objectType:
+      case PremiumGiveawayParticipantStatusAlreadyWasMember.defaultObjectId:
         return PremiumGiveawayParticipantStatusAlreadyWasMember.fromJson(json);
-      case PremiumGiveawayParticipantStatusAdministrator.objectType:
+      case PremiumGiveawayParticipantStatusAdministrator.defaultObjectId:
         return PremiumGiveawayParticipantStatusAdministrator.fromJson(json);
-      case PremiumGiveawayParticipantStatusDisallowedCountry.objectType:
+      case PremiumGiveawayParticipantStatusDisallowedCountry.defaultObjectId:
         return PremiumGiveawayParticipantStatusDisallowedCountry.fromJson(json);
       default:
         throw FormatException(
@@ -44,7 +44,7 @@ sealed class PremiumGiveawayParticipantStatus extends TdObject {
   PremiumGiveawayParticipantStatus copyWith();
 
   /// TDLib object type
-  static const String objectType = 'premiumGiveawayParticipantStatus';
+  static const String defaultObjectId = 'premiumGiveawayParticipantStatus';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -52,7 +52,7 @@ sealed class PremiumGiveawayParticipantStatus extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -73,7 +73,7 @@ final class PremiumGiveawayParticipantStatusEligible extends PremiumGiveawayPart
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -82,7 +82,7 @@ final class PremiumGiveawayParticipantStatusEligible extends PremiumGiveawayPart
   PremiumGiveawayParticipantStatusEligible copyWith() => const PremiumGiveawayParticipantStatusEligible();
 
   /// TDLib object type
-  static const String objectType = 'premiumGiveawayParticipantStatusEligible';
+  static const String defaultObjectId = 'premiumGiveawayParticipantStatusEligible';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -90,7 +90,7 @@ final class PremiumGiveawayParticipantStatusEligible extends PremiumGiveawayPart
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -111,7 +111,7 @@ final class PremiumGiveawayParticipantStatusParticipating extends PremiumGiveawa
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -120,7 +120,7 @@ final class PremiumGiveawayParticipantStatusParticipating extends PremiumGiveawa
   PremiumGiveawayParticipantStatusParticipating copyWith() => const PremiumGiveawayParticipantStatusParticipating();
 
   /// TDLib object type
-  static const String objectType = 'premiumGiveawayParticipantStatusParticipating';
+  static const String defaultObjectId = 'premiumGiveawayParticipantStatusParticipating';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -128,7 +128,7 @@ final class PremiumGiveawayParticipantStatusParticipating extends PremiumGiveawa
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -161,7 +161,7 @@ final class PremiumGiveawayParticipantStatusAlreadyWasMember extends PremiumGive
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "joined_chat_date": joinedChatDate,
 		};
 	}
@@ -178,7 +178,7 @@ final class PremiumGiveawayParticipantStatusAlreadyWasMember extends PremiumGive
   );
 
   /// TDLib object type
-  static const String objectType = 'premiumGiveawayParticipantStatusAlreadyWasMember';
+  static const String defaultObjectId = 'premiumGiveawayParticipantStatusAlreadyWasMember';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -186,7 +186,7 @@ final class PremiumGiveawayParticipantStatusAlreadyWasMember extends PremiumGive
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -219,7 +219,7 @@ final class PremiumGiveawayParticipantStatusAdministrator extends PremiumGiveawa
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
 		};
 	}
@@ -236,7 +236,7 @@ final class PremiumGiveawayParticipantStatusAdministrator extends PremiumGiveawa
   );
 
   /// TDLib object type
-  static const String objectType = 'premiumGiveawayParticipantStatusAdministrator';
+  static const String defaultObjectId = 'premiumGiveawayParticipantStatusAdministrator';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -244,7 +244,7 @@ final class PremiumGiveawayParticipantStatusAdministrator extends PremiumGiveawa
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -277,7 +277,7 @@ final class PremiumGiveawayParticipantStatusDisallowedCountry extends PremiumGiv
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "user_country_code": userCountryCode,
 		};
 	}
@@ -294,7 +294,7 @@ final class PremiumGiveawayParticipantStatusDisallowedCountry extends PremiumGiv
   );
 
   /// TDLib object type
-  static const String objectType = 'premiumGiveawayParticipantStatusDisallowedCountry';
+  static const String defaultObjectId = 'premiumGiveawayParticipantStatusDisallowedCountry';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -302,5 +302,5 @@ final class PremiumGiveawayParticipantStatusDisallowedCountry extends PremiumGiv
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

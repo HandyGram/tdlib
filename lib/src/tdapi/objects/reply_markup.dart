@@ -17,13 +17,13 @@ sealed class ReplyMarkup extends TdObject {
   /// * [ReplyMarkupInlineKeyboard]
   factory ReplyMarkup.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case ReplyMarkupRemoveKeyboard.objectType:
+      case ReplyMarkupRemoveKeyboard.defaultObjectId:
         return ReplyMarkupRemoveKeyboard.fromJson(json);
-      case ReplyMarkupForceReply.objectType:
+      case ReplyMarkupForceReply.defaultObjectId:
         return ReplyMarkupForceReply.fromJson(json);
-      case ReplyMarkupShowKeyboard.objectType:
+      case ReplyMarkupShowKeyboard.defaultObjectId:
         return ReplyMarkupShowKeyboard.fromJson(json);
-      case ReplyMarkupInlineKeyboard.objectType:
+      case ReplyMarkupInlineKeyboard.defaultObjectId:
         return ReplyMarkupInlineKeyboard.fromJson(json);
       default:
         throw FormatException(
@@ -41,7 +41,7 @@ sealed class ReplyMarkup extends TdObject {
   ReplyMarkup copyWith();
 
   /// TDLib object type
-  static const String objectType = 'replyMarkup';
+  static const String defaultObjectId = 'replyMarkup';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -49,7 +49,7 @@ sealed class ReplyMarkup extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -82,7 +82,7 @@ final class ReplyMarkupRemoveKeyboard extends ReplyMarkup {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "is_personal": isPersonal,
 		};
 	}
@@ -99,7 +99,7 @@ final class ReplyMarkupRemoveKeyboard extends ReplyMarkup {
   );
 
   /// TDLib object type
-  static const String objectType = 'replyMarkupRemoveKeyboard';
+  static const String defaultObjectId = 'replyMarkupRemoveKeyboard';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -107,7 +107,7 @@ final class ReplyMarkupRemoveKeyboard extends ReplyMarkup {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -147,7 +147,7 @@ final class ReplyMarkupForceReply extends ReplyMarkup {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "is_personal": isPersonal,
       "input_field_placeholder": inputFieldPlaceholder,
 		};
@@ -168,7 +168,7 @@ final class ReplyMarkupForceReply extends ReplyMarkup {
   );
 
   /// TDLib object type
-  static const String objectType = 'replyMarkupForceReply';
+  static const String defaultObjectId = 'replyMarkupForceReply';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -176,7 +176,7 @@ final class ReplyMarkupForceReply extends ReplyMarkup {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -244,7 +244,7 @@ final class ReplyMarkupShowKeyboard extends ReplyMarkup {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "rows": rows.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
       "is_persistent": isPersistent,
       "resize_keyboard": resizeKeyboard,
@@ -281,7 +281,7 @@ final class ReplyMarkupShowKeyboard extends ReplyMarkup {
   );
 
   /// TDLib object type
-  static const String objectType = 'replyMarkupShowKeyboard';
+  static const String defaultObjectId = 'replyMarkupShowKeyboard';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -289,7 +289,7 @@ final class ReplyMarkupShowKeyboard extends ReplyMarkup {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -322,7 +322,7 @@ final class ReplyMarkupInlineKeyboard extends ReplyMarkup {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "rows": rows.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
 		};
 	}
@@ -339,7 +339,7 @@ final class ReplyMarkupInlineKeyboard extends ReplyMarkup {
   );
 
   /// TDLib object type
-  static const String objectType = 'replyMarkupInlineKeyboard';
+  static const String defaultObjectId = 'replyMarkupInlineKeyboard';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -347,5 +347,5 @@ final class ReplyMarkupInlineKeyboard extends ReplyMarkup {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

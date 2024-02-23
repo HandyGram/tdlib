@@ -19,7 +19,7 @@ final class GetUserLink extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "@extra": extra,
 		};
 	}
@@ -28,7 +28,7 @@ final class GetUserLink extends TdFunction {
   GetUserLink copyWith() => const GetUserLink();
 
   /// TDLib object type
-  static const String objectType = 'getUserLink';
+  static const String defaultObjectId = 'getUserLink';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -36,5 +36,5 @@ final class GetUserLink extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

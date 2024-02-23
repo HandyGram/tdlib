@@ -19,7 +19,7 @@ final class GetSupportName extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "@extra": extra,
 		};
 	}
@@ -28,7 +28,7 @@ final class GetSupportName extends TdFunction {
   GetSupportName copyWith() => const GetSupportName();
 
   /// TDLib object type
-  static const String objectType = 'getSupportName';
+  static const String defaultObjectId = 'getSupportName';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -36,5 +36,5 @@ final class GetSupportName extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

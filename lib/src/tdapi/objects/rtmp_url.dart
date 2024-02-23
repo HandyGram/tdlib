@@ -48,7 +48,7 @@ final class RtmpUrl extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "url": url,
       "stream_key": streamKey,
 		};
@@ -72,7 +72,7 @@ final class RtmpUrl extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'rtmpUrl';
+  static const String defaultObjectId = 'rtmpUrl';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -80,5 +80,5 @@ final class RtmpUrl extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

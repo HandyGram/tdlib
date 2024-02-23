@@ -15,9 +15,9 @@ sealed class PublicForward extends TdObject {
   /// * [PublicForwardStory]
   factory PublicForward.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case PublicForwardMessage.objectType:
+      case PublicForwardMessage.defaultObjectId:
         return PublicForwardMessage.fromJson(json);
-      case PublicForwardStory.objectType:
+      case PublicForwardStory.defaultObjectId:
         return PublicForwardStory.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class PublicForward extends TdObject {
   PublicForward copyWith();
 
   /// TDLib object type
-  static const String objectType = 'publicForward';
+  static const String defaultObjectId = 'publicForward';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class PublicForward extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -76,7 +76,7 @@ final class PublicForwardMessage extends PublicForward {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "message": message.toJson(),
 		};
 	}
@@ -93,7 +93,7 @@ final class PublicForwardMessage extends PublicForward {
   );
 
   /// TDLib object type
-  static const String objectType = 'publicForwardMessage';
+  static const String defaultObjectId = 'publicForwardMessage';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -101,7 +101,7 @@ final class PublicForwardMessage extends PublicForward {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -134,7 +134,7 @@ final class PublicForwardStory extends PublicForward {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "story": story.toJson(),
 		};
 	}
@@ -151,7 +151,7 @@ final class PublicForwardStory extends PublicForward {
   );
 
   /// TDLib object type
-  static const String objectType = 'publicForwardStory';
+  static const String defaultObjectId = 'publicForwardStory';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -159,5 +159,5 @@ final class PublicForwardStory extends PublicForward {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

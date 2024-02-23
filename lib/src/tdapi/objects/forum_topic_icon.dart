@@ -36,7 +36,7 @@ final class ForumTopicIcon extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "color": color,
       "custom_emoji_id": customEmojiId,
 		};
@@ -56,7 +56,7 @@ final class ForumTopicIcon extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'forumTopicIcon';
+  static const String defaultObjectId = 'forumTopicIcon';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -64,5 +64,5 @@ final class ForumTopicIcon extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

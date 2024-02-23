@@ -17,13 +17,13 @@ sealed class NotificationType extends TdObject {
   /// * [NotificationTypeNewPushMessage]
   factory NotificationType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case NotificationTypeNewMessage.objectType:
+      case NotificationTypeNewMessage.defaultObjectId:
         return NotificationTypeNewMessage.fromJson(json);
-      case NotificationTypeNewSecretChat.objectType:
+      case NotificationTypeNewSecretChat.defaultObjectId:
         return NotificationTypeNewSecretChat.fromJson(json);
-      case NotificationTypeNewCall.objectType:
+      case NotificationTypeNewCall.defaultObjectId:
         return NotificationTypeNewCall.fromJson(json);
-      case NotificationTypeNewPushMessage.objectType:
+      case NotificationTypeNewPushMessage.defaultObjectId:
         return NotificationTypeNewPushMessage.fromJson(json);
       default:
         throw FormatException(
@@ -41,7 +41,7 @@ sealed class NotificationType extends TdObject {
   NotificationType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'notificationType';
+  static const String defaultObjectId = 'notificationType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -49,7 +49,7 @@ sealed class NotificationType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -89,7 +89,7 @@ final class NotificationTypeNewMessage extends NotificationType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "message": message.toJson(),
       "show_preview": showPreview,
 		};
@@ -110,7 +110,7 @@ final class NotificationTypeNewMessage extends NotificationType {
   );
 
   /// TDLib object type
-  static const String objectType = 'notificationTypeNewMessage';
+  static const String defaultObjectId = 'notificationTypeNewMessage';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -118,7 +118,7 @@ final class NotificationTypeNewMessage extends NotificationType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -139,7 +139,7 @@ final class NotificationTypeNewSecretChat extends NotificationType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -148,7 +148,7 @@ final class NotificationTypeNewSecretChat extends NotificationType {
   NotificationTypeNewSecretChat copyWith() => const NotificationTypeNewSecretChat();
 
   /// TDLib object type
-  static const String objectType = 'notificationTypeNewSecretChat';
+  static const String defaultObjectId = 'notificationTypeNewSecretChat';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -156,7 +156,7 @@ final class NotificationTypeNewSecretChat extends NotificationType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -189,7 +189,7 @@ final class NotificationTypeNewCall extends NotificationType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "call_id": callId,
 		};
 	}
@@ -206,7 +206,7 @@ final class NotificationTypeNewCall extends NotificationType {
   );
 
   /// TDLib object type
-  static const String objectType = 'notificationTypeNewCall';
+  static const String defaultObjectId = 'notificationTypeNewCall';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -214,7 +214,7 @@ final class NotificationTypeNewCall extends NotificationType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -275,7 +275,7 @@ final class NotificationTypeNewPushMessage extends NotificationType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "message_id": messageId,
       "sender_id": senderId.toJson(),
       "sender_name": senderName,
@@ -308,7 +308,7 @@ final class NotificationTypeNewPushMessage extends NotificationType {
   );
 
   /// TDLib object type
-  static const String objectType = 'notificationTypeNewPushMessage';
+  static const String defaultObjectId = 'notificationTypeNewPushMessage';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -316,5 +316,5 @@ final class NotificationTypeNewPushMessage extends NotificationType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

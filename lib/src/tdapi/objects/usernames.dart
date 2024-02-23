@@ -43,7 +43,7 @@ final class Usernames extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "active_usernames": activeUsernames.map((i) => i).toList(),
       "disabled_usernames": disabledUsernames.map((i) => i).toList(),
       "editable_username": editableUsername,
@@ -67,7 +67,7 @@ final class Usernames extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'usernames';
+  static const String defaultObjectId = 'usernames';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -75,5 +75,5 @@ final class Usernames extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

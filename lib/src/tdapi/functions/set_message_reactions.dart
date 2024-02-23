@@ -45,7 +45,7 @@ final class SetMessageReactions extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "reaction_types": reactionTypes.map((i) => i.toJson()).toList(),
@@ -74,7 +74,7 @@ final class SetMessageReactions extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'setMessageReactions';
+  static const String defaultObjectId = 'setMessageReactions';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -82,5 +82,5 @@ final class SetMessageReactions extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

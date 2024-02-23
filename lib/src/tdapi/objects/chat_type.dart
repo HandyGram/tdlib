@@ -17,13 +17,13 @@ sealed class ChatType extends TdObject {
   /// * [ChatTypeSecret]
   factory ChatType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case ChatTypePrivate.objectType:
+      case ChatTypePrivate.defaultObjectId:
         return ChatTypePrivate.fromJson(json);
-      case ChatTypeBasicGroup.objectType:
+      case ChatTypeBasicGroup.defaultObjectId:
         return ChatTypeBasicGroup.fromJson(json);
-      case ChatTypeSupergroup.objectType:
+      case ChatTypeSupergroup.defaultObjectId:
         return ChatTypeSupergroup.fromJson(json);
-      case ChatTypeSecret.objectType:
+      case ChatTypeSecret.defaultObjectId:
         return ChatTypeSecret.fromJson(json);
       default:
         throw FormatException(
@@ -41,7 +41,7 @@ sealed class ChatType extends TdObject {
   ChatType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'chatType';
+  static const String defaultObjectId = 'chatType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -49,7 +49,7 @@ sealed class ChatType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -82,7 +82,7 @@ final class ChatTypePrivate extends ChatType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "user_id": userId,
 		};
 	}
@@ -99,7 +99,7 @@ final class ChatTypePrivate extends ChatType {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatTypePrivate';
+  static const String defaultObjectId = 'chatTypePrivate';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -107,7 +107,7 @@ final class ChatTypePrivate extends ChatType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -140,7 +140,7 @@ final class ChatTypeBasicGroup extends ChatType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "basic_group_id": basicGroupId,
 		};
 	}
@@ -157,7 +157,7 @@ final class ChatTypeBasicGroup extends ChatType {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatTypeBasicGroup';
+  static const String defaultObjectId = 'chatTypeBasicGroup';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -165,7 +165,7 @@ final class ChatTypeBasicGroup extends ChatType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -205,7 +205,7 @@ final class ChatTypeSupergroup extends ChatType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "supergroup_id": supergroupId,
       "is_channel": isChannel,
 		};
@@ -226,7 +226,7 @@ final class ChatTypeSupergroup extends ChatType {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatTypeSupergroup';
+  static const String defaultObjectId = 'chatTypeSupergroup';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -234,7 +234,7 @@ final class ChatTypeSupergroup extends ChatType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -274,7 +274,7 @@ final class ChatTypeSecret extends ChatType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "secret_chat_id": secretChatId,
       "user_id": userId,
 		};
@@ -295,7 +295,7 @@ final class ChatTypeSecret extends ChatType {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatTypeSecret';
+  static const String defaultObjectId = 'chatTypeSecret';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -303,5 +303,5 @@ final class ChatTypeSecret extends ChatType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

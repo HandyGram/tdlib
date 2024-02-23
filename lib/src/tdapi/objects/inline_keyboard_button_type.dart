@@ -22,23 +22,23 @@ sealed class InlineKeyboardButtonType extends TdObject {
   /// * [InlineKeyboardButtonTypeUser]
   factory InlineKeyboardButtonType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case InlineKeyboardButtonTypeUrl.objectType:
+      case InlineKeyboardButtonTypeUrl.defaultObjectId:
         return InlineKeyboardButtonTypeUrl.fromJson(json);
-      case InlineKeyboardButtonTypeLoginUrl.objectType:
+      case InlineKeyboardButtonTypeLoginUrl.defaultObjectId:
         return InlineKeyboardButtonTypeLoginUrl.fromJson(json);
-      case InlineKeyboardButtonTypeWebApp.objectType:
+      case InlineKeyboardButtonTypeWebApp.defaultObjectId:
         return InlineKeyboardButtonTypeWebApp.fromJson(json);
-      case InlineKeyboardButtonTypeCallback.objectType:
+      case InlineKeyboardButtonTypeCallback.defaultObjectId:
         return InlineKeyboardButtonTypeCallback.fromJson(json);
-      case InlineKeyboardButtonTypeCallbackWithPassword.objectType:
+      case InlineKeyboardButtonTypeCallbackWithPassword.defaultObjectId:
         return InlineKeyboardButtonTypeCallbackWithPassword.fromJson(json);
-      case InlineKeyboardButtonTypeCallbackGame.objectType:
+      case InlineKeyboardButtonTypeCallbackGame.defaultObjectId:
         return InlineKeyboardButtonTypeCallbackGame.fromJson(json);
-      case InlineKeyboardButtonTypeSwitchInline.objectType:
+      case InlineKeyboardButtonTypeSwitchInline.defaultObjectId:
         return InlineKeyboardButtonTypeSwitchInline.fromJson(json);
-      case InlineKeyboardButtonTypeBuy.objectType:
+      case InlineKeyboardButtonTypeBuy.defaultObjectId:
         return InlineKeyboardButtonTypeBuy.fromJson(json);
-      case InlineKeyboardButtonTypeUser.objectType:
+      case InlineKeyboardButtonTypeUser.defaultObjectId:
         return InlineKeyboardButtonTypeUser.fromJson(json);
       default:
         throw FormatException(
@@ -56,7 +56,7 @@ sealed class InlineKeyboardButtonType extends TdObject {
   InlineKeyboardButtonType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'inlineKeyboardButtonType';
+  static const String defaultObjectId = 'inlineKeyboardButtonType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -64,7 +64,7 @@ sealed class InlineKeyboardButtonType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -97,7 +97,7 @@ final class InlineKeyboardButtonTypeUrl extends InlineKeyboardButtonType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "url": url,
 		};
 	}
@@ -114,7 +114,7 @@ final class InlineKeyboardButtonTypeUrl extends InlineKeyboardButtonType {
   );
 
   /// TDLib object type
-  static const String objectType = 'inlineKeyboardButtonTypeUrl';
+  static const String defaultObjectId = 'inlineKeyboardButtonTypeUrl';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -122,7 +122,7 @@ final class InlineKeyboardButtonTypeUrl extends InlineKeyboardButtonType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -169,7 +169,7 @@ final class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "url": url,
       "id": id,
       "forward_text": forwardText,
@@ -194,7 +194,7 @@ final class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
   );
 
   /// TDLib object type
-  static const String objectType = 'inlineKeyboardButtonTypeLoginUrl';
+  static const String defaultObjectId = 'inlineKeyboardButtonTypeLoginUrl';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -202,7 +202,7 @@ final class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -235,7 +235,7 @@ final class InlineKeyboardButtonTypeWebApp extends InlineKeyboardButtonType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "url": url,
 		};
 	}
@@ -252,7 +252,7 @@ final class InlineKeyboardButtonTypeWebApp extends InlineKeyboardButtonType {
   );
 
   /// TDLib object type
-  static const String objectType = 'inlineKeyboardButtonTypeWebApp';
+  static const String defaultObjectId = 'inlineKeyboardButtonTypeWebApp';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -260,7 +260,7 @@ final class InlineKeyboardButtonTypeWebApp extends InlineKeyboardButtonType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -293,7 +293,7 @@ final class InlineKeyboardButtonTypeCallback extends InlineKeyboardButtonType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "data": data,
 		};
 	}
@@ -310,7 +310,7 @@ final class InlineKeyboardButtonTypeCallback extends InlineKeyboardButtonType {
   );
 
   /// TDLib object type
-  static const String objectType = 'inlineKeyboardButtonTypeCallback';
+  static const String defaultObjectId = 'inlineKeyboardButtonTypeCallback';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -318,7 +318,7 @@ final class InlineKeyboardButtonTypeCallback extends InlineKeyboardButtonType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -351,7 +351,7 @@ final class InlineKeyboardButtonTypeCallbackWithPassword extends InlineKeyboardB
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "data": data,
 		};
 	}
@@ -368,7 +368,7 @@ final class InlineKeyboardButtonTypeCallbackWithPassword extends InlineKeyboardB
   );
 
   /// TDLib object type
-  static const String objectType = 'inlineKeyboardButtonTypeCallbackWithPassword';
+  static const String defaultObjectId = 'inlineKeyboardButtonTypeCallbackWithPassword';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -376,7 +376,7 @@ final class InlineKeyboardButtonTypeCallbackWithPassword extends InlineKeyboardB
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -397,7 +397,7 @@ final class InlineKeyboardButtonTypeCallbackGame extends InlineKeyboardButtonTyp
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -406,7 +406,7 @@ final class InlineKeyboardButtonTypeCallbackGame extends InlineKeyboardButtonTyp
   InlineKeyboardButtonTypeCallbackGame copyWith() => const InlineKeyboardButtonTypeCallbackGame();
 
   /// TDLib object type
-  static const String objectType = 'inlineKeyboardButtonTypeCallbackGame';
+  static const String defaultObjectId = 'inlineKeyboardButtonTypeCallbackGame';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -414,7 +414,7 @@ final class InlineKeyboardButtonTypeCallbackGame extends InlineKeyboardButtonTyp
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -454,7 +454,7 @@ final class InlineKeyboardButtonTypeSwitchInline extends InlineKeyboardButtonTyp
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "query": query,
       "target_chat": targetChat.toJson(),
 		};
@@ -475,7 +475,7 @@ final class InlineKeyboardButtonTypeSwitchInline extends InlineKeyboardButtonTyp
   );
 
   /// TDLib object type
-  static const String objectType = 'inlineKeyboardButtonTypeSwitchInline';
+  static const String defaultObjectId = 'inlineKeyboardButtonTypeSwitchInline';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -483,7 +483,7 @@ final class InlineKeyboardButtonTypeSwitchInline extends InlineKeyboardButtonTyp
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -504,7 +504,7 @@ final class InlineKeyboardButtonTypeBuy extends InlineKeyboardButtonType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -513,7 +513,7 @@ final class InlineKeyboardButtonTypeBuy extends InlineKeyboardButtonType {
   InlineKeyboardButtonTypeBuy copyWith() => const InlineKeyboardButtonTypeBuy();
 
   /// TDLib object type
-  static const String objectType = 'inlineKeyboardButtonTypeBuy';
+  static const String defaultObjectId = 'inlineKeyboardButtonTypeBuy';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -521,7 +521,7 @@ final class InlineKeyboardButtonTypeBuy extends InlineKeyboardButtonType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -554,7 +554,7 @@ final class InlineKeyboardButtonTypeUser extends InlineKeyboardButtonType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "user_id": userId,
 		};
 	}
@@ -571,7 +571,7 @@ final class InlineKeyboardButtonTypeUser extends InlineKeyboardButtonType {
   );
 
   /// TDLib object type
-  static const String objectType = 'inlineKeyboardButtonTypeUser';
+  static const String defaultObjectId = 'inlineKeyboardButtonTypeUser';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -579,5 +579,5 @@ final class InlineKeyboardButtonTypeUser extends InlineKeyboardButtonType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

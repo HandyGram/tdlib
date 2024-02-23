@@ -16,11 +16,11 @@ sealed class PageBlockVerticalAlignment extends TdObject {
   /// * [PageBlockVerticalAlignmentBottom]
   factory PageBlockVerticalAlignment.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case PageBlockVerticalAlignmentTop.objectType:
+      case PageBlockVerticalAlignmentTop.defaultObjectId:
         return PageBlockVerticalAlignmentTop.fromJson(json);
-      case PageBlockVerticalAlignmentMiddle.objectType:
+      case PageBlockVerticalAlignmentMiddle.defaultObjectId:
         return PageBlockVerticalAlignmentMiddle.fromJson(json);
-      case PageBlockVerticalAlignmentBottom.objectType:
+      case PageBlockVerticalAlignmentBottom.defaultObjectId:
         return PageBlockVerticalAlignmentBottom.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class PageBlockVerticalAlignment extends TdObject {
   PageBlockVerticalAlignment copyWith();
 
   /// TDLib object type
-  static const String objectType = 'pageBlockVerticalAlignment';
+  static const String defaultObjectId = 'pageBlockVerticalAlignment';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class PageBlockVerticalAlignment extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -67,7 +67,7 @@ final class PageBlockVerticalAlignmentTop extends PageBlockVerticalAlignment {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -76,7 +76,7 @@ final class PageBlockVerticalAlignmentTop extends PageBlockVerticalAlignment {
   PageBlockVerticalAlignmentTop copyWith() => const PageBlockVerticalAlignmentTop();
 
   /// TDLib object type
-  static const String objectType = 'pageBlockVerticalAlignmentTop';
+  static const String defaultObjectId = 'pageBlockVerticalAlignmentTop';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -84,7 +84,7 @@ final class PageBlockVerticalAlignmentTop extends PageBlockVerticalAlignment {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -105,7 +105,7 @@ final class PageBlockVerticalAlignmentMiddle extends PageBlockVerticalAlignment 
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -114,7 +114,7 @@ final class PageBlockVerticalAlignmentMiddle extends PageBlockVerticalAlignment 
   PageBlockVerticalAlignmentMiddle copyWith() => const PageBlockVerticalAlignmentMiddle();
 
   /// TDLib object type
-  static const String objectType = 'pageBlockVerticalAlignmentMiddle';
+  static const String defaultObjectId = 'pageBlockVerticalAlignmentMiddle';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -122,7 +122,7 @@ final class PageBlockVerticalAlignmentMiddle extends PageBlockVerticalAlignment 
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -143,7 +143,7 @@ final class PageBlockVerticalAlignmentBottom extends PageBlockVerticalAlignment 
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -152,7 +152,7 @@ final class PageBlockVerticalAlignmentBottom extends PageBlockVerticalAlignment 
   PageBlockVerticalAlignmentBottom copyWith() => const PageBlockVerticalAlignmentBottom();
 
   /// TDLib object type
-  static const String objectType = 'pageBlockVerticalAlignmentBottom';
+  static const String defaultObjectId = 'pageBlockVerticalAlignmentBottom';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -160,5 +160,5 @@ final class PageBlockVerticalAlignmentBottom extends PageBlockVerticalAlignment 
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

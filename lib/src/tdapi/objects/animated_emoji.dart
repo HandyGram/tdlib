@@ -69,7 +69,7 @@ final class AnimatedEmoji extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "sticker": sticker?.toJson(),
       "sticker_width": stickerWidth,
       "sticker_height": stickerHeight,
@@ -105,7 +105,7 @@ final class AnimatedEmoji extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'animatedEmoji';
+  static const String defaultObjectId = 'animatedEmoji';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -113,5 +113,5 @@ final class AnimatedEmoji extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -41,7 +41,7 @@ final class FileDownloadedPrefixSize extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "size": size,
 		};
 	}
@@ -61,7 +61,7 @@ final class FileDownloadedPrefixSize extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'fileDownloadedPrefixSize';
+  static const String defaultObjectId = 'fileDownloadedPrefixSize';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -69,5 +69,5 @@ final class FileDownloadedPrefixSize extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

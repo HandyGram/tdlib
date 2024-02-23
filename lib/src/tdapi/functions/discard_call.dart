@@ -51,7 +51,7 @@ final class DiscardCall extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "call_id": callId,
       "is_disconnected": isDisconnected,
       "duration": duration,
@@ -84,7 +84,7 @@ final class DiscardCall extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'discardCall';
+  static const String defaultObjectId = 'discardCall';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -92,5 +92,5 @@ final class DiscardCall extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

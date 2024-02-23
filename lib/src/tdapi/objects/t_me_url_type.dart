@@ -17,13 +17,13 @@ sealed class TMeUrlType extends TdObject {
   /// * [TMeUrlTypeStickerSet]
   factory TMeUrlType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case TMeUrlTypeUser.objectType:
+      case TMeUrlTypeUser.defaultObjectId:
         return TMeUrlTypeUser.fromJson(json);
-      case TMeUrlTypeSupergroup.objectType:
+      case TMeUrlTypeSupergroup.defaultObjectId:
         return TMeUrlTypeSupergroup.fromJson(json);
-      case TMeUrlTypeChatInvite.objectType:
+      case TMeUrlTypeChatInvite.defaultObjectId:
         return TMeUrlTypeChatInvite.fromJson(json);
-      case TMeUrlTypeStickerSet.objectType:
+      case TMeUrlTypeStickerSet.defaultObjectId:
         return TMeUrlTypeStickerSet.fromJson(json);
       default:
         throw FormatException(
@@ -41,7 +41,7 @@ sealed class TMeUrlType extends TdObject {
   TMeUrlType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'tMeUrlType';
+  static const String defaultObjectId = 'tMeUrlType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -49,7 +49,7 @@ sealed class TMeUrlType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -82,7 +82,7 @@ final class TMeUrlTypeUser extends TMeUrlType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "user_id": userId,
 		};
 	}
@@ -99,7 +99,7 @@ final class TMeUrlTypeUser extends TMeUrlType {
   );
 
   /// TDLib object type
-  static const String objectType = 'tMeUrlTypeUser';
+  static const String defaultObjectId = 'tMeUrlTypeUser';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -107,7 +107,7 @@ final class TMeUrlTypeUser extends TMeUrlType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -140,7 +140,7 @@ final class TMeUrlTypeSupergroup extends TMeUrlType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "supergroup_id": supergroupId,
 		};
 	}
@@ -157,7 +157,7 @@ final class TMeUrlTypeSupergroup extends TMeUrlType {
   );
 
   /// TDLib object type
-  static const String objectType = 'tMeUrlTypeSupergroup';
+  static const String defaultObjectId = 'tMeUrlTypeSupergroup';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -165,7 +165,7 @@ final class TMeUrlTypeSupergroup extends TMeUrlType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -198,7 +198,7 @@ final class TMeUrlTypeChatInvite extends TMeUrlType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "info": info.toJson(),
 		};
 	}
@@ -215,7 +215,7 @@ final class TMeUrlTypeChatInvite extends TMeUrlType {
   );
 
   /// TDLib object type
-  static const String objectType = 'tMeUrlTypeChatInvite';
+  static const String defaultObjectId = 'tMeUrlTypeChatInvite';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -223,7 +223,7 @@ final class TMeUrlTypeChatInvite extends TMeUrlType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -256,7 +256,7 @@ final class TMeUrlTypeStickerSet extends TMeUrlType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "sticker_set_id": stickerSetId,
 		};
 	}
@@ -273,7 +273,7 @@ final class TMeUrlTypeStickerSet extends TMeUrlType {
   );
 
   /// TDLib object type
-  static const String objectType = 'tMeUrlTypeStickerSet';
+  static const String defaultObjectId = 'tMeUrlTypeStickerSet';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -281,5 +281,5 @@ final class TMeUrlTypeStickerSet extends TMeUrlType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

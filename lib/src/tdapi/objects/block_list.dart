@@ -15,9 +15,9 @@ sealed class BlockList extends TdObject {
   /// * [BlockListStories]
   factory BlockList.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case BlockListMain.objectType:
+      case BlockListMain.defaultObjectId:
         return BlockListMain.fromJson(json);
-      case BlockListStories.objectType:
+      case BlockListStories.defaultObjectId:
         return BlockListStories.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class BlockList extends TdObject {
   BlockList copyWith();
 
   /// TDLib object type
-  static const String objectType = 'blockList';
+  static const String defaultObjectId = 'blockList';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class BlockList extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -64,7 +64,7 @@ final class BlockListMain extends BlockList {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -73,7 +73,7 @@ final class BlockListMain extends BlockList {
   BlockListMain copyWith() => const BlockListMain();
 
   /// TDLib object type
-  static const String objectType = 'blockListMain';
+  static const String defaultObjectId = 'blockListMain';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -81,7 +81,7 @@ final class BlockListMain extends BlockList {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -102,7 +102,7 @@ final class BlockListStories extends BlockList {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -111,7 +111,7 @@ final class BlockListStories extends BlockList {
   BlockListStories copyWith() => const BlockListStories();
 
   /// TDLib object type
-  static const String objectType = 'blockListStories';
+  static const String defaultObjectId = 'blockListStories';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -119,5 +119,5 @@ final class BlockListStories extends BlockList {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -10,7 +10,7 @@ sealed class TdObject {
   int? get clientId => null;
 
   /// TDLib object type for current class instance
-  String get instanceType => "object";
+  String get currentObjectId => "object";
 
   /// Unused constructor
   const TdObject();

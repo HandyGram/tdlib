@@ -43,7 +43,7 @@ final class ChatTheme extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "name": name,
       "light_settings": lightSettings.toJson(),
       "dark_settings": darkSettings.toJson(),
@@ -67,7 +67,7 @@ final class ChatTheme extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatTheme';
+  static const String defaultObjectId = 'chatTheme';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -75,5 +75,5 @@ final class ChatTheme extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

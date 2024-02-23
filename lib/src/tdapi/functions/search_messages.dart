@@ -63,7 +63,7 @@ final class SearchMessages extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_list": chatList?.toJson(),
       "query": query,
       "offset": offset,
@@ -104,7 +104,7 @@ final class SearchMessages extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'searchMessages';
+  static const String defaultObjectId = 'searchMessages';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -112,5 +112,5 @@ final class SearchMessages extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

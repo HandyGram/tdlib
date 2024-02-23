@@ -41,7 +41,7 @@ final class RecoveryEmailAddress extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "recovery_email_address": recoveryEmailAddress,
 		};
 	}
@@ -61,7 +61,7 @@ final class RecoveryEmailAddress extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'recoveryEmailAddress';
+  static const String defaultObjectId = 'recoveryEmailAddress';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -69,5 +69,5 @@ final class RecoveryEmailAddress extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

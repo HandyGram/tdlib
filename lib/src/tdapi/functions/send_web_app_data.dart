@@ -39,7 +39,7 @@ final class SendWebAppData extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "bot_user_id": botUserId,
       "button_text": buttonText,
       "data": data,
@@ -64,7 +64,7 @@ final class SendWebAppData extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'sendWebAppData';
+  static const String defaultObjectId = 'sendWebAppData';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -72,5 +72,5 @@ final class SendWebAppData extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

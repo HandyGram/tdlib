@@ -195,7 +195,7 @@ final class AttachmentMenuBot extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "bot_user_id": botUserId,
       "supports_self_chat": supportsSelfChat,
       "supports_user_chats": supportsUserChats,
@@ -303,7 +303,7 @@ final class AttachmentMenuBot extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'attachmentMenuBot';
+  static const String defaultObjectId = 'attachmentMenuBot';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -311,5 +311,5 @@ final class AttachmentMenuBot extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

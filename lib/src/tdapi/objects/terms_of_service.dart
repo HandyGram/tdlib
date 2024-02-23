@@ -43,7 +43,7 @@ final class TermsOfService extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text.toJson(),
       "min_user_age": minUserAge,
       "show_popup": showPopup,
@@ -67,7 +67,7 @@ final class TermsOfService extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'termsOfService';
+  static const String defaultObjectId = 'termsOfService';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -75,5 +75,5 @@ final class TermsOfService extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

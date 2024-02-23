@@ -48,7 +48,7 @@ final class UserLink extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "url": url,
       "expires_in": expiresIn,
 		};
@@ -72,7 +72,7 @@ final class UserLink extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'userLink';
+  static const String defaultObjectId = 'userLink';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -80,5 +80,5 @@ final class UserLink extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

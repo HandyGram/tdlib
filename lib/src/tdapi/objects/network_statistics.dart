@@ -48,7 +48,7 @@ final class NetworkStatistics extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "since_date": sinceDate,
       "entries": entries.map((i) => i.toJson()).toList(),
 		};
@@ -72,7 +72,7 @@ final class NetworkStatistics extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'networkStatistics';
+  static const String defaultObjectId = 'networkStatistics';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -80,5 +80,5 @@ final class NetworkStatistics extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

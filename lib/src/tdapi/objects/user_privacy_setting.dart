@@ -23,25 +23,25 @@ sealed class UserPrivacySetting extends TdObject {
   /// * [UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages]
   factory UserPrivacySetting.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case UserPrivacySettingShowStatus.objectType:
+      case UserPrivacySettingShowStatus.defaultObjectId:
         return UserPrivacySettingShowStatus.fromJson(json);
-      case UserPrivacySettingShowProfilePhoto.objectType:
+      case UserPrivacySettingShowProfilePhoto.defaultObjectId:
         return UserPrivacySettingShowProfilePhoto.fromJson(json);
-      case UserPrivacySettingShowLinkInForwardedMessages.objectType:
+      case UserPrivacySettingShowLinkInForwardedMessages.defaultObjectId:
         return UserPrivacySettingShowLinkInForwardedMessages.fromJson(json);
-      case UserPrivacySettingShowPhoneNumber.objectType:
+      case UserPrivacySettingShowPhoneNumber.defaultObjectId:
         return UserPrivacySettingShowPhoneNumber.fromJson(json);
-      case UserPrivacySettingShowBio.objectType:
+      case UserPrivacySettingShowBio.defaultObjectId:
         return UserPrivacySettingShowBio.fromJson(json);
-      case UserPrivacySettingAllowChatInvites.objectType:
+      case UserPrivacySettingAllowChatInvites.defaultObjectId:
         return UserPrivacySettingAllowChatInvites.fromJson(json);
-      case UserPrivacySettingAllowCalls.objectType:
+      case UserPrivacySettingAllowCalls.defaultObjectId:
         return UserPrivacySettingAllowCalls.fromJson(json);
-      case UserPrivacySettingAllowPeerToPeerCalls.objectType:
+      case UserPrivacySettingAllowPeerToPeerCalls.defaultObjectId:
         return UserPrivacySettingAllowPeerToPeerCalls.fromJson(json);
-      case UserPrivacySettingAllowFindingByPhoneNumber.objectType:
+      case UserPrivacySettingAllowFindingByPhoneNumber.defaultObjectId:
         return UserPrivacySettingAllowFindingByPhoneNumber.fromJson(json);
-      case UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages.objectType:
+      case UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages.defaultObjectId:
         return UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages.fromJson(json);
       default:
         throw FormatException(
@@ -59,7 +59,7 @@ sealed class UserPrivacySetting extends TdObject {
   UserPrivacySetting copyWith();
 
   /// TDLib object type
-  static const String objectType = 'userPrivacySetting';
+  static const String defaultObjectId = 'userPrivacySetting';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -67,7 +67,7 @@ sealed class UserPrivacySetting extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -88,7 +88,7 @@ final class UserPrivacySettingShowStatus extends UserPrivacySetting {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -97,7 +97,7 @@ final class UserPrivacySettingShowStatus extends UserPrivacySetting {
   UserPrivacySettingShowStatus copyWith() => const UserPrivacySettingShowStatus();
 
   /// TDLib object type
-  static const String objectType = 'userPrivacySettingShowStatus';
+  static const String defaultObjectId = 'userPrivacySettingShowStatus';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -105,7 +105,7 @@ final class UserPrivacySettingShowStatus extends UserPrivacySetting {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -126,7 +126,7 @@ final class UserPrivacySettingShowProfilePhoto extends UserPrivacySetting {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -135,7 +135,7 @@ final class UserPrivacySettingShowProfilePhoto extends UserPrivacySetting {
   UserPrivacySettingShowProfilePhoto copyWith() => const UserPrivacySettingShowProfilePhoto();
 
   /// TDLib object type
-  static const String objectType = 'userPrivacySettingShowProfilePhoto';
+  static const String defaultObjectId = 'userPrivacySettingShowProfilePhoto';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -143,7 +143,7 @@ final class UserPrivacySettingShowProfilePhoto extends UserPrivacySetting {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -164,7 +164,7 @@ final class UserPrivacySettingShowLinkInForwardedMessages extends UserPrivacySet
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -173,7 +173,7 @@ final class UserPrivacySettingShowLinkInForwardedMessages extends UserPrivacySet
   UserPrivacySettingShowLinkInForwardedMessages copyWith() => const UserPrivacySettingShowLinkInForwardedMessages();
 
   /// TDLib object type
-  static const String objectType = 'userPrivacySettingShowLinkInForwardedMessages';
+  static const String defaultObjectId = 'userPrivacySettingShowLinkInForwardedMessages';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -181,7 +181,7 @@ final class UserPrivacySettingShowLinkInForwardedMessages extends UserPrivacySet
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -202,7 +202,7 @@ final class UserPrivacySettingShowPhoneNumber extends UserPrivacySetting {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -211,7 +211,7 @@ final class UserPrivacySettingShowPhoneNumber extends UserPrivacySetting {
   UserPrivacySettingShowPhoneNumber copyWith() => const UserPrivacySettingShowPhoneNumber();
 
   /// TDLib object type
-  static const String objectType = 'userPrivacySettingShowPhoneNumber';
+  static const String defaultObjectId = 'userPrivacySettingShowPhoneNumber';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -219,7 +219,7 @@ final class UserPrivacySettingShowPhoneNumber extends UserPrivacySetting {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -240,7 +240,7 @@ final class UserPrivacySettingShowBio extends UserPrivacySetting {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -249,7 +249,7 @@ final class UserPrivacySettingShowBio extends UserPrivacySetting {
   UserPrivacySettingShowBio copyWith() => const UserPrivacySettingShowBio();
 
   /// TDLib object type
-  static const String objectType = 'userPrivacySettingShowBio';
+  static const String defaultObjectId = 'userPrivacySettingShowBio';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -257,7 +257,7 @@ final class UserPrivacySettingShowBio extends UserPrivacySetting {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -278,7 +278,7 @@ final class UserPrivacySettingAllowChatInvites extends UserPrivacySetting {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -287,7 +287,7 @@ final class UserPrivacySettingAllowChatInvites extends UserPrivacySetting {
   UserPrivacySettingAllowChatInvites copyWith() => const UserPrivacySettingAllowChatInvites();
 
   /// TDLib object type
-  static const String objectType = 'userPrivacySettingAllowChatInvites';
+  static const String defaultObjectId = 'userPrivacySettingAllowChatInvites';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -295,7 +295,7 @@ final class UserPrivacySettingAllowChatInvites extends UserPrivacySetting {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -316,7 +316,7 @@ final class UserPrivacySettingAllowCalls extends UserPrivacySetting {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -325,7 +325,7 @@ final class UserPrivacySettingAllowCalls extends UserPrivacySetting {
   UserPrivacySettingAllowCalls copyWith() => const UserPrivacySettingAllowCalls();
 
   /// TDLib object type
-  static const String objectType = 'userPrivacySettingAllowCalls';
+  static const String defaultObjectId = 'userPrivacySettingAllowCalls';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -333,7 +333,7 @@ final class UserPrivacySettingAllowCalls extends UserPrivacySetting {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -354,7 +354,7 @@ final class UserPrivacySettingAllowPeerToPeerCalls extends UserPrivacySetting {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -363,7 +363,7 @@ final class UserPrivacySettingAllowPeerToPeerCalls extends UserPrivacySetting {
   UserPrivacySettingAllowPeerToPeerCalls copyWith() => const UserPrivacySettingAllowPeerToPeerCalls();
 
   /// TDLib object type
-  static const String objectType = 'userPrivacySettingAllowPeerToPeerCalls';
+  static const String defaultObjectId = 'userPrivacySettingAllowPeerToPeerCalls';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -371,7 +371,7 @@ final class UserPrivacySettingAllowPeerToPeerCalls extends UserPrivacySetting {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -392,7 +392,7 @@ final class UserPrivacySettingAllowFindingByPhoneNumber extends UserPrivacySetti
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -401,7 +401,7 @@ final class UserPrivacySettingAllowFindingByPhoneNumber extends UserPrivacySetti
   UserPrivacySettingAllowFindingByPhoneNumber copyWith() => const UserPrivacySettingAllowFindingByPhoneNumber();
 
   /// TDLib object type
-  static const String objectType = 'userPrivacySettingAllowFindingByPhoneNumber';
+  static const String defaultObjectId = 'userPrivacySettingAllowFindingByPhoneNumber';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -409,7 +409,7 @@ final class UserPrivacySettingAllowFindingByPhoneNumber extends UserPrivacySetti
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -430,7 +430,7 @@ final class UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages extends User
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -439,7 +439,7 @@ final class UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages extends User
   UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages copyWith() => const UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages();
 
   /// TDLib object type
-  static const String objectType = 'userPrivacySettingAllowPrivateVoiceAndVideoNoteMessages';
+  static const String defaultObjectId = 'userPrivacySettingAllowPrivateVoiceAndVideoNoteMessages';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -447,5 +447,5 @@ final class UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages extends User
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

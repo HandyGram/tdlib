@@ -39,7 +39,7 @@ final class GetGameHighScores extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "user_id": userId,
@@ -64,7 +64,7 @@ final class GetGameHighScores extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'getGameHighScores';
+  static const String defaultObjectId = 'getGameHighScores';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -72,5 +72,5 @@ final class GetGameHighScores extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

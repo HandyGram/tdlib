@@ -76,7 +76,7 @@ final class NotificationSound extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "duration": duration,
       "date": date,
@@ -116,7 +116,7 @@ final class NotificationSound extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'notificationSound';
+  static const String defaultObjectId = 'notificationSound';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -124,5 +124,5 @@ final class NotificationSound extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

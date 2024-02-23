@@ -48,7 +48,7 @@ final class SponsoredMessages extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "messages": messages.map((i) => i.toJson()).toList(),
       "messages_between": messagesBetween,
 		};
@@ -72,7 +72,7 @@ final class SponsoredMessages extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'sponsoredMessages';
+  static const String defaultObjectId = 'sponsoredMessages';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -80,5 +80,5 @@ final class SponsoredMessages extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

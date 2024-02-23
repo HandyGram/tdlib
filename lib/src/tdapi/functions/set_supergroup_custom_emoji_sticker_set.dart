@@ -33,7 +33,7 @@ final class SetSupergroupCustomEmojiStickerSet extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "supergroup_id": supergroupId,
       "custom_emoji_sticker_set_id": customEmojiStickerSetId,
       "@extra": extra,
@@ -54,7 +54,7 @@ final class SetSupergroupCustomEmojiStickerSet extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'setSupergroupCustomEmojiStickerSet';
+  static const String defaultObjectId = 'setSupergroupCustomEmojiStickerSet';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -62,5 +62,5 @@ final class SetSupergroupCustomEmojiStickerSet extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

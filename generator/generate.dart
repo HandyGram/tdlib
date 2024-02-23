@@ -220,7 +220,7 @@ class DartTdDocumentationGenerator {
         hasFactory = true;
         fromJsonFields.add('switch(json["@type"]) {');
         for (var relevantObject in obj.relevantObjects) {
-          fromJsonFields.add('  case $relevantObject.objectType:');
+          fromJsonFields.add('  case $relevantObject.defaultObjectId:');
           fromJsonFields.add('    return $relevantObject.fromJson(json);');
           // extra = '\n\n  @override\n  dynamic get extra => null;\n\n  @override\n  int? get clientId => null;';
         }
@@ -233,7 +233,7 @@ class DartTdDocumentationGenerator {
         );
         fromJsonFields.add('}');
       } else {
-        toJsonFields.add('"@type": objectType,');
+        toJsonFields.add('"@type": defaultObjectId,');
         for (var variable in obj.variables) {
           variables.add(
               '/// ${variable.description}\n  final ${variable.optional ? "${variable.type}?" : variable.type} ${variable.argName};');

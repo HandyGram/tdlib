@@ -43,7 +43,7 @@ final class ScopeAutosaveSettings extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "autosave_photos": autosavePhotos,
       "autosave_videos": autosaveVideos,
       "max_video_file_size": maxVideoFileSize,
@@ -67,7 +67,7 @@ final class ScopeAutosaveSettings extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'scopeAutosaveSettings';
+  static const String defaultObjectId = 'scopeAutosaveSettings';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -75,5 +75,5 @@ final class ScopeAutosaveSettings extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

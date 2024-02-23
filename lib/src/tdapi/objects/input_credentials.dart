@@ -17,13 +17,13 @@ sealed class InputCredentials extends TdObject {
   /// * [InputCredentialsGooglePay]
   factory InputCredentials.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case InputCredentialsSaved.objectType:
+      case InputCredentialsSaved.defaultObjectId:
         return InputCredentialsSaved.fromJson(json);
-      case InputCredentialsNew.objectType:
+      case InputCredentialsNew.defaultObjectId:
         return InputCredentialsNew.fromJson(json);
-      case InputCredentialsApplePay.objectType:
+      case InputCredentialsApplePay.defaultObjectId:
         return InputCredentialsApplePay.fromJson(json);
-      case InputCredentialsGooglePay.objectType:
+      case InputCredentialsGooglePay.defaultObjectId:
         return InputCredentialsGooglePay.fromJson(json);
       default:
         throw FormatException(
@@ -41,7 +41,7 @@ sealed class InputCredentials extends TdObject {
   InputCredentials copyWith();
 
   /// TDLib object type
-  static const String objectType = 'inputCredentials';
+  static const String defaultObjectId = 'inputCredentials';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -49,7 +49,7 @@ sealed class InputCredentials extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -82,7 +82,7 @@ final class InputCredentialsSaved extends InputCredentials {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "saved_credentials_id": savedCredentialsId,
 		};
 	}
@@ -99,7 +99,7 @@ final class InputCredentialsSaved extends InputCredentials {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputCredentialsSaved';
+  static const String defaultObjectId = 'inputCredentialsSaved';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -107,7 +107,7 @@ final class InputCredentialsSaved extends InputCredentials {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -147,7 +147,7 @@ final class InputCredentialsNew extends InputCredentials {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "data": data,
       "allow_save": allowSave,
 		};
@@ -168,7 +168,7 @@ final class InputCredentialsNew extends InputCredentials {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputCredentialsNew';
+  static const String defaultObjectId = 'inputCredentialsNew';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -176,7 +176,7 @@ final class InputCredentialsNew extends InputCredentials {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -209,7 +209,7 @@ final class InputCredentialsApplePay extends InputCredentials {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "data": data,
 		};
 	}
@@ -226,7 +226,7 @@ final class InputCredentialsApplePay extends InputCredentials {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputCredentialsApplePay';
+  static const String defaultObjectId = 'inputCredentialsApplePay';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -234,7 +234,7 @@ final class InputCredentialsApplePay extends InputCredentials {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -267,7 +267,7 @@ final class InputCredentialsGooglePay extends InputCredentials {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "data": data,
 		};
 	}
@@ -284,7 +284,7 @@ final class InputCredentialsGooglePay extends InputCredentials {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputCredentialsGooglePay';
+  static const String defaultObjectId = 'inputCredentialsGooglePay';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -292,5 +292,5 @@ final class InputCredentialsGooglePay extends InputCredentials {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -48,7 +48,7 @@ final class ChatsNearby extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "users_nearby": usersNearby.map((i) => i.toJson()).toList(),
       "supergroups_nearby": supergroupsNearby.map((i) => i.toJson()).toList(),
 		};
@@ -72,7 +72,7 @@ final class ChatsNearby extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatsNearby';
+  static const String defaultObjectId = 'chatsNearby';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -80,5 +80,5 @@ final class ChatsNearby extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

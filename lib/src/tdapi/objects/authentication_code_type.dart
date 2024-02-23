@@ -21,21 +21,21 @@ sealed class AuthenticationCodeType extends TdObject {
   /// * [AuthenticationCodeTypeFirebaseIos]
   factory AuthenticationCodeType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case AuthenticationCodeTypeTelegramMessage.objectType:
+      case AuthenticationCodeTypeTelegramMessage.defaultObjectId:
         return AuthenticationCodeTypeTelegramMessage.fromJson(json);
-      case AuthenticationCodeTypeSms.objectType:
+      case AuthenticationCodeTypeSms.defaultObjectId:
         return AuthenticationCodeTypeSms.fromJson(json);
-      case AuthenticationCodeTypeCall.objectType:
+      case AuthenticationCodeTypeCall.defaultObjectId:
         return AuthenticationCodeTypeCall.fromJson(json);
-      case AuthenticationCodeTypeFlashCall.objectType:
+      case AuthenticationCodeTypeFlashCall.defaultObjectId:
         return AuthenticationCodeTypeFlashCall.fromJson(json);
-      case AuthenticationCodeTypeMissedCall.objectType:
+      case AuthenticationCodeTypeMissedCall.defaultObjectId:
         return AuthenticationCodeTypeMissedCall.fromJson(json);
-      case AuthenticationCodeTypeFragment.objectType:
+      case AuthenticationCodeTypeFragment.defaultObjectId:
         return AuthenticationCodeTypeFragment.fromJson(json);
-      case AuthenticationCodeTypeFirebaseAndroid.objectType:
+      case AuthenticationCodeTypeFirebaseAndroid.defaultObjectId:
         return AuthenticationCodeTypeFirebaseAndroid.fromJson(json);
-      case AuthenticationCodeTypeFirebaseIos.objectType:
+      case AuthenticationCodeTypeFirebaseIos.defaultObjectId:
         return AuthenticationCodeTypeFirebaseIos.fromJson(json);
       default:
         throw FormatException(
@@ -53,7 +53,7 @@ sealed class AuthenticationCodeType extends TdObject {
   AuthenticationCodeType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'authenticationCodeType';
+  static const String defaultObjectId = 'authenticationCodeType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -61,7 +61,7 @@ sealed class AuthenticationCodeType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -94,7 +94,7 @@ final class AuthenticationCodeTypeTelegramMessage extends AuthenticationCodeType
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "length": length,
 		};
 	}
@@ -111,7 +111,7 @@ final class AuthenticationCodeTypeTelegramMessage extends AuthenticationCodeType
   );
 
   /// TDLib object type
-  static const String objectType = 'authenticationCodeTypeTelegramMessage';
+  static const String defaultObjectId = 'authenticationCodeTypeTelegramMessage';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -119,7 +119,7 @@ final class AuthenticationCodeTypeTelegramMessage extends AuthenticationCodeType
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -152,7 +152,7 @@ final class AuthenticationCodeTypeSms extends AuthenticationCodeType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "length": length,
 		};
 	}
@@ -169,7 +169,7 @@ final class AuthenticationCodeTypeSms extends AuthenticationCodeType {
   );
 
   /// TDLib object type
-  static const String objectType = 'authenticationCodeTypeSms';
+  static const String defaultObjectId = 'authenticationCodeTypeSms';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -177,7 +177,7 @@ final class AuthenticationCodeTypeSms extends AuthenticationCodeType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -210,7 +210,7 @@ final class AuthenticationCodeTypeCall extends AuthenticationCodeType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "length": length,
 		};
 	}
@@ -227,7 +227,7 @@ final class AuthenticationCodeTypeCall extends AuthenticationCodeType {
   );
 
   /// TDLib object type
-  static const String objectType = 'authenticationCodeTypeCall';
+  static const String defaultObjectId = 'authenticationCodeTypeCall';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -235,7 +235,7 @@ final class AuthenticationCodeTypeCall extends AuthenticationCodeType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -268,7 +268,7 @@ final class AuthenticationCodeTypeFlashCall extends AuthenticationCodeType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "pattern": pattern,
 		};
 	}
@@ -285,7 +285,7 @@ final class AuthenticationCodeTypeFlashCall extends AuthenticationCodeType {
   );
 
   /// TDLib object type
-  static const String objectType = 'authenticationCodeTypeFlashCall';
+  static const String defaultObjectId = 'authenticationCodeTypeFlashCall';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -293,7 +293,7 @@ final class AuthenticationCodeTypeFlashCall extends AuthenticationCodeType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -333,7 +333,7 @@ final class AuthenticationCodeTypeMissedCall extends AuthenticationCodeType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "phone_number_prefix": phoneNumberPrefix,
       "length": length,
 		};
@@ -354,7 +354,7 @@ final class AuthenticationCodeTypeMissedCall extends AuthenticationCodeType {
   );
 
   /// TDLib object type
-  static const String objectType = 'authenticationCodeTypeMissedCall';
+  static const String defaultObjectId = 'authenticationCodeTypeMissedCall';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -362,7 +362,7 @@ final class AuthenticationCodeTypeMissedCall extends AuthenticationCodeType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -402,7 +402,7 @@ final class AuthenticationCodeTypeFragment extends AuthenticationCodeType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "url": url,
       "length": length,
 		};
@@ -423,7 +423,7 @@ final class AuthenticationCodeTypeFragment extends AuthenticationCodeType {
   );
 
   /// TDLib object type
-  static const String objectType = 'authenticationCodeTypeFragment';
+  static const String defaultObjectId = 'authenticationCodeTypeFragment';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -431,7 +431,7 @@ final class AuthenticationCodeTypeFragment extends AuthenticationCodeType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -471,7 +471,7 @@ final class AuthenticationCodeTypeFirebaseAndroid extends AuthenticationCodeType
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "nonce": nonce,
       "length": length,
 		};
@@ -492,7 +492,7 @@ final class AuthenticationCodeTypeFirebaseAndroid extends AuthenticationCodeType
   );
 
   /// TDLib object type
-  static const String objectType = 'authenticationCodeTypeFirebaseAndroid';
+  static const String defaultObjectId = 'authenticationCodeTypeFirebaseAndroid';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -500,7 +500,7 @@ final class AuthenticationCodeTypeFirebaseAndroid extends AuthenticationCodeType
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -547,7 +547,7 @@ final class AuthenticationCodeTypeFirebaseIos extends AuthenticationCodeType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "receipt": receipt,
       "push_timeout": pushTimeout,
       "length": length,
@@ -572,7 +572,7 @@ final class AuthenticationCodeTypeFirebaseIos extends AuthenticationCodeType {
   );
 
   /// TDLib object type
-  static const String objectType = 'authenticationCodeTypeFirebaseIos';
+  static const String defaultObjectId = 'authenticationCodeTypeFirebaseIos';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -580,5 +580,5 @@ final class AuthenticationCodeTypeFirebaseIos extends AuthenticationCodeType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

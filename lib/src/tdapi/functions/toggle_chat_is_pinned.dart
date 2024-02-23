@@ -39,7 +39,7 @@ final class ToggleChatIsPinned extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_list": chatList.toJson(),
       "chat_id": chatId,
       "is_pinned": isPinned,
@@ -64,7 +64,7 @@ final class ToggleChatIsPinned extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'toggleChatIsPinned';
+  static const String defaultObjectId = 'toggleChatIsPinned';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -72,5 +72,5 @@ final class ToggleChatIsPinned extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

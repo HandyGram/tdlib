@@ -30,39 +30,39 @@ sealed class SearchMessagesFilter extends TdObject {
   /// * [SearchMessagesFilterPinned]
   factory SearchMessagesFilter.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case SearchMessagesFilterEmpty.objectType:
+      case SearchMessagesFilterEmpty.defaultObjectId:
         return SearchMessagesFilterEmpty.fromJson(json);
-      case SearchMessagesFilterAnimation.objectType:
+      case SearchMessagesFilterAnimation.defaultObjectId:
         return SearchMessagesFilterAnimation.fromJson(json);
-      case SearchMessagesFilterAudio.objectType:
+      case SearchMessagesFilterAudio.defaultObjectId:
         return SearchMessagesFilterAudio.fromJson(json);
-      case SearchMessagesFilterDocument.objectType:
+      case SearchMessagesFilterDocument.defaultObjectId:
         return SearchMessagesFilterDocument.fromJson(json);
-      case SearchMessagesFilterPhoto.objectType:
+      case SearchMessagesFilterPhoto.defaultObjectId:
         return SearchMessagesFilterPhoto.fromJson(json);
-      case SearchMessagesFilterVideo.objectType:
+      case SearchMessagesFilterVideo.defaultObjectId:
         return SearchMessagesFilterVideo.fromJson(json);
-      case SearchMessagesFilterVoiceNote.objectType:
+      case SearchMessagesFilterVoiceNote.defaultObjectId:
         return SearchMessagesFilterVoiceNote.fromJson(json);
-      case SearchMessagesFilterPhotoAndVideo.objectType:
+      case SearchMessagesFilterPhotoAndVideo.defaultObjectId:
         return SearchMessagesFilterPhotoAndVideo.fromJson(json);
-      case SearchMessagesFilterUrl.objectType:
+      case SearchMessagesFilterUrl.defaultObjectId:
         return SearchMessagesFilterUrl.fromJson(json);
-      case SearchMessagesFilterChatPhoto.objectType:
+      case SearchMessagesFilterChatPhoto.defaultObjectId:
         return SearchMessagesFilterChatPhoto.fromJson(json);
-      case SearchMessagesFilterVideoNote.objectType:
+      case SearchMessagesFilterVideoNote.defaultObjectId:
         return SearchMessagesFilterVideoNote.fromJson(json);
-      case SearchMessagesFilterVoiceAndVideoNote.objectType:
+      case SearchMessagesFilterVoiceAndVideoNote.defaultObjectId:
         return SearchMessagesFilterVoiceAndVideoNote.fromJson(json);
-      case SearchMessagesFilterMention.objectType:
+      case SearchMessagesFilterMention.defaultObjectId:
         return SearchMessagesFilterMention.fromJson(json);
-      case SearchMessagesFilterUnreadMention.objectType:
+      case SearchMessagesFilterUnreadMention.defaultObjectId:
         return SearchMessagesFilterUnreadMention.fromJson(json);
-      case SearchMessagesFilterUnreadReaction.objectType:
+      case SearchMessagesFilterUnreadReaction.defaultObjectId:
         return SearchMessagesFilterUnreadReaction.fromJson(json);
-      case SearchMessagesFilterFailedToSend.objectType:
+      case SearchMessagesFilterFailedToSend.defaultObjectId:
         return SearchMessagesFilterFailedToSend.fromJson(json);
-      case SearchMessagesFilterPinned.objectType:
+      case SearchMessagesFilterPinned.defaultObjectId:
         return SearchMessagesFilterPinned.fromJson(json);
       default:
         throw FormatException(
@@ -80,7 +80,7 @@ sealed class SearchMessagesFilter extends TdObject {
   SearchMessagesFilter copyWith();
 
   /// TDLib object type
-  static const String objectType = 'searchMessagesFilter';
+  static const String defaultObjectId = 'searchMessagesFilter';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -88,7 +88,7 @@ sealed class SearchMessagesFilter extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -109,7 +109,7 @@ final class SearchMessagesFilterEmpty extends SearchMessagesFilter {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -118,7 +118,7 @@ final class SearchMessagesFilterEmpty extends SearchMessagesFilter {
   SearchMessagesFilterEmpty copyWith() => const SearchMessagesFilterEmpty();
 
   /// TDLib object type
-  static const String objectType = 'searchMessagesFilterEmpty';
+  static const String defaultObjectId = 'searchMessagesFilterEmpty';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -126,7 +126,7 @@ final class SearchMessagesFilterEmpty extends SearchMessagesFilter {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -147,7 +147,7 @@ final class SearchMessagesFilterAnimation extends SearchMessagesFilter {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -156,7 +156,7 @@ final class SearchMessagesFilterAnimation extends SearchMessagesFilter {
   SearchMessagesFilterAnimation copyWith() => const SearchMessagesFilterAnimation();
 
   /// TDLib object type
-  static const String objectType = 'searchMessagesFilterAnimation';
+  static const String defaultObjectId = 'searchMessagesFilterAnimation';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -164,7 +164,7 @@ final class SearchMessagesFilterAnimation extends SearchMessagesFilter {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -185,7 +185,7 @@ final class SearchMessagesFilterAudio extends SearchMessagesFilter {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -194,7 +194,7 @@ final class SearchMessagesFilterAudio extends SearchMessagesFilter {
   SearchMessagesFilterAudio copyWith() => const SearchMessagesFilterAudio();
 
   /// TDLib object type
-  static const String objectType = 'searchMessagesFilterAudio';
+  static const String defaultObjectId = 'searchMessagesFilterAudio';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -202,7 +202,7 @@ final class SearchMessagesFilterAudio extends SearchMessagesFilter {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -223,7 +223,7 @@ final class SearchMessagesFilterDocument extends SearchMessagesFilter {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -232,7 +232,7 @@ final class SearchMessagesFilterDocument extends SearchMessagesFilter {
   SearchMessagesFilterDocument copyWith() => const SearchMessagesFilterDocument();
 
   /// TDLib object type
-  static const String objectType = 'searchMessagesFilterDocument';
+  static const String defaultObjectId = 'searchMessagesFilterDocument';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -240,7 +240,7 @@ final class SearchMessagesFilterDocument extends SearchMessagesFilter {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -261,7 +261,7 @@ final class SearchMessagesFilterPhoto extends SearchMessagesFilter {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -270,7 +270,7 @@ final class SearchMessagesFilterPhoto extends SearchMessagesFilter {
   SearchMessagesFilterPhoto copyWith() => const SearchMessagesFilterPhoto();
 
   /// TDLib object type
-  static const String objectType = 'searchMessagesFilterPhoto';
+  static const String defaultObjectId = 'searchMessagesFilterPhoto';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -278,7 +278,7 @@ final class SearchMessagesFilterPhoto extends SearchMessagesFilter {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -299,7 +299,7 @@ final class SearchMessagesFilterVideo extends SearchMessagesFilter {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -308,7 +308,7 @@ final class SearchMessagesFilterVideo extends SearchMessagesFilter {
   SearchMessagesFilterVideo copyWith() => const SearchMessagesFilterVideo();
 
   /// TDLib object type
-  static const String objectType = 'searchMessagesFilterVideo';
+  static const String defaultObjectId = 'searchMessagesFilterVideo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -316,7 +316,7 @@ final class SearchMessagesFilterVideo extends SearchMessagesFilter {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -337,7 +337,7 @@ final class SearchMessagesFilterVoiceNote extends SearchMessagesFilter {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -346,7 +346,7 @@ final class SearchMessagesFilterVoiceNote extends SearchMessagesFilter {
   SearchMessagesFilterVoiceNote copyWith() => const SearchMessagesFilterVoiceNote();
 
   /// TDLib object type
-  static const String objectType = 'searchMessagesFilterVoiceNote';
+  static const String defaultObjectId = 'searchMessagesFilterVoiceNote';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -354,7 +354,7 @@ final class SearchMessagesFilterVoiceNote extends SearchMessagesFilter {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -375,7 +375,7 @@ final class SearchMessagesFilterPhotoAndVideo extends SearchMessagesFilter {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -384,7 +384,7 @@ final class SearchMessagesFilterPhotoAndVideo extends SearchMessagesFilter {
   SearchMessagesFilterPhotoAndVideo copyWith() => const SearchMessagesFilterPhotoAndVideo();
 
   /// TDLib object type
-  static const String objectType = 'searchMessagesFilterPhotoAndVideo';
+  static const String defaultObjectId = 'searchMessagesFilterPhotoAndVideo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -392,7 +392,7 @@ final class SearchMessagesFilterPhotoAndVideo extends SearchMessagesFilter {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -413,7 +413,7 @@ final class SearchMessagesFilterUrl extends SearchMessagesFilter {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -422,7 +422,7 @@ final class SearchMessagesFilterUrl extends SearchMessagesFilter {
   SearchMessagesFilterUrl copyWith() => const SearchMessagesFilterUrl();
 
   /// TDLib object type
-  static const String objectType = 'searchMessagesFilterUrl';
+  static const String defaultObjectId = 'searchMessagesFilterUrl';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -430,7 +430,7 @@ final class SearchMessagesFilterUrl extends SearchMessagesFilter {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -451,7 +451,7 @@ final class SearchMessagesFilterChatPhoto extends SearchMessagesFilter {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -460,7 +460,7 @@ final class SearchMessagesFilterChatPhoto extends SearchMessagesFilter {
   SearchMessagesFilterChatPhoto copyWith() => const SearchMessagesFilterChatPhoto();
 
   /// TDLib object type
-  static const String objectType = 'searchMessagesFilterChatPhoto';
+  static const String defaultObjectId = 'searchMessagesFilterChatPhoto';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -468,7 +468,7 @@ final class SearchMessagesFilterChatPhoto extends SearchMessagesFilter {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -489,7 +489,7 @@ final class SearchMessagesFilterVideoNote extends SearchMessagesFilter {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -498,7 +498,7 @@ final class SearchMessagesFilterVideoNote extends SearchMessagesFilter {
   SearchMessagesFilterVideoNote copyWith() => const SearchMessagesFilterVideoNote();
 
   /// TDLib object type
-  static const String objectType = 'searchMessagesFilterVideoNote';
+  static const String defaultObjectId = 'searchMessagesFilterVideoNote';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -506,7 +506,7 @@ final class SearchMessagesFilterVideoNote extends SearchMessagesFilter {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -527,7 +527,7 @@ final class SearchMessagesFilterVoiceAndVideoNote extends SearchMessagesFilter {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -536,7 +536,7 @@ final class SearchMessagesFilterVoiceAndVideoNote extends SearchMessagesFilter {
   SearchMessagesFilterVoiceAndVideoNote copyWith() => const SearchMessagesFilterVoiceAndVideoNote();
 
   /// TDLib object type
-  static const String objectType = 'searchMessagesFilterVoiceAndVideoNote';
+  static const String defaultObjectId = 'searchMessagesFilterVoiceAndVideoNote';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -544,7 +544,7 @@ final class SearchMessagesFilterVoiceAndVideoNote extends SearchMessagesFilter {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -565,7 +565,7 @@ final class SearchMessagesFilterMention extends SearchMessagesFilter {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -574,7 +574,7 @@ final class SearchMessagesFilterMention extends SearchMessagesFilter {
   SearchMessagesFilterMention copyWith() => const SearchMessagesFilterMention();
 
   /// TDLib object type
-  static const String objectType = 'searchMessagesFilterMention';
+  static const String defaultObjectId = 'searchMessagesFilterMention';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -582,7 +582,7 @@ final class SearchMessagesFilterMention extends SearchMessagesFilter {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -603,7 +603,7 @@ final class SearchMessagesFilterUnreadMention extends SearchMessagesFilter {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -612,7 +612,7 @@ final class SearchMessagesFilterUnreadMention extends SearchMessagesFilter {
   SearchMessagesFilterUnreadMention copyWith() => const SearchMessagesFilterUnreadMention();
 
   /// TDLib object type
-  static const String objectType = 'searchMessagesFilterUnreadMention';
+  static const String defaultObjectId = 'searchMessagesFilterUnreadMention';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -620,7 +620,7 @@ final class SearchMessagesFilterUnreadMention extends SearchMessagesFilter {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -641,7 +641,7 @@ final class SearchMessagesFilterUnreadReaction extends SearchMessagesFilter {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -650,7 +650,7 @@ final class SearchMessagesFilterUnreadReaction extends SearchMessagesFilter {
   SearchMessagesFilterUnreadReaction copyWith() => const SearchMessagesFilterUnreadReaction();
 
   /// TDLib object type
-  static const String objectType = 'searchMessagesFilterUnreadReaction';
+  static const String defaultObjectId = 'searchMessagesFilterUnreadReaction';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -658,7 +658,7 @@ final class SearchMessagesFilterUnreadReaction extends SearchMessagesFilter {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -679,7 +679,7 @@ final class SearchMessagesFilterFailedToSend extends SearchMessagesFilter {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -688,7 +688,7 @@ final class SearchMessagesFilterFailedToSend extends SearchMessagesFilter {
   SearchMessagesFilterFailedToSend copyWith() => const SearchMessagesFilterFailedToSend();
 
   /// TDLib object type
-  static const String objectType = 'searchMessagesFilterFailedToSend';
+  static const String defaultObjectId = 'searchMessagesFilterFailedToSend';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -696,7 +696,7 @@ final class SearchMessagesFilterFailedToSend extends SearchMessagesFilter {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -717,7 +717,7 @@ final class SearchMessagesFilterPinned extends SearchMessagesFilter {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -726,7 +726,7 @@ final class SearchMessagesFilterPinned extends SearchMessagesFilter {
   SearchMessagesFilterPinned copyWith() => const SearchMessagesFilterPinned();
 
   /// TDLib object type
-  static const String objectType = 'searchMessagesFilterPinned';
+  static const String defaultObjectId = 'searchMessagesFilterPinned';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -734,5 +734,5 @@ final class SearchMessagesFilterPinned extends SearchMessagesFilter {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

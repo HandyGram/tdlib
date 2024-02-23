@@ -36,7 +36,7 @@ final class InputPersonalDocument extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "files": files.map((i) => i.toJson()).toList(),
       "translation": translation.map((i) => i.toJson()).toList(),
 		};
@@ -56,7 +56,7 @@ final class InputPersonalDocument extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputPersonalDocument';
+  static const String defaultObjectId = 'inputPersonalDocument';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -64,5 +64,5 @@ final class InputPersonalDocument extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

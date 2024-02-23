@@ -15,9 +15,9 @@ sealed class ChatAvailableReactions extends TdObject {
   /// * [ChatAvailableReactionsSome]
   factory ChatAvailableReactions.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case ChatAvailableReactionsAll.objectType:
+      case ChatAvailableReactionsAll.defaultObjectId:
         return ChatAvailableReactionsAll.fromJson(json);
-      case ChatAvailableReactionsSome.objectType:
+      case ChatAvailableReactionsSome.defaultObjectId:
         return ChatAvailableReactionsSome.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class ChatAvailableReactions extends TdObject {
   ChatAvailableReactions copyWith();
 
   /// TDLib object type
-  static const String objectType = 'chatAvailableReactions';
+  static const String defaultObjectId = 'chatAvailableReactions';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class ChatAvailableReactions extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -64,7 +64,7 @@ final class ChatAvailableReactionsAll extends ChatAvailableReactions {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -73,7 +73,7 @@ final class ChatAvailableReactionsAll extends ChatAvailableReactions {
   ChatAvailableReactionsAll copyWith() => const ChatAvailableReactionsAll();
 
   /// TDLib object type
-  static const String objectType = 'chatAvailableReactionsAll';
+  static const String defaultObjectId = 'chatAvailableReactionsAll';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -81,7 +81,7 @@ final class ChatAvailableReactionsAll extends ChatAvailableReactions {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -114,7 +114,7 @@ final class ChatAvailableReactionsSome extends ChatAvailableReactions {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "reactions": reactions.map((i) => i.toJson()).toList(),
 		};
 	}
@@ -131,7 +131,7 @@ final class ChatAvailableReactionsSome extends ChatAvailableReactions {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatAvailableReactionsSome';
+  static const String defaultObjectId = 'chatAvailableReactionsSome';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -139,5 +139,5 @@ final class ChatAvailableReactionsSome extends ChatAvailableReactions {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -16,11 +16,11 @@ sealed class LanguagePackStringValue extends TdObject {
   /// * [LanguagePackStringValueDeleted]
   factory LanguagePackStringValue.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case LanguagePackStringValueOrdinary.objectType:
+      case LanguagePackStringValueOrdinary.defaultObjectId:
         return LanguagePackStringValueOrdinary.fromJson(json);
-      case LanguagePackStringValuePluralized.objectType:
+      case LanguagePackStringValuePluralized.defaultObjectId:
         return LanguagePackStringValuePluralized.fromJson(json);
-      case LanguagePackStringValueDeleted.objectType:
+      case LanguagePackStringValueDeleted.defaultObjectId:
         return LanguagePackStringValueDeleted.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class LanguagePackStringValue extends TdObject {
   LanguagePackStringValue copyWith();
 
   /// TDLib object type
-  static const String objectType = 'languagePackStringValue';
+  static const String defaultObjectId = 'languagePackStringValue';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class LanguagePackStringValue extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -91,7 +91,7 @@ final class LanguagePackStringValueOrdinary extends LanguagePackStringValue {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "value": value,
 		};
 	}
@@ -112,7 +112,7 @@ final class LanguagePackStringValueOrdinary extends LanguagePackStringValue {
   );
 
   /// TDLib object type
-  static const String objectType = 'languagePackStringValueOrdinary';
+  static const String defaultObjectId = 'languagePackStringValueOrdinary';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -120,7 +120,7 @@ final class LanguagePackStringValueOrdinary extends LanguagePackStringValue {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -200,7 +200,7 @@ final class LanguagePackStringValuePluralized extends LanguagePackStringValue {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "zero_value": zeroValue,
       "one_value": oneValue,
       "two_value": twoValue,
@@ -241,7 +241,7 @@ final class LanguagePackStringValuePluralized extends LanguagePackStringValue {
   );
 
   /// TDLib object type
-  static const String objectType = 'languagePackStringValuePluralized';
+  static const String defaultObjectId = 'languagePackStringValuePluralized';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -249,7 +249,7 @@ final class LanguagePackStringValuePluralized extends LanguagePackStringValue {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -285,7 +285,7 @@ final class LanguagePackStringValueDeleted extends LanguagePackStringValue {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -300,7 +300,7 @@ final class LanguagePackStringValueDeleted extends LanguagePackStringValue {
   );
 
   /// TDLib object type
-  static const String objectType = 'languagePackStringValueDeleted';
+  static const String defaultObjectId = 'languagePackStringValueDeleted';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -308,5 +308,5 @@ final class LanguagePackStringValueDeleted extends LanguagePackStringValue {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

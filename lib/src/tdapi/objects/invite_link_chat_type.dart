@@ -16,11 +16,11 @@ sealed class InviteLinkChatType extends TdObject {
   /// * [InviteLinkChatTypeChannel]
   factory InviteLinkChatType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case InviteLinkChatTypeBasicGroup.objectType:
+      case InviteLinkChatTypeBasicGroup.defaultObjectId:
         return InviteLinkChatTypeBasicGroup.fromJson(json);
-      case InviteLinkChatTypeSupergroup.objectType:
+      case InviteLinkChatTypeSupergroup.defaultObjectId:
         return InviteLinkChatTypeSupergroup.fromJson(json);
-      case InviteLinkChatTypeChannel.objectType:
+      case InviteLinkChatTypeChannel.defaultObjectId:
         return InviteLinkChatTypeChannel.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class InviteLinkChatType extends TdObject {
   InviteLinkChatType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'inviteLinkChatType';
+  static const String defaultObjectId = 'inviteLinkChatType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class InviteLinkChatType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -67,7 +67,7 @@ final class InviteLinkChatTypeBasicGroup extends InviteLinkChatType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -76,7 +76,7 @@ final class InviteLinkChatTypeBasicGroup extends InviteLinkChatType {
   InviteLinkChatTypeBasicGroup copyWith() => const InviteLinkChatTypeBasicGroup();
 
   /// TDLib object type
-  static const String objectType = 'inviteLinkChatTypeBasicGroup';
+  static const String defaultObjectId = 'inviteLinkChatTypeBasicGroup';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -84,7 +84,7 @@ final class InviteLinkChatTypeBasicGroup extends InviteLinkChatType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -105,7 +105,7 @@ final class InviteLinkChatTypeSupergroup extends InviteLinkChatType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -114,7 +114,7 @@ final class InviteLinkChatTypeSupergroup extends InviteLinkChatType {
   InviteLinkChatTypeSupergroup copyWith() => const InviteLinkChatTypeSupergroup();
 
   /// TDLib object type
-  static const String objectType = 'inviteLinkChatTypeSupergroup';
+  static const String defaultObjectId = 'inviteLinkChatTypeSupergroup';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -122,7 +122,7 @@ final class InviteLinkChatTypeSupergroup extends InviteLinkChatType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -143,7 +143,7 @@ final class InviteLinkChatTypeChannel extends InviteLinkChatType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -152,7 +152,7 @@ final class InviteLinkChatTypeChannel extends InviteLinkChatType {
   InviteLinkChatTypeChannel copyWith() => const InviteLinkChatTypeChannel();
 
   /// TDLib object type
-  static const String objectType = 'inviteLinkChatTypeChannel';
+  static const String defaultObjectId = 'inviteLinkChatTypeChannel';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -160,5 +160,5 @@ final class InviteLinkChatTypeChannel extends InviteLinkChatType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

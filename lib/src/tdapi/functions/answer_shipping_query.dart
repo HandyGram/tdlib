@@ -39,7 +39,7 @@ final class AnswerShippingQuery extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "shipping_query_id": shippingQueryId,
       "shipping_options": shippingOptions.map((i) => i.toJson()).toList(),
       "error_message": errorMessage,
@@ -64,7 +64,7 @@ final class AnswerShippingQuery extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'answerShippingQuery';
+  static const String defaultObjectId = 'answerShippingQuery';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -72,5 +72,5 @@ final class AnswerShippingQuery extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

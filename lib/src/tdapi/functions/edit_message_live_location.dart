@@ -57,7 +57,7 @@ final class EditMessageLiveLocation extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "reply_markup": replyMarkup?.toJson(),
@@ -94,7 +94,7 @@ final class EditMessageLiveLocation extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'editMessageLiveLocation';
+  static const String defaultObjectId = 'editMessageLiveLocation';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -102,5 +102,5 @@ final class EditMessageLiveLocation extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

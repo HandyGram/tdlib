@@ -27,7 +27,7 @@ final class SetDefaultChannelAdministratorRights extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "default_channel_administrator_rights": defaultChannelAdministratorRights?.toJson(),
       "@extra": extra,
 		};
@@ -44,7 +44,7 @@ final class SetDefaultChannelAdministratorRights extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'setDefaultChannelAdministratorRights';
+  static const String defaultObjectId = 'setDefaultChannelAdministratorRights';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -52,5 +52,5 @@ final class SetDefaultChannelAdministratorRights extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

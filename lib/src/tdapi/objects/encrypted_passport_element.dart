@@ -85,7 +85,7 @@ final class EncryptedPassportElement extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "type": type.toJson(),
       "data": data,
       "front_side": frontSide.toJson(),
@@ -133,7 +133,7 @@ final class EncryptedPassportElement extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'encryptedPassportElement';
+  static const String defaultObjectId = 'encryptedPassportElement';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -141,5 +141,5 @@ final class EncryptedPassportElement extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

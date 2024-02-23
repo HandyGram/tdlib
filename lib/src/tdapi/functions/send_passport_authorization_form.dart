@@ -33,7 +33,7 @@ final class SendPassportAuthorizationForm extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "authorization_form_id": authorizationFormId,
       "types": types.map((i) => i.toJson()).toList(),
       "@extra": extra,
@@ -54,7 +54,7 @@ final class SendPassportAuthorizationForm extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'sendPassportAuthorizationForm';
+  static const String defaultObjectId = 'sendPassportAuthorizationForm';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -62,5 +62,5 @@ final class SendPassportAuthorizationForm extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

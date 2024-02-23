@@ -33,7 +33,7 @@ final class ToggleSessionCanAcceptSecretChats extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "session_id": sessionId,
       "can_accept_secret_chats": canAcceptSecretChats,
       "@extra": extra,
@@ -54,7 +54,7 @@ final class ToggleSessionCanAcceptSecretChats extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'toggleSessionCanAcceptSecretChats';
+  static const String defaultObjectId = 'toggleSessionCanAcceptSecretChats';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -62,5 +62,5 @@ final class ToggleSessionCanAcceptSecretChats extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

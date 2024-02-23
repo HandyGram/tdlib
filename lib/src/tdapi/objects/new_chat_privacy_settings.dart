@@ -41,7 +41,7 @@ final class NewChatPrivacySettings extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "allow_new_chats_from_unknown_users": allowNewChatsFromUnknownUsers,
 		};
 	}
@@ -61,7 +61,7 @@ final class NewChatPrivacySettings extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'newChatPrivacySettings';
+  static const String defaultObjectId = 'newChatPrivacySettings';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -69,5 +69,5 @@ final class NewChatPrivacySettings extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

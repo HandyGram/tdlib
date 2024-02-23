@@ -55,7 +55,7 @@ final class PremiumState extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "state": state.toJson(),
       "payment_options": paymentOptions.map((i) => i.toJson()).toList(),
       "animations": animations.map((i) => i.toJson()).toList(),
@@ -83,7 +83,7 @@ final class PremiumState extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'premiumState';
+  static const String defaultObjectId = 'premiumState';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -91,5 +91,5 @@ final class PremiumState extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

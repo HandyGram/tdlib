@@ -51,7 +51,7 @@ final class EditProxy extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "proxy_id": proxyId,
       "server": server,
       "port": port,
@@ -84,7 +84,7 @@ final class EditProxy extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'editProxy';
+  static const String defaultObjectId = 'editProxy';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -92,5 +92,5 @@ final class EditProxy extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

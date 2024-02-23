@@ -64,7 +64,7 @@ final class PhoneNumberAuthenticationSettings extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "allow_flash_call": allowFlashCall,
       "allow_missed_call": allowMissedCall,
       "is_current_phone_number": isCurrentPhoneNumber,
@@ -100,7 +100,7 @@ final class PhoneNumberAuthenticationSettings extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'phoneNumberAuthenticationSettings';
+  static const String defaultObjectId = 'phoneNumberAuthenticationSettings';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -108,5 +108,5 @@ final class PhoneNumberAuthenticationSettings extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

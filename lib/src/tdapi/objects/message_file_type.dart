@@ -16,11 +16,11 @@ sealed class MessageFileType extends TdObject {
   /// * [MessageFileTypeUnknown]
   factory MessageFileType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case MessageFileTypePrivate.objectType:
+      case MessageFileTypePrivate.defaultObjectId:
         return MessageFileTypePrivate.fromJson(json);
-      case MessageFileTypeGroup.objectType:
+      case MessageFileTypeGroup.defaultObjectId:
         return MessageFileTypeGroup.fromJson(json);
-      case MessageFileTypeUnknown.objectType:
+      case MessageFileTypeUnknown.defaultObjectId:
         return MessageFileTypeUnknown.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class MessageFileType extends TdObject {
   MessageFileType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'messageFileType';
+  static const String defaultObjectId = 'messageFileType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class MessageFileType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -91,7 +91,7 @@ final class MessageFileTypePrivate extends MessageFileType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "name": name,
 		};
 	}
@@ -112,7 +112,7 @@ final class MessageFileTypePrivate extends MessageFileType {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageFileTypePrivate';
+  static const String defaultObjectId = 'messageFileTypePrivate';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -120,7 +120,7 @@ final class MessageFileTypePrivate extends MessageFileType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -165,7 +165,7 @@ final class MessageFileTypeGroup extends MessageFileType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "title": title,
 		};
 	}
@@ -186,7 +186,7 @@ final class MessageFileTypeGroup extends MessageFileType {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageFileTypeGroup';
+  static const String defaultObjectId = 'messageFileTypeGroup';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -194,7 +194,7 @@ final class MessageFileTypeGroup extends MessageFileType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -230,7 +230,7 @@ final class MessageFileTypeUnknown extends MessageFileType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -245,7 +245,7 @@ final class MessageFileTypeUnknown extends MessageFileType {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageFileTypeUnknown';
+  static const String defaultObjectId = 'messageFileTypeUnknown';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -253,5 +253,5 @@ final class MessageFileTypeUnknown extends MessageFileType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -56,91 +56,91 @@ sealed class InternalLinkType extends TdObject {
   /// * [InternalLinkTypeWebApp]
   factory InternalLinkType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case InternalLinkTypeActiveSessions.objectType:
+      case InternalLinkTypeActiveSessions.defaultObjectId:
         return InternalLinkTypeActiveSessions.fromJson(json);
-      case InternalLinkTypeAttachmentMenuBot.objectType:
+      case InternalLinkTypeAttachmentMenuBot.defaultObjectId:
         return InternalLinkTypeAttachmentMenuBot.fromJson(json);
-      case InternalLinkTypeAuthenticationCode.objectType:
+      case InternalLinkTypeAuthenticationCode.defaultObjectId:
         return InternalLinkTypeAuthenticationCode.fromJson(json);
-      case InternalLinkTypeBackground.objectType:
+      case InternalLinkTypeBackground.defaultObjectId:
         return InternalLinkTypeBackground.fromJson(json);
-      case InternalLinkTypeBotAddToChannel.objectType:
+      case InternalLinkTypeBotAddToChannel.defaultObjectId:
         return InternalLinkTypeBotAddToChannel.fromJson(json);
-      case InternalLinkTypeBotStart.objectType:
+      case InternalLinkTypeBotStart.defaultObjectId:
         return InternalLinkTypeBotStart.fromJson(json);
-      case InternalLinkTypeBotStartInGroup.objectType:
+      case InternalLinkTypeBotStartInGroup.defaultObjectId:
         return InternalLinkTypeBotStartInGroup.fromJson(json);
-      case InternalLinkTypeChangePhoneNumber.objectType:
+      case InternalLinkTypeChangePhoneNumber.defaultObjectId:
         return InternalLinkTypeChangePhoneNumber.fromJson(json);
-      case InternalLinkTypeChatBoost.objectType:
+      case InternalLinkTypeChatBoost.defaultObjectId:
         return InternalLinkTypeChatBoost.fromJson(json);
-      case InternalLinkTypeChatFolderInvite.objectType:
+      case InternalLinkTypeChatFolderInvite.defaultObjectId:
         return InternalLinkTypeChatFolderInvite.fromJson(json);
-      case InternalLinkTypeChatFolderSettings.objectType:
+      case InternalLinkTypeChatFolderSettings.defaultObjectId:
         return InternalLinkTypeChatFolderSettings.fromJson(json);
-      case InternalLinkTypeChatInvite.objectType:
+      case InternalLinkTypeChatInvite.defaultObjectId:
         return InternalLinkTypeChatInvite.fromJson(json);
-      case InternalLinkTypeDefaultMessageAutoDeleteTimerSettings.objectType:
+      case InternalLinkTypeDefaultMessageAutoDeleteTimerSettings.defaultObjectId:
         return InternalLinkTypeDefaultMessageAutoDeleteTimerSettings.fromJson(json);
-      case InternalLinkTypeEditProfileSettings.objectType:
+      case InternalLinkTypeEditProfileSettings.defaultObjectId:
         return InternalLinkTypeEditProfileSettings.fromJson(json);
-      case InternalLinkTypeGame.objectType:
+      case InternalLinkTypeGame.defaultObjectId:
         return InternalLinkTypeGame.fromJson(json);
-      case InternalLinkTypeInstantView.objectType:
+      case InternalLinkTypeInstantView.defaultObjectId:
         return InternalLinkTypeInstantView.fromJson(json);
-      case InternalLinkTypeInvoice.objectType:
+      case InternalLinkTypeInvoice.defaultObjectId:
         return InternalLinkTypeInvoice.fromJson(json);
-      case InternalLinkTypeLanguagePack.objectType:
+      case InternalLinkTypeLanguagePack.defaultObjectId:
         return InternalLinkTypeLanguagePack.fromJson(json);
-      case InternalLinkTypeLanguageSettings.objectType:
+      case InternalLinkTypeLanguageSettings.defaultObjectId:
         return InternalLinkTypeLanguageSettings.fromJson(json);
-      case InternalLinkTypeMessage.objectType:
+      case InternalLinkTypeMessage.defaultObjectId:
         return InternalLinkTypeMessage.fromJson(json);
-      case InternalLinkTypeMessageDraft.objectType:
+      case InternalLinkTypeMessageDraft.defaultObjectId:
         return InternalLinkTypeMessageDraft.fromJson(json);
-      case InternalLinkTypePassportDataRequest.objectType:
+      case InternalLinkTypePassportDataRequest.defaultObjectId:
         return InternalLinkTypePassportDataRequest.fromJson(json);
-      case InternalLinkTypePhoneNumberConfirmation.objectType:
+      case InternalLinkTypePhoneNumberConfirmation.defaultObjectId:
         return InternalLinkTypePhoneNumberConfirmation.fromJson(json);
-      case InternalLinkTypePremiumFeatures.objectType:
+      case InternalLinkTypePremiumFeatures.defaultObjectId:
         return InternalLinkTypePremiumFeatures.fromJson(json);
-      case InternalLinkTypePremiumGift.objectType:
+      case InternalLinkTypePremiumGift.defaultObjectId:
         return InternalLinkTypePremiumGift.fromJson(json);
-      case InternalLinkTypePremiumGiftCode.objectType:
+      case InternalLinkTypePremiumGiftCode.defaultObjectId:
         return InternalLinkTypePremiumGiftCode.fromJson(json);
-      case InternalLinkTypePrivacyAndSecuritySettings.objectType:
+      case InternalLinkTypePrivacyAndSecuritySettings.defaultObjectId:
         return InternalLinkTypePrivacyAndSecuritySettings.fromJson(json);
-      case InternalLinkTypeProxy.objectType:
+      case InternalLinkTypeProxy.defaultObjectId:
         return InternalLinkTypeProxy.fromJson(json);
-      case InternalLinkTypePublicChat.objectType:
+      case InternalLinkTypePublicChat.defaultObjectId:
         return InternalLinkTypePublicChat.fromJson(json);
-      case InternalLinkTypeQrCodeAuthentication.objectType:
+      case InternalLinkTypeQrCodeAuthentication.defaultObjectId:
         return InternalLinkTypeQrCodeAuthentication.fromJson(json);
-      case InternalLinkTypeRestorePurchases.objectType:
+      case InternalLinkTypeRestorePurchases.defaultObjectId:
         return InternalLinkTypeRestorePurchases.fromJson(json);
-      case InternalLinkTypeSettings.objectType:
+      case InternalLinkTypeSettings.defaultObjectId:
         return InternalLinkTypeSettings.fromJson(json);
-      case InternalLinkTypeSideMenuBot.objectType:
+      case InternalLinkTypeSideMenuBot.defaultObjectId:
         return InternalLinkTypeSideMenuBot.fromJson(json);
-      case InternalLinkTypeStickerSet.objectType:
+      case InternalLinkTypeStickerSet.defaultObjectId:
         return InternalLinkTypeStickerSet.fromJson(json);
-      case InternalLinkTypeStory.objectType:
+      case InternalLinkTypeStory.defaultObjectId:
         return InternalLinkTypeStory.fromJson(json);
-      case InternalLinkTypeTheme.objectType:
+      case InternalLinkTypeTheme.defaultObjectId:
         return InternalLinkTypeTheme.fromJson(json);
-      case InternalLinkTypeThemeSettings.objectType:
+      case InternalLinkTypeThemeSettings.defaultObjectId:
         return InternalLinkTypeThemeSettings.fromJson(json);
-      case InternalLinkTypeUnknownDeepLink.objectType:
+      case InternalLinkTypeUnknownDeepLink.defaultObjectId:
         return InternalLinkTypeUnknownDeepLink.fromJson(json);
-      case InternalLinkTypeUnsupportedProxy.objectType:
+      case InternalLinkTypeUnsupportedProxy.defaultObjectId:
         return InternalLinkTypeUnsupportedProxy.fromJson(json);
-      case InternalLinkTypeUserPhoneNumber.objectType:
+      case InternalLinkTypeUserPhoneNumber.defaultObjectId:
         return InternalLinkTypeUserPhoneNumber.fromJson(json);
-      case InternalLinkTypeUserToken.objectType:
+      case InternalLinkTypeUserToken.defaultObjectId:
         return InternalLinkTypeUserToken.fromJson(json);
-      case InternalLinkTypeVideoChat.objectType:
+      case InternalLinkTypeVideoChat.defaultObjectId:
         return InternalLinkTypeVideoChat.fromJson(json);
-      case InternalLinkTypeWebApp.objectType:
+      case InternalLinkTypeWebApp.defaultObjectId:
         return InternalLinkTypeWebApp.fromJson(json);
       default:
         throw FormatException(
@@ -158,7 +158,7 @@ sealed class InternalLinkType extends TdObject {
   InternalLinkType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'internalLinkType';
+  static const String defaultObjectId = 'internalLinkType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -166,7 +166,7 @@ sealed class InternalLinkType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -202,7 +202,7 @@ final class InternalLinkTypeActiveSessions extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -217,7 +217,7 @@ final class InternalLinkTypeActiveSessions extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeActiveSessions';
+  static const String defaultObjectId = 'internalLinkTypeActiveSessions';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -225,7 +225,7 @@ final class InternalLinkTypeActiveSessions extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -284,7 +284,7 @@ final class InternalLinkTypeAttachmentMenuBot extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "target_chat": targetChat.toJson(),
       "bot_username": botUsername,
       "url": url,
@@ -313,7 +313,7 @@ final class InternalLinkTypeAttachmentMenuBot extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeAttachmentMenuBot';
+  static const String defaultObjectId = 'internalLinkTypeAttachmentMenuBot';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -321,7 +321,7 @@ final class InternalLinkTypeAttachmentMenuBot extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -366,7 +366,7 @@ final class InternalLinkTypeAuthenticationCode extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "code": code,
 		};
 	}
@@ -387,7 +387,7 @@ final class InternalLinkTypeAuthenticationCode extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeAuthenticationCode';
+  static const String defaultObjectId = 'internalLinkTypeAuthenticationCode';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -395,7 +395,7 @@ final class InternalLinkTypeAuthenticationCode extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -440,7 +440,7 @@ final class InternalLinkTypeBackground extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "background_name": backgroundName,
 		};
 	}
@@ -461,7 +461,7 @@ final class InternalLinkTypeBackground extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeBackground';
+  static const String defaultObjectId = 'internalLinkTypeBackground';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -469,7 +469,7 @@ final class InternalLinkTypeBackground extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -521,7 +521,7 @@ final class InternalLinkTypeBotAddToChannel extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "bot_username": botUsername,
       "administrator_rights": administratorRights.toJson(),
 		};
@@ -546,7 +546,7 @@ final class InternalLinkTypeBotAddToChannel extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeBotAddToChannel';
+  static const String defaultObjectId = 'internalLinkTypeBotAddToChannel';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -554,7 +554,7 @@ final class InternalLinkTypeBotAddToChannel extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -613,7 +613,7 @@ final class InternalLinkTypeBotStart extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "bot_username": botUsername,
       "start_parameter": startParameter,
       "autostart": autostart,
@@ -642,7 +642,7 @@ final class InternalLinkTypeBotStart extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeBotStart';
+  static const String defaultObjectId = 'internalLinkTypeBotStart';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -650,7 +650,7 @@ final class InternalLinkTypeBotStart extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -709,7 +709,7 @@ final class InternalLinkTypeBotStartInGroup extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "bot_username": botUsername,
       "start_parameter": startParameter,
       "administrator_rights": administratorRights?.toJson(),
@@ -738,7 +738,7 @@ final class InternalLinkTypeBotStartInGroup extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeBotStartInGroup';
+  static const String defaultObjectId = 'internalLinkTypeBotStartInGroup';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -746,7 +746,7 @@ final class InternalLinkTypeBotStartInGroup extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -782,7 +782,7 @@ final class InternalLinkTypeChangePhoneNumber extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -797,7 +797,7 @@ final class InternalLinkTypeChangePhoneNumber extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeChangePhoneNumber';
+  static const String defaultObjectId = 'internalLinkTypeChangePhoneNumber';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -805,7 +805,7 @@ final class InternalLinkTypeChangePhoneNumber extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -850,7 +850,7 @@ final class InternalLinkTypeChatBoost extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "url": url,
 		};
 	}
@@ -871,7 +871,7 @@ final class InternalLinkTypeChatBoost extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeChatBoost';
+  static const String defaultObjectId = 'internalLinkTypeChatBoost';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -879,7 +879,7 @@ final class InternalLinkTypeChatBoost extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -924,7 +924,7 @@ final class InternalLinkTypeChatFolderInvite extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "invite_link": inviteLink,
 		};
 	}
@@ -945,7 +945,7 @@ final class InternalLinkTypeChatFolderInvite extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeChatFolderInvite';
+  static const String defaultObjectId = 'internalLinkTypeChatFolderInvite';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -953,7 +953,7 @@ final class InternalLinkTypeChatFolderInvite extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -989,7 +989,7 @@ final class InternalLinkTypeChatFolderSettings extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -1004,7 +1004,7 @@ final class InternalLinkTypeChatFolderSettings extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeChatFolderSettings';
+  static const String defaultObjectId = 'internalLinkTypeChatFolderSettings';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1012,7 +1012,7 @@ final class InternalLinkTypeChatFolderSettings extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1057,7 +1057,7 @@ final class InternalLinkTypeChatInvite extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "invite_link": inviteLink,
 		};
 	}
@@ -1078,7 +1078,7 @@ final class InternalLinkTypeChatInvite extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeChatInvite';
+  static const String defaultObjectId = 'internalLinkTypeChatInvite';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1086,7 +1086,7 @@ final class InternalLinkTypeChatInvite extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1122,7 +1122,7 @@ final class InternalLinkTypeDefaultMessageAutoDeleteTimerSettings extends Intern
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -1137,7 +1137,7 @@ final class InternalLinkTypeDefaultMessageAutoDeleteTimerSettings extends Intern
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeDefaultMessageAutoDeleteTimerSettings';
+  static const String defaultObjectId = 'internalLinkTypeDefaultMessageAutoDeleteTimerSettings';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1145,7 +1145,7 @@ final class InternalLinkTypeDefaultMessageAutoDeleteTimerSettings extends Intern
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1181,7 +1181,7 @@ final class InternalLinkTypeEditProfileSettings extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -1196,7 +1196,7 @@ final class InternalLinkTypeEditProfileSettings extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeEditProfileSettings';
+  static const String defaultObjectId = 'internalLinkTypeEditProfileSettings';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1204,7 +1204,7 @@ final class InternalLinkTypeEditProfileSettings extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1256,7 +1256,7 @@ final class InternalLinkTypeGame extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "bot_username": botUsername,
       "game_short_name": gameShortName,
 		};
@@ -1281,7 +1281,7 @@ final class InternalLinkTypeGame extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeGame';
+  static const String defaultObjectId = 'internalLinkTypeGame';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1289,7 +1289,7 @@ final class InternalLinkTypeGame extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1341,7 +1341,7 @@ final class InternalLinkTypeInstantView extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "url": url,
       "fallback_url": fallbackUrl,
 		};
@@ -1366,7 +1366,7 @@ final class InternalLinkTypeInstantView extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeInstantView';
+  static const String defaultObjectId = 'internalLinkTypeInstantView';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1374,7 +1374,7 @@ final class InternalLinkTypeInstantView extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1419,7 +1419,7 @@ final class InternalLinkTypeInvoice extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "invoice_name": invoiceName,
 		};
 	}
@@ -1440,7 +1440,7 @@ final class InternalLinkTypeInvoice extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeInvoice';
+  static const String defaultObjectId = 'internalLinkTypeInvoice';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1448,7 +1448,7 @@ final class InternalLinkTypeInvoice extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1493,7 +1493,7 @@ final class InternalLinkTypeLanguagePack extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "language_pack_id": languagePackId,
 		};
 	}
@@ -1514,7 +1514,7 @@ final class InternalLinkTypeLanguagePack extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeLanguagePack';
+  static const String defaultObjectId = 'internalLinkTypeLanguagePack';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1522,7 +1522,7 @@ final class InternalLinkTypeLanguagePack extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1558,7 +1558,7 @@ final class InternalLinkTypeLanguageSettings extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -1573,7 +1573,7 @@ final class InternalLinkTypeLanguageSettings extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeLanguageSettings';
+  static const String defaultObjectId = 'internalLinkTypeLanguageSettings';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1581,7 +1581,7 @@ final class InternalLinkTypeLanguageSettings extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1626,7 +1626,7 @@ final class InternalLinkTypeMessage extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "url": url,
 		};
 	}
@@ -1647,7 +1647,7 @@ final class InternalLinkTypeMessage extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeMessage';
+  static const String defaultObjectId = 'internalLinkTypeMessage';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1655,7 +1655,7 @@ final class InternalLinkTypeMessage extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1707,7 +1707,7 @@ final class InternalLinkTypeMessageDraft extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text.toJson(),
       "contains_link": containsLink,
 		};
@@ -1732,7 +1732,7 @@ final class InternalLinkTypeMessageDraft extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeMessageDraft';
+  static const String defaultObjectId = 'internalLinkTypeMessageDraft';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1740,7 +1740,7 @@ final class InternalLinkTypeMessageDraft extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1813,7 +1813,7 @@ final class InternalLinkTypePassportDataRequest extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "bot_user_id": botUserId,
       "scope": scope,
       "public_key": publicKey,
@@ -1850,7 +1850,7 @@ final class InternalLinkTypePassportDataRequest extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypePassportDataRequest';
+  static const String defaultObjectId = 'internalLinkTypePassportDataRequest';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1858,7 +1858,7 @@ final class InternalLinkTypePassportDataRequest extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1910,7 +1910,7 @@ final class InternalLinkTypePhoneNumberConfirmation extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "hash": hash,
       "phone_number": phoneNumber,
 		};
@@ -1935,7 +1935,7 @@ final class InternalLinkTypePhoneNumberConfirmation extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypePhoneNumberConfirmation';
+  static const String defaultObjectId = 'internalLinkTypePhoneNumberConfirmation';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1943,7 +1943,7 @@ final class InternalLinkTypePhoneNumberConfirmation extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1988,7 +1988,7 @@ final class InternalLinkTypePremiumFeatures extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "referrer": referrer,
 		};
 	}
@@ -2009,7 +2009,7 @@ final class InternalLinkTypePremiumFeatures extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypePremiumFeatures';
+  static const String defaultObjectId = 'internalLinkTypePremiumFeatures';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2017,7 +2017,7 @@ final class InternalLinkTypePremiumFeatures extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2062,7 +2062,7 @@ final class InternalLinkTypePremiumGift extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "referrer": referrer,
 		};
 	}
@@ -2083,7 +2083,7 @@ final class InternalLinkTypePremiumGift extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypePremiumGift';
+  static const String defaultObjectId = 'internalLinkTypePremiumGift';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2091,7 +2091,7 @@ final class InternalLinkTypePremiumGift extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2136,7 +2136,7 @@ final class InternalLinkTypePremiumGiftCode extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "code": code,
 		};
 	}
@@ -2157,7 +2157,7 @@ final class InternalLinkTypePremiumGiftCode extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypePremiumGiftCode';
+  static const String defaultObjectId = 'internalLinkTypePremiumGiftCode';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2165,7 +2165,7 @@ final class InternalLinkTypePremiumGiftCode extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2201,7 +2201,7 @@ final class InternalLinkTypePrivacyAndSecuritySettings extends InternalLinkType 
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -2216,7 +2216,7 @@ final class InternalLinkTypePrivacyAndSecuritySettings extends InternalLinkType 
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypePrivacyAndSecuritySettings';
+  static const String defaultObjectId = 'internalLinkTypePrivacyAndSecuritySettings';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2224,7 +2224,7 @@ final class InternalLinkTypePrivacyAndSecuritySettings extends InternalLinkType 
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2283,7 +2283,7 @@ final class InternalLinkTypeProxy extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "server": server,
       "port": port,
       "type": type.toJson(),
@@ -2312,7 +2312,7 @@ final class InternalLinkTypeProxy extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeProxy';
+  static const String defaultObjectId = 'internalLinkTypeProxy';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2320,7 +2320,7 @@ final class InternalLinkTypeProxy extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2365,7 +2365,7 @@ final class InternalLinkTypePublicChat extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_username": chatUsername,
 		};
 	}
@@ -2386,7 +2386,7 @@ final class InternalLinkTypePublicChat extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypePublicChat';
+  static const String defaultObjectId = 'internalLinkTypePublicChat';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2394,7 +2394,7 @@ final class InternalLinkTypePublicChat extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2430,7 +2430,7 @@ final class InternalLinkTypeQrCodeAuthentication extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -2445,7 +2445,7 @@ final class InternalLinkTypeQrCodeAuthentication extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeQrCodeAuthentication';
+  static const String defaultObjectId = 'internalLinkTypeQrCodeAuthentication';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2453,7 +2453,7 @@ final class InternalLinkTypeQrCodeAuthentication extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2489,7 +2489,7 @@ final class InternalLinkTypeRestorePurchases extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -2504,7 +2504,7 @@ final class InternalLinkTypeRestorePurchases extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeRestorePurchases';
+  static const String defaultObjectId = 'internalLinkTypeRestorePurchases';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2512,7 +2512,7 @@ final class InternalLinkTypeRestorePurchases extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2548,7 +2548,7 @@ final class InternalLinkTypeSettings extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -2563,7 +2563,7 @@ final class InternalLinkTypeSettings extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeSettings';
+  static const String defaultObjectId = 'internalLinkTypeSettings';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2571,7 +2571,7 @@ final class InternalLinkTypeSettings extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2623,7 +2623,7 @@ final class InternalLinkTypeSideMenuBot extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "bot_username": botUsername,
       "url": url,
 		};
@@ -2648,7 +2648,7 @@ final class InternalLinkTypeSideMenuBot extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeSideMenuBot';
+  static const String defaultObjectId = 'internalLinkTypeSideMenuBot';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2656,7 +2656,7 @@ final class InternalLinkTypeSideMenuBot extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2708,7 +2708,7 @@ final class InternalLinkTypeStickerSet extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "sticker_set_name": stickerSetName,
       "expect_custom_emoji": expectCustomEmoji,
 		};
@@ -2733,7 +2733,7 @@ final class InternalLinkTypeStickerSet extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeStickerSet';
+  static const String defaultObjectId = 'internalLinkTypeStickerSet';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2741,7 +2741,7 @@ final class InternalLinkTypeStickerSet extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2793,7 +2793,7 @@ final class InternalLinkTypeStory extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "story_sender_username": storySenderUsername,
       "story_id": storyId,
 		};
@@ -2818,7 +2818,7 @@ final class InternalLinkTypeStory extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeStory';
+  static const String defaultObjectId = 'internalLinkTypeStory';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2826,7 +2826,7 @@ final class InternalLinkTypeStory extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2871,7 +2871,7 @@ final class InternalLinkTypeTheme extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "theme_name": themeName,
 		};
 	}
@@ -2892,7 +2892,7 @@ final class InternalLinkTypeTheme extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeTheme';
+  static const String defaultObjectId = 'internalLinkTypeTheme';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2900,7 +2900,7 @@ final class InternalLinkTypeTheme extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2936,7 +2936,7 @@ final class InternalLinkTypeThemeSettings extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -2951,7 +2951,7 @@ final class InternalLinkTypeThemeSettings extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeThemeSettings';
+  static const String defaultObjectId = 'internalLinkTypeThemeSettings';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2959,7 +2959,7 @@ final class InternalLinkTypeThemeSettings extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -3004,7 +3004,7 @@ final class InternalLinkTypeUnknownDeepLink extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "link": link,
 		};
 	}
@@ -3025,7 +3025,7 @@ final class InternalLinkTypeUnknownDeepLink extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeUnknownDeepLink';
+  static const String defaultObjectId = 'internalLinkTypeUnknownDeepLink';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3033,7 +3033,7 @@ final class InternalLinkTypeUnknownDeepLink extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -3069,7 +3069,7 @@ final class InternalLinkTypeUnsupportedProxy extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -3084,7 +3084,7 @@ final class InternalLinkTypeUnsupportedProxy extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeUnsupportedProxy';
+  static const String defaultObjectId = 'internalLinkTypeUnsupportedProxy';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3092,7 +3092,7 @@ final class InternalLinkTypeUnsupportedProxy extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -3137,7 +3137,7 @@ final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "phone_number": phoneNumber,
 		};
 	}
@@ -3158,7 +3158,7 @@ final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeUserPhoneNumber';
+  static const String defaultObjectId = 'internalLinkTypeUserPhoneNumber';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3166,7 +3166,7 @@ final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -3211,7 +3211,7 @@ final class InternalLinkTypeUserToken extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "token": token,
 		};
 	}
@@ -3232,7 +3232,7 @@ final class InternalLinkTypeUserToken extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeUserToken';
+  static const String defaultObjectId = 'internalLinkTypeUserToken';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3240,7 +3240,7 @@ final class InternalLinkTypeUserToken extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -3299,7 +3299,7 @@ final class InternalLinkTypeVideoChat extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_username": chatUsername,
       "invite_hash": inviteHash,
       "is_live_stream": isLiveStream,
@@ -3328,7 +3328,7 @@ final class InternalLinkTypeVideoChat extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeVideoChat';
+  static const String defaultObjectId = 'internalLinkTypeVideoChat';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3336,7 +3336,7 @@ final class InternalLinkTypeVideoChat extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -3395,7 +3395,7 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "bot_username": botUsername,
       "web_app_short_name": webAppShortName,
       "start_parameter": startParameter,
@@ -3424,7 +3424,7 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
   );
 
   /// TDLib object type
-  static const String objectType = 'internalLinkTypeWebApp';
+  static const String defaultObjectId = 'internalLinkTypeWebApp';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3432,5 +3432,5 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -57,7 +57,7 @@ final class CallProtocol extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "udp_p2p": udpP2p,
       "udp_reflector": udpReflector,
       "min_layer": minLayer,
@@ -89,7 +89,7 @@ final class CallProtocol extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'callProtocol';
+  static const String defaultObjectId = 'callProtocol';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -97,5 +97,5 @@ final class CallProtocol extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

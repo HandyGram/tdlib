@@ -78,7 +78,7 @@ final class LocalFile extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "path": path,
       "can_be_downloaded": canBeDownloaded,
       "can_be_deleted": canBeDeleted,
@@ -122,7 +122,7 @@ final class LocalFile extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'localFile';
+  static const String defaultObjectId = 'localFile';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -130,5 +130,5 @@ final class LocalFile extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

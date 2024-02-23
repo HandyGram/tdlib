@@ -39,7 +39,7 @@ final class SetChatDraftMessage extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_thread_id": messageThreadId,
       "draft_message": draftMessage?.toJson(),
@@ -64,7 +64,7 @@ final class SetChatDraftMessage extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'setChatDraftMessage';
+  static const String defaultObjectId = 'setChatDraftMessage';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -72,5 +72,5 @@ final class SetChatDraftMessage extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

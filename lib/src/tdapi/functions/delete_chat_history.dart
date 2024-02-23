@@ -39,7 +39,7 @@ final class DeleteChatHistory extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "remove_from_chat_list": removeFromChatList,
       "revoke": revoke,
@@ -64,7 +64,7 @@ final class DeleteChatHistory extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'deleteChatHistory';
+  static const String defaultObjectId = 'deleteChatHistory';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -72,5 +72,5 @@ final class DeleteChatHistory extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -39,7 +39,7 @@ final class ReadFilePart extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "file_id": fileId,
       "offset": offset,
       "count": count,
@@ -64,7 +64,7 @@ final class ReadFilePart extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'readFilePart';
+  static const String defaultObjectId = 'readFilePart';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -72,5 +72,5 @@ final class ReadFilePart extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

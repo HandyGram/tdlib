@@ -62,7 +62,7 @@ final class AutosaveSettings extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "private_chat_settings": privateChatSettings.toJson(),
       "group_settings": groupSettings.toJson(),
       "channel_settings": channelSettings.toJson(),
@@ -94,7 +94,7 @@ final class AutosaveSettings extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'autosaveSettings';
+  static const String defaultObjectId = 'autosaveSettings';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -102,5 +102,5 @@ final class AutosaveSettings extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

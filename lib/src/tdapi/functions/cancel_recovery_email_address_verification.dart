@@ -19,7 +19,7 @@ final class CancelRecoveryEmailAddressVerification extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "@extra": extra,
 		};
 	}
@@ -28,7 +28,7 @@ final class CancelRecoveryEmailAddressVerification extends TdFunction {
   CancelRecoveryEmailAddressVerification copyWith() => const CancelRecoveryEmailAddressVerification();
 
   /// TDLib object type
-  static const String objectType = 'cancelRecoveryEmailAddressVerification';
+  static const String defaultObjectId = 'cancelRecoveryEmailAddressVerification';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -36,5 +36,5 @@ final class CancelRecoveryEmailAddressVerification extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

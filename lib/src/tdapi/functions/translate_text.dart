@@ -33,7 +33,7 @@ final class TranslateText extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text.toJson(),
       "to_language_code": toLanguageCode,
       "@extra": extra,
@@ -54,7 +54,7 @@ final class TranslateText extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'translateText';
+  static const String defaultObjectId = 'translateText';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -62,5 +62,5 @@ final class TranslateText extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

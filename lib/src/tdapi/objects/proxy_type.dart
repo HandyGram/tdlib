@@ -16,11 +16,11 @@ sealed class ProxyType extends TdObject {
   /// * [ProxyTypeMtproto]
   factory ProxyType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case ProxyTypeSocks5.objectType:
+      case ProxyTypeSocks5.defaultObjectId:
         return ProxyTypeSocks5.fromJson(json);
-      case ProxyTypeHttp.objectType:
+      case ProxyTypeHttp.defaultObjectId:
         return ProxyTypeHttp.fromJson(json);
-      case ProxyTypeMtproto.objectType:
+      case ProxyTypeMtproto.defaultObjectId:
         return ProxyTypeMtproto.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class ProxyType extends TdObject {
   ProxyType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'proxyType';
+  static const String defaultObjectId = 'proxyType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class ProxyType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -86,7 +86,7 @@ final class ProxyTypeSocks5 extends ProxyType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "username": username,
       "password": password,
 		};
@@ -107,7 +107,7 @@ final class ProxyTypeSocks5 extends ProxyType {
   );
 
   /// TDLib object type
-  static const String objectType = 'proxyTypeSocks5';
+  static const String defaultObjectId = 'proxyTypeSocks5';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -115,7 +115,7 @@ final class ProxyTypeSocks5 extends ProxyType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -162,7 +162,7 @@ final class ProxyTypeHttp extends ProxyType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "username": username,
       "password": password,
       "http_only": httpOnly,
@@ -187,7 +187,7 @@ final class ProxyTypeHttp extends ProxyType {
   );
 
   /// TDLib object type
-  static const String objectType = 'proxyTypeHttp';
+  static const String defaultObjectId = 'proxyTypeHttp';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -195,7 +195,7 @@ final class ProxyTypeHttp extends ProxyType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -228,7 +228,7 @@ final class ProxyTypeMtproto extends ProxyType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "secret": secret,
 		};
 	}
@@ -245,7 +245,7 @@ final class ProxyTypeMtproto extends ProxyType {
   );
 
   /// TDLib object type
-  static const String objectType = 'proxyTypeMtproto';
+  static const String defaultObjectId = 'proxyTypeMtproto';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -253,5 +253,5 @@ final class ProxyTypeMtproto extends ProxyType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

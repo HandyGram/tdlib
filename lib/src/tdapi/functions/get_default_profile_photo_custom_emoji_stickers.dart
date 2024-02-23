@@ -19,7 +19,7 @@ final class GetDefaultProfilePhotoCustomEmojiStickers extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "@extra": extra,
 		};
 	}
@@ -28,7 +28,7 @@ final class GetDefaultProfilePhotoCustomEmojiStickers extends TdFunction {
   GetDefaultProfilePhotoCustomEmojiStickers copyWith() => const GetDefaultProfilePhotoCustomEmojiStickers();
 
   /// TDLib object type
-  static const String objectType = 'getDefaultProfilePhotoCustomEmojiStickers';
+  static const String defaultObjectId = 'getDefaultProfilePhotoCustomEmojiStickers';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -36,5 +36,5 @@ final class GetDefaultProfilePhotoCustomEmojiStickers extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

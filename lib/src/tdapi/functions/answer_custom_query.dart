@@ -33,7 +33,7 @@ final class AnswerCustomQuery extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "custom_query_id": customQueryId,
       "data": data,
       "@extra": extra,
@@ -54,7 +54,7 @@ final class AnswerCustomQuery extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'answerCustomQuery';
+  static const String defaultObjectId = 'answerCustomQuery';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -62,5 +62,5 @@ final class AnswerCustomQuery extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

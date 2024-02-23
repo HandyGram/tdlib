@@ -31,41 +31,41 @@ sealed class InputMessageContent extends TdObject {
   /// * [InputMessageForwarded]
   factory InputMessageContent.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case InputMessageText.objectType:
+      case InputMessageText.defaultObjectId:
         return InputMessageText.fromJson(json);
-      case InputMessageAnimation.objectType:
+      case InputMessageAnimation.defaultObjectId:
         return InputMessageAnimation.fromJson(json);
-      case InputMessageAudio.objectType:
+      case InputMessageAudio.defaultObjectId:
         return InputMessageAudio.fromJson(json);
-      case InputMessageDocument.objectType:
+      case InputMessageDocument.defaultObjectId:
         return InputMessageDocument.fromJson(json);
-      case InputMessagePhoto.objectType:
+      case InputMessagePhoto.defaultObjectId:
         return InputMessagePhoto.fromJson(json);
-      case InputMessageSticker.objectType:
+      case InputMessageSticker.defaultObjectId:
         return InputMessageSticker.fromJson(json);
-      case InputMessageVideo.objectType:
+      case InputMessageVideo.defaultObjectId:
         return InputMessageVideo.fromJson(json);
-      case InputMessageVideoNote.objectType:
+      case InputMessageVideoNote.defaultObjectId:
         return InputMessageVideoNote.fromJson(json);
-      case InputMessageVoiceNote.objectType:
+      case InputMessageVoiceNote.defaultObjectId:
         return InputMessageVoiceNote.fromJson(json);
-      case InputMessageLocation.objectType:
+      case InputMessageLocation.defaultObjectId:
         return InputMessageLocation.fromJson(json);
-      case InputMessageVenue.objectType:
+      case InputMessageVenue.defaultObjectId:
         return InputMessageVenue.fromJson(json);
-      case InputMessageContact.objectType:
+      case InputMessageContact.defaultObjectId:
         return InputMessageContact.fromJson(json);
-      case InputMessageDice.objectType:
+      case InputMessageDice.defaultObjectId:
         return InputMessageDice.fromJson(json);
-      case InputMessageGame.objectType:
+      case InputMessageGame.defaultObjectId:
         return InputMessageGame.fromJson(json);
-      case InputMessageInvoice.objectType:
+      case InputMessageInvoice.defaultObjectId:
         return InputMessageInvoice.fromJson(json);
-      case InputMessagePoll.objectType:
+      case InputMessagePoll.defaultObjectId:
         return InputMessagePoll.fromJson(json);
-      case InputMessageStory.objectType:
+      case InputMessageStory.defaultObjectId:
         return InputMessageStory.fromJson(json);
-      case InputMessageForwarded.objectType:
+      case InputMessageForwarded.defaultObjectId:
         return InputMessageForwarded.fromJson(json);
       default:
         throw FormatException(
@@ -83,7 +83,7 @@ sealed class InputMessageContent extends TdObject {
   InputMessageContent copyWith();
 
   /// TDLib object type
-  static const String objectType = 'inputMessageContent';
+  static const String defaultObjectId = 'inputMessageContent';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -91,7 +91,7 @@ sealed class InputMessageContent extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -138,7 +138,7 @@ final class InputMessageText extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text.toJson(),
       "link_preview_options": linkPreviewOptions?.toJson(),
       "clear_draft": clearDraft,
@@ -163,7 +163,7 @@ final class InputMessageText extends InputMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputMessageText';
+  static const String defaultObjectId = 'inputMessageText';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -171,7 +171,7 @@ final class InputMessageText extends InputMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -253,7 +253,7 @@ final class InputMessageAnimation extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "animation": animation.toJson(),
       "thumbnail": thumbnail?.toJson(),
       "added_sticker_file_ids": addedStickerFileIds.map((i) => i).toList(),
@@ -298,7 +298,7 @@ final class InputMessageAnimation extends InputMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputMessageAnimation';
+  static const String defaultObjectId = 'inputMessageAnimation';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -306,7 +306,7 @@ final class InputMessageAnimation extends InputMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -374,7 +374,7 @@ final class InputMessageAudio extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "audio": audio.toJson(),
       "album_cover_thumbnail": albumCoverThumbnail?.toJson(),
       "duration": duration,
@@ -411,7 +411,7 @@ final class InputMessageAudio extends InputMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputMessageAudio';
+  static const String defaultObjectId = 'inputMessageAudio';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -419,7 +419,7 @@ final class InputMessageAudio extends InputMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -473,7 +473,7 @@ final class InputMessageDocument extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "document": document.toJson(),
       "thumbnail": thumbnail?.toJson(),
       "disable_content_type_detection": disableContentTypeDetection,
@@ -502,7 +502,7 @@ final class InputMessageDocument extends InputMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputMessageDocument';
+  static const String defaultObjectId = 'inputMessageDocument';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -510,7 +510,7 @@ final class InputMessageDocument extends InputMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -592,7 +592,7 @@ final class InputMessagePhoto extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "photo": photo.toJson(),
       "thumbnail": thumbnail?.toJson(),
       "added_sticker_file_ids": addedStickerFileIds.map((i) => i).toList(),
@@ -637,7 +637,7 @@ final class InputMessagePhoto extends InputMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputMessagePhoto';
+  static const String defaultObjectId = 'inputMessagePhoto';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -645,7 +645,7 @@ final class InputMessagePhoto extends InputMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -706,7 +706,7 @@ final class InputMessageSticker extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "sticker": sticker.toJson(),
       "thumbnail": thumbnail?.toJson(),
       "width": width,
@@ -739,7 +739,7 @@ final class InputMessageSticker extends InputMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputMessageSticker';
+  static const String defaultObjectId = 'inputMessageSticker';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -747,7 +747,7 @@ final class InputMessageSticker extends InputMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -843,7 +843,7 @@ final class InputMessageVideo extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "video": video.toJson(),
       "thumbnail": thumbnail?.toJson(),
       "added_sticker_file_ids": addedStickerFileIds.map((i) => i).toList(),
@@ -896,7 +896,7 @@ final class InputMessageVideo extends InputMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputMessageVideo';
+  static const String defaultObjectId = 'inputMessageVideo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -904,7 +904,7 @@ final class InputMessageVideo extends InputMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -965,7 +965,7 @@ final class InputMessageVideoNote extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "video_note": videoNote.toJson(),
       "thumbnail": thumbnail?.toJson(),
       "duration": duration,
@@ -998,7 +998,7 @@ final class InputMessageVideoNote extends InputMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputMessageVideoNote';
+  static const String defaultObjectId = 'inputMessageVideoNote';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1006,7 +1006,7 @@ final class InputMessageVideoNote extends InputMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1067,7 +1067,7 @@ final class InputMessageVoiceNote extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "voice_note": voiceNote.toJson(),
       "duration": duration,
       "waveform": waveform,
@@ -1100,7 +1100,7 @@ final class InputMessageVoiceNote extends InputMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputMessageVoiceNote';
+  static const String defaultObjectId = 'inputMessageVoiceNote';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1108,7 +1108,7 @@ final class InputMessageVoiceNote extends InputMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1162,7 +1162,7 @@ final class InputMessageLocation extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "location": location.toJson(),
       "live_period": livePeriod,
       "heading": heading,
@@ -1191,7 +1191,7 @@ final class InputMessageLocation extends InputMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputMessageLocation';
+  static const String defaultObjectId = 'inputMessageLocation';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1199,7 +1199,7 @@ final class InputMessageLocation extends InputMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1232,7 +1232,7 @@ final class InputMessageVenue extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "venue": venue.toJson(),
 		};
 	}
@@ -1249,7 +1249,7 @@ final class InputMessageVenue extends InputMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputMessageVenue';
+  static const String defaultObjectId = 'inputMessageVenue';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1257,7 +1257,7 @@ final class InputMessageVenue extends InputMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1290,7 +1290,7 @@ final class InputMessageContact extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "contact": contact.toJson(),
 		};
 	}
@@ -1307,7 +1307,7 @@ final class InputMessageContact extends InputMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputMessageContact';
+  static const String defaultObjectId = 'inputMessageContact';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1315,7 +1315,7 @@ final class InputMessageContact extends InputMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1355,7 +1355,7 @@ final class InputMessageDice extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "emoji": emoji,
       "clear_draft": clearDraft,
 		};
@@ -1376,7 +1376,7 @@ final class InputMessageDice extends InputMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputMessageDice';
+  static const String defaultObjectId = 'inputMessageDice';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1384,7 +1384,7 @@ final class InputMessageDice extends InputMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1424,7 +1424,7 @@ final class InputMessageGame extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "bot_user_id": botUserId,
       "game_short_name": gameShortName,
 		};
@@ -1445,7 +1445,7 @@ final class InputMessageGame extends InputMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputMessageGame';
+  static const String defaultObjectId = 'inputMessageGame';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1453,7 +1453,7 @@ final class InputMessageGame extends InputMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1563,7 +1563,7 @@ final class InputMessageInvoice extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "invoice": invoice.toJson(),
       "title": title,
       "description": description,
@@ -1624,7 +1624,7 @@ final class InputMessageInvoice extends InputMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputMessageInvoice';
+  static const String defaultObjectId = 'inputMessageInvoice';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1632,7 +1632,7 @@ final class InputMessageInvoice extends InputMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1707,7 +1707,7 @@ final class InputMessagePoll extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "question": question,
       "options": options.map((i) => i).toList(),
       "is_anonymous": isAnonymous,
@@ -1748,7 +1748,7 @@ final class InputMessagePoll extends InputMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputMessagePoll';
+  static const String defaultObjectId = 'inputMessagePoll';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1756,7 +1756,7 @@ final class InputMessagePoll extends InputMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1796,7 +1796,7 @@ final class InputMessageStory extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "story_sender_chat_id": storySenderChatId,
       "story_id": storyId,
 		};
@@ -1817,7 +1817,7 @@ final class InputMessageStory extends InputMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputMessageStory';
+  static const String defaultObjectId = 'inputMessageStory';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1825,7 +1825,7 @@ final class InputMessageStory extends InputMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1879,7 +1879,7 @@ final class InputMessageForwarded extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "from_chat_id": fromChatId,
       "message_id": messageId,
       "in_game_share": inGameShare,
@@ -1908,7 +1908,7 @@ final class InputMessageForwarded extends InputMessageContent {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputMessageForwarded';
+  static const String defaultObjectId = 'inputMessageForwarded';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1916,5 +1916,5 @@ final class InputMessageForwarded extends InputMessageContent {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -15,9 +15,9 @@ sealed class ChatStatistics extends TdObject {
   /// * [ChatStatisticsChannel]
   factory ChatStatistics.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case ChatStatisticsSupergroup.objectType:
+      case ChatStatisticsSupergroup.defaultObjectId:
         return ChatStatisticsSupergroup.fromJson(json);
-      case ChatStatisticsChannel.objectType:
+      case ChatStatisticsChannel.defaultObjectId:
         return ChatStatisticsChannel.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class ChatStatistics extends TdObject {
   ChatStatistics copyWith();
 
   /// TDLib object type
-  static const String objectType = 'chatStatistics';
+  static const String defaultObjectId = 'chatStatistics';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class ChatStatistics extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -193,7 +193,7 @@ final class ChatStatisticsSupergroup extends ChatStatistics {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "period": period.toJson(),
       "member_count": memberCount.toJson(),
       "message_count": messageCount.toJson(),
@@ -274,7 +274,7 @@ final class ChatStatisticsSupergroup extends ChatStatistics {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatStatisticsSupergroup';
+  static const String defaultObjectId = 'chatStatisticsSupergroup';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -282,7 +282,7 @@ final class ChatStatisticsSupergroup extends ChatStatistics {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -474,7 +474,7 @@ final class ChatStatisticsChannel extends ChatStatistics {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "period": period.toJson(),
       "member_count": memberCount.toJson(),
       "mean_message_view_count": meanMessageViewCount.toJson(),
@@ -579,7 +579,7 @@ final class ChatStatisticsChannel extends ChatStatistics {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatStatisticsChannel';
+  static const String defaultObjectId = 'chatStatisticsChannel';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -587,5 +587,5 @@ final class ChatStatisticsChannel extends ChatStatistics {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

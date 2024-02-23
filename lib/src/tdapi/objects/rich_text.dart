@@ -30,39 +30,39 @@ sealed class RichText extends TdObject {
   /// * [RichTexts]
   factory RichText.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case RichTextPlain.objectType:
+      case RichTextPlain.defaultObjectId:
         return RichTextPlain.fromJson(json);
-      case RichTextBold.objectType:
+      case RichTextBold.defaultObjectId:
         return RichTextBold.fromJson(json);
-      case RichTextItalic.objectType:
+      case RichTextItalic.defaultObjectId:
         return RichTextItalic.fromJson(json);
-      case RichTextUnderline.objectType:
+      case RichTextUnderline.defaultObjectId:
         return RichTextUnderline.fromJson(json);
-      case RichTextStrikethrough.objectType:
+      case RichTextStrikethrough.defaultObjectId:
         return RichTextStrikethrough.fromJson(json);
-      case RichTextFixed.objectType:
+      case RichTextFixed.defaultObjectId:
         return RichTextFixed.fromJson(json);
-      case RichTextUrl.objectType:
+      case RichTextUrl.defaultObjectId:
         return RichTextUrl.fromJson(json);
-      case RichTextEmailAddress.objectType:
+      case RichTextEmailAddress.defaultObjectId:
         return RichTextEmailAddress.fromJson(json);
-      case RichTextSubscript.objectType:
+      case RichTextSubscript.defaultObjectId:
         return RichTextSubscript.fromJson(json);
-      case RichTextSuperscript.objectType:
+      case RichTextSuperscript.defaultObjectId:
         return RichTextSuperscript.fromJson(json);
-      case RichTextMarked.objectType:
+      case RichTextMarked.defaultObjectId:
         return RichTextMarked.fromJson(json);
-      case RichTextPhoneNumber.objectType:
+      case RichTextPhoneNumber.defaultObjectId:
         return RichTextPhoneNumber.fromJson(json);
-      case RichTextIcon.objectType:
+      case RichTextIcon.defaultObjectId:
         return RichTextIcon.fromJson(json);
-      case RichTextReference.objectType:
+      case RichTextReference.defaultObjectId:
         return RichTextReference.fromJson(json);
-      case RichTextAnchor.objectType:
+      case RichTextAnchor.defaultObjectId:
         return RichTextAnchor.fromJson(json);
-      case RichTextAnchorLink.objectType:
+      case RichTextAnchorLink.defaultObjectId:
         return RichTextAnchorLink.fromJson(json);
-      case RichTexts.objectType:
+      case RichTexts.defaultObjectId:
         return RichTexts.fromJson(json);
       default:
         throw FormatException(
@@ -80,7 +80,7 @@ sealed class RichText extends TdObject {
   RichText copyWith();
 
   /// TDLib object type
-  static const String objectType = 'richText';
+  static const String defaultObjectId = 'richText';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -88,7 +88,7 @@ sealed class RichText extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -121,7 +121,7 @@ final class RichTextPlain extends RichText {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text,
 		};
 	}
@@ -138,7 +138,7 @@ final class RichTextPlain extends RichText {
   );
 
   /// TDLib object type
-  static const String objectType = 'richTextPlain';
+  static const String defaultObjectId = 'richTextPlain';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -146,7 +146,7 @@ final class RichTextPlain extends RichText {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -179,7 +179,7 @@ final class RichTextBold extends RichText {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text.toJson(),
 		};
 	}
@@ -196,7 +196,7 @@ final class RichTextBold extends RichText {
   );
 
   /// TDLib object type
-  static const String objectType = 'richTextBold';
+  static const String defaultObjectId = 'richTextBold';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -204,7 +204,7 @@ final class RichTextBold extends RichText {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -237,7 +237,7 @@ final class RichTextItalic extends RichText {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text.toJson(),
 		};
 	}
@@ -254,7 +254,7 @@ final class RichTextItalic extends RichText {
   );
 
   /// TDLib object type
-  static const String objectType = 'richTextItalic';
+  static const String defaultObjectId = 'richTextItalic';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -262,7 +262,7 @@ final class RichTextItalic extends RichText {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -295,7 +295,7 @@ final class RichTextUnderline extends RichText {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text.toJson(),
 		};
 	}
@@ -312,7 +312,7 @@ final class RichTextUnderline extends RichText {
   );
 
   /// TDLib object type
-  static const String objectType = 'richTextUnderline';
+  static const String defaultObjectId = 'richTextUnderline';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -320,7 +320,7 @@ final class RichTextUnderline extends RichText {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -353,7 +353,7 @@ final class RichTextStrikethrough extends RichText {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text.toJson(),
 		};
 	}
@@ -370,7 +370,7 @@ final class RichTextStrikethrough extends RichText {
   );
 
   /// TDLib object type
-  static const String objectType = 'richTextStrikethrough';
+  static const String defaultObjectId = 'richTextStrikethrough';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -378,7 +378,7 @@ final class RichTextStrikethrough extends RichText {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -411,7 +411,7 @@ final class RichTextFixed extends RichText {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text.toJson(),
 		};
 	}
@@ -428,7 +428,7 @@ final class RichTextFixed extends RichText {
   );
 
   /// TDLib object type
-  static const String objectType = 'richTextFixed';
+  static const String defaultObjectId = 'richTextFixed';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -436,7 +436,7 @@ final class RichTextFixed extends RichText {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -483,7 +483,7 @@ final class RichTextUrl extends RichText {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text.toJson(),
       "url": url,
       "is_cached": isCached,
@@ -508,7 +508,7 @@ final class RichTextUrl extends RichText {
   );
 
   /// TDLib object type
-  static const String objectType = 'richTextUrl';
+  static const String defaultObjectId = 'richTextUrl';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -516,7 +516,7 @@ final class RichTextUrl extends RichText {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -556,7 +556,7 @@ final class RichTextEmailAddress extends RichText {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text.toJson(),
       "email_address": emailAddress,
 		};
@@ -577,7 +577,7 @@ final class RichTextEmailAddress extends RichText {
   );
 
   /// TDLib object type
-  static const String objectType = 'richTextEmailAddress';
+  static const String defaultObjectId = 'richTextEmailAddress';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -585,7 +585,7 @@ final class RichTextEmailAddress extends RichText {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -618,7 +618,7 @@ final class RichTextSubscript extends RichText {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text.toJson(),
 		};
 	}
@@ -635,7 +635,7 @@ final class RichTextSubscript extends RichText {
   );
 
   /// TDLib object type
-  static const String objectType = 'richTextSubscript';
+  static const String defaultObjectId = 'richTextSubscript';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -643,7 +643,7 @@ final class RichTextSubscript extends RichText {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -676,7 +676,7 @@ final class RichTextSuperscript extends RichText {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text.toJson(),
 		};
 	}
@@ -693,7 +693,7 @@ final class RichTextSuperscript extends RichText {
   );
 
   /// TDLib object type
-  static const String objectType = 'richTextSuperscript';
+  static const String defaultObjectId = 'richTextSuperscript';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -701,7 +701,7 @@ final class RichTextSuperscript extends RichText {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -734,7 +734,7 @@ final class RichTextMarked extends RichText {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text.toJson(),
 		};
 	}
@@ -751,7 +751,7 @@ final class RichTextMarked extends RichText {
   );
 
   /// TDLib object type
-  static const String objectType = 'richTextMarked';
+  static const String defaultObjectId = 'richTextMarked';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -759,7 +759,7 @@ final class RichTextMarked extends RichText {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -799,7 +799,7 @@ final class RichTextPhoneNumber extends RichText {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text.toJson(),
       "phone_number": phoneNumber,
 		};
@@ -820,7 +820,7 @@ final class RichTextPhoneNumber extends RichText {
   );
 
   /// TDLib object type
-  static const String objectType = 'richTextPhoneNumber';
+  static const String defaultObjectId = 'richTextPhoneNumber';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -828,7 +828,7 @@ final class RichTextPhoneNumber extends RichText {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -875,7 +875,7 @@ final class RichTextIcon extends RichText {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "document": document.toJson(),
       "width": width,
       "height": height,
@@ -900,7 +900,7 @@ final class RichTextIcon extends RichText {
   );
 
   /// TDLib object type
-  static const String objectType = 'richTextIcon';
+  static const String defaultObjectId = 'richTextIcon';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -908,7 +908,7 @@ final class RichTextIcon extends RichText {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -955,7 +955,7 @@ final class RichTextReference extends RichText {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text.toJson(),
       "anchor_name": anchorName,
       "url": url,
@@ -980,7 +980,7 @@ final class RichTextReference extends RichText {
   );
 
   /// TDLib object type
-  static const String objectType = 'richTextReference';
+  static const String defaultObjectId = 'richTextReference';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -988,7 +988,7 @@ final class RichTextReference extends RichText {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1021,7 +1021,7 @@ final class RichTextAnchor extends RichText {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "name": name,
 		};
 	}
@@ -1038,7 +1038,7 @@ final class RichTextAnchor extends RichText {
   );
 
   /// TDLib object type
-  static const String objectType = 'richTextAnchor';
+  static const String defaultObjectId = 'richTextAnchor';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1046,7 +1046,7 @@ final class RichTextAnchor extends RichText {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1093,7 +1093,7 @@ final class RichTextAnchorLink extends RichText {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text.toJson(),
       "anchor_name": anchorName,
       "url": url,
@@ -1118,7 +1118,7 @@ final class RichTextAnchorLink extends RichText {
   );
 
   /// TDLib object type
-  static const String objectType = 'richTextAnchorLink';
+  static const String defaultObjectId = 'richTextAnchorLink';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1126,7 +1126,7 @@ final class RichTextAnchorLink extends RichText {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1159,7 +1159,7 @@ final class RichTexts extends RichText {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "texts": texts.map((i) => i.toJson()).toList(),
 		};
 	}
@@ -1176,7 +1176,7 @@ final class RichTexts extends RichText {
   );
 
   /// TDLib object type
-  static const String objectType = 'richTexts';
+  static const String defaultObjectId = 'richTexts';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1184,5 +1184,5 @@ final class RichTexts extends RichText {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

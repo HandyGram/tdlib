@@ -15,9 +15,9 @@ sealed class NetworkStatisticsEntry extends TdObject {
   /// * [NetworkStatisticsEntryCall]
   factory NetworkStatisticsEntry.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case NetworkStatisticsEntryFile.objectType:
+      case NetworkStatisticsEntryFile.defaultObjectId:
         return NetworkStatisticsEntryFile.fromJson(json);
-      case NetworkStatisticsEntryCall.objectType:
+      case NetworkStatisticsEntryCall.defaultObjectId:
         return NetworkStatisticsEntryCall.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class NetworkStatisticsEntry extends TdObject {
   NetworkStatisticsEntry copyWith();
 
   /// TDLib object type
-  static const String objectType = 'networkStatisticsEntry';
+  static const String defaultObjectId = 'networkStatisticsEntry';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class NetworkStatisticsEntry extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -97,7 +97,7 @@ final class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "file_type": fileType?.toJson(),
       "network_type": networkType.toJson(),
       "sent_bytes": sentBytes,
@@ -126,7 +126,7 @@ final class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
   );
 
   /// TDLib object type
-  static const String objectType = 'networkStatisticsEntryFile';
+  static const String defaultObjectId = 'networkStatisticsEntryFile';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -134,7 +134,7 @@ final class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -188,7 +188,7 @@ final class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "network_type": networkType.toJson(),
       "sent_bytes": sentBytes,
       "received_bytes": receivedBytes,
@@ -217,7 +217,7 @@ final class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
   );
 
   /// TDLib object type
-  static const String objectType = 'networkStatisticsEntryCall';
+  static const String defaultObjectId = 'networkStatisticsEntryCall';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -225,5 +225,5 @@ final class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

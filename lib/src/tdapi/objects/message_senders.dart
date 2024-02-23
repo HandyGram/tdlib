@@ -48,7 +48,7 @@ final class MessageSenders extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "total_count": totalCount,
       "senders": senders.map((i) => i.toJson()).toList(),
 		};
@@ -72,7 +72,7 @@ final class MessageSenders extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageSenders';
+  static const String defaultObjectId = 'messageSenders';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -80,5 +80,5 @@ final class MessageSenders extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

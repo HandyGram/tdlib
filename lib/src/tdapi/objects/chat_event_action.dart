@@ -62,103 +62,103 @@ sealed class ChatEventAction extends TdObject {
   /// * [ChatEventForumTopicPinned]
   factory ChatEventAction.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case ChatEventMessageEdited.objectType:
+      case ChatEventMessageEdited.defaultObjectId:
         return ChatEventMessageEdited.fromJson(json);
-      case ChatEventMessageDeleted.objectType:
+      case ChatEventMessageDeleted.defaultObjectId:
         return ChatEventMessageDeleted.fromJson(json);
-      case ChatEventMessagePinned.objectType:
+      case ChatEventMessagePinned.defaultObjectId:
         return ChatEventMessagePinned.fromJson(json);
-      case ChatEventMessageUnpinned.objectType:
+      case ChatEventMessageUnpinned.defaultObjectId:
         return ChatEventMessageUnpinned.fromJson(json);
-      case ChatEventPollStopped.objectType:
+      case ChatEventPollStopped.defaultObjectId:
         return ChatEventPollStopped.fromJson(json);
-      case ChatEventMemberJoined.objectType:
+      case ChatEventMemberJoined.defaultObjectId:
         return ChatEventMemberJoined.fromJson(json);
-      case ChatEventMemberJoinedByInviteLink.objectType:
+      case ChatEventMemberJoinedByInviteLink.defaultObjectId:
         return ChatEventMemberJoinedByInviteLink.fromJson(json);
-      case ChatEventMemberJoinedByRequest.objectType:
+      case ChatEventMemberJoinedByRequest.defaultObjectId:
         return ChatEventMemberJoinedByRequest.fromJson(json);
-      case ChatEventMemberInvited.objectType:
+      case ChatEventMemberInvited.defaultObjectId:
         return ChatEventMemberInvited.fromJson(json);
-      case ChatEventMemberLeft.objectType:
+      case ChatEventMemberLeft.defaultObjectId:
         return ChatEventMemberLeft.fromJson(json);
-      case ChatEventMemberPromoted.objectType:
+      case ChatEventMemberPromoted.defaultObjectId:
         return ChatEventMemberPromoted.fromJson(json);
-      case ChatEventMemberRestricted.objectType:
+      case ChatEventMemberRestricted.defaultObjectId:
         return ChatEventMemberRestricted.fromJson(json);
-      case ChatEventAvailableReactionsChanged.objectType:
+      case ChatEventAvailableReactionsChanged.defaultObjectId:
         return ChatEventAvailableReactionsChanged.fromJson(json);
-      case ChatEventBackgroundChanged.objectType:
+      case ChatEventBackgroundChanged.defaultObjectId:
         return ChatEventBackgroundChanged.fromJson(json);
-      case ChatEventDescriptionChanged.objectType:
+      case ChatEventDescriptionChanged.defaultObjectId:
         return ChatEventDescriptionChanged.fromJson(json);
-      case ChatEventEmojiStatusChanged.objectType:
+      case ChatEventEmojiStatusChanged.defaultObjectId:
         return ChatEventEmojiStatusChanged.fromJson(json);
-      case ChatEventLinkedChatChanged.objectType:
+      case ChatEventLinkedChatChanged.defaultObjectId:
         return ChatEventLinkedChatChanged.fromJson(json);
-      case ChatEventLocationChanged.objectType:
+      case ChatEventLocationChanged.defaultObjectId:
         return ChatEventLocationChanged.fromJson(json);
-      case ChatEventMessageAutoDeleteTimeChanged.objectType:
+      case ChatEventMessageAutoDeleteTimeChanged.defaultObjectId:
         return ChatEventMessageAutoDeleteTimeChanged.fromJson(json);
-      case ChatEventPermissionsChanged.objectType:
+      case ChatEventPermissionsChanged.defaultObjectId:
         return ChatEventPermissionsChanged.fromJson(json);
-      case ChatEventPhotoChanged.objectType:
+      case ChatEventPhotoChanged.defaultObjectId:
         return ChatEventPhotoChanged.fromJson(json);
-      case ChatEventSlowModeDelayChanged.objectType:
+      case ChatEventSlowModeDelayChanged.defaultObjectId:
         return ChatEventSlowModeDelayChanged.fromJson(json);
-      case ChatEventStickerSetChanged.objectType:
+      case ChatEventStickerSetChanged.defaultObjectId:
         return ChatEventStickerSetChanged.fromJson(json);
-      case ChatEventCustomEmojiStickerSetChanged.objectType:
+      case ChatEventCustomEmojiStickerSetChanged.defaultObjectId:
         return ChatEventCustomEmojiStickerSetChanged.fromJson(json);
-      case ChatEventTitleChanged.objectType:
+      case ChatEventTitleChanged.defaultObjectId:
         return ChatEventTitleChanged.fromJson(json);
-      case ChatEventUsernameChanged.objectType:
+      case ChatEventUsernameChanged.defaultObjectId:
         return ChatEventUsernameChanged.fromJson(json);
-      case ChatEventActiveUsernamesChanged.objectType:
+      case ChatEventActiveUsernamesChanged.defaultObjectId:
         return ChatEventActiveUsernamesChanged.fromJson(json);
-      case ChatEventAccentColorChanged.objectType:
+      case ChatEventAccentColorChanged.defaultObjectId:
         return ChatEventAccentColorChanged.fromJson(json);
-      case ChatEventProfileAccentColorChanged.objectType:
+      case ChatEventProfileAccentColorChanged.defaultObjectId:
         return ChatEventProfileAccentColorChanged.fromJson(json);
-      case ChatEventHasProtectedContentToggled.objectType:
+      case ChatEventHasProtectedContentToggled.defaultObjectId:
         return ChatEventHasProtectedContentToggled.fromJson(json);
-      case ChatEventInvitesToggled.objectType:
+      case ChatEventInvitesToggled.defaultObjectId:
         return ChatEventInvitesToggled.fromJson(json);
-      case ChatEventIsAllHistoryAvailableToggled.objectType:
+      case ChatEventIsAllHistoryAvailableToggled.defaultObjectId:
         return ChatEventIsAllHistoryAvailableToggled.fromJson(json);
-      case ChatEventHasAggressiveAntiSpamEnabledToggled.objectType:
+      case ChatEventHasAggressiveAntiSpamEnabledToggled.defaultObjectId:
         return ChatEventHasAggressiveAntiSpamEnabledToggled.fromJson(json);
-      case ChatEventSignMessagesToggled.objectType:
+      case ChatEventSignMessagesToggled.defaultObjectId:
         return ChatEventSignMessagesToggled.fromJson(json);
-      case ChatEventInviteLinkEdited.objectType:
+      case ChatEventInviteLinkEdited.defaultObjectId:
         return ChatEventInviteLinkEdited.fromJson(json);
-      case ChatEventInviteLinkRevoked.objectType:
+      case ChatEventInviteLinkRevoked.defaultObjectId:
         return ChatEventInviteLinkRevoked.fromJson(json);
-      case ChatEventInviteLinkDeleted.objectType:
+      case ChatEventInviteLinkDeleted.defaultObjectId:
         return ChatEventInviteLinkDeleted.fromJson(json);
-      case ChatEventVideoChatCreated.objectType:
+      case ChatEventVideoChatCreated.defaultObjectId:
         return ChatEventVideoChatCreated.fromJson(json);
-      case ChatEventVideoChatEnded.objectType:
+      case ChatEventVideoChatEnded.defaultObjectId:
         return ChatEventVideoChatEnded.fromJson(json);
-      case ChatEventVideoChatMuteNewParticipantsToggled.objectType:
+      case ChatEventVideoChatMuteNewParticipantsToggled.defaultObjectId:
         return ChatEventVideoChatMuteNewParticipantsToggled.fromJson(json);
-      case ChatEventVideoChatParticipantIsMutedToggled.objectType:
+      case ChatEventVideoChatParticipantIsMutedToggled.defaultObjectId:
         return ChatEventVideoChatParticipantIsMutedToggled.fromJson(json);
-      case ChatEventVideoChatParticipantVolumeLevelChanged.objectType:
+      case ChatEventVideoChatParticipantVolumeLevelChanged.defaultObjectId:
         return ChatEventVideoChatParticipantVolumeLevelChanged.fromJson(json);
-      case ChatEventIsForumToggled.objectType:
+      case ChatEventIsForumToggled.defaultObjectId:
         return ChatEventIsForumToggled.fromJson(json);
-      case ChatEventForumTopicCreated.objectType:
+      case ChatEventForumTopicCreated.defaultObjectId:
         return ChatEventForumTopicCreated.fromJson(json);
-      case ChatEventForumTopicEdited.objectType:
+      case ChatEventForumTopicEdited.defaultObjectId:
         return ChatEventForumTopicEdited.fromJson(json);
-      case ChatEventForumTopicToggleIsClosed.objectType:
+      case ChatEventForumTopicToggleIsClosed.defaultObjectId:
         return ChatEventForumTopicToggleIsClosed.fromJson(json);
-      case ChatEventForumTopicToggleIsHidden.objectType:
+      case ChatEventForumTopicToggleIsHidden.defaultObjectId:
         return ChatEventForumTopicToggleIsHidden.fromJson(json);
-      case ChatEventForumTopicDeleted.objectType:
+      case ChatEventForumTopicDeleted.defaultObjectId:
         return ChatEventForumTopicDeleted.fromJson(json);
-      case ChatEventForumTopicPinned.objectType:
+      case ChatEventForumTopicPinned.defaultObjectId:
         return ChatEventForumTopicPinned.fromJson(json);
       default:
         throw FormatException(
@@ -176,7 +176,7 @@ sealed class ChatEventAction extends TdObject {
   ChatEventAction copyWith();
 
   /// TDLib object type
-  static const String objectType = 'chatEventAction';
+  static const String defaultObjectId = 'chatEventAction';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -184,7 +184,7 @@ sealed class ChatEventAction extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -224,7 +224,7 @@ final class ChatEventMessageEdited extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "old_message": oldMessage.toJson(),
       "new_message": newMessage.toJson(),
 		};
@@ -245,7 +245,7 @@ final class ChatEventMessageEdited extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventMessageEdited';
+  static const String defaultObjectId = 'chatEventMessageEdited';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -253,7 +253,7 @@ final class ChatEventMessageEdited extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -293,7 +293,7 @@ final class ChatEventMessageDeleted extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "message": message.toJson(),
       "can_report_anti_spam_false_positive": canReportAntiSpamFalsePositive,
 		};
@@ -314,7 +314,7 @@ final class ChatEventMessageDeleted extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventMessageDeleted';
+  static const String defaultObjectId = 'chatEventMessageDeleted';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -322,7 +322,7 @@ final class ChatEventMessageDeleted extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -355,7 +355,7 @@ final class ChatEventMessagePinned extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "message": message.toJson(),
 		};
 	}
@@ -372,7 +372,7 @@ final class ChatEventMessagePinned extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventMessagePinned';
+  static const String defaultObjectId = 'chatEventMessagePinned';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -380,7 +380,7 @@ final class ChatEventMessagePinned extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -413,7 +413,7 @@ final class ChatEventMessageUnpinned extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "message": message.toJson(),
 		};
 	}
@@ -430,7 +430,7 @@ final class ChatEventMessageUnpinned extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventMessageUnpinned';
+  static const String defaultObjectId = 'chatEventMessageUnpinned';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -438,7 +438,7 @@ final class ChatEventMessageUnpinned extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -471,7 +471,7 @@ final class ChatEventPollStopped extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "message": message.toJson(),
 		};
 	}
@@ -488,7 +488,7 @@ final class ChatEventPollStopped extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventPollStopped';
+  static const String defaultObjectId = 'chatEventPollStopped';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -496,7 +496,7 @@ final class ChatEventPollStopped extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -517,7 +517,7 @@ final class ChatEventMemberJoined extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -526,7 +526,7 @@ final class ChatEventMemberJoined extends ChatEventAction {
   ChatEventMemberJoined copyWith() => const ChatEventMemberJoined();
 
   /// TDLib object type
-  static const String objectType = 'chatEventMemberJoined';
+  static const String defaultObjectId = 'chatEventMemberJoined';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -534,7 +534,7 @@ final class ChatEventMemberJoined extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -574,7 +574,7 @@ final class ChatEventMemberJoinedByInviteLink extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "invite_link": inviteLink.toJson(),
       "via_chat_folder_invite_link": viaChatFolderInviteLink,
 		};
@@ -595,7 +595,7 @@ final class ChatEventMemberJoinedByInviteLink extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventMemberJoinedByInviteLink';
+  static const String defaultObjectId = 'chatEventMemberJoinedByInviteLink';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -603,7 +603,7 @@ final class ChatEventMemberJoinedByInviteLink extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -643,7 +643,7 @@ final class ChatEventMemberJoinedByRequest extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "approver_user_id": approverUserId,
       "invite_link": inviteLink?.toJson(),
 		};
@@ -664,7 +664,7 @@ final class ChatEventMemberJoinedByRequest extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventMemberJoinedByRequest';
+  static const String defaultObjectId = 'chatEventMemberJoinedByRequest';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -672,7 +672,7 @@ final class ChatEventMemberJoinedByRequest extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -712,7 +712,7 @@ final class ChatEventMemberInvited extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "user_id": userId,
       "status": status.toJson(),
 		};
@@ -733,7 +733,7 @@ final class ChatEventMemberInvited extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventMemberInvited';
+  static const String defaultObjectId = 'chatEventMemberInvited';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -741,7 +741,7 @@ final class ChatEventMemberInvited extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -762,7 +762,7 @@ final class ChatEventMemberLeft extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -771,7 +771,7 @@ final class ChatEventMemberLeft extends ChatEventAction {
   ChatEventMemberLeft copyWith() => const ChatEventMemberLeft();
 
   /// TDLib object type
-  static const String objectType = 'chatEventMemberLeft';
+  static const String defaultObjectId = 'chatEventMemberLeft';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -779,7 +779,7 @@ final class ChatEventMemberLeft extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -826,7 +826,7 @@ final class ChatEventMemberPromoted extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "user_id": userId,
       "old_status": oldStatus.toJson(),
       "new_status": newStatus.toJson(),
@@ -851,7 +851,7 @@ final class ChatEventMemberPromoted extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventMemberPromoted';
+  static const String defaultObjectId = 'chatEventMemberPromoted';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -859,7 +859,7 @@ final class ChatEventMemberPromoted extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -906,7 +906,7 @@ final class ChatEventMemberRestricted extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "member_id": memberId.toJson(),
       "old_status": oldStatus.toJson(),
       "new_status": newStatus.toJson(),
@@ -931,7 +931,7 @@ final class ChatEventMemberRestricted extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventMemberRestricted';
+  static const String defaultObjectId = 'chatEventMemberRestricted';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -939,7 +939,7 @@ final class ChatEventMemberRestricted extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -979,7 +979,7 @@ final class ChatEventAvailableReactionsChanged extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "old_available_reactions": oldAvailableReactions.toJson(),
       "new_available_reactions": newAvailableReactions.toJson(),
 		};
@@ -1000,7 +1000,7 @@ final class ChatEventAvailableReactionsChanged extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventAvailableReactionsChanged';
+  static const String defaultObjectId = 'chatEventAvailableReactionsChanged';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1008,7 +1008,7 @@ final class ChatEventAvailableReactionsChanged extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1048,7 +1048,7 @@ final class ChatEventBackgroundChanged extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "old_background": oldBackground?.toJson(),
       "new_background": newBackground?.toJson(),
 		};
@@ -1069,7 +1069,7 @@ final class ChatEventBackgroundChanged extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventBackgroundChanged';
+  static const String defaultObjectId = 'chatEventBackgroundChanged';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1077,7 +1077,7 @@ final class ChatEventBackgroundChanged extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1117,7 +1117,7 @@ final class ChatEventDescriptionChanged extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "old_description": oldDescription,
       "new_description": newDescription,
 		};
@@ -1138,7 +1138,7 @@ final class ChatEventDescriptionChanged extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventDescriptionChanged';
+  static const String defaultObjectId = 'chatEventDescriptionChanged';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1146,7 +1146,7 @@ final class ChatEventDescriptionChanged extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1186,7 +1186,7 @@ final class ChatEventEmojiStatusChanged extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "old_emoji_status": oldEmojiStatus?.toJson(),
       "new_emoji_status": newEmojiStatus?.toJson(),
 		};
@@ -1207,7 +1207,7 @@ final class ChatEventEmojiStatusChanged extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventEmojiStatusChanged';
+  static const String defaultObjectId = 'chatEventEmojiStatusChanged';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1215,7 +1215,7 @@ final class ChatEventEmojiStatusChanged extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1255,7 +1255,7 @@ final class ChatEventLinkedChatChanged extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "old_linked_chat_id": oldLinkedChatId,
       "new_linked_chat_id": newLinkedChatId,
 		};
@@ -1276,7 +1276,7 @@ final class ChatEventLinkedChatChanged extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventLinkedChatChanged';
+  static const String defaultObjectId = 'chatEventLinkedChatChanged';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1284,7 +1284,7 @@ final class ChatEventLinkedChatChanged extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1324,7 +1324,7 @@ final class ChatEventLocationChanged extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "old_location": oldLocation?.toJson(),
       "new_location": newLocation?.toJson(),
 		};
@@ -1345,7 +1345,7 @@ final class ChatEventLocationChanged extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventLocationChanged';
+  static const String defaultObjectId = 'chatEventLocationChanged';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1353,7 +1353,7 @@ final class ChatEventLocationChanged extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1393,7 +1393,7 @@ final class ChatEventMessageAutoDeleteTimeChanged extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "old_message_auto_delete_time": oldMessageAutoDeleteTime,
       "new_message_auto_delete_time": newMessageAutoDeleteTime,
 		};
@@ -1414,7 +1414,7 @@ final class ChatEventMessageAutoDeleteTimeChanged extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventMessageAutoDeleteTimeChanged';
+  static const String defaultObjectId = 'chatEventMessageAutoDeleteTimeChanged';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1422,7 +1422,7 @@ final class ChatEventMessageAutoDeleteTimeChanged extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1462,7 +1462,7 @@ final class ChatEventPermissionsChanged extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "old_permissions": oldPermissions.toJson(),
       "new_permissions": newPermissions.toJson(),
 		};
@@ -1483,7 +1483,7 @@ final class ChatEventPermissionsChanged extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventPermissionsChanged';
+  static const String defaultObjectId = 'chatEventPermissionsChanged';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1491,7 +1491,7 @@ final class ChatEventPermissionsChanged extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1531,7 +1531,7 @@ final class ChatEventPhotoChanged extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "old_photo": oldPhoto?.toJson(),
       "new_photo": newPhoto?.toJson(),
 		};
@@ -1552,7 +1552,7 @@ final class ChatEventPhotoChanged extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventPhotoChanged';
+  static const String defaultObjectId = 'chatEventPhotoChanged';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1560,7 +1560,7 @@ final class ChatEventPhotoChanged extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1600,7 +1600,7 @@ final class ChatEventSlowModeDelayChanged extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "old_slow_mode_delay": oldSlowModeDelay,
       "new_slow_mode_delay": newSlowModeDelay,
 		};
@@ -1621,7 +1621,7 @@ final class ChatEventSlowModeDelayChanged extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventSlowModeDelayChanged';
+  static const String defaultObjectId = 'chatEventSlowModeDelayChanged';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1629,7 +1629,7 @@ final class ChatEventSlowModeDelayChanged extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1669,7 +1669,7 @@ final class ChatEventStickerSetChanged extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "old_sticker_set_id": oldStickerSetId,
       "new_sticker_set_id": newStickerSetId,
 		};
@@ -1690,7 +1690,7 @@ final class ChatEventStickerSetChanged extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventStickerSetChanged';
+  static const String defaultObjectId = 'chatEventStickerSetChanged';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1698,7 +1698,7 @@ final class ChatEventStickerSetChanged extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1738,7 +1738,7 @@ final class ChatEventCustomEmojiStickerSetChanged extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "old_sticker_set_id": oldStickerSetId,
       "new_sticker_set_id": newStickerSetId,
 		};
@@ -1759,7 +1759,7 @@ final class ChatEventCustomEmojiStickerSetChanged extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventCustomEmojiStickerSetChanged';
+  static const String defaultObjectId = 'chatEventCustomEmojiStickerSetChanged';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1767,7 +1767,7 @@ final class ChatEventCustomEmojiStickerSetChanged extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1807,7 +1807,7 @@ final class ChatEventTitleChanged extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "old_title": oldTitle,
       "new_title": newTitle,
 		};
@@ -1828,7 +1828,7 @@ final class ChatEventTitleChanged extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventTitleChanged';
+  static const String defaultObjectId = 'chatEventTitleChanged';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1836,7 +1836,7 @@ final class ChatEventTitleChanged extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1876,7 +1876,7 @@ final class ChatEventUsernameChanged extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "old_username": oldUsername,
       "new_username": newUsername,
 		};
@@ -1897,7 +1897,7 @@ final class ChatEventUsernameChanged extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventUsernameChanged';
+  static const String defaultObjectId = 'chatEventUsernameChanged';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1905,7 +1905,7 @@ final class ChatEventUsernameChanged extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1945,7 +1945,7 @@ final class ChatEventActiveUsernamesChanged extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "old_usernames": oldUsernames.map((i) => i).toList(),
       "new_usernames": newUsernames.map((i) => i).toList(),
 		};
@@ -1966,7 +1966,7 @@ final class ChatEventActiveUsernamesChanged extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventActiveUsernamesChanged';
+  static const String defaultObjectId = 'chatEventActiveUsernamesChanged';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1974,7 +1974,7 @@ final class ChatEventActiveUsernamesChanged extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2028,7 +2028,7 @@ final class ChatEventAccentColorChanged extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "old_accent_color_id": oldAccentColorId,
       "old_background_custom_emoji_id": oldBackgroundCustomEmojiId,
       "new_accent_color_id": newAccentColorId,
@@ -2057,7 +2057,7 @@ final class ChatEventAccentColorChanged extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventAccentColorChanged';
+  static const String defaultObjectId = 'chatEventAccentColorChanged';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2065,7 +2065,7 @@ final class ChatEventAccentColorChanged extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2119,7 +2119,7 @@ final class ChatEventProfileAccentColorChanged extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "old_profile_accent_color_id": oldProfileAccentColorId,
       "old_profile_background_custom_emoji_id": oldProfileBackgroundCustomEmojiId,
       "new_profile_accent_color_id": newProfileAccentColorId,
@@ -2148,7 +2148,7 @@ final class ChatEventProfileAccentColorChanged extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventProfileAccentColorChanged';
+  static const String defaultObjectId = 'chatEventProfileAccentColorChanged';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2156,7 +2156,7 @@ final class ChatEventProfileAccentColorChanged extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2189,7 +2189,7 @@ final class ChatEventHasProtectedContentToggled extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "has_protected_content": hasProtectedContent,
 		};
 	}
@@ -2206,7 +2206,7 @@ final class ChatEventHasProtectedContentToggled extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventHasProtectedContentToggled';
+  static const String defaultObjectId = 'chatEventHasProtectedContentToggled';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2214,7 +2214,7 @@ final class ChatEventHasProtectedContentToggled extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2247,7 +2247,7 @@ final class ChatEventInvitesToggled extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "can_invite_users": canInviteUsers,
 		};
 	}
@@ -2264,7 +2264,7 @@ final class ChatEventInvitesToggled extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventInvitesToggled';
+  static const String defaultObjectId = 'chatEventInvitesToggled';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2272,7 +2272,7 @@ final class ChatEventInvitesToggled extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2305,7 +2305,7 @@ final class ChatEventIsAllHistoryAvailableToggled extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "is_all_history_available": isAllHistoryAvailable,
 		};
 	}
@@ -2322,7 +2322,7 @@ final class ChatEventIsAllHistoryAvailableToggled extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventIsAllHistoryAvailableToggled';
+  static const String defaultObjectId = 'chatEventIsAllHistoryAvailableToggled';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2330,7 +2330,7 @@ final class ChatEventIsAllHistoryAvailableToggled extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2363,7 +2363,7 @@ final class ChatEventHasAggressiveAntiSpamEnabledToggled extends ChatEventAction
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "has_aggressive_anti_spam_enabled": hasAggressiveAntiSpamEnabled,
 		};
 	}
@@ -2380,7 +2380,7 @@ final class ChatEventHasAggressiveAntiSpamEnabledToggled extends ChatEventAction
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventHasAggressiveAntiSpamEnabledToggled';
+  static const String defaultObjectId = 'chatEventHasAggressiveAntiSpamEnabledToggled';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2388,7 +2388,7 @@ final class ChatEventHasAggressiveAntiSpamEnabledToggled extends ChatEventAction
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2421,7 +2421,7 @@ final class ChatEventSignMessagesToggled extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "sign_messages": signMessages,
 		};
 	}
@@ -2438,7 +2438,7 @@ final class ChatEventSignMessagesToggled extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventSignMessagesToggled';
+  static const String defaultObjectId = 'chatEventSignMessagesToggled';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2446,7 +2446,7 @@ final class ChatEventSignMessagesToggled extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2486,7 +2486,7 @@ final class ChatEventInviteLinkEdited extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "old_invite_link": oldInviteLink.toJson(),
       "new_invite_link": newInviteLink.toJson(),
 		};
@@ -2507,7 +2507,7 @@ final class ChatEventInviteLinkEdited extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventInviteLinkEdited';
+  static const String defaultObjectId = 'chatEventInviteLinkEdited';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2515,7 +2515,7 @@ final class ChatEventInviteLinkEdited extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2548,7 +2548,7 @@ final class ChatEventInviteLinkRevoked extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "invite_link": inviteLink.toJson(),
 		};
 	}
@@ -2565,7 +2565,7 @@ final class ChatEventInviteLinkRevoked extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventInviteLinkRevoked';
+  static const String defaultObjectId = 'chatEventInviteLinkRevoked';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2573,7 +2573,7 @@ final class ChatEventInviteLinkRevoked extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2606,7 +2606,7 @@ final class ChatEventInviteLinkDeleted extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "invite_link": inviteLink.toJson(),
 		};
 	}
@@ -2623,7 +2623,7 @@ final class ChatEventInviteLinkDeleted extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventInviteLinkDeleted';
+  static const String defaultObjectId = 'chatEventInviteLinkDeleted';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2631,7 +2631,7 @@ final class ChatEventInviteLinkDeleted extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2664,7 +2664,7 @@ final class ChatEventVideoChatCreated extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "group_call_id": groupCallId,
 		};
 	}
@@ -2681,7 +2681,7 @@ final class ChatEventVideoChatCreated extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventVideoChatCreated';
+  static const String defaultObjectId = 'chatEventVideoChatCreated';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2689,7 +2689,7 @@ final class ChatEventVideoChatCreated extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2722,7 +2722,7 @@ final class ChatEventVideoChatEnded extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "group_call_id": groupCallId,
 		};
 	}
@@ -2739,7 +2739,7 @@ final class ChatEventVideoChatEnded extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventVideoChatEnded';
+  static const String defaultObjectId = 'chatEventVideoChatEnded';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2747,7 +2747,7 @@ final class ChatEventVideoChatEnded extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2780,7 +2780,7 @@ final class ChatEventVideoChatMuteNewParticipantsToggled extends ChatEventAction
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "mute_new_participants": muteNewParticipants,
 		};
 	}
@@ -2797,7 +2797,7 @@ final class ChatEventVideoChatMuteNewParticipantsToggled extends ChatEventAction
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventVideoChatMuteNewParticipantsToggled';
+  static const String defaultObjectId = 'chatEventVideoChatMuteNewParticipantsToggled';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2805,7 +2805,7 @@ final class ChatEventVideoChatMuteNewParticipantsToggled extends ChatEventAction
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2845,7 +2845,7 @@ final class ChatEventVideoChatParticipantIsMutedToggled extends ChatEventAction 
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "participant_id": participantId.toJson(),
       "is_muted": isMuted,
 		};
@@ -2866,7 +2866,7 @@ final class ChatEventVideoChatParticipantIsMutedToggled extends ChatEventAction 
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventVideoChatParticipantIsMutedToggled';
+  static const String defaultObjectId = 'chatEventVideoChatParticipantIsMutedToggled';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2874,7 +2874,7 @@ final class ChatEventVideoChatParticipantIsMutedToggled extends ChatEventAction 
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2914,7 +2914,7 @@ final class ChatEventVideoChatParticipantVolumeLevelChanged extends ChatEventAct
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "participant_id": participantId.toJson(),
       "volume_level": volumeLevel,
 		};
@@ -2935,7 +2935,7 @@ final class ChatEventVideoChatParticipantVolumeLevelChanged extends ChatEventAct
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventVideoChatParticipantVolumeLevelChanged';
+  static const String defaultObjectId = 'chatEventVideoChatParticipantVolumeLevelChanged';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2943,7 +2943,7 @@ final class ChatEventVideoChatParticipantVolumeLevelChanged extends ChatEventAct
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2976,7 +2976,7 @@ final class ChatEventIsForumToggled extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "is_forum": isForum,
 		};
 	}
@@ -2993,7 +2993,7 @@ final class ChatEventIsForumToggled extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventIsForumToggled';
+  static const String defaultObjectId = 'chatEventIsForumToggled';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3001,7 +3001,7 @@ final class ChatEventIsForumToggled extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -3034,7 +3034,7 @@ final class ChatEventForumTopicCreated extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "topic_info": topicInfo.toJson(),
 		};
 	}
@@ -3051,7 +3051,7 @@ final class ChatEventForumTopicCreated extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventForumTopicCreated';
+  static const String defaultObjectId = 'chatEventForumTopicCreated';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3059,7 +3059,7 @@ final class ChatEventForumTopicCreated extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -3099,7 +3099,7 @@ final class ChatEventForumTopicEdited extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "old_topic_info": oldTopicInfo.toJson(),
       "new_topic_info": newTopicInfo.toJson(),
 		};
@@ -3120,7 +3120,7 @@ final class ChatEventForumTopicEdited extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventForumTopicEdited';
+  static const String defaultObjectId = 'chatEventForumTopicEdited';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3128,7 +3128,7 @@ final class ChatEventForumTopicEdited extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -3161,7 +3161,7 @@ final class ChatEventForumTopicToggleIsClosed extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "topic_info": topicInfo.toJson(),
 		};
 	}
@@ -3178,7 +3178,7 @@ final class ChatEventForumTopicToggleIsClosed extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventForumTopicToggleIsClosed';
+  static const String defaultObjectId = 'chatEventForumTopicToggleIsClosed';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3186,7 +3186,7 @@ final class ChatEventForumTopicToggleIsClosed extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -3219,7 +3219,7 @@ final class ChatEventForumTopicToggleIsHidden extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "topic_info": topicInfo.toJson(),
 		};
 	}
@@ -3236,7 +3236,7 @@ final class ChatEventForumTopicToggleIsHidden extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventForumTopicToggleIsHidden';
+  static const String defaultObjectId = 'chatEventForumTopicToggleIsHidden';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3244,7 +3244,7 @@ final class ChatEventForumTopicToggleIsHidden extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -3277,7 +3277,7 @@ final class ChatEventForumTopicDeleted extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "topic_info": topicInfo.toJson(),
 		};
 	}
@@ -3294,7 +3294,7 @@ final class ChatEventForumTopicDeleted extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventForumTopicDeleted';
+  static const String defaultObjectId = 'chatEventForumTopicDeleted';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3302,7 +3302,7 @@ final class ChatEventForumTopicDeleted extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -3342,7 +3342,7 @@ final class ChatEventForumTopicPinned extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "old_topic_info": oldTopicInfo?.toJson(),
       "new_topic_info": newTopicInfo?.toJson(),
 		};
@@ -3363,7 +3363,7 @@ final class ChatEventForumTopicPinned extends ChatEventAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventForumTopicPinned';
+  static const String defaultObjectId = 'chatEventForumTopicPinned';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3371,5 +3371,5 @@ final class ChatEventForumTopicPinned extends ChatEventAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

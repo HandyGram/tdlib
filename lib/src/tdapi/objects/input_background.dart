@@ -16,11 +16,11 @@ sealed class InputBackground extends TdObject {
   /// * [InputBackgroundPrevious]
   factory InputBackground.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case InputBackgroundLocal.objectType:
+      case InputBackgroundLocal.defaultObjectId:
         return InputBackgroundLocal.fromJson(json);
-      case InputBackgroundRemote.objectType:
+      case InputBackgroundRemote.defaultObjectId:
         return InputBackgroundRemote.fromJson(json);
-      case InputBackgroundPrevious.objectType:
+      case InputBackgroundPrevious.defaultObjectId:
         return InputBackgroundPrevious.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class InputBackground extends TdObject {
   InputBackground copyWith();
 
   /// TDLib object type
-  static const String objectType = 'inputBackground';
+  static const String defaultObjectId = 'inputBackground';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class InputBackground extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -79,7 +79,7 @@ final class InputBackgroundLocal extends InputBackground {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "background": background.toJson(),
 		};
 	}
@@ -96,7 +96,7 @@ final class InputBackgroundLocal extends InputBackground {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputBackgroundLocal';
+  static const String defaultObjectId = 'inputBackgroundLocal';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -104,7 +104,7 @@ final class InputBackgroundLocal extends InputBackground {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -137,7 +137,7 @@ final class InputBackgroundRemote extends InputBackground {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "background_id": backgroundId,
 		};
 	}
@@ -154,7 +154,7 @@ final class InputBackgroundRemote extends InputBackground {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputBackgroundRemote';
+  static const String defaultObjectId = 'inputBackgroundRemote';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -162,7 +162,7 @@ final class InputBackgroundRemote extends InputBackground {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -195,7 +195,7 @@ final class InputBackgroundPrevious extends InputBackground {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "message_id": messageId,
 		};
 	}
@@ -212,7 +212,7 @@ final class InputBackgroundPrevious extends InputBackground {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputBackgroundPrevious';
+  static const String defaultObjectId = 'inputBackgroundPrevious';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -220,5 +220,5 @@ final class InputBackgroundPrevious extends InputBackground {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

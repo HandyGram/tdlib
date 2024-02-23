@@ -33,7 +33,7 @@ final class SetMessageSenderBlockList extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "sender_id": senderId.toJson(),
       "block_list": blockList?.toJson(),
       "@extra": extra,
@@ -54,7 +54,7 @@ final class SetMessageSenderBlockList extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'setMessageSenderBlockList';
+  static const String defaultObjectId = 'setMessageSenderBlockList';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -62,5 +62,5 @@ final class SetMessageSenderBlockList extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

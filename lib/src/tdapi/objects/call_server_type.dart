@@ -15,9 +15,9 @@ sealed class CallServerType extends TdObject {
   /// * [CallServerTypeWebrtc]
   factory CallServerType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case CallServerTypeTelegramReflector.objectType:
+      case CallServerTypeTelegramReflector.defaultObjectId:
         return CallServerTypeTelegramReflector.fromJson(json);
-      case CallServerTypeWebrtc.objectType:
+      case CallServerTypeWebrtc.defaultObjectId:
         return CallServerTypeWebrtc.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class CallServerType extends TdObject {
   CallServerType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'callServerType';
+  static const String defaultObjectId = 'callServerType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class CallServerType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -83,7 +83,7 @@ final class CallServerTypeTelegramReflector extends CallServerType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "peer_tag": peerTag,
       "is_tcp": isTcp,
 		};
@@ -104,7 +104,7 @@ final class CallServerTypeTelegramReflector extends CallServerType {
   );
 
   /// TDLib object type
-  static const String objectType = 'callServerTypeTelegramReflector';
+  static const String defaultObjectId = 'callServerTypeTelegramReflector';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -112,7 +112,7 @@ final class CallServerTypeTelegramReflector extends CallServerType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -166,7 +166,7 @@ final class CallServerTypeWebrtc extends CallServerType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "username": username,
       "password": password,
       "supports_turn": supportsTurn,
@@ -195,7 +195,7 @@ final class CallServerTypeWebrtc extends CallServerType {
   );
 
   /// TDLib object type
-  static const String objectType = 'callServerTypeWebrtc';
+  static const String defaultObjectId = 'callServerTypeWebrtc';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -203,5 +203,5 @@ final class CallServerTypeWebrtc extends CallServerType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

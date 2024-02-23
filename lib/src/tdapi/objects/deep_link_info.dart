@@ -48,7 +48,7 @@ final class DeepLinkInfo extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text.toJson(),
       "need_update_application": needUpdateApplication,
 		};
@@ -72,7 +72,7 @@ final class DeepLinkInfo extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'deepLinkInfo';
+  static const String defaultObjectId = 'deepLinkInfo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -80,5 +80,5 @@ final class DeepLinkInfo extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

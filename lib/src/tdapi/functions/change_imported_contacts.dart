@@ -27,7 +27,7 @@ final class ChangeImportedContacts extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "contacts": contacts.map((i) => i.toJson()).toList(),
       "@extra": extra,
 		};
@@ -44,7 +44,7 @@ final class ChangeImportedContacts extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'changeImportedContacts';
+  static const String defaultObjectId = 'changeImportedContacts';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -52,5 +52,5 @@ final class ChangeImportedContacts extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

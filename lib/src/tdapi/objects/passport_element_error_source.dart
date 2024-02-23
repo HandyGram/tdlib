@@ -22,23 +22,23 @@ sealed class PassportElementErrorSource extends TdObject {
   /// * [PassportElementErrorSourceFiles]
   factory PassportElementErrorSource.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case PassportElementErrorSourceUnspecified.objectType:
+      case PassportElementErrorSourceUnspecified.defaultObjectId:
         return PassportElementErrorSourceUnspecified.fromJson(json);
-      case PassportElementErrorSourceDataField.objectType:
+      case PassportElementErrorSourceDataField.defaultObjectId:
         return PassportElementErrorSourceDataField.fromJson(json);
-      case PassportElementErrorSourceFrontSide.objectType:
+      case PassportElementErrorSourceFrontSide.defaultObjectId:
         return PassportElementErrorSourceFrontSide.fromJson(json);
-      case PassportElementErrorSourceReverseSide.objectType:
+      case PassportElementErrorSourceReverseSide.defaultObjectId:
         return PassportElementErrorSourceReverseSide.fromJson(json);
-      case PassportElementErrorSourceSelfie.objectType:
+      case PassportElementErrorSourceSelfie.defaultObjectId:
         return PassportElementErrorSourceSelfie.fromJson(json);
-      case PassportElementErrorSourceTranslationFile.objectType:
+      case PassportElementErrorSourceTranslationFile.defaultObjectId:
         return PassportElementErrorSourceTranslationFile.fromJson(json);
-      case PassportElementErrorSourceTranslationFiles.objectType:
+      case PassportElementErrorSourceTranslationFiles.defaultObjectId:
         return PassportElementErrorSourceTranslationFiles.fromJson(json);
-      case PassportElementErrorSourceFile.objectType:
+      case PassportElementErrorSourceFile.defaultObjectId:
         return PassportElementErrorSourceFile.fromJson(json);
-      case PassportElementErrorSourceFiles.objectType:
+      case PassportElementErrorSourceFiles.defaultObjectId:
         return PassportElementErrorSourceFiles.fromJson(json);
       default:
         throw FormatException(
@@ -56,7 +56,7 @@ sealed class PassportElementErrorSource extends TdObject {
   PassportElementErrorSource copyWith();
 
   /// TDLib object type
-  static const String objectType = 'passportElementErrorSource';
+  static const String defaultObjectId = 'passportElementErrorSource';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -64,7 +64,7 @@ sealed class PassportElementErrorSource extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -85,7 +85,7 @@ final class PassportElementErrorSourceUnspecified extends PassportElementErrorSo
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -94,7 +94,7 @@ final class PassportElementErrorSourceUnspecified extends PassportElementErrorSo
   PassportElementErrorSourceUnspecified copyWith() => const PassportElementErrorSourceUnspecified();
 
   /// TDLib object type
-  static const String objectType = 'passportElementErrorSourceUnspecified';
+  static const String defaultObjectId = 'passportElementErrorSourceUnspecified';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -102,7 +102,7 @@ final class PassportElementErrorSourceUnspecified extends PassportElementErrorSo
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -135,7 +135,7 @@ final class PassportElementErrorSourceDataField extends PassportElementErrorSour
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "field_name": fieldName,
 		};
 	}
@@ -152,7 +152,7 @@ final class PassportElementErrorSourceDataField extends PassportElementErrorSour
   );
 
   /// TDLib object type
-  static const String objectType = 'passportElementErrorSourceDataField';
+  static const String defaultObjectId = 'passportElementErrorSourceDataField';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -160,7 +160,7 @@ final class PassportElementErrorSourceDataField extends PassportElementErrorSour
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -181,7 +181,7 @@ final class PassportElementErrorSourceFrontSide extends PassportElementErrorSour
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -190,7 +190,7 @@ final class PassportElementErrorSourceFrontSide extends PassportElementErrorSour
   PassportElementErrorSourceFrontSide copyWith() => const PassportElementErrorSourceFrontSide();
 
   /// TDLib object type
-  static const String objectType = 'passportElementErrorSourceFrontSide';
+  static const String defaultObjectId = 'passportElementErrorSourceFrontSide';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -198,7 +198,7 @@ final class PassportElementErrorSourceFrontSide extends PassportElementErrorSour
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -219,7 +219,7 @@ final class PassportElementErrorSourceReverseSide extends PassportElementErrorSo
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -228,7 +228,7 @@ final class PassportElementErrorSourceReverseSide extends PassportElementErrorSo
   PassportElementErrorSourceReverseSide copyWith() => const PassportElementErrorSourceReverseSide();
 
   /// TDLib object type
-  static const String objectType = 'passportElementErrorSourceReverseSide';
+  static const String defaultObjectId = 'passportElementErrorSourceReverseSide';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -236,7 +236,7 @@ final class PassportElementErrorSourceReverseSide extends PassportElementErrorSo
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -257,7 +257,7 @@ final class PassportElementErrorSourceSelfie extends PassportElementErrorSource 
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -266,7 +266,7 @@ final class PassportElementErrorSourceSelfie extends PassportElementErrorSource 
   PassportElementErrorSourceSelfie copyWith() => const PassportElementErrorSourceSelfie();
 
   /// TDLib object type
-  static const String objectType = 'passportElementErrorSourceSelfie';
+  static const String defaultObjectId = 'passportElementErrorSourceSelfie';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -274,7 +274,7 @@ final class PassportElementErrorSourceSelfie extends PassportElementErrorSource 
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -307,7 +307,7 @@ final class PassportElementErrorSourceTranslationFile extends PassportElementErr
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "file_index": fileIndex,
 		};
 	}
@@ -324,7 +324,7 @@ final class PassportElementErrorSourceTranslationFile extends PassportElementErr
   );
 
   /// TDLib object type
-  static const String objectType = 'passportElementErrorSourceTranslationFile';
+  static const String defaultObjectId = 'passportElementErrorSourceTranslationFile';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -332,7 +332,7 @@ final class PassportElementErrorSourceTranslationFile extends PassportElementErr
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -353,7 +353,7 @@ final class PassportElementErrorSourceTranslationFiles extends PassportElementEr
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -362,7 +362,7 @@ final class PassportElementErrorSourceTranslationFiles extends PassportElementEr
   PassportElementErrorSourceTranslationFiles copyWith() => const PassportElementErrorSourceTranslationFiles();
 
   /// TDLib object type
-  static const String objectType = 'passportElementErrorSourceTranslationFiles';
+  static const String defaultObjectId = 'passportElementErrorSourceTranslationFiles';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -370,7 +370,7 @@ final class PassportElementErrorSourceTranslationFiles extends PassportElementEr
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -403,7 +403,7 @@ final class PassportElementErrorSourceFile extends PassportElementErrorSource {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "file_index": fileIndex,
 		};
 	}
@@ -420,7 +420,7 @@ final class PassportElementErrorSourceFile extends PassportElementErrorSource {
   );
 
   /// TDLib object type
-  static const String objectType = 'passportElementErrorSourceFile';
+  static const String defaultObjectId = 'passportElementErrorSourceFile';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -428,7 +428,7 @@ final class PassportElementErrorSourceFile extends PassportElementErrorSource {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -449,7 +449,7 @@ final class PassportElementErrorSourceFiles extends PassportElementErrorSource {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -458,7 +458,7 @@ final class PassportElementErrorSourceFiles extends PassportElementErrorSource {
   PassportElementErrorSourceFiles copyWith() => const PassportElementErrorSourceFiles();
 
   /// TDLib object type
-  static const String objectType = 'passportElementErrorSourceFiles';
+  static const String defaultObjectId = 'passportElementErrorSourceFiles';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -466,5 +466,5 @@ final class PassportElementErrorSourceFiles extends PassportElementErrorSource {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -125,7 +125,7 @@ final class ChatBoostLevelFeatures extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "level": level,
       "story_per_day_count": storyPerDayCount,
       "custom_emoji_reaction_count": customEmojiReactionCount,
@@ -193,7 +193,7 @@ final class ChatBoostLevelFeatures extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatBoostLevelFeatures';
+  static const String defaultObjectId = 'chatBoostLevelFeatures';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -201,5 +201,5 @@ final class ChatBoostLevelFeatures extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

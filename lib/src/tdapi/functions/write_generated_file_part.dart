@@ -39,7 +39,7 @@ final class WriteGeneratedFilePart extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "generation_id": generationId,
       "offset": offset,
       "data": data,
@@ -64,7 +64,7 @@ final class WriteGeneratedFilePart extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'writeGeneratedFilePart';
+  static const String defaultObjectId = 'writeGeneratedFilePart';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -72,5 +72,5 @@ final class WriteGeneratedFilePart extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

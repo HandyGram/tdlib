@@ -15,9 +15,9 @@ sealed class LoginUrlInfo extends TdObject {
   /// * [LoginUrlInfoRequestConfirmation]
   factory LoginUrlInfo.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case LoginUrlInfoOpen.objectType:
+      case LoginUrlInfoOpen.defaultObjectId:
         return LoginUrlInfoOpen.fromJson(json);
-      case LoginUrlInfoRequestConfirmation.objectType:
+      case LoginUrlInfoRequestConfirmation.defaultObjectId:
         return LoginUrlInfoRequestConfirmation.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class LoginUrlInfo extends TdObject {
   LoginUrlInfo copyWith();
 
   /// TDLib object type
-  static const String objectType = 'loginUrlInfo';
+  static const String defaultObjectId = 'loginUrlInfo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class LoginUrlInfo extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -95,7 +95,7 @@ final class LoginUrlInfoOpen extends LoginUrlInfo {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "url": url,
       "skip_confirmation": skipConfirmation,
 		};
@@ -120,7 +120,7 @@ final class LoginUrlInfoOpen extends LoginUrlInfo {
   );
 
   /// TDLib object type
-  static const String objectType = 'loginUrlInfoOpen';
+  static const String defaultObjectId = 'loginUrlInfoOpen';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -128,7 +128,7 @@ final class LoginUrlInfoOpen extends LoginUrlInfo {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -194,7 +194,7 @@ final class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "url": url,
       "domain": domain,
       "bot_user_id": botUserId,
@@ -227,7 +227,7 @@ final class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
   );
 
   /// TDLib object type
-  static const String objectType = 'loginUrlInfoRequestConfirmation';
+  static const String defaultObjectId = 'loginUrlInfoRequestConfirmation';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -235,5 +235,5 @@ final class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

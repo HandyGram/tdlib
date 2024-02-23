@@ -57,7 +57,7 @@ final class NotificationGroup extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "type": type.toJson(),
       "chat_id": chatId,
@@ -89,7 +89,7 @@ final class NotificationGroup extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'notificationGroup';
+  static const String defaultObjectId = 'notificationGroup';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -97,5 +97,5 @@ final class NotificationGroup extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

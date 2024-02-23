@@ -181,7 +181,7 @@ final class GroupCall extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "title": title,
       "scheduled_start_date": scheduledStartDate,
@@ -281,7 +281,7 @@ final class GroupCall extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'groupCall';
+  static const String defaultObjectId = 'groupCall';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -289,5 +289,5 @@ final class GroupCall extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

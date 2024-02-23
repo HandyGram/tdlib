@@ -33,7 +33,7 @@ final class ReorderInstalledStickerSets extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "sticker_type": stickerType.toJson(),
       "sticker_set_ids": stickerSetIds.map((i) => i).toList(),
       "@extra": extra,
@@ -54,7 +54,7 @@ final class ReorderInstalledStickerSets extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'reorderInstalledStickerSets';
+  static const String defaultObjectId = 'reorderInstalledStickerSets';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -62,5 +62,5 @@ final class ReorderInstalledStickerSets extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

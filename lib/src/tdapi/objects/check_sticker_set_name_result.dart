@@ -16,11 +16,11 @@ sealed class CheckStickerSetNameResult extends TdObject {
   /// * [CheckStickerSetNameResultNameOccupied]
   factory CheckStickerSetNameResult.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case CheckStickerSetNameResultOk.objectType:
+      case CheckStickerSetNameResultOk.defaultObjectId:
         return CheckStickerSetNameResultOk.fromJson(json);
-      case CheckStickerSetNameResultNameInvalid.objectType:
+      case CheckStickerSetNameResultNameInvalid.defaultObjectId:
         return CheckStickerSetNameResultNameInvalid.fromJson(json);
-      case CheckStickerSetNameResultNameOccupied.objectType:
+      case CheckStickerSetNameResultNameOccupied.defaultObjectId:
         return CheckStickerSetNameResultNameOccupied.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class CheckStickerSetNameResult extends TdObject {
   CheckStickerSetNameResult copyWith();
 
   /// TDLib object type
-  static const String objectType = 'checkStickerSetNameResult';
+  static const String defaultObjectId = 'checkStickerSetNameResult';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class CheckStickerSetNameResult extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -82,7 +82,7 @@ final class CheckStickerSetNameResultOk extends CheckStickerSetNameResult {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -97,7 +97,7 @@ final class CheckStickerSetNameResultOk extends CheckStickerSetNameResult {
   );
 
   /// TDLib object type
-  static const String objectType = 'checkStickerSetNameResultOk';
+  static const String defaultObjectId = 'checkStickerSetNameResultOk';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -105,7 +105,7 @@ final class CheckStickerSetNameResultOk extends CheckStickerSetNameResult {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -141,7 +141,7 @@ final class CheckStickerSetNameResultNameInvalid extends CheckStickerSetNameResu
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -156,7 +156,7 @@ final class CheckStickerSetNameResultNameInvalid extends CheckStickerSetNameResu
   );
 
   /// TDLib object type
-  static const String objectType = 'checkStickerSetNameResultNameInvalid';
+  static const String defaultObjectId = 'checkStickerSetNameResultNameInvalid';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -164,7 +164,7 @@ final class CheckStickerSetNameResultNameInvalid extends CheckStickerSetNameResu
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -200,7 +200,7 @@ final class CheckStickerSetNameResultNameOccupied extends CheckStickerSetNameRes
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -215,7 +215,7 @@ final class CheckStickerSetNameResultNameOccupied extends CheckStickerSetNameRes
   );
 
   /// TDLib object type
-  static const String objectType = 'checkStickerSetNameResultNameOccupied';
+  static const String defaultObjectId = 'checkStickerSetNameResultNameOccupied';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -223,5 +223,5 @@ final class CheckStickerSetNameResultNameOccupied extends CheckStickerSetNameRes
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

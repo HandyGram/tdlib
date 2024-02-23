@@ -16,11 +16,11 @@ sealed class CallbackQueryPayload extends TdObject {
   /// * [CallbackQueryPayloadGame]
   factory CallbackQueryPayload.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case CallbackQueryPayloadData.objectType:
+      case CallbackQueryPayloadData.defaultObjectId:
         return CallbackQueryPayloadData.fromJson(json);
-      case CallbackQueryPayloadDataWithPassword.objectType:
+      case CallbackQueryPayloadDataWithPassword.defaultObjectId:
         return CallbackQueryPayloadDataWithPassword.fromJson(json);
-      case CallbackQueryPayloadGame.objectType:
+      case CallbackQueryPayloadGame.defaultObjectId:
         return CallbackQueryPayloadGame.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class CallbackQueryPayload extends TdObject {
   CallbackQueryPayload copyWith();
 
   /// TDLib object type
-  static const String objectType = 'callbackQueryPayload';
+  static const String defaultObjectId = 'callbackQueryPayload';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class CallbackQueryPayload extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -79,7 +79,7 @@ final class CallbackQueryPayloadData extends CallbackQueryPayload {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "data": data,
 		};
 	}
@@ -96,7 +96,7 @@ final class CallbackQueryPayloadData extends CallbackQueryPayload {
   );
 
   /// TDLib object type
-  static const String objectType = 'callbackQueryPayloadData';
+  static const String defaultObjectId = 'callbackQueryPayloadData';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -104,7 +104,7 @@ final class CallbackQueryPayloadData extends CallbackQueryPayload {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -144,7 +144,7 @@ final class CallbackQueryPayloadDataWithPassword extends CallbackQueryPayload {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "password": password,
       "data": data,
 		};
@@ -165,7 +165,7 @@ final class CallbackQueryPayloadDataWithPassword extends CallbackQueryPayload {
   );
 
   /// TDLib object type
-  static const String objectType = 'callbackQueryPayloadDataWithPassword';
+  static const String defaultObjectId = 'callbackQueryPayloadDataWithPassword';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -173,7 +173,7 @@ final class CallbackQueryPayloadDataWithPassword extends CallbackQueryPayload {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -206,7 +206,7 @@ final class CallbackQueryPayloadGame extends CallbackQueryPayload {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "game_short_name": gameShortName,
 		};
 	}
@@ -223,7 +223,7 @@ final class CallbackQueryPayloadGame extends CallbackQueryPayload {
   );
 
   /// TDLib object type
-  static const String objectType = 'callbackQueryPayloadGame';
+  static const String defaultObjectId = 'callbackQueryPayloadGame';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -231,5 +231,5 @@ final class CallbackQueryPayloadGame extends CallbackQueryPayload {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

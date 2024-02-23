@@ -57,7 +57,7 @@ final class LinkPreviewOptions extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "is_disabled": isDisabled,
       "url": url,
       "force_small_media": forceSmallMedia,
@@ -89,7 +89,7 @@ final class LinkPreviewOptions extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'linkPreviewOptions';
+  static const String defaultObjectId = 'linkPreviewOptions';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -97,5 +97,5 @@ final class LinkPreviewOptions extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

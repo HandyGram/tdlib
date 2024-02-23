@@ -17,13 +17,13 @@ sealed class AutosaveSettingsScope extends TdObject {
   /// * [AutosaveSettingsScopeChat]
   factory AutosaveSettingsScope.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case AutosaveSettingsScopePrivateChats.objectType:
+      case AutosaveSettingsScopePrivateChats.defaultObjectId:
         return AutosaveSettingsScopePrivateChats.fromJson(json);
-      case AutosaveSettingsScopeGroupChats.objectType:
+      case AutosaveSettingsScopeGroupChats.defaultObjectId:
         return AutosaveSettingsScopeGroupChats.fromJson(json);
-      case AutosaveSettingsScopeChannelChats.objectType:
+      case AutosaveSettingsScopeChannelChats.defaultObjectId:
         return AutosaveSettingsScopeChannelChats.fromJson(json);
-      case AutosaveSettingsScopeChat.objectType:
+      case AutosaveSettingsScopeChat.defaultObjectId:
         return AutosaveSettingsScopeChat.fromJson(json);
       default:
         throw FormatException(
@@ -41,7 +41,7 @@ sealed class AutosaveSettingsScope extends TdObject {
   AutosaveSettingsScope copyWith();
 
   /// TDLib object type
-  static const String objectType = 'autosaveSettingsScope';
+  static const String defaultObjectId = 'autosaveSettingsScope';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -49,7 +49,7 @@ sealed class AutosaveSettingsScope extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -70,7 +70,7 @@ final class AutosaveSettingsScopePrivateChats extends AutosaveSettingsScope {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -79,7 +79,7 @@ final class AutosaveSettingsScopePrivateChats extends AutosaveSettingsScope {
   AutosaveSettingsScopePrivateChats copyWith() => const AutosaveSettingsScopePrivateChats();
 
   /// TDLib object type
-  static const String objectType = 'autosaveSettingsScopePrivateChats';
+  static const String defaultObjectId = 'autosaveSettingsScopePrivateChats';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -87,7 +87,7 @@ final class AutosaveSettingsScopePrivateChats extends AutosaveSettingsScope {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -108,7 +108,7 @@ final class AutosaveSettingsScopeGroupChats extends AutosaveSettingsScope {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -117,7 +117,7 @@ final class AutosaveSettingsScopeGroupChats extends AutosaveSettingsScope {
   AutosaveSettingsScopeGroupChats copyWith() => const AutosaveSettingsScopeGroupChats();
 
   /// TDLib object type
-  static const String objectType = 'autosaveSettingsScopeGroupChats';
+  static const String defaultObjectId = 'autosaveSettingsScopeGroupChats';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -125,7 +125,7 @@ final class AutosaveSettingsScopeGroupChats extends AutosaveSettingsScope {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -146,7 +146,7 @@ final class AutosaveSettingsScopeChannelChats extends AutosaveSettingsScope {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -155,7 +155,7 @@ final class AutosaveSettingsScopeChannelChats extends AutosaveSettingsScope {
   AutosaveSettingsScopeChannelChats copyWith() => const AutosaveSettingsScopeChannelChats();
 
   /// TDLib object type
-  static const String objectType = 'autosaveSettingsScopeChannelChats';
+  static const String defaultObjectId = 'autosaveSettingsScopeChannelChats';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -163,7 +163,7 @@ final class AutosaveSettingsScopeChannelChats extends AutosaveSettingsScope {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -196,7 +196,7 @@ final class AutosaveSettingsScopeChat extends AutosaveSettingsScope {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
 		};
 	}
@@ -213,7 +213,7 @@ final class AutosaveSettingsScopeChat extends AutosaveSettingsScope {
   );
 
   /// TDLib object type
-  static const String objectType = 'autosaveSettingsScopeChat';
+  static const String defaultObjectId = 'autosaveSettingsScopeChat';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -221,5 +221,5 @@ final class AutosaveSettingsScopeChat extends AutosaveSettingsScope {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

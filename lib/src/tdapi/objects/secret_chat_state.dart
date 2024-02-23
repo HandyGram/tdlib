@@ -16,11 +16,11 @@ sealed class SecretChatState extends TdObject {
   /// * [SecretChatStateClosed]
   factory SecretChatState.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case SecretChatStatePending.objectType:
+      case SecretChatStatePending.defaultObjectId:
         return SecretChatStatePending.fromJson(json);
-      case SecretChatStateReady.objectType:
+      case SecretChatStateReady.defaultObjectId:
         return SecretChatStateReady.fromJson(json);
-      case SecretChatStateClosed.objectType:
+      case SecretChatStateClosed.defaultObjectId:
         return SecretChatStateClosed.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class SecretChatState extends TdObject {
   SecretChatState copyWith();
 
   /// TDLib object type
-  static const String objectType = 'secretChatState';
+  static const String defaultObjectId = 'secretChatState';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class SecretChatState extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -67,7 +67,7 @@ final class SecretChatStatePending extends SecretChatState {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -76,7 +76,7 @@ final class SecretChatStatePending extends SecretChatState {
   SecretChatStatePending copyWith() => const SecretChatStatePending();
 
   /// TDLib object type
-  static const String objectType = 'secretChatStatePending';
+  static const String defaultObjectId = 'secretChatStatePending';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -84,7 +84,7 @@ final class SecretChatStatePending extends SecretChatState {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -105,7 +105,7 @@ final class SecretChatStateReady extends SecretChatState {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -114,7 +114,7 @@ final class SecretChatStateReady extends SecretChatState {
   SecretChatStateReady copyWith() => const SecretChatStateReady();
 
   /// TDLib object type
-  static const String objectType = 'secretChatStateReady';
+  static const String defaultObjectId = 'secretChatStateReady';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -122,7 +122,7 @@ final class SecretChatStateReady extends SecretChatState {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -143,7 +143,7 @@ final class SecretChatStateClosed extends SecretChatState {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -152,7 +152,7 @@ final class SecretChatStateClosed extends SecretChatState {
   SecretChatStateClosed copyWith() => const SecretChatStateClosed();
 
   /// TDLib object type
-  static const String objectType = 'secretChatStateClosed';
+  static const String defaultObjectId = 'secretChatStateClosed';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -160,5 +160,5 @@ final class SecretChatStateClosed extends SecretChatState {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

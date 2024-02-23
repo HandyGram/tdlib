@@ -27,7 +27,7 @@ final class GetRecentlyOpenedChats extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "limit": limit,
       "@extra": extra,
 		};
@@ -44,7 +44,7 @@ final class GetRecentlyOpenedChats extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'getRecentlyOpenedChats';
+  static const String defaultObjectId = 'getRecentlyOpenedChats';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -52,5 +52,5 @@ final class GetRecentlyOpenedChats extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

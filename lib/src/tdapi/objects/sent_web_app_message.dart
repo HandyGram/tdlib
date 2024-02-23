@@ -41,7 +41,7 @@ final class SentWebAppMessage extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "inline_message_id": inlineMessageId,
 		};
 	}
@@ -61,7 +61,7 @@ final class SentWebAppMessage extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'sentWebAppMessage';
+  static const String defaultObjectId = 'sentWebAppMessage';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -69,5 +69,5 @@ final class SentWebAppMessage extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

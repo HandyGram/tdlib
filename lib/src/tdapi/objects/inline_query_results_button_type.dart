@@ -15,9 +15,9 @@ sealed class InlineQueryResultsButtonType extends TdObject {
   /// * [InlineQueryResultsButtonTypeWebApp]
   factory InlineQueryResultsButtonType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case InlineQueryResultsButtonTypeStartBot.objectType:
+      case InlineQueryResultsButtonTypeStartBot.defaultObjectId:
         return InlineQueryResultsButtonTypeStartBot.fromJson(json);
-      case InlineQueryResultsButtonTypeWebApp.objectType:
+      case InlineQueryResultsButtonTypeWebApp.defaultObjectId:
         return InlineQueryResultsButtonTypeWebApp.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class InlineQueryResultsButtonType extends TdObject {
   InlineQueryResultsButtonType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'inlineQueryResultsButtonType';
+  static const String defaultObjectId = 'inlineQueryResultsButtonType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class InlineQueryResultsButtonType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -76,7 +76,7 @@ final class InlineQueryResultsButtonTypeStartBot extends InlineQueryResultsButto
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "parameter": parameter,
 		};
 	}
@@ -93,7 +93,7 @@ final class InlineQueryResultsButtonTypeStartBot extends InlineQueryResultsButto
   );
 
   /// TDLib object type
-  static const String objectType = 'inlineQueryResultsButtonTypeStartBot';
+  static const String defaultObjectId = 'inlineQueryResultsButtonTypeStartBot';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -101,7 +101,7 @@ final class InlineQueryResultsButtonTypeStartBot extends InlineQueryResultsButto
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -134,7 +134,7 @@ final class InlineQueryResultsButtonTypeWebApp extends InlineQueryResultsButtonT
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "url": url,
 		};
 	}
@@ -151,7 +151,7 @@ final class InlineQueryResultsButtonTypeWebApp extends InlineQueryResultsButtonT
   );
 
   /// TDLib object type
-  static const String objectType = 'inlineQueryResultsButtonTypeWebApp';
+  static const String defaultObjectId = 'inlineQueryResultsButtonTypeWebApp';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -159,5 +159,5 @@ final class InlineQueryResultsButtonTypeWebApp extends InlineQueryResultsButtonT
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

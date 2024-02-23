@@ -41,7 +41,7 @@ final class Count extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "count": count,
 		};
 	}
@@ -61,7 +61,7 @@ final class Count extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'count';
+  static const String defaultObjectId = 'count';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -69,5 +69,5 @@ final class Count extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

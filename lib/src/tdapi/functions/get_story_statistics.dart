@@ -39,7 +39,7 @@ final class GetStoryStatistics extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "story_id": storyId,
       "is_dark": isDark,
@@ -64,7 +64,7 @@ final class GetStoryStatistics extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'getStoryStatistics';
+  static const String defaultObjectId = 'getStoryStatistics';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -72,5 +72,5 @@ final class GetStoryStatistics extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -20,19 +20,19 @@ sealed class PremiumStoryFeature extends TdObject {
   /// * [PremiumStoryFeatureVideoQuality]
   factory PremiumStoryFeature.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case PremiumStoryFeaturePriorityOrder.objectType:
+      case PremiumStoryFeaturePriorityOrder.defaultObjectId:
         return PremiumStoryFeaturePriorityOrder.fromJson(json);
-      case PremiumStoryFeatureStealthMode.objectType:
+      case PremiumStoryFeatureStealthMode.defaultObjectId:
         return PremiumStoryFeatureStealthMode.fromJson(json);
-      case PremiumStoryFeaturePermanentViewsHistory.objectType:
+      case PremiumStoryFeaturePermanentViewsHistory.defaultObjectId:
         return PremiumStoryFeaturePermanentViewsHistory.fromJson(json);
-      case PremiumStoryFeatureCustomExpirationDuration.objectType:
+      case PremiumStoryFeatureCustomExpirationDuration.defaultObjectId:
         return PremiumStoryFeatureCustomExpirationDuration.fromJson(json);
-      case PremiumStoryFeatureSaveStories.objectType:
+      case PremiumStoryFeatureSaveStories.defaultObjectId:
         return PremiumStoryFeatureSaveStories.fromJson(json);
-      case PremiumStoryFeatureLinksAndFormatting.objectType:
+      case PremiumStoryFeatureLinksAndFormatting.defaultObjectId:
         return PremiumStoryFeatureLinksAndFormatting.fromJson(json);
-      case PremiumStoryFeatureVideoQuality.objectType:
+      case PremiumStoryFeatureVideoQuality.defaultObjectId:
         return PremiumStoryFeatureVideoQuality.fromJson(json);
       default:
         throw FormatException(
@@ -50,7 +50,7 @@ sealed class PremiumStoryFeature extends TdObject {
   PremiumStoryFeature copyWith();
 
   /// TDLib object type
-  static const String objectType = 'premiumStoryFeature';
+  static const String defaultObjectId = 'premiumStoryFeature';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -58,7 +58,7 @@ sealed class PremiumStoryFeature extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -79,7 +79,7 @@ final class PremiumStoryFeaturePriorityOrder extends PremiumStoryFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -88,7 +88,7 @@ final class PremiumStoryFeaturePriorityOrder extends PremiumStoryFeature {
   PremiumStoryFeaturePriorityOrder copyWith() => const PremiumStoryFeaturePriorityOrder();
 
   /// TDLib object type
-  static const String objectType = 'premiumStoryFeaturePriorityOrder';
+  static const String defaultObjectId = 'premiumStoryFeaturePriorityOrder';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -96,7 +96,7 @@ final class PremiumStoryFeaturePriorityOrder extends PremiumStoryFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -117,7 +117,7 @@ final class PremiumStoryFeatureStealthMode extends PremiumStoryFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -126,7 +126,7 @@ final class PremiumStoryFeatureStealthMode extends PremiumStoryFeature {
   PremiumStoryFeatureStealthMode copyWith() => const PremiumStoryFeatureStealthMode();
 
   /// TDLib object type
-  static const String objectType = 'premiumStoryFeatureStealthMode';
+  static const String defaultObjectId = 'premiumStoryFeatureStealthMode';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -134,7 +134,7 @@ final class PremiumStoryFeatureStealthMode extends PremiumStoryFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -155,7 +155,7 @@ final class PremiumStoryFeaturePermanentViewsHistory extends PremiumStoryFeature
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -164,7 +164,7 @@ final class PremiumStoryFeaturePermanentViewsHistory extends PremiumStoryFeature
   PremiumStoryFeaturePermanentViewsHistory copyWith() => const PremiumStoryFeaturePermanentViewsHistory();
 
   /// TDLib object type
-  static const String objectType = 'premiumStoryFeaturePermanentViewsHistory';
+  static const String defaultObjectId = 'premiumStoryFeaturePermanentViewsHistory';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -172,7 +172,7 @@ final class PremiumStoryFeaturePermanentViewsHistory extends PremiumStoryFeature
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -193,7 +193,7 @@ final class PremiumStoryFeatureCustomExpirationDuration extends PremiumStoryFeat
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -202,7 +202,7 @@ final class PremiumStoryFeatureCustomExpirationDuration extends PremiumStoryFeat
   PremiumStoryFeatureCustomExpirationDuration copyWith() => const PremiumStoryFeatureCustomExpirationDuration();
 
   /// TDLib object type
-  static const String objectType = 'premiumStoryFeatureCustomExpirationDuration';
+  static const String defaultObjectId = 'premiumStoryFeatureCustomExpirationDuration';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -210,7 +210,7 @@ final class PremiumStoryFeatureCustomExpirationDuration extends PremiumStoryFeat
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -231,7 +231,7 @@ final class PremiumStoryFeatureSaveStories extends PremiumStoryFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -240,7 +240,7 @@ final class PremiumStoryFeatureSaveStories extends PremiumStoryFeature {
   PremiumStoryFeatureSaveStories copyWith() => const PremiumStoryFeatureSaveStories();
 
   /// TDLib object type
-  static const String objectType = 'premiumStoryFeatureSaveStories';
+  static const String defaultObjectId = 'premiumStoryFeatureSaveStories';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -248,7 +248,7 @@ final class PremiumStoryFeatureSaveStories extends PremiumStoryFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -269,7 +269,7 @@ final class PremiumStoryFeatureLinksAndFormatting extends PremiumStoryFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -278,7 +278,7 @@ final class PremiumStoryFeatureLinksAndFormatting extends PremiumStoryFeature {
   PremiumStoryFeatureLinksAndFormatting copyWith() => const PremiumStoryFeatureLinksAndFormatting();
 
   /// TDLib object type
-  static const String objectType = 'premiumStoryFeatureLinksAndFormatting';
+  static const String defaultObjectId = 'premiumStoryFeatureLinksAndFormatting';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -286,7 +286,7 @@ final class PremiumStoryFeatureLinksAndFormatting extends PremiumStoryFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -307,7 +307,7 @@ final class PremiumStoryFeatureVideoQuality extends PremiumStoryFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -316,7 +316,7 @@ final class PremiumStoryFeatureVideoQuality extends PremiumStoryFeature {
   PremiumStoryFeatureVideoQuality copyWith() => const PremiumStoryFeatureVideoQuality();
 
   /// TDLib object type
-  static const String objectType = 'premiumStoryFeatureVideoQuality';
+  static const String defaultObjectId = 'premiumStoryFeatureVideoQuality';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -324,5 +324,5 @@ final class PremiumStoryFeatureVideoQuality extends PremiumStoryFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

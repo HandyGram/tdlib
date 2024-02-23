@@ -17,13 +17,13 @@ sealed class BackgroundType extends TdObject {
   /// * [BackgroundTypeChatTheme]
   factory BackgroundType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case BackgroundTypeWallpaper.objectType:
+      case BackgroundTypeWallpaper.defaultObjectId:
         return BackgroundTypeWallpaper.fromJson(json);
-      case BackgroundTypePattern.objectType:
+      case BackgroundTypePattern.defaultObjectId:
         return BackgroundTypePattern.fromJson(json);
-      case BackgroundTypeFill.objectType:
+      case BackgroundTypeFill.defaultObjectId:
         return BackgroundTypeFill.fromJson(json);
-      case BackgroundTypeChatTheme.objectType:
+      case BackgroundTypeChatTheme.defaultObjectId:
         return BackgroundTypeChatTheme.fromJson(json);
       default:
         throw FormatException(
@@ -41,7 +41,7 @@ sealed class BackgroundType extends TdObject {
   BackgroundType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'backgroundType';
+  static const String defaultObjectId = 'backgroundType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -49,7 +49,7 @@ sealed class BackgroundType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -89,7 +89,7 @@ final class BackgroundTypeWallpaper extends BackgroundType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "is_blurred": isBlurred,
       "is_moving": isMoving,
 		};
@@ -110,7 +110,7 @@ final class BackgroundTypeWallpaper extends BackgroundType {
   );
 
   /// TDLib object type
-  static const String objectType = 'backgroundTypeWallpaper';
+  static const String defaultObjectId = 'backgroundTypeWallpaper';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -118,7 +118,7 @@ final class BackgroundTypeWallpaper extends BackgroundType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -172,7 +172,7 @@ final class BackgroundTypePattern extends BackgroundType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "fill": fill.toJson(),
       "intensity": intensity,
       "is_inverted": isInverted,
@@ -201,7 +201,7 @@ final class BackgroundTypePattern extends BackgroundType {
   );
 
   /// TDLib object type
-  static const String objectType = 'backgroundTypePattern';
+  static const String defaultObjectId = 'backgroundTypePattern';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -209,7 +209,7 @@ final class BackgroundTypePattern extends BackgroundType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -242,7 +242,7 @@ final class BackgroundTypeFill extends BackgroundType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "fill": fill.toJson(),
 		};
 	}
@@ -259,7 +259,7 @@ final class BackgroundTypeFill extends BackgroundType {
   );
 
   /// TDLib object type
-  static const String objectType = 'backgroundTypeFill';
+  static const String defaultObjectId = 'backgroundTypeFill';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -267,7 +267,7 @@ final class BackgroundTypeFill extends BackgroundType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -300,7 +300,7 @@ final class BackgroundTypeChatTheme extends BackgroundType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "theme_name": themeName,
 		};
 	}
@@ -317,7 +317,7 @@ final class BackgroundTypeChatTheme extends BackgroundType {
   );
 
   /// TDLib object type
-  static const String objectType = 'backgroundTypeChatTheme';
+  static const String defaultObjectId = 'backgroundTypeChatTheme';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -325,5 +325,5 @@ final class BackgroundTypeChatTheme extends BackgroundType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

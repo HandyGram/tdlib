@@ -45,7 +45,7 @@ final class BlockMessageSenderFromReplies extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "message_id": messageId,
       "delete_message": deleteMessage,
       "delete_all_messages": deleteAllMessages,
@@ -74,7 +74,7 @@ final class BlockMessageSenderFromReplies extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'blockMessageSenderFromReplies';
+  static const String defaultObjectId = 'blockMessageSenderFromReplies';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -82,5 +82,5 @@ final class BlockMessageSenderFromReplies extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

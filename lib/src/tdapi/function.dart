@@ -4,7 +4,7 @@ part of 'tdapi.dart';
 /// to construct TDLib function.
 sealed class TdFunction {
   /// Get TDLib object type for class instance
-  String get instanceType => "function";
+  String get currentObjectId => "function";
 
   /// Unused constructor
   const TdFunction();

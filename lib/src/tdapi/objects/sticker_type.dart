@@ -16,11 +16,11 @@ sealed class StickerType extends TdObject {
   /// * [StickerTypeCustomEmoji]
   factory StickerType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case StickerTypeRegular.objectType:
+      case StickerTypeRegular.defaultObjectId:
         return StickerTypeRegular.fromJson(json);
-      case StickerTypeMask.objectType:
+      case StickerTypeMask.defaultObjectId:
         return StickerTypeMask.fromJson(json);
-      case StickerTypeCustomEmoji.objectType:
+      case StickerTypeCustomEmoji.defaultObjectId:
         return StickerTypeCustomEmoji.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class StickerType extends TdObject {
   StickerType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'stickerType';
+  static const String defaultObjectId = 'stickerType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class StickerType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -67,7 +67,7 @@ final class StickerTypeRegular extends StickerType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -76,7 +76,7 @@ final class StickerTypeRegular extends StickerType {
   StickerTypeRegular copyWith() => const StickerTypeRegular();
 
   /// TDLib object type
-  static const String objectType = 'stickerTypeRegular';
+  static const String defaultObjectId = 'stickerTypeRegular';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -84,7 +84,7 @@ final class StickerTypeRegular extends StickerType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -105,7 +105,7 @@ final class StickerTypeMask extends StickerType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -114,7 +114,7 @@ final class StickerTypeMask extends StickerType {
   StickerTypeMask copyWith() => const StickerTypeMask();
 
   /// TDLib object type
-  static const String objectType = 'stickerTypeMask';
+  static const String defaultObjectId = 'stickerTypeMask';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -122,7 +122,7 @@ final class StickerTypeMask extends StickerType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -143,7 +143,7 @@ final class StickerTypeCustomEmoji extends StickerType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -152,7 +152,7 @@ final class StickerTypeCustomEmoji extends StickerType {
   StickerTypeCustomEmoji copyWith() => const StickerTypeCustomEmoji();
 
   /// TDLib object type
-  static const String objectType = 'stickerTypeCustomEmoji';
+  static const String defaultObjectId = 'stickerTypeCustomEmoji';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -160,5 +160,5 @@ final class StickerTypeCustomEmoji extends StickerType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

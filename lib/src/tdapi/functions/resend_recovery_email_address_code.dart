@@ -19,7 +19,7 @@ final class ResendRecoveryEmailAddressCode extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "@extra": extra,
 		};
 	}
@@ -28,7 +28,7 @@ final class ResendRecoveryEmailAddressCode extends TdFunction {
   ResendRecoveryEmailAddressCode copyWith() => const ResendRecoveryEmailAddressCode();
 
   /// TDLib object type
-  static const String objectType = 'resendRecoveryEmailAddressCode';
+  static const String defaultObjectId = 'resendRecoveryEmailAddressCode';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -36,5 +36,5 @@ final class ResendRecoveryEmailAddressCode extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

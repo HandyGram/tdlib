@@ -34,47 +34,47 @@ sealed class TextEntityType extends TdObject {
   /// * [TextEntityTypeMediaTimestamp]
   factory TextEntityType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case TextEntityTypeMention.objectType:
+      case TextEntityTypeMention.defaultObjectId:
         return TextEntityTypeMention.fromJson(json);
-      case TextEntityTypeHashtag.objectType:
+      case TextEntityTypeHashtag.defaultObjectId:
         return TextEntityTypeHashtag.fromJson(json);
-      case TextEntityTypeCashtag.objectType:
+      case TextEntityTypeCashtag.defaultObjectId:
         return TextEntityTypeCashtag.fromJson(json);
-      case TextEntityTypeBotCommand.objectType:
+      case TextEntityTypeBotCommand.defaultObjectId:
         return TextEntityTypeBotCommand.fromJson(json);
-      case TextEntityTypeUrl.objectType:
+      case TextEntityTypeUrl.defaultObjectId:
         return TextEntityTypeUrl.fromJson(json);
-      case TextEntityTypeEmailAddress.objectType:
+      case TextEntityTypeEmailAddress.defaultObjectId:
         return TextEntityTypeEmailAddress.fromJson(json);
-      case TextEntityTypePhoneNumber.objectType:
+      case TextEntityTypePhoneNumber.defaultObjectId:
         return TextEntityTypePhoneNumber.fromJson(json);
-      case TextEntityTypeBankCardNumber.objectType:
+      case TextEntityTypeBankCardNumber.defaultObjectId:
         return TextEntityTypeBankCardNumber.fromJson(json);
-      case TextEntityTypeBold.objectType:
+      case TextEntityTypeBold.defaultObjectId:
         return TextEntityTypeBold.fromJson(json);
-      case TextEntityTypeItalic.objectType:
+      case TextEntityTypeItalic.defaultObjectId:
         return TextEntityTypeItalic.fromJson(json);
-      case TextEntityTypeUnderline.objectType:
+      case TextEntityTypeUnderline.defaultObjectId:
         return TextEntityTypeUnderline.fromJson(json);
-      case TextEntityTypeStrikethrough.objectType:
+      case TextEntityTypeStrikethrough.defaultObjectId:
         return TextEntityTypeStrikethrough.fromJson(json);
-      case TextEntityTypeSpoiler.objectType:
+      case TextEntityTypeSpoiler.defaultObjectId:
         return TextEntityTypeSpoiler.fromJson(json);
-      case TextEntityTypeCode.objectType:
+      case TextEntityTypeCode.defaultObjectId:
         return TextEntityTypeCode.fromJson(json);
-      case TextEntityTypePre.objectType:
+      case TextEntityTypePre.defaultObjectId:
         return TextEntityTypePre.fromJson(json);
-      case TextEntityTypePreCode.objectType:
+      case TextEntityTypePreCode.defaultObjectId:
         return TextEntityTypePreCode.fromJson(json);
-      case TextEntityTypeBlockQuote.objectType:
+      case TextEntityTypeBlockQuote.defaultObjectId:
         return TextEntityTypeBlockQuote.fromJson(json);
-      case TextEntityTypeTextUrl.objectType:
+      case TextEntityTypeTextUrl.defaultObjectId:
         return TextEntityTypeTextUrl.fromJson(json);
-      case TextEntityTypeMentionName.objectType:
+      case TextEntityTypeMentionName.defaultObjectId:
         return TextEntityTypeMentionName.fromJson(json);
-      case TextEntityTypeCustomEmoji.objectType:
+      case TextEntityTypeCustomEmoji.defaultObjectId:
         return TextEntityTypeCustomEmoji.fromJson(json);
-      case TextEntityTypeMediaTimestamp.objectType:
+      case TextEntityTypeMediaTimestamp.defaultObjectId:
         return TextEntityTypeMediaTimestamp.fromJson(json);
       default:
         throw FormatException(
@@ -92,7 +92,7 @@ sealed class TextEntityType extends TdObject {
   TextEntityType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'textEntityType';
+  static const String defaultObjectId = 'textEntityType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -100,7 +100,7 @@ sealed class TextEntityType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -121,7 +121,7 @@ final class TextEntityTypeMention extends TextEntityType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -130,7 +130,7 @@ final class TextEntityTypeMention extends TextEntityType {
   TextEntityTypeMention copyWith() => const TextEntityTypeMention();
 
   /// TDLib object type
-  static const String objectType = 'textEntityTypeMention';
+  static const String defaultObjectId = 'textEntityTypeMention';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -138,7 +138,7 @@ final class TextEntityTypeMention extends TextEntityType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -159,7 +159,7 @@ final class TextEntityTypeHashtag extends TextEntityType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -168,7 +168,7 @@ final class TextEntityTypeHashtag extends TextEntityType {
   TextEntityTypeHashtag copyWith() => const TextEntityTypeHashtag();
 
   /// TDLib object type
-  static const String objectType = 'textEntityTypeHashtag';
+  static const String defaultObjectId = 'textEntityTypeHashtag';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -176,7 +176,7 @@ final class TextEntityTypeHashtag extends TextEntityType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -197,7 +197,7 @@ final class TextEntityTypeCashtag extends TextEntityType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -206,7 +206,7 @@ final class TextEntityTypeCashtag extends TextEntityType {
   TextEntityTypeCashtag copyWith() => const TextEntityTypeCashtag();
 
   /// TDLib object type
-  static const String objectType = 'textEntityTypeCashtag';
+  static const String defaultObjectId = 'textEntityTypeCashtag';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -214,7 +214,7 @@ final class TextEntityTypeCashtag extends TextEntityType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -235,7 +235,7 @@ final class TextEntityTypeBotCommand extends TextEntityType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -244,7 +244,7 @@ final class TextEntityTypeBotCommand extends TextEntityType {
   TextEntityTypeBotCommand copyWith() => const TextEntityTypeBotCommand();
 
   /// TDLib object type
-  static const String objectType = 'textEntityTypeBotCommand';
+  static const String defaultObjectId = 'textEntityTypeBotCommand';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -252,7 +252,7 @@ final class TextEntityTypeBotCommand extends TextEntityType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -273,7 +273,7 @@ final class TextEntityTypeUrl extends TextEntityType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -282,7 +282,7 @@ final class TextEntityTypeUrl extends TextEntityType {
   TextEntityTypeUrl copyWith() => const TextEntityTypeUrl();
 
   /// TDLib object type
-  static const String objectType = 'textEntityTypeUrl';
+  static const String defaultObjectId = 'textEntityTypeUrl';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -290,7 +290,7 @@ final class TextEntityTypeUrl extends TextEntityType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -311,7 +311,7 @@ final class TextEntityTypeEmailAddress extends TextEntityType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -320,7 +320,7 @@ final class TextEntityTypeEmailAddress extends TextEntityType {
   TextEntityTypeEmailAddress copyWith() => const TextEntityTypeEmailAddress();
 
   /// TDLib object type
-  static const String objectType = 'textEntityTypeEmailAddress';
+  static const String defaultObjectId = 'textEntityTypeEmailAddress';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -328,7 +328,7 @@ final class TextEntityTypeEmailAddress extends TextEntityType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -349,7 +349,7 @@ final class TextEntityTypePhoneNumber extends TextEntityType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -358,7 +358,7 @@ final class TextEntityTypePhoneNumber extends TextEntityType {
   TextEntityTypePhoneNumber copyWith() => const TextEntityTypePhoneNumber();
 
   /// TDLib object type
-  static const String objectType = 'textEntityTypePhoneNumber';
+  static const String defaultObjectId = 'textEntityTypePhoneNumber';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -366,7 +366,7 @@ final class TextEntityTypePhoneNumber extends TextEntityType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -387,7 +387,7 @@ final class TextEntityTypeBankCardNumber extends TextEntityType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -396,7 +396,7 @@ final class TextEntityTypeBankCardNumber extends TextEntityType {
   TextEntityTypeBankCardNumber copyWith() => const TextEntityTypeBankCardNumber();
 
   /// TDLib object type
-  static const String objectType = 'textEntityTypeBankCardNumber';
+  static const String defaultObjectId = 'textEntityTypeBankCardNumber';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -404,7 +404,7 @@ final class TextEntityTypeBankCardNumber extends TextEntityType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -425,7 +425,7 @@ final class TextEntityTypeBold extends TextEntityType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -434,7 +434,7 @@ final class TextEntityTypeBold extends TextEntityType {
   TextEntityTypeBold copyWith() => const TextEntityTypeBold();
 
   /// TDLib object type
-  static const String objectType = 'textEntityTypeBold';
+  static const String defaultObjectId = 'textEntityTypeBold';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -442,7 +442,7 @@ final class TextEntityTypeBold extends TextEntityType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -463,7 +463,7 @@ final class TextEntityTypeItalic extends TextEntityType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -472,7 +472,7 @@ final class TextEntityTypeItalic extends TextEntityType {
   TextEntityTypeItalic copyWith() => const TextEntityTypeItalic();
 
   /// TDLib object type
-  static const String objectType = 'textEntityTypeItalic';
+  static const String defaultObjectId = 'textEntityTypeItalic';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -480,7 +480,7 @@ final class TextEntityTypeItalic extends TextEntityType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -501,7 +501,7 @@ final class TextEntityTypeUnderline extends TextEntityType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -510,7 +510,7 @@ final class TextEntityTypeUnderline extends TextEntityType {
   TextEntityTypeUnderline copyWith() => const TextEntityTypeUnderline();
 
   /// TDLib object type
-  static const String objectType = 'textEntityTypeUnderline';
+  static const String defaultObjectId = 'textEntityTypeUnderline';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -518,7 +518,7 @@ final class TextEntityTypeUnderline extends TextEntityType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -539,7 +539,7 @@ final class TextEntityTypeStrikethrough extends TextEntityType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -548,7 +548,7 @@ final class TextEntityTypeStrikethrough extends TextEntityType {
   TextEntityTypeStrikethrough copyWith() => const TextEntityTypeStrikethrough();
 
   /// TDLib object type
-  static const String objectType = 'textEntityTypeStrikethrough';
+  static const String defaultObjectId = 'textEntityTypeStrikethrough';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -556,7 +556,7 @@ final class TextEntityTypeStrikethrough extends TextEntityType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -577,7 +577,7 @@ final class TextEntityTypeSpoiler extends TextEntityType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -586,7 +586,7 @@ final class TextEntityTypeSpoiler extends TextEntityType {
   TextEntityTypeSpoiler copyWith() => const TextEntityTypeSpoiler();
 
   /// TDLib object type
-  static const String objectType = 'textEntityTypeSpoiler';
+  static const String defaultObjectId = 'textEntityTypeSpoiler';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -594,7 +594,7 @@ final class TextEntityTypeSpoiler extends TextEntityType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -615,7 +615,7 @@ final class TextEntityTypeCode extends TextEntityType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -624,7 +624,7 @@ final class TextEntityTypeCode extends TextEntityType {
   TextEntityTypeCode copyWith() => const TextEntityTypeCode();
 
   /// TDLib object type
-  static const String objectType = 'textEntityTypeCode';
+  static const String defaultObjectId = 'textEntityTypeCode';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -632,7 +632,7 @@ final class TextEntityTypeCode extends TextEntityType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -653,7 +653,7 @@ final class TextEntityTypePre extends TextEntityType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -662,7 +662,7 @@ final class TextEntityTypePre extends TextEntityType {
   TextEntityTypePre copyWith() => const TextEntityTypePre();
 
   /// TDLib object type
-  static const String objectType = 'textEntityTypePre';
+  static const String defaultObjectId = 'textEntityTypePre';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -670,7 +670,7 @@ final class TextEntityTypePre extends TextEntityType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -703,7 +703,7 @@ final class TextEntityTypePreCode extends TextEntityType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "language": language,
 		};
 	}
@@ -720,7 +720,7 @@ final class TextEntityTypePreCode extends TextEntityType {
   );
 
   /// TDLib object type
-  static const String objectType = 'textEntityTypePreCode';
+  static const String defaultObjectId = 'textEntityTypePreCode';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -728,7 +728,7 @@ final class TextEntityTypePreCode extends TextEntityType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -749,7 +749,7 @@ final class TextEntityTypeBlockQuote extends TextEntityType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -758,7 +758,7 @@ final class TextEntityTypeBlockQuote extends TextEntityType {
   TextEntityTypeBlockQuote copyWith() => const TextEntityTypeBlockQuote();
 
   /// TDLib object type
-  static const String objectType = 'textEntityTypeBlockQuote';
+  static const String defaultObjectId = 'textEntityTypeBlockQuote';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -766,7 +766,7 @@ final class TextEntityTypeBlockQuote extends TextEntityType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -799,7 +799,7 @@ final class TextEntityTypeTextUrl extends TextEntityType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "url": url,
 		};
 	}
@@ -816,7 +816,7 @@ final class TextEntityTypeTextUrl extends TextEntityType {
   );
 
   /// TDLib object type
-  static const String objectType = 'textEntityTypeTextUrl';
+  static const String defaultObjectId = 'textEntityTypeTextUrl';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -824,7 +824,7 @@ final class TextEntityTypeTextUrl extends TextEntityType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -857,7 +857,7 @@ final class TextEntityTypeMentionName extends TextEntityType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "user_id": userId,
 		};
 	}
@@ -874,7 +874,7 @@ final class TextEntityTypeMentionName extends TextEntityType {
   );
 
   /// TDLib object type
-  static const String objectType = 'textEntityTypeMentionName';
+  static const String defaultObjectId = 'textEntityTypeMentionName';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -882,7 +882,7 @@ final class TextEntityTypeMentionName extends TextEntityType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -915,7 +915,7 @@ final class TextEntityTypeCustomEmoji extends TextEntityType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "custom_emoji_id": customEmojiId,
 		};
 	}
@@ -932,7 +932,7 @@ final class TextEntityTypeCustomEmoji extends TextEntityType {
   );
 
   /// TDLib object type
-  static const String objectType = 'textEntityTypeCustomEmoji';
+  static const String defaultObjectId = 'textEntityTypeCustomEmoji';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -940,7 +940,7 @@ final class TextEntityTypeCustomEmoji extends TextEntityType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -973,7 +973,7 @@ final class TextEntityTypeMediaTimestamp extends TextEntityType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "media_timestamp": mediaTimestamp,
 		};
 	}
@@ -990,7 +990,7 @@ final class TextEntityTypeMediaTimestamp extends TextEntityType {
   );
 
   /// TDLib object type
-  static const String objectType = 'textEntityTypeMediaTimestamp';
+  static const String defaultObjectId = 'textEntityTypeMediaTimestamp';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -998,5 +998,5 @@ final class TextEntityTypeMediaTimestamp extends TextEntityType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -32,43 +32,43 @@ sealed class FileType extends TdObject {
   /// * [FileTypeWallpaper]
   factory FileType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case FileTypeNone.objectType:
+      case FileTypeNone.defaultObjectId:
         return FileTypeNone.fromJson(json);
-      case FileTypeAnimation.objectType:
+      case FileTypeAnimation.defaultObjectId:
         return FileTypeAnimation.fromJson(json);
-      case FileTypeAudio.objectType:
+      case FileTypeAudio.defaultObjectId:
         return FileTypeAudio.fromJson(json);
-      case FileTypeDocument.objectType:
+      case FileTypeDocument.defaultObjectId:
         return FileTypeDocument.fromJson(json);
-      case FileTypeNotificationSound.objectType:
+      case FileTypeNotificationSound.defaultObjectId:
         return FileTypeNotificationSound.fromJson(json);
-      case FileTypePhoto.objectType:
+      case FileTypePhoto.defaultObjectId:
         return FileTypePhoto.fromJson(json);
-      case FileTypePhotoStory.objectType:
+      case FileTypePhotoStory.defaultObjectId:
         return FileTypePhotoStory.fromJson(json);
-      case FileTypeProfilePhoto.objectType:
+      case FileTypeProfilePhoto.defaultObjectId:
         return FileTypeProfilePhoto.fromJson(json);
-      case FileTypeSecret.objectType:
+      case FileTypeSecret.defaultObjectId:
         return FileTypeSecret.fromJson(json);
-      case FileTypeSecretThumbnail.objectType:
+      case FileTypeSecretThumbnail.defaultObjectId:
         return FileTypeSecretThumbnail.fromJson(json);
-      case FileTypeSecure.objectType:
+      case FileTypeSecure.defaultObjectId:
         return FileTypeSecure.fromJson(json);
-      case FileTypeSticker.objectType:
+      case FileTypeSticker.defaultObjectId:
         return FileTypeSticker.fromJson(json);
-      case FileTypeThumbnail.objectType:
+      case FileTypeThumbnail.defaultObjectId:
         return FileTypeThumbnail.fromJson(json);
-      case FileTypeUnknown.objectType:
+      case FileTypeUnknown.defaultObjectId:
         return FileTypeUnknown.fromJson(json);
-      case FileTypeVideo.objectType:
+      case FileTypeVideo.defaultObjectId:
         return FileTypeVideo.fromJson(json);
-      case FileTypeVideoNote.objectType:
+      case FileTypeVideoNote.defaultObjectId:
         return FileTypeVideoNote.fromJson(json);
-      case FileTypeVideoStory.objectType:
+      case FileTypeVideoStory.defaultObjectId:
         return FileTypeVideoStory.fromJson(json);
-      case FileTypeVoiceNote.objectType:
+      case FileTypeVoiceNote.defaultObjectId:
         return FileTypeVoiceNote.fromJson(json);
-      case FileTypeWallpaper.objectType:
+      case FileTypeWallpaper.defaultObjectId:
         return FileTypeWallpaper.fromJson(json);
       default:
         throw FormatException(
@@ -86,7 +86,7 @@ sealed class FileType extends TdObject {
   FileType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'fileType';
+  static const String defaultObjectId = 'fileType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -94,7 +94,7 @@ sealed class FileType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -115,7 +115,7 @@ final class FileTypeNone extends FileType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -124,7 +124,7 @@ final class FileTypeNone extends FileType {
   FileTypeNone copyWith() => const FileTypeNone();
 
   /// TDLib object type
-  static const String objectType = 'fileTypeNone';
+  static const String defaultObjectId = 'fileTypeNone';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -132,7 +132,7 @@ final class FileTypeNone extends FileType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -153,7 +153,7 @@ final class FileTypeAnimation extends FileType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -162,7 +162,7 @@ final class FileTypeAnimation extends FileType {
   FileTypeAnimation copyWith() => const FileTypeAnimation();
 
   /// TDLib object type
-  static const String objectType = 'fileTypeAnimation';
+  static const String defaultObjectId = 'fileTypeAnimation';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -170,7 +170,7 @@ final class FileTypeAnimation extends FileType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -191,7 +191,7 @@ final class FileTypeAudio extends FileType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -200,7 +200,7 @@ final class FileTypeAudio extends FileType {
   FileTypeAudio copyWith() => const FileTypeAudio();
 
   /// TDLib object type
-  static const String objectType = 'fileTypeAudio';
+  static const String defaultObjectId = 'fileTypeAudio';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -208,7 +208,7 @@ final class FileTypeAudio extends FileType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -229,7 +229,7 @@ final class FileTypeDocument extends FileType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -238,7 +238,7 @@ final class FileTypeDocument extends FileType {
   FileTypeDocument copyWith() => const FileTypeDocument();
 
   /// TDLib object type
-  static const String objectType = 'fileTypeDocument';
+  static const String defaultObjectId = 'fileTypeDocument';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -246,7 +246,7 @@ final class FileTypeDocument extends FileType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -267,7 +267,7 @@ final class FileTypeNotificationSound extends FileType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -276,7 +276,7 @@ final class FileTypeNotificationSound extends FileType {
   FileTypeNotificationSound copyWith() => const FileTypeNotificationSound();
 
   /// TDLib object type
-  static const String objectType = 'fileTypeNotificationSound';
+  static const String defaultObjectId = 'fileTypeNotificationSound';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -284,7 +284,7 @@ final class FileTypeNotificationSound extends FileType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -305,7 +305,7 @@ final class FileTypePhoto extends FileType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -314,7 +314,7 @@ final class FileTypePhoto extends FileType {
   FileTypePhoto copyWith() => const FileTypePhoto();
 
   /// TDLib object type
-  static const String objectType = 'fileTypePhoto';
+  static const String defaultObjectId = 'fileTypePhoto';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -322,7 +322,7 @@ final class FileTypePhoto extends FileType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -343,7 +343,7 @@ final class FileTypePhotoStory extends FileType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -352,7 +352,7 @@ final class FileTypePhotoStory extends FileType {
   FileTypePhotoStory copyWith() => const FileTypePhotoStory();
 
   /// TDLib object type
-  static const String objectType = 'fileTypePhotoStory';
+  static const String defaultObjectId = 'fileTypePhotoStory';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -360,7 +360,7 @@ final class FileTypePhotoStory extends FileType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -381,7 +381,7 @@ final class FileTypeProfilePhoto extends FileType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -390,7 +390,7 @@ final class FileTypeProfilePhoto extends FileType {
   FileTypeProfilePhoto copyWith() => const FileTypeProfilePhoto();
 
   /// TDLib object type
-  static const String objectType = 'fileTypeProfilePhoto';
+  static const String defaultObjectId = 'fileTypeProfilePhoto';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -398,7 +398,7 @@ final class FileTypeProfilePhoto extends FileType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -419,7 +419,7 @@ final class FileTypeSecret extends FileType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -428,7 +428,7 @@ final class FileTypeSecret extends FileType {
   FileTypeSecret copyWith() => const FileTypeSecret();
 
   /// TDLib object type
-  static const String objectType = 'fileTypeSecret';
+  static const String defaultObjectId = 'fileTypeSecret';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -436,7 +436,7 @@ final class FileTypeSecret extends FileType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -457,7 +457,7 @@ final class FileTypeSecretThumbnail extends FileType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -466,7 +466,7 @@ final class FileTypeSecretThumbnail extends FileType {
   FileTypeSecretThumbnail copyWith() => const FileTypeSecretThumbnail();
 
   /// TDLib object type
-  static const String objectType = 'fileTypeSecretThumbnail';
+  static const String defaultObjectId = 'fileTypeSecretThumbnail';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -474,7 +474,7 @@ final class FileTypeSecretThumbnail extends FileType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -495,7 +495,7 @@ final class FileTypeSecure extends FileType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -504,7 +504,7 @@ final class FileTypeSecure extends FileType {
   FileTypeSecure copyWith() => const FileTypeSecure();
 
   /// TDLib object type
-  static const String objectType = 'fileTypeSecure';
+  static const String defaultObjectId = 'fileTypeSecure';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -512,7 +512,7 @@ final class FileTypeSecure extends FileType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -533,7 +533,7 @@ final class FileTypeSticker extends FileType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -542,7 +542,7 @@ final class FileTypeSticker extends FileType {
   FileTypeSticker copyWith() => const FileTypeSticker();
 
   /// TDLib object type
-  static const String objectType = 'fileTypeSticker';
+  static const String defaultObjectId = 'fileTypeSticker';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -550,7 +550,7 @@ final class FileTypeSticker extends FileType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -571,7 +571,7 @@ final class FileTypeThumbnail extends FileType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -580,7 +580,7 @@ final class FileTypeThumbnail extends FileType {
   FileTypeThumbnail copyWith() => const FileTypeThumbnail();
 
   /// TDLib object type
-  static const String objectType = 'fileTypeThumbnail';
+  static const String defaultObjectId = 'fileTypeThumbnail';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -588,7 +588,7 @@ final class FileTypeThumbnail extends FileType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -609,7 +609,7 @@ final class FileTypeUnknown extends FileType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -618,7 +618,7 @@ final class FileTypeUnknown extends FileType {
   FileTypeUnknown copyWith() => const FileTypeUnknown();
 
   /// TDLib object type
-  static const String objectType = 'fileTypeUnknown';
+  static const String defaultObjectId = 'fileTypeUnknown';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -626,7 +626,7 @@ final class FileTypeUnknown extends FileType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -647,7 +647,7 @@ final class FileTypeVideo extends FileType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -656,7 +656,7 @@ final class FileTypeVideo extends FileType {
   FileTypeVideo copyWith() => const FileTypeVideo();
 
   /// TDLib object type
-  static const String objectType = 'fileTypeVideo';
+  static const String defaultObjectId = 'fileTypeVideo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -664,7 +664,7 @@ final class FileTypeVideo extends FileType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -685,7 +685,7 @@ final class FileTypeVideoNote extends FileType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -694,7 +694,7 @@ final class FileTypeVideoNote extends FileType {
   FileTypeVideoNote copyWith() => const FileTypeVideoNote();
 
   /// TDLib object type
-  static const String objectType = 'fileTypeVideoNote';
+  static const String defaultObjectId = 'fileTypeVideoNote';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -702,7 +702,7 @@ final class FileTypeVideoNote extends FileType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -723,7 +723,7 @@ final class FileTypeVideoStory extends FileType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -732,7 +732,7 @@ final class FileTypeVideoStory extends FileType {
   FileTypeVideoStory copyWith() => const FileTypeVideoStory();
 
   /// TDLib object type
-  static const String objectType = 'fileTypeVideoStory';
+  static const String defaultObjectId = 'fileTypeVideoStory';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -740,7 +740,7 @@ final class FileTypeVideoStory extends FileType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -761,7 +761,7 @@ final class FileTypeVoiceNote extends FileType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -770,7 +770,7 @@ final class FileTypeVoiceNote extends FileType {
   FileTypeVoiceNote copyWith() => const FileTypeVoiceNote();
 
   /// TDLib object type
-  static const String objectType = 'fileTypeVoiceNote';
+  static const String defaultObjectId = 'fileTypeVoiceNote';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -778,7 +778,7 @@ final class FileTypeVoiceNote extends FileType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -799,7 +799,7 @@ final class FileTypeWallpaper extends FileType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -808,7 +808,7 @@ final class FileTypeWallpaper extends FileType {
   FileTypeWallpaper copyWith() => const FileTypeWallpaper();
 
   /// TDLib object type
-  static const String objectType = 'fileTypeWallpaper';
+  static const String defaultObjectId = 'fileTypeWallpaper';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -816,5 +816,5 @@ final class FileTypeWallpaper extends FileType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

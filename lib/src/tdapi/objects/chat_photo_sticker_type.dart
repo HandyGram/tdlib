@@ -15,9 +15,9 @@ sealed class ChatPhotoStickerType extends TdObject {
   /// * [ChatPhotoStickerTypeCustomEmoji]
   factory ChatPhotoStickerType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case ChatPhotoStickerTypeRegularOrMask.objectType:
+      case ChatPhotoStickerTypeRegularOrMask.defaultObjectId:
         return ChatPhotoStickerTypeRegularOrMask.fromJson(json);
-      case ChatPhotoStickerTypeCustomEmoji.objectType:
+      case ChatPhotoStickerTypeCustomEmoji.defaultObjectId:
         return ChatPhotoStickerTypeCustomEmoji.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class ChatPhotoStickerType extends TdObject {
   ChatPhotoStickerType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'chatPhotoStickerType';
+  static const String defaultObjectId = 'chatPhotoStickerType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class ChatPhotoStickerType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -83,7 +83,7 @@ final class ChatPhotoStickerTypeRegularOrMask extends ChatPhotoStickerType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "sticker_set_id": stickerSetId,
       "sticker_id": stickerId,
 		};
@@ -104,7 +104,7 @@ final class ChatPhotoStickerTypeRegularOrMask extends ChatPhotoStickerType {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatPhotoStickerTypeRegularOrMask';
+  static const String defaultObjectId = 'chatPhotoStickerTypeRegularOrMask';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -112,7 +112,7 @@ final class ChatPhotoStickerTypeRegularOrMask extends ChatPhotoStickerType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -145,7 +145,7 @@ final class ChatPhotoStickerTypeCustomEmoji extends ChatPhotoStickerType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "custom_emoji_id": customEmojiId,
 		};
 	}
@@ -162,7 +162,7 @@ final class ChatPhotoStickerTypeCustomEmoji extends ChatPhotoStickerType {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatPhotoStickerTypeCustomEmoji';
+  static const String defaultObjectId = 'chatPhotoStickerTypeCustomEmoji';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -170,5 +170,5 @@ final class ChatPhotoStickerTypeCustomEmoji extends ChatPhotoStickerType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

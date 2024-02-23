@@ -41,7 +41,7 @@ final class TextEntities extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "entities": entities.map((i) => i.toJson()).toList(),
 		};
 	}
@@ -61,7 +61,7 @@ final class TextEntities extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'textEntities';
+  static const String defaultObjectId = 'textEntities';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -69,5 +69,5 @@ final class TextEntities extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

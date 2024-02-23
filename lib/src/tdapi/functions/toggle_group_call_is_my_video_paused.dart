@@ -33,7 +33,7 @@ final class ToggleGroupCallIsMyVideoPaused extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "group_call_id": groupCallId,
       "is_my_video_paused": isMyVideoPaused,
       "@extra": extra,
@@ -54,7 +54,7 @@ final class ToggleGroupCallIsMyVideoPaused extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'toggleGroupCallIsMyVideoPaused';
+  static const String defaultObjectId = 'toggleGroupCallIsMyVideoPaused';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -62,5 +62,5 @@ final class ToggleGroupCallIsMyVideoPaused extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

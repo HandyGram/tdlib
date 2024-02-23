@@ -19,7 +19,7 @@ final class TestCallEmpty extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "@extra": extra,
 		};
 	}
@@ -28,7 +28,7 @@ final class TestCallEmpty extends TdFunction {
   TestCallEmpty copyWith() => const TestCallEmpty();
 
   /// TDLib object type
-  static const String objectType = 'testCallEmpty';
+  static const String defaultObjectId = 'testCallEmpty';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -36,5 +36,5 @@ final class TestCallEmpty extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

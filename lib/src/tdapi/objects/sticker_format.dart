@@ -16,11 +16,11 @@ sealed class StickerFormat extends TdObject {
   /// * [StickerFormatWebm]
   factory StickerFormat.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case StickerFormatWebp.objectType:
+      case StickerFormatWebp.defaultObjectId:
         return StickerFormatWebp.fromJson(json);
-      case StickerFormatTgs.objectType:
+      case StickerFormatTgs.defaultObjectId:
         return StickerFormatTgs.fromJson(json);
-      case StickerFormatWebm.objectType:
+      case StickerFormatWebm.defaultObjectId:
         return StickerFormatWebm.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class StickerFormat extends TdObject {
   StickerFormat copyWith();
 
   /// TDLib object type
-  static const String objectType = 'stickerFormat';
+  static const String defaultObjectId = 'stickerFormat';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class StickerFormat extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -67,7 +67,7 @@ final class StickerFormatWebp extends StickerFormat {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -76,7 +76,7 @@ final class StickerFormatWebp extends StickerFormat {
   StickerFormatWebp copyWith() => const StickerFormatWebp();
 
   /// TDLib object type
-  static const String objectType = 'stickerFormatWebp';
+  static const String defaultObjectId = 'stickerFormatWebp';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -84,7 +84,7 @@ final class StickerFormatWebp extends StickerFormat {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -105,7 +105,7 @@ final class StickerFormatTgs extends StickerFormat {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -114,7 +114,7 @@ final class StickerFormatTgs extends StickerFormat {
   StickerFormatTgs copyWith() => const StickerFormatTgs();
 
   /// TDLib object type
-  static const String objectType = 'stickerFormatTgs';
+  static const String defaultObjectId = 'stickerFormatTgs';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -122,7 +122,7 @@ final class StickerFormatTgs extends StickerFormat {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -143,7 +143,7 @@ final class StickerFormatWebm extends StickerFormat {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -152,7 +152,7 @@ final class StickerFormatWebm extends StickerFormat {
   StickerFormatWebm copyWith() => const StickerFormatWebm();
 
   /// TDLib object type
-  static const String objectType = 'stickerFormatWebm';
+  static const String defaultObjectId = 'stickerFormatWebm';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -160,5 +160,5 @@ final class StickerFormatWebm extends StickerFormat {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

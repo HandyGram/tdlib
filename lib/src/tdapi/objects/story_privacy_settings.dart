@@ -17,13 +17,13 @@ sealed class StoryPrivacySettings extends TdObject {
   /// * [StoryPrivacySettingsSelectedUsers]
   factory StoryPrivacySettings.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case StoryPrivacySettingsEveryone.objectType:
+      case StoryPrivacySettingsEveryone.defaultObjectId:
         return StoryPrivacySettingsEveryone.fromJson(json);
-      case StoryPrivacySettingsContacts.objectType:
+      case StoryPrivacySettingsContacts.defaultObjectId:
         return StoryPrivacySettingsContacts.fromJson(json);
-      case StoryPrivacySettingsCloseFriends.objectType:
+      case StoryPrivacySettingsCloseFriends.defaultObjectId:
         return StoryPrivacySettingsCloseFriends.fromJson(json);
-      case StoryPrivacySettingsSelectedUsers.objectType:
+      case StoryPrivacySettingsSelectedUsers.defaultObjectId:
         return StoryPrivacySettingsSelectedUsers.fromJson(json);
       default:
         throw FormatException(
@@ -41,7 +41,7 @@ sealed class StoryPrivacySettings extends TdObject {
   StoryPrivacySettings copyWith();
 
   /// TDLib object type
-  static const String objectType = 'storyPrivacySettings';
+  static const String defaultObjectId = 'storyPrivacySettings';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -49,7 +49,7 @@ sealed class StoryPrivacySettings extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -82,7 +82,7 @@ final class StoryPrivacySettingsEveryone extends StoryPrivacySettings {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "except_user_ids": exceptUserIds.map((i) => i).toList(),
 		};
 	}
@@ -99,7 +99,7 @@ final class StoryPrivacySettingsEveryone extends StoryPrivacySettings {
   );
 
   /// TDLib object type
-  static const String objectType = 'storyPrivacySettingsEveryone';
+  static const String defaultObjectId = 'storyPrivacySettingsEveryone';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -107,7 +107,7 @@ final class StoryPrivacySettingsEveryone extends StoryPrivacySettings {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -140,7 +140,7 @@ final class StoryPrivacySettingsContacts extends StoryPrivacySettings {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "except_user_ids": exceptUserIds.map((i) => i).toList(),
 		};
 	}
@@ -157,7 +157,7 @@ final class StoryPrivacySettingsContacts extends StoryPrivacySettings {
   );
 
   /// TDLib object type
-  static const String objectType = 'storyPrivacySettingsContacts';
+  static const String defaultObjectId = 'storyPrivacySettingsContacts';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -165,7 +165,7 @@ final class StoryPrivacySettingsContacts extends StoryPrivacySettings {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -186,7 +186,7 @@ final class StoryPrivacySettingsCloseFriends extends StoryPrivacySettings {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -195,7 +195,7 @@ final class StoryPrivacySettingsCloseFriends extends StoryPrivacySettings {
   StoryPrivacySettingsCloseFriends copyWith() => const StoryPrivacySettingsCloseFriends();
 
   /// TDLib object type
-  static const String objectType = 'storyPrivacySettingsCloseFriends';
+  static const String defaultObjectId = 'storyPrivacySettingsCloseFriends';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -203,7 +203,7 @@ final class StoryPrivacySettingsCloseFriends extends StoryPrivacySettings {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -236,7 +236,7 @@ final class StoryPrivacySettingsSelectedUsers extends StoryPrivacySettings {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "user_ids": userIds.map((i) => i).toList(),
 		};
 	}
@@ -253,7 +253,7 @@ final class StoryPrivacySettingsSelectedUsers extends StoryPrivacySettings {
   );
 
   /// TDLib object type
-  static const String objectType = 'storyPrivacySettingsSelectedUsers';
+  static const String defaultObjectId = 'storyPrivacySettingsSelectedUsers';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -261,5 +261,5 @@ final class StoryPrivacySettingsSelectedUsers extends StoryPrivacySettings {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

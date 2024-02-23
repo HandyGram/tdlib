@@ -16,11 +16,11 @@ sealed class StoryInteractionType extends TdObject {
   /// * [StoryInteractionTypeRepost]
   factory StoryInteractionType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case StoryInteractionTypeView.objectType:
+      case StoryInteractionTypeView.defaultObjectId:
         return StoryInteractionTypeView.fromJson(json);
-      case StoryInteractionTypeForward.objectType:
+      case StoryInteractionTypeForward.defaultObjectId:
         return StoryInteractionTypeForward.fromJson(json);
-      case StoryInteractionTypeRepost.objectType:
+      case StoryInteractionTypeRepost.defaultObjectId:
         return StoryInteractionTypeRepost.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class StoryInteractionType extends TdObject {
   StoryInteractionType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'storyInteractionType';
+  static const String defaultObjectId = 'storyInteractionType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class StoryInteractionType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -79,7 +79,7 @@ final class StoryInteractionTypeView extends StoryInteractionType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chosen_reaction_type": chosenReactionType?.toJson(),
 		};
 	}
@@ -96,7 +96,7 @@ final class StoryInteractionTypeView extends StoryInteractionType {
   );
 
   /// TDLib object type
-  static const String objectType = 'storyInteractionTypeView';
+  static const String defaultObjectId = 'storyInteractionTypeView';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -104,7 +104,7 @@ final class StoryInteractionTypeView extends StoryInteractionType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -137,7 +137,7 @@ final class StoryInteractionTypeForward extends StoryInteractionType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "message": message.toJson(),
 		};
 	}
@@ -154,7 +154,7 @@ final class StoryInteractionTypeForward extends StoryInteractionType {
   );
 
   /// TDLib object type
-  static const String objectType = 'storyInteractionTypeForward';
+  static const String defaultObjectId = 'storyInteractionTypeForward';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -162,7 +162,7 @@ final class StoryInteractionTypeForward extends StoryInteractionType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -195,7 +195,7 @@ final class StoryInteractionTypeRepost extends StoryInteractionType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "story": story.toJson(),
 		};
 	}
@@ -212,7 +212,7 @@ final class StoryInteractionTypeRepost extends StoryInteractionType {
   );
 
   /// TDLib object type
-  static const String objectType = 'storyInteractionTypeRepost';
+  static const String defaultObjectId = 'storyInteractionTypeRepost';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -220,5 +220,5 @@ final class StoryInteractionTypeRepost extends StoryInteractionType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

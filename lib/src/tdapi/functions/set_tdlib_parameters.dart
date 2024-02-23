@@ -105,7 +105,7 @@ final class SetTdlibParameters extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "use_test_dc": useTestDc,
       "database_directory": databaseDirectory,
       "files_directory": filesDirectory,
@@ -174,7 +174,7 @@ final class SetTdlibParameters extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'setTdlibParameters';
+  static const String defaultObjectId = 'setTdlibParameters';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -182,5 +182,5 @@ final class SetTdlibParameters extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -33,7 +33,7 @@ final class GetChatNotificationSettingsExceptions extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "scope": scope?.toJson(),
       "compare_sound": compareSound,
       "@extra": extra,
@@ -54,7 +54,7 @@ final class GetChatNotificationSettingsExceptions extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'getChatNotificationSettingsExceptions';
+  static const String defaultObjectId = 'getChatNotificationSettingsExceptions';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -62,5 +62,5 @@ final class GetChatNotificationSettingsExceptions extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

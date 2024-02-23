@@ -50,7 +50,7 @@ final class InputSticker extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "sticker": sticker.toJson(),
       "emojis": emojis,
       "mask_position": maskPosition?.toJson(),
@@ -78,7 +78,7 @@ final class InputSticker extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputSticker';
+  static const String defaultObjectId = 'inputSticker';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -86,5 +86,5 @@ final class InputSticker extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

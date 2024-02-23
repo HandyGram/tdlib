@@ -36,7 +36,7 @@ final class InputTextQuote extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text.toJson(),
       "position": position,
 		};
@@ -56,7 +56,7 @@ final class InputTextQuote extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputTextQuote';
+  static const String defaultObjectId = 'inputTextQuote';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -64,5 +64,5 @@ final class InputTextQuote extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -113,7 +113,7 @@ final class ChatEventLogFilters extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "message_edits": messageEdits,
       "message_deletions": messageDeletions,
       "message_pins": messagePins,
@@ -177,7 +177,7 @@ final class ChatEventLogFilters extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatEventLogFilters';
+  static const String defaultObjectId = 'chatEventLogFilters';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -185,5 +185,5 @@ final class ChatEventLogFilters extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

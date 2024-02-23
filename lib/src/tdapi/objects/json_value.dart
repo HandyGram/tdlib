@@ -19,17 +19,17 @@ sealed class JsonValue extends TdObject {
   /// * [JsonValueObject]
   factory JsonValue.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case JsonValueNull.objectType:
+      case JsonValueNull.defaultObjectId:
         return JsonValueNull.fromJson(json);
-      case JsonValueBoolean.objectType:
+      case JsonValueBoolean.defaultObjectId:
         return JsonValueBoolean.fromJson(json);
-      case JsonValueNumber.objectType:
+      case JsonValueNumber.defaultObjectId:
         return JsonValueNumber.fromJson(json);
-      case JsonValueString.objectType:
+      case JsonValueString.defaultObjectId:
         return JsonValueString.fromJson(json);
-      case JsonValueArray.objectType:
+      case JsonValueArray.defaultObjectId:
         return JsonValueArray.fromJson(json);
-      case JsonValueObject.objectType:
+      case JsonValueObject.defaultObjectId:
         return JsonValueObject.fromJson(json);
       default:
         throw FormatException(
@@ -47,7 +47,7 @@ sealed class JsonValue extends TdObject {
   JsonValue copyWith();
 
   /// TDLib object type
-  static const String objectType = 'jsonValue';
+  static const String defaultObjectId = 'jsonValue';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -55,7 +55,7 @@ sealed class JsonValue extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -91,7 +91,7 @@ final class JsonValueNull extends JsonValue {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -106,7 +106,7 @@ final class JsonValueNull extends JsonValue {
   );
 
   /// TDLib object type
-  static const String objectType = 'jsonValueNull';
+  static const String defaultObjectId = 'jsonValueNull';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -114,7 +114,7 @@ final class JsonValueNull extends JsonValue {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -159,7 +159,7 @@ final class JsonValueBoolean extends JsonValue {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "value": value,
 		};
 	}
@@ -180,7 +180,7 @@ final class JsonValueBoolean extends JsonValue {
   );
 
   /// TDLib object type
-  static const String objectType = 'jsonValueBoolean';
+  static const String defaultObjectId = 'jsonValueBoolean';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -188,7 +188,7 @@ final class JsonValueBoolean extends JsonValue {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -233,7 +233,7 @@ final class JsonValueNumber extends JsonValue {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "value": value,
 		};
 	}
@@ -254,7 +254,7 @@ final class JsonValueNumber extends JsonValue {
   );
 
   /// TDLib object type
-  static const String objectType = 'jsonValueNumber';
+  static const String defaultObjectId = 'jsonValueNumber';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -262,7 +262,7 @@ final class JsonValueNumber extends JsonValue {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -307,7 +307,7 @@ final class JsonValueString extends JsonValue {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "value": value,
 		};
 	}
@@ -328,7 +328,7 @@ final class JsonValueString extends JsonValue {
   );
 
   /// TDLib object type
-  static const String objectType = 'jsonValueString';
+  static const String defaultObjectId = 'jsonValueString';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -336,7 +336,7 @@ final class JsonValueString extends JsonValue {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -381,7 +381,7 @@ final class JsonValueArray extends JsonValue {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "values": values.map((i) => i.toJson()).toList(),
 		};
 	}
@@ -402,7 +402,7 @@ final class JsonValueArray extends JsonValue {
   );
 
   /// TDLib object type
-  static const String objectType = 'jsonValueArray';
+  static const String defaultObjectId = 'jsonValueArray';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -410,7 +410,7 @@ final class JsonValueArray extends JsonValue {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -455,7 +455,7 @@ final class JsonValueObject extends JsonValue {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "members": members.map((i) => i.toJson()).toList(),
 		};
 	}
@@ -476,7 +476,7 @@ final class JsonValueObject extends JsonValue {
   );
 
   /// TDLib object type
-  static const String objectType = 'jsonValueObject';
+  static const String defaultObjectId = 'jsonValueObject';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -484,5 +484,5 @@ final class JsonValueObject extends JsonValue {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -36,7 +36,7 @@ final class PremiumFeaturePromotionAnimation extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "feature": feature.toJson(),
       "animation": animation.toJson(),
 		};
@@ -56,7 +56,7 @@ final class PremiumFeaturePromotionAnimation extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'premiumFeaturePromotionAnimation';
+  static const String defaultObjectId = 'premiumFeaturePromotionAnimation';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -64,5 +64,5 @@ final class PremiumFeaturePromotionAnimation extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

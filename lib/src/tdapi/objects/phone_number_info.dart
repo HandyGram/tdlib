@@ -62,7 +62,7 @@ final class PhoneNumberInfo extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "country": country?.toJson(),
       "country_calling_code": countryCallingCode,
       "formatted_phone_number": formattedPhoneNumber,
@@ -94,7 +94,7 @@ final class PhoneNumberInfo extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'phoneNumberInfo';
+  static const String defaultObjectId = 'phoneNumberInfo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -102,5 +102,5 @@ final class PhoneNumberInfo extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

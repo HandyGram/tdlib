@@ -55,7 +55,7 @@ final class ArchiveChatListSettings extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "archive_and_mute_new_chats_from_unknown_users": archiveAndMuteNewChatsFromUnknownUsers,
       "keep_unmuted_chats_archived": keepUnmutedChatsArchived,
       "keep_chats_from_folders_archived": keepChatsFromFoldersArchived,
@@ -83,7 +83,7 @@ final class ArchiveChatListSettings extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'archiveChatListSettings';
+  static const String defaultObjectId = 'archiveChatListSettings';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -91,5 +91,5 @@ final class ArchiveChatListSettings extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

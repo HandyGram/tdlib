@@ -17,13 +17,13 @@ sealed class StorePaymentPurpose extends TdObject {
   /// * [StorePaymentPurposePremiumGiveaway]
   factory StorePaymentPurpose.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case StorePaymentPurposePremiumSubscription.objectType:
+      case StorePaymentPurposePremiumSubscription.defaultObjectId:
         return StorePaymentPurposePremiumSubscription.fromJson(json);
-      case StorePaymentPurposeGiftedPremium.objectType:
+      case StorePaymentPurposeGiftedPremium.defaultObjectId:
         return StorePaymentPurposeGiftedPremium.fromJson(json);
-      case StorePaymentPurposePremiumGiftCodes.objectType:
+      case StorePaymentPurposePremiumGiftCodes.defaultObjectId:
         return StorePaymentPurposePremiumGiftCodes.fromJson(json);
-      case StorePaymentPurposePremiumGiveaway.objectType:
+      case StorePaymentPurposePremiumGiveaway.defaultObjectId:
         return StorePaymentPurposePremiumGiveaway.fromJson(json);
       default:
         throw FormatException(
@@ -41,7 +41,7 @@ sealed class StorePaymentPurpose extends TdObject {
   StorePaymentPurpose copyWith();
 
   /// TDLib object type
-  static const String objectType = 'storePaymentPurpose';
+  static const String defaultObjectId = 'storePaymentPurpose';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -49,7 +49,7 @@ sealed class StorePaymentPurpose extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -89,7 +89,7 @@ final class StorePaymentPurposePremiumSubscription extends StorePaymentPurpose {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "is_restore": isRestore,
       "is_upgrade": isUpgrade,
 		};
@@ -110,7 +110,7 @@ final class StorePaymentPurposePremiumSubscription extends StorePaymentPurpose {
   );
 
   /// TDLib object type
-  static const String objectType = 'storePaymentPurposePremiumSubscription';
+  static const String defaultObjectId = 'storePaymentPurposePremiumSubscription';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -118,7 +118,7 @@ final class StorePaymentPurposePremiumSubscription extends StorePaymentPurpose {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -165,7 +165,7 @@ final class StorePaymentPurposeGiftedPremium extends StorePaymentPurpose {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "user_id": userId,
       "currency": currency,
       "amount": amount,
@@ -190,7 +190,7 @@ final class StorePaymentPurposeGiftedPremium extends StorePaymentPurpose {
   );
 
   /// TDLib object type
-  static const String objectType = 'storePaymentPurposeGiftedPremium';
+  static const String defaultObjectId = 'storePaymentPurposeGiftedPremium';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -198,7 +198,7 @@ final class StorePaymentPurposeGiftedPremium extends StorePaymentPurpose {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -252,7 +252,7 @@ final class StorePaymentPurposePremiumGiftCodes extends StorePaymentPurpose {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "boosted_chat_id": boostedChatId,
       "currency": currency,
       "amount": amount,
@@ -281,7 +281,7 @@ final class StorePaymentPurposePremiumGiftCodes extends StorePaymentPurpose {
   );
 
   /// TDLib object type
-  static const String objectType = 'storePaymentPurposePremiumGiftCodes';
+  static const String defaultObjectId = 'storePaymentPurposePremiumGiftCodes';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -289,7 +289,7 @@ final class StorePaymentPurposePremiumGiftCodes extends StorePaymentPurpose {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -336,7 +336,7 @@ final class StorePaymentPurposePremiumGiveaway extends StorePaymentPurpose {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "parameters": parameters.toJson(),
       "currency": currency,
       "amount": amount,
@@ -361,7 +361,7 @@ final class StorePaymentPurposePremiumGiveaway extends StorePaymentPurpose {
   );
 
   /// TDLib object type
-  static const String objectType = 'storePaymentPurposePremiumGiveaway';
+  static const String defaultObjectId = 'storePaymentPurposePremiumGiveaway';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -369,5 +369,5 @@ final class StorePaymentPurposePremiumGiveaway extends StorePaymentPurpose {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

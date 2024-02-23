@@ -17,13 +17,13 @@ sealed class InputChatPhoto extends TdObject {
   /// * [InputChatPhotoSticker]
   factory InputChatPhoto.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case InputChatPhotoPrevious.objectType:
+      case InputChatPhotoPrevious.defaultObjectId:
         return InputChatPhotoPrevious.fromJson(json);
-      case InputChatPhotoStatic.objectType:
+      case InputChatPhotoStatic.defaultObjectId:
         return InputChatPhotoStatic.fromJson(json);
-      case InputChatPhotoAnimation.objectType:
+      case InputChatPhotoAnimation.defaultObjectId:
         return InputChatPhotoAnimation.fromJson(json);
-      case InputChatPhotoSticker.objectType:
+      case InputChatPhotoSticker.defaultObjectId:
         return InputChatPhotoSticker.fromJson(json);
       default:
         throw FormatException(
@@ -41,7 +41,7 @@ sealed class InputChatPhoto extends TdObject {
   InputChatPhoto copyWith();
 
   /// TDLib object type
-  static const String objectType = 'inputChatPhoto';
+  static const String defaultObjectId = 'inputChatPhoto';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -49,7 +49,7 @@ sealed class InputChatPhoto extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -82,7 +82,7 @@ final class InputChatPhotoPrevious extends InputChatPhoto {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_photo_id": chatPhotoId,
 		};
 	}
@@ -99,7 +99,7 @@ final class InputChatPhotoPrevious extends InputChatPhoto {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputChatPhotoPrevious';
+  static const String defaultObjectId = 'inputChatPhotoPrevious';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -107,7 +107,7 @@ final class InputChatPhotoPrevious extends InputChatPhoto {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -140,7 +140,7 @@ final class InputChatPhotoStatic extends InputChatPhoto {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "photo": photo.toJson(),
 		};
 	}
@@ -157,7 +157,7 @@ final class InputChatPhotoStatic extends InputChatPhoto {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputChatPhotoStatic';
+  static const String defaultObjectId = 'inputChatPhotoStatic';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -165,7 +165,7 @@ final class InputChatPhotoStatic extends InputChatPhoto {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -205,7 +205,7 @@ final class InputChatPhotoAnimation extends InputChatPhoto {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "animation": animation.toJson(),
       "main_frame_timestamp": mainFrameTimestamp,
 		};
@@ -226,7 +226,7 @@ final class InputChatPhotoAnimation extends InputChatPhoto {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputChatPhotoAnimation';
+  static const String defaultObjectId = 'inputChatPhotoAnimation';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -234,7 +234,7 @@ final class InputChatPhotoAnimation extends InputChatPhoto {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -267,7 +267,7 @@ final class InputChatPhotoSticker extends InputChatPhoto {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "sticker": sticker.toJson(),
 		};
 	}
@@ -284,7 +284,7 @@ final class InputChatPhotoSticker extends InputChatPhoto {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputChatPhotoSticker';
+  static const String defaultObjectId = 'inputChatPhotoSticker';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -292,5 +292,5 @@ final class InputChatPhotoSticker extends InputChatPhoto {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

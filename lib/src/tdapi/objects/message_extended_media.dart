@@ -17,13 +17,13 @@ sealed class MessageExtendedMedia extends TdObject {
   /// * [MessageExtendedMediaUnsupported]
   factory MessageExtendedMedia.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case MessageExtendedMediaPreview.objectType:
+      case MessageExtendedMediaPreview.defaultObjectId:
         return MessageExtendedMediaPreview.fromJson(json);
-      case MessageExtendedMediaPhoto.objectType:
+      case MessageExtendedMediaPhoto.defaultObjectId:
         return MessageExtendedMediaPhoto.fromJson(json);
-      case MessageExtendedMediaVideo.objectType:
+      case MessageExtendedMediaVideo.defaultObjectId:
         return MessageExtendedMediaVideo.fromJson(json);
-      case MessageExtendedMediaUnsupported.objectType:
+      case MessageExtendedMediaUnsupported.defaultObjectId:
         return MessageExtendedMediaUnsupported.fromJson(json);
       default:
         throw FormatException(
@@ -41,7 +41,7 @@ sealed class MessageExtendedMedia extends TdObject {
   MessageExtendedMedia copyWith();
 
   /// TDLib object type
-  static const String objectType = 'messageExtendedMedia';
+  static const String defaultObjectId = 'messageExtendedMedia';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -49,7 +49,7 @@ sealed class MessageExtendedMedia extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -110,7 +110,7 @@ final class MessageExtendedMediaPreview extends MessageExtendedMedia {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "width": width,
       "height": height,
       "duration": duration,
@@ -143,7 +143,7 @@ final class MessageExtendedMediaPreview extends MessageExtendedMedia {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageExtendedMediaPreview';
+  static const String defaultObjectId = 'messageExtendedMediaPreview';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -151,7 +151,7 @@ final class MessageExtendedMediaPreview extends MessageExtendedMedia {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -191,7 +191,7 @@ final class MessageExtendedMediaPhoto extends MessageExtendedMedia {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "photo": photo.toJson(),
       "caption": caption.toJson(),
 		};
@@ -212,7 +212,7 @@ final class MessageExtendedMediaPhoto extends MessageExtendedMedia {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageExtendedMediaPhoto';
+  static const String defaultObjectId = 'messageExtendedMediaPhoto';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -220,7 +220,7 @@ final class MessageExtendedMediaPhoto extends MessageExtendedMedia {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -260,7 +260,7 @@ final class MessageExtendedMediaVideo extends MessageExtendedMedia {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "video": video.toJson(),
       "caption": caption.toJson(),
 		};
@@ -281,7 +281,7 @@ final class MessageExtendedMediaVideo extends MessageExtendedMedia {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageExtendedMediaVideo';
+  static const String defaultObjectId = 'messageExtendedMediaVideo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -289,7 +289,7 @@ final class MessageExtendedMediaVideo extends MessageExtendedMedia {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -322,7 +322,7 @@ final class MessageExtendedMediaUnsupported extends MessageExtendedMedia {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "caption": caption.toJson(),
 		};
 	}
@@ -339,7 +339,7 @@ final class MessageExtendedMediaUnsupported extends MessageExtendedMedia {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageExtendedMediaUnsupported';
+  static const String defaultObjectId = 'messageExtendedMediaUnsupported';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -347,5 +347,5 @@ final class MessageExtendedMediaUnsupported extends MessageExtendedMedia {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

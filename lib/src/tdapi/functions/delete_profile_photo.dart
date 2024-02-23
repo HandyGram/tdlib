@@ -27,7 +27,7 @@ final class DeleteProfilePhoto extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "profile_photo_id": profilePhotoId,
       "@extra": extra,
 		};
@@ -44,7 +44,7 @@ final class DeleteProfilePhoto extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'deleteProfilePhoto';
+  static const String defaultObjectId = 'deleteProfilePhoto';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -52,5 +52,5 @@ final class DeleteProfilePhoto extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

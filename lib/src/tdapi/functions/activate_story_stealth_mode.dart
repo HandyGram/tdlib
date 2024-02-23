@@ -19,7 +19,7 @@ final class ActivateStoryStealthMode extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "@extra": extra,
 		};
 	}
@@ -28,7 +28,7 @@ final class ActivateStoryStealthMode extends TdFunction {
   ActivateStoryStealthMode copyWith() => const ActivateStoryStealthMode();
 
   /// TDLib object type
-  static const String objectType = 'activateStoryStealthMode';
+  static const String defaultObjectId = 'activateStoryStealthMode';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -36,5 +36,5 @@ final class ActivateStoryStealthMode extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

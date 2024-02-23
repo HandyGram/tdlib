@@ -33,7 +33,7 @@ final class SendCallDebugInformation extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "call_id": callId,
       "debug_information": debugInformation,
       "@extra": extra,
@@ -54,7 +54,7 @@ final class SendCallDebugInformation extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'sendCallDebugInformation';
+  static const String defaultObjectId = 'sendCallDebugInformation';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -62,5 +62,5 @@ final class SendCallDebugInformation extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

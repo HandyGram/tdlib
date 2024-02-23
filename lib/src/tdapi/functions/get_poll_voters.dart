@@ -51,7 +51,7 @@ final class GetPollVoters extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "option_id": optionId,
@@ -84,7 +84,7 @@ final class GetPollVoters extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'getPollVoters';
+  static const String defaultObjectId = 'getPollVoters';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -92,5 +92,5 @@ final class GetPollVoters extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

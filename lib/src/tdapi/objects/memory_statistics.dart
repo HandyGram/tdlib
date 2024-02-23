@@ -41,7 +41,7 @@ final class MemoryStatistics extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "statistics": statistics,
 		};
 	}
@@ -61,7 +61,7 @@ final class MemoryStatistics extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'memoryStatistics';
+  static const String defaultObjectId = 'memoryStatistics';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -69,5 +69,5 @@ final class MemoryStatistics extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

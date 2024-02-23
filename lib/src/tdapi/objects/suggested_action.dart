@@ -23,25 +23,25 @@ sealed class SuggestedAction extends TdObject {
   /// * [SuggestedActionGiftPremiumForChristmas]
   factory SuggestedAction.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case SuggestedActionEnableArchiveAndMuteNewChats.objectType:
+      case SuggestedActionEnableArchiveAndMuteNewChats.defaultObjectId:
         return SuggestedActionEnableArchiveAndMuteNewChats.fromJson(json);
-      case SuggestedActionCheckPassword.objectType:
+      case SuggestedActionCheckPassword.defaultObjectId:
         return SuggestedActionCheckPassword.fromJson(json);
-      case SuggestedActionCheckPhoneNumber.objectType:
+      case SuggestedActionCheckPhoneNumber.defaultObjectId:
         return SuggestedActionCheckPhoneNumber.fromJson(json);
-      case SuggestedActionViewChecksHint.objectType:
+      case SuggestedActionViewChecksHint.defaultObjectId:
         return SuggestedActionViewChecksHint.fromJson(json);
-      case SuggestedActionConvertToBroadcastGroup.objectType:
+      case SuggestedActionConvertToBroadcastGroup.defaultObjectId:
         return SuggestedActionConvertToBroadcastGroup.fromJson(json);
-      case SuggestedActionSetPassword.objectType:
+      case SuggestedActionSetPassword.defaultObjectId:
         return SuggestedActionSetPassword.fromJson(json);
-      case SuggestedActionUpgradePremium.objectType:
+      case SuggestedActionUpgradePremium.defaultObjectId:
         return SuggestedActionUpgradePremium.fromJson(json);
-      case SuggestedActionRestorePremium.objectType:
+      case SuggestedActionRestorePremium.defaultObjectId:
         return SuggestedActionRestorePremium.fromJson(json);
-      case SuggestedActionSubscribeToAnnualPremium.objectType:
+      case SuggestedActionSubscribeToAnnualPremium.defaultObjectId:
         return SuggestedActionSubscribeToAnnualPremium.fromJson(json);
-      case SuggestedActionGiftPremiumForChristmas.objectType:
+      case SuggestedActionGiftPremiumForChristmas.defaultObjectId:
         return SuggestedActionGiftPremiumForChristmas.fromJson(json);
       default:
         throw FormatException(
@@ -59,7 +59,7 @@ sealed class SuggestedAction extends TdObject {
   SuggestedAction copyWith();
 
   /// TDLib object type
-  static const String objectType = 'suggestedAction';
+  static const String defaultObjectId = 'suggestedAction';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -67,7 +67,7 @@ sealed class SuggestedAction extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -88,7 +88,7 @@ final class SuggestedActionEnableArchiveAndMuteNewChats extends SuggestedAction 
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -97,7 +97,7 @@ final class SuggestedActionEnableArchiveAndMuteNewChats extends SuggestedAction 
   SuggestedActionEnableArchiveAndMuteNewChats copyWith() => const SuggestedActionEnableArchiveAndMuteNewChats();
 
   /// TDLib object type
-  static const String objectType = 'suggestedActionEnableArchiveAndMuteNewChats';
+  static const String defaultObjectId = 'suggestedActionEnableArchiveAndMuteNewChats';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -105,7 +105,7 @@ final class SuggestedActionEnableArchiveAndMuteNewChats extends SuggestedAction 
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -126,7 +126,7 @@ final class SuggestedActionCheckPassword extends SuggestedAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -135,7 +135,7 @@ final class SuggestedActionCheckPassword extends SuggestedAction {
   SuggestedActionCheckPassword copyWith() => const SuggestedActionCheckPassword();
 
   /// TDLib object type
-  static const String objectType = 'suggestedActionCheckPassword';
+  static const String defaultObjectId = 'suggestedActionCheckPassword';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -143,7 +143,7 @@ final class SuggestedActionCheckPassword extends SuggestedAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -164,7 +164,7 @@ final class SuggestedActionCheckPhoneNumber extends SuggestedAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -173,7 +173,7 @@ final class SuggestedActionCheckPhoneNumber extends SuggestedAction {
   SuggestedActionCheckPhoneNumber copyWith() => const SuggestedActionCheckPhoneNumber();
 
   /// TDLib object type
-  static const String objectType = 'suggestedActionCheckPhoneNumber';
+  static const String defaultObjectId = 'suggestedActionCheckPhoneNumber';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -181,7 +181,7 @@ final class SuggestedActionCheckPhoneNumber extends SuggestedAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -202,7 +202,7 @@ final class SuggestedActionViewChecksHint extends SuggestedAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -211,7 +211,7 @@ final class SuggestedActionViewChecksHint extends SuggestedAction {
   SuggestedActionViewChecksHint copyWith() => const SuggestedActionViewChecksHint();
 
   /// TDLib object type
-  static const String objectType = 'suggestedActionViewChecksHint';
+  static const String defaultObjectId = 'suggestedActionViewChecksHint';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -219,7 +219,7 @@ final class SuggestedActionViewChecksHint extends SuggestedAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -252,7 +252,7 @@ final class SuggestedActionConvertToBroadcastGroup extends SuggestedAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "supergroup_id": supergroupId,
 		};
 	}
@@ -269,7 +269,7 @@ final class SuggestedActionConvertToBroadcastGroup extends SuggestedAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'suggestedActionConvertToBroadcastGroup';
+  static const String defaultObjectId = 'suggestedActionConvertToBroadcastGroup';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -277,7 +277,7 @@ final class SuggestedActionConvertToBroadcastGroup extends SuggestedAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -310,7 +310,7 @@ final class SuggestedActionSetPassword extends SuggestedAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "authorization_delay": authorizationDelay,
 		};
 	}
@@ -327,7 +327,7 @@ final class SuggestedActionSetPassword extends SuggestedAction {
   );
 
   /// TDLib object type
-  static const String objectType = 'suggestedActionSetPassword';
+  static const String defaultObjectId = 'suggestedActionSetPassword';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -335,7 +335,7 @@ final class SuggestedActionSetPassword extends SuggestedAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -356,7 +356,7 @@ final class SuggestedActionUpgradePremium extends SuggestedAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -365,7 +365,7 @@ final class SuggestedActionUpgradePremium extends SuggestedAction {
   SuggestedActionUpgradePremium copyWith() => const SuggestedActionUpgradePremium();
 
   /// TDLib object type
-  static const String objectType = 'suggestedActionUpgradePremium';
+  static const String defaultObjectId = 'suggestedActionUpgradePremium';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -373,7 +373,7 @@ final class SuggestedActionUpgradePremium extends SuggestedAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -394,7 +394,7 @@ final class SuggestedActionRestorePremium extends SuggestedAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -403,7 +403,7 @@ final class SuggestedActionRestorePremium extends SuggestedAction {
   SuggestedActionRestorePremium copyWith() => const SuggestedActionRestorePremium();
 
   /// TDLib object type
-  static const String objectType = 'suggestedActionRestorePremium';
+  static const String defaultObjectId = 'suggestedActionRestorePremium';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -411,7 +411,7 @@ final class SuggestedActionRestorePremium extends SuggestedAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -432,7 +432,7 @@ final class SuggestedActionSubscribeToAnnualPremium extends SuggestedAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -441,7 +441,7 @@ final class SuggestedActionSubscribeToAnnualPremium extends SuggestedAction {
   SuggestedActionSubscribeToAnnualPremium copyWith() => const SuggestedActionSubscribeToAnnualPremium();
 
   /// TDLib object type
-  static const String objectType = 'suggestedActionSubscribeToAnnualPremium';
+  static const String defaultObjectId = 'suggestedActionSubscribeToAnnualPremium';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -449,7 +449,7 @@ final class SuggestedActionSubscribeToAnnualPremium extends SuggestedAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -470,7 +470,7 @@ final class SuggestedActionGiftPremiumForChristmas extends SuggestedAction {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -479,7 +479,7 @@ final class SuggestedActionGiftPremiumForChristmas extends SuggestedAction {
   SuggestedActionGiftPremiumForChristmas copyWith() => const SuggestedActionGiftPremiumForChristmas();
 
   /// TDLib object type
-  static const String objectType = 'suggestedActionGiftPremiumForChristmas';
+  static const String defaultObjectId = 'suggestedActionGiftPremiumForChristmas';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -487,5 +487,5 @@ final class SuggestedActionGiftPremiumForChristmas extends SuggestedAction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

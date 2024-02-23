@@ -16,11 +16,11 @@ sealed class PageBlockHorizontalAlignment extends TdObject {
   /// * [PageBlockHorizontalAlignmentRight]
   factory PageBlockHorizontalAlignment.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case PageBlockHorizontalAlignmentLeft.objectType:
+      case PageBlockHorizontalAlignmentLeft.defaultObjectId:
         return PageBlockHorizontalAlignmentLeft.fromJson(json);
-      case PageBlockHorizontalAlignmentCenter.objectType:
+      case PageBlockHorizontalAlignmentCenter.defaultObjectId:
         return PageBlockHorizontalAlignmentCenter.fromJson(json);
-      case PageBlockHorizontalAlignmentRight.objectType:
+      case PageBlockHorizontalAlignmentRight.defaultObjectId:
         return PageBlockHorizontalAlignmentRight.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class PageBlockHorizontalAlignment extends TdObject {
   PageBlockHorizontalAlignment copyWith();
 
   /// TDLib object type
-  static const String objectType = 'pageBlockHorizontalAlignment';
+  static const String defaultObjectId = 'pageBlockHorizontalAlignment';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class PageBlockHorizontalAlignment extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -67,7 +67,7 @@ final class PageBlockHorizontalAlignmentLeft extends PageBlockHorizontalAlignmen
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -76,7 +76,7 @@ final class PageBlockHorizontalAlignmentLeft extends PageBlockHorizontalAlignmen
   PageBlockHorizontalAlignmentLeft copyWith() => const PageBlockHorizontalAlignmentLeft();
 
   /// TDLib object type
-  static const String objectType = 'pageBlockHorizontalAlignmentLeft';
+  static const String defaultObjectId = 'pageBlockHorizontalAlignmentLeft';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -84,7 +84,7 @@ final class PageBlockHorizontalAlignmentLeft extends PageBlockHorizontalAlignmen
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -105,7 +105,7 @@ final class PageBlockHorizontalAlignmentCenter extends PageBlockHorizontalAlignm
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -114,7 +114,7 @@ final class PageBlockHorizontalAlignmentCenter extends PageBlockHorizontalAlignm
   PageBlockHorizontalAlignmentCenter copyWith() => const PageBlockHorizontalAlignmentCenter();
 
   /// TDLib object type
-  static const String objectType = 'pageBlockHorizontalAlignmentCenter';
+  static const String defaultObjectId = 'pageBlockHorizontalAlignmentCenter';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -122,7 +122,7 @@ final class PageBlockHorizontalAlignmentCenter extends PageBlockHorizontalAlignm
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -143,7 +143,7 @@ final class PageBlockHorizontalAlignmentRight extends PageBlockHorizontalAlignme
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -152,7 +152,7 @@ final class PageBlockHorizontalAlignmentRight extends PageBlockHorizontalAlignme
   PageBlockHorizontalAlignmentRight copyWith() => const PageBlockHorizontalAlignmentRight();
 
   /// TDLib object type
-  static const String objectType = 'pageBlockHorizontalAlignmentRight';
+  static const String defaultObjectId = 'pageBlockHorizontalAlignmentRight';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -160,5 +160,5 @@ final class PageBlockHorizontalAlignmentRight extends PageBlockHorizontalAlignme
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

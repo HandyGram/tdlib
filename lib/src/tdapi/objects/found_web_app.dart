@@ -55,7 +55,7 @@ final class FoundWebApp extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "web_app": webApp.toJson(),
       "request_write_access": requestWriteAccess,
       "skip_confirmation": skipConfirmation,
@@ -83,7 +83,7 @@ final class FoundWebApp extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'foundWebApp';
+  static const String defaultObjectId = 'foundWebApp';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -91,5 +91,5 @@ final class FoundWebApp extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

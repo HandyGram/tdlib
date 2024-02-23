@@ -26,31 +26,31 @@ sealed class PassportElement extends TdObject {
   /// * [PassportElementEmailAddress]
   factory PassportElement.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case PassportElementPersonalDetails.objectType:
+      case PassportElementPersonalDetails.defaultObjectId:
         return PassportElementPersonalDetails.fromJson(json);
-      case PassportElementPassport.objectType:
+      case PassportElementPassport.defaultObjectId:
         return PassportElementPassport.fromJson(json);
-      case PassportElementDriverLicense.objectType:
+      case PassportElementDriverLicense.defaultObjectId:
         return PassportElementDriverLicense.fromJson(json);
-      case PassportElementIdentityCard.objectType:
+      case PassportElementIdentityCard.defaultObjectId:
         return PassportElementIdentityCard.fromJson(json);
-      case PassportElementInternalPassport.objectType:
+      case PassportElementInternalPassport.defaultObjectId:
         return PassportElementInternalPassport.fromJson(json);
-      case PassportElementAddress.objectType:
+      case PassportElementAddress.defaultObjectId:
         return PassportElementAddress.fromJson(json);
-      case PassportElementUtilityBill.objectType:
+      case PassportElementUtilityBill.defaultObjectId:
         return PassportElementUtilityBill.fromJson(json);
-      case PassportElementBankStatement.objectType:
+      case PassportElementBankStatement.defaultObjectId:
         return PassportElementBankStatement.fromJson(json);
-      case PassportElementRentalAgreement.objectType:
+      case PassportElementRentalAgreement.defaultObjectId:
         return PassportElementRentalAgreement.fromJson(json);
-      case PassportElementPassportRegistration.objectType:
+      case PassportElementPassportRegistration.defaultObjectId:
         return PassportElementPassportRegistration.fromJson(json);
-      case PassportElementTemporaryRegistration.objectType:
+      case PassportElementTemporaryRegistration.defaultObjectId:
         return PassportElementTemporaryRegistration.fromJson(json);
-      case PassportElementPhoneNumber.objectType:
+      case PassportElementPhoneNumber.defaultObjectId:
         return PassportElementPhoneNumber.fromJson(json);
-      case PassportElementEmailAddress.objectType:
+      case PassportElementEmailAddress.defaultObjectId:
         return PassportElementEmailAddress.fromJson(json);
       default:
         throw FormatException(
@@ -68,7 +68,7 @@ sealed class PassportElement extends TdObject {
   PassportElement copyWith();
 
   /// TDLib object type
-  static const String objectType = 'passportElement';
+  static const String defaultObjectId = 'passportElement';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -76,7 +76,7 @@ sealed class PassportElement extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -121,7 +121,7 @@ final class PassportElementPersonalDetails extends PassportElement {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "personal_details": personalDetails.toJson(),
 		};
 	}
@@ -142,7 +142,7 @@ final class PassportElementPersonalDetails extends PassportElement {
   );
 
   /// TDLib object type
-  static const String objectType = 'passportElementPersonalDetails';
+  static const String defaultObjectId = 'passportElementPersonalDetails';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -150,7 +150,7 @@ final class PassportElementPersonalDetails extends PassportElement {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -195,7 +195,7 @@ final class PassportElementPassport extends PassportElement {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "passport": passport.toJson(),
 		};
 	}
@@ -216,7 +216,7 @@ final class PassportElementPassport extends PassportElement {
   );
 
   /// TDLib object type
-  static const String objectType = 'passportElementPassport';
+  static const String defaultObjectId = 'passportElementPassport';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -224,7 +224,7 @@ final class PassportElementPassport extends PassportElement {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -269,7 +269,7 @@ final class PassportElementDriverLicense extends PassportElement {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "driver_license": driverLicense.toJson(),
 		};
 	}
@@ -290,7 +290,7 @@ final class PassportElementDriverLicense extends PassportElement {
   );
 
   /// TDLib object type
-  static const String objectType = 'passportElementDriverLicense';
+  static const String defaultObjectId = 'passportElementDriverLicense';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -298,7 +298,7 @@ final class PassportElementDriverLicense extends PassportElement {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -343,7 +343,7 @@ final class PassportElementIdentityCard extends PassportElement {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "identity_card": identityCard.toJson(),
 		};
 	}
@@ -364,7 +364,7 @@ final class PassportElementIdentityCard extends PassportElement {
   );
 
   /// TDLib object type
-  static const String objectType = 'passportElementIdentityCard';
+  static const String defaultObjectId = 'passportElementIdentityCard';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -372,7 +372,7 @@ final class PassportElementIdentityCard extends PassportElement {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -417,7 +417,7 @@ final class PassportElementInternalPassport extends PassportElement {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "internal_passport": internalPassport.toJson(),
 		};
 	}
@@ -438,7 +438,7 @@ final class PassportElementInternalPassport extends PassportElement {
   );
 
   /// TDLib object type
-  static const String objectType = 'passportElementInternalPassport';
+  static const String defaultObjectId = 'passportElementInternalPassport';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -446,7 +446,7 @@ final class PassportElementInternalPassport extends PassportElement {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -491,7 +491,7 @@ final class PassportElementAddress extends PassportElement {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "address": address.toJson(),
 		};
 	}
@@ -512,7 +512,7 @@ final class PassportElementAddress extends PassportElement {
   );
 
   /// TDLib object type
-  static const String objectType = 'passportElementAddress';
+  static const String defaultObjectId = 'passportElementAddress';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -520,7 +520,7 @@ final class PassportElementAddress extends PassportElement {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -565,7 +565,7 @@ final class PassportElementUtilityBill extends PassportElement {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "utility_bill": utilityBill.toJson(),
 		};
 	}
@@ -586,7 +586,7 @@ final class PassportElementUtilityBill extends PassportElement {
   );
 
   /// TDLib object type
-  static const String objectType = 'passportElementUtilityBill';
+  static const String defaultObjectId = 'passportElementUtilityBill';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -594,7 +594,7 @@ final class PassportElementUtilityBill extends PassportElement {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -639,7 +639,7 @@ final class PassportElementBankStatement extends PassportElement {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "bank_statement": bankStatement.toJson(),
 		};
 	}
@@ -660,7 +660,7 @@ final class PassportElementBankStatement extends PassportElement {
   );
 
   /// TDLib object type
-  static const String objectType = 'passportElementBankStatement';
+  static const String defaultObjectId = 'passportElementBankStatement';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -668,7 +668,7 @@ final class PassportElementBankStatement extends PassportElement {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -713,7 +713,7 @@ final class PassportElementRentalAgreement extends PassportElement {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "rental_agreement": rentalAgreement.toJson(),
 		};
 	}
@@ -734,7 +734,7 @@ final class PassportElementRentalAgreement extends PassportElement {
   );
 
   /// TDLib object type
-  static const String objectType = 'passportElementRentalAgreement';
+  static const String defaultObjectId = 'passportElementRentalAgreement';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -742,7 +742,7 @@ final class PassportElementRentalAgreement extends PassportElement {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -787,7 +787,7 @@ final class PassportElementPassportRegistration extends PassportElement {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "passport_registration": passportRegistration.toJson(),
 		};
 	}
@@ -808,7 +808,7 @@ final class PassportElementPassportRegistration extends PassportElement {
   );
 
   /// TDLib object type
-  static const String objectType = 'passportElementPassportRegistration';
+  static const String defaultObjectId = 'passportElementPassportRegistration';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -816,7 +816,7 @@ final class PassportElementPassportRegistration extends PassportElement {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -861,7 +861,7 @@ final class PassportElementTemporaryRegistration extends PassportElement {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "temporary_registration": temporaryRegistration.toJson(),
 		};
 	}
@@ -882,7 +882,7 @@ final class PassportElementTemporaryRegistration extends PassportElement {
   );
 
   /// TDLib object type
-  static const String objectType = 'passportElementTemporaryRegistration';
+  static const String defaultObjectId = 'passportElementTemporaryRegistration';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -890,7 +890,7 @@ final class PassportElementTemporaryRegistration extends PassportElement {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -935,7 +935,7 @@ final class PassportElementPhoneNumber extends PassportElement {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "phone_number": phoneNumber,
 		};
 	}
@@ -956,7 +956,7 @@ final class PassportElementPhoneNumber extends PassportElement {
   );
 
   /// TDLib object type
-  static const String objectType = 'passportElementPhoneNumber';
+  static const String defaultObjectId = 'passportElementPhoneNumber';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -964,7 +964,7 @@ final class PassportElementPhoneNumber extends PassportElement {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1009,7 +1009,7 @@ final class PassportElementEmailAddress extends PassportElement {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "email_address": emailAddress,
 		};
 	}
@@ -1030,7 +1030,7 @@ final class PassportElementEmailAddress extends PassportElement {
   );
 
   /// TDLib object type
-  static const String objectType = 'passportElementEmailAddress';
+  static const String defaultObjectId = 'passportElementEmailAddress';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1038,5 +1038,5 @@ final class PassportElementEmailAddress extends PassportElement {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -39,7 +39,7 @@ final class ValidateOrderInfo extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "input_invoice": inputInvoice.toJson(),
       "order_info": orderInfo?.toJson(),
       "allow_save": allowSave,
@@ -64,7 +64,7 @@ final class ValidateOrderInfo extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'validateOrderInfo';
+  static const String defaultObjectId = 'validateOrderInfo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -72,5 +72,5 @@ final class ValidateOrderInfo extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -120,7 +120,7 @@ final class ChatPermissions extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "can_send_basic_messages": canSendBasicMessages,
       "can_send_audios": canSendAudios,
       "can_send_documents": canSendDocuments,
@@ -188,7 +188,7 @@ final class ChatPermissions extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatPermissions';
+  static const String defaultObjectId = 'chatPermissions';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -196,5 +196,5 @@ final class ChatPermissions extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

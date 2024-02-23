@@ -15,9 +15,9 @@ sealed class MessageSender extends TdObject {
   /// * [MessageSenderChat]
   factory MessageSender.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case MessageSenderUser.objectType:
+      case MessageSenderUser.defaultObjectId:
         return MessageSenderUser.fromJson(json);
-      case MessageSenderChat.objectType:
+      case MessageSenderChat.defaultObjectId:
         return MessageSenderChat.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class MessageSender extends TdObject {
   MessageSender copyWith();
 
   /// TDLib object type
-  static const String objectType = 'messageSender';
+  static const String defaultObjectId = 'messageSender';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class MessageSender extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -76,7 +76,7 @@ final class MessageSenderUser extends MessageSender {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "user_id": userId,
 		};
 	}
@@ -93,7 +93,7 @@ final class MessageSenderUser extends MessageSender {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageSenderUser';
+  static const String defaultObjectId = 'messageSenderUser';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -101,7 +101,7 @@ final class MessageSenderUser extends MessageSender {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -134,7 +134,7 @@ final class MessageSenderChat extends MessageSender {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
 		};
 	}
@@ -151,7 +151,7 @@ final class MessageSenderChat extends MessageSender {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageSenderChat';
+  static const String defaultObjectId = 'messageSenderChat';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -159,5 +159,5 @@ final class MessageSenderChat extends MessageSender {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

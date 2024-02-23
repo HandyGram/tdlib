@@ -20,19 +20,19 @@ sealed class TopChatCategory extends TdObject {
   /// * [TopChatCategoryForwardChats]
   factory TopChatCategory.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case TopChatCategoryUsers.objectType:
+      case TopChatCategoryUsers.defaultObjectId:
         return TopChatCategoryUsers.fromJson(json);
-      case TopChatCategoryBots.objectType:
+      case TopChatCategoryBots.defaultObjectId:
         return TopChatCategoryBots.fromJson(json);
-      case TopChatCategoryGroups.objectType:
+      case TopChatCategoryGroups.defaultObjectId:
         return TopChatCategoryGroups.fromJson(json);
-      case TopChatCategoryChannels.objectType:
+      case TopChatCategoryChannels.defaultObjectId:
         return TopChatCategoryChannels.fromJson(json);
-      case TopChatCategoryInlineBots.objectType:
+      case TopChatCategoryInlineBots.defaultObjectId:
         return TopChatCategoryInlineBots.fromJson(json);
-      case TopChatCategoryCalls.objectType:
+      case TopChatCategoryCalls.defaultObjectId:
         return TopChatCategoryCalls.fromJson(json);
-      case TopChatCategoryForwardChats.objectType:
+      case TopChatCategoryForwardChats.defaultObjectId:
         return TopChatCategoryForwardChats.fromJson(json);
       default:
         throw FormatException(
@@ -50,7 +50,7 @@ sealed class TopChatCategory extends TdObject {
   TopChatCategory copyWith();
 
   /// TDLib object type
-  static const String objectType = 'topChatCategory';
+  static const String defaultObjectId = 'topChatCategory';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -58,7 +58,7 @@ sealed class TopChatCategory extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -79,7 +79,7 @@ final class TopChatCategoryUsers extends TopChatCategory {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -88,7 +88,7 @@ final class TopChatCategoryUsers extends TopChatCategory {
   TopChatCategoryUsers copyWith() => const TopChatCategoryUsers();
 
   /// TDLib object type
-  static const String objectType = 'topChatCategoryUsers';
+  static const String defaultObjectId = 'topChatCategoryUsers';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -96,7 +96,7 @@ final class TopChatCategoryUsers extends TopChatCategory {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -117,7 +117,7 @@ final class TopChatCategoryBots extends TopChatCategory {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -126,7 +126,7 @@ final class TopChatCategoryBots extends TopChatCategory {
   TopChatCategoryBots copyWith() => const TopChatCategoryBots();
 
   /// TDLib object type
-  static const String objectType = 'topChatCategoryBots';
+  static const String defaultObjectId = 'topChatCategoryBots';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -134,7 +134,7 @@ final class TopChatCategoryBots extends TopChatCategory {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -155,7 +155,7 @@ final class TopChatCategoryGroups extends TopChatCategory {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -164,7 +164,7 @@ final class TopChatCategoryGroups extends TopChatCategory {
   TopChatCategoryGroups copyWith() => const TopChatCategoryGroups();
 
   /// TDLib object type
-  static const String objectType = 'topChatCategoryGroups';
+  static const String defaultObjectId = 'topChatCategoryGroups';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -172,7 +172,7 @@ final class TopChatCategoryGroups extends TopChatCategory {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -193,7 +193,7 @@ final class TopChatCategoryChannels extends TopChatCategory {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -202,7 +202,7 @@ final class TopChatCategoryChannels extends TopChatCategory {
   TopChatCategoryChannels copyWith() => const TopChatCategoryChannels();
 
   /// TDLib object type
-  static const String objectType = 'topChatCategoryChannels';
+  static const String defaultObjectId = 'topChatCategoryChannels';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -210,7 +210,7 @@ final class TopChatCategoryChannels extends TopChatCategory {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -231,7 +231,7 @@ final class TopChatCategoryInlineBots extends TopChatCategory {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -240,7 +240,7 @@ final class TopChatCategoryInlineBots extends TopChatCategory {
   TopChatCategoryInlineBots copyWith() => const TopChatCategoryInlineBots();
 
   /// TDLib object type
-  static const String objectType = 'topChatCategoryInlineBots';
+  static const String defaultObjectId = 'topChatCategoryInlineBots';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -248,7 +248,7 @@ final class TopChatCategoryInlineBots extends TopChatCategory {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -269,7 +269,7 @@ final class TopChatCategoryCalls extends TopChatCategory {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -278,7 +278,7 @@ final class TopChatCategoryCalls extends TopChatCategory {
   TopChatCategoryCalls copyWith() => const TopChatCategoryCalls();
 
   /// TDLib object type
-  static const String objectType = 'topChatCategoryCalls';
+  static const String defaultObjectId = 'topChatCategoryCalls';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -286,7 +286,7 @@ final class TopChatCategoryCalls extends TopChatCategory {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -307,7 +307,7 @@ final class TopChatCategoryForwardChats extends TopChatCategory {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -316,7 +316,7 @@ final class TopChatCategoryForwardChats extends TopChatCategory {
   TopChatCategoryForwardChats copyWith() => const TopChatCategoryForwardChats();
 
   /// TDLib object type
-  static const String objectType = 'topChatCategoryForwardChats';
+  static const String defaultObjectId = 'topChatCategoryForwardChats';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -324,5 +324,5 @@ final class TopChatCategoryForwardChats extends TopChatCategory {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

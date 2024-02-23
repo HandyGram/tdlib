@@ -20,19 +20,19 @@ sealed class KeyboardButtonType extends TdObject {
   /// * [KeyboardButtonTypeWebApp]
   factory KeyboardButtonType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case KeyboardButtonTypeText.objectType:
+      case KeyboardButtonTypeText.defaultObjectId:
         return KeyboardButtonTypeText.fromJson(json);
-      case KeyboardButtonTypeRequestPhoneNumber.objectType:
+      case KeyboardButtonTypeRequestPhoneNumber.defaultObjectId:
         return KeyboardButtonTypeRequestPhoneNumber.fromJson(json);
-      case KeyboardButtonTypeRequestLocation.objectType:
+      case KeyboardButtonTypeRequestLocation.defaultObjectId:
         return KeyboardButtonTypeRequestLocation.fromJson(json);
-      case KeyboardButtonTypeRequestPoll.objectType:
+      case KeyboardButtonTypeRequestPoll.defaultObjectId:
         return KeyboardButtonTypeRequestPoll.fromJson(json);
-      case KeyboardButtonTypeRequestUsers.objectType:
+      case KeyboardButtonTypeRequestUsers.defaultObjectId:
         return KeyboardButtonTypeRequestUsers.fromJson(json);
-      case KeyboardButtonTypeRequestChat.objectType:
+      case KeyboardButtonTypeRequestChat.defaultObjectId:
         return KeyboardButtonTypeRequestChat.fromJson(json);
-      case KeyboardButtonTypeWebApp.objectType:
+      case KeyboardButtonTypeWebApp.defaultObjectId:
         return KeyboardButtonTypeWebApp.fromJson(json);
       default:
         throw FormatException(
@@ -50,7 +50,7 @@ sealed class KeyboardButtonType extends TdObject {
   KeyboardButtonType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'keyboardButtonType';
+  static const String defaultObjectId = 'keyboardButtonType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -58,7 +58,7 @@ sealed class KeyboardButtonType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -79,7 +79,7 @@ final class KeyboardButtonTypeText extends KeyboardButtonType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -88,7 +88,7 @@ final class KeyboardButtonTypeText extends KeyboardButtonType {
   KeyboardButtonTypeText copyWith() => const KeyboardButtonTypeText();
 
   /// TDLib object type
-  static const String objectType = 'keyboardButtonTypeText';
+  static const String defaultObjectId = 'keyboardButtonTypeText';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -96,7 +96,7 @@ final class KeyboardButtonTypeText extends KeyboardButtonType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -117,7 +117,7 @@ final class KeyboardButtonTypeRequestPhoneNumber extends KeyboardButtonType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -126,7 +126,7 @@ final class KeyboardButtonTypeRequestPhoneNumber extends KeyboardButtonType {
   KeyboardButtonTypeRequestPhoneNumber copyWith() => const KeyboardButtonTypeRequestPhoneNumber();
 
   /// TDLib object type
-  static const String objectType = 'keyboardButtonTypeRequestPhoneNumber';
+  static const String defaultObjectId = 'keyboardButtonTypeRequestPhoneNumber';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -134,7 +134,7 @@ final class KeyboardButtonTypeRequestPhoneNumber extends KeyboardButtonType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -155,7 +155,7 @@ final class KeyboardButtonTypeRequestLocation extends KeyboardButtonType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -164,7 +164,7 @@ final class KeyboardButtonTypeRequestLocation extends KeyboardButtonType {
   KeyboardButtonTypeRequestLocation copyWith() => const KeyboardButtonTypeRequestLocation();
 
   /// TDLib object type
-  static const String objectType = 'keyboardButtonTypeRequestLocation';
+  static const String defaultObjectId = 'keyboardButtonTypeRequestLocation';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -172,7 +172,7 @@ final class KeyboardButtonTypeRequestLocation extends KeyboardButtonType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -212,7 +212,7 @@ final class KeyboardButtonTypeRequestPoll extends KeyboardButtonType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "force_regular": forceRegular,
       "force_quiz": forceQuiz,
 		};
@@ -233,7 +233,7 @@ final class KeyboardButtonTypeRequestPoll extends KeyboardButtonType {
   );
 
   /// TDLib object type
-  static const String objectType = 'keyboardButtonTypeRequestPoll';
+  static const String defaultObjectId = 'keyboardButtonTypeRequestPoll';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -241,7 +241,7 @@ final class KeyboardButtonTypeRequestPoll extends KeyboardButtonType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -309,7 +309,7 @@ final class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "restrict_user_is_bot": restrictUserIsBot,
       "user_is_bot": userIsBot,
@@ -346,7 +346,7 @@ final class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
   );
 
   /// TDLib object type
-  static const String objectType = 'keyboardButtonTypeRequestUsers';
+  static const String defaultObjectId = 'keyboardButtonTypeRequestUsers';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -354,7 +354,7 @@ final class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -450,7 +450,7 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "chat_is_channel": chatIsChannel,
       "restrict_chat_is_forum": restrictChatIsForum,
@@ -503,7 +503,7 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
   );
 
   /// TDLib object type
-  static const String objectType = 'keyboardButtonTypeRequestChat';
+  static const String defaultObjectId = 'keyboardButtonTypeRequestChat';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -511,7 +511,7 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -544,7 +544,7 @@ final class KeyboardButtonTypeWebApp extends KeyboardButtonType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "url": url,
 		};
 	}
@@ -561,7 +561,7 @@ final class KeyboardButtonTypeWebApp extends KeyboardButtonType {
   );
 
   /// TDLib object type
-  static const String objectType = 'keyboardButtonTypeWebApp';
+  static const String defaultObjectId = 'keyboardButtonTypeWebApp';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -569,5 +569,5 @@ final class KeyboardButtonTypeWebApp extends KeyboardButtonType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

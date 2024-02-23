@@ -39,7 +39,7 @@ final class RegisterUser extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "first_name": firstName,
       "last_name": lastName,
       "disable_notification": disableNotification,
@@ -64,7 +64,7 @@ final class RegisterUser extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'registerUser';
+  static const String defaultObjectId = 'registerUser';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -72,5 +72,5 @@ final class RegisterUser extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

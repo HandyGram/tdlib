@@ -16,11 +16,11 @@ sealed class SpeechRecognitionResult extends TdObject {
   /// * [SpeechRecognitionResultError]
   factory SpeechRecognitionResult.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case SpeechRecognitionResultPending.objectType:
+      case SpeechRecognitionResultPending.defaultObjectId:
         return SpeechRecognitionResultPending.fromJson(json);
-      case SpeechRecognitionResultText.objectType:
+      case SpeechRecognitionResultText.defaultObjectId:
         return SpeechRecognitionResultText.fromJson(json);
-      case SpeechRecognitionResultError.objectType:
+      case SpeechRecognitionResultError.defaultObjectId:
         return SpeechRecognitionResultError.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class SpeechRecognitionResult extends TdObject {
   SpeechRecognitionResult copyWith();
 
   /// TDLib object type
-  static const String objectType = 'speechRecognitionResult';
+  static const String defaultObjectId = 'speechRecognitionResult';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class SpeechRecognitionResult extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -79,7 +79,7 @@ final class SpeechRecognitionResultPending extends SpeechRecognitionResult {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "partial_text": partialText,
 		};
 	}
@@ -96,7 +96,7 @@ final class SpeechRecognitionResultPending extends SpeechRecognitionResult {
   );
 
   /// TDLib object type
-  static const String objectType = 'speechRecognitionResultPending';
+  static const String defaultObjectId = 'speechRecognitionResultPending';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -104,7 +104,7 @@ final class SpeechRecognitionResultPending extends SpeechRecognitionResult {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -137,7 +137,7 @@ final class SpeechRecognitionResultText extends SpeechRecognitionResult {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text,
 		};
 	}
@@ -154,7 +154,7 @@ final class SpeechRecognitionResultText extends SpeechRecognitionResult {
   );
 
   /// TDLib object type
-  static const String objectType = 'speechRecognitionResultText';
+  static const String defaultObjectId = 'speechRecognitionResultText';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -162,7 +162,7 @@ final class SpeechRecognitionResultText extends SpeechRecognitionResult {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -195,7 +195,7 @@ final class SpeechRecognitionResultError extends SpeechRecognitionResult {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "error": error.toJson(),
 		};
 	}
@@ -212,7 +212,7 @@ final class SpeechRecognitionResultError extends SpeechRecognitionResult {
   );
 
   /// TDLib object type
-  static const String objectType = 'speechRecognitionResultError';
+  static const String defaultObjectId = 'speechRecognitionResultError';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -220,5 +220,5 @@ final class SpeechRecognitionResultError extends SpeechRecognitionResult {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

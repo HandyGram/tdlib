@@ -36,7 +36,7 @@ final class AutosaveSettingsException extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "settings": settings.toJson(),
 		};
@@ -56,7 +56,7 @@ final class AutosaveSettingsException extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'autosaveSettingsException';
+  static const String defaultObjectId = 'autosaveSettingsException';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -64,5 +64,5 @@ final class AutosaveSettingsException extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

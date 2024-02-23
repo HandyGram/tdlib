@@ -36,7 +36,7 @@ final class AttachmentMenuBotColor extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "light_color": lightColor,
       "dark_color": darkColor,
 		};
@@ -56,7 +56,7 @@ final class AttachmentMenuBotColor extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'attachmentMenuBotColor';
+  static const String defaultObjectId = 'attachmentMenuBotColor';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -64,5 +64,5 @@ final class AttachmentMenuBotColor extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

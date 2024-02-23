@@ -50,7 +50,7 @@ final class StoryInteraction extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "actor_id": actorId.toJson(),
       "interaction_date": interactionDate,
       "block_list": blockList?.toJson(),
@@ -78,7 +78,7 @@ final class StoryInteraction extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'storyInteraction';
+  static const String defaultObjectId = 'storyInteraction';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -86,5 +86,5 @@ final class StoryInteraction extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -19,7 +19,7 @@ final class ResetAllNotificationSettings extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "@extra": extra,
 		};
 	}
@@ -28,7 +28,7 @@ final class ResetAllNotificationSettings extends TdFunction {
   ResetAllNotificationSettings copyWith() => const ResetAllNotificationSettings();
 
   /// TDLib object type
-  static const String objectType = 'resetAllNotificationSettings';
+  static const String defaultObjectId = 'resetAllNotificationSettings';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -36,5 +36,5 @@ final class ResetAllNotificationSettings extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -16,11 +16,11 @@ sealed class SavedMessagesTopicType extends TdObject {
   /// * [SavedMessagesTopicTypeSavedFromChat]
   factory SavedMessagesTopicType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case SavedMessagesTopicTypeMyNotes.objectType:
+      case SavedMessagesTopicTypeMyNotes.defaultObjectId:
         return SavedMessagesTopicTypeMyNotes.fromJson(json);
-      case SavedMessagesTopicTypeAuthorHidden.objectType:
+      case SavedMessagesTopicTypeAuthorHidden.defaultObjectId:
         return SavedMessagesTopicTypeAuthorHidden.fromJson(json);
-      case SavedMessagesTopicTypeSavedFromChat.objectType:
+      case SavedMessagesTopicTypeSavedFromChat.defaultObjectId:
         return SavedMessagesTopicTypeSavedFromChat.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class SavedMessagesTopicType extends TdObject {
   SavedMessagesTopicType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'savedMessagesTopicType';
+  static const String defaultObjectId = 'savedMessagesTopicType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class SavedMessagesTopicType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -67,7 +67,7 @@ final class SavedMessagesTopicTypeMyNotes extends SavedMessagesTopicType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -76,7 +76,7 @@ final class SavedMessagesTopicTypeMyNotes extends SavedMessagesTopicType {
   SavedMessagesTopicTypeMyNotes copyWith() => const SavedMessagesTopicTypeMyNotes();
 
   /// TDLib object type
-  static const String objectType = 'savedMessagesTopicTypeMyNotes';
+  static const String defaultObjectId = 'savedMessagesTopicTypeMyNotes';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -84,7 +84,7 @@ final class SavedMessagesTopicTypeMyNotes extends SavedMessagesTopicType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -105,7 +105,7 @@ final class SavedMessagesTopicTypeAuthorHidden extends SavedMessagesTopicType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -114,7 +114,7 @@ final class SavedMessagesTopicTypeAuthorHidden extends SavedMessagesTopicType {
   SavedMessagesTopicTypeAuthorHidden copyWith() => const SavedMessagesTopicTypeAuthorHidden();
 
   /// TDLib object type
-  static const String objectType = 'savedMessagesTopicTypeAuthorHidden';
+  static const String defaultObjectId = 'savedMessagesTopicTypeAuthorHidden';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -122,7 +122,7 @@ final class SavedMessagesTopicTypeAuthorHidden extends SavedMessagesTopicType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -155,7 +155,7 @@ final class SavedMessagesTopicTypeSavedFromChat extends SavedMessagesTopicType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
 		};
 	}
@@ -172,7 +172,7 @@ final class SavedMessagesTopicTypeSavedFromChat extends SavedMessagesTopicType {
   );
 
   /// TDLib object type
-  static const String objectType = 'savedMessagesTopicTypeSavedFromChat';
+  static const String defaultObjectId = 'savedMessagesTopicTypeSavedFromChat';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -180,5 +180,5 @@ final class SavedMessagesTopicTypeSavedFromChat extends SavedMessagesTopicType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

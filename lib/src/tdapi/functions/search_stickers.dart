@@ -39,7 +39,7 @@ final class SearchStickers extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "sticker_type": stickerType.toJson(),
       "emojis": emojis,
       "limit": limit,
@@ -64,7 +64,7 @@ final class SearchStickers extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'searchStickers';
+  static const String defaultObjectId = 'searchStickers';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -72,5 +72,5 @@ final class SearchStickers extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

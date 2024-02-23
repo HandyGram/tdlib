@@ -15,9 +15,9 @@ sealed class ChatSource extends TdObject {
   /// * [ChatSourcePublicServiceAnnouncement]
   factory ChatSource.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case ChatSourceMtprotoProxy.objectType:
+      case ChatSourceMtprotoProxy.defaultObjectId:
         return ChatSourceMtprotoProxy.fromJson(json);
-      case ChatSourcePublicServiceAnnouncement.objectType:
+      case ChatSourcePublicServiceAnnouncement.defaultObjectId:
         return ChatSourcePublicServiceAnnouncement.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class ChatSource extends TdObject {
   ChatSource copyWith();
 
   /// TDLib object type
-  static const String objectType = 'chatSource';
+  static const String defaultObjectId = 'chatSource';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class ChatSource extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -64,7 +64,7 @@ final class ChatSourceMtprotoProxy extends ChatSource {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -73,7 +73,7 @@ final class ChatSourceMtprotoProxy extends ChatSource {
   ChatSourceMtprotoProxy copyWith() => const ChatSourceMtprotoProxy();
 
   /// TDLib object type
-  static const String objectType = 'chatSourceMtprotoProxy';
+  static const String defaultObjectId = 'chatSourceMtprotoProxy';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -81,7 +81,7 @@ final class ChatSourceMtprotoProxy extends ChatSource {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -121,7 +121,7 @@ final class ChatSourcePublicServiceAnnouncement extends ChatSource {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "type": type,
       "text": text,
 		};
@@ -142,7 +142,7 @@ final class ChatSourcePublicServiceAnnouncement extends ChatSource {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatSourcePublicServiceAnnouncement';
+  static const String defaultObjectId = 'chatSourcePublicServiceAnnouncement';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -150,5 +150,5 @@ final class ChatSourcePublicServiceAnnouncement extends ChatSource {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

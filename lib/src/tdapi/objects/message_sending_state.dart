@@ -15,9 +15,9 @@ sealed class MessageSendingState extends TdObject {
   /// * [MessageSendingStateFailed]
   factory MessageSendingState.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case MessageSendingStatePending.objectType:
+      case MessageSendingStatePending.defaultObjectId:
         return MessageSendingStatePending.fromJson(json);
-      case MessageSendingStateFailed.objectType:
+      case MessageSendingStateFailed.defaultObjectId:
         return MessageSendingStateFailed.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class MessageSendingState extends TdObject {
   MessageSendingState copyWith();
 
   /// TDLib object type
-  static const String objectType = 'messageSendingState';
+  static const String defaultObjectId = 'messageSendingState';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class MessageSendingState extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -76,7 +76,7 @@ final class MessageSendingStatePending extends MessageSendingState {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "sending_id": sendingId,
 		};
 	}
@@ -93,7 +93,7 @@ final class MessageSendingStatePending extends MessageSendingState {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageSendingStatePending';
+  static const String defaultObjectId = 'messageSendingStatePending';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -101,7 +101,7 @@ final class MessageSendingStatePending extends MessageSendingState {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -169,7 +169,7 @@ final class MessageSendingStateFailed extends MessageSendingState {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "error": error.toJson(),
       "can_retry": canRetry,
       "need_another_sender": needAnotherSender,
@@ -206,7 +206,7 @@ final class MessageSendingStateFailed extends MessageSendingState {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageSendingStateFailed';
+  static const String defaultObjectId = 'messageSendingStateFailed';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -214,5 +214,5 @@ final class MessageSendingStateFailed extends MessageSendingState {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

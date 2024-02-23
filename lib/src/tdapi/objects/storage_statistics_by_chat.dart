@@ -50,7 +50,7 @@ final class StorageStatisticsByChat extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "size": size,
       "count": count,
@@ -78,7 +78,7 @@ final class StorageStatisticsByChat extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'storageStatisticsByChat';
+  static const String defaultObjectId = 'storageStatisticsByChat';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -86,5 +86,5 @@ final class StorageStatisticsByChat extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

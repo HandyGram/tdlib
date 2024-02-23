@@ -18,15 +18,15 @@ sealed class InputStoryAreaType extends TdObject {
   /// * [InputStoryAreaTypeMessage]
   factory InputStoryAreaType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case InputStoryAreaTypeLocation.objectType:
+      case InputStoryAreaTypeLocation.defaultObjectId:
         return InputStoryAreaTypeLocation.fromJson(json);
-      case InputStoryAreaTypeFoundVenue.objectType:
+      case InputStoryAreaTypeFoundVenue.defaultObjectId:
         return InputStoryAreaTypeFoundVenue.fromJson(json);
-      case InputStoryAreaTypePreviousVenue.objectType:
+      case InputStoryAreaTypePreviousVenue.defaultObjectId:
         return InputStoryAreaTypePreviousVenue.fromJson(json);
-      case InputStoryAreaTypeSuggestedReaction.objectType:
+      case InputStoryAreaTypeSuggestedReaction.defaultObjectId:
         return InputStoryAreaTypeSuggestedReaction.fromJson(json);
-      case InputStoryAreaTypeMessage.objectType:
+      case InputStoryAreaTypeMessage.defaultObjectId:
         return InputStoryAreaTypeMessage.fromJson(json);
       default:
         throw FormatException(
@@ -44,7 +44,7 @@ sealed class InputStoryAreaType extends TdObject {
   InputStoryAreaType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'inputStoryAreaType';
+  static const String defaultObjectId = 'inputStoryAreaType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -52,7 +52,7 @@ sealed class InputStoryAreaType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -85,7 +85,7 @@ final class InputStoryAreaTypeLocation extends InputStoryAreaType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "location": location.toJson(),
 		};
 	}
@@ -102,7 +102,7 @@ final class InputStoryAreaTypeLocation extends InputStoryAreaType {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputStoryAreaTypeLocation';
+  static const String defaultObjectId = 'inputStoryAreaTypeLocation';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -110,7 +110,7 @@ final class InputStoryAreaTypeLocation extends InputStoryAreaType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -150,7 +150,7 @@ final class InputStoryAreaTypeFoundVenue extends InputStoryAreaType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "query_id": queryId,
       "result_id": resultId,
 		};
@@ -171,7 +171,7 @@ final class InputStoryAreaTypeFoundVenue extends InputStoryAreaType {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputStoryAreaTypeFoundVenue';
+  static const String defaultObjectId = 'inputStoryAreaTypeFoundVenue';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -179,7 +179,7 @@ final class InputStoryAreaTypeFoundVenue extends InputStoryAreaType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -219,7 +219,7 @@ final class InputStoryAreaTypePreviousVenue extends InputStoryAreaType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "venue_provider": venueProvider,
       "venue_id": venueId,
 		};
@@ -240,7 +240,7 @@ final class InputStoryAreaTypePreviousVenue extends InputStoryAreaType {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputStoryAreaTypePreviousVenue';
+  static const String defaultObjectId = 'inputStoryAreaTypePreviousVenue';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -248,7 +248,7 @@ final class InputStoryAreaTypePreviousVenue extends InputStoryAreaType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -295,7 +295,7 @@ final class InputStoryAreaTypeSuggestedReaction extends InputStoryAreaType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "reaction_type": reactionType.toJson(),
       "is_dark": isDark,
       "is_flipped": isFlipped,
@@ -320,7 +320,7 @@ final class InputStoryAreaTypeSuggestedReaction extends InputStoryAreaType {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputStoryAreaTypeSuggestedReaction';
+  static const String defaultObjectId = 'inputStoryAreaTypeSuggestedReaction';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -328,7 +328,7 @@ final class InputStoryAreaTypeSuggestedReaction extends InputStoryAreaType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -368,7 +368,7 @@ final class InputStoryAreaTypeMessage extends InputStoryAreaType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
 		};
@@ -389,7 +389,7 @@ final class InputStoryAreaTypeMessage extends InputStoryAreaType {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputStoryAreaTypeMessage';
+  static const String defaultObjectId = 'inputStoryAreaTypeMessage';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -397,5 +397,5 @@ final class InputStoryAreaTypeMessage extends InputStoryAreaType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

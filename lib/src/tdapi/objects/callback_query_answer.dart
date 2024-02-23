@@ -55,7 +55,7 @@ final class CallbackQueryAnswer extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text,
       "show_alert": showAlert,
       "url": url,
@@ -83,7 +83,7 @@ final class CallbackQueryAnswer extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'callbackQueryAnswer';
+  static const String defaultObjectId = 'callbackQueryAnswer';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -91,5 +91,5 @@ final class CallbackQueryAnswer extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

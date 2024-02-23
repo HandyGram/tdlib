@@ -33,7 +33,7 @@ final class SetAccentColor extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "accent_color_id": accentColorId,
       "background_custom_emoji_id": backgroundCustomEmojiId,
       "@extra": extra,
@@ -54,7 +54,7 @@ final class SetAccentColor extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'setAccentColor';
+  static const String defaultObjectId = 'setAccentColor';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -62,5 +62,5 @@ final class SetAccentColor extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

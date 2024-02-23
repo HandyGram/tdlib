@@ -36,7 +36,7 @@ final class BankCardActionOpenUrl extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text,
       "url": url,
 		};
@@ -56,7 +56,7 @@ final class BankCardActionOpenUrl extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'bankCardActionOpenUrl';
+  static const String defaultObjectId = 'bankCardActionOpenUrl';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -64,5 +64,5 @@ final class BankCardActionOpenUrl extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

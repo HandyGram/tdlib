@@ -85,7 +85,7 @@ final class AutoDownloadSettings extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "is_auto_download_enabled": isAutoDownloadEnabled,
       "max_photo_file_size": maxPhotoFileSize,
       "max_video_file_size": maxVideoFileSize,
@@ -133,7 +133,7 @@ final class AutoDownloadSettings extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'autoDownloadSettings';
+  static const String defaultObjectId = 'autoDownloadSettings';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -141,5 +141,5 @@ final class AutoDownloadSettings extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

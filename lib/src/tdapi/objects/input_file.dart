@@ -17,13 +17,13 @@ sealed class InputFile extends TdObject {
   /// * [InputFileGenerated]
   factory InputFile.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case InputFileId.objectType:
+      case InputFileId.defaultObjectId:
         return InputFileId.fromJson(json);
-      case InputFileRemote.objectType:
+      case InputFileRemote.defaultObjectId:
         return InputFileRemote.fromJson(json);
-      case InputFileLocal.objectType:
+      case InputFileLocal.defaultObjectId:
         return InputFileLocal.fromJson(json);
-      case InputFileGenerated.objectType:
+      case InputFileGenerated.defaultObjectId:
         return InputFileGenerated.fromJson(json);
       default:
         throw FormatException(
@@ -41,7 +41,7 @@ sealed class InputFile extends TdObject {
   InputFile copyWith();
 
   /// TDLib object type
-  static const String objectType = 'inputFile';
+  static const String defaultObjectId = 'inputFile';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -49,7 +49,7 @@ sealed class InputFile extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -82,7 +82,7 @@ final class InputFileId extends InputFile {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
 		};
 	}
@@ -99,7 +99,7 @@ final class InputFileId extends InputFile {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputFileId';
+  static const String defaultObjectId = 'inputFileId';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -107,7 +107,7 @@ final class InputFileId extends InputFile {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -140,7 +140,7 @@ final class InputFileRemote extends InputFile {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
 		};
 	}
@@ -157,7 +157,7 @@ final class InputFileRemote extends InputFile {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputFileRemote';
+  static const String defaultObjectId = 'inputFileRemote';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -165,7 +165,7 @@ final class InputFileRemote extends InputFile {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -198,7 +198,7 @@ final class InputFileLocal extends InputFile {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "path": path,
 		};
 	}
@@ -215,7 +215,7 @@ final class InputFileLocal extends InputFile {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputFileLocal';
+  static const String defaultObjectId = 'inputFileLocal';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -223,7 +223,7 @@ final class InputFileLocal extends InputFile {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -270,7 +270,7 @@ final class InputFileGenerated extends InputFile {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "original_path": originalPath,
       "conversion": conversion,
       "expected_size": expectedSize,
@@ -295,7 +295,7 @@ final class InputFileGenerated extends InputFile {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputFileGenerated';
+  static const String defaultObjectId = 'inputFileGenerated';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -303,5 +303,5 @@ final class InputFileGenerated extends InputFile {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

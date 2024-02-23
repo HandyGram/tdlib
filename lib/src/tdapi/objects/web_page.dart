@@ -223,7 +223,7 @@ final class WebPage extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "url": url,
       "display_url": displayUrl,
       "type": type,
@@ -347,7 +347,7 @@ final class WebPage extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'webPage';
+  static const String defaultObjectId = 'webPage';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -355,5 +355,5 @@ final class WebPage extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -230,7 +230,7 @@ final class User extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "first_name": firstName,
       "last_name": lastName,
@@ -358,7 +358,7 @@ final class User extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'user';
+  static const String defaultObjectId = 'user';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -366,5 +366,5 @@ final class User extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

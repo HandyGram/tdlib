@@ -15,9 +15,9 @@ sealed class AccessHashType extends TdObject {
   /// * [AccessHashTypeChannel]
   factory AccessHashType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case AccessHashTypeUser.objectType:
+      case AccessHashTypeUser.defaultObjectId:
         return AccessHashTypeUser.fromJson(json);
-      case AccessHashTypeChannel.objectType:
+      case AccessHashTypeChannel.defaultObjectId:
         return AccessHashTypeChannel.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class AccessHashType extends TdObject {
   AccessHashType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'accessHashType';
+  static const String defaultObjectId = 'accessHashType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class AccessHashType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -64,7 +64,7 @@ final class AccessHashTypeUser extends AccessHashType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -73,7 +73,7 @@ final class AccessHashTypeUser extends AccessHashType {
   AccessHashTypeUser copyWith() => const AccessHashTypeUser();
 
   /// TDLib object type
-  static const String objectType = 'accessHashTypeUser';
+  static const String defaultObjectId = 'accessHashTypeUser';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -81,7 +81,7 @@ final class AccessHashTypeUser extends AccessHashType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -102,7 +102,7 @@ final class AccessHashTypeChannel extends AccessHashType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -111,7 +111,7 @@ final class AccessHashTypeChannel extends AccessHashType {
   AccessHashTypeChannel copyWith() => const AccessHashTypeChannel();
 
   /// TDLib object type
-  static const String objectType = 'accessHashTypeChannel';
+  static const String defaultObjectId = 'accessHashTypeChannel';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -119,5 +119,5 @@ final class AccessHashTypeChannel extends AccessHashType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -22,23 +22,23 @@ sealed class CallProblem extends TdObject {
   /// * [CallProblemPixelatedVideo]
   factory CallProblem.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case CallProblemEcho.objectType:
+      case CallProblemEcho.defaultObjectId:
         return CallProblemEcho.fromJson(json);
-      case CallProblemNoise.objectType:
+      case CallProblemNoise.defaultObjectId:
         return CallProblemNoise.fromJson(json);
-      case CallProblemInterruptions.objectType:
+      case CallProblemInterruptions.defaultObjectId:
         return CallProblemInterruptions.fromJson(json);
-      case CallProblemDistortedSpeech.objectType:
+      case CallProblemDistortedSpeech.defaultObjectId:
         return CallProblemDistortedSpeech.fromJson(json);
-      case CallProblemSilentLocal.objectType:
+      case CallProblemSilentLocal.defaultObjectId:
         return CallProblemSilentLocal.fromJson(json);
-      case CallProblemSilentRemote.objectType:
+      case CallProblemSilentRemote.defaultObjectId:
         return CallProblemSilentRemote.fromJson(json);
-      case CallProblemDropped.objectType:
+      case CallProblemDropped.defaultObjectId:
         return CallProblemDropped.fromJson(json);
-      case CallProblemDistortedVideo.objectType:
+      case CallProblemDistortedVideo.defaultObjectId:
         return CallProblemDistortedVideo.fromJson(json);
-      case CallProblemPixelatedVideo.objectType:
+      case CallProblemPixelatedVideo.defaultObjectId:
         return CallProblemPixelatedVideo.fromJson(json);
       default:
         throw FormatException(
@@ -56,7 +56,7 @@ sealed class CallProblem extends TdObject {
   CallProblem copyWith();
 
   /// TDLib object type
-  static const String objectType = 'callProblem';
+  static const String defaultObjectId = 'callProblem';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -64,7 +64,7 @@ sealed class CallProblem extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -85,7 +85,7 @@ final class CallProblemEcho extends CallProblem {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -94,7 +94,7 @@ final class CallProblemEcho extends CallProblem {
   CallProblemEcho copyWith() => const CallProblemEcho();
 
   /// TDLib object type
-  static const String objectType = 'callProblemEcho';
+  static const String defaultObjectId = 'callProblemEcho';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -102,7 +102,7 @@ final class CallProblemEcho extends CallProblem {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -123,7 +123,7 @@ final class CallProblemNoise extends CallProblem {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -132,7 +132,7 @@ final class CallProblemNoise extends CallProblem {
   CallProblemNoise copyWith() => const CallProblemNoise();
 
   /// TDLib object type
-  static const String objectType = 'callProblemNoise';
+  static const String defaultObjectId = 'callProblemNoise';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -140,7 +140,7 @@ final class CallProblemNoise extends CallProblem {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -161,7 +161,7 @@ final class CallProblemInterruptions extends CallProblem {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -170,7 +170,7 @@ final class CallProblemInterruptions extends CallProblem {
   CallProblemInterruptions copyWith() => const CallProblemInterruptions();
 
   /// TDLib object type
-  static const String objectType = 'callProblemInterruptions';
+  static const String defaultObjectId = 'callProblemInterruptions';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -178,7 +178,7 @@ final class CallProblemInterruptions extends CallProblem {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -199,7 +199,7 @@ final class CallProblemDistortedSpeech extends CallProblem {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -208,7 +208,7 @@ final class CallProblemDistortedSpeech extends CallProblem {
   CallProblemDistortedSpeech copyWith() => const CallProblemDistortedSpeech();
 
   /// TDLib object type
-  static const String objectType = 'callProblemDistortedSpeech';
+  static const String defaultObjectId = 'callProblemDistortedSpeech';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -216,7 +216,7 @@ final class CallProblemDistortedSpeech extends CallProblem {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -237,7 +237,7 @@ final class CallProblemSilentLocal extends CallProblem {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -246,7 +246,7 @@ final class CallProblemSilentLocal extends CallProblem {
   CallProblemSilentLocal copyWith() => const CallProblemSilentLocal();
 
   /// TDLib object type
-  static const String objectType = 'callProblemSilentLocal';
+  static const String defaultObjectId = 'callProblemSilentLocal';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -254,7 +254,7 @@ final class CallProblemSilentLocal extends CallProblem {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -275,7 +275,7 @@ final class CallProblemSilentRemote extends CallProblem {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -284,7 +284,7 @@ final class CallProblemSilentRemote extends CallProblem {
   CallProblemSilentRemote copyWith() => const CallProblemSilentRemote();
 
   /// TDLib object type
-  static const String objectType = 'callProblemSilentRemote';
+  static const String defaultObjectId = 'callProblemSilentRemote';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -292,7 +292,7 @@ final class CallProblemSilentRemote extends CallProblem {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -313,7 +313,7 @@ final class CallProblemDropped extends CallProblem {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -322,7 +322,7 @@ final class CallProblemDropped extends CallProblem {
   CallProblemDropped copyWith() => const CallProblemDropped();
 
   /// TDLib object type
-  static const String objectType = 'callProblemDropped';
+  static const String defaultObjectId = 'callProblemDropped';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -330,7 +330,7 @@ final class CallProblemDropped extends CallProblem {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -351,7 +351,7 @@ final class CallProblemDistortedVideo extends CallProblem {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -360,7 +360,7 @@ final class CallProblemDistortedVideo extends CallProblem {
   CallProblemDistortedVideo copyWith() => const CallProblemDistortedVideo();
 
   /// TDLib object type
-  static const String objectType = 'callProblemDistortedVideo';
+  static const String defaultObjectId = 'callProblemDistortedVideo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -368,7 +368,7 @@ final class CallProblemDistortedVideo extends CallProblem {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -389,7 +389,7 @@ final class CallProblemPixelatedVideo extends CallProblem {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -398,7 +398,7 @@ final class CallProblemPixelatedVideo extends CallProblem {
   CallProblemPixelatedVideo copyWith() => const CallProblemPixelatedVideo();
 
   /// TDLib object type
-  static const String objectType = 'callProblemPixelatedVideo';
+  static const String defaultObjectId = 'callProblemPixelatedVideo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -406,5 +406,5 @@ final class CallProblemPixelatedVideo extends CallProblem {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

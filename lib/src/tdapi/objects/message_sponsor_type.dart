@@ -18,15 +18,15 @@ sealed class MessageSponsorType extends TdObject {
   /// * [MessageSponsorTypeWebsite]
   factory MessageSponsorType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case MessageSponsorTypeBot.objectType:
+      case MessageSponsorTypeBot.defaultObjectId:
         return MessageSponsorTypeBot.fromJson(json);
-      case MessageSponsorTypeWebApp.objectType:
+      case MessageSponsorTypeWebApp.defaultObjectId:
         return MessageSponsorTypeWebApp.fromJson(json);
-      case MessageSponsorTypePublicChannel.objectType:
+      case MessageSponsorTypePublicChannel.defaultObjectId:
         return MessageSponsorTypePublicChannel.fromJson(json);
-      case MessageSponsorTypePrivateChannel.objectType:
+      case MessageSponsorTypePrivateChannel.defaultObjectId:
         return MessageSponsorTypePrivateChannel.fromJson(json);
-      case MessageSponsorTypeWebsite.objectType:
+      case MessageSponsorTypeWebsite.defaultObjectId:
         return MessageSponsorTypeWebsite.fromJson(json);
       default:
         throw FormatException(
@@ -44,7 +44,7 @@ sealed class MessageSponsorType extends TdObject {
   MessageSponsorType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'messageSponsorType';
+  static const String defaultObjectId = 'messageSponsorType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -52,7 +52,7 @@ sealed class MessageSponsorType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -92,7 +92,7 @@ final class MessageSponsorTypeBot extends MessageSponsorType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "bot_user_id": botUserId,
       "link": link.toJson(),
 		};
@@ -113,7 +113,7 @@ final class MessageSponsorTypeBot extends MessageSponsorType {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageSponsorTypeBot';
+  static const String defaultObjectId = 'messageSponsorTypeBot';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -121,7 +121,7 @@ final class MessageSponsorTypeBot extends MessageSponsorType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -161,7 +161,7 @@ final class MessageSponsorTypeWebApp extends MessageSponsorType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "web_app_title": webAppTitle,
       "link": link.toJson(),
 		};
@@ -182,7 +182,7 @@ final class MessageSponsorTypeWebApp extends MessageSponsorType {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageSponsorTypeWebApp';
+  static const String defaultObjectId = 'messageSponsorTypeWebApp';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -190,7 +190,7 @@ final class MessageSponsorTypeWebApp extends MessageSponsorType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -230,7 +230,7 @@ final class MessageSponsorTypePublicChannel extends MessageSponsorType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "link": link?.toJson(),
 		};
@@ -251,7 +251,7 @@ final class MessageSponsorTypePublicChannel extends MessageSponsorType {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageSponsorTypePublicChannel';
+  static const String defaultObjectId = 'messageSponsorTypePublicChannel';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -259,7 +259,7 @@ final class MessageSponsorTypePublicChannel extends MessageSponsorType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -299,7 +299,7 @@ final class MessageSponsorTypePrivateChannel extends MessageSponsorType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "title": title,
       "invite_link": inviteLink,
 		};
@@ -320,7 +320,7 @@ final class MessageSponsorTypePrivateChannel extends MessageSponsorType {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageSponsorTypePrivateChannel';
+  static const String defaultObjectId = 'messageSponsorTypePrivateChannel';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -328,7 +328,7 @@ final class MessageSponsorTypePrivateChannel extends MessageSponsorType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -368,7 +368,7 @@ final class MessageSponsorTypeWebsite extends MessageSponsorType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "url": url,
       "name": name,
 		};
@@ -389,7 +389,7 @@ final class MessageSponsorTypeWebsite extends MessageSponsorType {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageSponsorTypeWebsite';
+  static const String defaultObjectId = 'messageSponsorTypeWebsite';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -397,5 +397,5 @@ final class MessageSponsorTypeWebsite extends MessageSponsorType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

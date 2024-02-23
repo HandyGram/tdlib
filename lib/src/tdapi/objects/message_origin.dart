@@ -17,13 +17,13 @@ sealed class MessageOrigin extends TdObject {
   /// * [MessageOriginChannel]
   factory MessageOrigin.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case MessageOriginUser.objectType:
+      case MessageOriginUser.defaultObjectId:
         return MessageOriginUser.fromJson(json);
-      case MessageOriginHiddenUser.objectType:
+      case MessageOriginHiddenUser.defaultObjectId:
         return MessageOriginHiddenUser.fromJson(json);
-      case MessageOriginChat.objectType:
+      case MessageOriginChat.defaultObjectId:
         return MessageOriginChat.fromJson(json);
-      case MessageOriginChannel.objectType:
+      case MessageOriginChannel.defaultObjectId:
         return MessageOriginChannel.fromJson(json);
       default:
         throw FormatException(
@@ -41,7 +41,7 @@ sealed class MessageOrigin extends TdObject {
   MessageOrigin copyWith();
 
   /// TDLib object type
-  static const String objectType = 'messageOrigin';
+  static const String defaultObjectId = 'messageOrigin';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -49,7 +49,7 @@ sealed class MessageOrigin extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -82,7 +82,7 @@ final class MessageOriginUser extends MessageOrigin {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "sender_user_id": senderUserId,
 		};
 	}
@@ -99,7 +99,7 @@ final class MessageOriginUser extends MessageOrigin {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageOriginUser';
+  static const String defaultObjectId = 'messageOriginUser';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -107,7 +107,7 @@ final class MessageOriginUser extends MessageOrigin {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -140,7 +140,7 @@ final class MessageOriginHiddenUser extends MessageOrigin {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "sender_name": senderName,
 		};
 	}
@@ -157,7 +157,7 @@ final class MessageOriginHiddenUser extends MessageOrigin {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageOriginHiddenUser';
+  static const String defaultObjectId = 'messageOriginHiddenUser';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -165,7 +165,7 @@ final class MessageOriginHiddenUser extends MessageOrigin {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -205,7 +205,7 @@ final class MessageOriginChat extends MessageOrigin {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "sender_chat_id": senderChatId,
       "author_signature": authorSignature,
 		};
@@ -226,7 +226,7 @@ final class MessageOriginChat extends MessageOrigin {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageOriginChat';
+  static const String defaultObjectId = 'messageOriginChat';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -234,7 +234,7 @@ final class MessageOriginChat extends MessageOrigin {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -281,7 +281,7 @@ final class MessageOriginChannel extends MessageOrigin {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "author_signature": authorSignature,
@@ -306,7 +306,7 @@ final class MessageOriginChannel extends MessageOrigin {
   );
 
   /// TDLib object type
-  static const String objectType = 'messageOriginChannel';
+  static const String defaultObjectId = 'messageOriginChannel';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -314,5 +314,5 @@ final class MessageOriginChannel extends MessageOrigin {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

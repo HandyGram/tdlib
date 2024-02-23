@@ -143,265 +143,265 @@ sealed class Update extends TdObject {
   /// * [UpdateMessageReactions]
   factory Update.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case UpdateAuthorizationState.objectType:
+      case UpdateAuthorizationState.defaultObjectId:
         return UpdateAuthorizationState.fromJson(json);
-      case UpdateNewMessage.objectType:
+      case UpdateNewMessage.defaultObjectId:
         return UpdateNewMessage.fromJson(json);
-      case UpdateMessageSendAcknowledged.objectType:
+      case UpdateMessageSendAcknowledged.defaultObjectId:
         return UpdateMessageSendAcknowledged.fromJson(json);
-      case UpdateMessageSendSucceeded.objectType:
+      case UpdateMessageSendSucceeded.defaultObjectId:
         return UpdateMessageSendSucceeded.fromJson(json);
-      case UpdateMessageSendFailed.objectType:
+      case UpdateMessageSendFailed.defaultObjectId:
         return UpdateMessageSendFailed.fromJson(json);
-      case UpdateMessageContent.objectType:
+      case UpdateMessageContent.defaultObjectId:
         return UpdateMessageContent.fromJson(json);
-      case UpdateMessageEdited.objectType:
+      case UpdateMessageEdited.defaultObjectId:
         return UpdateMessageEdited.fromJson(json);
-      case UpdateMessageIsPinned.objectType:
+      case UpdateMessageIsPinned.defaultObjectId:
         return UpdateMessageIsPinned.fromJson(json);
-      case UpdateMessageInteractionInfo.objectType:
+      case UpdateMessageInteractionInfo.defaultObjectId:
         return UpdateMessageInteractionInfo.fromJson(json);
-      case UpdateMessageContentOpened.objectType:
+      case UpdateMessageContentOpened.defaultObjectId:
         return UpdateMessageContentOpened.fromJson(json);
-      case UpdateMessageMentionRead.objectType:
+      case UpdateMessageMentionRead.defaultObjectId:
         return UpdateMessageMentionRead.fromJson(json);
-      case UpdateMessageUnreadReactions.objectType:
+      case UpdateMessageUnreadReactions.defaultObjectId:
         return UpdateMessageUnreadReactions.fromJson(json);
-      case UpdateMessageLiveLocationViewed.objectType:
+      case UpdateMessageLiveLocationViewed.defaultObjectId:
         return UpdateMessageLiveLocationViewed.fromJson(json);
-      case UpdateNewChat.objectType:
+      case UpdateNewChat.defaultObjectId:
         return UpdateNewChat.fromJson(json);
-      case UpdateChatTitle.objectType:
+      case UpdateChatTitle.defaultObjectId:
         return UpdateChatTitle.fromJson(json);
-      case UpdateChatPhoto.objectType:
+      case UpdateChatPhoto.defaultObjectId:
         return UpdateChatPhoto.fromJson(json);
-      case UpdateChatAccentColors.objectType:
+      case UpdateChatAccentColors.defaultObjectId:
         return UpdateChatAccentColors.fromJson(json);
-      case UpdateChatPermissions.objectType:
+      case UpdateChatPermissions.defaultObjectId:
         return UpdateChatPermissions.fromJson(json);
-      case UpdateChatLastMessage.objectType:
+      case UpdateChatLastMessage.defaultObjectId:
         return UpdateChatLastMessage.fromJson(json);
-      case UpdateChatPosition.objectType:
+      case UpdateChatPosition.defaultObjectId:
         return UpdateChatPosition.fromJson(json);
-      case UpdateChatReadInbox.objectType:
+      case UpdateChatReadInbox.defaultObjectId:
         return UpdateChatReadInbox.fromJson(json);
-      case UpdateChatReadOutbox.objectType:
+      case UpdateChatReadOutbox.defaultObjectId:
         return UpdateChatReadOutbox.fromJson(json);
-      case UpdateChatActionBar.objectType:
+      case UpdateChatActionBar.defaultObjectId:
         return UpdateChatActionBar.fromJson(json);
-      case UpdateChatAvailableReactions.objectType:
+      case UpdateChatAvailableReactions.defaultObjectId:
         return UpdateChatAvailableReactions.fromJson(json);
-      case UpdateChatDraftMessage.objectType:
+      case UpdateChatDraftMessage.defaultObjectId:
         return UpdateChatDraftMessage.fromJson(json);
-      case UpdateChatEmojiStatus.objectType:
+      case UpdateChatEmojiStatus.defaultObjectId:
         return UpdateChatEmojiStatus.fromJson(json);
-      case UpdateChatMessageSender.objectType:
+      case UpdateChatMessageSender.defaultObjectId:
         return UpdateChatMessageSender.fromJson(json);
-      case UpdateChatMessageAutoDeleteTime.objectType:
+      case UpdateChatMessageAutoDeleteTime.defaultObjectId:
         return UpdateChatMessageAutoDeleteTime.fromJson(json);
-      case UpdateChatNotificationSettings.objectType:
+      case UpdateChatNotificationSettings.defaultObjectId:
         return UpdateChatNotificationSettings.fromJson(json);
-      case UpdateChatPendingJoinRequests.objectType:
+      case UpdateChatPendingJoinRequests.defaultObjectId:
         return UpdateChatPendingJoinRequests.fromJson(json);
-      case UpdateChatReplyMarkup.objectType:
+      case UpdateChatReplyMarkup.defaultObjectId:
         return UpdateChatReplyMarkup.fromJson(json);
-      case UpdateChatBackground.objectType:
+      case UpdateChatBackground.defaultObjectId:
         return UpdateChatBackground.fromJson(json);
-      case UpdateChatTheme.objectType:
+      case UpdateChatTheme.defaultObjectId:
         return UpdateChatTheme.fromJson(json);
-      case UpdateChatUnreadMentionCount.objectType:
+      case UpdateChatUnreadMentionCount.defaultObjectId:
         return UpdateChatUnreadMentionCount.fromJson(json);
-      case UpdateChatUnreadReactionCount.objectType:
+      case UpdateChatUnreadReactionCount.defaultObjectId:
         return UpdateChatUnreadReactionCount.fromJson(json);
-      case UpdateChatVideoChat.objectType:
+      case UpdateChatVideoChat.defaultObjectId:
         return UpdateChatVideoChat.fromJson(json);
-      case UpdateChatDefaultDisableNotification.objectType:
+      case UpdateChatDefaultDisableNotification.defaultObjectId:
         return UpdateChatDefaultDisableNotification.fromJson(json);
-      case UpdateChatHasProtectedContent.objectType:
+      case UpdateChatHasProtectedContent.defaultObjectId:
         return UpdateChatHasProtectedContent.fromJson(json);
-      case UpdateChatIsTranslatable.objectType:
+      case UpdateChatIsTranslatable.defaultObjectId:
         return UpdateChatIsTranslatable.fromJson(json);
-      case UpdateChatIsMarkedAsUnread.objectType:
+      case UpdateChatIsMarkedAsUnread.defaultObjectId:
         return UpdateChatIsMarkedAsUnread.fromJson(json);
-      case UpdateChatViewAsTopics.objectType:
+      case UpdateChatViewAsTopics.defaultObjectId:
         return UpdateChatViewAsTopics.fromJson(json);
-      case UpdateChatBlockList.objectType:
+      case UpdateChatBlockList.defaultObjectId:
         return UpdateChatBlockList.fromJson(json);
-      case UpdateChatHasScheduledMessages.objectType:
+      case UpdateChatHasScheduledMessages.defaultObjectId:
         return UpdateChatHasScheduledMessages.fromJson(json);
-      case UpdateChatFolders.objectType:
+      case UpdateChatFolders.defaultObjectId:
         return UpdateChatFolders.fromJson(json);
-      case UpdateChatOnlineMemberCount.objectType:
+      case UpdateChatOnlineMemberCount.defaultObjectId:
         return UpdateChatOnlineMemberCount.fromJson(json);
-      case UpdateSavedMessagesTopic.objectType:
+      case UpdateSavedMessagesTopic.defaultObjectId:
         return UpdateSavedMessagesTopic.fromJson(json);
-      case UpdateSavedMessagesTopicCount.objectType:
+      case UpdateSavedMessagesTopicCount.defaultObjectId:
         return UpdateSavedMessagesTopicCount.fromJson(json);
-      case UpdateForumTopicInfo.objectType:
+      case UpdateForumTopicInfo.defaultObjectId:
         return UpdateForumTopicInfo.fromJson(json);
-      case UpdateScopeNotificationSettings.objectType:
+      case UpdateScopeNotificationSettings.defaultObjectId:
         return UpdateScopeNotificationSettings.fromJson(json);
-      case UpdateNotification.objectType:
+      case UpdateNotification.defaultObjectId:
         return UpdateNotification.fromJson(json);
-      case UpdateNotificationGroup.objectType:
+      case UpdateNotificationGroup.defaultObjectId:
         return UpdateNotificationGroup.fromJson(json);
-      case UpdateActiveNotifications.objectType:
+      case UpdateActiveNotifications.defaultObjectId:
         return UpdateActiveNotifications.fromJson(json);
-      case UpdateHavePendingNotifications.objectType:
+      case UpdateHavePendingNotifications.defaultObjectId:
         return UpdateHavePendingNotifications.fromJson(json);
-      case UpdateDeleteMessages.objectType:
+      case UpdateDeleteMessages.defaultObjectId:
         return UpdateDeleteMessages.fromJson(json);
-      case UpdateChatAction.objectType:
+      case UpdateChatAction.defaultObjectId:
         return UpdateChatAction.fromJson(json);
-      case UpdateUserStatus.objectType:
+      case UpdateUserStatus.defaultObjectId:
         return UpdateUserStatus.fromJson(json);
-      case UpdateUser.objectType:
+      case UpdateUser.defaultObjectId:
         return UpdateUser.fromJson(json);
-      case UpdateAccessHash.objectType:
+      case UpdateAccessHash.defaultObjectId:
         return UpdateAccessHash.fromJson(json);
-      case UpdateBasicGroup.objectType:
+      case UpdateBasicGroup.defaultObjectId:
         return UpdateBasicGroup.fromJson(json);
-      case UpdateSupergroup.objectType:
+      case UpdateSupergroup.defaultObjectId:
         return UpdateSupergroup.fromJson(json);
-      case UpdateSecretChat.objectType:
+      case UpdateSecretChat.defaultObjectId:
         return UpdateSecretChat.fromJson(json);
-      case UpdateUserFullInfo.objectType:
+      case UpdateUserFullInfo.defaultObjectId:
         return UpdateUserFullInfo.fromJson(json);
-      case UpdateBasicGroupFullInfo.objectType:
+      case UpdateBasicGroupFullInfo.defaultObjectId:
         return UpdateBasicGroupFullInfo.fromJson(json);
-      case UpdateSupergroupFullInfo.objectType:
+      case UpdateSupergroupFullInfo.defaultObjectId:
         return UpdateSupergroupFullInfo.fromJson(json);
-      case UpdateServiceNotification.objectType:
+      case UpdateServiceNotification.defaultObjectId:
         return UpdateServiceNotification.fromJson(json);
-      case UpdateFile.objectType:
+      case UpdateFile.defaultObjectId:
         return UpdateFile.fromJson(json);
-      case UpdateFileGenerationStart.objectType:
+      case UpdateFileGenerationStart.defaultObjectId:
         return UpdateFileGenerationStart.fromJson(json);
-      case UpdateFileGenerationStop.objectType:
+      case UpdateFileGenerationStop.defaultObjectId:
         return UpdateFileGenerationStop.fromJson(json);
-      case UpdateFileDownloads.objectType:
+      case UpdateFileDownloads.defaultObjectId:
         return UpdateFileDownloads.fromJson(json);
-      case UpdateFileAddedToDownloads.objectType:
+      case UpdateFileAddedToDownloads.defaultObjectId:
         return UpdateFileAddedToDownloads.fromJson(json);
-      case UpdateFileDownload.objectType:
+      case UpdateFileDownload.defaultObjectId:
         return UpdateFileDownload.fromJson(json);
-      case UpdateFileRemovedFromDownloads.objectType:
+      case UpdateFileRemovedFromDownloads.defaultObjectId:
         return UpdateFileRemovedFromDownloads.fromJson(json);
-      case UpdateCall.objectType:
+      case UpdateCall.defaultObjectId:
         return UpdateCall.fromJson(json);
-      case UpdateGroupCall.objectType:
+      case UpdateGroupCall.defaultObjectId:
         return UpdateGroupCall.fromJson(json);
-      case UpdateGroupCallParticipant.objectType:
+      case UpdateGroupCallParticipant.defaultObjectId:
         return UpdateGroupCallParticipant.fromJson(json);
-      case UpdateNewCallSignalingData.objectType:
+      case UpdateNewCallSignalingData.defaultObjectId:
         return UpdateNewCallSignalingData.fromJson(json);
-      case UpdateUserPrivacySettingRules.objectType:
+      case UpdateUserPrivacySettingRules.defaultObjectId:
         return UpdateUserPrivacySettingRules.fromJson(json);
-      case UpdateUnreadMessageCount.objectType:
+      case UpdateUnreadMessageCount.defaultObjectId:
         return UpdateUnreadMessageCount.fromJson(json);
-      case UpdateUnreadChatCount.objectType:
+      case UpdateUnreadChatCount.defaultObjectId:
         return UpdateUnreadChatCount.fromJson(json);
-      case UpdateStory.objectType:
+      case UpdateStory.defaultObjectId:
         return UpdateStory.fromJson(json);
-      case UpdateStoryDeleted.objectType:
+      case UpdateStoryDeleted.defaultObjectId:
         return UpdateStoryDeleted.fromJson(json);
-      case UpdateStorySendSucceeded.objectType:
+      case UpdateStorySendSucceeded.defaultObjectId:
         return UpdateStorySendSucceeded.fromJson(json);
-      case UpdateStorySendFailed.objectType:
+      case UpdateStorySendFailed.defaultObjectId:
         return UpdateStorySendFailed.fromJson(json);
-      case UpdateChatActiveStories.objectType:
+      case UpdateChatActiveStories.defaultObjectId:
         return UpdateChatActiveStories.fromJson(json);
-      case UpdateStoryListChatCount.objectType:
+      case UpdateStoryListChatCount.defaultObjectId:
         return UpdateStoryListChatCount.fromJson(json);
-      case UpdateStoryStealthMode.objectType:
+      case UpdateStoryStealthMode.defaultObjectId:
         return UpdateStoryStealthMode.fromJson(json);
-      case UpdateOption.objectType:
+      case UpdateOption.defaultObjectId:
         return UpdateOption.fromJson(json);
-      case UpdateStickerSet.objectType:
+      case UpdateStickerSet.defaultObjectId:
         return UpdateStickerSet.fromJson(json);
-      case UpdateInstalledStickerSets.objectType:
+      case UpdateInstalledStickerSets.defaultObjectId:
         return UpdateInstalledStickerSets.fromJson(json);
-      case UpdateTrendingStickerSets.objectType:
+      case UpdateTrendingStickerSets.defaultObjectId:
         return UpdateTrendingStickerSets.fromJson(json);
-      case UpdateRecentStickers.objectType:
+      case UpdateRecentStickers.defaultObjectId:
         return UpdateRecentStickers.fromJson(json);
-      case UpdateFavoriteStickers.objectType:
+      case UpdateFavoriteStickers.defaultObjectId:
         return UpdateFavoriteStickers.fromJson(json);
-      case UpdateSavedAnimations.objectType:
+      case UpdateSavedAnimations.defaultObjectId:
         return UpdateSavedAnimations.fromJson(json);
-      case UpdateSavedNotificationSounds.objectType:
+      case UpdateSavedNotificationSounds.defaultObjectId:
         return UpdateSavedNotificationSounds.fromJson(json);
-      case UpdateDefaultBackground.objectType:
+      case UpdateDefaultBackground.defaultObjectId:
         return UpdateDefaultBackground.fromJson(json);
-      case UpdateChatThemes.objectType:
+      case UpdateChatThemes.defaultObjectId:
         return UpdateChatThemes.fromJson(json);
-      case UpdateAccentColors.objectType:
+      case UpdateAccentColors.defaultObjectId:
         return UpdateAccentColors.fromJson(json);
-      case UpdateProfileAccentColors.objectType:
+      case UpdateProfileAccentColors.defaultObjectId:
         return UpdateProfileAccentColors.fromJson(json);
-      case UpdateLanguagePackStrings.objectType:
+      case UpdateLanguagePackStrings.defaultObjectId:
         return UpdateLanguagePackStrings.fromJson(json);
-      case UpdateConnectionState.objectType:
+      case UpdateConnectionState.defaultObjectId:
         return UpdateConnectionState.fromJson(json);
-      case UpdateTermsOfService.objectType:
+      case UpdateTermsOfService.defaultObjectId:
         return UpdateTermsOfService.fromJson(json);
-      case UpdateUsersNearby.objectType:
+      case UpdateUsersNearby.defaultObjectId:
         return UpdateUsersNearby.fromJson(json);
-      case UpdateUnconfirmedSession.objectType:
+      case UpdateUnconfirmedSession.defaultObjectId:
         return UpdateUnconfirmedSession.fromJson(json);
-      case UpdateAttachmentMenuBots.objectType:
+      case UpdateAttachmentMenuBots.defaultObjectId:
         return UpdateAttachmentMenuBots.fromJson(json);
-      case UpdateWebAppMessageSent.objectType:
+      case UpdateWebAppMessageSent.defaultObjectId:
         return UpdateWebAppMessageSent.fromJson(json);
-      case UpdateActiveEmojiReactions.objectType:
+      case UpdateActiveEmojiReactions.defaultObjectId:
         return UpdateActiveEmojiReactions.fromJson(json);
-      case UpdateDefaultReactionType.objectType:
+      case UpdateDefaultReactionType.defaultObjectId:
         return UpdateDefaultReactionType.fromJson(json);
-      case UpdateSavedMessagesTags.objectType:
+      case UpdateSavedMessagesTags.defaultObjectId:
         return UpdateSavedMessagesTags.fromJson(json);
-      case UpdateSpeechRecognitionTrial.objectType:
+      case UpdateSpeechRecognitionTrial.defaultObjectId:
         return UpdateSpeechRecognitionTrial.fromJson(json);
-      case UpdateDiceEmojis.objectType:
+      case UpdateDiceEmojis.defaultObjectId:
         return UpdateDiceEmojis.fromJson(json);
-      case UpdateAnimatedEmojiMessageClicked.objectType:
+      case UpdateAnimatedEmojiMessageClicked.defaultObjectId:
         return UpdateAnimatedEmojiMessageClicked.fromJson(json);
-      case UpdateAnimationSearchParameters.objectType:
+      case UpdateAnimationSearchParameters.defaultObjectId:
         return UpdateAnimationSearchParameters.fromJson(json);
-      case UpdateSuggestedActions.objectType:
+      case UpdateSuggestedActions.defaultObjectId:
         return UpdateSuggestedActions.fromJson(json);
-      case UpdateAddChatMembersPrivacyForbidden.objectType:
+      case UpdateAddChatMembersPrivacyForbidden.defaultObjectId:
         return UpdateAddChatMembersPrivacyForbidden.fromJson(json);
-      case UpdateAutosaveSettings.objectType:
+      case UpdateAutosaveSettings.defaultObjectId:
         return UpdateAutosaveSettings.fromJson(json);
-      case UpdateNewInlineQuery.objectType:
+      case UpdateNewInlineQuery.defaultObjectId:
         return UpdateNewInlineQuery.fromJson(json);
-      case UpdateNewChosenInlineResult.objectType:
+      case UpdateNewChosenInlineResult.defaultObjectId:
         return UpdateNewChosenInlineResult.fromJson(json);
-      case UpdateNewCallbackQuery.objectType:
+      case UpdateNewCallbackQuery.defaultObjectId:
         return UpdateNewCallbackQuery.fromJson(json);
-      case UpdateNewInlineCallbackQuery.objectType:
+      case UpdateNewInlineCallbackQuery.defaultObjectId:
         return UpdateNewInlineCallbackQuery.fromJson(json);
-      case UpdateNewShippingQuery.objectType:
+      case UpdateNewShippingQuery.defaultObjectId:
         return UpdateNewShippingQuery.fromJson(json);
-      case UpdateNewPreCheckoutQuery.objectType:
+      case UpdateNewPreCheckoutQuery.defaultObjectId:
         return UpdateNewPreCheckoutQuery.fromJson(json);
-      case UpdateNewCustomEvent.objectType:
+      case UpdateNewCustomEvent.defaultObjectId:
         return UpdateNewCustomEvent.fromJson(json);
-      case UpdateNewCustomQuery.objectType:
+      case UpdateNewCustomQuery.defaultObjectId:
         return UpdateNewCustomQuery.fromJson(json);
-      case UpdatePoll.objectType:
+      case UpdatePoll.defaultObjectId:
         return UpdatePoll.fromJson(json);
-      case UpdatePollAnswer.objectType:
+      case UpdatePollAnswer.defaultObjectId:
         return UpdatePollAnswer.fromJson(json);
-      case UpdateChatMember.objectType:
+      case UpdateChatMember.defaultObjectId:
         return UpdateChatMember.fromJson(json);
-      case UpdateNewChatJoinRequest.objectType:
+      case UpdateNewChatJoinRequest.defaultObjectId:
         return UpdateNewChatJoinRequest.fromJson(json);
-      case UpdateChatBoost.objectType:
+      case UpdateChatBoost.defaultObjectId:
         return UpdateChatBoost.fromJson(json);
-      case UpdateMessageReaction.objectType:
+      case UpdateMessageReaction.defaultObjectId:
         return UpdateMessageReaction.fromJson(json);
-      case UpdateMessageReactions.objectType:
+      case UpdateMessageReactions.defaultObjectId:
         return UpdateMessageReactions.fromJson(json);
       default:
         throw FormatException(
@@ -419,7 +419,7 @@ sealed class Update extends TdObject {
   Update copyWith();
 
   /// TDLib object type
-  static const String objectType = 'update';
+  static const String defaultObjectId = 'update';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -427,7 +427,7 @@ sealed class Update extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -472,7 +472,7 @@ final class UpdateAuthorizationState extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "authorization_state": authorizationState.toJson(),
 		};
 	}
@@ -493,7 +493,7 @@ final class UpdateAuthorizationState extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateAuthorizationState';
+  static const String defaultObjectId = 'updateAuthorizationState';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -501,7 +501,7 @@ final class UpdateAuthorizationState extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -546,7 +546,7 @@ final class UpdateNewMessage extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "message": message.toJson(),
 		};
 	}
@@ -567,7 +567,7 @@ final class UpdateNewMessage extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateNewMessage';
+  static const String defaultObjectId = 'updateNewMessage';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -575,7 +575,7 @@ final class UpdateNewMessage extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -627,7 +627,7 @@ final class UpdateMessageSendAcknowledged extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
 		};
@@ -652,7 +652,7 @@ final class UpdateMessageSendAcknowledged extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateMessageSendAcknowledged';
+  static const String defaultObjectId = 'updateMessageSendAcknowledged';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -660,7 +660,7 @@ final class UpdateMessageSendAcknowledged extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -712,7 +712,7 @@ final class UpdateMessageSendSucceeded extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "message": message.toJson(),
       "old_message_id": oldMessageId,
 		};
@@ -737,7 +737,7 @@ final class UpdateMessageSendSucceeded extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateMessageSendSucceeded';
+  static const String defaultObjectId = 'updateMessageSendSucceeded';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -745,7 +745,7 @@ final class UpdateMessageSendSucceeded extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -804,7 +804,7 @@ final class UpdateMessageSendFailed extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "message": message.toJson(),
       "old_message_id": oldMessageId,
       "error": error.toJson(),
@@ -833,7 +833,7 @@ final class UpdateMessageSendFailed extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateMessageSendFailed';
+  static const String defaultObjectId = 'updateMessageSendFailed';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -841,7 +841,7 @@ final class UpdateMessageSendFailed extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -900,7 +900,7 @@ final class UpdateMessageContent extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "new_content": newContent.toJson(),
@@ -929,7 +929,7 @@ final class UpdateMessageContent extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateMessageContent';
+  static const String defaultObjectId = 'updateMessageContent';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -937,7 +937,7 @@ final class UpdateMessageContent extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1003,7 +1003,7 @@ final class UpdateMessageEdited extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "edit_date": editDate,
@@ -1036,7 +1036,7 @@ final class UpdateMessageEdited extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateMessageEdited';
+  static const String defaultObjectId = 'updateMessageEdited';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1044,7 +1044,7 @@ final class UpdateMessageEdited extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1103,7 +1103,7 @@ final class UpdateMessageIsPinned extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "is_pinned": isPinned,
@@ -1132,7 +1132,7 @@ final class UpdateMessageIsPinned extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateMessageIsPinned';
+  static const String defaultObjectId = 'updateMessageIsPinned';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1140,7 +1140,7 @@ final class UpdateMessageIsPinned extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1199,7 +1199,7 @@ final class UpdateMessageInteractionInfo extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "interaction_info": interactionInfo?.toJson(),
@@ -1228,7 +1228,7 @@ final class UpdateMessageInteractionInfo extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateMessageInteractionInfo';
+  static const String defaultObjectId = 'updateMessageInteractionInfo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1236,7 +1236,7 @@ final class UpdateMessageInteractionInfo extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1288,7 +1288,7 @@ final class UpdateMessageContentOpened extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
 		};
@@ -1313,7 +1313,7 @@ final class UpdateMessageContentOpened extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateMessageContentOpened';
+  static const String defaultObjectId = 'updateMessageContentOpened';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1321,7 +1321,7 @@ final class UpdateMessageContentOpened extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1380,7 +1380,7 @@ final class UpdateMessageMentionRead extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "unread_mention_count": unreadMentionCount,
@@ -1409,7 +1409,7 @@ final class UpdateMessageMentionRead extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateMessageMentionRead';
+  static const String defaultObjectId = 'updateMessageMentionRead';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1417,7 +1417,7 @@ final class UpdateMessageMentionRead extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1483,7 +1483,7 @@ final class UpdateMessageUnreadReactions extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "unread_reactions": unreadReactions.map((i) => i.toJson()).toList(),
@@ -1516,7 +1516,7 @@ final class UpdateMessageUnreadReactions extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateMessageUnreadReactions';
+  static const String defaultObjectId = 'updateMessageUnreadReactions';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1524,7 +1524,7 @@ final class UpdateMessageUnreadReactions extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1576,7 +1576,7 @@ final class UpdateMessageLiveLocationViewed extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
 		};
@@ -1601,7 +1601,7 @@ final class UpdateMessageLiveLocationViewed extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateMessageLiveLocationViewed';
+  static const String defaultObjectId = 'updateMessageLiveLocationViewed';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1609,7 +1609,7 @@ final class UpdateMessageLiveLocationViewed extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1654,7 +1654,7 @@ final class UpdateNewChat extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat": chat.toJson(),
 		};
 	}
@@ -1675,7 +1675,7 @@ final class UpdateNewChat extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateNewChat';
+  static const String defaultObjectId = 'updateNewChat';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1683,7 +1683,7 @@ final class UpdateNewChat extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1735,7 +1735,7 @@ final class UpdateChatTitle extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "title": title,
 		};
@@ -1760,7 +1760,7 @@ final class UpdateChatTitle extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatTitle';
+  static const String defaultObjectId = 'updateChatTitle';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1768,7 +1768,7 @@ final class UpdateChatTitle extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1820,7 +1820,7 @@ final class UpdateChatPhoto extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "photo": photo?.toJson(),
 		};
@@ -1845,7 +1845,7 @@ final class UpdateChatPhoto extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatPhoto';
+  static const String defaultObjectId = 'updateChatPhoto';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1853,7 +1853,7 @@ final class UpdateChatPhoto extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1926,7 +1926,7 @@ final class UpdateChatAccentColors extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "accent_color_id": accentColorId,
       "background_custom_emoji_id": backgroundCustomEmojiId,
@@ -1963,7 +1963,7 @@ final class UpdateChatAccentColors extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatAccentColors';
+  static const String defaultObjectId = 'updateChatAccentColors';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1971,7 +1971,7 @@ final class UpdateChatAccentColors extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2023,7 +2023,7 @@ final class UpdateChatPermissions extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "permissions": permissions.toJson(),
 		};
@@ -2048,7 +2048,7 @@ final class UpdateChatPermissions extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatPermissions';
+  static const String defaultObjectId = 'updateChatPermissions';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2056,7 +2056,7 @@ final class UpdateChatPermissions extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2115,7 +2115,7 @@ final class UpdateChatLastMessage extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "last_message": lastMessage?.toJson(),
       "positions": positions.map((i) => i.toJson()).toList(),
@@ -2144,7 +2144,7 @@ final class UpdateChatLastMessage extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatLastMessage';
+  static const String defaultObjectId = 'updateChatLastMessage';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2152,7 +2152,7 @@ final class UpdateChatLastMessage extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2204,7 +2204,7 @@ final class UpdateChatPosition extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "position": position.toJson(),
 		};
@@ -2229,7 +2229,7 @@ final class UpdateChatPosition extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatPosition';
+  static const String defaultObjectId = 'updateChatPosition';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2237,7 +2237,7 @@ final class UpdateChatPosition extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2296,7 +2296,7 @@ final class UpdateChatReadInbox extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "last_read_inbox_message_id": lastReadInboxMessageId,
       "unread_count": unreadCount,
@@ -2325,7 +2325,7 @@ final class UpdateChatReadInbox extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatReadInbox';
+  static const String defaultObjectId = 'updateChatReadInbox';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2333,7 +2333,7 @@ final class UpdateChatReadInbox extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2385,7 +2385,7 @@ final class UpdateChatReadOutbox extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "last_read_outbox_message_id": lastReadOutboxMessageId,
 		};
@@ -2410,7 +2410,7 @@ final class UpdateChatReadOutbox extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatReadOutbox';
+  static const String defaultObjectId = 'updateChatReadOutbox';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2418,7 +2418,7 @@ final class UpdateChatReadOutbox extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2470,7 +2470,7 @@ final class UpdateChatActionBar extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "action_bar": actionBar?.toJson(),
 		};
@@ -2495,7 +2495,7 @@ final class UpdateChatActionBar extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatActionBar';
+  static const String defaultObjectId = 'updateChatActionBar';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2503,7 +2503,7 @@ final class UpdateChatActionBar extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2555,7 +2555,7 @@ final class UpdateChatAvailableReactions extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "available_reactions": availableReactions.toJson(),
 		};
@@ -2580,7 +2580,7 @@ final class UpdateChatAvailableReactions extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatAvailableReactions';
+  static const String defaultObjectId = 'updateChatAvailableReactions';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2588,7 +2588,7 @@ final class UpdateChatAvailableReactions extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2647,7 +2647,7 @@ final class UpdateChatDraftMessage extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "draft_message": draftMessage?.toJson(),
       "positions": positions.map((i) => i.toJson()).toList(),
@@ -2676,7 +2676,7 @@ final class UpdateChatDraftMessage extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatDraftMessage';
+  static const String defaultObjectId = 'updateChatDraftMessage';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2684,7 +2684,7 @@ final class UpdateChatDraftMessage extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2736,7 +2736,7 @@ final class UpdateChatEmojiStatus extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "emoji_status": emojiStatus?.toJson(),
 		};
@@ -2761,7 +2761,7 @@ final class UpdateChatEmojiStatus extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatEmojiStatus';
+  static const String defaultObjectId = 'updateChatEmojiStatus';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2769,7 +2769,7 @@ final class UpdateChatEmojiStatus extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2821,7 +2821,7 @@ final class UpdateChatMessageSender extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_sender_id": messageSenderId?.toJson(),
 		};
@@ -2846,7 +2846,7 @@ final class UpdateChatMessageSender extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatMessageSender';
+  static const String defaultObjectId = 'updateChatMessageSender';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2854,7 +2854,7 @@ final class UpdateChatMessageSender extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2906,7 +2906,7 @@ final class UpdateChatMessageAutoDeleteTime extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_auto_delete_time": messageAutoDeleteTime,
 		};
@@ -2931,7 +2931,7 @@ final class UpdateChatMessageAutoDeleteTime extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatMessageAutoDeleteTime';
+  static const String defaultObjectId = 'updateChatMessageAutoDeleteTime';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2939,7 +2939,7 @@ final class UpdateChatMessageAutoDeleteTime extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2991,7 +2991,7 @@ final class UpdateChatNotificationSettings extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "notification_settings": notificationSettings.toJson(),
 		};
@@ -3016,7 +3016,7 @@ final class UpdateChatNotificationSettings extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatNotificationSettings';
+  static const String defaultObjectId = 'updateChatNotificationSettings';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3024,7 +3024,7 @@ final class UpdateChatNotificationSettings extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -3076,7 +3076,7 @@ final class UpdateChatPendingJoinRequests extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "pending_join_requests": pendingJoinRequests?.toJson(),
 		};
@@ -3101,7 +3101,7 @@ final class UpdateChatPendingJoinRequests extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatPendingJoinRequests';
+  static const String defaultObjectId = 'updateChatPendingJoinRequests';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3109,7 +3109,7 @@ final class UpdateChatPendingJoinRequests extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -3161,7 +3161,7 @@ final class UpdateChatReplyMarkup extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "reply_markup_message_id": replyMarkupMessageId,
 		};
@@ -3186,7 +3186,7 @@ final class UpdateChatReplyMarkup extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatReplyMarkup';
+  static const String defaultObjectId = 'updateChatReplyMarkup';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3194,7 +3194,7 @@ final class UpdateChatReplyMarkup extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -3246,7 +3246,7 @@ final class UpdateChatBackground extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "background": background?.toJson(),
 		};
@@ -3271,7 +3271,7 @@ final class UpdateChatBackground extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatBackground';
+  static const String defaultObjectId = 'updateChatBackground';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3279,7 +3279,7 @@ final class UpdateChatBackground extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -3331,7 +3331,7 @@ final class UpdateChatTheme extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "theme_name": themeName,
 		};
@@ -3356,7 +3356,7 @@ final class UpdateChatTheme extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatTheme';
+  static const String defaultObjectId = 'updateChatTheme';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3364,7 +3364,7 @@ final class UpdateChatTheme extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -3416,7 +3416,7 @@ final class UpdateChatUnreadMentionCount extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "unread_mention_count": unreadMentionCount,
 		};
@@ -3441,7 +3441,7 @@ final class UpdateChatUnreadMentionCount extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatUnreadMentionCount';
+  static const String defaultObjectId = 'updateChatUnreadMentionCount';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3449,7 +3449,7 @@ final class UpdateChatUnreadMentionCount extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -3501,7 +3501,7 @@ final class UpdateChatUnreadReactionCount extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "unread_reaction_count": unreadReactionCount,
 		};
@@ -3526,7 +3526,7 @@ final class UpdateChatUnreadReactionCount extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatUnreadReactionCount';
+  static const String defaultObjectId = 'updateChatUnreadReactionCount';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3534,7 +3534,7 @@ final class UpdateChatUnreadReactionCount extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -3586,7 +3586,7 @@ final class UpdateChatVideoChat extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "video_chat": videoChat.toJson(),
 		};
@@ -3611,7 +3611,7 @@ final class UpdateChatVideoChat extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatVideoChat';
+  static const String defaultObjectId = 'updateChatVideoChat';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3619,7 +3619,7 @@ final class UpdateChatVideoChat extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -3671,7 +3671,7 @@ final class UpdateChatDefaultDisableNotification extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "default_disable_notification": defaultDisableNotification,
 		};
@@ -3696,7 +3696,7 @@ final class UpdateChatDefaultDisableNotification extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatDefaultDisableNotification';
+  static const String defaultObjectId = 'updateChatDefaultDisableNotification';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3704,7 +3704,7 @@ final class UpdateChatDefaultDisableNotification extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -3756,7 +3756,7 @@ final class UpdateChatHasProtectedContent extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "has_protected_content": hasProtectedContent,
 		};
@@ -3781,7 +3781,7 @@ final class UpdateChatHasProtectedContent extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatHasProtectedContent';
+  static const String defaultObjectId = 'updateChatHasProtectedContent';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3789,7 +3789,7 @@ final class UpdateChatHasProtectedContent extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -3841,7 +3841,7 @@ final class UpdateChatIsTranslatable extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "is_translatable": isTranslatable,
 		};
@@ -3866,7 +3866,7 @@ final class UpdateChatIsTranslatable extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatIsTranslatable';
+  static const String defaultObjectId = 'updateChatIsTranslatable';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3874,7 +3874,7 @@ final class UpdateChatIsTranslatable extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -3926,7 +3926,7 @@ final class UpdateChatIsMarkedAsUnread extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "is_marked_as_unread": isMarkedAsUnread,
 		};
@@ -3951,7 +3951,7 @@ final class UpdateChatIsMarkedAsUnread extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatIsMarkedAsUnread';
+  static const String defaultObjectId = 'updateChatIsMarkedAsUnread';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -3959,7 +3959,7 @@ final class UpdateChatIsMarkedAsUnread extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -4011,7 +4011,7 @@ final class UpdateChatViewAsTopics extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "view_as_topics": viewAsTopics,
 		};
@@ -4036,7 +4036,7 @@ final class UpdateChatViewAsTopics extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatViewAsTopics';
+  static const String defaultObjectId = 'updateChatViewAsTopics';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -4044,7 +4044,7 @@ final class UpdateChatViewAsTopics extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -4096,7 +4096,7 @@ final class UpdateChatBlockList extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "block_list": blockList?.toJson(),
 		};
@@ -4121,7 +4121,7 @@ final class UpdateChatBlockList extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatBlockList';
+  static const String defaultObjectId = 'updateChatBlockList';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -4129,7 +4129,7 @@ final class UpdateChatBlockList extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -4181,7 +4181,7 @@ final class UpdateChatHasScheduledMessages extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "has_scheduled_messages": hasScheduledMessages,
 		};
@@ -4206,7 +4206,7 @@ final class UpdateChatHasScheduledMessages extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatHasScheduledMessages';
+  static const String defaultObjectId = 'updateChatHasScheduledMessages';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -4214,7 +4214,7 @@ final class UpdateChatHasScheduledMessages extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -4266,7 +4266,7 @@ final class UpdateChatFolders extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_folders": chatFolders.map((i) => i.toJson()).toList(),
       "main_chat_list_position": mainChatListPosition,
 		};
@@ -4291,7 +4291,7 @@ final class UpdateChatFolders extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatFolders';
+  static const String defaultObjectId = 'updateChatFolders';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -4299,7 +4299,7 @@ final class UpdateChatFolders extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -4351,7 +4351,7 @@ final class UpdateChatOnlineMemberCount extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "online_member_count": onlineMemberCount,
 		};
@@ -4376,7 +4376,7 @@ final class UpdateChatOnlineMemberCount extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatOnlineMemberCount';
+  static const String defaultObjectId = 'updateChatOnlineMemberCount';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -4384,7 +4384,7 @@ final class UpdateChatOnlineMemberCount extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -4429,7 +4429,7 @@ final class UpdateSavedMessagesTopic extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "topic": topic.toJson(),
 		};
 	}
@@ -4450,7 +4450,7 @@ final class UpdateSavedMessagesTopic extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateSavedMessagesTopic';
+  static const String defaultObjectId = 'updateSavedMessagesTopic';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -4458,7 +4458,7 @@ final class UpdateSavedMessagesTopic extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -4503,7 +4503,7 @@ final class UpdateSavedMessagesTopicCount extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "topic_count": topicCount,
 		};
 	}
@@ -4524,7 +4524,7 @@ final class UpdateSavedMessagesTopicCount extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateSavedMessagesTopicCount';
+  static const String defaultObjectId = 'updateSavedMessagesTopicCount';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -4532,7 +4532,7 @@ final class UpdateSavedMessagesTopicCount extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -4584,7 +4584,7 @@ final class UpdateForumTopicInfo extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "info": info.toJson(),
 		};
@@ -4609,7 +4609,7 @@ final class UpdateForumTopicInfo extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateForumTopicInfo';
+  static const String defaultObjectId = 'updateForumTopicInfo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -4617,7 +4617,7 @@ final class UpdateForumTopicInfo extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -4669,7 +4669,7 @@ final class UpdateScopeNotificationSettings extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "scope": scope.toJson(),
       "notification_settings": notificationSettings.toJson(),
 		};
@@ -4694,7 +4694,7 @@ final class UpdateScopeNotificationSettings extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateScopeNotificationSettings';
+  static const String defaultObjectId = 'updateScopeNotificationSettings';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -4702,7 +4702,7 @@ final class UpdateScopeNotificationSettings extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -4754,7 +4754,7 @@ final class UpdateNotification extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "notification_group_id": notificationGroupId,
       "notification": notification.toJson(),
 		};
@@ -4779,7 +4779,7 @@ final class UpdateNotification extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateNotification';
+  static const String defaultObjectId = 'updateNotification';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -4787,7 +4787,7 @@ final class UpdateNotification extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -4881,7 +4881,7 @@ final class UpdateNotificationGroup extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "notification_group_id": notificationGroupId,
       "type": type.toJson(),
       "chat_id": chatId,
@@ -4930,7 +4930,7 @@ final class UpdateNotificationGroup extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateNotificationGroup';
+  static const String defaultObjectId = 'updateNotificationGroup';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -4938,7 +4938,7 @@ final class UpdateNotificationGroup extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -4983,7 +4983,7 @@ final class UpdateActiveNotifications extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "groups": groups.map((i) => i.toJson()).toList(),
 		};
 	}
@@ -5004,7 +5004,7 @@ final class UpdateActiveNotifications extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateActiveNotifications';
+  static const String defaultObjectId = 'updateActiveNotifications';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -5012,7 +5012,7 @@ final class UpdateActiveNotifications extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -5064,7 +5064,7 @@ final class UpdateHavePendingNotifications extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "have_delayed_notifications": haveDelayedNotifications,
       "have_unreceived_notifications": haveUnreceivedNotifications,
 		};
@@ -5089,7 +5089,7 @@ final class UpdateHavePendingNotifications extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateHavePendingNotifications';
+  static const String defaultObjectId = 'updateHavePendingNotifications';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -5097,7 +5097,7 @@ final class UpdateHavePendingNotifications extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -5163,7 +5163,7 @@ final class UpdateDeleteMessages extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_ids": messageIds.map((i) => i).toList(),
       "is_permanent": isPermanent,
@@ -5196,7 +5196,7 @@ final class UpdateDeleteMessages extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateDeleteMessages';
+  static const String defaultObjectId = 'updateDeleteMessages';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -5204,7 +5204,7 @@ final class UpdateDeleteMessages extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -5270,7 +5270,7 @@ final class UpdateChatAction extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_thread_id": messageThreadId,
       "sender_id": senderId.toJson(),
@@ -5303,7 +5303,7 @@ final class UpdateChatAction extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatAction';
+  static const String defaultObjectId = 'updateChatAction';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -5311,7 +5311,7 @@ final class UpdateChatAction extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -5363,7 +5363,7 @@ final class UpdateUserStatus extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "user_id": userId,
       "status": status.toJson(),
 		};
@@ -5388,7 +5388,7 @@ final class UpdateUserStatus extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateUserStatus';
+  static const String defaultObjectId = 'updateUserStatus';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -5396,7 +5396,7 @@ final class UpdateUserStatus extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -5441,7 +5441,7 @@ final class UpdateUser extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "user": user.toJson(),
 		};
 	}
@@ -5462,7 +5462,7 @@ final class UpdateUser extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateUser';
+  static const String defaultObjectId = 'updateUser';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -5470,7 +5470,7 @@ final class UpdateUser extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -5515,7 +5515,7 @@ final class UpdateAccessHash extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "access_hash": accessHash.toJson(),
 		};
 	}
@@ -5536,7 +5536,7 @@ final class UpdateAccessHash extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateAccessHash';
+  static const String defaultObjectId = 'updateAccessHash';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -5544,7 +5544,7 @@ final class UpdateAccessHash extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -5589,7 +5589,7 @@ final class UpdateBasicGroup extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "basic_group": basicGroup.toJson(),
 		};
 	}
@@ -5610,7 +5610,7 @@ final class UpdateBasicGroup extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateBasicGroup';
+  static const String defaultObjectId = 'updateBasicGroup';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -5618,7 +5618,7 @@ final class UpdateBasicGroup extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -5663,7 +5663,7 @@ final class UpdateSupergroup extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "supergroup": supergroup.toJson(),
 		};
 	}
@@ -5684,7 +5684,7 @@ final class UpdateSupergroup extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateSupergroup';
+  static const String defaultObjectId = 'updateSupergroup';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -5692,7 +5692,7 @@ final class UpdateSupergroup extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -5737,7 +5737,7 @@ final class UpdateSecretChat extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "secret_chat": secretChat.toJson(),
 		};
 	}
@@ -5758,7 +5758,7 @@ final class UpdateSecretChat extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateSecretChat';
+  static const String defaultObjectId = 'updateSecretChat';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -5766,7 +5766,7 @@ final class UpdateSecretChat extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -5818,7 +5818,7 @@ final class UpdateUserFullInfo extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "user_id": userId,
       "user_full_info": userFullInfo.toJson(),
 		};
@@ -5843,7 +5843,7 @@ final class UpdateUserFullInfo extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateUserFullInfo';
+  static const String defaultObjectId = 'updateUserFullInfo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -5851,7 +5851,7 @@ final class UpdateUserFullInfo extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -5903,7 +5903,7 @@ final class UpdateBasicGroupFullInfo extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "basic_group_id": basicGroupId,
       "basic_group_full_info": basicGroupFullInfo.toJson(),
 		};
@@ -5928,7 +5928,7 @@ final class UpdateBasicGroupFullInfo extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateBasicGroupFullInfo';
+  static const String defaultObjectId = 'updateBasicGroupFullInfo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -5936,7 +5936,7 @@ final class UpdateBasicGroupFullInfo extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -5988,7 +5988,7 @@ final class UpdateSupergroupFullInfo extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "supergroup_id": supergroupId,
       "supergroup_full_info": supergroupFullInfo.toJson(),
 		};
@@ -6013,7 +6013,7 @@ final class UpdateSupergroupFullInfo extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateSupergroupFullInfo';
+  static const String defaultObjectId = 'updateSupergroupFullInfo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -6021,7 +6021,7 @@ final class UpdateSupergroupFullInfo extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -6073,7 +6073,7 @@ final class UpdateServiceNotification extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "type": type,
       "content": content.toJson(),
 		};
@@ -6098,7 +6098,7 @@ final class UpdateServiceNotification extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateServiceNotification';
+  static const String defaultObjectId = 'updateServiceNotification';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -6106,7 +6106,7 @@ final class UpdateServiceNotification extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -6151,7 +6151,7 @@ final class UpdateFile extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "file": file.toJson(),
 		};
 	}
@@ -6172,7 +6172,7 @@ final class UpdateFile extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateFile';
+  static const String defaultObjectId = 'updateFile';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -6180,7 +6180,7 @@ final class UpdateFile extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -6246,7 +6246,7 @@ final class UpdateFileGenerationStart extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "generation_id": generationId,
       "original_path": originalPath,
       "destination_path": destinationPath,
@@ -6279,7 +6279,7 @@ final class UpdateFileGenerationStart extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateFileGenerationStart';
+  static const String defaultObjectId = 'updateFileGenerationStart';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -6287,7 +6287,7 @@ final class UpdateFileGenerationStart extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -6332,7 +6332,7 @@ final class UpdateFileGenerationStop extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "generation_id": generationId,
 		};
 	}
@@ -6353,7 +6353,7 @@ final class UpdateFileGenerationStop extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateFileGenerationStop';
+  static const String defaultObjectId = 'updateFileGenerationStop';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -6361,7 +6361,7 @@ final class UpdateFileGenerationStop extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -6420,7 +6420,7 @@ final class UpdateFileDownloads extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "total_size": totalSize,
       "total_count": totalCount,
       "downloaded_size": downloadedSize,
@@ -6449,7 +6449,7 @@ final class UpdateFileDownloads extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateFileDownloads';
+  static const String defaultObjectId = 'updateFileDownloads';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -6457,7 +6457,7 @@ final class UpdateFileDownloads extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -6509,7 +6509,7 @@ final class UpdateFileAddedToDownloads extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "file_download": fileDownload.toJson(),
       "counts": counts.toJson(),
 		};
@@ -6534,7 +6534,7 @@ final class UpdateFileAddedToDownloads extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateFileAddedToDownloads';
+  static const String defaultObjectId = 'updateFileAddedToDownloads';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -6542,7 +6542,7 @@ final class UpdateFileAddedToDownloads extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -6608,7 +6608,7 @@ final class UpdateFileDownload extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "file_id": fileId,
       "complete_date": completeDate,
       "is_paused": isPaused,
@@ -6641,7 +6641,7 @@ final class UpdateFileDownload extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateFileDownload';
+  static const String defaultObjectId = 'updateFileDownload';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -6649,7 +6649,7 @@ final class UpdateFileDownload extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -6701,7 +6701,7 @@ final class UpdateFileRemovedFromDownloads extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "file_id": fileId,
       "counts": counts.toJson(),
 		};
@@ -6726,7 +6726,7 @@ final class UpdateFileRemovedFromDownloads extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateFileRemovedFromDownloads';
+  static const String defaultObjectId = 'updateFileRemovedFromDownloads';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -6734,7 +6734,7 @@ final class UpdateFileRemovedFromDownloads extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -6779,7 +6779,7 @@ final class UpdateCall extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "call": call.toJson(),
 		};
 	}
@@ -6800,7 +6800,7 @@ final class UpdateCall extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateCall';
+  static const String defaultObjectId = 'updateCall';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -6808,7 +6808,7 @@ final class UpdateCall extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -6853,7 +6853,7 @@ final class UpdateGroupCall extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "group_call": groupCall.toJson(),
 		};
 	}
@@ -6874,7 +6874,7 @@ final class UpdateGroupCall extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateGroupCall';
+  static const String defaultObjectId = 'updateGroupCall';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -6882,7 +6882,7 @@ final class UpdateGroupCall extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -6934,7 +6934,7 @@ final class UpdateGroupCallParticipant extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "group_call_id": groupCallId,
       "participant": participant.toJson(),
 		};
@@ -6959,7 +6959,7 @@ final class UpdateGroupCallParticipant extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateGroupCallParticipant';
+  static const String defaultObjectId = 'updateGroupCallParticipant';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -6967,7 +6967,7 @@ final class UpdateGroupCallParticipant extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -7019,7 +7019,7 @@ final class UpdateNewCallSignalingData extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "call_id": callId,
       "data": data,
 		};
@@ -7044,7 +7044,7 @@ final class UpdateNewCallSignalingData extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateNewCallSignalingData';
+  static const String defaultObjectId = 'updateNewCallSignalingData';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -7052,7 +7052,7 @@ final class UpdateNewCallSignalingData extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -7104,7 +7104,7 @@ final class UpdateUserPrivacySettingRules extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "setting": setting.toJson(),
       "rules": rules.toJson(),
 		};
@@ -7129,7 +7129,7 @@ final class UpdateUserPrivacySettingRules extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateUserPrivacySettingRules';
+  static const String defaultObjectId = 'updateUserPrivacySettingRules';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -7137,7 +7137,7 @@ final class UpdateUserPrivacySettingRules extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -7196,7 +7196,7 @@ final class UpdateUnreadMessageCount extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_list": chatList.toJson(),
       "unread_count": unreadCount,
       "unread_unmuted_count": unreadUnmutedCount,
@@ -7225,7 +7225,7 @@ final class UpdateUnreadMessageCount extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateUnreadMessageCount';
+  static const String defaultObjectId = 'updateUnreadMessageCount';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -7233,7 +7233,7 @@ final class UpdateUnreadMessageCount extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -7313,7 +7313,7 @@ final class UpdateUnreadChatCount extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_list": chatList.toJson(),
       "total_count": totalCount,
       "unread_count": unreadCount,
@@ -7354,7 +7354,7 @@ final class UpdateUnreadChatCount extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateUnreadChatCount';
+  static const String defaultObjectId = 'updateUnreadChatCount';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -7362,7 +7362,7 @@ final class UpdateUnreadChatCount extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -7407,7 +7407,7 @@ final class UpdateStory extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "story": story.toJson(),
 		};
 	}
@@ -7428,7 +7428,7 @@ final class UpdateStory extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateStory';
+  static const String defaultObjectId = 'updateStory';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -7436,7 +7436,7 @@ final class UpdateStory extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -7488,7 +7488,7 @@ final class UpdateStoryDeleted extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "story_sender_chat_id": storySenderChatId,
       "story_id": storyId,
 		};
@@ -7513,7 +7513,7 @@ final class UpdateStoryDeleted extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateStoryDeleted';
+  static const String defaultObjectId = 'updateStoryDeleted';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -7521,7 +7521,7 @@ final class UpdateStoryDeleted extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -7573,7 +7573,7 @@ final class UpdateStorySendSucceeded extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "story": story.toJson(),
       "old_story_id": oldStoryId,
 		};
@@ -7598,7 +7598,7 @@ final class UpdateStorySendSucceeded extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateStorySendSucceeded';
+  static const String defaultObjectId = 'updateStorySendSucceeded';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -7606,7 +7606,7 @@ final class UpdateStorySendSucceeded extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -7665,7 +7665,7 @@ final class UpdateStorySendFailed extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "story": story.toJson(),
       "error": error.toJson(),
       "error_type": errorType?.toJson(),
@@ -7694,7 +7694,7 @@ final class UpdateStorySendFailed extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateStorySendFailed';
+  static const String defaultObjectId = 'updateStorySendFailed';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -7702,7 +7702,7 @@ final class UpdateStorySendFailed extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -7747,7 +7747,7 @@ final class UpdateChatActiveStories extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "active_stories": activeStories.toJson(),
 		};
 	}
@@ -7768,7 +7768,7 @@ final class UpdateChatActiveStories extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatActiveStories';
+  static const String defaultObjectId = 'updateChatActiveStories';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -7776,7 +7776,7 @@ final class UpdateChatActiveStories extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -7828,7 +7828,7 @@ final class UpdateStoryListChatCount extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "story_list": storyList.toJson(),
       "chat_count": chatCount,
 		};
@@ -7853,7 +7853,7 @@ final class UpdateStoryListChatCount extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateStoryListChatCount';
+  static const String defaultObjectId = 'updateStoryListChatCount';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -7861,7 +7861,7 @@ final class UpdateStoryListChatCount extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -7913,7 +7913,7 @@ final class UpdateStoryStealthMode extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "active_until_date": activeUntilDate,
       "cooldown_until_date": cooldownUntilDate,
 		};
@@ -7938,7 +7938,7 @@ final class UpdateStoryStealthMode extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateStoryStealthMode';
+  static const String defaultObjectId = 'updateStoryStealthMode';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -7946,7 +7946,7 @@ final class UpdateStoryStealthMode extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -7998,7 +7998,7 @@ final class UpdateOption extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "name": name,
       "value": value.toJson(),
 		};
@@ -8023,7 +8023,7 @@ final class UpdateOption extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateOption';
+  static const String defaultObjectId = 'updateOption';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -8031,7 +8031,7 @@ final class UpdateOption extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -8076,7 +8076,7 @@ final class UpdateStickerSet extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "sticker_set": stickerSet.toJson(),
 		};
 	}
@@ -8097,7 +8097,7 @@ final class UpdateStickerSet extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateStickerSet';
+  static const String defaultObjectId = 'updateStickerSet';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -8105,7 +8105,7 @@ final class UpdateStickerSet extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -8157,7 +8157,7 @@ final class UpdateInstalledStickerSets extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "sticker_type": stickerType.toJson(),
       "sticker_set_ids": stickerSetIds.map((i) => i).toList(),
 		};
@@ -8182,7 +8182,7 @@ final class UpdateInstalledStickerSets extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateInstalledStickerSets';
+  static const String defaultObjectId = 'updateInstalledStickerSets';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -8190,7 +8190,7 @@ final class UpdateInstalledStickerSets extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -8242,7 +8242,7 @@ final class UpdateTrendingStickerSets extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "sticker_type": stickerType.toJson(),
       "sticker_sets": stickerSets.toJson(),
 		};
@@ -8267,7 +8267,7 @@ final class UpdateTrendingStickerSets extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateTrendingStickerSets';
+  static const String defaultObjectId = 'updateTrendingStickerSets';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -8275,7 +8275,7 @@ final class UpdateTrendingStickerSets extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -8327,7 +8327,7 @@ final class UpdateRecentStickers extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "is_attached": isAttached,
       "sticker_ids": stickerIds.map((i) => i).toList(),
 		};
@@ -8352,7 +8352,7 @@ final class UpdateRecentStickers extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateRecentStickers';
+  static const String defaultObjectId = 'updateRecentStickers';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -8360,7 +8360,7 @@ final class UpdateRecentStickers extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -8405,7 +8405,7 @@ final class UpdateFavoriteStickers extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "sticker_ids": stickerIds.map((i) => i).toList(),
 		};
 	}
@@ -8426,7 +8426,7 @@ final class UpdateFavoriteStickers extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateFavoriteStickers';
+  static const String defaultObjectId = 'updateFavoriteStickers';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -8434,7 +8434,7 @@ final class UpdateFavoriteStickers extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -8479,7 +8479,7 @@ final class UpdateSavedAnimations extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "animation_ids": animationIds.map((i) => i).toList(),
 		};
 	}
@@ -8500,7 +8500,7 @@ final class UpdateSavedAnimations extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateSavedAnimations';
+  static const String defaultObjectId = 'updateSavedAnimations';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -8508,7 +8508,7 @@ final class UpdateSavedAnimations extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -8553,7 +8553,7 @@ final class UpdateSavedNotificationSounds extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "notification_sound_ids": notificationSoundIds.map((i) => i).toList(),
 		};
 	}
@@ -8574,7 +8574,7 @@ final class UpdateSavedNotificationSounds extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateSavedNotificationSounds';
+  static const String defaultObjectId = 'updateSavedNotificationSounds';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -8582,7 +8582,7 @@ final class UpdateSavedNotificationSounds extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -8634,7 +8634,7 @@ final class UpdateDefaultBackground extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "for_dark_theme": forDarkTheme,
       "background": background?.toJson(),
 		};
@@ -8659,7 +8659,7 @@ final class UpdateDefaultBackground extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateDefaultBackground';
+  static const String defaultObjectId = 'updateDefaultBackground';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -8667,7 +8667,7 @@ final class UpdateDefaultBackground extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -8712,7 +8712,7 @@ final class UpdateChatThemes extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_themes": chatThemes.map((i) => i.toJson()).toList(),
 		};
 	}
@@ -8733,7 +8733,7 @@ final class UpdateChatThemes extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatThemes';
+  static const String defaultObjectId = 'updateChatThemes';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -8741,7 +8741,7 @@ final class UpdateChatThemes extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -8793,7 +8793,7 @@ final class UpdateAccentColors extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "colors": colors.map((i) => i.toJson()).toList(),
       "available_accent_color_ids": availableAccentColorIds.map((i) => i).toList(),
 		};
@@ -8818,7 +8818,7 @@ final class UpdateAccentColors extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateAccentColors';
+  static const String defaultObjectId = 'updateAccentColors';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -8826,7 +8826,7 @@ final class UpdateAccentColors extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -8878,7 +8878,7 @@ final class UpdateProfileAccentColors extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "colors": colors.map((i) => i.toJson()).toList(),
       "available_accent_color_ids": availableAccentColorIds.map((i) => i).toList(),
 		};
@@ -8903,7 +8903,7 @@ final class UpdateProfileAccentColors extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateProfileAccentColors';
+  static const String defaultObjectId = 'updateProfileAccentColors';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -8911,7 +8911,7 @@ final class UpdateProfileAccentColors extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -8970,7 +8970,7 @@ final class UpdateLanguagePackStrings extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "localization_target": localizationTarget,
       "language_pack_id": languagePackId,
       "strings": strings.map((i) => i.toJson()).toList(),
@@ -8999,7 +8999,7 @@ final class UpdateLanguagePackStrings extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateLanguagePackStrings';
+  static const String defaultObjectId = 'updateLanguagePackStrings';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -9007,7 +9007,7 @@ final class UpdateLanguagePackStrings extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -9052,7 +9052,7 @@ final class UpdateConnectionState extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "state": state.toJson(),
 		};
 	}
@@ -9073,7 +9073,7 @@ final class UpdateConnectionState extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateConnectionState';
+  static const String defaultObjectId = 'updateConnectionState';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -9081,7 +9081,7 @@ final class UpdateConnectionState extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -9133,7 +9133,7 @@ final class UpdateTermsOfService extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "terms_of_service_id": termsOfServiceId,
       "terms_of_service": termsOfService.toJson(),
 		};
@@ -9158,7 +9158,7 @@ final class UpdateTermsOfService extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateTermsOfService';
+  static const String defaultObjectId = 'updateTermsOfService';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -9166,7 +9166,7 @@ final class UpdateTermsOfService extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -9211,7 +9211,7 @@ final class UpdateUsersNearby extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "users_nearby": usersNearby.map((i) => i.toJson()).toList(),
 		};
 	}
@@ -9232,7 +9232,7 @@ final class UpdateUsersNearby extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateUsersNearby';
+  static const String defaultObjectId = 'updateUsersNearby';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -9240,7 +9240,7 @@ final class UpdateUsersNearby extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -9285,7 +9285,7 @@ final class UpdateUnconfirmedSession extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "session": session?.toJson(),
 		};
 	}
@@ -9306,7 +9306,7 @@ final class UpdateUnconfirmedSession extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateUnconfirmedSession';
+  static const String defaultObjectId = 'updateUnconfirmedSession';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -9314,7 +9314,7 @@ final class UpdateUnconfirmedSession extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -9359,7 +9359,7 @@ final class UpdateAttachmentMenuBots extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "bots": bots.map((i) => i.toJson()).toList(),
 		};
 	}
@@ -9380,7 +9380,7 @@ final class UpdateAttachmentMenuBots extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateAttachmentMenuBots';
+  static const String defaultObjectId = 'updateAttachmentMenuBots';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -9388,7 +9388,7 @@ final class UpdateAttachmentMenuBots extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -9433,7 +9433,7 @@ final class UpdateWebAppMessageSent extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "web_app_launch_id": webAppLaunchId,
 		};
 	}
@@ -9454,7 +9454,7 @@ final class UpdateWebAppMessageSent extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateWebAppMessageSent';
+  static const String defaultObjectId = 'updateWebAppMessageSent';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -9462,7 +9462,7 @@ final class UpdateWebAppMessageSent extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -9507,7 +9507,7 @@ final class UpdateActiveEmojiReactions extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "emojis": emojis.map((i) => i).toList(),
 		};
 	}
@@ -9528,7 +9528,7 @@ final class UpdateActiveEmojiReactions extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateActiveEmojiReactions';
+  static const String defaultObjectId = 'updateActiveEmojiReactions';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -9536,7 +9536,7 @@ final class UpdateActiveEmojiReactions extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -9581,7 +9581,7 @@ final class UpdateDefaultReactionType extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "reaction_type": reactionType.toJson(),
 		};
 	}
@@ -9602,7 +9602,7 @@ final class UpdateDefaultReactionType extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateDefaultReactionType';
+  static const String defaultObjectId = 'updateDefaultReactionType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -9610,7 +9610,7 @@ final class UpdateDefaultReactionType extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -9662,7 +9662,7 @@ final class UpdateSavedMessagesTags extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "saved_messages_topic_id": savedMessagesTopicId,
       "tags": tags.toJson(),
 		};
@@ -9687,7 +9687,7 @@ final class UpdateSavedMessagesTags extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateSavedMessagesTags';
+  static const String defaultObjectId = 'updateSavedMessagesTags';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -9695,7 +9695,7 @@ final class UpdateSavedMessagesTags extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -9761,7 +9761,7 @@ final class UpdateSpeechRecognitionTrial extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "max_media_duration": maxMediaDuration,
       "weekly_count": weeklyCount,
       "left_count": leftCount,
@@ -9794,7 +9794,7 @@ final class UpdateSpeechRecognitionTrial extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateSpeechRecognitionTrial';
+  static const String defaultObjectId = 'updateSpeechRecognitionTrial';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -9802,7 +9802,7 @@ final class UpdateSpeechRecognitionTrial extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -9847,7 +9847,7 @@ final class UpdateDiceEmojis extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "emojis": emojis.map((i) => i).toList(),
 		};
 	}
@@ -9868,7 +9868,7 @@ final class UpdateDiceEmojis extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateDiceEmojis';
+  static const String defaultObjectId = 'updateDiceEmojis';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -9876,7 +9876,7 @@ final class UpdateDiceEmojis extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -9935,7 +9935,7 @@ final class UpdateAnimatedEmojiMessageClicked extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "sticker": sticker.toJson(),
@@ -9964,7 +9964,7 @@ final class UpdateAnimatedEmojiMessageClicked extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateAnimatedEmojiMessageClicked';
+  static const String defaultObjectId = 'updateAnimatedEmojiMessageClicked';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -9972,7 +9972,7 @@ final class UpdateAnimatedEmojiMessageClicked extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -10024,7 +10024,7 @@ final class UpdateAnimationSearchParameters extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "provider": provider,
       "emojis": emojis.map((i) => i).toList(),
 		};
@@ -10049,7 +10049,7 @@ final class UpdateAnimationSearchParameters extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateAnimationSearchParameters';
+  static const String defaultObjectId = 'updateAnimationSearchParameters';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -10057,7 +10057,7 @@ final class UpdateAnimationSearchParameters extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -10109,7 +10109,7 @@ final class UpdateSuggestedActions extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "added_actions": addedActions.map((i) => i.toJson()).toList(),
       "removed_actions": removedActions.map((i) => i.toJson()).toList(),
 		};
@@ -10134,7 +10134,7 @@ final class UpdateSuggestedActions extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateSuggestedActions';
+  static const String defaultObjectId = 'updateSuggestedActions';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -10142,7 +10142,7 @@ final class UpdateSuggestedActions extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -10194,7 +10194,7 @@ final class UpdateAddChatMembersPrivacyForbidden extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "user_ids": userIds.map((i) => i).toList(),
 		};
@@ -10219,7 +10219,7 @@ final class UpdateAddChatMembersPrivacyForbidden extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateAddChatMembersPrivacyForbidden';
+  static const String defaultObjectId = 'updateAddChatMembersPrivacyForbidden';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -10227,7 +10227,7 @@ final class UpdateAddChatMembersPrivacyForbidden extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -10279,7 +10279,7 @@ final class UpdateAutosaveSettings extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "scope": scope.toJson(),
       "settings": settings?.toJson(),
 		};
@@ -10304,7 +10304,7 @@ final class UpdateAutosaveSettings extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateAutosaveSettings';
+  static const String defaultObjectId = 'updateAutosaveSettings';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -10312,7 +10312,7 @@ final class UpdateAutosaveSettings extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -10392,7 +10392,7 @@ final class UpdateNewInlineQuery extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "sender_user_id": senderUserId,
       "user_location": userLocation?.toJson(),
@@ -10433,7 +10433,7 @@ final class UpdateNewInlineQuery extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateNewInlineQuery';
+  static const String defaultObjectId = 'updateNewInlineQuery';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -10441,7 +10441,7 @@ final class UpdateNewInlineQuery extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -10514,7 +10514,7 @@ final class UpdateNewChosenInlineResult extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "sender_user_id": senderUserId,
       "user_location": userLocation?.toJson(),
       "query": query,
@@ -10551,7 +10551,7 @@ final class UpdateNewChosenInlineResult extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateNewChosenInlineResult';
+  static const String defaultObjectId = 'updateNewChosenInlineResult';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -10559,7 +10559,7 @@ final class UpdateNewChosenInlineResult extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -10639,7 +10639,7 @@ final class UpdateNewCallbackQuery extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "sender_user_id": senderUserId,
       "chat_id": chatId,
@@ -10680,7 +10680,7 @@ final class UpdateNewCallbackQuery extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateNewCallbackQuery';
+  static const String defaultObjectId = 'updateNewCallbackQuery';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -10688,7 +10688,7 @@ final class UpdateNewCallbackQuery extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -10761,7 +10761,7 @@ final class UpdateNewInlineCallbackQuery extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "sender_user_id": senderUserId,
       "inline_message_id": inlineMessageId,
@@ -10798,7 +10798,7 @@ final class UpdateNewInlineCallbackQuery extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateNewInlineCallbackQuery';
+  static const String defaultObjectId = 'updateNewInlineCallbackQuery';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -10806,7 +10806,7 @@ final class UpdateNewInlineCallbackQuery extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -10872,7 +10872,7 @@ final class UpdateNewShippingQuery extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "sender_user_id": senderUserId,
       "invoice_payload": invoicePayload,
@@ -10905,7 +10905,7 @@ final class UpdateNewShippingQuery extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateNewShippingQuery';
+  static const String defaultObjectId = 'updateNewShippingQuery';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -10913,7 +10913,7 @@ final class UpdateNewShippingQuery extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -11000,7 +11000,7 @@ final class UpdateNewPreCheckoutQuery extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "sender_user_id": senderUserId,
       "currency": currency,
@@ -11045,7 +11045,7 @@ final class UpdateNewPreCheckoutQuery extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateNewPreCheckoutQuery';
+  static const String defaultObjectId = 'updateNewPreCheckoutQuery';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -11053,7 +11053,7 @@ final class UpdateNewPreCheckoutQuery extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -11098,7 +11098,7 @@ final class UpdateNewCustomEvent extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "event": event,
 		};
 	}
@@ -11119,7 +11119,7 @@ final class UpdateNewCustomEvent extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateNewCustomEvent';
+  static const String defaultObjectId = 'updateNewCustomEvent';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -11127,7 +11127,7 @@ final class UpdateNewCustomEvent extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -11186,7 +11186,7 @@ final class UpdateNewCustomQuery extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "data": data,
       "timeout": timeout,
@@ -11215,7 +11215,7 @@ final class UpdateNewCustomQuery extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateNewCustomQuery';
+  static const String defaultObjectId = 'updateNewCustomQuery';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -11223,7 +11223,7 @@ final class UpdateNewCustomQuery extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -11268,7 +11268,7 @@ final class UpdatePoll extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "poll": poll.toJson(),
 		};
 	}
@@ -11289,7 +11289,7 @@ final class UpdatePoll extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updatePoll';
+  static const String defaultObjectId = 'updatePoll';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -11297,7 +11297,7 @@ final class UpdatePoll extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -11356,7 +11356,7 @@ final class UpdatePollAnswer extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "poll_id": pollId,
       "voter_id": voterId.toJson(),
       "option_ids": optionIds.map((i) => i).toList(),
@@ -11385,7 +11385,7 @@ final class UpdatePollAnswer extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updatePollAnswer';
+  static const String defaultObjectId = 'updatePollAnswer';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -11393,7 +11393,7 @@ final class UpdatePollAnswer extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -11480,7 +11480,7 @@ final class UpdateChatMember extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "actor_user_id": actorUserId,
       "date": date,
@@ -11525,7 +11525,7 @@ final class UpdateChatMember extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatMember';
+  static const String defaultObjectId = 'updateChatMember';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -11533,7 +11533,7 @@ final class UpdateChatMember extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -11599,7 +11599,7 @@ final class UpdateNewChatJoinRequest extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "request": request.toJson(),
       "user_chat_id": userChatId,
@@ -11632,7 +11632,7 @@ final class UpdateNewChatJoinRequest extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateNewChatJoinRequest';
+  static const String defaultObjectId = 'updateNewChatJoinRequest';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -11640,7 +11640,7 @@ final class UpdateNewChatJoinRequest extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -11692,7 +11692,7 @@ final class UpdateChatBoost extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "boost": boost.toJson(),
 		};
@@ -11717,7 +11717,7 @@ final class UpdateChatBoost extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateChatBoost';
+  static const String defaultObjectId = 'updateChatBoost';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -11725,7 +11725,7 @@ final class UpdateChatBoost extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -11805,7 +11805,7 @@ final class UpdateMessageReaction extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "actor_id": actorId.toJson(),
@@ -11846,7 +11846,7 @@ final class UpdateMessageReaction extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateMessageReaction';
+  static const String defaultObjectId = 'updateMessageReaction';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -11854,7 +11854,7 @@ final class UpdateMessageReaction extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -11920,7 +11920,7 @@ final class UpdateMessageReactions extends Update {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "date": date,
@@ -11953,7 +11953,7 @@ final class UpdateMessageReactions extends Update {
   );
 
   /// TDLib object type
-  static const String objectType = 'updateMessageReactions';
+  static const String defaultObjectId = 'updateMessageReactions';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -11961,5 +11961,5 @@ final class UpdateMessageReactions extends Update {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

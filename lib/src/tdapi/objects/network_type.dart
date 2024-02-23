@@ -18,15 +18,15 @@ sealed class NetworkType extends TdObject {
   /// * [NetworkTypeOther]
   factory NetworkType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case NetworkTypeNone.objectType:
+      case NetworkTypeNone.defaultObjectId:
         return NetworkTypeNone.fromJson(json);
-      case NetworkTypeMobile.objectType:
+      case NetworkTypeMobile.defaultObjectId:
         return NetworkTypeMobile.fromJson(json);
-      case NetworkTypeMobileRoaming.objectType:
+      case NetworkTypeMobileRoaming.defaultObjectId:
         return NetworkTypeMobileRoaming.fromJson(json);
-      case NetworkTypeWiFi.objectType:
+      case NetworkTypeWiFi.defaultObjectId:
         return NetworkTypeWiFi.fromJson(json);
-      case NetworkTypeOther.objectType:
+      case NetworkTypeOther.defaultObjectId:
         return NetworkTypeOther.fromJson(json);
       default:
         throw FormatException(
@@ -44,7 +44,7 @@ sealed class NetworkType extends TdObject {
   NetworkType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'networkType';
+  static const String defaultObjectId = 'networkType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -52,7 +52,7 @@ sealed class NetworkType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -73,7 +73,7 @@ final class NetworkTypeNone extends NetworkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -82,7 +82,7 @@ final class NetworkTypeNone extends NetworkType {
   NetworkTypeNone copyWith() => const NetworkTypeNone();
 
   /// TDLib object type
-  static const String objectType = 'networkTypeNone';
+  static const String defaultObjectId = 'networkTypeNone';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -90,7 +90,7 @@ final class NetworkTypeNone extends NetworkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -111,7 +111,7 @@ final class NetworkTypeMobile extends NetworkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -120,7 +120,7 @@ final class NetworkTypeMobile extends NetworkType {
   NetworkTypeMobile copyWith() => const NetworkTypeMobile();
 
   /// TDLib object type
-  static const String objectType = 'networkTypeMobile';
+  static const String defaultObjectId = 'networkTypeMobile';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -128,7 +128,7 @@ final class NetworkTypeMobile extends NetworkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -149,7 +149,7 @@ final class NetworkTypeMobileRoaming extends NetworkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -158,7 +158,7 @@ final class NetworkTypeMobileRoaming extends NetworkType {
   NetworkTypeMobileRoaming copyWith() => const NetworkTypeMobileRoaming();
 
   /// TDLib object type
-  static const String objectType = 'networkTypeMobileRoaming';
+  static const String defaultObjectId = 'networkTypeMobileRoaming';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -166,7 +166,7 @@ final class NetworkTypeMobileRoaming extends NetworkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -187,7 +187,7 @@ final class NetworkTypeWiFi extends NetworkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -196,7 +196,7 @@ final class NetworkTypeWiFi extends NetworkType {
   NetworkTypeWiFi copyWith() => const NetworkTypeWiFi();
 
   /// TDLib object type
-  static const String objectType = 'networkTypeWiFi';
+  static const String defaultObjectId = 'networkTypeWiFi';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -204,7 +204,7 @@ final class NetworkTypeWiFi extends NetworkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -225,7 +225,7 @@ final class NetworkTypeOther extends NetworkType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -234,7 +234,7 @@ final class NetworkTypeOther extends NetworkType {
   NetworkTypeOther copyWith() => const NetworkTypeOther();
 
   /// TDLib object type
-  static const String objectType = 'networkTypeOther';
+  static const String defaultObjectId = 'networkTypeOther';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -242,5 +242,5 @@ final class NetworkTypeOther extends NetworkType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

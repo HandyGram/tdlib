@@ -15,9 +15,9 @@ sealed class EmailAddressResetState extends TdObject {
   /// * [EmailAddressResetStatePending]
   factory EmailAddressResetState.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case EmailAddressResetStateAvailable.objectType:
+      case EmailAddressResetStateAvailable.defaultObjectId:
         return EmailAddressResetStateAvailable.fromJson(json);
-      case EmailAddressResetStatePending.objectType:
+      case EmailAddressResetStatePending.defaultObjectId:
         return EmailAddressResetStatePending.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class EmailAddressResetState extends TdObject {
   EmailAddressResetState copyWith();
 
   /// TDLib object type
-  static const String objectType = 'emailAddressResetState';
+  static const String defaultObjectId = 'emailAddressResetState';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class EmailAddressResetState extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -76,7 +76,7 @@ final class EmailAddressResetStateAvailable extends EmailAddressResetState {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "wait_period": waitPeriod,
 		};
 	}
@@ -93,7 +93,7 @@ final class EmailAddressResetStateAvailable extends EmailAddressResetState {
   );
 
   /// TDLib object type
-  static const String objectType = 'emailAddressResetStateAvailable';
+  static const String defaultObjectId = 'emailAddressResetStateAvailable';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -101,7 +101,7 @@ final class EmailAddressResetStateAvailable extends EmailAddressResetState {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -134,7 +134,7 @@ final class EmailAddressResetStatePending extends EmailAddressResetState {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "reset_in": resetIn,
 		};
 	}
@@ -151,7 +151,7 @@ final class EmailAddressResetStatePending extends EmailAddressResetState {
   );
 
   /// TDLib object type
-  static const String objectType = 'emailAddressResetStatePending';
+  static const String defaultObjectId = 'emailAddressResetStatePending';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -159,5 +159,5 @@ final class EmailAddressResetStatePending extends EmailAddressResetState {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

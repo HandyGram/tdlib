@@ -15,7 +15,7 @@ CLASS_MODIFIER class CLASS_NAME extends PARENT {
   CLASS_NAME copyWith(COPY_FIELDS)COPY_RETURN;
 
   /// TDLib object type
-  static const String objectType = 'ID';
+  static const String defaultObjectId = 'ID';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -23,5 +23,5 @@ CLASS_MODIFIER class CLASS_NAME extends PARENT {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

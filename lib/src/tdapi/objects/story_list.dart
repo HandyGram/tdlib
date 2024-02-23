@@ -15,9 +15,9 @@ sealed class StoryList extends TdObject {
   /// * [StoryListArchive]
   factory StoryList.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case StoryListMain.objectType:
+      case StoryListMain.defaultObjectId:
         return StoryListMain.fromJson(json);
-      case StoryListArchive.objectType:
+      case StoryListArchive.defaultObjectId:
         return StoryListArchive.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class StoryList extends TdObject {
   StoryList copyWith();
 
   /// TDLib object type
-  static const String objectType = 'storyList';
+  static const String defaultObjectId = 'storyList';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class StoryList extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -64,7 +64,7 @@ final class StoryListMain extends StoryList {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -73,7 +73,7 @@ final class StoryListMain extends StoryList {
   StoryListMain copyWith() => const StoryListMain();
 
   /// TDLib object type
-  static const String objectType = 'storyListMain';
+  static const String defaultObjectId = 'storyListMain';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -81,7 +81,7 @@ final class StoryListMain extends StoryList {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -102,7 +102,7 @@ final class StoryListArchive extends StoryList {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -111,7 +111,7 @@ final class StoryListArchive extends StoryList {
   StoryListArchive copyWith() => const StoryListArchive();
 
   /// TDLib object type
-  static const String objectType = 'storyListArchive';
+  static const String defaultObjectId = 'storyListArchive';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -119,5 +119,5 @@ final class StoryListArchive extends StoryList {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

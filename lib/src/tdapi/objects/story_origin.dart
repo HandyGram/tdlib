@@ -15,9 +15,9 @@ sealed class StoryOrigin extends TdObject {
   /// * [StoryOriginHiddenUser]
   factory StoryOrigin.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case StoryOriginPublicStory.objectType:
+      case StoryOriginPublicStory.defaultObjectId:
         return StoryOriginPublicStory.fromJson(json);
-      case StoryOriginHiddenUser.objectType:
+      case StoryOriginHiddenUser.defaultObjectId:
         return StoryOriginHiddenUser.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class StoryOrigin extends TdObject {
   StoryOrigin copyWith();
 
   /// TDLib object type
-  static const String objectType = 'storyOrigin';
+  static const String defaultObjectId = 'storyOrigin';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class StoryOrigin extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -83,7 +83,7 @@ final class StoryOriginPublicStory extends StoryOrigin {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "story_id": storyId,
 		};
@@ -104,7 +104,7 @@ final class StoryOriginPublicStory extends StoryOrigin {
   );
 
   /// TDLib object type
-  static const String objectType = 'storyOriginPublicStory';
+  static const String defaultObjectId = 'storyOriginPublicStory';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -112,7 +112,7 @@ final class StoryOriginPublicStory extends StoryOrigin {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -145,7 +145,7 @@ final class StoryOriginHiddenUser extends StoryOrigin {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "sender_name": senderName,
 		};
 	}
@@ -162,7 +162,7 @@ final class StoryOriginHiddenUser extends StoryOrigin {
   );
 
   /// TDLib object type
-  static const String objectType = 'storyOriginHiddenUser';
+  static const String defaultObjectId = 'storyOriginHiddenUser';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -170,5 +170,5 @@ final class StoryOriginHiddenUser extends StoryOrigin {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

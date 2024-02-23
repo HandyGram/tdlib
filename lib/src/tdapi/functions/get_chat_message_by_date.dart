@@ -33,7 +33,7 @@ final class GetChatMessageByDate extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "date": date,
       "@extra": extra,
@@ -54,7 +54,7 @@ final class GetChatMessageByDate extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'getChatMessageByDate';
+  static const String defaultObjectId = 'getChatMessageByDate';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -62,5 +62,5 @@ final class GetChatMessageByDate extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -25,29 +25,29 @@ sealed class AuthorizationState extends TdObject {
   /// * [AuthorizationStateClosed]
   factory AuthorizationState.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case AuthorizationStateWaitTdlibParameters.objectType:
+      case AuthorizationStateWaitTdlibParameters.defaultObjectId:
         return AuthorizationStateWaitTdlibParameters.fromJson(json);
-      case AuthorizationStateWaitPhoneNumber.objectType:
+      case AuthorizationStateWaitPhoneNumber.defaultObjectId:
         return AuthorizationStateWaitPhoneNumber.fromJson(json);
-      case AuthorizationStateWaitEmailAddress.objectType:
+      case AuthorizationStateWaitEmailAddress.defaultObjectId:
         return AuthorizationStateWaitEmailAddress.fromJson(json);
-      case AuthorizationStateWaitEmailCode.objectType:
+      case AuthorizationStateWaitEmailCode.defaultObjectId:
         return AuthorizationStateWaitEmailCode.fromJson(json);
-      case AuthorizationStateWaitCode.objectType:
+      case AuthorizationStateWaitCode.defaultObjectId:
         return AuthorizationStateWaitCode.fromJson(json);
-      case AuthorizationStateWaitOtherDeviceConfirmation.objectType:
+      case AuthorizationStateWaitOtherDeviceConfirmation.defaultObjectId:
         return AuthorizationStateWaitOtherDeviceConfirmation.fromJson(json);
-      case AuthorizationStateWaitRegistration.objectType:
+      case AuthorizationStateWaitRegistration.defaultObjectId:
         return AuthorizationStateWaitRegistration.fromJson(json);
-      case AuthorizationStateWaitPassword.objectType:
+      case AuthorizationStateWaitPassword.defaultObjectId:
         return AuthorizationStateWaitPassword.fromJson(json);
-      case AuthorizationStateReady.objectType:
+      case AuthorizationStateReady.defaultObjectId:
         return AuthorizationStateReady.fromJson(json);
-      case AuthorizationStateLoggingOut.objectType:
+      case AuthorizationStateLoggingOut.defaultObjectId:
         return AuthorizationStateLoggingOut.fromJson(json);
-      case AuthorizationStateClosing.objectType:
+      case AuthorizationStateClosing.defaultObjectId:
         return AuthorizationStateClosing.fromJson(json);
-      case AuthorizationStateClosed.objectType:
+      case AuthorizationStateClosed.defaultObjectId:
         return AuthorizationStateClosed.fromJson(json);
       default:
         throw FormatException(
@@ -65,7 +65,7 @@ sealed class AuthorizationState extends TdObject {
   AuthorizationState copyWith();
 
   /// TDLib object type
-  static const String objectType = 'authorizationState';
+  static const String defaultObjectId = 'authorizationState';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -73,7 +73,7 @@ sealed class AuthorizationState extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -109,7 +109,7 @@ final class AuthorizationStateWaitTdlibParameters extends AuthorizationState {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -124,7 +124,7 @@ final class AuthorizationStateWaitTdlibParameters extends AuthorizationState {
   );
 
   /// TDLib object type
-  static const String objectType = 'authorizationStateWaitTdlibParameters';
+  static const String defaultObjectId = 'authorizationStateWaitTdlibParameters';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -132,7 +132,7 @@ final class AuthorizationStateWaitTdlibParameters extends AuthorizationState {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -168,7 +168,7 @@ final class AuthorizationStateWaitPhoneNumber extends AuthorizationState {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -183,7 +183,7 @@ final class AuthorizationStateWaitPhoneNumber extends AuthorizationState {
   );
 
   /// TDLib object type
-  static const String objectType = 'authorizationStateWaitPhoneNumber';
+  static const String defaultObjectId = 'authorizationStateWaitPhoneNumber';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -191,7 +191,7 @@ final class AuthorizationStateWaitPhoneNumber extends AuthorizationState {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -243,7 +243,7 @@ final class AuthorizationStateWaitEmailAddress extends AuthorizationState {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "allow_apple_id": allowAppleId,
       "allow_google_id": allowGoogleId,
 		};
@@ -268,7 +268,7 @@ final class AuthorizationStateWaitEmailAddress extends AuthorizationState {
   );
 
   /// TDLib object type
-  static const String objectType = 'authorizationStateWaitEmailAddress';
+  static const String defaultObjectId = 'authorizationStateWaitEmailAddress';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -276,7 +276,7 @@ final class AuthorizationStateWaitEmailAddress extends AuthorizationState {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -342,7 +342,7 @@ final class AuthorizationStateWaitEmailCode extends AuthorizationState {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "allow_apple_id": allowAppleId,
       "allow_google_id": allowGoogleId,
       "code_info": codeInfo.toJson(),
@@ -375,7 +375,7 @@ final class AuthorizationStateWaitEmailCode extends AuthorizationState {
   );
 
   /// TDLib object type
-  static const String objectType = 'authorizationStateWaitEmailCode';
+  static const String defaultObjectId = 'authorizationStateWaitEmailCode';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -383,7 +383,7 @@ final class AuthorizationStateWaitEmailCode extends AuthorizationState {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -428,7 +428,7 @@ final class AuthorizationStateWaitCode extends AuthorizationState {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "code_info": codeInfo.toJson(),
 		};
 	}
@@ -449,7 +449,7 @@ final class AuthorizationStateWaitCode extends AuthorizationState {
   );
 
   /// TDLib object type
-  static const String objectType = 'authorizationStateWaitCode';
+  static const String defaultObjectId = 'authorizationStateWaitCode';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -457,7 +457,7 @@ final class AuthorizationStateWaitCode extends AuthorizationState {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -502,7 +502,7 @@ final class AuthorizationStateWaitOtherDeviceConfirmation extends AuthorizationS
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "link": link,
 		};
 	}
@@ -523,7 +523,7 @@ final class AuthorizationStateWaitOtherDeviceConfirmation extends AuthorizationS
   );
 
   /// TDLib object type
-  static const String objectType = 'authorizationStateWaitOtherDeviceConfirmation';
+  static const String defaultObjectId = 'authorizationStateWaitOtherDeviceConfirmation';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -531,7 +531,7 @@ final class AuthorizationStateWaitOtherDeviceConfirmation extends AuthorizationS
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -576,7 +576,7 @@ final class AuthorizationStateWaitRegistration extends AuthorizationState {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "terms_of_service": termsOfService.toJson(),
 		};
 	}
@@ -597,7 +597,7 @@ final class AuthorizationStateWaitRegistration extends AuthorizationState {
   );
 
   /// TDLib object type
-  static const String objectType = 'authorizationStateWaitRegistration';
+  static const String defaultObjectId = 'authorizationStateWaitRegistration';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -605,7 +605,7 @@ final class AuthorizationStateWaitRegistration extends AuthorizationState {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -671,7 +671,7 @@ final class AuthorizationStateWaitPassword extends AuthorizationState {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "password_hint": passwordHint,
       "has_recovery_email_address": hasRecoveryEmailAddress,
       "has_passport_data": hasPassportData,
@@ -704,7 +704,7 @@ final class AuthorizationStateWaitPassword extends AuthorizationState {
   );
 
   /// TDLib object type
-  static const String objectType = 'authorizationStateWaitPassword';
+  static const String defaultObjectId = 'authorizationStateWaitPassword';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -712,7 +712,7 @@ final class AuthorizationStateWaitPassword extends AuthorizationState {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -748,7 +748,7 @@ final class AuthorizationStateReady extends AuthorizationState {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -763,7 +763,7 @@ final class AuthorizationStateReady extends AuthorizationState {
   );
 
   /// TDLib object type
-  static const String objectType = 'authorizationStateReady';
+  static const String defaultObjectId = 'authorizationStateReady';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -771,7 +771,7 @@ final class AuthorizationStateReady extends AuthorizationState {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -807,7 +807,7 @@ final class AuthorizationStateLoggingOut extends AuthorizationState {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -822,7 +822,7 @@ final class AuthorizationStateLoggingOut extends AuthorizationState {
   );
 
   /// TDLib object type
-  static const String objectType = 'authorizationStateLoggingOut';
+  static const String defaultObjectId = 'authorizationStateLoggingOut';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -830,7 +830,7 @@ final class AuthorizationStateLoggingOut extends AuthorizationState {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -866,7 +866,7 @@ final class AuthorizationStateClosing extends AuthorizationState {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -881,7 +881,7 @@ final class AuthorizationStateClosing extends AuthorizationState {
   );
 
   /// TDLib object type
-  static const String objectType = 'authorizationStateClosing';
+  static const String defaultObjectId = 'authorizationStateClosing';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -889,7 +889,7 @@ final class AuthorizationStateClosing extends AuthorizationState {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -925,7 +925,7 @@ final class AuthorizationStateClosed extends AuthorizationState {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -940,7 +940,7 @@ final class AuthorizationStateClosed extends AuthorizationState {
   );
 
   /// TDLib object type
-  static const String objectType = 'authorizationStateClosed';
+  static const String defaultObjectId = 'authorizationStateClosed';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -948,5 +948,5 @@ final class AuthorizationStateClosed extends AuthorizationState {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

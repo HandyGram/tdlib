@@ -57,7 +57,7 @@ final class SendPaymentForm extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "input_invoice": inputInvoice.toJson(),
       "payment_form_id": paymentFormId,
       "order_info_id": orderInfoId,
@@ -94,7 +94,7 @@ final class SendPaymentForm extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'sendPaymentForm';
+  static const String defaultObjectId = 'sendPaymentForm';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -102,5 +102,5 @@ final class SendPaymentForm extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

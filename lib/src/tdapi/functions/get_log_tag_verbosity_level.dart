@@ -27,7 +27,7 @@ final class GetLogTagVerbosityLevel extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "tag": tag,
       "@extra": extra,
 		};
@@ -44,7 +44,7 @@ final class GetLogTagVerbosityLevel extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'getLogTagVerbosityLevel';
+  static const String defaultObjectId = 'getLogTagVerbosityLevel';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -52,5 +52,5 @@ final class GetLogTagVerbosityLevel extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

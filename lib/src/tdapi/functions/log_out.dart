@@ -19,7 +19,7 @@ final class LogOut extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "@extra": extra,
 		};
 	}
@@ -28,7 +28,7 @@ final class LogOut extends TdFunction {
   LogOut copyWith() => const LogOut();
 
   /// TDLib object type
-  static const String objectType = 'logOut';
+  static const String defaultObjectId = 'logOut';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -36,5 +36,5 @@ final class LogOut extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

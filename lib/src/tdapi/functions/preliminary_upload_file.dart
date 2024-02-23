@@ -39,7 +39,7 @@ final class PreliminaryUploadFile extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "file": file.toJson(),
       "file_type": fileType?.toJson(),
       "priority": priority,
@@ -64,7 +64,7 @@ final class PreliminaryUploadFile extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'preliminaryUploadFile';
+  static const String defaultObjectId = 'preliminaryUploadFile';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -72,5 +72,5 @@ final class PreliminaryUploadFile extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

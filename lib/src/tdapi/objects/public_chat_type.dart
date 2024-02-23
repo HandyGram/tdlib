@@ -15,9 +15,9 @@ sealed class PublicChatType extends TdObject {
   /// * [PublicChatTypeIsLocationBased]
   factory PublicChatType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case PublicChatTypeHasUsername.objectType:
+      case PublicChatTypeHasUsername.defaultObjectId:
         return PublicChatTypeHasUsername.fromJson(json);
-      case PublicChatTypeIsLocationBased.objectType:
+      case PublicChatTypeIsLocationBased.defaultObjectId:
         return PublicChatTypeIsLocationBased.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class PublicChatType extends TdObject {
   PublicChatType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'publicChatType';
+  static const String defaultObjectId = 'publicChatType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class PublicChatType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -64,7 +64,7 @@ final class PublicChatTypeHasUsername extends PublicChatType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -73,7 +73,7 @@ final class PublicChatTypeHasUsername extends PublicChatType {
   PublicChatTypeHasUsername copyWith() => const PublicChatTypeHasUsername();
 
   /// TDLib object type
-  static const String objectType = 'publicChatTypeHasUsername';
+  static const String defaultObjectId = 'publicChatTypeHasUsername';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -81,7 +81,7 @@ final class PublicChatTypeHasUsername extends PublicChatType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -102,7 +102,7 @@ final class PublicChatTypeIsLocationBased extends PublicChatType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -111,7 +111,7 @@ final class PublicChatTypeIsLocationBased extends PublicChatType {
   PublicChatTypeIsLocationBased copyWith() => const PublicChatTypeIsLocationBased();
 
   /// TDLib object type
-  static const String objectType = 'publicChatTypeIsLocationBased';
+  static const String defaultObjectId = 'publicChatTypeIsLocationBased';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -119,5 +119,5 @@ final class PublicChatTypeIsLocationBased extends PublicChatType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

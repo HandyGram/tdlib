@@ -15,9 +15,9 @@ sealed class InputMessageReplyTo extends TdObject {
   /// * [InputMessageReplyToStory]
   factory InputMessageReplyTo.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case InputMessageReplyToMessage.objectType:
+      case InputMessageReplyToMessage.defaultObjectId:
         return InputMessageReplyToMessage.fromJson(json);
-      case InputMessageReplyToStory.objectType:
+      case InputMessageReplyToStory.defaultObjectId:
         return InputMessageReplyToStory.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class InputMessageReplyTo extends TdObject {
   InputMessageReplyTo copyWith();
 
   /// TDLib object type
-  static const String objectType = 'inputMessageReplyTo';
+  static const String defaultObjectId = 'inputMessageReplyTo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class InputMessageReplyTo extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -90,7 +90,7 @@ final class InputMessageReplyToMessage extends InputMessageReplyTo {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "quote": quote?.toJson(),
@@ -115,7 +115,7 @@ final class InputMessageReplyToMessage extends InputMessageReplyTo {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputMessageReplyToMessage';
+  static const String defaultObjectId = 'inputMessageReplyToMessage';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -123,7 +123,7 @@ final class InputMessageReplyToMessage extends InputMessageReplyTo {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -163,7 +163,7 @@ final class InputMessageReplyToStory extends InputMessageReplyTo {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "story_sender_chat_id": storySenderChatId,
       "story_id": storyId,
 		};
@@ -184,7 +184,7 @@ final class InputMessageReplyToStory extends InputMessageReplyTo {
   );
 
   /// TDLib object type
-  static const String objectType = 'inputMessageReplyToStory';
+  static const String defaultObjectId = 'inputMessageReplyToStory';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -192,5 +192,5 @@ final class InputMessageReplyToStory extends InputMessageReplyTo {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -57,7 +57,7 @@ final class GetChatEventLog extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "query": query,
       "from_event_id": fromEventId,
@@ -94,7 +94,7 @@ final class GetChatEventLog extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'getChatEventLog';
+  static const String defaultObjectId = 'getChatEventLog';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -102,5 +102,5 @@ final class GetChatEventLog extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

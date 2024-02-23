@@ -45,7 +45,7 @@ final class DeleteChatMessagesByDate extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "min_date": minDate,
       "max_date": maxDate,
@@ -74,7 +74,7 @@ final class DeleteChatMessagesByDate extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'deleteChatMessagesByDate';
+  static const String defaultObjectId = 'deleteChatMessagesByDate';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -82,5 +82,5 @@ final class DeleteChatMessagesByDate extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

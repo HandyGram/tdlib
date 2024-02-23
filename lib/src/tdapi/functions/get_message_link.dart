@@ -51,7 +51,7 @@ final class GetMessageLink extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "media_timestamp": mediaTimestamp,
@@ -84,7 +84,7 @@ final class GetMessageLink extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'getMessageLink';
+  static const String defaultObjectId = 'getMessageLink';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -92,5 +92,5 @@ final class GetMessageLink extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

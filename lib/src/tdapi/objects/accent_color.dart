@@ -57,7 +57,7 @@ final class AccentColor extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "built_in_accent_color_id": builtInAccentColorId,
       "light_theme_colors": lightThemeColors.map((i) => i).toList(),
@@ -89,7 +89,7 @@ final class AccentColor extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'accentColor';
+  static const String defaultObjectId = 'accentColor';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -97,5 +97,5 @@ final class AccentColor extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

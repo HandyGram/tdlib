@@ -17,13 +17,13 @@ sealed class MaskPoint extends TdObject {
   /// * [MaskPointChin]
   factory MaskPoint.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case MaskPointForehead.objectType:
+      case MaskPointForehead.defaultObjectId:
         return MaskPointForehead.fromJson(json);
-      case MaskPointEyes.objectType:
+      case MaskPointEyes.defaultObjectId:
         return MaskPointEyes.fromJson(json);
-      case MaskPointMouth.objectType:
+      case MaskPointMouth.defaultObjectId:
         return MaskPointMouth.fromJson(json);
-      case MaskPointChin.objectType:
+      case MaskPointChin.defaultObjectId:
         return MaskPointChin.fromJson(json);
       default:
         throw FormatException(
@@ -41,7 +41,7 @@ sealed class MaskPoint extends TdObject {
   MaskPoint copyWith();
 
   /// TDLib object type
-  static const String objectType = 'maskPoint';
+  static const String defaultObjectId = 'maskPoint';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -49,7 +49,7 @@ sealed class MaskPoint extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -70,7 +70,7 @@ final class MaskPointForehead extends MaskPoint {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -79,7 +79,7 @@ final class MaskPointForehead extends MaskPoint {
   MaskPointForehead copyWith() => const MaskPointForehead();
 
   /// TDLib object type
-  static const String objectType = 'maskPointForehead';
+  static const String defaultObjectId = 'maskPointForehead';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -87,7 +87,7 @@ final class MaskPointForehead extends MaskPoint {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -108,7 +108,7 @@ final class MaskPointEyes extends MaskPoint {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -117,7 +117,7 @@ final class MaskPointEyes extends MaskPoint {
   MaskPointEyes copyWith() => const MaskPointEyes();
 
   /// TDLib object type
-  static const String objectType = 'maskPointEyes';
+  static const String defaultObjectId = 'maskPointEyes';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -125,7 +125,7 @@ final class MaskPointEyes extends MaskPoint {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -146,7 +146,7 @@ final class MaskPointMouth extends MaskPoint {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -155,7 +155,7 @@ final class MaskPointMouth extends MaskPoint {
   MaskPointMouth copyWith() => const MaskPointMouth();
 
   /// TDLib object type
-  static const String objectType = 'maskPointMouth';
+  static const String defaultObjectId = 'maskPointMouth';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -163,7 +163,7 @@ final class MaskPointMouth extends MaskPoint {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -184,7 +184,7 @@ final class MaskPointChin extends MaskPoint {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -193,7 +193,7 @@ final class MaskPointChin extends MaskPoint {
   MaskPointChin copyWith() => const MaskPointChin();
 
   /// TDLib object type
-  static const String objectType = 'maskPointChin';
+  static const String defaultObjectId = 'maskPointChin';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -201,5 +201,5 @@ final class MaskPointChin extends MaskPoint {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

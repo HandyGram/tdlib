@@ -15,9 +15,9 @@ sealed class ReactionUnavailabilityReason extends TdObject {
   /// * [ReactionUnavailabilityReasonGuest]
   factory ReactionUnavailabilityReason.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case ReactionUnavailabilityReasonAnonymousAdministrator.objectType:
+      case ReactionUnavailabilityReasonAnonymousAdministrator.defaultObjectId:
         return ReactionUnavailabilityReasonAnonymousAdministrator.fromJson(json);
-      case ReactionUnavailabilityReasonGuest.objectType:
+      case ReactionUnavailabilityReasonGuest.defaultObjectId:
         return ReactionUnavailabilityReasonGuest.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class ReactionUnavailabilityReason extends TdObject {
   ReactionUnavailabilityReason copyWith();
 
   /// TDLib object type
-  static const String objectType = 'reactionUnavailabilityReason';
+  static const String defaultObjectId = 'reactionUnavailabilityReason';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class ReactionUnavailabilityReason extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -64,7 +64,7 @@ final class ReactionUnavailabilityReasonAnonymousAdministrator extends ReactionU
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -73,7 +73,7 @@ final class ReactionUnavailabilityReasonAnonymousAdministrator extends ReactionU
   ReactionUnavailabilityReasonAnonymousAdministrator copyWith() => const ReactionUnavailabilityReasonAnonymousAdministrator();
 
   /// TDLib object type
-  static const String objectType = 'reactionUnavailabilityReasonAnonymousAdministrator';
+  static const String defaultObjectId = 'reactionUnavailabilityReasonAnonymousAdministrator';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -81,7 +81,7 @@ final class ReactionUnavailabilityReasonAnonymousAdministrator extends ReactionU
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -102,7 +102,7 @@ final class ReactionUnavailabilityReasonGuest extends ReactionUnavailabilityReas
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -111,7 +111,7 @@ final class ReactionUnavailabilityReasonGuest extends ReactionUnavailabilityReas
   ReactionUnavailabilityReasonGuest copyWith() => const ReactionUnavailabilityReasonGuest();
 
   /// TDLib object type
-  static const String objectType = 'reactionUnavailabilityReasonGuest';
+  static const String defaultObjectId = 'reactionUnavailabilityReasonGuest';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -119,5 +119,5 @@ final class ReactionUnavailabilityReasonGuest extends ReactionUnavailabilityReas
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

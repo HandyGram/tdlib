@@ -39,7 +39,7 @@ final class ProcessChatJoinRequest extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_id": chatId,
       "user_id": userId,
       "approve": approve,
@@ -64,7 +64,7 @@ final class ProcessChatJoinRequest extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'processChatJoinRequest';
+  static const String defaultObjectId = 'processChatJoinRequest';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -72,5 +72,5 @@ final class ProcessChatJoinRequest extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

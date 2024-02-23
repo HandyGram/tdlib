@@ -33,7 +33,7 @@ final class RemoveNotificationGroup extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "notification_group_id": notificationGroupId,
       "max_notification_id": maxNotificationId,
       "@extra": extra,
@@ -54,7 +54,7 @@ final class RemoveNotificationGroup extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'removeNotificationGroup';
+  static const String defaultObjectId = 'removeNotificationGroup';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -62,5 +62,5 @@ final class RemoveNotificationGroup extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

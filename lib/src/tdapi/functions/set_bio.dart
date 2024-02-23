@@ -27,7 +27,7 @@ final class SetBio extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "bio": bio,
       "@extra": extra,
 		};
@@ -44,7 +44,7 @@ final class SetBio extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'setBio';
+  static const String defaultObjectId = 'setBio';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -52,5 +52,5 @@ final class SetBio extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

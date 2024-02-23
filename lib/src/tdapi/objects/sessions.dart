@@ -48,7 +48,7 @@ final class Sessions extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "sessions": sessions.map((i) => i.toJson()).toList(),
       "inactive_session_ttl_days": inactiveSessionTtlDays,
 		};
@@ -72,7 +72,7 @@ final class Sessions extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'sessions';
+  static const String defaultObjectId = 'sessions';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -80,5 +80,5 @@ final class Sessions extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

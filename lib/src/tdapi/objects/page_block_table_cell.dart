@@ -64,7 +64,7 @@ final class PageBlockTableCell extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text?.toJson(),
       "is_header": isHeader,
       "colspan": colspan,
@@ -100,7 +100,7 @@ final class PageBlockTableCell extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockTableCell';
+  static const String defaultObjectId = 'pageBlockTableCell';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -108,5 +108,5 @@ final class PageBlockTableCell extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -15,9 +15,9 @@ sealed class TelegramPaymentPurpose extends TdObject {
   /// * [TelegramPaymentPurposePremiumGiveaway]
   factory TelegramPaymentPurpose.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case TelegramPaymentPurposePremiumGiftCodes.objectType:
+      case TelegramPaymentPurposePremiumGiftCodes.defaultObjectId:
         return TelegramPaymentPurposePremiumGiftCodes.fromJson(json);
-      case TelegramPaymentPurposePremiumGiveaway.objectType:
+      case TelegramPaymentPurposePremiumGiveaway.defaultObjectId:
         return TelegramPaymentPurposePremiumGiveaway.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class TelegramPaymentPurpose extends TdObject {
   TelegramPaymentPurpose copyWith();
 
   /// TDLib object type
-  static const String objectType = 'telegramPaymentPurpose';
+  static const String defaultObjectId = 'telegramPaymentPurpose';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class TelegramPaymentPurpose extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -104,7 +104,7 @@ final class TelegramPaymentPurposePremiumGiftCodes extends TelegramPaymentPurpos
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "boosted_chat_id": boostedChatId,
       "currency": currency,
       "amount": amount,
@@ -137,7 +137,7 @@ final class TelegramPaymentPurposePremiumGiftCodes extends TelegramPaymentPurpos
   );
 
   /// TDLib object type
-  static const String objectType = 'telegramPaymentPurposePremiumGiftCodes';
+  static const String defaultObjectId = 'telegramPaymentPurposePremiumGiftCodes';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -145,7 +145,7 @@ final class TelegramPaymentPurposePremiumGiftCodes extends TelegramPaymentPurpos
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -206,7 +206,7 @@ final class TelegramPaymentPurposePremiumGiveaway extends TelegramPaymentPurpose
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "parameters": parameters.toJson(),
       "currency": currency,
       "amount": amount,
@@ -239,7 +239,7 @@ final class TelegramPaymentPurposePremiumGiveaway extends TelegramPaymentPurpose
   );
 
   /// TDLib object type
-  static const String objectType = 'telegramPaymentPurposePremiumGiveaway';
+  static const String defaultObjectId = 'telegramPaymentPurposePremiumGiveaway';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -247,5 +247,5 @@ final class TelegramPaymentPurposePremiumGiveaway extends TelegramPaymentPurpose
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

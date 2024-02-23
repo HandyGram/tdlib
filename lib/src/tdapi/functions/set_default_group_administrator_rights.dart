@@ -27,7 +27,7 @@ final class SetDefaultGroupAdministratorRights extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "default_group_administrator_rights": defaultGroupAdministratorRights?.toJson(),
       "@extra": extra,
 		};
@@ -44,7 +44,7 @@ final class SetDefaultGroupAdministratorRights extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'setDefaultGroupAdministratorRights';
+  static const String defaultObjectId = 'setDefaultGroupAdministratorRights';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -52,5 +52,5 @@ final class SetDefaultGroupAdministratorRights extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

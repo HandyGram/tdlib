@@ -25,29 +25,29 @@ sealed class DeviceToken extends TdObject {
   /// * [DeviceTokenHuaweiPush]
   factory DeviceToken.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case DeviceTokenFirebaseCloudMessaging.objectType:
+      case DeviceTokenFirebaseCloudMessaging.defaultObjectId:
         return DeviceTokenFirebaseCloudMessaging.fromJson(json);
-      case DeviceTokenApplePush.objectType:
+      case DeviceTokenApplePush.defaultObjectId:
         return DeviceTokenApplePush.fromJson(json);
-      case DeviceTokenApplePushVoIP.objectType:
+      case DeviceTokenApplePushVoIP.defaultObjectId:
         return DeviceTokenApplePushVoIP.fromJson(json);
-      case DeviceTokenWindowsPush.objectType:
+      case DeviceTokenWindowsPush.defaultObjectId:
         return DeviceTokenWindowsPush.fromJson(json);
-      case DeviceTokenMicrosoftPush.objectType:
+      case DeviceTokenMicrosoftPush.defaultObjectId:
         return DeviceTokenMicrosoftPush.fromJson(json);
-      case DeviceTokenMicrosoftPushVoIP.objectType:
+      case DeviceTokenMicrosoftPushVoIP.defaultObjectId:
         return DeviceTokenMicrosoftPushVoIP.fromJson(json);
-      case DeviceTokenWebPush.objectType:
+      case DeviceTokenWebPush.defaultObjectId:
         return DeviceTokenWebPush.fromJson(json);
-      case DeviceTokenSimplePush.objectType:
+      case DeviceTokenSimplePush.defaultObjectId:
         return DeviceTokenSimplePush.fromJson(json);
-      case DeviceTokenUbuntuPush.objectType:
+      case DeviceTokenUbuntuPush.defaultObjectId:
         return DeviceTokenUbuntuPush.fromJson(json);
-      case DeviceTokenBlackBerryPush.objectType:
+      case DeviceTokenBlackBerryPush.defaultObjectId:
         return DeviceTokenBlackBerryPush.fromJson(json);
-      case DeviceTokenTizenPush.objectType:
+      case DeviceTokenTizenPush.defaultObjectId:
         return DeviceTokenTizenPush.fromJson(json);
-      case DeviceTokenHuaweiPush.objectType:
+      case DeviceTokenHuaweiPush.defaultObjectId:
         return DeviceTokenHuaweiPush.fromJson(json);
       default:
         throw FormatException(
@@ -65,7 +65,7 @@ sealed class DeviceToken extends TdObject {
   DeviceToken copyWith();
 
   /// TDLib object type
-  static const String objectType = 'deviceToken';
+  static const String defaultObjectId = 'deviceToken';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -73,7 +73,7 @@ sealed class DeviceToken extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -113,7 +113,7 @@ final class DeviceTokenFirebaseCloudMessaging extends DeviceToken {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "token": token,
       "encrypt": encrypt,
 		};
@@ -134,7 +134,7 @@ final class DeviceTokenFirebaseCloudMessaging extends DeviceToken {
   );
 
   /// TDLib object type
-  static const String objectType = 'deviceTokenFirebaseCloudMessaging';
+  static const String defaultObjectId = 'deviceTokenFirebaseCloudMessaging';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -142,7 +142,7 @@ final class DeviceTokenFirebaseCloudMessaging extends DeviceToken {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -182,7 +182,7 @@ final class DeviceTokenApplePush extends DeviceToken {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "device_token": deviceToken,
       "is_app_sandbox": isAppSandbox,
 		};
@@ -203,7 +203,7 @@ final class DeviceTokenApplePush extends DeviceToken {
   );
 
   /// TDLib object type
-  static const String objectType = 'deviceTokenApplePush';
+  static const String defaultObjectId = 'deviceTokenApplePush';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -211,7 +211,7 @@ final class DeviceTokenApplePush extends DeviceToken {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -258,7 +258,7 @@ final class DeviceTokenApplePushVoIP extends DeviceToken {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "device_token": deviceToken,
       "is_app_sandbox": isAppSandbox,
       "encrypt": encrypt,
@@ -283,7 +283,7 @@ final class DeviceTokenApplePushVoIP extends DeviceToken {
   );
 
   /// TDLib object type
-  static const String objectType = 'deviceTokenApplePushVoIP';
+  static const String defaultObjectId = 'deviceTokenApplePushVoIP';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -291,7 +291,7 @@ final class DeviceTokenApplePushVoIP extends DeviceToken {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -324,7 +324,7 @@ final class DeviceTokenWindowsPush extends DeviceToken {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "access_token": accessToken,
 		};
 	}
@@ -341,7 +341,7 @@ final class DeviceTokenWindowsPush extends DeviceToken {
   );
 
   /// TDLib object type
-  static const String objectType = 'deviceTokenWindowsPush';
+  static const String defaultObjectId = 'deviceTokenWindowsPush';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -349,7 +349,7 @@ final class DeviceTokenWindowsPush extends DeviceToken {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -382,7 +382,7 @@ final class DeviceTokenMicrosoftPush extends DeviceToken {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "channel_uri": channelUri,
 		};
 	}
@@ -399,7 +399,7 @@ final class DeviceTokenMicrosoftPush extends DeviceToken {
   );
 
   /// TDLib object type
-  static const String objectType = 'deviceTokenMicrosoftPush';
+  static const String defaultObjectId = 'deviceTokenMicrosoftPush';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -407,7 +407,7 @@ final class DeviceTokenMicrosoftPush extends DeviceToken {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -440,7 +440,7 @@ final class DeviceTokenMicrosoftPushVoIP extends DeviceToken {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "channel_uri": channelUri,
 		};
 	}
@@ -457,7 +457,7 @@ final class DeviceTokenMicrosoftPushVoIP extends DeviceToken {
   );
 
   /// TDLib object type
-  static const String objectType = 'deviceTokenMicrosoftPushVoIP';
+  static const String defaultObjectId = 'deviceTokenMicrosoftPushVoIP';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -465,7 +465,7 @@ final class DeviceTokenMicrosoftPushVoIP extends DeviceToken {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -512,7 +512,7 @@ final class DeviceTokenWebPush extends DeviceToken {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "endpoint": endpoint,
       "p256dh_base64url": p256dhBase64url,
       "auth_base64url": authBase64url,
@@ -537,7 +537,7 @@ final class DeviceTokenWebPush extends DeviceToken {
   );
 
   /// TDLib object type
-  static const String objectType = 'deviceTokenWebPush';
+  static const String defaultObjectId = 'deviceTokenWebPush';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -545,7 +545,7 @@ final class DeviceTokenWebPush extends DeviceToken {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -578,7 +578,7 @@ final class DeviceTokenSimplePush extends DeviceToken {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "endpoint": endpoint,
 		};
 	}
@@ -595,7 +595,7 @@ final class DeviceTokenSimplePush extends DeviceToken {
   );
 
   /// TDLib object type
-  static const String objectType = 'deviceTokenSimplePush';
+  static const String defaultObjectId = 'deviceTokenSimplePush';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -603,7 +603,7 @@ final class DeviceTokenSimplePush extends DeviceToken {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -636,7 +636,7 @@ final class DeviceTokenUbuntuPush extends DeviceToken {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "token": token,
 		};
 	}
@@ -653,7 +653,7 @@ final class DeviceTokenUbuntuPush extends DeviceToken {
   );
 
   /// TDLib object type
-  static const String objectType = 'deviceTokenUbuntuPush';
+  static const String defaultObjectId = 'deviceTokenUbuntuPush';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -661,7 +661,7 @@ final class DeviceTokenUbuntuPush extends DeviceToken {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -694,7 +694,7 @@ final class DeviceTokenBlackBerryPush extends DeviceToken {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "token": token,
 		};
 	}
@@ -711,7 +711,7 @@ final class DeviceTokenBlackBerryPush extends DeviceToken {
   );
 
   /// TDLib object type
-  static const String objectType = 'deviceTokenBlackBerryPush';
+  static const String defaultObjectId = 'deviceTokenBlackBerryPush';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -719,7 +719,7 @@ final class DeviceTokenBlackBerryPush extends DeviceToken {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -752,7 +752,7 @@ final class DeviceTokenTizenPush extends DeviceToken {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "reg_id": regId,
 		};
 	}
@@ -769,7 +769,7 @@ final class DeviceTokenTizenPush extends DeviceToken {
   );
 
   /// TDLib object type
-  static const String objectType = 'deviceTokenTizenPush';
+  static const String defaultObjectId = 'deviceTokenTizenPush';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -777,7 +777,7 @@ final class DeviceTokenTizenPush extends DeviceToken {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -817,7 +817,7 @@ final class DeviceTokenHuaweiPush extends DeviceToken {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "token": token,
       "encrypt": encrypt,
 		};
@@ -838,7 +838,7 @@ final class DeviceTokenHuaweiPush extends DeviceToken {
   );
 
   /// TDLib object type
-  static const String objectType = 'deviceTokenHuaweiPush';
+  static const String defaultObjectId = 'deviceTokenHuaweiPush';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -846,5 +846,5 @@ final class DeviceTokenHuaweiPush extends DeviceToken {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

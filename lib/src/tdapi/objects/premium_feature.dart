@@ -35,49 +35,49 @@ sealed class PremiumFeature extends TdObject {
   /// * [PremiumFeatureLastSeenTimes]
   factory PremiumFeature.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case PremiumFeatureIncreasedLimits.objectType:
+      case PremiumFeatureIncreasedLimits.defaultObjectId:
         return PremiumFeatureIncreasedLimits.fromJson(json);
-      case PremiumFeatureIncreasedUploadFileSize.objectType:
+      case PremiumFeatureIncreasedUploadFileSize.defaultObjectId:
         return PremiumFeatureIncreasedUploadFileSize.fromJson(json);
-      case PremiumFeatureImprovedDownloadSpeed.objectType:
+      case PremiumFeatureImprovedDownloadSpeed.defaultObjectId:
         return PremiumFeatureImprovedDownloadSpeed.fromJson(json);
-      case PremiumFeatureVoiceRecognition.objectType:
+      case PremiumFeatureVoiceRecognition.defaultObjectId:
         return PremiumFeatureVoiceRecognition.fromJson(json);
-      case PremiumFeatureDisabledAds.objectType:
+      case PremiumFeatureDisabledAds.defaultObjectId:
         return PremiumFeatureDisabledAds.fromJson(json);
-      case PremiumFeatureUniqueReactions.objectType:
+      case PremiumFeatureUniqueReactions.defaultObjectId:
         return PremiumFeatureUniqueReactions.fromJson(json);
-      case PremiumFeatureUniqueStickers.objectType:
+      case PremiumFeatureUniqueStickers.defaultObjectId:
         return PremiumFeatureUniqueStickers.fromJson(json);
-      case PremiumFeatureCustomEmoji.objectType:
+      case PremiumFeatureCustomEmoji.defaultObjectId:
         return PremiumFeatureCustomEmoji.fromJson(json);
-      case PremiumFeatureAdvancedChatManagement.objectType:
+      case PremiumFeatureAdvancedChatManagement.defaultObjectId:
         return PremiumFeatureAdvancedChatManagement.fromJson(json);
-      case PremiumFeatureProfileBadge.objectType:
+      case PremiumFeatureProfileBadge.defaultObjectId:
         return PremiumFeatureProfileBadge.fromJson(json);
-      case PremiumFeatureEmojiStatus.objectType:
+      case PremiumFeatureEmojiStatus.defaultObjectId:
         return PremiumFeatureEmojiStatus.fromJson(json);
-      case PremiumFeatureAnimatedProfilePhoto.objectType:
+      case PremiumFeatureAnimatedProfilePhoto.defaultObjectId:
         return PremiumFeatureAnimatedProfilePhoto.fromJson(json);
-      case PremiumFeatureForumTopicIcon.objectType:
+      case PremiumFeatureForumTopicIcon.defaultObjectId:
         return PremiumFeatureForumTopicIcon.fromJson(json);
-      case PremiumFeatureAppIcons.objectType:
+      case PremiumFeatureAppIcons.defaultObjectId:
         return PremiumFeatureAppIcons.fromJson(json);
-      case PremiumFeatureRealTimeChatTranslation.objectType:
+      case PremiumFeatureRealTimeChatTranslation.defaultObjectId:
         return PremiumFeatureRealTimeChatTranslation.fromJson(json);
-      case PremiumFeatureUpgradedStories.objectType:
+      case PremiumFeatureUpgradedStories.defaultObjectId:
         return PremiumFeatureUpgradedStories.fromJson(json);
-      case PremiumFeatureChatBoost.objectType:
+      case PremiumFeatureChatBoost.defaultObjectId:
         return PremiumFeatureChatBoost.fromJson(json);
-      case PremiumFeatureAccentColor.objectType:
+      case PremiumFeatureAccentColor.defaultObjectId:
         return PremiumFeatureAccentColor.fromJson(json);
-      case PremiumFeatureBackgroundForBoth.objectType:
+      case PremiumFeatureBackgroundForBoth.defaultObjectId:
         return PremiumFeatureBackgroundForBoth.fromJson(json);
-      case PremiumFeatureSavedMessagesTags.objectType:
+      case PremiumFeatureSavedMessagesTags.defaultObjectId:
         return PremiumFeatureSavedMessagesTags.fromJson(json);
-      case PremiumFeatureMessagePrivacy.objectType:
+      case PremiumFeatureMessagePrivacy.defaultObjectId:
         return PremiumFeatureMessagePrivacy.fromJson(json);
-      case PremiumFeatureLastSeenTimes.objectType:
+      case PremiumFeatureLastSeenTimes.defaultObjectId:
         return PremiumFeatureLastSeenTimes.fromJson(json);
       default:
         throw FormatException(
@@ -95,7 +95,7 @@ sealed class PremiumFeature extends TdObject {
   PremiumFeature copyWith();
 
   /// TDLib object type
-  static const String objectType = 'premiumFeature';
+  static const String defaultObjectId = 'premiumFeature';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -103,7 +103,7 @@ sealed class PremiumFeature extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -124,7 +124,7 @@ final class PremiumFeatureIncreasedLimits extends PremiumFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -133,7 +133,7 @@ final class PremiumFeatureIncreasedLimits extends PremiumFeature {
   PremiumFeatureIncreasedLimits copyWith() => const PremiumFeatureIncreasedLimits();
 
   /// TDLib object type
-  static const String objectType = 'premiumFeatureIncreasedLimits';
+  static const String defaultObjectId = 'premiumFeatureIncreasedLimits';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -141,7 +141,7 @@ final class PremiumFeatureIncreasedLimits extends PremiumFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -162,7 +162,7 @@ final class PremiumFeatureIncreasedUploadFileSize extends PremiumFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -171,7 +171,7 @@ final class PremiumFeatureIncreasedUploadFileSize extends PremiumFeature {
   PremiumFeatureIncreasedUploadFileSize copyWith() => const PremiumFeatureIncreasedUploadFileSize();
 
   /// TDLib object type
-  static const String objectType = 'premiumFeatureIncreasedUploadFileSize';
+  static const String defaultObjectId = 'premiumFeatureIncreasedUploadFileSize';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -179,7 +179,7 @@ final class PremiumFeatureIncreasedUploadFileSize extends PremiumFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -200,7 +200,7 @@ final class PremiumFeatureImprovedDownloadSpeed extends PremiumFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -209,7 +209,7 @@ final class PremiumFeatureImprovedDownloadSpeed extends PremiumFeature {
   PremiumFeatureImprovedDownloadSpeed copyWith() => const PremiumFeatureImprovedDownloadSpeed();
 
   /// TDLib object type
-  static const String objectType = 'premiumFeatureImprovedDownloadSpeed';
+  static const String defaultObjectId = 'premiumFeatureImprovedDownloadSpeed';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -217,7 +217,7 @@ final class PremiumFeatureImprovedDownloadSpeed extends PremiumFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -238,7 +238,7 @@ final class PremiumFeatureVoiceRecognition extends PremiumFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -247,7 +247,7 @@ final class PremiumFeatureVoiceRecognition extends PremiumFeature {
   PremiumFeatureVoiceRecognition copyWith() => const PremiumFeatureVoiceRecognition();
 
   /// TDLib object type
-  static const String objectType = 'premiumFeatureVoiceRecognition';
+  static const String defaultObjectId = 'premiumFeatureVoiceRecognition';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -255,7 +255,7 @@ final class PremiumFeatureVoiceRecognition extends PremiumFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -276,7 +276,7 @@ final class PremiumFeatureDisabledAds extends PremiumFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -285,7 +285,7 @@ final class PremiumFeatureDisabledAds extends PremiumFeature {
   PremiumFeatureDisabledAds copyWith() => const PremiumFeatureDisabledAds();
 
   /// TDLib object type
-  static const String objectType = 'premiumFeatureDisabledAds';
+  static const String defaultObjectId = 'premiumFeatureDisabledAds';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -293,7 +293,7 @@ final class PremiumFeatureDisabledAds extends PremiumFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -314,7 +314,7 @@ final class PremiumFeatureUniqueReactions extends PremiumFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -323,7 +323,7 @@ final class PremiumFeatureUniqueReactions extends PremiumFeature {
   PremiumFeatureUniqueReactions copyWith() => const PremiumFeatureUniqueReactions();
 
   /// TDLib object type
-  static const String objectType = 'premiumFeatureUniqueReactions';
+  static const String defaultObjectId = 'premiumFeatureUniqueReactions';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -331,7 +331,7 @@ final class PremiumFeatureUniqueReactions extends PremiumFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -352,7 +352,7 @@ final class PremiumFeatureUniqueStickers extends PremiumFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -361,7 +361,7 @@ final class PremiumFeatureUniqueStickers extends PremiumFeature {
   PremiumFeatureUniqueStickers copyWith() => const PremiumFeatureUniqueStickers();
 
   /// TDLib object type
-  static const String objectType = 'premiumFeatureUniqueStickers';
+  static const String defaultObjectId = 'premiumFeatureUniqueStickers';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -369,7 +369,7 @@ final class PremiumFeatureUniqueStickers extends PremiumFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -390,7 +390,7 @@ final class PremiumFeatureCustomEmoji extends PremiumFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -399,7 +399,7 @@ final class PremiumFeatureCustomEmoji extends PremiumFeature {
   PremiumFeatureCustomEmoji copyWith() => const PremiumFeatureCustomEmoji();
 
   /// TDLib object type
-  static const String objectType = 'premiumFeatureCustomEmoji';
+  static const String defaultObjectId = 'premiumFeatureCustomEmoji';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -407,7 +407,7 @@ final class PremiumFeatureCustomEmoji extends PremiumFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -428,7 +428,7 @@ final class PremiumFeatureAdvancedChatManagement extends PremiumFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -437,7 +437,7 @@ final class PremiumFeatureAdvancedChatManagement extends PremiumFeature {
   PremiumFeatureAdvancedChatManagement copyWith() => const PremiumFeatureAdvancedChatManagement();
 
   /// TDLib object type
-  static const String objectType = 'premiumFeatureAdvancedChatManagement';
+  static const String defaultObjectId = 'premiumFeatureAdvancedChatManagement';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -445,7 +445,7 @@ final class PremiumFeatureAdvancedChatManagement extends PremiumFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -466,7 +466,7 @@ final class PremiumFeatureProfileBadge extends PremiumFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -475,7 +475,7 @@ final class PremiumFeatureProfileBadge extends PremiumFeature {
   PremiumFeatureProfileBadge copyWith() => const PremiumFeatureProfileBadge();
 
   /// TDLib object type
-  static const String objectType = 'premiumFeatureProfileBadge';
+  static const String defaultObjectId = 'premiumFeatureProfileBadge';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -483,7 +483,7 @@ final class PremiumFeatureProfileBadge extends PremiumFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -504,7 +504,7 @@ final class PremiumFeatureEmojiStatus extends PremiumFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -513,7 +513,7 @@ final class PremiumFeatureEmojiStatus extends PremiumFeature {
   PremiumFeatureEmojiStatus copyWith() => const PremiumFeatureEmojiStatus();
 
   /// TDLib object type
-  static const String objectType = 'premiumFeatureEmojiStatus';
+  static const String defaultObjectId = 'premiumFeatureEmojiStatus';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -521,7 +521,7 @@ final class PremiumFeatureEmojiStatus extends PremiumFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -542,7 +542,7 @@ final class PremiumFeatureAnimatedProfilePhoto extends PremiumFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -551,7 +551,7 @@ final class PremiumFeatureAnimatedProfilePhoto extends PremiumFeature {
   PremiumFeatureAnimatedProfilePhoto copyWith() => const PremiumFeatureAnimatedProfilePhoto();
 
   /// TDLib object type
-  static const String objectType = 'premiumFeatureAnimatedProfilePhoto';
+  static const String defaultObjectId = 'premiumFeatureAnimatedProfilePhoto';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -559,7 +559,7 @@ final class PremiumFeatureAnimatedProfilePhoto extends PremiumFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -580,7 +580,7 @@ final class PremiumFeatureForumTopicIcon extends PremiumFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -589,7 +589,7 @@ final class PremiumFeatureForumTopicIcon extends PremiumFeature {
   PremiumFeatureForumTopicIcon copyWith() => const PremiumFeatureForumTopicIcon();
 
   /// TDLib object type
-  static const String objectType = 'premiumFeatureForumTopicIcon';
+  static const String defaultObjectId = 'premiumFeatureForumTopicIcon';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -597,7 +597,7 @@ final class PremiumFeatureForumTopicIcon extends PremiumFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -618,7 +618,7 @@ final class PremiumFeatureAppIcons extends PremiumFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -627,7 +627,7 @@ final class PremiumFeatureAppIcons extends PremiumFeature {
   PremiumFeatureAppIcons copyWith() => const PremiumFeatureAppIcons();
 
   /// TDLib object type
-  static const String objectType = 'premiumFeatureAppIcons';
+  static const String defaultObjectId = 'premiumFeatureAppIcons';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -635,7 +635,7 @@ final class PremiumFeatureAppIcons extends PremiumFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -656,7 +656,7 @@ final class PremiumFeatureRealTimeChatTranslation extends PremiumFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -665,7 +665,7 @@ final class PremiumFeatureRealTimeChatTranslation extends PremiumFeature {
   PremiumFeatureRealTimeChatTranslation copyWith() => const PremiumFeatureRealTimeChatTranslation();
 
   /// TDLib object type
-  static const String objectType = 'premiumFeatureRealTimeChatTranslation';
+  static const String defaultObjectId = 'premiumFeatureRealTimeChatTranslation';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -673,7 +673,7 @@ final class PremiumFeatureRealTimeChatTranslation extends PremiumFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -694,7 +694,7 @@ final class PremiumFeatureUpgradedStories extends PremiumFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -703,7 +703,7 @@ final class PremiumFeatureUpgradedStories extends PremiumFeature {
   PremiumFeatureUpgradedStories copyWith() => const PremiumFeatureUpgradedStories();
 
   /// TDLib object type
-  static const String objectType = 'premiumFeatureUpgradedStories';
+  static const String defaultObjectId = 'premiumFeatureUpgradedStories';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -711,7 +711,7 @@ final class PremiumFeatureUpgradedStories extends PremiumFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -732,7 +732,7 @@ final class PremiumFeatureChatBoost extends PremiumFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -741,7 +741,7 @@ final class PremiumFeatureChatBoost extends PremiumFeature {
   PremiumFeatureChatBoost copyWith() => const PremiumFeatureChatBoost();
 
   /// TDLib object type
-  static const String objectType = 'premiumFeatureChatBoost';
+  static const String defaultObjectId = 'premiumFeatureChatBoost';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -749,7 +749,7 @@ final class PremiumFeatureChatBoost extends PremiumFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -770,7 +770,7 @@ final class PremiumFeatureAccentColor extends PremiumFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -779,7 +779,7 @@ final class PremiumFeatureAccentColor extends PremiumFeature {
   PremiumFeatureAccentColor copyWith() => const PremiumFeatureAccentColor();
 
   /// TDLib object type
-  static const String objectType = 'premiumFeatureAccentColor';
+  static const String defaultObjectId = 'premiumFeatureAccentColor';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -787,7 +787,7 @@ final class PremiumFeatureAccentColor extends PremiumFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -808,7 +808,7 @@ final class PremiumFeatureBackgroundForBoth extends PremiumFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -817,7 +817,7 @@ final class PremiumFeatureBackgroundForBoth extends PremiumFeature {
   PremiumFeatureBackgroundForBoth copyWith() => const PremiumFeatureBackgroundForBoth();
 
   /// TDLib object type
-  static const String objectType = 'premiumFeatureBackgroundForBoth';
+  static const String defaultObjectId = 'premiumFeatureBackgroundForBoth';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -825,7 +825,7 @@ final class PremiumFeatureBackgroundForBoth extends PremiumFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -846,7 +846,7 @@ final class PremiumFeatureSavedMessagesTags extends PremiumFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -855,7 +855,7 @@ final class PremiumFeatureSavedMessagesTags extends PremiumFeature {
   PremiumFeatureSavedMessagesTags copyWith() => const PremiumFeatureSavedMessagesTags();
 
   /// TDLib object type
-  static const String objectType = 'premiumFeatureSavedMessagesTags';
+  static const String defaultObjectId = 'premiumFeatureSavedMessagesTags';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -863,7 +863,7 @@ final class PremiumFeatureSavedMessagesTags extends PremiumFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -884,7 +884,7 @@ final class PremiumFeatureMessagePrivacy extends PremiumFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -893,7 +893,7 @@ final class PremiumFeatureMessagePrivacy extends PremiumFeature {
   PremiumFeatureMessagePrivacy copyWith() => const PremiumFeatureMessagePrivacy();
 
   /// TDLib object type
-  static const String objectType = 'premiumFeatureMessagePrivacy';
+  static const String defaultObjectId = 'premiumFeatureMessagePrivacy';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -901,7 +901,7 @@ final class PremiumFeatureMessagePrivacy extends PremiumFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -922,7 +922,7 @@ final class PremiumFeatureLastSeenTimes extends PremiumFeature {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -931,7 +931,7 @@ final class PremiumFeatureLastSeenTimes extends PremiumFeature {
   PremiumFeatureLastSeenTimes copyWith() => const PremiumFeatureLastSeenTimes();
 
   /// TDLib object type
-  static const String objectType = 'premiumFeatureLastSeenTimes';
+  static const String defaultObjectId = 'premiumFeatureLastSeenTimes';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -939,5 +939,5 @@ final class PremiumFeatureLastSeenTimes extends PremiumFeature {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -17,13 +17,13 @@ sealed class NotificationGroupType extends TdObject {
   /// * [NotificationGroupTypeCalls]
   factory NotificationGroupType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case NotificationGroupTypeMessages.objectType:
+      case NotificationGroupTypeMessages.defaultObjectId:
         return NotificationGroupTypeMessages.fromJson(json);
-      case NotificationGroupTypeMentions.objectType:
+      case NotificationGroupTypeMentions.defaultObjectId:
         return NotificationGroupTypeMentions.fromJson(json);
-      case NotificationGroupTypeSecretChat.objectType:
+      case NotificationGroupTypeSecretChat.defaultObjectId:
         return NotificationGroupTypeSecretChat.fromJson(json);
-      case NotificationGroupTypeCalls.objectType:
+      case NotificationGroupTypeCalls.defaultObjectId:
         return NotificationGroupTypeCalls.fromJson(json);
       default:
         throw FormatException(
@@ -41,7 +41,7 @@ sealed class NotificationGroupType extends TdObject {
   NotificationGroupType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'notificationGroupType';
+  static const String defaultObjectId = 'notificationGroupType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -49,7 +49,7 @@ sealed class NotificationGroupType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -70,7 +70,7 @@ final class NotificationGroupTypeMessages extends NotificationGroupType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -79,7 +79,7 @@ final class NotificationGroupTypeMessages extends NotificationGroupType {
   NotificationGroupTypeMessages copyWith() => const NotificationGroupTypeMessages();
 
   /// TDLib object type
-  static const String objectType = 'notificationGroupTypeMessages';
+  static const String defaultObjectId = 'notificationGroupTypeMessages';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -87,7 +87,7 @@ final class NotificationGroupTypeMessages extends NotificationGroupType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -108,7 +108,7 @@ final class NotificationGroupTypeMentions extends NotificationGroupType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -117,7 +117,7 @@ final class NotificationGroupTypeMentions extends NotificationGroupType {
   NotificationGroupTypeMentions copyWith() => const NotificationGroupTypeMentions();
 
   /// TDLib object type
-  static const String objectType = 'notificationGroupTypeMentions';
+  static const String defaultObjectId = 'notificationGroupTypeMentions';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -125,7 +125,7 @@ final class NotificationGroupTypeMentions extends NotificationGroupType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -146,7 +146,7 @@ final class NotificationGroupTypeSecretChat extends NotificationGroupType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -155,7 +155,7 @@ final class NotificationGroupTypeSecretChat extends NotificationGroupType {
   NotificationGroupTypeSecretChat copyWith() => const NotificationGroupTypeSecretChat();
 
   /// TDLib object type
-  static const String objectType = 'notificationGroupTypeSecretChat';
+  static const String defaultObjectId = 'notificationGroupTypeSecretChat';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -163,7 +163,7 @@ final class NotificationGroupTypeSecretChat extends NotificationGroupType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -184,7 +184,7 @@ final class NotificationGroupTypeCalls extends NotificationGroupType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -193,7 +193,7 @@ final class NotificationGroupTypeCalls extends NotificationGroupType {
   NotificationGroupTypeCalls copyWith() => const NotificationGroupTypeCalls();
 
   /// TDLib object type
-  static const String objectType = 'notificationGroupTypeCalls';
+  static const String defaultObjectId = 'notificationGroupTypeCalls';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -201,5 +201,5 @@ final class NotificationGroupTypeCalls extends NotificationGroupType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

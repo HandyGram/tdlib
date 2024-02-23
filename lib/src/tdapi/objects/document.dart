@@ -57,7 +57,7 @@ final class Document extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "file_name": fileName,
       "mime_type": mimeType,
       "minithumbnail": minithumbnail?.toJson(),
@@ -89,7 +89,7 @@ final class Document extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'document';
+  static const String defaultObjectId = 'document';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -97,5 +97,5 @@ final class Document extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

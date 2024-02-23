@@ -76,7 +76,7 @@ final class WebPageInstantView extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "page_blocks": pageBlocks.map((i) => i.toJson()).toList(),
       "view_count": viewCount,
       "version": version,
@@ -116,7 +116,7 @@ final class WebPageInstantView extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'webPageInstantView';
+  static const String defaultObjectId = 'webPageInstantView';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -124,5 +124,5 @@ final class WebPageInstantView extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

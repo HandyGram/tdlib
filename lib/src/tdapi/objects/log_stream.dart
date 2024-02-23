@@ -16,11 +16,11 @@ sealed class LogStream extends TdObject {
   /// * [LogStreamEmpty]
   factory LogStream.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case LogStreamDefault.objectType:
+      case LogStreamDefault.defaultObjectId:
         return LogStreamDefault.fromJson(json);
-      case LogStreamFile.objectType:
+      case LogStreamFile.defaultObjectId:
         return LogStreamFile.fromJson(json);
-      case LogStreamEmpty.objectType:
+      case LogStreamEmpty.defaultObjectId:
         return LogStreamEmpty.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class LogStream extends TdObject {
   LogStream copyWith();
 
   /// TDLib object type
-  static const String objectType = 'logStream';
+  static const String defaultObjectId = 'logStream';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class LogStream extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -82,7 +82,7 @@ final class LogStreamDefault extends LogStream {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -97,7 +97,7 @@ final class LogStreamDefault extends LogStream {
   );
 
   /// TDLib object type
-  static const String objectType = 'logStreamDefault';
+  static const String defaultObjectId = 'logStreamDefault';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -105,7 +105,7 @@ final class LogStreamDefault extends LogStream {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -164,7 +164,7 @@ final class LogStreamFile extends LogStream {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "path": path,
       "max_file_size": maxFileSize,
       "redirect_stderr": redirectStderr,
@@ -193,7 +193,7 @@ final class LogStreamFile extends LogStream {
   );
 
   /// TDLib object type
-  static const String objectType = 'logStreamFile';
+  static const String defaultObjectId = 'logStreamFile';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -201,7 +201,7 @@ final class LogStreamFile extends LogStream {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -237,7 +237,7 @@ final class LogStreamEmpty extends LogStream {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -252,7 +252,7 @@ final class LogStreamEmpty extends LogStream {
   );
 
   /// TDLib object type
-  static const String objectType = 'logStreamEmpty';
+  static const String defaultObjectId = 'logStreamEmpty';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -260,5 +260,5 @@ final class LogStreamEmpty extends LogStream {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

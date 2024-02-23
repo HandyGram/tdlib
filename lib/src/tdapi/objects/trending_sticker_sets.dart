@@ -55,7 +55,7 @@ final class TrendingStickerSets extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "total_count": totalCount,
       "sets": sets.map((i) => i.toJson()).toList(),
       "is_premium": isPremium,
@@ -83,7 +83,7 @@ final class TrendingStickerSets extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'trendingStickerSets';
+  static const String defaultObjectId = 'trendingStickerSets';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -91,5 +91,5 @@ final class TrendingStickerSets extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -39,7 +39,7 @@ final class EditInlineMessageText extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "inline_message_id": inlineMessageId,
       "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
@@ -64,7 +64,7 @@ final class EditInlineMessageText extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'editInlineMessageText';
+  static const String defaultObjectId = 'editInlineMessageText';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -72,5 +72,5 @@ final class EditInlineMessageText extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

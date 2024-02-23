@@ -41,7 +41,7 @@ final class TestVectorString extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "value": value.map((i) => i).toList(),
 		};
 	}
@@ -61,7 +61,7 @@ final class TestVectorString extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'testVectorString';
+  static const String defaultObjectId = 'testVectorString';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -69,5 +69,5 @@ final class TestVectorString extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -42,63 +42,63 @@ sealed class PageBlock extends TdObject {
   /// * [PageBlockMap]
   factory PageBlock.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case PageBlockTitle.objectType:
+      case PageBlockTitle.defaultObjectId:
         return PageBlockTitle.fromJson(json);
-      case PageBlockSubtitle.objectType:
+      case PageBlockSubtitle.defaultObjectId:
         return PageBlockSubtitle.fromJson(json);
-      case PageBlockAuthorDate.objectType:
+      case PageBlockAuthorDate.defaultObjectId:
         return PageBlockAuthorDate.fromJson(json);
-      case PageBlockHeader.objectType:
+      case PageBlockHeader.defaultObjectId:
         return PageBlockHeader.fromJson(json);
-      case PageBlockSubheader.objectType:
+      case PageBlockSubheader.defaultObjectId:
         return PageBlockSubheader.fromJson(json);
-      case PageBlockKicker.objectType:
+      case PageBlockKicker.defaultObjectId:
         return PageBlockKicker.fromJson(json);
-      case PageBlockParagraph.objectType:
+      case PageBlockParagraph.defaultObjectId:
         return PageBlockParagraph.fromJson(json);
-      case PageBlockPreformatted.objectType:
+      case PageBlockPreformatted.defaultObjectId:
         return PageBlockPreformatted.fromJson(json);
-      case PageBlockFooter.objectType:
+      case PageBlockFooter.defaultObjectId:
         return PageBlockFooter.fromJson(json);
-      case PageBlockDivider.objectType:
+      case PageBlockDivider.defaultObjectId:
         return PageBlockDivider.fromJson(json);
-      case PageBlockAnchor.objectType:
+      case PageBlockAnchor.defaultObjectId:
         return PageBlockAnchor.fromJson(json);
-      case PageBlockList.objectType:
+      case PageBlockList.defaultObjectId:
         return PageBlockList.fromJson(json);
-      case PageBlockBlockQuote.objectType:
+      case PageBlockBlockQuote.defaultObjectId:
         return PageBlockBlockQuote.fromJson(json);
-      case PageBlockPullQuote.objectType:
+      case PageBlockPullQuote.defaultObjectId:
         return PageBlockPullQuote.fromJson(json);
-      case PageBlockAnimation.objectType:
+      case PageBlockAnimation.defaultObjectId:
         return PageBlockAnimation.fromJson(json);
-      case PageBlockAudio.objectType:
+      case PageBlockAudio.defaultObjectId:
         return PageBlockAudio.fromJson(json);
-      case PageBlockPhoto.objectType:
+      case PageBlockPhoto.defaultObjectId:
         return PageBlockPhoto.fromJson(json);
-      case PageBlockVideo.objectType:
+      case PageBlockVideo.defaultObjectId:
         return PageBlockVideo.fromJson(json);
-      case PageBlockVoiceNote.objectType:
+      case PageBlockVoiceNote.defaultObjectId:
         return PageBlockVoiceNote.fromJson(json);
-      case PageBlockCover.objectType:
+      case PageBlockCover.defaultObjectId:
         return PageBlockCover.fromJson(json);
-      case PageBlockEmbedded.objectType:
+      case PageBlockEmbedded.defaultObjectId:
         return PageBlockEmbedded.fromJson(json);
-      case PageBlockEmbeddedPost.objectType:
+      case PageBlockEmbeddedPost.defaultObjectId:
         return PageBlockEmbeddedPost.fromJson(json);
-      case PageBlockCollage.objectType:
+      case PageBlockCollage.defaultObjectId:
         return PageBlockCollage.fromJson(json);
-      case PageBlockSlideshow.objectType:
+      case PageBlockSlideshow.defaultObjectId:
         return PageBlockSlideshow.fromJson(json);
-      case PageBlockChatLink.objectType:
+      case PageBlockChatLink.defaultObjectId:
         return PageBlockChatLink.fromJson(json);
-      case PageBlockTable.objectType:
+      case PageBlockTable.defaultObjectId:
         return PageBlockTable.fromJson(json);
-      case PageBlockDetails.objectType:
+      case PageBlockDetails.defaultObjectId:
         return PageBlockDetails.fromJson(json);
-      case PageBlockRelatedArticles.objectType:
+      case PageBlockRelatedArticles.defaultObjectId:
         return PageBlockRelatedArticles.fromJson(json);
-      case PageBlockMap.objectType:
+      case PageBlockMap.defaultObjectId:
         return PageBlockMap.fromJson(json);
       default:
         throw FormatException(
@@ -116,7 +116,7 @@ sealed class PageBlock extends TdObject {
   PageBlock copyWith();
 
   /// TDLib object type
-  static const String objectType = 'pageBlock';
+  static const String defaultObjectId = 'pageBlock';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -124,7 +124,7 @@ sealed class PageBlock extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -157,7 +157,7 @@ final class PageBlockTitle extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "title": title.toJson(),
 		};
 	}
@@ -174,7 +174,7 @@ final class PageBlockTitle extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockTitle';
+  static const String defaultObjectId = 'pageBlockTitle';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -182,7 +182,7 @@ final class PageBlockTitle extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -215,7 +215,7 @@ final class PageBlockSubtitle extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "subtitle": subtitle.toJson(),
 		};
 	}
@@ -232,7 +232,7 @@ final class PageBlockSubtitle extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockSubtitle';
+  static const String defaultObjectId = 'pageBlockSubtitle';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -240,7 +240,7 @@ final class PageBlockSubtitle extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -280,7 +280,7 @@ final class PageBlockAuthorDate extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "author": author.toJson(),
       "publish_date": publishDate,
 		};
@@ -301,7 +301,7 @@ final class PageBlockAuthorDate extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockAuthorDate';
+  static const String defaultObjectId = 'pageBlockAuthorDate';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -309,7 +309,7 @@ final class PageBlockAuthorDate extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -342,7 +342,7 @@ final class PageBlockHeader extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "header": header.toJson(),
 		};
 	}
@@ -359,7 +359,7 @@ final class PageBlockHeader extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockHeader';
+  static const String defaultObjectId = 'pageBlockHeader';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -367,7 +367,7 @@ final class PageBlockHeader extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -400,7 +400,7 @@ final class PageBlockSubheader extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "subheader": subheader.toJson(),
 		};
 	}
@@ -417,7 +417,7 @@ final class PageBlockSubheader extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockSubheader';
+  static const String defaultObjectId = 'pageBlockSubheader';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -425,7 +425,7 @@ final class PageBlockSubheader extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -458,7 +458,7 @@ final class PageBlockKicker extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "kicker": kicker.toJson(),
 		};
 	}
@@ -475,7 +475,7 @@ final class PageBlockKicker extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockKicker';
+  static const String defaultObjectId = 'pageBlockKicker';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -483,7 +483,7 @@ final class PageBlockKicker extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -516,7 +516,7 @@ final class PageBlockParagraph extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text.toJson(),
 		};
 	}
@@ -533,7 +533,7 @@ final class PageBlockParagraph extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockParagraph';
+  static const String defaultObjectId = 'pageBlockParagraph';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -541,7 +541,7 @@ final class PageBlockParagraph extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -581,7 +581,7 @@ final class PageBlockPreformatted extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text.toJson(),
       "language": language,
 		};
@@ -602,7 +602,7 @@ final class PageBlockPreformatted extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockPreformatted';
+  static const String defaultObjectId = 'pageBlockPreformatted';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -610,7 +610,7 @@ final class PageBlockPreformatted extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -643,7 +643,7 @@ final class PageBlockFooter extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "footer": footer.toJson(),
 		};
 	}
@@ -660,7 +660,7 @@ final class PageBlockFooter extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockFooter';
+  static const String defaultObjectId = 'pageBlockFooter';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -668,7 +668,7 @@ final class PageBlockFooter extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -689,7 +689,7 @@ final class PageBlockDivider extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -698,7 +698,7 @@ final class PageBlockDivider extends PageBlock {
   PageBlockDivider copyWith() => const PageBlockDivider();
 
   /// TDLib object type
-  static const String objectType = 'pageBlockDivider';
+  static const String defaultObjectId = 'pageBlockDivider';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -706,7 +706,7 @@ final class PageBlockDivider extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -739,7 +739,7 @@ final class PageBlockAnchor extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "name": name,
 		};
 	}
@@ -756,7 +756,7 @@ final class PageBlockAnchor extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockAnchor';
+  static const String defaultObjectId = 'pageBlockAnchor';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -764,7 +764,7 @@ final class PageBlockAnchor extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -797,7 +797,7 @@ final class PageBlockList extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "items": items.map((i) => i.toJson()).toList(),
 		};
 	}
@@ -814,7 +814,7 @@ final class PageBlockList extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockList';
+  static const String defaultObjectId = 'pageBlockList';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -822,7 +822,7 @@ final class PageBlockList extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -862,7 +862,7 @@ final class PageBlockBlockQuote extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text.toJson(),
       "credit": credit.toJson(),
 		};
@@ -883,7 +883,7 @@ final class PageBlockBlockQuote extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockBlockQuote';
+  static const String defaultObjectId = 'pageBlockBlockQuote';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -891,7 +891,7 @@ final class PageBlockBlockQuote extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -931,7 +931,7 @@ final class PageBlockPullQuote extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "text": text.toJson(),
       "credit": credit.toJson(),
 		};
@@ -952,7 +952,7 @@ final class PageBlockPullQuote extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockPullQuote';
+  static const String defaultObjectId = 'pageBlockPullQuote';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -960,7 +960,7 @@ final class PageBlockPullQuote extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1007,7 +1007,7 @@ final class PageBlockAnimation extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "animation": animation?.toJson(),
       "caption": caption.toJson(),
       "need_autoplay": needAutoplay,
@@ -1032,7 +1032,7 @@ final class PageBlockAnimation extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockAnimation';
+  static const String defaultObjectId = 'pageBlockAnimation';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1040,7 +1040,7 @@ final class PageBlockAnimation extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1080,7 +1080,7 @@ final class PageBlockAudio extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "audio": audio?.toJson(),
       "caption": caption.toJson(),
 		};
@@ -1101,7 +1101,7 @@ final class PageBlockAudio extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockAudio';
+  static const String defaultObjectId = 'pageBlockAudio';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1109,7 +1109,7 @@ final class PageBlockAudio extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1156,7 +1156,7 @@ final class PageBlockPhoto extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "photo": photo?.toJson(),
       "caption": caption.toJson(),
       "url": url,
@@ -1181,7 +1181,7 @@ final class PageBlockPhoto extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockPhoto';
+  static const String defaultObjectId = 'pageBlockPhoto';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1189,7 +1189,7 @@ final class PageBlockPhoto extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1243,7 +1243,7 @@ final class PageBlockVideo extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "video": video?.toJson(),
       "caption": caption.toJson(),
       "need_autoplay": needAutoplay,
@@ -1272,7 +1272,7 @@ final class PageBlockVideo extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockVideo';
+  static const String defaultObjectId = 'pageBlockVideo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1280,7 +1280,7 @@ final class PageBlockVideo extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1320,7 +1320,7 @@ final class PageBlockVoiceNote extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "voice_note": voiceNote?.toJson(),
       "caption": caption.toJson(),
 		};
@@ -1341,7 +1341,7 @@ final class PageBlockVoiceNote extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockVoiceNote';
+  static const String defaultObjectId = 'pageBlockVoiceNote';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1349,7 +1349,7 @@ final class PageBlockVoiceNote extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1382,7 +1382,7 @@ final class PageBlockCover extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "cover": cover.toJson(),
 		};
 	}
@@ -1399,7 +1399,7 @@ final class PageBlockCover extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockCover';
+  static const String defaultObjectId = 'pageBlockCover';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1407,7 +1407,7 @@ final class PageBlockCover extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1489,7 +1489,7 @@ final class PageBlockEmbedded extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "url": url,
       "html": html,
       "poster_photo": posterPhoto?.toJson(),
@@ -1534,7 +1534,7 @@ final class PageBlockEmbedded extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockEmbedded';
+  static const String defaultObjectId = 'pageBlockEmbedded';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1542,7 +1542,7 @@ final class PageBlockEmbedded extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1610,7 +1610,7 @@ final class PageBlockEmbeddedPost extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "url": url,
       "author": author,
       "author_photo": authorPhoto?.toJson(),
@@ -1647,7 +1647,7 @@ final class PageBlockEmbeddedPost extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockEmbeddedPost';
+  static const String defaultObjectId = 'pageBlockEmbeddedPost';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1655,7 +1655,7 @@ final class PageBlockEmbeddedPost extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1695,7 +1695,7 @@ final class PageBlockCollage extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "page_blocks": pageBlocks.map((i) => i.toJson()).toList(),
       "caption": caption.toJson(),
 		};
@@ -1716,7 +1716,7 @@ final class PageBlockCollage extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockCollage';
+  static const String defaultObjectId = 'pageBlockCollage';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1724,7 +1724,7 @@ final class PageBlockCollage extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1764,7 +1764,7 @@ final class PageBlockSlideshow extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "page_blocks": pageBlocks.map((i) => i.toJson()).toList(),
       "caption": caption.toJson(),
 		};
@@ -1785,7 +1785,7 @@ final class PageBlockSlideshow extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockSlideshow';
+  static const String defaultObjectId = 'pageBlockSlideshow';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1793,7 +1793,7 @@ final class PageBlockSlideshow extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1847,7 +1847,7 @@ final class PageBlockChatLink extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "title": title,
       "photo": photo?.toJson(),
       "accent_color_id": accentColorId,
@@ -1876,7 +1876,7 @@ final class PageBlockChatLink extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockChatLink';
+  static const String defaultObjectId = 'pageBlockChatLink';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1884,7 +1884,7 @@ final class PageBlockChatLink extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -1938,7 +1938,7 @@ final class PageBlockTable extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "caption": caption.toJson(),
       "cells": cells.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
       "is_bordered": isBordered,
@@ -1967,7 +1967,7 @@ final class PageBlockTable extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockTable';
+  static const String defaultObjectId = 'pageBlockTable';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1975,7 +1975,7 @@ final class PageBlockTable extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2022,7 +2022,7 @@ final class PageBlockDetails extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "header": header.toJson(),
       "page_blocks": pageBlocks.map((i) => i.toJson()).toList(),
       "is_open": isOpen,
@@ -2047,7 +2047,7 @@ final class PageBlockDetails extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockDetails';
+  static const String defaultObjectId = 'pageBlockDetails';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2055,7 +2055,7 @@ final class PageBlockDetails extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2095,7 +2095,7 @@ final class PageBlockRelatedArticles extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "header": header.toJson(),
       "articles": articles.map((i) => i.toJson()).toList(),
 		};
@@ -2116,7 +2116,7 @@ final class PageBlockRelatedArticles extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockRelatedArticles';
+  static const String defaultObjectId = 'pageBlockRelatedArticles';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2124,7 +2124,7 @@ final class PageBlockRelatedArticles extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -2185,7 +2185,7 @@ final class PageBlockMap extends PageBlock {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "location": location.toJson(),
       "zoom": zoom,
       "width": width,
@@ -2218,7 +2218,7 @@ final class PageBlockMap extends PageBlock {
   );
 
   /// TDLib object type
-  static const String objectType = 'pageBlockMap';
+  static const String defaultObjectId = 'pageBlockMap';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2226,5 +2226,5 @@ final class PageBlockMap extends PageBlock {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

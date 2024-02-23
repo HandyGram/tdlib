@@ -36,7 +36,7 @@ final class ChatPhotoSticker extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "type": type.toJson(),
       "background_fill": backgroundFill.toJson(),
 		};
@@ -56,7 +56,7 @@ final class ChatPhotoSticker extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatPhotoSticker';
+  static const String defaultObjectId = 'chatPhotoSticker';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -64,5 +64,5 @@ final class ChatPhotoSticker extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -45,7 +45,7 @@ final class AssignGooglePlayTransaction extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "package_name": packageName,
       "store_product_id": storeProductId,
       "purchase_token": purchaseToken,
@@ -74,7 +74,7 @@ final class AssignGooglePlayTransaction extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'assignGooglePlayTransaction';
+  static const String defaultObjectId = 'assignGooglePlayTransaction';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -82,5 +82,5 @@ final class AssignGooglePlayTransaction extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

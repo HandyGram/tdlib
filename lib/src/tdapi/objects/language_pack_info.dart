@@ -125,7 +125,7 @@ final class LanguagePackInfo extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "base_language_pack_id": baseLanguagePackId,
       "name": name,
@@ -193,7 +193,7 @@ final class LanguagePackInfo extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'languagePackInfo';
+  static const String defaultObjectId = 'languagePackInfo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -201,5 +201,5 @@ final class LanguagePackInfo extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

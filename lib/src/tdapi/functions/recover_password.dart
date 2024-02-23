@@ -39,7 +39,7 @@ final class RecoverPassword extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "recovery_code": recoveryCode,
       "new_password": newPassword,
       "new_hint": newHint,
@@ -64,7 +64,7 @@ final class RecoverPassword extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'recoverPassword';
+  static const String defaultObjectId = 'recoverPassword';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -72,5 +72,5 @@ final class RecoverPassword extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

@@ -21,21 +21,21 @@ sealed class SupergroupMembersFilter extends TdObject {
   /// * [SupergroupMembersFilterBots]
   factory SupergroupMembersFilter.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case SupergroupMembersFilterRecent.objectType:
+      case SupergroupMembersFilterRecent.defaultObjectId:
         return SupergroupMembersFilterRecent.fromJson(json);
-      case SupergroupMembersFilterContacts.objectType:
+      case SupergroupMembersFilterContacts.defaultObjectId:
         return SupergroupMembersFilterContacts.fromJson(json);
-      case SupergroupMembersFilterAdministrators.objectType:
+      case SupergroupMembersFilterAdministrators.defaultObjectId:
         return SupergroupMembersFilterAdministrators.fromJson(json);
-      case SupergroupMembersFilterSearch.objectType:
+      case SupergroupMembersFilterSearch.defaultObjectId:
         return SupergroupMembersFilterSearch.fromJson(json);
-      case SupergroupMembersFilterRestricted.objectType:
+      case SupergroupMembersFilterRestricted.defaultObjectId:
         return SupergroupMembersFilterRestricted.fromJson(json);
-      case SupergroupMembersFilterBanned.objectType:
+      case SupergroupMembersFilterBanned.defaultObjectId:
         return SupergroupMembersFilterBanned.fromJson(json);
-      case SupergroupMembersFilterMention.objectType:
+      case SupergroupMembersFilterMention.defaultObjectId:
         return SupergroupMembersFilterMention.fromJson(json);
-      case SupergroupMembersFilterBots.objectType:
+      case SupergroupMembersFilterBots.defaultObjectId:
         return SupergroupMembersFilterBots.fromJson(json);
       default:
         throw FormatException(
@@ -53,7 +53,7 @@ sealed class SupergroupMembersFilter extends TdObject {
   SupergroupMembersFilter copyWith();
 
   /// TDLib object type
-  static const String objectType = 'supergroupMembersFilter';
+  static const String defaultObjectId = 'supergroupMembersFilter';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -61,7 +61,7 @@ sealed class SupergroupMembersFilter extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -82,7 +82,7 @@ final class SupergroupMembersFilterRecent extends SupergroupMembersFilter {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -91,7 +91,7 @@ final class SupergroupMembersFilterRecent extends SupergroupMembersFilter {
   SupergroupMembersFilterRecent copyWith() => const SupergroupMembersFilterRecent();
 
   /// TDLib object type
-  static const String objectType = 'supergroupMembersFilterRecent';
+  static const String defaultObjectId = 'supergroupMembersFilterRecent';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -99,7 +99,7 @@ final class SupergroupMembersFilterRecent extends SupergroupMembersFilter {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -132,7 +132,7 @@ final class SupergroupMembersFilterContacts extends SupergroupMembersFilter {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "query": query,
 		};
 	}
@@ -149,7 +149,7 @@ final class SupergroupMembersFilterContacts extends SupergroupMembersFilter {
   );
 
   /// TDLib object type
-  static const String objectType = 'supergroupMembersFilterContacts';
+  static const String defaultObjectId = 'supergroupMembersFilterContacts';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -157,7 +157,7 @@ final class SupergroupMembersFilterContacts extends SupergroupMembersFilter {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -178,7 +178,7 @@ final class SupergroupMembersFilterAdministrators extends SupergroupMembersFilte
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -187,7 +187,7 @@ final class SupergroupMembersFilterAdministrators extends SupergroupMembersFilte
   SupergroupMembersFilterAdministrators copyWith() => const SupergroupMembersFilterAdministrators();
 
   /// TDLib object type
-  static const String objectType = 'supergroupMembersFilterAdministrators';
+  static const String defaultObjectId = 'supergroupMembersFilterAdministrators';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -195,7 +195,7 @@ final class SupergroupMembersFilterAdministrators extends SupergroupMembersFilte
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -228,7 +228,7 @@ final class SupergroupMembersFilterSearch extends SupergroupMembersFilter {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "query": query,
 		};
 	}
@@ -245,7 +245,7 @@ final class SupergroupMembersFilterSearch extends SupergroupMembersFilter {
   );
 
   /// TDLib object type
-  static const String objectType = 'supergroupMembersFilterSearch';
+  static const String defaultObjectId = 'supergroupMembersFilterSearch';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -253,7 +253,7 @@ final class SupergroupMembersFilterSearch extends SupergroupMembersFilter {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -286,7 +286,7 @@ final class SupergroupMembersFilterRestricted extends SupergroupMembersFilter {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "query": query,
 		};
 	}
@@ -303,7 +303,7 @@ final class SupergroupMembersFilterRestricted extends SupergroupMembersFilter {
   );
 
   /// TDLib object type
-  static const String objectType = 'supergroupMembersFilterRestricted';
+  static const String defaultObjectId = 'supergroupMembersFilterRestricted';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -311,7 +311,7 @@ final class SupergroupMembersFilterRestricted extends SupergroupMembersFilter {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -344,7 +344,7 @@ final class SupergroupMembersFilterBanned extends SupergroupMembersFilter {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "query": query,
 		};
 	}
@@ -361,7 +361,7 @@ final class SupergroupMembersFilterBanned extends SupergroupMembersFilter {
   );
 
   /// TDLib object type
-  static const String objectType = 'supergroupMembersFilterBanned';
+  static const String defaultObjectId = 'supergroupMembersFilterBanned';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -369,7 +369,7 @@ final class SupergroupMembersFilterBanned extends SupergroupMembersFilter {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -409,7 +409,7 @@ final class SupergroupMembersFilterMention extends SupergroupMembersFilter {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "query": query,
       "message_thread_id": messageThreadId,
 		};
@@ -430,7 +430,7 @@ final class SupergroupMembersFilterMention extends SupergroupMembersFilter {
   );
 
   /// TDLib object type
-  static const String objectType = 'supergroupMembersFilterMention';
+  static const String defaultObjectId = 'supergroupMembersFilterMention';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -438,7 +438,7 @@ final class SupergroupMembersFilterMention extends SupergroupMembersFilter {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -459,7 +459,7 @@ final class SupergroupMembersFilterBots extends SupergroupMembersFilter {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -468,7 +468,7 @@ final class SupergroupMembersFilterBots extends SupergroupMembersFilter {
   SupergroupMembersFilterBots copyWith() => const SupergroupMembersFilterBots();
 
   /// TDLib object type
-  static const String objectType = 'supergroupMembersFilterBots';
+  static const String defaultObjectId = 'supergroupMembersFilterBots';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -476,5 +476,5 @@ final class SupergroupMembersFilterBots extends SupergroupMembersFilter {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

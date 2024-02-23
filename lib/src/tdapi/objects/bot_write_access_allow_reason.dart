@@ -17,13 +17,13 @@ sealed class BotWriteAccessAllowReason extends TdObject {
   /// * [BotWriteAccessAllowReasonAcceptedRequest]
   factory BotWriteAccessAllowReason.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case BotWriteAccessAllowReasonConnectedWebsite.objectType:
+      case BotWriteAccessAllowReasonConnectedWebsite.defaultObjectId:
         return BotWriteAccessAllowReasonConnectedWebsite.fromJson(json);
-      case BotWriteAccessAllowReasonAddedToAttachmentMenu.objectType:
+      case BotWriteAccessAllowReasonAddedToAttachmentMenu.defaultObjectId:
         return BotWriteAccessAllowReasonAddedToAttachmentMenu.fromJson(json);
-      case BotWriteAccessAllowReasonLaunchedWebApp.objectType:
+      case BotWriteAccessAllowReasonLaunchedWebApp.defaultObjectId:
         return BotWriteAccessAllowReasonLaunchedWebApp.fromJson(json);
-      case BotWriteAccessAllowReasonAcceptedRequest.objectType:
+      case BotWriteAccessAllowReasonAcceptedRequest.defaultObjectId:
         return BotWriteAccessAllowReasonAcceptedRequest.fromJson(json);
       default:
         throw FormatException(
@@ -41,7 +41,7 @@ sealed class BotWriteAccessAllowReason extends TdObject {
   BotWriteAccessAllowReason copyWith();
 
   /// TDLib object type
-  static const String objectType = 'botWriteAccessAllowReason';
+  static const String defaultObjectId = 'botWriteAccessAllowReason';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -49,7 +49,7 @@ sealed class BotWriteAccessAllowReason extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -82,7 +82,7 @@ final class BotWriteAccessAllowReasonConnectedWebsite extends BotWriteAccessAllo
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "domain_name": domainName,
 		};
 	}
@@ -99,7 +99,7 @@ final class BotWriteAccessAllowReasonConnectedWebsite extends BotWriteAccessAllo
   );
 
   /// TDLib object type
-  static const String objectType = 'botWriteAccessAllowReasonConnectedWebsite';
+  static const String defaultObjectId = 'botWriteAccessAllowReasonConnectedWebsite';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -107,7 +107,7 @@ final class BotWriteAccessAllowReasonConnectedWebsite extends BotWriteAccessAllo
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -128,7 +128,7 @@ final class BotWriteAccessAllowReasonAddedToAttachmentMenu extends BotWriteAcces
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -137,7 +137,7 @@ final class BotWriteAccessAllowReasonAddedToAttachmentMenu extends BotWriteAcces
   BotWriteAccessAllowReasonAddedToAttachmentMenu copyWith() => const BotWriteAccessAllowReasonAddedToAttachmentMenu();
 
   /// TDLib object type
-  static const String objectType = 'botWriteAccessAllowReasonAddedToAttachmentMenu';
+  static const String defaultObjectId = 'botWriteAccessAllowReasonAddedToAttachmentMenu';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -145,7 +145,7 @@ final class BotWriteAccessAllowReasonAddedToAttachmentMenu extends BotWriteAcces
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -178,7 +178,7 @@ final class BotWriteAccessAllowReasonLaunchedWebApp extends BotWriteAccessAllowR
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "web_app": webApp.toJson(),
 		};
 	}
@@ -195,7 +195,7 @@ final class BotWriteAccessAllowReasonLaunchedWebApp extends BotWriteAccessAllowR
   );
 
   /// TDLib object type
-  static const String objectType = 'botWriteAccessAllowReasonLaunchedWebApp';
+  static const String defaultObjectId = 'botWriteAccessAllowReasonLaunchedWebApp';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -203,7 +203,7 @@ final class BotWriteAccessAllowReasonLaunchedWebApp extends BotWriteAccessAllowR
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -224,7 +224,7 @@ final class BotWriteAccessAllowReasonAcceptedRequest extends BotWriteAccessAllow
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -233,7 +233,7 @@ final class BotWriteAccessAllowReasonAcceptedRequest extends BotWriteAccessAllow
   BotWriteAccessAllowReasonAcceptedRequest copyWith() => const BotWriteAccessAllowReasonAcceptedRequest();
 
   /// TDLib object type
-  static const String objectType = 'botWriteAccessAllowReasonAcceptedRequest';
+  static const String defaultObjectId = 'botWriteAccessAllowReasonAcceptedRequest';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -241,5 +241,5 @@ final class BotWriteAccessAllowReasonAcceptedRequest extends BotWriteAccessAllow
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

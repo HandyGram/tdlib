@@ -43,7 +43,7 @@ final class AnimatedChatPhoto extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "length": length,
       "file": file.toJson(),
       "main_frame_timestamp": mainFrameTimestamp,
@@ -67,7 +67,7 @@ final class AnimatedChatPhoto extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'animatedChatPhoto';
+  static const String defaultObjectId = 'animatedChatPhoto';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -75,5 +75,5 @@ final class AnimatedChatPhoto extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

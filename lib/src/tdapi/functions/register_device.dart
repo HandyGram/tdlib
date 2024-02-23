@@ -33,7 +33,7 @@ final class RegisterDevice extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "device_token": deviceToken.toJson(),
       "other_user_ids": otherUserIds.map((i) => i).toList(),
       "@extra": extra,
@@ -54,7 +54,7 @@ final class RegisterDevice extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'registerDevice';
+  static const String defaultObjectId = 'registerDevice';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -62,5 +62,5 @@ final class RegisterDevice extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

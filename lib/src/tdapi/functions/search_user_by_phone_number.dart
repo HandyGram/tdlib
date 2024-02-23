@@ -27,7 +27,7 @@ final class SearchUserByPhoneNumber extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "phone_number": phoneNumber,
       "@extra": extra,
 		};
@@ -44,7 +44,7 @@ final class SearchUserByPhoneNumber extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'searchUserByPhoneNumber';
+  static const String defaultObjectId = 'searchUserByPhoneNumber';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -52,5 +52,5 @@ final class SearchUserByPhoneNumber extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

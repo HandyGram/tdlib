@@ -39,7 +39,7 @@ final class SetCommands extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "scope": scope?.toJson(),
       "language_code": languageCode,
       "commands": commands.map((i) => i.toJson()).toList(),
@@ -64,7 +64,7 @@ final class SetCommands extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'setCommands';
+  static const String defaultObjectId = 'setCommands';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -72,5 +72,5 @@ final class SetCommands extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

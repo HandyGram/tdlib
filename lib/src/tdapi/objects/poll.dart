@@ -92,7 +92,7 @@ final class Poll extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "question": question,
       "options": options.map((i) => i.toJson()).toList(),
@@ -144,7 +144,7 @@ final class Poll extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'poll';
+  static const String defaultObjectId = 'poll';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -152,5 +152,5 @@ final class Poll extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

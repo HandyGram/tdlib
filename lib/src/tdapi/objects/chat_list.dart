@@ -16,11 +16,11 @@ sealed class ChatList extends TdObject {
   /// * [ChatListFolder]
   factory ChatList.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case ChatListMain.objectType:
+      case ChatListMain.defaultObjectId:
         return ChatListMain.fromJson(json);
-      case ChatListArchive.objectType:
+      case ChatListArchive.defaultObjectId:
         return ChatListArchive.fromJson(json);
-      case ChatListFolder.objectType:
+      case ChatListFolder.defaultObjectId:
         return ChatListFolder.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class ChatList extends TdObject {
   ChatList copyWith();
 
   /// TDLib object type
-  static const String objectType = 'chatList';
+  static const String defaultObjectId = 'chatList';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class ChatList extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -67,7 +67,7 @@ final class ChatListMain extends ChatList {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -76,7 +76,7 @@ final class ChatListMain extends ChatList {
   ChatListMain copyWith() => const ChatListMain();
 
   /// TDLib object type
-  static const String objectType = 'chatListMain';
+  static const String defaultObjectId = 'chatListMain';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -84,7 +84,7 @@ final class ChatListMain extends ChatList {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -105,7 +105,7 @@ final class ChatListArchive extends ChatList {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -114,7 +114,7 @@ final class ChatListArchive extends ChatList {
   ChatListArchive copyWith() => const ChatListArchive();
 
   /// TDLib object type
-  static const String objectType = 'chatListArchive';
+  static const String defaultObjectId = 'chatListArchive';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -122,7 +122,7 @@ final class ChatListArchive extends ChatList {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -155,7 +155,7 @@ final class ChatListFolder extends ChatList {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "chat_folder_id": chatFolderId,
 		};
 	}
@@ -172,7 +172,7 @@ final class ChatListFolder extends ChatList {
   );
 
   /// TDLib object type
-  static const String objectType = 'chatListFolder';
+  static const String defaultObjectId = 'chatListFolder';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -180,5 +180,5 @@ final class ChatListFolder extends ChatList {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

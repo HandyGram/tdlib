@@ -16,11 +16,11 @@ sealed class CanSendMessageToUserResult extends TdObject {
   /// * [CanSendMessageToUserResultUserRestrictsNewChats]
   factory CanSendMessageToUserResult.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case CanSendMessageToUserResultOk.objectType:
+      case CanSendMessageToUserResultOk.defaultObjectId:
         return CanSendMessageToUserResultOk.fromJson(json);
-      case CanSendMessageToUserResultUserIsDeleted.objectType:
+      case CanSendMessageToUserResultUserIsDeleted.defaultObjectId:
         return CanSendMessageToUserResultUserIsDeleted.fromJson(json);
-      case CanSendMessageToUserResultUserRestrictsNewChats.objectType:
+      case CanSendMessageToUserResultUserRestrictsNewChats.defaultObjectId:
         return CanSendMessageToUserResultUserRestrictsNewChats.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class CanSendMessageToUserResult extends TdObject {
   CanSendMessageToUserResult copyWith();
 
   /// TDLib object type
-  static const String objectType = 'canSendMessageToUserResult';
+  static const String defaultObjectId = 'canSendMessageToUserResult';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class CanSendMessageToUserResult extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -82,7 +82,7 @@ final class CanSendMessageToUserResultOk extends CanSendMessageToUserResult {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -97,7 +97,7 @@ final class CanSendMessageToUserResultOk extends CanSendMessageToUserResult {
   );
 
   /// TDLib object type
-  static const String objectType = 'canSendMessageToUserResultOk';
+  static const String defaultObjectId = 'canSendMessageToUserResultOk';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -105,7 +105,7 @@ final class CanSendMessageToUserResultOk extends CanSendMessageToUserResult {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -141,7 +141,7 @@ final class CanSendMessageToUserResultUserIsDeleted extends CanSendMessageToUser
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -156,7 +156,7 @@ final class CanSendMessageToUserResultUserIsDeleted extends CanSendMessageToUser
   );
 
   /// TDLib object type
-  static const String objectType = 'canSendMessageToUserResultUserIsDeleted';
+  static const String defaultObjectId = 'canSendMessageToUserResultUserIsDeleted';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -164,7 +164,7 @@ final class CanSendMessageToUserResultUserIsDeleted extends CanSendMessageToUser
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -200,7 +200,7 @@ final class CanSendMessageToUserResultUserRestrictsNewChats extends CanSendMessa
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -215,7 +215,7 @@ final class CanSendMessageToUserResultUserRestrictsNewChats extends CanSendMessa
   );
 
   /// TDLib object type
-  static const String objectType = 'canSendMessageToUserResultUserRestrictsNewChats';
+  static const String defaultObjectId = 'canSendMessageToUserResultUserRestrictsNewChats';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -223,5 +223,5 @@ final class CanSendMessageToUserResultUserRestrictsNewChats extends CanSendMessa
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

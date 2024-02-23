@@ -15,9 +15,9 @@ sealed class ReactionType extends TdObject {
   /// * [ReactionTypeCustomEmoji]
   factory ReactionType.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case ReactionTypeEmoji.objectType:
+      case ReactionTypeEmoji.defaultObjectId:
         return ReactionTypeEmoji.fromJson(json);
-      case ReactionTypeCustomEmoji.objectType:
+      case ReactionTypeCustomEmoji.defaultObjectId:
         return ReactionTypeCustomEmoji.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class ReactionType extends TdObject {
   ReactionType copyWith();
 
   /// TDLib object type
-  static const String objectType = 'reactionType';
+  static const String defaultObjectId = 'reactionType';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class ReactionType extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -76,7 +76,7 @@ final class ReactionTypeEmoji extends ReactionType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "emoji": emoji,
 		};
 	}
@@ -93,7 +93,7 @@ final class ReactionTypeEmoji extends ReactionType {
   );
 
   /// TDLib object type
-  static const String objectType = 'reactionTypeEmoji';
+  static const String defaultObjectId = 'reactionTypeEmoji';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -101,7 +101,7 @@ final class ReactionTypeEmoji extends ReactionType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -134,7 +134,7 @@ final class ReactionTypeCustomEmoji extends ReactionType {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "custom_emoji_id": customEmojiId,
 		};
 	}
@@ -151,7 +151,7 @@ final class ReactionTypeCustomEmoji extends ReactionType {
   );
 
   /// TDLib object type
-  static const String objectType = 'reactionTypeCustomEmoji';
+  static const String defaultObjectId = 'reactionTypeCustomEmoji';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -159,5 +159,5 @@ final class ReactionTypeCustomEmoji extends ReactionType {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

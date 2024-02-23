@@ -16,11 +16,11 @@ sealed class TargetChat extends TdObject {
   /// * [TargetChatInternalLink]
   factory TargetChat.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case TargetChatCurrent.objectType:
+      case TargetChatCurrent.defaultObjectId:
         return TargetChatCurrent.fromJson(json);
-      case TargetChatChosen.objectType:
+      case TargetChatChosen.defaultObjectId:
         return TargetChatChosen.fromJson(json);
-      case TargetChatInternalLink.objectType:
+      case TargetChatInternalLink.defaultObjectId:
         return TargetChatInternalLink.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class TargetChat extends TdObject {
   TargetChat copyWith();
 
   /// TDLib object type
-  static const String objectType = 'targetChat';
+  static const String defaultObjectId = 'targetChat';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class TargetChat extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -67,7 +67,7 @@ final class TargetChatCurrent extends TargetChat {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -76,7 +76,7 @@ final class TargetChatCurrent extends TargetChat {
   TargetChatCurrent copyWith() => const TargetChatCurrent();
 
   /// TDLib object type
-  static const String objectType = 'targetChatCurrent';
+  static const String defaultObjectId = 'targetChatCurrent';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -84,7 +84,7 @@ final class TargetChatCurrent extends TargetChat {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -138,7 +138,7 @@ final class TargetChatChosen extends TargetChat {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "allow_user_chats": allowUserChats,
       "allow_bot_chats": allowBotChats,
       "allow_group_chats": allowGroupChats,
@@ -167,7 +167,7 @@ final class TargetChatChosen extends TargetChat {
   );
 
   /// TDLib object type
-  static const String objectType = 'targetChatChosen';
+  static const String defaultObjectId = 'targetChatChosen';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -175,7 +175,7 @@ final class TargetChatChosen extends TargetChat {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -208,7 +208,7 @@ final class TargetChatInternalLink extends TargetChat {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "link": link.toJson(),
 		};
 	}
@@ -225,7 +225,7 @@ final class TargetChatInternalLink extends TargetChat {
   );
 
   /// TDLib object type
-  static const String objectType = 'targetChatInternalLink';
+  static const String defaultObjectId = 'targetChatInternalLink';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -233,5 +233,5 @@ final class TargetChatInternalLink extends TargetChat {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

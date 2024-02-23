@@ -15,9 +15,9 @@ sealed class DiceStickers extends TdObject {
   /// * [DiceStickersSlotMachine]
   factory DiceStickers.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case DiceStickersRegular.objectType:
+      case DiceStickersRegular.defaultObjectId:
         return DiceStickersRegular.fromJson(json);
-      case DiceStickersSlotMachine.objectType:
+      case DiceStickersSlotMachine.defaultObjectId:
         return DiceStickersSlotMachine.fromJson(json);
       default:
         throw FormatException(
@@ -35,7 +35,7 @@ sealed class DiceStickers extends TdObject {
   DiceStickers copyWith();
 
   /// TDLib object type
-  static const String objectType = 'diceStickers';
+  static const String defaultObjectId = 'diceStickers';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -43,7 +43,7 @@ sealed class DiceStickers extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -76,7 +76,7 @@ final class DiceStickersRegular extends DiceStickers {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "sticker": sticker.toJson(),
 		};
 	}
@@ -93,7 +93,7 @@ final class DiceStickersRegular extends DiceStickers {
   );
 
   /// TDLib object type
-  static const String objectType = 'diceStickersRegular';
+  static const String defaultObjectId = 'diceStickersRegular';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -101,7 +101,7 @@ final class DiceStickersRegular extends DiceStickers {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -162,7 +162,7 @@ final class DiceStickersSlotMachine extends DiceStickers {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "background": background.toJson(),
       "lever": lever.toJson(),
       "left_reel": leftReel.toJson(),
@@ -195,7 +195,7 @@ final class DiceStickersSlotMachine extends DiceStickers {
   );
 
   /// TDLib object type
-  static const String objectType = 'diceStickersSlotMachine';
+  static const String defaultObjectId = 'diceStickersSlotMachine';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -203,5 +203,5 @@ final class DiceStickersSlotMachine extends DiceStickers {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

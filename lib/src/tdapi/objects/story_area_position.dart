@@ -57,7 +57,7 @@ final class StoryAreaPosition extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "x_percentage": xPercentage,
       "y_percentage": yPercentage,
       "width_percentage": widthPercentage,
@@ -89,7 +89,7 @@ final class StoryAreaPosition extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'storyAreaPosition';
+  static const String defaultObjectId = 'storyAreaPosition';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -97,5 +97,5 @@ final class StoryAreaPosition extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

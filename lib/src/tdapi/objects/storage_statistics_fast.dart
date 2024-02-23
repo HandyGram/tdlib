@@ -69,7 +69,7 @@ final class StorageStatisticsFast extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "files_size": filesSize,
       "file_count": fileCount,
       "database_size": databaseSize,
@@ -105,7 +105,7 @@ final class StorageStatisticsFast extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'storageStatisticsFast';
+  static const String defaultObjectId = 'storageStatisticsFast';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -113,5 +113,5 @@ final class StorageStatisticsFast extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

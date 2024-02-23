@@ -57,7 +57,7 @@ final class ProfileAccentColor extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "id": id,
       "light_theme_colors": lightThemeColors.toJson(),
       "dark_theme_colors": darkThemeColors.toJson(),
@@ -89,7 +89,7 @@ final class ProfileAccentColor extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'profileAccentColor';
+  static const String defaultObjectId = 'profileAccentColor';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -97,5 +97,5 @@ final class ProfileAccentColor extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

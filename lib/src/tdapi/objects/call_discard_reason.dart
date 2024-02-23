@@ -18,15 +18,15 @@ sealed class CallDiscardReason extends TdObject {
   /// * [CallDiscardReasonHungUp]
   factory CallDiscardReason.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case CallDiscardReasonEmpty.objectType:
+      case CallDiscardReasonEmpty.defaultObjectId:
         return CallDiscardReasonEmpty.fromJson(json);
-      case CallDiscardReasonMissed.objectType:
+      case CallDiscardReasonMissed.defaultObjectId:
         return CallDiscardReasonMissed.fromJson(json);
-      case CallDiscardReasonDeclined.objectType:
+      case CallDiscardReasonDeclined.defaultObjectId:
         return CallDiscardReasonDeclined.fromJson(json);
-      case CallDiscardReasonDisconnected.objectType:
+      case CallDiscardReasonDisconnected.defaultObjectId:
         return CallDiscardReasonDisconnected.fromJson(json);
-      case CallDiscardReasonHungUp.objectType:
+      case CallDiscardReasonHungUp.defaultObjectId:
         return CallDiscardReasonHungUp.fromJson(json);
       default:
         throw FormatException(
@@ -44,7 +44,7 @@ sealed class CallDiscardReason extends TdObject {
   CallDiscardReason copyWith();
 
   /// TDLib object type
-  static const String objectType = 'callDiscardReason';
+  static const String defaultObjectId = 'callDiscardReason';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -52,7 +52,7 @@ sealed class CallDiscardReason extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -73,7 +73,7 @@ final class CallDiscardReasonEmpty extends CallDiscardReason {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -82,7 +82,7 @@ final class CallDiscardReasonEmpty extends CallDiscardReason {
   CallDiscardReasonEmpty copyWith() => const CallDiscardReasonEmpty();
 
   /// TDLib object type
-  static const String objectType = 'callDiscardReasonEmpty';
+  static const String defaultObjectId = 'callDiscardReasonEmpty';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -90,7 +90,7 @@ final class CallDiscardReasonEmpty extends CallDiscardReason {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -111,7 +111,7 @@ final class CallDiscardReasonMissed extends CallDiscardReason {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -120,7 +120,7 @@ final class CallDiscardReasonMissed extends CallDiscardReason {
   CallDiscardReasonMissed copyWith() => const CallDiscardReasonMissed();
 
   /// TDLib object type
-  static const String objectType = 'callDiscardReasonMissed';
+  static const String defaultObjectId = 'callDiscardReasonMissed';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -128,7 +128,7 @@ final class CallDiscardReasonMissed extends CallDiscardReason {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -149,7 +149,7 @@ final class CallDiscardReasonDeclined extends CallDiscardReason {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -158,7 +158,7 @@ final class CallDiscardReasonDeclined extends CallDiscardReason {
   CallDiscardReasonDeclined copyWith() => const CallDiscardReasonDeclined();
 
   /// TDLib object type
-  static const String objectType = 'callDiscardReasonDeclined';
+  static const String defaultObjectId = 'callDiscardReasonDeclined';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -166,7 +166,7 @@ final class CallDiscardReasonDeclined extends CallDiscardReason {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -187,7 +187,7 @@ final class CallDiscardReasonDisconnected extends CallDiscardReason {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -196,7 +196,7 @@ final class CallDiscardReasonDisconnected extends CallDiscardReason {
   CallDiscardReasonDisconnected copyWith() => const CallDiscardReasonDisconnected();
 
   /// TDLib object type
-  static const String objectType = 'callDiscardReasonDisconnected';
+  static const String defaultObjectId = 'callDiscardReasonDisconnected';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -204,7 +204,7 @@ final class CallDiscardReasonDisconnected extends CallDiscardReason {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -225,7 +225,7 @@ final class CallDiscardReasonHungUp extends CallDiscardReason {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
 		};
 	}
 
@@ -234,7 +234,7 @@ final class CallDiscardReasonHungUp extends CallDiscardReason {
   CallDiscardReasonHungUp copyWith() => const CallDiscardReasonHungUp();
 
   /// TDLib object type
-  static const String objectType = 'callDiscardReasonHungUp';
+  static const String defaultObjectId = 'callDiscardReasonHungUp';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -242,5 +242,5 @@ final class CallDiscardReasonHungUp extends CallDiscardReason {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

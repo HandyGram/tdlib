@@ -33,7 +33,7 @@ final class CreateBasicGroupChat extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "basic_group_id": basicGroupId,
       "force": force,
       "@extra": extra,
@@ -54,7 +54,7 @@ final class CreateBasicGroupChat extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'createBasicGroupChat';
+  static const String defaultObjectId = 'createBasicGroupChat';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -62,5 +62,5 @@ final class CreateBasicGroupChat extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

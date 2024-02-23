@@ -16,11 +16,11 @@ sealed class StatisticalGraph extends TdObject {
   /// * [StatisticalGraphError]
   factory StatisticalGraph.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case StatisticalGraphData.objectType:
+      case StatisticalGraphData.defaultObjectId:
         return StatisticalGraphData.fromJson(json);
-      case StatisticalGraphAsync.objectType:
+      case StatisticalGraphAsync.defaultObjectId:
         return StatisticalGraphAsync.fromJson(json);
-      case StatisticalGraphError.objectType:
+      case StatisticalGraphError.defaultObjectId:
         return StatisticalGraphError.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class StatisticalGraph extends TdObject {
   StatisticalGraph copyWith();
 
   /// TDLib object type
-  static const String objectType = 'statisticalGraph';
+  static const String defaultObjectId = 'statisticalGraph';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class StatisticalGraph extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -98,7 +98,7 @@ final class StatisticalGraphData extends StatisticalGraph {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "json_data": jsonData,
       "zoom_token": zoomToken,
 		};
@@ -123,7 +123,7 @@ final class StatisticalGraphData extends StatisticalGraph {
   );
 
   /// TDLib object type
-  static const String objectType = 'statisticalGraphData';
+  static const String defaultObjectId = 'statisticalGraphData';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -131,7 +131,7 @@ final class StatisticalGraphData extends StatisticalGraph {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -176,7 +176,7 @@ final class StatisticalGraphAsync extends StatisticalGraph {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "token": token,
 		};
 	}
@@ -197,7 +197,7 @@ final class StatisticalGraphAsync extends StatisticalGraph {
   );
 
   /// TDLib object type
-  static const String objectType = 'statisticalGraphAsync';
+  static const String defaultObjectId = 'statisticalGraphAsync';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -205,7 +205,7 @@ final class StatisticalGraphAsync extends StatisticalGraph {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -250,7 +250,7 @@ final class StatisticalGraphError extends StatisticalGraph {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "error_message": errorMessage,
 		};
 	}
@@ -271,7 +271,7 @@ final class StatisticalGraphError extends StatisticalGraph {
   );
 
   /// TDLib object type
-  static const String objectType = 'statisticalGraphError';
+  static const String defaultObjectId = 'statisticalGraphError';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -279,5 +279,5 @@ final class StatisticalGraphError extends StatisticalGraph {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

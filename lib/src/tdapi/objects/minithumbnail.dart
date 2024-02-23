@@ -43,7 +43,7 @@ final class Minithumbnail extends TdObject {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "width": width,
       "height": height,
       "data": data,
@@ -67,7 +67,7 @@ final class Minithumbnail extends TdObject {
   );
 
   /// TDLib object type
-  static const String objectType = 'minithumbnail';
+  static const String defaultObjectId = 'minithumbnail';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -75,5 +75,5 @@ final class Minithumbnail extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

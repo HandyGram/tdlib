@@ -45,7 +45,7 @@ final class GetLanguagePackString extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "language_pack_database_path": languagePackDatabasePath,
       "localization_target": localizationTarget,
       "language_pack_id": languagePackId,
@@ -74,7 +74,7 @@ final class GetLanguagePackString extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'getLanguagePackString';
+  static const String defaultObjectId = 'getLanguagePackString';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -82,5 +82,5 @@ final class GetLanguagePackString extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

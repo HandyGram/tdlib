@@ -33,7 +33,7 @@ final class ToggleSupergroupIsForum extends TdFunction {
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "supergroup_id": supergroupId,
       "is_forum": isForum,
       "@extra": extra,
@@ -54,7 +54,7 @@ final class ToggleSupergroupIsForum extends TdFunction {
   );
 
   /// TDLib object type
-  static const String objectType = 'toggleSupergroupIsForum';
+  static const String defaultObjectId = 'toggleSupergroupIsForum';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -62,5 +62,5 @@ final class ToggleSupergroupIsForum extends TdFunction {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }

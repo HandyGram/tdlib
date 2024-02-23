@@ -16,11 +16,11 @@ sealed class BackgroundFill extends TdObject {
   /// * [BackgroundFillFreeformGradient]
   factory BackgroundFill.fromJson(Map<String, dynamic> json)  {
     switch(json["@type"]) {
-      case BackgroundFillSolid.objectType:
+      case BackgroundFillSolid.defaultObjectId:
         return BackgroundFillSolid.fromJson(json);
-      case BackgroundFillGradient.objectType:
+      case BackgroundFillGradient.defaultObjectId:
         return BackgroundFillGradient.fromJson(json);
-      case BackgroundFillFreeformGradient.objectType:
+      case BackgroundFillFreeformGradient.defaultObjectId:
         return BackgroundFillFreeformGradient.fromJson(json);
       default:
         throw FormatException(
@@ -38,7 +38,7 @@ sealed class BackgroundFill extends TdObject {
   BackgroundFill copyWith();
 
   /// TDLib object type
-  static const String objectType = 'backgroundFill';
+  static const String defaultObjectId = 'backgroundFill';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -46,7 +46,7 @@ sealed class BackgroundFill extends TdObject {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -79,7 +79,7 @@ final class BackgroundFillSolid extends BackgroundFill {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "color": color,
 		};
 	}
@@ -96,7 +96,7 @@ final class BackgroundFillSolid extends BackgroundFill {
   );
 
   /// TDLib object type
-  static const String objectType = 'backgroundFillSolid';
+  static const String defaultObjectId = 'backgroundFillSolid';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -104,7 +104,7 @@ final class BackgroundFillSolid extends BackgroundFill {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -151,7 +151,7 @@ final class BackgroundFillGradient extends BackgroundFill {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "top_color": topColor,
       "bottom_color": bottomColor,
       "rotation_angle": rotationAngle,
@@ -176,7 +176,7 @@ final class BackgroundFillGradient extends BackgroundFill {
   );
 
   /// TDLib object type
-  static const String objectType = 'backgroundFillGradient';
+  static const String defaultObjectId = 'backgroundFillGradient';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -184,7 +184,7 @@ final class BackgroundFillGradient extends BackgroundFill {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
 
 
@@ -217,7 +217,7 @@ final class BackgroundFillFreeformGradient extends BackgroundFill {
   @override
   Map<String, dynamic> toJson() {
 		return {
-			"@type": objectType,
+			"@type": defaultObjectId,
       "colors": colors.map((i) => i).toList(),
 		};
 	}
@@ -234,7 +234,7 @@ final class BackgroundFillFreeformGradient extends BackgroundFill {
   );
 
   /// TDLib object type
-  static const String objectType = 'backgroundFillFreeformGradient';
+  static const String defaultObjectId = 'backgroundFillFreeformGradient';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -242,5 +242,5 @@ final class BackgroundFillFreeformGradient extends BackgroundFill {
 
   /// TDLib object type for current class instance
   @override
-  String get instanceType => objectType;
+  String get currentObjectId => defaultObjectId;
 }
