@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetGroupCallParticipantVolumeLevel extends TdFunction {
-  
   /// **SetGroupCallParticipantVolumeLevel** *(setGroupCallParticipantVolumeLevel)* - TDLib function
   ///
   /// Changes volume level of a participant of an active group call. If the current user can manage the group call, then the participant's volume level will be changed for all users with the default volume level.
@@ -25,7 +24,7 @@ final class SetGroupCallParticipantVolumeLevel extends TdFunction {
     required this.participantId,
     required this.volumeLevel,
   });
-  
+
   /// Group call identifier
   final int groupCallId;
 
@@ -34,18 +33,18 @@ final class SetGroupCallParticipantVolumeLevel extends TdFunction {
 
   /// New participant's volume level; 1-20000 in hundreds of percents
   final int volumeLevel;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "group_call_id": groupCallId,
       "participant_id": participantId.toJson(),
       "volume_level": volumeLevel,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class SetGroupCallParticipantVolumeLevel extends TdFunction {
     int? groupCallId,
     MessageSender? participantId,
     int? volumeLevel,
-  }) => SetGroupCallParticipantVolumeLevel(
-    groupCallId: groupCallId ?? this.groupCallId,
-    participantId: participantId ?? this.participantId,
-    volumeLevel: volumeLevel ?? this.volumeLevel,
-  );
+  }) =>
+      SetGroupCallParticipantVolumeLevel(
+        groupCallId: groupCallId ?? this.groupCallId,
+        participantId: participantId ?? this.participantId,
+        volumeLevel: volumeLevel ?? this.volumeLevel,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setGroupCallParticipantVolumeLevel';

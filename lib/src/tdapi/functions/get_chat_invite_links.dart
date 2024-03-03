@@ -13,7 +13,6 @@ part of '../tdapi.dart';
 ///
 /// [ChatInviteLinks] is returned on completion.
 final class GetChatInviteLinks extends TdFunction {
-  
   /// **GetChatInviteLinks** *(getChatInviteLinks)* - TDLib function
   ///
   /// Returns invite links for a chat created by specified administrator. Requires administrator privileges and can_invite_users right in the chat to get own links and owner privileges to get other links.
@@ -34,7 +33,7 @@ final class GetChatInviteLinks extends TdFunction {
     required this.offsetInviteLink,
     required this.limit,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -52,12 +51,12 @@ final class GetChatInviteLinks extends TdFunction {
 
   /// The maximum number of invite links to return; up to 100
   final int limit;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "creator_user_id": creatorUserId,
       "is_revoked": isRevoked,
@@ -65,8 +64,8 @@ final class GetChatInviteLinks extends TdFunction {
       "offset_invite_link": offsetInviteLink,
       "limit": limit,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -84,14 +83,15 @@ final class GetChatInviteLinks extends TdFunction {
     int? offsetDate,
     String? offsetInviteLink,
     int? limit,
-  }) => GetChatInviteLinks(
-    chatId: chatId ?? this.chatId,
-    creatorUserId: creatorUserId ?? this.creatorUserId,
-    isRevoked: isRevoked ?? this.isRevoked,
-    offsetDate: offsetDate ?? this.offsetDate,
-    offsetInviteLink: offsetInviteLink ?? this.offsetInviteLink,
-    limit: limit ?? this.limit,
-  );
+  }) =>
+      GetChatInviteLinks(
+        chatId: chatId ?? this.chatId,
+        creatorUserId: creatorUserId ?? this.creatorUserId,
+        isRevoked: isRevoked ?? this.isRevoked,
+        offsetDate: offsetDate ?? this.offsetDate,
+        offsetInviteLink: offsetInviteLink ?? this.offsetInviteLink,
+        limit: limit ?? this.limit,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getChatInviteLinks';

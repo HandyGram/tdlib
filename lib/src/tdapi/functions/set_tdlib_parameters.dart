@@ -21,7 +21,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetTdlibParameters extends TdFunction {
-  
   /// **SetTdlibParameters** *(setTdlibParameters)* - TDLib function
   ///
   /// Sets the parameters for TDLib initialization. Works only when the current authorization state is authorizationStateWaitTdlibParameters.
@@ -58,7 +57,7 @@ final class SetTdlibParameters extends TdFunction {
     required this.systemVersion,
     required this.applicationVersion,
   });
-  
+
   /// Pass true to use Telegram test environment instead of the production environment
   final bool useTestDc;
 
@@ -100,12 +99,12 @@ final class SetTdlibParameters extends TdFunction {
 
   /// Application version; must be non-empty
   final String applicationVersion;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "use_test_dc": useTestDc,
       "database_directory": databaseDirectory,
       "files_directory": filesDirectory,
@@ -121,8 +120,8 @@ final class SetTdlibParameters extends TdFunction {
       "system_version": systemVersion,
       "application_version": applicationVersion,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -156,22 +155,24 @@ final class SetTdlibParameters extends TdFunction {
     String? deviceModel,
     String? systemVersion,
     String? applicationVersion,
-  }) => SetTdlibParameters(
-    useTestDc: useTestDc ?? this.useTestDc,
-    databaseDirectory: databaseDirectory ?? this.databaseDirectory,
-    filesDirectory: filesDirectory ?? this.filesDirectory,
-    databaseEncryptionKey: databaseEncryptionKey ?? this.databaseEncryptionKey,
-    useFileDatabase: useFileDatabase ?? this.useFileDatabase,
-    useChatInfoDatabase: useChatInfoDatabase ?? this.useChatInfoDatabase,
-    useMessageDatabase: useMessageDatabase ?? this.useMessageDatabase,
-    useSecretChats: useSecretChats ?? this.useSecretChats,
-    apiId: apiId ?? this.apiId,
-    apiHash: apiHash ?? this.apiHash,
-    systemLanguageCode: systemLanguageCode ?? this.systemLanguageCode,
-    deviceModel: deviceModel ?? this.deviceModel,
-    systemVersion: systemVersion ?? this.systemVersion,
-    applicationVersion: applicationVersion ?? this.applicationVersion,
-  );
+  }) =>
+      SetTdlibParameters(
+        useTestDc: useTestDc ?? this.useTestDc,
+        databaseDirectory: databaseDirectory ?? this.databaseDirectory,
+        filesDirectory: filesDirectory ?? this.filesDirectory,
+        databaseEncryptionKey:
+            databaseEncryptionKey ?? this.databaseEncryptionKey,
+        useFileDatabase: useFileDatabase ?? this.useFileDatabase,
+        useChatInfoDatabase: useChatInfoDatabase ?? this.useChatInfoDatabase,
+        useMessageDatabase: useMessageDatabase ?? this.useMessageDatabase,
+        useSecretChats: useSecretChats ?? this.useSecretChats,
+        apiId: apiId ?? this.apiId,
+        apiHash: apiHash ?? this.apiHash,
+        systemLanguageCode: systemLanguageCode ?? this.systemLanguageCode,
+        deviceModel: deviceModel ?? this.deviceModel,
+        systemVersion: systemVersion ?? this.systemVersion,
+        applicationVersion: applicationVersion ?? this.applicationVersion,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setTdlibParameters';

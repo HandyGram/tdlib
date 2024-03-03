@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class DeleteSavedOrderInfo extends TdFunction {
-  
   /// **DeleteSavedOrderInfo** *(deleteSavedOrderInfo)* - TDLib function
   ///
   /// Deletes saved order information.
   ///
   /// [Ok] is returned on completion.
   const DeleteSavedOrderInfo();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   DeleteSavedOrderInfo copyWith() => const DeleteSavedOrderInfo();

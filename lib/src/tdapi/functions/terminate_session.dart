@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class TerminateSession extends TdFunction {
-  
   /// **TerminateSession** *(terminateSession)* - TDLib function
   ///
   /// Terminates a session of the current user.
@@ -19,19 +18,19 @@ final class TerminateSession extends TdFunction {
   const TerminateSession({
     required this.sessionId,
   });
-  
+
   /// Session identifier
   final int sessionId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "session_id": sessionId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class TerminateSession extends TdFunction {
   /// * [session_id]: Session identifier
   TerminateSession copyWith({
     int? sessionId,
-  }) => TerminateSession(
-    sessionId: sessionId ?? this.sessionId,
-  );
+  }) =>
+      TerminateSession(
+        sessionId: sessionId ?? this.sessionId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'terminateSession';

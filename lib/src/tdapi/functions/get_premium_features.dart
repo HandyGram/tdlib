@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [PremiumFeatures] is returned on completion.
 final class GetPremiumFeatures extends TdFunction {
-  
   /// **GetPremiumFeatures** *(getPremiumFeatures)* - TDLib function
   ///
   /// Returns information about features, available to Premium users.
@@ -19,19 +18,19 @@ final class GetPremiumFeatures extends TdFunction {
   const GetPremiumFeatures({
     this.source,
   });
-  
+
   /// Source of the request; pass null if the method is called from some non-standard source
   final PremiumSource? source;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "source": source?.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetPremiumFeatures extends TdFunction {
   /// * [source]: Source of the request; pass null if the method is called from some non-standard source
   GetPremiumFeatures copyWith({
     PremiumSource? source,
-  }) => GetPremiumFeatures(
-    source: source ?? this.source,
-  );
+  }) =>
+      GetPremiumFeatures(
+        source: source ?? this.source,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getPremiumFeatures';

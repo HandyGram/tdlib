@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 /// * [buttonText]: If non-empty, text for the message action button.
 /// * [additionalInfo]: If non-empty, additional information about the sponsored message to be shown along with the message.
 final class SponsoredMessage extends TdObject {
-  
   /// **SponsoredMessage** *(sponsoredMessage)* - basic class
   ///
   /// Describes a sponsored message.
@@ -30,7 +29,7 @@ final class SponsoredMessage extends TdObject {
     required this.buttonText,
     required this.additionalInfo,
   });
-  
+
   /// Message identifier; unique for the chat to which the sponsored message belongs among both ordinary and sponsored messages
   final int messageId;
 
@@ -48,31 +47,31 @@ final class SponsoredMessage extends TdObject {
 
   /// If non-empty, additional information about the sponsored message to be shown along with the message
   final String additionalInfo;
-  
+
   /// Parse from a json
-  factory SponsoredMessage.fromJson(Map<String, dynamic> json) => SponsoredMessage(
-    messageId: json['message_id'],
-    isRecommended: json['is_recommended'],
-    content: MessageContent.fromJson(json['content']),
-    sponsor: MessageSponsor.fromJson(json['sponsor']),
-    buttonText: json['button_text'],
-    additionalInfo: json['additional_info'],
-  );
-  
-  
+  factory SponsoredMessage.fromJson(Map<String, dynamic> json) =>
+      SponsoredMessage(
+        messageId: json['message_id'],
+        isRecommended: json['is_recommended'],
+        content: MessageContent.fromJson(json['content']),
+        sponsor: MessageSponsor.fromJson(json['sponsor']),
+        buttonText: json['button_text'],
+        additionalInfo: json['additional_info'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "message_id": messageId,
       "is_recommended": isRecommended,
       "content": content.toJson(),
       "sponsor": sponsor.toJson(),
       "button_text": buttonText,
       "additional_info": additionalInfo,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -90,14 +89,15 @@ final class SponsoredMessage extends TdObject {
     MessageSponsor? sponsor,
     String? buttonText,
     String? additionalInfo,
-  }) => SponsoredMessage(
-    messageId: messageId ?? this.messageId,
-    isRecommended: isRecommended ?? this.isRecommended,
-    content: content ?? this.content,
-    sponsor: sponsor ?? this.sponsor,
-    buttonText: buttonText ?? this.buttonText,
-    additionalInfo: additionalInfo ?? this.additionalInfo,
-  );
+  }) =>
+      SponsoredMessage(
+        messageId: messageId ?? this.messageId,
+        isRecommended: isRecommended ?? this.isRecommended,
+        content: content ?? this.content,
+        sponsor: sponsor ?? this.sponsor,
+        buttonText: buttonText ?? this.buttonText,
+        additionalInfo: additionalInfo ?? this.additionalInfo,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'sponsoredMessage';

@@ -4,17 +4,16 @@ part of '../tdapi.dart';
 ///
 /// Describes reset state of a email address.
 sealed class EmailAddressResetState extends TdObject {
-  
   /// **EmailAddressResetState** *(emailAddressResetState)* - parent
   ///
   /// Describes reset state of a email address.
   const EmailAddressResetState();
-  
+
   /// a EmailAddressResetState return type can be :
   /// * [EmailAddressResetStateAvailable]
   /// * [EmailAddressResetStatePending]
-  factory EmailAddressResetState.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory EmailAddressResetState.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case EmailAddressResetStateAvailable.defaultObjectId:
         return EmailAddressResetStateAvailable.fromJson(json);
       case EmailAddressResetStatePending.defaultObjectId:
@@ -26,7 +25,7 @@ sealed class EmailAddressResetState extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -46,14 +45,12 @@ sealed class EmailAddressResetState extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **EmailAddressResetStateAvailable** *(emailAddressResetStateAvailable)* - child of EmailAddressResetState
 ///
 /// Email address can be reset after the given period. Call resetAuthenticationEmailAddress to reset it and allow the user to authorize with a code sent to the user's phone number.
 ///
 /// * [waitPeriod]: Time required to wait before the email address can be reset; 0 if the user is subscribed to Telegram Premium.
 final class EmailAddressResetStateAvailable extends EmailAddressResetState {
-  
   /// **EmailAddressResetStateAvailable** *(emailAddressResetStateAvailable)* - child of EmailAddressResetState
   ///
   /// Email address can be reset after the given period. Call resetAuthenticationEmailAddress to reset it and allow the user to authorize with a code sent to the user's phone number.
@@ -62,24 +59,24 @@ final class EmailAddressResetStateAvailable extends EmailAddressResetState {
   const EmailAddressResetStateAvailable({
     required this.waitPeriod,
   });
-  
+
   /// Time required to wait before the email address can be reset; 0 if the user is subscribed to Telegram Premium
   final int waitPeriod;
-  
+
   /// Parse from a json
-  factory EmailAddressResetStateAvailable.fromJson(Map<String, dynamic> json) => EmailAddressResetStateAvailable(
-    waitPeriod: json['wait_period'],
-  );
-  
-  
+  factory EmailAddressResetStateAvailable.fromJson(Map<String, dynamic> json) =>
+      EmailAddressResetStateAvailable(
+        waitPeriod: json['wait_period'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "wait_period": waitPeriod,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -88,9 +85,10 @@ final class EmailAddressResetStateAvailable extends EmailAddressResetState {
   @override
   EmailAddressResetStateAvailable copyWith({
     int? waitPeriod,
-  }) => EmailAddressResetStateAvailable(
-    waitPeriod: waitPeriod ?? this.waitPeriod,
-  );
+  }) =>
+      EmailAddressResetStateAvailable(
+        waitPeriod: waitPeriod ?? this.waitPeriod,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'emailAddressResetStateAvailable';
@@ -104,14 +102,12 @@ final class EmailAddressResetStateAvailable extends EmailAddressResetState {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **EmailAddressResetStatePending** *(emailAddressResetStatePending)* - child of EmailAddressResetState
 ///
 /// Email address reset has already been requested. Call resetAuthenticationEmailAddress to check whether immediate reset is possible.
 ///
 /// * [resetIn]: Left time before the email address will be reset, in seconds. updateAuthorizationState is not sent when this field changes.
 final class EmailAddressResetStatePending extends EmailAddressResetState {
-  
   /// **EmailAddressResetStatePending** *(emailAddressResetStatePending)* - child of EmailAddressResetState
   ///
   /// Email address reset has already been requested. Call resetAuthenticationEmailAddress to check whether immediate reset is possible.
@@ -120,24 +116,24 @@ final class EmailAddressResetStatePending extends EmailAddressResetState {
   const EmailAddressResetStatePending({
     required this.resetIn,
   });
-  
+
   /// Left time before the email address will be reset, in seconds. updateAuthorizationState is not sent when this field changes
   final int resetIn;
-  
+
   /// Parse from a json
-  factory EmailAddressResetStatePending.fromJson(Map<String, dynamic> json) => EmailAddressResetStatePending(
-    resetIn: json['reset_in'],
-  );
-  
-  
+  factory EmailAddressResetStatePending.fromJson(Map<String, dynamic> json) =>
+      EmailAddressResetStatePending(
+        resetIn: json['reset_in'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "reset_in": resetIn,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -146,9 +142,10 @@ final class EmailAddressResetStatePending extends EmailAddressResetState {
   @override
   EmailAddressResetStatePending copyWith({
     int? resetIn,
-  }) => EmailAddressResetStatePending(
-    resetIn: resetIn ?? this.resetIn,
-  );
+  }) =>
+      EmailAddressResetStatePending(
+        resetIn: resetIn ?? this.resetIn,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'emailAddressResetStatePending';

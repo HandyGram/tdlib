@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [StickerSets] is returned on completion.
 final class GetInstalledStickerSets extends TdFunction {
-  
   /// **GetInstalledStickerSets** *(getInstalledStickerSets)* - TDLib function
   ///
   /// Returns a list of installed sticker sets.
@@ -19,19 +18,19 @@ final class GetInstalledStickerSets extends TdFunction {
   const GetInstalledStickerSets({
     required this.stickerType,
   });
-  
+
   /// Type of the sticker sets to return
   final StickerType stickerType;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sticker_type": stickerType.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetInstalledStickerSets extends TdFunction {
   /// * [sticker_type]: Type of the sticker sets to return
   GetInstalledStickerSets copyWith({
     StickerType? stickerType,
-  }) => GetInstalledStickerSets(
-    stickerType: stickerType ?? this.stickerType,
-  );
+  }) =>
+      GetInstalledStickerSets(
+        stickerType: stickerType ?? this.stickerType,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getInstalledStickerSets';

@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [StickerSets] is returned on completion.
 final class GetArchivedStickerSets extends TdFunction {
-  
   /// **GetArchivedStickerSets** *(getArchivedStickerSets)* - TDLib function
   ///
   /// Returns a list of archived sticker sets.
@@ -25,43 +24,44 @@ final class GetArchivedStickerSets extends TdFunction {
     required this.offsetStickerSetId,
     required this.limit,
   });
-  
-  /// Type of the sticker sets to return 
+
+  /// Type of the sticker sets to return
   final StickerType stickerType;
 
-  /// Identifier of the sticker set from which to return the result 
+  /// Identifier of the sticker set from which to return the result
   final int offsetStickerSetId;
 
   /// The maximum number of sticker sets to return; up to 100
   final int limit;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sticker_type": stickerType.toJson(),
       "offset_sticker_set_id": offsetStickerSetId,
       "limit": limit,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [sticker_type]: Type of the sticker sets to return 
-  /// * [offset_sticker_set_id]: Identifier of the sticker set from which to return the result 
+  /// * [sticker_type]: Type of the sticker sets to return
+  /// * [offset_sticker_set_id]: Identifier of the sticker set from which to return the result
   /// * [limit]: The maximum number of sticker sets to return; up to 100
   GetArchivedStickerSets copyWith({
     StickerType? stickerType,
     int? offsetStickerSetId,
     int? limit,
-  }) => GetArchivedStickerSets(
-    stickerType: stickerType ?? this.stickerType,
-    offsetStickerSetId: offsetStickerSetId ?? this.offsetStickerSetId,
-    limit: limit ?? this.limit,
-  );
+  }) =>
+      GetArchivedStickerSets(
+        stickerType: stickerType ?? this.stickerType,
+        offsetStickerSetId: offsetStickerSetId ?? this.offsetStickerSetId,
+        limit: limit ?? this.limit,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getArchivedStickerSets';

@@ -4,12 +4,11 @@ part of '../tdapi.dart';
 ///
 /// Contains notifications about data changes.
 sealed class Update extends TdObject {
-  
   /// **Update** *(update)* - parent
   ///
   /// Contains notifications about data changes.
   const Update();
-  
+
   /// a Update return type can be :
   /// * [UpdateAuthorizationState]
   /// * [UpdateNewMessage]
@@ -141,8 +140,8 @@ sealed class Update extends TdObject {
   /// * [UpdateChatBoost]
   /// * [UpdateMessageReaction]
   /// * [UpdateMessageReactions]
-  factory Update.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory Update.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case UpdateAuthorizationState.defaultObjectId:
         return UpdateAuthorizationState.fromJson(json);
       case UpdateNewMessage.defaultObjectId:
@@ -410,7 +409,7 @@ sealed class Update extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -430,14 +429,12 @@ sealed class Update extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateAuthorizationState** *(updateAuthorizationState)* - child of Update
 ///
 /// The user authorization state has changed.
 ///
 /// * [authorizationState]: New authorization state.
 final class UpdateAuthorizationState extends Update {
-  
   /// **UpdateAuthorizationState** *(updateAuthorizationState)* - child of Update
   ///
   /// The user authorization state has changed.
@@ -448,7 +445,7 @@ final class UpdateAuthorizationState extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// New authorization state
   final AuthorizationState authorizationState;
 
@@ -459,23 +456,24 @@ final class UpdateAuthorizationState extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateAuthorizationState.fromJson(Map<String, dynamic> json) => UpdateAuthorizationState(
-    authorizationState: AuthorizationState.fromJson(json['authorization_state']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateAuthorizationState.fromJson(Map<String, dynamic> json) =>
+      UpdateAuthorizationState(
+        authorizationState:
+            AuthorizationState.fromJson(json['authorization_state']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "authorization_state": authorizationState.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -486,11 +484,12 @@ final class UpdateAuthorizationState extends Update {
     AuthorizationState? authorizationState,
     dynamic extra,
     int? clientId,
-  }) => UpdateAuthorizationState(
-    authorizationState: authorizationState ?? this.authorizationState,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateAuthorizationState(
+        authorizationState: authorizationState ?? this.authorizationState,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateAuthorizationState';
@@ -504,14 +503,12 @@ final class UpdateAuthorizationState extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateNewMessage** *(updateNewMessage)* - child of Update
 ///
 /// A new message was received; can also be an outgoing message.
 ///
 /// * [message]: The new message.
 final class UpdateNewMessage extends Update {
-  
   /// **UpdateNewMessage** *(updateNewMessage)* - child of Update
   ///
   /// A new message was received; can also be an outgoing message.
@@ -522,7 +519,7 @@ final class UpdateNewMessage extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// The new message
   final Message message;
 
@@ -533,23 +530,23 @@ final class UpdateNewMessage extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateNewMessage.fromJson(Map<String, dynamic> json) => UpdateNewMessage(
-    message: Message.fromJson(json['message']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateNewMessage.fromJson(Map<String, dynamic> json) =>
+      UpdateNewMessage(
+        message: Message.fromJson(json['message']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "message": message.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -560,11 +557,12 @@ final class UpdateNewMessage extends Update {
     Message? message,
     dynamic extra,
     int? clientId,
-  }) => UpdateNewMessage(
-    message: message ?? this.message,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateNewMessage(
+        message: message ?? this.message,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateNewMessage';
@@ -578,7 +576,6 @@ final class UpdateNewMessage extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateMessageSendAcknowledged** *(updateMessageSendAcknowledged)* - child of Update
 ///
 /// A request to send a message has reached the Telegram server. This doesn't mean that the message will be sent successfully.. This update is sent only if the option "use_quick_ack" is set to true. This update may be sent multiple times for the same message.
@@ -586,7 +583,6 @@ final class UpdateNewMessage extends Update {
 /// * [chatId]: The chat identifier of the sent message.
 /// * [messageId]: A temporary message identifier.
 final class UpdateMessageSendAcknowledged extends Update {
-  
   /// **UpdateMessageSendAcknowledged** *(updateMessageSendAcknowledged)* - child of Update
   ///
   /// A request to send a message has reached the Telegram server. This doesn't mean that the message will be sent successfully.. This update is sent only if the option "use_quick_ack" is set to true. This update may be sent multiple times for the same message.
@@ -599,7 +595,7 @@ final class UpdateMessageSendAcknowledged extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// The chat identifier of the sent message
   final int chatId;
 
@@ -613,25 +609,25 @@ final class UpdateMessageSendAcknowledged extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateMessageSendAcknowledged.fromJson(Map<String, dynamic> json) => UpdateMessageSendAcknowledged(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateMessageSendAcknowledged.fromJson(Map<String, dynamic> json) =>
+      UpdateMessageSendAcknowledged(
+        chatId: json['chat_id'],
+        messageId: json['message_id'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -644,12 +640,13 @@ final class UpdateMessageSendAcknowledged extends Update {
     int? messageId,
     dynamic extra,
     int? clientId,
-  }) => UpdateMessageSendAcknowledged(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateMessageSendAcknowledged(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateMessageSendAcknowledged';
@@ -663,7 +660,6 @@ final class UpdateMessageSendAcknowledged extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateMessageSendSucceeded** *(updateMessageSendSucceeded)* - child of Update
 ///
 /// A message has been successfully sent.
@@ -671,7 +667,6 @@ final class UpdateMessageSendAcknowledged extends Update {
 /// * [message]: The sent message. Usually only the message identifier, date, and content are changed, but almost all other fields can also change.
 /// * [oldMessageId]: The previous temporary message identifier.
 final class UpdateMessageSendSucceeded extends Update {
-  
   /// **UpdateMessageSendSucceeded** *(updateMessageSendSucceeded)* - child of Update
   ///
   /// A message has been successfully sent.
@@ -684,8 +679,8 @@ final class UpdateMessageSendSucceeded extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// The sent message. Usually only the message identifier, date, and content are changed, but almost all other fields can also change 
+
+  /// The sent message. Usually only the message identifier, date, and content are changed, but almost all other fields can also change
   final Message message;
 
   /// The previous temporary message identifier
@@ -698,30 +693,30 @@ final class UpdateMessageSendSucceeded extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateMessageSendSucceeded.fromJson(Map<String, dynamic> json) => UpdateMessageSendSucceeded(
-    message: Message.fromJson(json['message']),
-    oldMessageId: json['old_message_id'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateMessageSendSucceeded.fromJson(Map<String, dynamic> json) =>
+      UpdateMessageSendSucceeded(
+        message: Message.fromJson(json['message']),
+        oldMessageId: json['old_message_id'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "message": message.toJson(),
       "old_message_id": oldMessageId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [message]: The sent message. Usually only the message identifier, date, and content are changed, but almost all other fields can also change 
+  /// * [message]: The sent message. Usually only the message identifier, date, and content are changed, but almost all other fields can also change
   /// * [old_message_id]: The previous temporary message identifier
   @override
   UpdateMessageSendSucceeded copyWith({
@@ -729,12 +724,13 @@ final class UpdateMessageSendSucceeded extends Update {
     int? oldMessageId,
     dynamic extra,
     int? clientId,
-  }) => UpdateMessageSendSucceeded(
-    message: message ?? this.message,
-    oldMessageId: oldMessageId ?? this.oldMessageId,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateMessageSendSucceeded(
+        message: message ?? this.message,
+        oldMessageId: oldMessageId ?? this.oldMessageId,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateMessageSendSucceeded';
@@ -748,7 +744,6 @@ final class UpdateMessageSendSucceeded extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateMessageSendFailed** *(updateMessageSendFailed)* - child of Update
 ///
 /// A message failed to send. Be aware that some messages being sent can be irrecoverably deleted, in which case updateDeleteMessages will be received instead of this update.
@@ -757,7 +752,6 @@ final class UpdateMessageSendSucceeded extends Update {
 /// * [oldMessageId]: The previous temporary message identifier.
 /// * [error]: The cause of the message sending failure.
 final class UpdateMessageSendFailed extends Update {
-  
   /// **UpdateMessageSendFailed** *(updateMessageSendFailed)* - child of Update
   ///
   /// A message failed to send. Be aware that some messages being sent can be irrecoverably deleted, in which case updateDeleteMessages will be received instead of this update.
@@ -772,7 +766,7 @@ final class UpdateMessageSendFailed extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// The failed to send message
   final Message message;
 
@@ -789,27 +783,27 @@ final class UpdateMessageSendFailed extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateMessageSendFailed.fromJson(Map<String, dynamic> json) => UpdateMessageSendFailed(
-    message: Message.fromJson(json['message']),
-    oldMessageId: json['old_message_id'],
-    error: TdError.fromJson(json['error']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateMessageSendFailed.fromJson(Map<String, dynamic> json) =>
+      UpdateMessageSendFailed(
+        message: Message.fromJson(json['message']),
+        oldMessageId: json['old_message_id'],
+        error: TdError.fromJson(json['error']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "message": message.toJson(),
       "old_message_id": oldMessageId,
       "error": error.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -824,13 +818,14 @@ final class UpdateMessageSendFailed extends Update {
     TdError? error,
     dynamic extra,
     int? clientId,
-  }) => UpdateMessageSendFailed(
-    message: message ?? this.message,
-    oldMessageId: oldMessageId ?? this.oldMessageId,
-    error: error ?? this.error,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateMessageSendFailed(
+        message: message ?? this.message,
+        oldMessageId: oldMessageId ?? this.oldMessageId,
+        error: error ?? this.error,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateMessageSendFailed';
@@ -844,7 +839,6 @@ final class UpdateMessageSendFailed extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateMessageContent** *(updateMessageContent)* - child of Update
 ///
 /// The message content has changed.
@@ -853,7 +847,6 @@ final class UpdateMessageSendFailed extends Update {
 /// * [messageId]: Message identifier.
 /// * [newContent]: New message content.
 final class UpdateMessageContent extends Update {
-  
   /// **UpdateMessageContent** *(updateMessageContent)* - child of Update
   ///
   /// The message content has changed.
@@ -868,11 +861,11 @@ final class UpdateMessageContent extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
-  /// Message identifier 
+  /// Message identifier
   final int messageId;
 
   /// New message content
@@ -885,33 +878,33 @@ final class UpdateMessageContent extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateMessageContent.fromJson(Map<String, dynamic> json) => UpdateMessageContent(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    newContent: MessageContent.fromJson(json['new_content']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateMessageContent.fromJson(Map<String, dynamic> json) =>
+      UpdateMessageContent(
+        chatId: json['chat_id'],
+        messageId: json['message_id'],
+        newContent: MessageContent.fromJson(json['new_content']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "new_content": newContent.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
-  /// * [message_id]: Message identifier 
+  /// * [chat_id]: Chat identifier
+  /// * [message_id]: Message identifier
   /// * [new_content]: New message content
   @override
   UpdateMessageContent copyWith({
@@ -920,13 +913,14 @@ final class UpdateMessageContent extends Update {
     MessageContent? newContent,
     dynamic extra,
     int? clientId,
-  }) => UpdateMessageContent(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    newContent: newContent ?? this.newContent,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateMessageContent(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        newContent: newContent ?? this.newContent,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateMessageContent';
@@ -940,7 +934,6 @@ final class UpdateMessageContent extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateMessageEdited** *(updateMessageEdited)* - child of Update
 ///
 /// A message was edited. Changes in the message content will come in a separate updateMessageContent.
@@ -950,7 +943,6 @@ final class UpdateMessageContent extends Update {
 /// * [editDate]: Point in time (Unix timestamp) when the message was edited.
 /// * [replyMarkup]: New message reply markup; may be null *(optional)*.
 final class UpdateMessageEdited extends Update {
-  
   /// **UpdateMessageEdited** *(updateMessageEdited)* - child of Update
   ///
   /// A message was edited. Changes in the message content will come in a separate updateMessageContent.
@@ -967,7 +959,7 @@ final class UpdateMessageEdited extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -987,29 +979,31 @@ final class UpdateMessageEdited extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateMessageEdited.fromJson(Map<String, dynamic> json) => UpdateMessageEdited(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    editDate: json['edit_date'],
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateMessageEdited.fromJson(Map<String, dynamic> json) =>
+      UpdateMessageEdited(
+        chatId: json['chat_id'],
+        messageId: json['message_id'],
+        editDate: json['edit_date'],
+        replyMarkup: json['reply_markup'] == null
+            ? null
+            : ReplyMarkup.fromJson(json['reply_markup']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "edit_date": editDate,
       "reply_markup": replyMarkup?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -1026,14 +1020,15 @@ final class UpdateMessageEdited extends Update {
     ReplyMarkup? replyMarkup,
     dynamic extra,
     int? clientId,
-  }) => UpdateMessageEdited(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    editDate: editDate ?? this.editDate,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateMessageEdited(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        editDate: editDate ?? this.editDate,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateMessageEdited';
@@ -1047,7 +1042,6 @@ final class UpdateMessageEdited extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateMessageIsPinned** *(updateMessageIsPinned)* - child of Update
 ///
 /// The message pinned state was changed.
@@ -1056,7 +1050,6 @@ final class UpdateMessageEdited extends Update {
 /// * [messageId]: The message identifier.
 /// * [isPinned]: True, if the message is pinned.
 final class UpdateMessageIsPinned extends Update {
-  
   /// **UpdateMessageIsPinned** *(updateMessageIsPinned)* - child of Update
   ///
   /// The message pinned state was changed.
@@ -1071,11 +1064,11 @@ final class UpdateMessageIsPinned extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
-  /// The message identifier 
+  /// The message identifier
   final int messageId;
 
   /// True, if the message is pinned
@@ -1088,33 +1081,33 @@ final class UpdateMessageIsPinned extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateMessageIsPinned.fromJson(Map<String, dynamic> json) => UpdateMessageIsPinned(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    isPinned: json['is_pinned'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateMessageIsPinned.fromJson(Map<String, dynamic> json) =>
+      UpdateMessageIsPinned(
+        chatId: json['chat_id'],
+        messageId: json['message_id'],
+        isPinned: json['is_pinned'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "is_pinned": isPinned,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
-  /// * [message_id]: The message identifier 
+  /// * [chat_id]: Chat identifier
+  /// * [message_id]: The message identifier
   /// * [is_pinned]: True, if the message is pinned
   @override
   UpdateMessageIsPinned copyWith({
@@ -1123,13 +1116,14 @@ final class UpdateMessageIsPinned extends Update {
     bool? isPinned,
     dynamic extra,
     int? clientId,
-  }) => UpdateMessageIsPinned(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    isPinned: isPinned ?? this.isPinned,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateMessageIsPinned(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        isPinned: isPinned ?? this.isPinned,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateMessageIsPinned';
@@ -1143,7 +1137,6 @@ final class UpdateMessageIsPinned extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateMessageInteractionInfo** *(updateMessageInteractionInfo)* - child of Update
 ///
 /// The information about interactions with a message has changed.
@@ -1152,7 +1145,6 @@ final class UpdateMessageIsPinned extends Update {
 /// * [messageId]: Message identifier.
 /// * [interactionInfo]: New information about interactions with the message; may be null *(optional)*.
 final class UpdateMessageInteractionInfo extends Update {
-  
   /// **UpdateMessageInteractionInfo** *(updateMessageInteractionInfo)* - child of Update
   ///
   /// The information about interactions with a message has changed.
@@ -1167,11 +1159,11 @@ final class UpdateMessageInteractionInfo extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
-  /// Message identifier 
+  /// Message identifier
   final int messageId;
 
   /// New information about interactions with the message; may be null
@@ -1184,33 +1176,35 @@ final class UpdateMessageInteractionInfo extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateMessageInteractionInfo.fromJson(Map<String, dynamic> json) => UpdateMessageInteractionInfo(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    interactionInfo: json['interaction_info'] == null ? null : MessageInteractionInfo.fromJson(json['interaction_info']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateMessageInteractionInfo.fromJson(Map<String, dynamic> json) =>
+      UpdateMessageInteractionInfo(
+        chatId: json['chat_id'],
+        messageId: json['message_id'],
+        interactionInfo: json['interaction_info'] == null
+            ? null
+            : MessageInteractionInfo.fromJson(json['interaction_info']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "interaction_info": interactionInfo?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
-  /// * [message_id]: Message identifier 
+  /// * [chat_id]: Chat identifier
+  /// * [message_id]: Message identifier
   /// * [interaction_info]: New information about interactions with the message; may be null
   @override
   UpdateMessageInteractionInfo copyWith({
@@ -1219,13 +1213,14 @@ final class UpdateMessageInteractionInfo extends Update {
     MessageInteractionInfo? interactionInfo,
     dynamic extra,
     int? clientId,
-  }) => UpdateMessageInteractionInfo(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    interactionInfo: interactionInfo ?? this.interactionInfo,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateMessageInteractionInfo(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        interactionInfo: interactionInfo ?? this.interactionInfo,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateMessageInteractionInfo';
@@ -1239,7 +1234,6 @@ final class UpdateMessageInteractionInfo extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateMessageContentOpened** *(updateMessageContentOpened)* - child of Update
 ///
 /// The message content was opened. Updates voice note messages to "listened", video note messages to "viewed" and starts the self-destruct timer.
@@ -1247,7 +1241,6 @@ final class UpdateMessageInteractionInfo extends Update {
 /// * [chatId]: Chat identifier.
 /// * [messageId]: Message identifier.
 final class UpdateMessageContentOpened extends Update {
-  
   /// **UpdateMessageContentOpened** *(updateMessageContentOpened)* - child of Update
   ///
   /// The message content was opened. Updates voice note messages to "listened", video note messages to "viewed" and starts the self-destruct timer.
@@ -1260,8 +1253,8 @@ final class UpdateMessageContentOpened extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// Message identifier
@@ -1274,30 +1267,30 @@ final class UpdateMessageContentOpened extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateMessageContentOpened.fromJson(Map<String, dynamic> json) => UpdateMessageContentOpened(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateMessageContentOpened.fromJson(Map<String, dynamic> json) =>
+      UpdateMessageContentOpened(
+        chatId: json['chat_id'],
+        messageId: json['message_id'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [message_id]: Message identifier
   @override
   UpdateMessageContentOpened copyWith({
@@ -1305,12 +1298,13 @@ final class UpdateMessageContentOpened extends Update {
     int? messageId,
     dynamic extra,
     int? clientId,
-  }) => UpdateMessageContentOpened(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateMessageContentOpened(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateMessageContentOpened';
@@ -1324,7 +1318,6 @@ final class UpdateMessageContentOpened extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateMessageMentionRead** *(updateMessageMentionRead)* - child of Update
 ///
 /// A message with an unread mention was read.
@@ -1333,7 +1326,6 @@ final class UpdateMessageContentOpened extends Update {
 /// * [messageId]: Message identifier.
 /// * [unreadMentionCount]: The new number of unread mention messages left in the chat.
 final class UpdateMessageMentionRead extends Update {
-  
   /// **UpdateMessageMentionRead** *(updateMessageMentionRead)* - child of Update
   ///
   /// A message with an unread mention was read.
@@ -1348,11 +1340,11 @@ final class UpdateMessageMentionRead extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
-  /// Message identifier 
+  /// Message identifier
   final int messageId;
 
   /// The new number of unread mention messages left in the chat
@@ -1365,33 +1357,33 @@ final class UpdateMessageMentionRead extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateMessageMentionRead.fromJson(Map<String, dynamic> json) => UpdateMessageMentionRead(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    unreadMentionCount: json['unread_mention_count'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateMessageMentionRead.fromJson(Map<String, dynamic> json) =>
+      UpdateMessageMentionRead(
+        chatId: json['chat_id'],
+        messageId: json['message_id'],
+        unreadMentionCount: json['unread_mention_count'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "unread_mention_count": unreadMentionCount,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
-  /// * [message_id]: Message identifier 
+  /// * [chat_id]: Chat identifier
+  /// * [message_id]: Message identifier
   /// * [unread_mention_count]: The new number of unread mention messages left in the chat
   @override
   UpdateMessageMentionRead copyWith({
@@ -1400,13 +1392,14 @@ final class UpdateMessageMentionRead extends Update {
     int? unreadMentionCount,
     dynamic extra,
     int? clientId,
-  }) => UpdateMessageMentionRead(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    unreadMentionCount: unreadMentionCount ?? this.unreadMentionCount,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateMessageMentionRead(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        unreadMentionCount: unreadMentionCount ?? this.unreadMentionCount,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateMessageMentionRead';
@@ -1420,7 +1413,6 @@ final class UpdateMessageMentionRead extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateMessageUnreadReactions** *(updateMessageUnreadReactions)* - child of Update
 ///
 /// The list of unread reactions added to a message was changed.
@@ -1430,7 +1422,6 @@ final class UpdateMessageMentionRead extends Update {
 /// * [unreadReactions]: The new list of unread reactions.
 /// * [unreadReactionCount]: The new number of messages with unread reactions left in the chat.
 final class UpdateMessageUnreadReactions extends Update {
-  
   /// **UpdateMessageUnreadReactions** *(updateMessageUnreadReactions)* - child of Update
   ///
   /// The list of unread reactions added to a message was changed.
@@ -1447,7 +1438,7 @@ final class UpdateMessageUnreadReactions extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -1467,29 +1458,32 @@ final class UpdateMessageUnreadReactions extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateMessageUnreadReactions.fromJson(Map<String, dynamic> json) => UpdateMessageUnreadReactions(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    unreadReactions: List<UnreadReaction>.from((json['unread_reactions'] ?? []).map((item) => UnreadReaction.fromJson(item)).toList()),
-    unreadReactionCount: json['unread_reaction_count'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateMessageUnreadReactions.fromJson(Map<String, dynamic> json) =>
+      UpdateMessageUnreadReactions(
+        chatId: json['chat_id'],
+        messageId: json['message_id'],
+        unreadReactions: List<UnreadReaction>.from(
+            (json['unread_reactions'] ?? [])
+                .map((item) => UnreadReaction.fromJson(item))
+                .toList()),
+        unreadReactionCount: json['unread_reaction_count'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "unread_reactions": unreadReactions.map((i) => i.toJson()).toList(),
       "unread_reaction_count": unreadReactionCount,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -1506,14 +1500,15 @@ final class UpdateMessageUnreadReactions extends Update {
     int? unreadReactionCount,
     dynamic extra,
     int? clientId,
-  }) => UpdateMessageUnreadReactions(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    unreadReactions: unreadReactions ?? this.unreadReactions,
-    unreadReactionCount: unreadReactionCount ?? this.unreadReactionCount,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateMessageUnreadReactions(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        unreadReactions: unreadReactions ?? this.unreadReactions,
+        unreadReactionCount: unreadReactionCount ?? this.unreadReactionCount,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateMessageUnreadReactions';
@@ -1527,7 +1522,6 @@ final class UpdateMessageUnreadReactions extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateMessageLiveLocationViewed** *(updateMessageLiveLocationViewed)* - child of Update
 ///
 /// A message with a live location was viewed. When the update is received, the application is supposed to update the live location.
@@ -1535,7 +1529,6 @@ final class UpdateMessageUnreadReactions extends Update {
 /// * [chatId]: Identifier of the chat with the live location message.
 /// * [messageId]: Identifier of the message with live location.
 final class UpdateMessageLiveLocationViewed extends Update {
-  
   /// **UpdateMessageLiveLocationViewed** *(updateMessageLiveLocationViewed)* - child of Update
   ///
   /// A message with a live location was viewed. When the update is received, the application is supposed to update the live location.
@@ -1548,7 +1541,7 @@ final class UpdateMessageLiveLocationViewed extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Identifier of the chat with the live location message
   final int chatId;
 
@@ -1562,25 +1555,25 @@ final class UpdateMessageLiveLocationViewed extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateMessageLiveLocationViewed.fromJson(Map<String, dynamic> json) => UpdateMessageLiveLocationViewed(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateMessageLiveLocationViewed.fromJson(Map<String, dynamic> json) =>
+      UpdateMessageLiveLocationViewed(
+        chatId: json['chat_id'],
+        messageId: json['message_id'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -1593,12 +1586,13 @@ final class UpdateMessageLiveLocationViewed extends Update {
     int? messageId,
     dynamic extra,
     int? clientId,
-  }) => UpdateMessageLiveLocationViewed(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateMessageLiveLocationViewed(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateMessageLiveLocationViewed';
@@ -1612,14 +1606,12 @@ final class UpdateMessageLiveLocationViewed extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateNewChat** *(updateNewChat)* - child of Update
 ///
 /// A new chat has been loaded/created. This update is guaranteed to come before the chat identifier is returned to the application. The chat field changes will be reported through separate updates.
 ///
 /// * [chat]: The chat.
 final class UpdateNewChat extends Update {
-  
   /// **UpdateNewChat** *(updateNewChat)* - child of Update
   ///
   /// A new chat has been loaded/created. This update is guaranteed to come before the chat identifier is returned to the application. The chat field changes will be reported through separate updates.
@@ -1630,7 +1622,7 @@ final class UpdateNewChat extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// The chat
   final Chat chat;
 
@@ -1641,23 +1633,22 @@ final class UpdateNewChat extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory UpdateNewChat.fromJson(Map<String, dynamic> json) => UpdateNewChat(
-    chat: Chat.fromJson(json['chat']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        chat: Chat.fromJson(json['chat']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat": chat.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -1668,11 +1659,12 @@ final class UpdateNewChat extends Update {
     Chat? chat,
     dynamic extra,
     int? clientId,
-  }) => UpdateNewChat(
-    chat: chat ?? this.chat,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateNewChat(
+        chat: chat ?? this.chat,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateNewChat';
@@ -1686,7 +1678,6 @@ final class UpdateNewChat extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatTitle** *(updateChatTitle)* - child of Update
 ///
 /// The title of a chat was changed.
@@ -1694,7 +1685,6 @@ final class UpdateNewChat extends Update {
 /// * [chatId]: Chat identifier.
 /// * [title]: The new chat title.
 final class UpdateChatTitle extends Update {
-  
   /// **UpdateChatTitle** *(updateChatTitle)* - child of Update
   ///
   /// The title of a chat was changed.
@@ -1707,8 +1697,8 @@ final class UpdateChatTitle extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// The new chat title
@@ -1721,30 +1711,30 @@ final class UpdateChatTitle extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatTitle.fromJson(Map<String, dynamic> json) => UpdateChatTitle(
-    chatId: json['chat_id'],
-    title: json['title'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatTitle.fromJson(Map<String, dynamic> json) =>
+      UpdateChatTitle(
+        chatId: json['chat_id'],
+        title: json['title'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "title": title,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [title]: The new chat title
   @override
   UpdateChatTitle copyWith({
@@ -1752,12 +1742,13 @@ final class UpdateChatTitle extends Update {
     String? title,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatTitle(
-    chatId: chatId ?? this.chatId,
-    title: title ?? this.title,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatTitle(
+        chatId: chatId ?? this.chatId,
+        title: title ?? this.title,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatTitle';
@@ -1771,7 +1762,6 @@ final class UpdateChatTitle extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatPhoto** *(updateChatPhoto)* - child of Update
 ///
 /// A chat photo was changed.
@@ -1779,7 +1769,6 @@ final class UpdateChatTitle extends Update {
 /// * [chatId]: Chat identifier.
 /// * [photo]: The new chat photo; may be null *(optional)*.
 final class UpdateChatPhoto extends Update {
-  
   /// **UpdateChatPhoto** *(updateChatPhoto)* - child of Update
   ///
   /// A chat photo was changed.
@@ -1792,8 +1781,8 @@ final class UpdateChatPhoto extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// The new chat photo; may be null
@@ -1806,30 +1795,32 @@ final class UpdateChatPhoto extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatPhoto.fromJson(Map<String, dynamic> json) => UpdateChatPhoto(
-    chatId: json['chat_id'],
-    photo: json['photo'] == null ? null : ChatPhotoInfo.fromJson(json['photo']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatPhoto.fromJson(Map<String, dynamic> json) =>
+      UpdateChatPhoto(
+        chatId: json['chat_id'],
+        photo: json['photo'] == null
+            ? null
+            : ChatPhotoInfo.fromJson(json['photo']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "photo": photo?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [photo]: The new chat photo; may be null
   @override
   UpdateChatPhoto copyWith({
@@ -1837,12 +1828,13 @@ final class UpdateChatPhoto extends Update {
     ChatPhotoInfo? photo,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatPhoto(
-    chatId: chatId ?? this.chatId,
-    photo: photo ?? this.photo,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatPhoto(
+        chatId: chatId ?? this.chatId,
+        photo: photo ?? this.photo,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatPhoto';
@@ -1856,7 +1848,6 @@ final class UpdateChatPhoto extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatAccentColors** *(updateChatAccentColors)* - child of Update
 ///
 /// Chat accent colors have changed.
@@ -1867,7 +1858,6 @@ final class UpdateChatPhoto extends Update {
 /// * [profileAccentColorId]: The new chat profile accent color identifier; -1 if none.
 /// * [profileBackgroundCustomEmojiId]: The new identifier of a custom emoji to be shown on the profile background; 0 if none.
 final class UpdateChatAccentColors extends Update {
-  
   /// **UpdateChatAccentColors** *(updateChatAccentColors)* - child of Update
   ///
   /// Chat accent colors have changed.
@@ -1886,7 +1876,7 @@ final class UpdateChatAccentColors extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -1909,31 +1899,33 @@ final class UpdateChatAccentColors extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatAccentColors.fromJson(Map<String, dynamic> json) => UpdateChatAccentColors(
-    chatId: json['chat_id'],
-    accentColorId: json['accent_color_id'],
-    backgroundCustomEmojiId: int.tryParse(json['background_custom_emoji_id'] ?? "") ?? 0,
-    profileAccentColorId: json['profile_accent_color_id'],
-    profileBackgroundCustomEmojiId: int.tryParse(json['profile_background_custom_emoji_id'] ?? "") ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatAccentColors.fromJson(Map<String, dynamic> json) =>
+      UpdateChatAccentColors(
+        chatId: json['chat_id'],
+        accentColorId: json['accent_color_id'],
+        backgroundCustomEmojiId:
+            int.tryParse(json['background_custom_emoji_id'] ?? "") ?? 0,
+        profileAccentColorId: json['profile_accent_color_id'],
+        profileBackgroundCustomEmojiId:
+            int.tryParse(json['profile_background_custom_emoji_id'] ?? "") ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "accent_color_id": accentColorId,
       "background_custom_emoji_id": backgroundCustomEmojiId,
       "profile_accent_color_id": profileAccentColorId,
       "profile_background_custom_emoji_id": profileBackgroundCustomEmojiId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -1952,15 +1944,18 @@ final class UpdateChatAccentColors extends Update {
     int? profileBackgroundCustomEmojiId,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatAccentColors(
-    chatId: chatId ?? this.chatId,
-    accentColorId: accentColorId ?? this.accentColorId,
-    backgroundCustomEmojiId: backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
-    profileAccentColorId: profileAccentColorId ?? this.profileAccentColorId,
-    profileBackgroundCustomEmojiId: profileBackgroundCustomEmojiId ?? this.profileBackgroundCustomEmojiId,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatAccentColors(
+        chatId: chatId ?? this.chatId,
+        accentColorId: accentColorId ?? this.accentColorId,
+        backgroundCustomEmojiId:
+            backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
+        profileAccentColorId: profileAccentColorId ?? this.profileAccentColorId,
+        profileBackgroundCustomEmojiId: profileBackgroundCustomEmojiId ??
+            this.profileBackgroundCustomEmojiId,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatAccentColors';
@@ -1974,7 +1969,6 @@ final class UpdateChatAccentColors extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatPermissions** *(updateChatPermissions)* - child of Update
 ///
 /// Chat permissions were changed.
@@ -1982,7 +1976,6 @@ final class UpdateChatAccentColors extends Update {
 /// * [chatId]: Chat identifier.
 /// * [permissions]: The new chat permissions.
 final class UpdateChatPermissions extends Update {
-  
   /// **UpdateChatPermissions** *(updateChatPermissions)* - child of Update
   ///
   /// Chat permissions were changed.
@@ -1995,8 +1988,8 @@ final class UpdateChatPermissions extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// The new chat permissions
@@ -2009,30 +2002,30 @@ final class UpdateChatPermissions extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatPermissions.fromJson(Map<String, dynamic> json) => UpdateChatPermissions(
-    chatId: json['chat_id'],
-    permissions: ChatPermissions.fromJson(json['permissions']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatPermissions.fromJson(Map<String, dynamic> json) =>
+      UpdateChatPermissions(
+        chatId: json['chat_id'],
+        permissions: ChatPermissions.fromJson(json['permissions']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "permissions": permissions.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [permissions]: The new chat permissions
   @override
   UpdateChatPermissions copyWith({
@@ -2040,12 +2033,13 @@ final class UpdateChatPermissions extends Update {
     ChatPermissions? permissions,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatPermissions(
-    chatId: chatId ?? this.chatId,
-    permissions: permissions ?? this.permissions,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatPermissions(
+        chatId: chatId ?? this.chatId,
+        permissions: permissions ?? this.permissions,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatPermissions';
@@ -2059,7 +2053,6 @@ final class UpdateChatPermissions extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatLastMessage** *(updateChatLastMessage)* - child of Update
 ///
 /// The last message of a chat was changed.
@@ -2068,7 +2061,6 @@ final class UpdateChatPermissions extends Update {
 /// * [lastMessage]: The new last message in the chat; may be null if the last message became unknown. While the last message is unknown, new messages can be added to the chat without corresponding updateNewMessage update *(optional)*.
 /// * [positions]: The new chat positions in the chat lists.
 final class UpdateChatLastMessage extends Update {
-  
   /// **UpdateChatLastMessage** *(updateChatLastMessage)* - child of Update
   ///
   /// The last message of a chat was changed.
@@ -2083,7 +2075,7 @@ final class UpdateChatLastMessage extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -2100,27 +2092,31 @@ final class UpdateChatLastMessage extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatLastMessage.fromJson(Map<String, dynamic> json) => UpdateChatLastMessage(
-    chatId: json['chat_id'],
-    lastMessage: json['last_message'] == null ? null : Message.fromJson(json['last_message']),
-    positions: List<ChatPosition>.from((json['positions'] ?? []).map((item) => ChatPosition.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatLastMessage.fromJson(Map<String, dynamic> json) =>
+      UpdateChatLastMessage(
+        chatId: json['chat_id'],
+        lastMessage: json['last_message'] == null
+            ? null
+            : Message.fromJson(json['last_message']),
+        positions: List<ChatPosition>.from((json['positions'] ?? [])
+            .map((item) => ChatPosition.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "last_message": lastMessage?.toJson(),
       "positions": positions.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -2135,13 +2131,14 @@ final class UpdateChatLastMessage extends Update {
     List<ChatPosition>? positions,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatLastMessage(
-    chatId: chatId ?? this.chatId,
-    lastMessage: lastMessage ?? this.lastMessage,
-    positions: positions ?? this.positions,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatLastMessage(
+        chatId: chatId ?? this.chatId,
+        lastMessage: lastMessage ?? this.lastMessage,
+        positions: positions ?? this.positions,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatLastMessage';
@@ -2155,7 +2152,6 @@ final class UpdateChatLastMessage extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatPosition** *(updateChatPosition)* - child of Update
 ///
 /// The position of a chat in a chat list has changed. An updateChatLastMessage or updateChatDraftMessage update might be sent instead of the update.
@@ -2163,7 +2159,6 @@ final class UpdateChatLastMessage extends Update {
 /// * [chatId]: Chat identifier.
 /// * [position]: New chat position. If new order is 0, then the chat needs to be removed from the list.
 final class UpdateChatPosition extends Update {
-  
   /// **UpdateChatPosition** *(updateChatPosition)* - child of Update
   ///
   /// The position of a chat in a chat list has changed. An updateChatLastMessage or updateChatDraftMessage update might be sent instead of the update.
@@ -2176,7 +2171,7 @@ final class UpdateChatPosition extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -2190,25 +2185,25 @@ final class UpdateChatPosition extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatPosition.fromJson(Map<String, dynamic> json) => UpdateChatPosition(
-    chatId: json['chat_id'],
-    position: ChatPosition.fromJson(json['position']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatPosition.fromJson(Map<String, dynamic> json) =>
+      UpdateChatPosition(
+        chatId: json['chat_id'],
+        position: ChatPosition.fromJson(json['position']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "position": position.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -2221,12 +2216,13 @@ final class UpdateChatPosition extends Update {
     ChatPosition? position,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatPosition(
-    chatId: chatId ?? this.chatId,
-    position: position ?? this.position,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatPosition(
+        chatId: chatId ?? this.chatId,
+        position: position ?? this.position,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatPosition';
@@ -2240,7 +2236,6 @@ final class UpdateChatPosition extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatReadInbox** *(updateChatReadInbox)* - child of Update
 ///
 /// Incoming messages were read or the number of unread messages has been changed.
@@ -2249,7 +2244,6 @@ final class UpdateChatPosition extends Update {
 /// * [lastReadInboxMessageId]: Identifier of the last read incoming message.
 /// * [unreadCount]: The number of unread messages left in the chat.
 final class UpdateChatReadInbox extends Update {
-  
   /// **UpdateChatReadInbox** *(updateChatReadInbox)* - child of Update
   ///
   /// Incoming messages were read or the number of unread messages has been changed.
@@ -2264,11 +2258,11 @@ final class UpdateChatReadInbox extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
-  /// Identifier of the last read incoming message 
+  /// Identifier of the last read incoming message
   final int lastReadInboxMessageId;
 
   /// The number of unread messages left in the chat
@@ -2281,33 +2275,33 @@ final class UpdateChatReadInbox extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatReadInbox.fromJson(Map<String, dynamic> json) => UpdateChatReadInbox(
-    chatId: json['chat_id'],
-    lastReadInboxMessageId: json['last_read_inbox_message_id'],
-    unreadCount: json['unread_count'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatReadInbox.fromJson(Map<String, dynamic> json) =>
+      UpdateChatReadInbox(
+        chatId: json['chat_id'],
+        lastReadInboxMessageId: json['last_read_inbox_message_id'],
+        unreadCount: json['unread_count'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "last_read_inbox_message_id": lastReadInboxMessageId,
       "unread_count": unreadCount,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
-  /// * [last_read_inbox_message_id]: Identifier of the last read incoming message 
+  /// * [chat_id]: Chat identifier
+  /// * [last_read_inbox_message_id]: Identifier of the last read incoming message
   /// * [unread_count]: The number of unread messages left in the chat
   @override
   UpdateChatReadInbox copyWith({
@@ -2316,13 +2310,15 @@ final class UpdateChatReadInbox extends Update {
     int? unreadCount,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatReadInbox(
-    chatId: chatId ?? this.chatId,
-    lastReadInboxMessageId: lastReadInboxMessageId ?? this.lastReadInboxMessageId,
-    unreadCount: unreadCount ?? this.unreadCount,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatReadInbox(
+        chatId: chatId ?? this.chatId,
+        lastReadInboxMessageId:
+            lastReadInboxMessageId ?? this.lastReadInboxMessageId,
+        unreadCount: unreadCount ?? this.unreadCount,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatReadInbox';
@@ -2336,7 +2332,6 @@ final class UpdateChatReadInbox extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatReadOutbox** *(updateChatReadOutbox)* - child of Update
 ///
 /// Outgoing messages were read.
@@ -2344,7 +2339,6 @@ final class UpdateChatReadInbox extends Update {
 /// * [chatId]: Chat identifier.
 /// * [lastReadOutboxMessageId]: Identifier of last read outgoing message.
 final class UpdateChatReadOutbox extends Update {
-  
   /// **UpdateChatReadOutbox** *(updateChatReadOutbox)* - child of Update
   ///
   /// Outgoing messages were read.
@@ -2357,8 +2351,8 @@ final class UpdateChatReadOutbox extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// Identifier of last read outgoing message
@@ -2371,30 +2365,30 @@ final class UpdateChatReadOutbox extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatReadOutbox.fromJson(Map<String, dynamic> json) => UpdateChatReadOutbox(
-    chatId: json['chat_id'],
-    lastReadOutboxMessageId: json['last_read_outbox_message_id'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatReadOutbox.fromJson(Map<String, dynamic> json) =>
+      UpdateChatReadOutbox(
+        chatId: json['chat_id'],
+        lastReadOutboxMessageId: json['last_read_outbox_message_id'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "last_read_outbox_message_id": lastReadOutboxMessageId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [last_read_outbox_message_id]: Identifier of last read outgoing message
   @override
   UpdateChatReadOutbox copyWith({
@@ -2402,12 +2396,14 @@ final class UpdateChatReadOutbox extends Update {
     int? lastReadOutboxMessageId,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatReadOutbox(
-    chatId: chatId ?? this.chatId,
-    lastReadOutboxMessageId: lastReadOutboxMessageId ?? this.lastReadOutboxMessageId,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatReadOutbox(
+        chatId: chatId ?? this.chatId,
+        lastReadOutboxMessageId:
+            lastReadOutboxMessageId ?? this.lastReadOutboxMessageId,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatReadOutbox';
@@ -2421,7 +2417,6 @@ final class UpdateChatReadOutbox extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatActionBar** *(updateChatActionBar)* - child of Update
 ///
 /// The chat action bar was changed.
@@ -2429,7 +2424,6 @@ final class UpdateChatReadOutbox extends Update {
 /// * [chatId]: Chat identifier.
 /// * [actionBar]: The new value of the action bar; may be null *(optional)*.
 final class UpdateChatActionBar extends Update {
-  
   /// **UpdateChatActionBar** *(updateChatActionBar)* - child of Update
   ///
   /// The chat action bar was changed.
@@ -2442,8 +2436,8 @@ final class UpdateChatActionBar extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// The new value of the action bar; may be null
@@ -2456,30 +2450,32 @@ final class UpdateChatActionBar extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatActionBar.fromJson(Map<String, dynamic> json) => UpdateChatActionBar(
-    chatId: json['chat_id'],
-    actionBar: json['action_bar'] == null ? null : ChatActionBar.fromJson(json['action_bar']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatActionBar.fromJson(Map<String, dynamic> json) =>
+      UpdateChatActionBar(
+        chatId: json['chat_id'],
+        actionBar: json['action_bar'] == null
+            ? null
+            : ChatActionBar.fromJson(json['action_bar']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "action_bar": actionBar?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [action_bar]: The new value of the action bar; may be null
   @override
   UpdateChatActionBar copyWith({
@@ -2487,12 +2483,13 @@ final class UpdateChatActionBar extends Update {
     ChatActionBar? actionBar,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatActionBar(
-    chatId: chatId ?? this.chatId,
-    actionBar: actionBar ?? this.actionBar,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatActionBar(
+        chatId: chatId ?? this.chatId,
+        actionBar: actionBar ?? this.actionBar,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatActionBar';
@@ -2506,7 +2503,6 @@ final class UpdateChatActionBar extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatAvailableReactions** *(updateChatAvailableReactions)* - child of Update
 ///
 /// The chat available reactions were changed.
@@ -2514,7 +2510,6 @@ final class UpdateChatActionBar extends Update {
 /// * [chatId]: Chat identifier.
 /// * [availableReactions]: The new reactions, available in the chat.
 final class UpdateChatAvailableReactions extends Update {
-  
   /// **UpdateChatAvailableReactions** *(updateChatAvailableReactions)* - child of Update
   ///
   /// The chat available reactions were changed.
@@ -2527,8 +2522,8 @@ final class UpdateChatAvailableReactions extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// The new reactions, available in the chat
@@ -2541,30 +2536,31 @@ final class UpdateChatAvailableReactions extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatAvailableReactions.fromJson(Map<String, dynamic> json) => UpdateChatAvailableReactions(
-    chatId: json['chat_id'],
-    availableReactions: ChatAvailableReactions.fromJson(json['available_reactions']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatAvailableReactions.fromJson(Map<String, dynamic> json) =>
+      UpdateChatAvailableReactions(
+        chatId: json['chat_id'],
+        availableReactions:
+            ChatAvailableReactions.fromJson(json['available_reactions']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "available_reactions": availableReactions.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [available_reactions]: The new reactions, available in the chat
   @override
   UpdateChatAvailableReactions copyWith({
@@ -2572,12 +2568,13 @@ final class UpdateChatAvailableReactions extends Update {
     ChatAvailableReactions? availableReactions,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatAvailableReactions(
-    chatId: chatId ?? this.chatId,
-    availableReactions: availableReactions ?? this.availableReactions,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatAvailableReactions(
+        chatId: chatId ?? this.chatId,
+        availableReactions: availableReactions ?? this.availableReactions,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatAvailableReactions';
@@ -2591,7 +2588,6 @@ final class UpdateChatAvailableReactions extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatDraftMessage** *(updateChatDraftMessage)* - child of Update
 ///
 /// A chat draft has changed. Be aware that the update may come in the currently opened chat but with old content of the draft. If the user has changed the content of the draft, this update mustn't be applied.
@@ -2600,7 +2596,6 @@ final class UpdateChatAvailableReactions extends Update {
 /// * [draftMessage]: The new draft message; may be null if none *(optional)*.
 /// * [positions]: The new chat positions in the chat lists.
 final class UpdateChatDraftMessage extends Update {
-  
   /// **UpdateChatDraftMessage** *(updateChatDraftMessage)* - child of Update
   ///
   /// A chat draft has changed. Be aware that the update may come in the currently opened chat but with old content of the draft. If the user has changed the content of the draft, this update mustn't be applied.
@@ -2615,7 +2610,7 @@ final class UpdateChatDraftMessage extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -2632,27 +2627,31 @@ final class UpdateChatDraftMessage extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatDraftMessage.fromJson(Map<String, dynamic> json) => UpdateChatDraftMessage(
-    chatId: json['chat_id'],
-    draftMessage: json['draft_message'] == null ? null : DraftMessage.fromJson(json['draft_message']),
-    positions: List<ChatPosition>.from((json['positions'] ?? []).map((item) => ChatPosition.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatDraftMessage.fromJson(Map<String, dynamic> json) =>
+      UpdateChatDraftMessage(
+        chatId: json['chat_id'],
+        draftMessage: json['draft_message'] == null
+            ? null
+            : DraftMessage.fromJson(json['draft_message']),
+        positions: List<ChatPosition>.from((json['positions'] ?? [])
+            .map((item) => ChatPosition.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "draft_message": draftMessage?.toJson(),
       "positions": positions.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -2667,13 +2666,14 @@ final class UpdateChatDraftMessage extends Update {
     List<ChatPosition>? positions,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatDraftMessage(
-    chatId: chatId ?? this.chatId,
-    draftMessage: draftMessage ?? this.draftMessage,
-    positions: positions ?? this.positions,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatDraftMessage(
+        chatId: chatId ?? this.chatId,
+        draftMessage: draftMessage ?? this.draftMessage,
+        positions: positions ?? this.positions,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatDraftMessage';
@@ -2687,7 +2687,6 @@ final class UpdateChatDraftMessage extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatEmojiStatus** *(updateChatEmojiStatus)* - child of Update
 ///
 /// Chat emoji status has changed.
@@ -2695,7 +2694,6 @@ final class UpdateChatDraftMessage extends Update {
 /// * [chatId]: Chat identifier.
 /// * [emojiStatus]: The new chat emoji status; may be null *(optional)*.
 final class UpdateChatEmojiStatus extends Update {
-  
   /// **UpdateChatEmojiStatus** *(updateChatEmojiStatus)* - child of Update
   ///
   /// Chat emoji status has changed.
@@ -2708,7 +2706,7 @@ final class UpdateChatEmojiStatus extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -2722,25 +2720,27 @@ final class UpdateChatEmojiStatus extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatEmojiStatus.fromJson(Map<String, dynamic> json) => UpdateChatEmojiStatus(
-    chatId: json['chat_id'],
-    emojiStatus: json['emoji_status'] == null ? null : EmojiStatus.fromJson(json['emoji_status']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatEmojiStatus.fromJson(Map<String, dynamic> json) =>
+      UpdateChatEmojiStatus(
+        chatId: json['chat_id'],
+        emojiStatus: json['emoji_status'] == null
+            ? null
+            : EmojiStatus.fromJson(json['emoji_status']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "emoji_status": emojiStatus?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -2753,12 +2753,13 @@ final class UpdateChatEmojiStatus extends Update {
     EmojiStatus? emojiStatus,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatEmojiStatus(
-    chatId: chatId ?? this.chatId,
-    emojiStatus: emojiStatus ?? this.emojiStatus,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatEmojiStatus(
+        chatId: chatId ?? this.chatId,
+        emojiStatus: emojiStatus ?? this.emojiStatus,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatEmojiStatus';
@@ -2772,7 +2773,6 @@ final class UpdateChatEmojiStatus extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatMessageSender** *(updateChatMessageSender)* - child of Update
 ///
 /// The message sender that is selected to send messages in a chat has changed.
@@ -2780,7 +2780,6 @@ final class UpdateChatEmojiStatus extends Update {
 /// * [chatId]: Chat identifier.
 /// * [messageSenderId]: New value of message_sender_id; may be null if the user can't change message sender *(optional)*.
 final class UpdateChatMessageSender extends Update {
-  
   /// **UpdateChatMessageSender** *(updateChatMessageSender)* - child of Update
   ///
   /// The message sender that is selected to send messages in a chat has changed.
@@ -2793,8 +2792,8 @@ final class UpdateChatMessageSender extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// New value of message_sender_id; may be null if the user can't change message sender
@@ -2807,30 +2806,32 @@ final class UpdateChatMessageSender extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatMessageSender.fromJson(Map<String, dynamic> json) => UpdateChatMessageSender(
-    chatId: json['chat_id'],
-    messageSenderId: json['message_sender_id'] == null ? null : MessageSender.fromJson(json['message_sender_id']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatMessageSender.fromJson(Map<String, dynamic> json) =>
+      UpdateChatMessageSender(
+        chatId: json['chat_id'],
+        messageSenderId: json['message_sender_id'] == null
+            ? null
+            : MessageSender.fromJson(json['message_sender_id']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_sender_id": messageSenderId?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [message_sender_id]: New value of message_sender_id; may be null if the user can't change message sender
   @override
   UpdateChatMessageSender copyWith({
@@ -2838,12 +2839,13 @@ final class UpdateChatMessageSender extends Update {
     MessageSender? messageSenderId,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatMessageSender(
-    chatId: chatId ?? this.chatId,
-    messageSenderId: messageSenderId ?? this.messageSenderId,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatMessageSender(
+        chatId: chatId ?? this.chatId,
+        messageSenderId: messageSenderId ?? this.messageSenderId,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatMessageSender';
@@ -2857,7 +2859,6 @@ final class UpdateChatMessageSender extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatMessageAutoDeleteTime** *(updateChatMessageAutoDeleteTime)* - child of Update
 ///
 /// The message auto-delete or self-destruct timer setting for a chat was changed.
@@ -2865,7 +2866,6 @@ final class UpdateChatMessageSender extends Update {
 /// * [chatId]: Chat identifier.
 /// * [messageAutoDeleteTime]: New value of message_auto_delete_time.
 final class UpdateChatMessageAutoDeleteTime extends Update {
-  
   /// **UpdateChatMessageAutoDeleteTime** *(updateChatMessageAutoDeleteTime)* - child of Update
   ///
   /// The message auto-delete or self-destruct timer setting for a chat was changed.
@@ -2878,8 +2878,8 @@ final class UpdateChatMessageAutoDeleteTime extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// New value of message_auto_delete_time
@@ -2892,30 +2892,30 @@ final class UpdateChatMessageAutoDeleteTime extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatMessageAutoDeleteTime.fromJson(Map<String, dynamic> json) => UpdateChatMessageAutoDeleteTime(
-    chatId: json['chat_id'],
-    messageAutoDeleteTime: json['message_auto_delete_time'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatMessageAutoDeleteTime.fromJson(Map<String, dynamic> json) =>
+      UpdateChatMessageAutoDeleteTime(
+        chatId: json['chat_id'],
+        messageAutoDeleteTime: json['message_auto_delete_time'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_auto_delete_time": messageAutoDeleteTime,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [message_auto_delete_time]: New value of message_auto_delete_time
   @override
   UpdateChatMessageAutoDeleteTime copyWith({
@@ -2923,12 +2923,14 @@ final class UpdateChatMessageAutoDeleteTime extends Update {
     int? messageAutoDeleteTime,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatMessageAutoDeleteTime(
-    chatId: chatId ?? this.chatId,
-    messageAutoDeleteTime: messageAutoDeleteTime ?? this.messageAutoDeleteTime,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatMessageAutoDeleteTime(
+        chatId: chatId ?? this.chatId,
+        messageAutoDeleteTime:
+            messageAutoDeleteTime ?? this.messageAutoDeleteTime,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatMessageAutoDeleteTime';
@@ -2942,7 +2944,6 @@ final class UpdateChatMessageAutoDeleteTime extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatNotificationSettings** *(updateChatNotificationSettings)* - child of Update
 ///
 /// Notification settings for a chat were changed.
@@ -2950,7 +2951,6 @@ final class UpdateChatMessageAutoDeleteTime extends Update {
 /// * [chatId]: Chat identifier.
 /// * [notificationSettings]: The new notification settings.
 final class UpdateChatNotificationSettings extends Update {
-  
   /// **UpdateChatNotificationSettings** *(updateChatNotificationSettings)* - child of Update
   ///
   /// Notification settings for a chat were changed.
@@ -2963,8 +2963,8 @@ final class UpdateChatNotificationSettings extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// The new notification settings
@@ -2977,30 +2977,31 @@ final class UpdateChatNotificationSettings extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatNotificationSettings.fromJson(Map<String, dynamic> json) => UpdateChatNotificationSettings(
-    chatId: json['chat_id'],
-    notificationSettings: ChatNotificationSettings.fromJson(json['notification_settings']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatNotificationSettings.fromJson(Map<String, dynamic> json) =>
+      UpdateChatNotificationSettings(
+        chatId: json['chat_id'],
+        notificationSettings:
+            ChatNotificationSettings.fromJson(json['notification_settings']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "notification_settings": notificationSettings.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [notification_settings]: The new notification settings
   @override
   UpdateChatNotificationSettings copyWith({
@@ -3008,12 +3009,13 @@ final class UpdateChatNotificationSettings extends Update {
     ChatNotificationSettings? notificationSettings,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatNotificationSettings(
-    chatId: chatId ?? this.chatId,
-    notificationSettings: notificationSettings ?? this.notificationSettings,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatNotificationSettings(
+        chatId: chatId ?? this.chatId,
+        notificationSettings: notificationSettings ?? this.notificationSettings,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatNotificationSettings';
@@ -3027,7 +3029,6 @@ final class UpdateChatNotificationSettings extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatPendingJoinRequests** *(updateChatPendingJoinRequests)* - child of Update
 ///
 /// The chat pending join requests were changed.
@@ -3035,7 +3036,6 @@ final class UpdateChatNotificationSettings extends Update {
 /// * [chatId]: Chat identifier.
 /// * [pendingJoinRequests]: The new data about pending join requests; may be null *(optional)*.
 final class UpdateChatPendingJoinRequests extends Update {
-  
   /// **UpdateChatPendingJoinRequests** *(updateChatPendingJoinRequests)* - child of Update
   ///
   /// The chat pending join requests were changed.
@@ -3048,8 +3048,8 @@ final class UpdateChatPendingJoinRequests extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// The new data about pending join requests; may be null
@@ -3062,30 +3062,32 @@ final class UpdateChatPendingJoinRequests extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatPendingJoinRequests.fromJson(Map<String, dynamic> json) => UpdateChatPendingJoinRequests(
-    chatId: json['chat_id'],
-    pendingJoinRequests: json['pending_join_requests'] == null ? null : ChatJoinRequestsInfo.fromJson(json['pending_join_requests']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatPendingJoinRequests.fromJson(Map<String, dynamic> json) =>
+      UpdateChatPendingJoinRequests(
+        chatId: json['chat_id'],
+        pendingJoinRequests: json['pending_join_requests'] == null
+            ? null
+            : ChatJoinRequestsInfo.fromJson(json['pending_join_requests']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "pending_join_requests": pendingJoinRequests?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [pending_join_requests]: The new data about pending join requests; may be null
   @override
   UpdateChatPendingJoinRequests copyWith({
@@ -3093,12 +3095,13 @@ final class UpdateChatPendingJoinRequests extends Update {
     ChatJoinRequestsInfo? pendingJoinRequests,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatPendingJoinRequests(
-    chatId: chatId ?? this.chatId,
-    pendingJoinRequests: pendingJoinRequests ?? this.pendingJoinRequests,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatPendingJoinRequests(
+        chatId: chatId ?? this.chatId,
+        pendingJoinRequests: pendingJoinRequests ?? this.pendingJoinRequests,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatPendingJoinRequests';
@@ -3112,7 +3115,6 @@ final class UpdateChatPendingJoinRequests extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatReplyMarkup** *(updateChatReplyMarkup)* - child of Update
 ///
 /// The default chat reply markup was changed. Can occur because new messages with reply markup were received or because an old reply markup was hidden by the user.
@@ -3120,7 +3122,6 @@ final class UpdateChatPendingJoinRequests extends Update {
 /// * [chatId]: Chat identifier.
 /// * [replyMarkupMessageId]: Identifier of the message from which reply markup needs to be used; 0 if there is no default custom reply markup in the chat.
 final class UpdateChatReplyMarkup extends Update {
-  
   /// **UpdateChatReplyMarkup** *(updateChatReplyMarkup)* - child of Update
   ///
   /// The default chat reply markup was changed. Can occur because new messages with reply markup were received or because an old reply markup was hidden by the user.
@@ -3133,7 +3134,7 @@ final class UpdateChatReplyMarkup extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -3147,25 +3148,25 @@ final class UpdateChatReplyMarkup extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatReplyMarkup.fromJson(Map<String, dynamic> json) => UpdateChatReplyMarkup(
-    chatId: json['chat_id'],
-    replyMarkupMessageId: json['reply_markup_message_id'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatReplyMarkup.fromJson(Map<String, dynamic> json) =>
+      UpdateChatReplyMarkup(
+        chatId: json['chat_id'],
+        replyMarkupMessageId: json['reply_markup_message_id'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "reply_markup_message_id": replyMarkupMessageId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -3178,12 +3179,13 @@ final class UpdateChatReplyMarkup extends Update {
     int? replyMarkupMessageId,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatReplyMarkup(
-    chatId: chatId ?? this.chatId,
-    replyMarkupMessageId: replyMarkupMessageId ?? this.replyMarkupMessageId,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatReplyMarkup(
+        chatId: chatId ?? this.chatId,
+        replyMarkupMessageId: replyMarkupMessageId ?? this.replyMarkupMessageId,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatReplyMarkup';
@@ -3197,7 +3199,6 @@ final class UpdateChatReplyMarkup extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatBackground** *(updateChatBackground)* - child of Update
 ///
 /// The chat background was changed.
@@ -3205,7 +3206,6 @@ final class UpdateChatReplyMarkup extends Update {
 /// * [chatId]: Chat identifier.
 /// * [background]: The new chat background; may be null if background was reset to default *(optional)*.
 final class UpdateChatBackground extends Update {
-  
   /// **UpdateChatBackground** *(updateChatBackground)* - child of Update
   ///
   /// The chat background was changed.
@@ -3218,8 +3218,8 @@ final class UpdateChatBackground extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// The new chat background; may be null if background was reset to default
@@ -3232,30 +3232,32 @@ final class UpdateChatBackground extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatBackground.fromJson(Map<String, dynamic> json) => UpdateChatBackground(
-    chatId: json['chat_id'],
-    background: json['background'] == null ? null : ChatBackground.fromJson(json['background']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatBackground.fromJson(Map<String, dynamic> json) =>
+      UpdateChatBackground(
+        chatId: json['chat_id'],
+        background: json['background'] == null
+            ? null
+            : ChatBackground.fromJson(json['background']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "background": background?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [background]: The new chat background; may be null if background was reset to default
   @override
   UpdateChatBackground copyWith({
@@ -3263,12 +3265,13 @@ final class UpdateChatBackground extends Update {
     ChatBackground? background,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatBackground(
-    chatId: chatId ?? this.chatId,
-    background: background ?? this.background,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatBackground(
+        chatId: chatId ?? this.chatId,
+        background: background ?? this.background,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatBackground';
@@ -3282,7 +3285,6 @@ final class UpdateChatBackground extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatTheme** *(updateChatTheme)* - child of Update
 ///
 /// The chat theme was changed.
@@ -3290,7 +3292,6 @@ final class UpdateChatBackground extends Update {
 /// * [chatId]: Chat identifier.
 /// * [themeName]: The new name of the chat theme; may be empty if theme was reset to default.
 final class UpdateChatTheme extends Update {
-  
   /// **UpdateChatTheme** *(updateChatTheme)* - child of Update
   ///
   /// The chat theme was changed.
@@ -3303,8 +3304,8 @@ final class UpdateChatTheme extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// The new name of the chat theme; may be empty if theme was reset to default
@@ -3317,30 +3318,30 @@ final class UpdateChatTheme extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatTheme.fromJson(Map<String, dynamic> json) => UpdateChatTheme(
-    chatId: json['chat_id'],
-    themeName: json['theme_name'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatTheme.fromJson(Map<String, dynamic> json) =>
+      UpdateChatTheme(
+        chatId: json['chat_id'],
+        themeName: json['theme_name'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "theme_name": themeName,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [theme_name]: The new name of the chat theme; may be empty if theme was reset to default
   @override
   UpdateChatTheme copyWith({
@@ -3348,12 +3349,13 @@ final class UpdateChatTheme extends Update {
     String? themeName,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatTheme(
-    chatId: chatId ?? this.chatId,
-    themeName: themeName ?? this.themeName,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatTheme(
+        chatId: chatId ?? this.chatId,
+        themeName: themeName ?? this.themeName,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatTheme';
@@ -3367,7 +3369,6 @@ final class UpdateChatTheme extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatUnreadMentionCount** *(updateChatUnreadMentionCount)* - child of Update
 ///
 /// The chat unread_mention_count has changed.
@@ -3375,7 +3376,6 @@ final class UpdateChatTheme extends Update {
 /// * [chatId]: Chat identifier.
 /// * [unreadMentionCount]: The number of unread mention messages left in the chat.
 final class UpdateChatUnreadMentionCount extends Update {
-  
   /// **UpdateChatUnreadMentionCount** *(updateChatUnreadMentionCount)* - child of Update
   ///
   /// The chat unread_mention_count has changed.
@@ -3388,8 +3388,8 @@ final class UpdateChatUnreadMentionCount extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// The number of unread mention messages left in the chat
@@ -3402,30 +3402,30 @@ final class UpdateChatUnreadMentionCount extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatUnreadMentionCount.fromJson(Map<String, dynamic> json) => UpdateChatUnreadMentionCount(
-    chatId: json['chat_id'],
-    unreadMentionCount: json['unread_mention_count'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatUnreadMentionCount.fromJson(Map<String, dynamic> json) =>
+      UpdateChatUnreadMentionCount(
+        chatId: json['chat_id'],
+        unreadMentionCount: json['unread_mention_count'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "unread_mention_count": unreadMentionCount,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [unread_mention_count]: The number of unread mention messages left in the chat
   @override
   UpdateChatUnreadMentionCount copyWith({
@@ -3433,12 +3433,13 @@ final class UpdateChatUnreadMentionCount extends Update {
     int? unreadMentionCount,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatUnreadMentionCount(
-    chatId: chatId ?? this.chatId,
-    unreadMentionCount: unreadMentionCount ?? this.unreadMentionCount,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatUnreadMentionCount(
+        chatId: chatId ?? this.chatId,
+        unreadMentionCount: unreadMentionCount ?? this.unreadMentionCount,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatUnreadMentionCount';
@@ -3452,7 +3453,6 @@ final class UpdateChatUnreadMentionCount extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatUnreadReactionCount** *(updateChatUnreadReactionCount)* - child of Update
 ///
 /// The chat unread_reaction_count has changed.
@@ -3460,7 +3460,6 @@ final class UpdateChatUnreadMentionCount extends Update {
 /// * [chatId]: Chat identifier.
 /// * [unreadReactionCount]: The number of messages with unread reactions left in the chat.
 final class UpdateChatUnreadReactionCount extends Update {
-  
   /// **UpdateChatUnreadReactionCount** *(updateChatUnreadReactionCount)* - child of Update
   ///
   /// The chat unread_reaction_count has changed.
@@ -3473,8 +3472,8 @@ final class UpdateChatUnreadReactionCount extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// The number of messages with unread reactions left in the chat
@@ -3487,30 +3486,30 @@ final class UpdateChatUnreadReactionCount extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatUnreadReactionCount.fromJson(Map<String, dynamic> json) => UpdateChatUnreadReactionCount(
-    chatId: json['chat_id'],
-    unreadReactionCount: json['unread_reaction_count'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatUnreadReactionCount.fromJson(Map<String, dynamic> json) =>
+      UpdateChatUnreadReactionCount(
+        chatId: json['chat_id'],
+        unreadReactionCount: json['unread_reaction_count'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "unread_reaction_count": unreadReactionCount,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [unread_reaction_count]: The number of messages with unread reactions left in the chat
   @override
   UpdateChatUnreadReactionCount copyWith({
@@ -3518,12 +3517,13 @@ final class UpdateChatUnreadReactionCount extends Update {
     int? unreadReactionCount,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatUnreadReactionCount(
-    chatId: chatId ?? this.chatId,
-    unreadReactionCount: unreadReactionCount ?? this.unreadReactionCount,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatUnreadReactionCount(
+        chatId: chatId ?? this.chatId,
+        unreadReactionCount: unreadReactionCount ?? this.unreadReactionCount,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatUnreadReactionCount';
@@ -3537,7 +3537,6 @@ final class UpdateChatUnreadReactionCount extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatVideoChat** *(updateChatVideoChat)* - child of Update
 ///
 /// A chat video chat state has changed.
@@ -3545,7 +3544,6 @@ final class UpdateChatUnreadReactionCount extends Update {
 /// * [chatId]: Chat identifier.
 /// * [videoChat]: New value of video_chat.
 final class UpdateChatVideoChat extends Update {
-  
   /// **UpdateChatVideoChat** *(updateChatVideoChat)* - child of Update
   ///
   /// A chat video chat state has changed.
@@ -3558,8 +3556,8 @@ final class UpdateChatVideoChat extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// New value of video_chat
@@ -3572,30 +3570,30 @@ final class UpdateChatVideoChat extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatVideoChat.fromJson(Map<String, dynamic> json) => UpdateChatVideoChat(
-    chatId: json['chat_id'],
-    videoChat: VideoChat.fromJson(json['video_chat']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatVideoChat.fromJson(Map<String, dynamic> json) =>
+      UpdateChatVideoChat(
+        chatId: json['chat_id'],
+        videoChat: VideoChat.fromJson(json['video_chat']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "video_chat": videoChat.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [video_chat]: New value of video_chat
   @override
   UpdateChatVideoChat copyWith({
@@ -3603,12 +3601,13 @@ final class UpdateChatVideoChat extends Update {
     VideoChat? videoChat,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatVideoChat(
-    chatId: chatId ?? this.chatId,
-    videoChat: videoChat ?? this.videoChat,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatVideoChat(
+        chatId: chatId ?? this.chatId,
+        videoChat: videoChat ?? this.videoChat,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatVideoChat';
@@ -3622,7 +3621,6 @@ final class UpdateChatVideoChat extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatDefaultDisableNotification** *(updateChatDefaultDisableNotification)* - child of Update
 ///
 /// The value of the default disable_notification parameter, used when a message is sent to the chat, was changed.
@@ -3630,7 +3628,6 @@ final class UpdateChatVideoChat extends Update {
 /// * [chatId]: Chat identifier.
 /// * [defaultDisableNotification]: The new default_disable_notification value.
 final class UpdateChatDefaultDisableNotification extends Update {
-  
   /// **UpdateChatDefaultDisableNotification** *(updateChatDefaultDisableNotification)* - child of Update
   ///
   /// The value of the default disable_notification parameter, used when a message is sent to the chat, was changed.
@@ -3643,8 +3640,8 @@ final class UpdateChatDefaultDisableNotification extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// The new default_disable_notification value
@@ -3657,30 +3654,31 @@ final class UpdateChatDefaultDisableNotification extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatDefaultDisableNotification.fromJson(Map<String, dynamic> json) => UpdateChatDefaultDisableNotification(
-    chatId: json['chat_id'],
-    defaultDisableNotification: json['default_disable_notification'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatDefaultDisableNotification.fromJson(
+          Map<String, dynamic> json) =>
+      UpdateChatDefaultDisableNotification(
+        chatId: json['chat_id'],
+        defaultDisableNotification: json['default_disable_notification'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "default_disable_notification": defaultDisableNotification,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [default_disable_notification]: The new default_disable_notification value
   @override
   UpdateChatDefaultDisableNotification copyWith({
@@ -3688,12 +3686,14 @@ final class UpdateChatDefaultDisableNotification extends Update {
     bool? defaultDisableNotification,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatDefaultDisableNotification(
-    chatId: chatId ?? this.chatId,
-    defaultDisableNotification: defaultDisableNotification ?? this.defaultDisableNotification,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatDefaultDisableNotification(
+        chatId: chatId ?? this.chatId,
+        defaultDisableNotification:
+            defaultDisableNotification ?? this.defaultDisableNotification,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatDefaultDisableNotification';
@@ -3707,7 +3707,6 @@ final class UpdateChatDefaultDisableNotification extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatHasProtectedContent** *(updateChatHasProtectedContent)* - child of Update
 ///
 /// A chat content was allowed or restricted for saving.
@@ -3715,7 +3714,6 @@ final class UpdateChatDefaultDisableNotification extends Update {
 /// * [chatId]: Chat identifier.
 /// * [hasProtectedContent]: New value of has_protected_content.
 final class UpdateChatHasProtectedContent extends Update {
-  
   /// **UpdateChatHasProtectedContent** *(updateChatHasProtectedContent)* - child of Update
   ///
   /// A chat content was allowed or restricted for saving.
@@ -3728,8 +3726,8 @@ final class UpdateChatHasProtectedContent extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// New value of has_protected_content
@@ -3742,30 +3740,30 @@ final class UpdateChatHasProtectedContent extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatHasProtectedContent.fromJson(Map<String, dynamic> json) => UpdateChatHasProtectedContent(
-    chatId: json['chat_id'],
-    hasProtectedContent: json['has_protected_content'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatHasProtectedContent.fromJson(Map<String, dynamic> json) =>
+      UpdateChatHasProtectedContent(
+        chatId: json['chat_id'],
+        hasProtectedContent: json['has_protected_content'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "has_protected_content": hasProtectedContent,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [has_protected_content]: New value of has_protected_content
   @override
   UpdateChatHasProtectedContent copyWith({
@@ -3773,12 +3771,13 @@ final class UpdateChatHasProtectedContent extends Update {
     bool? hasProtectedContent,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatHasProtectedContent(
-    chatId: chatId ?? this.chatId,
-    hasProtectedContent: hasProtectedContent ?? this.hasProtectedContent,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatHasProtectedContent(
+        chatId: chatId ?? this.chatId,
+        hasProtectedContent: hasProtectedContent ?? this.hasProtectedContent,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatHasProtectedContent';
@@ -3792,7 +3791,6 @@ final class UpdateChatHasProtectedContent extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatIsTranslatable** *(updateChatIsTranslatable)* - child of Update
 ///
 /// Translation of chat messages was enabled or disabled.
@@ -3800,7 +3798,6 @@ final class UpdateChatHasProtectedContent extends Update {
 /// * [chatId]: Chat identifier.
 /// * [isTranslatable]: New value of is_translatable.
 final class UpdateChatIsTranslatable extends Update {
-  
   /// **UpdateChatIsTranslatable** *(updateChatIsTranslatable)* - child of Update
   ///
   /// Translation of chat messages was enabled or disabled.
@@ -3813,8 +3810,8 @@ final class UpdateChatIsTranslatable extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// New value of is_translatable
@@ -3827,30 +3824,30 @@ final class UpdateChatIsTranslatable extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatIsTranslatable.fromJson(Map<String, dynamic> json) => UpdateChatIsTranslatable(
-    chatId: json['chat_id'],
-    isTranslatable: json['is_translatable'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatIsTranslatable.fromJson(Map<String, dynamic> json) =>
+      UpdateChatIsTranslatable(
+        chatId: json['chat_id'],
+        isTranslatable: json['is_translatable'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "is_translatable": isTranslatable,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [is_translatable]: New value of is_translatable
   @override
   UpdateChatIsTranslatable copyWith({
@@ -3858,12 +3855,13 @@ final class UpdateChatIsTranslatable extends Update {
     bool? isTranslatable,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatIsTranslatable(
-    chatId: chatId ?? this.chatId,
-    isTranslatable: isTranslatable ?? this.isTranslatable,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatIsTranslatable(
+        chatId: chatId ?? this.chatId,
+        isTranslatable: isTranslatable ?? this.isTranslatable,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatIsTranslatable';
@@ -3877,7 +3875,6 @@ final class UpdateChatIsTranslatable extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatIsMarkedAsUnread** *(updateChatIsMarkedAsUnread)* - child of Update
 ///
 /// A chat was marked as unread or was read.
@@ -3885,7 +3882,6 @@ final class UpdateChatIsTranslatable extends Update {
 /// * [chatId]: Chat identifier.
 /// * [isMarkedAsUnread]: New value of is_marked_as_unread.
 final class UpdateChatIsMarkedAsUnread extends Update {
-  
   /// **UpdateChatIsMarkedAsUnread** *(updateChatIsMarkedAsUnread)* - child of Update
   ///
   /// A chat was marked as unread or was read.
@@ -3898,8 +3894,8 @@ final class UpdateChatIsMarkedAsUnread extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// New value of is_marked_as_unread
@@ -3912,30 +3908,30 @@ final class UpdateChatIsMarkedAsUnread extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatIsMarkedAsUnread.fromJson(Map<String, dynamic> json) => UpdateChatIsMarkedAsUnread(
-    chatId: json['chat_id'],
-    isMarkedAsUnread: json['is_marked_as_unread'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatIsMarkedAsUnread.fromJson(Map<String, dynamic> json) =>
+      UpdateChatIsMarkedAsUnread(
+        chatId: json['chat_id'],
+        isMarkedAsUnread: json['is_marked_as_unread'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "is_marked_as_unread": isMarkedAsUnread,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [is_marked_as_unread]: New value of is_marked_as_unread
   @override
   UpdateChatIsMarkedAsUnread copyWith({
@@ -3943,12 +3939,13 @@ final class UpdateChatIsMarkedAsUnread extends Update {
     bool? isMarkedAsUnread,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatIsMarkedAsUnread(
-    chatId: chatId ?? this.chatId,
-    isMarkedAsUnread: isMarkedAsUnread ?? this.isMarkedAsUnread,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatIsMarkedAsUnread(
+        chatId: chatId ?? this.chatId,
+        isMarkedAsUnread: isMarkedAsUnread ?? this.isMarkedAsUnread,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatIsMarkedAsUnread';
@@ -3962,7 +3959,6 @@ final class UpdateChatIsMarkedAsUnread extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatViewAsTopics** *(updateChatViewAsTopics)* - child of Update
 ///
 /// A chat default appearance has changed.
@@ -3970,7 +3966,6 @@ final class UpdateChatIsMarkedAsUnread extends Update {
 /// * [chatId]: Chat identifier.
 /// * [viewAsTopics]: New value of view_as_topics.
 final class UpdateChatViewAsTopics extends Update {
-  
   /// **UpdateChatViewAsTopics** *(updateChatViewAsTopics)* - child of Update
   ///
   /// A chat default appearance has changed.
@@ -3983,8 +3978,8 @@ final class UpdateChatViewAsTopics extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// New value of view_as_topics
@@ -3997,30 +3992,30 @@ final class UpdateChatViewAsTopics extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatViewAsTopics.fromJson(Map<String, dynamic> json) => UpdateChatViewAsTopics(
-    chatId: json['chat_id'],
-    viewAsTopics: json['view_as_topics'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatViewAsTopics.fromJson(Map<String, dynamic> json) =>
+      UpdateChatViewAsTopics(
+        chatId: json['chat_id'],
+        viewAsTopics: json['view_as_topics'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "view_as_topics": viewAsTopics,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [view_as_topics]: New value of view_as_topics
   @override
   UpdateChatViewAsTopics copyWith({
@@ -4028,12 +4023,13 @@ final class UpdateChatViewAsTopics extends Update {
     bool? viewAsTopics,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatViewAsTopics(
-    chatId: chatId ?? this.chatId,
-    viewAsTopics: viewAsTopics ?? this.viewAsTopics,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatViewAsTopics(
+        chatId: chatId ?? this.chatId,
+        viewAsTopics: viewAsTopics ?? this.viewAsTopics,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatViewAsTopics';
@@ -4047,7 +4043,6 @@ final class UpdateChatViewAsTopics extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatBlockList** *(updateChatBlockList)* - child of Update
 ///
 /// A chat was blocked or unblocked.
@@ -4055,7 +4050,6 @@ final class UpdateChatViewAsTopics extends Update {
 /// * [chatId]: Chat identifier.
 /// * [blockList]: Block list to which the chat is added; may be null if none *(optional)*.
 final class UpdateChatBlockList extends Update {
-  
   /// **UpdateChatBlockList** *(updateChatBlockList)* - child of Update
   ///
   /// A chat was blocked or unblocked.
@@ -4068,8 +4062,8 @@ final class UpdateChatBlockList extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// Block list to which the chat is added; may be null if none
@@ -4082,30 +4076,32 @@ final class UpdateChatBlockList extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatBlockList.fromJson(Map<String, dynamic> json) => UpdateChatBlockList(
-    chatId: json['chat_id'],
-    blockList: json['block_list'] == null ? null : BlockList.fromJson(json['block_list']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatBlockList.fromJson(Map<String, dynamic> json) =>
+      UpdateChatBlockList(
+        chatId: json['chat_id'],
+        blockList: json['block_list'] == null
+            ? null
+            : BlockList.fromJson(json['block_list']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "block_list": blockList?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [block_list]: Block list to which the chat is added; may be null if none
   @override
   UpdateChatBlockList copyWith({
@@ -4113,12 +4109,13 @@ final class UpdateChatBlockList extends Update {
     BlockList? blockList,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatBlockList(
-    chatId: chatId ?? this.chatId,
-    blockList: blockList ?? this.blockList,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatBlockList(
+        chatId: chatId ?? this.chatId,
+        blockList: blockList ?? this.blockList,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatBlockList';
@@ -4132,7 +4129,6 @@ final class UpdateChatBlockList extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatHasScheduledMessages** *(updateChatHasScheduledMessages)* - child of Update
 ///
 /// A chat's has_scheduled_messages field has changed.
@@ -4140,7 +4136,6 @@ final class UpdateChatBlockList extends Update {
 /// * [chatId]: Chat identifier.
 /// * [hasScheduledMessages]: New value of has_scheduled_messages.
 final class UpdateChatHasScheduledMessages extends Update {
-  
   /// **UpdateChatHasScheduledMessages** *(updateChatHasScheduledMessages)* - child of Update
   ///
   /// A chat's has_scheduled_messages field has changed.
@@ -4153,8 +4148,8 @@ final class UpdateChatHasScheduledMessages extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// New value of has_scheduled_messages
@@ -4167,30 +4162,30 @@ final class UpdateChatHasScheduledMessages extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatHasScheduledMessages.fromJson(Map<String, dynamic> json) => UpdateChatHasScheduledMessages(
-    chatId: json['chat_id'],
-    hasScheduledMessages: json['has_scheduled_messages'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatHasScheduledMessages.fromJson(Map<String, dynamic> json) =>
+      UpdateChatHasScheduledMessages(
+        chatId: json['chat_id'],
+        hasScheduledMessages: json['has_scheduled_messages'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "has_scheduled_messages": hasScheduledMessages,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [has_scheduled_messages]: New value of has_scheduled_messages
   @override
   UpdateChatHasScheduledMessages copyWith({
@@ -4198,12 +4193,13 @@ final class UpdateChatHasScheduledMessages extends Update {
     bool? hasScheduledMessages,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatHasScheduledMessages(
-    chatId: chatId ?? this.chatId,
-    hasScheduledMessages: hasScheduledMessages ?? this.hasScheduledMessages,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatHasScheduledMessages(
+        chatId: chatId ?? this.chatId,
+        hasScheduledMessages: hasScheduledMessages ?? this.hasScheduledMessages,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatHasScheduledMessages';
@@ -4217,7 +4213,6 @@ final class UpdateChatHasScheduledMessages extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatFolders** *(updateChatFolders)* - child of Update
 ///
 /// The list of chat folders or a chat folder has changed.
@@ -4225,7 +4220,6 @@ final class UpdateChatHasScheduledMessages extends Update {
 /// * [chatFolders]: The new list of chat folders.
 /// * [mainChatListPosition]: Position of the main chat list among chat folders, 0-based.
 final class UpdateChatFolders extends Update {
-  
   /// **UpdateChatFolders** *(updateChatFolders)* - child of Update
   ///
   /// The list of chat folders or a chat folder has changed.
@@ -4238,8 +4232,8 @@ final class UpdateChatFolders extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// The new list of chat folders 
+
+  /// The new list of chat folders
   final List<ChatFolderInfo> chatFolders;
 
   /// Position of the main chat list among chat folders, 0-based
@@ -4252,30 +4246,32 @@ final class UpdateChatFolders extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatFolders.fromJson(Map<String, dynamic> json) => UpdateChatFolders(
-    chatFolders: List<ChatFolderInfo>.from((json['chat_folders'] ?? []).map((item) => ChatFolderInfo.fromJson(item)).toList()),
-    mainChatListPosition: json['main_chat_list_position'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatFolders.fromJson(Map<String, dynamic> json) =>
+      UpdateChatFolders(
+        chatFolders: List<ChatFolderInfo>.from((json['chat_folders'] ?? [])
+            .map((item) => ChatFolderInfo.fromJson(item))
+            .toList()),
+        mainChatListPosition: json['main_chat_list_position'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_folders": chatFolders.map((i) => i.toJson()).toList(),
       "main_chat_list_position": mainChatListPosition,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_folders]: The new list of chat folders 
+  /// * [chat_folders]: The new list of chat folders
   /// * [main_chat_list_position]: Position of the main chat list among chat folders, 0-based
   @override
   UpdateChatFolders copyWith({
@@ -4283,12 +4279,13 @@ final class UpdateChatFolders extends Update {
     int? mainChatListPosition,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatFolders(
-    chatFolders: chatFolders ?? this.chatFolders,
-    mainChatListPosition: mainChatListPosition ?? this.mainChatListPosition,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatFolders(
+        chatFolders: chatFolders ?? this.chatFolders,
+        mainChatListPosition: mainChatListPosition ?? this.mainChatListPosition,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatFolders';
@@ -4302,7 +4299,6 @@ final class UpdateChatFolders extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatOnlineMemberCount** *(updateChatOnlineMemberCount)* - child of Update
 ///
 /// The number of online group members has changed. This update with non-zero number of online group members is sent only for currently opened chats.. There is no guarantee that it is sent just after the number of online users has changed.
@@ -4310,7 +4306,6 @@ final class UpdateChatFolders extends Update {
 /// * [chatId]: Identifier of the chat.
 /// * [onlineMemberCount]: New number of online members in the chat, or 0 if unknown.
 final class UpdateChatOnlineMemberCount extends Update {
-  
   /// **UpdateChatOnlineMemberCount** *(updateChatOnlineMemberCount)* - child of Update
   ///
   /// The number of online group members has changed. This update with non-zero number of online group members is sent only for currently opened chats.. There is no guarantee that it is sent just after the number of online users has changed.
@@ -4323,7 +4318,7 @@ final class UpdateChatOnlineMemberCount extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Identifier of the chat
   final int chatId;
 
@@ -4337,25 +4332,25 @@ final class UpdateChatOnlineMemberCount extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatOnlineMemberCount.fromJson(Map<String, dynamic> json) => UpdateChatOnlineMemberCount(
-    chatId: json['chat_id'],
-    onlineMemberCount: json['online_member_count'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatOnlineMemberCount.fromJson(Map<String, dynamic> json) =>
+      UpdateChatOnlineMemberCount(
+        chatId: json['chat_id'],
+        onlineMemberCount: json['online_member_count'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "online_member_count": onlineMemberCount,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -4368,12 +4363,13 @@ final class UpdateChatOnlineMemberCount extends Update {
     int? onlineMemberCount,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatOnlineMemberCount(
-    chatId: chatId ?? this.chatId,
-    onlineMemberCount: onlineMemberCount ?? this.onlineMemberCount,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatOnlineMemberCount(
+        chatId: chatId ?? this.chatId,
+        onlineMemberCount: onlineMemberCount ?? this.onlineMemberCount,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatOnlineMemberCount';
@@ -4387,14 +4383,12 @@ final class UpdateChatOnlineMemberCount extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateSavedMessagesTopic** *(updateSavedMessagesTopic)* - child of Update
 ///
 /// Basic information about a Saved Messages topic has changed. This update is guaranteed to come before the topic identifier is returned to the application.
 ///
 /// * [topic]: New data about the topic.
 final class UpdateSavedMessagesTopic extends Update {
-  
   /// **UpdateSavedMessagesTopic** *(updateSavedMessagesTopic)* - child of Update
   ///
   /// Basic information about a Saved Messages topic has changed. This update is guaranteed to come before the topic identifier is returned to the application.
@@ -4405,7 +4399,7 @@ final class UpdateSavedMessagesTopic extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// New data about the topic
   final SavedMessagesTopic topic;
 
@@ -4416,23 +4410,23 @@ final class UpdateSavedMessagesTopic extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateSavedMessagesTopic.fromJson(Map<String, dynamic> json) => UpdateSavedMessagesTopic(
-    topic: SavedMessagesTopic.fromJson(json['topic']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateSavedMessagesTopic.fromJson(Map<String, dynamic> json) =>
+      UpdateSavedMessagesTopic(
+        topic: SavedMessagesTopic.fromJson(json['topic']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "topic": topic.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -4443,11 +4437,12 @@ final class UpdateSavedMessagesTopic extends Update {
     SavedMessagesTopic? topic,
     dynamic extra,
     int? clientId,
-  }) => UpdateSavedMessagesTopic(
-    topic: topic ?? this.topic,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateSavedMessagesTopic(
+        topic: topic ?? this.topic,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateSavedMessagesTopic';
@@ -4461,14 +4456,12 @@ final class UpdateSavedMessagesTopic extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateSavedMessagesTopicCount** *(updateSavedMessagesTopicCount)* - child of Update
 ///
 /// Number of Saved Messages topics has changed.
 ///
 /// * [topicCount]: Approximate total number of Saved Messages topics.
 final class UpdateSavedMessagesTopicCount extends Update {
-  
   /// **UpdateSavedMessagesTopicCount** *(updateSavedMessagesTopicCount)* - child of Update
   ///
   /// Number of Saved Messages topics has changed.
@@ -4479,7 +4472,7 @@ final class UpdateSavedMessagesTopicCount extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Approximate total number of Saved Messages topics
   final int topicCount;
 
@@ -4490,23 +4483,23 @@ final class UpdateSavedMessagesTopicCount extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateSavedMessagesTopicCount.fromJson(Map<String, dynamic> json) => UpdateSavedMessagesTopicCount(
-    topicCount: json['topic_count'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateSavedMessagesTopicCount.fromJson(Map<String, dynamic> json) =>
+      UpdateSavedMessagesTopicCount(
+        topicCount: json['topic_count'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "topic_count": topicCount,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -4517,11 +4510,12 @@ final class UpdateSavedMessagesTopicCount extends Update {
     int? topicCount,
     dynamic extra,
     int? clientId,
-  }) => UpdateSavedMessagesTopicCount(
-    topicCount: topicCount ?? this.topicCount,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateSavedMessagesTopicCount(
+        topicCount: topicCount ?? this.topicCount,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateSavedMessagesTopicCount';
@@ -4535,7 +4529,6 @@ final class UpdateSavedMessagesTopicCount extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateForumTopicInfo** *(updateForumTopicInfo)* - child of Update
 ///
 /// Basic information about a topic in a forum chat was changed.
@@ -4543,7 +4536,6 @@ final class UpdateSavedMessagesTopicCount extends Update {
 /// * [chatId]: Chat identifier.
 /// * [info]: New information about the topic.
 final class UpdateForumTopicInfo extends Update {
-  
   /// **UpdateForumTopicInfo** *(updateForumTopicInfo)* - child of Update
   ///
   /// Basic information about a topic in a forum chat was changed.
@@ -4556,8 +4548,8 @@ final class UpdateForumTopicInfo extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// New information about the topic
@@ -4570,30 +4562,30 @@ final class UpdateForumTopicInfo extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateForumTopicInfo.fromJson(Map<String, dynamic> json) => UpdateForumTopicInfo(
-    chatId: json['chat_id'],
-    info: ForumTopicInfo.fromJson(json['info']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateForumTopicInfo.fromJson(Map<String, dynamic> json) =>
+      UpdateForumTopicInfo(
+        chatId: json['chat_id'],
+        info: ForumTopicInfo.fromJson(json['info']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "info": info.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [info]: New information about the topic
   @override
   UpdateForumTopicInfo copyWith({
@@ -4601,12 +4593,13 @@ final class UpdateForumTopicInfo extends Update {
     ForumTopicInfo? info,
     dynamic extra,
     int? clientId,
-  }) => UpdateForumTopicInfo(
-    chatId: chatId ?? this.chatId,
-    info: info ?? this.info,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateForumTopicInfo(
+        chatId: chatId ?? this.chatId,
+        info: info ?? this.info,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateForumTopicInfo';
@@ -4620,7 +4613,6 @@ final class UpdateForumTopicInfo extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateScopeNotificationSettings** *(updateScopeNotificationSettings)* - child of Update
 ///
 /// Notification settings for some type of chats were updated.
@@ -4628,7 +4620,6 @@ final class UpdateForumTopicInfo extends Update {
 /// * [scope]: Types of chats for which notification settings were updated.
 /// * [notificationSettings]: The new notification settings.
 final class UpdateScopeNotificationSettings extends Update {
-  
   /// **UpdateScopeNotificationSettings** *(updateScopeNotificationSettings)* - child of Update
   ///
   /// Notification settings for some type of chats were updated.
@@ -4641,8 +4632,8 @@ final class UpdateScopeNotificationSettings extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Types of chats for which notification settings were updated 
+
+  /// Types of chats for which notification settings were updated
   final NotificationSettingsScope scope;
 
   /// The new notification settings
@@ -4655,30 +4646,31 @@ final class UpdateScopeNotificationSettings extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateScopeNotificationSettings.fromJson(Map<String, dynamic> json) => UpdateScopeNotificationSettings(
-    scope: NotificationSettingsScope.fromJson(json['scope']),
-    notificationSettings: ScopeNotificationSettings.fromJson(json['notification_settings']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateScopeNotificationSettings.fromJson(Map<String, dynamic> json) =>
+      UpdateScopeNotificationSettings(
+        scope: NotificationSettingsScope.fromJson(json['scope']),
+        notificationSettings:
+            ScopeNotificationSettings.fromJson(json['notification_settings']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "scope": scope.toJson(),
       "notification_settings": notificationSettings.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [scope]: Types of chats for which notification settings were updated 
+  /// * [scope]: Types of chats for which notification settings were updated
   /// * [notification_settings]: The new notification settings
   @override
   UpdateScopeNotificationSettings copyWith({
@@ -4686,12 +4678,13 @@ final class UpdateScopeNotificationSettings extends Update {
     ScopeNotificationSettings? notificationSettings,
     dynamic extra,
     int? clientId,
-  }) => UpdateScopeNotificationSettings(
-    scope: scope ?? this.scope,
-    notificationSettings: notificationSettings ?? this.notificationSettings,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateScopeNotificationSettings(
+        scope: scope ?? this.scope,
+        notificationSettings: notificationSettings ?? this.notificationSettings,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateScopeNotificationSettings';
@@ -4705,7 +4698,6 @@ final class UpdateScopeNotificationSettings extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateNotification** *(updateNotification)* - child of Update
 ///
 /// A notification was changed.
@@ -4713,7 +4705,6 @@ final class UpdateScopeNotificationSettings extends Update {
 /// * [notificationGroupId]: Unique notification group identifier.
 /// * [notification]: Changed notification.
 final class UpdateNotification extends Update {
-  
   /// **UpdateNotification** *(updateNotification)* - child of Update
   ///
   /// A notification was changed.
@@ -4726,8 +4717,8 @@ final class UpdateNotification extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Unique notification group identifier 
+
+  /// Unique notification group identifier
   final int notificationGroupId;
 
   /// Changed notification
@@ -4740,30 +4731,30 @@ final class UpdateNotification extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateNotification.fromJson(Map<String, dynamic> json) => UpdateNotification(
-    notificationGroupId: json['notification_group_id'],
-    notification: Notification.fromJson(json['notification']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateNotification.fromJson(Map<String, dynamic> json) =>
+      UpdateNotification(
+        notificationGroupId: json['notification_group_id'],
+        notification: Notification.fromJson(json['notification']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "notification_group_id": notificationGroupId,
       "notification": notification.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [notification_group_id]: Unique notification group identifier 
+  /// * [notification_group_id]: Unique notification group identifier
   /// * [notification]: Changed notification
   @override
   UpdateNotification copyWith({
@@ -4771,12 +4762,13 @@ final class UpdateNotification extends Update {
     Notification? notification,
     dynamic extra,
     int? clientId,
-  }) => UpdateNotification(
-    notificationGroupId: notificationGroupId ?? this.notificationGroupId,
-    notification: notification ?? this.notification,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateNotification(
+        notificationGroupId: notificationGroupId ?? this.notificationGroupId,
+        notification: notification ?? this.notification,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateNotification';
@@ -4789,7 +4781,6 @@ final class UpdateNotification extends Update {
   @override
   String get currentObjectId => defaultObjectId;
 }
-
 
 /// **UpdateNotificationGroup** *(updateNotificationGroup)* - child of Update
 ///
@@ -4804,7 +4795,6 @@ final class UpdateNotification extends Update {
 /// * [addedNotifications]: List of added group notifications, sorted by notification identifier.
 /// * [removedNotificationIds]: Identifiers of removed group notifications, sorted by notification identifier.
 final class UpdateNotificationGroup extends Update {
-  
   /// **UpdateNotificationGroup** *(updateNotificationGroup)* - child of Update
   ///
   /// A list of active notifications in a notification group has changed.
@@ -4829,7 +4819,7 @@ final class UpdateNotificationGroup extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Unique notification group identifier
   final int notificationGroupId;
 
@@ -4861,27 +4851,33 @@ final class UpdateNotificationGroup extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateNotificationGroup.fromJson(Map<String, dynamic> json) => UpdateNotificationGroup(
-    notificationGroupId: json['notification_group_id'],
-    type: NotificationGroupType.fromJson(json['type']),
-    chatId: json['chat_id'],
-    notificationSettingsChatId: json['notification_settings_chat_id'],
-    notificationSoundId: int.parse(json['notification_sound_id']),
-    totalCount: json['total_count'],
-    addedNotifications: List<Notification>.from((json['added_notifications'] ?? []).map((item) => Notification.fromJson(item)).toList()),
-    removedNotificationIds: List<int>.from((json['removed_notification_ids'] ?? []).map((item) => item).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateNotificationGroup.fromJson(Map<String, dynamic> json) =>
+      UpdateNotificationGroup(
+        notificationGroupId: json['notification_group_id'],
+        type: NotificationGroupType.fromJson(json['type']),
+        chatId: json['chat_id'],
+        notificationSettingsChatId: json['notification_settings_chat_id'],
+        notificationSoundId: int.parse(json['notification_sound_id']),
+        totalCount: json['total_count'],
+        addedNotifications: List<Notification>.from(
+            (json['added_notifications'] ?? [])
+                .map((item) => Notification.fromJson(item))
+                .toList()),
+        removedNotificationIds: List<int>.from(
+            (json['removed_notification_ids'] ?? [])
+                .map((item) => item)
+                .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "notification_group_id": notificationGroupId,
       "type": type.toJson(),
       "chat_id": chatId,
@@ -4890,8 +4886,8 @@ final class UpdateNotificationGroup extends Update {
       "total_count": totalCount,
       "added_notifications": addedNotifications.map((i) => i.toJson()).toList(),
       "removed_notification_ids": removedNotificationIds.map((i) => i).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -4916,18 +4912,21 @@ final class UpdateNotificationGroup extends Update {
     List<int>? removedNotificationIds,
     dynamic extra,
     int? clientId,
-  }) => UpdateNotificationGroup(
-    notificationGroupId: notificationGroupId ?? this.notificationGroupId,
-    type: type ?? this.type,
-    chatId: chatId ?? this.chatId,
-    notificationSettingsChatId: notificationSettingsChatId ?? this.notificationSettingsChatId,
-    notificationSoundId: notificationSoundId ?? this.notificationSoundId,
-    totalCount: totalCount ?? this.totalCount,
-    addedNotifications: addedNotifications ?? this.addedNotifications,
-    removedNotificationIds: removedNotificationIds ?? this.removedNotificationIds,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateNotificationGroup(
+        notificationGroupId: notificationGroupId ?? this.notificationGroupId,
+        type: type ?? this.type,
+        chatId: chatId ?? this.chatId,
+        notificationSettingsChatId:
+            notificationSettingsChatId ?? this.notificationSettingsChatId,
+        notificationSoundId: notificationSoundId ?? this.notificationSoundId,
+        totalCount: totalCount ?? this.totalCount,
+        addedNotifications: addedNotifications ?? this.addedNotifications,
+        removedNotificationIds:
+            removedNotificationIds ?? this.removedNotificationIds,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateNotificationGroup';
@@ -4941,14 +4940,12 @@ final class UpdateNotificationGroup extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateActiveNotifications** *(updateActiveNotifications)* - child of Update
 ///
 /// Contains active notifications that were shown on previous application launches. This update is sent only if the message database is used. In that case it comes once before any updateNotification and updateNotificationGroup update.
 ///
 /// * [groups]: Lists of active notification groups.
 final class UpdateActiveNotifications extends Update {
-  
   /// **UpdateActiveNotifications** *(updateActiveNotifications)* - child of Update
   ///
   /// Contains active notifications that were shown on previous application launches. This update is sent only if the message database is used. In that case it comes once before any updateNotification and updateNotificationGroup update.
@@ -4959,7 +4956,7 @@ final class UpdateActiveNotifications extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Lists of active notification groups
   final List<NotificationGroup> groups;
 
@@ -4970,23 +4967,25 @@ final class UpdateActiveNotifications extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateActiveNotifications.fromJson(Map<String, dynamic> json) => UpdateActiveNotifications(
-    groups: List<NotificationGroup>.from((json['groups'] ?? []).map((item) => NotificationGroup.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateActiveNotifications.fromJson(Map<String, dynamic> json) =>
+      UpdateActiveNotifications(
+        groups: List<NotificationGroup>.from((json['groups'] ?? [])
+            .map((item) => NotificationGroup.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "groups": groups.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -4997,11 +4996,12 @@ final class UpdateActiveNotifications extends Update {
     List<NotificationGroup>? groups,
     dynamic extra,
     int? clientId,
-  }) => UpdateActiveNotifications(
-    groups: groups ?? this.groups,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateActiveNotifications(
+        groups: groups ?? this.groups,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateActiveNotifications';
@@ -5015,7 +5015,6 @@ final class UpdateActiveNotifications extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateHavePendingNotifications** *(updateHavePendingNotifications)* - child of Update
 ///
 /// Describes whether there are some pending notification updates. Can be used to prevent application from killing, while there are some pending notifications.
@@ -5023,7 +5022,6 @@ final class UpdateActiveNotifications extends Update {
 /// * [haveDelayedNotifications]: True, if there are some delayed notification updates, which will be sent soon.
 /// * [haveUnreceivedNotifications]: True, if there can be some yet unreceived notifications, which are being fetched from the server.
 final class UpdateHavePendingNotifications extends Update {
-  
   /// **UpdateHavePendingNotifications** *(updateHavePendingNotifications)* - child of Update
   ///
   /// Describes whether there are some pending notification updates. Can be used to prevent application from killing, while there are some pending notifications.
@@ -5036,7 +5034,7 @@ final class UpdateHavePendingNotifications extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// True, if there are some delayed notification updates, which will be sent soon
   final bool haveDelayedNotifications;
 
@@ -5050,25 +5048,25 @@ final class UpdateHavePendingNotifications extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateHavePendingNotifications.fromJson(Map<String, dynamic> json) => UpdateHavePendingNotifications(
-    haveDelayedNotifications: json['have_delayed_notifications'],
-    haveUnreceivedNotifications: json['have_unreceived_notifications'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateHavePendingNotifications.fromJson(Map<String, dynamic> json) =>
+      UpdateHavePendingNotifications(
+        haveDelayedNotifications: json['have_delayed_notifications'],
+        haveUnreceivedNotifications: json['have_unreceived_notifications'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "have_delayed_notifications": haveDelayedNotifications,
       "have_unreceived_notifications": haveUnreceivedNotifications,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -5081,12 +5079,15 @@ final class UpdateHavePendingNotifications extends Update {
     bool? haveUnreceivedNotifications,
     dynamic extra,
     int? clientId,
-  }) => UpdateHavePendingNotifications(
-    haveDelayedNotifications: haveDelayedNotifications ?? this.haveDelayedNotifications,
-    haveUnreceivedNotifications: haveUnreceivedNotifications ?? this.haveUnreceivedNotifications,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateHavePendingNotifications(
+        haveDelayedNotifications:
+            haveDelayedNotifications ?? this.haveDelayedNotifications,
+        haveUnreceivedNotifications:
+            haveUnreceivedNotifications ?? this.haveUnreceivedNotifications,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateHavePendingNotifications';
@@ -5100,7 +5101,6 @@ final class UpdateHavePendingNotifications extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateDeleteMessages** *(updateDeleteMessages)* - child of Update
 ///
 /// Some messages were deleted.
@@ -5110,7 +5110,6 @@ final class UpdateHavePendingNotifications extends Update {
 /// * [isPermanent]: True, if the messages are permanently deleted by a user (as opposed to just becoming inaccessible).
 /// * [fromCache]: True, if the messages are deleted only from the cache and can possibly be retrieved again in the future.
 final class UpdateDeleteMessages extends Update {
-  
   /// **UpdateDeleteMessages** *(updateDeleteMessages)* - child of Update
   ///
   /// Some messages were deleted.
@@ -5127,7 +5126,7 @@ final class UpdateDeleteMessages extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -5147,29 +5146,30 @@ final class UpdateDeleteMessages extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateDeleteMessages.fromJson(Map<String, dynamic> json) => UpdateDeleteMessages(
-    chatId: json['chat_id'],
-    messageIds: List<int>.from((json['message_ids'] ?? []).map((item) => item).toList()),
-    isPermanent: json['is_permanent'],
-    fromCache: json['from_cache'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateDeleteMessages.fromJson(Map<String, dynamic> json) =>
+      UpdateDeleteMessages(
+        chatId: json['chat_id'],
+        messageIds: List<int>.from(
+            (json['message_ids'] ?? []).map((item) => item).toList()),
+        isPermanent: json['is_permanent'],
+        fromCache: json['from_cache'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_ids": messageIds.map((i) => i).toList(),
       "is_permanent": isPermanent,
       "from_cache": fromCache,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -5186,14 +5186,15 @@ final class UpdateDeleteMessages extends Update {
     bool? fromCache,
     dynamic extra,
     int? clientId,
-  }) => UpdateDeleteMessages(
-    chatId: chatId ?? this.chatId,
-    messageIds: messageIds ?? this.messageIds,
-    isPermanent: isPermanent ?? this.isPermanent,
-    fromCache: fromCache ?? this.fromCache,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateDeleteMessages(
+        chatId: chatId ?? this.chatId,
+        messageIds: messageIds ?? this.messageIds,
+        isPermanent: isPermanent ?? this.isPermanent,
+        fromCache: fromCache ?? this.fromCache,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateDeleteMessages';
@@ -5207,7 +5208,6 @@ final class UpdateDeleteMessages extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatAction** *(updateChatAction)* - child of Update
 ///
 /// A message sender activity in the chat has changed.
@@ -5217,7 +5217,6 @@ final class UpdateDeleteMessages extends Update {
 /// * [senderId]: Identifier of a message sender performing the action.
 /// * [action]: The action.
 final class UpdateChatAction extends Update {
-  
   /// **UpdateChatAction** *(updateChatAction)* - child of Update
   ///
   /// A message sender activity in the chat has changed.
@@ -5234,7 +5233,7 @@ final class UpdateChatAction extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -5254,29 +5253,29 @@ final class UpdateChatAction extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatAction.fromJson(Map<String, dynamic> json) => UpdateChatAction(
-    chatId: json['chat_id'],
-    messageThreadId: json['message_thread_id'],
-    senderId: MessageSender.fromJson(json['sender_id']),
-    action: ChatAction.fromJson(json['action']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatAction.fromJson(Map<String, dynamic> json) =>
+      UpdateChatAction(
+        chatId: json['chat_id'],
+        messageThreadId: json['message_thread_id'],
+        senderId: MessageSender.fromJson(json['sender_id']),
+        action: ChatAction.fromJson(json['action']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_thread_id": messageThreadId,
       "sender_id": senderId.toJson(),
       "action": action.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -5293,14 +5292,15 @@ final class UpdateChatAction extends Update {
     ChatAction? action,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatAction(
-    chatId: chatId ?? this.chatId,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-    senderId: senderId ?? this.senderId,
-    action: action ?? this.action,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatAction(
+        chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+        senderId: senderId ?? this.senderId,
+        action: action ?? this.action,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatAction';
@@ -5314,7 +5314,6 @@ final class UpdateChatAction extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateUserStatus** *(updateUserStatus)* - child of Update
 ///
 /// The user went online or offline.
@@ -5322,7 +5321,6 @@ final class UpdateChatAction extends Update {
 /// * [userId]: User identifier.
 /// * [status]: New status of the user.
 final class UpdateUserStatus extends Update {
-  
   /// **UpdateUserStatus** *(updateUserStatus)* - child of Update
   ///
   /// The user went online or offline.
@@ -5335,8 +5333,8 @@ final class UpdateUserStatus extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// User identifier 
+
+  /// User identifier
   final int userId;
 
   /// New status of the user
@@ -5349,30 +5347,30 @@ final class UpdateUserStatus extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateUserStatus.fromJson(Map<String, dynamic> json) => UpdateUserStatus(
-    userId: json['user_id'],
-    status: UserStatus.fromJson(json['status']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateUserStatus.fromJson(Map<String, dynamic> json) =>
+      UpdateUserStatus(
+        userId: json['user_id'],
+        status: UserStatus.fromJson(json['status']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "user_id": userId,
       "status": status.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [user_id]: User identifier 
+  /// * [user_id]: User identifier
   /// * [status]: New status of the user
   @override
   UpdateUserStatus copyWith({
@@ -5380,12 +5378,13 @@ final class UpdateUserStatus extends Update {
     UserStatus? status,
     dynamic extra,
     int? clientId,
-  }) => UpdateUserStatus(
-    userId: userId ?? this.userId,
-    status: status ?? this.status,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateUserStatus(
+        userId: userId ?? this.userId,
+        status: status ?? this.status,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateUserStatus';
@@ -5399,14 +5398,12 @@ final class UpdateUserStatus extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateUser** *(updateUser)* - child of Update
 ///
 /// Some data of a user has changed. This update is guaranteed to come before the user identifier is returned to the application.
 ///
 /// * [user]: New data about the user.
 final class UpdateUser extends Update {
-  
   /// **UpdateUser** *(updateUser)* - child of Update
   ///
   /// Some data of a user has changed. This update is guaranteed to come before the user identifier is returned to the application.
@@ -5417,7 +5414,7 @@ final class UpdateUser extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// New data about the user
   final User user;
 
@@ -5428,23 +5425,22 @@ final class UpdateUser extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory UpdateUser.fromJson(Map<String, dynamic> json) => UpdateUser(
-    user: User.fromJson(json['user']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        user: User.fromJson(json['user']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "user": user.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -5455,11 +5451,12 @@ final class UpdateUser extends Update {
     User? user,
     dynamic extra,
     int? clientId,
-  }) => UpdateUser(
-    user: user ?? this.user,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateUser(
+        user: user ?? this.user,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateUser';
@@ -5473,14 +5470,12 @@ final class UpdateUser extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateAccessHash** *(updateAccessHash)* - child of Update
 ///
 /// Some data of a user or a chat has changed. This update is guaranteed to come before the user or chat identifier is returned to the application.
 ///
 /// * [accessHash]: Access hash.
 final class UpdateAccessHash extends Update {
-  
   /// **UpdateAccessHash** *(updateAccessHash)* - child of Update
   ///
   /// Some data of a user or a chat has changed. This update is guaranteed to come before the user or chat identifier is returned to the application.
@@ -5491,7 +5486,7 @@ final class UpdateAccessHash extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Access hash
   final AccessHash accessHash;
 
@@ -5502,23 +5497,23 @@ final class UpdateAccessHash extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateAccessHash.fromJson(Map<String, dynamic> json) => UpdateAccessHash(
-    accessHash: AccessHash.fromJson(json['access_hash']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateAccessHash.fromJson(Map<String, dynamic> json) =>
+      UpdateAccessHash(
+        accessHash: AccessHash.fromJson(json['access_hash']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "access_hash": accessHash.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -5529,11 +5524,12 @@ final class UpdateAccessHash extends Update {
     AccessHash? accessHash,
     dynamic extra,
     int? clientId,
-  }) => UpdateAccessHash(
-    accessHash: accessHash ?? this.accessHash,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateAccessHash(
+        accessHash: accessHash ?? this.accessHash,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateAccessHash';
@@ -5547,14 +5543,12 @@ final class UpdateAccessHash extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateBasicGroup** *(updateBasicGroup)* - child of Update
 ///
 /// Some data of a basic group has changed. This update is guaranteed to come before the basic group identifier is returned to the application.
 ///
 /// * [basicGroup]: New data about the group.
 final class UpdateBasicGroup extends Update {
-  
   /// **UpdateBasicGroup** *(updateBasicGroup)* - child of Update
   ///
   /// Some data of a basic group has changed. This update is guaranteed to come before the basic group identifier is returned to the application.
@@ -5565,7 +5559,7 @@ final class UpdateBasicGroup extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// New data about the group
   final BasicGroup basicGroup;
 
@@ -5576,23 +5570,23 @@ final class UpdateBasicGroup extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateBasicGroup.fromJson(Map<String, dynamic> json) => UpdateBasicGroup(
-    basicGroup: BasicGroup.fromJson(json['basic_group']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateBasicGroup.fromJson(Map<String, dynamic> json) =>
+      UpdateBasicGroup(
+        basicGroup: BasicGroup.fromJson(json['basic_group']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "basic_group": basicGroup.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -5603,11 +5597,12 @@ final class UpdateBasicGroup extends Update {
     BasicGroup? basicGroup,
     dynamic extra,
     int? clientId,
-  }) => UpdateBasicGroup(
-    basicGroup: basicGroup ?? this.basicGroup,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateBasicGroup(
+        basicGroup: basicGroup ?? this.basicGroup,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateBasicGroup';
@@ -5621,14 +5616,12 @@ final class UpdateBasicGroup extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateSupergroup** *(updateSupergroup)* - child of Update
 ///
 /// Some data of a supergroup or a channel has changed. This update is guaranteed to come before the supergroup identifier is returned to the application.
 ///
 /// * [supergroup]: New data about the supergroup.
 final class UpdateSupergroup extends Update {
-  
   /// **UpdateSupergroup** *(updateSupergroup)* - child of Update
   ///
   /// Some data of a supergroup or a channel has changed. This update is guaranteed to come before the supergroup identifier is returned to the application.
@@ -5639,7 +5632,7 @@ final class UpdateSupergroup extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// New data about the supergroup
   final Supergroup supergroup;
 
@@ -5650,23 +5643,23 @@ final class UpdateSupergroup extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateSupergroup.fromJson(Map<String, dynamic> json) => UpdateSupergroup(
-    supergroup: Supergroup.fromJson(json['supergroup']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateSupergroup.fromJson(Map<String, dynamic> json) =>
+      UpdateSupergroup(
+        supergroup: Supergroup.fromJson(json['supergroup']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "supergroup": supergroup.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -5677,11 +5670,12 @@ final class UpdateSupergroup extends Update {
     Supergroup? supergroup,
     dynamic extra,
     int? clientId,
-  }) => UpdateSupergroup(
-    supergroup: supergroup ?? this.supergroup,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateSupergroup(
+        supergroup: supergroup ?? this.supergroup,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateSupergroup';
@@ -5695,14 +5689,12 @@ final class UpdateSupergroup extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateSecretChat** *(updateSecretChat)* - child of Update
 ///
 /// Some data of a secret chat has changed. This update is guaranteed to come before the secret chat identifier is returned to the application.
 ///
 /// * [secretChat]: New data about the secret chat.
 final class UpdateSecretChat extends Update {
-  
   /// **UpdateSecretChat** *(updateSecretChat)* - child of Update
   ///
   /// Some data of a secret chat has changed. This update is guaranteed to come before the secret chat identifier is returned to the application.
@@ -5713,7 +5705,7 @@ final class UpdateSecretChat extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// New data about the secret chat
   final SecretChat secretChat;
 
@@ -5724,23 +5716,23 @@ final class UpdateSecretChat extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateSecretChat.fromJson(Map<String, dynamic> json) => UpdateSecretChat(
-    secretChat: SecretChat.fromJson(json['secret_chat']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateSecretChat.fromJson(Map<String, dynamic> json) =>
+      UpdateSecretChat(
+        secretChat: SecretChat.fromJson(json['secret_chat']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "secret_chat": secretChat.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -5751,11 +5743,12 @@ final class UpdateSecretChat extends Update {
     SecretChat? secretChat,
     dynamic extra,
     int? clientId,
-  }) => UpdateSecretChat(
-    secretChat: secretChat ?? this.secretChat,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateSecretChat(
+        secretChat: secretChat ?? this.secretChat,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateSecretChat';
@@ -5769,7 +5762,6 @@ final class UpdateSecretChat extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateUserFullInfo** *(updateUserFullInfo)* - child of Update
 ///
 /// Some data in userFullInfo has been changed.
@@ -5777,7 +5769,6 @@ final class UpdateSecretChat extends Update {
 /// * [userId]: User identifier.
 /// * [userFullInfo]: New full information about the user.
 final class UpdateUserFullInfo extends Update {
-  
   /// **UpdateUserFullInfo** *(updateUserFullInfo)* - child of Update
   ///
   /// Some data in userFullInfo has been changed.
@@ -5790,8 +5781,8 @@ final class UpdateUserFullInfo extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// User identifier 
+
+  /// User identifier
   final int userId;
 
   /// New full information about the user
@@ -5804,30 +5795,30 @@ final class UpdateUserFullInfo extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateUserFullInfo.fromJson(Map<String, dynamic> json) => UpdateUserFullInfo(
-    userId: json['user_id'],
-    userFullInfo: UserFullInfo.fromJson(json['user_full_info']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateUserFullInfo.fromJson(Map<String, dynamic> json) =>
+      UpdateUserFullInfo(
+        userId: json['user_id'],
+        userFullInfo: UserFullInfo.fromJson(json['user_full_info']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "user_id": userId,
       "user_full_info": userFullInfo.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [user_id]: User identifier 
+  /// * [user_id]: User identifier
   /// * [user_full_info]: New full information about the user
   @override
   UpdateUserFullInfo copyWith({
@@ -5835,12 +5826,13 @@ final class UpdateUserFullInfo extends Update {
     UserFullInfo? userFullInfo,
     dynamic extra,
     int? clientId,
-  }) => UpdateUserFullInfo(
-    userId: userId ?? this.userId,
-    userFullInfo: userFullInfo ?? this.userFullInfo,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateUserFullInfo(
+        userId: userId ?? this.userId,
+        userFullInfo: userFullInfo ?? this.userFullInfo,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateUserFullInfo';
@@ -5854,7 +5846,6 @@ final class UpdateUserFullInfo extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateBasicGroupFullInfo** *(updateBasicGroupFullInfo)* - child of Update
 ///
 /// Some data in basicGroupFullInfo has been changed.
@@ -5862,7 +5853,6 @@ final class UpdateUserFullInfo extends Update {
 /// * [basicGroupId]: Identifier of a basic group.
 /// * [basicGroupFullInfo]: New full information about the group.
 final class UpdateBasicGroupFullInfo extends Update {
-  
   /// **UpdateBasicGroupFullInfo** *(updateBasicGroupFullInfo)* - child of Update
   ///
   /// Some data in basicGroupFullInfo has been changed.
@@ -5875,8 +5865,8 @@ final class UpdateBasicGroupFullInfo extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Identifier of a basic group 
+
+  /// Identifier of a basic group
   final int basicGroupId;
 
   /// New full information about the group
@@ -5889,30 +5879,31 @@ final class UpdateBasicGroupFullInfo extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateBasicGroupFullInfo.fromJson(Map<String, dynamic> json) => UpdateBasicGroupFullInfo(
-    basicGroupId: json['basic_group_id'],
-    basicGroupFullInfo: BasicGroupFullInfo.fromJson(json['basic_group_full_info']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateBasicGroupFullInfo.fromJson(Map<String, dynamic> json) =>
+      UpdateBasicGroupFullInfo(
+        basicGroupId: json['basic_group_id'],
+        basicGroupFullInfo:
+            BasicGroupFullInfo.fromJson(json['basic_group_full_info']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "basic_group_id": basicGroupId,
       "basic_group_full_info": basicGroupFullInfo.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [basic_group_id]: Identifier of a basic group 
+  /// * [basic_group_id]: Identifier of a basic group
   /// * [basic_group_full_info]: New full information about the group
   @override
   UpdateBasicGroupFullInfo copyWith({
@@ -5920,12 +5911,13 @@ final class UpdateBasicGroupFullInfo extends Update {
     BasicGroupFullInfo? basicGroupFullInfo,
     dynamic extra,
     int? clientId,
-  }) => UpdateBasicGroupFullInfo(
-    basicGroupId: basicGroupId ?? this.basicGroupId,
-    basicGroupFullInfo: basicGroupFullInfo ?? this.basicGroupFullInfo,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateBasicGroupFullInfo(
+        basicGroupId: basicGroupId ?? this.basicGroupId,
+        basicGroupFullInfo: basicGroupFullInfo ?? this.basicGroupFullInfo,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateBasicGroupFullInfo';
@@ -5939,7 +5931,6 @@ final class UpdateBasicGroupFullInfo extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateSupergroupFullInfo** *(updateSupergroupFullInfo)* - child of Update
 ///
 /// Some data in supergroupFullInfo has been changed.
@@ -5947,7 +5938,6 @@ final class UpdateBasicGroupFullInfo extends Update {
 /// * [supergroupId]: Identifier of the supergroup or channel.
 /// * [supergroupFullInfo]: New full information about the supergroup.
 final class UpdateSupergroupFullInfo extends Update {
-  
   /// **UpdateSupergroupFullInfo** *(updateSupergroupFullInfo)* - child of Update
   ///
   /// Some data in supergroupFullInfo has been changed.
@@ -5960,8 +5950,8 @@ final class UpdateSupergroupFullInfo extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Identifier of the supergroup or channel 
+
+  /// Identifier of the supergroup or channel
   final int supergroupId;
 
   /// New full information about the supergroup
@@ -5974,30 +5964,31 @@ final class UpdateSupergroupFullInfo extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateSupergroupFullInfo.fromJson(Map<String, dynamic> json) => UpdateSupergroupFullInfo(
-    supergroupId: json['supergroup_id'],
-    supergroupFullInfo: SupergroupFullInfo.fromJson(json['supergroup_full_info']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateSupergroupFullInfo.fromJson(Map<String, dynamic> json) =>
+      UpdateSupergroupFullInfo(
+        supergroupId: json['supergroup_id'],
+        supergroupFullInfo:
+            SupergroupFullInfo.fromJson(json['supergroup_full_info']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "supergroup_id": supergroupId,
       "supergroup_full_info": supergroupFullInfo.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [supergroup_id]: Identifier of the supergroup or channel 
+  /// * [supergroup_id]: Identifier of the supergroup or channel
   /// * [supergroup_full_info]: New full information about the supergroup
   @override
   UpdateSupergroupFullInfo copyWith({
@@ -6005,12 +5996,13 @@ final class UpdateSupergroupFullInfo extends Update {
     SupergroupFullInfo? supergroupFullInfo,
     dynamic extra,
     int? clientId,
-  }) => UpdateSupergroupFullInfo(
-    supergroupId: supergroupId ?? this.supergroupId,
-    supergroupFullInfo: supergroupFullInfo ?? this.supergroupFullInfo,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateSupergroupFullInfo(
+        supergroupId: supergroupId ?? this.supergroupId,
+        supergroupFullInfo: supergroupFullInfo ?? this.supergroupFullInfo,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateSupergroupFullInfo';
@@ -6024,7 +6016,6 @@ final class UpdateSupergroupFullInfo extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateServiceNotification** *(updateServiceNotification)* - child of Update
 ///
 /// A service notification from the server was received. Upon receiving this the application must show a popup with the content of the notification.
@@ -6032,7 +6023,6 @@ final class UpdateSupergroupFullInfo extends Update {
 /// * [type]: Notification type. If type begins with "AUTH_KEY_DROP_", then two buttons "Cancel" and "Log out" must be shown under notification; if user presses the second, all local data must be destroyed using Destroy method.
 /// * [content]: Notification content.
 final class UpdateServiceNotification extends Update {
-  
   /// **UpdateServiceNotification** *(updateServiceNotification)* - child of Update
   ///
   /// A service notification from the server was received. Upon receiving this the application must show a popup with the content of the notification.
@@ -6045,7 +6035,7 @@ final class UpdateServiceNotification extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Notification type. If type begins with "AUTH_KEY_DROP_", then two buttons "Cancel" and "Log out" must be shown under notification; if user presses the second, all local data must be destroyed using Destroy method
   final String type;
 
@@ -6059,25 +6049,25 @@ final class UpdateServiceNotification extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateServiceNotification.fromJson(Map<String, dynamic> json) => UpdateServiceNotification(
-    type: json['type'],
-    content: MessageContent.fromJson(json['content']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateServiceNotification.fromJson(Map<String, dynamic> json) =>
+      UpdateServiceNotification(
+        type: json['type'],
+        content: MessageContent.fromJson(json['content']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "type": type,
       "content": content.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -6090,12 +6080,13 @@ final class UpdateServiceNotification extends Update {
     MessageContent? content,
     dynamic extra,
     int? clientId,
-  }) => UpdateServiceNotification(
-    type: type ?? this.type,
-    content: content ?? this.content,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateServiceNotification(
+        type: type ?? this.type,
+        content: content ?? this.content,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateServiceNotification';
@@ -6109,14 +6100,12 @@ final class UpdateServiceNotification extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateFile** *(updateFile)* - child of Update
 ///
 /// Information about a file was updated.
 ///
 /// * [file]: New data about the file.
 final class UpdateFile extends Update {
-  
   /// **UpdateFile** *(updateFile)* - child of Update
   ///
   /// Information about a file was updated.
@@ -6127,7 +6116,7 @@ final class UpdateFile extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// New data about the file
   final File file;
 
@@ -6138,23 +6127,22 @@ final class UpdateFile extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory UpdateFile.fromJson(Map<String, dynamic> json) => UpdateFile(
-    file: File.fromJson(json['file']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        file: File.fromJson(json['file']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "file": file.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -6165,11 +6153,12 @@ final class UpdateFile extends Update {
     File? file,
     dynamic extra,
     int? clientId,
-  }) => UpdateFile(
-    file: file ?? this.file,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateFile(
+        file: file ?? this.file,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateFile';
@@ -6183,7 +6172,6 @@ final class UpdateFile extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateFileGenerationStart** *(updateFileGenerationStart)* - child of Update
 ///
 /// The file generation process needs to be started by the application.
@@ -6193,7 +6181,6 @@ final class UpdateFile extends Update {
 /// * [destinationPath]: The path to a file that must be created and where the new file is generated.
 /// * [conversion]: String specifying the conversion applied to the original file. If conversion is "#url#" than original_path contains an HTTP/HTTPS URL of a file, which must be downloaded by the application.
 final class UpdateFileGenerationStart extends Update {
-  
   /// **UpdateFileGenerationStart** *(updateFileGenerationStart)* - child of Update
   ///
   /// The file generation process needs to be started by the application.
@@ -6210,7 +6197,7 @@ final class UpdateFileGenerationStart extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Unique identifier for the generation process
   final int generationId;
 
@@ -6230,29 +6217,29 @@ final class UpdateFileGenerationStart extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateFileGenerationStart.fromJson(Map<String, dynamic> json) => UpdateFileGenerationStart(
-    generationId: int.parse(json['generation_id']),
-    originalPath: json['original_path'],
-    destinationPath: json['destination_path'],
-    conversion: json['conversion'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateFileGenerationStart.fromJson(Map<String, dynamic> json) =>
+      UpdateFileGenerationStart(
+        generationId: int.parse(json['generation_id']),
+        originalPath: json['original_path'],
+        destinationPath: json['destination_path'],
+        conversion: json['conversion'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "generation_id": generationId,
       "original_path": originalPath,
       "destination_path": destinationPath,
       "conversion": conversion,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -6269,14 +6256,15 @@ final class UpdateFileGenerationStart extends Update {
     String? conversion,
     dynamic extra,
     int? clientId,
-  }) => UpdateFileGenerationStart(
-    generationId: generationId ?? this.generationId,
-    originalPath: originalPath ?? this.originalPath,
-    destinationPath: destinationPath ?? this.destinationPath,
-    conversion: conversion ?? this.conversion,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateFileGenerationStart(
+        generationId: generationId ?? this.generationId,
+        originalPath: originalPath ?? this.originalPath,
+        destinationPath: destinationPath ?? this.destinationPath,
+        conversion: conversion ?? this.conversion,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateFileGenerationStart';
@@ -6290,14 +6278,12 @@ final class UpdateFileGenerationStart extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateFileGenerationStop** *(updateFileGenerationStop)* - child of Update
 ///
 /// File generation is no longer needed.
 ///
 /// * [generationId]: Unique identifier for the generation process.
 final class UpdateFileGenerationStop extends Update {
-  
   /// **UpdateFileGenerationStop** *(updateFileGenerationStop)* - child of Update
   ///
   /// File generation is no longer needed.
@@ -6308,7 +6294,7 @@ final class UpdateFileGenerationStop extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Unique identifier for the generation process
   final int generationId;
 
@@ -6319,23 +6305,23 @@ final class UpdateFileGenerationStop extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateFileGenerationStop.fromJson(Map<String, dynamic> json) => UpdateFileGenerationStop(
-    generationId: int.parse(json['generation_id']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateFileGenerationStop.fromJson(Map<String, dynamic> json) =>
+      UpdateFileGenerationStop(
+        generationId: int.parse(json['generation_id']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "generation_id": generationId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -6346,11 +6332,12 @@ final class UpdateFileGenerationStop extends Update {
     int? generationId,
     dynamic extra,
     int? clientId,
-  }) => UpdateFileGenerationStop(
-    generationId: generationId ?? this.generationId,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateFileGenerationStop(
+        generationId: generationId ?? this.generationId,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateFileGenerationStop';
@@ -6364,7 +6351,6 @@ final class UpdateFileGenerationStop extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateFileDownloads** *(updateFileDownloads)* - child of Update
 ///
 /// The state of the file download list has changed.
@@ -6373,7 +6359,6 @@ final class UpdateFileGenerationStop extends Update {
 /// * [totalCount]: Total number of files in the file download list.
 /// * [downloadedSize]: Total downloaded size of files in the file download list, in bytes.
 final class UpdateFileDownloads extends Update {
-  
   /// **UpdateFileDownloads** *(updateFileDownloads)* - child of Update
   ///
   /// The state of the file download list has changed.
@@ -6388,7 +6373,7 @@ final class UpdateFileDownloads extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Total size of files in the file download list, in bytes
   final int totalSize;
 
@@ -6405,27 +6390,27 @@ final class UpdateFileDownloads extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateFileDownloads.fromJson(Map<String, dynamic> json) => UpdateFileDownloads(
-    totalSize: json['total_size'],
-    totalCount: json['total_count'],
-    downloadedSize: json['downloaded_size'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateFileDownloads.fromJson(Map<String, dynamic> json) =>
+      UpdateFileDownloads(
+        totalSize: json['total_size'],
+        totalCount: json['total_count'],
+        downloadedSize: json['downloaded_size'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "total_size": totalSize,
       "total_count": totalCount,
       "downloaded_size": downloadedSize,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -6440,13 +6425,14 @@ final class UpdateFileDownloads extends Update {
     int? downloadedSize,
     dynamic extra,
     int? clientId,
-  }) => UpdateFileDownloads(
-    totalSize: totalSize ?? this.totalSize,
-    totalCount: totalCount ?? this.totalCount,
-    downloadedSize: downloadedSize ?? this.downloadedSize,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateFileDownloads(
+        totalSize: totalSize ?? this.totalSize,
+        totalCount: totalCount ?? this.totalCount,
+        downloadedSize: downloadedSize ?? this.downloadedSize,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateFileDownloads';
@@ -6460,7 +6446,6 @@ final class UpdateFileDownloads extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateFileAddedToDownloads** *(updateFileAddedToDownloads)* - child of Update
 ///
 /// A file was added to the file download list. This update is sent only after file download list is loaded for the first time.
@@ -6468,7 +6453,6 @@ final class UpdateFileDownloads extends Update {
 /// * [fileDownload]: The added file download.
 /// * [counts]: New number of being downloaded and recently downloaded files found.
 final class UpdateFileAddedToDownloads extends Update {
-  
   /// **UpdateFileAddedToDownloads** *(updateFileAddedToDownloads)* - child of Update
   ///
   /// A file was added to the file download list. This update is sent only after file download list is loaded for the first time.
@@ -6481,8 +6465,8 @@ final class UpdateFileAddedToDownloads extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// The added file download 
+
+  /// The added file download
   final FileDownload fileDownload;
 
   /// New number of being downloaded and recently downloaded files found
@@ -6495,30 +6479,30 @@ final class UpdateFileAddedToDownloads extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateFileAddedToDownloads.fromJson(Map<String, dynamic> json) => UpdateFileAddedToDownloads(
-    fileDownload: FileDownload.fromJson(json['file_download']),
-    counts: DownloadedFileCounts.fromJson(json['counts']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateFileAddedToDownloads.fromJson(Map<String, dynamic> json) =>
+      UpdateFileAddedToDownloads(
+        fileDownload: FileDownload.fromJson(json['file_download']),
+        counts: DownloadedFileCounts.fromJson(json['counts']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "file_download": fileDownload.toJson(),
       "counts": counts.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [file_download]: The added file download 
+  /// * [file_download]: The added file download
   /// * [counts]: New number of being downloaded and recently downloaded files found
   @override
   UpdateFileAddedToDownloads copyWith({
@@ -6526,12 +6510,13 @@ final class UpdateFileAddedToDownloads extends Update {
     DownloadedFileCounts? counts,
     dynamic extra,
     int? clientId,
-  }) => UpdateFileAddedToDownloads(
-    fileDownload: fileDownload ?? this.fileDownload,
-    counts: counts ?? this.counts,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateFileAddedToDownloads(
+        fileDownload: fileDownload ?? this.fileDownload,
+        counts: counts ?? this.counts,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateFileAddedToDownloads';
@@ -6545,7 +6530,6 @@ final class UpdateFileAddedToDownloads extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateFileDownload** *(updateFileDownload)* - child of Update
 ///
 /// A file download was changed. This update is sent only after file download list is loaded for the first time.
@@ -6555,7 +6539,6 @@ final class UpdateFileAddedToDownloads extends Update {
 /// * [isPaused]: True, if downloading of the file is paused.
 /// * [counts]: New number of being downloaded and recently downloaded files found.
 final class UpdateFileDownload extends Update {
-  
   /// **UpdateFileDownload** *(updateFileDownload)* - child of Update
   ///
   /// A file download was changed. This update is sent only after file download list is loaded for the first time.
@@ -6572,7 +6555,7 @@ final class UpdateFileDownload extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// File identifier
   final int fileId;
 
@@ -6592,29 +6575,29 @@ final class UpdateFileDownload extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateFileDownload.fromJson(Map<String, dynamic> json) => UpdateFileDownload(
-    fileId: json['file_id'],
-    completeDate: json['complete_date'],
-    isPaused: json['is_paused'],
-    counts: DownloadedFileCounts.fromJson(json['counts']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateFileDownload.fromJson(Map<String, dynamic> json) =>
+      UpdateFileDownload(
+        fileId: json['file_id'],
+        completeDate: json['complete_date'],
+        isPaused: json['is_paused'],
+        counts: DownloadedFileCounts.fromJson(json['counts']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "file_id": fileId,
       "complete_date": completeDate,
       "is_paused": isPaused,
       "counts": counts.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -6631,14 +6614,15 @@ final class UpdateFileDownload extends Update {
     DownloadedFileCounts? counts,
     dynamic extra,
     int? clientId,
-  }) => UpdateFileDownload(
-    fileId: fileId ?? this.fileId,
-    completeDate: completeDate ?? this.completeDate,
-    isPaused: isPaused ?? this.isPaused,
-    counts: counts ?? this.counts,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateFileDownload(
+        fileId: fileId ?? this.fileId,
+        completeDate: completeDate ?? this.completeDate,
+        isPaused: isPaused ?? this.isPaused,
+        counts: counts ?? this.counts,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateFileDownload';
@@ -6652,7 +6636,6 @@ final class UpdateFileDownload extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateFileRemovedFromDownloads** *(updateFileRemovedFromDownloads)* - child of Update
 ///
 /// A file was removed from the file download list. This update is sent only after file download list is loaded for the first time.
@@ -6660,7 +6643,6 @@ final class UpdateFileDownload extends Update {
 /// * [fileId]: File identifier.
 /// * [counts]: New number of being downloaded and recently downloaded files found.
 final class UpdateFileRemovedFromDownloads extends Update {
-  
   /// **UpdateFileRemovedFromDownloads** *(updateFileRemovedFromDownloads)* - child of Update
   ///
   /// A file was removed from the file download list. This update is sent only after file download list is loaded for the first time.
@@ -6673,8 +6655,8 @@ final class UpdateFileRemovedFromDownloads extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// File identifier 
+
+  /// File identifier
   final int fileId;
 
   /// New number of being downloaded and recently downloaded files found
@@ -6687,30 +6669,30 @@ final class UpdateFileRemovedFromDownloads extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateFileRemovedFromDownloads.fromJson(Map<String, dynamic> json) => UpdateFileRemovedFromDownloads(
-    fileId: json['file_id'],
-    counts: DownloadedFileCounts.fromJson(json['counts']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateFileRemovedFromDownloads.fromJson(Map<String, dynamic> json) =>
+      UpdateFileRemovedFromDownloads(
+        fileId: json['file_id'],
+        counts: DownloadedFileCounts.fromJson(json['counts']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "file_id": fileId,
       "counts": counts.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [file_id]: File identifier 
+  /// * [file_id]: File identifier
   /// * [counts]: New number of being downloaded and recently downloaded files found
   @override
   UpdateFileRemovedFromDownloads copyWith({
@@ -6718,12 +6700,13 @@ final class UpdateFileRemovedFromDownloads extends Update {
     DownloadedFileCounts? counts,
     dynamic extra,
     int? clientId,
-  }) => UpdateFileRemovedFromDownloads(
-    fileId: fileId ?? this.fileId,
-    counts: counts ?? this.counts,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateFileRemovedFromDownloads(
+        fileId: fileId ?? this.fileId,
+        counts: counts ?? this.counts,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateFileRemovedFromDownloads';
@@ -6737,14 +6720,12 @@ final class UpdateFileRemovedFromDownloads extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateCall** *(updateCall)* - child of Update
 ///
 /// New call was created or information about a call was updated.
 ///
 /// * [call]: New data about a call.
 final class UpdateCall extends Update {
-  
   /// **UpdateCall** *(updateCall)* - child of Update
   ///
   /// New call was created or information about a call was updated.
@@ -6755,7 +6736,7 @@ final class UpdateCall extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// New data about a call
   final Call call;
 
@@ -6766,23 +6747,22 @@ final class UpdateCall extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory UpdateCall.fromJson(Map<String, dynamic> json) => UpdateCall(
-    call: Call.fromJson(json['call']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        call: Call.fromJson(json['call']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "call": call.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -6793,11 +6773,12 @@ final class UpdateCall extends Update {
     Call? call,
     dynamic extra,
     int? clientId,
-  }) => UpdateCall(
-    call: call ?? this.call,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateCall(
+        call: call ?? this.call,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateCall';
@@ -6811,14 +6792,12 @@ final class UpdateCall extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateGroupCall** *(updateGroupCall)* - child of Update
 ///
 /// Information about a group call was updated.
 ///
 /// * [groupCall]: New data about a group call.
 final class UpdateGroupCall extends Update {
-  
   /// **UpdateGroupCall** *(updateGroupCall)* - child of Update
   ///
   /// Information about a group call was updated.
@@ -6829,7 +6808,7 @@ final class UpdateGroupCall extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// New data about a group call
   final GroupCall groupCall;
 
@@ -6840,23 +6819,23 @@ final class UpdateGroupCall extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateGroupCall.fromJson(Map<String, dynamic> json) => UpdateGroupCall(
-    groupCall: GroupCall.fromJson(json['group_call']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateGroupCall.fromJson(Map<String, dynamic> json) =>
+      UpdateGroupCall(
+        groupCall: GroupCall.fromJson(json['group_call']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "group_call": groupCall.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -6867,11 +6846,12 @@ final class UpdateGroupCall extends Update {
     GroupCall? groupCall,
     dynamic extra,
     int? clientId,
-  }) => UpdateGroupCall(
-    groupCall: groupCall ?? this.groupCall,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateGroupCall(
+        groupCall: groupCall ?? this.groupCall,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateGroupCall';
@@ -6885,7 +6865,6 @@ final class UpdateGroupCall extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateGroupCallParticipant** *(updateGroupCallParticipant)* - child of Update
 ///
 /// Information about a group call participant was changed. The updates are sent only after the group call is received through getGroupCall and only if the call is joined or being joined.
@@ -6893,7 +6872,6 @@ final class UpdateGroupCall extends Update {
 /// * [groupCallId]: Identifier of group call.
 /// * [participant]: New data about a participant.
 final class UpdateGroupCallParticipant extends Update {
-  
   /// **UpdateGroupCallParticipant** *(updateGroupCallParticipant)* - child of Update
   ///
   /// Information about a group call participant was changed. The updates are sent only after the group call is received through getGroupCall and only if the call is joined or being joined.
@@ -6906,7 +6884,7 @@ final class UpdateGroupCallParticipant extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Identifier of group call
   final int groupCallId;
 
@@ -6920,25 +6898,25 @@ final class UpdateGroupCallParticipant extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateGroupCallParticipant.fromJson(Map<String, dynamic> json) => UpdateGroupCallParticipant(
-    groupCallId: json['group_call_id'],
-    participant: GroupCallParticipant.fromJson(json['participant']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateGroupCallParticipant.fromJson(Map<String, dynamic> json) =>
+      UpdateGroupCallParticipant(
+        groupCallId: json['group_call_id'],
+        participant: GroupCallParticipant.fromJson(json['participant']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "group_call_id": groupCallId,
       "participant": participant.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -6951,12 +6929,13 @@ final class UpdateGroupCallParticipant extends Update {
     GroupCallParticipant? participant,
     dynamic extra,
     int? clientId,
-  }) => UpdateGroupCallParticipant(
-    groupCallId: groupCallId ?? this.groupCallId,
-    participant: participant ?? this.participant,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateGroupCallParticipant(
+        groupCallId: groupCallId ?? this.groupCallId,
+        participant: participant ?? this.participant,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateGroupCallParticipant';
@@ -6970,7 +6949,6 @@ final class UpdateGroupCallParticipant extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateNewCallSignalingData** *(updateNewCallSignalingData)* - child of Update
 ///
 /// New call signaling data arrived.
@@ -6978,7 +6956,6 @@ final class UpdateGroupCallParticipant extends Update {
 /// * [callId]: The call identifier.
 /// * [data]: The data.
 final class UpdateNewCallSignalingData extends Update {
-  
   /// **UpdateNewCallSignalingData** *(updateNewCallSignalingData)* - child of Update
   ///
   /// New call signaling data arrived.
@@ -6991,8 +6968,8 @@ final class UpdateNewCallSignalingData extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// The call identifier 
+
+  /// The call identifier
   final int callId;
 
   /// The data
@@ -7005,30 +6982,30 @@ final class UpdateNewCallSignalingData extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateNewCallSignalingData.fromJson(Map<String, dynamic> json) => UpdateNewCallSignalingData(
-    callId: json['call_id'],
-    data: json['data'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateNewCallSignalingData.fromJson(Map<String, dynamic> json) =>
+      UpdateNewCallSignalingData(
+        callId: json['call_id'],
+        data: json['data'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "call_id": callId,
       "data": data,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [call_id]: The call identifier 
+  /// * [call_id]: The call identifier
   /// * [data]: The data
   @override
   UpdateNewCallSignalingData copyWith({
@@ -7036,12 +7013,13 @@ final class UpdateNewCallSignalingData extends Update {
     String? data,
     dynamic extra,
     int? clientId,
-  }) => UpdateNewCallSignalingData(
-    callId: callId ?? this.callId,
-    data: data ?? this.data,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateNewCallSignalingData(
+        callId: callId ?? this.callId,
+        data: data ?? this.data,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateNewCallSignalingData';
@@ -7055,7 +7033,6 @@ final class UpdateNewCallSignalingData extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateUserPrivacySettingRules** *(updateUserPrivacySettingRules)* - child of Update
 ///
 /// Some privacy setting rules have been changed.
@@ -7063,7 +7040,6 @@ final class UpdateNewCallSignalingData extends Update {
 /// * [setting]: The privacy setting.
 /// * [rules]: New privacy rules.
 final class UpdateUserPrivacySettingRules extends Update {
-  
   /// **UpdateUserPrivacySettingRules** *(updateUserPrivacySettingRules)* - child of Update
   ///
   /// Some privacy setting rules have been changed.
@@ -7076,8 +7052,8 @@ final class UpdateUserPrivacySettingRules extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// The privacy setting 
+
+  /// The privacy setting
   final UserPrivacySetting setting;
 
   /// New privacy rules
@@ -7090,30 +7066,30 @@ final class UpdateUserPrivacySettingRules extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateUserPrivacySettingRules.fromJson(Map<String, dynamic> json) => UpdateUserPrivacySettingRules(
-    setting: UserPrivacySetting.fromJson(json['setting']),
-    rules: UserPrivacySettingRules.fromJson(json['rules']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateUserPrivacySettingRules.fromJson(Map<String, dynamic> json) =>
+      UpdateUserPrivacySettingRules(
+        setting: UserPrivacySetting.fromJson(json['setting']),
+        rules: UserPrivacySettingRules.fromJson(json['rules']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "setting": setting.toJson(),
       "rules": rules.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [setting]: The privacy setting 
+  /// * [setting]: The privacy setting
   /// * [rules]: New privacy rules
   @override
   UpdateUserPrivacySettingRules copyWith({
@@ -7121,12 +7097,13 @@ final class UpdateUserPrivacySettingRules extends Update {
     UserPrivacySettingRules? rules,
     dynamic extra,
     int? clientId,
-  }) => UpdateUserPrivacySettingRules(
-    setting: setting ?? this.setting,
-    rules: rules ?? this.rules,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateUserPrivacySettingRules(
+        setting: setting ?? this.setting,
+        rules: rules ?? this.rules,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateUserPrivacySettingRules';
@@ -7140,7 +7117,6 @@ final class UpdateUserPrivacySettingRules extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateUnreadMessageCount** *(updateUnreadMessageCount)* - child of Update
 ///
 /// Number of unread messages in a chat list has changed. This update is sent only if the message database is used.
@@ -7149,7 +7125,6 @@ final class UpdateUserPrivacySettingRules extends Update {
 /// * [unreadCount]: Total number of unread messages.
 /// * [unreadUnmutedCount]: Total number of unread messages in unmuted chats.
 final class UpdateUnreadMessageCount extends Update {
-  
   /// **UpdateUnreadMessageCount** *(updateUnreadMessageCount)* - child of Update
   ///
   /// Number of unread messages in a chat list has changed. This update is sent only if the message database is used.
@@ -7164,7 +7139,7 @@ final class UpdateUnreadMessageCount extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// The chat list with changed number of unread messages
   final ChatList chatList;
 
@@ -7181,27 +7156,27 @@ final class UpdateUnreadMessageCount extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateUnreadMessageCount.fromJson(Map<String, dynamic> json) => UpdateUnreadMessageCount(
-    chatList: ChatList.fromJson(json['chat_list']),
-    unreadCount: json['unread_count'],
-    unreadUnmutedCount: json['unread_unmuted_count'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateUnreadMessageCount.fromJson(Map<String, dynamic> json) =>
+      UpdateUnreadMessageCount(
+        chatList: ChatList.fromJson(json['chat_list']),
+        unreadCount: json['unread_count'],
+        unreadUnmutedCount: json['unread_unmuted_count'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_list": chatList.toJson(),
       "unread_count": unreadCount,
       "unread_unmuted_count": unreadUnmutedCount,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -7216,13 +7191,14 @@ final class UpdateUnreadMessageCount extends Update {
     int? unreadUnmutedCount,
     dynamic extra,
     int? clientId,
-  }) => UpdateUnreadMessageCount(
-    chatList: chatList ?? this.chatList,
-    unreadCount: unreadCount ?? this.unreadCount,
-    unreadUnmutedCount: unreadUnmutedCount ?? this.unreadUnmutedCount,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateUnreadMessageCount(
+        chatList: chatList ?? this.chatList,
+        unreadCount: unreadCount ?? this.unreadCount,
+        unreadUnmutedCount: unreadUnmutedCount ?? this.unreadUnmutedCount,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateUnreadMessageCount';
@@ -7236,7 +7212,6 @@ final class UpdateUnreadMessageCount extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateUnreadChatCount** *(updateUnreadChatCount)* - child of Update
 ///
 /// Number of unread chats, i.e. with unread messages or marked as unread, has changed. This update is sent only if the message database is used.
@@ -7248,7 +7223,6 @@ final class UpdateUnreadMessageCount extends Update {
 /// * [markedAsUnreadCount]: Total number of chats marked as unread.
 /// * [markedAsUnreadUnmutedCount]: Total number of unmuted chats marked as unread.
 final class UpdateUnreadChatCount extends Update {
-  
   /// **UpdateUnreadChatCount** *(updateUnreadChatCount)* - child of Update
   ///
   /// Number of unread chats, i.e. with unread messages or marked as unread, has changed. This update is sent only if the message database is used.
@@ -7269,7 +7243,7 @@ final class UpdateUnreadChatCount extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// The chat list with changed number of unread messages
   final ChatList chatList;
 
@@ -7295,33 +7269,33 @@ final class UpdateUnreadChatCount extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateUnreadChatCount.fromJson(Map<String, dynamic> json) => UpdateUnreadChatCount(
-    chatList: ChatList.fromJson(json['chat_list']),
-    totalCount: json['total_count'],
-    unreadCount: json['unread_count'],
-    unreadUnmutedCount: json['unread_unmuted_count'],
-    markedAsUnreadCount: json['marked_as_unread_count'],
-    markedAsUnreadUnmutedCount: json['marked_as_unread_unmuted_count'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateUnreadChatCount.fromJson(Map<String, dynamic> json) =>
+      UpdateUnreadChatCount(
+        chatList: ChatList.fromJson(json['chat_list']),
+        totalCount: json['total_count'],
+        unreadCount: json['unread_count'],
+        unreadUnmutedCount: json['unread_unmuted_count'],
+        markedAsUnreadCount: json['marked_as_unread_count'],
+        markedAsUnreadUnmutedCount: json['marked_as_unread_unmuted_count'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_list": chatList.toJson(),
       "total_count": totalCount,
       "unread_count": unreadCount,
       "unread_unmuted_count": unreadUnmutedCount,
       "marked_as_unread_count": markedAsUnreadCount,
       "marked_as_unread_unmuted_count": markedAsUnreadUnmutedCount,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -7342,16 +7316,18 @@ final class UpdateUnreadChatCount extends Update {
     int? markedAsUnreadUnmutedCount,
     dynamic extra,
     int? clientId,
-  }) => UpdateUnreadChatCount(
-    chatList: chatList ?? this.chatList,
-    totalCount: totalCount ?? this.totalCount,
-    unreadCount: unreadCount ?? this.unreadCount,
-    unreadUnmutedCount: unreadUnmutedCount ?? this.unreadUnmutedCount,
-    markedAsUnreadCount: markedAsUnreadCount ?? this.markedAsUnreadCount,
-    markedAsUnreadUnmutedCount: markedAsUnreadUnmutedCount ?? this.markedAsUnreadUnmutedCount,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateUnreadChatCount(
+        chatList: chatList ?? this.chatList,
+        totalCount: totalCount ?? this.totalCount,
+        unreadCount: unreadCount ?? this.unreadCount,
+        unreadUnmutedCount: unreadUnmutedCount ?? this.unreadUnmutedCount,
+        markedAsUnreadCount: markedAsUnreadCount ?? this.markedAsUnreadCount,
+        markedAsUnreadUnmutedCount:
+            markedAsUnreadUnmutedCount ?? this.markedAsUnreadUnmutedCount,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateUnreadChatCount';
@@ -7365,14 +7341,12 @@ final class UpdateUnreadChatCount extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateStory** *(updateStory)* - child of Update
 ///
 /// A story was changed.
 ///
 /// * [story]: The new information about the story.
 final class UpdateStory extends Update {
-  
   /// **UpdateStory** *(updateStory)* - child of Update
   ///
   /// A story was changed.
@@ -7383,7 +7357,7 @@ final class UpdateStory extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// The new information about the story
   final Story story;
 
@@ -7394,23 +7368,22 @@ final class UpdateStory extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory UpdateStory.fromJson(Map<String, dynamic> json) => UpdateStory(
-    story: Story.fromJson(json['story']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        story: Story.fromJson(json['story']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "story": story.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -7421,11 +7394,12 @@ final class UpdateStory extends Update {
     Story? story,
     dynamic extra,
     int? clientId,
-  }) => UpdateStory(
-    story: story ?? this.story,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateStory(
+        story: story ?? this.story,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateStory';
@@ -7439,7 +7413,6 @@ final class UpdateStory extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateStoryDeleted** *(updateStoryDeleted)* - child of Update
 ///
 /// A story became inaccessible.
@@ -7447,7 +7420,6 @@ final class UpdateStory extends Update {
 /// * [storySenderChatId]: Identifier of the chat that posted the story.
 /// * [storyId]: Story identifier.
 final class UpdateStoryDeleted extends Update {
-  
   /// **UpdateStoryDeleted** *(updateStoryDeleted)* - child of Update
   ///
   /// A story became inaccessible.
@@ -7460,8 +7432,8 @@ final class UpdateStoryDeleted extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Identifier of the chat that posted the story 
+
+  /// Identifier of the chat that posted the story
   final int storySenderChatId;
 
   /// Story identifier
@@ -7474,30 +7446,30 @@ final class UpdateStoryDeleted extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateStoryDeleted.fromJson(Map<String, dynamic> json) => UpdateStoryDeleted(
-    storySenderChatId: json['story_sender_chat_id'],
-    storyId: json['story_id'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateStoryDeleted.fromJson(Map<String, dynamic> json) =>
+      UpdateStoryDeleted(
+        storySenderChatId: json['story_sender_chat_id'],
+        storyId: json['story_id'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "story_sender_chat_id": storySenderChatId,
       "story_id": storyId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [story_sender_chat_id]: Identifier of the chat that posted the story 
+  /// * [story_sender_chat_id]: Identifier of the chat that posted the story
   /// * [story_id]: Story identifier
   @override
   UpdateStoryDeleted copyWith({
@@ -7505,12 +7477,13 @@ final class UpdateStoryDeleted extends Update {
     int? storyId,
     dynamic extra,
     int? clientId,
-  }) => UpdateStoryDeleted(
-    storySenderChatId: storySenderChatId ?? this.storySenderChatId,
-    storyId: storyId ?? this.storyId,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateStoryDeleted(
+        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+        storyId: storyId ?? this.storyId,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateStoryDeleted';
@@ -7524,7 +7497,6 @@ final class UpdateStoryDeleted extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateStorySendSucceeded** *(updateStorySendSucceeded)* - child of Update
 ///
 /// A story has been successfully sent.
@@ -7532,7 +7504,6 @@ final class UpdateStoryDeleted extends Update {
 /// * [story]: The sent story.
 /// * [oldStoryId]: The previous temporary story identifier.
 final class UpdateStorySendSucceeded extends Update {
-  
   /// **UpdateStorySendSucceeded** *(updateStorySendSucceeded)* - child of Update
   ///
   /// A story has been successfully sent.
@@ -7545,8 +7516,8 @@ final class UpdateStorySendSucceeded extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// The sent story 
+
+  /// The sent story
   final Story story;
 
   /// The previous temporary story identifier
@@ -7559,30 +7530,30 @@ final class UpdateStorySendSucceeded extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateStorySendSucceeded.fromJson(Map<String, dynamic> json) => UpdateStorySendSucceeded(
-    story: Story.fromJson(json['story']),
-    oldStoryId: json['old_story_id'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateStorySendSucceeded.fromJson(Map<String, dynamic> json) =>
+      UpdateStorySendSucceeded(
+        story: Story.fromJson(json['story']),
+        oldStoryId: json['old_story_id'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "story": story.toJson(),
       "old_story_id": oldStoryId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [story]: The sent story 
+  /// * [story]: The sent story
   /// * [old_story_id]: The previous temporary story identifier
   @override
   UpdateStorySendSucceeded copyWith({
@@ -7590,12 +7561,13 @@ final class UpdateStorySendSucceeded extends Update {
     int? oldStoryId,
     dynamic extra,
     int? clientId,
-  }) => UpdateStorySendSucceeded(
-    story: story ?? this.story,
-    oldStoryId: oldStoryId ?? this.oldStoryId,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateStorySendSucceeded(
+        story: story ?? this.story,
+        oldStoryId: oldStoryId ?? this.oldStoryId,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateStorySendSucceeded';
@@ -7609,7 +7581,6 @@ final class UpdateStorySendSucceeded extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateStorySendFailed** *(updateStorySendFailed)* - child of Update
 ///
 /// A story failed to send. If the story sending is canceled, then updateStoryDeleted will be received instead of this update.
@@ -7618,7 +7589,6 @@ final class UpdateStorySendSucceeded extends Update {
 /// * [error]: The cause of the story sending failure.
 /// * [errorType]: Type of the error; may be null if unknown *(optional)*.
 final class UpdateStorySendFailed extends Update {
-  
   /// **UpdateStorySendFailed** *(updateStorySendFailed)* - child of Update
   ///
   /// A story failed to send. If the story sending is canceled, then updateStoryDeleted will be received instead of this update.
@@ -7633,7 +7603,7 @@ final class UpdateStorySendFailed extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// The failed to send story
   final Story story;
 
@@ -7650,27 +7620,29 @@ final class UpdateStorySendFailed extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateStorySendFailed.fromJson(Map<String, dynamic> json) => UpdateStorySendFailed(
-    story: Story.fromJson(json['story']),
-    error: TdError.fromJson(json['error']),
-    errorType: json['error_type'] == null ? null : CanSendStoryResult.fromJson(json['error_type']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateStorySendFailed.fromJson(Map<String, dynamic> json) =>
+      UpdateStorySendFailed(
+        story: Story.fromJson(json['story']),
+        error: TdError.fromJson(json['error']),
+        errorType: json['error_type'] == null
+            ? null
+            : CanSendStoryResult.fromJson(json['error_type']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "story": story.toJson(),
       "error": error.toJson(),
       "error_type": errorType?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -7685,13 +7657,14 @@ final class UpdateStorySendFailed extends Update {
     CanSendStoryResult? errorType,
     dynamic extra,
     int? clientId,
-  }) => UpdateStorySendFailed(
-    story: story ?? this.story,
-    error: error ?? this.error,
-    errorType: errorType ?? this.errorType,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateStorySendFailed(
+        story: story ?? this.story,
+        error: error ?? this.error,
+        errorType: errorType ?? this.errorType,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateStorySendFailed';
@@ -7705,14 +7678,12 @@ final class UpdateStorySendFailed extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatActiveStories** *(updateChatActiveStories)* - child of Update
 ///
 /// The list of active stories posted by a specific chat has changed.
 ///
 /// * [activeStories]: The new list of active stories.
 final class UpdateChatActiveStories extends Update {
-  
   /// **UpdateChatActiveStories** *(updateChatActiveStories)* - child of Update
   ///
   /// The list of active stories posted by a specific chat has changed.
@@ -7723,7 +7694,7 @@ final class UpdateChatActiveStories extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// The new list of active stories
   final ChatActiveStories activeStories;
 
@@ -7734,23 +7705,23 @@ final class UpdateChatActiveStories extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatActiveStories.fromJson(Map<String, dynamic> json) => UpdateChatActiveStories(
-    activeStories: ChatActiveStories.fromJson(json['active_stories']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatActiveStories.fromJson(Map<String, dynamic> json) =>
+      UpdateChatActiveStories(
+        activeStories: ChatActiveStories.fromJson(json['active_stories']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "active_stories": activeStories.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -7761,11 +7732,12 @@ final class UpdateChatActiveStories extends Update {
     ChatActiveStories? activeStories,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatActiveStories(
-    activeStories: activeStories ?? this.activeStories,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatActiveStories(
+        activeStories: activeStories ?? this.activeStories,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatActiveStories';
@@ -7779,7 +7751,6 @@ final class UpdateChatActiveStories extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateStoryListChatCount** *(updateStoryListChatCount)* - child of Update
 ///
 /// Number of chats in a story list has changed.
@@ -7787,7 +7758,6 @@ final class UpdateChatActiveStories extends Update {
 /// * [storyList]: The story list.
 /// * [chatCount]: Approximate total number of chats with active stories in the list.
 final class UpdateStoryListChatCount extends Update {
-  
   /// **UpdateStoryListChatCount** *(updateStoryListChatCount)* - child of Update
   ///
   /// Number of chats in a story list has changed.
@@ -7800,8 +7770,8 @@ final class UpdateStoryListChatCount extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// The story list 
+
+  /// The story list
   final StoryList storyList;
 
   /// Approximate total number of chats with active stories in the list
@@ -7814,30 +7784,30 @@ final class UpdateStoryListChatCount extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateStoryListChatCount.fromJson(Map<String, dynamic> json) => UpdateStoryListChatCount(
-    storyList: StoryList.fromJson(json['story_list']),
-    chatCount: json['chat_count'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateStoryListChatCount.fromJson(Map<String, dynamic> json) =>
+      UpdateStoryListChatCount(
+        storyList: StoryList.fromJson(json['story_list']),
+        chatCount: json['chat_count'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "story_list": storyList.toJson(),
       "chat_count": chatCount,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [story_list]: The story list 
+  /// * [story_list]: The story list
   /// * [chat_count]: Approximate total number of chats with active stories in the list
   @override
   UpdateStoryListChatCount copyWith({
@@ -7845,12 +7815,13 @@ final class UpdateStoryListChatCount extends Update {
     int? chatCount,
     dynamic extra,
     int? clientId,
-  }) => UpdateStoryListChatCount(
-    storyList: storyList ?? this.storyList,
-    chatCount: chatCount ?? this.chatCount,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateStoryListChatCount(
+        storyList: storyList ?? this.storyList,
+        chatCount: chatCount ?? this.chatCount,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateStoryListChatCount';
@@ -7864,7 +7835,6 @@ final class UpdateStoryListChatCount extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateStoryStealthMode** *(updateStoryStealthMode)* - child of Update
 ///
 /// Story stealth mode settings have changed.
@@ -7872,7 +7842,6 @@ final class UpdateStoryListChatCount extends Update {
 /// * [activeUntilDate]: Point in time (Unix timestamp) until stealth mode is active; 0 if it is disabled.
 /// * [cooldownUntilDate]: Point in time (Unix timestamp) when stealth mode can be enabled again; 0 if there is no active cooldown.
 final class UpdateStoryStealthMode extends Update {
-  
   /// **UpdateStoryStealthMode** *(updateStoryStealthMode)* - child of Update
   ///
   /// Story stealth mode settings have changed.
@@ -7885,7 +7854,7 @@ final class UpdateStoryStealthMode extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Point in time (Unix timestamp) until stealth mode is active; 0 if it is disabled
   final int activeUntilDate;
 
@@ -7899,25 +7868,25 @@ final class UpdateStoryStealthMode extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateStoryStealthMode.fromJson(Map<String, dynamic> json) => UpdateStoryStealthMode(
-    activeUntilDate: json['active_until_date'],
-    cooldownUntilDate: json['cooldown_until_date'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateStoryStealthMode.fromJson(Map<String, dynamic> json) =>
+      UpdateStoryStealthMode(
+        activeUntilDate: json['active_until_date'],
+        cooldownUntilDate: json['cooldown_until_date'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "active_until_date": activeUntilDate,
       "cooldown_until_date": cooldownUntilDate,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -7930,12 +7899,13 @@ final class UpdateStoryStealthMode extends Update {
     int? cooldownUntilDate,
     dynamic extra,
     int? clientId,
-  }) => UpdateStoryStealthMode(
-    activeUntilDate: activeUntilDate ?? this.activeUntilDate,
-    cooldownUntilDate: cooldownUntilDate ?? this.cooldownUntilDate,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateStoryStealthMode(
+        activeUntilDate: activeUntilDate ?? this.activeUntilDate,
+        cooldownUntilDate: cooldownUntilDate ?? this.cooldownUntilDate,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateStoryStealthMode';
@@ -7949,7 +7919,6 @@ final class UpdateStoryStealthMode extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateOption** *(updateOption)* - child of Update
 ///
 /// An option changed its value.
@@ -7957,7 +7926,6 @@ final class UpdateStoryStealthMode extends Update {
 /// * [name]: The option name.
 /// * [value]: The new option value.
 final class UpdateOption extends Update {
-  
   /// **UpdateOption** *(updateOption)* - child of Update
   ///
   /// An option changed its value.
@@ -7970,8 +7938,8 @@ final class UpdateOption extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// The option name 
+
+  /// The option name
   final String name;
 
   /// The new option value
@@ -7984,30 +7952,29 @@ final class UpdateOption extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory UpdateOption.fromJson(Map<String, dynamic> json) => UpdateOption(
-    name: json['name'],
-    value: OptionValue.fromJson(json['value']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        name: json['name'],
+        value: OptionValue.fromJson(json['value']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "name": name,
       "value": value.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [name]: The option name 
+  /// * [name]: The option name
   /// * [value]: The new option value
   @override
   UpdateOption copyWith({
@@ -8015,12 +7982,13 @@ final class UpdateOption extends Update {
     OptionValue? value,
     dynamic extra,
     int? clientId,
-  }) => UpdateOption(
-    name: name ?? this.name,
-    value: value ?? this.value,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateOption(
+        name: name ?? this.name,
+        value: value ?? this.value,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateOption';
@@ -8034,14 +8002,12 @@ final class UpdateOption extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateStickerSet** *(updateStickerSet)* - child of Update
 ///
 /// A sticker set has changed.
 ///
 /// * [stickerSet]: The sticker set.
 final class UpdateStickerSet extends Update {
-  
   /// **UpdateStickerSet** *(updateStickerSet)* - child of Update
   ///
   /// A sticker set has changed.
@@ -8052,7 +8018,7 @@ final class UpdateStickerSet extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// The sticker set
   final StickerSet stickerSet;
 
@@ -8063,23 +8029,23 @@ final class UpdateStickerSet extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateStickerSet.fromJson(Map<String, dynamic> json) => UpdateStickerSet(
-    stickerSet: StickerSet.fromJson(json['sticker_set']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateStickerSet.fromJson(Map<String, dynamic> json) =>
+      UpdateStickerSet(
+        stickerSet: StickerSet.fromJson(json['sticker_set']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sticker_set": stickerSet.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -8090,11 +8056,12 @@ final class UpdateStickerSet extends Update {
     StickerSet? stickerSet,
     dynamic extra,
     int? clientId,
-  }) => UpdateStickerSet(
-    stickerSet: stickerSet ?? this.stickerSet,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateStickerSet(
+        stickerSet: stickerSet ?? this.stickerSet,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateStickerSet';
@@ -8108,7 +8075,6 @@ final class UpdateStickerSet extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateInstalledStickerSets** *(updateInstalledStickerSets)* - child of Update
 ///
 /// The list of installed sticker sets was updated.
@@ -8116,7 +8082,6 @@ final class UpdateStickerSet extends Update {
 /// * [stickerType]: Type of the affected stickers.
 /// * [stickerSetIds]: The new list of installed ordinary sticker sets.
 final class UpdateInstalledStickerSets extends Update {
-  
   /// **UpdateInstalledStickerSets** *(updateInstalledStickerSets)* - child of Update
   ///
   /// The list of installed sticker sets was updated.
@@ -8129,8 +8094,8 @@ final class UpdateInstalledStickerSets extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Type of the affected stickers 
+
+  /// Type of the affected stickers
   final StickerType stickerType;
 
   /// The new list of installed ordinary sticker sets
@@ -8143,30 +8108,31 @@ final class UpdateInstalledStickerSets extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateInstalledStickerSets.fromJson(Map<String, dynamic> json) => UpdateInstalledStickerSets(
-    stickerType: StickerType.fromJson(json['sticker_type']),
-    stickerSetIds: List<int>.from((json['sticker_set_ids'] ?? []).map((item) => item).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateInstalledStickerSets.fromJson(Map<String, dynamic> json) =>
+      UpdateInstalledStickerSets(
+        stickerType: StickerType.fromJson(json['sticker_type']),
+        stickerSetIds: List<int>.from(
+            (json['sticker_set_ids'] ?? []).map((item) => item).toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sticker_type": stickerType.toJson(),
       "sticker_set_ids": stickerSetIds.map((i) => i).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [sticker_type]: Type of the affected stickers 
+  /// * [sticker_type]: Type of the affected stickers
   /// * [sticker_set_ids]: The new list of installed ordinary sticker sets
   @override
   UpdateInstalledStickerSets copyWith({
@@ -8174,12 +8140,13 @@ final class UpdateInstalledStickerSets extends Update {
     List<int>? stickerSetIds,
     dynamic extra,
     int? clientId,
-  }) => UpdateInstalledStickerSets(
-    stickerType: stickerType ?? this.stickerType,
-    stickerSetIds: stickerSetIds ?? this.stickerSetIds,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateInstalledStickerSets(
+        stickerType: stickerType ?? this.stickerType,
+        stickerSetIds: stickerSetIds ?? this.stickerSetIds,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateInstalledStickerSets';
@@ -8193,7 +8160,6 @@ final class UpdateInstalledStickerSets extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateTrendingStickerSets** *(updateTrendingStickerSets)* - child of Update
 ///
 /// The list of trending sticker sets was updated or some of them were viewed.
@@ -8201,7 +8167,6 @@ final class UpdateInstalledStickerSets extends Update {
 /// * [stickerType]: Type of the affected stickers.
 /// * [stickerSets]: The prefix of the list of trending sticker sets with the newest trending sticker sets.
 final class UpdateTrendingStickerSets extends Update {
-  
   /// **UpdateTrendingStickerSets** *(updateTrendingStickerSets)* - child of Update
   ///
   /// The list of trending sticker sets was updated or some of them were viewed.
@@ -8214,8 +8179,8 @@ final class UpdateTrendingStickerSets extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Type of the affected stickers 
+
+  /// Type of the affected stickers
   final StickerType stickerType;
 
   /// The prefix of the list of trending sticker sets with the newest trending sticker sets
@@ -8228,30 +8193,30 @@ final class UpdateTrendingStickerSets extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateTrendingStickerSets.fromJson(Map<String, dynamic> json) => UpdateTrendingStickerSets(
-    stickerType: StickerType.fromJson(json['sticker_type']),
-    stickerSets: TrendingStickerSets.fromJson(json['sticker_sets']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateTrendingStickerSets.fromJson(Map<String, dynamic> json) =>
+      UpdateTrendingStickerSets(
+        stickerType: StickerType.fromJson(json['sticker_type']),
+        stickerSets: TrendingStickerSets.fromJson(json['sticker_sets']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sticker_type": stickerType.toJson(),
       "sticker_sets": stickerSets.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [sticker_type]: Type of the affected stickers 
+  /// * [sticker_type]: Type of the affected stickers
   /// * [sticker_sets]: The prefix of the list of trending sticker sets with the newest trending sticker sets
   @override
   UpdateTrendingStickerSets copyWith({
@@ -8259,12 +8224,13 @@ final class UpdateTrendingStickerSets extends Update {
     TrendingStickerSets? stickerSets,
     dynamic extra,
     int? clientId,
-  }) => UpdateTrendingStickerSets(
-    stickerType: stickerType ?? this.stickerType,
-    stickerSets: stickerSets ?? this.stickerSets,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateTrendingStickerSets(
+        stickerType: stickerType ?? this.stickerType,
+        stickerSets: stickerSets ?? this.stickerSets,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateTrendingStickerSets';
@@ -8278,7 +8244,6 @@ final class UpdateTrendingStickerSets extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateRecentStickers** *(updateRecentStickers)* - child of Update
 ///
 /// The list of recently used stickers was updated.
@@ -8286,7 +8251,6 @@ final class UpdateTrendingStickerSets extends Update {
 /// * [isAttached]: True, if the list of stickers attached to photo or video files was updated; otherwise, the list of sent stickers is updated.
 /// * [stickerIds]: The new list of file identifiers of recently used stickers.
 final class UpdateRecentStickers extends Update {
-  
   /// **UpdateRecentStickers** *(updateRecentStickers)* - child of Update
   ///
   /// The list of recently used stickers was updated.
@@ -8299,8 +8263,8 @@ final class UpdateRecentStickers extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// True, if the list of stickers attached to photo or video files was updated; otherwise, the list of sent stickers is updated 
+
+  /// True, if the list of stickers attached to photo or video files was updated; otherwise, the list of sent stickers is updated
   final bool isAttached;
 
   /// The new list of file identifiers of recently used stickers
@@ -8313,30 +8277,31 @@ final class UpdateRecentStickers extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateRecentStickers.fromJson(Map<String, dynamic> json) => UpdateRecentStickers(
-    isAttached: json['is_attached'],
-    stickerIds: List<int>.from((json['sticker_ids'] ?? []).map((item) => item).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateRecentStickers.fromJson(Map<String, dynamic> json) =>
+      UpdateRecentStickers(
+        isAttached: json['is_attached'],
+        stickerIds: List<int>.from(
+            (json['sticker_ids'] ?? []).map((item) => item).toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "is_attached": isAttached,
       "sticker_ids": stickerIds.map((i) => i).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [is_attached]: True, if the list of stickers attached to photo or video files was updated; otherwise, the list of sent stickers is updated 
+  /// * [is_attached]: True, if the list of stickers attached to photo or video files was updated; otherwise, the list of sent stickers is updated
   /// * [sticker_ids]: The new list of file identifiers of recently used stickers
   @override
   UpdateRecentStickers copyWith({
@@ -8344,12 +8309,13 @@ final class UpdateRecentStickers extends Update {
     List<int>? stickerIds,
     dynamic extra,
     int? clientId,
-  }) => UpdateRecentStickers(
-    isAttached: isAttached ?? this.isAttached,
-    stickerIds: stickerIds ?? this.stickerIds,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateRecentStickers(
+        isAttached: isAttached ?? this.isAttached,
+        stickerIds: stickerIds ?? this.stickerIds,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateRecentStickers';
@@ -8363,14 +8329,12 @@ final class UpdateRecentStickers extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateFavoriteStickers** *(updateFavoriteStickers)* - child of Update
 ///
 /// The list of favorite stickers was updated.
 ///
 /// * [stickerIds]: The new list of file identifiers of favorite stickers.
 final class UpdateFavoriteStickers extends Update {
-  
   /// **UpdateFavoriteStickers** *(updateFavoriteStickers)* - child of Update
   ///
   /// The list of favorite stickers was updated.
@@ -8381,7 +8345,7 @@ final class UpdateFavoriteStickers extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// The new list of file identifiers of favorite stickers
   final List<int> stickerIds;
 
@@ -8392,23 +8356,24 @@ final class UpdateFavoriteStickers extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateFavoriteStickers.fromJson(Map<String, dynamic> json) => UpdateFavoriteStickers(
-    stickerIds: List<int>.from((json['sticker_ids'] ?? []).map((item) => item).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateFavoriteStickers.fromJson(Map<String, dynamic> json) =>
+      UpdateFavoriteStickers(
+        stickerIds: List<int>.from(
+            (json['sticker_ids'] ?? []).map((item) => item).toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sticker_ids": stickerIds.map((i) => i).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -8419,11 +8384,12 @@ final class UpdateFavoriteStickers extends Update {
     List<int>? stickerIds,
     dynamic extra,
     int? clientId,
-  }) => UpdateFavoriteStickers(
-    stickerIds: stickerIds ?? this.stickerIds,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateFavoriteStickers(
+        stickerIds: stickerIds ?? this.stickerIds,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateFavoriteStickers';
@@ -8437,14 +8403,12 @@ final class UpdateFavoriteStickers extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateSavedAnimations** *(updateSavedAnimations)* - child of Update
 ///
 /// The list of saved animations was updated.
 ///
 /// * [animationIds]: The new list of file identifiers of saved animations.
 final class UpdateSavedAnimations extends Update {
-  
   /// **UpdateSavedAnimations** *(updateSavedAnimations)* - child of Update
   ///
   /// The list of saved animations was updated.
@@ -8455,7 +8419,7 @@ final class UpdateSavedAnimations extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// The new list of file identifiers of saved animations
   final List<int> animationIds;
 
@@ -8466,23 +8430,24 @@ final class UpdateSavedAnimations extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateSavedAnimations.fromJson(Map<String, dynamic> json) => UpdateSavedAnimations(
-    animationIds: List<int>.from((json['animation_ids'] ?? []).map((item) => item).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateSavedAnimations.fromJson(Map<String, dynamic> json) =>
+      UpdateSavedAnimations(
+        animationIds: List<int>.from(
+            (json['animation_ids'] ?? []).map((item) => item).toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "animation_ids": animationIds.map((i) => i).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -8493,11 +8458,12 @@ final class UpdateSavedAnimations extends Update {
     List<int>? animationIds,
     dynamic extra,
     int? clientId,
-  }) => UpdateSavedAnimations(
-    animationIds: animationIds ?? this.animationIds,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateSavedAnimations(
+        animationIds: animationIds ?? this.animationIds,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateSavedAnimations';
@@ -8511,14 +8477,12 @@ final class UpdateSavedAnimations extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateSavedNotificationSounds** *(updateSavedNotificationSounds)* - child of Update
 ///
 /// The list of saved notification sounds was updated. This update may not be sent until information about a notification sound was requested for the first time.
 ///
 /// * [notificationSoundIds]: The new list of identifiers of saved notification sounds.
 final class UpdateSavedNotificationSounds extends Update {
-  
   /// **UpdateSavedNotificationSounds** *(updateSavedNotificationSounds)* - child of Update
   ///
   /// The list of saved notification sounds was updated. This update may not be sent until information about a notification sound was requested for the first time.
@@ -8529,7 +8493,7 @@ final class UpdateSavedNotificationSounds extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// The new list of identifiers of saved notification sounds
   final List<int> notificationSoundIds;
 
@@ -8540,23 +8504,26 @@ final class UpdateSavedNotificationSounds extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateSavedNotificationSounds.fromJson(Map<String, dynamic> json) => UpdateSavedNotificationSounds(
-    notificationSoundIds: List<int>.from((json['notification_sound_ids'] ?? []).map((item) => item).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateSavedNotificationSounds.fromJson(Map<String, dynamic> json) =>
+      UpdateSavedNotificationSounds(
+        notificationSoundIds: List<int>.from(
+            (json['notification_sound_ids'] ?? [])
+                .map((item) => item)
+                .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "notification_sound_ids": notificationSoundIds.map((i) => i).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -8567,11 +8534,12 @@ final class UpdateSavedNotificationSounds extends Update {
     List<int>? notificationSoundIds,
     dynamic extra,
     int? clientId,
-  }) => UpdateSavedNotificationSounds(
-    notificationSoundIds: notificationSoundIds ?? this.notificationSoundIds,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateSavedNotificationSounds(
+        notificationSoundIds: notificationSoundIds ?? this.notificationSoundIds,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateSavedNotificationSounds';
@@ -8585,7 +8553,6 @@ final class UpdateSavedNotificationSounds extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateDefaultBackground** *(updateDefaultBackground)* - child of Update
 ///
 /// The default background has changed.
@@ -8593,7 +8560,6 @@ final class UpdateSavedNotificationSounds extends Update {
 /// * [forDarkTheme]: True, if default background for dark theme has changed.
 /// * [background]: The new default background; may be null *(optional)*.
 final class UpdateDefaultBackground extends Update {
-  
   /// **UpdateDefaultBackground** *(updateDefaultBackground)* - child of Update
   ///
   /// The default background has changed.
@@ -8606,8 +8572,8 @@ final class UpdateDefaultBackground extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// True, if default background for dark theme has changed 
+
+  /// True, if default background for dark theme has changed
   final bool forDarkTheme;
 
   /// The new default background; may be null
@@ -8620,30 +8586,32 @@ final class UpdateDefaultBackground extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateDefaultBackground.fromJson(Map<String, dynamic> json) => UpdateDefaultBackground(
-    forDarkTheme: json['for_dark_theme'],
-    background: json['background'] == null ? null : Background.fromJson(json['background']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateDefaultBackground.fromJson(Map<String, dynamic> json) =>
+      UpdateDefaultBackground(
+        forDarkTheme: json['for_dark_theme'],
+        background: json['background'] == null
+            ? null
+            : Background.fromJson(json['background']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "for_dark_theme": forDarkTheme,
       "background": background?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [for_dark_theme]: True, if default background for dark theme has changed 
+  /// * [for_dark_theme]: True, if default background for dark theme has changed
   /// * [background]: The new default background; may be null
   @override
   UpdateDefaultBackground copyWith({
@@ -8651,12 +8619,13 @@ final class UpdateDefaultBackground extends Update {
     Background? background,
     dynamic extra,
     int? clientId,
-  }) => UpdateDefaultBackground(
-    forDarkTheme: forDarkTheme ?? this.forDarkTheme,
-    background: background ?? this.background,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateDefaultBackground(
+        forDarkTheme: forDarkTheme ?? this.forDarkTheme,
+        background: background ?? this.background,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateDefaultBackground';
@@ -8670,14 +8639,12 @@ final class UpdateDefaultBackground extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatThemes** *(updateChatThemes)* - child of Update
 ///
 /// The list of available chat themes has changed.
 ///
 /// * [chatThemes]: The new list of chat themes.
 final class UpdateChatThemes extends Update {
-  
   /// **UpdateChatThemes** *(updateChatThemes)* - child of Update
   ///
   /// The list of available chat themes has changed.
@@ -8688,7 +8655,7 @@ final class UpdateChatThemes extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// The new list of chat themes
   final List<ChatTheme> chatThemes;
 
@@ -8699,23 +8666,25 @@ final class UpdateChatThemes extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatThemes.fromJson(Map<String, dynamic> json) => UpdateChatThemes(
-    chatThemes: List<ChatTheme>.from((json['chat_themes'] ?? []).map((item) => ChatTheme.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatThemes.fromJson(Map<String, dynamic> json) =>
+      UpdateChatThemes(
+        chatThemes: List<ChatTheme>.from((json['chat_themes'] ?? [])
+            .map((item) => ChatTheme.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_themes": chatThemes.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -8726,11 +8695,12 @@ final class UpdateChatThemes extends Update {
     List<ChatTheme>? chatThemes,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatThemes(
-    chatThemes: chatThemes ?? this.chatThemes,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatThemes(
+        chatThemes: chatThemes ?? this.chatThemes,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatThemes';
@@ -8744,7 +8714,6 @@ final class UpdateChatThemes extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateAccentColors** *(updateAccentColors)* - child of Update
 ///
 /// The list of supported accent colors has changed.
@@ -8752,7 +8721,6 @@ final class UpdateChatThemes extends Update {
 /// * [colors]: Information about supported colors; colors with identifiers 0 (red), 1 (orange), 2 (purple/violet), 3 (green), 4 (cyan), 5 (blue), 6 (pink) must always be supported. and aren't included in the list. The exact colors for the accent colors with identifiers 0-6 must be taken from the app theme.
 /// * [availableAccentColorIds]: The list of accent color identifiers, which can be set through setAccentColor and setChatAccentColor. The colors must be shown in the specififed order.
 final class UpdateAccentColors extends Update {
-  
   /// **UpdateAccentColors** *(updateAccentColors)* - child of Update
   ///
   /// The list of supported accent colors has changed.
@@ -8765,7 +8733,7 @@ final class UpdateAccentColors extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Information about supported colors; colors with identifiers 0 (red), 1 (orange), 2 (purple/violet), 3 (green), 4 (cyan), 5 (blue), 6 (pink) must always be supported. and aren't included in the list. The exact colors for the accent colors with identifiers 0-6 must be taken from the app theme
   final List<AccentColor> colors;
 
@@ -8779,25 +8747,31 @@ final class UpdateAccentColors extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateAccentColors.fromJson(Map<String, dynamic> json) => UpdateAccentColors(
-    colors: List<AccentColor>.from((json['colors'] ?? []).map((item) => AccentColor.fromJson(item)).toList()),
-    availableAccentColorIds: List<int>.from((json['available_accent_color_ids'] ?? []).map((item) => item).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateAccentColors.fromJson(Map<String, dynamic> json) =>
+      UpdateAccentColors(
+        colors: List<AccentColor>.from((json['colors'] ?? [])
+            .map((item) => AccentColor.fromJson(item))
+            .toList()),
+        availableAccentColorIds: List<int>.from(
+            (json['available_accent_color_ids'] ?? [])
+                .map((item) => item)
+                .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "colors": colors.map((i) => i.toJson()).toList(),
-      "available_accent_color_ids": availableAccentColorIds.map((i) => i).toList(),
-		};
-	}
+      "available_accent_color_ids":
+          availableAccentColorIds.map((i) => i).toList(),
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -8810,12 +8784,14 @@ final class UpdateAccentColors extends Update {
     List<int>? availableAccentColorIds,
     dynamic extra,
     int? clientId,
-  }) => UpdateAccentColors(
-    colors: colors ?? this.colors,
-    availableAccentColorIds: availableAccentColorIds ?? this.availableAccentColorIds,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateAccentColors(
+        colors: colors ?? this.colors,
+        availableAccentColorIds:
+            availableAccentColorIds ?? this.availableAccentColorIds,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateAccentColors';
@@ -8829,7 +8805,6 @@ final class UpdateAccentColors extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateProfileAccentColors** *(updateProfileAccentColors)* - child of Update
 ///
 /// The list of supported accent colors for user profiles has changed.
@@ -8837,7 +8812,6 @@ final class UpdateAccentColors extends Update {
 /// * [colors]: Information about supported colors.
 /// * [availableAccentColorIds]: The list of accent color identifiers, which can be set through setProfileAccentColor and setChatProfileAccentColor. The colors must be shown in the specififed order.
 final class UpdateProfileAccentColors extends Update {
-  
   /// **UpdateProfileAccentColors** *(updateProfileAccentColors)* - child of Update
   ///
   /// The list of supported accent colors for user profiles has changed.
@@ -8850,7 +8824,7 @@ final class UpdateProfileAccentColors extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Information about supported colors
   final List<ProfileAccentColor> colors;
 
@@ -8864,25 +8838,31 @@ final class UpdateProfileAccentColors extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateProfileAccentColors.fromJson(Map<String, dynamic> json) => UpdateProfileAccentColors(
-    colors: List<ProfileAccentColor>.from((json['colors'] ?? []).map((item) => ProfileAccentColor.fromJson(item)).toList()),
-    availableAccentColorIds: List<int>.from((json['available_accent_color_ids'] ?? []).map((item) => item).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateProfileAccentColors.fromJson(Map<String, dynamic> json) =>
+      UpdateProfileAccentColors(
+        colors: List<ProfileAccentColor>.from((json['colors'] ?? [])
+            .map((item) => ProfileAccentColor.fromJson(item))
+            .toList()),
+        availableAccentColorIds: List<int>.from(
+            (json['available_accent_color_ids'] ?? [])
+                .map((item) => item)
+                .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "colors": colors.map((i) => i.toJson()).toList(),
-      "available_accent_color_ids": availableAccentColorIds.map((i) => i).toList(),
-		};
-	}
+      "available_accent_color_ids":
+          availableAccentColorIds.map((i) => i).toList(),
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -8895,12 +8875,14 @@ final class UpdateProfileAccentColors extends Update {
     List<int>? availableAccentColorIds,
     dynamic extra,
     int? clientId,
-  }) => UpdateProfileAccentColors(
-    colors: colors ?? this.colors,
-    availableAccentColorIds: availableAccentColorIds ?? this.availableAccentColorIds,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateProfileAccentColors(
+        colors: colors ?? this.colors,
+        availableAccentColorIds:
+            availableAccentColorIds ?? this.availableAccentColorIds,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateProfileAccentColors';
@@ -8914,7 +8896,6 @@ final class UpdateProfileAccentColors extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateLanguagePackStrings** *(updateLanguagePackStrings)* - child of Update
 ///
 /// Some language pack strings have been updated.
@@ -8923,7 +8904,6 @@ final class UpdateProfileAccentColors extends Update {
 /// * [languagePackId]: Identifier of the updated language pack.
 /// * [strings]: List of changed language pack strings; empty if all strings have changed.
 final class UpdateLanguagePackStrings extends Update {
-  
   /// **UpdateLanguagePackStrings** *(updateLanguagePackStrings)* - child of Update
   ///
   /// Some language pack strings have been updated.
@@ -8938,11 +8918,11 @@ final class UpdateLanguagePackStrings extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Localization target to which the language pack belongs 
+
+  /// Localization target to which the language pack belongs
   final String localizationTarget;
 
-  /// Identifier of the updated language pack 
+  /// Identifier of the updated language pack
   final String languagePackId;
 
   /// List of changed language pack strings; empty if all strings have changed
@@ -8955,33 +8935,35 @@ final class UpdateLanguagePackStrings extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateLanguagePackStrings.fromJson(Map<String, dynamic> json) => UpdateLanguagePackStrings(
-    localizationTarget: json['localization_target'],
-    languagePackId: json['language_pack_id'],
-    strings: List<LanguagePackString>.from((json['strings'] ?? []).map((item) => LanguagePackString.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateLanguagePackStrings.fromJson(Map<String, dynamic> json) =>
+      UpdateLanguagePackStrings(
+        localizationTarget: json['localization_target'],
+        languagePackId: json['language_pack_id'],
+        strings: List<LanguagePackString>.from((json['strings'] ?? [])
+            .map((item) => LanguagePackString.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "localization_target": localizationTarget,
       "language_pack_id": languagePackId,
       "strings": strings.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [localization_target]: Localization target to which the language pack belongs 
-  /// * [language_pack_id]: Identifier of the updated language pack 
+  /// * [localization_target]: Localization target to which the language pack belongs
+  /// * [language_pack_id]: Identifier of the updated language pack
   /// * [strings]: List of changed language pack strings; empty if all strings have changed
   @override
   UpdateLanguagePackStrings copyWith({
@@ -8990,13 +8972,14 @@ final class UpdateLanguagePackStrings extends Update {
     List<LanguagePackString>? strings,
     dynamic extra,
     int? clientId,
-  }) => UpdateLanguagePackStrings(
-    localizationTarget: localizationTarget ?? this.localizationTarget,
-    languagePackId: languagePackId ?? this.languagePackId,
-    strings: strings ?? this.strings,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateLanguagePackStrings(
+        localizationTarget: localizationTarget ?? this.localizationTarget,
+        languagePackId: languagePackId ?? this.languagePackId,
+        strings: strings ?? this.strings,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateLanguagePackStrings';
@@ -9010,14 +8993,12 @@ final class UpdateLanguagePackStrings extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateConnectionState** *(updateConnectionState)* - child of Update
 ///
 /// The connection state has changed. This update must be used only to show a human-readable description of the connection state.
 ///
 /// * [state]: The new connection state.
 final class UpdateConnectionState extends Update {
-  
   /// **UpdateConnectionState** *(updateConnectionState)* - child of Update
   ///
   /// The connection state has changed. This update must be used only to show a human-readable description of the connection state.
@@ -9028,7 +9009,7 @@ final class UpdateConnectionState extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// The new connection state
   final ConnectionState state;
 
@@ -9039,23 +9020,23 @@ final class UpdateConnectionState extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateConnectionState.fromJson(Map<String, dynamic> json) => UpdateConnectionState(
-    state: ConnectionState.fromJson(json['state']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateConnectionState.fromJson(Map<String, dynamic> json) =>
+      UpdateConnectionState(
+        state: ConnectionState.fromJson(json['state']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "state": state.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -9066,11 +9047,12 @@ final class UpdateConnectionState extends Update {
     ConnectionState? state,
     dynamic extra,
     int? clientId,
-  }) => UpdateConnectionState(
-    state: state ?? this.state,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateConnectionState(
+        state: state ?? this.state,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateConnectionState';
@@ -9084,7 +9066,6 @@ final class UpdateConnectionState extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateTermsOfService** *(updateTermsOfService)* - child of Update
 ///
 /// New terms of service must be accepted by the user. If the terms of service are declined, then the deleteAccount method must be called with the reason "Decline ToS update".
@@ -9092,7 +9073,6 @@ final class UpdateConnectionState extends Update {
 /// * [termsOfServiceId]: Identifier of the terms of service.
 /// * [termsOfService]: The new terms of service.
 final class UpdateTermsOfService extends Update {
-  
   /// **UpdateTermsOfService** *(updateTermsOfService)* - child of Update
   ///
   /// New terms of service must be accepted by the user. If the terms of service are declined, then the deleteAccount method must be called with the reason "Decline ToS update".
@@ -9105,8 +9085,8 @@ final class UpdateTermsOfService extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Identifier of the terms of service 
+
+  /// Identifier of the terms of service
   final String termsOfServiceId;
 
   /// The new terms of service
@@ -9119,30 +9099,30 @@ final class UpdateTermsOfService extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateTermsOfService.fromJson(Map<String, dynamic> json) => UpdateTermsOfService(
-    termsOfServiceId: json['terms_of_service_id'],
-    termsOfService: TermsOfService.fromJson(json['terms_of_service']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateTermsOfService.fromJson(Map<String, dynamic> json) =>
+      UpdateTermsOfService(
+        termsOfServiceId: json['terms_of_service_id'],
+        termsOfService: TermsOfService.fromJson(json['terms_of_service']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "terms_of_service_id": termsOfServiceId,
       "terms_of_service": termsOfService.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [terms_of_service_id]: Identifier of the terms of service 
+  /// * [terms_of_service_id]: Identifier of the terms of service
   /// * [terms_of_service]: The new terms of service
   @override
   UpdateTermsOfService copyWith({
@@ -9150,12 +9130,13 @@ final class UpdateTermsOfService extends Update {
     TermsOfService? termsOfService,
     dynamic extra,
     int? clientId,
-  }) => UpdateTermsOfService(
-    termsOfServiceId: termsOfServiceId ?? this.termsOfServiceId,
-    termsOfService: termsOfService ?? this.termsOfService,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateTermsOfService(
+        termsOfServiceId: termsOfServiceId ?? this.termsOfServiceId,
+        termsOfService: termsOfService ?? this.termsOfService,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateTermsOfService';
@@ -9169,14 +9150,12 @@ final class UpdateTermsOfService extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateUsersNearby** *(updateUsersNearby)* - child of Update
 ///
 /// The list of users nearby has changed. The update is guaranteed to be sent only 60 seconds after a successful searchChatsNearby request.
 ///
 /// * [usersNearby]: The new list of users nearby.
 final class UpdateUsersNearby extends Update {
-  
   /// **UpdateUsersNearby** *(updateUsersNearby)* - child of Update
   ///
   /// The list of users nearby has changed. The update is guaranteed to be sent only 60 seconds after a successful searchChatsNearby request.
@@ -9187,7 +9166,7 @@ final class UpdateUsersNearby extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// The new list of users nearby
   final List<ChatNearby> usersNearby;
 
@@ -9198,23 +9177,25 @@ final class UpdateUsersNearby extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateUsersNearby.fromJson(Map<String, dynamic> json) => UpdateUsersNearby(
-    usersNearby: List<ChatNearby>.from((json['users_nearby'] ?? []).map((item) => ChatNearby.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateUsersNearby.fromJson(Map<String, dynamic> json) =>
+      UpdateUsersNearby(
+        usersNearby: List<ChatNearby>.from((json['users_nearby'] ?? [])
+            .map((item) => ChatNearby.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "users_nearby": usersNearby.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -9225,11 +9206,12 @@ final class UpdateUsersNearby extends Update {
     List<ChatNearby>? usersNearby,
     dynamic extra,
     int? clientId,
-  }) => UpdateUsersNearby(
-    usersNearby: usersNearby ?? this.usersNearby,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateUsersNearby(
+        usersNearby: usersNearby ?? this.usersNearby,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateUsersNearby';
@@ -9243,14 +9225,12 @@ final class UpdateUsersNearby extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateUnconfirmedSession** *(updateUnconfirmedSession)* - child of Update
 ///
 /// The first unconfirmed session has changed.
 ///
 /// * [session]: The unconfirmed session; may be null if none *(optional)*.
 final class UpdateUnconfirmedSession extends Update {
-  
   /// **UpdateUnconfirmedSession** *(updateUnconfirmedSession)* - child of Update
   ///
   /// The first unconfirmed session has changed.
@@ -9261,7 +9241,7 @@ final class UpdateUnconfirmedSession extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// The unconfirmed session; may be null if none
   final UnconfirmedSession? session;
 
@@ -9272,23 +9252,25 @@ final class UpdateUnconfirmedSession extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateUnconfirmedSession.fromJson(Map<String, dynamic> json) => UpdateUnconfirmedSession(
-    session: json['session'] == null ? null : UnconfirmedSession.fromJson(json['session']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateUnconfirmedSession.fromJson(Map<String, dynamic> json) =>
+      UpdateUnconfirmedSession(
+        session: json['session'] == null
+            ? null
+            : UnconfirmedSession.fromJson(json['session']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "session": session?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -9299,11 +9281,12 @@ final class UpdateUnconfirmedSession extends Update {
     UnconfirmedSession? session,
     dynamic extra,
     int? clientId,
-  }) => UpdateUnconfirmedSession(
-    session: session ?? this.session,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateUnconfirmedSession(
+        session: session ?? this.session,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateUnconfirmedSession';
@@ -9317,14 +9300,12 @@ final class UpdateUnconfirmedSession extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateAttachmentMenuBots** *(updateAttachmentMenuBots)* - child of Update
 ///
 /// The list of bots added to attachment or side menu has changed.
 ///
 /// * [bots]: The new list of bots. The bots must not be shown on scheduled messages screen.
 final class UpdateAttachmentMenuBots extends Update {
-  
   /// **UpdateAttachmentMenuBots** *(updateAttachmentMenuBots)* - child of Update
   ///
   /// The list of bots added to attachment or side menu has changed.
@@ -9335,7 +9316,7 @@ final class UpdateAttachmentMenuBots extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// The new list of bots. The bots must not be shown on scheduled messages screen
   final List<AttachmentMenuBot> bots;
 
@@ -9346,23 +9327,25 @@ final class UpdateAttachmentMenuBots extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateAttachmentMenuBots.fromJson(Map<String, dynamic> json) => UpdateAttachmentMenuBots(
-    bots: List<AttachmentMenuBot>.from((json['bots'] ?? []).map((item) => AttachmentMenuBot.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateAttachmentMenuBots.fromJson(Map<String, dynamic> json) =>
+      UpdateAttachmentMenuBots(
+        bots: List<AttachmentMenuBot>.from((json['bots'] ?? [])
+            .map((item) => AttachmentMenuBot.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "bots": bots.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -9373,11 +9356,12 @@ final class UpdateAttachmentMenuBots extends Update {
     List<AttachmentMenuBot>? bots,
     dynamic extra,
     int? clientId,
-  }) => UpdateAttachmentMenuBots(
-    bots: bots ?? this.bots,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateAttachmentMenuBots(
+        bots: bots ?? this.bots,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateAttachmentMenuBots';
@@ -9391,14 +9375,12 @@ final class UpdateAttachmentMenuBots extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateWebAppMessageSent** *(updateWebAppMessageSent)* - child of Update
 ///
 /// A message was sent by an opened Web App, so the Web App needs to be closed.
 ///
 /// * [webAppLaunchId]: Identifier of Web App launch.
 final class UpdateWebAppMessageSent extends Update {
-  
   /// **UpdateWebAppMessageSent** *(updateWebAppMessageSent)* - child of Update
   ///
   /// A message was sent by an opened Web App, so the Web App needs to be closed.
@@ -9409,7 +9391,7 @@ final class UpdateWebAppMessageSent extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Identifier of Web App launch
   final int webAppLaunchId;
 
@@ -9420,23 +9402,23 @@ final class UpdateWebAppMessageSent extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateWebAppMessageSent.fromJson(Map<String, dynamic> json) => UpdateWebAppMessageSent(
-    webAppLaunchId: int.parse(json['web_app_launch_id']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateWebAppMessageSent.fromJson(Map<String, dynamic> json) =>
+      UpdateWebAppMessageSent(
+        webAppLaunchId: int.parse(json['web_app_launch_id']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "web_app_launch_id": webAppLaunchId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -9447,11 +9429,12 @@ final class UpdateWebAppMessageSent extends Update {
     int? webAppLaunchId,
     dynamic extra,
     int? clientId,
-  }) => UpdateWebAppMessageSent(
-    webAppLaunchId: webAppLaunchId ?? this.webAppLaunchId,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateWebAppMessageSent(
+        webAppLaunchId: webAppLaunchId ?? this.webAppLaunchId,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateWebAppMessageSent';
@@ -9465,14 +9448,12 @@ final class UpdateWebAppMessageSent extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateActiveEmojiReactions** *(updateActiveEmojiReactions)* - child of Update
 ///
 /// The list of active emoji reactions has changed.
 ///
 /// * [emojis]: The new list of active emoji reactions.
 final class UpdateActiveEmojiReactions extends Update {
-  
   /// **UpdateActiveEmojiReactions** *(updateActiveEmojiReactions)* - child of Update
   ///
   /// The list of active emoji reactions has changed.
@@ -9483,7 +9464,7 @@ final class UpdateActiveEmojiReactions extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// The new list of active emoji reactions
   final List<String> emojis;
 
@@ -9494,23 +9475,24 @@ final class UpdateActiveEmojiReactions extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateActiveEmojiReactions.fromJson(Map<String, dynamic> json) => UpdateActiveEmojiReactions(
-    emojis: List<String>.from((json['emojis'] ?? []).map((item) => item).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateActiveEmojiReactions.fromJson(Map<String, dynamic> json) =>
+      UpdateActiveEmojiReactions(
+        emojis: List<String>.from(
+            (json['emojis'] ?? []).map((item) => item).toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "emojis": emojis.map((i) => i).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -9521,11 +9503,12 @@ final class UpdateActiveEmojiReactions extends Update {
     List<String>? emojis,
     dynamic extra,
     int? clientId,
-  }) => UpdateActiveEmojiReactions(
-    emojis: emojis ?? this.emojis,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateActiveEmojiReactions(
+        emojis: emojis ?? this.emojis,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateActiveEmojiReactions';
@@ -9539,14 +9522,12 @@ final class UpdateActiveEmojiReactions extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateDefaultReactionType** *(updateDefaultReactionType)* - child of Update
 ///
 /// The type of default reaction has changed.
 ///
 /// * [reactionType]: The new type of the default reaction.
 final class UpdateDefaultReactionType extends Update {
-  
   /// **UpdateDefaultReactionType** *(updateDefaultReactionType)* - child of Update
   ///
   /// The type of default reaction has changed.
@@ -9557,7 +9538,7 @@ final class UpdateDefaultReactionType extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// The new type of the default reaction
   final ReactionType reactionType;
 
@@ -9568,23 +9549,23 @@ final class UpdateDefaultReactionType extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateDefaultReactionType.fromJson(Map<String, dynamic> json) => UpdateDefaultReactionType(
-    reactionType: ReactionType.fromJson(json['reaction_type']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateDefaultReactionType.fromJson(Map<String, dynamic> json) =>
+      UpdateDefaultReactionType(
+        reactionType: ReactionType.fromJson(json['reaction_type']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "reaction_type": reactionType.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -9595,11 +9576,12 @@ final class UpdateDefaultReactionType extends Update {
     ReactionType? reactionType,
     dynamic extra,
     int? clientId,
-  }) => UpdateDefaultReactionType(
-    reactionType: reactionType ?? this.reactionType,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateDefaultReactionType(
+        reactionType: reactionType ?? this.reactionType,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateDefaultReactionType';
@@ -9613,7 +9595,6 @@ final class UpdateDefaultReactionType extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateSavedMessagesTags** *(updateSavedMessagesTags)* - child of Update
 ///
 /// Tags used in Saved Messages or a Saved Messages topic have changed.
@@ -9621,7 +9602,6 @@ final class UpdateDefaultReactionType extends Update {
 /// * [savedMessagesTopicId]: Identifier of Saved Messages topic which tags were changed; 0 if tags for the whole chat has changed.
 /// * [tags]: The new tags.
 final class UpdateSavedMessagesTags extends Update {
-  
   /// **UpdateSavedMessagesTags** *(updateSavedMessagesTags)* - child of Update
   ///
   /// Tags used in Saved Messages or a Saved Messages topic have changed.
@@ -9634,7 +9614,7 @@ final class UpdateSavedMessagesTags extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Identifier of Saved Messages topic which tags were changed; 0 if tags for the whole chat has changed
   final int savedMessagesTopicId;
 
@@ -9648,25 +9628,25 @@ final class UpdateSavedMessagesTags extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateSavedMessagesTags.fromJson(Map<String, dynamic> json) => UpdateSavedMessagesTags(
-    savedMessagesTopicId: json['saved_messages_topic_id'],
-    tags: SavedMessagesTags.fromJson(json['tags']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateSavedMessagesTags.fromJson(Map<String, dynamic> json) =>
+      UpdateSavedMessagesTags(
+        savedMessagesTopicId: json['saved_messages_topic_id'],
+        tags: SavedMessagesTags.fromJson(json['tags']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "saved_messages_topic_id": savedMessagesTopicId,
       "tags": tags.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -9679,12 +9659,13 @@ final class UpdateSavedMessagesTags extends Update {
     SavedMessagesTags? tags,
     dynamic extra,
     int? clientId,
-  }) => UpdateSavedMessagesTags(
-    savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
-    tags: tags ?? this.tags,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateSavedMessagesTags(
+        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
+        tags: tags ?? this.tags,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateSavedMessagesTags';
@@ -9698,7 +9679,6 @@ final class UpdateSavedMessagesTags extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateSpeechRecognitionTrial** *(updateSpeechRecognitionTrial)* - child of Update
 ///
 /// The parameters of speech recognition without Telegram Premium subscription has changed.
@@ -9708,7 +9688,6 @@ final class UpdateSavedMessagesTags extends Update {
 /// * [leftCount]: Number of left speech recognition attempts this week.
 /// * [nextResetDate]: Point in time (Unix timestamp) when the weekly number of tries will reset; 0 if unknown.
 final class UpdateSpeechRecognitionTrial extends Update {
-  
   /// **UpdateSpeechRecognitionTrial** *(updateSpeechRecognitionTrial)* - child of Update
   ///
   /// The parameters of speech recognition without Telegram Premium subscription has changed.
@@ -9725,7 +9704,7 @@ final class UpdateSpeechRecognitionTrial extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// The maximum allowed duration of media for speech recognition without Telegram Premium subscription
   final int maxMediaDuration;
 
@@ -9745,29 +9724,29 @@ final class UpdateSpeechRecognitionTrial extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateSpeechRecognitionTrial.fromJson(Map<String, dynamic> json) => UpdateSpeechRecognitionTrial(
-    maxMediaDuration: json['max_media_duration'],
-    weeklyCount: json['weekly_count'] ?? 0,
-    leftCount: json['left_count'],
-    nextResetDate: json['next_reset_date'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateSpeechRecognitionTrial.fromJson(Map<String, dynamic> json) =>
+      UpdateSpeechRecognitionTrial(
+        maxMediaDuration: json['max_media_duration'],
+        weeklyCount: json['weekly_count'] ?? 0,
+        leftCount: json['left_count'],
+        nextResetDate: json['next_reset_date'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "max_media_duration": maxMediaDuration,
       "weekly_count": weeklyCount,
       "left_count": leftCount,
       "next_reset_date": nextResetDate,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -9784,14 +9763,15 @@ final class UpdateSpeechRecognitionTrial extends Update {
     int? nextResetDate,
     dynamic extra,
     int? clientId,
-  }) => UpdateSpeechRecognitionTrial(
-    maxMediaDuration: maxMediaDuration ?? this.maxMediaDuration,
-    weeklyCount: weeklyCount ?? this.weeklyCount,
-    leftCount: leftCount ?? this.leftCount,
-    nextResetDate: nextResetDate ?? this.nextResetDate,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateSpeechRecognitionTrial(
+        maxMediaDuration: maxMediaDuration ?? this.maxMediaDuration,
+        weeklyCount: weeklyCount ?? this.weeklyCount,
+        leftCount: leftCount ?? this.leftCount,
+        nextResetDate: nextResetDate ?? this.nextResetDate,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateSpeechRecognitionTrial';
@@ -9805,14 +9785,12 @@ final class UpdateSpeechRecognitionTrial extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateDiceEmojis** *(updateDiceEmojis)* - child of Update
 ///
 /// The list of supported dice emojis has changed.
 ///
 /// * [emojis]: The new list of supported dice emojis.
 final class UpdateDiceEmojis extends Update {
-  
   /// **UpdateDiceEmojis** *(updateDiceEmojis)* - child of Update
   ///
   /// The list of supported dice emojis has changed.
@@ -9823,7 +9801,7 @@ final class UpdateDiceEmojis extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// The new list of supported dice emojis
   final List<String> emojis;
 
@@ -9834,23 +9812,24 @@ final class UpdateDiceEmojis extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateDiceEmojis.fromJson(Map<String, dynamic> json) => UpdateDiceEmojis(
-    emojis: List<String>.from((json['emojis'] ?? []).map((item) => item).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateDiceEmojis.fromJson(Map<String, dynamic> json) =>
+      UpdateDiceEmojis(
+        emojis: List<String>.from(
+            (json['emojis'] ?? []).map((item) => item).toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "emojis": emojis.map((i) => i).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -9861,11 +9840,12 @@ final class UpdateDiceEmojis extends Update {
     List<String>? emojis,
     dynamic extra,
     int? clientId,
-  }) => UpdateDiceEmojis(
-    emojis: emojis ?? this.emojis,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateDiceEmojis(
+        emojis: emojis ?? this.emojis,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateDiceEmojis';
@@ -9879,7 +9859,6 @@ final class UpdateDiceEmojis extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateAnimatedEmojiMessageClicked** *(updateAnimatedEmojiMessageClicked)* - child of Update
 ///
 /// Some animated emoji message was clicked and a big animated sticker must be played if the message is visible on the screen. chatActionWatchingAnimations with the text of the message needs to be sent if the sticker is played.
@@ -9888,7 +9867,6 @@ final class UpdateDiceEmojis extends Update {
 /// * [messageId]: Message identifier.
 /// * [sticker]: The animated sticker to be played.
 final class UpdateAnimatedEmojiMessageClicked extends Update {
-  
   /// **UpdateAnimatedEmojiMessageClicked** *(updateAnimatedEmojiMessageClicked)* - child of Update
   ///
   /// Some animated emoji message was clicked and a big animated sticker must be played if the message is visible on the screen. chatActionWatchingAnimations with the text of the message needs to be sent if the sticker is played.
@@ -9903,7 +9881,7 @@ final class UpdateAnimatedEmojiMessageClicked extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -9920,27 +9898,28 @@ final class UpdateAnimatedEmojiMessageClicked extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateAnimatedEmojiMessageClicked.fromJson(Map<String, dynamic> json) => UpdateAnimatedEmojiMessageClicked(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    sticker: Sticker.fromJson(json['sticker']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateAnimatedEmojiMessageClicked.fromJson(
+          Map<String, dynamic> json) =>
+      UpdateAnimatedEmojiMessageClicked(
+        chatId: json['chat_id'],
+        messageId: json['message_id'],
+        sticker: Sticker.fromJson(json['sticker']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "sticker": sticker.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -9955,13 +9934,14 @@ final class UpdateAnimatedEmojiMessageClicked extends Update {
     Sticker? sticker,
     dynamic extra,
     int? clientId,
-  }) => UpdateAnimatedEmojiMessageClicked(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    sticker: sticker ?? this.sticker,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateAnimatedEmojiMessageClicked(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        sticker: sticker ?? this.sticker,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateAnimatedEmojiMessageClicked';
@@ -9975,7 +9955,6 @@ final class UpdateAnimatedEmojiMessageClicked extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateAnimationSearchParameters** *(updateAnimationSearchParameters)* - child of Update
 ///
 /// The parameters of animation search through getOption("animation_search_bot_username") bot has changed.
@@ -9983,7 +9962,6 @@ final class UpdateAnimatedEmojiMessageClicked extends Update {
 /// * [provider]: Name of the animation search provider.
 /// * [emojis]: The new list of emojis suggested for searching.
 final class UpdateAnimationSearchParameters extends Update {
-  
   /// **UpdateAnimationSearchParameters** *(updateAnimationSearchParameters)* - child of Update
   ///
   /// The parameters of animation search through getOption("animation_search_bot_username") bot has changed.
@@ -9996,8 +9974,8 @@ final class UpdateAnimationSearchParameters extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Name of the animation search provider 
+
+  /// Name of the animation search provider
   final String provider;
 
   /// The new list of emojis suggested for searching
@@ -10010,30 +9988,31 @@ final class UpdateAnimationSearchParameters extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateAnimationSearchParameters.fromJson(Map<String, dynamic> json) => UpdateAnimationSearchParameters(
-    provider: json['provider'],
-    emojis: List<String>.from((json['emojis'] ?? []).map((item) => item).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateAnimationSearchParameters.fromJson(Map<String, dynamic> json) =>
+      UpdateAnimationSearchParameters(
+        provider: json['provider'],
+        emojis: List<String>.from(
+            (json['emojis'] ?? []).map((item) => item).toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "provider": provider,
       "emojis": emojis.map((i) => i).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [provider]: Name of the animation search provider 
+  /// * [provider]: Name of the animation search provider
   /// * [emojis]: The new list of emojis suggested for searching
   @override
   UpdateAnimationSearchParameters copyWith({
@@ -10041,12 +10020,13 @@ final class UpdateAnimationSearchParameters extends Update {
     List<String>? emojis,
     dynamic extra,
     int? clientId,
-  }) => UpdateAnimationSearchParameters(
-    provider: provider ?? this.provider,
-    emojis: emojis ?? this.emojis,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateAnimationSearchParameters(
+        provider: provider ?? this.provider,
+        emojis: emojis ?? this.emojis,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateAnimationSearchParameters';
@@ -10060,7 +10040,6 @@ final class UpdateAnimationSearchParameters extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateSuggestedActions** *(updateSuggestedActions)* - child of Update
 ///
 /// The list of suggested to the user actions has changed.
@@ -10068,7 +10047,6 @@ final class UpdateAnimationSearchParameters extends Update {
 /// * [addedActions]: Added suggested actions.
 /// * [removedActions]: Removed suggested actions.
 final class UpdateSuggestedActions extends Update {
-  
   /// **UpdateSuggestedActions** *(updateSuggestedActions)* - child of Update
   ///
   /// The list of suggested to the user actions has changed.
@@ -10081,8 +10059,8 @@ final class UpdateSuggestedActions extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Added suggested actions 
+
+  /// Added suggested actions
   final List<SuggestedAction> addedActions;
 
   /// Removed suggested actions
@@ -10095,30 +10073,35 @@ final class UpdateSuggestedActions extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateSuggestedActions.fromJson(Map<String, dynamic> json) => UpdateSuggestedActions(
-    addedActions: List<SuggestedAction>.from((json['added_actions'] ?? []).map((item) => SuggestedAction.fromJson(item)).toList()),
-    removedActions: List<SuggestedAction>.from((json['removed_actions'] ?? []).map((item) => SuggestedAction.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateSuggestedActions.fromJson(Map<String, dynamic> json) =>
+      UpdateSuggestedActions(
+        addedActions: List<SuggestedAction>.from((json['added_actions'] ?? [])
+            .map((item) => SuggestedAction.fromJson(item))
+            .toList()),
+        removedActions: List<SuggestedAction>.from(
+            (json['removed_actions'] ?? [])
+                .map((item) => SuggestedAction.fromJson(item))
+                .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "added_actions": addedActions.map((i) => i.toJson()).toList(),
       "removed_actions": removedActions.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [added_actions]: Added suggested actions 
+  /// * [added_actions]: Added suggested actions
   /// * [removed_actions]: Removed suggested actions
   @override
   UpdateSuggestedActions copyWith({
@@ -10126,12 +10109,13 @@ final class UpdateSuggestedActions extends Update {
     List<SuggestedAction>? removedActions,
     dynamic extra,
     int? clientId,
-  }) => UpdateSuggestedActions(
-    addedActions: addedActions ?? this.addedActions,
-    removedActions: removedActions ?? this.removedActions,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateSuggestedActions(
+        addedActions: addedActions ?? this.addedActions,
+        removedActions: removedActions ?? this.removedActions,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateSuggestedActions';
@@ -10145,7 +10129,6 @@ final class UpdateSuggestedActions extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateAddChatMembersPrivacyForbidden** *(updateAddChatMembersPrivacyForbidden)* - child of Update
 ///
 /// Adding users to a chat has failed because of their privacy settings. An invite link can be shared with the users if appropriate.
@@ -10153,7 +10136,6 @@ final class UpdateSuggestedActions extends Update {
 /// * [chatId]: Chat identifier.
 /// * [userIds]: Identifiers of users, which weren't added because of their privacy settings.
 final class UpdateAddChatMembersPrivacyForbidden extends Update {
-  
   /// **UpdateAddChatMembersPrivacyForbidden** *(updateAddChatMembersPrivacyForbidden)* - child of Update
   ///
   /// Adding users to a chat has failed because of their privacy settings. An invite link can be shared with the users if appropriate.
@@ -10166,8 +10148,8 @@ final class UpdateAddChatMembersPrivacyForbidden extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// Identifiers of users, which weren't added because of their privacy settings
@@ -10180,30 +10162,32 @@ final class UpdateAddChatMembersPrivacyForbidden extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateAddChatMembersPrivacyForbidden.fromJson(Map<String, dynamic> json) => UpdateAddChatMembersPrivacyForbidden(
-    chatId: json['chat_id'],
-    userIds: List<int>.from((json['user_ids'] ?? []).map((item) => item).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateAddChatMembersPrivacyForbidden.fromJson(
+          Map<String, dynamic> json) =>
+      UpdateAddChatMembersPrivacyForbidden(
+        chatId: json['chat_id'],
+        userIds: List<int>.from(
+            (json['user_ids'] ?? []).map((item) => item).toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "user_ids": userIds.map((i) => i).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [user_ids]: Identifiers of users, which weren't added because of their privacy settings
   @override
   UpdateAddChatMembersPrivacyForbidden copyWith({
@@ -10211,12 +10195,13 @@ final class UpdateAddChatMembersPrivacyForbidden extends Update {
     List<int>? userIds,
     dynamic extra,
     int? clientId,
-  }) => UpdateAddChatMembersPrivacyForbidden(
-    chatId: chatId ?? this.chatId,
-    userIds: userIds ?? this.userIds,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateAddChatMembersPrivacyForbidden(
+        chatId: chatId ?? this.chatId,
+        userIds: userIds ?? this.userIds,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateAddChatMembersPrivacyForbidden';
@@ -10230,7 +10215,6 @@ final class UpdateAddChatMembersPrivacyForbidden extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateAutosaveSettings** *(updateAutosaveSettings)* - child of Update
 ///
 /// Autosave settings for some type of chats were updated.
@@ -10238,7 +10222,6 @@ final class UpdateAddChatMembersPrivacyForbidden extends Update {
 /// * [scope]: Type of chats for which autosave settings were updated.
 /// * [settings]: The new autosave settings; may be null if the settings are reset to default *(optional)*.
 final class UpdateAutosaveSettings extends Update {
-  
   /// **UpdateAutosaveSettings** *(updateAutosaveSettings)* - child of Update
   ///
   /// Autosave settings for some type of chats were updated.
@@ -10251,8 +10234,8 @@ final class UpdateAutosaveSettings extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// Type of chats for which autosave settings were updated 
+
+  /// Type of chats for which autosave settings were updated
   final AutosaveSettingsScope scope;
 
   /// The new autosave settings; may be null if the settings are reset to default
@@ -10265,30 +10248,32 @@ final class UpdateAutosaveSettings extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateAutosaveSettings.fromJson(Map<String, dynamic> json) => UpdateAutosaveSettings(
-    scope: AutosaveSettingsScope.fromJson(json['scope']),
-    settings: json['settings'] == null ? null : ScopeAutosaveSettings.fromJson(json['settings']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateAutosaveSettings.fromJson(Map<String, dynamic> json) =>
+      UpdateAutosaveSettings(
+        scope: AutosaveSettingsScope.fromJson(json['scope']),
+        settings: json['settings'] == null
+            ? null
+            : ScopeAutosaveSettings.fromJson(json['settings']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "scope": scope.toJson(),
       "settings": settings?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [scope]: Type of chats for which autosave settings were updated 
+  /// * [scope]: Type of chats for which autosave settings were updated
   /// * [settings]: The new autosave settings; may be null if the settings are reset to default
   @override
   UpdateAutosaveSettings copyWith({
@@ -10296,12 +10281,13 @@ final class UpdateAutosaveSettings extends Update {
     ScopeAutosaveSettings? settings,
     dynamic extra,
     int? clientId,
-  }) => UpdateAutosaveSettings(
-    scope: scope ?? this.scope,
-    settings: settings ?? this.settings,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateAutosaveSettings(
+        scope: scope ?? this.scope,
+        settings: settings ?? this.settings,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateAutosaveSettings';
@@ -10315,7 +10301,6 @@ final class UpdateAutosaveSettings extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateNewInlineQuery** *(updateNewInlineQuery)* - child of Update
 ///
 /// A new incoming inline query; for bots only.
@@ -10327,7 +10312,6 @@ final class UpdateAutosaveSettings extends Update {
 /// * [query]: Text of the query.
 /// * [offset]: Offset of the first entry to return.
 final class UpdateNewInlineQuery extends Update {
-  
   /// **UpdateNewInlineQuery** *(updateNewInlineQuery)* - child of Update
   ///
   /// A new incoming inline query; for bots only.
@@ -10348,7 +10332,7 @@ final class UpdateNewInlineQuery extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Unique query identifier
   final int id;
 
@@ -10374,33 +10358,37 @@ final class UpdateNewInlineQuery extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateNewInlineQuery.fromJson(Map<String, dynamic> json) => UpdateNewInlineQuery(
-    id: int.parse(json['id']),
-    senderUserId: json['sender_user_id'],
-    userLocation: json['user_location'] == null ? null : Location.fromJson(json['user_location']),
-    chatType: json['chat_type'] == null ? null : ChatType.fromJson(json['chat_type']),
-    query: json['query'],
-    offset: json['offset'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateNewInlineQuery.fromJson(Map<String, dynamic> json) =>
+      UpdateNewInlineQuery(
+        id: int.parse(json['id']),
+        senderUserId: json['sender_user_id'],
+        userLocation: json['user_location'] == null
+            ? null
+            : Location.fromJson(json['user_location']),
+        chatType: json['chat_type'] == null
+            ? null
+            : ChatType.fromJson(json['chat_type']),
+        query: json['query'],
+        offset: json['offset'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "sender_user_id": senderUserId,
       "user_location": userLocation?.toJson(),
       "chat_type": chatType?.toJson(),
       "query": query,
       "offset": offset,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -10421,16 +10409,17 @@ final class UpdateNewInlineQuery extends Update {
     String? offset,
     dynamic extra,
     int? clientId,
-  }) => UpdateNewInlineQuery(
-    id: id ?? this.id,
-    senderUserId: senderUserId ?? this.senderUserId,
-    userLocation: userLocation ?? this.userLocation,
-    chatType: chatType ?? this.chatType,
-    query: query ?? this.query,
-    offset: offset ?? this.offset,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateNewInlineQuery(
+        id: id ?? this.id,
+        senderUserId: senderUserId ?? this.senderUserId,
+        userLocation: userLocation ?? this.userLocation,
+        chatType: chatType ?? this.chatType,
+        query: query ?? this.query,
+        offset: offset ?? this.offset,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateNewInlineQuery';
@@ -10444,7 +10433,6 @@ final class UpdateNewInlineQuery extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateNewChosenInlineResult** *(updateNewChosenInlineResult)* - child of Update
 ///
 /// The user has chosen a result of an inline query; for bots only.
@@ -10455,7 +10443,6 @@ final class UpdateNewInlineQuery extends Update {
 /// * [resultId]: Identifier of the chosen result.
 /// * [inlineMessageId]: Identifier of the sent inline message, if known.
 final class UpdateNewChosenInlineResult extends Update {
-  
   /// **UpdateNewChosenInlineResult** *(updateNewChosenInlineResult)* - child of Update
   ///
   /// The user has chosen a result of an inline query; for bots only.
@@ -10474,7 +10461,7 @@ final class UpdateNewChosenInlineResult extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Identifier of the user who sent the query
   final int senderUserId;
 
@@ -10497,31 +10484,33 @@ final class UpdateNewChosenInlineResult extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateNewChosenInlineResult.fromJson(Map<String, dynamic> json) => UpdateNewChosenInlineResult(
-    senderUserId: json['sender_user_id'],
-    userLocation: json['user_location'] == null ? null : Location.fromJson(json['user_location']),
-    query: json['query'],
-    resultId: json['result_id'],
-    inlineMessageId: json['inline_message_id'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateNewChosenInlineResult.fromJson(Map<String, dynamic> json) =>
+      UpdateNewChosenInlineResult(
+        senderUserId: json['sender_user_id'],
+        userLocation: json['user_location'] == null
+            ? null
+            : Location.fromJson(json['user_location']),
+        query: json['query'],
+        resultId: json['result_id'],
+        inlineMessageId: json['inline_message_id'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sender_user_id": senderUserId,
       "user_location": userLocation?.toJson(),
       "query": query,
       "result_id": resultId,
       "inline_message_id": inlineMessageId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -10540,15 +10529,16 @@ final class UpdateNewChosenInlineResult extends Update {
     String? inlineMessageId,
     dynamic extra,
     int? clientId,
-  }) => UpdateNewChosenInlineResult(
-    senderUserId: senderUserId ?? this.senderUserId,
-    userLocation: userLocation ?? this.userLocation,
-    query: query ?? this.query,
-    resultId: resultId ?? this.resultId,
-    inlineMessageId: inlineMessageId ?? this.inlineMessageId,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateNewChosenInlineResult(
+        senderUserId: senderUserId ?? this.senderUserId,
+        userLocation: userLocation ?? this.userLocation,
+        query: query ?? this.query,
+        resultId: resultId ?? this.resultId,
+        inlineMessageId: inlineMessageId ?? this.inlineMessageId,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateNewChosenInlineResult';
@@ -10562,7 +10552,6 @@ final class UpdateNewChosenInlineResult extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateNewCallbackQuery** *(updateNewCallbackQuery)* - child of Update
 ///
 /// A new incoming callback query; for bots only.
@@ -10574,7 +10563,6 @@ final class UpdateNewChosenInlineResult extends Update {
 /// * [chatInstance]: Identifier that uniquely corresponds to the chat to which the message was sent.
 /// * [payload]: Query payload.
 final class UpdateNewCallbackQuery extends Update {
-  
   /// **UpdateNewCallbackQuery** *(updateNewCallbackQuery)* - child of Update
   ///
   /// A new incoming callback query; for bots only.
@@ -10595,7 +10583,7 @@ final class UpdateNewCallbackQuery extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Unique query identifier
   final int id;
 
@@ -10621,33 +10609,33 @@ final class UpdateNewCallbackQuery extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateNewCallbackQuery.fromJson(Map<String, dynamic> json) => UpdateNewCallbackQuery(
-    id: int.parse(json['id']),
-    senderUserId: json['sender_user_id'],
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    chatInstance: int.parse(json['chat_instance']),
-    payload: CallbackQueryPayload.fromJson(json['payload']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateNewCallbackQuery.fromJson(Map<String, dynamic> json) =>
+      UpdateNewCallbackQuery(
+        id: int.parse(json['id']),
+        senderUserId: json['sender_user_id'],
+        chatId: json['chat_id'],
+        messageId: json['message_id'],
+        chatInstance: int.parse(json['chat_instance']),
+        payload: CallbackQueryPayload.fromJson(json['payload']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "sender_user_id": senderUserId,
       "chat_id": chatId,
       "message_id": messageId,
       "chat_instance": chatInstance,
       "payload": payload.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -10668,16 +10656,17 @@ final class UpdateNewCallbackQuery extends Update {
     CallbackQueryPayload? payload,
     dynamic extra,
     int? clientId,
-  }) => UpdateNewCallbackQuery(
-    id: id ?? this.id,
-    senderUserId: senderUserId ?? this.senderUserId,
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    chatInstance: chatInstance ?? this.chatInstance,
-    payload: payload ?? this.payload,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateNewCallbackQuery(
+        id: id ?? this.id,
+        senderUserId: senderUserId ?? this.senderUserId,
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        chatInstance: chatInstance ?? this.chatInstance,
+        payload: payload ?? this.payload,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateNewCallbackQuery';
@@ -10691,7 +10680,6 @@ final class UpdateNewCallbackQuery extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateNewInlineCallbackQuery** *(updateNewInlineCallbackQuery)* - child of Update
 ///
 /// A new incoming callback query from a message sent via a bot; for bots only.
@@ -10702,7 +10690,6 @@ final class UpdateNewCallbackQuery extends Update {
 /// * [chatInstance]: An identifier uniquely corresponding to the chat a message was sent to.
 /// * [payload]: Query payload.
 final class UpdateNewInlineCallbackQuery extends Update {
-  
   /// **UpdateNewInlineCallbackQuery** *(updateNewInlineCallbackQuery)* - child of Update
   ///
   /// A new incoming callback query from a message sent via a bot; for bots only.
@@ -10721,7 +10708,7 @@ final class UpdateNewInlineCallbackQuery extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Unique query identifier
   final int id;
 
@@ -10744,31 +10731,31 @@ final class UpdateNewInlineCallbackQuery extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateNewInlineCallbackQuery.fromJson(Map<String, dynamic> json) => UpdateNewInlineCallbackQuery(
-    id: int.parse(json['id']),
-    senderUserId: json['sender_user_id'],
-    inlineMessageId: json['inline_message_id'],
-    chatInstance: int.parse(json['chat_instance']),
-    payload: CallbackQueryPayload.fromJson(json['payload']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateNewInlineCallbackQuery.fromJson(Map<String, dynamic> json) =>
+      UpdateNewInlineCallbackQuery(
+        id: int.parse(json['id']),
+        senderUserId: json['sender_user_id'],
+        inlineMessageId: json['inline_message_id'],
+        chatInstance: int.parse(json['chat_instance']),
+        payload: CallbackQueryPayload.fromJson(json['payload']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "sender_user_id": senderUserId,
       "inline_message_id": inlineMessageId,
       "chat_instance": chatInstance,
       "payload": payload.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -10787,15 +10774,16 @@ final class UpdateNewInlineCallbackQuery extends Update {
     CallbackQueryPayload? payload,
     dynamic extra,
     int? clientId,
-  }) => UpdateNewInlineCallbackQuery(
-    id: id ?? this.id,
-    senderUserId: senderUserId ?? this.senderUserId,
-    inlineMessageId: inlineMessageId ?? this.inlineMessageId,
-    chatInstance: chatInstance ?? this.chatInstance,
-    payload: payload ?? this.payload,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateNewInlineCallbackQuery(
+        id: id ?? this.id,
+        senderUserId: senderUserId ?? this.senderUserId,
+        inlineMessageId: inlineMessageId ?? this.inlineMessageId,
+        chatInstance: chatInstance ?? this.chatInstance,
+        payload: payload ?? this.payload,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateNewInlineCallbackQuery';
@@ -10809,7 +10797,6 @@ final class UpdateNewInlineCallbackQuery extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateNewShippingQuery** *(updateNewShippingQuery)* - child of Update
 ///
 /// A new incoming shipping query; for bots only. Only for invoices with flexible price.
@@ -10819,7 +10806,6 @@ final class UpdateNewInlineCallbackQuery extends Update {
 /// * [invoicePayload]: Invoice payload.
 /// * [shippingAddress]: User shipping address.
 final class UpdateNewShippingQuery extends Update {
-  
   /// **UpdateNewShippingQuery** *(updateNewShippingQuery)* - child of Update
   ///
   /// A new incoming shipping query; for bots only. Only for invoices with flexible price.
@@ -10836,7 +10822,7 @@ final class UpdateNewShippingQuery extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Unique query identifier
   final int id;
 
@@ -10856,29 +10842,29 @@ final class UpdateNewShippingQuery extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateNewShippingQuery.fromJson(Map<String, dynamic> json) => UpdateNewShippingQuery(
-    id: int.parse(json['id']),
-    senderUserId: json['sender_user_id'],
-    invoicePayload: json['invoice_payload'],
-    shippingAddress: Address.fromJson(json['shipping_address']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateNewShippingQuery.fromJson(Map<String, dynamic> json) =>
+      UpdateNewShippingQuery(
+        id: int.parse(json['id']),
+        senderUserId: json['sender_user_id'],
+        invoicePayload: json['invoice_payload'],
+        shippingAddress: Address.fromJson(json['shipping_address']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "sender_user_id": senderUserId,
       "invoice_payload": invoicePayload,
       "shipping_address": shippingAddress.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -10895,14 +10881,15 @@ final class UpdateNewShippingQuery extends Update {
     Address? shippingAddress,
     dynamic extra,
     int? clientId,
-  }) => UpdateNewShippingQuery(
-    id: id ?? this.id,
-    senderUserId: senderUserId ?? this.senderUserId,
-    invoicePayload: invoicePayload ?? this.invoicePayload,
-    shippingAddress: shippingAddress ?? this.shippingAddress,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateNewShippingQuery(
+        id: id ?? this.id,
+        senderUserId: senderUserId ?? this.senderUserId,
+        invoicePayload: invoicePayload ?? this.invoicePayload,
+        shippingAddress: shippingAddress ?? this.shippingAddress,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateNewShippingQuery';
@@ -10916,7 +10903,6 @@ final class UpdateNewShippingQuery extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateNewPreCheckoutQuery** *(updateNewPreCheckoutQuery)* - child of Update
 ///
 /// A new incoming pre-checkout query; for bots only. Contains full information about a checkout.
@@ -10929,7 +10915,6 @@ final class UpdateNewShippingQuery extends Update {
 /// * [shippingOptionId]: Identifier of a shipping option chosen by the user; may be empty if not applicable.
 /// * [orderInfo]: Information about the order; may be null *(optional)*.
 final class UpdateNewPreCheckoutQuery extends Update {
-  
   /// **UpdateNewPreCheckoutQuery** *(updateNewPreCheckoutQuery)* - child of Update
   ///
   /// A new incoming pre-checkout query; for bots only. Contains full information about a checkout.
@@ -10952,7 +10937,7 @@ final class UpdateNewPreCheckoutQuery extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Unique query identifier
   final int id;
 
@@ -10981,26 +10966,28 @@ final class UpdateNewPreCheckoutQuery extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateNewPreCheckoutQuery.fromJson(Map<String, dynamic> json) => UpdateNewPreCheckoutQuery(
-    id: int.parse(json['id']),
-    senderUserId: json['sender_user_id'],
-    currency: json['currency'],
-    totalAmount: json['total_amount'],
-    invoicePayload: json['invoice_payload'],
-    shippingOptionId: json['shipping_option_id'],
-    orderInfo: json['order_info'] == null ? null : OrderInfo.fromJson(json['order_info']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateNewPreCheckoutQuery.fromJson(Map<String, dynamic> json) =>
+      UpdateNewPreCheckoutQuery(
+        id: int.parse(json['id']),
+        senderUserId: json['sender_user_id'],
+        currency: json['currency'],
+        totalAmount: json['total_amount'],
+        invoicePayload: json['invoice_payload'],
+        shippingOptionId: json['shipping_option_id'],
+        orderInfo: json['order_info'] == null
+            ? null
+            : OrderInfo.fromJson(json['order_info']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "sender_user_id": senderUserId,
       "currency": currency,
@@ -11008,8 +10995,8 @@ final class UpdateNewPreCheckoutQuery extends Update {
       "invoice_payload": invoicePayload,
       "shipping_option_id": shippingOptionId,
       "order_info": orderInfo?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -11032,17 +11019,18 @@ final class UpdateNewPreCheckoutQuery extends Update {
     OrderInfo? orderInfo,
     dynamic extra,
     int? clientId,
-  }) => UpdateNewPreCheckoutQuery(
-    id: id ?? this.id,
-    senderUserId: senderUserId ?? this.senderUserId,
-    currency: currency ?? this.currency,
-    totalAmount: totalAmount ?? this.totalAmount,
-    invoicePayload: invoicePayload ?? this.invoicePayload,
-    shippingOptionId: shippingOptionId ?? this.shippingOptionId,
-    orderInfo: orderInfo ?? this.orderInfo,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateNewPreCheckoutQuery(
+        id: id ?? this.id,
+        senderUserId: senderUserId ?? this.senderUserId,
+        currency: currency ?? this.currency,
+        totalAmount: totalAmount ?? this.totalAmount,
+        invoicePayload: invoicePayload ?? this.invoicePayload,
+        shippingOptionId: shippingOptionId ?? this.shippingOptionId,
+        orderInfo: orderInfo ?? this.orderInfo,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateNewPreCheckoutQuery';
@@ -11056,14 +11044,12 @@ final class UpdateNewPreCheckoutQuery extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateNewCustomEvent** *(updateNewCustomEvent)* - child of Update
 ///
 /// A new incoming event; for bots only.
 ///
 /// * [event]: A JSON-serialized event.
 final class UpdateNewCustomEvent extends Update {
-  
   /// **UpdateNewCustomEvent** *(updateNewCustomEvent)* - child of Update
   ///
   /// A new incoming event; for bots only.
@@ -11074,7 +11060,7 @@ final class UpdateNewCustomEvent extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// A JSON-serialized event
   final String event;
 
@@ -11085,23 +11071,23 @@ final class UpdateNewCustomEvent extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateNewCustomEvent.fromJson(Map<String, dynamic> json) => UpdateNewCustomEvent(
-    event: json['event'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateNewCustomEvent.fromJson(Map<String, dynamic> json) =>
+      UpdateNewCustomEvent(
+        event: json['event'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "event": event,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -11112,11 +11098,12 @@ final class UpdateNewCustomEvent extends Update {
     String? event,
     dynamic extra,
     int? clientId,
-  }) => UpdateNewCustomEvent(
-    event: event ?? this.event,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateNewCustomEvent(
+        event: event ?? this.event,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateNewCustomEvent';
@@ -11130,7 +11117,6 @@ final class UpdateNewCustomEvent extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateNewCustomQuery** *(updateNewCustomQuery)* - child of Update
 ///
 /// A new incoming query; for bots only.
@@ -11139,7 +11125,6 @@ final class UpdateNewCustomEvent extends Update {
 /// * [data]: JSON-serialized query data.
 /// * [timeout]: Query timeout.
 final class UpdateNewCustomQuery extends Update {
-  
   /// **UpdateNewCustomQuery** *(updateNewCustomQuery)* - child of Update
   ///
   /// A new incoming query; for bots only.
@@ -11154,11 +11139,11 @@ final class UpdateNewCustomQuery extends Update {
     this.extra,
     this.clientId,
   });
-  
-  /// The query identifier 
+
+  /// The query identifier
   final int id;
 
-  /// JSON-serialized query data 
+  /// JSON-serialized query data
   final String data;
 
   /// Query timeout
@@ -11171,33 +11156,33 @@ final class UpdateNewCustomQuery extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateNewCustomQuery.fromJson(Map<String, dynamic> json) => UpdateNewCustomQuery(
-    id: int.parse(json['id']),
-    data: json['data'],
-    timeout: json['timeout'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateNewCustomQuery.fromJson(Map<String, dynamic> json) =>
+      UpdateNewCustomQuery(
+        id: int.parse(json['id']),
+        data: json['data'],
+        timeout: json['timeout'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "data": data,
       "timeout": timeout,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [id]: The query identifier 
-  /// * [data]: JSON-serialized query data 
+  /// * [id]: The query identifier
+  /// * [data]: JSON-serialized query data
   /// * [timeout]: Query timeout
   @override
   UpdateNewCustomQuery copyWith({
@@ -11206,13 +11191,14 @@ final class UpdateNewCustomQuery extends Update {
     int? timeout,
     dynamic extra,
     int? clientId,
-  }) => UpdateNewCustomQuery(
-    id: id ?? this.id,
-    data: data ?? this.data,
-    timeout: timeout ?? this.timeout,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateNewCustomQuery(
+        id: id ?? this.id,
+        data: data ?? this.data,
+        timeout: timeout ?? this.timeout,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateNewCustomQuery';
@@ -11226,14 +11212,12 @@ final class UpdateNewCustomQuery extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdatePoll** *(updatePoll)* - child of Update
 ///
 /// A poll was updated; for bots only.
 ///
 /// * [poll]: New data about the poll.
 final class UpdatePoll extends Update {
-  
   /// **UpdatePoll** *(updatePoll)* - child of Update
   ///
   /// A poll was updated; for bots only.
@@ -11244,7 +11228,7 @@ final class UpdatePoll extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// New data about the poll
   final Poll poll;
 
@@ -11255,23 +11239,22 @@ final class UpdatePoll extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory UpdatePoll.fromJson(Map<String, dynamic> json) => UpdatePoll(
-    poll: Poll.fromJson(json['poll']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        poll: Poll.fromJson(json['poll']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "poll": poll.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -11282,11 +11265,12 @@ final class UpdatePoll extends Update {
     Poll? poll,
     dynamic extra,
     int? clientId,
-  }) => UpdatePoll(
-    poll: poll ?? this.poll,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdatePoll(
+        poll: poll ?? this.poll,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updatePoll';
@@ -11300,7 +11284,6 @@ final class UpdatePoll extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdatePollAnswer** *(updatePollAnswer)* - child of Update
 ///
 /// A user changed the answer to a poll; for bots only.
@@ -11309,7 +11292,6 @@ final class UpdatePoll extends Update {
 /// * [voterId]: Identifier of the message sender that changed the answer to the poll.
 /// * [optionIds]: 0-based identifiers of answer options, chosen by the user.
 final class UpdatePollAnswer extends Update {
-  
   /// **UpdatePollAnswer** *(updatePollAnswer)* - child of Update
   ///
   /// A user changed the answer to a poll; for bots only.
@@ -11324,7 +11306,7 @@ final class UpdatePollAnswer extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Unique poll identifier
   final int pollId;
 
@@ -11341,27 +11323,28 @@ final class UpdatePollAnswer extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdatePollAnswer.fromJson(Map<String, dynamic> json) => UpdatePollAnswer(
-    pollId: int.parse(json['poll_id']),
-    voterId: MessageSender.fromJson(json['voter_id']),
-    optionIds: List<int>.from((json['option_ids'] ?? []).map((item) => item).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdatePollAnswer.fromJson(Map<String, dynamic> json) =>
+      UpdatePollAnswer(
+        pollId: int.parse(json['poll_id']),
+        voterId: MessageSender.fromJson(json['voter_id']),
+        optionIds: List<int>.from(
+            (json['option_ids'] ?? []).map((item) => item).toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "poll_id": pollId,
       "voter_id": voterId.toJson(),
       "option_ids": optionIds.map((i) => i).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -11376,13 +11359,14 @@ final class UpdatePollAnswer extends Update {
     List<int>? optionIds,
     dynamic extra,
     int? clientId,
-  }) => UpdatePollAnswer(
-    pollId: pollId ?? this.pollId,
-    voterId: voterId ?? this.voterId,
-    optionIds: optionIds ?? this.optionIds,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdatePollAnswer(
+        pollId: pollId ?? this.pollId,
+        voterId: voterId ?? this.voterId,
+        optionIds: optionIds ?? this.optionIds,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updatePollAnswer';
@@ -11396,7 +11380,6 @@ final class UpdatePollAnswer extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatMember** *(updateChatMember)* - child of Update
 ///
 /// User rights changed in a chat; for bots only.
@@ -11409,7 +11392,6 @@ final class UpdatePollAnswer extends Update {
 /// * [oldChatMember]: Previous chat member.
 /// * [newChatMember]: New chat member.
 final class UpdateChatMember extends Update {
-  
   /// **UpdateChatMember** *(updateChatMember)* - child of Update
   ///
   /// User rights changed in a chat; for bots only.
@@ -11432,7 +11414,7 @@ final class UpdateChatMember extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -11461,26 +11443,28 @@ final class UpdateChatMember extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatMember.fromJson(Map<String, dynamic> json) => UpdateChatMember(
-    chatId: json['chat_id'],
-    actorUserId: json['actor_user_id'],
-    date: json['date'],
-    inviteLink: json['invite_link'] == null ? null : ChatInviteLink.fromJson(json['invite_link']),
-    viaChatFolderInviteLink: json['via_chat_folder_invite_link'],
-    oldChatMember: ChatMember.fromJson(json['old_chat_member']),
-    newChatMember: ChatMember.fromJson(json['new_chat_member']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatMember.fromJson(Map<String, dynamic> json) =>
+      UpdateChatMember(
+        chatId: json['chat_id'],
+        actorUserId: json['actor_user_id'],
+        date: json['date'],
+        inviteLink: json['invite_link'] == null
+            ? null
+            : ChatInviteLink.fromJson(json['invite_link']),
+        viaChatFolderInviteLink: json['via_chat_folder_invite_link'],
+        oldChatMember: ChatMember.fromJson(json['old_chat_member']),
+        newChatMember: ChatMember.fromJson(json['new_chat_member']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "actor_user_id": actorUserId,
       "date": date,
@@ -11488,8 +11472,8 @@ final class UpdateChatMember extends Update {
       "via_chat_folder_invite_link": viaChatFolderInviteLink,
       "old_chat_member": oldChatMember.toJson(),
       "new_chat_member": newChatMember.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -11512,17 +11496,19 @@ final class UpdateChatMember extends Update {
     ChatMember? newChatMember,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatMember(
-    chatId: chatId ?? this.chatId,
-    actorUserId: actorUserId ?? this.actorUserId,
-    date: date ?? this.date,
-    inviteLink: inviteLink ?? this.inviteLink,
-    viaChatFolderInviteLink: viaChatFolderInviteLink ?? this.viaChatFolderInviteLink,
-    oldChatMember: oldChatMember ?? this.oldChatMember,
-    newChatMember: newChatMember ?? this.newChatMember,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatMember(
+        chatId: chatId ?? this.chatId,
+        actorUserId: actorUserId ?? this.actorUserId,
+        date: date ?? this.date,
+        inviteLink: inviteLink ?? this.inviteLink,
+        viaChatFolderInviteLink:
+            viaChatFolderInviteLink ?? this.viaChatFolderInviteLink,
+        oldChatMember: oldChatMember ?? this.oldChatMember,
+        newChatMember: newChatMember ?? this.newChatMember,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatMember';
@@ -11536,7 +11522,6 @@ final class UpdateChatMember extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateNewChatJoinRequest** *(updateNewChatJoinRequest)* - child of Update
 ///
 /// A user sent a join request to a chat; for bots only.
@@ -11546,7 +11531,6 @@ final class UpdateChatMember extends Update {
 /// * [userChatId]: Chat identifier of the private chat with the user.
 /// * [inviteLink]: The invite link, which was used to send join request; may be null *(optional)*.
 final class UpdateNewChatJoinRequest extends Update {
-  
   /// **UpdateNewChatJoinRequest** *(updateNewChatJoinRequest)* - child of Update
   ///
   /// A user sent a join request to a chat; for bots only.
@@ -11563,7 +11547,7 @@ final class UpdateNewChatJoinRequest extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -11583,29 +11567,31 @@ final class UpdateNewChatJoinRequest extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateNewChatJoinRequest.fromJson(Map<String, dynamic> json) => UpdateNewChatJoinRequest(
-    chatId: json['chat_id'],
-    request: ChatJoinRequest.fromJson(json['request']),
-    userChatId: json['user_chat_id'],
-    inviteLink: json['invite_link'] == null ? null : ChatInviteLink.fromJson(json['invite_link']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateNewChatJoinRequest.fromJson(Map<String, dynamic> json) =>
+      UpdateNewChatJoinRequest(
+        chatId: json['chat_id'],
+        request: ChatJoinRequest.fromJson(json['request']),
+        userChatId: json['user_chat_id'],
+        inviteLink: json['invite_link'] == null
+            ? null
+            : ChatInviteLink.fromJson(json['invite_link']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "request": request.toJson(),
       "user_chat_id": userChatId,
       "invite_link": inviteLink?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -11622,14 +11608,15 @@ final class UpdateNewChatJoinRequest extends Update {
     ChatInviteLink? inviteLink,
     dynamic extra,
     int? clientId,
-  }) => UpdateNewChatJoinRequest(
-    chatId: chatId ?? this.chatId,
-    request: request ?? this.request,
-    userChatId: userChatId ?? this.userChatId,
-    inviteLink: inviteLink ?? this.inviteLink,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateNewChatJoinRequest(
+        chatId: chatId ?? this.chatId,
+        request: request ?? this.request,
+        userChatId: userChatId ?? this.userChatId,
+        inviteLink: inviteLink ?? this.inviteLink,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateNewChatJoinRequest';
@@ -11643,7 +11630,6 @@ final class UpdateNewChatJoinRequest extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateChatBoost** *(updateChatBoost)* - child of Update
 ///
 /// A chat boost has changed; for bots only.
@@ -11651,7 +11637,6 @@ final class UpdateNewChatJoinRequest extends Update {
 /// * [chatId]: Chat identifier.
 /// * [boost]: New information about the boost.
 final class UpdateChatBoost extends Update {
-  
   /// **UpdateChatBoost** *(updateChatBoost)* - child of Update
   ///
   /// A chat boost has changed; for bots only.
@@ -11664,7 +11649,7 @@ final class UpdateChatBoost extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -11678,25 +11663,25 @@ final class UpdateChatBoost extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateChatBoost.fromJson(Map<String, dynamic> json) => UpdateChatBoost(
-    chatId: json['chat_id'],
-    boost: ChatBoost.fromJson(json['boost']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateChatBoost.fromJson(Map<String, dynamic> json) =>
+      UpdateChatBoost(
+        chatId: json['chat_id'],
+        boost: ChatBoost.fromJson(json['boost']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "boost": boost.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -11709,12 +11694,13 @@ final class UpdateChatBoost extends Update {
     ChatBoost? boost,
     dynamic extra,
     int? clientId,
-  }) => UpdateChatBoost(
-    chatId: chatId ?? this.chatId,
-    boost: boost ?? this.boost,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateChatBoost(
+        chatId: chatId ?? this.chatId,
+        boost: boost ?? this.boost,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateChatBoost';
@@ -11728,7 +11714,6 @@ final class UpdateChatBoost extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateMessageReaction** *(updateMessageReaction)* - child of Update
 ///
 /// User changed its reactions on a message with public reactions; for bots only.
@@ -11740,7 +11725,6 @@ final class UpdateChatBoost extends Update {
 /// * [oldReactionTypes]: Old list of chosen reactions.
 /// * [newReactionTypes]: New list of chosen reactions.
 final class UpdateMessageReaction extends Update {
-  
   /// **UpdateMessageReaction** *(updateMessageReaction)* - child of Update
   ///
   /// User changed its reactions on a message with public reactions; for bots only.
@@ -11761,7 +11745,7 @@ final class UpdateMessageReaction extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -11787,33 +11771,39 @@ final class UpdateMessageReaction extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateMessageReaction.fromJson(Map<String, dynamic> json) => UpdateMessageReaction(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    actorId: MessageSender.fromJson(json['actor_id']),
-    date: json['date'],
-    oldReactionTypes: List<ReactionType>.from((json['old_reaction_types'] ?? []).map((item) => ReactionType.fromJson(item)).toList()),
-    newReactionTypes: List<ReactionType>.from((json['new_reaction_types'] ?? []).map((item) => ReactionType.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateMessageReaction.fromJson(Map<String, dynamic> json) =>
+      UpdateMessageReaction(
+        chatId: json['chat_id'],
+        messageId: json['message_id'],
+        actorId: MessageSender.fromJson(json['actor_id']),
+        date: json['date'],
+        oldReactionTypes: List<ReactionType>.from(
+            (json['old_reaction_types'] ?? [])
+                .map((item) => ReactionType.fromJson(item))
+                .toList()),
+        newReactionTypes: List<ReactionType>.from(
+            (json['new_reaction_types'] ?? [])
+                .map((item) => ReactionType.fromJson(item))
+                .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "actor_id": actorId.toJson(),
       "date": date,
       "old_reaction_types": oldReactionTypes.map((i) => i.toJson()).toList(),
       "new_reaction_types": newReactionTypes.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -11834,16 +11824,17 @@ final class UpdateMessageReaction extends Update {
     List<ReactionType>? newReactionTypes,
     dynamic extra,
     int? clientId,
-  }) => UpdateMessageReaction(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    actorId: actorId ?? this.actorId,
-    date: date ?? this.date,
-    oldReactionTypes: oldReactionTypes ?? this.oldReactionTypes,
-    newReactionTypes: newReactionTypes ?? this.newReactionTypes,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateMessageReaction(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        actorId: actorId ?? this.actorId,
+        date: date ?? this.date,
+        oldReactionTypes: oldReactionTypes ?? this.oldReactionTypes,
+        newReactionTypes: newReactionTypes ?? this.newReactionTypes,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateMessageReaction';
@@ -11857,7 +11848,6 @@ final class UpdateMessageReaction extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UpdateMessageReactions** *(updateMessageReactions)* - child of Update
 ///
 /// Reactions added to a message with anonymous reactions have changed; for bots only.
@@ -11867,7 +11857,6 @@ final class UpdateMessageReaction extends Update {
 /// * [date]: Point in time (Unix timestamp) when the reactions were changed.
 /// * [reactions]: The list of reactions added to the message.
 final class UpdateMessageReactions extends Update {
-  
   /// **UpdateMessageReactions** *(updateMessageReactions)* - child of Update
   ///
   /// Reactions added to a message with anonymous reactions have changed; for bots only.
@@ -11884,7 +11873,7 @@ final class UpdateMessageReactions extends Update {
     this.extra,
     this.clientId,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -11904,29 +11893,31 @@ final class UpdateMessageReactions extends Update {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UpdateMessageReactions.fromJson(Map<String, dynamic> json) => UpdateMessageReactions(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    date: json['date'],
-    reactions: List<MessageReaction>.from((json['reactions'] ?? []).map((item) => MessageReaction.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UpdateMessageReactions.fromJson(Map<String, dynamic> json) =>
+      UpdateMessageReactions(
+        chatId: json['chat_id'],
+        messageId: json['message_id'],
+        date: json['date'],
+        reactions: List<MessageReaction>.from((json['reactions'] ?? [])
+            .map((item) => MessageReaction.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "date": date,
       "reactions": reactions.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -11943,14 +11934,15 @@ final class UpdateMessageReactions extends Update {
     List<MessageReaction>? reactions,
     dynamic extra,
     int? clientId,
-  }) => UpdateMessageReactions(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    date: date ?? this.date,
-    reactions: reactions ?? this.reactions,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UpdateMessageReactions(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        date: date ?? this.date,
+        reactions: reactions ?? this.reactions,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'updateMessageReactions';

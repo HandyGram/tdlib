@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetDefaultGroupAdministratorRights extends TdFunction {
-  
   /// **SetDefaultGroupAdministratorRights** *(setDefaultGroupAdministratorRights)* - TDLib function
   ///
   /// Sets default administrator rights for adding the bot to basic group and supergroup chats; for bots only.
@@ -19,19 +18,20 @@ final class SetDefaultGroupAdministratorRights extends TdFunction {
   const SetDefaultGroupAdministratorRights({
     this.defaultGroupAdministratorRights,
   });
-  
+
   /// Default administrator rights for adding the bot to basic group and supergroup chats; pass null to remove default rights
   final ChatAdministratorRights? defaultGroupAdministratorRights;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
-      "default_group_administrator_rights": defaultGroupAdministratorRights?.toJson(),
+    return {
+      "@type": defaultObjectId,
+      "default_group_administrator_rights":
+          defaultGroupAdministratorRights?.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +39,11 @@ final class SetDefaultGroupAdministratorRights extends TdFunction {
   /// * [default_group_administrator_rights]: Default administrator rights for adding the bot to basic group and supergroup chats; pass null to remove default rights
   SetDefaultGroupAdministratorRights copyWith({
     ChatAdministratorRights? defaultGroupAdministratorRights,
-  }) => SetDefaultGroupAdministratorRights(
-    defaultGroupAdministratorRights: defaultGroupAdministratorRights ?? this.defaultGroupAdministratorRights,
-  );
+  }) =>
+      SetDefaultGroupAdministratorRights(
+        defaultGroupAdministratorRights: defaultGroupAdministratorRights ??
+            this.defaultGroupAdministratorRights,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setDefaultGroupAdministratorRights';

@@ -4,18 +4,17 @@ part of '../tdapi.dart';
 ///
 /// Describes the types of chats to which notification settings are relevant.
 sealed class NotificationSettingsScope extends TdObject {
-  
   /// **NotificationSettingsScope** *(notificationSettingsScope)* - parent
   ///
   /// Describes the types of chats to which notification settings are relevant.
   const NotificationSettingsScope();
-  
+
   /// a NotificationSettingsScope return type can be :
   /// * [NotificationSettingsScopePrivateChats]
   /// * [NotificationSettingsScopeGroupChats]
   /// * [NotificationSettingsScopeChannelChats]
-  factory NotificationSettingsScope.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory NotificationSettingsScope.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case NotificationSettingsScopePrivateChats.defaultObjectId:
         return NotificationSettingsScopePrivateChats.fromJson(json);
       case NotificationSettingsScopeGroupChats.defaultObjectId:
@@ -29,7 +28,7 @@ sealed class NotificationSettingsScope extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -49,31 +48,33 @@ sealed class NotificationSettingsScope extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **NotificationSettingsScopePrivateChats** *(notificationSettingsScopePrivateChats)* - child of NotificationSettingsScope
 ///
 /// Notification settings applied to all private and secret chats when the corresponding chat setting has a default value.
-final class NotificationSettingsScopePrivateChats extends NotificationSettingsScope {
-  
+final class NotificationSettingsScopePrivateChats
+    extends NotificationSettingsScope {
   /// **NotificationSettingsScopePrivateChats** *(notificationSettingsScopePrivateChats)* - child of NotificationSettingsScope
   ///
   /// Notification settings applied to all private and secret chats when the corresponding chat setting has a default value.
   const NotificationSettingsScopePrivateChats();
-  
+
   /// Parse from a json
-  factory NotificationSettingsScopePrivateChats.fromJson(Map<String, dynamic> json) => const NotificationSettingsScopePrivateChats();
-  
+  factory NotificationSettingsScopePrivateChats.fromJson(
+          Map<String, dynamic> json) =>
+      const NotificationSettingsScopePrivateChats();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  NotificationSettingsScopePrivateChats copyWith() => const NotificationSettingsScopePrivateChats();
+  NotificationSettingsScopePrivateChats copyWith() =>
+      const NotificationSettingsScopePrivateChats();
 
   /// TDLib object type
   static const String defaultObjectId = 'notificationSettingsScopePrivateChats';
@@ -87,31 +88,33 @@ final class NotificationSettingsScopePrivateChats extends NotificationSettingsSc
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **NotificationSettingsScopeGroupChats** *(notificationSettingsScopeGroupChats)* - child of NotificationSettingsScope
 ///
 /// Notification settings applied to all basic group and supergroup chats when the corresponding chat setting has a default value.
-final class NotificationSettingsScopeGroupChats extends NotificationSettingsScope {
-  
+final class NotificationSettingsScopeGroupChats
+    extends NotificationSettingsScope {
   /// **NotificationSettingsScopeGroupChats** *(notificationSettingsScopeGroupChats)* - child of NotificationSettingsScope
   ///
   /// Notification settings applied to all basic group and supergroup chats when the corresponding chat setting has a default value.
   const NotificationSettingsScopeGroupChats();
-  
+
   /// Parse from a json
-  factory NotificationSettingsScopeGroupChats.fromJson(Map<String, dynamic> json) => const NotificationSettingsScopeGroupChats();
-  
+  factory NotificationSettingsScopeGroupChats.fromJson(
+          Map<String, dynamic> json) =>
+      const NotificationSettingsScopeGroupChats();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  NotificationSettingsScopeGroupChats copyWith() => const NotificationSettingsScopeGroupChats();
+  NotificationSettingsScopeGroupChats copyWith() =>
+      const NotificationSettingsScopeGroupChats();
 
   /// TDLib object type
   static const String defaultObjectId = 'notificationSettingsScopeGroupChats';
@@ -125,31 +128,33 @@ final class NotificationSettingsScopeGroupChats extends NotificationSettingsScop
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **NotificationSettingsScopeChannelChats** *(notificationSettingsScopeChannelChats)* - child of NotificationSettingsScope
 ///
 /// Notification settings applied to all channel chats when the corresponding chat setting has a default value.
-final class NotificationSettingsScopeChannelChats extends NotificationSettingsScope {
-  
+final class NotificationSettingsScopeChannelChats
+    extends NotificationSettingsScope {
   /// **NotificationSettingsScopeChannelChats** *(notificationSettingsScopeChannelChats)* - child of NotificationSettingsScope
   ///
   /// Notification settings applied to all channel chats when the corresponding chat setting has a default value.
   const NotificationSettingsScopeChannelChats();
-  
+
   /// Parse from a json
-  factory NotificationSettingsScopeChannelChats.fromJson(Map<String, dynamic> json) => const NotificationSettingsScopeChannelChats();
-  
+  factory NotificationSettingsScopeChannelChats.fromJson(
+          Map<String, dynamic> json) =>
+      const NotificationSettingsScopeChannelChats();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  NotificationSettingsScopeChannelChats copyWith() => const NotificationSettingsScopeChannelChats();
+  NotificationSettingsScopeChannelChats copyWith() =>
+      const NotificationSettingsScopeChannelChats();
 
   /// TDLib object type
   static const String defaultObjectId = 'notificationSettingsScopeChannelChats';

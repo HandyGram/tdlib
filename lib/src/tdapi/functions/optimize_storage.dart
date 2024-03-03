@@ -16,7 +16,6 @@ part of '../tdapi.dart';
 ///
 /// [StorageStatistics] is returned on completion.
 final class OptimizeStorage extends TdFunction {
-  
   /// **OptimizeStorage** *(optimizeStorage)* - TDLib function
   ///
   /// Optimizes storage usage, i.e. deletes some files and returns new storage usage statistics. Secret thumbnails can't be deleted.
@@ -43,7 +42,7 @@ final class OptimizeStorage extends TdFunction {
     required this.returnDeletedFileStatistics,
     required this.chatLimit,
   });
-  
+
   /// Limit on the total size of files after deletion, in bytes. Pass -1 to use the default limit
   final int size;
 
@@ -70,12 +69,12 @@ final class OptimizeStorage extends TdFunction {
 
   /// Same as in getStorageStatistics. Affects only returned statistics
   final int chatLimit;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "size": size,
       "ttl": ttl,
       "count": count,
@@ -86,8 +85,8 @@ final class OptimizeStorage extends TdFunction {
       "return_deleted_file_statistics": returnDeletedFileStatistics,
       "chat_limit": chatLimit,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -111,17 +110,19 @@ final class OptimizeStorage extends TdFunction {
     List<int>? excludeChatIds,
     bool? returnDeletedFileStatistics,
     int? chatLimit,
-  }) => OptimizeStorage(
-    size: size ?? this.size,
-    ttl: ttl ?? this.ttl,
-    count: count ?? this.count,
-    immunityDelay: immunityDelay ?? this.immunityDelay,
-    fileTypes: fileTypes ?? this.fileTypes,
-    chatIds: chatIds ?? this.chatIds,
-    excludeChatIds: excludeChatIds ?? this.excludeChatIds,
-    returnDeletedFileStatistics: returnDeletedFileStatistics ?? this.returnDeletedFileStatistics,
-    chatLimit: chatLimit ?? this.chatLimit,
-  );
+  }) =>
+      OptimizeStorage(
+        size: size ?? this.size,
+        ttl: ttl ?? this.ttl,
+        count: count ?? this.count,
+        immunityDelay: immunityDelay ?? this.immunityDelay,
+        fileTypes: fileTypes ?? this.fileTypes,
+        chatIds: chatIds ?? this.chatIds,
+        excludeChatIds: excludeChatIds ?? this.excludeChatIds,
+        returnDeletedFileStatistics:
+            returnDeletedFileStatistics ?? this.returnDeletedFileStatistics,
+        chatLimit: chatLimit ?? this.chatLimit,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'optimizeStorage';

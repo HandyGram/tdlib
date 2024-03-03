@@ -13,7 +13,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class AnswerInlineQuery extends TdFunction {
-  
   /// **AnswerInlineQuery** *(answerInlineQuery)* - TDLib function
   ///
   /// Sets the result of an inline query; for bots only.
@@ -34,7 +33,7 @@ final class AnswerInlineQuery extends TdFunction {
     required this.cacheTime,
     required this.nextOffset,
   });
-  
+
   /// Identifier of the inline query
   final int inlineQueryId;
 
@@ -52,12 +51,12 @@ final class AnswerInlineQuery extends TdFunction {
 
   /// Offset for the next inline query; pass an empty string if there are no more results
   final String nextOffset;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "inline_query_id": inlineQueryId,
       "is_personal": isPersonal,
       "button": button?.toJson(),
@@ -65,8 +64,8 @@ final class AnswerInlineQuery extends TdFunction {
       "cache_time": cacheTime,
       "next_offset": nextOffset,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -84,14 +83,15 @@ final class AnswerInlineQuery extends TdFunction {
     List<InputInlineQueryResult>? results,
     int? cacheTime,
     String? nextOffset,
-  }) => AnswerInlineQuery(
-    inlineQueryId: inlineQueryId ?? this.inlineQueryId,
-    isPersonal: isPersonal ?? this.isPersonal,
-    button: button ?? this.button,
-    results: results ?? this.results,
-    cacheTime: cacheTime ?? this.cacheTime,
-    nextOffset: nextOffset ?? this.nextOffset,
-  );
+  }) =>
+      AnswerInlineQuery(
+        inlineQueryId: inlineQueryId ?? this.inlineQueryId,
+        isPersonal: isPersonal ?? this.isPersonal,
+        button: button ?? this.button,
+        results: results ?? this.results,
+        cacheTime: cacheTime ?? this.cacheTime,
+        nextOffset: nextOffset ?? this.nextOffset,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'answerInlineQuery';

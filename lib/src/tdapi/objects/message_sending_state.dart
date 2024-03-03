@@ -4,17 +4,16 @@ part of '../tdapi.dart';
 ///
 /// Contains information about the sending state of the message.
 sealed class MessageSendingState extends TdObject {
-  
   /// **MessageSendingState** *(messageSendingState)* - parent
   ///
   /// Contains information about the sending state of the message.
   const MessageSendingState();
-  
+
   /// a MessageSendingState return type can be :
   /// * [MessageSendingStatePending]
   /// * [MessageSendingStateFailed]
-  factory MessageSendingState.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory MessageSendingState.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case MessageSendingStatePending.defaultObjectId:
         return MessageSendingStatePending.fromJson(json);
       case MessageSendingStateFailed.defaultObjectId:
@@ -26,7 +25,7 @@ sealed class MessageSendingState extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -46,14 +45,12 @@ sealed class MessageSendingState extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **MessageSendingStatePending** *(messageSendingStatePending)* - child of MessageSendingState
 ///
 /// The message is being sent now, but has not yet been delivered to the server.
 ///
 /// * [sendingId]: Non-persistent message sending identifier, specified by the application.
 final class MessageSendingStatePending extends MessageSendingState {
-  
   /// **MessageSendingStatePending** *(messageSendingStatePending)* - child of MessageSendingState
   ///
   /// The message is being sent now, but has not yet been delivered to the server.
@@ -62,24 +59,24 @@ final class MessageSendingStatePending extends MessageSendingState {
   const MessageSendingStatePending({
     required this.sendingId,
   });
-  
+
   /// Non-persistent message sending identifier, specified by the application
   final int sendingId;
-  
+
   /// Parse from a json
-  factory MessageSendingStatePending.fromJson(Map<String, dynamic> json) => MessageSendingStatePending(
-    sendingId: json['sending_id'],
-  );
-  
-  
+  factory MessageSendingStatePending.fromJson(Map<String, dynamic> json) =>
+      MessageSendingStatePending(
+        sendingId: json['sending_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sending_id": sendingId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -88,9 +85,10 @@ final class MessageSendingStatePending extends MessageSendingState {
   @override
   MessageSendingStatePending copyWith({
     int? sendingId,
-  }) => MessageSendingStatePending(
-    sendingId: sendingId ?? this.sendingId,
-  );
+  }) =>
+      MessageSendingStatePending(
+        sendingId: sendingId ?? this.sendingId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'messageSendingStatePending';
@@ -104,7 +102,6 @@ final class MessageSendingStatePending extends MessageSendingState {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **MessageSendingStateFailed** *(messageSendingStateFailed)* - child of MessageSendingState
 ///
 /// The message failed to be sent.
@@ -116,7 +113,6 @@ final class MessageSendingStatePending extends MessageSendingState {
 /// * [needDropReply]: True, if the message can be re-sent only if the message to be replied is removed. This will be done automatically by resendMessages.
 /// * [retryAfter]: Time left before the message can be re-sent, in seconds. No update is sent when this field changes.
 final class MessageSendingStateFailed extends MessageSendingState {
-  
   /// **MessageSendingStateFailed** *(messageSendingStateFailed)* - child of MessageSendingState
   ///
   /// The message failed to be sent.
@@ -135,7 +131,7 @@ final class MessageSendingStateFailed extends MessageSendingState {
     required this.needDropReply,
     required this.retryAfter,
   });
-  
+
   /// The cause of the message sending failure
   final TdError error;
 
@@ -153,31 +149,31 @@ final class MessageSendingStateFailed extends MessageSendingState {
 
   /// Time left before the message can be re-sent, in seconds. No update is sent when this field changes
   final double retryAfter;
-  
+
   /// Parse from a json
-  factory MessageSendingStateFailed.fromJson(Map<String, dynamic> json) => MessageSendingStateFailed(
-    error: TdError.fromJson(json['error']),
-    canRetry: json['can_retry'],
-    needAnotherSender: json['need_another_sender'],
-    needAnotherReplyQuote: json['need_another_reply_quote'],
-    needDropReply: json['need_drop_reply'],
-    retryAfter: json['retry_after'],
-  );
-  
-  
+  factory MessageSendingStateFailed.fromJson(Map<String, dynamic> json) =>
+      MessageSendingStateFailed(
+        error: TdError.fromJson(json['error']),
+        canRetry: json['can_retry'],
+        needAnotherSender: json['need_another_sender'],
+        needAnotherReplyQuote: json['need_another_reply_quote'],
+        needDropReply: json['need_drop_reply'],
+        retryAfter: json['retry_after'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "error": error.toJson(),
       "can_retry": canRetry,
       "need_another_sender": needAnotherSender,
       "need_another_reply_quote": needAnotherReplyQuote,
       "need_drop_reply": needDropReply,
       "retry_after": retryAfter,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -196,14 +192,16 @@ final class MessageSendingStateFailed extends MessageSendingState {
     bool? needAnotherReplyQuote,
     bool? needDropReply,
     double? retryAfter,
-  }) => MessageSendingStateFailed(
-    error: error ?? this.error,
-    canRetry: canRetry ?? this.canRetry,
-    needAnotherSender: needAnotherSender ?? this.needAnotherSender,
-    needAnotherReplyQuote: needAnotherReplyQuote ?? this.needAnotherReplyQuote,
-    needDropReply: needDropReply ?? this.needDropReply,
-    retryAfter: retryAfter ?? this.retryAfter,
-  );
+  }) =>
+      MessageSendingStateFailed(
+        error: error ?? this.error,
+        canRetry: canRetry ?? this.canRetry,
+        needAnotherSender: needAnotherSender ?? this.needAnotherSender,
+        needAnotherReplyQuote:
+            needAnotherReplyQuote ?? this.needAnotherReplyQuote,
+        needDropReply: needDropReply ?? this.needDropReply,
+        retryAfter: retryAfter ?? this.retryAfter,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'messageSendingStateFailed';

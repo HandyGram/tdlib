@@ -4,18 +4,17 @@ part of '../tdapi.dart';
 ///
 /// Contains information about a file with messages exported from another app.
 sealed class MessageFileType extends TdObject {
-  
   /// **MessageFileType** *(messageFileType)* - parent
   ///
   /// Contains information about a file with messages exported from another app.
   const MessageFileType();
-  
+
   /// a MessageFileType return type can be :
   /// * [MessageFileTypePrivate]
   /// * [MessageFileTypeGroup]
   /// * [MessageFileTypeUnknown]
-  factory MessageFileType.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory MessageFileType.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case MessageFileTypePrivate.defaultObjectId:
         return MessageFileTypePrivate.fromJson(json);
       case MessageFileTypeGroup.defaultObjectId:
@@ -29,7 +28,7 @@ sealed class MessageFileType extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -49,14 +48,12 @@ sealed class MessageFileType extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **MessageFileTypePrivate** *(messageFileTypePrivate)* - child of MessageFileType
 ///
 /// The messages were exported from a private chat.
 ///
 /// * [name]: Name of the other party; may be empty if unrecognized.
 final class MessageFileTypePrivate extends MessageFileType {
-  
   /// **MessageFileTypePrivate** *(messageFileTypePrivate)* - child of MessageFileType
   ///
   /// The messages were exported from a private chat.
@@ -67,7 +64,7 @@ final class MessageFileTypePrivate extends MessageFileType {
     this.extra,
     this.clientId,
   });
-  
+
   /// Name of the other party; may be empty if unrecognized
   final String name;
 
@@ -78,23 +75,23 @@ final class MessageFileTypePrivate extends MessageFileType {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory MessageFileTypePrivate.fromJson(Map<String, dynamic> json) => MessageFileTypePrivate(
-    name: json['name'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory MessageFileTypePrivate.fromJson(Map<String, dynamic> json) =>
+      MessageFileTypePrivate(
+        name: json['name'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "name": name,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -105,11 +102,12 @@ final class MessageFileTypePrivate extends MessageFileType {
     String? name,
     dynamic extra,
     int? clientId,
-  }) => MessageFileTypePrivate(
-    name: name ?? this.name,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      MessageFileTypePrivate(
+        name: name ?? this.name,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'messageFileTypePrivate';
@@ -123,14 +121,12 @@ final class MessageFileTypePrivate extends MessageFileType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **MessageFileTypeGroup** *(messageFileTypeGroup)* - child of MessageFileType
 ///
 /// The messages were exported from a group chat.
 ///
 /// * [title]: Title of the group chat; may be empty if unrecognized.
 final class MessageFileTypeGroup extends MessageFileType {
-  
   /// **MessageFileTypeGroup** *(messageFileTypeGroup)* - child of MessageFileType
   ///
   /// The messages were exported from a group chat.
@@ -141,7 +137,7 @@ final class MessageFileTypeGroup extends MessageFileType {
     this.extra,
     this.clientId,
   });
-  
+
   /// Title of the group chat; may be empty if unrecognized
   final String title;
 
@@ -152,23 +148,23 @@ final class MessageFileTypeGroup extends MessageFileType {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory MessageFileTypeGroup.fromJson(Map<String, dynamic> json) => MessageFileTypeGroup(
-    title: json['title'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory MessageFileTypeGroup.fromJson(Map<String, dynamic> json) =>
+      MessageFileTypeGroup(
+        title: json['title'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "title": title,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -179,11 +175,12 @@ final class MessageFileTypeGroup extends MessageFileType {
     String? title,
     dynamic extra,
     int? clientId,
-  }) => MessageFileTypeGroup(
-    title: title ?? this.title,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      MessageFileTypeGroup(
+        title: title ?? this.title,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'messageFileTypeGroup';
@@ -197,12 +194,10 @@ final class MessageFileTypeGroup extends MessageFileType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **MessageFileTypeUnknown** *(messageFileTypeUnknown)* - child of MessageFileType
 ///
 /// The messages were exported from a chat of unknown type.
 final class MessageFileTypeUnknown extends MessageFileType {
-  
   /// **MessageFileTypeUnknown** *(messageFileTypeUnknown)* - child of MessageFileType
   ///
   /// The messages were exported from a chat of unknown type.
@@ -210,7 +205,7 @@ final class MessageFileTypeUnknown extends MessageFileType {
     this.extra,
     this.clientId,
   });
-  
+
   /// [extra] callback sign
   @override
   final dynamic extra;
@@ -218,31 +213,32 @@ final class MessageFileTypeUnknown extends MessageFileType {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory MessageFileTypeUnknown.fromJson(Map<String, dynamic> json) => MessageFileTypeUnknown(
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory MessageFileTypeUnknown.fromJson(Map<String, dynamic> json) =>
+      MessageFileTypeUnknown(
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
   MessageFileTypeUnknown copyWith({
     dynamic extra,
     int? clientId,
-  }) => MessageFileTypeUnknown(
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      MessageFileTypeUnknown(
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'messageFileTypeUnknown';

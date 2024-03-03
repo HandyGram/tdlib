@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class RemoveSavedAnimation extends TdFunction {
-  
   /// **RemoveSavedAnimation** *(removeSavedAnimation)* - TDLib function
   ///
   /// Removes an animation from the list of saved animations.
@@ -19,19 +18,19 @@ final class RemoveSavedAnimation extends TdFunction {
   const RemoveSavedAnimation({
     required this.animation,
   });
-  
+
   /// Animation file to be removed
   final InputFile animation;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "animation": animation.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class RemoveSavedAnimation extends TdFunction {
   /// * [animation]: Animation file to be removed
   RemoveSavedAnimation copyWith({
     InputFile? animation,
-  }) => RemoveSavedAnimation(
-    animation: animation ?? this.animation,
-  );
+  }) =>
+      RemoveSavedAnimation(
+        animation: animation ?? this.animation,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'removeSavedAnimation';

@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ToggleGeneralForumTopicIsHidden extends TdFunction {
-  
   /// **ToggleGeneralForumTopicIsHidden** *(toggleGeneralForumTopicIsHidden)* - TDLib function
   ///
   /// Toggles whether a General topic is hidden in a forum supergroup chat; requires can_manage_topics right in the supergroup.
@@ -22,23 +21,23 @@ final class ToggleGeneralForumTopicIsHidden extends TdFunction {
     required this.chatId,
     required this.isHidden,
   });
-  
+
   /// Identifier of the chat
   final int chatId;
 
   /// Pass true to hide and close the General topic; pass false to unhide it
   final bool isHidden;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "is_hidden": isHidden,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class ToggleGeneralForumTopicIsHidden extends TdFunction {
   ToggleGeneralForumTopicIsHidden copyWith({
     int? chatId,
     bool? isHidden,
-  }) => ToggleGeneralForumTopicIsHidden(
-    chatId: chatId ?? this.chatId,
-    isHidden: isHidden ?? this.isHidden,
-  );
+  }) =>
+      ToggleGeneralForumTopicIsHidden(
+        chatId: chatId ?? this.chatId,
+        isHidden: isHidden ?? this.isHidden,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'toggleGeneralForumTopicIsHidden';

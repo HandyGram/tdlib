@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 /// * [date]: Point in time (Unix timestamp) when the user sent the join request.
 /// * [bio]: A short bio of the user.
 final class ChatJoinRequest extends TdObject {
-  
   /// **ChatJoinRequest** *(chatJoinRequest)* - basic class
   ///
   /// Describes a user that sent a join request and waits for administrator approval.
@@ -21,50 +20,51 @@ final class ChatJoinRequest extends TdObject {
     required this.date,
     required this.bio,
   });
-  
-  /// User identifier 
+
+  /// User identifier
   final int userId;
 
-  /// Point in time (Unix timestamp) when the user sent the join request 
+  /// Point in time (Unix timestamp) when the user sent the join request
   final int date;
 
   /// A short bio of the user
   final String bio;
-  
+
   /// Parse from a json
-  factory ChatJoinRequest.fromJson(Map<String, dynamic> json) => ChatJoinRequest(
-    userId: json['user_id'],
-    date: json['date'],
-    bio: json['bio'],
-  );
-  
-  
+  factory ChatJoinRequest.fromJson(Map<String, dynamic> json) =>
+      ChatJoinRequest(
+        userId: json['user_id'],
+        date: json['date'],
+        bio: json['bio'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "user_id": userId,
       "date": date,
       "bio": bio,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [user_id]: User identifier 
-  /// * [date]: Point in time (Unix timestamp) when the user sent the join request 
+  /// * [user_id]: User identifier
+  /// * [date]: Point in time (Unix timestamp) when the user sent the join request
   /// * [bio]: A short bio of the user
   ChatJoinRequest copyWith({
     int? userId,
     int? date,
     String? bio,
-  }) => ChatJoinRequest(
-    userId: userId ?? this.userId,
-    date: date ?? this.date,
-    bio: bio ?? this.bio,
-  );
+  }) =>
+      ChatJoinRequest(
+        userId: userId ?? this.userId,
+        date: date ?? this.date,
+        bio: bio ?? this.bio,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatJoinRequest';

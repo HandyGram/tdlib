@@ -14,7 +14,6 @@ part of '../tdapi.dart';
 /// * [preloadPrefixSize]: Size of file prefix, which is supposed to be preloaded, in bytes.
 /// * [video]: File containing the video.
 final class StoryVideo extends TdObject {
-  
   /// **StoryVideo** *(storyVideo)* - basic class
   ///
   /// Describes a video file sent in a story.
@@ -39,7 +38,7 @@ final class StoryVideo extends TdObject {
     required this.preloadPrefixSize,
     required this.video,
   });
-  
+
   /// Duration of the video, in seconds
   final double duration;
 
@@ -66,26 +65,29 @@ final class StoryVideo extends TdObject {
 
   /// File containing the video
   final File video;
-  
+
   /// Parse from a json
   factory StoryVideo.fromJson(Map<String, dynamic> json) => StoryVideo(
-    duration: json['duration'],
-    width: json['width'],
-    height: json['height'],
-    hasStickers: json['has_stickers'],
-    isAnimation: json['is_animation'],
-    minithumbnail: json['minithumbnail'] == null ? null : Minithumbnail.fromJson(json['minithumbnail']),
-    thumbnail: json['thumbnail'] == null ? null : Thumbnail.fromJson(json['thumbnail']),
-    preloadPrefixSize: json['preload_prefix_size'],
-    video: File.fromJson(json['video']),
-  );
-  
-  
+        duration: json['duration'],
+        width: json['width'],
+        height: json['height'],
+        hasStickers: json['has_stickers'],
+        isAnimation: json['is_animation'],
+        minithumbnail: json['minithumbnail'] == null
+            ? null
+            : Minithumbnail.fromJson(json['minithumbnail']),
+        thumbnail: json['thumbnail'] == null
+            ? null
+            : Thumbnail.fromJson(json['thumbnail']),
+        preloadPrefixSize: json['preload_prefix_size'],
+        video: File.fromJson(json['video']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "duration": duration,
       "width": width,
       "height": height,
@@ -95,8 +97,8 @@ final class StoryVideo extends TdObject {
       "thumbnail": thumbnail?.toJson(),
       "preload_prefix_size": preloadPrefixSize,
       "video": video.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -120,17 +122,18 @@ final class StoryVideo extends TdObject {
     Thumbnail? thumbnail,
     int? preloadPrefixSize,
     File? video,
-  }) => StoryVideo(
-    duration: duration ?? this.duration,
-    width: width ?? this.width,
-    height: height ?? this.height,
-    hasStickers: hasStickers ?? this.hasStickers,
-    isAnimation: isAnimation ?? this.isAnimation,
-    minithumbnail: minithumbnail ?? this.minithumbnail,
-    thumbnail: thumbnail ?? this.thumbnail,
-    preloadPrefixSize: preloadPrefixSize ?? this.preloadPrefixSize,
-    video: video ?? this.video,
-  );
+  }) =>
+      StoryVideo(
+        duration: duration ?? this.duration,
+        width: width ?? this.width,
+        height: height ?? this.height,
+        hasStickers: hasStickers ?? this.hasStickers,
+        isAnimation: isAnimation ?? this.isAnimation,
+        minithumbnail: minithumbnail ?? this.minithumbnail,
+        thumbnail: thumbnail ?? this.thumbnail,
+        preloadPrefixSize: preloadPrefixSize ?? this.preloadPrefixSize,
+        video: video ?? this.video,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'storyVideo';

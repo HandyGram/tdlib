@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class DiscardCall extends TdFunction {
-  
   /// **DiscardCall** *(discardCall)* - TDLib function
   ///
   /// Discards a call.
@@ -31,7 +30,7 @@ final class DiscardCall extends TdFunction {
     required this.isVideo,
     required this.connectionId,
   });
-  
+
   /// Call identifier
   final int callId;
 
@@ -46,20 +45,20 @@ final class DiscardCall extends TdFunction {
 
   /// Identifier of the connection used during the call
   final int connectionId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "call_id": callId,
       "is_disconnected": isDisconnected,
       "duration": duration,
       "is_video": isVideo,
       "connection_id": connectionId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -75,13 +74,14 @@ final class DiscardCall extends TdFunction {
     int? duration,
     bool? isVideo,
     int? connectionId,
-  }) => DiscardCall(
-    callId: callId ?? this.callId,
-    isDisconnected: isDisconnected ?? this.isDisconnected,
-    duration: duration ?? this.duration,
-    isVideo: isVideo ?? this.isVideo,
-    connectionId: connectionId ?? this.connectionId,
-  );
+  }) =>
+      DiscardCall(
+        callId: callId ?? this.callId,
+        isDisconnected: isDisconnected ?? this.isDisconnected,
+        duration: duration ?? this.duration,
+        isVideo: isVideo ?? this.isVideo,
+        connectionId: connectionId ?? this.connectionId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'discardCall';

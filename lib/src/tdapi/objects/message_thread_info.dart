@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 /// * [messages]: The messages from which the thread starts. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id).
 /// * [draftMessage]: A draft of a message in the message thread; may be null if none *(optional)*.
 final class MessageThreadInfo extends TdObject {
-  
   /// **MessageThreadInfo** *(messageThreadInfo)* - basic class
   ///
   /// Contains information about a message thread.
@@ -32,7 +31,7 @@ final class MessageThreadInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Identifier of the chat to which the message thread belongs
   final int chatId;
 
@@ -58,33 +57,39 @@ final class MessageThreadInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory MessageThreadInfo.fromJson(Map<String, dynamic> json) => MessageThreadInfo(
-    chatId: json['chat_id'],
-    messageThreadId: json['message_thread_id'],
-    replyInfo: json['reply_info'] == null ? null : MessageReplyInfo.fromJson(json['reply_info']),
-    unreadMessageCount: json['unread_message_count'],
-    messages: List<Message>.from((json['messages'] ?? []).map((item) => Message.fromJson(item)).toList()),
-    draftMessage: json['draft_message'] == null ? null : DraftMessage.fromJson(json['draft_message']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory MessageThreadInfo.fromJson(Map<String, dynamic> json) =>
+      MessageThreadInfo(
+        chatId: json['chat_id'],
+        messageThreadId: json['message_thread_id'],
+        replyInfo: json['reply_info'] == null
+            ? null
+            : MessageReplyInfo.fromJson(json['reply_info']),
+        unreadMessageCount: json['unread_message_count'],
+        messages: List<Message>.from((json['messages'] ?? [])
+            .map((item) => Message.fromJson(item))
+            .toList()),
+        draftMessage: json['draft_message'] == null
+            ? null
+            : DraftMessage.fromJson(json['draft_message']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_thread_id": messageThreadId,
       "reply_info": replyInfo?.toJson(),
       "unread_message_count": unreadMessageCount,
       "messages": messages.map((i) => i.toJson()).toList(),
       "draft_message": draftMessage?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -104,16 +109,17 @@ final class MessageThreadInfo extends TdObject {
     DraftMessage? draftMessage,
     dynamic extra,
     int? clientId,
-  }) => MessageThreadInfo(
-    chatId: chatId ?? this.chatId,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-    replyInfo: replyInfo ?? this.replyInfo,
-    unreadMessageCount: unreadMessageCount ?? this.unreadMessageCount,
-    messages: messages ?? this.messages,
-    draftMessage: draftMessage ?? this.draftMessage,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      MessageThreadInfo(
+        chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+        replyInfo: replyInfo ?? this.replyInfo,
+        unreadMessageCount: unreadMessageCount ?? this.unreadMessageCount,
+        messages: messages ?? this.messages,
+        draftMessage: draftMessage ?? this.draftMessage,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'messageThreadInfo';

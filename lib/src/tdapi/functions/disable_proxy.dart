@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class DisableProxy extends TdFunction {
-  
   /// **DisableProxy** *(disableProxy)* - TDLib function
   ///
   /// Disables the currently enabled proxy. Can be called before authorization.
   ///
   /// [Ok] is returned on completion.
   const DisableProxy();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   DisableProxy copyWith() => const DisableProxy();

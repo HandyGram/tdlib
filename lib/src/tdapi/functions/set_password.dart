@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 ///
 /// [PasswordState] is returned on completion.
 final class SetPassword extends TdFunction {
-  
   /// **SetPassword** *(setPassword)* - TDLib function
   ///
   /// Changes the 2-step verification password for the current user. If a new recovery email address is specified, then the change will not be applied until the new recovery email address is confirmed.
@@ -31,7 +30,7 @@ final class SetPassword extends TdFunction {
     required this.setRecoveryEmailAddress,
     required this.newRecoveryEmailAddress,
   });
-  
+
   /// Previous 2-step verification password of the user
   final String oldPassword;
 
@@ -46,20 +45,20 @@ final class SetPassword extends TdFunction {
 
   /// New recovery email address; may be empty
   final String newRecoveryEmailAddress;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "old_password": oldPassword,
       "new_password": newPassword,
       "new_hint": newHint,
       "set_recovery_email_address": setRecoveryEmailAddress,
       "new_recovery_email_address": newRecoveryEmailAddress,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -75,13 +74,16 @@ final class SetPassword extends TdFunction {
     String? newHint,
     bool? setRecoveryEmailAddress,
     String? newRecoveryEmailAddress,
-  }) => SetPassword(
-    oldPassword: oldPassword ?? this.oldPassword,
-    newPassword: newPassword ?? this.newPassword,
-    newHint: newHint ?? this.newHint,
-    setRecoveryEmailAddress: setRecoveryEmailAddress ?? this.setRecoveryEmailAddress,
-    newRecoveryEmailAddress: newRecoveryEmailAddress ?? this.newRecoveryEmailAddress,
-  );
+  }) =>
+      SetPassword(
+        oldPassword: oldPassword ?? this.oldPassword,
+        newPassword: newPassword ?? this.newPassword,
+        newHint: newHint ?? this.newHint,
+        setRecoveryEmailAddress:
+            setRecoveryEmailAddress ?? this.setRecoveryEmailAddress,
+        newRecoveryEmailAddress:
+            newRecoveryEmailAddress ?? this.newRecoveryEmailAddress,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setPassword';

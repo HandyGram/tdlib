@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Messages] is returned on completion.
 final class GetChatScheduledMessages extends TdFunction {
-  
   /// **GetChatScheduledMessages** *(getChatScheduledMessages)* - TDLib function
   ///
   /// Returns all scheduled messages in a chat. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id).
@@ -19,19 +18,19 @@ final class GetChatScheduledMessages extends TdFunction {
   const GetChatScheduledMessages({
     required this.chatId,
   });
-  
+
   /// Chat identifier
   final int chatId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetChatScheduledMessages extends TdFunction {
   /// * [chat_id]: Chat identifier
   GetChatScheduledMessages copyWith({
     int? chatId,
-  }) => GetChatScheduledMessages(
-    chatId: chatId ?? this.chatId,
-  );
+  }) =>
+      GetChatScheduledMessages(
+        chatId: chatId ?? this.chatId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getChatScheduledMessages';

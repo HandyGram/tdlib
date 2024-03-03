@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 ///
 /// [Proxy] is returned on completion.
 final class AddProxy extends TdFunction {
-  
   /// **AddProxy** *(addProxy)* - TDLib function
   ///
   /// Adds a proxy server for network requests. Can be called before authorization.
@@ -28,7 +27,7 @@ final class AddProxy extends TdFunction {
     required this.enable,
     required this.type,
   });
-  
+
   /// Proxy server domain or IP address
   final String server;
 
@@ -40,19 +39,19 @@ final class AddProxy extends TdFunction {
 
   /// Proxy type
   final ProxyType type;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "server": server,
       "port": port,
       "enable": enable,
       "type": type.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -66,12 +65,13 @@ final class AddProxy extends TdFunction {
     int? port,
     bool? enable,
     ProxyType? type,
-  }) => AddProxy(
-    server: server ?? this.server,
-    port: port ?? this.port,
-    enable: enable ?? this.enable,
-    type: type ?? this.type,
-  );
+  }) =>
+      AddProxy(
+        server: server ?? this.server,
+        port: port ?? this.port,
+        enable: enable ?? this.enable,
+        type: type ?? this.type,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'addProxy';

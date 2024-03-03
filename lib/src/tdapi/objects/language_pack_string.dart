@@ -7,7 +7,6 @@ part of '../tdapi.dart';
 /// * [key]: String key.
 /// * [value]: String value; pass null if the string needs to be taken from the built-in English language pack *(optional)*.
 final class LanguagePackString extends TdObject {
-  
   /// **LanguagePackString** *(languagePackString)* - basic class
   ///
   /// Represents one language pack string.
@@ -18,42 +17,45 @@ final class LanguagePackString extends TdObject {
     required this.key,
     this.value,
   });
-  
-  /// String key 
+
+  /// String key
   final String key;
 
   /// String value; pass null if the string needs to be taken from the built-in English language pack
   final LanguagePackStringValue? value;
-  
+
   /// Parse from a json
-  factory LanguagePackString.fromJson(Map<String, dynamic> json) => LanguagePackString(
-    key: json['key'],
-    value: json['value'] == null ? null : LanguagePackStringValue.fromJson(json['value']),
-  );
-  
-  
+  factory LanguagePackString.fromJson(Map<String, dynamic> json) =>
+      LanguagePackString(
+        key: json['key'],
+        value: json['value'] == null
+            ? null
+            : LanguagePackStringValue.fromJson(json['value']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "key": key,
       "value": value?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [key]: String key 
+  /// * [key]: String key
   /// * [value]: String value; pass null if the string needs to be taken from the built-in English language pack
   LanguagePackString copyWith({
     String? key,
     LanguagePackStringValue? value,
-  }) => LanguagePackString(
-    key: key ?? this.key,
-    value: value ?? this.value,
-  );
+  }) =>
+      LanguagePackString(
+        key: key ?? this.key,
+        value: value ?? this.value,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'languagePackString';

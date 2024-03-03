@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class HideSuggestedAction extends TdFunction {
-  
   /// **HideSuggestedAction** *(hideSuggestedAction)* - TDLib function
   ///
   /// Hides a suggested action.
@@ -19,19 +18,19 @@ final class HideSuggestedAction extends TdFunction {
   const HideSuggestedAction({
     required this.action,
   });
-  
+
   /// Suggested action to hide
   final SuggestedAction action;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "action": action.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class HideSuggestedAction extends TdFunction {
   /// * [action]: Suggested action to hide
   HideSuggestedAction copyWith({
     SuggestedAction? action,
-  }) => HideSuggestedAction(
-    action: action ?? this.action,
-  );
+  }) =>
+      HideSuggestedAction(
+        action: action ?? this.action,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'hideSuggestedAction';

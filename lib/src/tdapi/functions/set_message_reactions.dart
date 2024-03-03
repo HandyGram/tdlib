@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetMessageReactions extends TdFunction {
-  
   /// **SetMessageReactions** *(setMessageReactions)* - TDLib function
   ///
   /// Sets reactions on a message; for bots only.
@@ -28,7 +27,7 @@ final class SetMessageReactions extends TdFunction {
     required this.reactionTypes,
     required this.isBig,
   });
-  
+
   /// Identifier of the chat to which the message belongs
   final int chatId;
 
@@ -40,19 +39,19 @@ final class SetMessageReactions extends TdFunction {
 
   /// Pass true if the reactions are added with a big animation
   final bool isBig;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "reaction_types": reactionTypes.map((i) => i.toJson()).toList(),
       "is_big": isBig,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -66,12 +65,13 @@ final class SetMessageReactions extends TdFunction {
     int? messageId,
     List<ReactionType>? reactionTypes,
     bool? isBig,
-  }) => SetMessageReactions(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    reactionTypes: reactionTypes ?? this.reactionTypes,
-    isBig: isBig ?? this.isBig,
-  );
+  }) =>
+      SetMessageReactions(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        reactionTypes: reactionTypes ?? this.reactionTypes,
+        isBig: isBig ?? this.isBig,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setMessageReactions';

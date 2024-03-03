@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 /// * [requiredElements]: Telegram Passport elements that must be provided to complete the form.
 /// * [privacyPolicyUrl]: URL for the privacy policy of the service; may be empty.
 final class PassportAuthorizationForm extends TdObject {
-  
   /// **PassportAuthorizationForm** *(passportAuthorizationForm)* - basic class
   ///
   /// Contains information about a Telegram Passport authorization form that was requested.
@@ -23,7 +22,7 @@ final class PassportAuthorizationForm extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Unique identifier of the authorization form
   final int id;
 
@@ -40,27 +39,30 @@ final class PassportAuthorizationForm extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory PassportAuthorizationForm.fromJson(Map<String, dynamic> json) => PassportAuthorizationForm(
-    id: json['id'],
-    requiredElements: List<PassportRequiredElement>.from((json['required_elements'] ?? []).map((item) => PassportRequiredElement.fromJson(item)).toList()),
-    privacyPolicyUrl: json['privacy_policy_url'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory PassportAuthorizationForm.fromJson(Map<String, dynamic> json) =>
+      PassportAuthorizationForm(
+        id: json['id'],
+        requiredElements: List<PassportRequiredElement>.from(
+            (json['required_elements'] ?? [])
+                .map((item) => PassportRequiredElement.fromJson(item))
+                .toList()),
+        privacyPolicyUrl: json['privacy_policy_url'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "required_elements": requiredElements.map((i) => i.toJson()).toList(),
       "privacy_policy_url": privacyPolicyUrl,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -74,13 +76,14 @@ final class PassportAuthorizationForm extends TdObject {
     String? privacyPolicyUrl,
     dynamic extra,
     int? clientId,
-  }) => PassportAuthorizationForm(
-    id: id ?? this.id,
-    requiredElements: requiredElements ?? this.requiredElements,
-    privacyPolicyUrl: privacyPolicyUrl ?? this.privacyPolicyUrl,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      PassportAuthorizationForm(
+        id: id ?? this.id,
+        requiredElements: requiredElements ?? this.requiredElements,
+        privacyPolicyUrl: privacyPolicyUrl ?? this.privacyPolicyUrl,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'passportAuthorizationForm';

@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [AutosaveSettings] is returned on completion.
 final class GetAutosaveSettings extends TdFunction {
-  
   /// **GetAutosaveSettings** *(getAutosaveSettings)* - TDLib function
   ///
   /// Returns autosave settings for the current user.
   ///
   /// [AutosaveSettings] is returned on completion.
   const GetAutosaveSettings();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   GetAutosaveSettings copyWith() => const GetAutosaveSettings();

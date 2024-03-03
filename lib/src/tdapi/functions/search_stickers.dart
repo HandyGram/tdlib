@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Stickers] is returned on completion.
 final class SearchStickers extends TdFunction {
-  
   /// **SearchStickers** *(searchStickers)* - TDLib function
   ///
   /// Searches for stickers from public sticker sets that correspond to any of the given emoji.
@@ -25,7 +24,7 @@ final class SearchStickers extends TdFunction {
     required this.emojis,
     required this.limit,
   });
-  
+
   /// Type of the stickers to return
   final StickerType stickerType;
 
@@ -34,18 +33,18 @@ final class SearchStickers extends TdFunction {
 
   /// The maximum number of stickers to be returned; 0-100
   final int limit;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sticker_type": stickerType.toJson(),
       "emojis": emojis,
       "limit": limit,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class SearchStickers extends TdFunction {
     StickerType? stickerType,
     String? emojis,
     int? limit,
-  }) => SearchStickers(
-    stickerType: stickerType ?? this.stickerType,
-    emojis: emojis ?? this.emojis,
-    limit: limit ?? this.limit,
-  );
+  }) =>
+      SearchStickers(
+        stickerType: stickerType ?? this.stickerType,
+        emojis: emojis ?? this.emojis,
+        limit: limit ?? this.limit,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'searchStickers';

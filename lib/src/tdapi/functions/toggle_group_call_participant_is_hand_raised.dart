@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ToggleGroupCallParticipantIsHandRaised extends TdFunction {
-  
   /// **ToggleGroupCallParticipantIsHandRaised** *(toggleGroupCallParticipantIsHandRaised)* - TDLib function
   ///
   /// Toggles whether a group call participant hand is rased.
@@ -25,7 +24,7 @@ final class ToggleGroupCallParticipantIsHandRaised extends TdFunction {
     required this.participantId,
     required this.isHandRaised,
   });
-  
+
   /// Group call identifier
   final int groupCallId;
 
@@ -34,18 +33,18 @@ final class ToggleGroupCallParticipantIsHandRaised extends TdFunction {
 
   /// Pass true if the user's hand needs to be raised. Only self hand can be raised. Requires groupCall.can_be_managed group call flag to lower other's hand
   final bool isHandRaised;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "group_call_id": groupCallId,
       "participant_id": participantId.toJson(),
       "is_hand_raised": isHandRaised,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,14 +56,16 @@ final class ToggleGroupCallParticipantIsHandRaised extends TdFunction {
     int? groupCallId,
     MessageSender? participantId,
     bool? isHandRaised,
-  }) => ToggleGroupCallParticipantIsHandRaised(
-    groupCallId: groupCallId ?? this.groupCallId,
-    participantId: participantId ?? this.participantId,
-    isHandRaised: isHandRaised ?? this.isHandRaised,
-  );
+  }) =>
+      ToggleGroupCallParticipantIsHandRaised(
+        groupCallId: groupCallId ?? this.groupCallId,
+        participantId: participantId ?? this.participantId,
+        isHandRaised: isHandRaised ?? this.isHandRaised,
+      );
 
   /// TDLib object type
-  static const String defaultObjectId = 'toggleGroupCallParticipantIsHandRaised';
+  static const String defaultObjectId =
+      'toggleGroupCallParticipantIsHandRaised';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

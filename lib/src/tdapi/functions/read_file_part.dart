@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [FilePart] is returned on completion.
 final class ReadFilePart extends TdFunction {
-  
   /// **ReadFilePart** *(readFilePart)* - TDLib function
   ///
   /// Reads a part of a file from the TDLib file cache and returns read bytes. This method is intended to be used only if the application has no direct access to TDLib's file system, because it is usually slower than a direct read from the file.
@@ -25,7 +24,7 @@ final class ReadFilePart extends TdFunction {
     required this.offset,
     required this.count,
   });
-  
+
   /// Identifier of the file. The file must be located in the TDLib file cache
   final int fileId;
 
@@ -34,18 +33,18 @@ final class ReadFilePart extends TdFunction {
 
   /// Number of bytes to read. An error will be returned if there are not enough bytes available in the file from the specified position. Pass 0 to read all available data from the specified position
   final int count;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "file_id": fileId,
       "offset": offset,
       "count": count,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class ReadFilePart extends TdFunction {
     int? fileId,
     int? offset,
     int? count,
-  }) => ReadFilePart(
-    fileId: fileId ?? this.fileId,
-    offset: offset ?? this.offset,
-    count: count ?? this.count,
-  );
+  }) =>
+      ReadFilePart(
+        fileId: fileId ?? this.fileId,
+        offset: offset ?? this.offset,
+        count: count ?? this.count,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'readFilePart';

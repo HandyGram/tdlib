@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class RemoveRecentlyFoundChat extends TdFunction {
-  
   /// **RemoveRecentlyFoundChat** *(removeRecentlyFoundChat)* - TDLib function
   ///
   /// Removes a chat from the list of recently found chats.
@@ -19,19 +18,19 @@ final class RemoveRecentlyFoundChat extends TdFunction {
   const RemoveRecentlyFoundChat({
     required this.chatId,
   });
-  
+
   /// Identifier of the chat to be removed
   final int chatId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class RemoveRecentlyFoundChat extends TdFunction {
   /// * [chat_id]: Identifier of the chat to be removed
   RemoveRecentlyFoundChat copyWith({
     int? chatId,
-  }) => RemoveRecentlyFoundChat(
-    chatId: chatId ?? this.chatId,
-  );
+  }) =>
+      RemoveRecentlyFoundChat(
+        chatId: chatId ?? this.chatId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'removeRecentlyFoundChat';

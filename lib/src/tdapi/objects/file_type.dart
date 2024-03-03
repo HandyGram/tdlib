@@ -4,12 +4,11 @@ part of '../tdapi.dart';
 ///
 /// Represents the type of a file.
 sealed class FileType extends TdObject {
-  
   /// **FileType** *(fileType)* - parent
   ///
   /// Represents the type of a file.
   const FileType();
-  
+
   /// a FileType return type can be :
   /// * [FileTypeNone]
   /// * [FileTypeAnimation]
@@ -30,8 +29,8 @@ sealed class FileType extends TdObject {
   /// * [FileTypeVideoStory]
   /// * [FileTypeVoiceNote]
   /// * [FileTypeWallpaper]
-  factory FileType.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory FileType.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case FileTypeNone.defaultObjectId:
         return FileTypeNone.fromJson(json);
       case FileTypeAnimation.defaultObjectId:
@@ -77,7 +76,7 @@ sealed class FileType extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -97,27 +96,26 @@ sealed class FileType extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **FileTypeNone** *(fileTypeNone)* - child of FileType
 ///
 /// The data is not a file.
 final class FileTypeNone extends FileType {
-  
   /// **FileTypeNone** *(fileTypeNone)* - child of FileType
   ///
   /// The data is not a file.
   const FileTypeNone();
-  
+
   /// Parse from a json
-  factory FileTypeNone.fromJson(Map<String, dynamic> json) => const FileTypeNone();
-  
+  factory FileTypeNone.fromJson(Map<String, dynamic> json) =>
+      const FileTypeNone();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -135,27 +133,26 @@ final class FileTypeNone extends FileType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **FileTypeAnimation** *(fileTypeAnimation)* - child of FileType
 ///
 /// The file is an animation.
 final class FileTypeAnimation extends FileType {
-  
   /// **FileTypeAnimation** *(fileTypeAnimation)* - child of FileType
   ///
   /// The file is an animation.
   const FileTypeAnimation();
-  
+
   /// Parse from a json
-  factory FileTypeAnimation.fromJson(Map<String, dynamic> json) => const FileTypeAnimation();
-  
+  factory FileTypeAnimation.fromJson(Map<String, dynamic> json) =>
+      const FileTypeAnimation();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -173,27 +170,26 @@ final class FileTypeAnimation extends FileType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **FileTypeAudio** *(fileTypeAudio)* - child of FileType
 ///
 /// The file is an audio file.
 final class FileTypeAudio extends FileType {
-  
   /// **FileTypeAudio** *(fileTypeAudio)* - child of FileType
   ///
   /// The file is an audio file.
   const FileTypeAudio();
-  
+
   /// Parse from a json
-  factory FileTypeAudio.fromJson(Map<String, dynamic> json) => const FileTypeAudio();
-  
+  factory FileTypeAudio.fromJson(Map<String, dynamic> json) =>
+      const FileTypeAudio();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -211,27 +207,26 @@ final class FileTypeAudio extends FileType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **FileTypeDocument** *(fileTypeDocument)* - child of FileType
 ///
 /// The file is a document.
 final class FileTypeDocument extends FileType {
-  
   /// **FileTypeDocument** *(fileTypeDocument)* - child of FileType
   ///
   /// The file is a document.
   const FileTypeDocument();
-  
+
   /// Parse from a json
-  factory FileTypeDocument.fromJson(Map<String, dynamic> json) => const FileTypeDocument();
-  
+  factory FileTypeDocument.fromJson(Map<String, dynamic> json) =>
+      const FileTypeDocument();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -249,27 +244,26 @@ final class FileTypeDocument extends FileType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **FileTypeNotificationSound** *(fileTypeNotificationSound)* - child of FileType
 ///
 /// The file is a notification sound.
 final class FileTypeNotificationSound extends FileType {
-  
   /// **FileTypeNotificationSound** *(fileTypeNotificationSound)* - child of FileType
   ///
   /// The file is a notification sound.
   const FileTypeNotificationSound();
-  
+
   /// Parse from a json
-  factory FileTypeNotificationSound.fromJson(Map<String, dynamic> json) => const FileTypeNotificationSound();
-  
+  factory FileTypeNotificationSound.fromJson(Map<String, dynamic> json) =>
+      const FileTypeNotificationSound();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -287,27 +281,26 @@ final class FileTypeNotificationSound extends FileType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **FileTypePhoto** *(fileTypePhoto)* - child of FileType
 ///
 /// The file is a photo.
 final class FileTypePhoto extends FileType {
-  
   /// **FileTypePhoto** *(fileTypePhoto)* - child of FileType
   ///
   /// The file is a photo.
   const FileTypePhoto();
-  
+
   /// Parse from a json
-  factory FileTypePhoto.fromJson(Map<String, dynamic> json) => const FileTypePhoto();
-  
+  factory FileTypePhoto.fromJson(Map<String, dynamic> json) =>
+      const FileTypePhoto();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -325,27 +318,26 @@ final class FileTypePhoto extends FileType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **FileTypePhotoStory** *(fileTypePhotoStory)* - child of FileType
 ///
 /// The file is a photo published as a story.
 final class FileTypePhotoStory extends FileType {
-  
   /// **FileTypePhotoStory** *(fileTypePhotoStory)* - child of FileType
   ///
   /// The file is a photo published as a story.
   const FileTypePhotoStory();
-  
+
   /// Parse from a json
-  factory FileTypePhotoStory.fromJson(Map<String, dynamic> json) => const FileTypePhotoStory();
-  
+  factory FileTypePhotoStory.fromJson(Map<String, dynamic> json) =>
+      const FileTypePhotoStory();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -363,27 +355,26 @@ final class FileTypePhotoStory extends FileType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **FileTypeProfilePhoto** *(fileTypeProfilePhoto)* - child of FileType
 ///
 /// The file is a profile photo.
 final class FileTypeProfilePhoto extends FileType {
-  
   /// **FileTypeProfilePhoto** *(fileTypeProfilePhoto)* - child of FileType
   ///
   /// The file is a profile photo.
   const FileTypeProfilePhoto();
-  
+
   /// Parse from a json
-  factory FileTypeProfilePhoto.fromJson(Map<String, dynamic> json) => const FileTypeProfilePhoto();
-  
+  factory FileTypeProfilePhoto.fromJson(Map<String, dynamic> json) =>
+      const FileTypeProfilePhoto();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -401,27 +392,26 @@ final class FileTypeProfilePhoto extends FileType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **FileTypeSecret** *(fileTypeSecret)* - child of FileType
 ///
 /// The file was sent to a secret chat (the file type is not known to the server).
 final class FileTypeSecret extends FileType {
-  
   /// **FileTypeSecret** *(fileTypeSecret)* - child of FileType
   ///
   /// The file was sent to a secret chat (the file type is not known to the server).
   const FileTypeSecret();
-  
+
   /// Parse from a json
-  factory FileTypeSecret.fromJson(Map<String, dynamic> json) => const FileTypeSecret();
-  
+  factory FileTypeSecret.fromJson(Map<String, dynamic> json) =>
+      const FileTypeSecret();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -439,27 +429,26 @@ final class FileTypeSecret extends FileType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **FileTypeSecretThumbnail** *(fileTypeSecretThumbnail)* - child of FileType
 ///
 /// The file is a thumbnail of a file from a secret chat.
 final class FileTypeSecretThumbnail extends FileType {
-  
   /// **FileTypeSecretThumbnail** *(fileTypeSecretThumbnail)* - child of FileType
   ///
   /// The file is a thumbnail of a file from a secret chat.
   const FileTypeSecretThumbnail();
-  
+
   /// Parse from a json
-  factory FileTypeSecretThumbnail.fromJson(Map<String, dynamic> json) => const FileTypeSecretThumbnail();
-  
+  factory FileTypeSecretThumbnail.fromJson(Map<String, dynamic> json) =>
+      const FileTypeSecretThumbnail();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -477,27 +466,26 @@ final class FileTypeSecretThumbnail extends FileType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **FileTypeSecure** *(fileTypeSecure)* - child of FileType
 ///
 /// The file is a file from Secure storage used for storing Telegram Passport files.
 final class FileTypeSecure extends FileType {
-  
   /// **FileTypeSecure** *(fileTypeSecure)* - child of FileType
   ///
   /// The file is a file from Secure storage used for storing Telegram Passport files.
   const FileTypeSecure();
-  
+
   /// Parse from a json
-  factory FileTypeSecure.fromJson(Map<String, dynamic> json) => const FileTypeSecure();
-  
+  factory FileTypeSecure.fromJson(Map<String, dynamic> json) =>
+      const FileTypeSecure();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -515,27 +503,26 @@ final class FileTypeSecure extends FileType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **FileTypeSticker** *(fileTypeSticker)* - child of FileType
 ///
 /// The file is a sticker.
 final class FileTypeSticker extends FileType {
-  
   /// **FileTypeSticker** *(fileTypeSticker)* - child of FileType
   ///
   /// The file is a sticker.
   const FileTypeSticker();
-  
+
   /// Parse from a json
-  factory FileTypeSticker.fromJson(Map<String, dynamic> json) => const FileTypeSticker();
-  
+  factory FileTypeSticker.fromJson(Map<String, dynamic> json) =>
+      const FileTypeSticker();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -553,27 +540,26 @@ final class FileTypeSticker extends FileType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **FileTypeThumbnail** *(fileTypeThumbnail)* - child of FileType
 ///
 /// The file is a thumbnail of another file.
 final class FileTypeThumbnail extends FileType {
-  
   /// **FileTypeThumbnail** *(fileTypeThumbnail)* - child of FileType
   ///
   /// The file is a thumbnail of another file.
   const FileTypeThumbnail();
-  
+
   /// Parse from a json
-  factory FileTypeThumbnail.fromJson(Map<String, dynamic> json) => const FileTypeThumbnail();
-  
+  factory FileTypeThumbnail.fromJson(Map<String, dynamic> json) =>
+      const FileTypeThumbnail();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -591,27 +577,26 @@ final class FileTypeThumbnail extends FileType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **FileTypeUnknown** *(fileTypeUnknown)* - child of FileType
 ///
 /// The file type is not yet known.
 final class FileTypeUnknown extends FileType {
-  
   /// **FileTypeUnknown** *(fileTypeUnknown)* - child of FileType
   ///
   /// The file type is not yet known.
   const FileTypeUnknown();
-  
+
   /// Parse from a json
-  factory FileTypeUnknown.fromJson(Map<String, dynamic> json) => const FileTypeUnknown();
-  
+  factory FileTypeUnknown.fromJson(Map<String, dynamic> json) =>
+      const FileTypeUnknown();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -629,27 +614,26 @@ final class FileTypeUnknown extends FileType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **FileTypeVideo** *(fileTypeVideo)* - child of FileType
 ///
 /// The file is a video.
 final class FileTypeVideo extends FileType {
-  
   /// **FileTypeVideo** *(fileTypeVideo)* - child of FileType
   ///
   /// The file is a video.
   const FileTypeVideo();
-  
+
   /// Parse from a json
-  factory FileTypeVideo.fromJson(Map<String, dynamic> json) => const FileTypeVideo();
-  
+  factory FileTypeVideo.fromJson(Map<String, dynamic> json) =>
+      const FileTypeVideo();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -667,27 +651,26 @@ final class FileTypeVideo extends FileType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **FileTypeVideoNote** *(fileTypeVideoNote)* - child of FileType
 ///
 /// The file is a video note.
 final class FileTypeVideoNote extends FileType {
-  
   /// **FileTypeVideoNote** *(fileTypeVideoNote)* - child of FileType
   ///
   /// The file is a video note.
   const FileTypeVideoNote();
-  
+
   /// Parse from a json
-  factory FileTypeVideoNote.fromJson(Map<String, dynamic> json) => const FileTypeVideoNote();
-  
+  factory FileTypeVideoNote.fromJson(Map<String, dynamic> json) =>
+      const FileTypeVideoNote();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -705,27 +688,26 @@ final class FileTypeVideoNote extends FileType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **FileTypeVideoStory** *(fileTypeVideoStory)* - child of FileType
 ///
 /// The file is a video published as a story.
 final class FileTypeVideoStory extends FileType {
-  
   /// **FileTypeVideoStory** *(fileTypeVideoStory)* - child of FileType
   ///
   /// The file is a video published as a story.
   const FileTypeVideoStory();
-  
+
   /// Parse from a json
-  factory FileTypeVideoStory.fromJson(Map<String, dynamic> json) => const FileTypeVideoStory();
-  
+  factory FileTypeVideoStory.fromJson(Map<String, dynamic> json) =>
+      const FileTypeVideoStory();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -743,27 +725,26 @@ final class FileTypeVideoStory extends FileType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **FileTypeVoiceNote** *(fileTypeVoiceNote)* - child of FileType
 ///
 /// The file is a voice note.
 final class FileTypeVoiceNote extends FileType {
-  
   /// **FileTypeVoiceNote** *(fileTypeVoiceNote)* - child of FileType
   ///
   /// The file is a voice note.
   const FileTypeVoiceNote();
-  
+
   /// Parse from a json
-  factory FileTypeVoiceNote.fromJson(Map<String, dynamic> json) => const FileTypeVoiceNote();
-  
+  factory FileTypeVoiceNote.fromJson(Map<String, dynamic> json) =>
+      const FileTypeVoiceNote();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -781,27 +762,26 @@ final class FileTypeVoiceNote extends FileType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **FileTypeWallpaper** *(fileTypeWallpaper)* - child of FileType
 ///
 /// The file is a wallpaper or a background pattern.
 final class FileTypeWallpaper extends FileType {
-  
   /// **FileTypeWallpaper** *(fileTypeWallpaper)* - child of FileType
   ///
   /// The file is a wallpaper or a background pattern.
   const FileTypeWallpaper();
-  
+
   /// Parse from a json
-  factory FileTypeWallpaper.fromJson(Map<String, dynamic> json) => const FileTypeWallpaper();
-  
+  factory FileTypeWallpaper.fromJson(Map<String, dynamic> json) =>
+      const FileTypeWallpaper();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override

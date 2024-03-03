@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [File] is returned on completion.
 final class PreliminaryUploadFile extends TdFunction {
-  
   /// **PreliminaryUploadFile** *(preliminaryUploadFile)* - TDLib function
   ///
   /// Preliminary uploads a file to the cloud before sending it in a message, which can be useful for uploading of being recorded voice and video notes. Updates updateFile will be used. to notify about upload progress and successful completion of the upload. The file will not have a persistent remote identifier until it is sent in a message.
@@ -25,7 +24,7 @@ final class PreliminaryUploadFile extends TdFunction {
     this.fileType,
     required this.priority,
   });
-  
+
   /// File to upload
   final InputFile file;
 
@@ -34,18 +33,18 @@ final class PreliminaryUploadFile extends TdFunction {
 
   /// Priority of the upload (1-32). The higher the priority, the earlier the file will be uploaded. If the priorities of two files are equal, then the first one for which preliminaryUploadFile was called will be uploaded first
   final int priority;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "file": file.toJson(),
       "file_type": fileType?.toJson(),
       "priority": priority,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class PreliminaryUploadFile extends TdFunction {
     InputFile? file,
     FileType? fileType,
     int? priority,
-  }) => PreliminaryUploadFile(
-    file: file ?? this.file,
-    fileType: fileType ?? this.fileType,
-    priority: priority ?? this.priority,
-  );
+  }) =>
+      PreliminaryUploadFile(
+        file: file ?? this.file,
+        fileType: fileType ?? this.fileType,
+        priority: priority ?? this.priority,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'preliminaryUploadFile';

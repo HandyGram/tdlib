@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [hashtags]: A list of hashtags.
 final class Hashtags extends TdObject {
-  
   /// **Hashtags** *(hashtags)* - basic class
   ///
   /// Contains a list of hashtags.
@@ -17,7 +16,7 @@ final class Hashtags extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// A list of hashtags
   final List<String> hashtags;
 
@@ -28,23 +27,23 @@ final class Hashtags extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory Hashtags.fromJson(Map<String, dynamic> json) => Hashtags(
-    hashtags: List<String>.from((json['hashtags'] ?? []).map((item) => item).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        hashtags: List<String>.from(
+            (json['hashtags'] ?? []).map((item) => item).toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "hashtags": hashtags.map((i) => i).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +53,12 @@ final class Hashtags extends TdObject {
     List<String>? hashtags,
     dynamic extra,
     int? clientId,
-  }) => Hashtags(
-    hashtags: hashtags ?? this.hashtags,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      Hashtags(
+        hashtags: hashtags ?? this.hashtags,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'hashtags';

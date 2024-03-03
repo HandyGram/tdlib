@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class PinChatMessage extends TdFunction {
-  
   /// **PinChatMessage** *(pinChatMessage)* - TDLib function
   ///
   /// Pins a message in a chat; requires can_pin_messages member right if the chat is a basic group or supergroup, or can_edit_messages administrator right if the chat is a channel.
@@ -28,7 +27,7 @@ final class PinChatMessage extends TdFunction {
     required this.disableNotification,
     required this.onlyForSelf,
   });
-  
+
   /// Identifier of the chat
   final int chatId;
 
@@ -40,19 +39,19 @@ final class PinChatMessage extends TdFunction {
 
   /// Pass true to pin the message only for self; private chats only
   final bool onlyForSelf;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "disable_notification": disableNotification,
       "only_for_self": onlyForSelf,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -66,12 +65,13 @@ final class PinChatMessage extends TdFunction {
     int? messageId,
     bool? disableNotification,
     bool? onlyForSelf,
-  }) => PinChatMessage(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    disableNotification: disableNotification ?? this.disableNotification,
-    onlyForSelf: onlyForSelf ?? this.onlyForSelf,
-  );
+  }) =>
+      PinChatMessage(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        disableNotification: disableNotification ?? this.disableNotification,
+        onlyForSelf: onlyForSelf ?? this.onlyForSelf,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'pinChatMessage';

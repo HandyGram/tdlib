@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class CancelPasswordReset extends TdFunction {
-  
   /// **CancelPasswordReset** *(cancelPasswordReset)* - TDLib function
   ///
   /// Cancels reset of 2-step verification password. The method can be called if passwordState.pending_reset_date.
   ///
   /// [Ok] is returned on completion.
   const CancelPasswordReset();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   CancelPasswordReset copyWith() => const CancelPasswordReset();

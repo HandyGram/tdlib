@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [ChatBoostLink] is returned on completion.
 final class GetChatBoostLink extends TdFunction {
-  
   /// **GetChatBoostLink** *(getChatBoostLink)* - TDLib function
   ///
   /// Returns an HTTPS link to boost the specified supergroup or channel chat.
@@ -19,19 +18,19 @@ final class GetChatBoostLink extends TdFunction {
   const GetChatBoostLink({
     required this.chatId,
   });
-  
+
   /// Identifier of the chat
   final int chatId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetChatBoostLink extends TdFunction {
   /// * [chat_id]: Identifier of the chat
   GetChatBoostLink copyWith({
     int? chatId,
-  }) => GetChatBoostLink(
-    chatId: chatId ?? this.chatId,
-  );
+  }) =>
+      GetChatBoostLink(
+        chatId: chatId ?? this.chatId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getChatBoostLink';

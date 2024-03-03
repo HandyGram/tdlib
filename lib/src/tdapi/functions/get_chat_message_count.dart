@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 ///
 /// [Count] is returned on completion.
 final class GetChatMessageCount extends TdFunction {
-  
   /// **GetChatMessageCount** *(getChatMessageCount)* - TDLib function
   ///
   /// Returns approximate number of messages of the specified type in the chat.
@@ -28,7 +27,7 @@ final class GetChatMessageCount extends TdFunction {
     required this.savedMessagesTopicId,
     required this.returnLocal,
   });
-  
+
   /// Identifier of the chat in which to count messages
   final int chatId;
 
@@ -40,19 +39,19 @@ final class GetChatMessageCount extends TdFunction {
 
   /// Pass true to get the number of messages without sending network requests, or -1 if the number of messages is unknown locally
   final bool returnLocal;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "filter": filter.toJson(),
       "saved_messages_topic_id": savedMessagesTopicId,
       "return_local": returnLocal,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -66,12 +65,13 @@ final class GetChatMessageCount extends TdFunction {
     SearchMessagesFilter? filter,
     int? savedMessagesTopicId,
     bool? returnLocal,
-  }) => GetChatMessageCount(
-    chatId: chatId ?? this.chatId,
-    filter: filter ?? this.filter,
-    savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
-    returnLocal: returnLocal ?? this.returnLocal,
-  );
+  }) =>
+      GetChatMessageCount(
+        chatId: chatId ?? this.chatId,
+        filter: filter ?? this.filter,
+        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
+        returnLocal: returnLocal ?? this.returnLocal,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getChatMessageCount';

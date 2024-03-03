@@ -7,7 +7,6 @@ part of '../tdapi.dart';
 /// * [link]: The link.
 /// * [isPublic]: True, if the link will work for non-members of the chat.
 final class ChatBoostLink extends TdObject {
-  
   /// **ChatBoostLink** *(chatBoostLink)* - basic class
   ///
   /// Contains an HTTPS link to boost a chat.
@@ -20,8 +19,8 @@ final class ChatBoostLink extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// The link 
+
+  /// The link
   final String link;
 
   /// True, if the link will work for non-members of the chat
@@ -34,42 +33,42 @@ final class ChatBoostLink extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory ChatBoostLink.fromJson(Map<String, dynamic> json) => ChatBoostLink(
-    link: json['link'],
-    isPublic: json['is_public'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        link: json['link'],
+        isPublic: json['is_public'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "link": link,
       "is_public": isPublic,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [link]: The link 
+  /// * [link]: The link
   /// * [is_public]: True, if the link will work for non-members of the chat
   ChatBoostLink copyWith({
     String? link,
     bool? isPublic,
     dynamic extra,
     int? clientId,
-  }) => ChatBoostLink(
-    link: link ?? this.link,
-    isPublic: isPublic ?? this.isPublic,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      ChatBoostLink(
+        link: link ?? this.link,
+        isPublic: isPublic ?? this.isPublic,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatBoostLink';

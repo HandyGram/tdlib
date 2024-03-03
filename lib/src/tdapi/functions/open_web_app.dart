@@ -14,7 +14,6 @@ part of '../tdapi.dart';
 ///
 /// [WebAppInfo] is returned on completion.
 final class OpenWebApp extends TdFunction {
-  
   /// **OpenWebApp** *(openWebApp)* - TDLib function
   ///
   /// Informs TDLib that a Web App is being opened from the attachment menu, a botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an inlineKeyboardButtonTypeWebApp button.. For each bot, a confirmation alert about data sent to the bot must be shown once.
@@ -37,7 +36,7 @@ final class OpenWebApp extends TdFunction {
     required this.messageThreadId,
     this.replyTo,
   });
-  
+
   /// Identifier of the chat in which the Web App is opened. The Web App can't be opened in secret chats
   final int chatId;
 
@@ -58,12 +57,12 @@ final class OpenWebApp extends TdFunction {
 
   /// Information about the message or story to be replied in the message sent by the Web App; pass null if none
   final InputMessageReplyTo? replyTo;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "bot_user_id": botUserId,
       "url": url,
@@ -72,8 +71,8 @@ final class OpenWebApp extends TdFunction {
       "message_thread_id": messageThreadId,
       "reply_to": replyTo?.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -93,15 +92,16 @@ final class OpenWebApp extends TdFunction {
     String? applicationName,
     int? messageThreadId,
     InputMessageReplyTo? replyTo,
-  }) => OpenWebApp(
-    chatId: chatId ?? this.chatId,
-    botUserId: botUserId ?? this.botUserId,
-    url: url ?? this.url,
-    theme: theme ?? this.theme,
-    applicationName: applicationName ?? this.applicationName,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-    replyTo: replyTo ?? this.replyTo,
-  );
+  }) =>
+      OpenWebApp(
+        chatId: chatId ?? this.chatId,
+        botUserId: botUserId ?? this.botUserId,
+        url: url ?? this.url,
+        theme: theme ?? this.theme,
+        applicationName: applicationName ?? this.applicationName,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+        replyTo: replyTo ?? this.replyTo,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'openWebApp';

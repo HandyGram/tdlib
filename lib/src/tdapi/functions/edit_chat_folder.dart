@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [ChatFolderInfo] is returned on completion.
 final class EditChatFolder extends TdFunction {
-  
   /// **EditChatFolder** *(editChatFolder)* - TDLib function
   ///
   /// Edits existing chat folder. Returns information about the edited chat folder.
@@ -22,36 +21,37 @@ final class EditChatFolder extends TdFunction {
     required this.chatFolderId,
     required this.folder,
   });
-  
-  /// Chat folder identifier 
+
+  /// Chat folder identifier
   final int chatFolderId;
 
   /// The edited chat folder
   final ChatFolder folder;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_folder_id": chatFolderId,
       "folder": folder.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_folder_id]: Chat folder identifier 
+  /// * [chat_folder_id]: Chat folder identifier
   /// * [folder]: The edited chat folder
   EditChatFolder copyWith({
     int? chatFolderId,
     ChatFolder? folder,
-  }) => EditChatFolder(
-    chatFolderId: chatFolderId ?? this.chatFolderId,
-    folder: folder ?? this.folder,
-  );
+  }) =>
+      EditChatFolder(
+        chatFolderId: chatFolderId ?? this.chatFolderId,
+        folder: folder ?? this.folder,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'editChatFolder';

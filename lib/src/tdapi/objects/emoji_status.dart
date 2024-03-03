@@ -7,7 +7,6 @@ part of '../tdapi.dart';
 /// * [customEmojiId]: Identifier of the custom emoji in stickerFormatTgs format.
 /// * [expirationDate]: Point in time (Unix timestamp) when the status will expire; 0 if never.
 final class EmojiStatus extends TdObject {
-  
   /// **EmojiStatus** *(emojiStatus)* - basic class
   ///
   /// Describes a custom emoji to be shown instead of the Telegram Premium badge.
@@ -18,29 +17,28 @@ final class EmojiStatus extends TdObject {
     required this.customEmojiId,
     required this.expirationDate,
   });
-  
+
   /// Identifier of the custom emoji in stickerFormatTgs format
   final int customEmojiId;
 
   /// Point in time (Unix timestamp) when the status will expire; 0 if never
   final int expirationDate;
-  
+
   /// Parse from a json
   factory EmojiStatus.fromJson(Map<String, dynamic> json) => EmojiStatus(
-    customEmojiId: int.parse(json['custom_emoji_id']),
-    expirationDate: json['expiration_date'],
-  );
-  
-  
+        customEmojiId: int.parse(json['custom_emoji_id']),
+        expirationDate: json['expiration_date'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "custom_emoji_id": customEmojiId,
       "expiration_date": expirationDate,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -50,10 +48,11 @@ final class EmojiStatus extends TdObject {
   EmojiStatus copyWith({
     int? customEmojiId,
     int? expirationDate,
-  }) => EmojiStatus(
-    customEmojiId: customEmojiId ?? this.customEmojiId,
-    expirationDate: expirationDate ?? this.expirationDate,
-  );
+  }) =>
+      EmojiStatus(
+        customEmojiId: customEmojiId ?? this.customEmojiId,
+        expirationDate: expirationDate ?? this.expirationDate,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'emojiStatus';

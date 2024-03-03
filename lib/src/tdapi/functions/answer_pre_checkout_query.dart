@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class AnswerPreCheckoutQuery extends TdFunction {
-  
   /// **AnswerPreCheckoutQuery** *(answerPreCheckoutQuery)* - TDLib function
   ///
   /// Sets the result of a pre-checkout query; for bots only.
@@ -22,36 +21,37 @@ final class AnswerPreCheckoutQuery extends TdFunction {
     required this.preCheckoutQueryId,
     required this.errorMessage,
   });
-  
-  /// Identifier of the pre-checkout query 
+
+  /// Identifier of the pre-checkout query
   final int preCheckoutQueryId;
 
   /// An error message, empty on success
   final String errorMessage;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "pre_checkout_query_id": preCheckoutQueryId,
       "error_message": errorMessage,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [pre_checkout_query_id]: Identifier of the pre-checkout query 
+  /// * [pre_checkout_query_id]: Identifier of the pre-checkout query
   /// * [error_message]: An error message, empty on success
   AnswerPreCheckoutQuery copyWith({
     int? preCheckoutQueryId,
     String? errorMessage,
-  }) => AnswerPreCheckoutQuery(
-    preCheckoutQueryId: preCheckoutQueryId ?? this.preCheckoutQueryId,
-    errorMessage: errorMessage ?? this.errorMessage,
-  );
+  }) =>
+      AnswerPreCheckoutQuery(
+        preCheckoutQueryId: preCheckoutQueryId ?? this.preCheckoutQueryId,
+        errorMessage: errorMessage ?? this.errorMessage,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'answerPreCheckoutQuery';

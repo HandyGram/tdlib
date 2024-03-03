@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 /// * [lastReadOutboxMessageId]: Identifier of the last read outgoing reply to the message.
 /// * [lastMessageId]: Identifier of the last reply to the message.
 final class MessageReplyInfo extends TdObject {
-  
   /// **MessageReplyInfo** *(messageReplyInfo)* - basic class
   ///
   /// Contains information about replies to a message.
@@ -27,7 +26,7 @@ final class MessageReplyInfo extends TdObject {
     required this.lastReadOutboxMessageId,
     required this.lastMessageId,
   });
-  
+
   /// Number of times the message was directly or indirectly replied
   final int replyCount;
 
@@ -42,29 +41,32 @@ final class MessageReplyInfo extends TdObject {
 
   /// Identifier of the last reply to the message
   final int lastMessageId;
-  
+
   /// Parse from a json
-  factory MessageReplyInfo.fromJson(Map<String, dynamic> json) => MessageReplyInfo(
-    replyCount: json['reply_count'],
-    recentReplierIds: List<MessageSender>.from((json['recent_replier_ids'] ?? []).map((item) => MessageSender.fromJson(item)).toList()),
-    lastReadInboxMessageId: json['last_read_inbox_message_id'],
-    lastReadOutboxMessageId: json['last_read_outbox_message_id'],
-    lastMessageId: json['last_message_id'],
-  );
-  
-  
+  factory MessageReplyInfo.fromJson(Map<String, dynamic> json) =>
+      MessageReplyInfo(
+        replyCount: json['reply_count'],
+        recentReplierIds: List<MessageSender>.from(
+            (json['recent_replier_ids'] ?? [])
+                .map((item) => MessageSender.fromJson(item))
+                .toList()),
+        lastReadInboxMessageId: json['last_read_inbox_message_id'],
+        lastReadOutboxMessageId: json['last_read_outbox_message_id'],
+        lastMessageId: json['last_message_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "reply_count": replyCount,
       "recent_replier_ids": recentReplierIds.map((i) => i.toJson()).toList(),
       "last_read_inbox_message_id": lastReadInboxMessageId,
       "last_read_outbox_message_id": lastReadOutboxMessageId,
       "last_message_id": lastMessageId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -80,13 +82,16 @@ final class MessageReplyInfo extends TdObject {
     int? lastReadInboxMessageId,
     int? lastReadOutboxMessageId,
     int? lastMessageId,
-  }) => MessageReplyInfo(
-    replyCount: replyCount ?? this.replyCount,
-    recentReplierIds: recentReplierIds ?? this.recentReplierIds,
-    lastReadInboxMessageId: lastReadInboxMessageId ?? this.lastReadInboxMessageId,
-    lastReadOutboxMessageId: lastReadOutboxMessageId ?? this.lastReadOutboxMessageId,
-    lastMessageId: lastMessageId ?? this.lastMessageId,
-  );
+  }) =>
+      MessageReplyInfo(
+        replyCount: replyCount ?? this.replyCount,
+        recentReplierIds: recentReplierIds ?? this.recentReplierIds,
+        lastReadInboxMessageId:
+            lastReadInboxMessageId ?? this.lastReadInboxMessageId,
+        lastReadOutboxMessageId:
+            lastReadOutboxMessageId ?? this.lastReadOutboxMessageId,
+        lastMessageId: lastMessageId ?? this.lastMessageId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'messageReplyInfo';

@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetLogTagVerbosityLevel extends TdFunction {
-  
   /// **SetLogTagVerbosityLevel** *(setLogTagVerbosityLevel)* - TDLib function
   ///
   /// Sets the verbosity level for a specified TDLib internal log tag. Can be called synchronously.
@@ -22,23 +21,23 @@ final class SetLogTagVerbosityLevel extends TdFunction {
     required this.tag,
     required this.newVerbosityLevel,
   });
-  
+
   /// Logging tag to change verbosity level
   final String tag;
 
   /// New verbosity level; 1-1024
   final int newVerbosityLevel;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "tag": tag,
       "new_verbosity_level": newVerbosityLevel,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class SetLogTagVerbosityLevel extends TdFunction {
   SetLogTagVerbosityLevel copyWith({
     String? tag,
     int? newVerbosityLevel,
-  }) => SetLogTagVerbosityLevel(
-    tag: tag ?? this.tag,
-    newVerbosityLevel: newVerbosityLevel ?? this.newVerbosityLevel,
-  );
+  }) =>
+      SetLogTagVerbosityLevel(
+        tag: tag ?? this.tag,
+        newVerbosityLevel: newVerbosityLevel ?? this.newVerbosityLevel,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setLogTagVerbosityLevel';

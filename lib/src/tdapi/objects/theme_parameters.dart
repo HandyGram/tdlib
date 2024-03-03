@@ -18,7 +18,6 @@ part of '../tdapi.dart';
 /// * [buttonColor]: A color of the buttons in the RGB24 format.
 /// * [buttonTextColor]: A color of text on the buttons in the RGB24 format.
 final class ThemeParameters extends TdObject {
-  
   /// **ThemeParameters** *(themeParameters)* - basic class
   ///
   /// Contains parameters of the application theme.
@@ -51,7 +50,7 @@ final class ThemeParameters extends TdObject {
     required this.buttonColor,
     required this.buttonTextColor,
   });
-  
+
   /// A color of the background in the RGB24 format
   final int backgroundColor;
 
@@ -90,30 +89,30 @@ final class ThemeParameters extends TdObject {
 
   /// A color of text on the buttons in the RGB24 format
   final int buttonTextColor;
-  
+
   /// Parse from a json
-  factory ThemeParameters.fromJson(Map<String, dynamic> json) => ThemeParameters(
-    backgroundColor: json['background_color'],
-    secondaryBackgroundColor: json['secondary_background_color'],
-    headerBackgroundColor: json['header_background_color'],
-    sectionBackgroundColor: json['section_background_color'],
-    textColor: json['text_color'],
-    accentTextColor: json['accent_text_color'],
-    sectionHeaderTextColor: json['section_header_text_color'],
-    subtitleTextColor: json['subtitle_text_color'],
-    destructiveTextColor: json['destructive_text_color'],
-    hintColor: json['hint_color'],
-    linkColor: json['link_color'],
-    buttonColor: json['button_color'],
-    buttonTextColor: json['button_text_color'],
-  );
-  
-  
+  factory ThemeParameters.fromJson(Map<String, dynamic> json) =>
+      ThemeParameters(
+        backgroundColor: json['background_color'],
+        secondaryBackgroundColor: json['secondary_background_color'],
+        headerBackgroundColor: json['header_background_color'],
+        sectionBackgroundColor: json['section_background_color'],
+        textColor: json['text_color'],
+        accentTextColor: json['accent_text_color'],
+        sectionHeaderTextColor: json['section_header_text_color'],
+        subtitleTextColor: json['subtitle_text_color'],
+        destructiveTextColor: json['destructive_text_color'],
+        hintColor: json['hint_color'],
+        linkColor: json['link_color'],
+        buttonColor: json['button_color'],
+        buttonTextColor: json['button_text_color'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "background_color": backgroundColor,
       "secondary_background_color": secondaryBackgroundColor,
       "header_background_color": headerBackgroundColor,
@@ -127,8 +126,8 @@ final class ThemeParameters extends TdObject {
       "link_color": linkColor,
       "button_color": buttonColor,
       "button_text_color": buttonTextColor,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -160,21 +159,26 @@ final class ThemeParameters extends TdObject {
     int? linkColor,
     int? buttonColor,
     int? buttonTextColor,
-  }) => ThemeParameters(
-    backgroundColor: backgroundColor ?? this.backgroundColor,
-    secondaryBackgroundColor: secondaryBackgroundColor ?? this.secondaryBackgroundColor,
-    headerBackgroundColor: headerBackgroundColor ?? this.headerBackgroundColor,
-    sectionBackgroundColor: sectionBackgroundColor ?? this.sectionBackgroundColor,
-    textColor: textColor ?? this.textColor,
-    accentTextColor: accentTextColor ?? this.accentTextColor,
-    sectionHeaderTextColor: sectionHeaderTextColor ?? this.sectionHeaderTextColor,
-    subtitleTextColor: subtitleTextColor ?? this.subtitleTextColor,
-    destructiveTextColor: destructiveTextColor ?? this.destructiveTextColor,
-    hintColor: hintColor ?? this.hintColor,
-    linkColor: linkColor ?? this.linkColor,
-    buttonColor: buttonColor ?? this.buttonColor,
-    buttonTextColor: buttonTextColor ?? this.buttonTextColor,
-  );
+  }) =>
+      ThemeParameters(
+        backgroundColor: backgroundColor ?? this.backgroundColor,
+        secondaryBackgroundColor:
+            secondaryBackgroundColor ?? this.secondaryBackgroundColor,
+        headerBackgroundColor:
+            headerBackgroundColor ?? this.headerBackgroundColor,
+        sectionBackgroundColor:
+            sectionBackgroundColor ?? this.sectionBackgroundColor,
+        textColor: textColor ?? this.textColor,
+        accentTextColor: accentTextColor ?? this.accentTextColor,
+        sectionHeaderTextColor:
+            sectionHeaderTextColor ?? this.sectionHeaderTextColor,
+        subtitleTextColor: subtitleTextColor ?? this.subtitleTextColor,
+        destructiveTextColor: destructiveTextColor ?? this.destructiveTextColor,
+        hintColor: hintColor ?? this.hintColor,
+        linkColor: linkColor ?? this.linkColor,
+        buttonColor: buttonColor ?? this.buttonColor,
+        buttonTextColor: buttonTextColor ?? this.buttonTextColor,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'themeParameters';

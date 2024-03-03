@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetStoryReaction extends TdFunction {
-  
   /// **SetStoryReaction** *(setStoryReaction)* - TDLib function
   ///
   /// Changes chosen reaction on a story that has already been sent.
@@ -28,7 +27,7 @@ final class SetStoryReaction extends TdFunction {
     this.reactionType,
     required this.updateRecentReactions,
   });
-  
+
   /// The identifier of the sender of the story
   final int storySenderChatId;
 
@@ -40,19 +39,19 @@ final class SetStoryReaction extends TdFunction {
 
   /// Pass true if the reaction needs to be added to recent reactions
   final bool updateRecentReactions;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "story_sender_chat_id": storySenderChatId,
       "story_id": storyId,
       "reaction_type": reactionType?.toJson(),
       "update_recent_reactions": updateRecentReactions,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -66,12 +65,14 @@ final class SetStoryReaction extends TdFunction {
     int? storyId,
     ReactionType? reactionType,
     bool? updateRecentReactions,
-  }) => SetStoryReaction(
-    storySenderChatId: storySenderChatId ?? this.storySenderChatId,
-    storyId: storyId ?? this.storyId,
-    reactionType: reactionType ?? this.reactionType,
-    updateRecentReactions: updateRecentReactions ?? this.updateRecentReactions,
-  );
+  }) =>
+      SetStoryReaction(
+        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+        storyId: storyId ?? this.storyId,
+        reactionType: reactionType ?? this.reactionType,
+        updateRecentReactions:
+            updateRecentReactions ?? this.updateRecentReactions,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setStoryReaction';

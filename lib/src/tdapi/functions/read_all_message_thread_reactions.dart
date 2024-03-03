@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ReadAllMessageThreadReactions extends TdFunction {
-  
   /// **ReadAllMessageThreadReactions** *(readAllMessageThreadReactions)* - TDLib function
   ///
   /// Marks all reactions in a forum topic as read.
@@ -22,36 +21,37 @@ final class ReadAllMessageThreadReactions extends TdFunction {
     required this.chatId,
     required this.messageThreadId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// Message thread identifier in which reactions are marked as read
   final int messageThreadId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_thread_id": messageThreadId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [message_thread_id]: Message thread identifier in which reactions are marked as read
   ReadAllMessageThreadReactions copyWith({
     int? chatId,
     int? messageThreadId,
-  }) => ReadAllMessageThreadReactions(
-    chatId: chatId ?? this.chatId,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-  );
+  }) =>
+      ReadAllMessageThreadReactions(
+        chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'readAllMessageThreadReactions';

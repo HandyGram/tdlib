@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 /// * [expirationDate]: Point in time (Unix timestamp) when the boost will expire.
 /// * [cooldownUntilDate]: Point in time (Unix timestamp) after which the boost can be used for another chat.
 final class ChatBoostSlot extends TdObject {
-  
   /// **ChatBoostSlot** *(chatBoostSlot)* - basic class
   ///
   /// Describes a slot for chat boost.
@@ -27,7 +26,7 @@ final class ChatBoostSlot extends TdObject {
     required this.expirationDate,
     required this.cooldownUntilDate,
   });
-  
+
   /// Unique identifier of the slot
   final int slotId;
 
@@ -42,29 +41,28 @@ final class ChatBoostSlot extends TdObject {
 
   /// Point in time (Unix timestamp) after which the boost can be used for another chat
   final int cooldownUntilDate;
-  
+
   /// Parse from a json
   factory ChatBoostSlot.fromJson(Map<String, dynamic> json) => ChatBoostSlot(
-    slotId: json['slot_id'],
-    currentlyBoostedChatId: json['currently_boosted_chat_id'] ?? 0,
-    startDate: json['start_date'] ?? 0,
-    expirationDate: json['expiration_date'],
-    cooldownUntilDate: json['cooldown_until_date'],
-  );
-  
-  
+        slotId: json['slot_id'],
+        currentlyBoostedChatId: json['currently_boosted_chat_id'] ?? 0,
+        startDate: json['start_date'] ?? 0,
+        expirationDate: json['expiration_date'],
+        cooldownUntilDate: json['cooldown_until_date'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "slot_id": slotId,
       "currently_boosted_chat_id": currentlyBoostedChatId,
       "start_date": startDate,
       "expiration_date": expirationDate,
       "cooldown_until_date": cooldownUntilDate,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -80,13 +78,15 @@ final class ChatBoostSlot extends TdObject {
     int? startDate,
     int? expirationDate,
     int? cooldownUntilDate,
-  }) => ChatBoostSlot(
-    slotId: slotId ?? this.slotId,
-    currentlyBoostedChatId: currentlyBoostedChatId ?? this.currentlyBoostedChatId,
-    startDate: startDate ?? this.startDate,
-    expirationDate: expirationDate ?? this.expirationDate,
-    cooldownUntilDate: cooldownUntilDate ?? this.cooldownUntilDate,
-  );
+  }) =>
+      ChatBoostSlot(
+        slotId: slotId ?? this.slotId,
+        currentlyBoostedChatId:
+            currentlyBoostedChatId ?? this.currentlyBoostedChatId,
+        startDate: startDate ?? this.startDate,
+        expirationDate: expirationDate ?? this.expirationDate,
+        cooldownUntilDate: cooldownUntilDate ?? this.cooldownUntilDate,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatBoostSlot';

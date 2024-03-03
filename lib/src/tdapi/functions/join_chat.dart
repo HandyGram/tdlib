@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class JoinChat extends TdFunction {
-  
   /// **JoinChat** *(joinChat)* - TDLib function
   ///
   /// Adds the current user as a new member to a chat. Private and secret chats can't be joined using this method. May return an error with a message "INVITE_REQUEST_SENT" if only a join request was created.
@@ -19,19 +18,19 @@ final class JoinChat extends TdFunction {
   const JoinChat({
     required this.chatId,
   });
-  
+
   /// Chat identifier
   final int chatId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class JoinChat extends TdFunction {
   /// * [chat_id]: Chat identifier
   JoinChat copyWith({
     int? chatId,
-  }) => JoinChat(
-    chatId: chatId ?? this.chatId,
-  );
+  }) =>
+      JoinChat(
+        chatId: chatId ?? this.chatId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'joinChat';

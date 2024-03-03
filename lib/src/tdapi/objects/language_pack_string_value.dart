@@ -4,18 +4,17 @@ part of '../tdapi.dart';
 ///
 /// Represents the value of a string in a language pack.
 sealed class LanguagePackStringValue extends TdObject {
-  
   /// **LanguagePackStringValue** *(languagePackStringValue)* - parent
   ///
   /// Represents the value of a string in a language pack.
   const LanguagePackStringValue();
-  
+
   /// a LanguagePackStringValue return type can be :
   /// * [LanguagePackStringValueOrdinary]
   /// * [LanguagePackStringValuePluralized]
   /// * [LanguagePackStringValueDeleted]
-  factory LanguagePackStringValue.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory LanguagePackStringValue.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case LanguagePackStringValueOrdinary.defaultObjectId:
         return LanguagePackStringValueOrdinary.fromJson(json);
       case LanguagePackStringValuePluralized.defaultObjectId:
@@ -29,7 +28,7 @@ sealed class LanguagePackStringValue extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -49,14 +48,12 @@ sealed class LanguagePackStringValue extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **LanguagePackStringValueOrdinary** *(languagePackStringValueOrdinary)* - child of LanguagePackStringValue
 ///
 /// An ordinary language pack string.
 ///
 /// * [value]: String value.
 final class LanguagePackStringValueOrdinary extends LanguagePackStringValue {
-  
   /// **LanguagePackStringValueOrdinary** *(languagePackStringValueOrdinary)* - child of LanguagePackStringValue
   ///
   /// An ordinary language pack string.
@@ -67,7 +64,7 @@ final class LanguagePackStringValueOrdinary extends LanguagePackStringValue {
     this.extra,
     this.clientId,
   });
-  
+
   /// String value
   final String value;
 
@@ -78,23 +75,23 @@ final class LanguagePackStringValueOrdinary extends LanguagePackStringValue {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory LanguagePackStringValueOrdinary.fromJson(Map<String, dynamic> json) => LanguagePackStringValueOrdinary(
-    value: json['value'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory LanguagePackStringValueOrdinary.fromJson(Map<String, dynamic> json) =>
+      LanguagePackStringValueOrdinary(
+        value: json['value'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "value": value,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -105,11 +102,12 @@ final class LanguagePackStringValueOrdinary extends LanguagePackStringValue {
     String? value,
     dynamic extra,
     int? clientId,
-  }) => LanguagePackStringValueOrdinary(
-    value: value ?? this.value,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      LanguagePackStringValueOrdinary(
+        value: value ?? this.value,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'languagePackStringValueOrdinary';
@@ -123,7 +121,6 @@ final class LanguagePackStringValueOrdinary extends LanguagePackStringValue {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **LanguagePackStringValuePluralized** *(languagePackStringValuePluralized)* - child of LanguagePackStringValue
 ///
 /// A language pack string which has different forms based on the number of some object it mentions. See https://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html for more information.
@@ -135,7 +132,6 @@ final class LanguagePackStringValueOrdinary extends LanguagePackStringValue {
 /// * [manyValue]: Value for many objects.
 /// * [otherValue]: Default value.
 final class LanguagePackStringValuePluralized extends LanguagePackStringValue {
-  
   /// **LanguagePackStringValuePluralized** *(languagePackStringValuePluralized)* - child of LanguagePackStringValue
   ///
   /// A language pack string which has different forms based on the number of some object it mentions. See https://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html for more information.
@@ -156,7 +152,7 @@ final class LanguagePackStringValuePluralized extends LanguagePackStringValue {
     this.extra,
     this.clientId,
   });
-  
+
   /// Value for zero objects
   final String zeroValue;
 
@@ -182,33 +178,34 @@ final class LanguagePackStringValuePluralized extends LanguagePackStringValue {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory LanguagePackStringValuePluralized.fromJson(Map<String, dynamic> json) => LanguagePackStringValuePluralized(
-    zeroValue: json['zero_value'],
-    oneValue: json['one_value'],
-    twoValue: json['two_value'],
-    fewValue: json['few_value'],
-    manyValue: json['many_value'],
-    otherValue: json['other_value'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory LanguagePackStringValuePluralized.fromJson(
+          Map<String, dynamic> json) =>
+      LanguagePackStringValuePluralized(
+        zeroValue: json['zero_value'],
+        oneValue: json['one_value'],
+        twoValue: json['two_value'],
+        fewValue: json['few_value'],
+        manyValue: json['many_value'],
+        otherValue: json['other_value'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "zero_value": zeroValue,
       "one_value": oneValue,
       "two_value": twoValue,
       "few_value": fewValue,
       "many_value": manyValue,
       "other_value": otherValue,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -229,16 +226,17 @@ final class LanguagePackStringValuePluralized extends LanguagePackStringValue {
     String? otherValue,
     dynamic extra,
     int? clientId,
-  }) => LanguagePackStringValuePluralized(
-    zeroValue: zeroValue ?? this.zeroValue,
-    oneValue: oneValue ?? this.oneValue,
-    twoValue: twoValue ?? this.twoValue,
-    fewValue: fewValue ?? this.fewValue,
-    manyValue: manyValue ?? this.manyValue,
-    otherValue: otherValue ?? this.otherValue,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      LanguagePackStringValuePluralized(
+        zeroValue: zeroValue ?? this.zeroValue,
+        oneValue: oneValue ?? this.oneValue,
+        twoValue: twoValue ?? this.twoValue,
+        fewValue: fewValue ?? this.fewValue,
+        manyValue: manyValue ?? this.manyValue,
+        otherValue: otherValue ?? this.otherValue,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'languagePackStringValuePluralized';
@@ -252,12 +250,10 @@ final class LanguagePackStringValuePluralized extends LanguagePackStringValue {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **LanguagePackStringValueDeleted** *(languagePackStringValueDeleted)* - child of LanguagePackStringValue
 ///
 /// A deleted language pack string, the value must be taken from the built-in English language pack.
 final class LanguagePackStringValueDeleted extends LanguagePackStringValue {
-  
   /// **LanguagePackStringValueDeleted** *(languagePackStringValueDeleted)* - child of LanguagePackStringValue
   ///
   /// A deleted language pack string, the value must be taken from the built-in English language pack.
@@ -265,7 +261,7 @@ final class LanguagePackStringValueDeleted extends LanguagePackStringValue {
     this.extra,
     this.clientId,
   });
-  
+
   /// [extra] callback sign
   @override
   final dynamic extra;
@@ -273,31 +269,32 @@ final class LanguagePackStringValueDeleted extends LanguagePackStringValue {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory LanguagePackStringValueDeleted.fromJson(Map<String, dynamic> json) => LanguagePackStringValueDeleted(
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory LanguagePackStringValueDeleted.fromJson(Map<String, dynamic> json) =>
+      LanguagePackStringValueDeleted(
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
   LanguagePackStringValueDeleted copyWith({
     dynamic extra,
     int? clientId,
-  }) => LanguagePackStringValueDeleted(
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      LanguagePackStringValueDeleted(
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'languagePackStringValueDeleted';

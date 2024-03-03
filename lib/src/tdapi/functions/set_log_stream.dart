@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetLogStream extends TdFunction {
-  
   /// **SetLogStream** *(setLogStream)* - TDLib function
   ///
   /// Sets new log stream for internal logging of TDLib. Can be called synchronously.
@@ -19,19 +18,19 @@ final class SetLogStream extends TdFunction {
   const SetLogStream({
     required this.logStream,
   });
-  
+
   /// New log stream
   final LogStream logStream;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "log_stream": logStream.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class SetLogStream extends TdFunction {
   /// * [log_stream]: New log stream
   SetLogStream copyWith({
     LogStream? logStream,
-  }) => SetLogStream(
-    logStream: logStream ?? this.logStream,
-  );
+  }) =>
+      SetLogStream(
+        logStream: logStream ?? this.logStream,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setLogStream';

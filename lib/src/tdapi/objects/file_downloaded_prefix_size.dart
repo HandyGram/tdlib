@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [size]: The prefix size, in bytes.
 final class FileDownloadedPrefixSize extends TdObject {
-  
   /// **FileDownloadedPrefixSize** *(fileDownloadedPrefixSize)* - basic class
   ///
   /// Contains size of downloaded prefix of a file.
@@ -17,7 +16,7 @@ final class FileDownloadedPrefixSize extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// The prefix size, in bytes
   final int size;
 
@@ -28,23 +27,23 @@ final class FileDownloadedPrefixSize extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory FileDownloadedPrefixSize.fromJson(Map<String, dynamic> json) => FileDownloadedPrefixSize(
-    size: json['size'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory FileDownloadedPrefixSize.fromJson(Map<String, dynamic> json) =>
+      FileDownloadedPrefixSize(
+        size: json['size'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "size": size,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +53,12 @@ final class FileDownloadedPrefixSize extends TdObject {
     int? size,
     dynamic extra,
     int? clientId,
-  }) => FileDownloadedPrefixSize(
-    size: size ?? this.size,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      FileDownloadedPrefixSize(
+        size: size ?? this.size,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'fileDownloadedPrefixSize';

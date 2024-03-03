@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [FormattedText] is returned on completion.
 final class GetMarkdownText extends TdFunction {
-  
   /// **GetMarkdownText** *(getMarkdownText)* - TDLib function
   ///
   /// Replaces text entities with Markdown formatting in a human-friendly format. Entities that can't be represented in Markdown unambiguously are kept as is. Can be called synchronously.
@@ -19,19 +18,19 @@ final class GetMarkdownText extends TdFunction {
   const GetMarkdownText({
     required this.text,
   });
-  
+
   /// The text
   final FormattedText text;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "text": text.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetMarkdownText extends TdFunction {
   /// * [text]: The text
   GetMarkdownText copyWith({
     FormattedText? text,
-  }) => GetMarkdownText(
-    text: text ?? this.text,
-  );
+  }) =>
+      GetMarkdownText(
+        text: text ?? this.text,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getMarkdownText';

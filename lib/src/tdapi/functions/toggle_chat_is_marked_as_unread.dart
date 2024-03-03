@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ToggleChatIsMarkedAsUnread extends TdFunction {
-  
   /// **ToggleChatIsMarkedAsUnread** *(toggleChatIsMarkedAsUnread)* - TDLib function
   ///
   /// Changes the marked as unread state of a chat.
@@ -22,36 +21,37 @@ final class ToggleChatIsMarkedAsUnread extends TdFunction {
     required this.chatId,
     required this.isMarkedAsUnread,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// New value of is_marked_as_unread
   final bool isMarkedAsUnread;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "is_marked_as_unread": isMarkedAsUnread,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [is_marked_as_unread]: New value of is_marked_as_unread
   ToggleChatIsMarkedAsUnread copyWith({
     int? chatId,
     bool? isMarkedAsUnread,
-  }) => ToggleChatIsMarkedAsUnread(
-    chatId: chatId ?? this.chatId,
-    isMarkedAsUnread: isMarkedAsUnread ?? this.isMarkedAsUnread,
-  );
+  }) =>
+      ToggleChatIsMarkedAsUnread(
+        chatId: chatId ?? this.chatId,
+        isMarkedAsUnread: isMarkedAsUnread ?? this.isMarkedAsUnread,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'toggleChatIsMarkedAsUnread';

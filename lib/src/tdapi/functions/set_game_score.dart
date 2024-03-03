@@ -13,7 +13,6 @@ part of '../tdapi.dart';
 ///
 /// [Message] is returned on completion.
 final class SetGameScore extends TdFunction {
-  
   /// **SetGameScore** *(setGameScore)* - TDLib function
   ///
   /// Updates the game score of the specified user in the game; for bots only.
@@ -34,7 +33,7 @@ final class SetGameScore extends TdFunction {
     required this.score,
     required this.force,
   });
-  
+
   /// The chat to which the message with the game belongs
   final int chatId;
 
@@ -52,12 +51,12 @@ final class SetGameScore extends TdFunction {
 
   /// Pass true to update the score even if it decreases. If the score is 0, the user will be deleted from the high score table
   final bool force;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "edit_message": editMessage,
@@ -65,8 +64,8 @@ final class SetGameScore extends TdFunction {
       "score": score,
       "force": force,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -84,14 +83,15 @@ final class SetGameScore extends TdFunction {
     int? userId,
     int? score,
     bool? force,
-  }) => SetGameScore(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    editMessage: editMessage ?? this.editMessage,
-    userId: userId ?? this.userId,
-    score: score ?? this.score,
-    force: force ?? this.force,
-  );
+  }) =>
+      SetGameScore(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        editMessage: editMessage ?? this.editMessage,
+        userId: userId ?? this.userId,
+        score: score ?? this.score,
+        force: force ?? this.force,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setGameScore';

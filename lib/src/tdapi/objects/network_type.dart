@@ -4,20 +4,19 @@ part of '../tdapi.dart';
 ///
 /// Represents the type of a network.
 sealed class NetworkType extends TdObject {
-  
   /// **NetworkType** *(networkType)* - parent
   ///
   /// Represents the type of a network.
   const NetworkType();
-  
+
   /// a NetworkType return type can be :
   /// * [NetworkTypeNone]
   /// * [NetworkTypeMobile]
   /// * [NetworkTypeMobileRoaming]
   /// * [NetworkTypeWiFi]
   /// * [NetworkTypeOther]
-  factory NetworkType.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory NetworkType.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case NetworkTypeNone.defaultObjectId:
         return NetworkTypeNone.fromJson(json);
       case NetworkTypeMobile.defaultObjectId:
@@ -35,7 +34,7 @@ sealed class NetworkType extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -55,27 +54,26 @@ sealed class NetworkType extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **NetworkTypeNone** *(networkTypeNone)* - child of NetworkType
 ///
 /// The network is not available.
 final class NetworkTypeNone extends NetworkType {
-  
   /// **NetworkTypeNone** *(networkTypeNone)* - child of NetworkType
   ///
   /// The network is not available.
   const NetworkTypeNone();
-  
+
   /// Parse from a json
-  factory NetworkTypeNone.fromJson(Map<String, dynamic> json) => const NetworkTypeNone();
-  
+  factory NetworkTypeNone.fromJson(Map<String, dynamic> json) =>
+      const NetworkTypeNone();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -93,27 +91,26 @@ final class NetworkTypeNone extends NetworkType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **NetworkTypeMobile** *(networkTypeMobile)* - child of NetworkType
 ///
 /// A mobile network.
 final class NetworkTypeMobile extends NetworkType {
-  
   /// **NetworkTypeMobile** *(networkTypeMobile)* - child of NetworkType
   ///
   /// A mobile network.
   const NetworkTypeMobile();
-  
+
   /// Parse from a json
-  factory NetworkTypeMobile.fromJson(Map<String, dynamic> json) => const NetworkTypeMobile();
-  
+  factory NetworkTypeMobile.fromJson(Map<String, dynamic> json) =>
+      const NetworkTypeMobile();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -131,27 +128,26 @@ final class NetworkTypeMobile extends NetworkType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **NetworkTypeMobileRoaming** *(networkTypeMobileRoaming)* - child of NetworkType
 ///
 /// A mobile roaming network.
 final class NetworkTypeMobileRoaming extends NetworkType {
-  
   /// **NetworkTypeMobileRoaming** *(networkTypeMobileRoaming)* - child of NetworkType
   ///
   /// A mobile roaming network.
   const NetworkTypeMobileRoaming();
-  
+
   /// Parse from a json
-  factory NetworkTypeMobileRoaming.fromJson(Map<String, dynamic> json) => const NetworkTypeMobileRoaming();
-  
+  factory NetworkTypeMobileRoaming.fromJson(Map<String, dynamic> json) =>
+      const NetworkTypeMobileRoaming();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -169,27 +165,26 @@ final class NetworkTypeMobileRoaming extends NetworkType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **NetworkTypeWiFi** *(networkTypeWiFi)* - child of NetworkType
 ///
 /// A Wi-Fi network.
 final class NetworkTypeWiFi extends NetworkType {
-  
   /// **NetworkTypeWiFi** *(networkTypeWiFi)* - child of NetworkType
   ///
   /// A Wi-Fi network.
   const NetworkTypeWiFi();
-  
+
   /// Parse from a json
-  factory NetworkTypeWiFi.fromJson(Map<String, dynamic> json) => const NetworkTypeWiFi();
-  
+  factory NetworkTypeWiFi.fromJson(Map<String, dynamic> json) =>
+      const NetworkTypeWiFi();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -207,27 +202,26 @@ final class NetworkTypeWiFi extends NetworkType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **NetworkTypeOther** *(networkTypeOther)* - child of NetworkType
 ///
 /// A different network type (e.g., Ethernet network).
 final class NetworkTypeOther extends NetworkType {
-  
   /// **NetworkTypeOther** *(networkTypeOther)* - child of NetworkType
   ///
   /// A different network type (e.g., Ethernet network).
   const NetworkTypeOther();
-  
+
   /// Parse from a json
-  factory NetworkTypeOther.fromJson(Map<String, dynamic> json) => const NetworkTypeOther();
-  
+  factory NetworkTypeOther.fromJson(Map<String, dynamic> json) =>
+      const NetworkTypeOther();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override

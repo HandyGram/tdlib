@@ -14,7 +14,6 @@ part of '../tdapi.dart';
 /// * [disablePinnedMessageNotifications]: True, if notifications for incoming pinned messages will be created as for an ordinary unread message.
 /// * [disableMentionNotifications]: True, if notifications for messages with mentions will be created as for an ordinary unread message.
 final class ScopeNotificationSettings extends TdObject {
-  
   /// **ScopeNotificationSettings** *(scopeNotificationSettings)* - basic class
   ///
   /// Contains information about notification settings for several chats.
@@ -41,7 +40,7 @@ final class ScopeNotificationSettings extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Time left before notifications will be unmuted, in seconds
   final int muteFor;
 
@@ -76,28 +75,29 @@ final class ScopeNotificationSettings extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory ScopeNotificationSettings.fromJson(Map<String, dynamic> json) => ScopeNotificationSettings(
-    muteFor: json['mute_for'],
-    soundId: int.parse(json['sound_id']),
-    showPreview: json['show_preview'],
-    useDefaultMuteStories: json['use_default_mute_stories'],
-    muteStories: json['mute_stories'],
-    storySoundId: int.parse(json['story_sound_id']),
-    showStorySender: json['show_story_sender'],
-    disablePinnedMessageNotifications: json['disable_pinned_message_notifications'],
-    disableMentionNotifications: json['disable_mention_notifications'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory ScopeNotificationSettings.fromJson(Map<String, dynamic> json) =>
+      ScopeNotificationSettings(
+        muteFor: json['mute_for'],
+        soundId: int.parse(json['sound_id']),
+        showPreview: json['show_preview'],
+        useDefaultMuteStories: json['use_default_mute_stories'],
+        muteStories: json['mute_stories'],
+        storySoundId: int.parse(json['story_sound_id']),
+        showStorySender: json['show_story_sender'],
+        disablePinnedMessageNotifications:
+            json['disable_pinned_message_notifications'],
+        disableMentionNotifications: json['disable_mention_notifications'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "mute_for": muteFor,
       "sound_id": soundId,
       "show_preview": showPreview,
@@ -107,8 +107,8 @@ final class ScopeNotificationSettings extends TdObject {
       "show_story_sender": showStorySender,
       "disable_pinned_message_notifications": disablePinnedMessageNotifications,
       "disable_mention_notifications": disableMentionNotifications,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -134,19 +134,23 @@ final class ScopeNotificationSettings extends TdObject {
     bool? disableMentionNotifications,
     dynamic extra,
     int? clientId,
-  }) => ScopeNotificationSettings(
-    muteFor: muteFor ?? this.muteFor,
-    soundId: soundId ?? this.soundId,
-    showPreview: showPreview ?? this.showPreview,
-    useDefaultMuteStories: useDefaultMuteStories ?? this.useDefaultMuteStories,
-    muteStories: muteStories ?? this.muteStories,
-    storySoundId: storySoundId ?? this.storySoundId,
-    showStorySender: showStorySender ?? this.showStorySender,
-    disablePinnedMessageNotifications: disablePinnedMessageNotifications ?? this.disablePinnedMessageNotifications,
-    disableMentionNotifications: disableMentionNotifications ?? this.disableMentionNotifications,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      ScopeNotificationSettings(
+        muteFor: muteFor ?? this.muteFor,
+        soundId: soundId ?? this.soundId,
+        showPreview: showPreview ?? this.showPreview,
+        useDefaultMuteStories:
+            useDefaultMuteStories ?? this.useDefaultMuteStories,
+        muteStories: muteStories ?? this.muteStories,
+        storySoundId: storySoundId ?? this.storySoundId,
+        showStorySender: showStorySender ?? this.showStorySender,
+        disablePinnedMessageNotifications: disablePinnedMessageNotifications ??
+            this.disablePinnedMessageNotifications,
+        disableMentionNotifications:
+            disableMentionNotifications ?? this.disableMentionNotifications,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'scopeNotificationSettings';

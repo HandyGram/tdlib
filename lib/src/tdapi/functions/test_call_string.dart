@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [TestString] is returned on completion.
 final class TestCallString extends TdFunction {
-  
   /// **TestCallString** *(testCallString)* - TDLib function
   ///
   /// Returns the received string; for testing only. This is an offline method. Can be called before authorization.
@@ -19,19 +18,19 @@ final class TestCallString extends TdFunction {
   const TestCallString({
     required this.x,
   });
-  
+
   /// String to return
   final String x;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "x": x,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class TestCallString extends TdFunction {
   /// * [x]: String to return
   TestCallString copyWith({
     String? x,
-  }) => TestCallString(
-    x: x ?? this.x,
-  );
+  }) =>
+      TestCallString(
+        x: x ?? this.x,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'testCallString';

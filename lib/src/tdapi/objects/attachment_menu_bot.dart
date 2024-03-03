@@ -28,7 +28,6 @@ part of '../tdapi.dart';
 /// * [iconColor]: Color to highlight selected icon of the bot if appropriate; may be null *(optional)*.
 /// * [webAppPlaceholder]: Default placeholder for opened Web Apps in SVG format; may be null *(optional)*.
 final class AttachmentMenuBot extends TdObject {
-  
   /// **AttachmentMenuBot** *(attachmentMenuBot)* - basic class
   ///
   /// Represents a bot, which can be added to attachment or side menu.
@@ -83,7 +82,7 @@ final class AttachmentMenuBot extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// User identifier of the bot
   final int botUserId;
 
@@ -160,42 +159,64 @@ final class AttachmentMenuBot extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory AttachmentMenuBot.fromJson(Map<String, dynamic> json) => AttachmentMenuBot(
-    botUserId: json['bot_user_id'],
-    supportsSelfChat: json['supports_self_chat'],
-    supportsUserChats: json['supports_user_chats'],
-    supportsBotChats: json['supports_bot_chats'],
-    supportsGroupChats: json['supports_group_chats'],
-    supportsChannelChats: json['supports_channel_chats'],
-    requestWriteAccess: json['request_write_access'],
-    isAdded: json['is_added'],
-    showInAttachmentMenu: json['show_in_attachment_menu'],
-    showInSideMenu: json['show_in_side_menu'],
-    showDisclaimerInSideMenu: json['show_disclaimer_in_side_menu'],
-    name: json['name'],
-    nameColor: json['name_color'] == null ? null : AttachmentMenuBotColor.fromJson(json['name_color']),
-    defaultIcon: json['default_icon'] == null ? null : File.fromJson(json['default_icon']),
-    iosStaticIcon: json['ios_static_icon'] == null ? null : File.fromJson(json['ios_static_icon']),
-    iosAnimatedIcon: json['ios_animated_icon'] == null ? null : File.fromJson(json['ios_animated_icon']),
-    iosSideMenuIcon: json['ios_side_menu_icon'] == null ? null : File.fromJson(json['ios_side_menu_icon']),
-    androidIcon: json['android_icon'] == null ? null : File.fromJson(json['android_icon']),
-    androidSideMenuIcon: json['android_side_menu_icon'] == null ? null : File.fromJson(json['android_side_menu_icon']),
-    macosIcon: json['macos_icon'] == null ? null : File.fromJson(json['macos_icon']),
-    macosSideMenuIcon: json['macos_side_menu_icon'] == null ? null : File.fromJson(json['macos_side_menu_icon']),
-    iconColor: json['icon_color'] == null ? null : AttachmentMenuBotColor.fromJson(json['icon_color']),
-    webAppPlaceholder: json['web_app_placeholder'] == null ? null : File.fromJson(json['web_app_placeholder']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory AttachmentMenuBot.fromJson(Map<String, dynamic> json) =>
+      AttachmentMenuBot(
+        botUserId: json['bot_user_id'],
+        supportsSelfChat: json['supports_self_chat'],
+        supportsUserChats: json['supports_user_chats'],
+        supportsBotChats: json['supports_bot_chats'],
+        supportsGroupChats: json['supports_group_chats'],
+        supportsChannelChats: json['supports_channel_chats'],
+        requestWriteAccess: json['request_write_access'],
+        isAdded: json['is_added'],
+        showInAttachmentMenu: json['show_in_attachment_menu'],
+        showInSideMenu: json['show_in_side_menu'],
+        showDisclaimerInSideMenu: json['show_disclaimer_in_side_menu'],
+        name: json['name'],
+        nameColor: json['name_color'] == null
+            ? null
+            : AttachmentMenuBotColor.fromJson(json['name_color']),
+        defaultIcon: json['default_icon'] == null
+            ? null
+            : File.fromJson(json['default_icon']),
+        iosStaticIcon: json['ios_static_icon'] == null
+            ? null
+            : File.fromJson(json['ios_static_icon']),
+        iosAnimatedIcon: json['ios_animated_icon'] == null
+            ? null
+            : File.fromJson(json['ios_animated_icon']),
+        iosSideMenuIcon: json['ios_side_menu_icon'] == null
+            ? null
+            : File.fromJson(json['ios_side_menu_icon']),
+        androidIcon: json['android_icon'] == null
+            ? null
+            : File.fromJson(json['android_icon']),
+        androidSideMenuIcon: json['android_side_menu_icon'] == null
+            ? null
+            : File.fromJson(json['android_side_menu_icon']),
+        macosIcon: json['macos_icon'] == null
+            ? null
+            : File.fromJson(json['macos_icon']),
+        macosSideMenuIcon: json['macos_side_menu_icon'] == null
+            ? null
+            : File.fromJson(json['macos_side_menu_icon']),
+        iconColor: json['icon_color'] == null
+            ? null
+            : AttachmentMenuBotColor.fromJson(json['icon_color']),
+        webAppPlaceholder: json['web_app_placeholder'] == null
+            ? null
+            : File.fromJson(json['web_app_placeholder']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "bot_user_id": botUserId,
       "supports_self_chat": supportsSelfChat,
       "supports_user_chats": supportsUserChats,
@@ -219,8 +240,8 @@ final class AttachmentMenuBot extends TdObject {
       "macos_side_menu_icon": macosSideMenuIcon?.toJson(),
       "icon_color": iconColor?.toJson(),
       "web_app_placeholder": webAppPlaceholder?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -274,33 +295,35 @@ final class AttachmentMenuBot extends TdObject {
     File? webAppPlaceholder,
     dynamic extra,
     int? clientId,
-  }) => AttachmentMenuBot(
-    botUserId: botUserId ?? this.botUserId,
-    supportsSelfChat: supportsSelfChat ?? this.supportsSelfChat,
-    supportsUserChats: supportsUserChats ?? this.supportsUserChats,
-    supportsBotChats: supportsBotChats ?? this.supportsBotChats,
-    supportsGroupChats: supportsGroupChats ?? this.supportsGroupChats,
-    supportsChannelChats: supportsChannelChats ?? this.supportsChannelChats,
-    requestWriteAccess: requestWriteAccess ?? this.requestWriteAccess,
-    isAdded: isAdded ?? this.isAdded,
-    showInAttachmentMenu: showInAttachmentMenu ?? this.showInAttachmentMenu,
-    showInSideMenu: showInSideMenu ?? this.showInSideMenu,
-    showDisclaimerInSideMenu: showDisclaimerInSideMenu ?? this.showDisclaimerInSideMenu,
-    name: name ?? this.name,
-    nameColor: nameColor ?? this.nameColor,
-    defaultIcon: defaultIcon ?? this.defaultIcon,
-    iosStaticIcon: iosStaticIcon ?? this.iosStaticIcon,
-    iosAnimatedIcon: iosAnimatedIcon ?? this.iosAnimatedIcon,
-    iosSideMenuIcon: iosSideMenuIcon ?? this.iosSideMenuIcon,
-    androidIcon: androidIcon ?? this.androidIcon,
-    androidSideMenuIcon: androidSideMenuIcon ?? this.androidSideMenuIcon,
-    macosIcon: macosIcon ?? this.macosIcon,
-    macosSideMenuIcon: macosSideMenuIcon ?? this.macosSideMenuIcon,
-    iconColor: iconColor ?? this.iconColor,
-    webAppPlaceholder: webAppPlaceholder ?? this.webAppPlaceholder,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      AttachmentMenuBot(
+        botUserId: botUserId ?? this.botUserId,
+        supportsSelfChat: supportsSelfChat ?? this.supportsSelfChat,
+        supportsUserChats: supportsUserChats ?? this.supportsUserChats,
+        supportsBotChats: supportsBotChats ?? this.supportsBotChats,
+        supportsGroupChats: supportsGroupChats ?? this.supportsGroupChats,
+        supportsChannelChats: supportsChannelChats ?? this.supportsChannelChats,
+        requestWriteAccess: requestWriteAccess ?? this.requestWriteAccess,
+        isAdded: isAdded ?? this.isAdded,
+        showInAttachmentMenu: showInAttachmentMenu ?? this.showInAttachmentMenu,
+        showInSideMenu: showInSideMenu ?? this.showInSideMenu,
+        showDisclaimerInSideMenu:
+            showDisclaimerInSideMenu ?? this.showDisclaimerInSideMenu,
+        name: name ?? this.name,
+        nameColor: nameColor ?? this.nameColor,
+        defaultIcon: defaultIcon ?? this.defaultIcon,
+        iosStaticIcon: iosStaticIcon ?? this.iosStaticIcon,
+        iosAnimatedIcon: iosAnimatedIcon ?? this.iosAnimatedIcon,
+        iosSideMenuIcon: iosSideMenuIcon ?? this.iosSideMenuIcon,
+        androidIcon: androidIcon ?? this.androidIcon,
+        androidSideMenuIcon: androidSideMenuIcon ?? this.androidSideMenuIcon,
+        macosIcon: macosIcon ?? this.macosIcon,
+        macosSideMenuIcon: macosSideMenuIcon ?? this.macosSideMenuIcon,
+        iconColor: iconColor ?? this.iconColor,
+        webAppPlaceholder: webAppPlaceholder ?? this.webAppPlaceholder,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'attachmentMenuBot';

@@ -7,7 +7,6 @@ part of '../tdapi.dart';
 /// * [url]: URL.
 /// * [type]: Type of the URL.
 final class TMeUrl extends TdObject {
-  
   /// **TMeUrl** *(tMeUrl)* - basic class
   ///
   /// Represents a URL linking to an internal Telegram entity.
@@ -18,42 +17,42 @@ final class TMeUrl extends TdObject {
     required this.url,
     required this.type,
   });
-  
-  /// URL 
+
+  /// URL
   final String url;
 
   /// Type of the URL
   final TMeUrlType type;
-  
+
   /// Parse from a json
   factory TMeUrl.fromJson(Map<String, dynamic> json) => TMeUrl(
-    url: json['url'],
-    type: TMeUrlType.fromJson(json['type']),
-  );
-  
-  
+        url: json['url'],
+        type: TMeUrlType.fromJson(json['type']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "url": url,
       "type": type.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [url]: URL 
+  /// * [url]: URL
   /// * [type]: Type of the URL
   TMeUrl copyWith({
     String? url,
     TMeUrlType? type,
-  }) => TMeUrl(
-    url: url ?? this.url,
-    type: type ?? this.type,
-  );
+  }) =>
+      TMeUrl(
+        url: url ?? this.url,
+        type: type ?? this.type,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'tMeUrl';

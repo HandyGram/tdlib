@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class DeleteFile extends TdFunction {
-  
   /// **DeleteFile** *(deleteFile)* - TDLib function
   ///
   /// Deletes a file from the TDLib file cache.
@@ -19,19 +18,19 @@ final class DeleteFile extends TdFunction {
   const DeleteFile({
     required this.fileId,
   });
-  
+
   /// Identifier of the file to delete
   final int fileId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "file_id": fileId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class DeleteFile extends TdFunction {
   /// * [file_id]: Identifier of the file to delete
   DeleteFile copyWith({
     int? fileId,
-  }) => DeleteFile(
-    fileId: fileId ?? this.fileId,
-  );
+  }) =>
+      DeleteFile(
+        fileId: fileId ?? this.fileId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'deleteFile';

@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class TestGetDifference extends TdFunction {
-  
   /// **TestGetDifference** *(testGetDifference)* - TDLib function
   ///
   /// Forces an updates.getDifference call to the Telegram servers; for testing only.
   ///
   /// [Ok] is returned on completion.
   const TestGetDifference();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   TestGetDifference copyWith() => const TestGetDifference();

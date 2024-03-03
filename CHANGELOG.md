@@ -1,3 +1,7 @@
+## 2.3.2
+* Added formatting to generator
+* Improved documentation
+
 ## 2.3.1
 * Statically relinked TDLib
 

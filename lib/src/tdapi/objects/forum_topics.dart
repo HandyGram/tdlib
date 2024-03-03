@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 /// * [nextOffsetMessageId]: Offset message identifier for the next getForumTopics request.
 /// * [nextOffsetMessageThreadId]: Offset message thread identifier for the next getForumTopics request.
 final class ForumTopics extends TdObject {
-  
   /// **ForumTopics** *(forumTopics)* - basic class
   ///
   /// Describes a list of forum topics.
@@ -29,7 +28,7 @@ final class ForumTopics extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Approximate total number of forum topics found
   final int totalCount;
 
@@ -52,31 +51,32 @@ final class ForumTopics extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory ForumTopics.fromJson(Map<String, dynamic> json) => ForumTopics(
-    totalCount: json['total_count'],
-    topics: List<ForumTopic>.from((json['topics'] ?? []).map((item) => ForumTopic.fromJson(item)).toList()),
-    nextOffsetDate: json['next_offset_date'],
-    nextOffsetMessageId: json['next_offset_message_id'],
-    nextOffsetMessageThreadId: json['next_offset_message_thread_id'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        totalCount: json['total_count'],
+        topics: List<ForumTopic>.from((json['topics'] ?? [])
+            .map((item) => ForumTopic.fromJson(item))
+            .toList()),
+        nextOffsetDate: json['next_offset_date'],
+        nextOffsetMessageId: json['next_offset_message_id'],
+        nextOffsetMessageThreadId: json['next_offset_message_thread_id'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "total_count": totalCount,
       "topics": topics.map((i) => i.toJson()).toList(),
       "next_offset_date": nextOffsetDate,
       "next_offset_message_id": nextOffsetMessageId,
       "next_offset_message_thread_id": nextOffsetMessageThreadId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -94,15 +94,17 @@ final class ForumTopics extends TdObject {
     int? nextOffsetMessageThreadId,
     dynamic extra,
     int? clientId,
-  }) => ForumTopics(
-    totalCount: totalCount ?? this.totalCount,
-    topics: topics ?? this.topics,
-    nextOffsetDate: nextOffsetDate ?? this.nextOffsetDate,
-    nextOffsetMessageId: nextOffsetMessageId ?? this.nextOffsetMessageId,
-    nextOffsetMessageThreadId: nextOffsetMessageThreadId ?? this.nextOffsetMessageThreadId,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      ForumTopics(
+        totalCount: totalCount ?? this.totalCount,
+        topics: topics ?? this.topics,
+        nextOffsetDate: nextOffsetDate ?? this.nextOffsetDate,
+        nextOffsetMessageId: nextOffsetMessageId ?? this.nextOffsetMessageId,
+        nextOffsetMessageThreadId:
+            nextOffsetMessageThreadId ?? this.nextOffsetMessageThreadId,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'forumTopics';

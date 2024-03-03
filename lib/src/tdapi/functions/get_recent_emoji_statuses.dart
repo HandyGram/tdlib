@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [EmojiStatuses] is returned on completion.
 final class GetRecentEmojiStatuses extends TdFunction {
-  
   /// **GetRecentEmojiStatuses** *(getRecentEmojiStatuses)* - TDLib function
   ///
   /// Returns recent emoji statuses for self status.
   ///
   /// [EmojiStatuses] is returned on completion.
   const GetRecentEmojiStatuses();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   GetRecentEmojiStatuses copyWith() => const GetRecentEmojiStatuses();

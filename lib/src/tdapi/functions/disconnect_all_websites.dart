@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class DisconnectAllWebsites extends TdFunction {
-  
   /// **DisconnectAllWebsites** *(disconnectAllWebsites)* - TDLib function
   ///
   /// Disconnects all websites from the current user's Telegram account.
   ///
   /// [Ok] is returned on completion.
   const DisconnectAllWebsites();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   DisconnectAllWebsites copyWith() => const DisconnectAllWebsites();

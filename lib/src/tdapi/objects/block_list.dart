@@ -4,17 +4,16 @@ part of '../tdapi.dart';
 ///
 /// Describes a type of a block list.
 sealed class BlockList extends TdObject {
-  
   /// **BlockList** *(blockList)* - parent
   ///
   /// Describes a type of a block list.
   const BlockList();
-  
+
   /// a BlockList return type can be :
   /// * [BlockListMain]
   /// * [BlockListStories]
-  factory BlockList.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory BlockList.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case BlockListMain.defaultObjectId:
         return BlockListMain.fromJson(json);
       case BlockListStories.defaultObjectId:
@@ -26,7 +25,7 @@ sealed class BlockList extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -46,27 +45,26 @@ sealed class BlockList extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **BlockListMain** *(blockListMain)* - child of BlockList
 ///
 /// The main block list that disallows writing messages to the current user, receiving their status and photo, viewing of stories, and some other actions.
 final class BlockListMain extends BlockList {
-  
   /// **BlockListMain** *(blockListMain)* - child of BlockList
   ///
   /// The main block list that disallows writing messages to the current user, receiving their status and photo, viewing of stories, and some other actions.
   const BlockListMain();
-  
+
   /// Parse from a json
-  factory BlockListMain.fromJson(Map<String, dynamic> json) => const BlockListMain();
-  
+  factory BlockListMain.fromJson(Map<String, dynamic> json) =>
+      const BlockListMain();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -84,27 +82,26 @@ final class BlockListMain extends BlockList {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **BlockListStories** *(blockListStories)* - child of BlockList
 ///
 /// The block list that disallows viewing of stories of the current user.
 final class BlockListStories extends BlockList {
-  
   /// **BlockListStories** *(blockListStories)* - child of BlockList
   ///
   /// The block list that disallows viewing of stories of the current user.
   const BlockListStories();
-  
+
   /// Parse from a json
-  factory BlockListStories.fromJson(Map<String, dynamic> json) => const BlockListStories();
-  
+  factory BlockListStories.fromJson(Map<String, dynamic> json) =>
+      const BlockListStories();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override

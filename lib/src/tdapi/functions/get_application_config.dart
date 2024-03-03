@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [JsonValue] is returned on completion.
 final class GetApplicationConfig extends TdFunction {
-  
   /// **GetApplicationConfig** *(getApplicationConfig)* - TDLib function
   ///
   /// Returns application config, provided by the server. Can be called before authorization.
   ///
   /// [JsonValue] is returned on completion.
   const GetApplicationConfig();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   GetApplicationConfig copyWith() => const GetApplicationConfig();

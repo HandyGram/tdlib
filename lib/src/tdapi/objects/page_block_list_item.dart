@@ -7,7 +7,6 @@ part of '../tdapi.dart';
 /// * [label]: Item label.
 /// * [pageBlocks]: Item blocks.
 final class PageBlockListItem extends TdObject {
-  
   /// **PageBlockListItem** *(pageBlockListItem)* - basic class
   ///
   /// Describes an item of a list page block.
@@ -18,42 +17,45 @@ final class PageBlockListItem extends TdObject {
     required this.label,
     required this.pageBlocks,
   });
-  
-  /// Item label 
+
+  /// Item label
   final String label;
 
   /// Item blocks
   final List<PageBlock> pageBlocks;
-  
+
   /// Parse from a json
-  factory PageBlockListItem.fromJson(Map<String, dynamic> json) => PageBlockListItem(
-    label: json['label'],
-    pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? []).map((item) => PageBlock.fromJson(item)).toList()),
-  );
-  
-  
+  factory PageBlockListItem.fromJson(Map<String, dynamic> json) =>
+      PageBlockListItem(
+        label: json['label'],
+        pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? [])
+            .map((item) => PageBlock.fromJson(item))
+            .toList()),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "label": label,
       "page_blocks": pageBlocks.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [label]: Item label 
+  /// * [label]: Item label
   /// * [page_blocks]: Item blocks
   PageBlockListItem copyWith({
     String? label,
     List<PageBlock>? pageBlocks,
-  }) => PageBlockListItem(
-    label: label ?? this.label,
-    pageBlocks: pageBlocks ?? this.pageBlocks,
-  );
+  }) =>
+      PageBlockListItem(
+        label: label ?? this.label,
+        pageBlocks: pageBlocks ?? this.pageBlocks,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'pageBlockListItem';

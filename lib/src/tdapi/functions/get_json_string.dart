@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Text] is returned on completion.
 final class GetJsonString extends TdFunction {
-  
   /// **GetJsonString** *(getJsonString)* - TDLib function
   ///
   /// Converts a JsonValue object to corresponding JSON-serialized string. Can be called synchronously.
@@ -19,19 +18,19 @@ final class GetJsonString extends TdFunction {
   const GetJsonString({
     required this.jsonValue,
   });
-  
+
   /// The JsonValue object
   final JsonValue jsonValue;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "json_value": jsonValue.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetJsonString extends TdFunction {
   /// * [json_value]: The JsonValue object
   GetJsonString copyWith({
     JsonValue? jsonValue,
-  }) => GetJsonString(
-    jsonValue: jsonValue ?? this.jsonValue,
-  );
+  }) =>
+      GetJsonString(
+        jsonValue: jsonValue ?? this.jsonValue,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getJsonString';

@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [ConnectedWebsites] is returned on completion.
 final class GetConnectedWebsites extends TdFunction {
-  
   /// **GetConnectedWebsites** *(getConnectedWebsites)* - TDLib function
   ///
   /// Returns all website where the current user used Telegram to log in.
   ///
   /// [ConnectedWebsites] is returned on completion.
   const GetConnectedWebsites();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   GetConnectedWebsites copyWith() => const GetConnectedWebsites();

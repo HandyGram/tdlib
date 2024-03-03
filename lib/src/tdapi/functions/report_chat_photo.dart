@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ReportChatPhoto extends TdFunction {
-  
   /// **ReportChatPhoto** *(reportChatPhoto)* - TDLib function
   ///
   /// Reports a chat photo to the Telegram moderators. A chat photo can be reported only if chat.can_be_reported.
@@ -28,7 +27,7 @@ final class ReportChatPhoto extends TdFunction {
     required this.reason,
     required this.text,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -40,19 +39,19 @@ final class ReportChatPhoto extends TdFunction {
 
   /// Additional report details; 0-1024 characters
   final String text;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "file_id": fileId,
       "reason": reason.toJson(),
       "text": text,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -66,12 +65,13 @@ final class ReportChatPhoto extends TdFunction {
     int? fileId,
     ReportReason? reason,
     String? text,
-  }) => ReportChatPhoto(
-    chatId: chatId ?? this.chatId,
-    fileId: fileId ?? this.fileId,
-    reason: reason ?? this.reason,
-    text: text ?? this.text,
-  );
+  }) =>
+      ReportChatPhoto(
+        chatId: chatId ?? this.chatId,
+        fileId: fileId ?? this.fileId,
+        reason: reason ?? this.reason,
+        text: text ?? this.text,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'reportChatPhoto';

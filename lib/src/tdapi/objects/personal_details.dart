@@ -15,7 +15,6 @@ part of '../tdapi.dart';
 /// * [countryCode]: A two-letter ISO 3166-1 alpha-2 country code of the user's country.
 /// * [residenceCountryCode]: A two-letter ISO 3166-1 alpha-2 country code of the user's residence country.
 final class PersonalDetails extends TdObject {
-  
   /// **PersonalDetails** *(personalDetails)* - basic class
   ///
   /// Contains the user's personal details.
@@ -42,7 +41,7 @@ final class PersonalDetails extends TdObject {
     required this.countryCode,
     required this.residenceCountryCode,
   });
-  
+
   /// First name of the user written in English; 1-255 characters
   final String firstName;
 
@@ -72,27 +71,27 @@ final class PersonalDetails extends TdObject {
 
   /// A two-letter ISO 3166-1 alpha-2 country code of the user's residence country
   final String residenceCountryCode;
-  
+
   /// Parse from a json
-  factory PersonalDetails.fromJson(Map<String, dynamic> json) => PersonalDetails(
-    firstName: json['first_name'],
-    middleName: json['middle_name'],
-    lastName: json['last_name'],
-    nativeFirstName: json['native_first_name'],
-    nativeMiddleName: json['native_middle_name'],
-    nativeLastName: json['native_last_name'],
-    birthdate: Date.fromJson(json['birthdate']),
-    gender: json['gender'],
-    countryCode: json['country_code'],
-    residenceCountryCode: json['residence_country_code'],
-  );
-  
-  
+  factory PersonalDetails.fromJson(Map<String, dynamic> json) =>
+      PersonalDetails(
+        firstName: json['first_name'],
+        middleName: json['middle_name'],
+        lastName: json['last_name'],
+        nativeFirstName: json['native_first_name'],
+        nativeMiddleName: json['native_middle_name'],
+        nativeLastName: json['native_last_name'],
+        birthdate: Date.fromJson(json['birthdate']),
+        gender: json['gender'],
+        countryCode: json['country_code'],
+        residenceCountryCode: json['residence_country_code'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "first_name": firstName,
       "middle_name": middleName,
       "last_name": lastName,
@@ -103,8 +102,8 @@ final class PersonalDetails extends TdObject {
       "gender": gender,
       "country_code": countryCode,
       "residence_country_code": residenceCountryCode,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -130,18 +129,19 @@ final class PersonalDetails extends TdObject {
     String? gender,
     String? countryCode,
     String? residenceCountryCode,
-  }) => PersonalDetails(
-    firstName: firstName ?? this.firstName,
-    middleName: middleName ?? this.middleName,
-    lastName: lastName ?? this.lastName,
-    nativeFirstName: nativeFirstName ?? this.nativeFirstName,
-    nativeMiddleName: nativeMiddleName ?? this.nativeMiddleName,
-    nativeLastName: nativeLastName ?? this.nativeLastName,
-    birthdate: birthdate ?? this.birthdate,
-    gender: gender ?? this.gender,
-    countryCode: countryCode ?? this.countryCode,
-    residenceCountryCode: residenceCountryCode ?? this.residenceCountryCode,
-  );
+  }) =>
+      PersonalDetails(
+        firstName: firstName ?? this.firstName,
+        middleName: middleName ?? this.middleName,
+        lastName: lastName ?? this.lastName,
+        nativeFirstName: nativeFirstName ?? this.nativeFirstName,
+        nativeMiddleName: nativeMiddleName ?? this.nativeMiddleName,
+        nativeLastName: nativeLastName ?? this.nativeLastName,
+        birthdate: birthdate ?? this.birthdate,
+        gender: gender ?? this.gender,
+        countryCode: countryCode ?? this.countryCode,
+        residenceCountryCode: residenceCountryCode ?? this.residenceCountryCode,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'personalDetails';

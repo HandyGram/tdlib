@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [BotMenuButton] is returned on completion.
 final class GetMenuButton extends TdFunction {
-  
   /// **GetMenuButton** *(getMenuButton)* - TDLib function
   ///
   /// Returns menu button set by the bot for the given user; for bots only.
@@ -19,19 +18,19 @@ final class GetMenuButton extends TdFunction {
   const GetMenuButton({
     required this.userId,
   });
-  
+
   /// Identifier of the user or 0 to get the default menu button
   final int userId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "user_id": userId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetMenuButton extends TdFunction {
   /// * [user_id]: Identifier of the user or 0 to get the default menu button
   GetMenuButton copyWith({
     int? userId,
-  }) => GetMenuButton(
-    userId: userId ?? this.userId,
-  );
+  }) =>
+      GetMenuButton(
+        userId: userId ?? this.userId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getMenuButton';

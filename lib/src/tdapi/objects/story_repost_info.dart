@@ -7,7 +7,6 @@ part of '../tdapi.dart';
 /// * [origin]: Origin of the story that was reposted.
 /// * [isContentModified]: True, if story content was modified during reposting; otherwise, story wasn't modified.
 final class StoryRepostInfo extends TdObject {
-  
   /// **StoryRepostInfo** *(storyRepostInfo)* - basic class
   ///
   /// Contains information about original story that was reposted.
@@ -18,29 +17,29 @@ final class StoryRepostInfo extends TdObject {
     required this.origin,
     required this.isContentModified,
   });
-  
+
   /// Origin of the story that was reposted
   final StoryOrigin origin;
 
   /// True, if story content was modified during reposting; otherwise, story wasn't modified
   final bool isContentModified;
-  
+
   /// Parse from a json
-  factory StoryRepostInfo.fromJson(Map<String, dynamic> json) => StoryRepostInfo(
-    origin: StoryOrigin.fromJson(json['origin']),
-    isContentModified: json['is_content_modified'],
-  );
-  
-  
+  factory StoryRepostInfo.fromJson(Map<String, dynamic> json) =>
+      StoryRepostInfo(
+        origin: StoryOrigin.fromJson(json['origin']),
+        isContentModified: json['is_content_modified'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "origin": origin.toJson(),
       "is_content_modified": isContentModified,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -50,10 +49,11 @@ final class StoryRepostInfo extends TdObject {
   StoryRepostInfo copyWith({
     StoryOrigin? origin,
     bool? isContentModified,
-  }) => StoryRepostInfo(
-    origin: origin ?? this.origin,
-    isContentModified: isContentModified ?? this.isContentModified,
-  );
+  }) =>
+      StoryRepostInfo(
+        origin: origin ?? this.origin,
+        isContentModified: isContentModified ?? this.isContentModified,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'storyRepostInfo';

@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Chat] is returned on completion.
 final class GetChat extends TdFunction {
-  
   /// **GetChat** *(getChat)* - TDLib function
   ///
   /// Returns information about a chat by its identifier; this is an offline request if the current user is not a bot.
@@ -19,19 +18,19 @@ final class GetChat extends TdFunction {
   const GetChat({
     required this.chatId,
   });
-  
+
   /// Chat identifier
   final int chatId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetChat extends TdFunction {
   /// * [chat_id]: Chat identifier
   GetChat copyWith({
     int? chatId,
-  }) => GetChat(
-    chatId: chatId ?? this.chatId,
-  );
+  }) =>
+      GetChat(
+        chatId: chatId ?? this.chatId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getChat';

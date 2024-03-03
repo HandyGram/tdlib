@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [Proxies] is returned on completion.
 final class GetProxies extends TdFunction {
-  
   /// **GetProxies** *(getProxies)* - TDLib function
   ///
   /// Returns list of proxies that are currently set up. Can be called before authorization.
   ///
   /// [Proxies] is returned on completion.
   const GetProxies();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   GetProxies copyWith() => const GetProxies();

@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class RemoveContacts extends TdFunction {
-  
   /// **RemoveContacts** *(removeContacts)* - TDLib function
   ///
   /// Removes users from the contact list.
@@ -19,19 +18,19 @@ final class RemoveContacts extends TdFunction {
   const RemoveContacts({
     required this.userIds,
   });
-  
+
   /// Identifiers of users to be deleted
   final List<int> userIds;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "user_ids": userIds.map((i) => i).toList(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class RemoveContacts extends TdFunction {
   /// * [user_ids]: Identifiers of users to be deleted
   RemoveContacts copyWith({
     List<int>? userIds,
-  }) => RemoveContacts(
-    userIds: userIds ?? this.userIds,
-  );
+  }) =>
+      RemoveContacts(
+        userIds: userIds ?? this.userIds,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'removeContacts';

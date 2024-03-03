@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ReadAllChatReactions extends TdFunction {
-  
   /// **ReadAllChatReactions** *(readAllChatReactions)* - TDLib function
   ///
   /// Marks all reactions in a chat or a forum topic as read.
@@ -19,19 +18,19 @@ final class ReadAllChatReactions extends TdFunction {
   const ReadAllChatReactions({
     required this.chatId,
   });
-  
+
   /// Chat identifier
   final int chatId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class ReadAllChatReactions extends TdFunction {
   /// * [chat_id]: Chat identifier
   ReadAllChatReactions copyWith({
     int? chatId,
-  }) => ReadAllChatReactions(
-    chatId: chatId ?? this.chatId,
-  );
+  }) =>
+      ReadAllChatReactions(
+        chatId: chatId ?? this.chatId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'readAllChatReactions';

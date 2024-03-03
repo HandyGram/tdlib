@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [MessageLink] is returned on completion.
 final class GetForumTopicLink extends TdFunction {
-  
   /// **GetForumTopicLink** *(getForumTopicLink)* - TDLib function
   ///
   /// Returns an HTTPS link to a topic in a forum chat. This is an offline request.
@@ -22,36 +21,37 @@ final class GetForumTopicLink extends TdFunction {
     required this.chatId,
     required this.messageThreadId,
   });
-  
-  /// Identifier of the chat 
+
+  /// Identifier of the chat
   final int chatId;
 
   /// Message thread identifier of the forum topic
   final int messageThreadId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_thread_id": messageThreadId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Identifier of the chat 
+  /// * [chat_id]: Identifier of the chat
   /// * [message_thread_id]: Message thread identifier of the forum topic
   GetForumTopicLink copyWith({
     int? chatId,
     int? messageThreadId,
-  }) => GetForumTopicLink(
-    chatId: chatId ?? this.chatId,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-  );
+  }) =>
+      GetForumTopicLink(
+        chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getForumTopicLink';

@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [HttpUrl] is returned on completion.
 final class GetExternalLink extends TdFunction {
-  
   /// **GetExternalLink** *(getExternalLink)* - TDLib function
   ///
   /// Returns an HTTP URL which can be used to automatically authorize the current user on a website after clicking an HTTP link. Use the method getExternalLinkInfo to find whether a prior user confirmation is needed.
@@ -22,23 +21,23 @@ final class GetExternalLink extends TdFunction {
     required this.link,
     required this.allowWriteAccess,
   });
-  
+
   /// The HTTP link
   final String link;
 
   /// Pass true if the current user allowed the bot, returned in getExternalLinkInfo, to send them messages
   final bool allowWriteAccess;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "link": link,
       "allow_write_access": allowWriteAccess,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class GetExternalLink extends TdFunction {
   GetExternalLink copyWith({
     String? link,
     bool? allowWriteAccess,
-  }) => GetExternalLink(
-    link: link ?? this.link,
-    allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
-  );
+  }) =>
+      GetExternalLink(
+        link: link ?? this.link,
+        allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getExternalLink';

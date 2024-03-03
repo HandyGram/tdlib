@@ -4,17 +4,16 @@ part of '../tdapi.dart';
 ///
 /// Describes type of a sticker, which was used to create a chat photo.
 sealed class ChatPhotoStickerType extends TdObject {
-  
   /// **ChatPhotoStickerType** *(chatPhotoStickerType)* - parent
   ///
   /// Describes type of a sticker, which was used to create a chat photo.
   const ChatPhotoStickerType();
-  
+
   /// a ChatPhotoStickerType return type can be :
   /// * [ChatPhotoStickerTypeRegularOrMask]
   /// * [ChatPhotoStickerTypeCustomEmoji]
-  factory ChatPhotoStickerType.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory ChatPhotoStickerType.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case ChatPhotoStickerTypeRegularOrMask.defaultObjectId:
         return ChatPhotoStickerTypeRegularOrMask.fromJson(json);
       case ChatPhotoStickerTypeCustomEmoji.defaultObjectId:
@@ -26,7 +25,7 @@ sealed class ChatPhotoStickerType extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -46,7 +45,6 @@ sealed class ChatPhotoStickerType extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **ChatPhotoStickerTypeRegularOrMask** *(chatPhotoStickerTypeRegularOrMask)* - child of ChatPhotoStickerType
 ///
 /// Information about the sticker, which was used to create the chat photo.
@@ -54,7 +52,6 @@ sealed class ChatPhotoStickerType extends TdObject {
 /// * [stickerSetId]: Sticker set identifier.
 /// * [stickerId]: Identifier of the sticker in the set.
 final class ChatPhotoStickerTypeRegularOrMask extends ChatPhotoStickerType {
-  
   /// **ChatPhotoStickerTypeRegularOrMask** *(chatPhotoStickerTypeRegularOrMask)* - child of ChatPhotoStickerType
   ///
   /// Information about the sticker, which was used to create the chat photo.
@@ -65,29 +62,30 @@ final class ChatPhotoStickerTypeRegularOrMask extends ChatPhotoStickerType {
     required this.stickerSetId,
     required this.stickerId,
   });
-  
+
   /// Sticker set identifier
   final int stickerSetId;
 
   /// Identifier of the sticker in the set
   final int stickerId;
-  
+
   /// Parse from a json
-  factory ChatPhotoStickerTypeRegularOrMask.fromJson(Map<String, dynamic> json) => ChatPhotoStickerTypeRegularOrMask(
-    stickerSetId: int.parse(json['sticker_set_id']),
-    stickerId: int.parse(json['sticker_id']),
-  );
-  
-  
+  factory ChatPhotoStickerTypeRegularOrMask.fromJson(
+          Map<String, dynamic> json) =>
+      ChatPhotoStickerTypeRegularOrMask(
+        stickerSetId: int.parse(json['sticker_set_id']),
+        stickerId: int.parse(json['sticker_id']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sticker_set_id": stickerSetId,
       "sticker_id": stickerId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -98,10 +96,11 @@ final class ChatPhotoStickerTypeRegularOrMask extends ChatPhotoStickerType {
   ChatPhotoStickerTypeRegularOrMask copyWith({
     int? stickerSetId,
     int? stickerId,
-  }) => ChatPhotoStickerTypeRegularOrMask(
-    stickerSetId: stickerSetId ?? this.stickerSetId,
-    stickerId: stickerId ?? this.stickerId,
-  );
+  }) =>
+      ChatPhotoStickerTypeRegularOrMask(
+        stickerSetId: stickerSetId ?? this.stickerSetId,
+        stickerId: stickerId ?? this.stickerId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatPhotoStickerTypeRegularOrMask';
@@ -115,14 +114,12 @@ final class ChatPhotoStickerTypeRegularOrMask extends ChatPhotoStickerType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **ChatPhotoStickerTypeCustomEmoji** *(chatPhotoStickerTypeCustomEmoji)* - child of ChatPhotoStickerType
 ///
 /// Information about the custom emoji, which was used to create the chat photo.
 ///
 /// * [customEmojiId]: Identifier of the custom emoji.
 final class ChatPhotoStickerTypeCustomEmoji extends ChatPhotoStickerType {
-  
   /// **ChatPhotoStickerTypeCustomEmoji** *(chatPhotoStickerTypeCustomEmoji)* - child of ChatPhotoStickerType
   ///
   /// Information about the custom emoji, which was used to create the chat photo.
@@ -131,24 +128,24 @@ final class ChatPhotoStickerTypeCustomEmoji extends ChatPhotoStickerType {
   const ChatPhotoStickerTypeCustomEmoji({
     required this.customEmojiId,
   });
-  
+
   /// Identifier of the custom emoji
   final int customEmojiId;
-  
+
   /// Parse from a json
-  factory ChatPhotoStickerTypeCustomEmoji.fromJson(Map<String, dynamic> json) => ChatPhotoStickerTypeCustomEmoji(
-    customEmojiId: int.parse(json['custom_emoji_id']),
-  );
-  
-  
+  factory ChatPhotoStickerTypeCustomEmoji.fromJson(Map<String, dynamic> json) =>
+      ChatPhotoStickerTypeCustomEmoji(
+        customEmojiId: int.parse(json['custom_emoji_id']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "custom_emoji_id": customEmojiId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -157,9 +154,10 @@ final class ChatPhotoStickerTypeCustomEmoji extends ChatPhotoStickerType {
   @override
   ChatPhotoStickerTypeCustomEmoji copyWith({
     int? customEmojiId,
-  }) => ChatPhotoStickerTypeCustomEmoji(
-    customEmojiId: customEmojiId ?? this.customEmojiId,
-  );
+  }) =>
+      ChatPhotoStickerTypeCustomEmoji(
+        customEmojiId: customEmojiId ?? this.customEmojiId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatPhotoStickerTypeCustomEmoji';

@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 /// * [forwardCount]: Number of times the object was forwarded.
 /// * [reactionCount]: Number of times reactions were added to the object.
 final class ChatStatisticsInteractionInfo extends TdObject {
-  
   /// **ChatStatisticsInteractionInfo** *(chatStatisticsInteractionInfo)* - basic class
   ///
   /// Contains statistics about interactions with a message sent in the chat or a story sent by the chat.
@@ -24,7 +23,7 @@ final class ChatStatisticsInteractionInfo extends TdObject {
     required this.forwardCount,
     required this.reactionCount,
   });
-  
+
   /// Type of the object
   final ChatStatisticsObjectType objectType;
 
@@ -36,27 +35,27 @@ final class ChatStatisticsInteractionInfo extends TdObject {
 
   /// Number of times reactions were added to the object
   final int reactionCount;
-  
+
   /// Parse from a json
-  factory ChatStatisticsInteractionInfo.fromJson(Map<String, dynamic> json) => ChatStatisticsInteractionInfo(
-    objectType: ChatStatisticsObjectType.fromJson(json['object_type']),
-    viewCount: json['view_count'],
-    forwardCount: json['forward_count'],
-    reactionCount: json['reaction_count'],
-  );
-  
-  
+  factory ChatStatisticsInteractionInfo.fromJson(Map<String, dynamic> json) =>
+      ChatStatisticsInteractionInfo(
+        objectType: ChatStatisticsObjectType.fromJson(json['object_type']),
+        viewCount: json['view_count'],
+        forwardCount: json['forward_count'],
+        reactionCount: json['reaction_count'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "object_type": objectType.toJson(),
       "view_count": viewCount,
       "forward_count": forwardCount,
       "reaction_count": reactionCount,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -70,12 +69,13 @@ final class ChatStatisticsInteractionInfo extends TdObject {
     int? viewCount,
     int? forwardCount,
     int? reactionCount,
-  }) => ChatStatisticsInteractionInfo(
-    objectType: objectType ?? this.objectType,
-    viewCount: viewCount ?? this.viewCount,
-    forwardCount: forwardCount ?? this.forwardCount,
-    reactionCount: reactionCount ?? this.reactionCount,
-  );
+  }) =>
+      ChatStatisticsInteractionInfo(
+        objectType: objectType ?? this.objectType,
+        viewCount: viewCount ?? this.viewCount,
+        forwardCount: forwardCount ?? this.forwardCount,
+        reactionCount: reactionCount ?? this.reactionCount,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatStatisticsInteractionInfo';

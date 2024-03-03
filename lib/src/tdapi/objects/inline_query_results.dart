@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 /// * [results]: Results of the query.
 /// * [nextOffset]: The offset for the next request. If empty, then there are no more results.
 final class InlineQueryResults extends TdObject {
-  
   /// **InlineQueryResults** *(inlineQueryResults)* - basic class
   ///
   /// Represents the results of the inline query. Use sendInlineQueryResultMessage to send the result of the query.
@@ -26,7 +25,7 @@ final class InlineQueryResults extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Unique identifier of the inline query
   final int inlineQueryId;
 
@@ -46,29 +45,33 @@ final class InlineQueryResults extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory InlineQueryResults.fromJson(Map<String, dynamic> json) => InlineQueryResults(
-    inlineQueryId: int.parse(json['inline_query_id']),
-    button: json['button'] == null ? null : InlineQueryResultsButton.fromJson(json['button']),
-    results: List<InlineQueryResult>.from((json['results'] ?? []).map((item) => InlineQueryResult.fromJson(item)).toList()),
-    nextOffset: json['next_offset'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory InlineQueryResults.fromJson(Map<String, dynamic> json) =>
+      InlineQueryResults(
+        inlineQueryId: int.parse(json['inline_query_id']),
+        button: json['button'] == null
+            ? null
+            : InlineQueryResultsButton.fromJson(json['button']),
+        results: List<InlineQueryResult>.from((json['results'] ?? [])
+            .map((item) => InlineQueryResult.fromJson(item))
+            .toList()),
+        nextOffset: json['next_offset'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "inline_query_id": inlineQueryId,
       "button": button?.toJson(),
       "results": results.map((i) => i.toJson()).toList(),
       "next_offset": nextOffset,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -84,14 +87,15 @@ final class InlineQueryResults extends TdObject {
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) => InlineQueryResults(
-    inlineQueryId: inlineQueryId ?? this.inlineQueryId,
-    button: button ?? this.button,
-    results: results ?? this.results,
-    nextOffset: nextOffset ?? this.nextOffset,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      InlineQueryResults(
+        inlineQueryId: inlineQueryId ?? this.inlineQueryId,
+        button: button ?? this.button,
+        results: results ?? this.results,
+        nextOffset: nextOffset ?? this.nextOffset,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inlineQueryResults';

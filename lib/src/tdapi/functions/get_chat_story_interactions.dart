@@ -13,7 +13,6 @@ part of '../tdapi.dart';
 ///
 /// [StoryInteractions] is returned on completion.
 final class GetChatStoryInteractions extends TdFunction {
-  
   /// **GetChatStoryInteractions** *(getChatStoryInteractions)* - TDLib function
   ///
   /// Returns interactions with a story posted in a chat. Can be used only if story is posted on behalf of a chat and the user is an administrator in the chat.
@@ -34,7 +33,7 @@ final class GetChatStoryInteractions extends TdFunction {
     required this.offset,
     required this.limit,
   });
-  
+
   /// The identifier of the sender of the story
   final int storySenderChatId;
 
@@ -52,12 +51,12 @@ final class GetChatStoryInteractions extends TdFunction {
 
   /// The maximum number of story interactions to return
   final int limit;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "story_sender_chat_id": storySenderChatId,
       "story_id": storyId,
       "reaction_type": reactionType?.toJson(),
@@ -65,8 +64,8 @@ final class GetChatStoryInteractions extends TdFunction {
       "offset": offset,
       "limit": limit,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -84,14 +83,15 @@ final class GetChatStoryInteractions extends TdFunction {
     bool? preferForwards,
     String? offset,
     int? limit,
-  }) => GetChatStoryInteractions(
-    storySenderChatId: storySenderChatId ?? this.storySenderChatId,
-    storyId: storyId ?? this.storyId,
-    reactionType: reactionType ?? this.reactionType,
-    preferForwards: preferForwards ?? this.preferForwards,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-  );
+  }) =>
+      GetChatStoryInteractions(
+        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+        storyId: storyId ?? this.storyId,
+        reactionType: reactionType ?? this.reactionType,
+        preferForwards: preferForwards ?? this.preferForwards,
+        offset: offset ?? this.offset,
+        limit: limit ?? this.limit,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getChatStoryInteractions';

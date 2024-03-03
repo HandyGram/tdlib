@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class RemoveChatActionBar extends TdFunction {
-  
   /// **RemoveChatActionBar** *(removeChatActionBar)* - TDLib function
   ///
   /// Removes a chat action bar without any other action.
@@ -19,19 +18,19 @@ final class RemoveChatActionBar extends TdFunction {
   const RemoveChatActionBar({
     required this.chatId,
   });
-  
+
   /// Chat identifier
   final int chatId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class RemoveChatActionBar extends TdFunction {
   /// * [chat_id]: Chat identifier
   RemoveChatActionBar copyWith({
     int? chatId,
-  }) => RemoveChatActionBar(
-    chatId: chatId ?? this.chatId,
-  );
+  }) =>
+      RemoveChatActionBar(
+        chatId: chatId ?? this.chatId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'removeChatActionBar';

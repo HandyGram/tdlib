@@ -7,7 +7,6 @@ part of '../tdapi.dart';
 /// * [messageInteractionGraph]: A graph containing number of message views and shares.
 /// * [messageReactionGraph]: A graph containing number of message reactions.
 final class MessageStatistics extends TdObject {
-  
   /// **MessageStatistics** *(messageStatistics)* - basic class
   ///
   /// A detailed statistics about a message.
@@ -20,7 +19,7 @@ final class MessageStatistics extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// A graph containing number of message views and shares
   final StatisticalGraph messageInteractionGraph;
 
@@ -34,25 +33,27 @@ final class MessageStatistics extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory MessageStatistics.fromJson(Map<String, dynamic> json) => MessageStatistics(
-    messageInteractionGraph: StatisticalGraph.fromJson(json['message_interaction_graph']),
-    messageReactionGraph: StatisticalGraph.fromJson(json['message_reaction_graph']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory MessageStatistics.fromJson(Map<String, dynamic> json) =>
+      MessageStatistics(
+        messageInteractionGraph:
+            StatisticalGraph.fromJson(json['message_interaction_graph']),
+        messageReactionGraph:
+            StatisticalGraph.fromJson(json['message_reaction_graph']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "message_interaction_graph": messageInteractionGraph.toJson(),
       "message_reaction_graph": messageReactionGraph.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -64,12 +65,14 @@ final class MessageStatistics extends TdObject {
     StatisticalGraph? messageReactionGraph,
     dynamic extra,
     int? clientId,
-  }) => MessageStatistics(
-    messageInteractionGraph: messageInteractionGraph ?? this.messageInteractionGraph,
-    messageReactionGraph: messageReactionGraph ?? this.messageReactionGraph,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      MessageStatistics(
+        messageInteractionGraph:
+            messageInteractionGraph ?? this.messageInteractionGraph,
+        messageReactionGraph: messageReactionGraph ?? this.messageReactionGraph,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'messageStatistics';

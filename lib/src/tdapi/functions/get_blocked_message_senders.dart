@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [MessageSenders] is returned on completion.
 final class GetBlockedMessageSenders extends TdFunction {
-  
   /// **GetBlockedMessageSenders** *(getBlockedMessageSenders)* - TDLib function
   ///
   /// Returns users and chats that were blocked by the current user.
@@ -25,7 +24,7 @@ final class GetBlockedMessageSenders extends TdFunction {
     required this.offset,
     required this.limit,
   });
-  
+
   /// Block list from which to return users
   final BlockList blockList;
 
@@ -34,18 +33,18 @@ final class GetBlockedMessageSenders extends TdFunction {
 
   /// The maximum number of users and chats to return; up to 100
   final int limit;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "block_list": blockList.toJson(),
       "offset": offset,
       "limit": limit,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class GetBlockedMessageSenders extends TdFunction {
     BlockList? blockList,
     int? offset,
     int? limit,
-  }) => GetBlockedMessageSenders(
-    blockList: blockList ?? this.blockList,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-  );
+  }) =>
+      GetBlockedMessageSenders(
+        blockList: blockList ?? this.blockList,
+        offset: offset ?? this.offset,
+        limit: limit ?? this.limit,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getBlockedMessageSenders';

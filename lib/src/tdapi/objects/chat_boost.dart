@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 /// * [startDate]: Point in time (Unix timestamp) when the chat was boosted.
 /// * [expirationDate]: Point in time (Unix timestamp) when the boost will expire.
 final class ChatBoost extends TdObject {
-  
   /// **ChatBoost** *(chatBoost)* - basic class
   ///
   /// Describes a boost applied to a chat.
@@ -27,7 +26,7 @@ final class ChatBoost extends TdObject {
     required this.startDate,
     required this.expirationDate,
   });
-  
+
   /// Unique identifier of the boost
   final String id;
 
@@ -42,29 +41,28 @@ final class ChatBoost extends TdObject {
 
   /// Point in time (Unix timestamp) when the boost will expire
   final int expirationDate;
-  
+
   /// Parse from a json
   factory ChatBoost.fromJson(Map<String, dynamic> json) => ChatBoost(
-    id: json['id'],
-    count: json['count'],
-    source: ChatBoostSource.fromJson(json['source']),
-    startDate: json['start_date'],
-    expirationDate: json['expiration_date'],
-  );
-  
-  
+        id: json['id'],
+        count: json['count'],
+        source: ChatBoostSource.fromJson(json['source']),
+        startDate: json['start_date'],
+        expirationDate: json['expiration_date'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "count": count,
       "source": source.toJson(),
       "start_date": startDate,
       "expiration_date": expirationDate,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -80,13 +78,14 @@ final class ChatBoost extends TdObject {
     ChatBoostSource? source,
     int? startDate,
     int? expirationDate,
-  }) => ChatBoost(
-    id: id ?? this.id,
-    count: count ?? this.count,
-    source: source ?? this.source,
-    startDate: startDate ?? this.startDate,
-    expirationDate: expirationDate ?? this.expirationDate,
-  );
+  }) =>
+      ChatBoost(
+        id: id ?? this.id,
+        count: count ?? this.count,
+        source: source ?? this.source,
+        startDate: startDate ?? this.startDate,
+        expirationDate: expirationDate ?? this.expirationDate,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatBoost';

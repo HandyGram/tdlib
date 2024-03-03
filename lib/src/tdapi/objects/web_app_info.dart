@@ -7,7 +7,6 @@ part of '../tdapi.dart';
 /// * [launchId]: Unique identifier for the Web App launch.
 /// * [url]: A Web App URL to open in a web view.
 final class WebAppInfo extends TdObject {
-  
   /// **WebAppInfo** *(webAppInfo)* - basic class
   ///
   /// Contains information about a Web App.
@@ -20,8 +19,8 @@ final class WebAppInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// Unique identifier for the Web App launch 
+
+  /// Unique identifier for the Web App launch
   final int launchId;
 
   /// A Web App URL to open in a web view
@@ -34,42 +33,42 @@ final class WebAppInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory WebAppInfo.fromJson(Map<String, dynamic> json) => WebAppInfo(
-    launchId: int.parse(json['launch_id']),
-    url: json['url'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        launchId: int.parse(json['launch_id']),
+        url: json['url'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "launch_id": launchId,
       "url": url,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [launch_id]: Unique identifier for the Web App launch 
+  /// * [launch_id]: Unique identifier for the Web App launch
   /// * [url]: A Web App URL to open in a web view
   WebAppInfo copyWith({
     int? launchId,
     String? url,
     dynamic extra,
     int? clientId,
-  }) => WebAppInfo(
-    launchId: launchId ?? this.launchId,
-    url: url ?? this.url,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      WebAppInfo(
+        launchId: launchId ?? this.launchId,
+        url: url ?? this.url,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'webAppInfo';

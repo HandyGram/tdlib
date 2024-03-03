@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [EmailAddressAuthenticationCodeInfo] is returned on completion.
 final class SetLoginEmailAddress extends TdFunction {
-  
   /// **SetLoginEmailAddress** *(setLoginEmailAddress)* - TDLib function
   ///
   /// Changes the login email address of the user. The email address can be changed only if the current user already has login email and passwordState.login_email_address_pattern is non-empty.. The change will not be applied until the new login email address is confirmed with checkLoginEmailAddressCode. To use Apple setLoginEmailAddress/Google setLoginEmailAddress instead of a email address, call checkLoginEmailAddressCode directly.
@@ -19,19 +18,19 @@ final class SetLoginEmailAddress extends TdFunction {
   const SetLoginEmailAddress({
     required this.newLoginEmailAddress,
   });
-  
+
   /// New login email address
   final String newLoginEmailAddress;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "new_login_email_address": newLoginEmailAddress,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class SetLoginEmailAddress extends TdFunction {
   /// * [new_login_email_address]: New login email address
   SetLoginEmailAddress copyWith({
     String? newLoginEmailAddress,
-  }) => SetLoginEmailAddress(
-    newLoginEmailAddress: newLoginEmailAddress ?? this.newLoginEmailAddress,
-  );
+  }) =>
+      SetLoginEmailAddress(
+        newLoginEmailAddress: newLoginEmailAddress ?? this.newLoginEmailAddress,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setLoginEmailAddress';

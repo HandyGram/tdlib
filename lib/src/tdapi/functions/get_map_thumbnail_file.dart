@@ -13,7 +13,6 @@ part of '../tdapi.dart';
 ///
 /// [File] is returned on completion.
 final class GetMapThumbnailFile extends TdFunction {
-  
   /// **GetMapThumbnailFile** *(getMapThumbnailFile)* - TDLib function
   ///
   /// Returns information about a file with a map thumbnail in PNG format. Only map thumbnail files with size less than 1MB can be downloaded.
@@ -34,7 +33,7 @@ final class GetMapThumbnailFile extends TdFunction {
     required this.scale,
     required this.chatId,
   });
-  
+
   /// Location of the map center
   final Location location;
 
@@ -52,12 +51,12 @@ final class GetMapThumbnailFile extends TdFunction {
 
   /// Identifier of a chat in which the thumbnail will be shown. Use 0 if unknown
   final int chatId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "location": location.toJson(),
       "zoom": zoom,
       "width": width,
@@ -65,8 +64,8 @@ final class GetMapThumbnailFile extends TdFunction {
       "scale": scale,
       "chat_id": chatId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -84,14 +83,15 @@ final class GetMapThumbnailFile extends TdFunction {
     int? height,
     int? scale,
     int? chatId,
-  }) => GetMapThumbnailFile(
-    location: location ?? this.location,
-    zoom: zoom ?? this.zoom,
-    width: width ?? this.width,
-    height: height ?? this.height,
-    scale: scale ?? this.scale,
-    chatId: chatId ?? this.chatId,
-  );
+  }) =>
+      GetMapThumbnailFile(
+        location: location ?? this.location,
+        zoom: zoom ?? this.zoom,
+        width: width ?? this.width,
+        height: height ?? this.height,
+        scale: scale ?? this.scale,
+        chatId: chatId ?? this.chatId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getMapThumbnailFile';

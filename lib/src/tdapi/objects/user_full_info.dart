@@ -21,7 +21,6 @@ part of '../tdapi.dart';
 /// * [groupInCommonCount]: Number of group chats where both the other user and the current user are a member; 0 for the current user.
 /// * [botInfo]: For bots, information about the bot; may be null if the user isn't a bot *(optional)*.
 final class UserFullInfo extends TdObject {
-  
   /// **UserFullInfo** *(userFullInfo)* - basic class
   ///
   /// Contains full information about a user.
@@ -62,7 +61,7 @@ final class UserFullInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// User profile photo set by the current user for the contact; may be null. If null and user.profile_photo is null, then the photo is empty; otherwise, it is unknown.. If non-null, then it is the same photo as in user.profile_photo and chat.photo. This photo isn't returned in the list of user photos
   final ChatPhoto? personalPhoto;
 
@@ -118,35 +117,47 @@ final class UserFullInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory UserFullInfo.fromJson(Map<String, dynamic> json) => UserFullInfo(
-    personalPhoto: json['personal_photo'] == null ? null : ChatPhoto.fromJson(json['personal_photo']),
-    photo: json['photo'] == null ? null : ChatPhoto.fromJson(json['photo']),
-    publicPhoto: json['public_photo'] == null ? null : ChatPhoto.fromJson(json['public_photo']),
-    blockList: json['block_list'] == null ? null : BlockList.fromJson(json['block_list']),
-    canBeCalled: json['can_be_called'],
-    supportsVideoCalls: json['supports_video_calls'],
-    hasPrivateCalls: json['has_private_calls'],
-    hasPrivateForwards: json['has_private_forwards'],
-    hasRestrictedVoiceAndVideoNoteMessages: json['has_restricted_voice_and_video_note_messages'],
-    hasPinnedStories: json['has_pinned_stories'],
-    needPhoneNumberPrivacyException: json['need_phone_number_privacy_exception'],
-    setChatBackground: json['set_chat_background'],
-    bio: json['bio'] == null ? null : FormattedText.fromJson(json['bio']),
-    premiumGiftOptions: List<PremiumPaymentOption>.from((json['premium_gift_options'] ?? []).map((item) => PremiumPaymentOption.fromJson(item)).toList()),
-    groupInCommonCount: json['group_in_common_count'],
-    botInfo: json['bot_info'] == null ? null : BotInfo.fromJson(json['bot_info']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        personalPhoto: json['personal_photo'] == null
+            ? null
+            : ChatPhoto.fromJson(json['personal_photo']),
+        photo: json['photo'] == null ? null : ChatPhoto.fromJson(json['photo']),
+        publicPhoto: json['public_photo'] == null
+            ? null
+            : ChatPhoto.fromJson(json['public_photo']),
+        blockList: json['block_list'] == null
+            ? null
+            : BlockList.fromJson(json['block_list']),
+        canBeCalled: json['can_be_called'],
+        supportsVideoCalls: json['supports_video_calls'],
+        hasPrivateCalls: json['has_private_calls'],
+        hasPrivateForwards: json['has_private_forwards'],
+        hasRestrictedVoiceAndVideoNoteMessages:
+            json['has_restricted_voice_and_video_note_messages'],
+        hasPinnedStories: json['has_pinned_stories'],
+        needPhoneNumberPrivacyException:
+            json['need_phone_number_privacy_exception'],
+        setChatBackground: json['set_chat_background'],
+        bio: json['bio'] == null ? null : FormattedText.fromJson(json['bio']),
+        premiumGiftOptions: List<PremiumPaymentOption>.from(
+            (json['premium_gift_options'] ?? [])
+                .map((item) => PremiumPaymentOption.fromJson(item))
+                .toList()),
+        groupInCommonCount: json['group_in_common_count'],
+        botInfo: json['bot_info'] == null
+            ? null
+            : BotInfo.fromJson(json['bot_info']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "personal_photo": personalPhoto?.toJson(),
       "photo": photo?.toJson(),
       "public_photo": publicPhoto?.toJson(),
@@ -155,16 +166,18 @@ final class UserFullInfo extends TdObject {
       "supports_video_calls": supportsVideoCalls,
       "has_private_calls": hasPrivateCalls,
       "has_private_forwards": hasPrivateForwards,
-      "has_restricted_voice_and_video_note_messages": hasRestrictedVoiceAndVideoNoteMessages,
+      "has_restricted_voice_and_video_note_messages":
+          hasRestrictedVoiceAndVideoNoteMessages,
       "has_pinned_stories": hasPinnedStories,
       "need_phone_number_privacy_exception": needPhoneNumberPrivacyException,
       "set_chat_background": setChatBackground,
       "bio": bio?.toJson(),
-      "premium_gift_options": premiumGiftOptions.map((i) => i.toJson()).toList(),
+      "premium_gift_options":
+          premiumGiftOptions.map((i) => i.toJson()).toList(),
       "group_in_common_count": groupInCommonCount,
       "bot_info": botInfo?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -204,26 +217,30 @@ final class UserFullInfo extends TdObject {
     BotInfo? botInfo,
     dynamic extra,
     int? clientId,
-  }) => UserFullInfo(
-    personalPhoto: personalPhoto ?? this.personalPhoto,
-    photo: photo ?? this.photo,
-    publicPhoto: publicPhoto ?? this.publicPhoto,
-    blockList: blockList ?? this.blockList,
-    canBeCalled: canBeCalled ?? this.canBeCalled,
-    supportsVideoCalls: supportsVideoCalls ?? this.supportsVideoCalls,
-    hasPrivateCalls: hasPrivateCalls ?? this.hasPrivateCalls,
-    hasPrivateForwards: hasPrivateForwards ?? this.hasPrivateForwards,
-    hasRestrictedVoiceAndVideoNoteMessages: hasRestrictedVoiceAndVideoNoteMessages ?? this.hasRestrictedVoiceAndVideoNoteMessages,
-    hasPinnedStories: hasPinnedStories ?? this.hasPinnedStories,
-    needPhoneNumberPrivacyException: needPhoneNumberPrivacyException ?? this.needPhoneNumberPrivacyException,
-    setChatBackground: setChatBackground ?? this.setChatBackground,
-    bio: bio ?? this.bio,
-    premiumGiftOptions: premiumGiftOptions ?? this.premiumGiftOptions,
-    groupInCommonCount: groupInCommonCount ?? this.groupInCommonCount,
-    botInfo: botInfo ?? this.botInfo,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UserFullInfo(
+        personalPhoto: personalPhoto ?? this.personalPhoto,
+        photo: photo ?? this.photo,
+        publicPhoto: publicPhoto ?? this.publicPhoto,
+        blockList: blockList ?? this.blockList,
+        canBeCalled: canBeCalled ?? this.canBeCalled,
+        supportsVideoCalls: supportsVideoCalls ?? this.supportsVideoCalls,
+        hasPrivateCalls: hasPrivateCalls ?? this.hasPrivateCalls,
+        hasPrivateForwards: hasPrivateForwards ?? this.hasPrivateForwards,
+        hasRestrictedVoiceAndVideoNoteMessages:
+            hasRestrictedVoiceAndVideoNoteMessages ??
+                this.hasRestrictedVoiceAndVideoNoteMessages,
+        hasPinnedStories: hasPinnedStories ?? this.hasPinnedStories,
+        needPhoneNumberPrivacyException: needPhoneNumberPrivacyException ??
+            this.needPhoneNumberPrivacyException,
+        setChatBackground: setChatBackground ?? this.setChatBackground,
+        bio: bio ?? this.bio,
+        premiumGiftOptions: premiumGiftOptions ?? this.premiumGiftOptions,
+        groupInCommonCount: groupInCommonCount ?? this.groupInCommonCount,
+        botInfo: botInfo ?? this.botInfo,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'userFullInfo';

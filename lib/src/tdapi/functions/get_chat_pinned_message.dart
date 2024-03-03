@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Message] is returned on completion.
 final class GetChatPinnedMessage extends TdFunction {
-  
   /// **GetChatPinnedMessage** *(getChatPinnedMessage)* - TDLib function
   ///
   /// Returns information about a newest pinned message in the chat.
@@ -19,19 +18,19 @@ final class GetChatPinnedMessage extends TdFunction {
   const GetChatPinnedMessage({
     required this.chatId,
   });
-  
+
   /// Identifier of the chat the message belongs to
   final int chatId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetChatPinnedMessage extends TdFunction {
   /// * [chat_id]: Identifier of the chat the message belongs to
   GetChatPinnedMessage copyWith({
     int? chatId,
-  }) => GetChatPinnedMessage(
-    chatId: chatId ?? this.chatId,
-  );
+  }) =>
+      GetChatPinnedMessage(
+        chatId: chatId ?? this.chatId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getChatPinnedMessage';

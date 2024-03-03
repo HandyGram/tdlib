@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [CanSendMessageToUserResult] is returned on completion.
 final class CanSendMessageToUser extends TdFunction {
-  
   /// **CanSendMessageToUser** *(canSendMessageToUser)* - TDLib function
   ///
   /// Check whether the current user can message another user or try to create a chat with them.
@@ -22,23 +21,23 @@ final class CanSendMessageToUser extends TdFunction {
     required this.userId,
     required this.onlyLocal,
   });
-  
+
   /// Identifier of the other user
   final int userId;
 
   /// Pass true to get only locally available information without sending network requests
   final bool onlyLocal;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "user_id": userId,
       "only_local": onlyLocal,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class CanSendMessageToUser extends TdFunction {
   CanSendMessageToUser copyWith({
     int? userId,
     bool? onlyLocal,
-  }) => CanSendMessageToUser(
-    userId: userId ?? this.userId,
-    onlyLocal: onlyLocal ?? this.onlyLocal,
-  );
+  }) =>
+      CanSendMessageToUser(
+        userId: userId ?? this.userId,
+        onlyLocal: onlyLocal ?? this.onlyLocal,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'canSendMessageToUser';

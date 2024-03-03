@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class TransferChatOwnership extends TdFunction {
-  
   /// **TransferChatOwnership** *(transferChatOwnership)* - TDLib function
   ///
   /// Changes the owner of a chat; requires owner privileges in the chat. Use the method canTransferOwnership to check whether the ownership can be transferred from the current session. Available only for supergroups and channel chats.
@@ -25,7 +24,7 @@ final class TransferChatOwnership extends TdFunction {
     required this.userId,
     required this.password,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -34,18 +33,18 @@ final class TransferChatOwnership extends TdFunction {
 
   /// The 2-step verification password of the current user
   final String password;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "user_id": userId,
       "password": password,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class TransferChatOwnership extends TdFunction {
     int? chatId,
     int? userId,
     String? password,
-  }) => TransferChatOwnership(
-    chatId: chatId ?? this.chatId,
-    userId: userId ?? this.userId,
-    password: password ?? this.password,
-  );
+  }) =>
+      TransferChatOwnership(
+        chatId: chatId ?? this.chatId,
+        userId: userId ?? this.userId,
+        password: password ?? this.password,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'transferChatOwnership';

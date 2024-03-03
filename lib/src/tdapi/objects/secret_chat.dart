@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 /// * [keyHash]: Hash of the currently used key for comparison with the hash of the chat partner's key. This is a string of 36 little-endian bytes, which must be split into groups of 2 bits, each denoting a pixel of one of 4 colors FFFFFF, D5E6F3, 2D5775, and 2F99C9.. The pixels must be used to make a 12x12 square image filled from left to right, top to bottom. Alternatively, the first 32 bytes of the hash can be converted to the hexadecimal format and printed as 32 2-digit hex numbers.
 /// * [layer]: Secret chat layer; determines features supported by the chat partner's application. Nested text entities and underline and strikethrough entities are supported if the layer. files bigger than 2000MB are supported if the layer.
 final class SecretChat extends TdObject {
-  
   /// **SecretChat** *(secretChat)* - basic class
   ///
   /// Represents a secret chat.
@@ -32,7 +31,7 @@ final class SecretChat extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Secret chat identifier
   final int id;
 
@@ -58,33 +57,32 @@ final class SecretChat extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory SecretChat.fromJson(Map<String, dynamic> json) => SecretChat(
-    id: json['id'],
-    userId: json['user_id'],
-    state: SecretChatState.fromJson(json['state']),
-    isOutbound: json['is_outbound'],
-    keyHash: json['key_hash'],
-    layer: json['layer'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: json['id'],
+        userId: json['user_id'],
+        state: SecretChatState.fromJson(json['state']),
+        isOutbound: json['is_outbound'],
+        keyHash: json['key_hash'],
+        layer: json['layer'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "user_id": userId,
       "state": state.toJson(),
       "is_outbound": isOutbound,
       "key_hash": keyHash,
       "layer": layer,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -104,16 +102,17 @@ final class SecretChat extends TdObject {
     int? layer,
     dynamic extra,
     int? clientId,
-  }) => SecretChat(
-    id: id ?? this.id,
-    userId: userId ?? this.userId,
-    state: state ?? this.state,
-    isOutbound: isOutbound ?? this.isOutbound,
-    keyHash: keyHash ?? this.keyHash,
-    layer: layer ?? this.layer,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      SecretChat(
+        id: id ?? this.id,
+        userId: userId ?? this.userId,
+        state: state ?? this.state,
+        isOutbound: isOutbound ?? this.isOutbound,
+        keyHash: keyHash ?? this.keyHash,
+        layer: layer ?? this.layer,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'secretChat';

@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 /// * [minithumbnail]: Photo minithumbnail; may be null *(optional)*.
 /// * [sizes]: Available variants of the photo, in different sizes.
 final class Photo extends TdObject {
-  
   /// **Photo** *(photo)* - basic class
   ///
   /// Describes a photo.
@@ -21,7 +20,7 @@ final class Photo extends TdObject {
     this.minithumbnail,
     required this.sizes,
   });
-  
+
   /// True, if stickers were added to the photo. The list of corresponding sticker sets can be received using getAttachedStickerSets
   final bool hasStickers;
 
@@ -30,25 +29,28 @@ final class Photo extends TdObject {
 
   /// Available variants of the photo, in different sizes
   final List<PhotoSize> sizes;
-  
+
   /// Parse from a json
   factory Photo.fromJson(Map<String, dynamic> json) => Photo(
-    hasStickers: json['has_stickers'],
-    minithumbnail: json['minithumbnail'] == null ? null : Minithumbnail.fromJson(json['minithumbnail']),
-    sizes: List<PhotoSize>.from((json['sizes'] ?? []).map((item) => PhotoSize.fromJson(item)).toList()),
-  );
-  
-  
+        hasStickers: json['has_stickers'],
+        minithumbnail: json['minithumbnail'] == null
+            ? null
+            : Minithumbnail.fromJson(json['minithumbnail']),
+        sizes: List<PhotoSize>.from((json['sizes'] ?? [])
+            .map((item) => PhotoSize.fromJson(item))
+            .toList()),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "has_stickers": hasStickers,
       "minithumbnail": minithumbnail?.toJson(),
       "sizes": sizes.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -60,11 +62,12 @@ final class Photo extends TdObject {
     bool? hasStickers,
     Minithumbnail? minithumbnail,
     List<PhotoSize>? sizes,
-  }) => Photo(
-    hasStickers: hasStickers ?? this.hasStickers,
-    minithumbnail: minithumbnail ?? this.minithumbnail,
-    sizes: sizes ?? this.sizes,
-  );
+  }) =>
+      Photo(
+        hasStickers: hasStickers ?? this.hasStickers,
+        minithumbnail: minithumbnail ?? this.minithumbnail,
+        sizes: sizes ?? this.sizes,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'photo';

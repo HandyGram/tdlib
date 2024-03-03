@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class DeleteDefaultBackground extends TdFunction {
-  
   /// **DeleteDefaultBackground** *(deleteDefaultBackground)* - TDLib function
   ///
   /// Deletes default background for chats.
@@ -19,19 +18,19 @@ final class DeleteDefaultBackground extends TdFunction {
   const DeleteDefaultBackground({
     required this.forDarkTheme,
   });
-  
+
   /// Pass true if the background is deleted for a dark theme
   final bool forDarkTheme;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "for_dark_theme": forDarkTheme,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class DeleteDefaultBackground extends TdFunction {
   /// * [for_dark_theme]: Pass true if the background is deleted for a dark theme
   DeleteDefaultBackground copyWith({
     bool? forDarkTheme,
-  }) => DeleteDefaultBackground(
-    forDarkTheme: forDarkTheme ?? this.forDarkTheme,
-  );
+  }) =>
+      DeleteDefaultBackground(
+        forDarkTheme: forDarkTheme ?? this.forDarkTheme,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'deleteDefaultBackground';

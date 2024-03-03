@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ReportChat extends TdFunction {
-  
   /// **ReportChat** *(reportChat)* - TDLib function
   ///
   /// Reports a chat to the Telegram moderators. A chat can be reported only from the chat action bar, or if chat.can_be_reported.
@@ -28,7 +27,7 @@ final class ReportChat extends TdFunction {
     required this.reason,
     required this.text,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -40,19 +39,19 @@ final class ReportChat extends TdFunction {
 
   /// Additional report details; 0-1024 characters
   final String text;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_ids": messageIds.map((i) => i).toList(),
       "reason": reason.toJson(),
       "text": text,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -66,12 +65,13 @@ final class ReportChat extends TdFunction {
     List<int>? messageIds,
     ReportReason? reason,
     String? text,
-  }) => ReportChat(
-    chatId: chatId ?? this.chatId,
-    messageIds: messageIds ?? this.messageIds,
-    reason: reason ?? this.reason,
-    text: text ?? this.text,
-  );
+  }) =>
+      ReportChat(
+        chatId: chatId ?? this.chatId,
+        messageIds: messageIds ?? this.messageIds,
+        reason: reason ?? this.reason,
+        text: text ?? this.text,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'reportChat';

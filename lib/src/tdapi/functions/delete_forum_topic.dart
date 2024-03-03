@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class DeleteForumTopic extends TdFunction {
-  
   /// **DeleteForumTopic** *(deleteForumTopic)* - TDLib function
   ///
   /// Deletes all messages in a forum topic; requires can_delete_messages administrator right in the supergroup unless the user is creator of the topic, the topic has no messages from other users and has at most 11 messages.
@@ -22,23 +21,23 @@ final class DeleteForumTopic extends TdFunction {
     required this.chatId,
     required this.messageThreadId,
   });
-  
+
   /// Identifier of the chat
   final int chatId;
 
   /// Message thread identifier of the forum topic
   final int messageThreadId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_thread_id": messageThreadId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class DeleteForumTopic extends TdFunction {
   DeleteForumTopic copyWith({
     int? chatId,
     int? messageThreadId,
-  }) => DeleteForumTopic(
-    chatId: chatId ?? this.chatId,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-  );
+  }) =>
+      DeleteForumTopic(
+        chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'deleteForumTopic';

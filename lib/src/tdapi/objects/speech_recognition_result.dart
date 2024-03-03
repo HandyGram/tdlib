@@ -4,18 +4,17 @@ part of '../tdapi.dart';
 ///
 /// Describes result of speech recognition in a voice note.
 sealed class SpeechRecognitionResult extends TdObject {
-  
   /// **SpeechRecognitionResult** *(speechRecognitionResult)* - parent
   ///
   /// Describes result of speech recognition in a voice note.
   const SpeechRecognitionResult();
-  
+
   /// a SpeechRecognitionResult return type can be :
   /// * [SpeechRecognitionResultPending]
   /// * [SpeechRecognitionResultText]
   /// * [SpeechRecognitionResultError]
-  factory SpeechRecognitionResult.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory SpeechRecognitionResult.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case SpeechRecognitionResultPending.defaultObjectId:
         return SpeechRecognitionResultPending.fromJson(json);
       case SpeechRecognitionResultText.defaultObjectId:
@@ -29,7 +28,7 @@ sealed class SpeechRecognitionResult extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -49,14 +48,12 @@ sealed class SpeechRecognitionResult extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SpeechRecognitionResultPending** *(speechRecognitionResultPending)* - child of SpeechRecognitionResult
 ///
 /// The speech recognition is ongoing.
 ///
 /// * [partialText]: Partially recognized text.
 final class SpeechRecognitionResultPending extends SpeechRecognitionResult {
-  
   /// **SpeechRecognitionResultPending** *(speechRecognitionResultPending)* - child of SpeechRecognitionResult
   ///
   /// The speech recognition is ongoing.
@@ -65,24 +62,24 @@ final class SpeechRecognitionResultPending extends SpeechRecognitionResult {
   const SpeechRecognitionResultPending({
     required this.partialText,
   });
-  
+
   /// Partially recognized text
   final String partialText;
-  
+
   /// Parse from a json
-  factory SpeechRecognitionResultPending.fromJson(Map<String, dynamic> json) => SpeechRecognitionResultPending(
-    partialText: json['partial_text'],
-  );
-  
-  
+  factory SpeechRecognitionResultPending.fromJson(Map<String, dynamic> json) =>
+      SpeechRecognitionResultPending(
+        partialText: json['partial_text'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "partial_text": partialText,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -91,9 +88,10 @@ final class SpeechRecognitionResultPending extends SpeechRecognitionResult {
   @override
   SpeechRecognitionResultPending copyWith({
     String? partialText,
-  }) => SpeechRecognitionResultPending(
-    partialText: partialText ?? this.partialText,
-  );
+  }) =>
+      SpeechRecognitionResultPending(
+        partialText: partialText ?? this.partialText,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'speechRecognitionResultPending';
@@ -107,14 +105,12 @@ final class SpeechRecognitionResultPending extends SpeechRecognitionResult {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SpeechRecognitionResultText** *(speechRecognitionResultText)* - child of SpeechRecognitionResult
 ///
 /// The speech recognition successfully finished.
 ///
 /// * [text]: Recognized text.
 final class SpeechRecognitionResultText extends SpeechRecognitionResult {
-  
   /// **SpeechRecognitionResultText** *(speechRecognitionResultText)* - child of SpeechRecognitionResult
   ///
   /// The speech recognition successfully finished.
@@ -123,24 +119,24 @@ final class SpeechRecognitionResultText extends SpeechRecognitionResult {
   const SpeechRecognitionResultText({
     required this.text,
   });
-  
+
   /// Recognized text
   final String text;
-  
+
   /// Parse from a json
-  factory SpeechRecognitionResultText.fromJson(Map<String, dynamic> json) => SpeechRecognitionResultText(
-    text: json['text'],
-  );
-  
-  
+  factory SpeechRecognitionResultText.fromJson(Map<String, dynamic> json) =>
+      SpeechRecognitionResultText(
+        text: json['text'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "text": text,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -149,9 +145,10 @@ final class SpeechRecognitionResultText extends SpeechRecognitionResult {
   @override
   SpeechRecognitionResultText copyWith({
     String? text,
-  }) => SpeechRecognitionResultText(
-    text: text ?? this.text,
-  );
+  }) =>
+      SpeechRecognitionResultText(
+        text: text ?? this.text,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'speechRecognitionResultText';
@@ -165,14 +162,12 @@ final class SpeechRecognitionResultText extends SpeechRecognitionResult {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SpeechRecognitionResultError** *(speechRecognitionResultError)* - child of SpeechRecognitionResult
 ///
 /// The speech recognition failed.
 ///
 /// * [error]: Recognition error. An error with a message "MSG_VOICE_TOO_LONG" is returned when media duration is too big to be recognized.
 final class SpeechRecognitionResultError extends SpeechRecognitionResult {
-  
   /// **SpeechRecognitionResultError** *(speechRecognitionResultError)* - child of SpeechRecognitionResult
   ///
   /// The speech recognition failed.
@@ -181,24 +176,24 @@ final class SpeechRecognitionResultError extends SpeechRecognitionResult {
   const SpeechRecognitionResultError({
     required this.error,
   });
-  
+
   /// Recognition error. An error with a message "MSG_VOICE_TOO_LONG" is returned when media duration is too big to be recognized
   final TdError error;
-  
+
   /// Parse from a json
-  factory SpeechRecognitionResultError.fromJson(Map<String, dynamic> json) => SpeechRecognitionResultError(
-    error: TdError.fromJson(json['error']),
-  );
-  
-  
+  factory SpeechRecognitionResultError.fromJson(Map<String, dynamic> json) =>
+      SpeechRecognitionResultError(
+        error: TdError.fromJson(json['error']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "error": error.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -207,9 +202,10 @@ final class SpeechRecognitionResultError extends SpeechRecognitionResult {
   @override
   SpeechRecognitionResultError copyWith({
     TdError? error,
-  }) => SpeechRecognitionResultError(
-    error: error ?? this.error,
-  );
+  }) =>
+      SpeechRecognitionResultError(
+        error: error ?? this.error,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'speechRecognitionResultError';

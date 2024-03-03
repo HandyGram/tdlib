@@ -19,7 +19,6 @@ part of '../tdapi.dart';
 /// * [canPinMessages]: True, if the user can pin messages.
 /// * [canCreateTopics]: True, if the user can create topics.
 final class ChatPermissions extends TdObject {
-  
   /// **ChatPermissions** *(chatPermissions)* - basic class
   ///
   /// Describes actions that a user is allowed to take in a chat.
@@ -54,7 +53,7 @@ final class ChatPermissions extends TdObject {
     required this.canPinMessages,
     required this.canCreateTopics,
   });
-  
+
   /// True, if the user can send text messages, contacts, giveaways, giveaway winners, invoices, locations, and venues
   final bool canSendBasicMessages;
 
@@ -96,31 +95,31 @@ final class ChatPermissions extends TdObject {
 
   /// True, if the user can create topics
   final bool canCreateTopics;
-  
+
   /// Parse from a json
-  factory ChatPermissions.fromJson(Map<String, dynamic> json) => ChatPermissions(
-    canSendBasicMessages: json['can_send_basic_messages'],
-    canSendAudios: json['can_send_audios'],
-    canSendDocuments: json['can_send_documents'],
-    canSendPhotos: json['can_send_photos'],
-    canSendVideos: json['can_send_videos'],
-    canSendVideoNotes: json['can_send_video_notes'],
-    canSendVoiceNotes: json['can_send_voice_notes'],
-    canSendPolls: json['can_send_polls'],
-    canSendOtherMessages: json['can_send_other_messages'],
-    canAddWebPagePreviews: json['can_add_web_page_previews'],
-    canChangeInfo: json['can_change_info'],
-    canInviteUsers: json['can_invite_users'],
-    canPinMessages: json['can_pin_messages'],
-    canCreateTopics: json['can_create_topics'],
-  );
-  
-  
+  factory ChatPermissions.fromJson(Map<String, dynamic> json) =>
+      ChatPermissions(
+        canSendBasicMessages: json['can_send_basic_messages'],
+        canSendAudios: json['can_send_audios'],
+        canSendDocuments: json['can_send_documents'],
+        canSendPhotos: json['can_send_photos'],
+        canSendVideos: json['can_send_videos'],
+        canSendVideoNotes: json['can_send_video_notes'],
+        canSendVoiceNotes: json['can_send_voice_notes'],
+        canSendPolls: json['can_send_polls'],
+        canSendOtherMessages: json['can_send_other_messages'],
+        canAddWebPagePreviews: json['can_add_web_page_previews'],
+        canChangeInfo: json['can_change_info'],
+        canInviteUsers: json['can_invite_users'],
+        canPinMessages: json['can_pin_messages'],
+        canCreateTopics: json['can_create_topics'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "can_send_basic_messages": canSendBasicMessages,
       "can_send_audios": canSendAudios,
       "can_send_documents": canSendDocuments,
@@ -135,8 +134,8 @@ final class ChatPermissions extends TdObject {
       "can_invite_users": canInviteUsers,
       "can_pin_messages": canPinMessages,
       "can_create_topics": canCreateTopics,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -170,22 +169,24 @@ final class ChatPermissions extends TdObject {
     bool? canInviteUsers,
     bool? canPinMessages,
     bool? canCreateTopics,
-  }) => ChatPermissions(
-    canSendBasicMessages: canSendBasicMessages ?? this.canSendBasicMessages,
-    canSendAudios: canSendAudios ?? this.canSendAudios,
-    canSendDocuments: canSendDocuments ?? this.canSendDocuments,
-    canSendPhotos: canSendPhotos ?? this.canSendPhotos,
-    canSendVideos: canSendVideos ?? this.canSendVideos,
-    canSendVideoNotes: canSendVideoNotes ?? this.canSendVideoNotes,
-    canSendVoiceNotes: canSendVoiceNotes ?? this.canSendVoiceNotes,
-    canSendPolls: canSendPolls ?? this.canSendPolls,
-    canSendOtherMessages: canSendOtherMessages ?? this.canSendOtherMessages,
-    canAddWebPagePreviews: canAddWebPagePreviews ?? this.canAddWebPagePreviews,
-    canChangeInfo: canChangeInfo ?? this.canChangeInfo,
-    canInviteUsers: canInviteUsers ?? this.canInviteUsers,
-    canPinMessages: canPinMessages ?? this.canPinMessages,
-    canCreateTopics: canCreateTopics ?? this.canCreateTopics,
-  );
+  }) =>
+      ChatPermissions(
+        canSendBasicMessages: canSendBasicMessages ?? this.canSendBasicMessages,
+        canSendAudios: canSendAudios ?? this.canSendAudios,
+        canSendDocuments: canSendDocuments ?? this.canSendDocuments,
+        canSendPhotos: canSendPhotos ?? this.canSendPhotos,
+        canSendVideos: canSendVideos ?? this.canSendVideos,
+        canSendVideoNotes: canSendVideoNotes ?? this.canSendVideoNotes,
+        canSendVoiceNotes: canSendVoiceNotes ?? this.canSendVoiceNotes,
+        canSendPolls: canSendPolls ?? this.canSendPolls,
+        canSendOtherMessages: canSendOtherMessages ?? this.canSendOtherMessages,
+        canAddWebPagePreviews:
+            canAddWebPagePreviews ?? this.canAddWebPagePreviews,
+        canChangeInfo: canChangeInfo ?? this.canChangeInfo,
+        canInviteUsers: canInviteUsers ?? this.canInviteUsers,
+        canPinMessages: canPinMessages ?? this.canPinMessages,
+        canCreateTopics: canCreateTopics ?? this.canCreateTopics,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatPermissions';

@@ -26,7 +26,6 @@ part of '../tdapi.dart';
 /// * [hasActiveStories]: True, if the supergroup or channel has non-expired stories available to the current user.
 /// * [hasUnreadActiveStories]: True, if the supergroup or channel has unread non-expired stories available to the current user.
 final class Supergroup extends TdObject {
-  
   /// **Supergroup** *(supergroup)* - basic class
   ///
   /// Represents a supergroup or channel with zero or more members (subscribers in the case of channels). From the point of view of the system, a channel is a special kind of a supergroup:. only administrators can post and see the list of members, and posts from all administrators use the name and photo of the channel instead of individual names and profile photos.. Unlike supergroups, channels can have an unlimited number of subscribers.
@@ -77,7 +76,7 @@ final class Supergroup extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Supergroup or channel identifier
   final int id;
 
@@ -148,40 +147,41 @@ final class Supergroup extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory Supergroup.fromJson(Map<String, dynamic> json) => Supergroup(
-    id: json['id'],
-    usernames: json['usernames'] == null ? null : Usernames.fromJson(json['usernames']),
-    date: json['date'],
-    status: ChatMemberStatus.fromJson(json['status']),
-    memberCount: json['member_count'],
-    boostLevel: json['boost_level'],
-    hasLinkedChat: json['has_linked_chat'],
-    hasLocation: json['has_location'],
-    signMessages: json['sign_messages'],
-    joinToSendMessages: json['join_to_send_messages'],
-    joinByRequest: json['join_by_request'],
-    isSlowModeEnabled: json['is_slow_mode_enabled'],
-    isChannel: json['is_channel'],
-    isBroadcastGroup: json['is_broadcast_group'],
-    isForum: json['is_forum'],
-    isVerified: json['is_verified'],
-    restrictionReason: json['restriction_reason'],
-    isScam: json['is_scam'],
-    isFake: json['is_fake'],
-    hasActiveStories: json['has_active_stories'],
-    hasUnreadActiveStories: json['has_unread_active_stories'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: json['id'],
+        usernames: json['usernames'] == null
+            ? null
+            : Usernames.fromJson(json['usernames']),
+        date: json['date'],
+        status: ChatMemberStatus.fromJson(json['status']),
+        memberCount: json['member_count'],
+        boostLevel: json['boost_level'],
+        hasLinkedChat: json['has_linked_chat'],
+        hasLocation: json['has_location'],
+        signMessages: json['sign_messages'],
+        joinToSendMessages: json['join_to_send_messages'],
+        joinByRequest: json['join_by_request'],
+        isSlowModeEnabled: json['is_slow_mode_enabled'],
+        isChannel: json['is_channel'],
+        isBroadcastGroup: json['is_broadcast_group'],
+        isForum: json['is_forum'],
+        isVerified: json['is_verified'],
+        restrictionReason: json['restriction_reason'],
+        isScam: json['is_scam'],
+        isFake: json['is_fake'],
+        hasActiveStories: json['has_active_stories'],
+        hasUnreadActiveStories: json['has_unread_active_stories'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "usernames": usernames?.toJson(),
       "date": date,
@@ -203,8 +203,8 @@ final class Supergroup extends TdObject {
       "is_fake": isFake,
       "has_active_stories": hasActiveStories,
       "has_unread_active_stories": hasUnreadActiveStories,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -254,31 +254,33 @@ final class Supergroup extends TdObject {
     bool? hasUnreadActiveStories,
     dynamic extra,
     int? clientId,
-  }) => Supergroup(
-    id: id ?? this.id,
-    usernames: usernames ?? this.usernames,
-    date: date ?? this.date,
-    status: status ?? this.status,
-    memberCount: memberCount ?? this.memberCount,
-    boostLevel: boostLevel ?? this.boostLevel,
-    hasLinkedChat: hasLinkedChat ?? this.hasLinkedChat,
-    hasLocation: hasLocation ?? this.hasLocation,
-    signMessages: signMessages ?? this.signMessages,
-    joinToSendMessages: joinToSendMessages ?? this.joinToSendMessages,
-    joinByRequest: joinByRequest ?? this.joinByRequest,
-    isSlowModeEnabled: isSlowModeEnabled ?? this.isSlowModeEnabled,
-    isChannel: isChannel ?? this.isChannel,
-    isBroadcastGroup: isBroadcastGroup ?? this.isBroadcastGroup,
-    isForum: isForum ?? this.isForum,
-    isVerified: isVerified ?? this.isVerified,
-    restrictionReason: restrictionReason ?? this.restrictionReason,
-    isScam: isScam ?? this.isScam,
-    isFake: isFake ?? this.isFake,
-    hasActiveStories: hasActiveStories ?? this.hasActiveStories,
-    hasUnreadActiveStories: hasUnreadActiveStories ?? this.hasUnreadActiveStories,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      Supergroup(
+        id: id ?? this.id,
+        usernames: usernames ?? this.usernames,
+        date: date ?? this.date,
+        status: status ?? this.status,
+        memberCount: memberCount ?? this.memberCount,
+        boostLevel: boostLevel ?? this.boostLevel,
+        hasLinkedChat: hasLinkedChat ?? this.hasLinkedChat,
+        hasLocation: hasLocation ?? this.hasLocation,
+        signMessages: signMessages ?? this.signMessages,
+        joinToSendMessages: joinToSendMessages ?? this.joinToSendMessages,
+        joinByRequest: joinByRequest ?? this.joinByRequest,
+        isSlowModeEnabled: isSlowModeEnabled ?? this.isSlowModeEnabled,
+        isChannel: isChannel ?? this.isChannel,
+        isBroadcastGroup: isBroadcastGroup ?? this.isBroadcastGroup,
+        isForum: isForum ?? this.isForum,
+        isVerified: isVerified ?? this.isVerified,
+        restrictionReason: restrictionReason ?? this.restrictionReason,
+        isScam: isScam ?? this.isScam,
+        isFake: isFake ?? this.isFake,
+        hasActiveStories: hasActiveStories ?? this.hasActiveStories,
+        hasUnreadActiveStories:
+            hasUnreadActiveStories ?? this.hasUnreadActiveStories,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'supergroup';

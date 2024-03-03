@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [count]: Count.
 final class Count extends TdObject {
-  
   /// **Count** *(count)* - basic class
   ///
   /// Contains a counter.
@@ -17,7 +16,7 @@ final class Count extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Count
   final int count;
 
@@ -28,23 +27,22 @@ final class Count extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory Count.fromJson(Map<String, dynamic> json) => Count(
-    count: json['count'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        count: json['count'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "count": count,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +52,12 @@ final class Count extends TdObject {
     int? count,
     dynamic extra,
     int? clientId,
-  }) => Count(
-    count: count ?? this.count,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      Count(
+        count: count ?? this.count,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'count';

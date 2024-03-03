@@ -4,18 +4,17 @@ part of '../tdapi.dart';
 ///
 /// Describes result of canSendMessageToUser.
 sealed class CanSendMessageToUserResult extends TdObject {
-  
   /// **CanSendMessageToUserResult** *(canSendMessageToUserResult)* - parent
   ///
   /// Describes result of canSendMessageToUser.
   const CanSendMessageToUserResult();
-  
+
   /// a CanSendMessageToUserResult return type can be :
   /// * [CanSendMessageToUserResultOk]
   /// * [CanSendMessageToUserResultUserIsDeleted]
   /// * [CanSendMessageToUserResultUserRestrictsNewChats]
-  factory CanSendMessageToUserResult.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory CanSendMessageToUserResult.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case CanSendMessageToUserResultOk.defaultObjectId:
         return CanSendMessageToUserResultOk.fromJson(json);
       case CanSendMessageToUserResultUserIsDeleted.defaultObjectId:
@@ -29,7 +28,7 @@ sealed class CanSendMessageToUserResult extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -49,12 +48,10 @@ sealed class CanSendMessageToUserResult extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **CanSendMessageToUserResultOk** *(canSendMessageToUserResultOk)* - child of CanSendMessageToUserResult
 ///
 /// The user can be messaged.
 final class CanSendMessageToUserResultOk extends CanSendMessageToUserResult {
-  
   /// **CanSendMessageToUserResultOk** *(canSendMessageToUserResultOk)* - child of CanSendMessageToUserResult
   ///
   /// The user can be messaged.
@@ -62,7 +59,7 @@ final class CanSendMessageToUserResultOk extends CanSendMessageToUserResult {
     this.extra,
     this.clientId,
   });
-  
+
   /// [extra] callback sign
   @override
   final dynamic extra;
@@ -70,31 +67,32 @@ final class CanSendMessageToUserResultOk extends CanSendMessageToUserResult {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory CanSendMessageToUserResultOk.fromJson(Map<String, dynamic> json) => CanSendMessageToUserResultOk(
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory CanSendMessageToUserResultOk.fromJson(Map<String, dynamic> json) =>
+      CanSendMessageToUserResultOk(
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
   CanSendMessageToUserResultOk copyWith({
     dynamic extra,
     int? clientId,
-  }) => CanSendMessageToUserResultOk(
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      CanSendMessageToUserResultOk(
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'canSendMessageToUserResultOk';
@@ -108,12 +106,11 @@ final class CanSendMessageToUserResultOk extends CanSendMessageToUserResult {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **CanSendMessageToUserResultUserIsDeleted** *(canSendMessageToUserResultUserIsDeleted)* - child of CanSendMessageToUserResult
 ///
 /// The user can't be messaged, because they are deleted or unknown.
-final class CanSendMessageToUserResultUserIsDeleted extends CanSendMessageToUserResult {
-  
+final class CanSendMessageToUserResultUserIsDeleted
+    extends CanSendMessageToUserResult {
   /// **CanSendMessageToUserResultUserIsDeleted** *(canSendMessageToUserResultUserIsDeleted)* - child of CanSendMessageToUserResult
   ///
   /// The user can't be messaged, because they are deleted or unknown.
@@ -121,7 +118,7 @@ final class CanSendMessageToUserResultUserIsDeleted extends CanSendMessageToUser
     this.extra,
     this.clientId,
   });
-  
+
   /// [extra] callback sign
   @override
   final dynamic extra;
@@ -129,34 +126,37 @@ final class CanSendMessageToUserResultUserIsDeleted extends CanSendMessageToUser
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory CanSendMessageToUserResultUserIsDeleted.fromJson(Map<String, dynamic> json) => CanSendMessageToUserResultUserIsDeleted(
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory CanSendMessageToUserResultUserIsDeleted.fromJson(
+          Map<String, dynamic> json) =>
+      CanSendMessageToUserResultUserIsDeleted(
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
   CanSendMessageToUserResultUserIsDeleted copyWith({
     dynamic extra,
     int? clientId,
-  }) => CanSendMessageToUserResultUserIsDeleted(
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      CanSendMessageToUserResultUserIsDeleted(
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
-  static const String defaultObjectId = 'canSendMessageToUserResultUserIsDeleted';
+  static const String defaultObjectId =
+      'canSendMessageToUserResultUserIsDeleted';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -167,12 +167,11 @@ final class CanSendMessageToUserResultUserIsDeleted extends CanSendMessageToUser
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **CanSendMessageToUserResultUserRestrictsNewChats** *(canSendMessageToUserResultUserRestrictsNewChats)* - child of CanSendMessageToUserResult
 ///
 /// The user can't be messaged, because they restrict new chats with non-contacts.
-final class CanSendMessageToUserResultUserRestrictsNewChats extends CanSendMessageToUserResult {
-  
+final class CanSendMessageToUserResultUserRestrictsNewChats
+    extends CanSendMessageToUserResult {
   /// **CanSendMessageToUserResultUserRestrictsNewChats** *(canSendMessageToUserResultUserRestrictsNewChats)* - child of CanSendMessageToUserResult
   ///
   /// The user can't be messaged, because they restrict new chats with non-contacts.
@@ -180,7 +179,7 @@ final class CanSendMessageToUserResultUserRestrictsNewChats extends CanSendMessa
     this.extra,
     this.clientId,
   });
-  
+
   /// [extra] callback sign
   @override
   final dynamic extra;
@@ -188,34 +187,37 @@ final class CanSendMessageToUserResultUserRestrictsNewChats extends CanSendMessa
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory CanSendMessageToUserResultUserRestrictsNewChats.fromJson(Map<String, dynamic> json) => CanSendMessageToUserResultUserRestrictsNewChats(
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory CanSendMessageToUserResultUserRestrictsNewChats.fromJson(
+          Map<String, dynamic> json) =>
+      CanSendMessageToUserResultUserRestrictsNewChats(
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
   CanSendMessageToUserResultUserRestrictsNewChats copyWith({
     dynamic extra,
     int? clientId,
-  }) => CanSendMessageToUserResultUserRestrictsNewChats(
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      CanSendMessageToUserResultUserRestrictsNewChats(
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
-  static const String defaultObjectId = 'canSendMessageToUserResultUserRestrictsNewChats';
+  static const String defaultObjectId =
+      'canSendMessageToUserResultUserRestrictsNewChats';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

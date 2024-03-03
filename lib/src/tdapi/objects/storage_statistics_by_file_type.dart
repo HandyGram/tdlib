@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 /// * [size]: Total size of the files, in bytes.
 /// * [count]: Total number of files.
 final class StorageStatisticsByFileType extends TdObject {
-  
   /// **StorageStatisticsByFileType** *(storageStatisticsByFileType)* - basic class
   ///
   /// Contains the storage usage statistics for a specific file type.
@@ -21,7 +20,7 @@ final class StorageStatisticsByFileType extends TdObject {
     required this.size,
     required this.count,
   });
-  
+
   /// File type
   final FileType fileType;
 
@@ -30,25 +29,25 @@ final class StorageStatisticsByFileType extends TdObject {
 
   /// Total number of files
   final int count;
-  
+
   /// Parse from a json
-  factory StorageStatisticsByFileType.fromJson(Map<String, dynamic> json) => StorageStatisticsByFileType(
-    fileType: FileType.fromJson(json['file_type']),
-    size: json['size'],
-    count: json['count'],
-  );
-  
-  
+  factory StorageStatisticsByFileType.fromJson(Map<String, dynamic> json) =>
+      StorageStatisticsByFileType(
+        fileType: FileType.fromJson(json['file_type']),
+        size: json['size'],
+        count: json['count'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "file_type": fileType.toJson(),
       "size": size,
       "count": count,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -60,11 +59,12 @@ final class StorageStatisticsByFileType extends TdObject {
     FileType? fileType,
     int? size,
     int? count,
-  }) => StorageStatisticsByFileType(
-    fileType: fileType ?? this.fileType,
-    size: size ?? this.size,
-    count: count ?? this.count,
-  );
+  }) =>
+      StorageStatisticsByFileType(
+        fileType: fileType ?? this.fileType,
+        size: size ?? this.size,
+        count: count ?? this.count,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'storageStatisticsByFileType';

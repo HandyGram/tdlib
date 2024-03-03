@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ToggleSupergroupJoinToSendMessages extends TdFunction {
-  
   /// **ToggleSupergroupJoinToSendMessages** *(toggleSupergroupJoinToSendMessages)* - TDLib function
   ///
   /// Toggles whether joining is mandatory to send messages to a discussion supergroup; requires can_restrict_members administrator right.
@@ -22,36 +21,37 @@ final class ToggleSupergroupJoinToSendMessages extends TdFunction {
     required this.supergroupId,
     required this.joinToSendMessages,
   });
-  
-  /// Identifier of the supergroup 
+
+  /// Identifier of the supergroup
   final int supergroupId;
 
   /// New value of join_to_send_messages
   final bool joinToSendMessages;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "supergroup_id": supergroupId,
       "join_to_send_messages": joinToSendMessages,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [supergroup_id]: Identifier of the supergroup 
+  /// * [supergroup_id]: Identifier of the supergroup
   /// * [join_to_send_messages]: New value of join_to_send_messages
   ToggleSupergroupJoinToSendMessages copyWith({
     int? supergroupId,
     bool? joinToSendMessages,
-  }) => ToggleSupergroupJoinToSendMessages(
-    supergroupId: supergroupId ?? this.supergroupId,
-    joinToSendMessages: joinToSendMessages ?? this.joinToSendMessages,
-  );
+  }) =>
+      ToggleSupergroupJoinToSendMessages(
+        supergroupId: supergroupId ?? this.supergroupId,
+        joinToSendMessages: joinToSendMessages ?? this.joinToSendMessages,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'toggleSupergroupJoinToSendMessages';

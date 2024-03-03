@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Chat] is returned on completion.
 final class CreateNewSecretChat extends TdFunction {
-  
   /// **CreateNewSecretChat** *(createNewSecretChat)* - TDLib function
   ///
   /// Creates a new secret chat. Returns the newly created chat.
@@ -19,19 +18,19 @@ final class CreateNewSecretChat extends TdFunction {
   const CreateNewSecretChat({
     required this.userId,
   });
-  
+
   /// Identifier of the target user
   final int userId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "user_id": userId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class CreateNewSecretChat extends TdFunction {
   /// * [user_id]: Identifier of the target user
   CreateNewSecretChat copyWith({
     int? userId,
-  }) => CreateNewSecretChat(
-    userId: userId ?? this.userId,
-  );
+  }) =>
+      CreateNewSecretChat(
+        userId: userId ?? this.userId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'createNewSecretChat';

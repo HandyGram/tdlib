@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 /// * [memberId]: Identifier of the user or chat who performed the action.
 /// * [action]: The action.
 final class ChatEvent extends TdObject {
-  
   /// **ChatEvent** *(chatEvent)* - basic class
   ///
   /// Represents a chat event.
@@ -24,7 +23,7 @@ final class ChatEvent extends TdObject {
     required this.memberId,
     required this.action,
   });
-  
+
   /// Chat event identifier
   final int id;
 
@@ -36,27 +35,26 @@ final class ChatEvent extends TdObject {
 
   /// The action
   final ChatEventAction action;
-  
+
   /// Parse from a json
   factory ChatEvent.fromJson(Map<String, dynamic> json) => ChatEvent(
-    id: int.parse(json['id']),
-    date: json['date'],
-    memberId: MessageSender.fromJson(json['member_id']),
-    action: ChatEventAction.fromJson(json['action']),
-  );
-  
-  
+        id: int.parse(json['id']),
+        date: json['date'],
+        memberId: MessageSender.fromJson(json['member_id']),
+        action: ChatEventAction.fromJson(json['action']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "date": date,
       "member_id": memberId.toJson(),
       "action": action.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -70,12 +68,13 @@ final class ChatEvent extends TdObject {
     int? date,
     MessageSender? memberId,
     ChatEventAction? action,
-  }) => ChatEvent(
-    id: id ?? this.id,
-    date: date ?? this.date,
-    memberId: memberId ?? this.memberId,
-    action: action ?? this.action,
-  );
+  }) =>
+      ChatEvent(
+        id: id ?? this.id,
+        date: date ?? this.date,
+        memberId: memberId ?? this.memberId,
+        action: action ?? this.action,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatEvent';

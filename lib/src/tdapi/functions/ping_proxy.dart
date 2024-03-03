@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Seconds] is returned on completion.
 final class PingProxy extends TdFunction {
-  
   /// **PingProxy** *(pingProxy)* - TDLib function
   ///
   /// Computes time needed to receive a response from a Telegram server through a proxy. Can be called before authorization.
@@ -19,19 +18,19 @@ final class PingProxy extends TdFunction {
   const PingProxy({
     required this.proxyId,
   });
-  
+
   /// Proxy identifier. Use 0 to ping a Telegram server without a proxy
   final int proxyId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "proxy_id": proxyId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class PingProxy extends TdFunction {
   /// * [proxy_id]: Proxy identifier. Use 0 to ping a Telegram server without a proxy
   PingProxy copyWith({
     int? proxyId,
-  }) => PingProxy(
-    proxyId: proxyId ?? this.proxyId,
-  );
+  }) =>
+      PingProxy(
+        proxyId: proxyId ?? this.proxyId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'pingProxy';

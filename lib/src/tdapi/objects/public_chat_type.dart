@@ -4,17 +4,16 @@ part of '../tdapi.dart';
 ///
 /// Describes a type of public chats.
 sealed class PublicChatType extends TdObject {
-  
   /// **PublicChatType** *(publicChatType)* - parent
   ///
   /// Describes a type of public chats.
   const PublicChatType();
-  
+
   /// a PublicChatType return type can be :
   /// * [PublicChatTypeHasUsername]
   /// * [PublicChatTypeIsLocationBased]
-  factory PublicChatType.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory PublicChatType.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case PublicChatTypeHasUsername.defaultObjectId:
         return PublicChatTypeHasUsername.fromJson(json);
       case PublicChatTypeIsLocationBased.defaultObjectId:
@@ -26,7 +25,7 @@ sealed class PublicChatType extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -46,27 +45,26 @@ sealed class PublicChatType extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PublicChatTypeHasUsername** *(publicChatTypeHasUsername)* - child of PublicChatType
 ///
 /// The chat is public, because it has an active username.
 final class PublicChatTypeHasUsername extends PublicChatType {
-  
   /// **PublicChatTypeHasUsername** *(publicChatTypeHasUsername)* - child of PublicChatType
   ///
   /// The chat is public, because it has an active username.
   const PublicChatTypeHasUsername();
-  
+
   /// Parse from a json
-  factory PublicChatTypeHasUsername.fromJson(Map<String, dynamic> json) => const PublicChatTypeHasUsername();
-  
+  factory PublicChatTypeHasUsername.fromJson(Map<String, dynamic> json) =>
+      const PublicChatTypeHasUsername();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -84,31 +82,31 @@ final class PublicChatTypeHasUsername extends PublicChatType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PublicChatTypeIsLocationBased** *(publicChatTypeIsLocationBased)* - child of PublicChatType
 ///
 /// The chat is public, because it is a location-based supergroup.
 final class PublicChatTypeIsLocationBased extends PublicChatType {
-  
   /// **PublicChatTypeIsLocationBased** *(publicChatTypeIsLocationBased)* - child of PublicChatType
   ///
   /// The chat is public, because it is a location-based supergroup.
   const PublicChatTypeIsLocationBased();
-  
+
   /// Parse from a json
-  factory PublicChatTypeIsLocationBased.fromJson(Map<String, dynamic> json) => const PublicChatTypeIsLocationBased();
-  
+  factory PublicChatTypeIsLocationBased.fromJson(Map<String, dynamic> json) =>
+      const PublicChatTypeIsLocationBased();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  PublicChatTypeIsLocationBased copyWith() => const PublicChatTypeIsLocationBased();
+  PublicChatTypeIsLocationBased copyWith() =>
+      const PublicChatTypeIsLocationBased();
 
   /// TDLib object type
   static const String defaultObjectId = 'publicChatTypeIsLocationBased';

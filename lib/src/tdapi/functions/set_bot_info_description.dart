@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetBotInfoDescription extends TdFunction {
-  
   /// **SetBotInfoDescription** *(setBotInfoDescription)* - TDLib function
   ///
   /// Sets the text shown in the chat with a bot if the chat is empty. Can be called only if userTypeBot.can_be_edited == true.
@@ -25,7 +24,7 @@ final class SetBotInfoDescription extends TdFunction {
     required this.languageCode,
     required this.description,
   });
-  
+
   /// Identifier of the target bot
   final int botUserId;
 
@@ -34,18 +33,18 @@ final class SetBotInfoDescription extends TdFunction {
 
   /// New bot's description on the specified language
   final String description;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "bot_user_id": botUserId,
       "language_code": languageCode,
       "description": description,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class SetBotInfoDescription extends TdFunction {
     int? botUserId,
     String? languageCode,
     String? description,
-  }) => SetBotInfoDescription(
-    botUserId: botUserId ?? this.botUserId,
-    languageCode: languageCode ?? this.languageCode,
-    description: description ?? this.description,
-  );
+  }) =>
+      SetBotInfoDescription(
+        botUserId: botUserId ?? this.botUserId,
+        languageCode: languageCode ?? this.languageCode,
+        description: description ?? this.description,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setBotInfoDescription';

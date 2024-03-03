@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetGroupCallParticipantIsSpeaking extends TdFunction {
-  
   /// **SetGroupCallParticipantIsSpeaking** *(setGroupCallParticipantIsSpeaking)* - TDLib function
   ///
   /// Informs TDLib that speaking state of a participant of an active group has changed.
@@ -25,7 +24,7 @@ final class SetGroupCallParticipantIsSpeaking extends TdFunction {
     required this.audioSource,
     required this.isSpeaking,
   });
-  
+
   /// Group call identifier
   final int groupCallId;
 
@@ -34,18 +33,18 @@ final class SetGroupCallParticipantIsSpeaking extends TdFunction {
 
   /// Pass true if the user is speaking
   final bool isSpeaking;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "group_call_id": groupCallId,
       "audio_source": audioSource,
       "is_speaking": isSpeaking,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class SetGroupCallParticipantIsSpeaking extends TdFunction {
     int? groupCallId,
     int? audioSource,
     bool? isSpeaking,
-  }) => SetGroupCallParticipantIsSpeaking(
-    groupCallId: groupCallId ?? this.groupCallId,
-    audioSource: audioSource ?? this.audioSource,
-    isSpeaking: isSpeaking ?? this.isSpeaking,
-  );
+  }) =>
+      SetGroupCallParticipantIsSpeaking(
+        groupCallId: groupCallId ?? this.groupCallId,
+        audioSource: audioSource ?? this.audioSource,
+        isSpeaking: isSpeaking ?? this.isSpeaking,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setGroupCallParticipantIsSpeaking';

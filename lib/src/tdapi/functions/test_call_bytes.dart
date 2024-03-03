@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [TestBytes] is returned on completion.
 final class TestCallBytes extends TdFunction {
-  
   /// **TestCallBytes** *(testCallBytes)* - TDLib function
   ///
   /// Returns the received bytes; for testing only. This is an offline method. Can be called before authorization.
@@ -19,19 +18,19 @@ final class TestCallBytes extends TdFunction {
   const TestCallBytes({
     required this.x,
   });
-  
+
   /// Bytes to return
   final String x;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "x": x,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class TestCallBytes extends TdFunction {
   /// * [x]: Bytes to return
   TestCallBytes copyWith({
     String? x,
-  }) => TestCallBytes(
-    x: x ?? this.x,
-  );
+  }) =>
+      TestCallBytes(
+        x: x ?? this.x,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'testCallBytes';

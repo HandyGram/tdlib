@@ -7,7 +7,6 @@ part of '../tdapi.dart';
 /// * [link]: The link.
 /// * [isPublic]: True, if the link will work for non-members of the chat.
 final class MessageLink extends TdObject {
-  
   /// **MessageLink** *(messageLink)* - basic class
   ///
   /// Contains an HTTPS link to a message in a supergroup or channel, or a forum topic.
@@ -20,8 +19,8 @@ final class MessageLink extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// The link 
+
+  /// The link
   final String link;
 
   /// True, if the link will work for non-members of the chat
@@ -34,42 +33,42 @@ final class MessageLink extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory MessageLink.fromJson(Map<String, dynamic> json) => MessageLink(
-    link: json['link'],
-    isPublic: json['is_public'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        link: json['link'],
+        isPublic: json['is_public'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "link": link,
       "is_public": isPublic,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [link]: The link 
+  /// * [link]: The link
   /// * [is_public]: True, if the link will work for non-members of the chat
   MessageLink copyWith({
     String? link,
     bool? isPublic,
     dynamic extra,
     int? clientId,
-  }) => MessageLink(
-    link: link ?? this.link,
-    isPublic: isPublic ?? this.isPublic,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      MessageLink(
+        link: link ?? this.link,
+        isPublic: isPublic ?? this.isPublic,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'messageLink';

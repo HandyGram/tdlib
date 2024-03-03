@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ShareChatWithBot extends TdFunction {
-  
   /// **ShareChatWithBot** *(shareChatWithBot)* - TDLib function
   ///
   /// Shares a chat after pressing a keyboardButtonTypeRequestChat button with the bot.
@@ -31,7 +30,7 @@ final class ShareChatWithBot extends TdFunction {
     required this.sharedChatId,
     required this.onlyCheck,
   });
-  
+
   /// Identifier of the chat with the bot
   final int chatId;
 
@@ -46,20 +45,20 @@ final class ShareChatWithBot extends TdFunction {
 
   /// Pass true to check that the chat can be shared by the button instead of actually sharing it. Doesn't check bot_is_member and bot_administrator_rights restrictions.. If the bot must be a member, then all chats from getGroupsInCommon and all chats, where the user can add the bot, are suitable. In the latter case the bot will be automatically added to the chat.. If the bot must be an administrator, then all chats, where the bot already has requested rights or can be added to administrators by the user, are suitable. In the latter case the bot will be automatically granted requested rights
   final bool onlyCheck;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "button_id": buttonId,
       "shared_chat_id": sharedChatId,
       "only_check": onlyCheck,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -75,13 +74,14 @@ final class ShareChatWithBot extends TdFunction {
     int? buttonId,
     int? sharedChatId,
     bool? onlyCheck,
-  }) => ShareChatWithBot(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    buttonId: buttonId ?? this.buttonId,
-    sharedChatId: sharedChatId ?? this.sharedChatId,
-    onlyCheck: onlyCheck ?? this.onlyCheck,
-  );
+  }) =>
+      ShareChatWithBot(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        buttonId: buttonId ?? this.buttonId,
+        sharedChatId: sharedChatId ?? this.sharedChatId,
+        onlyCheck: onlyCheck ?? this.onlyCheck,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'shareChatWithBot';

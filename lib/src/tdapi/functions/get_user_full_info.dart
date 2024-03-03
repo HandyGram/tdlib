@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [UserFullInfo] is returned on completion.
 final class GetUserFullInfo extends TdFunction {
-  
   /// **GetUserFullInfo** *(getUserFullInfo)* - TDLib function
   ///
   /// Returns full information about a user by their identifier.
@@ -19,19 +18,19 @@ final class GetUserFullInfo extends TdFunction {
   const GetUserFullInfo({
     required this.userId,
   });
-  
+
   /// User identifier
   final int userId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "user_id": userId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetUserFullInfo extends TdFunction {
   /// * [user_id]: User identifier
   GetUserFullInfo copyWith({
     int? userId,
-  }) => GetUserFullInfo(
-    userId: userId ?? this.userId,
-  );
+  }) =>
+      GetUserFullInfo(
+        userId: userId ?? this.userId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getUserFullInfo';

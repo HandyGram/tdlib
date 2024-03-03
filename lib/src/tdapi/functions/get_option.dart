@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [OptionValue] is returned on completion.
 final class GetOption extends TdFunction {
-  
   /// **GetOption** *(getOption)* - TDLib function
   ///
   /// Returns the value of an option by its name. (Check the list of available options on https://core.telegram.org/tdlib/options.) Can be called before authorization. Can be called synchronously for options "version" and "commit_hash".
@@ -19,19 +18,19 @@ final class GetOption extends TdFunction {
   const GetOption({
     required this.name,
   });
-  
+
   /// The name of the option
   final String name;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "name": name,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetOption extends TdFunction {
   /// * [name]: The name of the option
   GetOption copyWith({
     String? name,
-  }) => GetOption(
-    name: name ?? this.name,
-  );
+  }) =>
+      GetOption(
+        name: name ?? this.name,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getOption';

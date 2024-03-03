@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 /// * [isChosen]: True, if the option was chosen by the user.
 /// * [isBeingChosen]: True, if the option is being chosen by a pending setPollAnswer request.
 final class PollOption extends TdObject {
-  
   /// **PollOption** *(pollOption)* - basic class
   ///
   /// Describes one answer option of a poll.
@@ -27,7 +26,7 @@ final class PollOption extends TdObject {
     required this.isChosen,
     required this.isBeingChosen,
   });
-  
+
   /// Option text; 1-100 characters
   final String text;
 
@@ -42,29 +41,28 @@ final class PollOption extends TdObject {
 
   /// True, if the option is being chosen by a pending setPollAnswer request
   final bool isBeingChosen;
-  
+
   /// Parse from a json
   factory PollOption.fromJson(Map<String, dynamic> json) => PollOption(
-    text: json['text'],
-    voterCount: json['voter_count'],
-    votePercentage: json['vote_percentage'],
-    isChosen: json['is_chosen'],
-    isBeingChosen: json['is_being_chosen'],
-  );
-  
-  
+        text: json['text'],
+        voterCount: json['voter_count'],
+        votePercentage: json['vote_percentage'],
+        isChosen: json['is_chosen'],
+        isBeingChosen: json['is_being_chosen'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "text": text,
       "voter_count": voterCount,
       "vote_percentage": votePercentage,
       "is_chosen": isChosen,
       "is_being_chosen": isBeingChosen,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -80,13 +78,14 @@ final class PollOption extends TdObject {
     int? votePercentage,
     bool? isChosen,
     bool? isBeingChosen,
-  }) => PollOption(
-    text: text ?? this.text,
-    voterCount: voterCount ?? this.voterCount,
-    votePercentage: votePercentage ?? this.votePercentage,
-    isChosen: isChosen ?? this.isChosen,
-    isBeingChosen: isBeingChosen ?? this.isBeingChosen,
-  );
+  }) =>
+      PollOption(
+        text: text ?? this.text,
+        voterCount: voterCount ?? this.voterCount,
+        votePercentage: votePercentage ?? this.votePercentage,
+        isChosen: isChosen ?? this.isChosen,
+        isBeingChosen: isBeingChosen ?? this.isBeingChosen,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'pollOption';

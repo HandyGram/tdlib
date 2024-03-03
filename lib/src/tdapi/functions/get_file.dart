@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [File] is returned on completion.
 final class GetFile extends TdFunction {
-  
   /// **GetFile** *(getFile)* - TDLib function
   ///
   /// Returns information about a file; this is an offline request.
@@ -19,19 +18,19 @@ final class GetFile extends TdFunction {
   const GetFile({
     required this.fileId,
   });
-  
+
   /// Identifier of the file to get
   final int fileId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "file_id": fileId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetFile extends TdFunction {
   /// * [file_id]: Identifier of the file to get
   GetFile copyWith({
     int? fileId,
-  }) => GetFile(
-    fileId: fileId ?? this.fileId,
-  );
+  }) =>
+      GetFile(
+        fileId: fileId ?? this.fileId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getFile';

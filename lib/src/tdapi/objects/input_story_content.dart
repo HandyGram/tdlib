@@ -4,17 +4,16 @@ part of '../tdapi.dart';
 ///
 /// The content of a story to send.
 sealed class InputStoryContent extends TdObject {
-  
   /// **InputStoryContent** *(inputStoryContent)* - parent
   ///
   /// The content of a story to send.
   const InputStoryContent();
-  
+
   /// a InputStoryContent return type can be :
   /// * [InputStoryContentPhoto]
   /// * [InputStoryContentVideo]
-  factory InputStoryContent.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory InputStoryContent.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case InputStoryContentPhoto.defaultObjectId:
         return InputStoryContentPhoto.fromJson(json);
       case InputStoryContentVideo.defaultObjectId:
@@ -26,7 +25,7 @@ sealed class InputStoryContent extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -46,7 +45,6 @@ sealed class InputStoryContent extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputStoryContentPhoto** *(inputStoryContentPhoto)* - child of InputStoryContent
 ///
 /// A photo story.
@@ -54,7 +52,6 @@ sealed class InputStoryContent extends TdObject {
 /// * [photo]: Photo to send. The photo must be at most 10 MB in size. The photo size must be 1080x1920.
 /// * [addedStickerFileIds]: File identifiers of the stickers added to the photo, if applicable.
 final class InputStoryContentPhoto extends InputStoryContent {
-  
   /// **InputStoryContentPhoto** *(inputStoryContentPhoto)* - child of InputStoryContent
   ///
   /// A photo story.
@@ -65,29 +62,32 @@ final class InputStoryContentPhoto extends InputStoryContent {
     required this.photo,
     required this.addedStickerFileIds,
   });
-  
+
   /// Photo to send. The photo must be at most 10 MB in size. The photo size must be 1080x1920
   final InputFile photo;
 
   /// File identifiers of the stickers added to the photo, if applicable
   final List<int> addedStickerFileIds;
-  
+
   /// Parse from a json
-  factory InputStoryContentPhoto.fromJson(Map<String, dynamic> json) => InputStoryContentPhoto(
-    photo: InputFile.fromJson(json['photo']),
-    addedStickerFileIds: List<int>.from((json['added_sticker_file_ids'] ?? []).map((item) => item).toList()),
-  );
-  
-  
+  factory InputStoryContentPhoto.fromJson(Map<String, dynamic> json) =>
+      InputStoryContentPhoto(
+        photo: InputFile.fromJson(json['photo']),
+        addedStickerFileIds: List<int>.from(
+            (json['added_sticker_file_ids'] ?? [])
+                .map((item) => item)
+                .toList()),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "photo": photo.toJson(),
       "added_sticker_file_ids": addedStickerFileIds.map((i) => i).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -98,10 +98,11 @@ final class InputStoryContentPhoto extends InputStoryContent {
   InputStoryContentPhoto copyWith({
     InputFile? photo,
     List<int>? addedStickerFileIds,
-  }) => InputStoryContentPhoto(
-    photo: photo ?? this.photo,
-    addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
-  );
+  }) =>
+      InputStoryContentPhoto(
+        photo: photo ?? this.photo,
+        addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputStoryContentPhoto';
@@ -115,7 +116,6 @@ final class InputStoryContentPhoto extends InputStoryContent {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputStoryContentVideo** *(inputStoryContentVideo)* - child of InputStoryContent
 ///
 /// A video story.
@@ -125,7 +125,6 @@ final class InputStoryContentPhoto extends InputStoryContent {
 /// * [duration]: Precise duration of the video, in seconds; 0-60.
 /// * [isAnimation]: True, if the video has no sound.
 final class InputStoryContentVideo extends InputStoryContent {
-  
   /// **InputStoryContentVideo** *(inputStoryContentVideo)* - child of InputStoryContent
   ///
   /// A video story.
@@ -140,7 +139,7 @@ final class InputStoryContentVideo extends InputStoryContent {
     required this.duration,
     required this.isAnimation,
   });
-  
+
   /// Video to be sent. The video size must be 720x1280. The video must be streamable and stored in MPEG4 format, after encoding with x265 codec and key frames added each second
   final InputFile video;
 
@@ -152,27 +151,30 @@ final class InputStoryContentVideo extends InputStoryContent {
 
   /// True, if the video has no sound
   final bool isAnimation;
-  
+
   /// Parse from a json
-  factory InputStoryContentVideo.fromJson(Map<String, dynamic> json) => InputStoryContentVideo(
-    video: InputFile.fromJson(json['video']),
-    addedStickerFileIds: List<int>.from((json['added_sticker_file_ids'] ?? []).map((item) => item).toList()),
-    duration: json['duration'],
-    isAnimation: json['is_animation'],
-  );
-  
-  
+  factory InputStoryContentVideo.fromJson(Map<String, dynamic> json) =>
+      InputStoryContentVideo(
+        video: InputFile.fromJson(json['video']),
+        addedStickerFileIds: List<int>.from(
+            (json['added_sticker_file_ids'] ?? [])
+                .map((item) => item)
+                .toList()),
+        duration: json['duration'],
+        isAnimation: json['is_animation'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "video": video.toJson(),
       "added_sticker_file_ids": addedStickerFileIds.map((i) => i).toList(),
       "duration": duration,
       "is_animation": isAnimation,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -187,12 +189,13 @@ final class InputStoryContentVideo extends InputStoryContent {
     List<int>? addedStickerFileIds,
     double? duration,
     bool? isAnimation,
-  }) => InputStoryContentVideo(
-    video: video ?? this.video,
-    addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
-    duration: duration ?? this.duration,
-    isAnimation: isAnimation ?? this.isAnimation,
-  );
+  }) =>
+      InputStoryContentVideo(
+        video: video ?? this.video,
+        addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
+        duration: duration ?? this.duration,
+        isAnimation: isAnimation ?? this.isAnimation,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputStoryContentVideo';

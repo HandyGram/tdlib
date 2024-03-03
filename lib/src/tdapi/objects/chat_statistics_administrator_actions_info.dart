@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 /// * [bannedUserCount]: Number of users banned by the administrator.
 /// * [restrictedUserCount]: Number of users restricted by the administrator.
 final class ChatStatisticsAdministratorActionsInfo extends TdObject {
-  
   /// **ChatStatisticsAdministratorActionsInfo** *(chatStatisticsAdministratorActionsInfo)* - basic class
   ///
   /// Contains statistics about administrator actions done by a user.
@@ -24,7 +23,7 @@ final class ChatStatisticsAdministratorActionsInfo extends TdObject {
     required this.bannedUserCount,
     required this.restrictedUserCount,
   });
-  
+
   /// Administrator user identifier
   final int userId;
 
@@ -36,27 +35,28 @@ final class ChatStatisticsAdministratorActionsInfo extends TdObject {
 
   /// Number of users restricted by the administrator
   final int restrictedUserCount;
-  
+
   /// Parse from a json
-  factory ChatStatisticsAdministratorActionsInfo.fromJson(Map<String, dynamic> json) => ChatStatisticsAdministratorActionsInfo(
-    userId: json['user_id'],
-    deletedMessageCount: json['deleted_message_count'],
-    bannedUserCount: json['banned_user_count'],
-    restrictedUserCount: json['restricted_user_count'],
-  );
-  
-  
+  factory ChatStatisticsAdministratorActionsInfo.fromJson(
+          Map<String, dynamic> json) =>
+      ChatStatisticsAdministratorActionsInfo(
+        userId: json['user_id'],
+        deletedMessageCount: json['deleted_message_count'],
+        bannedUserCount: json['banned_user_count'],
+        restrictedUserCount: json['restricted_user_count'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "user_id": userId,
       "deleted_message_count": deletedMessageCount,
       "banned_user_count": bannedUserCount,
       "restricted_user_count": restrictedUserCount,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -70,15 +70,17 @@ final class ChatStatisticsAdministratorActionsInfo extends TdObject {
     int? deletedMessageCount,
     int? bannedUserCount,
     int? restrictedUserCount,
-  }) => ChatStatisticsAdministratorActionsInfo(
-    userId: userId ?? this.userId,
-    deletedMessageCount: deletedMessageCount ?? this.deletedMessageCount,
-    bannedUserCount: bannedUserCount ?? this.bannedUserCount,
-    restrictedUserCount: restrictedUserCount ?? this.restrictedUserCount,
-  );
+  }) =>
+      ChatStatisticsAdministratorActionsInfo(
+        userId: userId ?? this.userId,
+        deletedMessageCount: deletedMessageCount ?? this.deletedMessageCount,
+        bannedUserCount: bannedUserCount ?? this.bannedUserCount,
+        restrictedUserCount: restrictedUserCount ?? this.restrictedUserCount,
+      );
 
   /// TDLib object type
-  static const String defaultObjectId = 'chatStatisticsAdministratorActionsInfo';
+  static const String defaultObjectId =
+      'chatStatisticsAdministratorActionsInfo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

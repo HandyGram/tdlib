@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 ///
 /// [AddedReactions] is returned on completion.
 final class GetMessageAddedReactions extends TdFunction {
-  
   /// **GetMessageAddedReactions** *(getMessageAddedReactions)* - TDLib function
   ///
   /// Returns reactions added for a message, along with their sender.
@@ -31,7 +30,7 @@ final class GetMessageAddedReactions extends TdFunction {
     required this.offset,
     required this.limit,
   });
-  
+
   /// Identifier of the chat to which the message belongs
   final int chatId;
 
@@ -46,20 +45,20 @@ final class GetMessageAddedReactions extends TdFunction {
 
   /// The maximum number of reactions to be returned; must be positive and can't be greater than 100
   final int limit;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "reaction_type": reactionType?.toJson(),
       "offset": offset,
       "limit": limit,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -75,13 +74,14 @@ final class GetMessageAddedReactions extends TdFunction {
     ReactionType? reactionType,
     String? offset,
     int? limit,
-  }) => GetMessageAddedReactions(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    reactionType: reactionType ?? this.reactionType,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-  );
+  }) =>
+      GetMessageAddedReactions(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        reactionType: reactionType ?? this.reactionType,
+        offset: offset ?? this.offset,
+        limit: limit ?? this.limit,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getMessageAddedReactions';

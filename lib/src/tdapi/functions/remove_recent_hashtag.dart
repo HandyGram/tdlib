@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class RemoveRecentHashtag extends TdFunction {
-  
   /// **RemoveRecentHashtag** *(removeRecentHashtag)* - TDLib function
   ///
   /// Removes a hashtag from the list of recently used hashtags.
@@ -19,19 +18,19 @@ final class RemoveRecentHashtag extends TdFunction {
   const RemoveRecentHashtag({
     required this.hashtag,
   });
-  
+
   /// Hashtag to delete
   final String hashtag;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "hashtag": hashtag,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class RemoveRecentHashtag extends TdFunction {
   /// * [hashtag]: Hashtag to delete
   RemoveRecentHashtag copyWith({
     String? hashtag,
-  }) => RemoveRecentHashtag(
-    hashtag: hashtag ?? this.hashtag,
-  );
+  }) =>
+      RemoveRecentHashtag(
+        hashtag: hashtag ?? this.hashtag,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'removeRecentHashtag';

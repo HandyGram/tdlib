@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 /// * [hasAnimation]: True, if the photo has animated variant.
 /// * [isPersonal]: True, if the photo is visible only for the current user.
 final class ChatPhotoInfo extends TdObject {
-  
   /// **ChatPhotoInfo** *(chatPhotoInfo)* - basic class
   ///
   /// Contains basic information about the photo of a chat.
@@ -27,7 +26,7 @@ final class ChatPhotoInfo extends TdObject {
     required this.hasAnimation,
     required this.isPersonal,
   });
-  
+
   /// A small (160x160) chat photo variant in JPEG format. The file can be downloaded only before the photo is changed
   final File small;
 
@@ -42,29 +41,30 @@ final class ChatPhotoInfo extends TdObject {
 
   /// True, if the photo is visible only for the current user
   final bool isPersonal;
-  
+
   /// Parse from a json
   factory ChatPhotoInfo.fromJson(Map<String, dynamic> json) => ChatPhotoInfo(
-    small: File.fromJson(json['small']),
-    big: File.fromJson(json['big']),
-    minithumbnail: json['minithumbnail'] == null ? null : Minithumbnail.fromJson(json['minithumbnail']),
-    hasAnimation: json['has_animation'],
-    isPersonal: json['is_personal'],
-  );
-  
-  
+        small: File.fromJson(json['small']),
+        big: File.fromJson(json['big']),
+        minithumbnail: json['minithumbnail'] == null
+            ? null
+            : Minithumbnail.fromJson(json['minithumbnail']),
+        hasAnimation: json['has_animation'],
+        isPersonal: json['is_personal'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "small": small.toJson(),
       "big": big.toJson(),
       "minithumbnail": minithumbnail?.toJson(),
       "has_animation": hasAnimation,
       "is_personal": isPersonal,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -80,13 +80,14 @@ final class ChatPhotoInfo extends TdObject {
     Minithumbnail? minithumbnail,
     bool? hasAnimation,
     bool? isPersonal,
-  }) => ChatPhotoInfo(
-    small: small ?? this.small,
-    big: big ?? this.big,
-    minithumbnail: minithumbnail ?? this.minithumbnail,
-    hasAnimation: hasAnimation ?? this.hasAnimation,
-    isPersonal: isPersonal ?? this.isPersonal,
-  );
+  }) =>
+      ChatPhotoInfo(
+        small: small ?? this.small,
+        big: big ?? this.big,
+        minithumbnail: minithumbnail ?? this.minithumbnail,
+        hasAnimation: hasAnimation ?? this.hasAnimation,
+        isPersonal: isPersonal ?? this.isPersonal,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatPhotoInfo';

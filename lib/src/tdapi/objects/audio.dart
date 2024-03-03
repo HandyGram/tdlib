@@ -14,7 +14,6 @@ part of '../tdapi.dart';
 /// * [externalAlbumCovers]: Album cover variants to use if the downloaded audio file contains no album cover. Provided thumbnail dimensions are approximate.
 /// * [audio]: File containing the audio.
 final class Audio extends TdObject {
-  
   /// **Audio** *(audio)* - basic class
   ///
   /// Describes an audio file. Audio is usually in MP3 or M4A format.
@@ -39,7 +38,7 @@ final class Audio extends TdObject {
     required this.externalAlbumCovers,
     required this.audio,
   });
-  
+
   /// Duration of the audio, in seconds; as defined by the sender
   final int duration;
 
@@ -66,26 +65,32 @@ final class Audio extends TdObject {
 
   /// File containing the audio
   final File audio;
-  
+
   /// Parse from a json
   factory Audio.fromJson(Map<String, dynamic> json) => Audio(
-    duration: json['duration'],
-    title: json['title'],
-    performer: json['performer'],
-    fileName: json['file_name'],
-    mimeType: json['mime_type'],
-    albumCoverMinithumbnail: json['album_cover_minithumbnail'] == null ? null : Minithumbnail.fromJson(json['album_cover_minithumbnail']),
-    albumCoverThumbnail: json['album_cover_thumbnail'] == null ? null : Thumbnail.fromJson(json['album_cover_thumbnail']),
-    externalAlbumCovers: List<Thumbnail>.from((json['external_album_covers'] ?? []).map((item) => Thumbnail.fromJson(item)).toList()),
-    audio: File.fromJson(json['audio']),
-  );
-  
-  
+        duration: json['duration'],
+        title: json['title'],
+        performer: json['performer'],
+        fileName: json['file_name'],
+        mimeType: json['mime_type'],
+        albumCoverMinithumbnail: json['album_cover_minithumbnail'] == null
+            ? null
+            : Minithumbnail.fromJson(json['album_cover_minithumbnail']),
+        albumCoverThumbnail: json['album_cover_thumbnail'] == null
+            ? null
+            : Thumbnail.fromJson(json['album_cover_thumbnail']),
+        externalAlbumCovers: List<Thumbnail>.from(
+            (json['external_album_covers'] ?? [])
+                .map((item) => Thumbnail.fromJson(item))
+                .toList()),
+        audio: File.fromJson(json['audio']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "duration": duration,
       "title": title,
       "performer": performer,
@@ -93,10 +98,11 @@ final class Audio extends TdObject {
       "mime_type": mimeType,
       "album_cover_minithumbnail": albumCoverMinithumbnail?.toJson(),
       "album_cover_thumbnail": albumCoverThumbnail?.toJson(),
-      "external_album_covers": externalAlbumCovers.map((i) => i.toJson()).toList(),
+      "external_album_covers":
+          externalAlbumCovers.map((i) => i.toJson()).toList(),
       "audio": audio.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -120,17 +126,19 @@ final class Audio extends TdObject {
     Thumbnail? albumCoverThumbnail,
     List<Thumbnail>? externalAlbumCovers,
     File? audio,
-  }) => Audio(
-    duration: duration ?? this.duration,
-    title: title ?? this.title,
-    performer: performer ?? this.performer,
-    fileName: fileName ?? this.fileName,
-    mimeType: mimeType ?? this.mimeType,
-    albumCoverMinithumbnail: albumCoverMinithumbnail ?? this.albumCoverMinithumbnail,
-    albumCoverThumbnail: albumCoverThumbnail ?? this.albumCoverThumbnail,
-    externalAlbumCovers: externalAlbumCovers ?? this.externalAlbumCovers,
-    audio: audio ?? this.audio,
-  );
+  }) =>
+      Audio(
+        duration: duration ?? this.duration,
+        title: title ?? this.title,
+        performer: performer ?? this.performer,
+        fileName: fileName ?? this.fileName,
+        mimeType: mimeType ?? this.mimeType,
+        albumCoverMinithumbnail:
+            albumCoverMinithumbnail ?? this.albumCoverMinithumbnail,
+        albumCoverThumbnail: albumCoverThumbnail ?? this.albumCoverThumbnail,
+        externalAlbumCovers: externalAlbumCovers ?? this.externalAlbumCovers,
+        audio: audio ?? this.audio,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'audio';

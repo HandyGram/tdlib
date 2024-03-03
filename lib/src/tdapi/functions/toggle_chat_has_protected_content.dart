@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ToggleChatHasProtectedContent extends TdFunction {
-  
   /// **ToggleChatHasProtectedContent** *(toggleChatHasProtectedContent)* - TDLib function
   ///
   /// Changes the ability of users to save, forward, or copy chat content. Supported only for basic groups, supergroups and channels. Requires owner privileges.
@@ -22,23 +21,23 @@ final class ToggleChatHasProtectedContent extends TdFunction {
     required this.chatId,
     required this.hasProtectedContent,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
   /// New value of has_protected_content
   final bool hasProtectedContent;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "has_protected_content": hasProtectedContent,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class ToggleChatHasProtectedContent extends TdFunction {
   ToggleChatHasProtectedContent copyWith({
     int? chatId,
     bool? hasProtectedContent,
-  }) => ToggleChatHasProtectedContent(
-    chatId: chatId ?? this.chatId,
-    hasProtectedContent: hasProtectedContent ?? this.hasProtectedContent,
-  );
+  }) =>
+      ToggleChatHasProtectedContent(
+        chatId: chatId ?? this.chatId,
+        hasProtectedContent: hasProtectedContent ?? this.hasProtectedContent,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'toggleChatHasProtectedContent';

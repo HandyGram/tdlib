@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 /// * [streetLine2]: Second line of the address.
 /// * [postalCode]: Address postal code.
 final class Address extends TdObject {
-  
   /// **Address** *(address)* - basic class
   ///
   /// Describes an address.
@@ -30,7 +29,7 @@ final class Address extends TdObject {
     required this.streetLine2,
     required this.postalCode,
   });
-  
+
   /// A two-letter ISO 3166-1 alpha-2 country code
   final String countryCode;
 
@@ -48,31 +47,30 @@ final class Address extends TdObject {
 
   /// Address postal code
   final String postalCode;
-  
+
   /// Parse from a json
   factory Address.fromJson(Map<String, dynamic> json) => Address(
-    countryCode: json['country_code'],
-    state: json['state'],
-    city: json['city'],
-    streetLine1: json['street_line1'],
-    streetLine2: json['street_line2'],
-    postalCode: json['postal_code'],
-  );
-  
-  
+        countryCode: json['country_code'],
+        state: json['state'],
+        city: json['city'],
+        streetLine1: json['street_line1'],
+        streetLine2: json['street_line2'],
+        postalCode: json['postal_code'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "country_code": countryCode,
       "state": state,
       "city": city,
       "street_line1": streetLine1,
       "street_line2": streetLine2,
       "postal_code": postalCode,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -90,14 +88,15 @@ final class Address extends TdObject {
     String? streetLine1,
     String? streetLine2,
     String? postalCode,
-  }) => Address(
-    countryCode: countryCode ?? this.countryCode,
-    state: state ?? this.state,
-    city: city ?? this.city,
-    streetLine1: streetLine1 ?? this.streetLine1,
-    streetLine2: streetLine2 ?? this.streetLine2,
-    postalCode: postalCode ?? this.postalCode,
-  );
+  }) =>
+      Address(
+        countryCode: countryCode ?? this.countryCode,
+        state: state ?? this.state,
+        city: city ?? this.city,
+        streetLine1: streetLine1 ?? this.streetLine1,
+        streetLine2: streetLine2 ?? this.streetLine2,
+        postalCode: postalCode ?? this.postalCode,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'address';

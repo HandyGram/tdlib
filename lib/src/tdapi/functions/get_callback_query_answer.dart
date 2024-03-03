@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [CallbackQueryAnswer] is returned on completion.
 final class GetCallbackQueryAnswer extends TdFunction {
-  
   /// **GetCallbackQueryAnswer** *(getCallbackQueryAnswer)* - TDLib function
   ///
   /// Sends a callback query to a bot and returns an answer. Returns an error with code 502 if the bot fails to answer the query before the query timeout expires.
@@ -25,7 +24,7 @@ final class GetCallbackQueryAnswer extends TdFunction {
     required this.messageId,
     required this.payload,
   });
-  
+
   /// Identifier of the chat with the message
   final int chatId;
 
@@ -34,18 +33,18 @@ final class GetCallbackQueryAnswer extends TdFunction {
 
   /// Query payload
   final CallbackQueryPayload payload;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "payload": payload.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class GetCallbackQueryAnswer extends TdFunction {
     int? chatId,
     int? messageId,
     CallbackQueryPayload? payload,
-  }) => GetCallbackQueryAnswer(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    payload: payload ?? this.payload,
-  );
+  }) =>
+      GetCallbackQueryAnswer(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        payload: payload ?? this.payload,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getCallbackQueryAnswer';

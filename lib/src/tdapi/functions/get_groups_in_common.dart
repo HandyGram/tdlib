@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Chats] is returned on completion.
 final class GetGroupsInCommon extends TdFunction {
-  
   /// **GetGroupsInCommon** *(getGroupsInCommon)* - TDLib function
   ///
   /// Returns a list of common group chats with a given user. Chats are sorted by their type and creation date.
@@ -25,7 +24,7 @@ final class GetGroupsInCommon extends TdFunction {
     required this.offsetChatId,
     required this.limit,
   });
-  
+
   /// User identifier
   final int userId;
 
@@ -34,18 +33,18 @@ final class GetGroupsInCommon extends TdFunction {
 
   /// The maximum number of chats to be returned; up to 100
   final int limit;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "user_id": userId,
       "offset_chat_id": offsetChatId,
       "limit": limit,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class GetGroupsInCommon extends TdFunction {
     int? userId,
     int? offsetChatId,
     int? limit,
-  }) => GetGroupsInCommon(
-    userId: userId ?? this.userId,
-    offsetChatId: offsetChatId ?? this.offsetChatId,
-    limit: limit ?? this.limit,
-  );
+  }) =>
+      GetGroupsInCommon(
+        userId: userId ?? this.userId,
+        offsetChatId: offsetChatId ?? this.offsetChatId,
+        limit: limit ?? this.limit,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getGroupsInCommon';

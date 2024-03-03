@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [ChatFolderInviteLinkInfo] is returned on completion.
 final class CheckChatFolderInviteLink extends TdFunction {
-  
   /// **CheckChatFolderInviteLink** *(checkChatFolderInviteLink)* - TDLib function
   ///
   /// Checks the validity of an invite link for a chat folder and returns information about the corresponding chat folder.
@@ -19,19 +18,19 @@ final class CheckChatFolderInviteLink extends TdFunction {
   const CheckChatFolderInviteLink({
     required this.inviteLink,
   });
-  
+
   /// Invite link to be checked
   final String inviteLink;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "invite_link": inviteLink,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class CheckChatFolderInviteLink extends TdFunction {
   /// * [invite_link]: Invite link to be checked
   CheckChatFolderInviteLink copyWith({
     String? inviteLink,
-  }) => CheckChatFolderInviteLink(
-    inviteLink: inviteLink ?? this.inviteLink,
-  );
+  }) =>
+      CheckChatFolderInviteLink(
+        inviteLink: inviteLink ?? this.inviteLink,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'checkChatFolderInviteLink';

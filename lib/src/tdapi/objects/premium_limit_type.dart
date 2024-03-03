@@ -4,12 +4,11 @@ part of '../tdapi.dart';
 ///
 /// Describes type of a limit, increased for Premium users.
 sealed class PremiumLimitType extends TdObject {
-  
   /// **PremiumLimitType** *(premiumLimitType)* - parent
   ///
   /// Describes type of a limit, increased for Premium users.
   const PremiumLimitType();
-  
+
   /// a PremiumLimitType return type can be :
   /// * [PremiumLimitTypeSupergroupCount]
   /// * [PremiumLimitTypePinnedChatCount]
@@ -30,8 +29,8 @@ sealed class PremiumLimitType extends TdObject {
   /// * [PremiumLimitTypeStoryCaptionLength]
   /// * [PremiumLimitTypeStorySuggestedReactionAreaCount]
   /// * [PremiumLimitTypeSimilarChatCount]
-  factory PremiumLimitType.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory PremiumLimitType.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case PremiumLimitTypeSupergroupCount.defaultObjectId:
         return PremiumLimitTypeSupergroupCount.fromJson(json);
       case PremiumLimitTypePinnedChatCount.defaultObjectId:
@@ -77,7 +76,7 @@ sealed class PremiumLimitType extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -97,31 +96,31 @@ sealed class PremiumLimitType extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PremiumLimitTypeSupergroupCount** *(premiumLimitTypeSupergroupCount)* - child of PremiumLimitType
 ///
 /// The maximum number of joined supergroups and channels.
 final class PremiumLimitTypeSupergroupCount extends PremiumLimitType {
-  
   /// **PremiumLimitTypeSupergroupCount** *(premiumLimitTypeSupergroupCount)* - child of PremiumLimitType
   ///
   /// The maximum number of joined supergroups and channels.
   const PremiumLimitTypeSupergroupCount();
-  
+
   /// Parse from a json
-  factory PremiumLimitTypeSupergroupCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeSupergroupCount();
-  
+  factory PremiumLimitTypeSupergroupCount.fromJson(Map<String, dynamic> json) =>
+      const PremiumLimitTypeSupergroupCount();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  PremiumLimitTypeSupergroupCount copyWith() => const PremiumLimitTypeSupergroupCount();
+  PremiumLimitTypeSupergroupCount copyWith() =>
+      const PremiumLimitTypeSupergroupCount();
 
   /// TDLib object type
   static const String defaultObjectId = 'premiumLimitTypeSupergroupCount';
@@ -135,31 +134,31 @@ final class PremiumLimitTypeSupergroupCount extends PremiumLimitType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PremiumLimitTypePinnedChatCount** *(premiumLimitTypePinnedChatCount)* - child of PremiumLimitType
 ///
 /// The maximum number of pinned chats in the main chat list.
 final class PremiumLimitTypePinnedChatCount extends PremiumLimitType {
-  
   /// **PremiumLimitTypePinnedChatCount** *(premiumLimitTypePinnedChatCount)* - child of PremiumLimitType
   ///
   /// The maximum number of pinned chats in the main chat list.
   const PremiumLimitTypePinnedChatCount();
-  
+
   /// Parse from a json
-  factory PremiumLimitTypePinnedChatCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypePinnedChatCount();
-  
+  factory PremiumLimitTypePinnedChatCount.fromJson(Map<String, dynamic> json) =>
+      const PremiumLimitTypePinnedChatCount();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  PremiumLimitTypePinnedChatCount copyWith() => const PremiumLimitTypePinnedChatCount();
+  PremiumLimitTypePinnedChatCount copyWith() =>
+      const PremiumLimitTypePinnedChatCount();
 
   /// TDLib object type
   static const String defaultObjectId = 'premiumLimitTypePinnedChatCount';
@@ -173,34 +172,36 @@ final class PremiumLimitTypePinnedChatCount extends PremiumLimitType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PremiumLimitTypeCreatedPublicChatCount** *(premiumLimitTypeCreatedPublicChatCount)* - child of PremiumLimitType
 ///
 /// The maximum number of created public chats.
 final class PremiumLimitTypeCreatedPublicChatCount extends PremiumLimitType {
-  
   /// **PremiumLimitTypeCreatedPublicChatCount** *(premiumLimitTypeCreatedPublicChatCount)* - child of PremiumLimitType
   ///
   /// The maximum number of created public chats.
   const PremiumLimitTypeCreatedPublicChatCount();
-  
+
   /// Parse from a json
-  factory PremiumLimitTypeCreatedPublicChatCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeCreatedPublicChatCount();
-  
+  factory PremiumLimitTypeCreatedPublicChatCount.fromJson(
+          Map<String, dynamic> json) =>
+      const PremiumLimitTypeCreatedPublicChatCount();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  PremiumLimitTypeCreatedPublicChatCount copyWith() => const PremiumLimitTypeCreatedPublicChatCount();
+  PremiumLimitTypeCreatedPublicChatCount copyWith() =>
+      const PremiumLimitTypeCreatedPublicChatCount();
 
   /// TDLib object type
-  static const String defaultObjectId = 'premiumLimitTypeCreatedPublicChatCount';
+  static const String defaultObjectId =
+      'premiumLimitTypeCreatedPublicChatCount';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -211,31 +212,32 @@ final class PremiumLimitTypeCreatedPublicChatCount extends PremiumLimitType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PremiumLimitTypeSavedAnimationCount** *(premiumLimitTypeSavedAnimationCount)* - child of PremiumLimitType
 ///
 /// The maximum number of saved animations.
 final class PremiumLimitTypeSavedAnimationCount extends PremiumLimitType {
-  
   /// **PremiumLimitTypeSavedAnimationCount** *(premiumLimitTypeSavedAnimationCount)* - child of PremiumLimitType
   ///
   /// The maximum number of saved animations.
   const PremiumLimitTypeSavedAnimationCount();
-  
+
   /// Parse from a json
-  factory PremiumLimitTypeSavedAnimationCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeSavedAnimationCount();
-  
+  factory PremiumLimitTypeSavedAnimationCount.fromJson(
+          Map<String, dynamic> json) =>
+      const PremiumLimitTypeSavedAnimationCount();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  PremiumLimitTypeSavedAnimationCount copyWith() => const PremiumLimitTypeSavedAnimationCount();
+  PremiumLimitTypeSavedAnimationCount copyWith() =>
+      const PremiumLimitTypeSavedAnimationCount();
 
   /// TDLib object type
   static const String defaultObjectId = 'premiumLimitTypeSavedAnimationCount';
@@ -249,31 +251,32 @@ final class PremiumLimitTypeSavedAnimationCount extends PremiumLimitType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PremiumLimitTypeFavoriteStickerCount** *(premiumLimitTypeFavoriteStickerCount)* - child of PremiumLimitType
 ///
 /// The maximum number of favorite stickers.
 final class PremiumLimitTypeFavoriteStickerCount extends PremiumLimitType {
-  
   /// **PremiumLimitTypeFavoriteStickerCount** *(premiumLimitTypeFavoriteStickerCount)* - child of PremiumLimitType
   ///
   /// The maximum number of favorite stickers.
   const PremiumLimitTypeFavoriteStickerCount();
-  
+
   /// Parse from a json
-  factory PremiumLimitTypeFavoriteStickerCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeFavoriteStickerCount();
-  
+  factory PremiumLimitTypeFavoriteStickerCount.fromJson(
+          Map<String, dynamic> json) =>
+      const PremiumLimitTypeFavoriteStickerCount();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  PremiumLimitTypeFavoriteStickerCount copyWith() => const PremiumLimitTypeFavoriteStickerCount();
+  PremiumLimitTypeFavoriteStickerCount copyWith() =>
+      const PremiumLimitTypeFavoriteStickerCount();
 
   /// TDLib object type
   static const String defaultObjectId = 'premiumLimitTypeFavoriteStickerCount';
@@ -287,31 +290,31 @@ final class PremiumLimitTypeFavoriteStickerCount extends PremiumLimitType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PremiumLimitTypeChatFolderCount** *(premiumLimitTypeChatFolderCount)* - child of PremiumLimitType
 ///
 /// The maximum number of chat folders.
 final class PremiumLimitTypeChatFolderCount extends PremiumLimitType {
-  
   /// **PremiumLimitTypeChatFolderCount** *(premiumLimitTypeChatFolderCount)* - child of PremiumLimitType
   ///
   /// The maximum number of chat folders.
   const PremiumLimitTypeChatFolderCount();
-  
+
   /// Parse from a json
-  factory PremiumLimitTypeChatFolderCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeChatFolderCount();
-  
+  factory PremiumLimitTypeChatFolderCount.fromJson(Map<String, dynamic> json) =>
+      const PremiumLimitTypeChatFolderCount();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  PremiumLimitTypeChatFolderCount copyWith() => const PremiumLimitTypeChatFolderCount();
+  PremiumLimitTypeChatFolderCount copyWith() =>
+      const PremiumLimitTypeChatFolderCount();
 
   /// TDLib object type
   static const String defaultObjectId = 'premiumLimitTypeChatFolderCount';
@@ -325,34 +328,36 @@ final class PremiumLimitTypeChatFolderCount extends PremiumLimitType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PremiumLimitTypeChatFolderChosenChatCount** *(premiumLimitTypeChatFolderChosenChatCount)* - child of PremiumLimitType
 ///
 /// The maximum number of pinned and always included, or always excluded chats in a chat folder.
 final class PremiumLimitTypeChatFolderChosenChatCount extends PremiumLimitType {
-  
   /// **PremiumLimitTypeChatFolderChosenChatCount** *(premiumLimitTypeChatFolderChosenChatCount)* - child of PremiumLimitType
   ///
   /// The maximum number of pinned and always included, or always excluded chats in a chat folder.
   const PremiumLimitTypeChatFolderChosenChatCount();
-  
+
   /// Parse from a json
-  factory PremiumLimitTypeChatFolderChosenChatCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeChatFolderChosenChatCount();
-  
+  factory PremiumLimitTypeChatFolderChosenChatCount.fromJson(
+          Map<String, dynamic> json) =>
+      const PremiumLimitTypeChatFolderChosenChatCount();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  PremiumLimitTypeChatFolderChosenChatCount copyWith() => const PremiumLimitTypeChatFolderChosenChatCount();
+  PremiumLimitTypeChatFolderChosenChatCount copyWith() =>
+      const PremiumLimitTypeChatFolderChosenChatCount();
 
   /// TDLib object type
-  static const String defaultObjectId = 'premiumLimitTypeChatFolderChosenChatCount';
+  static const String defaultObjectId =
+      'premiumLimitTypeChatFolderChosenChatCount';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -362,35 +367,37 @@ final class PremiumLimitTypeChatFolderChosenChatCount extends PremiumLimitType {
   @override
   String get currentObjectId => defaultObjectId;
 }
-
 
 /// **PremiumLimitTypePinnedArchivedChatCount** *(premiumLimitTypePinnedArchivedChatCount)* - child of PremiumLimitType
 ///
 /// The maximum number of pinned chats in the archive chat list.
 final class PremiumLimitTypePinnedArchivedChatCount extends PremiumLimitType {
-  
   /// **PremiumLimitTypePinnedArchivedChatCount** *(premiumLimitTypePinnedArchivedChatCount)* - child of PremiumLimitType
   ///
   /// The maximum number of pinned chats in the archive chat list.
   const PremiumLimitTypePinnedArchivedChatCount();
-  
+
   /// Parse from a json
-  factory PremiumLimitTypePinnedArchivedChatCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypePinnedArchivedChatCount();
-  
+  factory PremiumLimitTypePinnedArchivedChatCount.fromJson(
+          Map<String, dynamic> json) =>
+      const PremiumLimitTypePinnedArchivedChatCount();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  PremiumLimitTypePinnedArchivedChatCount copyWith() => const PremiumLimitTypePinnedArchivedChatCount();
+  PremiumLimitTypePinnedArchivedChatCount copyWith() =>
+      const PremiumLimitTypePinnedArchivedChatCount();
 
   /// TDLib object type
-  static const String defaultObjectId = 'premiumLimitTypePinnedArchivedChatCount';
+  static const String defaultObjectId =
+      'premiumLimitTypePinnedArchivedChatCount';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -400,35 +407,38 @@ final class PremiumLimitTypePinnedArchivedChatCount extends PremiumLimitType {
   @override
   String get currentObjectId => defaultObjectId;
 }
-
 
 /// **PremiumLimitTypePinnedSavedMessagesTopicCount** *(premiumLimitTypePinnedSavedMessagesTopicCount)* - child of PremiumLimitType
 ///
 /// The maximum number of pinned Saved Messages topics.
-final class PremiumLimitTypePinnedSavedMessagesTopicCount extends PremiumLimitType {
-  
+final class PremiumLimitTypePinnedSavedMessagesTopicCount
+    extends PremiumLimitType {
   /// **PremiumLimitTypePinnedSavedMessagesTopicCount** *(premiumLimitTypePinnedSavedMessagesTopicCount)* - child of PremiumLimitType
   ///
   /// The maximum number of pinned Saved Messages topics.
   const PremiumLimitTypePinnedSavedMessagesTopicCount();
-  
+
   /// Parse from a json
-  factory PremiumLimitTypePinnedSavedMessagesTopicCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypePinnedSavedMessagesTopicCount();
-  
+  factory PremiumLimitTypePinnedSavedMessagesTopicCount.fromJson(
+          Map<String, dynamic> json) =>
+      const PremiumLimitTypePinnedSavedMessagesTopicCount();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  PremiumLimitTypePinnedSavedMessagesTopicCount copyWith() => const PremiumLimitTypePinnedSavedMessagesTopicCount();
+  PremiumLimitTypePinnedSavedMessagesTopicCount copyWith() =>
+      const PremiumLimitTypePinnedSavedMessagesTopicCount();
 
   /// TDLib object type
-  static const String defaultObjectId = 'premiumLimitTypePinnedSavedMessagesTopicCount';
+  static const String defaultObjectId =
+      'premiumLimitTypePinnedSavedMessagesTopicCount';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -438,32 +448,32 @@ final class PremiumLimitTypePinnedSavedMessagesTopicCount extends PremiumLimitTy
   @override
   String get currentObjectId => defaultObjectId;
 }
-
 
 /// **PremiumLimitTypeCaptionLength** *(premiumLimitTypeCaptionLength)* - child of PremiumLimitType
 ///
 /// The maximum length of sent media caption.
 final class PremiumLimitTypeCaptionLength extends PremiumLimitType {
-  
   /// **PremiumLimitTypeCaptionLength** *(premiumLimitTypeCaptionLength)* - child of PremiumLimitType
   ///
   /// The maximum length of sent media caption.
   const PremiumLimitTypeCaptionLength();
-  
+
   /// Parse from a json
-  factory PremiumLimitTypeCaptionLength.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeCaptionLength();
-  
+  factory PremiumLimitTypeCaptionLength.fromJson(Map<String, dynamic> json) =>
+      const PremiumLimitTypeCaptionLength();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  PremiumLimitTypeCaptionLength copyWith() => const PremiumLimitTypeCaptionLength();
+  PremiumLimitTypeCaptionLength copyWith() =>
+      const PremiumLimitTypeCaptionLength();
 
   /// TDLib object type
   static const String defaultObjectId = 'premiumLimitTypeCaptionLength';
@@ -477,27 +487,26 @@ final class PremiumLimitTypeCaptionLength extends PremiumLimitType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PremiumLimitTypeBioLength** *(premiumLimitTypeBioLength)* - child of PremiumLimitType
 ///
 /// The maximum length of the user's bio.
 final class PremiumLimitTypeBioLength extends PremiumLimitType {
-  
   /// **PremiumLimitTypeBioLength** *(premiumLimitTypeBioLength)* - child of PremiumLimitType
   ///
   /// The maximum length of the user's bio.
   const PremiumLimitTypeBioLength();
-  
+
   /// Parse from a json
-  factory PremiumLimitTypeBioLength.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeBioLength();
-  
+  factory PremiumLimitTypeBioLength.fromJson(Map<String, dynamic> json) =>
+      const PremiumLimitTypeBioLength();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -515,34 +524,36 @@ final class PremiumLimitTypeBioLength extends PremiumLimitType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PremiumLimitTypeChatFolderInviteLinkCount** *(premiumLimitTypeChatFolderInviteLinkCount)* - child of PremiumLimitType
 ///
 /// The maximum number of invite links for a chat folder.
 final class PremiumLimitTypeChatFolderInviteLinkCount extends PremiumLimitType {
-  
   /// **PremiumLimitTypeChatFolderInviteLinkCount** *(premiumLimitTypeChatFolderInviteLinkCount)* - child of PremiumLimitType
   ///
   /// The maximum number of invite links for a chat folder.
   const PremiumLimitTypeChatFolderInviteLinkCount();
-  
+
   /// Parse from a json
-  factory PremiumLimitTypeChatFolderInviteLinkCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeChatFolderInviteLinkCount();
-  
+  factory PremiumLimitTypeChatFolderInviteLinkCount.fromJson(
+          Map<String, dynamic> json) =>
+      const PremiumLimitTypeChatFolderInviteLinkCount();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  PremiumLimitTypeChatFolderInviteLinkCount copyWith() => const PremiumLimitTypeChatFolderInviteLinkCount();
+  PremiumLimitTypeChatFolderInviteLinkCount copyWith() =>
+      const PremiumLimitTypeChatFolderInviteLinkCount();
 
   /// TDLib object type
-  static const String defaultObjectId = 'premiumLimitTypeChatFolderInviteLinkCount';
+  static const String defaultObjectId =
+      'premiumLimitTypeChatFolderInviteLinkCount';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -552,35 +563,37 @@ final class PremiumLimitTypeChatFolderInviteLinkCount extends PremiumLimitType {
   @override
   String get currentObjectId => defaultObjectId;
 }
-
 
 /// **PremiumLimitTypeShareableChatFolderCount** *(premiumLimitTypeShareableChatFolderCount)* - child of PremiumLimitType
 ///
 /// The maximum number of added shareable chat folders.
 final class PremiumLimitTypeShareableChatFolderCount extends PremiumLimitType {
-  
   /// **PremiumLimitTypeShareableChatFolderCount** *(premiumLimitTypeShareableChatFolderCount)* - child of PremiumLimitType
   ///
   /// The maximum number of added shareable chat folders.
   const PremiumLimitTypeShareableChatFolderCount();
-  
+
   /// Parse from a json
-  factory PremiumLimitTypeShareableChatFolderCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeShareableChatFolderCount();
-  
+  factory PremiumLimitTypeShareableChatFolderCount.fromJson(
+          Map<String, dynamic> json) =>
+      const PremiumLimitTypeShareableChatFolderCount();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  PremiumLimitTypeShareableChatFolderCount copyWith() => const PremiumLimitTypeShareableChatFolderCount();
+  PremiumLimitTypeShareableChatFolderCount copyWith() =>
+      const PremiumLimitTypeShareableChatFolderCount();
 
   /// TDLib object type
-  static const String defaultObjectId = 'premiumLimitTypeShareableChatFolderCount';
+  static const String defaultObjectId =
+      'premiumLimitTypeShareableChatFolderCount';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -591,31 +604,32 @@ final class PremiumLimitTypeShareableChatFolderCount extends PremiumLimitType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PremiumLimitTypeActiveStoryCount** *(premiumLimitTypeActiveStoryCount)* - child of PremiumLimitType
 ///
 /// The maximum number of active stories.
 final class PremiumLimitTypeActiveStoryCount extends PremiumLimitType {
-  
   /// **PremiumLimitTypeActiveStoryCount** *(premiumLimitTypeActiveStoryCount)* - child of PremiumLimitType
   ///
   /// The maximum number of active stories.
   const PremiumLimitTypeActiveStoryCount();
-  
+
   /// Parse from a json
-  factory PremiumLimitTypeActiveStoryCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeActiveStoryCount();
-  
+  factory PremiumLimitTypeActiveStoryCount.fromJson(
+          Map<String, dynamic> json) =>
+      const PremiumLimitTypeActiveStoryCount();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  PremiumLimitTypeActiveStoryCount copyWith() => const PremiumLimitTypeActiveStoryCount();
+  PremiumLimitTypeActiveStoryCount copyWith() =>
+      const PremiumLimitTypeActiveStoryCount();
 
   /// TDLib object type
   static const String defaultObjectId = 'premiumLimitTypeActiveStoryCount';
@@ -629,31 +643,32 @@ final class PremiumLimitTypeActiveStoryCount extends PremiumLimitType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PremiumLimitTypeWeeklySentStoryCount** *(premiumLimitTypeWeeklySentStoryCount)* - child of PremiumLimitType
 ///
 /// The maximum number of stories sent per week.
 final class PremiumLimitTypeWeeklySentStoryCount extends PremiumLimitType {
-  
   /// **PremiumLimitTypeWeeklySentStoryCount** *(premiumLimitTypeWeeklySentStoryCount)* - child of PremiumLimitType
   ///
   /// The maximum number of stories sent per week.
   const PremiumLimitTypeWeeklySentStoryCount();
-  
+
   /// Parse from a json
-  factory PremiumLimitTypeWeeklySentStoryCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeWeeklySentStoryCount();
-  
+  factory PremiumLimitTypeWeeklySentStoryCount.fromJson(
+          Map<String, dynamic> json) =>
+      const PremiumLimitTypeWeeklySentStoryCount();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  PremiumLimitTypeWeeklySentStoryCount copyWith() => const PremiumLimitTypeWeeklySentStoryCount();
+  PremiumLimitTypeWeeklySentStoryCount copyWith() =>
+      const PremiumLimitTypeWeeklySentStoryCount();
 
   /// TDLib object type
   static const String defaultObjectId = 'premiumLimitTypeWeeklySentStoryCount';
@@ -667,31 +682,32 @@ final class PremiumLimitTypeWeeklySentStoryCount extends PremiumLimitType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PremiumLimitTypeMonthlySentStoryCount** *(premiumLimitTypeMonthlySentStoryCount)* - child of PremiumLimitType
 ///
 /// The maximum number of stories sent per month.
 final class PremiumLimitTypeMonthlySentStoryCount extends PremiumLimitType {
-  
   /// **PremiumLimitTypeMonthlySentStoryCount** *(premiumLimitTypeMonthlySentStoryCount)* - child of PremiumLimitType
   ///
   /// The maximum number of stories sent per month.
   const PremiumLimitTypeMonthlySentStoryCount();
-  
+
   /// Parse from a json
-  factory PremiumLimitTypeMonthlySentStoryCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeMonthlySentStoryCount();
-  
+  factory PremiumLimitTypeMonthlySentStoryCount.fromJson(
+          Map<String, dynamic> json) =>
+      const PremiumLimitTypeMonthlySentStoryCount();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  PremiumLimitTypeMonthlySentStoryCount copyWith() => const PremiumLimitTypeMonthlySentStoryCount();
+  PremiumLimitTypeMonthlySentStoryCount copyWith() =>
+      const PremiumLimitTypeMonthlySentStoryCount();
 
   /// TDLib object type
   static const String defaultObjectId = 'premiumLimitTypeMonthlySentStoryCount';
@@ -705,31 +721,32 @@ final class PremiumLimitTypeMonthlySentStoryCount extends PremiumLimitType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PremiumLimitTypeStoryCaptionLength** *(premiumLimitTypeStoryCaptionLength)* - child of PremiumLimitType
 ///
 /// The maximum length of captions of sent stories.
 final class PremiumLimitTypeStoryCaptionLength extends PremiumLimitType {
-  
   /// **PremiumLimitTypeStoryCaptionLength** *(premiumLimitTypeStoryCaptionLength)* - child of PremiumLimitType
   ///
   /// The maximum length of captions of sent stories.
   const PremiumLimitTypeStoryCaptionLength();
-  
+
   /// Parse from a json
-  factory PremiumLimitTypeStoryCaptionLength.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeStoryCaptionLength();
-  
+  factory PremiumLimitTypeStoryCaptionLength.fromJson(
+          Map<String, dynamic> json) =>
+      const PremiumLimitTypeStoryCaptionLength();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  PremiumLimitTypeStoryCaptionLength copyWith() => const PremiumLimitTypeStoryCaptionLength();
+  PremiumLimitTypeStoryCaptionLength copyWith() =>
+      const PremiumLimitTypeStoryCaptionLength();
 
   /// TDLib object type
   static const String defaultObjectId = 'premiumLimitTypeStoryCaptionLength';
@@ -743,34 +760,37 @@ final class PremiumLimitTypeStoryCaptionLength extends PremiumLimitType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PremiumLimitTypeStorySuggestedReactionAreaCount** *(premiumLimitTypeStorySuggestedReactionAreaCount)* - child of PremiumLimitType
 ///
 /// The maximum number of suggested reaction areas on a story.
-final class PremiumLimitTypeStorySuggestedReactionAreaCount extends PremiumLimitType {
-  
+final class PremiumLimitTypeStorySuggestedReactionAreaCount
+    extends PremiumLimitType {
   /// **PremiumLimitTypeStorySuggestedReactionAreaCount** *(premiumLimitTypeStorySuggestedReactionAreaCount)* - child of PremiumLimitType
   ///
   /// The maximum number of suggested reaction areas on a story.
   const PremiumLimitTypeStorySuggestedReactionAreaCount();
-  
+
   /// Parse from a json
-  factory PremiumLimitTypeStorySuggestedReactionAreaCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeStorySuggestedReactionAreaCount();
-  
+  factory PremiumLimitTypeStorySuggestedReactionAreaCount.fromJson(
+          Map<String, dynamic> json) =>
+      const PremiumLimitTypeStorySuggestedReactionAreaCount();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  PremiumLimitTypeStorySuggestedReactionAreaCount copyWith() => const PremiumLimitTypeStorySuggestedReactionAreaCount();
+  PremiumLimitTypeStorySuggestedReactionAreaCount copyWith() =>
+      const PremiumLimitTypeStorySuggestedReactionAreaCount();
 
   /// TDLib object type
-  static const String defaultObjectId = 'premiumLimitTypeStorySuggestedReactionAreaCount';
+  static const String defaultObjectId =
+      'premiumLimitTypeStorySuggestedReactionAreaCount';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -781,31 +801,32 @@ final class PremiumLimitTypeStorySuggestedReactionAreaCount extends PremiumLimit
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PremiumLimitTypeSimilarChatCount** *(premiumLimitTypeSimilarChatCount)* - child of PremiumLimitType
 ///
 /// The maximum number of received similar chats.
 final class PremiumLimitTypeSimilarChatCount extends PremiumLimitType {
-  
   /// **PremiumLimitTypeSimilarChatCount** *(premiumLimitTypeSimilarChatCount)* - child of PremiumLimitType
   ///
   /// The maximum number of received similar chats.
   const PremiumLimitTypeSimilarChatCount();
-  
+
   /// Parse from a json
-  factory PremiumLimitTypeSimilarChatCount.fromJson(Map<String, dynamic> json) => const PremiumLimitTypeSimilarChatCount();
-  
+  factory PremiumLimitTypeSimilarChatCount.fromJson(
+          Map<String, dynamic> json) =>
+      const PremiumLimitTypeSimilarChatCount();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  PremiumLimitTypeSimilarChatCount copyWith() => const PremiumLimitTypeSimilarChatCount();
+  PremiumLimitTypeSimilarChatCount copyWith() =>
+      const PremiumLimitTypeSimilarChatCount();
 
   /// TDLib object type
   static const String defaultObjectId = 'premiumLimitTypeSimilarChatCount';

@@ -13,7 +13,6 @@ part of '../tdapi.dart';
 /// * [inviteLink]: Primary invite link for this group; may be null. For chat administrators with can_invite_users right only. Updated only after the basic group is opened *(optional)*.
 /// * [botCommands]: List of commands of bots in the group.
 final class BasicGroupFullInfo extends TdObject {
-  
   /// **BasicGroupFullInfo** *(basicGroupFullInfo)* - basic class
   ///
   /// Contains full information about a basic group.
@@ -38,7 +37,7 @@ final class BasicGroupFullInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Chat photo; may be null if empty or unknown. If non-null, then it is the same photo as in chat.photo
   final ChatPhoto? photo;
 
@@ -70,27 +69,33 @@ final class BasicGroupFullInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory BasicGroupFullInfo.fromJson(Map<String, dynamic> json) => BasicGroupFullInfo(
-    photo: json['photo'] == null ? null : ChatPhoto.fromJson(json['photo']),
-    description: json['description'],
-    creatorUserId: json['creator_user_id'],
-    members: List<ChatMember>.from((json['members'] ?? []).map((item) => ChatMember.fromJson(item)).toList()),
-    canHideMembers: json['can_hide_members'],
-    canToggleAggressiveAntiSpam: json['can_toggle_aggressive_anti_spam'],
-    inviteLink: json['invite_link'] == null ? null : ChatInviteLink.fromJson(json['invite_link']),
-    botCommands: List<BotCommands>.from((json['bot_commands'] ?? []).map((item) => BotCommands.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory BasicGroupFullInfo.fromJson(Map<String, dynamic> json) =>
+      BasicGroupFullInfo(
+        photo: json['photo'] == null ? null : ChatPhoto.fromJson(json['photo']),
+        description: json['description'],
+        creatorUserId: json['creator_user_id'],
+        members: List<ChatMember>.from((json['members'] ?? [])
+            .map((item) => ChatMember.fromJson(item))
+            .toList()),
+        canHideMembers: json['can_hide_members'],
+        canToggleAggressiveAntiSpam: json['can_toggle_aggressive_anti_spam'],
+        inviteLink: json['invite_link'] == null
+            ? null
+            : ChatInviteLink.fromJson(json['invite_link']),
+        botCommands: List<BotCommands>.from((json['bot_commands'] ?? [])
+            .map((item) => BotCommands.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "photo": photo?.toJson(),
       "description": description,
       "creator_user_id": creatorUserId,
@@ -99,8 +104,8 @@ final class BasicGroupFullInfo extends TdObject {
       "can_toggle_aggressive_anti_spam": canToggleAggressiveAntiSpam,
       "invite_link": inviteLink?.toJson(),
       "bot_commands": botCommands.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -124,18 +129,20 @@ final class BasicGroupFullInfo extends TdObject {
     List<BotCommands>? botCommands,
     dynamic extra,
     int? clientId,
-  }) => BasicGroupFullInfo(
-    photo: photo ?? this.photo,
-    description: description ?? this.description,
-    creatorUserId: creatorUserId ?? this.creatorUserId,
-    members: members ?? this.members,
-    canHideMembers: canHideMembers ?? this.canHideMembers,
-    canToggleAggressiveAntiSpam: canToggleAggressiveAntiSpam ?? this.canToggleAggressiveAntiSpam,
-    inviteLink: inviteLink ?? this.inviteLink,
-    botCommands: botCommands ?? this.botCommands,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      BasicGroupFullInfo(
+        photo: photo ?? this.photo,
+        description: description ?? this.description,
+        creatorUserId: creatorUserId ?? this.creatorUserId,
+        members: members ?? this.members,
+        canHideMembers: canHideMembers ?? this.canHideMembers,
+        canToggleAggressiveAntiSpam:
+            canToggleAggressiveAntiSpam ?? this.canToggleAggressiveAntiSpam,
+        inviteLink: inviteLink ?? this.inviteLink,
+        botCommands: botCommands ?? this.botCommands,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'basicGroupFullInfo';

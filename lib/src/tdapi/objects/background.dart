@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 /// * [document]: Document with the background; may be null. Null only for filled and chat theme backgrounds *(optional)*.
 /// * [type]: Type of the background.
 final class Background extends TdObject {
-  
   /// **Background** *(background)* - basic class
   ///
   /// Describes a chat background.
@@ -32,7 +31,7 @@ final class Background extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Unique background identifier
   final int id;
 
@@ -58,33 +57,34 @@ final class Background extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory Background.fromJson(Map<String, dynamic> json) => Background(
-    id: int.parse(json['id']),
-    isDefault: json['is_default'],
-    isDark: json['is_dark'],
-    name: json['name'],
-    document: json['document'] == null ? null : Document.fromJson(json['document']),
-    type: BackgroundType.fromJson(json['type']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: int.parse(json['id']),
+        isDefault: json['is_default'],
+        isDark: json['is_dark'],
+        name: json['name'],
+        document: json['document'] == null
+            ? null
+            : Document.fromJson(json['document']),
+        type: BackgroundType.fromJson(json['type']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "is_default": isDefault,
       "is_dark": isDark,
       "name": name,
       "document": document?.toJson(),
       "type": type.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -104,16 +104,17 @@ final class Background extends TdObject {
     BackgroundType? type,
     dynamic extra,
     int? clientId,
-  }) => Background(
-    id: id ?? this.id,
-    isDefault: isDefault ?? this.isDefault,
-    isDark: isDark ?? this.isDark,
-    name: name ?? this.name,
-    document: document ?? this.document,
-    type: type ?? this.type,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      Background(
+        id: id ?? this.id,
+        isDefault: isDefault ?? this.isDefault,
+        isDark: isDark ?? this.isDark,
+        name: name ?? this.name,
+        document: document ?? this.document,
+        type: type ?? this.type,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'background';

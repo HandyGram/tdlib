@@ -7,7 +7,6 @@ part of '../tdapi.dart';
 /// * [file]: The file.
 /// * [date]: Point in time (Unix timestamp) when the file was uploaded.
 final class DatedFile extends TdObject {
-  
   /// **DatedFile** *(datedFile)* - basic class
   ///
   /// File with the date it was uploaded.
@@ -18,42 +17,42 @@ final class DatedFile extends TdObject {
     required this.file,
     required this.date,
   });
-  
-  /// The file 
+
+  /// The file
   final File file;
 
   /// Point in time (Unix timestamp) when the file was uploaded
   final int date;
-  
+
   /// Parse from a json
   factory DatedFile.fromJson(Map<String, dynamic> json) => DatedFile(
-    file: File.fromJson(json['file']),
-    date: json['date'],
-  );
-  
-  
+        file: File.fromJson(json['file']),
+        date: json['date'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "file": file.toJson(),
       "date": date,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [file]: The file 
+  /// * [file]: The file
   /// * [date]: Point in time (Unix timestamp) when the file was uploaded
   DatedFile copyWith({
     File? file,
     int? date,
-  }) => DatedFile(
-    file: file ?? this.file,
-    date: date ?? this.date,
-  );
+  }) =>
+      DatedFile(
+        file: file ?? this.file,
+        date: date ?? this.date,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'datedFile';

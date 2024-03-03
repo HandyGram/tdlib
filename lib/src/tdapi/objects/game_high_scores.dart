@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [scores]: A list of game high scores.
 final class GameHighScores extends TdObject {
-  
   /// **GameHighScores** *(gameHighScores)* - basic class
   ///
   /// Contains a list of game high scores.
@@ -17,7 +16,7 @@ final class GameHighScores extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// A list of game high scores
   final List<GameHighScore> scores;
 
@@ -28,23 +27,24 @@ final class GameHighScores extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory GameHighScores.fromJson(Map<String, dynamic> json) => GameHighScores(
-    scores: List<GameHighScore>.from((json['scores'] ?? []).map((item) => GameHighScore.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        scores: List<GameHighScore>.from((json['scores'] ?? [])
+            .map((item) => GameHighScore.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "scores": scores.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +54,12 @@ final class GameHighScores extends TdObject {
     List<GameHighScore>? scores,
     dynamic extra,
     int? clientId,
-  }) => GameHighScores(
-    scores: scores ?? this.scores,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      GameHighScores(
+        scores: scores ?? this.scores,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'gameHighScores';

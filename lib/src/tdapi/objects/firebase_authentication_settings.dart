@@ -4,17 +4,16 @@ part of '../tdapi.dart';
 ///
 /// Contains settings for Firebase Authentication in the official applications.
 sealed class FirebaseAuthenticationSettings extends TdObject {
-  
   /// **FirebaseAuthenticationSettings** *(firebaseAuthenticationSettings)* - parent
   ///
   /// Contains settings for Firebase Authentication in the official applications.
   const FirebaseAuthenticationSettings();
-  
+
   /// a FirebaseAuthenticationSettings return type can be :
   /// * [FirebaseAuthenticationSettingsAndroid]
   /// * [FirebaseAuthenticationSettingsIos]
-  factory FirebaseAuthenticationSettings.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory FirebaseAuthenticationSettings.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case FirebaseAuthenticationSettingsAndroid.defaultObjectId:
         return FirebaseAuthenticationSettingsAndroid.fromJson(json);
       case FirebaseAuthenticationSettingsIos.defaultObjectId:
@@ -26,7 +25,7 @@ sealed class FirebaseAuthenticationSettings extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -46,31 +45,33 @@ sealed class FirebaseAuthenticationSettings extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **FirebaseAuthenticationSettingsAndroid** *(firebaseAuthenticationSettingsAndroid)* - child of FirebaseAuthenticationSettings
 ///
 /// Settings for Firebase Authentication in the official Android application.
-final class FirebaseAuthenticationSettingsAndroid extends FirebaseAuthenticationSettings {
-  
+final class FirebaseAuthenticationSettingsAndroid
+    extends FirebaseAuthenticationSettings {
   /// **FirebaseAuthenticationSettingsAndroid** *(firebaseAuthenticationSettingsAndroid)* - child of FirebaseAuthenticationSettings
   ///
   /// Settings for Firebase Authentication in the official Android application.
   const FirebaseAuthenticationSettingsAndroid();
-  
+
   /// Parse from a json
-  factory FirebaseAuthenticationSettingsAndroid.fromJson(Map<String, dynamic> json) => const FirebaseAuthenticationSettingsAndroid();
-  
+  factory FirebaseAuthenticationSettingsAndroid.fromJson(
+          Map<String, dynamic> json) =>
+      const FirebaseAuthenticationSettingsAndroid();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  FirebaseAuthenticationSettingsAndroid copyWith() => const FirebaseAuthenticationSettingsAndroid();
+  FirebaseAuthenticationSettingsAndroid copyWith() =>
+      const FirebaseAuthenticationSettingsAndroid();
 
   /// TDLib object type
   static const String defaultObjectId = 'firebaseAuthenticationSettingsAndroid';
@@ -84,15 +85,14 @@ final class FirebaseAuthenticationSettingsAndroid extends FirebaseAuthentication
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **FirebaseAuthenticationSettingsIos** *(firebaseAuthenticationSettingsIos)* - child of FirebaseAuthenticationSettings
 ///
 /// Settings for Firebase Authentication in the official iOS application.
 ///
 /// * [deviceToken]: Device token from Apple Push Notification service.
 /// * [isAppSandbox]: True, if App Sandbox is enabled.
-final class FirebaseAuthenticationSettingsIos extends FirebaseAuthenticationSettings {
-  
+final class FirebaseAuthenticationSettingsIos
+    extends FirebaseAuthenticationSettings {
   /// **FirebaseAuthenticationSettingsIos** *(firebaseAuthenticationSettingsIos)* - child of FirebaseAuthenticationSettings
   ///
   /// Settings for Firebase Authentication in the official iOS application.
@@ -103,43 +103,45 @@ final class FirebaseAuthenticationSettingsIos extends FirebaseAuthenticationSett
     required this.deviceToken,
     required this.isAppSandbox,
   });
-  
-  /// Device token from Apple Push Notification service 
+
+  /// Device token from Apple Push Notification service
   final String deviceToken;
 
   /// True, if App Sandbox is enabled
   final bool isAppSandbox;
-  
+
   /// Parse from a json
-  factory FirebaseAuthenticationSettingsIos.fromJson(Map<String, dynamic> json) => FirebaseAuthenticationSettingsIos(
-    deviceToken: json['device_token'],
-    isAppSandbox: json['is_app_sandbox'],
-  );
-  
-  
+  factory FirebaseAuthenticationSettingsIos.fromJson(
+          Map<String, dynamic> json) =>
+      FirebaseAuthenticationSettingsIos(
+        deviceToken: json['device_token'],
+        isAppSandbox: json['is_app_sandbox'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "device_token": deviceToken,
       "is_app_sandbox": isAppSandbox,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [device_token]: Device token from Apple Push Notification service 
+  /// * [device_token]: Device token from Apple Push Notification service
   /// * [is_app_sandbox]: True, if App Sandbox is enabled
   @override
   FirebaseAuthenticationSettingsIos copyWith({
     String? deviceToken,
     bool? isAppSandbox,
-  }) => FirebaseAuthenticationSettingsIos(
-    deviceToken: deviceToken ?? this.deviceToken,
-    isAppSandbox: isAppSandbox ?? this.isAppSandbox,
-  );
+  }) =>
+      FirebaseAuthenticationSettingsIos(
+        deviceToken: deviceToken ?? this.deviceToken,
+        isAppSandbox: isAppSandbox ?? this.isAppSandbox,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'firebaseAuthenticationSettingsIos';

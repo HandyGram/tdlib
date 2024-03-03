@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class EditInlineMessageCaption extends TdFunction {
-  
   /// **EditInlineMessageCaption** *(editInlineMessageCaption)* - TDLib function
   ///
   /// Edits the caption of an inline message sent via a bot; for bots only.
@@ -25,7 +24,7 @@ final class EditInlineMessageCaption extends TdFunction {
     this.replyMarkup,
     this.caption,
   });
-  
+
   /// Inline message identifier
   final String inlineMessageId;
 
@@ -34,18 +33,18 @@ final class EditInlineMessageCaption extends TdFunction {
 
   /// New message content caption; pass null to remove caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "inline_message_id": inlineMessageId,
       "reply_markup": replyMarkup?.toJson(),
       "caption": caption?.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class EditInlineMessageCaption extends TdFunction {
     String? inlineMessageId,
     ReplyMarkup? replyMarkup,
     FormattedText? caption,
-  }) => EditInlineMessageCaption(
-    inlineMessageId: inlineMessageId ?? this.inlineMessageId,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    caption: caption ?? this.caption,
-  );
+  }) =>
+      EditInlineMessageCaption(
+        inlineMessageId: inlineMessageId ?? this.inlineMessageId,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+        caption: caption ?? this.caption,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'editInlineMessageCaption';

@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 /// * [disabledUsernames]: List of currently disabled usernames; the username can be activated with toggleUsernameIsActive, toggleBotUsernameIsActive, or toggleSupergroupUsernameIsActive.
 /// * [editableUsername]: The active username, which can be changed with setUsername or setSupergroupUsername.
 final class Usernames extends TdObject {
-  
   /// **Usernames** *(usernames)* - basic class
   ///
   /// Describes usernames assigned to a user, a supergroup, or a channel.
@@ -21,7 +20,7 @@ final class Usernames extends TdObject {
     required this.disabledUsernames,
     required this.editableUsername,
   });
-  
+
   /// List of active usernames; the first one must be shown as the primary username. The order of active usernames can be changed with reorderActiveUsernames, reorderBotActiveUsernames or reorderSupergroupActiveUsernames
   final List<String> activeUsernames;
 
@@ -30,25 +29,26 @@ final class Usernames extends TdObject {
 
   /// The active username, which can be changed with setUsername or setSupergroupUsername
   final String editableUsername;
-  
+
   /// Parse from a json
   factory Usernames.fromJson(Map<String, dynamic> json) => Usernames(
-    activeUsernames: List<String>.from((json['active_usernames'] ?? []).map((item) => item).toList()),
-    disabledUsernames: List<String>.from((json['disabled_usernames'] ?? []).map((item) => item).toList()),
-    editableUsername: json['editable_username'],
-  );
-  
-  
+        activeUsernames: List<String>.from(
+            (json['active_usernames'] ?? []).map((item) => item).toList()),
+        disabledUsernames: List<String>.from(
+            (json['disabled_usernames'] ?? []).map((item) => item).toList()),
+        editableUsername: json['editable_username'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "active_usernames": activeUsernames.map((i) => i).toList(),
       "disabled_usernames": disabledUsernames.map((i) => i).toList(),
       "editable_username": editableUsername,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -60,11 +60,12 @@ final class Usernames extends TdObject {
     List<String>? activeUsernames,
     List<String>? disabledUsernames,
     String? editableUsername,
-  }) => Usernames(
-    activeUsernames: activeUsernames ?? this.activeUsernames,
-    disabledUsernames: disabledUsernames ?? this.disabledUsernames,
-    editableUsername: editableUsername ?? this.editableUsername,
-  );
+  }) =>
+      Usernames(
+        activeUsernames: activeUsernames ?? this.activeUsernames,
+        disabledUsernames: disabledUsernames ?? this.disabledUsernames,
+        editableUsername: editableUsername ?? this.editableUsername,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'usernames';

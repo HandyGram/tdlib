@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 /// * [speechRecognitionResult]: Result of speech recognition in the voice note; may be null *(optional)*.
 /// * [voice]: File containing the voice note.
 final class VoiceNote extends TdObject {
-  
   /// **VoiceNote** *(voiceNote)* - basic class
   ///
   /// Describes a voice note. The voice note must be encoded with the Opus codec, and stored inside an OGG container. Voice notes can have only a single audio channel.
@@ -27,7 +26,7 @@ final class VoiceNote extends TdObject {
     this.speechRecognitionResult,
     required this.voice,
   });
-  
+
   /// Duration of the voice note, in seconds; as defined by the sender
   final int duration;
 
@@ -42,29 +41,31 @@ final class VoiceNote extends TdObject {
 
   /// File containing the voice note
   final File voice;
-  
+
   /// Parse from a json
   factory VoiceNote.fromJson(Map<String, dynamic> json) => VoiceNote(
-    duration: json['duration'],
-    waveform: json['waveform'],
-    mimeType: json['mime_type'],
-    speechRecognitionResult: json['speech_recognition_result'] == null ? null : SpeechRecognitionResult.fromJson(json['speech_recognition_result']),
-    voice: File.fromJson(json['voice']),
-  );
-  
-  
+        duration: json['duration'],
+        waveform: json['waveform'],
+        mimeType: json['mime_type'],
+        speechRecognitionResult: json['speech_recognition_result'] == null
+            ? null
+            : SpeechRecognitionResult.fromJson(
+                json['speech_recognition_result']),
+        voice: File.fromJson(json['voice']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "duration": duration,
       "waveform": waveform,
       "mime_type": mimeType,
       "speech_recognition_result": speechRecognitionResult?.toJson(),
       "voice": voice.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -80,13 +81,15 @@ final class VoiceNote extends TdObject {
     String? mimeType,
     SpeechRecognitionResult? speechRecognitionResult,
     File? voice,
-  }) => VoiceNote(
-    duration: duration ?? this.duration,
-    waveform: waveform ?? this.waveform,
-    mimeType: mimeType ?? this.mimeType,
-    speechRecognitionResult: speechRecognitionResult ?? this.speechRecognitionResult,
-    voice: voice ?? this.voice,
-  );
+  }) =>
+      VoiceNote(
+        duration: duration ?? this.duration,
+        waveform: waveform ?? this.waveform,
+        mimeType: mimeType ?? this.mimeType,
+        speechRecognitionResult:
+            speechRecognitionResult ?? this.speechRecognitionResult,
+        voice: voice ?? this.voice,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'voiceNote';

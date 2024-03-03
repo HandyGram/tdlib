@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetInactiveSessionTtl extends TdFunction {
-  
   /// **SetInactiveSessionTtl** *(setInactiveSessionTtl)* - TDLib function
   ///
   /// Changes the period of inactivity after which sessions will automatically be terminated.
@@ -19,19 +18,19 @@ final class SetInactiveSessionTtl extends TdFunction {
   const SetInactiveSessionTtl({
     required this.inactiveSessionTtlDays,
   });
-  
+
   /// New number of days of inactivity before sessions will be automatically terminated; 1-366 days
   final int inactiveSessionTtlDays;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "inactive_session_ttl_days": inactiveSessionTtlDays,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,11 @@ final class SetInactiveSessionTtl extends TdFunction {
   /// * [inactive_session_ttl_days]: New number of days of inactivity before sessions will be automatically terminated; 1-366 days
   SetInactiveSessionTtl copyWith({
     int? inactiveSessionTtlDays,
-  }) => SetInactiveSessionTtl(
-    inactiveSessionTtlDays: inactiveSessionTtlDays ?? this.inactiveSessionTtlDays,
-  );
+  }) =>
+      SetInactiveSessionTtl(
+        inactiveSessionTtlDays:
+            inactiveSessionTtlDays ?? this.inactiveSessionTtlDays,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setInactiveSessionTtl';

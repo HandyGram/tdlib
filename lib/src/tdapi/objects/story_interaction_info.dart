@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 /// * [reactionCount]: Number of reactions added to the story; 0 if none or unknown.
 /// * [recentViewerUserIds]: Identifiers of at most 3 recent viewers of the story.
 final class StoryInteractionInfo extends TdObject {
-  
   /// **StoryInteractionInfo** *(storyInteractionInfo)* - basic class
   ///
   /// Contains information about interactions with a story.
@@ -24,7 +23,7 @@ final class StoryInteractionInfo extends TdObject {
     required this.reactionCount,
     required this.recentViewerUserIds,
   });
-  
+
   /// Number of times the story was viewed
   final int viewCount;
 
@@ -36,27 +35,30 @@ final class StoryInteractionInfo extends TdObject {
 
   /// Identifiers of at most 3 recent viewers of the story
   final List<int> recentViewerUserIds;
-  
+
   /// Parse from a json
-  factory StoryInteractionInfo.fromJson(Map<String, dynamic> json) => StoryInteractionInfo(
-    viewCount: json['view_count'],
-    forwardCount: json['forward_count'] ?? 0,
-    reactionCount: json['reaction_count'] ?? 0,
-    recentViewerUserIds: List<int>.from((json['recent_viewer_user_ids'] ?? []).map((item) => item).toList()),
-  );
-  
-  
+  factory StoryInteractionInfo.fromJson(Map<String, dynamic> json) =>
+      StoryInteractionInfo(
+        viewCount: json['view_count'],
+        forwardCount: json['forward_count'] ?? 0,
+        reactionCount: json['reaction_count'] ?? 0,
+        recentViewerUserIds: List<int>.from(
+            (json['recent_viewer_user_ids'] ?? [])
+                .map((item) => item)
+                .toList()),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "view_count": viewCount,
       "forward_count": forwardCount,
       "reaction_count": reactionCount,
       "recent_viewer_user_ids": recentViewerUserIds.map((i) => i).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -70,12 +72,13 @@ final class StoryInteractionInfo extends TdObject {
     int? forwardCount,
     int? reactionCount,
     List<int>? recentViewerUserIds,
-  }) => StoryInteractionInfo(
-    viewCount: viewCount ?? this.viewCount,
-    forwardCount: forwardCount ?? this.forwardCount,
-    reactionCount: reactionCount ?? this.reactionCount,
-    recentViewerUserIds: recentViewerUserIds ?? this.recentViewerUserIds,
-  );
+  }) =>
+      StoryInteractionInfo(
+        viewCount: viewCount ?? this.viewCount,
+        forwardCount: forwardCount ?? this.forwardCount,
+        reactionCount: reactionCount ?? this.reactionCount,
+        recentViewerUserIds: recentViewerUserIds ?? this.recentViewerUserIds,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'storyInteractionInfo';

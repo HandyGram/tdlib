@@ -7,7 +7,6 @@ part of '../tdapi.dart';
 /// * [x]: The point's first coordinate.
 /// * [y]: The point's second coordinate.
 final class Point extends TdObject {
-  
   /// **Point** *(point)* - basic class
   ///
   /// A point on a Cartesian plane.
@@ -18,42 +17,42 @@ final class Point extends TdObject {
     required this.x,
     required this.y,
   });
-  
-  /// The point's first coordinate 
+
+  /// The point's first coordinate
   final double x;
 
   /// The point's second coordinate
   final double y;
-  
+
   /// Parse from a json
   factory Point.fromJson(Map<String, dynamic> json) => Point(
-    x: json['x'],
-    y: json['y'],
-  );
-  
-  
+        x: json['x'],
+        y: json['y'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "x": x,
       "y": y,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [x]: The point's first coordinate 
+  /// * [x]: The point's first coordinate
   /// * [y]: The point's second coordinate
   Point copyWith({
     double? x,
     double? y,
-  }) => Point(
-    x: x ?? this.x,
-    y: y ?? this.y,
-  );
+  }) =>
+      Point(
+        x: x ?? this.x,
+        y: y ?? this.y,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'point';

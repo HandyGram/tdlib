@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetNewChatPrivacySettings extends TdFunction {
-  
   /// **SetNewChatPrivacySettings** *(setNewChatPrivacySettings)* - TDLib function
   ///
   /// Changes privacy settings for new chat creation; for Telegram Premium users only.
@@ -19,19 +18,19 @@ final class SetNewChatPrivacySettings extends TdFunction {
   const SetNewChatPrivacySettings({
     required this.settings,
   });
-  
+
   /// New settings
   final NewChatPrivacySettings settings;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "settings": settings.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class SetNewChatPrivacySettings extends TdFunction {
   /// * [settings]: New settings
   SetNewChatPrivacySettings copyWith({
     NewChatPrivacySettings? settings,
-  }) => SetNewChatPrivacySettings(
-    settings: settings ?? this.settings,
-  );
+  }) =>
+      SetNewChatPrivacySettings(
+        settings: settings ?? this.settings,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setNewChatPrivacySettings';

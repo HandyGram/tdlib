@@ -4,12 +4,11 @@ part of '../tdapi.dart';
 ///
 /// The content of a message to send.
 sealed class InputMessageContent extends TdObject {
-  
   /// **InputMessageContent** *(inputMessageContent)* - parent
   ///
   /// The content of a message to send.
   const InputMessageContent();
-  
+
   /// a InputMessageContent return type can be :
   /// * [InputMessageText]
   /// * [InputMessageAnimation]
@@ -29,8 +28,8 @@ sealed class InputMessageContent extends TdObject {
   /// * [InputMessagePoll]
   /// * [InputMessageStory]
   /// * [InputMessageForwarded]
-  factory InputMessageContent.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory InputMessageContent.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case InputMessageText.defaultObjectId:
         return InputMessageText.fromJson(json);
       case InputMessageAnimation.defaultObjectId:
@@ -74,7 +73,7 @@ sealed class InputMessageContent extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -94,7 +93,6 @@ sealed class InputMessageContent extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputMessageText** *(inputMessageText)* - child of InputMessageContent
 ///
 /// A text message.
@@ -103,7 +101,6 @@ sealed class InputMessageContent extends TdObject {
 /// * [linkPreviewOptions]: Options to be used for generation of a link preview; may be null if none; pass null to use default link preview options *(optional)*.
 /// * [clearDraft]: True, if a chat message draft must be deleted.
 final class InputMessageText extends InputMessageContent {
-  
   /// **InputMessageText** *(inputMessageText)* - child of InputMessageContent
   ///
   /// A text message.
@@ -116,7 +113,7 @@ final class InputMessageText extends InputMessageContent {
     this.linkPreviewOptions,
     required this.clearDraft,
   });
-  
+
   /// Formatted text to be sent; 0-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually
   final FormattedText text;
 
@@ -125,25 +122,27 @@ final class InputMessageText extends InputMessageContent {
 
   /// True, if a chat message draft must be deleted
   final bool clearDraft;
-  
+
   /// Parse from a json
-  factory InputMessageText.fromJson(Map<String, dynamic> json) => InputMessageText(
-    text: FormattedText.fromJson(json['text']),
-    linkPreviewOptions: json['link_preview_options'] == null ? null : LinkPreviewOptions.fromJson(json['link_preview_options']),
-    clearDraft: json['clear_draft'],
-  );
-  
-  
+  factory InputMessageText.fromJson(Map<String, dynamic> json) =>
+      InputMessageText(
+        text: FormattedText.fromJson(json['text']),
+        linkPreviewOptions: json['link_preview_options'] == null
+            ? null
+            : LinkPreviewOptions.fromJson(json['link_preview_options']),
+        clearDraft: json['clear_draft'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "text": text.toJson(),
       "link_preview_options": linkPreviewOptions?.toJson(),
       "clear_draft": clearDraft,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -156,11 +155,12 @@ final class InputMessageText extends InputMessageContent {
     FormattedText? text,
     LinkPreviewOptions? linkPreviewOptions,
     bool? clearDraft,
-  }) => InputMessageText(
-    text: text ?? this.text,
-    linkPreviewOptions: linkPreviewOptions ?? this.linkPreviewOptions,
-    clearDraft: clearDraft ?? this.clearDraft,
-  );
+  }) =>
+      InputMessageText(
+        text: text ?? this.text,
+        linkPreviewOptions: linkPreviewOptions ?? this.linkPreviewOptions,
+        clearDraft: clearDraft ?? this.clearDraft,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputMessageText';
@@ -173,7 +173,6 @@ final class InputMessageText extends InputMessageContent {
   @override
   String get currentObjectId => defaultObjectId;
 }
-
 
 /// **InputMessageAnimation** *(inputMessageAnimation)* - child of InputMessageContent
 ///
@@ -188,7 +187,6 @@ final class InputMessageText extends InputMessageContent {
 /// * [caption]: Animation caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
 /// * [hasSpoiler]: True, if the animation preview must be covered by a spoiler animation; not supported in secret chats.
 final class InputMessageAnimation extends InputMessageContent {
-  
   /// **InputMessageAnimation** *(inputMessageAnimation)* - child of InputMessageContent
   ///
   /// An animation message (GIF-style).
@@ -211,7 +209,7 @@ final class InputMessageAnimation extends InputMessageContent {
     this.caption,
     required this.hasSpoiler,
   });
-  
+
   /// Animation file to be sent
   final InputFile animation;
 
@@ -235,25 +233,32 @@ final class InputMessageAnimation extends InputMessageContent {
 
   /// True, if the animation preview must be covered by a spoiler animation; not supported in secret chats
   final bool hasSpoiler;
-  
+
   /// Parse from a json
-  factory InputMessageAnimation.fromJson(Map<String, dynamic> json) => InputMessageAnimation(
-    animation: InputFile.fromJson(json['animation']),
-    thumbnail: json['thumbnail'] == null ? null : InputThumbnail.fromJson(json['thumbnail']),
-    addedStickerFileIds: List<int>.from((json['added_sticker_file_ids'] ?? []).map((item) => item).toList()),
-    duration: json['duration'],
-    width: json['width'],
-    height: json['height'],
-    caption: json['caption'] == null ? null : FormattedText.fromJson(json['caption']),
-    hasSpoiler: json['has_spoiler'],
-  );
-  
-  
+  factory InputMessageAnimation.fromJson(Map<String, dynamic> json) =>
+      InputMessageAnimation(
+        animation: InputFile.fromJson(json['animation']),
+        thumbnail: json['thumbnail'] == null
+            ? null
+            : InputThumbnail.fromJson(json['thumbnail']),
+        addedStickerFileIds: List<int>.from(
+            (json['added_sticker_file_ids'] ?? [])
+                .map((item) => item)
+                .toList()),
+        duration: json['duration'],
+        width: json['width'],
+        height: json['height'],
+        caption: json['caption'] == null
+            ? null
+            : FormattedText.fromJson(json['caption']),
+        hasSpoiler: json['has_spoiler'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "animation": animation.toJson(),
       "thumbnail": thumbnail?.toJson(),
       "added_sticker_file_ids": addedStickerFileIds.map((i) => i).toList(),
@@ -262,8 +267,8 @@ final class InputMessageAnimation extends InputMessageContent {
       "height": height,
       "caption": caption?.toJson(),
       "has_spoiler": hasSpoiler,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -286,16 +291,17 @@ final class InputMessageAnimation extends InputMessageContent {
     int? height,
     FormattedText? caption,
     bool? hasSpoiler,
-  }) => InputMessageAnimation(
-    animation: animation ?? this.animation,
-    thumbnail: thumbnail ?? this.thumbnail,
-    addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
-    duration: duration ?? this.duration,
-    width: width ?? this.width,
-    height: height ?? this.height,
-    caption: caption ?? this.caption,
-    hasSpoiler: hasSpoiler ?? this.hasSpoiler,
-  );
+  }) =>
+      InputMessageAnimation(
+        animation: animation ?? this.animation,
+        thumbnail: thumbnail ?? this.thumbnail,
+        addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
+        duration: duration ?? this.duration,
+        width: width ?? this.width,
+        height: height ?? this.height,
+        caption: caption ?? this.caption,
+        hasSpoiler: hasSpoiler ?? this.hasSpoiler,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputMessageAnimation';
@@ -309,7 +315,6 @@ final class InputMessageAnimation extends InputMessageContent {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputMessageAudio** *(inputMessageAudio)* - child of InputMessageContent
 ///
 /// An audio message.
@@ -321,7 +326,6 @@ final class InputMessageAnimation extends InputMessageContent {
 /// * [performer]: Performer of the audio; 0-64 characters, may be replaced by the server.
 /// * [caption]: Audio caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
 final class InputMessageAudio extends InputMessageContent {
-  
   /// **InputMessageAudio** *(inputMessageAudio)* - child of InputMessageContent
   ///
   /// An audio message.
@@ -340,7 +344,7 @@ final class InputMessageAudio extends InputMessageContent {
     required this.performer,
     this.caption,
   });
-  
+
   /// Audio file to be sent
   final InputFile audio;
 
@@ -358,31 +362,35 @@ final class InputMessageAudio extends InputMessageContent {
 
   /// Audio caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
-  
+
   /// Parse from a json
-  factory InputMessageAudio.fromJson(Map<String, dynamic> json) => InputMessageAudio(
-    audio: InputFile.fromJson(json['audio']),
-    albumCoverThumbnail: json['album_cover_thumbnail'] == null ? null : InputThumbnail.fromJson(json['album_cover_thumbnail']),
-    duration: json['duration'],
-    title: json['title'],
-    performer: json['performer'],
-    caption: json['caption'] == null ? null : FormattedText.fromJson(json['caption']),
-  );
-  
-  
+  factory InputMessageAudio.fromJson(Map<String, dynamic> json) =>
+      InputMessageAudio(
+        audio: InputFile.fromJson(json['audio']),
+        albumCoverThumbnail: json['album_cover_thumbnail'] == null
+            ? null
+            : InputThumbnail.fromJson(json['album_cover_thumbnail']),
+        duration: json['duration'],
+        title: json['title'],
+        performer: json['performer'],
+        caption: json['caption'] == null
+            ? null
+            : FormattedText.fromJson(json['caption']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "audio": audio.toJson(),
       "album_cover_thumbnail": albumCoverThumbnail?.toJson(),
       "duration": duration,
       "title": title,
       "performer": performer,
       "caption": caption?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -401,14 +409,15 @@ final class InputMessageAudio extends InputMessageContent {
     String? title,
     String? performer,
     FormattedText? caption,
-  }) => InputMessageAudio(
-    audio: audio ?? this.audio,
-    albumCoverThumbnail: albumCoverThumbnail ?? this.albumCoverThumbnail,
-    duration: duration ?? this.duration,
-    title: title ?? this.title,
-    performer: performer ?? this.performer,
-    caption: caption ?? this.caption,
-  );
+  }) =>
+      InputMessageAudio(
+        audio: audio ?? this.audio,
+        albumCoverThumbnail: albumCoverThumbnail ?? this.albumCoverThumbnail,
+        duration: duration ?? this.duration,
+        title: title ?? this.title,
+        performer: performer ?? this.performer,
+        caption: caption ?? this.caption,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputMessageAudio';
@@ -422,7 +431,6 @@ final class InputMessageAudio extends InputMessageContent {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputMessageDocument** *(inputMessageDocument)* - child of InputMessageContent
 ///
 /// A document message (general file).
@@ -432,7 +440,6 @@ final class InputMessageAudio extends InputMessageContent {
 /// * [disableContentTypeDetection]: Pass true to disable automatic file type detection and send the document as a file. Always true for files sent to secret chats.
 /// * [caption]: Document caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
 final class InputMessageDocument extends InputMessageContent {
-  
   /// **InputMessageDocument** *(inputMessageDocument)* - child of InputMessageContent
   ///
   /// A document message (general file).
@@ -447,7 +454,7 @@ final class InputMessageDocument extends InputMessageContent {
     required this.disableContentTypeDetection,
     this.caption,
   });
-  
+
   /// Document to be sent
   final InputFile document;
 
@@ -459,27 +466,31 @@ final class InputMessageDocument extends InputMessageContent {
 
   /// Document caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
-  
+
   /// Parse from a json
-  factory InputMessageDocument.fromJson(Map<String, dynamic> json) => InputMessageDocument(
-    document: InputFile.fromJson(json['document']),
-    thumbnail: json['thumbnail'] == null ? null : InputThumbnail.fromJson(json['thumbnail']),
-    disableContentTypeDetection: json['disable_content_type_detection'],
-    caption: json['caption'] == null ? null : FormattedText.fromJson(json['caption']),
-  );
-  
-  
+  factory InputMessageDocument.fromJson(Map<String, dynamic> json) =>
+      InputMessageDocument(
+        document: InputFile.fromJson(json['document']),
+        thumbnail: json['thumbnail'] == null
+            ? null
+            : InputThumbnail.fromJson(json['thumbnail']),
+        disableContentTypeDetection: json['disable_content_type_detection'],
+        caption: json['caption'] == null
+            ? null
+            : FormattedText.fromJson(json['caption']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "document": document.toJson(),
       "thumbnail": thumbnail?.toJson(),
       "disable_content_type_detection": disableContentTypeDetection,
       "caption": caption?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -494,12 +505,14 @@ final class InputMessageDocument extends InputMessageContent {
     InputThumbnail? thumbnail,
     bool? disableContentTypeDetection,
     FormattedText? caption,
-  }) => InputMessageDocument(
-    document: document ?? this.document,
-    thumbnail: thumbnail ?? this.thumbnail,
-    disableContentTypeDetection: disableContentTypeDetection ?? this.disableContentTypeDetection,
-    caption: caption ?? this.caption,
-  );
+  }) =>
+      InputMessageDocument(
+        document: document ?? this.document,
+        thumbnail: thumbnail ?? this.thumbnail,
+        disableContentTypeDetection:
+            disableContentTypeDetection ?? this.disableContentTypeDetection,
+        caption: caption ?? this.caption,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputMessageDocument';
@@ -512,7 +525,6 @@ final class InputMessageDocument extends InputMessageContent {
   @override
   String get currentObjectId => defaultObjectId;
 }
-
 
 /// **InputMessagePhoto** *(inputMessagePhoto)* - child of InputMessageContent
 ///
@@ -527,7 +539,6 @@ final class InputMessageDocument extends InputMessageContent {
 /// * [selfDestructType]: Photo self-destruct type; pass null if none; private chats only *(optional)*.
 /// * [hasSpoiler]: True, if the photo preview must be covered by a spoiler animation; not supported in secret chats.
 final class InputMessagePhoto extends InputMessageContent {
-  
   /// **InputMessagePhoto** *(inputMessagePhoto)* - child of InputMessageContent
   ///
   /// A photo message.
@@ -550,7 +561,7 @@ final class InputMessagePhoto extends InputMessageContent {
     this.selfDestructType,
     required this.hasSpoiler,
   });
-  
+
   /// Photo to send. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20
   final InputFile photo;
 
@@ -574,25 +585,34 @@ final class InputMessagePhoto extends InputMessageContent {
 
   /// True, if the photo preview must be covered by a spoiler animation; not supported in secret chats
   final bool hasSpoiler;
-  
+
   /// Parse from a json
-  factory InputMessagePhoto.fromJson(Map<String, dynamic> json) => InputMessagePhoto(
-    photo: InputFile.fromJson(json['photo']),
-    thumbnail: json['thumbnail'] == null ? null : InputThumbnail.fromJson(json['thumbnail']),
-    addedStickerFileIds: List<int>.from((json['added_sticker_file_ids'] ?? []).map((item) => item).toList()),
-    width: json['width'],
-    height: json['height'],
-    caption: json['caption'] == null ? null : FormattedText.fromJson(json['caption']),
-    selfDestructType: json['self_destruct_type'] == null ? null : MessageSelfDestructType.fromJson(json['self_destruct_type']),
-    hasSpoiler: json['has_spoiler'],
-  );
-  
-  
+  factory InputMessagePhoto.fromJson(Map<String, dynamic> json) =>
+      InputMessagePhoto(
+        photo: InputFile.fromJson(json['photo']),
+        thumbnail: json['thumbnail'] == null
+            ? null
+            : InputThumbnail.fromJson(json['thumbnail']),
+        addedStickerFileIds: List<int>.from(
+            (json['added_sticker_file_ids'] ?? [])
+                .map((item) => item)
+                .toList()),
+        width: json['width'],
+        height: json['height'],
+        caption: json['caption'] == null
+            ? null
+            : FormattedText.fromJson(json['caption']),
+        selfDestructType: json['self_destruct_type'] == null
+            ? null
+            : MessageSelfDestructType.fromJson(json['self_destruct_type']),
+        hasSpoiler: json['has_spoiler'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "photo": photo.toJson(),
       "thumbnail": thumbnail?.toJson(),
       "added_sticker_file_ids": addedStickerFileIds.map((i) => i).toList(),
@@ -601,8 +621,8 @@ final class InputMessagePhoto extends InputMessageContent {
       "caption": caption?.toJson(),
       "self_destruct_type": selfDestructType?.toJson(),
       "has_spoiler": hasSpoiler,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -625,16 +645,17 @@ final class InputMessagePhoto extends InputMessageContent {
     FormattedText? caption,
     MessageSelfDestructType? selfDestructType,
     bool? hasSpoiler,
-  }) => InputMessagePhoto(
-    photo: photo ?? this.photo,
-    thumbnail: thumbnail ?? this.thumbnail,
-    addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
-    width: width ?? this.width,
-    height: height ?? this.height,
-    caption: caption ?? this.caption,
-    selfDestructType: selfDestructType ?? this.selfDestructType,
-    hasSpoiler: hasSpoiler ?? this.hasSpoiler,
-  );
+  }) =>
+      InputMessagePhoto(
+        photo: photo ?? this.photo,
+        thumbnail: thumbnail ?? this.thumbnail,
+        addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
+        width: width ?? this.width,
+        height: height ?? this.height,
+        caption: caption ?? this.caption,
+        selfDestructType: selfDestructType ?? this.selfDestructType,
+        hasSpoiler: hasSpoiler ?? this.hasSpoiler,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputMessagePhoto';
@@ -648,7 +669,6 @@ final class InputMessagePhoto extends InputMessageContent {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputMessageSticker** *(inputMessageSticker)* - child of InputMessageContent
 ///
 /// A sticker message.
@@ -659,7 +679,6 @@ final class InputMessagePhoto extends InputMessageContent {
 /// * [height]: Sticker height.
 /// * [emoji]: Emoji used to choose the sticker.
 final class InputMessageSticker extends InputMessageContent {
-  
   /// **InputMessageSticker** *(inputMessageSticker)* - child of InputMessageContent
   ///
   /// A sticker message.
@@ -676,7 +695,7 @@ final class InputMessageSticker extends InputMessageContent {
     required this.height,
     required this.emoji,
   });
-  
+
   /// Sticker to be sent
   final InputFile sticker;
 
@@ -691,29 +710,31 @@ final class InputMessageSticker extends InputMessageContent {
 
   /// Emoji used to choose the sticker
   final String emoji;
-  
+
   /// Parse from a json
-  factory InputMessageSticker.fromJson(Map<String, dynamic> json) => InputMessageSticker(
-    sticker: InputFile.fromJson(json['sticker']),
-    thumbnail: json['thumbnail'] == null ? null : InputThumbnail.fromJson(json['thumbnail']),
-    width: json['width'],
-    height: json['height'],
-    emoji: json['emoji'],
-  );
-  
-  
+  factory InputMessageSticker.fromJson(Map<String, dynamic> json) =>
+      InputMessageSticker(
+        sticker: InputFile.fromJson(json['sticker']),
+        thumbnail: json['thumbnail'] == null
+            ? null
+            : InputThumbnail.fromJson(json['thumbnail']),
+        width: json['width'],
+        height: json['height'],
+        emoji: json['emoji'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sticker": sticker.toJson(),
       "thumbnail": thumbnail?.toJson(),
       "width": width,
       "height": height,
       "emoji": emoji,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -730,13 +751,14 @@ final class InputMessageSticker extends InputMessageContent {
     int? width,
     int? height,
     String? emoji,
-  }) => InputMessageSticker(
-    sticker: sticker ?? this.sticker,
-    thumbnail: thumbnail ?? this.thumbnail,
-    width: width ?? this.width,
-    height: height ?? this.height,
-    emoji: emoji ?? this.emoji,
-  );
+  }) =>
+      InputMessageSticker(
+        sticker: sticker ?? this.sticker,
+        thumbnail: thumbnail ?? this.thumbnail,
+        width: width ?? this.width,
+        height: height ?? this.height,
+        emoji: emoji ?? this.emoji,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputMessageSticker';
@@ -749,7 +771,6 @@ final class InputMessageSticker extends InputMessageContent {
   @override
   String get currentObjectId => defaultObjectId;
 }
-
 
 /// **InputMessageVideo** *(inputMessageVideo)* - child of InputMessageContent
 ///
@@ -766,7 +787,6 @@ final class InputMessageSticker extends InputMessageContent {
 /// * [selfDestructType]: Video self-destruct type; pass null if none; private chats only *(optional)*.
 /// * [hasSpoiler]: True, if the video preview must be covered by a spoiler animation; not supported in secret chats.
 final class InputMessageVideo extends InputMessageContent {
-  
   /// **InputMessageVideo** *(inputMessageVideo)* - child of InputMessageContent
   ///
   /// A video message.
@@ -793,7 +813,7 @@ final class InputMessageVideo extends InputMessageContent {
     this.selfDestructType,
     required this.hasSpoiler,
   });
-  
+
   /// Video to be sent
   final InputFile video;
 
@@ -823,27 +843,36 @@ final class InputMessageVideo extends InputMessageContent {
 
   /// True, if the video preview must be covered by a spoiler animation; not supported in secret chats
   final bool hasSpoiler;
-  
+
   /// Parse from a json
-  factory InputMessageVideo.fromJson(Map<String, dynamic> json) => InputMessageVideo(
-    video: InputFile.fromJson(json['video']),
-    thumbnail: json['thumbnail'] == null ? null : InputThumbnail.fromJson(json['thumbnail']),
-    addedStickerFileIds: List<int>.from((json['added_sticker_file_ids'] ?? []).map((item) => item).toList()),
-    duration: json['duration'],
-    width: json['width'],
-    height: json['height'],
-    supportsStreaming: json['supports_streaming'],
-    caption: json['caption'] == null ? null : FormattedText.fromJson(json['caption']),
-    selfDestructType: json['self_destruct_type'] == null ? null : MessageSelfDestructType.fromJson(json['self_destruct_type']),
-    hasSpoiler: json['has_spoiler'],
-  );
-  
-  
+  factory InputMessageVideo.fromJson(Map<String, dynamic> json) =>
+      InputMessageVideo(
+        video: InputFile.fromJson(json['video']),
+        thumbnail: json['thumbnail'] == null
+            ? null
+            : InputThumbnail.fromJson(json['thumbnail']),
+        addedStickerFileIds: List<int>.from(
+            (json['added_sticker_file_ids'] ?? [])
+                .map((item) => item)
+                .toList()),
+        duration: json['duration'],
+        width: json['width'],
+        height: json['height'],
+        supportsStreaming: json['supports_streaming'],
+        caption: json['caption'] == null
+            ? null
+            : FormattedText.fromJson(json['caption']),
+        selfDestructType: json['self_destruct_type'] == null
+            ? null
+            : MessageSelfDestructType.fromJson(json['self_destruct_type']),
+        hasSpoiler: json['has_spoiler'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "video": video.toJson(),
       "thumbnail": thumbnail?.toJson(),
       "added_sticker_file_ids": addedStickerFileIds.map((i) => i).toList(),
@@ -854,8 +883,8 @@ final class InputMessageVideo extends InputMessageContent {
       "caption": caption?.toJson(),
       "self_destruct_type": selfDestructType?.toJson(),
       "has_spoiler": hasSpoiler,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -882,18 +911,19 @@ final class InputMessageVideo extends InputMessageContent {
     FormattedText? caption,
     MessageSelfDestructType? selfDestructType,
     bool? hasSpoiler,
-  }) => InputMessageVideo(
-    video: video ?? this.video,
-    thumbnail: thumbnail ?? this.thumbnail,
-    addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
-    duration: duration ?? this.duration,
-    width: width ?? this.width,
-    height: height ?? this.height,
-    supportsStreaming: supportsStreaming ?? this.supportsStreaming,
-    caption: caption ?? this.caption,
-    selfDestructType: selfDestructType ?? this.selfDestructType,
-    hasSpoiler: hasSpoiler ?? this.hasSpoiler,
-  );
+  }) =>
+      InputMessageVideo(
+        video: video ?? this.video,
+        thumbnail: thumbnail ?? this.thumbnail,
+        addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
+        duration: duration ?? this.duration,
+        width: width ?? this.width,
+        height: height ?? this.height,
+        supportsStreaming: supportsStreaming ?? this.supportsStreaming,
+        caption: caption ?? this.caption,
+        selfDestructType: selfDestructType ?? this.selfDestructType,
+        hasSpoiler: hasSpoiler ?? this.hasSpoiler,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputMessageVideo';
@@ -907,7 +937,6 @@ final class InputMessageVideo extends InputMessageContent {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputMessageVideoNote** *(inputMessageVideoNote)* - child of InputMessageContent
 ///
 /// A video note message.
@@ -918,7 +947,6 @@ final class InputMessageVideo extends InputMessageContent {
 /// * [length]: Video width and height; must be positive and not greater than 640.
 /// * [selfDestructType]: Video note self-destruct type; may be null if none; pass null if none; private chats only *(optional)*.
 final class InputMessageVideoNote extends InputMessageContent {
-  
   /// **InputMessageVideoNote** *(inputMessageVideoNote)* - child of InputMessageContent
   ///
   /// A video note message.
@@ -935,7 +963,7 @@ final class InputMessageVideoNote extends InputMessageContent {
     required this.length,
     this.selfDestructType,
   });
-  
+
   /// Video note to be sent
   final InputFile videoNote;
 
@@ -950,29 +978,33 @@ final class InputMessageVideoNote extends InputMessageContent {
 
   /// Video note self-destruct type; may be null if none; pass null if none; private chats only
   final MessageSelfDestructType? selfDestructType;
-  
+
   /// Parse from a json
-  factory InputMessageVideoNote.fromJson(Map<String, dynamic> json) => InputMessageVideoNote(
-    videoNote: InputFile.fromJson(json['video_note']),
-    thumbnail: json['thumbnail'] == null ? null : InputThumbnail.fromJson(json['thumbnail']),
-    duration: json['duration'],
-    length: json['length'],
-    selfDestructType: json['self_destruct_type'] == null ? null : MessageSelfDestructType.fromJson(json['self_destruct_type']),
-  );
-  
-  
+  factory InputMessageVideoNote.fromJson(Map<String, dynamic> json) =>
+      InputMessageVideoNote(
+        videoNote: InputFile.fromJson(json['video_note']),
+        thumbnail: json['thumbnail'] == null
+            ? null
+            : InputThumbnail.fromJson(json['thumbnail']),
+        duration: json['duration'],
+        length: json['length'],
+        selfDestructType: json['self_destruct_type'] == null
+            ? null
+            : MessageSelfDestructType.fromJson(json['self_destruct_type']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "video_note": videoNote.toJson(),
       "thumbnail": thumbnail?.toJson(),
       "duration": duration,
       "length": length,
       "self_destruct_type": selfDestructType?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -989,13 +1021,14 @@ final class InputMessageVideoNote extends InputMessageContent {
     int? duration,
     int? length,
     MessageSelfDestructType? selfDestructType,
-  }) => InputMessageVideoNote(
-    videoNote: videoNote ?? this.videoNote,
-    thumbnail: thumbnail ?? this.thumbnail,
-    duration: duration ?? this.duration,
-    length: length ?? this.length,
-    selfDestructType: selfDestructType ?? this.selfDestructType,
-  );
+  }) =>
+      InputMessageVideoNote(
+        videoNote: videoNote ?? this.videoNote,
+        thumbnail: thumbnail ?? this.thumbnail,
+        duration: duration ?? this.duration,
+        length: length ?? this.length,
+        selfDestructType: selfDestructType ?? this.selfDestructType,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputMessageVideoNote';
@@ -1009,7 +1042,6 @@ final class InputMessageVideoNote extends InputMessageContent {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputMessageVoiceNote** *(inputMessageVoiceNote)* - child of InputMessageContent
 ///
 /// A voice note message.
@@ -1020,7 +1052,6 @@ final class InputMessageVideoNote extends InputMessageContent {
 /// * [caption]: Voice note caption; may be null if empty; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
 /// * [selfDestructType]: Voice note self-destruct type; may be null if none; pass null if none; private chats only *(optional)*.
 final class InputMessageVoiceNote extends InputMessageContent {
-  
   /// **InputMessageVoiceNote** *(inputMessageVoiceNote)* - child of InputMessageContent
   ///
   /// A voice note message.
@@ -1037,7 +1068,7 @@ final class InputMessageVoiceNote extends InputMessageContent {
     this.caption,
     this.selfDestructType,
   });
-  
+
   /// Voice note to be sent
   final InputFile voiceNote;
 
@@ -1052,29 +1083,33 @@ final class InputMessageVoiceNote extends InputMessageContent {
 
   /// Voice note self-destruct type; may be null if none; pass null if none; private chats only
   final MessageSelfDestructType? selfDestructType;
-  
+
   /// Parse from a json
-  factory InputMessageVoiceNote.fromJson(Map<String, dynamic> json) => InputMessageVoiceNote(
-    voiceNote: InputFile.fromJson(json['voice_note']),
-    duration: json['duration'],
-    waveform: json['waveform'],
-    caption: json['caption'] == null ? null : FormattedText.fromJson(json['caption']),
-    selfDestructType: json['self_destruct_type'] == null ? null : MessageSelfDestructType.fromJson(json['self_destruct_type']),
-  );
-  
-  
+  factory InputMessageVoiceNote.fromJson(Map<String, dynamic> json) =>
+      InputMessageVoiceNote(
+        voiceNote: InputFile.fromJson(json['voice_note']),
+        duration: json['duration'],
+        waveform: json['waveform'],
+        caption: json['caption'] == null
+            ? null
+            : FormattedText.fromJson(json['caption']),
+        selfDestructType: json['self_destruct_type'] == null
+            ? null
+            : MessageSelfDestructType.fromJson(json['self_destruct_type']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "voice_note": voiceNote.toJson(),
       "duration": duration,
       "waveform": waveform,
       "caption": caption?.toJson(),
       "self_destruct_type": selfDestructType?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -1091,13 +1126,14 @@ final class InputMessageVoiceNote extends InputMessageContent {
     String? waveform,
     FormattedText? caption,
     MessageSelfDestructType? selfDestructType,
-  }) => InputMessageVoiceNote(
-    voiceNote: voiceNote ?? this.voiceNote,
-    duration: duration ?? this.duration,
-    waveform: waveform ?? this.waveform,
-    caption: caption ?? this.caption,
-    selfDestructType: selfDestructType ?? this.selfDestructType,
-  );
+  }) =>
+      InputMessageVoiceNote(
+        voiceNote: voiceNote ?? this.voiceNote,
+        duration: duration ?? this.duration,
+        waveform: waveform ?? this.waveform,
+        caption: caption ?? this.caption,
+        selfDestructType: selfDestructType ?? this.selfDestructType,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputMessageVoiceNote';
@@ -1111,7 +1147,6 @@ final class InputMessageVoiceNote extends InputMessageContent {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputMessageLocation** *(inputMessageLocation)* - child of InputMessageContent
 ///
 /// A message with a location.
@@ -1121,7 +1156,6 @@ final class InputMessageVoiceNote extends InputMessageContent {
 /// * [heading]: For live locations, a direction in which the location moves, in degrees; 1-360. Pass 0 if unknown.
 /// * [proximityAlertRadius]: For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled. Can't be enabled in channels and Saved Messages.
 final class InputMessageLocation extends InputMessageContent {
-  
   /// **InputMessageLocation** *(inputMessageLocation)* - child of InputMessageContent
   ///
   /// A message with a location.
@@ -1136,7 +1170,7 @@ final class InputMessageLocation extends InputMessageContent {
     required this.heading,
     required this.proximityAlertRadius,
   });
-  
+
   /// Location to be sent
   final Location location;
 
@@ -1148,27 +1182,27 @@ final class InputMessageLocation extends InputMessageContent {
 
   /// For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled. Can't be enabled in channels and Saved Messages
   final int proximityAlertRadius;
-  
+
   /// Parse from a json
-  factory InputMessageLocation.fromJson(Map<String, dynamic> json) => InputMessageLocation(
-    location: Location.fromJson(json['location']),
-    livePeriod: json['live_period'],
-    heading: json['heading'],
-    proximityAlertRadius: json['proximity_alert_radius'],
-  );
-  
-  
+  factory InputMessageLocation.fromJson(Map<String, dynamic> json) =>
+      InputMessageLocation(
+        location: Location.fromJson(json['location']),
+        livePeriod: json['live_period'],
+        heading: json['heading'],
+        proximityAlertRadius: json['proximity_alert_radius'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "location": location.toJson(),
       "live_period": livePeriod,
       "heading": heading,
       "proximity_alert_radius": proximityAlertRadius,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -1183,12 +1217,13 @@ final class InputMessageLocation extends InputMessageContent {
     int? livePeriod,
     int? heading,
     int? proximityAlertRadius,
-  }) => InputMessageLocation(
-    location: location ?? this.location,
-    livePeriod: livePeriod ?? this.livePeriod,
-    heading: heading ?? this.heading,
-    proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
-  );
+  }) =>
+      InputMessageLocation(
+        location: location ?? this.location,
+        livePeriod: livePeriod ?? this.livePeriod,
+        heading: heading ?? this.heading,
+        proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputMessageLocation';
@@ -1202,14 +1237,12 @@ final class InputMessageLocation extends InputMessageContent {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputMessageVenue** *(inputMessageVenue)* - child of InputMessageContent
 ///
 /// A message with information about a venue.
 ///
 /// * [venue]: Venue to send.
 final class InputMessageVenue extends InputMessageContent {
-  
   /// **InputMessageVenue** *(inputMessageVenue)* - child of InputMessageContent
   ///
   /// A message with information about a venue.
@@ -1218,24 +1251,24 @@ final class InputMessageVenue extends InputMessageContent {
   const InputMessageVenue({
     required this.venue,
   });
-  
+
   /// Venue to send
   final Venue venue;
-  
+
   /// Parse from a json
-  factory InputMessageVenue.fromJson(Map<String, dynamic> json) => InputMessageVenue(
-    venue: Venue.fromJson(json['venue']),
-  );
-  
-  
+  factory InputMessageVenue.fromJson(Map<String, dynamic> json) =>
+      InputMessageVenue(
+        venue: Venue.fromJson(json['venue']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "venue": venue.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -1244,9 +1277,10 @@ final class InputMessageVenue extends InputMessageContent {
   @override
   InputMessageVenue copyWith({
     Venue? venue,
-  }) => InputMessageVenue(
-    venue: venue ?? this.venue,
-  );
+  }) =>
+      InputMessageVenue(
+        venue: venue ?? this.venue,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputMessageVenue';
@@ -1260,14 +1294,12 @@ final class InputMessageVenue extends InputMessageContent {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputMessageContact** *(inputMessageContact)* - child of InputMessageContent
 ///
 /// A message containing a user contact.
 ///
 /// * [contact]: Contact to send.
 final class InputMessageContact extends InputMessageContent {
-  
   /// **InputMessageContact** *(inputMessageContact)* - child of InputMessageContent
   ///
   /// A message containing a user contact.
@@ -1276,24 +1308,24 @@ final class InputMessageContact extends InputMessageContent {
   const InputMessageContact({
     required this.contact,
   });
-  
+
   /// Contact to send
   final Contact contact;
-  
+
   /// Parse from a json
-  factory InputMessageContact.fromJson(Map<String, dynamic> json) => InputMessageContact(
-    contact: Contact.fromJson(json['contact']),
-  );
-  
-  
+  factory InputMessageContact.fromJson(Map<String, dynamic> json) =>
+      InputMessageContact(
+        contact: Contact.fromJson(json['contact']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "contact": contact.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -1302,9 +1334,10 @@ final class InputMessageContact extends InputMessageContent {
   @override
   InputMessageContact copyWith({
     Contact? contact,
-  }) => InputMessageContact(
-    contact: contact ?? this.contact,
-  );
+  }) =>
+      InputMessageContact(
+        contact: contact ?? this.contact,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputMessageContact';
@@ -1318,7 +1351,6 @@ final class InputMessageContact extends InputMessageContent {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputMessageDice** *(inputMessageDice)* - child of InputMessageContent
 ///
 /// A dice message.
@@ -1326,7 +1358,6 @@ final class InputMessageContact extends InputMessageContent {
 /// * [emoji]: Emoji on which the dice throw animation is based.
 /// * [clearDraft]: True, if the chat message draft must be deleted.
 final class InputMessageDice extends InputMessageContent {
-  
   /// **InputMessageDice** *(inputMessageDice)* - child of InputMessageContent
   ///
   /// A dice message.
@@ -1337,43 +1368,44 @@ final class InputMessageDice extends InputMessageContent {
     required this.emoji,
     required this.clearDraft,
   });
-  
-  /// Emoji on which the dice throw animation is based 
+
+  /// Emoji on which the dice throw animation is based
   final String emoji;
 
   /// True, if the chat message draft must be deleted
   final bool clearDraft;
-  
+
   /// Parse from a json
-  factory InputMessageDice.fromJson(Map<String, dynamic> json) => InputMessageDice(
-    emoji: json['emoji'],
-    clearDraft: json['clear_draft'],
-  );
-  
-  
+  factory InputMessageDice.fromJson(Map<String, dynamic> json) =>
+      InputMessageDice(
+        emoji: json['emoji'],
+        clearDraft: json['clear_draft'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "emoji": emoji,
       "clear_draft": clearDraft,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [emoji]: Emoji on which the dice throw animation is based 
+  /// * [emoji]: Emoji on which the dice throw animation is based
   /// * [clear_draft]: True, if the chat message draft must be deleted
   @override
   InputMessageDice copyWith({
     String? emoji,
     bool? clearDraft,
-  }) => InputMessageDice(
-    emoji: emoji ?? this.emoji,
-    clearDraft: clearDraft ?? this.clearDraft,
-  );
+  }) =>
+      InputMessageDice(
+        emoji: emoji ?? this.emoji,
+        clearDraft: clearDraft ?? this.clearDraft,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputMessageDice';
@@ -1387,7 +1419,6 @@ final class InputMessageDice extends InputMessageContent {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputMessageGame** *(inputMessageGame)* - child of InputMessageContent
 ///
 /// A message with a game; not supported for channels or secret chats.
@@ -1395,7 +1426,6 @@ final class InputMessageDice extends InputMessageContent {
 /// * [botUserId]: User identifier of the bot that owns the game.
 /// * [gameShortName]: Short name of the game.
 final class InputMessageGame extends InputMessageContent {
-  
   /// **InputMessageGame** *(inputMessageGame)* - child of InputMessageContent
   ///
   /// A message with a game; not supported for channels or secret chats.
@@ -1406,43 +1436,44 @@ final class InputMessageGame extends InputMessageContent {
     required this.botUserId,
     required this.gameShortName,
   });
-  
-  /// User identifier of the bot that owns the game 
+
+  /// User identifier of the bot that owns the game
   final int botUserId;
 
   /// Short name of the game
   final String gameShortName;
-  
+
   /// Parse from a json
-  factory InputMessageGame.fromJson(Map<String, dynamic> json) => InputMessageGame(
-    botUserId: json['bot_user_id'],
-    gameShortName: json['game_short_name'],
-  );
-  
-  
+  factory InputMessageGame.fromJson(Map<String, dynamic> json) =>
+      InputMessageGame(
+        botUserId: json['bot_user_id'],
+        gameShortName: json['game_short_name'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "bot_user_id": botUserId,
       "game_short_name": gameShortName,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [bot_user_id]: User identifier of the bot that owns the game 
+  /// * [bot_user_id]: User identifier of the bot that owns the game
   /// * [game_short_name]: Short name of the game
   @override
   InputMessageGame copyWith({
     int? botUserId,
     String? gameShortName,
-  }) => InputMessageGame(
-    botUserId: botUserId ?? this.botUserId,
-    gameShortName: gameShortName ?? this.gameShortName,
-  );
+  }) =>
+      InputMessageGame(
+        botUserId: botUserId ?? this.botUserId,
+        gameShortName: gameShortName ?? this.gameShortName,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputMessageGame';
@@ -1455,7 +1486,6 @@ final class InputMessageGame extends InputMessageContent {
   @override
   String get currentObjectId => defaultObjectId;
 }
-
 
 /// **InputMessageInvoice** *(inputMessageInvoice)* - child of InputMessageContent
 ///
@@ -1474,7 +1504,6 @@ final class InputMessageGame extends InputMessageContent {
 /// * [startParameter]: Unique invoice bot deep link parameter for the generation of this invoice. If empty, it would be possible to pay directly from forwards of the invoice message.
 /// * [extendedMediaContent]: The content of extended media attached to the invoice. The content of the message to be sent. Must be one of the following types: inputMessagePhoto, inputMessageVideo.
 final class InputMessageInvoice extends InputMessageContent {
-  
   /// **InputMessageInvoice** *(inputMessageInvoice)* - child of InputMessageContent
   ///
   /// A message with an invoice; can be used only by bots.
@@ -1505,7 +1534,7 @@ final class InputMessageInvoice extends InputMessageContent {
     required this.startParameter,
     required this.extendedMediaContent,
   });
-  
+
   /// Invoice
   final Invoice invoice;
 
@@ -1541,29 +1570,30 @@ final class InputMessageInvoice extends InputMessageContent {
 
   /// The content of extended media attached to the invoice. The content of the message to be sent. Must be one of the following types: inputMessagePhoto, inputMessageVideo
   final InputMessageContent extendedMediaContent;
-  
+
   /// Parse from a json
-  factory InputMessageInvoice.fromJson(Map<String, dynamic> json) => InputMessageInvoice(
-    invoice: Invoice.fromJson(json['invoice']),
-    title: json['title'],
-    description: json['description'],
-    photoUrl: json['photo_url'],
-    photoSize: json['photo_size'],
-    photoWidth: json['photo_width'],
-    photoHeight: json['photo_height'],
-    payload: json['payload'],
-    providerToken: json['provider_token'],
-    providerData: json['provider_data'],
-    startParameter: json['start_parameter'],
-    extendedMediaContent: InputMessageContent.fromJson(json['extended_media_content']),
-  );
-  
-  
+  factory InputMessageInvoice.fromJson(Map<String, dynamic> json) =>
+      InputMessageInvoice(
+        invoice: Invoice.fromJson(json['invoice']),
+        title: json['title'],
+        description: json['description'],
+        photoUrl: json['photo_url'],
+        photoSize: json['photo_size'],
+        photoWidth: json['photo_width'],
+        photoHeight: json['photo_height'],
+        payload: json['payload'],
+        providerToken: json['provider_token'],
+        providerData: json['provider_data'],
+        startParameter: json['start_parameter'],
+        extendedMediaContent:
+            InputMessageContent.fromJson(json['extended_media_content']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "invoice": invoice.toJson(),
       "title": title,
       "description": description,
@@ -1576,8 +1606,8 @@ final class InputMessageInvoice extends InputMessageContent {
       "provider_data": providerData,
       "start_parameter": startParameter,
       "extended_media_content": extendedMediaContent.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -1608,20 +1638,21 @@ final class InputMessageInvoice extends InputMessageContent {
     String? providerData,
     String? startParameter,
     InputMessageContent? extendedMediaContent,
-  }) => InputMessageInvoice(
-    invoice: invoice ?? this.invoice,
-    title: title ?? this.title,
-    description: description ?? this.description,
-    photoUrl: photoUrl ?? this.photoUrl,
-    photoSize: photoSize ?? this.photoSize,
-    photoWidth: photoWidth ?? this.photoWidth,
-    photoHeight: photoHeight ?? this.photoHeight,
-    payload: payload ?? this.payload,
-    providerToken: providerToken ?? this.providerToken,
-    providerData: providerData ?? this.providerData,
-    startParameter: startParameter ?? this.startParameter,
-    extendedMediaContent: extendedMediaContent ?? this.extendedMediaContent,
-  );
+  }) =>
+      InputMessageInvoice(
+        invoice: invoice ?? this.invoice,
+        title: title ?? this.title,
+        description: description ?? this.description,
+        photoUrl: photoUrl ?? this.photoUrl,
+        photoSize: photoSize ?? this.photoSize,
+        photoWidth: photoWidth ?? this.photoWidth,
+        photoHeight: photoHeight ?? this.photoHeight,
+        payload: payload ?? this.payload,
+        providerToken: providerToken ?? this.providerToken,
+        providerData: providerData ?? this.providerData,
+        startParameter: startParameter ?? this.startParameter,
+        extendedMediaContent: extendedMediaContent ?? this.extendedMediaContent,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputMessageInvoice';
@@ -1635,7 +1666,6 @@ final class InputMessageInvoice extends InputMessageContent {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputMessagePoll** *(inputMessagePoll)* - child of InputMessageContent
 ///
 /// A message with a poll. Polls can't be sent to secret chats. Polls can be sent only to a private chat with a bot.
@@ -1648,7 +1678,6 @@ final class InputMessageInvoice extends InputMessageContent {
 /// * [closeDate]: Point in time (Unix timestamp) when the poll will automatically be closed; for bots only.
 /// * [isClosed]: True, if the poll needs to be sent already closed; for bots only.
 final class InputMessagePoll extends InputMessageContent {
-  
   /// **InputMessagePoll** *(inputMessagePoll)* - child of InputMessageContent
   ///
   /// A message with a poll. Polls can't be sent to secret chats. Polls can be sent only to a private chat with a bot.
@@ -1669,7 +1698,7 @@ final class InputMessagePoll extends InputMessageContent {
     required this.closeDate,
     required this.isClosed,
   });
-  
+
   /// Poll question; 1-255 characters (up to 300 characters for bots)
   final String question;
 
@@ -1690,24 +1719,25 @@ final class InputMessagePoll extends InputMessageContent {
 
   /// True, if the poll needs to be sent already closed; for bots only
   final bool isClosed;
-  
+
   /// Parse from a json
-  factory InputMessagePoll.fromJson(Map<String, dynamic> json) => InputMessagePoll(
-    question: json['question'],
-    options: List<String>.from((json['options'] ?? []).map((item) => item).toList()),
-    isAnonymous: json['is_anonymous'],
-    type: PollType.fromJson(json['type']),
-    openPeriod: json['open_period'],
-    closeDate: json['close_date'],
-    isClosed: json['is_closed'],
-  );
-  
-  
+  factory InputMessagePoll.fromJson(Map<String, dynamic> json) =>
+      InputMessagePoll(
+        question: json['question'],
+        options: List<String>.from(
+            (json['options'] ?? []).map((item) => item).toList()),
+        isAnonymous: json['is_anonymous'],
+        type: PollType.fromJson(json['type']),
+        openPeriod: json['open_period'],
+        closeDate: json['close_date'],
+        isClosed: json['is_closed'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "question": question,
       "options": options.map((i) => i).toList(),
       "is_anonymous": isAnonymous,
@@ -1715,8 +1745,8 @@ final class InputMessagePoll extends InputMessageContent {
       "open_period": openPeriod,
       "close_date": closeDate,
       "is_closed": isClosed,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -1737,15 +1767,16 @@ final class InputMessagePoll extends InputMessageContent {
     int? openPeriod,
     int? closeDate,
     bool? isClosed,
-  }) => InputMessagePoll(
-    question: question ?? this.question,
-    options: options ?? this.options,
-    isAnonymous: isAnonymous ?? this.isAnonymous,
-    type: type ?? this.type,
-    openPeriod: openPeriod ?? this.openPeriod,
-    closeDate: closeDate ?? this.closeDate,
-    isClosed: isClosed ?? this.isClosed,
-  );
+  }) =>
+      InputMessagePoll(
+        question: question ?? this.question,
+        options: options ?? this.options,
+        isAnonymous: isAnonymous ?? this.isAnonymous,
+        type: type ?? this.type,
+        openPeriod: openPeriod ?? this.openPeriod,
+        closeDate: closeDate ?? this.closeDate,
+        isClosed: isClosed ?? this.isClosed,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputMessagePoll';
@@ -1759,7 +1790,6 @@ final class InputMessagePoll extends InputMessageContent {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputMessageStory** *(inputMessageStory)* - child of InputMessageContent
 ///
 /// A message with a forwarded story. Stories can't be sent to secret chats. A story can be forwarded only if story.can_be_forwarded.
@@ -1767,7 +1797,6 @@ final class InputMessagePoll extends InputMessageContent {
 /// * [storySenderChatId]: Identifier of the chat that posted the story.
 /// * [storyId]: Story identifier.
 final class InputMessageStory extends InputMessageContent {
-  
   /// **InputMessageStory** *(inputMessageStory)* - child of InputMessageContent
   ///
   /// A message with a forwarded story. Stories can't be sent to secret chats. A story can be forwarded only if story.can_be_forwarded.
@@ -1778,29 +1807,29 @@ final class InputMessageStory extends InputMessageContent {
     required this.storySenderChatId,
     required this.storyId,
   });
-  
+
   /// Identifier of the chat that posted the story
   final int storySenderChatId;
 
   /// Story identifier
   final int storyId;
-  
+
   /// Parse from a json
-  factory InputMessageStory.fromJson(Map<String, dynamic> json) => InputMessageStory(
-    storySenderChatId: json['story_sender_chat_id'],
-    storyId: json['story_id'],
-  );
-  
-  
+  factory InputMessageStory.fromJson(Map<String, dynamic> json) =>
+      InputMessageStory(
+        storySenderChatId: json['story_sender_chat_id'],
+        storyId: json['story_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "story_sender_chat_id": storySenderChatId,
       "story_id": storyId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -1811,10 +1840,11 @@ final class InputMessageStory extends InputMessageContent {
   InputMessageStory copyWith({
     int? storySenderChatId,
     int? storyId,
-  }) => InputMessageStory(
-    storySenderChatId: storySenderChatId ?? this.storySenderChatId,
-    storyId: storyId ?? this.storyId,
-  );
+  }) =>
+      InputMessageStory(
+        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+        storyId: storyId ?? this.storyId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputMessageStory';
@@ -1828,7 +1858,6 @@ final class InputMessageStory extends InputMessageContent {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputMessageForwarded** *(inputMessageForwarded)* - child of InputMessageContent
 ///
 /// A forwarded message.
@@ -1838,7 +1867,6 @@ final class InputMessageStory extends InputMessageContent {
 /// * [inGameShare]: True, if a game message is being shared from a launched game; applies only to game messages.
 /// * [copyOptions]: Options to be used to copy content of the message without reference to the original sender; pass null to forward the message as usual *(optional)*.
 final class InputMessageForwarded extends InputMessageContent {
-  
   /// **InputMessageForwarded** *(inputMessageForwarded)* - child of InputMessageContent
   ///
   /// A forwarded message.
@@ -1853,7 +1881,7 @@ final class InputMessageForwarded extends InputMessageContent {
     required this.inGameShare,
     this.copyOptions,
   });
-  
+
   /// Identifier for the chat this forwarded message came from
   final int fromChatId;
 
@@ -1865,27 +1893,29 @@ final class InputMessageForwarded extends InputMessageContent {
 
   /// Options to be used to copy content of the message without reference to the original sender; pass null to forward the message as usual
   final MessageCopyOptions? copyOptions;
-  
+
   /// Parse from a json
-  factory InputMessageForwarded.fromJson(Map<String, dynamic> json) => InputMessageForwarded(
-    fromChatId: json['from_chat_id'],
-    messageId: json['message_id'],
-    inGameShare: json['in_game_share'],
-    copyOptions: json['copy_options'] == null ? null : MessageCopyOptions.fromJson(json['copy_options']),
-  );
-  
-  
+  factory InputMessageForwarded.fromJson(Map<String, dynamic> json) =>
+      InputMessageForwarded(
+        fromChatId: json['from_chat_id'],
+        messageId: json['message_id'],
+        inGameShare: json['in_game_share'],
+        copyOptions: json['copy_options'] == null
+            ? null
+            : MessageCopyOptions.fromJson(json['copy_options']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "from_chat_id": fromChatId,
       "message_id": messageId,
       "in_game_share": inGameShare,
       "copy_options": copyOptions?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -1900,12 +1930,13 @@ final class InputMessageForwarded extends InputMessageContent {
     int? messageId,
     bool? inGameShare,
     MessageCopyOptions? copyOptions,
-  }) => InputMessageForwarded(
-    fromChatId: fromChatId ?? this.fromChatId,
-    messageId: messageId ?? this.messageId,
-    inGameShare: inGameShare ?? this.inGameShare,
-    copyOptions: copyOptions ?? this.copyOptions,
-  );
+  }) =>
+      InputMessageForwarded(
+        fromChatId: fromChatId ?? this.fromChatId,
+        messageId: messageId ?? this.messageId,
+        inGameShare: inGameShare ?? this.inGameShare,
+        copyOptions: copyOptions ?? this.copyOptions,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputMessageForwarded';

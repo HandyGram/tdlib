@@ -19,7 +19,6 @@ part of '../tdapi.dart';
 /// * [includeGroups]: True, if basic groups and supergroups need to be included.
 /// * [includeChannels]: True, if channels need to be included.
 final class ChatFolder extends TdObject {
-  
   /// **ChatFolder** *(chatFolder)* - basic class
   ///
   /// Represents a folder for user chats.
@@ -56,7 +55,7 @@ final class ChatFolder extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// The title of the folder; 1-12 characters without line feeds
   final String title;
 
@@ -106,33 +105,36 @@ final class ChatFolder extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory ChatFolder.fromJson(Map<String, dynamic> json) => ChatFolder(
-    title: json['title'],
-    icon: json['icon'] == null ? null : ChatFolderIcon.fromJson(json['icon']),
-    isShareable: json['is_shareable'],
-    pinnedChatIds: List<int>.from((json['pinned_chat_ids'] ?? []).map((item) => item).toList()),
-    includedChatIds: List<int>.from((json['included_chat_ids'] ?? []).map((item) => item).toList()),
-    excludedChatIds: List<int>.from((json['excluded_chat_ids'] ?? []).map((item) => item).toList()),
-    excludeMuted: json['exclude_muted'],
-    excludeRead: json['exclude_read'],
-    excludeArchived: json['exclude_archived'],
-    includeContacts: json['include_contacts'],
-    includeNonContacts: json['include_non_contacts'],
-    includeBots: json['include_bots'],
-    includeGroups: json['include_groups'],
-    includeChannels: json['include_channels'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        title: json['title'],
+        icon:
+            json['icon'] == null ? null : ChatFolderIcon.fromJson(json['icon']),
+        isShareable: json['is_shareable'],
+        pinnedChatIds: List<int>.from(
+            (json['pinned_chat_ids'] ?? []).map((item) => item).toList()),
+        includedChatIds: List<int>.from(
+            (json['included_chat_ids'] ?? []).map((item) => item).toList()),
+        excludedChatIds: List<int>.from(
+            (json['excluded_chat_ids'] ?? []).map((item) => item).toList()),
+        excludeMuted: json['exclude_muted'],
+        excludeRead: json['exclude_read'],
+        excludeArchived: json['exclude_archived'],
+        includeContacts: json['include_contacts'],
+        includeNonContacts: json['include_non_contacts'],
+        includeBots: json['include_bots'],
+        includeGroups: json['include_groups'],
+        includeChannels: json['include_channels'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "title": title,
       "icon": icon?.toJson(),
       "is_shareable": isShareable,
@@ -147,8 +149,8 @@ final class ChatFolder extends TdObject {
       "include_bots": includeBots,
       "include_groups": includeGroups,
       "include_channels": includeChannels,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -184,24 +186,25 @@ final class ChatFolder extends TdObject {
     bool? includeChannels,
     dynamic extra,
     int? clientId,
-  }) => ChatFolder(
-    title: title ?? this.title,
-    icon: icon ?? this.icon,
-    isShareable: isShareable ?? this.isShareable,
-    pinnedChatIds: pinnedChatIds ?? this.pinnedChatIds,
-    includedChatIds: includedChatIds ?? this.includedChatIds,
-    excludedChatIds: excludedChatIds ?? this.excludedChatIds,
-    excludeMuted: excludeMuted ?? this.excludeMuted,
-    excludeRead: excludeRead ?? this.excludeRead,
-    excludeArchived: excludeArchived ?? this.excludeArchived,
-    includeContacts: includeContacts ?? this.includeContacts,
-    includeNonContacts: includeNonContacts ?? this.includeNonContacts,
-    includeBots: includeBots ?? this.includeBots,
-    includeGroups: includeGroups ?? this.includeGroups,
-    includeChannels: includeChannels ?? this.includeChannels,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      ChatFolder(
+        title: title ?? this.title,
+        icon: icon ?? this.icon,
+        isShareable: isShareable ?? this.isShareable,
+        pinnedChatIds: pinnedChatIds ?? this.pinnedChatIds,
+        includedChatIds: includedChatIds ?? this.includedChatIds,
+        excludedChatIds: excludedChatIds ?? this.excludedChatIds,
+        excludeMuted: excludeMuted ?? this.excludeMuted,
+        excludeRead: excludeRead ?? this.excludeRead,
+        excludeArchived: excludeArchived ?? this.excludeArchived,
+        includeContacts: includeContacts ?? this.includeContacts,
+        includeNonContacts: includeNonContacts ?? this.includeNonContacts,
+        includeBots: includeBots ?? this.includeBots,
+        includeGroups: includeGroups ?? this.includeGroups,
+        includeChannels: includeChannels ?? this.includeChannels,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatFolder';

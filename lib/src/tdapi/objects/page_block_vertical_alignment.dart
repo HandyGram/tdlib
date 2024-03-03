@@ -4,18 +4,17 @@ part of '../tdapi.dart';
 ///
 /// Describes a Vertical alignment of a table cell content.
 sealed class PageBlockVerticalAlignment extends TdObject {
-  
   /// **PageBlockVerticalAlignment** *(pageBlockVerticalAlignment)* - parent
   ///
   /// Describes a Vertical alignment of a table cell content.
   const PageBlockVerticalAlignment();
-  
+
   /// a PageBlockVerticalAlignment return type can be :
   /// * [PageBlockVerticalAlignmentTop]
   /// * [PageBlockVerticalAlignmentMiddle]
   /// * [PageBlockVerticalAlignmentBottom]
-  factory PageBlockVerticalAlignment.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory PageBlockVerticalAlignment.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case PageBlockVerticalAlignmentTop.defaultObjectId:
         return PageBlockVerticalAlignmentTop.fromJson(json);
       case PageBlockVerticalAlignmentMiddle.defaultObjectId:
@@ -29,7 +28,7 @@ sealed class PageBlockVerticalAlignment extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -49,31 +48,31 @@ sealed class PageBlockVerticalAlignment extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PageBlockVerticalAlignmentTop** *(pageBlockVerticalAlignmentTop)* - child of PageBlockVerticalAlignment
 ///
 /// The content must be top-aligned.
 final class PageBlockVerticalAlignmentTop extends PageBlockVerticalAlignment {
-  
   /// **PageBlockVerticalAlignmentTop** *(pageBlockVerticalAlignmentTop)* - child of PageBlockVerticalAlignment
   ///
   /// The content must be top-aligned.
   const PageBlockVerticalAlignmentTop();
-  
+
   /// Parse from a json
-  factory PageBlockVerticalAlignmentTop.fromJson(Map<String, dynamic> json) => const PageBlockVerticalAlignmentTop();
-  
+  factory PageBlockVerticalAlignmentTop.fromJson(Map<String, dynamic> json) =>
+      const PageBlockVerticalAlignmentTop();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  PageBlockVerticalAlignmentTop copyWith() => const PageBlockVerticalAlignmentTop();
+  PageBlockVerticalAlignmentTop copyWith() =>
+      const PageBlockVerticalAlignmentTop();
 
   /// TDLib object type
   static const String defaultObjectId = 'pageBlockVerticalAlignmentTop';
@@ -87,31 +86,33 @@ final class PageBlockVerticalAlignmentTop extends PageBlockVerticalAlignment {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PageBlockVerticalAlignmentMiddle** *(pageBlockVerticalAlignmentMiddle)* - child of PageBlockVerticalAlignment
 ///
 /// The content must be middle-aligned.
-final class PageBlockVerticalAlignmentMiddle extends PageBlockVerticalAlignment {
-  
+final class PageBlockVerticalAlignmentMiddle
+    extends PageBlockVerticalAlignment {
   /// **PageBlockVerticalAlignmentMiddle** *(pageBlockVerticalAlignmentMiddle)* - child of PageBlockVerticalAlignment
   ///
   /// The content must be middle-aligned.
   const PageBlockVerticalAlignmentMiddle();
-  
+
   /// Parse from a json
-  factory PageBlockVerticalAlignmentMiddle.fromJson(Map<String, dynamic> json) => const PageBlockVerticalAlignmentMiddle();
-  
+  factory PageBlockVerticalAlignmentMiddle.fromJson(
+          Map<String, dynamic> json) =>
+      const PageBlockVerticalAlignmentMiddle();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  PageBlockVerticalAlignmentMiddle copyWith() => const PageBlockVerticalAlignmentMiddle();
+  PageBlockVerticalAlignmentMiddle copyWith() =>
+      const PageBlockVerticalAlignmentMiddle();
 
   /// TDLib object type
   static const String defaultObjectId = 'pageBlockVerticalAlignmentMiddle';
@@ -125,31 +126,33 @@ final class PageBlockVerticalAlignmentMiddle extends PageBlockVerticalAlignment 
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PageBlockVerticalAlignmentBottom** *(pageBlockVerticalAlignmentBottom)* - child of PageBlockVerticalAlignment
 ///
 /// The content must be bottom-aligned.
-final class PageBlockVerticalAlignmentBottom extends PageBlockVerticalAlignment {
-  
+final class PageBlockVerticalAlignmentBottom
+    extends PageBlockVerticalAlignment {
   /// **PageBlockVerticalAlignmentBottom** *(pageBlockVerticalAlignmentBottom)* - child of PageBlockVerticalAlignment
   ///
   /// The content must be bottom-aligned.
   const PageBlockVerticalAlignmentBottom();
-  
+
   /// Parse from a json
-  factory PageBlockVerticalAlignmentBottom.fromJson(Map<String, dynamic> json) => const PageBlockVerticalAlignmentBottom();
-  
+  factory PageBlockVerticalAlignmentBottom.fromJson(
+          Map<String, dynamic> json) =>
+      const PageBlockVerticalAlignmentBottom();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  PageBlockVerticalAlignmentBottom copyWith() => const PageBlockVerticalAlignmentBottom();
+  PageBlockVerticalAlignmentBottom copyWith() =>
+      const PageBlockVerticalAlignmentBottom();
 
   /// TDLib object type
   static const String defaultObjectId = 'pageBlockVerticalAlignmentBottom';

@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class RemoveInstalledBackground extends TdFunction {
-  
   /// **RemoveInstalledBackground** *(removeInstalledBackground)* - TDLib function
   ///
   /// Removes background from the list of installed backgrounds.
@@ -19,19 +18,19 @@ final class RemoveInstalledBackground extends TdFunction {
   const RemoveInstalledBackground({
     required this.backgroundId,
   });
-  
+
   /// The background identifier
   final int backgroundId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "background_id": backgroundId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class RemoveInstalledBackground extends TdFunction {
   /// * [background_id]: The background identifier
   RemoveInstalledBackground copyWith({
     int? backgroundId,
-  }) => RemoveInstalledBackground(
-    backgroundId: backgroundId ?? this.backgroundId,
-  );
+  }) =>
+      RemoveInstalledBackground(
+        backgroundId: backgroundId ?? this.backgroundId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'removeInstalledBackground';

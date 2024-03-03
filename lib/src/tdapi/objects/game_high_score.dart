@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 /// * [userId]: User identifier.
 /// * [score]: User score.
 final class GameHighScore extends TdObject {
-  
   /// **GameHighScore** *(gameHighScore)* - basic class
   ///
   /// Contains one row of the game high score table.
@@ -21,50 +20,50 @@ final class GameHighScore extends TdObject {
     required this.userId,
     required this.score,
   });
-  
-  /// Position in the high score table 
+
+  /// Position in the high score table
   final int position;
 
-  /// User identifier 
+  /// User identifier
   final int userId;
 
   /// User score
   final int score;
-  
+
   /// Parse from a json
   factory GameHighScore.fromJson(Map<String, dynamic> json) => GameHighScore(
-    position: json['position'],
-    userId: json['user_id'],
-    score: json['score'],
-  );
-  
-  
+        position: json['position'],
+        userId: json['user_id'],
+        score: json['score'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "position": position,
       "user_id": userId,
       "score": score,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [position]: Position in the high score table 
-  /// * [user_id]: User identifier 
+  /// * [position]: Position in the high score table
+  /// * [user_id]: User identifier
   /// * [score]: User score
   GameHighScore copyWith({
     int? position,
     int? userId,
     int? score,
-  }) => GameHighScore(
-    position: position ?? this.position,
-    userId: userId ?? this.userId,
-    score: score ?? this.score,
-  );
+  }) =>
+      GameHighScore(
+        position: position ?? this.position,
+        userId: userId ?? this.userId,
+        score: score ?? this.score,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'gameHighScore';

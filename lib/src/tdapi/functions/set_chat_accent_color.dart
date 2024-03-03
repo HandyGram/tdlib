@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetChatAccentColor extends TdFunction {
-  
   /// **SetChatAccentColor** *(setChatAccentColor)* - TDLib function
   ///
   /// Changes accent color and background custom emoji of a channel chat. Requires can_change_info administrator right.
@@ -25,7 +24,7 @@ final class SetChatAccentColor extends TdFunction {
     required this.accentColorId,
     required this.backgroundCustomEmojiId,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -34,18 +33,18 @@ final class SetChatAccentColor extends TdFunction {
 
   /// Identifier of a custom emoji to be shown on the reply header and link preview background; 0 if none. Use chatBoostLevelFeatures.can_set_background_custom_emoji to check whether a custom emoji can be set
   final int backgroundCustomEmojiId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "accent_color_id": accentColorId,
       "background_custom_emoji_id": backgroundCustomEmojiId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,13 @@ final class SetChatAccentColor extends TdFunction {
     int? chatId,
     int? accentColorId,
     int? backgroundCustomEmojiId,
-  }) => SetChatAccentColor(
-    chatId: chatId ?? this.chatId,
-    accentColorId: accentColorId ?? this.accentColorId,
-    backgroundCustomEmojiId: backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
-  );
+  }) =>
+      SetChatAccentColor(
+        chatId: chatId ?? this.chatId,
+        accentColorId: accentColorId ?? this.accentColorId,
+        backgroundCustomEmojiId:
+            backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setChatAccentColor';

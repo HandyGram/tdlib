@@ -7,7 +7,6 @@ part of '../tdapi.dart';
 /// * [elements]: Telegram Passport elements.
 /// * [errors]: Errors in the elements that are already available.
 final class PassportElementsWithErrors extends TdObject {
-  
   /// **PassportElementsWithErrors** *(passportElementsWithErrors)* - basic class
   ///
   /// Contains information about a Telegram Passport elements and corresponding errors.
@@ -20,8 +19,8 @@ final class PassportElementsWithErrors extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// Telegram Passport elements 
+
+  /// Telegram Passport elements
   final List<PassportElement> elements;
 
   /// Errors in the elements that are already available
@@ -34,42 +33,47 @@ final class PassportElementsWithErrors extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory PassportElementsWithErrors.fromJson(Map<String, dynamic> json) => PassportElementsWithErrors(
-    elements: List<PassportElement>.from((json['elements'] ?? []).map((item) => PassportElement.fromJson(item)).toList()),
-    errors: List<PassportElementError>.from((json['errors'] ?? []).map((item) => PassportElementError.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory PassportElementsWithErrors.fromJson(Map<String, dynamic> json) =>
+      PassportElementsWithErrors(
+        elements: List<PassportElement>.from((json['elements'] ?? [])
+            .map((item) => PassportElement.fromJson(item))
+            .toList()),
+        errors: List<PassportElementError>.from((json['errors'] ?? [])
+            .map((item) => PassportElementError.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "elements": elements.map((i) => i.toJson()).toList(),
       "errors": errors.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [elements]: Telegram Passport elements 
+  /// * [elements]: Telegram Passport elements
   /// * [errors]: Errors in the elements that are already available
   PassportElementsWithErrors copyWith({
     List<PassportElement>? elements,
     List<PassportElementError>? errors,
     dynamic extra,
     int? clientId,
-  }) => PassportElementsWithErrors(
-    elements: elements ?? this.elements,
-    errors: errors ?? this.errors,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      PassportElementsWithErrors(
+        elements: elements ?? this.elements,
+        errors: errors ?? this.errors,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'passportElementsWithErrors';

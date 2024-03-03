@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 ///
 /// [FoundMessages] is returned on completion.
 final class SearchSecretMessages extends TdFunction {
-  
   /// **SearchSecretMessages** *(searchSecretMessages)* - TDLib function
   ///
   /// Searches for messages in secret chats. Returns the results in reverse chronological order. For optimal performance, the number of returned messages is chosen by TDLib.
@@ -31,7 +30,7 @@ final class SearchSecretMessages extends TdFunction {
     required this.limit,
     this.filter,
   });
-  
+
   /// Identifier of the chat in which to search. Specify 0 to search in all secret chats
   final int chatId;
 
@@ -46,20 +45,20 @@ final class SearchSecretMessages extends TdFunction {
 
   /// Additional filter for messages to search; pass null to search for all messages
   final SearchMessagesFilter? filter;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "query": query,
       "offset": offset,
       "limit": limit,
       "filter": filter?.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -75,13 +74,14 @@ final class SearchSecretMessages extends TdFunction {
     String? offset,
     int? limit,
     SearchMessagesFilter? filter,
-  }) => SearchSecretMessages(
-    chatId: chatId ?? this.chatId,
-    query: query ?? this.query,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-    filter: filter ?? this.filter,
-  );
+  }) =>
+      SearchSecretMessages(
+        chatId: chatId ?? this.chatId,
+        query: query ?? this.query,
+        offset: offset ?? this.offset,
+        limit: limit ?? this.limit,
+        filter: filter ?? this.filter,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'searchSecretMessages';

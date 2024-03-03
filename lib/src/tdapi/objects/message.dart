@@ -48,7 +48,6 @@ part of '../tdapi.dart';
 /// * [content]: Content of the message.
 /// * [replyMarkup]: Reply markup for the message; may be null if none *(optional)*.
 final class Message extends TdObject {
-  
   /// **Message** *(message)* - basic class
   ///
   /// Describes a message.
@@ -143,7 +142,7 @@ final class Message extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Message identifier; unique for the chat to which the message belongs
   final int id;
 
@@ -280,62 +279,80 @@ final class Message extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory Message.fromJson(Map<String, dynamic> json) => Message(
-    id: json['id'],
-    senderId: MessageSender.fromJson(json['sender_id']),
-    chatId: json['chat_id'],
-    sendingState: json['sending_state'] == null ? null : MessageSendingState.fromJson(json['sending_state']),
-    schedulingState: json['scheduling_state'] == null ? null : MessageSchedulingState.fromJson(json['scheduling_state']),
-    isOutgoing: json['is_outgoing'],
-    isPinned: json['is_pinned'],
-    canBeEdited: json['can_be_edited'],
-    canBeForwarded: json['can_be_forwarded'],
-    canBeRepliedInAnotherChat: json['can_be_replied_in_another_chat'],
-    canBeSaved: json['can_be_saved'],
-    canBeDeletedOnlyForSelf: json['can_be_deleted_only_for_self'],
-    canBeDeletedForAllUsers: json['can_be_deleted_for_all_users'],
-    canGetAddedReactions: json['can_get_added_reactions'],
-    canGetStatistics: json['can_get_statistics'],
-    canGetMessageThread: json['can_get_message_thread'],
-    canGetReadDate: json['can_get_read_date'],
-    canGetViewers: json['can_get_viewers'],
-    canGetMediaTimestampLinks: json['can_get_media_timestamp_links'],
-    canReportReactions: json['can_report_reactions'],
-    hasTimestampedMedia: json['has_timestamped_media'],
-    isChannelPost: json['is_channel_post'],
-    isTopicMessage: json['is_topic_message'],
-    containsUnreadMention: json['contains_unread_mention'],
-    date: json['date'],
-    editDate: json['edit_date'],
-    forwardInfo: json['forward_info'] == null ? null : MessageForwardInfo.fromJson(json['forward_info']),
-    importInfo: json['import_info'] == null ? null : MessageImportInfo.fromJson(json['import_info']),
-    interactionInfo: json['interaction_info'] == null ? null : MessageInteractionInfo.fromJson(json['interaction_info']),
-    unreadReactions: List<UnreadReaction>.from((json['unread_reactions'] ?? []).map((item) => UnreadReaction.fromJson(item)).toList()),
-    replyTo: json['reply_to'] == null ? null : MessageReplyTo.fromJson(json['reply_to']),
-    messageThreadId: json['message_thread_id'],
-    savedMessagesTopicId: json['saved_messages_topic_id'],
-    selfDestructType: json['self_destruct_type'] == null ? null : MessageSelfDestructType.fromJson(json['self_destruct_type']),
-    selfDestructIn: json['self_destruct_in'],
-    autoDeleteIn: json['auto_delete_in'],
-    viaBotUserId: json['via_bot_user_id'],
-    senderBoostCount: json['sender_boost_count'] ?? 0,
-    authorSignature: json['author_signature'],
-    mediaAlbumId: int.parse(json['media_album_id']),
-    restrictionReason: json['restriction_reason'],
-    content: MessageContent.fromJson(json['content']),
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: json['id'],
+        senderId: MessageSender.fromJson(json['sender_id']),
+        chatId: json['chat_id'],
+        sendingState: json['sending_state'] == null
+            ? null
+            : MessageSendingState.fromJson(json['sending_state']),
+        schedulingState: json['scheduling_state'] == null
+            ? null
+            : MessageSchedulingState.fromJson(json['scheduling_state']),
+        isOutgoing: json['is_outgoing'],
+        isPinned: json['is_pinned'],
+        canBeEdited: json['can_be_edited'],
+        canBeForwarded: json['can_be_forwarded'],
+        canBeRepliedInAnotherChat: json['can_be_replied_in_another_chat'],
+        canBeSaved: json['can_be_saved'],
+        canBeDeletedOnlyForSelf: json['can_be_deleted_only_for_self'],
+        canBeDeletedForAllUsers: json['can_be_deleted_for_all_users'],
+        canGetAddedReactions: json['can_get_added_reactions'],
+        canGetStatistics: json['can_get_statistics'],
+        canGetMessageThread: json['can_get_message_thread'],
+        canGetReadDate: json['can_get_read_date'],
+        canGetViewers: json['can_get_viewers'],
+        canGetMediaTimestampLinks: json['can_get_media_timestamp_links'],
+        canReportReactions: json['can_report_reactions'],
+        hasTimestampedMedia: json['has_timestamped_media'],
+        isChannelPost: json['is_channel_post'],
+        isTopicMessage: json['is_topic_message'],
+        containsUnreadMention: json['contains_unread_mention'],
+        date: json['date'],
+        editDate: json['edit_date'],
+        forwardInfo: json['forward_info'] == null
+            ? null
+            : MessageForwardInfo.fromJson(json['forward_info']),
+        importInfo: json['import_info'] == null
+            ? null
+            : MessageImportInfo.fromJson(json['import_info']),
+        interactionInfo: json['interaction_info'] == null
+            ? null
+            : MessageInteractionInfo.fromJson(json['interaction_info']),
+        unreadReactions: List<UnreadReaction>.from(
+            (json['unread_reactions'] ?? [])
+                .map((item) => UnreadReaction.fromJson(item))
+                .toList()),
+        replyTo: json['reply_to'] == null
+            ? null
+            : MessageReplyTo.fromJson(json['reply_to']),
+        messageThreadId: json['message_thread_id'],
+        savedMessagesTopicId: json['saved_messages_topic_id'],
+        selfDestructType: json['self_destruct_type'] == null
+            ? null
+            : MessageSelfDestructType.fromJson(json['self_destruct_type']),
+        selfDestructIn: json['self_destruct_in'],
+        autoDeleteIn: json['auto_delete_in'],
+        viaBotUserId: json['via_bot_user_id'],
+        senderBoostCount: json['sender_boost_count'] ?? 0,
+        authorSignature: json['author_signature'],
+        mediaAlbumId: int.parse(json['media_album_id']),
+        restrictionReason: json['restriction_reason'],
+        content: MessageContent.fromJson(json['content']),
+        replyMarkup: json['reply_markup'] == null
+            ? null
+            : ReplyMarkup.fromJson(json['reply_markup']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "sender_id": senderId.toJson(),
       "chat_id": chatId,
@@ -379,8 +396,8 @@ final class Message extends TdObject {
       "restriction_reason": restrictionReason,
       "content": content.toJson(),
       "reply_markup": replyMarkup?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -474,53 +491,59 @@ final class Message extends TdObject {
     ReplyMarkup? replyMarkup,
     dynamic extra,
     int? clientId,
-  }) => Message(
-    id: id ?? this.id,
-    senderId: senderId ?? this.senderId,
-    chatId: chatId ?? this.chatId,
-    sendingState: sendingState ?? this.sendingState,
-    schedulingState: schedulingState ?? this.schedulingState,
-    isOutgoing: isOutgoing ?? this.isOutgoing,
-    isPinned: isPinned ?? this.isPinned,
-    canBeEdited: canBeEdited ?? this.canBeEdited,
-    canBeForwarded: canBeForwarded ?? this.canBeForwarded,
-    canBeRepliedInAnotherChat: canBeRepliedInAnotherChat ?? this.canBeRepliedInAnotherChat,
-    canBeSaved: canBeSaved ?? this.canBeSaved,
-    canBeDeletedOnlyForSelf: canBeDeletedOnlyForSelf ?? this.canBeDeletedOnlyForSelf,
-    canBeDeletedForAllUsers: canBeDeletedForAllUsers ?? this.canBeDeletedForAllUsers,
-    canGetAddedReactions: canGetAddedReactions ?? this.canGetAddedReactions,
-    canGetStatistics: canGetStatistics ?? this.canGetStatistics,
-    canGetMessageThread: canGetMessageThread ?? this.canGetMessageThread,
-    canGetReadDate: canGetReadDate ?? this.canGetReadDate,
-    canGetViewers: canGetViewers ?? this.canGetViewers,
-    canGetMediaTimestampLinks: canGetMediaTimestampLinks ?? this.canGetMediaTimestampLinks,
-    canReportReactions: canReportReactions ?? this.canReportReactions,
-    hasTimestampedMedia: hasTimestampedMedia ?? this.hasTimestampedMedia,
-    isChannelPost: isChannelPost ?? this.isChannelPost,
-    isTopicMessage: isTopicMessage ?? this.isTopicMessage,
-    containsUnreadMention: containsUnreadMention ?? this.containsUnreadMention,
-    date: date ?? this.date,
-    editDate: editDate ?? this.editDate,
-    forwardInfo: forwardInfo ?? this.forwardInfo,
-    importInfo: importInfo ?? this.importInfo,
-    interactionInfo: interactionInfo ?? this.interactionInfo,
-    unreadReactions: unreadReactions ?? this.unreadReactions,
-    replyTo: replyTo ?? this.replyTo,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-    savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
-    selfDestructType: selfDestructType ?? this.selfDestructType,
-    selfDestructIn: selfDestructIn ?? this.selfDestructIn,
-    autoDeleteIn: autoDeleteIn ?? this.autoDeleteIn,
-    viaBotUserId: viaBotUserId ?? this.viaBotUserId,
-    senderBoostCount: senderBoostCount ?? this.senderBoostCount,
-    authorSignature: authorSignature ?? this.authorSignature,
-    mediaAlbumId: mediaAlbumId ?? this.mediaAlbumId,
-    restrictionReason: restrictionReason ?? this.restrictionReason,
-    content: content ?? this.content,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      Message(
+        id: id ?? this.id,
+        senderId: senderId ?? this.senderId,
+        chatId: chatId ?? this.chatId,
+        sendingState: sendingState ?? this.sendingState,
+        schedulingState: schedulingState ?? this.schedulingState,
+        isOutgoing: isOutgoing ?? this.isOutgoing,
+        isPinned: isPinned ?? this.isPinned,
+        canBeEdited: canBeEdited ?? this.canBeEdited,
+        canBeForwarded: canBeForwarded ?? this.canBeForwarded,
+        canBeRepliedInAnotherChat:
+            canBeRepliedInAnotherChat ?? this.canBeRepliedInAnotherChat,
+        canBeSaved: canBeSaved ?? this.canBeSaved,
+        canBeDeletedOnlyForSelf:
+            canBeDeletedOnlyForSelf ?? this.canBeDeletedOnlyForSelf,
+        canBeDeletedForAllUsers:
+            canBeDeletedForAllUsers ?? this.canBeDeletedForAllUsers,
+        canGetAddedReactions: canGetAddedReactions ?? this.canGetAddedReactions,
+        canGetStatistics: canGetStatistics ?? this.canGetStatistics,
+        canGetMessageThread: canGetMessageThread ?? this.canGetMessageThread,
+        canGetReadDate: canGetReadDate ?? this.canGetReadDate,
+        canGetViewers: canGetViewers ?? this.canGetViewers,
+        canGetMediaTimestampLinks:
+            canGetMediaTimestampLinks ?? this.canGetMediaTimestampLinks,
+        canReportReactions: canReportReactions ?? this.canReportReactions,
+        hasTimestampedMedia: hasTimestampedMedia ?? this.hasTimestampedMedia,
+        isChannelPost: isChannelPost ?? this.isChannelPost,
+        isTopicMessage: isTopicMessage ?? this.isTopicMessage,
+        containsUnreadMention:
+            containsUnreadMention ?? this.containsUnreadMention,
+        date: date ?? this.date,
+        editDate: editDate ?? this.editDate,
+        forwardInfo: forwardInfo ?? this.forwardInfo,
+        importInfo: importInfo ?? this.importInfo,
+        interactionInfo: interactionInfo ?? this.interactionInfo,
+        unreadReactions: unreadReactions ?? this.unreadReactions,
+        replyTo: replyTo ?? this.replyTo,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
+        selfDestructType: selfDestructType ?? this.selfDestructType,
+        selfDestructIn: selfDestructIn ?? this.selfDestructIn,
+        autoDeleteIn: autoDeleteIn ?? this.autoDeleteIn,
+        viaBotUserId: viaBotUserId ?? this.viaBotUserId,
+        senderBoostCount: senderBoostCount ?? this.senderBoostCount,
+        authorSignature: authorSignature ?? this.authorSignature,
+        mediaAlbumId: mediaAlbumId ?? this.mediaAlbumId,
+        restrictionReason: restrictionReason ?? this.restrictionReason,
+        content: content ?? this.content,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'message';

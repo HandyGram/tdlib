@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetLocation extends TdFunction {
-  
   /// **SetLocation** *(setLocation)* - TDLib function
   ///
   /// Changes the location of the current user. Needs to be called if getOption("is_location_visible") is true and location changes for more than 1 kilometer.
@@ -19,19 +18,19 @@ final class SetLocation extends TdFunction {
   const SetLocation({
     required this.location,
   });
-  
+
   /// The new location of the user
   final Location location;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "location": location.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class SetLocation extends TdFunction {
   /// * [location]: The new location of the user
   SetLocation copyWith({
     Location? location,
-  }) => SetLocation(
-    location: location ?? this.location,
-  );
+  }) =>
+      SetLocation(
+        location: location ?? this.location,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setLocation';

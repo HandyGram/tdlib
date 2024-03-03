@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetStickerMaskPosition extends TdFunction {
-  
   /// **SetStickerMaskPosition** *(setStickerMaskPosition)* - TDLib function
   ///
   /// Changes the mask position of a mask sticker; for bots only. The sticker must belong to a mask sticker set created by the bot.
@@ -22,23 +21,23 @@ final class SetStickerMaskPosition extends TdFunction {
     required this.sticker,
     this.maskPosition,
   });
-  
+
   /// Sticker
   final InputFile sticker;
 
   /// Position where the mask is placed; pass null to remove mask position
   final MaskPosition? maskPosition;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sticker": sticker.toJson(),
       "mask_position": maskPosition?.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class SetStickerMaskPosition extends TdFunction {
   SetStickerMaskPosition copyWith({
     InputFile? sticker,
     MaskPosition? maskPosition,
-  }) => SetStickerMaskPosition(
-    sticker: sticker ?? this.sticker,
-    maskPosition: maskPosition ?? this.maskPosition,
-  );
+  }) =>
+      SetStickerMaskPosition(
+        sticker: sticker ?? this.sticker,
+        maskPosition: maskPosition ?? this.maskPosition,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setStickerMaskPosition';

@@ -16,7 +16,6 @@ part of '../tdapi.dart';
 /// * [credentialsTitle]: Title of the saved credentials chosen by the buyer.
 /// * [tipAmount]: The amount of tip chosen by the buyer in the smallest units of the currency.
 final class PaymentReceipt extends TdObject {
-  
   /// **PaymentReceipt** *(paymentReceipt)* - basic class
   ///
   /// Contains information about a successful payment.
@@ -47,7 +46,7 @@ final class PaymentReceipt extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Product title
   final String title;
 
@@ -88,30 +87,33 @@ final class PaymentReceipt extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory PaymentReceipt.fromJson(Map<String, dynamic> json) => PaymentReceipt(
-    title: json['title'],
-    description: FormattedText.fromJson(json['description']),
-    photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
-    date: json['date'],
-    sellerBotUserId: json['seller_bot_user_id'],
-    paymentProviderUserId: json['payment_provider_user_id'],
-    invoice: Invoice.fromJson(json['invoice']),
-    orderInfo: json['order_info'] == null ? null : OrderInfo.fromJson(json['order_info']),
-    shippingOption: json['shipping_option'] == null ? null : ShippingOption.fromJson(json['shipping_option']),
-    credentialsTitle: json['credentials_title'],
-    tipAmount: json['tip_amount'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        title: json['title'],
+        description: FormattedText.fromJson(json['description']),
+        photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
+        date: json['date'],
+        sellerBotUserId: json['seller_bot_user_id'],
+        paymentProviderUserId: json['payment_provider_user_id'],
+        invoice: Invoice.fromJson(json['invoice']),
+        orderInfo: json['order_info'] == null
+            ? null
+            : OrderInfo.fromJson(json['order_info']),
+        shippingOption: json['shipping_option'] == null
+            ? null
+            : ShippingOption.fromJson(json['shipping_option']),
+        credentialsTitle: json['credentials_title'],
+        tipAmount: json['tip_amount'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "title": title,
       "description": description.toJson(),
       "photo": photo?.toJson(),
@@ -123,8 +125,8 @@ final class PaymentReceipt extends TdObject {
       "shipping_option": shippingOption?.toJson(),
       "credentials_title": credentialsTitle,
       "tip_amount": tipAmount,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -154,21 +156,23 @@ final class PaymentReceipt extends TdObject {
     int? tipAmount,
     dynamic extra,
     int? clientId,
-  }) => PaymentReceipt(
-    title: title ?? this.title,
-    description: description ?? this.description,
-    photo: photo ?? this.photo,
-    date: date ?? this.date,
-    sellerBotUserId: sellerBotUserId ?? this.sellerBotUserId,
-    paymentProviderUserId: paymentProviderUserId ?? this.paymentProviderUserId,
-    invoice: invoice ?? this.invoice,
-    orderInfo: orderInfo ?? this.orderInfo,
-    shippingOption: shippingOption ?? this.shippingOption,
-    credentialsTitle: credentialsTitle ?? this.credentialsTitle,
-    tipAmount: tipAmount ?? this.tipAmount,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      PaymentReceipt(
+        title: title ?? this.title,
+        description: description ?? this.description,
+        photo: photo ?? this.photo,
+        date: date ?? this.date,
+        sellerBotUserId: sellerBotUserId ?? this.sellerBotUserId,
+        paymentProviderUserId:
+            paymentProviderUserId ?? this.paymentProviderUserId,
+        invoice: invoice ?? this.invoice,
+        orderInfo: orderInfo ?? this.orderInfo,
+        shippingOption: shippingOption ?? this.shippingOption,
+        credentialsTitle: credentialsTitle ?? this.credentialsTitle,
+        tipAmount: tipAmount ?? this.tipAmount,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'paymentReceipt';

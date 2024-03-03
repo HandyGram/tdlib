@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [InternalLinkType] is returned on completion.
 final class GetInternalLinkType extends TdFunction {
-  
   /// **GetInternalLinkType** *(getInternalLinkType)* - TDLib function
   ///
   /// Returns information about the type of an internal link. Returns a 404 error if the link is not internal. Can be called before authorization.
@@ -19,19 +18,19 @@ final class GetInternalLinkType extends TdFunction {
   const GetInternalLinkType({
     required this.link,
   });
-  
+
   /// The link
   final String link;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "link": link,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetInternalLinkType extends TdFunction {
   /// * [link]: The link
   GetInternalLinkType copyWith({
     String? link,
-  }) => GetInternalLinkType(
-    link: link ?? this.link,
-  );
+  }) =>
+      GetInternalLinkType(
+        link: link ?? this.link,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getInternalLinkType';

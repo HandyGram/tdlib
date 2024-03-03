@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class AddChatMember extends TdFunction {
-  
   /// **AddChatMember** *(addChatMember)* - TDLib function
   ///
   /// Adds a new member to a chat; requires can_invite_users member right. Members can't be added to private or secret chats.
@@ -25,7 +24,7 @@ final class AddChatMember extends TdFunction {
     required this.userId,
     required this.forwardLimit,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -34,18 +33,18 @@ final class AddChatMember extends TdFunction {
 
   /// The number of earlier messages from the chat to be forwarded to the new member; up to 100. Ignored for supergroups and channels, or if the added user is a bot
   final int forwardLimit;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "user_id": userId,
       "forward_limit": forwardLimit,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class AddChatMember extends TdFunction {
     int? chatId,
     int? userId,
     int? forwardLimit,
-  }) => AddChatMember(
-    chatId: chatId ?? this.chatId,
-    userId: userId ?? this.userId,
-    forwardLimit: forwardLimit ?? this.forwardLimit,
-  );
+  }) =>
+      AddChatMember(
+        chatId: chatId ?? this.chatId,
+        userId: userId ?? this.userId,
+        forwardLimit: forwardLimit ?? this.forwardLimit,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'addChatMember';

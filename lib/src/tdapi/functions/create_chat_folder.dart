@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [ChatFolderInfo] is returned on completion.
 final class CreateChatFolder extends TdFunction {
-  
   /// **CreateChatFolder** *(createChatFolder)* - TDLib function
   ///
   /// Creates new chat folder. Returns information about the created chat folder. There can be up to getOption("chat_folder_count_max") chat folders, but the limit can be increased with Telegram Premium.
@@ -19,19 +18,19 @@ final class CreateChatFolder extends TdFunction {
   const CreateChatFolder({
     required this.folder,
   });
-  
+
   /// The new chat folder
   final ChatFolder folder;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "folder": folder.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class CreateChatFolder extends TdFunction {
   /// * [folder]: The new chat folder
   CreateChatFolder copyWith({
     ChatFolder? folder,
-  }) => CreateChatFolder(
-    folder: folder ?? this.folder,
-  );
+  }) =>
+      CreateChatFolder(
+        folder: folder ?? this.folder,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'createChatFolder';

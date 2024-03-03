@@ -6,26 +6,25 @@ part of '../tdapi.dart';
 ///
 /// [AuthenticationCodeInfo] is returned on completion.
 final class ResendPhoneNumberConfirmationCode extends TdFunction {
-  
   /// **ResendPhoneNumberConfirmationCode** *(resendPhoneNumberConfirmationCode)* - TDLib function
   ///
   /// Resends phone number confirmation code.
   ///
   /// [AuthenticationCodeInfo] is returned on completion.
   const ResendPhoneNumberConfirmationCode();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
-  ResendPhoneNumberConfirmationCode copyWith() => const ResendPhoneNumberConfirmationCode();
+  ResendPhoneNumberConfirmationCode copyWith() =>
+      const ResendPhoneNumberConfirmationCode();
 
   /// TDLib object type
   static const String defaultObjectId = 'resendPhoneNumberConfirmationCode';

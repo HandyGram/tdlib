@@ -4,7 +4,7 @@
 
 ## About plugin
 
-This is a Flutter [plugin](https://pub.dev/packages/handy_tdlib) for [TDLib (Telegram Database Library)](https://github.com/tdlib) v1.8.14
+This is a Flutter [plugin](https://pub.dev/packages/handy_tdlib) for [TDLib (Telegram Database Library)](https://github.com/tdlib) v1.8.25
 
 This plugin is a complete TDLib's JSON interface binding package to help you create your own Telegram client.
 
@@ -24,24 +24,24 @@ on **separate** thread to avoid any freezes.
 
 1. Set up 2 isolates with the working `SendPort` + `ReceivePort` pair.
 
-2. Get TDJSON client ID with `TdPlugin.instance.tdJsonClientCreate()` on invokes thread.
+2. Get TDLib client ID with `TdPlugin.instance.tdCreateClientId()` on invokes thread.
 
 3. Transfer this ID to updates thread.
 
 4. Set up `await for` on invokes thread for `ReceivePort`.
 
-   Run `TdPlugin.instance.tdJsonClientSend` on every event from `ReceivePort`. This will send
+   Run `TdPlugin.instance.tdSend` on every event from `ReceivePort`. This will send
    all updates to TDLib. Consider running jsonEncode on this thread to improve UI performance.
 
    On the main thread, you should use `SendPort' with TdFunction to send invokes.
 
-   > Hey, what about `extra` argument in `TdFunction().toJson()`?
+   > Hey, what about `extra` argument in `TdFunction.toJson`?
 
    You should put here any random number and save it somewhere in your class instance. This is used as a sign to detect what invoke's result have you got from updates thread. Consider using `Timer` to make timeouts for invokes.
 
 5.  On updates thread, set up `while (true) { ... }` with something like this
     ```
-    final String? response = TdPlugin.instance.tdJsonClientReceive(clientId);
+    final String? response = TdPlugin.instance.tdReceive(clientId);
     if (response != null) {
       try {
         sendPort.send(convertJsonToObject(response));
@@ -63,7 +63,7 @@ on **separate** thread to avoid any freezes.
 
 *Library uses sealed classes, so you can use Dart 3's new `switch (...) { ... }` on object type if needed.*
 
-*Consider importing lib/api.dart with name. Some object names are the same with `dart:io` and **Flutter**.*
+*Consider importing lib/api.dart with prefix (`import '...' as ...`). Some object names are the same with `dart:io` and **Flutter**.*
 
 ## Still have questions?
 

@@ -13,7 +13,6 @@ part of '../tdapi.dart';
 ///
 /// [Message] is returned on completion.
 final class EditMessageLiveLocation extends TdFunction {
-  
   /// **EditMessageLiveLocation** *(editMessageLiveLocation)* - TDLib function
   ///
   /// Edits the message content of a live location. Messages can be edited for a limited period of time specified in the live location. Returns the edited message after the edit is completed on the server side.
@@ -34,7 +33,7 @@ final class EditMessageLiveLocation extends TdFunction {
     required this.heading,
     required this.proximityAlertRadius,
   });
-  
+
   /// The chat the message belongs to
   final int chatId;
 
@@ -52,12 +51,12 @@ final class EditMessageLiveLocation extends TdFunction {
 
   /// The new maximum distance for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled
   final int proximityAlertRadius;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "reply_markup": replyMarkup?.toJson(),
@@ -65,8 +64,8 @@ final class EditMessageLiveLocation extends TdFunction {
       "heading": heading,
       "proximity_alert_radius": proximityAlertRadius,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -84,14 +83,15 @@ final class EditMessageLiveLocation extends TdFunction {
     Location? location,
     int? heading,
     int? proximityAlertRadius,
-  }) => EditMessageLiveLocation(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    location: location ?? this.location,
-    heading: heading ?? this.heading,
-    proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
-  );
+  }) =>
+      EditMessageLiveLocation(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+        location: location ?? this.location,
+        heading: heading ?? this.heading,
+        proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'editMessageLiveLocation';

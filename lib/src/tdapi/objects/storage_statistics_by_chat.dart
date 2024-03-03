@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 /// * [count]: Total number of files in the chat.
 /// * [byFileType]: Statistics split by file types.
 final class StorageStatisticsByChat extends TdObject {
-  
   /// **StorageStatisticsByChat** *(storageStatisticsByChat)* - basic class
   ///
   /// Contains the storage usage statistics for a specific chat.
@@ -24,7 +23,7 @@ final class StorageStatisticsByChat extends TdObject {
     required this.count,
     required this.byFileType,
   });
-  
+
   /// Chat identifier; 0 if none
   final int chatId;
 
@@ -36,27 +35,30 @@ final class StorageStatisticsByChat extends TdObject {
 
   /// Statistics split by file types
   final List<StorageStatisticsByFileType> byFileType;
-  
+
   /// Parse from a json
-  factory StorageStatisticsByChat.fromJson(Map<String, dynamic> json) => StorageStatisticsByChat(
-    chatId: json['chat_id'] ?? 0,
-    size: json['size'],
-    count: json['count'],
-    byFileType: List<StorageStatisticsByFileType>.from((json['by_file_type'] ?? []).map((item) => StorageStatisticsByFileType.fromJson(item)).toList()),
-  );
-  
-  
+  factory StorageStatisticsByChat.fromJson(Map<String, dynamic> json) =>
+      StorageStatisticsByChat(
+        chatId: json['chat_id'] ?? 0,
+        size: json['size'],
+        count: json['count'],
+        byFileType: List<StorageStatisticsByFileType>.from(
+            (json['by_file_type'] ?? [])
+                .map((item) => StorageStatisticsByFileType.fromJson(item))
+                .toList()),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "size": size,
       "count": count,
       "by_file_type": byFileType.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -70,12 +72,13 @@ final class StorageStatisticsByChat extends TdObject {
     int? size,
     int? count,
     List<StorageStatisticsByFileType>? byFileType,
-  }) => StorageStatisticsByChat(
-    chatId: chatId ?? this.chatId,
-    size: size ?? this.size,
-    count: count ?? this.count,
-    byFileType: byFileType ?? this.byFileType,
-  );
+  }) =>
+      StorageStatisticsByChat(
+        chatId: chatId ?? this.chatId,
+        size: size ?? this.size,
+        count: count ?? this.count,
+        byFileType: byFileType ?? this.byFileType,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'storageStatisticsByChat';

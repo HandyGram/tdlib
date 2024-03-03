@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [FormattedText] is returned on completion.
 final class ParseMarkdown extends TdFunction {
-  
   /// **ParseMarkdown** *(parseMarkdown)* - TDLib function
   ///
   /// Parses Markdown entities in a human-friendly format, ignoring markup errors. Can be called synchronously.
@@ -19,19 +18,19 @@ final class ParseMarkdown extends TdFunction {
   const ParseMarkdown({
     required this.text,
   });
-  
+
   /// The text to parse. For example, "__italic__
   final FormattedText text;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "text": text.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class ParseMarkdown extends TdFunction {
   /// * [text]: The text to parse. For example, "__italic__
   ParseMarkdown copyWith({
     FormattedText? text,
-  }) => ParseMarkdown(
-    text: text ?? this.text,
-  );
+  }) =>
+      ParseMarkdown(
+        text: text ?? this.text,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'parseMarkdown';

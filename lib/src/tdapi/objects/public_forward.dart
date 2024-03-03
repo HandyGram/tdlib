@@ -4,17 +4,16 @@ part of '../tdapi.dart';
 ///
 /// Describes a public forward or repost of a story.
 sealed class PublicForward extends TdObject {
-  
   /// **PublicForward** *(publicForward)* - parent
   ///
   /// Describes a public forward or repost of a story.
   const PublicForward();
-  
+
   /// a PublicForward return type can be :
   /// * [PublicForwardMessage]
   /// * [PublicForwardStory]
-  factory PublicForward.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory PublicForward.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case PublicForwardMessage.defaultObjectId:
         return PublicForwardMessage.fromJson(json);
       case PublicForwardStory.defaultObjectId:
@@ -26,7 +25,7 @@ sealed class PublicForward extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -46,14 +45,12 @@ sealed class PublicForward extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PublicForwardMessage** *(publicForwardMessage)* - child of PublicForward
 ///
 /// Contains a public forward as a message.
 ///
 /// * [message]: Information about the message.
 final class PublicForwardMessage extends PublicForward {
-  
   /// **PublicForwardMessage** *(publicForwardMessage)* - child of PublicForward
   ///
   /// Contains a public forward as a message.
@@ -62,24 +59,24 @@ final class PublicForwardMessage extends PublicForward {
   const PublicForwardMessage({
     required this.message,
   });
-  
+
   /// Information about the message
   final Message message;
-  
+
   /// Parse from a json
-  factory PublicForwardMessage.fromJson(Map<String, dynamic> json) => PublicForwardMessage(
-    message: Message.fromJson(json['message']),
-  );
-  
-  
+  factory PublicForwardMessage.fromJson(Map<String, dynamic> json) =>
+      PublicForwardMessage(
+        message: Message.fromJson(json['message']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "message": message.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -88,9 +85,10 @@ final class PublicForwardMessage extends PublicForward {
   @override
   PublicForwardMessage copyWith({
     Message? message,
-  }) => PublicForwardMessage(
-    message: message ?? this.message,
-  );
+  }) =>
+      PublicForwardMessage(
+        message: message ?? this.message,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'publicForwardMessage';
@@ -104,14 +102,12 @@ final class PublicForwardMessage extends PublicForward {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PublicForwardStory** *(publicForwardStory)* - child of PublicForward
 ///
 /// Contains a public repost to a story.
 ///
 /// * [story]: Information about the story.
 final class PublicForwardStory extends PublicForward {
-  
   /// **PublicForwardStory** *(publicForwardStory)* - child of PublicForward
   ///
   /// Contains a public repost to a story.
@@ -120,24 +116,24 @@ final class PublicForwardStory extends PublicForward {
   const PublicForwardStory({
     required this.story,
   });
-  
+
   /// Information about the story
   final Story story;
-  
+
   /// Parse from a json
-  factory PublicForwardStory.fromJson(Map<String, dynamic> json) => PublicForwardStory(
-    story: Story.fromJson(json['story']),
-  );
-  
-  
+  factory PublicForwardStory.fromJson(Map<String, dynamic> json) =>
+      PublicForwardStory(
+        story: Story.fromJson(json['story']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "story": story.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -146,9 +142,10 @@ final class PublicForwardStory extends PublicForward {
   @override
   PublicForwardStory copyWith({
     Story? story,
-  }) => PublicForwardStory(
-    story: story ?? this.story,
-  );
+  }) =>
+      PublicForwardStory(
+        story: story ?? this.story,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'publicForwardStory';

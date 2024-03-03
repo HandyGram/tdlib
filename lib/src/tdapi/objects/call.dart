@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 /// * [isVideo]: True, if the call is a video call.
 /// * [state]: Call state.
 final class Call extends TdObject {
-  
   /// **Call** *(call)* - basic class
   ///
   /// Describes a call.
@@ -27,7 +26,7 @@ final class Call extends TdObject {
     required this.isVideo,
     required this.state,
   });
-  
+
   /// Call identifier, not persistent
   final int id;
 
@@ -42,29 +41,28 @@ final class Call extends TdObject {
 
   /// Call state
   final CallState state;
-  
+
   /// Parse from a json
   factory Call.fromJson(Map<String, dynamic> json) => Call(
-    id: json['id'],
-    userId: json['user_id'],
-    isOutgoing: json['is_outgoing'],
-    isVideo: json['is_video'],
-    state: CallState.fromJson(json['state']),
-  );
-  
-  
+        id: json['id'],
+        userId: json['user_id'],
+        isOutgoing: json['is_outgoing'],
+        isVideo: json['is_video'],
+        state: CallState.fromJson(json['state']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "user_id": userId,
       "is_outgoing": isOutgoing,
       "is_video": isVideo,
       "state": state.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -80,13 +78,14 @@ final class Call extends TdObject {
     bool? isOutgoing,
     bool? isVideo,
     CallState? state,
-  }) => Call(
-    id: id ?? this.id,
-    userId: userId ?? this.userId,
-    isOutgoing: isOutgoing ?? this.isOutgoing,
-    isVideo: isVideo ?? this.isVideo,
-    state: state ?? this.state,
-  );
+  }) =>
+      Call(
+        id: id ?? this.id,
+        userId: userId ?? this.userId,
+        isOutgoing: isOutgoing ?? this.isOutgoing,
+        isVideo: isVideo ?? this.isVideo,
+        state: state ?? this.state,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'call';

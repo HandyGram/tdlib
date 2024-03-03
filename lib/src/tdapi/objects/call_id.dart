@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [id]: Call identifier.
 final class CallId extends TdObject {
-  
   /// **CallId** *(callId)* - basic class
   ///
   /// Contains the call identifier.
@@ -17,7 +16,7 @@ final class CallId extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Call identifier
   final int id;
 
@@ -28,23 +27,22 @@ final class CallId extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory CallId.fromJson(Map<String, dynamic> json) => CallId(
-    id: json['id'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: json['id'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +52,12 @@ final class CallId extends TdObject {
     int? id,
     dynamic extra,
     int? clientId,
-  }) => CallId(
-    id: id ?? this.id,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      CallId(
+        id: id ?? this.id,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'callId';

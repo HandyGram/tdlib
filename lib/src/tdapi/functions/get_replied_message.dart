@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Message] is returned on completion.
 final class GetRepliedMessage extends TdFunction {
-  
   /// **GetRepliedMessage** *(getRepliedMessage)* - TDLib function
   ///
   /// Returns information about a non-bundled message that is replied by a given message. Also, returns the pinned message, the game message, the invoice message,. the message with a previously set same background, the giveaway message, and the topic creation message for messages of the types. messagePinMessage, messageGameScore, messagePaymentSuccessful, messageChatSetBackground, messagePremiumGiveawayCompleted and topic messages without non-bundled replied message respectively.
@@ -22,23 +21,23 @@ final class GetRepliedMessage extends TdFunction {
     required this.chatId,
     required this.messageId,
   });
-  
+
   /// Identifier of the chat the message belongs to
   final int chatId;
 
   /// Identifier of the reply message
   final int messageId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class GetRepliedMessage extends TdFunction {
   GetRepliedMessage copyWith({
     int? chatId,
     int? messageId,
-  }) => GetRepliedMessage(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-  );
+  }) =>
+      GetRepliedMessage(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getRepliedMessage';

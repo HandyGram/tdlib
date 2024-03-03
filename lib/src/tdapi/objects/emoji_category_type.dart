@@ -4,18 +4,17 @@ part of '../tdapi.dart';
 ///
 /// Describes type of an emoji category.
 sealed class EmojiCategoryType extends TdObject {
-  
   /// **EmojiCategoryType** *(emojiCategoryType)* - parent
   ///
   /// Describes type of an emoji category.
   const EmojiCategoryType();
-  
+
   /// a EmojiCategoryType return type can be :
   /// * [EmojiCategoryTypeDefault]
   /// * [EmojiCategoryTypeEmojiStatus]
   /// * [EmojiCategoryTypeChatPhoto]
-  factory EmojiCategoryType.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory EmojiCategoryType.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case EmojiCategoryTypeDefault.defaultObjectId:
         return EmojiCategoryTypeDefault.fromJson(json);
       case EmojiCategoryTypeEmojiStatus.defaultObjectId:
@@ -29,7 +28,7 @@ sealed class EmojiCategoryType extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -49,27 +48,26 @@ sealed class EmojiCategoryType extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **EmojiCategoryTypeDefault** *(emojiCategoryTypeDefault)* - child of EmojiCategoryType
 ///
 /// The category must be used by default.
 final class EmojiCategoryTypeDefault extends EmojiCategoryType {
-  
   /// **EmojiCategoryTypeDefault** *(emojiCategoryTypeDefault)* - child of EmojiCategoryType
   ///
   /// The category must be used by default.
   const EmojiCategoryTypeDefault();
-  
+
   /// Parse from a json
-  factory EmojiCategoryTypeDefault.fromJson(Map<String, dynamic> json) => const EmojiCategoryTypeDefault();
-  
+  factory EmojiCategoryTypeDefault.fromJson(Map<String, dynamic> json) =>
+      const EmojiCategoryTypeDefault();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -87,31 +85,31 @@ final class EmojiCategoryTypeDefault extends EmojiCategoryType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **EmojiCategoryTypeEmojiStatus** *(emojiCategoryTypeEmojiStatus)* - child of EmojiCategoryType
 ///
 /// The category must be used for emoji status selection.
 final class EmojiCategoryTypeEmojiStatus extends EmojiCategoryType {
-  
   /// **EmojiCategoryTypeEmojiStatus** *(emojiCategoryTypeEmojiStatus)* - child of EmojiCategoryType
   ///
   /// The category must be used for emoji status selection.
   const EmojiCategoryTypeEmojiStatus();
-  
+
   /// Parse from a json
-  factory EmojiCategoryTypeEmojiStatus.fromJson(Map<String, dynamic> json) => const EmojiCategoryTypeEmojiStatus();
-  
+  factory EmojiCategoryTypeEmojiStatus.fromJson(Map<String, dynamic> json) =>
+      const EmojiCategoryTypeEmojiStatus();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  EmojiCategoryTypeEmojiStatus copyWith() => const EmojiCategoryTypeEmojiStatus();
+  EmojiCategoryTypeEmojiStatus copyWith() =>
+      const EmojiCategoryTypeEmojiStatus();
 
   /// TDLib object type
   static const String defaultObjectId = 'emojiCategoryTypeEmojiStatus';
@@ -125,27 +123,26 @@ final class EmojiCategoryTypeEmojiStatus extends EmojiCategoryType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **EmojiCategoryTypeChatPhoto** *(emojiCategoryTypeChatPhoto)* - child of EmojiCategoryType
 ///
 /// The category must be used for chat photo emoji selection.
 final class EmojiCategoryTypeChatPhoto extends EmojiCategoryType {
-  
   /// **EmojiCategoryTypeChatPhoto** *(emojiCategoryTypeChatPhoto)* - child of EmojiCategoryType
   ///
   /// The category must be used for chat photo emoji selection.
   const EmojiCategoryTypeChatPhoto();
-  
+
   /// Parse from a json
-  factory EmojiCategoryTypeChatPhoto.fromJson(Map<String, dynamic> json) => const EmojiCategoryTypeChatPhoto();
-  
+  factory EmojiCategoryTypeChatPhoto.fromJson(Map<String, dynamic> json) =>
+      const EmojiCategoryTypeChatPhoto();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override

@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class UnpinAllMessageThreadMessages extends TdFunction {
-  
   /// **UnpinAllMessageThreadMessages** *(unpinAllMessageThreadMessages)* - TDLib function
   ///
   /// Removes all pinned messages from a forum topic; requires can_pin_messages member right in the supergroup.
@@ -22,23 +21,23 @@ final class UnpinAllMessageThreadMessages extends TdFunction {
     required this.chatId,
     required this.messageThreadId,
   });
-  
+
   /// Identifier of the chat
   final int chatId;
 
   /// Message thread identifier in which messages will be unpinned
   final int messageThreadId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_thread_id": messageThreadId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class UnpinAllMessageThreadMessages extends TdFunction {
   UnpinAllMessageThreadMessages copyWith({
     int? chatId,
     int? messageThreadId,
-  }) => UnpinAllMessageThreadMessages(
-    chatId: chatId ?? this.chatId,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-  );
+  }) =>
+      UnpinAllMessageThreadMessages(
+        chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'unpinAllMessageThreadMessages';

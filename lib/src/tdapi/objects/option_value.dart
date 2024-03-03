@@ -4,19 +4,18 @@ part of '../tdapi.dart';
 ///
 /// Represents the value of an option.
 sealed class OptionValue extends TdObject {
-  
   /// **OptionValue** *(optionValue)* - parent
   ///
   /// Represents the value of an option.
   const OptionValue();
-  
+
   /// a OptionValue return type can be :
   /// * [OptionValueBoolean]
   /// * [OptionValueEmpty]
   /// * [OptionValueInteger]
   /// * [OptionValueString]
-  factory OptionValue.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory OptionValue.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case OptionValueBoolean.defaultObjectId:
         return OptionValueBoolean.fromJson(json);
       case OptionValueEmpty.defaultObjectId:
@@ -32,7 +31,7 @@ sealed class OptionValue extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -52,14 +51,12 @@ sealed class OptionValue extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **OptionValueBoolean** *(optionValueBoolean)* - child of OptionValue
 ///
 /// Represents a boolean option.
 ///
 /// * [value]: The value of the option.
 final class OptionValueBoolean extends OptionValue {
-  
   /// **OptionValueBoolean** *(optionValueBoolean)* - child of OptionValue
   ///
   /// Represents a boolean option.
@@ -70,7 +67,7 @@ final class OptionValueBoolean extends OptionValue {
     this.extra,
     this.clientId,
   });
-  
+
   /// The value of the option
   final bool value;
 
@@ -81,23 +78,23 @@ final class OptionValueBoolean extends OptionValue {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory OptionValueBoolean.fromJson(Map<String, dynamic> json) => OptionValueBoolean(
-    value: json['value'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory OptionValueBoolean.fromJson(Map<String, dynamic> json) =>
+      OptionValueBoolean(
+        value: json['value'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "value": value,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -108,11 +105,12 @@ final class OptionValueBoolean extends OptionValue {
     bool? value,
     dynamic extra,
     int? clientId,
-  }) => OptionValueBoolean(
-    value: value ?? this.value,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      OptionValueBoolean(
+        value: value ?? this.value,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'optionValueBoolean';
@@ -126,12 +124,10 @@ final class OptionValueBoolean extends OptionValue {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **OptionValueEmpty** *(optionValueEmpty)* - child of OptionValue
 ///
 /// Represents an unknown option or an option which has a default value.
 final class OptionValueEmpty extends OptionValue {
-  
   /// **OptionValueEmpty** *(optionValueEmpty)* - child of OptionValue
   ///
   /// Represents an unknown option or an option which has a default value.
@@ -139,7 +135,7 @@ final class OptionValueEmpty extends OptionValue {
     this.extra,
     this.clientId,
   });
-  
+
   /// [extra] callback sign
   @override
   final dynamic extra;
@@ -147,31 +143,32 @@ final class OptionValueEmpty extends OptionValue {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory OptionValueEmpty.fromJson(Map<String, dynamic> json) => OptionValueEmpty(
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory OptionValueEmpty.fromJson(Map<String, dynamic> json) =>
+      OptionValueEmpty(
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
   OptionValueEmpty copyWith({
     dynamic extra,
     int? clientId,
-  }) => OptionValueEmpty(
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      OptionValueEmpty(
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'optionValueEmpty';
@@ -185,14 +182,12 @@ final class OptionValueEmpty extends OptionValue {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **OptionValueInteger** *(optionValueInteger)* - child of OptionValue
 ///
 /// Represents an integer option.
 ///
 /// * [value]: The value of the option.
 final class OptionValueInteger extends OptionValue {
-  
   /// **OptionValueInteger** *(optionValueInteger)* - child of OptionValue
   ///
   /// Represents an integer option.
@@ -203,7 +198,7 @@ final class OptionValueInteger extends OptionValue {
     this.extra,
     this.clientId,
   });
-  
+
   /// The value of the option
   final int value;
 
@@ -214,23 +209,23 @@ final class OptionValueInteger extends OptionValue {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory OptionValueInteger.fromJson(Map<String, dynamic> json) => OptionValueInteger(
-    value: int.parse(json['value']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory OptionValueInteger.fromJson(Map<String, dynamic> json) =>
+      OptionValueInteger(
+        value: int.parse(json['value']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "value": value,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -241,11 +236,12 @@ final class OptionValueInteger extends OptionValue {
     int? value,
     dynamic extra,
     int? clientId,
-  }) => OptionValueInteger(
-    value: value ?? this.value,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      OptionValueInteger(
+        value: value ?? this.value,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'optionValueInteger';
@@ -259,14 +255,12 @@ final class OptionValueInteger extends OptionValue {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **OptionValueString** *(optionValueString)* - child of OptionValue
 ///
 /// Represents a string option.
 ///
 /// * [value]: The value of the option.
 final class OptionValueString extends OptionValue {
-  
   /// **OptionValueString** *(optionValueString)* - child of OptionValue
   ///
   /// Represents a string option.
@@ -277,7 +271,7 @@ final class OptionValueString extends OptionValue {
     this.extra,
     this.clientId,
   });
-  
+
   /// The value of the option
   final String value;
 
@@ -288,23 +282,23 @@ final class OptionValueString extends OptionValue {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory OptionValueString.fromJson(Map<String, dynamic> json) => OptionValueString(
-    value: json['value'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory OptionValueString.fromJson(Map<String, dynamic> json) =>
+      OptionValueString(
+        value: json['value'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "value": value,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -315,11 +309,12 @@ final class OptionValueString extends OptionValue {
     String? value,
     dynamic extra,
     int? clientId,
-  }) => OptionValueString(
-    value: value ?? this.value,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      OptionValueString(
+        value: value ?? this.value,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'optionValueString';

@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [PasswordState] is returned on completion.
 final class CheckRecoveryEmailAddressCode extends TdFunction {
-  
   /// **CheckRecoveryEmailAddressCode** *(checkRecoveryEmailAddressCode)* - TDLib function
   ///
   /// Checks the 2-step verification recovery email address verification code.
@@ -19,19 +18,19 @@ final class CheckRecoveryEmailAddressCode extends TdFunction {
   const CheckRecoveryEmailAddressCode({
     required this.code,
   });
-  
+
   /// Verification code to check
   final String code;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "code": code,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class CheckRecoveryEmailAddressCode extends TdFunction {
   /// * [code]: Verification code to check
   CheckRecoveryEmailAddressCode copyWith({
     String? code,
-  }) => CheckRecoveryEmailAddressCode(
-    code: code ?? this.code,
-  );
+  }) =>
+      CheckRecoveryEmailAddressCode(
+        code: code ?? this.code,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'checkRecoveryEmailAddressCode';

@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [TestInt] is returned on completion.
 final class TestSquareInt extends TdFunction {
-  
   /// **TestSquareInt** *(testSquareInt)* - TDLib function
   ///
   /// Returns the squared received number; for testing only. This is an offline method. Can be called before authorization.
@@ -19,19 +18,19 @@ final class TestSquareInt extends TdFunction {
   const TestSquareInt({
     required this.x,
   });
-  
+
   /// Number to square
   final int x;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "x": x,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class TestSquareInt extends TdFunction {
   /// * [x]: Number to square
   TestSquareInt copyWith({
     int? x,
-  }) => TestSquareInt(
-    x: x ?? this.x,
-  );
+  }) =>
+      TestSquareInt(
+        x: x ?? this.x,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'testSquareInt';

@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ShareUsersWithBot extends TdFunction {
-  
   /// **ShareUsersWithBot** *(shareUsersWithBot)* - TDLib function
   ///
   /// Shares users after pressing a keyboardButtonTypeRequestUsers button with the bot.
@@ -31,7 +30,7 @@ final class ShareUsersWithBot extends TdFunction {
     required this.sharedUserIds,
     required this.onlyCheck,
   });
-  
+
   /// Identifier of the chat with the bot
   final int chatId;
 
@@ -46,20 +45,20 @@ final class ShareUsersWithBot extends TdFunction {
 
   /// Pass true to check that the users can be shared by the button instead of actually sharing them
   final bool onlyCheck;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "button_id": buttonId,
       "shared_user_ids": sharedUserIds.map((i) => i).toList(),
       "only_check": onlyCheck,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -75,13 +74,14 @@ final class ShareUsersWithBot extends TdFunction {
     int? buttonId,
     List<int>? sharedUserIds,
     bool? onlyCheck,
-  }) => ShareUsersWithBot(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    buttonId: buttonId ?? this.buttonId,
-    sharedUserIds: sharedUserIds ?? this.sharedUserIds,
-    onlyCheck: onlyCheck ?? this.onlyCheck,
-  );
+  }) =>
+      ShareUsersWithBot(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        buttonId: buttonId ?? this.buttonId,
+        sharedUserIds: sharedUserIds ?? this.sharedUserIds,
+        onlyCheck: onlyCheck ?? this.onlyCheck,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'shareUsersWithBot';

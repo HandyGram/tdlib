@@ -7,7 +7,6 @@ part of '../tdapi.dart';
 /// * [storyInteractionGraph]: A graph containing number of story views and shares.
 /// * [storyReactionGraph]: A graph containing number of story reactions.
 final class StoryStatistics extends TdObject {
-  
   /// **StoryStatistics** *(storyStatistics)* - basic class
   ///
   /// A detailed statistics about a story.
@@ -20,7 +19,7 @@ final class StoryStatistics extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// A graph containing number of story views and shares
   final StatisticalGraph storyInteractionGraph;
 
@@ -34,25 +33,27 @@ final class StoryStatistics extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory StoryStatistics.fromJson(Map<String, dynamic> json) => StoryStatistics(
-    storyInteractionGraph: StatisticalGraph.fromJson(json['story_interaction_graph']),
-    storyReactionGraph: StatisticalGraph.fromJson(json['story_reaction_graph']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory StoryStatistics.fromJson(Map<String, dynamic> json) =>
+      StoryStatistics(
+        storyInteractionGraph:
+            StatisticalGraph.fromJson(json['story_interaction_graph']),
+        storyReactionGraph:
+            StatisticalGraph.fromJson(json['story_reaction_graph']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "story_interaction_graph": storyInteractionGraph.toJson(),
       "story_reaction_graph": storyReactionGraph.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -64,12 +65,14 @@ final class StoryStatistics extends TdObject {
     StatisticalGraph? storyReactionGraph,
     dynamic extra,
     int? clientId,
-  }) => StoryStatistics(
-    storyInteractionGraph: storyInteractionGraph ?? this.storyInteractionGraph,
-    storyReactionGraph: storyReactionGraph ?? this.storyReactionGraph,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      StoryStatistics(
+        storyInteractionGraph:
+            storyInteractionGraph ?? this.storyInteractionGraph,
+        storyReactionGraph: storyReactionGraph ?? this.storyReactionGraph,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'storyStatistics';

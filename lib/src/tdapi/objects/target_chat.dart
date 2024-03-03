@@ -4,18 +4,17 @@ part of '../tdapi.dart';
 ///
 /// Describes the target chat to be opened.
 sealed class TargetChat extends TdObject {
-  
   /// **TargetChat** *(targetChat)* - parent
   ///
   /// Describes the target chat to be opened.
   const TargetChat();
-  
+
   /// a TargetChat return type can be :
   /// * [TargetChatCurrent]
   /// * [TargetChatChosen]
   /// * [TargetChatInternalLink]
-  factory TargetChat.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory TargetChat.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case TargetChatCurrent.defaultObjectId:
         return TargetChatCurrent.fromJson(json);
       case TargetChatChosen.defaultObjectId:
@@ -29,7 +28,7 @@ sealed class TargetChat extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -49,27 +48,26 @@ sealed class TargetChat extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **TargetChatCurrent** *(targetChatCurrent)* - child of TargetChat
 ///
 /// The currently opened chat needs to be kept.
 final class TargetChatCurrent extends TargetChat {
-  
   /// **TargetChatCurrent** *(targetChatCurrent)* - child of TargetChat
   ///
   /// The currently opened chat needs to be kept.
   const TargetChatCurrent();
-  
+
   /// Parse from a json
-  factory TargetChatCurrent.fromJson(Map<String, dynamic> json) => const TargetChatCurrent();
-  
+  factory TargetChatCurrent.fromJson(Map<String, dynamic> json) =>
+      const TargetChatCurrent();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -87,7 +85,6 @@ final class TargetChatCurrent extends TargetChat {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **TargetChatChosen** *(targetChatChosen)* - child of TargetChat
 ///
 /// The chat needs to be chosen by the user among chats of the specified types.
@@ -97,7 +94,6 @@ final class TargetChatCurrent extends TargetChat {
 /// * [allowGroupChats]: True, if basic group and supergroup chats are allowed.
 /// * [allowChannelChats]: True, if channel chats are allowed.
 final class TargetChatChosen extends TargetChat {
-  
   /// **TargetChatChosen** *(targetChatChosen)* - child of TargetChat
   ///
   /// The chat needs to be chosen by the user among chats of the specified types.
@@ -112,7 +108,7 @@ final class TargetChatChosen extends TargetChat {
     required this.allowGroupChats,
     required this.allowChannelChats,
   });
-  
+
   /// True, if private chats with ordinary users are allowed
   final bool allowUserChats;
 
@@ -124,27 +120,27 @@ final class TargetChatChosen extends TargetChat {
 
   /// True, if channel chats are allowed
   final bool allowChannelChats;
-  
+
   /// Parse from a json
-  factory TargetChatChosen.fromJson(Map<String, dynamic> json) => TargetChatChosen(
-    allowUserChats: json['allow_user_chats'],
-    allowBotChats: json['allow_bot_chats'],
-    allowGroupChats: json['allow_group_chats'],
-    allowChannelChats: json['allow_channel_chats'],
-  );
-  
-  
+  factory TargetChatChosen.fromJson(Map<String, dynamic> json) =>
+      TargetChatChosen(
+        allowUserChats: json['allow_user_chats'],
+        allowBotChats: json['allow_bot_chats'],
+        allowGroupChats: json['allow_group_chats'],
+        allowChannelChats: json['allow_channel_chats'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "allow_user_chats": allowUserChats,
       "allow_bot_chats": allowBotChats,
       "allow_group_chats": allowGroupChats,
       "allow_channel_chats": allowChannelChats,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -159,12 +155,13 @@ final class TargetChatChosen extends TargetChat {
     bool? allowBotChats,
     bool? allowGroupChats,
     bool? allowChannelChats,
-  }) => TargetChatChosen(
-    allowUserChats: allowUserChats ?? this.allowUserChats,
-    allowBotChats: allowBotChats ?? this.allowBotChats,
-    allowGroupChats: allowGroupChats ?? this.allowGroupChats,
-    allowChannelChats: allowChannelChats ?? this.allowChannelChats,
-  );
+  }) =>
+      TargetChatChosen(
+        allowUserChats: allowUserChats ?? this.allowUserChats,
+        allowBotChats: allowBotChats ?? this.allowBotChats,
+        allowGroupChats: allowGroupChats ?? this.allowGroupChats,
+        allowChannelChats: allowChannelChats ?? this.allowChannelChats,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'targetChatChosen';
@@ -178,14 +175,12 @@ final class TargetChatChosen extends TargetChat {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **TargetChatInternalLink** *(targetChatInternalLink)* - child of TargetChat
 ///
 /// The chat needs to be open with the provided internal link.
 ///
 /// * [link]: An internal link pointing to the chat.
 final class TargetChatInternalLink extends TargetChat {
-  
   /// **TargetChatInternalLink** *(targetChatInternalLink)* - child of TargetChat
   ///
   /// The chat needs to be open with the provided internal link.
@@ -194,24 +189,24 @@ final class TargetChatInternalLink extends TargetChat {
   const TargetChatInternalLink({
     required this.link,
   });
-  
+
   /// An internal link pointing to the chat
   final InternalLinkType link;
-  
+
   /// Parse from a json
-  factory TargetChatInternalLink.fromJson(Map<String, dynamic> json) => TargetChatInternalLink(
-    link: InternalLinkType.fromJson(json['link']),
-  );
-  
-  
+  factory TargetChatInternalLink.fromJson(Map<String, dynamic> json) =>
+      TargetChatInternalLink(
+        link: InternalLinkType.fromJson(json['link']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "link": link.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -220,9 +215,10 @@ final class TargetChatInternalLink extends TargetChat {
   @override
   TargetChatInternalLink copyWith({
     InternalLinkType? link,
-  }) => TargetChatInternalLink(
-    link: link ?? this.link,
-  );
+  }) =>
+      TargetChatInternalLink(
+        link: link ?? this.link,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'targetChatInternalLink';

@@ -13,7 +13,6 @@ part of '../tdapi.dart';
 ///
 /// [ForumTopics] is returned on completion.
 final class GetForumTopics extends TdFunction {
-  
   /// **GetForumTopics** *(getForumTopics)* - TDLib function
   ///
   /// Returns found forum topics in a forum chat. This is a temporary method for getting information about topic list from the server.
@@ -34,7 +33,7 @@ final class GetForumTopics extends TdFunction {
     required this.offsetMessageThreadId,
     required this.limit,
   });
-  
+
   /// Identifier of the forum chat
   final int chatId;
 
@@ -52,12 +51,12 @@ final class GetForumTopics extends TdFunction {
 
   /// The maximum number of forum topics to be returned; up to 100. For optimal performance, the number of returned forum topics is chosen by TDLib and can be smaller than the specified limit
   final int limit;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "query": query,
       "offset_date": offsetDate,
@@ -65,8 +64,8 @@ final class GetForumTopics extends TdFunction {
       "offset_message_thread_id": offsetMessageThreadId,
       "limit": limit,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -84,14 +83,16 @@ final class GetForumTopics extends TdFunction {
     int? offsetMessageId,
     int? offsetMessageThreadId,
     int? limit,
-  }) => GetForumTopics(
-    chatId: chatId ?? this.chatId,
-    query: query ?? this.query,
-    offsetDate: offsetDate ?? this.offsetDate,
-    offsetMessageId: offsetMessageId ?? this.offsetMessageId,
-    offsetMessageThreadId: offsetMessageThreadId ?? this.offsetMessageThreadId,
-    limit: limit ?? this.limit,
-  );
+  }) =>
+      GetForumTopics(
+        chatId: chatId ?? this.chatId,
+        query: query ?? this.query,
+        offsetDate: offsetDate ?? this.offsetDate,
+        offsetMessageId: offsetMessageId ?? this.offsetMessageId,
+        offsetMessageThreadId:
+            offsetMessageThreadId ?? this.offsetMessageThreadId,
+        limit: limit ?? this.limit,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getForumTopics';

@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [EmojiStatuses] is returned on completion.
 final class GetThemedEmojiStatuses extends TdFunction {
-  
   /// **GetThemedEmojiStatuses** *(getThemedEmojiStatuses)* - TDLib function
   ///
   /// Returns up to 8 emoji statuses, which must be shown right after the default Premium Badge in the emoji status list for self status.
   ///
   /// [EmojiStatuses] is returned on completion.
   const GetThemedEmojiStatuses();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   GetThemedEmojiStatuses copyWith() => const GetThemedEmojiStatuses();

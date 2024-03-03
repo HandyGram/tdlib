@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 ///
 /// [Message] is returned on completion.
 final class AddLocalMessage extends TdFunction {
-  
   /// **AddLocalMessage** *(addLocalMessage)* - TDLib function
   ///
   /// Adds a local message to a chat. The message is persistent across application restarts only if the message database is used. Returns the added message.
@@ -31,7 +30,7 @@ final class AddLocalMessage extends TdFunction {
     required this.disableNotification,
     required this.inputMessageContent,
   });
-  
+
   /// Target chat
   final int chatId;
 
@@ -46,20 +45,20 @@ final class AddLocalMessage extends TdFunction {
 
   /// The content of the message to be added
   final InputMessageContent inputMessageContent;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "sender_id": senderId.toJson(),
       "reply_to": replyTo?.toJson(),
       "disable_notification": disableNotification,
       "input_message_content": inputMessageContent.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -75,13 +74,14 @@ final class AddLocalMessage extends TdFunction {
     InputMessageReplyTo? replyTo,
     bool? disableNotification,
     InputMessageContent? inputMessageContent,
-  }) => AddLocalMessage(
-    chatId: chatId ?? this.chatId,
-    senderId: senderId ?? this.senderId,
-    replyTo: replyTo ?? this.replyTo,
-    disableNotification: disableNotification ?? this.disableNotification,
-    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-  );
+  }) =>
+      AddLocalMessage(
+        chatId: chatId ?? this.chatId,
+        senderId: senderId ?? this.senderId,
+        replyTo: replyTo ?? this.replyTo,
+        disableNotification: disableNotification ?? this.disableNotification,
+        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'addLocalMessage';

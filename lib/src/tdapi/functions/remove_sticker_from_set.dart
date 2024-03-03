@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class RemoveStickerFromSet extends TdFunction {
-  
   /// **RemoveStickerFromSet** *(removeStickerFromSet)* - TDLib function
   ///
   /// Removes a sticker from the set to which it belongs; for bots only. The sticker set must have been created by the bot.
@@ -19,19 +18,19 @@ final class RemoveStickerFromSet extends TdFunction {
   const RemoveStickerFromSet({
     required this.sticker,
   });
-  
+
   /// Sticker
   final InputFile sticker;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sticker": sticker.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class RemoveStickerFromSet extends TdFunction {
   /// * [sticker]: Sticker
   RemoveStickerFromSet copyWith({
     InputFile? sticker,
-  }) => RemoveStickerFromSet(
-    sticker: sticker ?? this.sticker,
-  );
+  }) =>
+      RemoveStickerFromSet(
+        sticker: sticker ?? this.sticker,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'removeStickerFromSet';

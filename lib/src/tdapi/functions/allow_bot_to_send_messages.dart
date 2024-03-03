@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class AllowBotToSendMessages extends TdFunction {
-  
   /// **AllowBotToSendMessages** *(allowBotToSendMessages)* - TDLib function
   ///
   /// Allows the specified bot to send messages to the user.
@@ -19,19 +18,19 @@ final class AllowBotToSendMessages extends TdFunction {
   const AllowBotToSendMessages({
     required this.botUserId,
   });
-  
+
   /// Identifier of the target bot
   final int botUserId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "bot_user_id": botUserId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class AllowBotToSendMessages extends TdFunction {
   /// * [bot_user_id]: Identifier of the target bot
   AllowBotToSendMessages copyWith({
     int? botUserId,
-  }) => AllowBotToSendMessages(
-    botUserId: botUserId ?? this.botUserId,
-  );
+  }) =>
+      AllowBotToSendMessages(
+        botUserId: botUserId ?? this.botUserId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'allowBotToSendMessages';

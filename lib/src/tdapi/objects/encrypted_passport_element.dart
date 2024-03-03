@@ -14,7 +14,6 @@ part of '../tdapi.dart';
 /// * [value]: Unencrypted data, phone number or email address.
 /// * [hash]: Hash of the entire element.
 final class EncryptedPassportElement extends TdObject {
-  
   /// **EncryptedPassportElement** *(encryptedPassportElement)* - basic class
   ///
   /// Contains information about an encrypted Telegram Passport element; for bots only.
@@ -39,7 +38,7 @@ final class EncryptedPassportElement extends TdObject {
     required this.value,
     required this.hash,
   });
-  
+
   /// Type of Telegram Passport element
   final PassportElementType type;
 
@@ -66,26 +65,33 @@ final class EncryptedPassportElement extends TdObject {
 
   /// Hash of the entire element
   final String hash;
-  
+
   /// Parse from a json
-  factory EncryptedPassportElement.fromJson(Map<String, dynamic> json) => EncryptedPassportElement(
-    type: PassportElementType.fromJson(json['type']),
-    data: json['data'],
-    frontSide: DatedFile.fromJson(json['front_side']),
-    reverseSide: json['reverse_side'] == null ? null : DatedFile.fromJson(json['reverse_side']),
-    selfie: json['selfie'] == null ? null : DatedFile.fromJson(json['selfie']),
-    translation: List<DatedFile>.from((json['translation'] ?? []).map((item) => DatedFile.fromJson(item)).toList()),
-    files: List<DatedFile>.from((json['files'] ?? []).map((item) => DatedFile.fromJson(item)).toList()),
-    value: json['value'],
-    hash: json['hash'],
-  );
-  
-  
+  factory EncryptedPassportElement.fromJson(Map<String, dynamic> json) =>
+      EncryptedPassportElement(
+        type: PassportElementType.fromJson(json['type']),
+        data: json['data'],
+        frontSide: DatedFile.fromJson(json['front_side']),
+        reverseSide: json['reverse_side'] == null
+            ? null
+            : DatedFile.fromJson(json['reverse_side']),
+        selfie:
+            json['selfie'] == null ? null : DatedFile.fromJson(json['selfie']),
+        translation: List<DatedFile>.from((json['translation'] ?? [])
+            .map((item) => DatedFile.fromJson(item))
+            .toList()),
+        files: List<DatedFile>.from((json['files'] ?? [])
+            .map((item) => DatedFile.fromJson(item))
+            .toList()),
+        value: json['value'],
+        hash: json['hash'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "type": type.toJson(),
       "data": data,
       "front_side": frontSide.toJson(),
@@ -95,8 +101,8 @@ final class EncryptedPassportElement extends TdObject {
       "files": files.map((i) => i.toJson()).toList(),
       "value": value,
       "hash": hash,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -120,17 +126,18 @@ final class EncryptedPassportElement extends TdObject {
     List<DatedFile>? files,
     String? value,
     String? hash,
-  }) => EncryptedPassportElement(
-    type: type ?? this.type,
-    data: data ?? this.data,
-    frontSide: frontSide ?? this.frontSide,
-    reverseSide: reverseSide ?? this.reverseSide,
-    selfie: selfie ?? this.selfie,
-    translation: translation ?? this.translation,
-    files: files ?? this.files,
-    value: value ?? this.value,
-    hash: hash ?? this.hash,
-  );
+  }) =>
+      EncryptedPassportElement(
+        type: type ?? this.type,
+        data: data ?? this.data,
+        frontSide: frontSide ?? this.frontSide,
+        reverseSide: reverseSide ?? this.reverseSide,
+        selfie: selfie ?? this.selfie,
+        translation: translation ?? this.translation,
+        files: files ?? this.files,
+        value: value ?? this.value,
+        hash: hash ?? this.hash,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'encryptedPassportElement';

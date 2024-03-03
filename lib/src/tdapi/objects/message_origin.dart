@@ -4,19 +4,18 @@ part of '../tdapi.dart';
 ///
 /// Contains information about the origin of a message.
 sealed class MessageOrigin extends TdObject {
-  
   /// **MessageOrigin** *(messageOrigin)* - parent
   ///
   /// Contains information about the origin of a message.
   const MessageOrigin();
-  
+
   /// a MessageOrigin return type can be :
   /// * [MessageOriginUser]
   /// * [MessageOriginHiddenUser]
   /// * [MessageOriginChat]
   /// * [MessageOriginChannel]
-  factory MessageOrigin.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory MessageOrigin.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case MessageOriginUser.defaultObjectId:
         return MessageOriginUser.fromJson(json);
       case MessageOriginHiddenUser.defaultObjectId:
@@ -32,7 +31,7 @@ sealed class MessageOrigin extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -52,14 +51,12 @@ sealed class MessageOrigin extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **MessageOriginUser** *(messageOriginUser)* - child of MessageOrigin
 ///
 /// The message was originally sent by a known user.
 ///
 /// * [senderUserId]: Identifier of the user that originally sent the message.
 final class MessageOriginUser extends MessageOrigin {
-  
   /// **MessageOriginUser** *(messageOriginUser)* - child of MessageOrigin
   ///
   /// The message was originally sent by a known user.
@@ -68,24 +65,24 @@ final class MessageOriginUser extends MessageOrigin {
   const MessageOriginUser({
     required this.senderUserId,
   });
-  
+
   /// Identifier of the user that originally sent the message
   final int senderUserId;
-  
+
   /// Parse from a json
-  factory MessageOriginUser.fromJson(Map<String, dynamic> json) => MessageOriginUser(
-    senderUserId: json['sender_user_id'],
-  );
-  
-  
+  factory MessageOriginUser.fromJson(Map<String, dynamic> json) =>
+      MessageOriginUser(
+        senderUserId: json['sender_user_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sender_user_id": senderUserId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -94,9 +91,10 @@ final class MessageOriginUser extends MessageOrigin {
   @override
   MessageOriginUser copyWith({
     int? senderUserId,
-  }) => MessageOriginUser(
-    senderUserId: senderUserId ?? this.senderUserId,
-  );
+  }) =>
+      MessageOriginUser(
+        senderUserId: senderUserId ?? this.senderUserId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'messageOriginUser';
@@ -110,14 +108,12 @@ final class MessageOriginUser extends MessageOrigin {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **MessageOriginHiddenUser** *(messageOriginHiddenUser)* - child of MessageOrigin
 ///
 /// The message was originally sent by a user, which is hidden by their privacy settings.
 ///
 /// * [senderName]: Name of the sender.
 final class MessageOriginHiddenUser extends MessageOrigin {
-  
   /// **MessageOriginHiddenUser** *(messageOriginHiddenUser)* - child of MessageOrigin
   ///
   /// The message was originally sent by a user, which is hidden by their privacy settings.
@@ -126,24 +122,24 @@ final class MessageOriginHiddenUser extends MessageOrigin {
   const MessageOriginHiddenUser({
     required this.senderName,
   });
-  
+
   /// Name of the sender
   final String senderName;
-  
+
   /// Parse from a json
-  factory MessageOriginHiddenUser.fromJson(Map<String, dynamic> json) => MessageOriginHiddenUser(
-    senderName: json['sender_name'],
-  );
-  
-  
+  factory MessageOriginHiddenUser.fromJson(Map<String, dynamic> json) =>
+      MessageOriginHiddenUser(
+        senderName: json['sender_name'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sender_name": senderName,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -152,9 +148,10 @@ final class MessageOriginHiddenUser extends MessageOrigin {
   @override
   MessageOriginHiddenUser copyWith({
     String? senderName,
-  }) => MessageOriginHiddenUser(
-    senderName: senderName ?? this.senderName,
-  );
+  }) =>
+      MessageOriginHiddenUser(
+        senderName: senderName ?? this.senderName,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'messageOriginHiddenUser';
@@ -168,7 +165,6 @@ final class MessageOriginHiddenUser extends MessageOrigin {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **MessageOriginChat** *(messageOriginChat)* - child of MessageOrigin
 ///
 /// The message was originally sent on behalf of a chat.
@@ -176,7 +172,6 @@ final class MessageOriginHiddenUser extends MessageOrigin {
 /// * [senderChatId]: Identifier of the chat that originally sent the message.
 /// * [authorSignature]: For messages originally sent by an anonymous chat administrator, original message author signature.
 final class MessageOriginChat extends MessageOrigin {
-  
   /// **MessageOriginChat** *(messageOriginChat)* - child of MessageOrigin
   ///
   /// The message was originally sent on behalf of a chat.
@@ -187,29 +182,29 @@ final class MessageOriginChat extends MessageOrigin {
     required this.senderChatId,
     required this.authorSignature,
   });
-  
+
   /// Identifier of the chat that originally sent the message
   final int senderChatId;
 
   /// For messages originally sent by an anonymous chat administrator, original message author signature
   final String authorSignature;
-  
+
   /// Parse from a json
-  factory MessageOriginChat.fromJson(Map<String, dynamic> json) => MessageOriginChat(
-    senderChatId: json['sender_chat_id'],
-    authorSignature: json['author_signature'],
-  );
-  
-  
+  factory MessageOriginChat.fromJson(Map<String, dynamic> json) =>
+      MessageOriginChat(
+        senderChatId: json['sender_chat_id'],
+        authorSignature: json['author_signature'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sender_chat_id": senderChatId,
       "author_signature": authorSignature,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -220,10 +215,11 @@ final class MessageOriginChat extends MessageOrigin {
   MessageOriginChat copyWith({
     int? senderChatId,
     String? authorSignature,
-  }) => MessageOriginChat(
-    senderChatId: senderChatId ?? this.senderChatId,
-    authorSignature: authorSignature ?? this.authorSignature,
-  );
+  }) =>
+      MessageOriginChat(
+        senderChatId: senderChatId ?? this.senderChatId,
+        authorSignature: authorSignature ?? this.authorSignature,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'messageOriginChat';
@@ -237,7 +233,6 @@ final class MessageOriginChat extends MessageOrigin {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **MessageOriginChannel** *(messageOriginChannel)* - child of MessageOrigin
 ///
 /// The message was originally a post in a channel.
@@ -246,7 +241,6 @@ final class MessageOriginChat extends MessageOrigin {
 /// * [messageId]: Message identifier of the original message.
 /// * [authorSignature]: Original post author signature.
 final class MessageOriginChannel extends MessageOrigin {
-  
   /// **MessageOriginChannel** *(messageOriginChannel)* - child of MessageOrigin
   ///
   /// The message was originally a post in a channel.
@@ -259,7 +253,7 @@ final class MessageOriginChannel extends MessageOrigin {
     required this.messageId,
     required this.authorSignature,
   });
-  
+
   /// Identifier of the channel chat to which the message was originally sent
   final int chatId;
 
@@ -268,25 +262,25 @@ final class MessageOriginChannel extends MessageOrigin {
 
   /// Original post author signature
   final String authorSignature;
-  
+
   /// Parse from a json
-  factory MessageOriginChannel.fromJson(Map<String, dynamic> json) => MessageOriginChannel(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    authorSignature: json['author_signature'],
-  );
-  
-  
+  factory MessageOriginChannel.fromJson(Map<String, dynamic> json) =>
+      MessageOriginChannel(
+        chatId: json['chat_id'],
+        messageId: json['message_id'],
+        authorSignature: json['author_signature'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "author_signature": authorSignature,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -299,11 +293,12 @@ final class MessageOriginChannel extends MessageOrigin {
     int? chatId,
     int? messageId,
     String? authorSignature,
-  }) => MessageOriginChannel(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    authorSignature: authorSignature ?? this.authorSignature,
-  );
+  }) =>
+      MessageOriginChannel(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        authorSignature: authorSignature ?? this.authorSignature,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'messageOriginChannel';

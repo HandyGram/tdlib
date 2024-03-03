@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 /// * [completeDate]: Point in time (Unix timestamp) when the file downloading was completed; 0 if the file downloading isn't completed.
 /// * [isPaused]: True, if downloading of the file is paused.
 final class FileDownload extends TdObject {
-  
   /// **FileDownload** *(fileDownload)* - basic class
   ///
   /// Describes a file added to file download list.
@@ -27,7 +26,7 @@ final class FileDownload extends TdObject {
     required this.completeDate,
     required this.isPaused,
   });
-  
+
   /// File identifier
   final int fileId;
 
@@ -42,29 +41,28 @@ final class FileDownload extends TdObject {
 
   /// True, if downloading of the file is paused
   final bool isPaused;
-  
+
   /// Parse from a json
   factory FileDownload.fromJson(Map<String, dynamic> json) => FileDownload(
-    fileId: json['file_id'],
-    message: Message.fromJson(json['message']),
-    addDate: json['add_date'],
-    completeDate: json['complete_date'],
-    isPaused: json['is_paused'],
-  );
-  
-  
+        fileId: json['file_id'],
+        message: Message.fromJson(json['message']),
+        addDate: json['add_date'],
+        completeDate: json['complete_date'],
+        isPaused: json['is_paused'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "file_id": fileId,
       "message": message.toJson(),
       "add_date": addDate,
       "complete_date": completeDate,
       "is_paused": isPaused,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -80,13 +78,14 @@ final class FileDownload extends TdObject {
     int? addDate,
     int? completeDate,
     bool? isPaused,
-  }) => FileDownload(
-    fileId: fileId ?? this.fileId,
-    message: message ?? this.message,
-    addDate: addDate ?? this.addDate,
-    completeDate: completeDate ?? this.completeDate,
-    isPaused: isPaused ?? this.isPaused,
-  );
+  }) =>
+      FileDownload(
+        fileId: fileId ?? this.fileId,
+        message: message ?? this.message,
+        addDate: addDate ?? this.addDate,
+        completeDate: completeDate ?? this.completeDate,
+        isPaused: isPaused ?? this.isPaused,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'fileDownload';

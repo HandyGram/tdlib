@@ -4,12 +4,11 @@ part of '../tdapi.dart';
 ///
 /// Contains information about a Telegram Passport element.
 sealed class PassportElement extends TdObject {
-  
   /// **PassportElement** *(passportElement)* - parent
   ///
   /// Contains information about a Telegram Passport element.
   const PassportElement();
-  
+
   /// a PassportElement return type can be :
   /// * [PassportElementPersonalDetails]
   /// * [PassportElementPassport]
@@ -24,8 +23,8 @@ sealed class PassportElement extends TdObject {
   /// * [PassportElementTemporaryRegistration]
   /// * [PassportElementPhoneNumber]
   /// * [PassportElementEmailAddress]
-  factory PassportElement.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory PassportElement.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case PassportElementPersonalDetails.defaultObjectId:
         return PassportElementPersonalDetails.fromJson(json);
       case PassportElementPassport.defaultObjectId:
@@ -59,7 +58,7 @@ sealed class PassportElement extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -79,14 +78,12 @@ sealed class PassportElement extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PassportElementPersonalDetails** *(passportElementPersonalDetails)* - child of PassportElement
 ///
 /// A Telegram Passport element containing the user's personal details.
 ///
 /// * [personalDetails]: Personal details of the user.
 final class PassportElementPersonalDetails extends PassportElement {
-  
   /// **PassportElementPersonalDetails** *(passportElementPersonalDetails)* - child of PassportElement
   ///
   /// A Telegram Passport element containing the user's personal details.
@@ -97,7 +94,7 @@ final class PassportElementPersonalDetails extends PassportElement {
     this.extra,
     this.clientId,
   });
-  
+
   /// Personal details of the user
   final PersonalDetails personalDetails;
 
@@ -108,23 +105,23 @@ final class PassportElementPersonalDetails extends PassportElement {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory PassportElementPersonalDetails.fromJson(Map<String, dynamic> json) => PassportElementPersonalDetails(
-    personalDetails: PersonalDetails.fromJson(json['personal_details']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory PassportElementPersonalDetails.fromJson(Map<String, dynamic> json) =>
+      PassportElementPersonalDetails(
+        personalDetails: PersonalDetails.fromJson(json['personal_details']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "personal_details": personalDetails.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -135,11 +132,12 @@ final class PassportElementPersonalDetails extends PassportElement {
     PersonalDetails? personalDetails,
     dynamic extra,
     int? clientId,
-  }) => PassportElementPersonalDetails(
-    personalDetails: personalDetails ?? this.personalDetails,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      PassportElementPersonalDetails(
+        personalDetails: personalDetails ?? this.personalDetails,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'passportElementPersonalDetails';
@@ -153,14 +151,12 @@ final class PassportElementPersonalDetails extends PassportElement {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PassportElementPassport** *(passportElementPassport)* - child of PassportElement
 ///
 /// A Telegram Passport element containing the user's passport.
 ///
 /// * [passport]: Passport.
 final class PassportElementPassport extends PassportElement {
-  
   /// **PassportElementPassport** *(passportElementPassport)* - child of PassportElement
   ///
   /// A Telegram Passport element containing the user's passport.
@@ -171,7 +167,7 @@ final class PassportElementPassport extends PassportElement {
     this.extra,
     this.clientId,
   });
-  
+
   /// Passport
   final IdentityDocument passport;
 
@@ -182,23 +178,23 @@ final class PassportElementPassport extends PassportElement {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory PassportElementPassport.fromJson(Map<String, dynamic> json) => PassportElementPassport(
-    passport: IdentityDocument.fromJson(json['passport']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory PassportElementPassport.fromJson(Map<String, dynamic> json) =>
+      PassportElementPassport(
+        passport: IdentityDocument.fromJson(json['passport']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "passport": passport.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -209,11 +205,12 @@ final class PassportElementPassport extends PassportElement {
     IdentityDocument? passport,
     dynamic extra,
     int? clientId,
-  }) => PassportElementPassport(
-    passport: passport ?? this.passport,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      PassportElementPassport(
+        passport: passport ?? this.passport,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'passportElementPassport';
@@ -227,14 +224,12 @@ final class PassportElementPassport extends PassportElement {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PassportElementDriverLicense** *(passportElementDriverLicense)* - child of PassportElement
 ///
 /// A Telegram Passport element containing the user's driver license.
 ///
 /// * [driverLicense]: Driver license.
 final class PassportElementDriverLicense extends PassportElement {
-  
   /// **PassportElementDriverLicense** *(passportElementDriverLicense)* - child of PassportElement
   ///
   /// A Telegram Passport element containing the user's driver license.
@@ -245,7 +240,7 @@ final class PassportElementDriverLicense extends PassportElement {
     this.extra,
     this.clientId,
   });
-  
+
   /// Driver license
   final IdentityDocument driverLicense;
 
@@ -256,23 +251,23 @@ final class PassportElementDriverLicense extends PassportElement {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory PassportElementDriverLicense.fromJson(Map<String, dynamic> json) => PassportElementDriverLicense(
-    driverLicense: IdentityDocument.fromJson(json['driver_license']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory PassportElementDriverLicense.fromJson(Map<String, dynamic> json) =>
+      PassportElementDriverLicense(
+        driverLicense: IdentityDocument.fromJson(json['driver_license']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "driver_license": driverLicense.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -283,11 +278,12 @@ final class PassportElementDriverLicense extends PassportElement {
     IdentityDocument? driverLicense,
     dynamic extra,
     int? clientId,
-  }) => PassportElementDriverLicense(
-    driverLicense: driverLicense ?? this.driverLicense,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      PassportElementDriverLicense(
+        driverLicense: driverLicense ?? this.driverLicense,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'passportElementDriverLicense';
@@ -301,14 +297,12 @@ final class PassportElementDriverLicense extends PassportElement {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PassportElementIdentityCard** *(passportElementIdentityCard)* - child of PassportElement
 ///
 /// A Telegram Passport element containing the user's identity card.
 ///
 /// * [identityCard]: Identity card.
 final class PassportElementIdentityCard extends PassportElement {
-  
   /// **PassportElementIdentityCard** *(passportElementIdentityCard)* - child of PassportElement
   ///
   /// A Telegram Passport element containing the user's identity card.
@@ -319,7 +313,7 @@ final class PassportElementIdentityCard extends PassportElement {
     this.extra,
     this.clientId,
   });
-  
+
   /// Identity card
   final IdentityDocument identityCard;
 
@@ -330,23 +324,23 @@ final class PassportElementIdentityCard extends PassportElement {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory PassportElementIdentityCard.fromJson(Map<String, dynamic> json) => PassportElementIdentityCard(
-    identityCard: IdentityDocument.fromJson(json['identity_card']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory PassportElementIdentityCard.fromJson(Map<String, dynamic> json) =>
+      PassportElementIdentityCard(
+        identityCard: IdentityDocument.fromJson(json['identity_card']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "identity_card": identityCard.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -357,11 +351,12 @@ final class PassportElementIdentityCard extends PassportElement {
     IdentityDocument? identityCard,
     dynamic extra,
     int? clientId,
-  }) => PassportElementIdentityCard(
-    identityCard: identityCard ?? this.identityCard,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      PassportElementIdentityCard(
+        identityCard: identityCard ?? this.identityCard,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'passportElementIdentityCard';
@@ -375,14 +370,12 @@ final class PassportElementIdentityCard extends PassportElement {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PassportElementInternalPassport** *(passportElementInternalPassport)* - child of PassportElement
 ///
 /// A Telegram Passport element containing the user's internal passport.
 ///
 /// * [internalPassport]: Internal passport.
 final class PassportElementInternalPassport extends PassportElement {
-  
   /// **PassportElementInternalPassport** *(passportElementInternalPassport)* - child of PassportElement
   ///
   /// A Telegram Passport element containing the user's internal passport.
@@ -393,7 +386,7 @@ final class PassportElementInternalPassport extends PassportElement {
     this.extra,
     this.clientId,
   });
-  
+
   /// Internal passport
   final IdentityDocument internalPassport;
 
@@ -404,23 +397,23 @@ final class PassportElementInternalPassport extends PassportElement {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory PassportElementInternalPassport.fromJson(Map<String, dynamic> json) => PassportElementInternalPassport(
-    internalPassport: IdentityDocument.fromJson(json['internal_passport']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory PassportElementInternalPassport.fromJson(Map<String, dynamic> json) =>
+      PassportElementInternalPassport(
+        internalPassport: IdentityDocument.fromJson(json['internal_passport']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "internal_passport": internalPassport.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -431,11 +424,12 @@ final class PassportElementInternalPassport extends PassportElement {
     IdentityDocument? internalPassport,
     dynamic extra,
     int? clientId,
-  }) => PassportElementInternalPassport(
-    internalPassport: internalPassport ?? this.internalPassport,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      PassportElementInternalPassport(
+        internalPassport: internalPassport ?? this.internalPassport,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'passportElementInternalPassport';
@@ -449,14 +443,12 @@ final class PassportElementInternalPassport extends PassportElement {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PassportElementAddress** *(passportElementAddress)* - child of PassportElement
 ///
 /// A Telegram Passport element containing the user's address.
 ///
 /// * [address]: Address.
 final class PassportElementAddress extends PassportElement {
-  
   /// **PassportElementAddress** *(passportElementAddress)* - child of PassportElement
   ///
   /// A Telegram Passport element containing the user's address.
@@ -467,7 +459,7 @@ final class PassportElementAddress extends PassportElement {
     this.extra,
     this.clientId,
   });
-  
+
   /// Address
   final Address address;
 
@@ -478,23 +470,23 @@ final class PassportElementAddress extends PassportElement {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory PassportElementAddress.fromJson(Map<String, dynamic> json) => PassportElementAddress(
-    address: Address.fromJson(json['address']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory PassportElementAddress.fromJson(Map<String, dynamic> json) =>
+      PassportElementAddress(
+        address: Address.fromJson(json['address']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "address": address.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -505,11 +497,12 @@ final class PassportElementAddress extends PassportElement {
     Address? address,
     dynamic extra,
     int? clientId,
-  }) => PassportElementAddress(
-    address: address ?? this.address,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      PassportElementAddress(
+        address: address ?? this.address,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'passportElementAddress';
@@ -523,14 +516,12 @@ final class PassportElementAddress extends PassportElement {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PassportElementUtilityBill** *(passportElementUtilityBill)* - child of PassportElement
 ///
 /// A Telegram Passport element containing the user's utility bill.
 ///
 /// * [utilityBill]: Utility bill.
 final class PassportElementUtilityBill extends PassportElement {
-  
   /// **PassportElementUtilityBill** *(passportElementUtilityBill)* - child of PassportElement
   ///
   /// A Telegram Passport element containing the user's utility bill.
@@ -541,7 +532,7 @@ final class PassportElementUtilityBill extends PassportElement {
     this.extra,
     this.clientId,
   });
-  
+
   /// Utility bill
   final PersonalDocument utilityBill;
 
@@ -552,23 +543,23 @@ final class PassportElementUtilityBill extends PassportElement {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory PassportElementUtilityBill.fromJson(Map<String, dynamic> json) => PassportElementUtilityBill(
-    utilityBill: PersonalDocument.fromJson(json['utility_bill']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory PassportElementUtilityBill.fromJson(Map<String, dynamic> json) =>
+      PassportElementUtilityBill(
+        utilityBill: PersonalDocument.fromJson(json['utility_bill']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "utility_bill": utilityBill.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -579,11 +570,12 @@ final class PassportElementUtilityBill extends PassportElement {
     PersonalDocument? utilityBill,
     dynamic extra,
     int? clientId,
-  }) => PassportElementUtilityBill(
-    utilityBill: utilityBill ?? this.utilityBill,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      PassportElementUtilityBill(
+        utilityBill: utilityBill ?? this.utilityBill,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'passportElementUtilityBill';
@@ -597,14 +589,12 @@ final class PassportElementUtilityBill extends PassportElement {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PassportElementBankStatement** *(passportElementBankStatement)* - child of PassportElement
 ///
 /// A Telegram Passport element containing the user's bank statement.
 ///
 /// * [bankStatement]: Bank statement.
 final class PassportElementBankStatement extends PassportElement {
-  
   /// **PassportElementBankStatement** *(passportElementBankStatement)* - child of PassportElement
   ///
   /// A Telegram Passport element containing the user's bank statement.
@@ -615,7 +605,7 @@ final class PassportElementBankStatement extends PassportElement {
     this.extra,
     this.clientId,
   });
-  
+
   /// Bank statement
   final PersonalDocument bankStatement;
 
@@ -626,23 +616,23 @@ final class PassportElementBankStatement extends PassportElement {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory PassportElementBankStatement.fromJson(Map<String, dynamic> json) => PassportElementBankStatement(
-    bankStatement: PersonalDocument.fromJson(json['bank_statement']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory PassportElementBankStatement.fromJson(Map<String, dynamic> json) =>
+      PassportElementBankStatement(
+        bankStatement: PersonalDocument.fromJson(json['bank_statement']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "bank_statement": bankStatement.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -653,11 +643,12 @@ final class PassportElementBankStatement extends PassportElement {
     PersonalDocument? bankStatement,
     dynamic extra,
     int? clientId,
-  }) => PassportElementBankStatement(
-    bankStatement: bankStatement ?? this.bankStatement,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      PassportElementBankStatement(
+        bankStatement: bankStatement ?? this.bankStatement,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'passportElementBankStatement';
@@ -671,14 +662,12 @@ final class PassportElementBankStatement extends PassportElement {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PassportElementRentalAgreement** *(passportElementRentalAgreement)* - child of PassportElement
 ///
 /// A Telegram Passport element containing the user's rental agreement.
 ///
 /// * [rentalAgreement]: Rental agreement.
 final class PassportElementRentalAgreement extends PassportElement {
-  
   /// **PassportElementRentalAgreement** *(passportElementRentalAgreement)* - child of PassportElement
   ///
   /// A Telegram Passport element containing the user's rental agreement.
@@ -689,7 +678,7 @@ final class PassportElementRentalAgreement extends PassportElement {
     this.extra,
     this.clientId,
   });
-  
+
   /// Rental agreement
   final PersonalDocument rentalAgreement;
 
@@ -700,23 +689,23 @@ final class PassportElementRentalAgreement extends PassportElement {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory PassportElementRentalAgreement.fromJson(Map<String, dynamic> json) => PassportElementRentalAgreement(
-    rentalAgreement: PersonalDocument.fromJson(json['rental_agreement']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory PassportElementRentalAgreement.fromJson(Map<String, dynamic> json) =>
+      PassportElementRentalAgreement(
+        rentalAgreement: PersonalDocument.fromJson(json['rental_agreement']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "rental_agreement": rentalAgreement.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -727,11 +716,12 @@ final class PassportElementRentalAgreement extends PassportElement {
     PersonalDocument? rentalAgreement,
     dynamic extra,
     int? clientId,
-  }) => PassportElementRentalAgreement(
-    rentalAgreement: rentalAgreement ?? this.rentalAgreement,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      PassportElementRentalAgreement(
+        rentalAgreement: rentalAgreement ?? this.rentalAgreement,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'passportElementRentalAgreement';
@@ -745,14 +735,12 @@ final class PassportElementRentalAgreement extends PassportElement {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PassportElementPassportRegistration** *(passportElementPassportRegistration)* - child of PassportElement
 ///
 /// A Telegram Passport element containing the user's passport registration pages.
 ///
 /// * [passportRegistration]: Passport registration pages.
 final class PassportElementPassportRegistration extends PassportElement {
-  
   /// **PassportElementPassportRegistration** *(passportElementPassportRegistration)* - child of PassportElement
   ///
   /// A Telegram Passport element containing the user's passport registration pages.
@@ -763,7 +751,7 @@ final class PassportElementPassportRegistration extends PassportElement {
     this.extra,
     this.clientId,
   });
-  
+
   /// Passport registration pages
   final PersonalDocument passportRegistration;
 
@@ -774,23 +762,25 @@ final class PassportElementPassportRegistration extends PassportElement {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory PassportElementPassportRegistration.fromJson(Map<String, dynamic> json) => PassportElementPassportRegistration(
-    passportRegistration: PersonalDocument.fromJson(json['passport_registration']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory PassportElementPassportRegistration.fromJson(
+          Map<String, dynamic> json) =>
+      PassportElementPassportRegistration(
+        passportRegistration:
+            PersonalDocument.fromJson(json['passport_registration']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "passport_registration": passportRegistration.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -801,11 +791,12 @@ final class PassportElementPassportRegistration extends PassportElement {
     PersonalDocument? passportRegistration,
     dynamic extra,
     int? clientId,
-  }) => PassportElementPassportRegistration(
-    passportRegistration: passportRegistration ?? this.passportRegistration,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      PassportElementPassportRegistration(
+        passportRegistration: passportRegistration ?? this.passportRegistration,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'passportElementPassportRegistration';
@@ -819,14 +810,12 @@ final class PassportElementPassportRegistration extends PassportElement {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PassportElementTemporaryRegistration** *(passportElementTemporaryRegistration)* - child of PassportElement
 ///
 /// A Telegram Passport element containing the user's temporary registration.
 ///
 /// * [temporaryRegistration]: Temporary registration.
 final class PassportElementTemporaryRegistration extends PassportElement {
-  
   /// **PassportElementTemporaryRegistration** *(passportElementTemporaryRegistration)* - child of PassportElement
   ///
   /// A Telegram Passport element containing the user's temporary registration.
@@ -837,7 +826,7 @@ final class PassportElementTemporaryRegistration extends PassportElement {
     this.extra,
     this.clientId,
   });
-  
+
   /// Temporary registration
   final PersonalDocument temporaryRegistration;
 
@@ -848,23 +837,25 @@ final class PassportElementTemporaryRegistration extends PassportElement {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory PassportElementTemporaryRegistration.fromJson(Map<String, dynamic> json) => PassportElementTemporaryRegistration(
-    temporaryRegistration: PersonalDocument.fromJson(json['temporary_registration']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory PassportElementTemporaryRegistration.fromJson(
+          Map<String, dynamic> json) =>
+      PassportElementTemporaryRegistration(
+        temporaryRegistration:
+            PersonalDocument.fromJson(json['temporary_registration']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "temporary_registration": temporaryRegistration.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -875,11 +866,13 @@ final class PassportElementTemporaryRegistration extends PassportElement {
     PersonalDocument? temporaryRegistration,
     dynamic extra,
     int? clientId,
-  }) => PassportElementTemporaryRegistration(
-    temporaryRegistration: temporaryRegistration ?? this.temporaryRegistration,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      PassportElementTemporaryRegistration(
+        temporaryRegistration:
+            temporaryRegistration ?? this.temporaryRegistration,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'passportElementTemporaryRegistration';
@@ -893,14 +886,12 @@ final class PassportElementTemporaryRegistration extends PassportElement {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PassportElementPhoneNumber** *(passportElementPhoneNumber)* - child of PassportElement
 ///
 /// A Telegram Passport element containing the user's phone number.
 ///
 /// * [phoneNumber]: Phone number.
 final class PassportElementPhoneNumber extends PassportElement {
-  
   /// **PassportElementPhoneNumber** *(passportElementPhoneNumber)* - child of PassportElement
   ///
   /// A Telegram Passport element containing the user's phone number.
@@ -911,7 +902,7 @@ final class PassportElementPhoneNumber extends PassportElement {
     this.extra,
     this.clientId,
   });
-  
+
   /// Phone number
   final String phoneNumber;
 
@@ -922,23 +913,23 @@ final class PassportElementPhoneNumber extends PassportElement {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory PassportElementPhoneNumber.fromJson(Map<String, dynamic> json) => PassportElementPhoneNumber(
-    phoneNumber: json['phone_number'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory PassportElementPhoneNumber.fromJson(Map<String, dynamic> json) =>
+      PassportElementPhoneNumber(
+        phoneNumber: json['phone_number'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "phone_number": phoneNumber,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -949,11 +940,12 @@ final class PassportElementPhoneNumber extends PassportElement {
     String? phoneNumber,
     dynamic extra,
     int? clientId,
-  }) => PassportElementPhoneNumber(
-    phoneNumber: phoneNumber ?? this.phoneNumber,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      PassportElementPhoneNumber(
+        phoneNumber: phoneNumber ?? this.phoneNumber,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'passportElementPhoneNumber';
@@ -967,14 +959,12 @@ final class PassportElementPhoneNumber extends PassportElement {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PassportElementEmailAddress** *(passportElementEmailAddress)* - child of PassportElement
 ///
 /// A Telegram Passport element containing the user's email address.
 ///
 /// * [emailAddress]: Email address.
 final class PassportElementEmailAddress extends PassportElement {
-  
   /// **PassportElementEmailAddress** *(passportElementEmailAddress)* - child of PassportElement
   ///
   /// A Telegram Passport element containing the user's email address.
@@ -985,7 +975,7 @@ final class PassportElementEmailAddress extends PassportElement {
     this.extra,
     this.clientId,
   });
-  
+
   /// Email address
   final String emailAddress;
 
@@ -996,23 +986,23 @@ final class PassportElementEmailAddress extends PassportElement {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory PassportElementEmailAddress.fromJson(Map<String, dynamic> json) => PassportElementEmailAddress(
-    emailAddress: json['email_address'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory PassportElementEmailAddress.fromJson(Map<String, dynamic> json) =>
+      PassportElementEmailAddress(
+        emailAddress: json['email_address'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "email_address": emailAddress,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -1023,11 +1013,12 @@ final class PassportElementEmailAddress extends PassportElement {
     String? emailAddress,
     dynamic extra,
     int? clientId,
-  }) => PassportElementEmailAddress(
-    emailAddress: emailAddress ?? this.emailAddress,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      PassportElementEmailAddress(
+        emailAddress: emailAddress ?? this.emailAddress,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'passportElementEmailAddress';

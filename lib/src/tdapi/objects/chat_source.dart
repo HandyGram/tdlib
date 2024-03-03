@@ -4,17 +4,16 @@ part of '../tdapi.dart';
 ///
 /// Describes a reason why an external chat is shown in a chat list.
 sealed class ChatSource extends TdObject {
-  
   /// **ChatSource** *(chatSource)* - parent
   ///
   /// Describes a reason why an external chat is shown in a chat list.
   const ChatSource();
-  
+
   /// a ChatSource return type can be :
   /// * [ChatSourceMtprotoProxy]
   /// * [ChatSourcePublicServiceAnnouncement]
-  factory ChatSource.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory ChatSource.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case ChatSourceMtprotoProxy.defaultObjectId:
         return ChatSourceMtprotoProxy.fromJson(json);
       case ChatSourcePublicServiceAnnouncement.defaultObjectId:
@@ -26,7 +25,7 @@ sealed class ChatSource extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -46,27 +45,26 @@ sealed class ChatSource extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **ChatSourceMtprotoProxy** *(chatSourceMtprotoProxy)* - child of ChatSource
 ///
 /// The chat is sponsored by the user's MTProxy server.
 final class ChatSourceMtprotoProxy extends ChatSource {
-  
   /// **ChatSourceMtprotoProxy** *(chatSourceMtprotoProxy)* - child of ChatSource
   ///
   /// The chat is sponsored by the user's MTProxy server.
   const ChatSourceMtprotoProxy();
-  
+
   /// Parse from a json
-  factory ChatSourceMtprotoProxy.fromJson(Map<String, dynamic> json) => const ChatSourceMtprotoProxy();
-  
+  factory ChatSourceMtprotoProxy.fromJson(Map<String, dynamic> json) =>
+      const ChatSourceMtprotoProxy();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -84,7 +82,6 @@ final class ChatSourceMtprotoProxy extends ChatSource {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **ChatSourcePublicServiceAnnouncement** *(chatSourcePublicServiceAnnouncement)* - child of ChatSource
 ///
 /// The chat contains a public service announcement.
@@ -92,7 +89,6 @@ final class ChatSourceMtprotoProxy extends ChatSource {
 /// * [type]: The type of the announcement.
 /// * [text]: The text of the announcement.
 final class ChatSourcePublicServiceAnnouncement extends ChatSource {
-  
   /// **ChatSourcePublicServiceAnnouncement** *(chatSourcePublicServiceAnnouncement)* - child of ChatSource
   ///
   /// The chat contains a public service announcement.
@@ -103,43 +99,45 @@ final class ChatSourcePublicServiceAnnouncement extends ChatSource {
     required this.type,
     required this.text,
   });
-  
-  /// The type of the announcement 
+
+  /// The type of the announcement
   final String type;
 
   /// The text of the announcement
   final String text;
-  
+
   /// Parse from a json
-  factory ChatSourcePublicServiceAnnouncement.fromJson(Map<String, dynamic> json) => ChatSourcePublicServiceAnnouncement(
-    type: json['type'],
-    text: json['text'],
-  );
-  
-  
+  factory ChatSourcePublicServiceAnnouncement.fromJson(
+          Map<String, dynamic> json) =>
+      ChatSourcePublicServiceAnnouncement(
+        type: json['type'],
+        text: json['text'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "type": type,
       "text": text,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [type]: The type of the announcement 
+  /// * [type]: The type of the announcement
   /// * [text]: The text of the announcement
   @override
   ChatSourcePublicServiceAnnouncement copyWith({
     String? type,
     String? text,
-  }) => ChatSourcePublicServiceAnnouncement(
-    type: type ?? this.type,
-    text: text ?? this.text,
-  );
+  }) =>
+      ChatSourcePublicServiceAnnouncement(
+        type: type ?? this.type,
+        text: text ?? this.text,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatSourcePublicServiceAnnouncement';

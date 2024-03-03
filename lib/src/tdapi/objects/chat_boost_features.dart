@@ -13,7 +13,6 @@ part of '../tdapi.dart';
 /// * [minCustomEmojiStickerSetBoostLevel]: The minimum boost level required to set custom emoji sticker set for the chat; for supergroup chats only.
 /// * [minSpeechRecognitionBoostLevel]: The minimum boost level allowing to recognize speech in video note and voice note messages for non-Premium users; for supergroup chats only.
 final class ChatBoostFeatures extends TdObject {
-  
   /// **ChatBoostFeatures** *(chatBoostFeatures)* - basic class
   ///
   /// Contains a list of features available on the first chat boost levels.
@@ -38,7 +37,7 @@ final class ChatBoostFeatures extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// The list of features
   final List<ChatBoostLevelFeatures> features;
 
@@ -70,37 +69,48 @@ final class ChatBoostFeatures extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory ChatBoostFeatures.fromJson(Map<String, dynamic> json) => ChatBoostFeatures(
-    features: List<ChatBoostLevelFeatures>.from((json['features'] ?? []).map((item) => ChatBoostLevelFeatures.fromJson(item)).toList()),
-    minProfileBackgroundCustomEmojiBoostLevel: json['min_profile_background_custom_emoji_boost_level'],
-    minBackgroundCustomEmojiBoostLevel: json['min_background_custom_emoji_boost_level'],
-    minEmojiStatusBoostLevel: json['min_emoji_status_boost_level'],
-    minChatThemeBackgroundBoostLevel: json['min_chat_theme_background_boost_level'],
-    minCustomBackgroundBoostLevel: json['min_custom_background_boost_level'],
-    minCustomEmojiStickerSetBoostLevel: json['min_custom_emoji_sticker_set_boost_level'],
-    minSpeechRecognitionBoostLevel: json['min_speech_recognition_boost_level'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory ChatBoostFeatures.fromJson(Map<String, dynamic> json) =>
+      ChatBoostFeatures(
+        features: List<ChatBoostLevelFeatures>.from((json['features'] ?? [])
+            .map((item) => ChatBoostLevelFeatures.fromJson(item))
+            .toList()),
+        minProfileBackgroundCustomEmojiBoostLevel:
+            json['min_profile_background_custom_emoji_boost_level'],
+        minBackgroundCustomEmojiBoostLevel:
+            json['min_background_custom_emoji_boost_level'],
+        minEmojiStatusBoostLevel: json['min_emoji_status_boost_level'],
+        minChatThemeBackgroundBoostLevel:
+            json['min_chat_theme_background_boost_level'],
+        minCustomBackgroundBoostLevel:
+            json['min_custom_background_boost_level'],
+        minCustomEmojiStickerSetBoostLevel:
+            json['min_custom_emoji_sticker_set_boost_level'],
+        minSpeechRecognitionBoostLevel:
+            json['min_speech_recognition_boost_level'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "features": features.map((i) => i.toJson()).toList(),
-      "min_profile_background_custom_emoji_boost_level": minProfileBackgroundCustomEmojiBoostLevel,
-      "min_background_custom_emoji_boost_level": minBackgroundCustomEmojiBoostLevel,
+      "min_profile_background_custom_emoji_boost_level":
+          minProfileBackgroundCustomEmojiBoostLevel,
+      "min_background_custom_emoji_boost_level":
+          minBackgroundCustomEmojiBoostLevel,
       "min_emoji_status_boost_level": minEmojiStatusBoostLevel,
       "min_chat_theme_background_boost_level": minChatThemeBackgroundBoostLevel,
       "min_custom_background_boost_level": minCustomBackgroundBoostLevel,
-      "min_custom_emoji_sticker_set_boost_level": minCustomEmojiStickerSetBoostLevel,
+      "min_custom_emoji_sticker_set_boost_level":
+          minCustomEmojiStickerSetBoostLevel,
       "min_speech_recognition_boost_level": minSpeechRecognitionBoostLevel,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -124,18 +134,29 @@ final class ChatBoostFeatures extends TdObject {
     int? minSpeechRecognitionBoostLevel,
     dynamic extra,
     int? clientId,
-  }) => ChatBoostFeatures(
-    features: features ?? this.features,
-    minProfileBackgroundCustomEmojiBoostLevel: minProfileBackgroundCustomEmojiBoostLevel ?? this.minProfileBackgroundCustomEmojiBoostLevel,
-    minBackgroundCustomEmojiBoostLevel: minBackgroundCustomEmojiBoostLevel ?? this.minBackgroundCustomEmojiBoostLevel,
-    minEmojiStatusBoostLevel: minEmojiStatusBoostLevel ?? this.minEmojiStatusBoostLevel,
-    minChatThemeBackgroundBoostLevel: minChatThemeBackgroundBoostLevel ?? this.minChatThemeBackgroundBoostLevel,
-    minCustomBackgroundBoostLevel: minCustomBackgroundBoostLevel ?? this.minCustomBackgroundBoostLevel,
-    minCustomEmojiStickerSetBoostLevel: minCustomEmojiStickerSetBoostLevel ?? this.minCustomEmojiStickerSetBoostLevel,
-    minSpeechRecognitionBoostLevel: minSpeechRecognitionBoostLevel ?? this.minSpeechRecognitionBoostLevel,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      ChatBoostFeatures(
+        features: features ?? this.features,
+        minProfileBackgroundCustomEmojiBoostLevel:
+            minProfileBackgroundCustomEmojiBoostLevel ??
+                this.minProfileBackgroundCustomEmojiBoostLevel,
+        minBackgroundCustomEmojiBoostLevel:
+            minBackgroundCustomEmojiBoostLevel ??
+                this.minBackgroundCustomEmojiBoostLevel,
+        minEmojiStatusBoostLevel:
+            minEmojiStatusBoostLevel ?? this.minEmojiStatusBoostLevel,
+        minChatThemeBackgroundBoostLevel: minChatThemeBackgroundBoostLevel ??
+            this.minChatThemeBackgroundBoostLevel,
+        minCustomBackgroundBoostLevel:
+            minCustomBackgroundBoostLevel ?? this.minCustomBackgroundBoostLevel,
+        minCustomEmojiStickerSetBoostLevel:
+            minCustomEmojiStickerSetBoostLevel ??
+                this.minCustomEmojiStickerSetBoostLevel,
+        minSpeechRecognitionBoostLevel: minSpeechRecognitionBoostLevel ??
+            this.minSpeechRecognitionBoostLevel,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatBoostFeatures';

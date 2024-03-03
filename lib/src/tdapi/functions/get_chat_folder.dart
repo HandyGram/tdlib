@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [ChatFolder] is returned on completion.
 final class GetChatFolder extends TdFunction {
-  
   /// **GetChatFolder** *(getChatFolder)* - TDLib function
   ///
   /// Returns information about a chat folder by its identifier.
@@ -19,19 +18,19 @@ final class GetChatFolder extends TdFunction {
   const GetChatFolder({
     required this.chatFolderId,
   });
-  
+
   /// Chat folder identifier
   final int chatFolderId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_folder_id": chatFolderId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetChatFolder extends TdFunction {
   /// * [chat_folder_id]: Chat folder identifier
   GetChatFolder copyWith({
     int? chatFolderId,
-  }) => GetChatFolder(
-    chatFolderId: chatFolderId ?? this.chatFolderId,
-  );
+  }) =>
+      GetChatFolder(
+        chatFolderId: chatFolderId ?? this.chatFolderId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getChatFolder';

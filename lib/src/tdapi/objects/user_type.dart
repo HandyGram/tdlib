@@ -4,19 +4,18 @@ part of '../tdapi.dart';
 ///
 /// Represents the type of a user. The following types are possible: regular users, deleted users and bots.
 sealed class UserType extends TdObject {
-  
   /// **UserType** *(userType)* - parent
   ///
   /// Represents the type of a user. The following types are possible: regular users, deleted users and bots.
   const UserType();
-  
+
   /// a UserType return type can be :
   /// * [UserTypeRegular]
   /// * [UserTypeDeleted]
   /// * [UserTypeBot]
   /// * [UserTypeUnknown]
-  factory UserType.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory UserType.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case UserTypeRegular.defaultObjectId:
         return UserTypeRegular.fromJson(json);
       case UserTypeDeleted.defaultObjectId:
@@ -32,7 +31,7 @@ sealed class UserType extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -52,27 +51,26 @@ sealed class UserType extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UserTypeRegular** *(userTypeRegular)* - child of UserType
 ///
 /// A regular user.
 final class UserTypeRegular extends UserType {
-  
   /// **UserTypeRegular** *(userTypeRegular)* - child of UserType
   ///
   /// A regular user.
   const UserTypeRegular();
-  
+
   /// Parse from a json
-  factory UserTypeRegular.fromJson(Map<String, dynamic> json) => const UserTypeRegular();
-  
+  factory UserTypeRegular.fromJson(Map<String, dynamic> json) =>
+      const UserTypeRegular();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -90,27 +88,26 @@ final class UserTypeRegular extends UserType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UserTypeDeleted** *(userTypeDeleted)* - child of UserType
 ///
 /// A deleted user or deleted bot. No information on the user besides the user identifier is available. It is not possible to perform any active actions on this type of user.
 final class UserTypeDeleted extends UserType {
-  
   /// **UserTypeDeleted** *(userTypeDeleted)* - child of UserType
   ///
   /// A deleted user or deleted bot. No information on the user besides the user identifier is available. It is not possible to perform any active actions on this type of user.
   const UserTypeDeleted();
-  
+
   /// Parse from a json
-  factory UserTypeDeleted.fromJson(Map<String, dynamic> json) => const UserTypeDeleted();
-  
+  factory UserTypeDeleted.fromJson(Map<String, dynamic> json) =>
+      const UserTypeDeleted();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -128,7 +125,6 @@ final class UserTypeDeleted extends UserType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UserTypeBot** *(userTypeBot)* - child of UserType
 ///
 /// A bot (see https://core.telegram.org/bots).
@@ -141,7 +137,6 @@ final class UserTypeDeleted extends UserType {
 /// * [needLocation]: True, if the location of the user is expected to be sent with every inline query to this bot.
 /// * [canBeAddedToAttachmentMenu]: True, if the bot can be added to attachment or side menu.
 final class UserTypeBot extends UserType {
-  
   /// **UserTypeBot** *(userTypeBot)* - child of UserType
   ///
   /// A bot (see https://core.telegram.org/bots).
@@ -162,7 +157,7 @@ final class UserTypeBot extends UserType {
     required this.needLocation,
     required this.canBeAddedToAttachmentMenu,
   });
-  
+
   /// True, if the bot is owned by the current user and can be edited using the methods toggleBotUsernameIsActive, reorderBotActiveUsernames, setBotProfilePhoto, setBotName, setBotInfoDescription, and setBotInfoShortDescription
   final bool canBeEdited;
 
@@ -183,24 +178,23 @@ final class UserTypeBot extends UserType {
 
   /// True, if the bot can be added to attachment or side menu
   final bool canBeAddedToAttachmentMenu;
-  
+
   /// Parse from a json
   factory UserTypeBot.fromJson(Map<String, dynamic> json) => UserTypeBot(
-    canBeEdited: json['can_be_edited'],
-    canJoinGroups: json['can_join_groups'],
-    canReadAllGroupMessages: json['can_read_all_group_messages'],
-    isInline: json['is_inline'],
-    inlineQueryPlaceholder: json['inline_query_placeholder'],
-    needLocation: json['need_location'],
-    canBeAddedToAttachmentMenu: json['can_be_added_to_attachment_menu'],
-  );
-  
-  
+        canBeEdited: json['can_be_edited'],
+        canJoinGroups: json['can_join_groups'],
+        canReadAllGroupMessages: json['can_read_all_group_messages'],
+        isInline: json['is_inline'],
+        inlineQueryPlaceholder: json['inline_query_placeholder'],
+        needLocation: json['need_location'],
+        canBeAddedToAttachmentMenu: json['can_be_added_to_attachment_menu'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "can_be_edited": canBeEdited,
       "can_join_groups": canJoinGroups,
       "can_read_all_group_messages": canReadAllGroupMessages,
@@ -208,8 +202,8 @@ final class UserTypeBot extends UserType {
       "inline_query_placeholder": inlineQueryPlaceholder,
       "need_location": needLocation,
       "can_be_added_to_attachment_menu": canBeAddedToAttachmentMenu,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -230,15 +224,19 @@ final class UserTypeBot extends UserType {
     String? inlineQueryPlaceholder,
     bool? needLocation,
     bool? canBeAddedToAttachmentMenu,
-  }) => UserTypeBot(
-    canBeEdited: canBeEdited ?? this.canBeEdited,
-    canJoinGroups: canJoinGroups ?? this.canJoinGroups,
-    canReadAllGroupMessages: canReadAllGroupMessages ?? this.canReadAllGroupMessages,
-    isInline: isInline ?? this.isInline,
-    inlineQueryPlaceholder: inlineQueryPlaceholder ?? this.inlineQueryPlaceholder,
-    needLocation: needLocation ?? this.needLocation,
-    canBeAddedToAttachmentMenu: canBeAddedToAttachmentMenu ?? this.canBeAddedToAttachmentMenu,
-  );
+  }) =>
+      UserTypeBot(
+        canBeEdited: canBeEdited ?? this.canBeEdited,
+        canJoinGroups: canJoinGroups ?? this.canJoinGroups,
+        canReadAllGroupMessages:
+            canReadAllGroupMessages ?? this.canReadAllGroupMessages,
+        isInline: isInline ?? this.isInline,
+        inlineQueryPlaceholder:
+            inlineQueryPlaceholder ?? this.inlineQueryPlaceholder,
+        needLocation: needLocation ?? this.needLocation,
+        canBeAddedToAttachmentMenu:
+            canBeAddedToAttachmentMenu ?? this.canBeAddedToAttachmentMenu,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'userTypeBot';
@@ -252,27 +250,26 @@ final class UserTypeBot extends UserType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **UserTypeUnknown** *(userTypeUnknown)* - child of UserType
 ///
 /// No information on the user besides the user identifier is available, yet this user has not been deleted. This object is extremely rare and must be handled like a deleted user. It is not possible to perform any actions on users of this type.
 final class UserTypeUnknown extends UserType {
-  
   /// **UserTypeUnknown** *(userTypeUnknown)* - child of UserType
   ///
   /// No information on the user besides the user identifier is available, yet this user has not been deleted. This object is extremely rare and must be handled like a deleted user. It is not possible to perform any actions on users of this type.
   const UserTypeUnknown();
-  
+
   /// Parse from a json
-  factory UserTypeUnknown.fromJson(Map<String, dynamic> json) => const UserTypeUnknown();
-  
+  factory UserTypeUnknown.fromJson(Map<String, dynamic> json) =>
+      const UserTypeUnknown();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override

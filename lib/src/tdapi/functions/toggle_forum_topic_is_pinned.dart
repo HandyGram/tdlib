@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ToggleForumTopicIsPinned extends TdFunction {
-  
   /// **ToggleForumTopicIsPinned** *(toggleForumTopicIsPinned)* - TDLib function
   ///
   /// Changes the pinned state of a forum topic; requires can_manage_topics right in the supergroup. There can be up to getOption("pinned_forum_topic_count_max") pinned forum topics.
@@ -25,7 +24,7 @@ final class ToggleForumTopicIsPinned extends TdFunction {
     required this.messageThreadId,
     required this.isPinned,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -34,18 +33,18 @@ final class ToggleForumTopicIsPinned extends TdFunction {
 
   /// Pass true to pin the topic; pass false to unpin it
   final bool isPinned;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_thread_id": messageThreadId,
       "is_pinned": isPinned,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class ToggleForumTopicIsPinned extends TdFunction {
     int? chatId,
     int? messageThreadId,
     bool? isPinned,
-  }) => ToggleForumTopicIsPinned(
-    chatId: chatId ?? this.chatId,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-    isPinned: isPinned ?? this.isPinned,
-  );
+  }) =>
+      ToggleForumTopicIsPinned(
+        chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+        isPinned: isPinned ?? this.isPinned,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'toggleForumTopicIsPinned';

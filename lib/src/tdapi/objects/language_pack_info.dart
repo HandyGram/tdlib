@@ -18,7 +18,6 @@ part of '../tdapi.dart';
 /// * [localStringCount]: Total number of non-deleted strings from the language pack available locally.
 /// * [translationUrl]: Link to language translation interface; empty for custom local language packs.
 final class LanguagePackInfo extends TdObject {
-  
   /// **LanguagePackInfo** *(languagePackInfo)* - basic class
   ///
   /// Contains information about a language pack.
@@ -53,7 +52,7 @@ final class LanguagePackInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Unique language pack identifier
   final String id;
 
@@ -100,32 +99,32 @@ final class LanguagePackInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory LanguagePackInfo.fromJson(Map<String, dynamic> json) => LanguagePackInfo(
-    id: json['id'],
-    baseLanguagePackId: json['base_language_pack_id'],
-    name: json['name'],
-    nativeName: json['native_name'],
-    pluralCode: json['plural_code'],
-    isOfficial: json['is_official'],
-    isRtl: json['is_rtl'],
-    isBeta: json['is_beta'],
-    isInstalled: json['is_installed'],
-    totalStringCount: json['total_string_count'],
-    translatedStringCount: json['translated_string_count'],
-    localStringCount: json['local_string_count'],
-    translationUrl: json['translation_url'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory LanguagePackInfo.fromJson(Map<String, dynamic> json) =>
+      LanguagePackInfo(
+        id: json['id'],
+        baseLanguagePackId: json['base_language_pack_id'],
+        name: json['name'],
+        nativeName: json['native_name'],
+        pluralCode: json['plural_code'],
+        isOfficial: json['is_official'],
+        isRtl: json['is_rtl'],
+        isBeta: json['is_beta'],
+        isInstalled: json['is_installed'],
+        totalStringCount: json['total_string_count'],
+        translatedStringCount: json['translated_string_count'],
+        localStringCount: json['local_string_count'],
+        translationUrl: json['translation_url'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "base_language_pack_id": baseLanguagePackId,
       "name": name,
@@ -139,8 +138,8 @@ final class LanguagePackInfo extends TdObject {
       "translated_string_count": translatedStringCount,
       "local_string_count": localStringCount,
       "translation_url": translationUrl,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -174,23 +173,25 @@ final class LanguagePackInfo extends TdObject {
     String? translationUrl,
     dynamic extra,
     int? clientId,
-  }) => LanguagePackInfo(
-    id: id ?? this.id,
-    baseLanguagePackId: baseLanguagePackId ?? this.baseLanguagePackId,
-    name: name ?? this.name,
-    nativeName: nativeName ?? this.nativeName,
-    pluralCode: pluralCode ?? this.pluralCode,
-    isOfficial: isOfficial ?? this.isOfficial,
-    isRtl: isRtl ?? this.isRtl,
-    isBeta: isBeta ?? this.isBeta,
-    isInstalled: isInstalled ?? this.isInstalled,
-    totalStringCount: totalStringCount ?? this.totalStringCount,
-    translatedStringCount: translatedStringCount ?? this.translatedStringCount,
-    localStringCount: localStringCount ?? this.localStringCount,
-    translationUrl: translationUrl ?? this.translationUrl,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      LanguagePackInfo(
+        id: id ?? this.id,
+        baseLanguagePackId: baseLanguagePackId ?? this.baseLanguagePackId,
+        name: name ?? this.name,
+        nativeName: nativeName ?? this.nativeName,
+        pluralCode: pluralCode ?? this.pluralCode,
+        isOfficial: isOfficial ?? this.isOfficial,
+        isRtl: isRtl ?? this.isRtl,
+        isBeta: isBeta ?? this.isBeta,
+        isInstalled: isInstalled ?? this.isInstalled,
+        totalStringCount: totalStringCount ?? this.totalStringCount,
+        translatedStringCount:
+            translatedStringCount ?? this.translatedStringCount,
+        localStringCount: localStringCount ?? this.localStringCount,
+        translationUrl: translationUrl ?? this.translationUrl,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'languagePackInfo';

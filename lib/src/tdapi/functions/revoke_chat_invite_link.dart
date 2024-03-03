@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [ChatInviteLinks] is returned on completion.
 final class RevokeChatInviteLink extends TdFunction {
-  
   /// **RevokeChatInviteLink** *(revokeChatInviteLink)* - TDLib function
   ///
   /// Revokes invite link for a chat. Available for basic groups, supergroups, and channels. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links.. If a primary link is revoked, then additionally to the revoked link returns new primary link.
@@ -22,23 +21,23 @@ final class RevokeChatInviteLink extends TdFunction {
     required this.chatId,
     required this.inviteLink,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
   /// Invite link to be revoked
   final String inviteLink;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "invite_link": inviteLink,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class RevokeChatInviteLink extends TdFunction {
   RevokeChatInviteLink copyWith({
     int? chatId,
     String? inviteLink,
-  }) => RevokeChatInviteLink(
-    chatId: chatId ?? this.chatId,
-    inviteLink: inviteLink ?? this.inviteLink,
-  );
+  }) =>
+      RevokeChatInviteLink(
+        chatId: chatId ?? this.chatId,
+        inviteLink: inviteLink ?? this.inviteLink,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'revokeChatInviteLink';

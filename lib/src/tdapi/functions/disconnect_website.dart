@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class DisconnectWebsite extends TdFunction {
-  
   /// **DisconnectWebsite** *(disconnectWebsite)* - TDLib function
   ///
   /// Disconnects website from the current user's Telegram account.
@@ -19,19 +18,19 @@ final class DisconnectWebsite extends TdFunction {
   const DisconnectWebsite({
     required this.websiteId,
   });
-  
+
   /// Website identifier
   final int websiteId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "website_id": websiteId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class DisconnectWebsite extends TdFunction {
   /// * [website_id]: Website identifier
   DisconnectWebsite copyWith({
     int? websiteId,
-  }) => DisconnectWebsite(
-    websiteId: websiteId ?? this.websiteId,
-  );
+  }) =>
+      DisconnectWebsite(
+        websiteId: websiteId ?? this.websiteId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'disconnectWebsite';

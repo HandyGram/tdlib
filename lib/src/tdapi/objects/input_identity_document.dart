@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 /// * [selfie]: Selfie with the document; pass null if unavailable *(optional)*.
 /// * [translation]: List of files containing a certified English translation of the document.
 final class InputIdentityDocument extends TdObject {
-  
   /// **InputIdentityDocument** *(inputIdentityDocument)* - basic class
   ///
   /// An identity document to be saved to Telegram Passport.
@@ -30,7 +29,7 @@ final class InputIdentityDocument extends TdObject {
     this.selfie,
     required this.translation,
   });
-  
+
   /// Document number; 1-24 characters
   final String number;
 
@@ -48,31 +47,38 @@ final class InputIdentityDocument extends TdObject {
 
   /// List of files containing a certified English translation of the document
   final List<InputFile> translation;
-  
+
   /// Parse from a json
-  factory InputIdentityDocument.fromJson(Map<String, dynamic> json) => InputIdentityDocument(
-    number: json['number'],
-    expirationDate: json['expiration_date'] == null ? null : Date.fromJson(json['expiration_date']),
-    frontSide: InputFile.fromJson(json['front_side']),
-    reverseSide: json['reverse_side'] == null ? null : InputFile.fromJson(json['reverse_side']),
-    selfie: json['selfie'] == null ? null : InputFile.fromJson(json['selfie']),
-    translation: List<InputFile>.from((json['translation'] ?? []).map((item) => InputFile.fromJson(item)).toList()),
-  );
-  
-  
+  factory InputIdentityDocument.fromJson(Map<String, dynamic> json) =>
+      InputIdentityDocument(
+        number: json['number'],
+        expirationDate: json['expiration_date'] == null
+            ? null
+            : Date.fromJson(json['expiration_date']),
+        frontSide: InputFile.fromJson(json['front_side']),
+        reverseSide: json['reverse_side'] == null
+            ? null
+            : InputFile.fromJson(json['reverse_side']),
+        selfie:
+            json['selfie'] == null ? null : InputFile.fromJson(json['selfie']),
+        translation: List<InputFile>.from((json['translation'] ?? [])
+            .map((item) => InputFile.fromJson(item))
+            .toList()),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "number": number,
       "expiration_date": expirationDate?.toJson(),
       "front_side": frontSide.toJson(),
       "reverse_side": reverseSide?.toJson(),
       "selfie": selfie?.toJson(),
       "translation": translation.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -90,14 +96,15 @@ final class InputIdentityDocument extends TdObject {
     InputFile? reverseSide,
     InputFile? selfie,
     List<InputFile>? translation,
-  }) => InputIdentityDocument(
-    number: number ?? this.number,
-    expirationDate: expirationDate ?? this.expirationDate,
-    frontSide: frontSide ?? this.frontSide,
-    reverseSide: reverseSide ?? this.reverseSide,
-    selfie: selfie ?? this.selfie,
-    translation: translation ?? this.translation,
-  );
+  }) =>
+      InputIdentityDocument(
+        number: number ?? this.number,
+        expirationDate: expirationDate ?? this.expirationDate,
+        frontSide: frontSide ?? this.frontSide,
+        reverseSide: reverseSide ?? this.reverseSide,
+        selfie: selfie ?? this.selfie,
+        translation: translation ?? this.translation,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputIdentityDocument';

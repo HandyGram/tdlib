@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [CanSendStoryResult] is returned on completion.
 final class CanSendStory extends TdFunction {
-  
   /// **CanSendStory** *(canSendStory)* - TDLib function
   ///
   /// Checks whether the current user can send a story on behalf of a chat; requires can_post_stories right for supergroup and channel chats.
@@ -19,19 +18,19 @@ final class CanSendStory extends TdFunction {
   const CanSendStory({
     required this.chatId,
   });
-  
+
   /// Chat identifier
   final int chatId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class CanSendStory extends TdFunction {
   /// * [chat_id]: Chat identifier
   CanSendStory copyWith({
     int? chatId,
-  }) => CanSendStory(
-    chatId: chatId ?? this.chatId,
-  );
+  }) =>
+      CanSendStory(
+        chatId: chatId ?? this.chatId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'canSendStory';

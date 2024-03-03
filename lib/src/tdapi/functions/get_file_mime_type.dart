@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Text] is returned on completion.
 final class GetFileMimeType extends TdFunction {
-  
   /// **GetFileMimeType** *(getFileMimeType)* - TDLib function
   ///
   /// Returns the MIME type of a file, guessed by its extension. Returns an empty string on failure. Can be called synchronously.
@@ -19,19 +18,19 @@ final class GetFileMimeType extends TdFunction {
   const GetFileMimeType({
     required this.fileName,
   });
-  
+
   /// The name of the file or path to the file
   final String fileName;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "file_name": fileName,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetFileMimeType extends TdFunction {
   /// * [file_name]: The name of the file or path to the file
   GetFileMimeType copyWith({
     String? fileName,
-  }) => GetFileMimeType(
-    fileName: fileName ?? this.fileName,
-  );
+  }) =>
+      GetFileMimeType(
+        fileName: fileName ?? this.fileName,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getFileMimeType';

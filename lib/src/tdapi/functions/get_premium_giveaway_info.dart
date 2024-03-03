@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [PremiumGiveawayInfo] is returned on completion.
 final class GetPremiumGiveawayInfo extends TdFunction {
-  
   /// **GetPremiumGiveawayInfo** *(getPremiumGiveawayInfo)* - TDLib function
   ///
   /// Returns information about a Telegram Premium giveaway.
@@ -22,23 +21,23 @@ final class GetPremiumGiveawayInfo extends TdFunction {
     required this.chatId,
     required this.messageId,
   });
-  
+
   /// Identifier of the channel chat which started the giveaway
   final int chatId;
 
   /// Identifier of the giveaway or a giveaway winners message in the chat
   final int messageId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class GetPremiumGiveawayInfo extends TdFunction {
   GetPremiumGiveawayInfo copyWith({
     int? chatId,
     int? messageId,
-  }) => GetPremiumGiveawayInfo(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-  );
+  }) =>
+      GetPremiumGiveawayInfo(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getPremiumGiveawayInfo';

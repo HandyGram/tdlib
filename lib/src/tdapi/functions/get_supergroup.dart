@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Supergroup] is returned on completion.
 final class GetSupergroup extends TdFunction {
-  
   /// **GetSupergroup** *(getSupergroup)* - TDLib function
   ///
   /// Returns information about a supergroup or a channel by its identifier. This is an offline request if the current user is not a bot.
@@ -19,19 +18,19 @@ final class GetSupergroup extends TdFunction {
   const GetSupergroup({
     required this.supergroupId,
   });
-  
+
   /// Supergroup or channel identifier
   final int supergroupId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "supergroup_id": supergroupId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetSupergroup extends TdFunction {
   /// * [supergroup_id]: Supergroup or channel identifier
   GetSupergroup copyWith({
     int? supergroupId,
-  }) => GetSupergroup(
-    supergroupId: supergroupId ?? this.supergroupId,
-  );
+  }) =>
+      GetSupergroup(
+        supergroupId: supergroupId ?? this.supergroupId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getSupergroup';

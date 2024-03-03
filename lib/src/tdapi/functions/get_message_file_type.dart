@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [MessageFileType] is returned on completion.
 final class GetMessageFileType extends TdFunction {
-  
   /// **GetMessageFileType** *(getMessageFileType)* - TDLib function
   ///
   /// Returns information about a file with messages exported from another application.
@@ -19,19 +18,19 @@ final class GetMessageFileType extends TdFunction {
   const GetMessageFileType({
     required this.messageFileHead,
   });
-  
+
   /// Beginning of the message file; up to 100 first lines
   final String messageFileHead;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "message_file_head": messageFileHead,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetMessageFileType extends TdFunction {
   /// * [message_file_head]: Beginning of the message file; up to 100 first lines
   GetMessageFileType copyWith({
     String? messageFileHead,
-  }) => GetMessageFileType(
-    messageFileHead: messageFileHead ?? this.messageFileHead,
-  );
+  }) =>
+      GetMessageFileType(
+        messageFileHead: messageFileHead ?? this.messageFileHead,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getMessageFileType';

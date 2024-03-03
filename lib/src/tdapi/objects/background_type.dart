@@ -4,19 +4,18 @@ part of '../tdapi.dart';
 ///
 /// Describes the type of a background.
 sealed class BackgroundType extends TdObject {
-  
   /// **BackgroundType** *(backgroundType)* - parent
   ///
   /// Describes the type of a background.
   const BackgroundType();
-  
+
   /// a BackgroundType return type can be :
   /// * [BackgroundTypeWallpaper]
   /// * [BackgroundTypePattern]
   /// * [BackgroundTypeFill]
   /// * [BackgroundTypeChatTheme]
-  factory BackgroundType.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory BackgroundType.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case BackgroundTypeWallpaper.defaultObjectId:
         return BackgroundTypeWallpaper.fromJson(json);
       case BackgroundTypePattern.defaultObjectId:
@@ -32,7 +31,7 @@ sealed class BackgroundType extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -52,7 +51,6 @@ sealed class BackgroundType extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **BackgroundTypeWallpaper** *(backgroundTypeWallpaper)* - child of BackgroundType
 ///
 /// A wallpaper in JPEG format.
@@ -60,7 +58,6 @@ sealed class BackgroundType extends TdObject {
 /// * [isBlurred]: True, if the wallpaper must be downscaled to fit in 450x450 square and then box-blurred with radius 12.
 /// * [isMoving]: True, if the background needs to be slightly moved when device is tilted.
 final class BackgroundTypeWallpaper extends BackgroundType {
-  
   /// **BackgroundTypeWallpaper** *(backgroundTypeWallpaper)* - child of BackgroundType
   ///
   /// A wallpaper in JPEG format.
@@ -71,29 +68,29 @@ final class BackgroundTypeWallpaper extends BackgroundType {
     required this.isBlurred,
     required this.isMoving,
   });
-  
+
   /// True, if the wallpaper must be downscaled to fit in 450x450 square and then box-blurred with radius 12
   final bool isBlurred;
 
   /// True, if the background needs to be slightly moved when device is tilted
   final bool isMoving;
-  
+
   /// Parse from a json
-  factory BackgroundTypeWallpaper.fromJson(Map<String, dynamic> json) => BackgroundTypeWallpaper(
-    isBlurred: json['is_blurred'],
-    isMoving: json['is_moving'],
-  );
-  
-  
+  factory BackgroundTypeWallpaper.fromJson(Map<String, dynamic> json) =>
+      BackgroundTypeWallpaper(
+        isBlurred: json['is_blurred'],
+        isMoving: json['is_moving'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "is_blurred": isBlurred,
       "is_moving": isMoving,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -104,10 +101,11 @@ final class BackgroundTypeWallpaper extends BackgroundType {
   BackgroundTypeWallpaper copyWith({
     bool? isBlurred,
     bool? isMoving,
-  }) => BackgroundTypeWallpaper(
-    isBlurred: isBlurred ?? this.isBlurred,
-    isMoving: isMoving ?? this.isMoving,
-  );
+  }) =>
+      BackgroundTypeWallpaper(
+        isBlurred: isBlurred ?? this.isBlurred,
+        isMoving: isMoving ?? this.isMoving,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'backgroundTypeWallpaper';
@@ -121,7 +119,6 @@ final class BackgroundTypeWallpaper extends BackgroundType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **BackgroundTypePattern** *(backgroundTypePattern)* - child of BackgroundType
 ///
 /// A PNG or TGV (gzipped subset of SVG with MIME type "application/x-tgwallpattern") pattern to be combined with the background fill chosen by the user.
@@ -131,7 +128,6 @@ final class BackgroundTypeWallpaper extends BackgroundType {
 /// * [isInverted]: True, if the background fill must be applied only to the pattern itself. All other pixels are black in this case. For dark themes only.
 /// * [isMoving]: True, if the background needs to be slightly moved when device is tilted.
 final class BackgroundTypePattern extends BackgroundType {
-  
   /// **BackgroundTypePattern** *(backgroundTypePattern)* - child of BackgroundType
   ///
   /// A PNG or TGV (gzipped subset of SVG with MIME type "application/x-tgwallpattern") pattern to be combined with the background fill chosen by the user.
@@ -146,7 +142,7 @@ final class BackgroundTypePattern extends BackgroundType {
     required this.isInverted,
     required this.isMoving,
   });
-  
+
   /// Fill of the background
   final BackgroundFill fill;
 
@@ -158,27 +154,27 @@ final class BackgroundTypePattern extends BackgroundType {
 
   /// True, if the background needs to be slightly moved when device is tilted
   final bool isMoving;
-  
+
   /// Parse from a json
-  factory BackgroundTypePattern.fromJson(Map<String, dynamic> json) => BackgroundTypePattern(
-    fill: BackgroundFill.fromJson(json['fill']),
-    intensity: json['intensity'],
-    isInverted: json['is_inverted'],
-    isMoving: json['is_moving'],
-  );
-  
-  
+  factory BackgroundTypePattern.fromJson(Map<String, dynamic> json) =>
+      BackgroundTypePattern(
+        fill: BackgroundFill.fromJson(json['fill']),
+        intensity: json['intensity'],
+        isInverted: json['is_inverted'],
+        isMoving: json['is_moving'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "fill": fill.toJson(),
       "intensity": intensity,
       "is_inverted": isInverted,
       "is_moving": isMoving,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -193,12 +189,13 @@ final class BackgroundTypePattern extends BackgroundType {
     int? intensity,
     bool? isInverted,
     bool? isMoving,
-  }) => BackgroundTypePattern(
-    fill: fill ?? this.fill,
-    intensity: intensity ?? this.intensity,
-    isInverted: isInverted ?? this.isInverted,
-    isMoving: isMoving ?? this.isMoving,
-  );
+  }) =>
+      BackgroundTypePattern(
+        fill: fill ?? this.fill,
+        intensity: intensity ?? this.intensity,
+        isInverted: isInverted ?? this.isInverted,
+        isMoving: isMoving ?? this.isMoving,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'backgroundTypePattern';
@@ -212,14 +209,12 @@ final class BackgroundTypePattern extends BackgroundType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **BackgroundTypeFill** *(backgroundTypeFill)* - child of BackgroundType
 ///
 /// A filled background.
 ///
 /// * [fill]: The background fill.
 final class BackgroundTypeFill extends BackgroundType {
-  
   /// **BackgroundTypeFill** *(backgroundTypeFill)* - child of BackgroundType
   ///
   /// A filled background.
@@ -228,24 +223,24 @@ final class BackgroundTypeFill extends BackgroundType {
   const BackgroundTypeFill({
     required this.fill,
   });
-  
+
   /// The background fill
   final BackgroundFill fill;
-  
+
   /// Parse from a json
-  factory BackgroundTypeFill.fromJson(Map<String, dynamic> json) => BackgroundTypeFill(
-    fill: BackgroundFill.fromJson(json['fill']),
-  );
-  
-  
+  factory BackgroundTypeFill.fromJson(Map<String, dynamic> json) =>
+      BackgroundTypeFill(
+        fill: BackgroundFill.fromJson(json['fill']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "fill": fill.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -254,9 +249,10 @@ final class BackgroundTypeFill extends BackgroundType {
   @override
   BackgroundTypeFill copyWith({
     BackgroundFill? fill,
-  }) => BackgroundTypeFill(
-    fill: fill ?? this.fill,
-  );
+  }) =>
+      BackgroundTypeFill(
+        fill: fill ?? this.fill,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'backgroundTypeFill';
@@ -270,14 +266,12 @@ final class BackgroundTypeFill extends BackgroundType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **BackgroundTypeChatTheme** *(backgroundTypeChatTheme)* - child of BackgroundType
 ///
 /// A background from a chat theme; can be used only as a chat background in channels.
 ///
 /// * [themeName]: Name of the chat theme.
 final class BackgroundTypeChatTheme extends BackgroundType {
-  
   /// **BackgroundTypeChatTheme** *(backgroundTypeChatTheme)* - child of BackgroundType
   ///
   /// A background from a chat theme; can be used only as a chat background in channels.
@@ -286,24 +280,24 @@ final class BackgroundTypeChatTheme extends BackgroundType {
   const BackgroundTypeChatTheme({
     required this.themeName,
   });
-  
+
   /// Name of the chat theme
   final String themeName;
-  
+
   /// Parse from a json
-  factory BackgroundTypeChatTheme.fromJson(Map<String, dynamic> json) => BackgroundTypeChatTheme(
-    themeName: json['theme_name'],
-  );
-  
-  
+  factory BackgroundTypeChatTheme.fromJson(Map<String, dynamic> json) =>
+      BackgroundTypeChatTheme(
+        themeName: json['theme_name'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "theme_name": themeName,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -312,9 +306,10 @@ final class BackgroundTypeChatTheme extends BackgroundType {
   @override
   BackgroundTypeChatTheme copyWith({
     String? themeName,
-  }) => BackgroundTypeChatTheme(
-    themeName: themeName ?? this.themeName,
-  );
+  }) =>
+      BackgroundTypeChatTheme(
+        themeName: themeName ?? this.themeName,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'backgroundTypeChatTheme';

@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [RecommendedChatFolders] is returned on completion.
 final class GetRecommendedChatFolders extends TdFunction {
-  
   /// **GetRecommendedChatFolders** *(getRecommendedChatFolders)* - TDLib function
   ///
   /// Returns recommended chat folders for the current user.
   ///
   /// [RecommendedChatFolders] is returned on completion.
   const GetRecommendedChatFolders();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   GetRecommendedChatFolders copyWith() => const GetRecommendedChatFolders();

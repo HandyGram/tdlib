@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 /// * [viaChatFolderInviteLink]: True, if the user has joined the chat using an invite link for a chat folder.
 /// * [approverUserId]: User identifier of the chat administrator, approved user join request.
 final class ChatInviteLinkMember extends TdObject {
-  
   /// **ChatInviteLinkMember** *(chatInviteLinkMember)* - basic class
   ///
   /// Describes a chat member joined a chat via an invite link.
@@ -24,7 +23,7 @@ final class ChatInviteLinkMember extends TdObject {
     required this.viaChatFolderInviteLink,
     required this.approverUserId,
   });
-  
+
   /// User identifier
   final int userId;
 
@@ -36,27 +35,27 @@ final class ChatInviteLinkMember extends TdObject {
 
   /// User identifier of the chat administrator, approved user join request
   final int approverUserId;
-  
+
   /// Parse from a json
-  factory ChatInviteLinkMember.fromJson(Map<String, dynamic> json) => ChatInviteLinkMember(
-    userId: json['user_id'],
-    joinedChatDate: json['joined_chat_date'],
-    viaChatFolderInviteLink: json['via_chat_folder_invite_link'],
-    approverUserId: json['approver_user_id'],
-  );
-  
-  
+  factory ChatInviteLinkMember.fromJson(Map<String, dynamic> json) =>
+      ChatInviteLinkMember(
+        userId: json['user_id'],
+        joinedChatDate: json['joined_chat_date'],
+        viaChatFolderInviteLink: json['via_chat_folder_invite_link'],
+        approverUserId: json['approver_user_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "user_id": userId,
       "joined_chat_date": joinedChatDate,
       "via_chat_folder_invite_link": viaChatFolderInviteLink,
       "approver_user_id": approverUserId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -70,12 +69,14 @@ final class ChatInviteLinkMember extends TdObject {
     int? joinedChatDate,
     bool? viaChatFolderInviteLink,
     int? approverUserId,
-  }) => ChatInviteLinkMember(
-    userId: userId ?? this.userId,
-    joinedChatDate: joinedChatDate ?? this.joinedChatDate,
-    viaChatFolderInviteLink: viaChatFolderInviteLink ?? this.viaChatFolderInviteLink,
-    approverUserId: approverUserId ?? this.approverUserId,
-  );
+  }) =>
+      ChatInviteLinkMember(
+        userId: userId ?? this.userId,
+        joinedChatDate: joinedChatDate ?? this.joinedChatDate,
+        viaChatFolderInviteLink:
+            viaChatFolderInviteLink ?? this.viaChatFolderInviteLink,
+        approverUserId: approverUserId ?? this.approverUserId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatInviteLinkMember';

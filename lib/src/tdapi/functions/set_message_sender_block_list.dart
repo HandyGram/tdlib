@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetMessageSenderBlockList extends TdFunction {
-  
   /// **SetMessageSenderBlockList** *(setMessageSenderBlockList)* - TDLib function
   ///
   /// Changes the block list of a message sender. Currently, only users and supergroup chats can be blocked.
@@ -22,23 +21,23 @@ final class SetMessageSenderBlockList extends TdFunction {
     required this.senderId,
     this.blockList,
   });
-  
+
   /// Identifier of a message sender to block/unblock
   final MessageSender senderId;
 
   /// New block list for the message sender; pass null to unblock the message sender
   final BlockList? blockList;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sender_id": senderId.toJson(),
       "block_list": blockList?.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class SetMessageSenderBlockList extends TdFunction {
   SetMessageSenderBlockList copyWith({
     MessageSender? senderId,
     BlockList? blockList,
-  }) => SetMessageSenderBlockList(
-    senderId: senderId ?? this.senderId,
-    blockList: blockList ?? this.blockList,
-  );
+  }) =>
+      SetMessageSenderBlockList(
+        senderId: senderId ?? this.senderId,
+        blockList: blockList ?? this.blockList,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setMessageSenderBlockList';

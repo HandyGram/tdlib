@@ -4,20 +4,19 @@ part of '../tdapi.dart';
 ///
 /// Describes the current state of the connection to Telegram servers.
 sealed class ConnectionState extends TdObject {
-  
   /// **ConnectionState** *(connectionState)* - parent
   ///
   /// Describes the current state of the connection to Telegram servers.
   const ConnectionState();
-  
+
   /// a ConnectionState return type can be :
   /// * [ConnectionStateWaitingForNetwork]
   /// * [ConnectionStateConnectingToProxy]
   /// * [ConnectionStateConnecting]
   /// * [ConnectionStateUpdating]
   /// * [ConnectionStateReady]
-  factory ConnectionState.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory ConnectionState.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case ConnectionStateWaitingForNetwork.defaultObjectId:
         return ConnectionStateWaitingForNetwork.fromJson(json);
       case ConnectionStateConnectingToProxy.defaultObjectId:
@@ -35,7 +34,7 @@ sealed class ConnectionState extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -55,31 +54,32 @@ sealed class ConnectionState extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **ConnectionStateWaitingForNetwork** *(connectionStateWaitingForNetwork)* - child of ConnectionState
 ///
 /// Waiting for the network to become available. Use setNetworkType to change the available network type.
 final class ConnectionStateWaitingForNetwork extends ConnectionState {
-  
   /// **ConnectionStateWaitingForNetwork** *(connectionStateWaitingForNetwork)* - child of ConnectionState
   ///
   /// Waiting for the network to become available. Use setNetworkType to change the available network type.
   const ConnectionStateWaitingForNetwork();
-  
+
   /// Parse from a json
-  factory ConnectionStateWaitingForNetwork.fromJson(Map<String, dynamic> json) => const ConnectionStateWaitingForNetwork();
-  
+  factory ConnectionStateWaitingForNetwork.fromJson(
+          Map<String, dynamic> json) =>
+      const ConnectionStateWaitingForNetwork();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  ConnectionStateWaitingForNetwork copyWith() => const ConnectionStateWaitingForNetwork();
+  ConnectionStateWaitingForNetwork copyWith() =>
+      const ConnectionStateWaitingForNetwork();
 
   /// TDLib object type
   static const String defaultObjectId = 'connectionStateWaitingForNetwork';
@@ -93,31 +93,32 @@ final class ConnectionStateWaitingForNetwork extends ConnectionState {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **ConnectionStateConnectingToProxy** *(connectionStateConnectingToProxy)* - child of ConnectionState
 ///
 /// Establishing a connection with a proxy server.
 final class ConnectionStateConnectingToProxy extends ConnectionState {
-  
   /// **ConnectionStateConnectingToProxy** *(connectionStateConnectingToProxy)* - child of ConnectionState
   ///
   /// Establishing a connection with a proxy server.
   const ConnectionStateConnectingToProxy();
-  
+
   /// Parse from a json
-  factory ConnectionStateConnectingToProxy.fromJson(Map<String, dynamic> json) => const ConnectionStateConnectingToProxy();
-  
+  factory ConnectionStateConnectingToProxy.fromJson(
+          Map<String, dynamic> json) =>
+      const ConnectionStateConnectingToProxy();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  ConnectionStateConnectingToProxy copyWith() => const ConnectionStateConnectingToProxy();
+  ConnectionStateConnectingToProxy copyWith() =>
+      const ConnectionStateConnectingToProxy();
 
   /// TDLib object type
   static const String defaultObjectId = 'connectionStateConnectingToProxy';
@@ -131,27 +132,26 @@ final class ConnectionStateConnectingToProxy extends ConnectionState {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **ConnectionStateConnecting** *(connectionStateConnecting)* - child of ConnectionState
 ///
 /// Establishing a connection to the Telegram servers.
 final class ConnectionStateConnecting extends ConnectionState {
-  
   /// **ConnectionStateConnecting** *(connectionStateConnecting)* - child of ConnectionState
   ///
   /// Establishing a connection to the Telegram servers.
   const ConnectionStateConnecting();
-  
+
   /// Parse from a json
-  factory ConnectionStateConnecting.fromJson(Map<String, dynamic> json) => const ConnectionStateConnecting();
-  
+  factory ConnectionStateConnecting.fromJson(Map<String, dynamic> json) =>
+      const ConnectionStateConnecting();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -169,27 +169,26 @@ final class ConnectionStateConnecting extends ConnectionState {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **ConnectionStateUpdating** *(connectionStateUpdating)* - child of ConnectionState
 ///
 /// Downloading data supposed to be received while the application was offline.
 final class ConnectionStateUpdating extends ConnectionState {
-  
   /// **ConnectionStateUpdating** *(connectionStateUpdating)* - child of ConnectionState
   ///
   /// Downloading data supposed to be received while the application was offline.
   const ConnectionStateUpdating();
-  
+
   /// Parse from a json
-  factory ConnectionStateUpdating.fromJson(Map<String, dynamic> json) => const ConnectionStateUpdating();
-  
+  factory ConnectionStateUpdating.fromJson(Map<String, dynamic> json) =>
+      const ConnectionStateUpdating();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -207,27 +206,26 @@ final class ConnectionStateUpdating extends ConnectionState {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **ConnectionStateReady** *(connectionStateReady)* - child of ConnectionState
 ///
 /// There is a working connection to the Telegram servers.
 final class ConnectionStateReady extends ConnectionState {
-  
   /// **ConnectionStateReady** *(connectionStateReady)* - child of ConnectionState
   ///
   /// There is a working connection to the Telegram servers.
   const ConnectionStateReady();
-  
+
   /// Parse from a json
-  factory ConnectionStateReady.fromJson(Map<String, dynamic> json) => const ConnectionStateReady();
-  
+  factory ConnectionStateReady.fromJson(Map<String, dynamic> json) =>
+      const ConnectionStateReady();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override

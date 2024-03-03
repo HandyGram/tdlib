@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class AddStickerToSet extends TdFunction {
-  
   /// **AddStickerToSet** *(addStickerToSet)* - TDLib function
   ///
   /// Adds a new sticker to a set; for bots only.
@@ -25,7 +24,7 @@ final class AddStickerToSet extends TdFunction {
     required this.name,
     required this.sticker,
   });
-  
+
   /// Sticker set owner
   final int userId;
 
@@ -34,18 +33,18 @@ final class AddStickerToSet extends TdFunction {
 
   /// Sticker to add to the set
   final InputSticker sticker;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "user_id": userId,
       "name": name,
       "sticker": sticker.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class AddStickerToSet extends TdFunction {
     int? userId,
     String? name,
     InputSticker? sticker,
-  }) => AddStickerToSet(
-    userId: userId ?? this.userId,
-    name: name ?? this.name,
-    sticker: sticker ?? this.sticker,
-  );
+  }) =>
+      AddStickerToSet(
+        userId: userId ?? this.userId,
+        name: name ?? this.name,
+        sticker: sticker ?? this.sticker,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'addStickerToSet';

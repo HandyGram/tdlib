@@ -4,12 +4,11 @@ part of '../tdapi.dart';
 ///
 /// Describes the current call state.
 sealed class CallState extends TdObject {
-  
   /// **CallState** *(callState)* - parent
   ///
   /// Describes the current call state.
   const CallState();
-  
+
   /// a CallState return type can be :
   /// * [CallStatePending]
   /// * [CallStateExchangingKeys]
@@ -17,8 +16,8 @@ sealed class CallState extends TdObject {
   /// * [CallStateHangingUp]
   /// * [CallStateDiscarded]
   /// * [CallStateError]
-  factory CallState.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory CallState.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case CallStatePending.defaultObjectId:
         return CallStatePending.fromJson(json);
       case CallStateExchangingKeys.defaultObjectId:
@@ -38,7 +37,7 @@ sealed class CallState extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -58,7 +57,6 @@ sealed class CallState extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **CallStatePending** *(callStatePending)* - child of CallState
 ///
 /// The call is pending, waiting to be accepted by a user.
@@ -66,7 +64,6 @@ sealed class CallState extends TdObject {
 /// * [isCreated]: True, if the call has already been created by the server.
 /// * [isReceived]: True, if the call has already been received by the other party.
 final class CallStatePending extends CallState {
-  
   /// **CallStatePending** *(callStatePending)* - child of CallState
   ///
   /// The call is pending, waiting to be accepted by a user.
@@ -77,43 +74,44 @@ final class CallStatePending extends CallState {
     required this.isCreated,
     required this.isReceived,
   });
-  
-  /// True, if the call has already been created by the server 
+
+  /// True, if the call has already been created by the server
   final bool isCreated;
 
   /// True, if the call has already been received by the other party
   final bool isReceived;
-  
+
   /// Parse from a json
-  factory CallStatePending.fromJson(Map<String, dynamic> json) => CallStatePending(
-    isCreated: json['is_created'],
-    isReceived: json['is_received'],
-  );
-  
-  
+  factory CallStatePending.fromJson(Map<String, dynamic> json) =>
+      CallStatePending(
+        isCreated: json['is_created'],
+        isReceived: json['is_received'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "is_created": isCreated,
       "is_received": isReceived,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [is_created]: True, if the call has already been created by the server 
+  /// * [is_created]: True, if the call has already been created by the server
   /// * [is_received]: True, if the call has already been received by the other party
   @override
   CallStatePending copyWith({
     bool? isCreated,
     bool? isReceived,
-  }) => CallStatePending(
-    isCreated: isCreated ?? this.isCreated,
-    isReceived: isReceived ?? this.isReceived,
-  );
+  }) =>
+      CallStatePending(
+        isCreated: isCreated ?? this.isCreated,
+        isReceived: isReceived ?? this.isReceived,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'callStatePending';
@@ -127,27 +125,26 @@ final class CallStatePending extends CallState {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **CallStateExchangingKeys** *(callStateExchangingKeys)* - child of CallState
 ///
 /// The call has been answered and encryption keys are being exchanged.
 final class CallStateExchangingKeys extends CallState {
-  
   /// **CallStateExchangingKeys** *(callStateExchangingKeys)* - child of CallState
   ///
   /// The call has been answered and encryption keys are being exchanged.
   const CallStateExchangingKeys();
-  
+
   /// Parse from a json
-  factory CallStateExchangingKeys.fromJson(Map<String, dynamic> json) => const CallStateExchangingKeys();
-  
+  factory CallStateExchangingKeys.fromJson(Map<String, dynamic> json) =>
+      const CallStateExchangingKeys();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -165,7 +162,6 @@ final class CallStateExchangingKeys extends CallState {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **CallStateReady** *(callStateReady)* - child of CallState
 ///
 /// The call is ready to use.
@@ -177,7 +173,6 @@ final class CallStateExchangingKeys extends CallState {
 /// * [emojis]: Encryption key emojis fingerprint.
 /// * [allowP2p]: True, if peer-to-peer connection is allowed by users privacy settings.
 final class CallStateReady extends CallState {
-  
   /// **CallStateReady** *(callStateReady)* - child of CallState
   ///
   /// The call is ready to use.
@@ -196,7 +191,7 @@ final class CallStateReady extends CallState {
     required this.emojis,
     required this.allowP2p,
   });
-  
+
   /// Call protocols supported by the other call participant
   final CallProtocol protocol;
 
@@ -214,31 +209,33 @@ final class CallStateReady extends CallState {
 
   /// True, if peer-to-peer connection is allowed by users privacy settings
   final bool allowP2p;
-  
+
   /// Parse from a json
   factory CallStateReady.fromJson(Map<String, dynamic> json) => CallStateReady(
-    protocol: CallProtocol.fromJson(json['protocol']),
-    servers: List<CallServer>.from((json['servers'] ?? []).map((item) => CallServer.fromJson(item)).toList()),
-    config: json['config'],
-    encryptionKey: json['encryption_key'],
-    emojis: List<String>.from((json['emojis'] ?? []).map((item) => item).toList()),
-    allowP2p: json['allow_p2p'],
-  );
-  
-  
+        protocol: CallProtocol.fromJson(json['protocol']),
+        servers: List<CallServer>.from((json['servers'] ?? [])
+            .map((item) => CallServer.fromJson(item))
+            .toList()),
+        config: json['config'],
+        encryptionKey: json['encryption_key'],
+        emojis: List<String>.from(
+            (json['emojis'] ?? []).map((item) => item).toList()),
+        allowP2p: json['allow_p2p'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "protocol": protocol.toJson(),
       "servers": servers.map((i) => i.toJson()).toList(),
       "config": config,
       "encryption_key": encryptionKey,
       "emojis": emojis.map((i) => i).toList(),
       "allow_p2p": allowP2p,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -257,14 +254,15 @@ final class CallStateReady extends CallState {
     String? encryptionKey,
     List<String>? emojis,
     bool? allowP2p,
-  }) => CallStateReady(
-    protocol: protocol ?? this.protocol,
-    servers: servers ?? this.servers,
-    config: config ?? this.config,
-    encryptionKey: encryptionKey ?? this.encryptionKey,
-    emojis: emojis ?? this.emojis,
-    allowP2p: allowP2p ?? this.allowP2p,
-  );
+  }) =>
+      CallStateReady(
+        protocol: protocol ?? this.protocol,
+        servers: servers ?? this.servers,
+        config: config ?? this.config,
+        encryptionKey: encryptionKey ?? this.encryptionKey,
+        emojis: emojis ?? this.emojis,
+        allowP2p: allowP2p ?? this.allowP2p,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'callStateReady';
@@ -278,27 +276,26 @@ final class CallStateReady extends CallState {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **CallStateHangingUp** *(callStateHangingUp)* - child of CallState
 ///
 /// The call is hanging up after discardCall has been called.
 final class CallStateHangingUp extends CallState {
-  
   /// **CallStateHangingUp** *(callStateHangingUp)* - child of CallState
   ///
   /// The call is hanging up after discardCall has been called.
   const CallStateHangingUp();
-  
+
   /// Parse from a json
-  factory CallStateHangingUp.fromJson(Map<String, dynamic> json) => const CallStateHangingUp();
-  
+  factory CallStateHangingUp.fromJson(Map<String, dynamic> json) =>
+      const CallStateHangingUp();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -316,7 +313,6 @@ final class CallStateHangingUp extends CallState {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **CallStateDiscarded** *(callStateDiscarded)* - child of CallState
 ///
 /// The call has ended successfully.
@@ -326,7 +322,6 @@ final class CallStateHangingUp extends CallState {
 /// * [needDebugInformation]: True, if the call debug information must be sent to the server.
 /// * [needLog]: True, if the call log must be sent to the server.
 final class CallStateDiscarded extends CallState {
-  
   /// **CallStateDiscarded** *(callStateDiscarded)* - child of CallState
   ///
   /// The call has ended successfully.
@@ -341,7 +336,7 @@ final class CallStateDiscarded extends CallState {
     required this.needDebugInformation,
     required this.needLog,
   });
-  
+
   /// The reason why the call has ended
   final CallDiscardReason reason;
 
@@ -353,27 +348,27 @@ final class CallStateDiscarded extends CallState {
 
   /// True, if the call log must be sent to the server
   final bool needLog;
-  
+
   /// Parse from a json
-  factory CallStateDiscarded.fromJson(Map<String, dynamic> json) => CallStateDiscarded(
-    reason: CallDiscardReason.fromJson(json['reason']),
-    needRating: json['need_rating'],
-    needDebugInformation: json['need_debug_information'],
-    needLog: json['need_log'],
-  );
-  
-  
+  factory CallStateDiscarded.fromJson(Map<String, dynamic> json) =>
+      CallStateDiscarded(
+        reason: CallDiscardReason.fromJson(json['reason']),
+        needRating: json['need_rating'],
+        needDebugInformation: json['need_debug_information'],
+        needLog: json['need_log'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "reason": reason.toJson(),
       "need_rating": needRating,
       "need_debug_information": needDebugInformation,
       "need_log": needLog,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -388,12 +383,13 @@ final class CallStateDiscarded extends CallState {
     bool? needRating,
     bool? needDebugInformation,
     bool? needLog,
-  }) => CallStateDiscarded(
-    reason: reason ?? this.reason,
-    needRating: needRating ?? this.needRating,
-    needDebugInformation: needDebugInformation ?? this.needDebugInformation,
-    needLog: needLog ?? this.needLog,
-  );
+  }) =>
+      CallStateDiscarded(
+        reason: reason ?? this.reason,
+        needRating: needRating ?? this.needRating,
+        needDebugInformation: needDebugInformation ?? this.needDebugInformation,
+        needLog: needLog ?? this.needLog,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'callStateDiscarded';
@@ -407,14 +403,12 @@ final class CallStateDiscarded extends CallState {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **CallStateError** *(callStateError)* - child of CallState
 ///
 /// The call has ended with an error.
 ///
 /// * [error]: Error. An error with the code 4005000 will be returned if an outgoing call is missed because of an expired timeout.
 final class CallStateError extends CallState {
-  
   /// **CallStateError** *(callStateError)* - child of CallState
   ///
   /// The call has ended with an error.
@@ -423,24 +417,23 @@ final class CallStateError extends CallState {
   const CallStateError({
     required this.error,
   });
-  
+
   /// Error. An error with the code 4005000 will be returned if an outgoing call is missed because of an expired timeout
   final TdError error;
-  
+
   /// Parse from a json
   factory CallStateError.fromJson(Map<String, dynamic> json) => CallStateError(
-    error: TdError.fromJson(json['error']),
-  );
-  
-  
+        error: TdError.fromJson(json['error']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "error": error.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -449,9 +442,10 @@ final class CallStateError extends CallState {
   @override
   CallStateError copyWith({
     TdError? error,
-  }) => CallStateError(
-    error: error ?? this.error,
-  );
+  }) =>
+      CallStateError(
+        error: error ?? this.error,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'callStateError';

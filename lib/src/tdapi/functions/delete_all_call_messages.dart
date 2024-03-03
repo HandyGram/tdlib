@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class DeleteAllCallMessages extends TdFunction {
-  
   /// **DeleteAllCallMessages** *(deleteAllCallMessages)* - TDLib function
   ///
   /// Deletes all call messages.
@@ -19,19 +18,19 @@ final class DeleteAllCallMessages extends TdFunction {
   const DeleteAllCallMessages({
     required this.revoke,
   });
-  
+
   /// Pass true to delete the messages for all users
   final bool revoke;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "revoke": revoke,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class DeleteAllCallMessages extends TdFunction {
   /// * [revoke]: Pass true to delete the messages for all users
   DeleteAllCallMessages copyWith({
     bool? revoke,
-  }) => DeleteAllCallMessages(
-    revoke: revoke ?? this.revoke,
-  );
+  }) =>
+      DeleteAllCallMessages(
+        revoke: revoke ?? this.revoke,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'deleteAllCallMessages';

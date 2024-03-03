@@ -4,12 +4,11 @@ part of '../tdapi.dart';
 ///
 /// Specifies the kind of chat members to return in getSupergroupMembers.
 sealed class SupergroupMembersFilter extends TdObject {
-  
   /// **SupergroupMembersFilter** *(supergroupMembersFilter)* - parent
   ///
   /// Specifies the kind of chat members to return in getSupergroupMembers.
   const SupergroupMembersFilter();
-  
+
   /// a SupergroupMembersFilter return type can be :
   /// * [SupergroupMembersFilterRecent]
   /// * [SupergroupMembersFilterContacts]
@@ -19,8 +18,8 @@ sealed class SupergroupMembersFilter extends TdObject {
   /// * [SupergroupMembersFilterBanned]
   /// * [SupergroupMembersFilterMention]
   /// * [SupergroupMembersFilterBots]
-  factory SupergroupMembersFilter.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory SupergroupMembersFilter.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case SupergroupMembersFilterRecent.defaultObjectId:
         return SupergroupMembersFilterRecent.fromJson(json);
       case SupergroupMembersFilterContacts.defaultObjectId:
@@ -44,7 +43,7 @@ sealed class SupergroupMembersFilter extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -64,31 +63,31 @@ sealed class SupergroupMembersFilter extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SupergroupMembersFilterRecent** *(supergroupMembersFilterRecent)* - child of SupergroupMembersFilter
 ///
 /// Returns recently active users in reverse chronological order.
 final class SupergroupMembersFilterRecent extends SupergroupMembersFilter {
-  
   /// **SupergroupMembersFilterRecent** *(supergroupMembersFilterRecent)* - child of SupergroupMembersFilter
   ///
   /// Returns recently active users in reverse chronological order.
   const SupergroupMembersFilterRecent();
-  
+
   /// Parse from a json
-  factory SupergroupMembersFilterRecent.fromJson(Map<String, dynamic> json) => const SupergroupMembersFilterRecent();
-  
+  factory SupergroupMembersFilterRecent.fromJson(Map<String, dynamic> json) =>
+      const SupergroupMembersFilterRecent();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  SupergroupMembersFilterRecent copyWith() => const SupergroupMembersFilterRecent();
+  SupergroupMembersFilterRecent copyWith() =>
+      const SupergroupMembersFilterRecent();
 
   /// TDLib object type
   static const String defaultObjectId = 'supergroupMembersFilterRecent';
@@ -102,14 +101,12 @@ final class SupergroupMembersFilterRecent extends SupergroupMembersFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SupergroupMembersFilterContacts** *(supergroupMembersFilterContacts)* - child of SupergroupMembersFilter
 ///
 /// Returns contacts of the user, which are members of the supergroup or channel.
 ///
 /// * [query]: Query to search for.
 final class SupergroupMembersFilterContacts extends SupergroupMembersFilter {
-  
   /// **SupergroupMembersFilterContacts** *(supergroupMembersFilterContacts)* - child of SupergroupMembersFilter
   ///
   /// Returns contacts of the user, which are members of the supergroup or channel.
@@ -118,24 +115,24 @@ final class SupergroupMembersFilterContacts extends SupergroupMembersFilter {
   const SupergroupMembersFilterContacts({
     required this.query,
   });
-  
+
   /// Query to search for
   final String query;
-  
+
   /// Parse from a json
-  factory SupergroupMembersFilterContacts.fromJson(Map<String, dynamic> json) => SupergroupMembersFilterContacts(
-    query: json['query'],
-  );
-  
-  
+  factory SupergroupMembersFilterContacts.fromJson(Map<String, dynamic> json) =>
+      SupergroupMembersFilterContacts(
+        query: json['query'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "query": query,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -144,9 +141,10 @@ final class SupergroupMembersFilterContacts extends SupergroupMembersFilter {
   @override
   SupergroupMembersFilterContacts copyWith({
     String? query,
-  }) => SupergroupMembersFilterContacts(
-    query: query ?? this.query,
-  );
+  }) =>
+      SupergroupMembersFilterContacts(
+        query: query ?? this.query,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'supergroupMembersFilterContacts';
@@ -160,31 +158,33 @@ final class SupergroupMembersFilterContacts extends SupergroupMembersFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SupergroupMembersFilterAdministrators** *(supergroupMembersFilterAdministrators)* - child of SupergroupMembersFilter
 ///
 /// Returns the owner and administrators.
-final class SupergroupMembersFilterAdministrators extends SupergroupMembersFilter {
-  
+final class SupergroupMembersFilterAdministrators
+    extends SupergroupMembersFilter {
   /// **SupergroupMembersFilterAdministrators** *(supergroupMembersFilterAdministrators)* - child of SupergroupMembersFilter
   ///
   /// Returns the owner and administrators.
   const SupergroupMembersFilterAdministrators();
-  
+
   /// Parse from a json
-  factory SupergroupMembersFilterAdministrators.fromJson(Map<String, dynamic> json) => const SupergroupMembersFilterAdministrators();
-  
+  factory SupergroupMembersFilterAdministrators.fromJson(
+          Map<String, dynamic> json) =>
+      const SupergroupMembersFilterAdministrators();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  SupergroupMembersFilterAdministrators copyWith() => const SupergroupMembersFilterAdministrators();
+  SupergroupMembersFilterAdministrators copyWith() =>
+      const SupergroupMembersFilterAdministrators();
 
   /// TDLib object type
   static const String defaultObjectId = 'supergroupMembersFilterAdministrators';
@@ -198,14 +198,12 @@ final class SupergroupMembersFilterAdministrators extends SupergroupMembersFilte
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SupergroupMembersFilterSearch** *(supergroupMembersFilterSearch)* - child of SupergroupMembersFilter
 ///
 /// Used to search for supergroup or channel members via a (string) query.
 ///
 /// * [query]: Query to search for.
 final class SupergroupMembersFilterSearch extends SupergroupMembersFilter {
-  
   /// **SupergroupMembersFilterSearch** *(supergroupMembersFilterSearch)* - child of SupergroupMembersFilter
   ///
   /// Used to search for supergroup or channel members via a (string) query.
@@ -214,24 +212,24 @@ final class SupergroupMembersFilterSearch extends SupergroupMembersFilter {
   const SupergroupMembersFilterSearch({
     required this.query,
   });
-  
+
   /// Query to search for
   final String query;
-  
+
   /// Parse from a json
-  factory SupergroupMembersFilterSearch.fromJson(Map<String, dynamic> json) => SupergroupMembersFilterSearch(
-    query: json['query'],
-  );
-  
-  
+  factory SupergroupMembersFilterSearch.fromJson(Map<String, dynamic> json) =>
+      SupergroupMembersFilterSearch(
+        query: json['query'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "query": query,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -240,9 +238,10 @@ final class SupergroupMembersFilterSearch extends SupergroupMembersFilter {
   @override
   SupergroupMembersFilterSearch copyWith({
     String? query,
-  }) => SupergroupMembersFilterSearch(
-    query: query ?? this.query,
-  );
+  }) =>
+      SupergroupMembersFilterSearch(
+        query: query ?? this.query,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'supergroupMembersFilterSearch';
@@ -256,14 +255,12 @@ final class SupergroupMembersFilterSearch extends SupergroupMembersFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SupergroupMembersFilterRestricted** *(supergroupMembersFilterRestricted)* - child of SupergroupMembersFilter
 ///
 /// Returns restricted supergroup members; can be used only by administrators.
 ///
 /// * [query]: Query to search for.
 final class SupergroupMembersFilterRestricted extends SupergroupMembersFilter {
-  
   /// **SupergroupMembersFilterRestricted** *(supergroupMembersFilterRestricted)* - child of SupergroupMembersFilter
   ///
   /// Returns restricted supergroup members; can be used only by administrators.
@@ -272,24 +269,25 @@ final class SupergroupMembersFilterRestricted extends SupergroupMembersFilter {
   const SupergroupMembersFilterRestricted({
     required this.query,
   });
-  
+
   /// Query to search for
   final String query;
-  
+
   /// Parse from a json
-  factory SupergroupMembersFilterRestricted.fromJson(Map<String, dynamic> json) => SupergroupMembersFilterRestricted(
-    query: json['query'],
-  );
-  
-  
+  factory SupergroupMembersFilterRestricted.fromJson(
+          Map<String, dynamic> json) =>
+      SupergroupMembersFilterRestricted(
+        query: json['query'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "query": query,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -298,9 +296,10 @@ final class SupergroupMembersFilterRestricted extends SupergroupMembersFilter {
   @override
   SupergroupMembersFilterRestricted copyWith({
     String? query,
-  }) => SupergroupMembersFilterRestricted(
-    query: query ?? this.query,
-  );
+  }) =>
+      SupergroupMembersFilterRestricted(
+        query: query ?? this.query,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'supergroupMembersFilterRestricted';
@@ -314,14 +313,12 @@ final class SupergroupMembersFilterRestricted extends SupergroupMembersFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SupergroupMembersFilterBanned** *(supergroupMembersFilterBanned)* - child of SupergroupMembersFilter
 ///
 /// Returns users banned from the supergroup or channel; can be used only by administrators.
 ///
 /// * [query]: Query to search for.
 final class SupergroupMembersFilterBanned extends SupergroupMembersFilter {
-  
   /// **SupergroupMembersFilterBanned** *(supergroupMembersFilterBanned)* - child of SupergroupMembersFilter
   ///
   /// Returns users banned from the supergroup or channel; can be used only by administrators.
@@ -330,24 +327,24 @@ final class SupergroupMembersFilterBanned extends SupergroupMembersFilter {
   const SupergroupMembersFilterBanned({
     required this.query,
   });
-  
+
   /// Query to search for
   final String query;
-  
+
   /// Parse from a json
-  factory SupergroupMembersFilterBanned.fromJson(Map<String, dynamic> json) => SupergroupMembersFilterBanned(
-    query: json['query'],
-  );
-  
-  
+  factory SupergroupMembersFilterBanned.fromJson(Map<String, dynamic> json) =>
+      SupergroupMembersFilterBanned(
+        query: json['query'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "query": query,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -356,9 +353,10 @@ final class SupergroupMembersFilterBanned extends SupergroupMembersFilter {
   @override
   SupergroupMembersFilterBanned copyWith({
     String? query,
-  }) => SupergroupMembersFilterBanned(
-    query: query ?? this.query,
-  );
+  }) =>
+      SupergroupMembersFilterBanned(
+        query: query ?? this.query,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'supergroupMembersFilterBanned';
@@ -372,7 +370,6 @@ final class SupergroupMembersFilterBanned extends SupergroupMembersFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SupergroupMembersFilterMention** *(supergroupMembersFilterMention)* - child of SupergroupMembersFilter
 ///
 /// Returns users which can be mentioned in the supergroup.
@@ -380,7 +377,6 @@ final class SupergroupMembersFilterBanned extends SupergroupMembersFilter {
 /// * [query]: Query to search for.
 /// * [messageThreadId]: If non-zero, the identifier of the current message thread.
 final class SupergroupMembersFilterMention extends SupergroupMembersFilter {
-  
   /// **SupergroupMembersFilterMention** *(supergroupMembersFilterMention)* - child of SupergroupMembersFilter
   ///
   /// Returns users which can be mentioned in the supergroup.
@@ -391,43 +387,44 @@ final class SupergroupMembersFilterMention extends SupergroupMembersFilter {
     required this.query,
     required this.messageThreadId,
   });
-  
-  /// Query to search for 
+
+  /// Query to search for
   final String query;
 
   /// If non-zero, the identifier of the current message thread
   final int messageThreadId;
-  
+
   /// Parse from a json
-  factory SupergroupMembersFilterMention.fromJson(Map<String, dynamic> json) => SupergroupMembersFilterMention(
-    query: json['query'],
-    messageThreadId: json['message_thread_id'],
-  );
-  
-  
+  factory SupergroupMembersFilterMention.fromJson(Map<String, dynamic> json) =>
+      SupergroupMembersFilterMention(
+        query: json['query'],
+        messageThreadId: json['message_thread_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "query": query,
       "message_thread_id": messageThreadId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [query]: Query to search for 
+  /// * [query]: Query to search for
   /// * [message_thread_id]: If non-zero, the identifier of the current message thread
   @override
   SupergroupMembersFilterMention copyWith({
     String? query,
     int? messageThreadId,
-  }) => SupergroupMembersFilterMention(
-    query: query ?? this.query,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-  );
+  }) =>
+      SupergroupMembersFilterMention(
+        query: query ?? this.query,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'supergroupMembersFilterMention';
@@ -441,27 +438,26 @@ final class SupergroupMembersFilterMention extends SupergroupMembersFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SupergroupMembersFilterBots** *(supergroupMembersFilterBots)* - child of SupergroupMembersFilter
 ///
 /// Returns bot members of the supergroup or channel.
 final class SupergroupMembersFilterBots extends SupergroupMembersFilter {
-  
   /// **SupergroupMembersFilterBots** *(supergroupMembersFilterBots)* - child of SupergroupMembersFilter
   ///
   /// Returns bot members of the supergroup or channel.
   const SupergroupMembersFilterBots();
-  
+
   /// Parse from a json
-  factory SupergroupMembersFilterBots.fromJson(Map<String, dynamic> json) => const SupergroupMembersFilterBots();
-  
+  factory SupergroupMembersFilterBots.fromJson(Map<String, dynamic> json) =>
+      const SupergroupMembersFilterBots();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override

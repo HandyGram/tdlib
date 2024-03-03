@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 /// * [blockList]: Block list to which the actor is added; may be null if none or for chat stories *(optional)*.
 /// * [type]: Type of the interaction.
 final class StoryInteraction extends TdObject {
-  
   /// **StoryInteraction** *(storyInteraction)* - basic class
   ///
   /// Represents interaction with a story.
@@ -24,7 +23,7 @@ final class StoryInteraction extends TdObject {
     this.blockList,
     required this.type,
   });
-  
+
   /// Identifier of the user or chat that made the interaction
   final MessageSender actorId;
 
@@ -36,27 +35,29 @@ final class StoryInteraction extends TdObject {
 
   /// Type of the interaction
   final StoryInteractionType type;
-  
+
   /// Parse from a json
-  factory StoryInteraction.fromJson(Map<String, dynamic> json) => StoryInteraction(
-    actorId: MessageSender.fromJson(json['actor_id']),
-    interactionDate: json['interaction_date'],
-    blockList: json['block_list'] == null ? null : BlockList.fromJson(json['block_list']),
-    type: StoryInteractionType.fromJson(json['type']),
-  );
-  
-  
+  factory StoryInteraction.fromJson(Map<String, dynamic> json) =>
+      StoryInteraction(
+        actorId: MessageSender.fromJson(json['actor_id']),
+        interactionDate: json['interaction_date'],
+        blockList: json['block_list'] == null
+            ? null
+            : BlockList.fromJson(json['block_list']),
+        type: StoryInteractionType.fromJson(json['type']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "actor_id": actorId.toJson(),
       "interaction_date": interactionDate,
       "block_list": blockList?.toJson(),
       "type": type.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -70,12 +71,13 @@ final class StoryInteraction extends TdObject {
     int? interactionDate,
     BlockList? blockList,
     StoryInteractionType? type,
-  }) => StoryInteraction(
-    actorId: actorId ?? this.actorId,
-    interactionDate: interactionDate ?? this.interactionDate,
-    blockList: blockList ?? this.blockList,
-    type: type ?? this.type,
-  );
+  }) =>
+      StoryInteraction(
+        actorId: actorId ?? this.actorId,
+        interactionDate: interactionDate ?? this.interactionDate,
+        blockList: blockList ?? this.blockList,
+        type: type ?? this.type,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'storyInteraction';

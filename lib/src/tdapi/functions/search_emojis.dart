@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [EmojiKeywords] is returned on completion.
 final class SearchEmojis extends TdFunction {
-  
   /// **SearchEmojis** *(searchEmojis)* - TDLib function
   ///
   /// Searches for emojis by keywords. Supported only if the file database is enabled. Order of results is unspecified.
@@ -22,23 +21,23 @@ final class SearchEmojis extends TdFunction {
     required this.text,
     required this.inputLanguageCodes,
   });
-  
+
   /// Text to search for
   final String text;
 
   /// List of possible IETF language tags of the user's input language; may be empty if unknown
   final List<String> inputLanguageCodes;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "text": text,
       "input_language_codes": inputLanguageCodes.map((i) => i).toList(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class SearchEmojis extends TdFunction {
   SearchEmojis copyWith({
     String? text,
     List<String>? inputLanguageCodes,
-  }) => SearchEmojis(
-    text: text ?? this.text,
-    inputLanguageCodes: inputLanguageCodes ?? this.inputLanguageCodes,
-  );
+  }) =>
+      SearchEmojis(
+        text: text ?? this.text,
+        inputLanguageCodes: inputLanguageCodes ?? this.inputLanguageCodes,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'searchEmojis';

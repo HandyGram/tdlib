@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class DeletePassportElement extends TdFunction {
-  
   /// **DeletePassportElement** *(deletePassportElement)* - TDLib function
   ///
   /// Deletes a Telegram Passport element.
@@ -19,19 +18,19 @@ final class DeletePassportElement extends TdFunction {
   const DeletePassportElement({
     required this.type,
   });
-  
+
   /// Element type
   final PassportElementType type;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "type": type.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class DeletePassportElement extends TdFunction {
   /// * [type]: Element type
   DeletePassportElement copyWith({
     PassportElementType? type,
-  }) => DeletePassportElement(
-    type: type ?? this.type,
-  );
+  }) =>
+      DeletePassportElement(
+        type: type ?? this.type,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'deletePassportElement';

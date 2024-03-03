@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [Users] is returned on completion.
 final class GetCloseFriends extends TdFunction {
-  
   /// **GetCloseFriends** *(getCloseFriends)* - TDLib function
   ///
   /// Returns all close friends of the current user.
   ///
   /// [Users] is returned on completion.
   const GetCloseFriends();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   GetCloseFriends copyWith() => const GetCloseFriends();

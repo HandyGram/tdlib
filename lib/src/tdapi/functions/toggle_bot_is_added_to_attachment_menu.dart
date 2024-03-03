@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ToggleBotIsAddedToAttachmentMenu extends TdFunction {
-  
   /// **ToggleBotIsAddedToAttachmentMenu** *(toggleBotIsAddedToAttachmentMenu)* - TDLib function
   ///
   /// Adds or removes a bot to attachment and side menu. Bot can be added to the menu, only if userTypeBot.can_be_added_to_attachment_menu == true.
@@ -25,7 +24,7 @@ final class ToggleBotIsAddedToAttachmentMenu extends TdFunction {
     required this.isAdded,
     required this.allowWriteAccess,
   });
-  
+
   /// Bot's user identifier
   final int botUserId;
 
@@ -34,18 +33,18 @@ final class ToggleBotIsAddedToAttachmentMenu extends TdFunction {
 
   /// Pass true if the current user allowed the bot to send them messages. Ignored if is_added is false
   final bool allowWriteAccess;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "bot_user_id": botUserId,
       "is_added": isAdded,
       "allow_write_access": allowWriteAccess,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class ToggleBotIsAddedToAttachmentMenu extends TdFunction {
     int? botUserId,
     bool? isAdded,
     bool? allowWriteAccess,
-  }) => ToggleBotIsAddedToAttachmentMenu(
-    botUserId: botUserId ?? this.botUserId,
-    isAdded: isAdded ?? this.isAdded,
-    allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
-  );
+  }) =>
+      ToggleBotIsAddedToAttachmentMenu(
+        botUserId: botUserId ?? this.botUserId,
+        isAdded: isAdded ?? this.isAdded,
+        allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'toggleBotIsAddedToAttachmentMenu';

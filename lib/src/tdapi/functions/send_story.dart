@@ -16,7 +16,6 @@ part of '../tdapi.dart';
 ///
 /// [Story] is returned on completion.
 final class SendStory extends TdFunction {
-  
   /// **SendStory** *(sendStory)* - TDLib function
   ///
   /// Sends a new story to a chat; requires can_post_stories right for supergroup and channel chats. Returns a temporary story.
@@ -43,7 +42,7 @@ final class SendStory extends TdFunction {
     required this.isPinned,
     required this.protectContent,
   });
-  
+
   /// Identifier of the chat that will post the story
   final int chatId;
 
@@ -70,12 +69,12 @@ final class SendStory extends TdFunction {
 
   /// Pass true if the content of the story must be protected from forwarding and screenshotting
   final bool protectContent;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "content": content.toJson(),
       "areas": areas?.toJson(),
@@ -86,8 +85,8 @@ final class SendStory extends TdFunction {
       "is_pinned": isPinned,
       "protect_content": protectContent,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -111,17 +110,18 @@ final class SendStory extends TdFunction {
     StoryFullId? fromStoryFullId,
     bool? isPinned,
     bool? protectContent,
-  }) => SendStory(
-    chatId: chatId ?? this.chatId,
-    content: content ?? this.content,
-    areas: areas ?? this.areas,
-    caption: caption ?? this.caption,
-    privacySettings: privacySettings ?? this.privacySettings,
-    activePeriod: activePeriod ?? this.activePeriod,
-    fromStoryFullId: fromStoryFullId ?? this.fromStoryFullId,
-    isPinned: isPinned ?? this.isPinned,
-    protectContent: protectContent ?? this.protectContent,
-  );
+  }) =>
+      SendStory(
+        chatId: chatId ?? this.chatId,
+        content: content ?? this.content,
+        areas: areas ?? this.areas,
+        caption: caption ?? this.caption,
+        privacySettings: privacySettings ?? this.privacySettings,
+        activePeriod: activePeriod ?? this.activePeriod,
+        fromStoryFullId: fromStoryFullId ?? this.fromStoryFullId,
+        isPinned: isPinned ?? this.isPinned,
+        protectContent: protectContent ?? this.protectContent,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'sendStory';

@@ -23,7 +23,6 @@ part of '../tdapi.dart';
 /// * [ipAddress]: IP address from which the session was created, in human-readable format.
 /// * [location]: A human-readable description of the location from which the session was created, based on the IP address.
 final class Session extends TdObject {
-  
   /// **Session** *(session)* - basic class
   ///
   /// Contains information about one session in a Telegram application used by the current user. Sessions must be shown to the user in the returned order.
@@ -68,7 +67,7 @@ final class Session extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Session identifier
   final int id;
 
@@ -130,37 +129,36 @@ final class Session extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory Session.fromJson(Map<String, dynamic> json) => Session(
-    id: int.parse(json['id']),
-    isCurrent: json['is_current'],
-    isPasswordPending: json['is_password_pending'],
-    isUnconfirmed: json['is_unconfirmed'],
-    canAcceptSecretChats: json['can_accept_secret_chats'],
-    canAcceptCalls: json['can_accept_calls'],
-    type: SessionType.fromJson(json['type']),
-    apiId: json['api_id'],
-    applicationName: json['application_name'],
-    applicationVersion: json['application_version'],
-    isOfficialApplication: json['is_official_application'],
-    deviceModel: json['device_model'],
-    platform: json['platform'],
-    systemVersion: json['system_version'],
-    logInDate: json['log_in_date'],
-    lastActiveDate: json['last_active_date'],
-    ipAddress: json['ip_address'],
-    location: json['location'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: int.parse(json['id']),
+        isCurrent: json['is_current'],
+        isPasswordPending: json['is_password_pending'],
+        isUnconfirmed: json['is_unconfirmed'],
+        canAcceptSecretChats: json['can_accept_secret_chats'],
+        canAcceptCalls: json['can_accept_calls'],
+        type: SessionType.fromJson(json['type']),
+        apiId: json['api_id'],
+        applicationName: json['application_name'],
+        applicationVersion: json['application_version'],
+        isOfficialApplication: json['is_official_application'],
+        deviceModel: json['device_model'],
+        platform: json['platform'],
+        systemVersion: json['system_version'],
+        logInDate: json['log_in_date'],
+        lastActiveDate: json['last_active_date'],
+        ipAddress: json['ip_address'],
+        location: json['location'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "is_current": isCurrent,
       "is_password_pending": isPasswordPending,
@@ -179,8 +177,8 @@ final class Session extends TdObject {
       "last_active_date": lastActiveDate,
       "ip_address": ipAddress,
       "location": location,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -224,28 +222,30 @@ final class Session extends TdObject {
     String? location,
     dynamic extra,
     int? clientId,
-  }) => Session(
-    id: id ?? this.id,
-    isCurrent: isCurrent ?? this.isCurrent,
-    isPasswordPending: isPasswordPending ?? this.isPasswordPending,
-    isUnconfirmed: isUnconfirmed ?? this.isUnconfirmed,
-    canAcceptSecretChats: canAcceptSecretChats ?? this.canAcceptSecretChats,
-    canAcceptCalls: canAcceptCalls ?? this.canAcceptCalls,
-    type: type ?? this.type,
-    apiId: apiId ?? this.apiId,
-    applicationName: applicationName ?? this.applicationName,
-    applicationVersion: applicationVersion ?? this.applicationVersion,
-    isOfficialApplication: isOfficialApplication ?? this.isOfficialApplication,
-    deviceModel: deviceModel ?? this.deviceModel,
-    platform: platform ?? this.platform,
-    systemVersion: systemVersion ?? this.systemVersion,
-    logInDate: logInDate ?? this.logInDate,
-    lastActiveDate: lastActiveDate ?? this.lastActiveDate,
-    ipAddress: ipAddress ?? this.ipAddress,
-    location: location ?? this.location,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      Session(
+        id: id ?? this.id,
+        isCurrent: isCurrent ?? this.isCurrent,
+        isPasswordPending: isPasswordPending ?? this.isPasswordPending,
+        isUnconfirmed: isUnconfirmed ?? this.isUnconfirmed,
+        canAcceptSecretChats: canAcceptSecretChats ?? this.canAcceptSecretChats,
+        canAcceptCalls: canAcceptCalls ?? this.canAcceptCalls,
+        type: type ?? this.type,
+        apiId: apiId ?? this.apiId,
+        applicationName: applicationName ?? this.applicationName,
+        applicationVersion: applicationVersion ?? this.applicationVersion,
+        isOfficialApplication:
+            isOfficialApplication ?? this.isOfficialApplication,
+        deviceModel: deviceModel ?? this.deviceModel,
+        platform: platform ?? this.platform,
+        systemVersion: systemVersion ?? this.systemVersion,
+        logInDate: logInDate ?? this.logInDate,
+        lastActiveDate: lastActiveDate ?? this.lastActiveDate,
+        ipAddress: ipAddress ?? this.ipAddress,
+        location: location ?? this.location,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'session';

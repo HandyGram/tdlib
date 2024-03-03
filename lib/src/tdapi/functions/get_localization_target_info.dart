@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [LocalizationTargetInfo] is returned on completion.
 final class GetLocalizationTargetInfo extends TdFunction {
-  
   /// **GetLocalizationTargetInfo** *(getLocalizationTargetInfo)* - TDLib function
   ///
   /// Returns information about the current localization target. This is an offline request if only_local is true. Can be called before authorization.
@@ -19,19 +18,19 @@ final class GetLocalizationTargetInfo extends TdFunction {
   const GetLocalizationTargetInfo({
     required this.onlyLocal,
   });
-  
+
   /// Pass true to get only locally available information without sending network requests
   final bool onlyLocal;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "only_local": onlyLocal,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetLocalizationTargetInfo extends TdFunction {
   /// * [only_local]: Pass true to get only locally available information without sending network requests
   GetLocalizationTargetInfo copyWith({
     bool? onlyLocal,
-  }) => GetLocalizationTargetInfo(
-    onlyLocal: onlyLocal ?? this.onlyLocal,
-  );
+  }) =>
+      GetLocalizationTargetInfo(
+        onlyLocal: onlyLocal ?? this.onlyLocal,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getLocalizationTargetInfo';

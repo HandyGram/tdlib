@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class TerminateAllOtherSessions extends TdFunction {
-  
   /// **TerminateAllOtherSessions** *(terminateAllOtherSessions)* - TDLib function
   ///
   /// Terminates all other sessions of the current user.
   ///
   /// [Ok] is returned on completion.
   const TerminateAllOtherSessions();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   TerminateAllOtherSessions copyWith() => const TerminateAllOtherSessions();

@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetStickerPositionInSet extends TdFunction {
-  
   /// **SetStickerPositionInSet** *(setStickerPositionInSet)* - TDLib function
   ///
   /// Changes the position of a sticker in the set to which it belongs; for bots only. The sticker set must have been created by the bot.
@@ -22,23 +21,23 @@ final class SetStickerPositionInSet extends TdFunction {
     required this.sticker,
     required this.position,
   });
-  
+
   /// Sticker
   final InputFile sticker;
 
   /// New position of the sticker in the set, 0-based
   final int position;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sticker": sticker.toJson(),
       "position": position,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class SetStickerPositionInSet extends TdFunction {
   SetStickerPositionInSet copyWith({
     InputFile? sticker,
     int? position,
-  }) => SetStickerPositionInSet(
-    sticker: sticker ?? this.sticker,
-    position: position ?? this.position,
-  );
+  }) =>
+      SetStickerPositionInSet(
+        sticker: sticker ?? this.sticker,
+        position: position ?? this.position,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setStickerPositionInSet';

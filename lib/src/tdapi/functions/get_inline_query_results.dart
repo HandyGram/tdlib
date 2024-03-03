@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 ///
 /// [InlineQueryResults] is returned on completion.
 final class GetInlineQueryResults extends TdFunction {
-  
   /// **GetInlineQueryResults** *(getInlineQueryResults)* - TDLib function
   ///
   /// Sends an inline query to a bot and returns its results. Returns an error with code 502 if the bot fails to answer the query before the query timeout expires.
@@ -31,7 +30,7 @@ final class GetInlineQueryResults extends TdFunction {
     required this.query,
     required this.offset,
   });
-  
+
   /// Identifier of the target bot
   final int botUserId;
 
@@ -46,20 +45,20 @@ final class GetInlineQueryResults extends TdFunction {
 
   /// Offset of the first entry to return; use empty string to get the first chunk of results
   final String offset;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "bot_user_id": botUserId,
       "chat_id": chatId,
       "user_location": userLocation?.toJson(),
       "query": query,
       "offset": offset,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -75,13 +74,14 @@ final class GetInlineQueryResults extends TdFunction {
     Location? userLocation,
     String? query,
     String? offset,
-  }) => GetInlineQueryResults(
-    botUserId: botUserId ?? this.botUserId,
-    chatId: chatId ?? this.chatId,
-    userLocation: userLocation ?? this.userLocation,
-    query: query ?? this.query,
-    offset: offset ?? this.offset,
-  );
+  }) =>
+      GetInlineQueryResults(
+        botUserId: botUserId ?? this.botUserId,
+        chatId: chatId ?? this.chatId,
+        userLocation: userLocation ?? this.userLocation,
+        query: query ?? this.query,
+        offset: offset ?? this.offset,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getInlineQueryResults';

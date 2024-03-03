@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [SecretChat] is returned on completion.
 final class GetSecretChat extends TdFunction {
-  
   /// **GetSecretChat** *(getSecretChat)* - TDLib function
   ///
   /// Returns information about a secret chat by its identifier. This is an offline request.
@@ -19,19 +18,19 @@ final class GetSecretChat extends TdFunction {
   const GetSecretChat({
     required this.secretChatId,
   });
-  
+
   /// Secret chat identifier
   final int secretChatId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "secret_chat_id": secretChatId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetSecretChat extends TdFunction {
   /// * [secret_chat_id]: Secret chat identifier
   GetSecretChat copyWith({
     int? secretChatId,
-  }) => GetSecretChat(
-    secretChatId: secretChatId ?? this.secretChatId,
-  );
+  }) =>
+      GetSecretChat(
+        secretChatId: secretChatId ?? this.secretChatId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getSecretChat';

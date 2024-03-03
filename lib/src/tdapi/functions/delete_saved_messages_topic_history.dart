@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class DeleteSavedMessagesTopicHistory extends TdFunction {
-  
   /// **DeleteSavedMessagesTopicHistory** *(deleteSavedMessagesTopicHistory)* - TDLib function
   ///
   /// Deletes all messages in a Saved Messages topic.
@@ -19,19 +18,19 @@ final class DeleteSavedMessagesTopicHistory extends TdFunction {
   const DeleteSavedMessagesTopicHistory({
     required this.savedMessagesTopicId,
   });
-  
+
   /// Identifier of Saved Messages topic which messages will be deleted
   final int savedMessagesTopicId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "saved_messages_topic_id": savedMessagesTopicId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class DeleteSavedMessagesTopicHistory extends TdFunction {
   /// * [saved_messages_topic_id]: Identifier of Saved Messages topic which messages will be deleted
   DeleteSavedMessagesTopicHistory copyWith({
     int? savedMessagesTopicId,
-  }) => DeleteSavedMessagesTopicHistory(
-    savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
-  );
+  }) =>
+      DeleteSavedMessagesTopicHistory(
+        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'deleteSavedMessagesTopicHistory';

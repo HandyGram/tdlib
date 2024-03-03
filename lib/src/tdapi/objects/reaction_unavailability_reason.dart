@@ -4,19 +4,19 @@ part of '../tdapi.dart';
 ///
 /// Describes why the current user can't add reactions to the message, despite some other users can.
 sealed class ReactionUnavailabilityReason extends TdObject {
-  
   /// **ReactionUnavailabilityReason** *(reactionUnavailabilityReason)* - parent
   ///
   /// Describes why the current user can't add reactions to the message, despite some other users can.
   const ReactionUnavailabilityReason();
-  
+
   /// a ReactionUnavailabilityReason return type can be :
   /// * [ReactionUnavailabilityReasonAnonymousAdministrator]
   /// * [ReactionUnavailabilityReasonGuest]
-  factory ReactionUnavailabilityReason.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory ReactionUnavailabilityReason.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case ReactionUnavailabilityReasonAnonymousAdministrator.defaultObjectId:
-        return ReactionUnavailabilityReasonAnonymousAdministrator.fromJson(json);
+        return ReactionUnavailabilityReasonAnonymousAdministrator.fromJson(
+            json);
       case ReactionUnavailabilityReasonGuest.defaultObjectId:
         return ReactionUnavailabilityReasonGuest.fromJson(json);
       default:
@@ -26,7 +26,7 @@ sealed class ReactionUnavailabilityReason extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -46,34 +46,37 @@ sealed class ReactionUnavailabilityReason extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **ReactionUnavailabilityReasonAnonymousAdministrator** *(reactionUnavailabilityReasonAnonymousAdministrator)* - child of ReactionUnavailabilityReason
 ///
 /// The user is an anonymous administrator in the supergroup, but isn't a creator of it, so they can't vote on behalf of the supergroup.
-final class ReactionUnavailabilityReasonAnonymousAdministrator extends ReactionUnavailabilityReason {
-  
+final class ReactionUnavailabilityReasonAnonymousAdministrator
+    extends ReactionUnavailabilityReason {
   /// **ReactionUnavailabilityReasonAnonymousAdministrator** *(reactionUnavailabilityReasonAnonymousAdministrator)* - child of ReactionUnavailabilityReason
   ///
   /// The user is an anonymous administrator in the supergroup, but isn't a creator of it, so they can't vote on behalf of the supergroup.
   const ReactionUnavailabilityReasonAnonymousAdministrator();
-  
+
   /// Parse from a json
-  factory ReactionUnavailabilityReasonAnonymousAdministrator.fromJson(Map<String, dynamic> json) => const ReactionUnavailabilityReasonAnonymousAdministrator();
-  
+  factory ReactionUnavailabilityReasonAnonymousAdministrator.fromJson(
+          Map<String, dynamic> json) =>
+      const ReactionUnavailabilityReasonAnonymousAdministrator();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  ReactionUnavailabilityReasonAnonymousAdministrator copyWith() => const ReactionUnavailabilityReasonAnonymousAdministrator();
+  ReactionUnavailabilityReasonAnonymousAdministrator copyWith() =>
+      const ReactionUnavailabilityReasonAnonymousAdministrator();
 
   /// TDLib object type
-  static const String defaultObjectId = 'reactionUnavailabilityReasonAnonymousAdministrator';
+  static const String defaultObjectId =
+      'reactionUnavailabilityReasonAnonymousAdministrator';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -84,31 +87,33 @@ final class ReactionUnavailabilityReasonAnonymousAdministrator extends ReactionU
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **ReactionUnavailabilityReasonGuest** *(reactionUnavailabilityReasonGuest)* - child of ReactionUnavailabilityReason
 ///
 /// The user isn't a member of the supergroup and can't send messages and reactions there without joining.
-final class ReactionUnavailabilityReasonGuest extends ReactionUnavailabilityReason {
-  
+final class ReactionUnavailabilityReasonGuest
+    extends ReactionUnavailabilityReason {
   /// **ReactionUnavailabilityReasonGuest** *(reactionUnavailabilityReasonGuest)* - child of ReactionUnavailabilityReason
   ///
   /// The user isn't a member of the supergroup and can't send messages and reactions there without joining.
   const ReactionUnavailabilityReasonGuest();
-  
+
   /// Parse from a json
-  factory ReactionUnavailabilityReasonGuest.fromJson(Map<String, dynamic> json) => const ReactionUnavailabilityReasonGuest();
-  
+  factory ReactionUnavailabilityReasonGuest.fromJson(
+          Map<String, dynamic> json) =>
+      const ReactionUnavailabilityReasonGuest();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  ReactionUnavailabilityReasonGuest copyWith() => const ReactionUnavailabilityReasonGuest();
+  ReactionUnavailabilityReasonGuest copyWith() =>
+      const ReactionUnavailabilityReasonGuest();
 
   /// TDLib object type
   static const String defaultObjectId = 'reactionUnavailabilityReasonGuest';

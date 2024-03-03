@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 /// * [userId]: Identifier of a user for which the code was created; 0 if none.
 /// * [useDate]: Point in time (Unix timestamp) when the code was activated; 0 if none.
 final class PremiumGiftCodeInfo extends TdObject {
-  
   /// **PremiumGiftCodeInfo** *(premiumGiftCodeInfo)* - basic class
   ///
   /// Contains information about a Telegram Premium gift code.
@@ -35,7 +34,7 @@ final class PremiumGiftCodeInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Identifier of a chat or a user that created the gift code; may be null if unknown. If null and the code is from messagePremiumGiftCode message, then creator_id from the message can be used
   final MessageSender? creatorId;
 
@@ -64,26 +63,28 @@ final class PremiumGiftCodeInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory PremiumGiftCodeInfo.fromJson(Map<String, dynamic> json) => PremiumGiftCodeInfo(
-    creatorId: json['creator_id'] == null ? null : MessageSender.fromJson(json['creator_id']),
-    creationDate: json['creation_date'],
-    isFromGiveaway: json['is_from_giveaway'],
-    giveawayMessageId: json['giveaway_message_id'],
-    monthCount: json['month_count'],
-    userId: json['user_id'] ?? 0,
-    useDate: json['use_date'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory PremiumGiftCodeInfo.fromJson(Map<String, dynamic> json) =>
+      PremiumGiftCodeInfo(
+        creatorId: json['creator_id'] == null
+            ? null
+            : MessageSender.fromJson(json['creator_id']),
+        creationDate: json['creation_date'],
+        isFromGiveaway: json['is_from_giveaway'],
+        giveawayMessageId: json['giveaway_message_id'],
+        monthCount: json['month_count'],
+        userId: json['user_id'] ?? 0,
+        useDate: json['use_date'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "creator_id": creatorId?.toJson(),
       "creation_date": creationDate,
       "is_from_giveaway": isFromGiveaway,
@@ -91,8 +92,8 @@ final class PremiumGiftCodeInfo extends TdObject {
       "month_count": monthCount,
       "user_id": userId,
       "use_date": useDate,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -114,17 +115,18 @@ final class PremiumGiftCodeInfo extends TdObject {
     int? useDate,
     dynamic extra,
     int? clientId,
-  }) => PremiumGiftCodeInfo(
-    creatorId: creatorId ?? this.creatorId,
-    creationDate: creationDate ?? this.creationDate,
-    isFromGiveaway: isFromGiveaway ?? this.isFromGiveaway,
-    giveawayMessageId: giveawayMessageId ?? this.giveawayMessageId,
-    monthCount: monthCount ?? this.monthCount,
-    userId: userId ?? this.userId,
-    useDate: useDate ?? this.useDate,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      PremiumGiftCodeInfo(
+        creatorId: creatorId ?? this.creatorId,
+        creationDate: creationDate ?? this.creationDate,
+        isFromGiveaway: isFromGiveaway ?? this.isFromGiveaway,
+        giveawayMessageId: giveawayMessageId ?? this.giveawayMessageId,
+        monthCount: monthCount ?? this.monthCount,
+        userId: userId ?? this.userId,
+        useDate: useDate ?? this.useDate,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'premiumGiftCodeInfo';

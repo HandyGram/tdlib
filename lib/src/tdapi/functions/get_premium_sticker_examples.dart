@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [Stickers] is returned on completion.
 final class GetPremiumStickerExamples extends TdFunction {
-  
   /// **GetPremiumStickerExamples** *(getPremiumStickerExamples)* - TDLib function
   ///
   /// Returns examples of premium stickers for demonstration purposes.
   ///
   /// [Stickers] is returned on completion.
   const GetPremiumStickerExamples();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   GetPremiumStickerExamples copyWith() => const GetPremiumStickerExamples();

@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [UserPrivacySettingRules] is returned on completion.
 final class GetUserPrivacySettingRules extends TdFunction {
-  
   /// **GetUserPrivacySettingRules** *(getUserPrivacySettingRules)* - TDLib function
   ///
   /// Returns the current privacy settings.
@@ -19,19 +18,19 @@ final class GetUserPrivacySettingRules extends TdFunction {
   const GetUserPrivacySettingRules({
     required this.setting,
   });
-  
+
   /// The privacy setting
   final UserPrivacySetting setting;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "setting": setting.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetUserPrivacySettingRules extends TdFunction {
   /// * [setting]: The privacy setting
   GetUserPrivacySettingRules copyWith({
     UserPrivacySetting? setting,
-  }) => GetUserPrivacySettingRules(
-    setting: setting ?? this.setting,
-  );
+  }) =>
+      GetUserPrivacySettingRules(
+        setting: setting ?? this.setting,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getUserPrivacySettingRules';

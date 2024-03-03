@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [chatFolders]: List of recommended chat folders.
 final class RecommendedChatFolders extends TdObject {
-  
   /// **RecommendedChatFolders** *(recommendedChatFolders)* - basic class
   ///
   /// Contains a list of recommended chat folders.
@@ -17,7 +16,7 @@ final class RecommendedChatFolders extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// List of recommended chat folders
   final List<RecommendedChatFolder> chatFolders;
 
@@ -28,23 +27,26 @@ final class RecommendedChatFolders extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory RecommendedChatFolders.fromJson(Map<String, dynamic> json) => RecommendedChatFolders(
-    chatFolders: List<RecommendedChatFolder>.from((json['chat_folders'] ?? []).map((item) => RecommendedChatFolder.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory RecommendedChatFolders.fromJson(Map<String, dynamic> json) =>
+      RecommendedChatFolders(
+        chatFolders: List<RecommendedChatFolder>.from(
+            (json['chat_folders'] ?? [])
+                .map((item) => RecommendedChatFolder.fromJson(item))
+                .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_folders": chatFolders.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +56,12 @@ final class RecommendedChatFolders extends TdObject {
     List<RecommendedChatFolder>? chatFolders,
     dynamic extra,
     int? clientId,
-  }) => RecommendedChatFolders(
-    chatFolders: chatFolders ?? this.chatFolders,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      RecommendedChatFolders(
+        chatFolders: chatFolders ?? this.chatFolders,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'recommendedChatFolders';

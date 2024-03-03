@@ -4,18 +4,17 @@ part of '../tdapi.dart';
 ///
 /// Represents result of 2-step verification password reset.
 sealed class ResetPasswordResult extends TdObject {
-  
   /// **ResetPasswordResult** *(resetPasswordResult)* - parent
   ///
   /// Represents result of 2-step verification password reset.
   const ResetPasswordResult();
-  
+
   /// a ResetPasswordResult return type can be :
   /// * [ResetPasswordResultOk]
   /// * [ResetPasswordResultPending]
   /// * [ResetPasswordResultDeclined]
-  factory ResetPasswordResult.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory ResetPasswordResult.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case ResetPasswordResultOk.defaultObjectId:
         return ResetPasswordResultOk.fromJson(json);
       case ResetPasswordResultPending.defaultObjectId:
@@ -29,7 +28,7 @@ sealed class ResetPasswordResult extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -49,12 +48,10 @@ sealed class ResetPasswordResult extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **ResetPasswordResultOk** *(resetPasswordResultOk)* - child of ResetPasswordResult
 ///
 /// The password was reset.
 final class ResetPasswordResultOk extends ResetPasswordResult {
-  
   /// **ResetPasswordResultOk** *(resetPasswordResultOk)* - child of ResetPasswordResult
   ///
   /// The password was reset.
@@ -62,7 +59,7 @@ final class ResetPasswordResultOk extends ResetPasswordResult {
     this.extra,
     this.clientId,
   });
-  
+
   /// [extra] callback sign
   @override
   final dynamic extra;
@@ -70,31 +67,32 @@ final class ResetPasswordResultOk extends ResetPasswordResult {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory ResetPasswordResultOk.fromJson(Map<String, dynamic> json) => ResetPasswordResultOk(
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory ResetPasswordResultOk.fromJson(Map<String, dynamic> json) =>
+      ResetPasswordResultOk(
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
   ResetPasswordResultOk copyWith({
     dynamic extra,
     int? clientId,
-  }) => ResetPasswordResultOk(
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      ResetPasswordResultOk(
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'resetPasswordResultOk';
@@ -108,14 +106,12 @@ final class ResetPasswordResultOk extends ResetPasswordResult {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **ResetPasswordResultPending** *(resetPasswordResultPending)* - child of ResetPasswordResult
 ///
 /// The password reset request is pending.
 ///
 /// * [pendingResetDate]: Point in time (Unix timestamp) after which the password can be reset immediately using resetPassword.
 final class ResetPasswordResultPending extends ResetPasswordResult {
-  
   /// **ResetPasswordResultPending** *(resetPasswordResultPending)* - child of ResetPasswordResult
   ///
   /// The password reset request is pending.
@@ -126,7 +122,7 @@ final class ResetPasswordResultPending extends ResetPasswordResult {
     this.extra,
     this.clientId,
   });
-  
+
   /// Point in time (Unix timestamp) after which the password can be reset immediately using resetPassword
   final int pendingResetDate;
 
@@ -137,23 +133,23 @@ final class ResetPasswordResultPending extends ResetPasswordResult {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory ResetPasswordResultPending.fromJson(Map<String, dynamic> json) => ResetPasswordResultPending(
-    pendingResetDate: json['pending_reset_date'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory ResetPasswordResultPending.fromJson(Map<String, dynamic> json) =>
+      ResetPasswordResultPending(
+        pendingResetDate: json['pending_reset_date'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "pending_reset_date": pendingResetDate,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -164,11 +160,12 @@ final class ResetPasswordResultPending extends ResetPasswordResult {
     int? pendingResetDate,
     dynamic extra,
     int? clientId,
-  }) => ResetPasswordResultPending(
-    pendingResetDate: pendingResetDate ?? this.pendingResetDate,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      ResetPasswordResultPending(
+        pendingResetDate: pendingResetDate ?? this.pendingResetDate,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'resetPasswordResultPending';
@@ -182,14 +179,12 @@ final class ResetPasswordResultPending extends ResetPasswordResult {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **ResetPasswordResultDeclined** *(resetPasswordResultDeclined)* - child of ResetPasswordResult
 ///
 /// The password reset request was declined.
 ///
 /// * [retryDate]: Point in time (Unix timestamp) when the password reset can be retried.
 final class ResetPasswordResultDeclined extends ResetPasswordResult {
-  
   /// **ResetPasswordResultDeclined** *(resetPasswordResultDeclined)* - child of ResetPasswordResult
   ///
   /// The password reset request was declined.
@@ -200,7 +195,7 @@ final class ResetPasswordResultDeclined extends ResetPasswordResult {
     this.extra,
     this.clientId,
   });
-  
+
   /// Point in time (Unix timestamp) when the password reset can be retried
   final int retryDate;
 
@@ -211,23 +206,23 @@ final class ResetPasswordResultDeclined extends ResetPasswordResult {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory ResetPasswordResultDeclined.fromJson(Map<String, dynamic> json) => ResetPasswordResultDeclined(
-    retryDate: json['retry_date'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory ResetPasswordResultDeclined.fromJson(Map<String, dynamic> json) =>
+      ResetPasswordResultDeclined(
+        retryDate: json['retry_date'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "retry_date": retryDate,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -238,11 +233,12 @@ final class ResetPasswordResultDeclined extends ResetPasswordResult {
     int? retryDate,
     dynamic extra,
     int? clientId,
-  }) => ResetPasswordResultDeclined(
-    retryDate: retryDate ?? this.retryDate,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      ResetPasswordResultDeclined(
+        retryDate: retryDate ?? this.retryDate,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'resetPasswordResultDeclined';

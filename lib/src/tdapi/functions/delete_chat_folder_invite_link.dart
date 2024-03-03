@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class DeleteChatFolderInviteLink extends TdFunction {
-  
   /// **DeleteChatFolderInviteLink** *(deleteChatFolderInviteLink)* - TDLib function
   ///
   /// Deletes an invite link for a chat folder.
@@ -22,23 +21,23 @@ final class DeleteChatFolderInviteLink extends TdFunction {
     required this.chatFolderId,
     required this.inviteLink,
   });
-  
+
   /// Chat folder identifier
   final int chatFolderId;
 
   /// Invite link to be deleted
   final String inviteLink;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_folder_id": chatFolderId,
       "invite_link": inviteLink,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class DeleteChatFolderInviteLink extends TdFunction {
   DeleteChatFolderInviteLink copyWith({
     int? chatFolderId,
     String? inviteLink,
-  }) => DeleteChatFolderInviteLink(
-    chatFolderId: chatFolderId ?? this.chatFolderId,
-    inviteLink: inviteLink ?? this.inviteLink,
-  );
+  }) =>
+      DeleteChatFolderInviteLink(
+        chatFolderId: chatFolderId ?? this.chatFolderId,
+        inviteLink: inviteLink ?? this.inviteLink,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'deleteChatFolderInviteLink';

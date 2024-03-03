@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetChatNotificationSettings extends TdFunction {
-  
   /// **SetChatNotificationSettings** *(setChatNotificationSettings)* - TDLib function
   ///
   /// Changes the notification settings of a chat. Notification settings of a chat with the current user (Saved Messages) can't be changed.
@@ -22,23 +21,23 @@ final class SetChatNotificationSettings extends TdFunction {
     required this.chatId,
     required this.notificationSettings,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
   /// New notification settings for the chat. If the chat is muted for more than 366 days, it is considered to be muted forever
   final ChatNotificationSettings notificationSettings;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "notification_settings": notificationSettings.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class SetChatNotificationSettings extends TdFunction {
   SetChatNotificationSettings copyWith({
     int? chatId,
     ChatNotificationSettings? notificationSettings,
-  }) => SetChatNotificationSettings(
-    chatId: chatId ?? this.chatId,
-    notificationSettings: notificationSettings ?? this.notificationSettings,
-  );
+  }) =>
+      SetChatNotificationSettings(
+        chatId: chatId ?? this.chatId,
+        notificationSettings: notificationSettings ?? this.notificationSettings,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setChatNotificationSettings';

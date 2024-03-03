@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [statistics]: Memory statistics in an unspecified human-readable format.
 final class MemoryStatistics extends TdObject {
-  
   /// **MemoryStatistics** *(memoryStatistics)* - basic class
   ///
   /// Contains memory statistics.
@@ -17,7 +16,7 @@ final class MemoryStatistics extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Memory statistics in an unspecified human-readable format
   final String statistics;
 
@@ -28,23 +27,23 @@ final class MemoryStatistics extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory MemoryStatistics.fromJson(Map<String, dynamic> json) => MemoryStatistics(
-    statistics: json['statistics'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory MemoryStatistics.fromJson(Map<String, dynamic> json) =>
+      MemoryStatistics(
+        statistics: json['statistics'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "statistics": statistics,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +53,12 @@ final class MemoryStatistics extends TdObject {
     String? statistics,
     dynamic extra,
     int? clientId,
-  }) => MemoryStatistics(
-    statistics: statistics ?? this.statistics,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      MemoryStatistics(
+        statistics: statistics ?? this.statistics,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'memoryStatistics';

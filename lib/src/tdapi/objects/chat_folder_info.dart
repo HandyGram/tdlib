@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 /// * [isShareable]: True, if at least one link has been created for the folder.
 /// * [hasMyInviteLinks]: True, if the chat folder has invite links created by the current user.
 final class ChatFolderInfo extends TdObject {
-  
   /// **ChatFolderInfo** *(chatFolderInfo)* - basic class
   ///
   /// Contains basic information about a chat folder.
@@ -29,7 +28,7 @@ final class ChatFolderInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Unique chat folder identifier
   final int id;
 
@@ -52,31 +51,30 @@ final class ChatFolderInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory ChatFolderInfo.fromJson(Map<String, dynamic> json) => ChatFolderInfo(
-    id: json['id'],
-    title: json['title'],
-    icon: ChatFolderIcon.fromJson(json['icon']),
-    isShareable: json['is_shareable'],
-    hasMyInviteLinks: json['has_my_invite_links'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: json['id'],
+        title: json['title'],
+        icon: ChatFolderIcon.fromJson(json['icon']),
+        isShareable: json['is_shareable'],
+        hasMyInviteLinks: json['has_my_invite_links'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "title": title,
       "icon": icon.toJson(),
       "is_shareable": isShareable,
       "has_my_invite_links": hasMyInviteLinks,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -94,15 +92,16 @@ final class ChatFolderInfo extends TdObject {
     bool? hasMyInviteLinks,
     dynamic extra,
     int? clientId,
-  }) => ChatFolderInfo(
-    id: id ?? this.id,
-    title: title ?? this.title,
-    icon: icon ?? this.icon,
-    isShareable: isShareable ?? this.isShareable,
-    hasMyInviteLinks: hasMyInviteLinks ?? this.hasMyInviteLinks,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      ChatFolderInfo(
+        id: id ?? this.id,
+        title: title ?? this.title,
+        icon: icon ?? this.icon,
+        isShareable: isShareable ?? this.isShareable,
+        hasMyInviteLinks: hasMyInviteLinks ?? this.hasMyInviteLinks,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatFolderInfo';

@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 ///
 /// [FilePart] is returned on completion.
 final class GetGroupCallStreamSegment extends TdFunction {
-  
   /// **GetGroupCallStreamSegment** *(getGroupCallStreamSegment)* - TDLib function
   ///
   /// Returns a file with a segment of a group call stream in a modified OGG format for audio or MPEG-4 format for video.
@@ -31,7 +30,7 @@ final class GetGroupCallStreamSegment extends TdFunction {
     required this.channelId,
     this.videoQuality,
   });
-  
+
   /// Group call identifier
   final int groupCallId;
 
@@ -46,20 +45,20 @@ final class GetGroupCallStreamSegment extends TdFunction {
 
   /// Video quality as received from tgcalls; pass null to get the worst available quality
   final GroupCallVideoQuality? videoQuality;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "group_call_id": groupCallId,
       "time_offset": timeOffset,
       "scale": scale,
       "channel_id": channelId,
       "video_quality": videoQuality?.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -75,13 +74,14 @@ final class GetGroupCallStreamSegment extends TdFunction {
     int? scale,
     int? channelId,
     GroupCallVideoQuality? videoQuality,
-  }) => GetGroupCallStreamSegment(
-    groupCallId: groupCallId ?? this.groupCallId,
-    timeOffset: timeOffset ?? this.timeOffset,
-    scale: scale ?? this.scale,
-    channelId: channelId ?? this.channelId,
-    videoQuality: videoQuality ?? this.videoQuality,
-  );
+  }) =>
+      GetGroupCallStreamSegment(
+        groupCallId: groupCallId ?? this.groupCallId,
+        timeOffset: timeOffset ?? this.timeOffset,
+        scale: scale ?? this.scale,
+        channelId: channelId ?? this.channelId,
+        videoQuality: videoQuality ?? this.videoQuality,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getGroupCallStreamSegment';

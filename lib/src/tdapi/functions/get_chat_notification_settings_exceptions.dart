@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Chats] is returned on completion.
 final class GetChatNotificationSettingsExceptions extends TdFunction {
-  
   /// **GetChatNotificationSettingsExceptions** *(getChatNotificationSettingsExceptions)* - TDLib function
   ///
   /// Returns list of chats with non-default notification settings for new messages.
@@ -22,23 +21,23 @@ final class GetChatNotificationSettingsExceptions extends TdFunction {
     this.scope,
     required this.compareSound,
   });
-  
+
   /// If specified, only chats from the scope will be returned; pass null to return chats from all scopes
   final NotificationSettingsScope? scope;
 
   /// Pass true to include in the response chats with only non-default sound
   final bool compareSound;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "scope": scope?.toJson(),
       "compare_sound": compareSound,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class GetChatNotificationSettingsExceptions extends TdFunction {
   GetChatNotificationSettingsExceptions copyWith({
     NotificationSettingsScope? scope,
     bool? compareSound,
-  }) => GetChatNotificationSettingsExceptions(
-    scope: scope ?? this.scope,
-    compareSound: compareSound ?? this.compareSound,
-  );
+  }) =>
+      GetChatNotificationSettingsExceptions(
+        scope: scope ?? this.scope,
+        compareSound: compareSound ?? this.compareSound,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getChatNotificationSettingsExceptions';

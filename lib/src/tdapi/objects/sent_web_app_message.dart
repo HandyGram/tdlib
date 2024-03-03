@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [inlineMessageId]: Identifier of the sent inline message, if known.
 final class SentWebAppMessage extends TdObject {
-  
   /// **SentWebAppMessage** *(sentWebAppMessage)* - basic class
   ///
   /// Information about the message sent by answerWebAppQuery.
@@ -17,7 +16,7 @@ final class SentWebAppMessage extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Identifier of the sent inline message, if known
   final String inlineMessageId;
 
@@ -28,23 +27,23 @@ final class SentWebAppMessage extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory SentWebAppMessage.fromJson(Map<String, dynamic> json) => SentWebAppMessage(
-    inlineMessageId: json['inline_message_id'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory SentWebAppMessage.fromJson(Map<String, dynamic> json) =>
+      SentWebAppMessage(
+        inlineMessageId: json['inline_message_id'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "inline_message_id": inlineMessageId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +53,12 @@ final class SentWebAppMessage extends TdObject {
     String? inlineMessageId,
     dynamic extra,
     int? clientId,
-  }) => SentWebAppMessage(
-    inlineMessageId: inlineMessageId ?? this.inlineMessageId,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      SentWebAppMessage(
+        inlineMessageId: inlineMessageId ?? this.inlineMessageId,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'sentWebAppMessage';

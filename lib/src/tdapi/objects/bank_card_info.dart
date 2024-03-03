@@ -7,7 +7,6 @@ part of '../tdapi.dart';
 /// * [title]: Title of the bank card description.
 /// * [actions]: Actions that can be done with the bank card number.
 final class BankCardInfo extends TdObject {
-  
   /// **BankCardInfo** *(bankCardInfo)* - basic class
   ///
   /// Information about a bank card.
@@ -20,8 +19,8 @@ final class BankCardInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// Title of the bank card description 
+
+  /// Title of the bank card description
   final String title;
 
   /// Actions that can be done with the bank card number
@@ -34,42 +33,44 @@ final class BankCardInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory BankCardInfo.fromJson(Map<String, dynamic> json) => BankCardInfo(
-    title: json['title'],
-    actions: List<BankCardActionOpenUrl>.from((json['actions'] ?? []).map((item) => BankCardActionOpenUrl.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        title: json['title'],
+        actions: List<BankCardActionOpenUrl>.from((json['actions'] ?? [])
+            .map((item) => BankCardActionOpenUrl.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "title": title,
       "actions": actions.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [title]: Title of the bank card description 
+  /// * [title]: Title of the bank card description
   /// * [actions]: Actions that can be done with the bank card number
   BankCardInfo copyWith({
     String? title,
     List<BankCardActionOpenUrl>? actions,
     dynamic extra,
     int? clientId,
-  }) => BankCardInfo(
-    title: title ?? this.title,
-    actions: actions ?? this.actions,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      BankCardInfo(
+        title: title ?? this.title,
+        actions: actions ?? this.actions,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'bankCardInfo';

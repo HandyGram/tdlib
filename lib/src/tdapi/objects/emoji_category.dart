@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 /// * [icon]: Custom emoji sticker, which represents icon of the category.
 /// * [emojis]: List of emojis in the category.
 final class EmojiCategory extends TdObject {
-  
   /// **EmojiCategory** *(emojiCategory)* - basic class
   ///
   /// Contains a list of similar emoji to search for in getStickers and searchStickers.
@@ -21,7 +20,7 @@ final class EmojiCategory extends TdObject {
     required this.icon,
     required this.emojis,
   });
-  
+
   /// Name of the category
   final String name;
 
@@ -30,25 +29,25 @@ final class EmojiCategory extends TdObject {
 
   /// List of emojis in the category
   final List<String> emojis;
-  
+
   /// Parse from a json
   factory EmojiCategory.fromJson(Map<String, dynamic> json) => EmojiCategory(
-    name: json['name'],
-    icon: Sticker.fromJson(json['icon']),
-    emojis: List<String>.from((json['emojis'] ?? []).map((item) => item).toList()),
-  );
-  
-  
+        name: json['name'],
+        icon: Sticker.fromJson(json['icon']),
+        emojis: List<String>.from(
+            (json['emojis'] ?? []).map((item) => item).toList()),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "name": name,
       "icon": icon.toJson(),
       "emojis": emojis.map((i) => i).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -60,11 +59,12 @@ final class EmojiCategory extends TdObject {
     String? name,
     Sticker? icon,
     List<String>? emojis,
-  }) => EmojiCategory(
-    name: name ?? this.name,
-    icon: icon ?? this.icon,
-    emojis: emojis ?? this.emojis,
-  );
+  }) =>
+      EmojiCategory(
+        name: name ?? this.name,
+        icon: icon ?? this.icon,
+        emojis: emojis ?? this.emojis,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'emojiCategory';

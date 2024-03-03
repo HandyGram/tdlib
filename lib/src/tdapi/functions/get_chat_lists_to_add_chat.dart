@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [ChatLists] is returned on completion.
 final class GetChatListsToAddChat extends TdFunction {
-  
   /// **GetChatListsToAddChat** *(getChatListsToAddChat)* - TDLib function
   ///
   /// Returns chat lists to which the chat can be added. This is an offline request.
@@ -19,19 +18,19 @@ final class GetChatListsToAddChat extends TdFunction {
   const GetChatListsToAddChat({
     required this.chatId,
   });
-  
+
   /// Chat identifier
   final int chatId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetChatListsToAddChat extends TdFunction {
   /// * [chat_id]: Chat identifier
   GetChatListsToAddChat copyWith({
     int? chatId,
-  }) => GetChatListsToAddChat(
-    chatId: chatId ?? this.chatId,
-  );
+  }) =>
+      GetChatListsToAddChat(
+        chatId: chatId ?? this.chatId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getChatListsToAddChat';

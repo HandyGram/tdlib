@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Text] is returned on completion.
 final class GetThemeParametersJsonString extends TdFunction {
-  
   /// **GetThemeParametersJsonString** *(getThemeParametersJsonString)* - TDLib function
   ///
   /// Converts a themeParameters object to corresponding JSON-serialized string. Can be called synchronously.
@@ -19,19 +18,19 @@ final class GetThemeParametersJsonString extends TdFunction {
   const GetThemeParametersJsonString({
     required this.theme,
   });
-  
+
   /// Theme parameters to convert to JSON
   final ThemeParameters theme;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "theme": theme.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetThemeParametersJsonString extends TdFunction {
   /// * [theme]: Theme parameters to convert to JSON
   GetThemeParametersJsonString copyWith({
     ThemeParameters? theme,
-  }) => GetThemeParametersJsonString(
-    theme: theme ?? this.theme,
-  );
+  }) =>
+      GetThemeParametersJsonString(
+        theme: theme ?? this.theme,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getThemeParametersJsonString';

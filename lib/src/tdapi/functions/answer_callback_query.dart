@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class AnswerCallbackQuery extends TdFunction {
-  
   /// **AnswerCallbackQuery** *(answerCallbackQuery)* - TDLib function
   ///
   /// Sets the result of a callback query; for bots only.
@@ -31,7 +30,7 @@ final class AnswerCallbackQuery extends TdFunction {
     required this.url,
     required this.cacheTime,
   });
-  
+
   /// Identifier of the callback query
   final int callbackQueryId;
 
@@ -46,20 +45,20 @@ final class AnswerCallbackQuery extends TdFunction {
 
   /// Time during which the result of the query can be cached, in seconds
   final int cacheTime;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "callback_query_id": callbackQueryId,
       "text": text,
       "show_alert": showAlert,
       "url": url,
       "cache_time": cacheTime,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -75,13 +74,14 @@ final class AnswerCallbackQuery extends TdFunction {
     bool? showAlert,
     String? url,
     int? cacheTime,
-  }) => AnswerCallbackQuery(
-    callbackQueryId: callbackQueryId ?? this.callbackQueryId,
-    text: text ?? this.text,
-    showAlert: showAlert ?? this.showAlert,
-    url: url ?? this.url,
-    cacheTime: cacheTime ?? this.cacheTime,
-  );
+  }) =>
+      AnswerCallbackQuery(
+        callbackQueryId: callbackQueryId ?? this.callbackQueryId,
+        text: text ?? this.text,
+        showAlert: showAlert ?? this.showAlert,
+        url: url ?? this.url,
+        cacheTime: cacheTime ?? this.cacheTime,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'answerCallbackQuery';

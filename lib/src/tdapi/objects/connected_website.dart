@@ -14,7 +14,6 @@ part of '../tdapi.dart';
 /// * [ipAddress]: IP address from which the user was logged in, in human-readable format.
 /// * [location]: Human-readable description of a country and a region from which the user was logged in, based on the IP address.
 final class ConnectedWebsite extends TdObject {
-  
   /// **ConnectedWebsite** *(connectedWebsite)* - basic class
   ///
   /// Contains information about one website the current user is logged in with Telegram.
@@ -39,7 +38,7 @@ final class ConnectedWebsite extends TdObject {
     required this.ipAddress,
     required this.location,
   });
-  
+
   /// Website identifier
   final int id;
 
@@ -66,26 +65,26 @@ final class ConnectedWebsite extends TdObject {
 
   /// Human-readable description of a country and a region from which the user was logged in, based on the IP address
   final String location;
-  
+
   /// Parse from a json
-  factory ConnectedWebsite.fromJson(Map<String, dynamic> json) => ConnectedWebsite(
-    id: int.parse(json['id']),
-    domainName: json['domain_name'],
-    botUserId: json['bot_user_id'],
-    browser: json['browser'],
-    platform: json['platform'],
-    logInDate: json['log_in_date'],
-    lastActiveDate: json['last_active_date'],
-    ipAddress: json['ip_address'],
-    location: json['location'],
-  );
-  
-  
+  factory ConnectedWebsite.fromJson(Map<String, dynamic> json) =>
+      ConnectedWebsite(
+        id: int.parse(json['id']),
+        domainName: json['domain_name'],
+        botUserId: json['bot_user_id'],
+        browser: json['browser'],
+        platform: json['platform'],
+        logInDate: json['log_in_date'],
+        lastActiveDate: json['last_active_date'],
+        ipAddress: json['ip_address'],
+        location: json['location'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "domain_name": domainName,
       "bot_user_id": botUserId,
@@ -95,8 +94,8 @@ final class ConnectedWebsite extends TdObject {
       "last_active_date": lastActiveDate,
       "ip_address": ipAddress,
       "location": location,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -120,17 +119,18 @@ final class ConnectedWebsite extends TdObject {
     int? lastActiveDate,
     String? ipAddress,
     String? location,
-  }) => ConnectedWebsite(
-    id: id ?? this.id,
-    domainName: domainName ?? this.domainName,
-    botUserId: botUserId ?? this.botUserId,
-    browser: browser ?? this.browser,
-    platform: platform ?? this.platform,
-    logInDate: logInDate ?? this.logInDate,
-    lastActiveDate: lastActiveDate ?? this.lastActiveDate,
-    ipAddress: ipAddress ?? this.ipAddress,
-    location: location ?? this.location,
-  );
+  }) =>
+      ConnectedWebsite(
+        id: id ?? this.id,
+        domainName: domainName ?? this.domainName,
+        botUserId: botUserId ?? this.botUserId,
+        browser: browser ?? this.browser,
+        platform: platform ?? this.platform,
+        logInDate: logInDate ?? this.logInDate,
+        lastActiveDate: lastActiveDate ?? this.lastActiveDate,
+        ipAddress: ipAddress ?? this.ipAddress,
+        location: location ?? this.location,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'connectedWebsite';

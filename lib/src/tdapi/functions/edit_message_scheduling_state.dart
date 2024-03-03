@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class EditMessageSchedulingState extends TdFunction {
-  
   /// **EditMessageSchedulingState** *(editMessageSchedulingState)* - TDLib function
   ///
   /// Edits the time when a scheduled message will be sent. Scheduling state of all messages in the same album or forwarded together with the message will be also changed.
@@ -25,7 +24,7 @@ final class EditMessageSchedulingState extends TdFunction {
     required this.messageId,
     this.schedulingState,
   });
-  
+
   /// The chat the message belongs to
   final int chatId;
 
@@ -34,18 +33,18 @@ final class EditMessageSchedulingState extends TdFunction {
 
   /// The new message scheduling state; pass null to send the message immediately
   final MessageSchedulingState? schedulingState;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "scheduling_state": schedulingState?.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class EditMessageSchedulingState extends TdFunction {
     int? chatId,
     int? messageId,
     MessageSchedulingState? schedulingState,
-  }) => EditMessageSchedulingState(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    schedulingState: schedulingState ?? this.schedulingState,
-  );
+  }) =>
+      EditMessageSchedulingState(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        schedulingState: schedulingState ?? this.schedulingState,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'editMessageSchedulingState';

@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class OpenChatSimilarChat extends TdFunction {
-  
   /// **OpenChatSimilarChat** *(openChatSimilarChat)* - TDLib function
   ///
   /// Informs TDLib that a chat was opened from the list of similar chats. The method is independent from openChat and closeChat methods.
@@ -22,23 +21,23 @@ final class OpenChatSimilarChat extends TdFunction {
     required this.chatId,
     required this.openedChatId,
   });
-  
+
   /// Identifier of the original chat, which similar chats were requested
   final int chatId;
 
   /// Identifier of the opened chat
   final int openedChatId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "opened_chat_id": openedChatId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class OpenChatSimilarChat extends TdFunction {
   OpenChatSimilarChat copyWith({
     int? chatId,
     int? openedChatId,
-  }) => OpenChatSimilarChat(
-    chatId: chatId ?? this.chatId,
-    openedChatId: openedChatId ?? this.openedChatId,
-  );
+  }) =>
+      OpenChatSimilarChat(
+        chatId: chatId ?? this.chatId,
+        openedChatId: openedChatId ?? this.openedChatId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'openChatSimilarChat';

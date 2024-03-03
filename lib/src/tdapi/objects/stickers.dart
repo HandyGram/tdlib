@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [stickers]: List of stickers.
 final class Stickers extends TdObject {
-  
   /// **Stickers** *(stickers)* - basic class
   ///
   /// Represents a list of stickers.
@@ -17,7 +16,7 @@ final class Stickers extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// List of stickers
   final List<Sticker> stickers;
 
@@ -28,23 +27,24 @@ final class Stickers extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory Stickers.fromJson(Map<String, dynamic> json) => Stickers(
-    stickers: List<Sticker>.from((json['stickers'] ?? []).map((item) => Sticker.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        stickers: List<Sticker>.from((json['stickers'] ?? [])
+            .map((item) => Sticker.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "stickers": stickers.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +54,12 @@ final class Stickers extends TdObject {
     List<Sticker>? stickers,
     dynamic extra,
     int? clientId,
-  }) => Stickers(
-    stickers: stickers ?? this.stickers,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      Stickers(
+        stickers: stickers ?? this.stickers,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'stickers';

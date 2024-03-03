@@ -18,7 +18,6 @@ part of '../tdapi.dart';
 /// * [productDescription]: Product description.
 /// * [productPhoto]: Product photo; may be null *(optional)*.
 final class PaymentForm extends TdObject {
-  
   /// **PaymentForm** *(paymentForm)* - basic class
   ///
   /// Contains information about an invoice payment form.
@@ -53,7 +52,7 @@ final class PaymentForm extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// The payment form identifier
   final int id;
 
@@ -100,38 +99,48 @@ final class PaymentForm extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory PaymentForm.fromJson(Map<String, dynamic> json) => PaymentForm(
-    id: int.parse(json['id']),
-    invoice: Invoice.fromJson(json['invoice']),
-    sellerBotUserId: json['seller_bot_user_id'],
-    paymentProviderUserId: json['payment_provider_user_id'],
-    paymentProvider: PaymentProvider.fromJson(json['payment_provider']),
-    additionalPaymentOptions: List<PaymentOption>.from((json['additional_payment_options'] ?? []).map((item) => PaymentOption.fromJson(item)).toList()),
-    savedOrderInfo: json['saved_order_info'] == null ? null : OrderInfo.fromJson(json['saved_order_info']),
-    savedCredentials: List<SavedCredentials>.from((json['saved_credentials'] ?? []).map((item) => SavedCredentials.fromJson(item)).toList()),
-    canSaveCredentials: json['can_save_credentials'],
-    needPassword: json['need_password'],
-    productTitle: json['product_title'],
-    productDescription: FormattedText.fromJson(json['product_description']),
-    productPhoto: json['product_photo'] == null ? null : Photo.fromJson(json['product_photo']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: int.parse(json['id']),
+        invoice: Invoice.fromJson(json['invoice']),
+        sellerBotUserId: json['seller_bot_user_id'],
+        paymentProviderUserId: json['payment_provider_user_id'],
+        paymentProvider: PaymentProvider.fromJson(json['payment_provider']),
+        additionalPaymentOptions: List<PaymentOption>.from(
+            (json['additional_payment_options'] ?? [])
+                .map((item) => PaymentOption.fromJson(item))
+                .toList()),
+        savedOrderInfo: json['saved_order_info'] == null
+            ? null
+            : OrderInfo.fromJson(json['saved_order_info']),
+        savedCredentials: List<SavedCredentials>.from(
+            (json['saved_credentials'] ?? [])
+                .map((item) => SavedCredentials.fromJson(item))
+                .toList()),
+        canSaveCredentials: json['can_save_credentials'],
+        needPassword: json['need_password'],
+        productTitle: json['product_title'],
+        productDescription: FormattedText.fromJson(json['product_description']),
+        productPhoto: json['product_photo'] == null
+            ? null
+            : Photo.fromJson(json['product_photo']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "invoice": invoice.toJson(),
       "seller_bot_user_id": sellerBotUserId,
       "payment_provider_user_id": paymentProviderUserId,
       "payment_provider": paymentProvider.toJson(),
-      "additional_payment_options": additionalPaymentOptions.map((i) => i.toJson()).toList(),
+      "additional_payment_options":
+          additionalPaymentOptions.map((i) => i.toJson()).toList(),
       "saved_order_info": savedOrderInfo?.toJson(),
       "saved_credentials": savedCredentials.map((i) => i.toJson()).toList(),
       "can_save_credentials": canSaveCredentials,
@@ -139,8 +148,8 @@ final class PaymentForm extends TdObject {
       "product_title": productTitle,
       "product_description": productDescription.toJson(),
       "product_photo": productPhoto?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -174,23 +183,26 @@ final class PaymentForm extends TdObject {
     Photo? productPhoto,
     dynamic extra,
     int? clientId,
-  }) => PaymentForm(
-    id: id ?? this.id,
-    invoice: invoice ?? this.invoice,
-    sellerBotUserId: sellerBotUserId ?? this.sellerBotUserId,
-    paymentProviderUserId: paymentProviderUserId ?? this.paymentProviderUserId,
-    paymentProvider: paymentProvider ?? this.paymentProvider,
-    additionalPaymentOptions: additionalPaymentOptions ?? this.additionalPaymentOptions,
-    savedOrderInfo: savedOrderInfo ?? this.savedOrderInfo,
-    savedCredentials: savedCredentials ?? this.savedCredentials,
-    canSaveCredentials: canSaveCredentials ?? this.canSaveCredentials,
-    needPassword: needPassword ?? this.needPassword,
-    productTitle: productTitle ?? this.productTitle,
-    productDescription: productDescription ?? this.productDescription,
-    productPhoto: productPhoto ?? this.productPhoto,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      PaymentForm(
+        id: id ?? this.id,
+        invoice: invoice ?? this.invoice,
+        sellerBotUserId: sellerBotUserId ?? this.sellerBotUserId,
+        paymentProviderUserId:
+            paymentProviderUserId ?? this.paymentProviderUserId,
+        paymentProvider: paymentProvider ?? this.paymentProvider,
+        additionalPaymentOptions:
+            additionalPaymentOptions ?? this.additionalPaymentOptions,
+        savedOrderInfo: savedOrderInfo ?? this.savedOrderInfo,
+        savedCredentials: savedCredentials ?? this.savedCredentials,
+        canSaveCredentials: canSaveCredentials ?? this.canSaveCredentials,
+        needPassword: needPassword ?? this.needPassword,
+        productTitle: productTitle ?? this.productTitle,
+        productDescription: productDescription ?? this.productDescription,
+        productPhoto: productPhoto ?? this.productPhoto,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'paymentForm';

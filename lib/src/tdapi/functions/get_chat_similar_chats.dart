@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Chats] is returned on completion.
 final class GetChatSimilarChats extends TdFunction {
-  
   /// **GetChatSimilarChats** *(getChatSimilarChats)* - TDLib function
   ///
   /// Returns a list of chats similar to the given chat.
@@ -19,19 +18,19 @@ final class GetChatSimilarChats extends TdFunction {
   const GetChatSimilarChats({
     required this.chatId,
   });
-  
+
   /// Identifier of the target chat; must be an identifier of a channel chat
   final int chatId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetChatSimilarChats extends TdFunction {
   /// * [chat_id]: Identifier of the target chat; must be an identifier of a channel chat
   GetChatSimilarChats copyWith({
     int? chatId,
-  }) => GetChatSimilarChats(
-    chatId: chatId ?? this.chatId,
-  );
+  }) =>
+      GetChatSimilarChats(
+        chatId: chatId ?? this.chatId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getChatSimilarChats';

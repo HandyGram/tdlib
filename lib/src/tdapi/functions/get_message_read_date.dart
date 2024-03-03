@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [MessageReadDate] is returned on completion.
 final class GetMessageReadDate extends TdFunction {
-  
   /// **GetMessageReadDate** *(getMessageReadDate)* - TDLib function
   ///
   /// Returns read date of a recent outgoing message in a private chat. The method can be called if message.can_get_read_date == true and the message is read.
@@ -22,23 +21,23 @@ final class GetMessageReadDate extends TdFunction {
     required this.chatId,
     required this.messageId,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
   /// Identifier of the message
   final int messageId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class GetMessageReadDate extends TdFunction {
   GetMessageReadDate copyWith({
     int? chatId,
     int? messageId,
-  }) => GetMessageReadDate(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-  );
+  }) =>
+      GetMessageReadDate(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getMessageReadDate';

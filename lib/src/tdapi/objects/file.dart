@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 /// * [local]: Information about the local copy of the file.
 /// * [remote]: Information about the remote copy of the file.
 final class File extends TdObject {
-  
   /// **File** *(file)* - basic class
   ///
   /// Represents a file.
@@ -29,7 +28,7 @@ final class File extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Unique file identifier
   final int id;
 
@@ -52,31 +51,30 @@ final class File extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory File.fromJson(Map<String, dynamic> json) => File(
-    id: json['id'],
-    size: json['size'],
-    expectedSize: json['expected_size'],
-    local: LocalFile.fromJson(json['local']),
-    remote: RemoteFile.fromJson(json['remote']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: json['id'],
+        size: json['size'],
+        expectedSize: json['expected_size'],
+        local: LocalFile.fromJson(json['local']),
+        remote: RemoteFile.fromJson(json['remote']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "size": size,
       "expected_size": expectedSize,
       "local": local.toJson(),
       "remote": remote.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -94,15 +92,16 @@ final class File extends TdObject {
     RemoteFile? remote,
     dynamic extra,
     int? clientId,
-  }) => File(
-    id: id ?? this.id,
-    size: size ?? this.size,
-    expectedSize: expectedSize ?? this.expectedSize,
-    local: local ?? this.local,
-    remote: remote ?? this.remote,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      File(
+        id: id ?? this.id,
+        size: size ?? this.size,
+        expectedSize: expectedSize ?? this.expectedSize,
+        local: local ?? this.local,
+        remote: remote ?? this.remote,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'file';

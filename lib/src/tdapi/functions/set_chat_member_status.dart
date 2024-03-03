@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetChatMemberStatus extends TdFunction {
-  
   /// **SetChatMemberStatus** *(setChatMemberStatus)* - TDLib function
   ///
   /// Changes the status of a chat member; requires can_invite_users member right to add a chat member, can_promote_members administrator right to change administrator rights of the member,. and can_restrict_members administrator right to change restrictions of a user. This function is currently not suitable for transferring chat ownership; use transferChatOwnership instead.. Use addChatMember or banChatMember if some additional parameters needs to be passed.
@@ -25,7 +24,7 @@ final class SetChatMemberStatus extends TdFunction {
     required this.memberId,
     required this.status,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -34,18 +33,18 @@ final class SetChatMemberStatus extends TdFunction {
 
   /// The new status of the member in the chat
   final ChatMemberStatus status;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "member_id": memberId.toJson(),
       "status": status.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class SetChatMemberStatus extends TdFunction {
     int? chatId,
     MessageSender? memberId,
     ChatMemberStatus? status,
-  }) => SetChatMemberStatus(
-    chatId: chatId ?? this.chatId,
-    memberId: memberId ?? this.memberId,
-    status: status ?? this.status,
-  );
+  }) =>
+      SetChatMemberStatus(
+        chatId: chatId ?? this.chatId,
+        memberId: memberId ?? this.memberId,
+        status: status ?? this.status,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setChatMemberStatus';

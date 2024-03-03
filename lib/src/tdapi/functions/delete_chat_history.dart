@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class DeleteChatHistory extends TdFunction {
-  
   /// **DeleteChatHistory** *(deleteChatHistory)* - TDLib function
   ///
   /// Deletes all messages in the chat. Use chat.can_be_deleted_only_for_self and chat.can_be_deleted_for_all_users fields to find whether and how the method can be applied to the chat.
@@ -25,7 +24,7 @@ final class DeleteChatHistory extends TdFunction {
     required this.removeFromChatList,
     required this.revoke,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -34,18 +33,18 @@ final class DeleteChatHistory extends TdFunction {
 
   /// Pass true to delete chat history for all users
   final bool revoke;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "remove_from_chat_list": removeFromChatList,
       "revoke": revoke,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class DeleteChatHistory extends TdFunction {
     int? chatId,
     bool? removeFromChatList,
     bool? revoke,
-  }) => DeleteChatHistory(
-    chatId: chatId ?? this.chatId,
-    removeFromChatList: removeFromChatList ?? this.removeFromChatList,
-    revoke: revoke ?? this.revoke,
-  );
+  }) =>
+      DeleteChatHistory(
+        chatId: chatId ?? this.chatId,
+        removeFromChatList: removeFromChatList ?? this.removeFromChatList,
+        revoke: revoke ?? this.revoke,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'deleteChatHistory';

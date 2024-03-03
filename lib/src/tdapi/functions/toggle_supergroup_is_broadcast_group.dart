@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ToggleSupergroupIsBroadcastGroup extends TdFunction {
-  
   /// **ToggleSupergroupIsBroadcastGroup** *(toggleSupergroupIsBroadcastGroup)* - TDLib function
   ///
   /// Upgrades supergroup to a broadcast group; requires owner privileges in the supergroup.
@@ -19,19 +18,19 @@ final class ToggleSupergroupIsBroadcastGroup extends TdFunction {
   const ToggleSupergroupIsBroadcastGroup({
     required this.supergroupId,
   });
-  
+
   /// Identifier of the supergroup
   final int supergroupId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "supergroup_id": supergroupId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class ToggleSupergroupIsBroadcastGroup extends TdFunction {
   /// * [supergroup_id]: Identifier of the supergroup
   ToggleSupergroupIsBroadcastGroup copyWith({
     int? supergroupId,
-  }) => ToggleSupergroupIsBroadcastGroup(
-    supergroupId: supergroupId ?? this.supergroupId,
-  );
+  }) =>
+      ToggleSupergroupIsBroadcastGroup(
+        supergroupId: supergroupId ?? this.supergroupId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'toggleSupergroupIsBroadcastGroup';

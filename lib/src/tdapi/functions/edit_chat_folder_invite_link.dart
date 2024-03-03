@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 ///
 /// [ChatFolderInviteLink] is returned on completion.
 final class EditChatFolderInviteLink extends TdFunction {
-  
   /// **EditChatFolderInviteLink** *(editChatFolderInviteLink)* - TDLib function
   ///
   /// Edits an invite link for a chat folder.
@@ -28,7 +27,7 @@ final class EditChatFolderInviteLink extends TdFunction {
     required this.name,
     required this.chatIds,
   });
-  
+
   /// Chat folder identifier
   final int chatFolderId;
 
@@ -40,19 +39,19 @@ final class EditChatFolderInviteLink extends TdFunction {
 
   /// New identifiers of chats to be accessible by the invite link. Use getChatsForChatFolderInviteLink to get suitable chats. Basic groups will be automatically converted to supergroups before link editing
   final List<int> chatIds;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_folder_id": chatFolderId,
       "invite_link": inviteLink,
       "name": name,
       "chat_ids": chatIds.map((i) => i).toList(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -66,12 +65,13 @@ final class EditChatFolderInviteLink extends TdFunction {
     String? inviteLink,
     String? name,
     List<int>? chatIds,
-  }) => EditChatFolderInviteLink(
-    chatFolderId: chatFolderId ?? this.chatFolderId,
-    inviteLink: inviteLink ?? this.inviteLink,
-    name: name ?? this.name,
-    chatIds: chatIds ?? this.chatIds,
-  );
+  }) =>
+      EditChatFolderInviteLink(
+        chatFolderId: chatFolderId ?? this.chatFolderId,
+        inviteLink: inviteLink ?? this.inviteLink,
+        name: name ?? this.name,
+        chatIds: chatIds ?? this.chatIds,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'editChatFolderInviteLink';

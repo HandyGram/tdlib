@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Chats] is returned on completion.
 final class GetChatFolderNewChats extends TdFunction {
-  
   /// **GetChatFolderNewChats** *(getChatFolderNewChats)* - TDLib function
   ///
   /// Returns new chats added to a shareable chat folder by its owner. The method must be called at most once in getOption("chat_folder_new_chats_update_period") for the given chat folder.
@@ -19,19 +18,19 @@ final class GetChatFolderNewChats extends TdFunction {
   const GetChatFolderNewChats({
     required this.chatFolderId,
   });
-  
+
   /// Chat folder identifier
   final int chatFolderId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_folder_id": chatFolderId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetChatFolderNewChats extends TdFunction {
   /// * [chat_folder_id]: Chat folder identifier
   GetChatFolderNewChats copyWith({
     int? chatFolderId,
-  }) => GetChatFolderNewChats(
-    chatFolderId: chatFolderId ?? this.chatFolderId,
-  );
+  }) =>
+      GetChatFolderNewChats(
+        chatFolderId: chatFolderId ?? this.chatFolderId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getChatFolderNewChats';

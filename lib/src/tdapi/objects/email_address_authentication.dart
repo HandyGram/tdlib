@@ -4,18 +4,17 @@ part of '../tdapi.dart';
 ///
 /// Contains authentication data for a email address.
 sealed class EmailAddressAuthentication extends TdObject {
-  
   /// **EmailAddressAuthentication** *(emailAddressAuthentication)* - parent
   ///
   /// Contains authentication data for a email address.
   const EmailAddressAuthentication();
-  
+
   /// a EmailAddressAuthentication return type can be :
   /// * [EmailAddressAuthenticationCode]
   /// * [EmailAddressAuthenticationAppleId]
   /// * [EmailAddressAuthenticationGoogleId]
-  factory EmailAddressAuthentication.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory EmailAddressAuthentication.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case EmailAddressAuthenticationCode.defaultObjectId:
         return EmailAddressAuthenticationCode.fromJson(json);
       case EmailAddressAuthenticationAppleId.defaultObjectId:
@@ -29,7 +28,7 @@ sealed class EmailAddressAuthentication extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -49,14 +48,12 @@ sealed class EmailAddressAuthentication extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **EmailAddressAuthenticationCode** *(emailAddressAuthenticationCode)* - child of EmailAddressAuthentication
 ///
 /// An authentication code delivered to a user's email address.
 ///
 /// * [code]: The code.
 final class EmailAddressAuthenticationCode extends EmailAddressAuthentication {
-  
   /// **EmailAddressAuthenticationCode** *(emailAddressAuthenticationCode)* - child of EmailAddressAuthentication
   ///
   /// An authentication code delivered to a user's email address.
@@ -65,24 +62,24 @@ final class EmailAddressAuthenticationCode extends EmailAddressAuthentication {
   const EmailAddressAuthenticationCode({
     required this.code,
   });
-  
+
   /// The code
   final String code;
-  
+
   /// Parse from a json
-  factory EmailAddressAuthenticationCode.fromJson(Map<String, dynamic> json) => EmailAddressAuthenticationCode(
-    code: json['code'],
-  );
-  
-  
+  factory EmailAddressAuthenticationCode.fromJson(Map<String, dynamic> json) =>
+      EmailAddressAuthenticationCode(
+        code: json['code'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "code": code,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -91,9 +88,10 @@ final class EmailAddressAuthenticationCode extends EmailAddressAuthentication {
   @override
   EmailAddressAuthenticationCode copyWith({
     String? code,
-  }) => EmailAddressAuthenticationCode(
-    code: code ?? this.code,
-  );
+  }) =>
+      EmailAddressAuthenticationCode(
+        code: code ?? this.code,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'emailAddressAuthenticationCode';
@@ -107,14 +105,13 @@ final class EmailAddressAuthenticationCode extends EmailAddressAuthentication {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **EmailAddressAuthenticationAppleId** *(emailAddressAuthenticationAppleId)* - child of EmailAddressAuthentication
 ///
 /// An authentication token received through Apple emailAddressAuthenticationAppleId.
 ///
 /// * [token]: The token.
-final class EmailAddressAuthenticationAppleId extends EmailAddressAuthentication {
-  
+final class EmailAddressAuthenticationAppleId
+    extends EmailAddressAuthentication {
   /// **EmailAddressAuthenticationAppleId** *(emailAddressAuthenticationAppleId)* - child of EmailAddressAuthentication
   ///
   /// An authentication token received through Apple emailAddressAuthenticationAppleId.
@@ -123,24 +120,25 @@ final class EmailAddressAuthenticationAppleId extends EmailAddressAuthentication
   const EmailAddressAuthenticationAppleId({
     required this.token,
   });
-  
+
   /// The token
   final String token;
-  
+
   /// Parse from a json
-  factory EmailAddressAuthenticationAppleId.fromJson(Map<String, dynamic> json) => EmailAddressAuthenticationAppleId(
-    token: json['token'],
-  );
-  
-  
+  factory EmailAddressAuthenticationAppleId.fromJson(
+          Map<String, dynamic> json) =>
+      EmailAddressAuthenticationAppleId(
+        token: json['token'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "token": token,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -149,9 +147,10 @@ final class EmailAddressAuthenticationAppleId extends EmailAddressAuthentication
   @override
   EmailAddressAuthenticationAppleId copyWith({
     String? token,
-  }) => EmailAddressAuthenticationAppleId(
-    token: token ?? this.token,
-  );
+  }) =>
+      EmailAddressAuthenticationAppleId(
+        token: token ?? this.token,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'emailAddressAuthenticationAppleId';
@@ -165,14 +164,13 @@ final class EmailAddressAuthenticationAppleId extends EmailAddressAuthentication
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **EmailAddressAuthenticationGoogleId** *(emailAddressAuthenticationGoogleId)* - child of EmailAddressAuthentication
 ///
 /// An authentication token received through Google emailAddressAuthenticationGoogleId.
 ///
 /// * [token]: The token.
-final class EmailAddressAuthenticationGoogleId extends EmailAddressAuthentication {
-  
+final class EmailAddressAuthenticationGoogleId
+    extends EmailAddressAuthentication {
   /// **EmailAddressAuthenticationGoogleId** *(emailAddressAuthenticationGoogleId)* - child of EmailAddressAuthentication
   ///
   /// An authentication token received through Google emailAddressAuthenticationGoogleId.
@@ -181,24 +179,25 @@ final class EmailAddressAuthenticationGoogleId extends EmailAddressAuthenticatio
   const EmailAddressAuthenticationGoogleId({
     required this.token,
   });
-  
+
   /// The token
   final String token;
-  
+
   /// Parse from a json
-  factory EmailAddressAuthenticationGoogleId.fromJson(Map<String, dynamic> json) => EmailAddressAuthenticationGoogleId(
-    token: json['token'],
-  );
-  
-  
+  factory EmailAddressAuthenticationGoogleId.fromJson(
+          Map<String, dynamic> json) =>
+      EmailAddressAuthenticationGoogleId(
+        token: json['token'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "token": token,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -207,9 +206,10 @@ final class EmailAddressAuthenticationGoogleId extends EmailAddressAuthenticatio
   @override
   EmailAddressAuthenticationGoogleId copyWith({
     String? token,
-  }) => EmailAddressAuthenticationGoogleId(
-    token: token ?? this.token,
-  );
+  }) =>
+      EmailAddressAuthenticationGoogleId(
+        token: token ?? this.token,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'emailAddressAuthenticationGoogleId';

@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetArchiveChatListSettings extends TdFunction {
-  
   /// **SetArchiveChatListSettings** *(setArchiveChatListSettings)* - TDLib function
   ///
   /// Changes settings for automatic moving of chats to and from the Archive chat lists.
@@ -19,19 +18,19 @@ final class SetArchiveChatListSettings extends TdFunction {
   const SetArchiveChatListSettings({
     required this.settings,
   });
-  
+
   /// New settings
   final ArchiveChatListSettings settings;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "settings": settings.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class SetArchiveChatListSettings extends TdFunction {
   /// * [settings]: New settings
   SetArchiveChatListSettings copyWith({
     ArchiveChatListSettings? settings,
-  }) => SetArchiveChatListSettings(
-    settings: settings ?? this.settings,
-  );
+  }) =>
+      SetArchiveChatListSettings(
+        settings: settings ?? this.settings,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setArchiveChatListSettings';

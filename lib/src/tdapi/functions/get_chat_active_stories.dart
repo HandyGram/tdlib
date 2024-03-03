@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [ChatActiveStories] is returned on completion.
 final class GetChatActiveStories extends TdFunction {
-  
   /// **GetChatActiveStories** *(getChatActiveStories)* - TDLib function
   ///
   /// Returns the list of active stories posted by the given chat.
@@ -19,19 +18,19 @@ final class GetChatActiveStories extends TdFunction {
   const GetChatActiveStories({
     required this.chatId,
   });
-  
+
   /// Chat identifier
   final int chatId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetChatActiveStories extends TdFunction {
   /// * [chat_id]: Chat identifier
   GetChatActiveStories copyWith({
     int? chatId,
-  }) => GetChatActiveStories(
-    chatId: chatId ?? this.chatId,
-  );
+  }) =>
+      GetChatActiveStories(
+        chatId: chatId ?? this.chatId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getChatActiveStories';

@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class AddLogMessage extends TdFunction {
-  
   /// **AddLogMessage** *(addLogMessage)* - TDLib function
   ///
   /// Adds a message to TDLib internal log. Can be called synchronously.
@@ -22,23 +21,23 @@ final class AddLogMessage extends TdFunction {
     required this.verbosityLevel,
     required this.text,
   });
-  
+
   /// The minimum verbosity level needed for the message to be logged; 0-1023
   final int verbosityLevel;
 
   /// Text of a message to log
   final String text;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "verbosity_level": verbosityLevel,
       "text": text,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class AddLogMessage extends TdFunction {
   AddLogMessage copyWith({
     int? verbosityLevel,
     String? text,
-  }) => AddLogMessage(
-    verbosityLevel: verbosityLevel ?? this.verbosityLevel,
-    text: text ?? this.text,
-  );
+  }) =>
+      AddLogMessage(
+        verbosityLevel: verbosityLevel ?? this.verbosityLevel,
+        text: text ?? this.text,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'addLogMessage';

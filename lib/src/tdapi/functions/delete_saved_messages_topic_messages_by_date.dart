@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class DeleteSavedMessagesTopicMessagesByDate extends TdFunction {
-  
   /// **DeleteSavedMessagesTopicMessagesByDate** *(deleteSavedMessagesTopicMessagesByDate)* - TDLib function
   ///
   /// Deletes all messages between the specified dates in a Saved Messages topic. Messages sent in the last 30 seconds will not be deleted.
@@ -25,7 +24,7 @@ final class DeleteSavedMessagesTopicMessagesByDate extends TdFunction {
     required this.minDate,
     required this.maxDate,
   });
-  
+
   /// Identifier of Saved Messages topic which messages will be deleted
   final int savedMessagesTopicId;
 
@@ -34,18 +33,18 @@ final class DeleteSavedMessagesTopicMessagesByDate extends TdFunction {
 
   /// The maximum date of the messages to delete
   final int maxDate;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "saved_messages_topic_id": savedMessagesTopicId,
       "min_date": minDate,
       "max_date": maxDate,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,14 +56,16 @@ final class DeleteSavedMessagesTopicMessagesByDate extends TdFunction {
     int? savedMessagesTopicId,
     int? minDate,
     int? maxDate,
-  }) => DeleteSavedMessagesTopicMessagesByDate(
-    savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
-    minDate: minDate ?? this.minDate,
-    maxDate: maxDate ?? this.maxDate,
-  );
+  }) =>
+      DeleteSavedMessagesTopicMessagesByDate(
+        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
+        minDate: minDate ?? this.minDate,
+        maxDate: maxDate ?? this.maxDate,
+      );
 
   /// TDLib object type
-  static const String defaultObjectId = 'deleteSavedMessagesTopicMessagesByDate';
+  static const String defaultObjectId =
+      'deleteSavedMessagesTopicMessagesByDate';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

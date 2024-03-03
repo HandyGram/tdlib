@@ -6,29 +6,29 @@ part of '../tdapi.dart';
 ///
 /// [Stickers] is returned on completion.
 final class GetDefaultBackgroundCustomEmojiStickers extends TdFunction {
-  
   /// **GetDefaultBackgroundCustomEmojiStickers** *(getDefaultBackgroundCustomEmojiStickers)* - TDLib function
   ///
   /// Returns default list of custom emoji stickers for reply background.
   ///
   /// [Stickers] is returned on completion.
   const GetDefaultBackgroundCustomEmojiStickers();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
-  GetDefaultBackgroundCustomEmojiStickers copyWith() => const GetDefaultBackgroundCustomEmojiStickers();
+  GetDefaultBackgroundCustomEmojiStickers copyWith() =>
+      const GetDefaultBackgroundCustomEmojiStickers();
 
   /// TDLib object type
-  static const String defaultObjectId = 'getDefaultBackgroundCustomEmojiStickers';
+  static const String defaultObjectId =
+      'getDefaultBackgroundCustomEmojiStickers';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [ChatBoostLinkInfo] is returned on completion.
 final class GetChatBoostLinkInfo extends TdFunction {
-  
   /// **GetChatBoostLinkInfo** *(getChatBoostLinkInfo)* - TDLib function
   ///
   /// Returns information about a link to boost a chat. Can be called for any internal link of the type internalLinkTypeChatBoost.
@@ -19,19 +18,19 @@ final class GetChatBoostLinkInfo extends TdFunction {
   const GetChatBoostLinkInfo({
     required this.url,
   });
-  
+
   /// The link to boost a chat
   final String url;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "url": url,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetChatBoostLinkInfo extends TdFunction {
   /// * [url]: The link to boost a chat
   GetChatBoostLinkInfo copyWith({
     String? url,
-  }) => GetChatBoostLinkInfo(
-    url: url ?? this.url,
-  );
+  }) =>
+      GetChatBoostLinkInfo(
+        url: url ?? this.url,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getChatBoostLinkInfo';

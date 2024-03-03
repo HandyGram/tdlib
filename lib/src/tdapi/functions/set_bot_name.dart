@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetBotName extends TdFunction {
-  
   /// **SetBotName** *(setBotName)* - TDLib function
   ///
   /// Sets the name of a bot. Can be called only if userTypeBot.can_be_edited == true.
@@ -25,7 +24,7 @@ final class SetBotName extends TdFunction {
     required this.languageCode,
     required this.name,
   });
-  
+
   /// Identifier of the target bot
   final int botUserId;
 
@@ -34,18 +33,18 @@ final class SetBotName extends TdFunction {
 
   /// New bot's name on the specified language; 0-64 characters; must be non-empty if language code is empty
   final String name;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "bot_user_id": botUserId,
       "language_code": languageCode,
       "name": name,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class SetBotName extends TdFunction {
     int? botUserId,
     String? languageCode,
     String? name,
-  }) => SetBotName(
-    botUserId: botUserId ?? this.botUserId,
-    languageCode: languageCode ?? this.languageCode,
-    name: name ?? this.name,
-  );
+  }) =>
+      SetBotName(
+        botUserId: botUserId ?? this.botUserId,
+        languageCode: languageCode ?? this.languageCode,
+        name: name ?? this.name,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setBotName';

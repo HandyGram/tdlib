@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class DeleteMessages extends TdFunction {
-  
   /// **DeleteMessages** *(deleteMessages)* - TDLib function
   ///
   /// Deletes messages.
@@ -25,43 +24,44 @@ final class DeleteMessages extends TdFunction {
     required this.messageIds,
     required this.revoke,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
-  /// Identifiers of the messages to be deleted 
+  /// Identifiers of the messages to be deleted
   final List<int> messageIds;
 
   /// Pass true to delete messages for all chat members. Always true for supergroups, channels and secret chats
   final bool revoke;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_ids": messageIds.map((i) => i).toList(),
       "revoke": revoke,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
-  /// * [message_ids]: Identifiers of the messages to be deleted 
+  /// * [chat_id]: Chat identifier
+  /// * [message_ids]: Identifiers of the messages to be deleted
   /// * [revoke]: Pass true to delete messages for all chat members. Always true for supergroups, channels and secret chats
   DeleteMessages copyWith({
     int? chatId,
     List<int>? messageIds,
     bool? revoke,
-  }) => DeleteMessages(
-    chatId: chatId ?? this.chatId,
-    messageIds: messageIds ?? this.messageIds,
-    revoke: revoke ?? this.revoke,
-  );
+  }) =>
+      DeleteMessages(
+        chatId: chatId ?? this.chatId,
+        messageIds: messageIds ?? this.messageIds,
+        revoke: revoke ?? this.revoke,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'deleteMessages';

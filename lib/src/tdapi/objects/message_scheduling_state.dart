@@ -4,17 +4,16 @@ part of '../tdapi.dart';
 ///
 /// Contains information about the time when a scheduled message will be sent.
 sealed class MessageSchedulingState extends TdObject {
-  
   /// **MessageSchedulingState** *(messageSchedulingState)* - parent
   ///
   /// Contains information about the time when a scheduled message will be sent.
   const MessageSchedulingState();
-  
+
   /// a MessageSchedulingState return type can be :
   /// * [MessageSchedulingStateSendAtDate]
   /// * [MessageSchedulingStateSendWhenOnline]
-  factory MessageSchedulingState.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory MessageSchedulingState.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case MessageSchedulingStateSendAtDate.defaultObjectId:
         return MessageSchedulingStateSendAtDate.fromJson(json);
       case MessageSchedulingStateSendWhenOnline.defaultObjectId:
@@ -26,7 +25,7 @@ sealed class MessageSchedulingState extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -46,14 +45,12 @@ sealed class MessageSchedulingState extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **MessageSchedulingStateSendAtDate** *(messageSchedulingStateSendAtDate)* - child of MessageSchedulingState
 ///
 /// The message will be sent at the specified date.
 ///
 /// * [sendDate]: Point in time (Unix timestamp) when the message will be sent. The date must be within 367 days in the future.
 final class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
-  
   /// **MessageSchedulingStateSendAtDate** *(messageSchedulingStateSendAtDate)* - child of MessageSchedulingState
   ///
   /// The message will be sent at the specified date.
@@ -62,24 +59,25 @@ final class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
   const MessageSchedulingStateSendAtDate({
     required this.sendDate,
   });
-  
+
   /// Point in time (Unix timestamp) when the message will be sent. The date must be within 367 days in the future
   final int sendDate;
-  
+
   /// Parse from a json
-  factory MessageSchedulingStateSendAtDate.fromJson(Map<String, dynamic> json) => MessageSchedulingStateSendAtDate(
-    sendDate: json['send_date'],
-  );
-  
-  
+  factory MessageSchedulingStateSendAtDate.fromJson(
+          Map<String, dynamic> json) =>
+      MessageSchedulingStateSendAtDate(
+        sendDate: json['send_date'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "send_date": sendDate,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -88,9 +86,10 @@ final class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
   @override
   MessageSchedulingStateSendAtDate copyWith({
     int? sendDate,
-  }) => MessageSchedulingStateSendAtDate(
-    sendDate: sendDate ?? this.sendDate,
-  );
+  }) =>
+      MessageSchedulingStateSendAtDate(
+        sendDate: sendDate ?? this.sendDate,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'messageSchedulingStateSendAtDate';
@@ -104,31 +103,33 @@ final class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **MessageSchedulingStateSendWhenOnline** *(messageSchedulingStateSendWhenOnline)* - child of MessageSchedulingState
 ///
 /// The message will be sent when the other user is online. Applicable to private chats only and when the exact online status of the other user is known.
-final class MessageSchedulingStateSendWhenOnline extends MessageSchedulingState {
-  
+final class MessageSchedulingStateSendWhenOnline
+    extends MessageSchedulingState {
   /// **MessageSchedulingStateSendWhenOnline** *(messageSchedulingStateSendWhenOnline)* - child of MessageSchedulingState
   ///
   /// The message will be sent when the other user is online. Applicable to private chats only and when the exact online status of the other user is known.
   const MessageSchedulingStateSendWhenOnline();
-  
+
   /// Parse from a json
-  factory MessageSchedulingStateSendWhenOnline.fromJson(Map<String, dynamic> json) => const MessageSchedulingStateSendWhenOnline();
-  
+  factory MessageSchedulingStateSendWhenOnline.fromJson(
+          Map<String, dynamic> json) =>
+      const MessageSchedulingStateSendWhenOnline();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  MessageSchedulingStateSendWhenOnline copyWith() => const MessageSchedulingStateSendWhenOnline();
+  MessageSchedulingStateSendWhenOnline copyWith() =>
+      const MessageSchedulingStateSendWhenOnline();
 
   /// TDLib object type
   static const String defaultObjectId = 'messageSchedulingStateSendWhenOnline';

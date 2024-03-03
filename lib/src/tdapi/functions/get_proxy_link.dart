@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [HttpUrl] is returned on completion.
 final class GetProxyLink extends TdFunction {
-  
   /// **GetProxyLink** *(getProxyLink)* - TDLib function
   ///
   /// Returns an HTTPS link, which can be used to add a proxy. Available only for SOCKS5 and MTProto proxies. Can be called before authorization.
@@ -19,19 +18,19 @@ final class GetProxyLink extends TdFunction {
   const GetProxyLink({
     required this.proxyId,
   });
-  
+
   /// Proxy identifier
   final int proxyId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "proxy_id": proxyId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetProxyLink extends TdFunction {
   /// * [proxy_id]: Proxy identifier
   GetProxyLink copyWith({
     int? proxyId,
-  }) => GetProxyLink(
-    proxyId: proxyId ?? this.proxyId,
-  );
+  }) =>
+      GetProxyLink(
+        proxyId: proxyId ?? this.proxyId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getProxyLink';

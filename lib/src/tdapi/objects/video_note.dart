@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 /// * [speechRecognitionResult]: Result of speech recognition in the video note; may be null *(optional)*.
 /// * [video]: File containing the video.
 final class VideoNote extends TdObject {
-  
   /// **VideoNote** *(videoNote)* - basic class
   ///
   /// Describes a video note. The video must be equal in width and height, cropped to a circle, and stored in MPEG4 format.
@@ -33,7 +32,7 @@ final class VideoNote extends TdObject {
     this.speechRecognitionResult,
     required this.video,
   });
-  
+
   /// Duration of the video, in seconds; as defined by the sender
   final int duration;
 
@@ -54,24 +53,30 @@ final class VideoNote extends TdObject {
 
   /// File containing the video
   final File video;
-  
+
   /// Parse from a json
   factory VideoNote.fromJson(Map<String, dynamic> json) => VideoNote(
-    duration: json['duration'],
-    waveform: json['waveform'],
-    length: json['length'],
-    minithumbnail: json['minithumbnail'] == null ? null : Minithumbnail.fromJson(json['minithumbnail']),
-    thumbnail: json['thumbnail'] == null ? null : Thumbnail.fromJson(json['thumbnail']),
-    speechRecognitionResult: json['speech_recognition_result'] == null ? null : SpeechRecognitionResult.fromJson(json['speech_recognition_result']),
-    video: File.fromJson(json['video']),
-  );
-  
-  
+        duration: json['duration'],
+        waveform: json['waveform'],
+        length: json['length'],
+        minithumbnail: json['minithumbnail'] == null
+            ? null
+            : Minithumbnail.fromJson(json['minithumbnail']),
+        thumbnail: json['thumbnail'] == null
+            ? null
+            : Thumbnail.fromJson(json['thumbnail']),
+        speechRecognitionResult: json['speech_recognition_result'] == null
+            ? null
+            : SpeechRecognitionResult.fromJson(
+                json['speech_recognition_result']),
+        video: File.fromJson(json['video']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "duration": duration,
       "waveform": waveform,
       "length": length,
@@ -79,8 +84,8 @@ final class VideoNote extends TdObject {
       "thumbnail": thumbnail?.toJson(),
       "speech_recognition_result": speechRecognitionResult?.toJson(),
       "video": video.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -100,15 +105,17 @@ final class VideoNote extends TdObject {
     Thumbnail? thumbnail,
     SpeechRecognitionResult? speechRecognitionResult,
     File? video,
-  }) => VideoNote(
-    duration: duration ?? this.duration,
-    waveform: waveform ?? this.waveform,
-    length: length ?? this.length,
-    minithumbnail: minithumbnail ?? this.minithumbnail,
-    thumbnail: thumbnail ?? this.thumbnail,
-    speechRecognitionResult: speechRecognitionResult ?? this.speechRecognitionResult,
-    video: video ?? this.video,
-  );
+  }) =>
+      VideoNote(
+        duration: duration ?? this.duration,
+        waveform: waveform ?? this.waveform,
+        length: length ?? this.length,
+        minithumbnail: minithumbnail ?? this.minithumbnail,
+        thumbnail: thumbnail ?? this.thumbnail,
+        speechRecognitionResult:
+            speechRecognitionResult ?? this.speechRecognitionResult,
+        video: video ?? this.video,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'videoNote';

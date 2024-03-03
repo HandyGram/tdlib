@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class EditInlineMessageLiveLocation extends TdFunction {
-  
   /// **EditInlineMessageLiveLocation** *(editInlineMessageLiveLocation)* - TDLib function
   ///
   /// Edits the content of a live location in an inline message sent via a bot; for bots only.
@@ -31,7 +30,7 @@ final class EditInlineMessageLiveLocation extends TdFunction {
     required this.heading,
     required this.proximityAlertRadius,
   });
-  
+
   /// Inline message identifier
   final String inlineMessageId;
 
@@ -46,20 +45,20 @@ final class EditInlineMessageLiveLocation extends TdFunction {
 
   /// The new maximum distance for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled
   final int proximityAlertRadius;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "inline_message_id": inlineMessageId,
       "reply_markup": replyMarkup?.toJson(),
       "location": location?.toJson(),
       "heading": heading,
       "proximity_alert_radius": proximityAlertRadius,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -75,13 +74,14 @@ final class EditInlineMessageLiveLocation extends TdFunction {
     Location? location,
     int? heading,
     int? proximityAlertRadius,
-  }) => EditInlineMessageLiveLocation(
-    inlineMessageId: inlineMessageId ?? this.inlineMessageId,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    location: location ?? this.location,
-    heading: heading ?? this.heading,
-    proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
-  );
+  }) =>
+      EditInlineMessageLiveLocation(
+        inlineMessageId: inlineMessageId ?? this.inlineMessageId,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+        location: location ?? this.location,
+        heading: heading ?? this.heading,
+        proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'editInlineMessageLiveLocation';

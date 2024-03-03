@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [MessageSenders] is returned on completion.
 final class GetVideoChatAvailableParticipants extends TdFunction {
-  
   /// **GetVideoChatAvailableParticipants** *(getVideoChatAvailableParticipants)* - TDLib function
   ///
   /// Returns list of participant identifiers, on whose behalf a video chat in the chat can be joined.
@@ -19,19 +18,19 @@ final class GetVideoChatAvailableParticipants extends TdFunction {
   const GetVideoChatAvailableParticipants({
     required this.chatId,
   });
-  
+
   /// Chat identifier
   final int chatId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetVideoChatAvailableParticipants extends TdFunction {
   /// * [chat_id]: Chat identifier
   GetVideoChatAvailableParticipants copyWith({
     int? chatId,
-  }) => GetVideoChatAvailableParticipants(
-    chatId: chatId ?? this.chatId,
-  );
+  }) =>
+      GetVideoChatAvailableParticipants(
+        chatId: chatId ?? this.chatId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getVideoChatAvailableParticipants';

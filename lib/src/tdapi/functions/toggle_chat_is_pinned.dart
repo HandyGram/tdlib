@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ToggleChatIsPinned extends TdFunction {
-  
   /// **ToggleChatIsPinned** *(toggleChatIsPinned)* - TDLib function
   ///
   /// Changes the pinned state of a chat. There can be up to getOption("pinned_chat_count_max")/getOption("pinned_archived_chat_count_max") pinned non-secret chats and the same number of secret chats in the main/archive chat list. The limit can be increased with Telegram Premium.
@@ -25,7 +24,7 @@ final class ToggleChatIsPinned extends TdFunction {
     required this.chatId,
     required this.isPinned,
   });
-  
+
   /// Chat list in which to change the pinned state of the chat
   final ChatList chatList;
 
@@ -34,18 +33,18 @@ final class ToggleChatIsPinned extends TdFunction {
 
   /// Pass true to pin the chat; pass false to unpin it
   final bool isPinned;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_list": chatList.toJson(),
       "chat_id": chatId,
       "is_pinned": isPinned,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class ToggleChatIsPinned extends TdFunction {
     ChatList? chatList,
     int? chatId,
     bool? isPinned,
-  }) => ToggleChatIsPinned(
-    chatList: chatList ?? this.chatList,
-    chatId: chatId ?? this.chatId,
-    isPinned: isPinned ?? this.isPinned,
-  );
+  }) =>
+      ToggleChatIsPinned(
+        chatList: chatList ?? this.chatList,
+        chatId: chatId ?? this.chatId,
+        isPinned: isPinned ?? this.isPinned,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'toggleChatIsPinned';

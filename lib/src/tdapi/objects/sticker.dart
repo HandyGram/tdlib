@@ -15,7 +15,6 @@ part of '../tdapi.dart';
 /// * [thumbnail]: Sticker thumbnail in WEBP or JPEG format; may be null *(optional)*.
 /// * [sticker]: File containing the sticker.
 final class Sticker extends TdObject {
-  
   /// **Sticker** *(sticker)* - basic class
   ///
   /// Describes a sticker.
@@ -44,7 +43,7 @@ final class Sticker extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Unique sticker identifier within the set; 0 if none
   final int id;
 
@@ -82,29 +81,32 @@ final class Sticker extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory Sticker.fromJson(Map<String, dynamic> json) => Sticker(
-    id: int.tryParse(json['id'] ?? "") ?? 0,
-    setId: int.tryParse(json['set_id'] ?? "") ?? 0,
-    width: json['width'],
-    height: json['height'],
-    emoji: json['emoji'],
-    format: StickerFormat.fromJson(json['format']),
-    fullType: StickerFullType.fromJson(json['full_type']),
-    outline: List<ClosedVectorPath>.from((json['outline'] ?? []).map((item) => ClosedVectorPath.fromJson(item)).toList()),
-    thumbnail: json['thumbnail'] == null ? null : Thumbnail.fromJson(json['thumbnail']),
-    sticker: File.fromJson(json['sticker']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: int.tryParse(json['id'] ?? "") ?? 0,
+        setId: int.tryParse(json['set_id'] ?? "") ?? 0,
+        width: json['width'],
+        height: json['height'],
+        emoji: json['emoji'],
+        format: StickerFormat.fromJson(json['format']),
+        fullType: StickerFullType.fromJson(json['full_type']),
+        outline: List<ClosedVectorPath>.from((json['outline'] ?? [])
+            .map((item) => ClosedVectorPath.fromJson(item))
+            .toList()),
+        thumbnail: json['thumbnail'] == null
+            ? null
+            : Thumbnail.fromJson(json['thumbnail']),
+        sticker: File.fromJson(json['sticker']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "set_id": setId,
       "width": width,
@@ -115,8 +117,8 @@ final class Sticker extends TdObject {
       "outline": outline.map((i) => i.toJson()).toList(),
       "thumbnail": thumbnail?.toJson(),
       "sticker": sticker.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -144,20 +146,21 @@ final class Sticker extends TdObject {
     File? sticker,
     dynamic extra,
     int? clientId,
-  }) => Sticker(
-    id: id ?? this.id,
-    setId: setId ?? this.setId,
-    width: width ?? this.width,
-    height: height ?? this.height,
-    emoji: emoji ?? this.emoji,
-    format: format ?? this.format,
-    fullType: fullType ?? this.fullType,
-    outline: outline ?? this.outline,
-    thumbnail: thumbnail ?? this.thumbnail,
-    sticker: sticker ?? this.sticker,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      Sticker(
+        id: id ?? this.id,
+        setId: setId ?? this.setId,
+        width: width ?? this.width,
+        height: height ?? this.height,
+        emoji: emoji ?? this.emoji,
+        format: format ?? this.format,
+        fullType: fullType ?? this.fullType,
+        outline: outline ?? this.outline,
+        thumbnail: thumbnail ?? this.thumbnail,
+        sticker: sticker ?? this.sticker,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'sticker';

@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SendWebAppData extends TdFunction {
-  
   /// **SendWebAppData** *(sendWebAppData)* - TDLib function
   ///
   /// Sends data received from a keyboardButtonTypeWebApp Web App to a bot.
@@ -25,7 +24,7 @@ final class SendWebAppData extends TdFunction {
     required this.buttonText,
     required this.data,
   });
-  
+
   /// Identifier of the target bot
   final int botUserId;
 
@@ -34,18 +33,18 @@ final class SendWebAppData extends TdFunction {
 
   /// The data
   final String data;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "bot_user_id": botUserId,
       "button_text": buttonText,
       "data": data,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class SendWebAppData extends TdFunction {
     int? botUserId,
     String? buttonText,
     String? data,
-  }) => SendWebAppData(
-    botUserId: botUserId ?? this.botUserId,
-    buttonText: buttonText ?? this.buttonText,
-    data: data ?? this.data,
-  );
+  }) =>
+      SendWebAppData(
+        botUserId: botUserId ?? this.botUserId,
+        buttonText: buttonText ?? this.buttonText,
+        data: data ?? this.data,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'sendWebAppData';

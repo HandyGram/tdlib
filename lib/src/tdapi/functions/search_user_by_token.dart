@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [User] is returned on completion.
 final class SearchUserByToken extends TdFunction {
-  
   /// **SearchUserByToken** *(searchUserByToken)* - TDLib function
   ///
   /// Searches a user by a token from the user's link.
@@ -19,19 +18,19 @@ final class SearchUserByToken extends TdFunction {
   const SearchUserByToken({
     required this.token,
   });
-  
+
   /// Token to search for
   final String token;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "token": token,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class SearchUserByToken extends TdFunction {
   /// * [token]: Token to search for
   SearchUserByToken copyWith({
     String? token,
-  }) => SearchUserByToken(
-    token: token ?? this.token,
-  );
+  }) =>
+      SearchUserByToken(
+        token: token ?? this.token,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'searchUserByToken';

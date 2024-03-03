@@ -7,7 +7,6 @@ part of '../tdapi.dart';
 /// * [chatId]: Chat identifier.
 /// * [settings]: Autosave settings for the chat.
 final class AutosaveSettingsException extends TdObject {
-  
   /// **AutosaveSettingsException** *(autosaveSettingsException)* - basic class
   ///
   /// Contains autosave settings for a chat, which overrides default settings for the corresponding scope.
@@ -18,29 +17,29 @@ final class AutosaveSettingsException extends TdObject {
     required this.chatId,
     required this.settings,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
   /// Autosave settings for the chat
   final ScopeAutosaveSettings settings;
-  
+
   /// Parse from a json
-  factory AutosaveSettingsException.fromJson(Map<String, dynamic> json) => AutosaveSettingsException(
-    chatId: json['chat_id'],
-    settings: ScopeAutosaveSettings.fromJson(json['settings']),
-  );
-  
-  
+  factory AutosaveSettingsException.fromJson(Map<String, dynamic> json) =>
+      AutosaveSettingsException(
+        chatId: json['chat_id'],
+        settings: ScopeAutosaveSettings.fromJson(json['settings']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "settings": settings.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -50,10 +49,11 @@ final class AutosaveSettingsException extends TdObject {
   AutosaveSettingsException copyWith({
     int? chatId,
     ScopeAutosaveSettings? settings,
-  }) => AutosaveSettingsException(
-    chatId: chatId ?? this.chatId,
-    settings: settings ?? this.settings,
-  );
+  }) =>
+      AutosaveSettingsException(
+        chatId: chatId ?? this.chatId,
+        settings: settings ?? this.settings,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'autosaveSettingsException';

@@ -4,18 +4,17 @@ part of '../tdapi.dart';
 ///
 /// Describes format of a sticker.
 sealed class StickerFormat extends TdObject {
-  
   /// **StickerFormat** *(stickerFormat)* - parent
   ///
   /// Describes format of a sticker.
   const StickerFormat();
-  
+
   /// a StickerFormat return type can be :
   /// * [StickerFormatWebp]
   /// * [StickerFormatTgs]
   /// * [StickerFormatWebm]
-  factory StickerFormat.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory StickerFormat.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case StickerFormatWebp.defaultObjectId:
         return StickerFormatWebp.fromJson(json);
       case StickerFormatTgs.defaultObjectId:
@@ -29,7 +28,7 @@ sealed class StickerFormat extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -49,27 +48,26 @@ sealed class StickerFormat extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **StickerFormatWebp** *(stickerFormatWebp)* - child of StickerFormat
 ///
 /// The sticker is an image in WEBP format.
 final class StickerFormatWebp extends StickerFormat {
-  
   /// **StickerFormatWebp** *(stickerFormatWebp)* - child of StickerFormat
   ///
   /// The sticker is an image in WEBP format.
   const StickerFormatWebp();
-  
+
   /// Parse from a json
-  factory StickerFormatWebp.fromJson(Map<String, dynamic> json) => const StickerFormatWebp();
-  
+  factory StickerFormatWebp.fromJson(Map<String, dynamic> json) =>
+      const StickerFormatWebp();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -87,27 +85,26 @@ final class StickerFormatWebp extends StickerFormat {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **StickerFormatTgs** *(stickerFormatTgs)* - child of StickerFormat
 ///
 /// The sticker is an animation in TGS format.
 final class StickerFormatTgs extends StickerFormat {
-  
   /// **StickerFormatTgs** *(stickerFormatTgs)* - child of StickerFormat
   ///
   /// The sticker is an animation in TGS format.
   const StickerFormatTgs();
-  
+
   /// Parse from a json
-  factory StickerFormatTgs.fromJson(Map<String, dynamic> json) => const StickerFormatTgs();
-  
+  factory StickerFormatTgs.fromJson(Map<String, dynamic> json) =>
+      const StickerFormatTgs();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -125,27 +122,26 @@ final class StickerFormatTgs extends StickerFormat {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **StickerFormatWebm** *(stickerFormatWebm)* - child of StickerFormat
 ///
 /// The sticker is a video in WEBM format.
 final class StickerFormatWebm extends StickerFormat {
-  
   /// **StickerFormatWebm** *(stickerFormatWebm)* - child of StickerFormat
   ///
   /// The sticker is a video in WEBM format.
   const StickerFormatWebm();
-  
+
   /// Parse from a json
-  factory StickerFormatWebm.fromJson(Map<String, dynamic> json) => const StickerFormatWebm();
-  
+  factory StickerFormatWebm.fromJson(Map<String, dynamic> json) =>
+      const StickerFormatWebm();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override

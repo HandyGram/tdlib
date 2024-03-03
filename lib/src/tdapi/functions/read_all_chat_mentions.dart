@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ReadAllChatMentions extends TdFunction {
-  
   /// **ReadAllChatMentions** *(readAllChatMentions)* - TDLib function
   ///
   /// Marks all mentions in a chat as read.
@@ -19,19 +18,19 @@ final class ReadAllChatMentions extends TdFunction {
   const ReadAllChatMentions({
     required this.chatId,
   });
-  
+
   /// Chat identifier
   final int chatId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class ReadAllChatMentions extends TdFunction {
   /// * [chat_id]: Chat identifier
   ReadAllChatMentions copyWith({
     int? chatId,
-  }) => ReadAllChatMentions(
-    chatId: chatId ?? this.chatId,
-  );
+  }) =>
+      ReadAllChatMentions(
+        chatId: chatId ?? this.chatId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'readAllChatMentions';

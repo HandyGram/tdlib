@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [streams]: A list of group call streams.
 final class GroupCallStreams extends TdObject {
-  
   /// **GroupCallStreams** *(groupCallStreams)* - basic class
   ///
   /// Represents a list of group call streams.
@@ -17,7 +16,7 @@ final class GroupCallStreams extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// A list of group call streams
   final List<GroupCallStream> streams;
 
@@ -28,23 +27,25 @@ final class GroupCallStreams extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory GroupCallStreams.fromJson(Map<String, dynamic> json) => GroupCallStreams(
-    streams: List<GroupCallStream>.from((json['streams'] ?? []).map((item) => GroupCallStream.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory GroupCallStreams.fromJson(Map<String, dynamic> json) =>
+      GroupCallStreams(
+        streams: List<GroupCallStream>.from((json['streams'] ?? [])
+            .map((item) => GroupCallStream.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "streams": streams.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +55,12 @@ final class GroupCallStreams extends TdObject {
     List<GroupCallStream>? streams,
     dynamic extra,
     int? clientId,
-  }) => GroupCallStreams(
-    streams: streams ?? this.streams,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      GroupCallStreams(
+        streams: streams ?? this.streams,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'groupCallStreams';

@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 /// * [limits]: The list of limits, increased for Premium users.
 /// * [paymentLink]: An internal link to be opened to pay for Telegram Premium if store payment isn't possible; may be null if direct payment isn't available *(optional)*.
 final class PremiumFeatures extends TdObject {
-  
   /// **PremiumFeatures** *(premiumFeatures)* - basic class
   ///
   /// Contains information about features, available to Premium users.
@@ -23,7 +22,7 @@ final class PremiumFeatures extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// The list of available features
   final List<PremiumFeature> features;
 
@@ -40,27 +39,33 @@ final class PremiumFeatures extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory PremiumFeatures.fromJson(Map<String, dynamic> json) => PremiumFeatures(
-    features: List<PremiumFeature>.from((json['features'] ?? []).map((item) => PremiumFeature.fromJson(item)).toList()),
-    limits: List<PremiumLimit>.from((json['limits'] ?? []).map((item) => PremiumLimit.fromJson(item)).toList()),
-    paymentLink: json['payment_link'] == null ? null : InternalLinkType.fromJson(json['payment_link']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory PremiumFeatures.fromJson(Map<String, dynamic> json) =>
+      PremiumFeatures(
+        features: List<PremiumFeature>.from((json['features'] ?? [])
+            .map((item) => PremiumFeature.fromJson(item))
+            .toList()),
+        limits: List<PremiumLimit>.from((json['limits'] ?? [])
+            .map((item) => PremiumLimit.fromJson(item))
+            .toList()),
+        paymentLink: json['payment_link'] == null
+            ? null
+            : InternalLinkType.fromJson(json['payment_link']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "features": features.map((i) => i.toJson()).toList(),
       "limits": limits.map((i) => i.toJson()).toList(),
       "payment_link": paymentLink?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -74,13 +79,14 @@ final class PremiumFeatures extends TdObject {
     InternalLinkType? paymentLink,
     dynamic extra,
     int? clientId,
-  }) => PremiumFeatures(
-    features: features ?? this.features,
-    limits: limits ?? this.limits,
-    paymentLink: paymentLink ?? this.paymentLink,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      PremiumFeatures(
+        features: features ?? this.features,
+        limits: limits ?? this.limits,
+        paymentLink: paymentLink ?? this.paymentLink,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'premiumFeatures';

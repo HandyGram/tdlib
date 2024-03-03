@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 ///
 /// [MessageSenders] is returned on completion.
 final class GetPollVoters extends TdFunction {
-  
   /// **GetPollVoters** *(getPollVoters)* - TDLib function
   ///
   /// Returns message senders voted for the specified option in a non-anonymous polls. For optimal performance, the number of returned users is chosen by TDLib.
@@ -31,7 +30,7 @@ final class GetPollVoters extends TdFunction {
     required this.offset,
     required this.limit,
   });
-  
+
   /// Identifier of the chat to which the poll belongs
   final int chatId;
 
@@ -46,20 +45,20 @@ final class GetPollVoters extends TdFunction {
 
   /// The maximum number of voters to be returned; must be positive and can't be greater than 50. For optimal performance, the number of returned voters is chosen by TDLib and can be smaller than the specified limit, even if the end of the voter list has not been reached
   final int limit;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "option_id": optionId,
       "offset": offset,
       "limit": limit,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -75,13 +74,14 @@ final class GetPollVoters extends TdFunction {
     int? optionId,
     int? offset,
     int? limit,
-  }) => GetPollVoters(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    optionId: optionId ?? this.optionId,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-  );
+  }) =>
+      GetPollVoters(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        optionId: optionId ?? this.optionId,
+        offset: offset ?? this.offset,
+        limit: limit ?? this.limit,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getPollVoters';

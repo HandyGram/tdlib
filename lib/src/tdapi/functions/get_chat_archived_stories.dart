@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Stories] is returned on completion.
 final class GetChatArchivedStories extends TdFunction {
-  
   /// **GetChatArchivedStories** *(getChatArchivedStories)* - TDLib function
   ///
   /// Returns the list of all stories posted by the given chat; requires can_edit_stories right in the chat.. The stories are returned in a reverse chronological order (i.e., in order of decreasing story_id). For optimal performance, the number of returned stories is chosen by TDLib.
@@ -25,7 +24,7 @@ final class GetChatArchivedStories extends TdFunction {
     required this.fromStoryId,
     required this.limit,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -34,18 +33,18 @@ final class GetChatArchivedStories extends TdFunction {
 
   /// The maximum number of stories to be returned. For optimal performance, the number of returned stories is chosen by TDLib and can be smaller than the specified limit
   final int limit;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "from_story_id": fromStoryId,
       "limit": limit,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class GetChatArchivedStories extends TdFunction {
     int? chatId,
     int? fromStoryId,
     int? limit,
-  }) => GetChatArchivedStories(
-    chatId: chatId ?? this.chatId,
-    fromStoryId: fromStoryId ?? this.fromStoryId,
-    limit: limit ?? this.limit,
-  );
+  }) =>
+      GetChatArchivedStories(
+        chatId: chatId ?? this.chatId,
+        fromStoryId: fromStoryId ?? this.fromStoryId,
+        limit: limit ?? this.limit,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getChatArchivedStories';

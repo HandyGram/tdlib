@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 /// * [isEnabled]: True, if the proxy is enabled now.
 /// * [type]: Type of the proxy.
 final class Proxy extends TdObject {
-  
   /// **Proxy** *(proxy)* - basic class
   ///
   /// Contains information about a proxy server.
@@ -32,7 +31,7 @@ final class Proxy extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Unique identifier of the proxy
   final int id;
 
@@ -58,33 +57,32 @@ final class Proxy extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory Proxy.fromJson(Map<String, dynamic> json) => Proxy(
-    id: json['id'],
-    server: json['server'],
-    port: json['port'],
-    lastUsedDate: json['last_used_date'],
-    isEnabled: json['is_enabled'],
-    type: ProxyType.fromJson(json['type']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: json['id'],
+        server: json['server'],
+        port: json['port'],
+        lastUsedDate: json['last_used_date'],
+        isEnabled: json['is_enabled'],
+        type: ProxyType.fromJson(json['type']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "server": server,
       "port": port,
       "last_used_date": lastUsedDate,
       "is_enabled": isEnabled,
       "type": type.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -104,16 +102,17 @@ final class Proxy extends TdObject {
     ProxyType? type,
     dynamic extra,
     int? clientId,
-  }) => Proxy(
-    id: id ?? this.id,
-    server: server ?? this.server,
-    port: port ?? this.port,
-    lastUsedDate: lastUsedDate ?? this.lastUsedDate,
-    isEnabled: isEnabled ?? this.isEnabled,
-    type: type ?? this.type,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      Proxy(
+        id: id ?? this.id,
+        server: server ?? this.server,
+        port: port ?? this.port,
+        lastUsedDate: lastUsedDate ?? this.lastUsedDate,
+        isEnabled: isEnabled ?? this.isEnabled,
+        type: type ?? this.type,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'proxy';

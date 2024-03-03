@@ -7,7 +7,6 @@ part of '../tdapi.dart';
 /// * [feature]: Premium feature.
 /// * [animation]: Promotion animation for the feature.
 final class PremiumFeaturePromotionAnimation extends TdObject {
-  
   /// **PremiumFeaturePromotionAnimation** *(premiumFeaturePromotionAnimation)* - basic class
   ///
   /// Describes a promotion animation for a Premium feature.
@@ -18,42 +17,44 @@ final class PremiumFeaturePromotionAnimation extends TdObject {
     required this.feature,
     required this.animation,
   });
-  
-  /// Premium feature 
+
+  /// Premium feature
   final PremiumFeature feature;
 
   /// Promotion animation for the feature
   final Animation animation;
-  
+
   /// Parse from a json
-  factory PremiumFeaturePromotionAnimation.fromJson(Map<String, dynamic> json) => PremiumFeaturePromotionAnimation(
-    feature: PremiumFeature.fromJson(json['feature']),
-    animation: Animation.fromJson(json['animation']),
-  );
-  
-  
+  factory PremiumFeaturePromotionAnimation.fromJson(
+          Map<String, dynamic> json) =>
+      PremiumFeaturePromotionAnimation(
+        feature: PremiumFeature.fromJson(json['feature']),
+        animation: Animation.fromJson(json['animation']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "feature": feature.toJson(),
       "animation": animation.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [feature]: Premium feature 
+  /// * [feature]: Premium feature
   /// * [animation]: Promotion animation for the feature
   PremiumFeaturePromotionAnimation copyWith({
     PremiumFeature? feature,
     Animation? animation,
-  }) => PremiumFeaturePromotionAnimation(
-    feature: feature ?? this.feature,
-    animation: animation ?? this.animation,
-  );
+  }) =>
+      PremiumFeaturePromotionAnimation(
+        feature: feature ?? this.feature,
+        animation: animation ?? this.animation,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'premiumFeaturePromotionAnimation';

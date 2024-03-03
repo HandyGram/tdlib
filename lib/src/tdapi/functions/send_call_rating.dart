@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SendCallRating extends TdFunction {
-  
   /// **SendCallRating** *(sendCallRating)* - TDLib function
   ///
   /// Sends a call rating.
@@ -28,7 +27,7 @@ final class SendCallRating extends TdFunction {
     required this.comment,
     required this.problems,
   });
-  
+
   /// Call identifier
   final int callId;
 
@@ -40,19 +39,19 @@ final class SendCallRating extends TdFunction {
 
   /// List of the exact types of problems with the call, specified by the user
   final List<CallProblem> problems;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "call_id": callId,
       "rating": rating,
       "comment": comment,
       "problems": problems.map((i) => i.toJson()).toList(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -66,12 +65,13 @@ final class SendCallRating extends TdFunction {
     int? rating,
     String? comment,
     List<CallProblem>? problems,
-  }) => SendCallRating(
-    callId: callId ?? this.callId,
-    rating: rating ?? this.rating,
-    comment: comment ?? this.comment,
-    problems: problems ?? this.problems,
-  );
+  }) =>
+      SendCallRating(
+        callId: callId ?? this.callId,
+        rating: rating ?? this.rating,
+        comment: comment ?? this.comment,
+        problems: problems ?? this.problems,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'sendCallRating';

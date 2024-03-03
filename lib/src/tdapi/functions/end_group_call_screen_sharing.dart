@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class EndGroupCallScreenSharing extends TdFunction {
-  
   /// **EndGroupCallScreenSharing** *(endGroupCallScreenSharing)* - TDLib function
   ///
   /// Ends screen sharing in a joined group call.
@@ -19,19 +18,19 @@ final class EndGroupCallScreenSharing extends TdFunction {
   const EndGroupCallScreenSharing({
     required this.groupCallId,
   });
-  
+
   /// Group call identifier
   final int groupCallId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "group_call_id": groupCallId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class EndGroupCallScreenSharing extends TdFunction {
   /// * [group_call_id]: Group call identifier
   EndGroupCallScreenSharing copyWith({
     int? groupCallId,
-  }) => EndGroupCallScreenSharing(
-    groupCallId: groupCallId ?? this.groupCallId,
-  );
+  }) =>
+      EndGroupCallScreenSharing(
+        groupCallId: groupCallId ?? this.groupCallId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'endGroupCallScreenSharing';

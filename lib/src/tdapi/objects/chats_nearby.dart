@@ -7,7 +7,6 @@ part of '../tdapi.dart';
 /// * [usersNearby]: List of users nearby.
 /// * [supergroupsNearby]: List of location-based supergroups nearby.
 final class ChatsNearby extends TdObject {
-  
   /// **ChatsNearby** *(chatsNearby)* - basic class
   ///
   /// Represents a list of chats located nearby.
@@ -20,8 +19,8 @@ final class ChatsNearby extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// List of users nearby 
+
+  /// List of users nearby
   final List<ChatNearby> usersNearby;
 
   /// List of location-based supergroups nearby
@@ -34,42 +33,47 @@ final class ChatsNearby extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory ChatsNearby.fromJson(Map<String, dynamic> json) => ChatsNearby(
-    usersNearby: List<ChatNearby>.from((json['users_nearby'] ?? []).map((item) => ChatNearby.fromJson(item)).toList()),
-    supergroupsNearby: List<ChatNearby>.from((json['supergroups_nearby'] ?? []).map((item) => ChatNearby.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        usersNearby: List<ChatNearby>.from((json['users_nearby'] ?? [])
+            .map((item) => ChatNearby.fromJson(item))
+            .toList()),
+        supergroupsNearby: List<ChatNearby>.from(
+            (json['supergroups_nearby'] ?? [])
+                .map((item) => ChatNearby.fromJson(item))
+                .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "users_nearby": usersNearby.map((i) => i.toJson()).toList(),
       "supergroups_nearby": supergroupsNearby.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [users_nearby]: List of users nearby 
+  /// * [users_nearby]: List of users nearby
   /// * [supergroups_nearby]: List of location-based supergroups nearby
   ChatsNearby copyWith({
     List<ChatNearby>? usersNearby,
     List<ChatNearby>? supergroupsNearby,
     dynamic extra,
     int? clientId,
-  }) => ChatsNearby(
-    usersNearby: usersNearby ?? this.usersNearby,
-    supergroupsNearby: supergroupsNearby ?? this.supergroupsNearby,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      ChatsNearby(
+        usersNearby: usersNearby ?? this.usersNearby,
+        supergroupsNearby: supergroupsNearby ?? this.supergroupsNearby,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatsNearby';

@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [AnimatedEmoji] is returned on completion.
 final class GetAnimatedEmoji extends TdFunction {
-  
   /// **GetAnimatedEmoji** *(getAnimatedEmoji)* - TDLib function
   ///
   /// Returns an animated emoji corresponding to a given emoji. Returns a 404 error if the emoji has no animated emoji.
@@ -19,19 +18,19 @@ final class GetAnimatedEmoji extends TdFunction {
   const GetAnimatedEmoji({
     required this.emoji,
   });
-  
+
   /// The emoji
   final String emoji;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "emoji": emoji,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetAnimatedEmoji extends TdFunction {
   /// * [emoji]: The emoji
   GetAnimatedEmoji copyWith({
     String? emoji,
-  }) => GetAnimatedEmoji(
-    emoji: emoji ?? this.emoji,
-  );
+  }) =>
+      GetAnimatedEmoji(
+        emoji: emoji ?? this.emoji,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getAnimatedEmoji';

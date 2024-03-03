@@ -4,18 +4,17 @@ part of '../tdapi.dart';
 ///
 /// Contains information about a payment provider.
 sealed class PaymentProvider extends TdObject {
-  
   /// **PaymentProvider** *(paymentProvider)* - parent
   ///
   /// Contains information about a payment provider.
   const PaymentProvider();
-  
+
   /// a PaymentProvider return type can be :
   /// * [PaymentProviderSmartGlocal]
   /// * [PaymentProviderStripe]
   /// * [PaymentProviderOther]
-  factory PaymentProvider.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory PaymentProvider.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case PaymentProviderSmartGlocal.defaultObjectId:
         return PaymentProviderSmartGlocal.fromJson(json);
       case PaymentProviderStripe.defaultObjectId:
@@ -29,7 +28,7 @@ sealed class PaymentProvider extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -49,7 +48,6 @@ sealed class PaymentProvider extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PaymentProviderSmartGlocal** *(paymentProviderSmartGlocal)* - child of PaymentProvider
 ///
 /// Smart Glocal payment provider.
@@ -57,7 +55,6 @@ sealed class PaymentProvider extends TdObject {
 /// * [publicToken]: Public payment token.
 /// * [tokenizeUrl]: URL for sending card tokenization requests.
 final class PaymentProviderSmartGlocal extends PaymentProvider {
-  
   /// **PaymentProviderSmartGlocal** *(paymentProviderSmartGlocal)* - child of PaymentProvider
   ///
   /// Smart Glocal payment provider.
@@ -68,43 +65,44 @@ final class PaymentProviderSmartGlocal extends PaymentProvider {
     required this.publicToken,
     required this.tokenizeUrl,
   });
-  
-  /// Public payment token 
+
+  /// Public payment token
   final String publicToken;
 
   /// URL for sending card tokenization requests
   final String tokenizeUrl;
-  
+
   /// Parse from a json
-  factory PaymentProviderSmartGlocal.fromJson(Map<String, dynamic> json) => PaymentProviderSmartGlocal(
-    publicToken: json['public_token'],
-    tokenizeUrl: json['tokenize_url'],
-  );
-  
-  
+  factory PaymentProviderSmartGlocal.fromJson(Map<String, dynamic> json) =>
+      PaymentProviderSmartGlocal(
+        publicToken: json['public_token'],
+        tokenizeUrl: json['tokenize_url'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "public_token": publicToken,
       "tokenize_url": tokenizeUrl,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [public_token]: Public payment token 
+  /// * [public_token]: Public payment token
   /// * [tokenize_url]: URL for sending card tokenization requests
   @override
   PaymentProviderSmartGlocal copyWith({
     String? publicToken,
     String? tokenizeUrl,
-  }) => PaymentProviderSmartGlocal(
-    publicToken: publicToken ?? this.publicToken,
-    tokenizeUrl: tokenizeUrl ?? this.tokenizeUrl,
-  );
+  }) =>
+      PaymentProviderSmartGlocal(
+        publicToken: publicToken ?? this.publicToken,
+        tokenizeUrl: tokenizeUrl ?? this.tokenizeUrl,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'paymentProviderSmartGlocal';
@@ -118,7 +116,6 @@ final class PaymentProviderSmartGlocal extends PaymentProvider {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PaymentProviderStripe** *(paymentProviderStripe)* - child of PaymentProvider
 ///
 /// Stripe payment provider.
@@ -128,7 +125,6 @@ final class PaymentProviderSmartGlocal extends PaymentProvider {
 /// * [needPostalCode]: True, if the user ZIP/postal code must be provided.
 /// * [needCardholderName]: True, if the cardholder name must be provided.
 final class PaymentProviderStripe extends PaymentProvider {
-  
   /// **PaymentProviderStripe** *(paymentProviderStripe)* - child of PaymentProvider
   ///
   /// Stripe payment provider.
@@ -143,7 +139,7 @@ final class PaymentProviderStripe extends PaymentProvider {
     required this.needPostalCode,
     required this.needCardholderName,
   });
-  
+
   /// Stripe API publishable key
   final String publishableKey;
 
@@ -155,27 +151,27 @@ final class PaymentProviderStripe extends PaymentProvider {
 
   /// True, if the cardholder name must be provided
   final bool needCardholderName;
-  
+
   /// Parse from a json
-  factory PaymentProviderStripe.fromJson(Map<String, dynamic> json) => PaymentProviderStripe(
-    publishableKey: json['publishable_key'],
-    needCountry: json['need_country'],
-    needPostalCode: json['need_postal_code'],
-    needCardholderName: json['need_cardholder_name'],
-  );
-  
-  
+  factory PaymentProviderStripe.fromJson(Map<String, dynamic> json) =>
+      PaymentProviderStripe(
+        publishableKey: json['publishable_key'],
+        needCountry: json['need_country'],
+        needPostalCode: json['need_postal_code'],
+        needCardholderName: json['need_cardholder_name'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "publishable_key": publishableKey,
       "need_country": needCountry,
       "need_postal_code": needPostalCode,
       "need_cardholder_name": needCardholderName,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -190,12 +186,13 @@ final class PaymentProviderStripe extends PaymentProvider {
     bool? needCountry,
     bool? needPostalCode,
     bool? needCardholderName,
-  }) => PaymentProviderStripe(
-    publishableKey: publishableKey ?? this.publishableKey,
-    needCountry: needCountry ?? this.needCountry,
-    needPostalCode: needPostalCode ?? this.needPostalCode,
-    needCardholderName: needCardholderName ?? this.needCardholderName,
-  );
+  }) =>
+      PaymentProviderStripe(
+        publishableKey: publishableKey ?? this.publishableKey,
+        needCountry: needCountry ?? this.needCountry,
+        needPostalCode: needPostalCode ?? this.needPostalCode,
+        needCardholderName: needCardholderName ?? this.needCardholderName,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'paymentProviderStripe';
@@ -209,14 +206,12 @@ final class PaymentProviderStripe extends PaymentProvider {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PaymentProviderOther** *(paymentProviderOther)* - child of PaymentProvider
 ///
 /// Some other payment provider, for which a web payment form must be shown.
 ///
 /// * [url]: Payment form URL.
 final class PaymentProviderOther extends PaymentProvider {
-  
   /// **PaymentProviderOther** *(paymentProviderOther)* - child of PaymentProvider
   ///
   /// Some other payment provider, for which a web payment form must be shown.
@@ -225,24 +220,24 @@ final class PaymentProviderOther extends PaymentProvider {
   const PaymentProviderOther({
     required this.url,
   });
-  
+
   /// Payment form URL
   final String url;
-  
+
   /// Parse from a json
-  factory PaymentProviderOther.fromJson(Map<String, dynamic> json) => PaymentProviderOther(
-    url: json['url'],
-  );
-  
-  
+  factory PaymentProviderOther.fromJson(Map<String, dynamic> json) =>
+      PaymentProviderOther(
+        url: json['url'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "url": url,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -251,9 +246,10 @@ final class PaymentProviderOther extends PaymentProvider {
   @override
   PaymentProviderOther copyWith({
     String? url,
-  }) => PaymentProviderOther(
-    url: url ?? this.url,
-  );
+  }) =>
+      PaymentProviderOther(
+        url: url ?? this.url,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'paymentProviderOther';

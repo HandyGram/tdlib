@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [PasswordState] is returned on completion.
 final class RecoverPassword extends TdFunction {
-  
   /// **RecoverPassword** *(recoverPassword)* - TDLib function
   ///
   /// Recovers the 2-step verification password using a recovery code sent to an email address that was previously set up.
@@ -25,7 +24,7 @@ final class RecoverPassword extends TdFunction {
     required this.newPassword,
     required this.newHint,
   });
-  
+
   /// Recovery code to check
   final String recoveryCode;
 
@@ -34,18 +33,18 @@ final class RecoverPassword extends TdFunction {
 
   /// New password hint; may be empty
   final String newHint;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "recovery_code": recoveryCode,
       "new_password": newPassword,
       "new_hint": newHint,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class RecoverPassword extends TdFunction {
     String? recoveryCode,
     String? newPassword,
     String? newHint,
-  }) => RecoverPassword(
-    recoveryCode: recoveryCode ?? this.recoveryCode,
-    newPassword: newPassword ?? this.newPassword,
-    newHint: newHint ?? this.newHint,
-  );
+  }) =>
+      RecoverPassword(
+        recoveryCode: recoveryCode ?? this.recoveryCode,
+        newPassword: newPassword ?? this.newPassword,
+        newHint: newHint ?? this.newHint,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'recoverPassword';

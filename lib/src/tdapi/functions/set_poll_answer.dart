@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetPollAnswer extends TdFunction {
-  
   /// **SetPollAnswer** *(setPollAnswer)* - TDLib function
   ///
   /// Changes the user answer to a poll. A poll in quiz mode can be answered only once.
@@ -25,7 +24,7 @@ final class SetPollAnswer extends TdFunction {
     required this.messageId,
     required this.optionIds,
   });
-  
+
   /// Identifier of the chat to which the poll belongs
   final int chatId;
 
@@ -34,18 +33,18 @@ final class SetPollAnswer extends TdFunction {
 
   /// 0-based identifiers of answer options, chosen by the user. User can choose more than 1 answer option only is the poll allows multiple answers
   final List<int> optionIds;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "option_ids": optionIds.map((i) => i).toList(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class SetPollAnswer extends TdFunction {
     int? chatId,
     int? messageId,
     List<int>? optionIds,
-  }) => SetPollAnswer(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    optionIds: optionIds ?? this.optionIds,
-  );
+  }) =>
+      SetPollAnswer(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        optionIds: optionIds ?? this.optionIds,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setPollAnswer';

@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class AssignGooglePlayTransaction extends TdFunction {
-  
   /// **AssignGooglePlayTransaction** *(assignGooglePlayTransaction)* - TDLib function
   ///
   /// Informs server about a purchase through Google Play. For official applications only.
@@ -28,7 +27,7 @@ final class AssignGooglePlayTransaction extends TdFunction {
     required this.purchaseToken,
     required this.purpose,
   });
-  
+
   /// Application package name
   final String packageName;
 
@@ -40,19 +39,19 @@ final class AssignGooglePlayTransaction extends TdFunction {
 
   /// Transaction purpose
   final StorePaymentPurpose purpose;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "package_name": packageName,
       "store_product_id": storeProductId,
       "purchase_token": purchaseToken,
       "purpose": purpose.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -66,12 +65,13 @@ final class AssignGooglePlayTransaction extends TdFunction {
     String? storeProductId,
     String? purchaseToken,
     StorePaymentPurpose? purpose,
-  }) => AssignGooglePlayTransaction(
-    packageName: packageName ?? this.packageName,
-    storeProductId: storeProductId ?? this.storeProductId,
-    purchaseToken: purchaseToken ?? this.purchaseToken,
-    purpose: purpose ?? this.purpose,
-  );
+  }) =>
+      AssignGooglePlayTransaction(
+        packageName: packageName ?? this.packageName,
+        storeProductId: storeProductId ?? this.storeProductId,
+        purchaseToken: purchaseToken ?? this.purchaseToken,
+        purpose: purpose ?? this.purpose,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'assignGooglePlayTransaction';

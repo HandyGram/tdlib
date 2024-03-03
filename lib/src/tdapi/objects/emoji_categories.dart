@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [categories]: List of categories.
 final class EmojiCategories extends TdObject {
-  
   /// **EmojiCategories** *(emojiCategories)* - basic class
   ///
   /// Represents a list of emoji categories.
@@ -17,7 +16,7 @@ final class EmojiCategories extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// List of categories
   final List<EmojiCategory> categories;
 
@@ -28,23 +27,25 @@ final class EmojiCategories extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory EmojiCategories.fromJson(Map<String, dynamic> json) => EmojiCategories(
-    categories: List<EmojiCategory>.from((json['categories'] ?? []).map((item) => EmojiCategory.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory EmojiCategories.fromJson(Map<String, dynamic> json) =>
+      EmojiCategories(
+        categories: List<EmojiCategory>.from((json['categories'] ?? [])
+            .map((item) => EmojiCategory.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "categories": categories.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +55,12 @@ final class EmojiCategories extends TdObject {
     List<EmojiCategory>? categories,
     dynamic extra,
     int? clientId,
-  }) => EmojiCategories(
-    categories: categories ?? this.categories,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      EmojiCategories(
+        categories: categories ?? this.categories,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'emojiCategories';

@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ToggleForumTopicIsClosed extends TdFunction {
-  
   /// **ToggleForumTopicIsClosed** *(toggleForumTopicIsClosed)* - TDLib function
   ///
   /// Toggles whether a topic is closed in a forum supergroup chat; requires can_manage_topics right in the supergroup unless the user is creator of the topic.
@@ -25,7 +24,7 @@ final class ToggleForumTopicIsClosed extends TdFunction {
     required this.messageThreadId,
     required this.isClosed,
   });
-  
+
   /// Identifier of the chat
   final int chatId;
 
@@ -34,18 +33,18 @@ final class ToggleForumTopicIsClosed extends TdFunction {
 
   /// Pass true to close the topic; pass false to reopen it
   final bool isClosed;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_thread_id": messageThreadId,
       "is_closed": isClosed,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class ToggleForumTopicIsClosed extends TdFunction {
     int? chatId,
     int? messageThreadId,
     bool? isClosed,
-  }) => ToggleForumTopicIsClosed(
-    chatId: chatId ?? this.chatId,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-    isClosed: isClosed ?? this.isClosed,
-  );
+  }) =>
+      ToggleForumTopicIsClosed(
+        chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+        isClosed: isClosed ?? this.isClosed,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'toggleForumTopicIsClosed';

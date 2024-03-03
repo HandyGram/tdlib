@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [StickerSets] is returned on completion.
 final class GetAttachedStickerSets extends TdFunction {
-  
   /// **GetAttachedStickerSets** *(getAttachedStickerSets)* - TDLib function
   ///
   /// Returns a list of sticker sets attached to a file, including regular, mask, and emoji sticker sets. Currently, only animations, photos, and videos can have attached sticker sets.
@@ -19,19 +18,19 @@ final class GetAttachedStickerSets extends TdFunction {
   const GetAttachedStickerSets({
     required this.fileId,
   });
-  
+
   /// File identifier
   final int fileId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "file_id": fileId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetAttachedStickerSets extends TdFunction {
   /// * [file_id]: File identifier
   GetAttachedStickerSets copyWith({
     int? fileId,
-  }) => GetAttachedStickerSets(
-    fileId: fileId ?? this.fileId,
-  );
+  }) =>
+      GetAttachedStickerSets(
+        fileId: fileId ?? this.fileId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getAttachedStickerSets';

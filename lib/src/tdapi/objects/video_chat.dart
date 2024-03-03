@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 /// * [hasParticipants]: True, if the video chat has participants.
 /// * [defaultParticipantId]: Default group call participant identifier to join the video chat; may be null *(optional)*.
 final class VideoChat extends TdObject {
-  
   /// **VideoChat** *(videoChat)* - basic class
   ///
   /// Describes a video chat.
@@ -21,7 +20,7 @@ final class VideoChat extends TdObject {
     required this.hasParticipants,
     this.defaultParticipantId,
   });
-  
+
   /// Group call identifier of an active video chat; 0 if none. Full information about the video chat can be received through the method getGroupCall
   final int groupCallId;
 
@@ -30,25 +29,26 @@ final class VideoChat extends TdObject {
 
   /// Default group call participant identifier to join the video chat; may be null
   final MessageSender? defaultParticipantId;
-  
+
   /// Parse from a json
   factory VideoChat.fromJson(Map<String, dynamic> json) => VideoChat(
-    groupCallId: json['group_call_id'] ?? 0,
-    hasParticipants: json['has_participants'],
-    defaultParticipantId: json['default_participant_id'] == null ? null : MessageSender.fromJson(json['default_participant_id']),
-  );
-  
-  
+        groupCallId: json['group_call_id'] ?? 0,
+        hasParticipants: json['has_participants'],
+        defaultParticipantId: json['default_participant_id'] == null
+            ? null
+            : MessageSender.fromJson(json['default_participant_id']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "group_call_id": groupCallId,
       "has_participants": hasParticipants,
       "default_participant_id": defaultParticipantId?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -60,11 +60,12 @@ final class VideoChat extends TdObject {
     int? groupCallId,
     bool? hasParticipants,
     MessageSender? defaultParticipantId,
-  }) => VideoChat(
-    groupCallId: groupCallId ?? this.groupCallId,
-    hasParticipants: hasParticipants ?? this.hasParticipants,
-    defaultParticipantId: defaultParticipantId ?? this.defaultParticipantId,
-  );
+  }) =>
+      VideoChat(
+        groupCallId: groupCallId ?? this.groupCallId,
+        hasParticipants: hasParticipants ?? this.hasParticipants,
+        defaultParticipantId: defaultParticipantId ?? this.defaultParticipantId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'videoChat';

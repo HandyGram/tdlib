@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 ///
 /// [Messages] is returned on completion.
 final class GetMessageThreadHistory extends TdFunction {
-  
   /// **GetMessageThreadHistory** *(getMessageThreadHistory)* - TDLib function
   ///
   /// Returns messages in a message thread of a message. Can be used only if message.can_get_message_thread == true. Message thread of a channel message is in the channel's linked supergroup.. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id). For optimal performance, the number of returned messages is chosen by TDLib.
@@ -31,7 +30,7 @@ final class GetMessageThreadHistory extends TdFunction {
     required this.offset,
     required this.limit,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -46,20 +45,20 @@ final class GetMessageThreadHistory extends TdFunction {
 
   /// The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset.. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
   final int limit;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "from_message_id": fromMessageId,
       "offset": offset,
       "limit": limit,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -75,13 +74,14 @@ final class GetMessageThreadHistory extends TdFunction {
     int? fromMessageId,
     int? offset,
     int? limit,
-  }) => GetMessageThreadHistory(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    fromMessageId: fromMessageId ?? this.fromMessageId,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-  );
+  }) =>
+      GetMessageThreadHistory(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        fromMessageId: fromMessageId ?? this.fromMessageId,
+        offset: offset ?? this.offset,
+        limit: limit ?? this.limit,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getMessageThreadHistory';

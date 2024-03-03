@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 ///
 /// [Messages] is returned on completion.
 final class SendMessageAlbum extends TdFunction {
-  
   /// **SendMessageAlbum** *(sendMessageAlbum)* - TDLib function
   ///
   /// Sends 2-10 messages grouped together into an album. Currently, only audio, document, photo and video messages can be grouped into an album. Documents and audio files can be only grouped in an album with messages of the same type. Returns sent messages.
@@ -31,7 +30,7 @@ final class SendMessageAlbum extends TdFunction {
     this.options,
     required this.inputMessageContents,
   });
-  
+
   /// Target chat
   final int chatId;
 
@@ -46,20 +45,21 @@ final class SendMessageAlbum extends TdFunction {
 
   /// Contents of messages to be sent. At most 10 messages can be added to an album
   final List<InputMessageContent> inputMessageContents;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_thread_id": messageThreadId,
       "reply_to": replyTo?.toJson(),
       "options": options?.toJson(),
-      "input_message_contents": inputMessageContents.map((i) => i.toJson()).toList(),
+      "input_message_contents":
+          inputMessageContents.map((i) => i.toJson()).toList(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -75,13 +75,14 @@ final class SendMessageAlbum extends TdFunction {
     InputMessageReplyTo? replyTo,
     MessageSendOptions? options,
     List<InputMessageContent>? inputMessageContents,
-  }) => SendMessageAlbum(
-    chatId: chatId ?? this.chatId,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-    replyTo: replyTo ?? this.replyTo,
-    options: options ?? this.options,
-    inputMessageContents: inputMessageContents ?? this.inputMessageContents,
-  );
+  }) =>
+      SendMessageAlbum(
+        chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+        replyTo: replyTo ?? this.replyTo,
+        options: options ?? this.options,
+        inputMessageContents: inputMessageContents ?? this.inputMessageContents,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'sendMessageAlbum';

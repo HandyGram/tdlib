@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [allowNewChatsFromUnknownUsers]: True, if non-contacts users are able to write first to the current user. Telegram Premium subscribers are able to write first regardless of this setting.
 final class NewChatPrivacySettings extends TdObject {
-  
   /// **NewChatPrivacySettings** *(newChatPrivacySettings)* - basic class
   ///
   /// Contains privacy settings for new chats with non-contacts.
@@ -17,7 +16,7 @@ final class NewChatPrivacySettings extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// True, if non-contacts users are able to write first to the current user. Telegram Premium subscribers are able to write first regardless of this setting
   final bool allowNewChatsFromUnknownUsers;
 
@@ -28,23 +27,24 @@ final class NewChatPrivacySettings extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory NewChatPrivacySettings.fromJson(Map<String, dynamic> json) => NewChatPrivacySettings(
-    allowNewChatsFromUnknownUsers: json['allow_new_chats_from_unknown_users'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory NewChatPrivacySettings.fromJson(Map<String, dynamic> json) =>
+      NewChatPrivacySettings(
+        allowNewChatsFromUnknownUsers:
+            json['allow_new_chats_from_unknown_users'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "allow_new_chats_from_unknown_users": allowNewChatsFromUnknownUsers,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +54,13 @@ final class NewChatPrivacySettings extends TdObject {
     bool? allowNewChatsFromUnknownUsers,
     dynamic extra,
     int? clientId,
-  }) => NewChatPrivacySettings(
-    allowNewChatsFromUnknownUsers: allowNewChatsFromUnknownUsers ?? this.allowNewChatsFromUnknownUsers,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      NewChatPrivacySettings(
+        allowNewChatsFromUnknownUsers:
+            allowNewChatsFromUnknownUsers ?? this.allowNewChatsFromUnknownUsers,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'newChatPrivacySettings';

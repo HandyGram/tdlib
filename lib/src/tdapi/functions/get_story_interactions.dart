@@ -14,7 +14,6 @@ part of '../tdapi.dart';
 ///
 /// [StoryInteractions] is returned on completion.
 final class GetStoryInteractions extends TdFunction {
-  
   /// **GetStoryInteractions** *(getStoryInteractions)* - TDLib function
   ///
   /// Returns interactions with a story. The method can be called only for stories posted on behalf of the current user.
@@ -37,7 +36,7 @@ final class GetStoryInteractions extends TdFunction {
     required this.offset,
     required this.limit,
   });
-  
+
   /// Story identifier
   final int storyId;
 
@@ -58,12 +57,12 @@ final class GetStoryInteractions extends TdFunction {
 
   /// The maximum number of story interactions to return
   final int limit;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "story_id": storyId,
       "query": query,
       "only_contacts": onlyContacts,
@@ -72,8 +71,8 @@ final class GetStoryInteractions extends TdFunction {
       "offset": offset,
       "limit": limit,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -93,15 +92,16 @@ final class GetStoryInteractions extends TdFunction {
     bool? preferWithReaction,
     String? offset,
     int? limit,
-  }) => GetStoryInteractions(
-    storyId: storyId ?? this.storyId,
-    query: query ?? this.query,
-    onlyContacts: onlyContacts ?? this.onlyContacts,
-    preferForwards: preferForwards ?? this.preferForwards,
-    preferWithReaction: preferWithReaction ?? this.preferWithReaction,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-  );
+  }) =>
+      GetStoryInteractions(
+        storyId: storyId ?? this.storyId,
+        query: query ?? this.query,
+        onlyContacts: onlyContacts ?? this.onlyContacts,
+        preferForwards: preferForwards ?? this.preferForwards,
+        preferWithReaction: preferWithReaction ?? this.preferWithReaction,
+        offset: offset ?? this.offset,
+        limit: limit ?? this.limit,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getStoryInteractions';

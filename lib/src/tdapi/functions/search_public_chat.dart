@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Chat] is returned on completion.
 final class SearchPublicChat extends TdFunction {
-  
   /// **SearchPublicChat** *(searchPublicChat)* - TDLib function
   ///
   /// Searches a public chat by its username. Currently, only private chats, supergroups and channels can be public. Returns the chat if found; otherwise, an error is returned.
@@ -19,19 +18,19 @@ final class SearchPublicChat extends TdFunction {
   const SearchPublicChat({
     required this.username,
   });
-  
+
   /// Username to be resolved
   final String username;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "username": username,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class SearchPublicChat extends TdFunction {
   /// * [username]: Username to be resolved
   SearchPublicChat copyWith({
     String? username,
-  }) => SearchPublicChat(
-    username: username ?? this.username,
-  );
+  }) =>
+      SearchPublicChat(
+        username: username ?? this.username,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'searchPublicChat';

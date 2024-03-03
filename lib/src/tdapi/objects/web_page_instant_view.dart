@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 /// * [isFull]: True, if the instant view contains the full page. A network request might be needed to get the full web page instant view.
 /// * [feedbackLink]: An internal link to be opened to leave feedback about the instant view.
 final class WebPageInstantView extends TdObject {
-  
   /// **WebPageInstantView** *(webPageInstantView)* - basic class
   ///
   /// Describes an instant view page for a web page.
@@ -32,7 +31,7 @@ final class WebPageInstantView extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Content of the web page
   final List<PageBlock> pageBlocks;
 
@@ -58,33 +57,35 @@ final class WebPageInstantView extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory WebPageInstantView.fromJson(Map<String, dynamic> json) => WebPageInstantView(
-    pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? []).map((item) => PageBlock.fromJson(item)).toList()),
-    viewCount: json['view_count'],
-    version: json['version'],
-    isRtl: json['is_rtl'],
-    isFull: json['is_full'],
-    feedbackLink: InternalLinkType.fromJson(json['feedback_link']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory WebPageInstantView.fromJson(Map<String, dynamic> json) =>
+      WebPageInstantView(
+        pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? [])
+            .map((item) => PageBlock.fromJson(item))
+            .toList()),
+        viewCount: json['view_count'],
+        version: json['version'],
+        isRtl: json['is_rtl'],
+        isFull: json['is_full'],
+        feedbackLink: InternalLinkType.fromJson(json['feedback_link']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "page_blocks": pageBlocks.map((i) => i.toJson()).toList(),
       "view_count": viewCount,
       "version": version,
       "is_rtl": isRtl,
       "is_full": isFull,
       "feedback_link": feedbackLink.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -104,16 +105,17 @@ final class WebPageInstantView extends TdObject {
     InternalLinkType? feedbackLink,
     dynamic extra,
     int? clientId,
-  }) => WebPageInstantView(
-    pageBlocks: pageBlocks ?? this.pageBlocks,
-    viewCount: viewCount ?? this.viewCount,
-    version: version ?? this.version,
-    isRtl: isRtl ?? this.isRtl,
-    isFull: isFull ?? this.isFull,
-    feedbackLink: feedbackLink ?? this.feedbackLink,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      WebPageInstantView(
+        pageBlocks: pageBlocks ?? this.pageBlocks,
+        viewCount: viewCount ?? this.viewCount,
+        version: version ?? this.version,
+        isRtl: isRtl ?? this.isRtl,
+        isFull: isFull ?? this.isFull,
+        feedbackLink: feedbackLink ?? this.feedbackLink,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'webPageInstantView';

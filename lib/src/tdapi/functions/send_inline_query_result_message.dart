@@ -14,7 +14,6 @@ part of '../tdapi.dart';
 ///
 /// [Message] is returned on completion.
 final class SendInlineQueryResultMessage extends TdFunction {
-  
   /// **SendInlineQueryResultMessage** *(sendInlineQueryResultMessage)* - TDLib function
   ///
   /// Sends the result of an inline query as a message. Returns the sent message. Always clears a chat draft message.
@@ -37,7 +36,7 @@ final class SendInlineQueryResultMessage extends TdFunction {
     required this.resultId,
     required this.hideViaBot,
   });
-  
+
   /// Target chat
   final int chatId;
 
@@ -58,12 +57,12 @@ final class SendInlineQueryResultMessage extends TdFunction {
 
   /// Pass true to hide the bot, via which the message is sent. Can be used only for bots getOption("animation_search_bot_username"), getOption("photo_search_bot_username"), and getOption("venue_search_bot_username")
   final bool hideViaBot;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_thread_id": messageThreadId,
       "reply_to": replyTo?.toJson(),
@@ -72,8 +71,8 @@ final class SendInlineQueryResultMessage extends TdFunction {
       "result_id": resultId,
       "hide_via_bot": hideViaBot,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -93,15 +92,16 @@ final class SendInlineQueryResultMessage extends TdFunction {
     int? queryId,
     String? resultId,
     bool? hideViaBot,
-  }) => SendInlineQueryResultMessage(
-    chatId: chatId ?? this.chatId,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-    replyTo: replyTo ?? this.replyTo,
-    options: options ?? this.options,
-    queryId: queryId ?? this.queryId,
-    resultId: resultId ?? this.resultId,
-    hideViaBot: hideViaBot ?? this.hideViaBot,
-  );
+  }) =>
+      SendInlineQueryResultMessage(
+        chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+        replyTo: replyTo ?? this.replyTo,
+        options: options ?? this.options,
+        queryId: queryId ?? this.queryId,
+        resultId: resultId ?? this.resultId,
+        hideViaBot: hideViaBot ?? this.hideViaBot,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'sendInlineQueryResultMessage';

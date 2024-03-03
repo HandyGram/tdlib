@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [AuthenticationCodeInfo] is returned on completion.
 final class SendPhoneNumberVerificationCode extends TdFunction {
-  
   /// **SendPhoneNumberVerificationCode** *(sendPhoneNumberVerificationCode)* - TDLib function
   ///
   /// Sends a code to verify a phone number to be added to a user's Telegram Passport.
@@ -22,23 +21,23 @@ final class SendPhoneNumberVerificationCode extends TdFunction {
     required this.phoneNumber,
     this.settings,
   });
-  
+
   /// The phone number of the user, in international format
   final String phoneNumber;
 
   /// Settings for the authentication of the user's phone number; pass null to use default settings
   final PhoneNumberAuthenticationSettings? settings;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "phone_number": phoneNumber,
       "settings": settings?.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class SendPhoneNumberVerificationCode extends TdFunction {
   SendPhoneNumberVerificationCode copyWith({
     String? phoneNumber,
     PhoneNumberAuthenticationSettings? settings,
-  }) => SendPhoneNumberVerificationCode(
-    phoneNumber: phoneNumber ?? this.phoneNumber,
-    settings: settings ?? this.settings,
-  );
+  }) =>
+      SendPhoneNumberVerificationCode(
+        phoneNumber: phoneNumber ?? this.phoneNumber,
+        settings: settings ?? this.settings,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'sendPhoneNumberVerificationCode';

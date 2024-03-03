@@ -14,7 +14,6 @@ part of '../tdapi.dart';
 ///
 /// [HttpUrl] is returned on completion.
 final class GetWebAppLinkUrl extends TdFunction {
-  
   /// **GetWebAppLinkUrl** *(getWebAppLinkUrl)* - TDLib function
   ///
   /// Returns an HTTPS URL of a Web App to open after a link of the type internalLinkTypeWebApp is clicked.
@@ -37,7 +36,7 @@ final class GetWebAppLinkUrl extends TdFunction {
     required this.applicationName,
     required this.allowWriteAccess,
   });
-  
+
   /// Identifier of the chat in which the link was clicked; pass 0 if none
   final int chatId;
 
@@ -58,12 +57,12 @@ final class GetWebAppLinkUrl extends TdFunction {
 
   /// Pass true if the current user allowed the bot to send them messages
   final bool allowWriteAccess;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "bot_user_id": botUserId,
       "web_app_short_name": webAppShortName,
@@ -72,8 +71,8 @@ final class GetWebAppLinkUrl extends TdFunction {
       "application_name": applicationName,
       "allow_write_access": allowWriteAccess,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -93,15 +92,16 @@ final class GetWebAppLinkUrl extends TdFunction {
     ThemeParameters? theme,
     String? applicationName,
     bool? allowWriteAccess,
-  }) => GetWebAppLinkUrl(
-    chatId: chatId ?? this.chatId,
-    botUserId: botUserId ?? this.botUserId,
-    webAppShortName: webAppShortName ?? this.webAppShortName,
-    startParameter: startParameter ?? this.startParameter,
-    theme: theme ?? this.theme,
-    applicationName: applicationName ?? this.applicationName,
-    allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
-  );
+  }) =>
+      GetWebAppLinkUrl(
+        chatId: chatId ?? this.chatId,
+        botUserId: botUserId ?? this.botUserId,
+        webAppShortName: webAppShortName ?? this.webAppShortName,
+        startParameter: startParameter ?? this.startParameter,
+        theme: theme ?? this.theme,
+        applicationName: applicationName ?? this.applicationName,
+        allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getWebAppLinkUrl';

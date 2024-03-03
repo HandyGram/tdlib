@@ -4,17 +4,16 @@ part of '../tdapi.dart';
 ///
 /// Contains statistics about network usage.
 sealed class NetworkStatisticsEntry extends TdObject {
-  
   /// **NetworkStatisticsEntry** *(networkStatisticsEntry)* - parent
   ///
   /// Contains statistics about network usage.
   const NetworkStatisticsEntry();
-  
+
   /// a NetworkStatisticsEntry return type can be :
   /// * [NetworkStatisticsEntryFile]
   /// * [NetworkStatisticsEntryCall]
-  factory NetworkStatisticsEntry.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory NetworkStatisticsEntry.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case NetworkStatisticsEntryFile.defaultObjectId:
         return NetworkStatisticsEntryFile.fromJson(json);
       case NetworkStatisticsEntryCall.defaultObjectId:
@@ -26,7 +25,7 @@ sealed class NetworkStatisticsEntry extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -46,7 +45,6 @@ sealed class NetworkStatisticsEntry extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **NetworkStatisticsEntryFile** *(networkStatisticsEntryFile)* - child of NetworkStatisticsEntry
 ///
 /// Contains information about the total amount of data that was used to send and receive files.
@@ -56,7 +54,6 @@ sealed class NetworkStatisticsEntry extends TdObject {
 /// * [sentBytes]: Total number of bytes sent.
 /// * [receivedBytes]: Total number of bytes received.
 final class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
-  
   /// **NetworkStatisticsEntryFile** *(networkStatisticsEntryFile)* - child of NetworkStatisticsEntry
   ///
   /// Contains information about the total amount of data that was used to send and receive files.
@@ -71,7 +68,7 @@ final class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
     required this.sentBytes,
     required this.receivedBytes,
   });
-  
+
   /// Type of the file the data is part of; pass null if the data isn't related to files
   final FileType? fileType;
 
@@ -83,27 +80,29 @@ final class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
 
   /// Total number of bytes received
   final int receivedBytes;
-  
+
   /// Parse from a json
-  factory NetworkStatisticsEntryFile.fromJson(Map<String, dynamic> json) => NetworkStatisticsEntryFile(
-    fileType: json['file_type'] == null ? null : FileType.fromJson(json['file_type']),
-    networkType: NetworkType.fromJson(json['network_type']),
-    sentBytes: json['sent_bytes'],
-    receivedBytes: json['received_bytes'],
-  );
-  
-  
+  factory NetworkStatisticsEntryFile.fromJson(Map<String, dynamic> json) =>
+      NetworkStatisticsEntryFile(
+        fileType: json['file_type'] == null
+            ? null
+            : FileType.fromJson(json['file_type']),
+        networkType: NetworkType.fromJson(json['network_type']),
+        sentBytes: json['sent_bytes'],
+        receivedBytes: json['received_bytes'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "file_type": fileType?.toJson(),
       "network_type": networkType.toJson(),
       "sent_bytes": sentBytes,
       "received_bytes": receivedBytes,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -118,12 +117,13 @@ final class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
     NetworkType? networkType,
     int? sentBytes,
     int? receivedBytes,
-  }) => NetworkStatisticsEntryFile(
-    fileType: fileType ?? this.fileType,
-    networkType: networkType ?? this.networkType,
-    sentBytes: sentBytes ?? this.sentBytes,
-    receivedBytes: receivedBytes ?? this.receivedBytes,
-  );
+  }) =>
+      NetworkStatisticsEntryFile(
+        fileType: fileType ?? this.fileType,
+        networkType: networkType ?? this.networkType,
+        sentBytes: sentBytes ?? this.sentBytes,
+        receivedBytes: receivedBytes ?? this.receivedBytes,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'networkStatisticsEntryFile';
@@ -137,7 +137,6 @@ final class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **NetworkStatisticsEntryCall** *(networkStatisticsEntryCall)* - child of NetworkStatisticsEntry
 ///
 /// Contains information about the total amount of data that was used for calls.
@@ -147,7 +146,6 @@ final class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
 /// * [receivedBytes]: Total number of bytes received.
 /// * [duration]: Total call duration, in seconds.
 final class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
-  
   /// **NetworkStatisticsEntryCall** *(networkStatisticsEntryCall)* - child of NetworkStatisticsEntry
   ///
   /// Contains information about the total amount of data that was used for calls.
@@ -162,7 +160,7 @@ final class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
     required this.receivedBytes,
     required this.duration,
   });
-  
+
   /// Type of the network the data was sent through. Call setNetworkType to maintain the actual network type
   final NetworkType networkType;
 
@@ -174,27 +172,27 @@ final class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
 
   /// Total call duration, in seconds
   final double duration;
-  
+
   /// Parse from a json
-  factory NetworkStatisticsEntryCall.fromJson(Map<String, dynamic> json) => NetworkStatisticsEntryCall(
-    networkType: NetworkType.fromJson(json['network_type']),
-    sentBytes: json['sent_bytes'],
-    receivedBytes: json['received_bytes'],
-    duration: json['duration'],
-  );
-  
-  
+  factory NetworkStatisticsEntryCall.fromJson(Map<String, dynamic> json) =>
+      NetworkStatisticsEntryCall(
+        networkType: NetworkType.fromJson(json['network_type']),
+        sentBytes: json['sent_bytes'],
+        receivedBytes: json['received_bytes'],
+        duration: json['duration'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "network_type": networkType.toJson(),
       "sent_bytes": sentBytes,
       "received_bytes": receivedBytes,
       "duration": duration,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -209,12 +207,13 @@ final class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
     int? sentBytes,
     int? receivedBytes,
     double? duration,
-  }) => NetworkStatisticsEntryCall(
-    networkType: networkType ?? this.networkType,
-    sentBytes: sentBytes ?? this.sentBytes,
-    receivedBytes: receivedBytes ?? this.receivedBytes,
-    duration: duration ?? this.duration,
-  );
+  }) =>
+      NetworkStatisticsEntryCall(
+        networkType: networkType ?? this.networkType,
+        sentBytes: sentBytes ?? this.sentBytes,
+        receivedBytes: receivedBytes ?? this.receivedBytes,
+        duration: duration ?? this.duration,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'networkStatisticsEntryCall';

@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [value]: Vector of numbers.
 final class TestVectorInt extends TdObject {
-  
   /// **TestVectorInt** *(testVectorInt)* - basic class
   ///
   /// A simple object containing a vector of numbers; for testing only.
@@ -17,7 +16,7 @@ final class TestVectorInt extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Vector of numbers
   final List<int> value;
 
@@ -28,23 +27,23 @@ final class TestVectorInt extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory TestVectorInt.fromJson(Map<String, dynamic> json) => TestVectorInt(
-    value: List<int>.from((json['value'] ?? []).map((item) => item).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        value:
+            List<int>.from((json['value'] ?? []).map((item) => item).toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "value": value.map((i) => i).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +53,12 @@ final class TestVectorInt extends TdObject {
     List<int>? value,
     dynamic extra,
     int? clientId,
-  }) => TestVectorInt(
-    value: value ?? this.value,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      TestVectorInt(
+        value: value ?? this.value,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'testVectorInt';

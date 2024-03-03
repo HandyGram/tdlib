@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [DeepLinkInfo] is returned on completion.
 final class GetDeepLinkInfo extends TdFunction {
-  
   /// **GetDeepLinkInfo** *(getDeepLinkInfo)* - TDLib function
   ///
   /// Returns information about a tg:// deep link. Use "tg://need_update_for_some_feature" or "tg:some_unsupported_feature" for testing. Returns a 404 error for unknown links. Can be called before authorization.
@@ -19,19 +18,19 @@ final class GetDeepLinkInfo extends TdFunction {
   const GetDeepLinkInfo({
     required this.link,
   });
-  
+
   /// The link
   final String link;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "link": link,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetDeepLinkInfo extends TdFunction {
   /// * [link]: The link
   GetDeepLinkInfo copyWith({
     String? link,
-  }) => GetDeepLinkInfo(
-    link: link ?? this.link,
-  );
+  }) =>
+      GetDeepLinkInfo(
+        link: link ?? this.link,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getDeepLinkInfo';

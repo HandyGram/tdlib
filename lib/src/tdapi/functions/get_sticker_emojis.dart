@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Emojis] is returned on completion.
 final class GetStickerEmojis extends TdFunction {
-  
   /// **GetStickerEmojis** *(getStickerEmojis)* - TDLib function
   ///
   /// Returns emoji corresponding to a sticker. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object.
@@ -19,19 +18,19 @@ final class GetStickerEmojis extends TdFunction {
   const GetStickerEmojis({
     required this.sticker,
   });
-  
+
   /// Sticker file identifier
   final InputFile sticker;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sticker": sticker.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetStickerEmojis extends TdFunction {
   /// * [sticker]: Sticker file identifier
   GetStickerEmojis copyWith({
     InputFile? sticker,
-  }) => GetStickerEmojis(
-    sticker: sticker ?? this.sticker,
-  );
+  }) =>
+      GetStickerEmojis(
+        sticker: sticker ?? this.sticker,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getStickerEmojis';

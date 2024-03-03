@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Count] is returned on completion.
 final class GetChatFolderChatCount extends TdFunction {
-  
   /// **GetChatFolderChatCount** *(getChatFolderChatCount)* - TDLib function
   ///
   /// Returns approximate number of chats in a being created chat folder. Main and archive chat lists must be fully preloaded for this function to work correctly.
@@ -19,19 +18,19 @@ final class GetChatFolderChatCount extends TdFunction {
   const GetChatFolderChatCount({
     required this.folder,
   });
-  
+
   /// The new chat folder
   final ChatFolder folder;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "folder": folder.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetChatFolderChatCount extends TdFunction {
   /// * [folder]: The new chat folder
   GetChatFolderChatCount copyWith({
     ChatFolder? folder,
-  }) => GetChatFolderChatCount(
-    folder: folder ?? this.folder,
-  );
+  }) =>
+      GetChatFolderChatCount(
+        folder: folder ?? this.folder,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getChatFolderChatCount';

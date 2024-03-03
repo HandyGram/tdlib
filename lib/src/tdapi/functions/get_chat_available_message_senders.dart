@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [ChatMessageSenders] is returned on completion.
 final class GetChatAvailableMessageSenders extends TdFunction {
-  
   /// **GetChatAvailableMessageSenders** *(getChatAvailableMessageSenders)* - TDLib function
   ///
   /// Returns list of message sender identifiers, which can be used to send messages in a chat.
@@ -19,19 +18,19 @@ final class GetChatAvailableMessageSenders extends TdFunction {
   const GetChatAvailableMessageSenders({
     required this.chatId,
   });
-  
+
   /// Chat identifier
   final int chatId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetChatAvailableMessageSenders extends TdFunction {
   /// * [chat_id]: Chat identifier
   GetChatAvailableMessageSenders copyWith({
     int? chatId,
-  }) => GetChatAvailableMessageSenders(
-    chatId: chatId ?? this.chatId,
-  );
+  }) =>
+      GetChatAvailableMessageSenders(
+        chatId: chatId ?? this.chatId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getChatAvailableMessageSenders';

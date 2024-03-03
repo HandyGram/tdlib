@@ -7,7 +7,6 @@ part of '../tdapi.dart';
 /// * [totalCount]: Approximate total number of chat members found.
 /// * [members]: List of chat members, joined a chat via an invite link.
 final class ChatInviteLinkMembers extends TdObject {
-  
   /// **ChatInviteLinkMembers** *(chatInviteLinkMembers)* - basic class
   ///
   /// Contains a list of chat members joined a chat via an invite link.
@@ -20,8 +19,8 @@ final class ChatInviteLinkMembers extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// Approximate total number of chat members found 
+
+  /// Approximate total number of chat members found
   final int totalCount;
 
   /// List of chat members, joined a chat via an invite link
@@ -34,42 +33,45 @@ final class ChatInviteLinkMembers extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory ChatInviteLinkMembers.fromJson(Map<String, dynamic> json) => ChatInviteLinkMembers(
-    totalCount: json['total_count'],
-    members: List<ChatInviteLinkMember>.from((json['members'] ?? []).map((item) => ChatInviteLinkMember.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory ChatInviteLinkMembers.fromJson(Map<String, dynamic> json) =>
+      ChatInviteLinkMembers(
+        totalCount: json['total_count'],
+        members: List<ChatInviteLinkMember>.from((json['members'] ?? [])
+            .map((item) => ChatInviteLinkMember.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "total_count": totalCount,
       "members": members.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [total_count]: Approximate total number of chat members found 
+  /// * [total_count]: Approximate total number of chat members found
   /// * [members]: List of chat members, joined a chat via an invite link
   ChatInviteLinkMembers copyWith({
     int? totalCount,
     List<ChatInviteLinkMember>? members,
     dynamic extra,
     int? clientId,
-  }) => ChatInviteLinkMembers(
-    totalCount: totalCount ?? this.totalCount,
-    members: members ?? this.members,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      ChatInviteLinkMembers(
+        totalCount: totalCount ?? this.totalCount,
+        members: members ?? this.members,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatInviteLinkMembers';

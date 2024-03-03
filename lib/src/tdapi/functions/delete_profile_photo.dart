@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class DeleteProfilePhoto extends TdFunction {
-  
   /// **DeleteProfilePhoto** *(deleteProfilePhoto)* - TDLib function
   ///
   /// Deletes a profile photo.
@@ -19,19 +18,19 @@ final class DeleteProfilePhoto extends TdFunction {
   const DeleteProfilePhoto({
     required this.profilePhotoId,
   });
-  
+
   /// Identifier of the profile photo to delete
   final int profilePhotoId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "profile_photo_id": profilePhotoId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class DeleteProfilePhoto extends TdFunction {
   /// * [profile_photo_id]: Identifier of the profile photo to delete
   DeleteProfilePhoto copyWith({
     int? profilePhotoId,
-  }) => DeleteProfilePhoto(
-    profilePhotoId: profilePhotoId ?? this.profilePhotoId,
-  );
+  }) =>
+      DeleteProfilePhoto(
+        profilePhotoId: profilePhotoId ?? this.profilePhotoId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'deleteProfilePhoto';

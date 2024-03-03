@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 /// * [isPinned]: True, if the chat is pinned in the chat list.
 /// * [source]: Source of the chat in the chat list; may be null *(optional)*.
 final class ChatPosition extends TdObject {
-  
   /// **ChatPosition** *(chatPosition)* - basic class
   ///
   /// Describes a position of a chat in a chat list.
@@ -24,7 +23,7 @@ final class ChatPosition extends TdObject {
     required this.isPinned,
     this.source,
   });
-  
+
   /// The chat list
   final ChatList list;
 
@@ -36,27 +35,27 @@ final class ChatPosition extends TdObject {
 
   /// Source of the chat in the chat list; may be null
   final ChatSource? source;
-  
+
   /// Parse from a json
   factory ChatPosition.fromJson(Map<String, dynamic> json) => ChatPosition(
-    list: ChatList.fromJson(json['list']),
-    order: int.parse(json['order']),
-    isPinned: json['is_pinned'],
-    source: json['source'] == null ? null : ChatSource.fromJson(json['source']),
-  );
-  
-  
+        list: ChatList.fromJson(json['list']),
+        order: int.parse(json['order']),
+        isPinned: json['is_pinned'],
+        source:
+            json['source'] == null ? null : ChatSource.fromJson(json['source']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "list": list.toJson(),
       "order": order,
       "is_pinned": isPinned,
       "source": source?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -70,12 +69,13 @@ final class ChatPosition extends TdObject {
     int? order,
     bool? isPinned,
     ChatSource? source,
-  }) => ChatPosition(
-    list: list ?? this.list,
-    order: order ?? this.order,
-    isPinned: isPinned ?? this.isPinned,
-    source: source ?? this.source,
-  );
+  }) =>
+      ChatPosition(
+        list: list ?? this.list,
+        order: order ?? this.order,
+        isPinned: isPinned ?? this.isPinned,
+        source: source ?? this.source,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatPosition';

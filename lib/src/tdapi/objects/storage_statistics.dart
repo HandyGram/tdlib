@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 /// * [count]: Total number of files.
 /// * [byChat]: Statistics split by chats.
 final class StorageStatistics extends TdObject {
-  
   /// **StorageStatistics** *(storageStatistics)* - basic class
   ///
   /// Contains the exact storage usage statistics split by chats and file type.
@@ -23,7 +22,7 @@ final class StorageStatistics extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Total size of files, in bytes
   final int size;
 
@@ -40,27 +39,29 @@ final class StorageStatistics extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory StorageStatistics.fromJson(Map<String, dynamic> json) => StorageStatistics(
-    size: json['size'],
-    count: json['count'],
-    byChat: List<StorageStatisticsByChat>.from((json['by_chat'] ?? []).map((item) => StorageStatisticsByChat.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory StorageStatistics.fromJson(Map<String, dynamic> json) =>
+      StorageStatistics(
+        size: json['size'],
+        count: json['count'],
+        byChat: List<StorageStatisticsByChat>.from((json['by_chat'] ?? [])
+            .map((item) => StorageStatisticsByChat.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "size": size,
       "count": count,
       "by_chat": byChat.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -74,13 +75,14 @@ final class StorageStatistics extends TdObject {
     List<StorageStatisticsByChat>? byChat,
     dynamic extra,
     int? clientId,
-  }) => StorageStatistics(
-    size: size ?? this.size,
-    count: count ?? this.count,
-    byChat: byChat ?? this.byChat,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      StorageStatistics(
+        size: size ?? this.size,
+        count: count ?? this.count,
+        byChat: byChat ?? this.byChat,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'storageStatistics';

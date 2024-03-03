@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [MessageThreadInfo] is returned on completion.
 final class GetMessageThread extends TdFunction {
-  
   /// **GetMessageThread** *(getMessageThread)* - TDLib function
   ///
   /// Returns information about a message thread. Can be used only if message.can_get_message_thread == true.
@@ -22,36 +21,37 @@ final class GetMessageThread extends TdFunction {
     required this.chatId,
     required this.messageId,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// Identifier of the message
   final int messageId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [message_id]: Identifier of the message
   GetMessageThread copyWith({
     int? chatId,
     int? messageId,
-  }) => GetMessageThread(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-  );
+  }) =>
+      GetMessageThread(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getMessageThread';

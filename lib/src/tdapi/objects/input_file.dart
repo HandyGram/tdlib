@@ -4,19 +4,18 @@ part of '../tdapi.dart';
 ///
 /// Points to a file.
 sealed class InputFile extends TdObject {
-  
   /// **InputFile** *(inputFile)* - parent
   ///
   /// Points to a file.
   const InputFile();
-  
+
   /// a InputFile return type can be :
   /// * [InputFileId]
   /// * [InputFileRemote]
   /// * [InputFileLocal]
   /// * [InputFileGenerated]
-  factory InputFile.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory InputFile.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case InputFileId.defaultObjectId:
         return InputFileId.fromJson(json);
       case InputFileRemote.defaultObjectId:
@@ -32,7 +31,7 @@ sealed class InputFile extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -52,14 +51,12 @@ sealed class InputFile extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputFileId** *(inputFileId)* - child of InputFile
 ///
 /// A file defined by its unique identifier.
 ///
 /// * [id]: Unique file identifier.
 final class InputFileId extends InputFile {
-  
   /// **InputFileId** *(inputFileId)* - child of InputFile
   ///
   /// A file defined by its unique identifier.
@@ -68,24 +65,23 @@ final class InputFileId extends InputFile {
   const InputFileId({
     required this.id,
   });
-  
+
   /// Unique file identifier
   final int id;
-  
+
   /// Parse from a json
   factory InputFileId.fromJson(Map<String, dynamic> json) => InputFileId(
-    id: json['id'],
-  );
-  
-  
+        id: json['id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -94,9 +90,10 @@ final class InputFileId extends InputFile {
   @override
   InputFileId copyWith({
     int? id,
-  }) => InputFileId(
-    id: id ?? this.id,
-  );
+  }) =>
+      InputFileId(
+        id: id ?? this.id,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputFileId';
@@ -110,14 +107,12 @@ final class InputFileId extends InputFile {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputFileRemote** *(inputFileRemote)* - child of InputFile
 ///
 /// A file defined by its remote identifier. The remote identifier is guaranteed to be usable only if the corresponding file is still accessible to the user and known to TDLib.. For example, if the file is from a message, then the message must be not deleted and accessible to the user. If the file database is disabled, then the corresponding object with the file must be preloaded by the application.
 ///
 /// * [id]: Remote file identifier.
 final class InputFileRemote extends InputFile {
-  
   /// **InputFileRemote** *(inputFileRemote)* - child of InputFile
   ///
   /// A file defined by its remote identifier. The remote identifier is guaranteed to be usable only if the corresponding file is still accessible to the user and known to TDLib.. For example, if the file is from a message, then the message must be not deleted and accessible to the user. If the file database is disabled, then the corresponding object with the file must be preloaded by the application.
@@ -126,24 +121,24 @@ final class InputFileRemote extends InputFile {
   const InputFileRemote({
     required this.id,
   });
-  
+
   /// Remote file identifier
   final String id;
-  
+
   /// Parse from a json
-  factory InputFileRemote.fromJson(Map<String, dynamic> json) => InputFileRemote(
-    id: json['id'],
-  );
-  
-  
+  factory InputFileRemote.fromJson(Map<String, dynamic> json) =>
+      InputFileRemote(
+        id: json['id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -152,9 +147,10 @@ final class InputFileRemote extends InputFile {
   @override
   InputFileRemote copyWith({
     String? id,
-  }) => InputFileRemote(
-    id: id ?? this.id,
-  );
+  }) =>
+      InputFileRemote(
+        id: id ?? this.id,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputFileRemote';
@@ -168,14 +164,12 @@ final class InputFileRemote extends InputFile {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputFileLocal** *(inputFileLocal)* - child of InputFile
 ///
 /// A file defined by a local path.
 ///
 /// * [path]: Local path to the file.
 final class InputFileLocal extends InputFile {
-  
   /// **InputFileLocal** *(inputFileLocal)* - child of InputFile
   ///
   /// A file defined by a local path.
@@ -184,24 +178,23 @@ final class InputFileLocal extends InputFile {
   const InputFileLocal({
     required this.path,
   });
-  
+
   /// Local path to the file
   final String path;
-  
+
   /// Parse from a json
   factory InputFileLocal.fromJson(Map<String, dynamic> json) => InputFileLocal(
-    path: json['path'],
-  );
-  
-  
+        path: json['path'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "path": path,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -210,9 +203,10 @@ final class InputFileLocal extends InputFile {
   @override
   InputFileLocal copyWith({
     String? path,
-  }) => InputFileLocal(
-    path: path ?? this.path,
-  );
+  }) =>
+      InputFileLocal(
+        path: path ?? this.path,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputFileLocal';
@@ -226,7 +220,6 @@ final class InputFileLocal extends InputFile {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputFileGenerated** *(inputFileGenerated)* - child of InputFile
 ///
 /// A file generated by the application.
@@ -235,7 +228,6 @@ final class InputFileLocal extends InputFile {
 /// * [conversion]: String specifying the conversion applied to the original file; must be persistent across application restarts. Conversions beginning with '#' are reserved for internal TDLib usage.
 /// * [expectedSize]: Expected size of the generated file, in bytes; 0 if unknown.
 final class InputFileGenerated extends InputFile {
-  
   /// **InputFileGenerated** *(inputFileGenerated)* - child of InputFile
   ///
   /// A file generated by the application.
@@ -248,7 +240,7 @@ final class InputFileGenerated extends InputFile {
     required this.conversion,
     required this.expectedSize,
   });
-  
+
   /// Local path to a file from which the file is generated; may be empty if there is no such file
   final String originalPath;
 
@@ -257,25 +249,25 @@ final class InputFileGenerated extends InputFile {
 
   /// Expected size of the generated file, in bytes; 0 if unknown
   final int expectedSize;
-  
+
   /// Parse from a json
-  factory InputFileGenerated.fromJson(Map<String, dynamic> json) => InputFileGenerated(
-    originalPath: json['original_path'],
-    conversion: json['conversion'],
-    expectedSize: json['expected_size'],
-  );
-  
-  
+  factory InputFileGenerated.fromJson(Map<String, dynamic> json) =>
+      InputFileGenerated(
+        originalPath: json['original_path'],
+        conversion: json['conversion'],
+        expectedSize: json['expected_size'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "original_path": originalPath,
       "conversion": conversion,
       "expected_size": expectedSize,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -288,11 +280,12 @@ final class InputFileGenerated extends InputFile {
     String? originalPath,
     String? conversion,
     int? expectedSize,
-  }) => InputFileGenerated(
-    originalPath: originalPath ?? this.originalPath,
-    conversion: conversion ?? this.conversion,
-    expectedSize: expectedSize ?? this.expectedSize,
-  );
+  }) =>
+      InputFileGenerated(
+        originalPath: originalPath ?? this.originalPath,
+        conversion: conversion ?? this.conversion,
+        expectedSize: expectedSize ?? this.expectedSize,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputFileGenerated';

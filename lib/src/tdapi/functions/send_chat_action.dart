@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SendChatAction extends TdFunction {
-  
   /// **SendChatAction** *(sendChatAction)* - TDLib function
   ///
   /// Sends a notification about user activity in a chat.
@@ -25,43 +24,44 @@ final class SendChatAction extends TdFunction {
     required this.messageThreadId,
     this.action,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
-  /// If not 0, the message thread identifier in which the action was performed 
+  /// If not 0, the message thread identifier in which the action was performed
   final int messageThreadId;
 
   /// The action description; pass null to cancel the currently active action
   final ChatAction? action;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_thread_id": messageThreadId,
       "action": action?.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
-  /// * [message_thread_id]: If not 0, the message thread identifier in which the action was performed 
+  /// * [chat_id]: Chat identifier
+  /// * [message_thread_id]: If not 0, the message thread identifier in which the action was performed
   /// * [action]: The action description; pass null to cancel the currently active action
   SendChatAction copyWith({
     int? chatId,
     int? messageThreadId,
     ChatAction? action,
-  }) => SendChatAction(
-    chatId: chatId ?? this.chatId,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-    action: action ?? this.action,
-  );
+  }) =>
+      SendChatAction(
+        chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+        action: action ?? this.action,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'sendChatAction';

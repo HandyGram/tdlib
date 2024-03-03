@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [Users] is returned on completion.
 final class GetRecentInlineBots extends TdFunction {
-  
   /// **GetRecentInlineBots** *(getRecentInlineBots)* - TDLib function
   ///
   /// Returns up to 20 recently used inline bots in the order of their last usage.
   ///
   /// [Users] is returned on completion.
   const GetRecentInlineBots();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   GetRecentInlineBots copyWith() => const GetRecentInlineBots();

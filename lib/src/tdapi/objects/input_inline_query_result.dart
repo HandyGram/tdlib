@@ -4,12 +4,11 @@ part of '../tdapi.dart';
 ///
 /// Represents a single result of an inline query; for bots only.
 sealed class InputInlineQueryResult extends TdObject {
-  
   /// **InputInlineQueryResult** *(inputInlineQueryResult)* - parent
   ///
   /// Represents a single result of an inline query; for bots only.
   const InputInlineQueryResult();
-  
+
   /// a InputInlineQueryResult return type can be :
   /// * [InputInlineQueryResultAnimation]
   /// * [InputInlineQueryResultArticle]
@@ -23,8 +22,8 @@ sealed class InputInlineQueryResult extends TdObject {
   /// * [InputInlineQueryResultVenue]
   /// * [InputInlineQueryResultVideo]
   /// * [InputInlineQueryResultVoiceNote]
-  factory InputInlineQueryResult.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory InputInlineQueryResult.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case InputInlineQueryResultAnimation.defaultObjectId:
         return InputInlineQueryResultAnimation.fromJson(json);
       case InputInlineQueryResultArticle.defaultObjectId:
@@ -56,7 +55,7 @@ sealed class InputInlineQueryResult extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -76,7 +75,6 @@ sealed class InputInlineQueryResult extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputInlineQueryResultAnimation** *(inputInlineQueryResultAnimation)* - child of InputInlineQueryResult
 ///
 /// Represents a link to an animated GIF or an animated (i.e., without sound) H.264/MPEG-4 AVC video.
@@ -93,7 +91,6 @@ sealed class InputInlineQueryResult extends TdObject {
 /// * [replyMarkup]: The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null *(optional)*.
 /// * [inputMessageContent]: The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageAnimation, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact.
 final class InputInlineQueryResultAnimation extends InputInlineQueryResult {
-  
   /// **InputInlineQueryResultAnimation** *(inputInlineQueryResultAnimation)* - child of InputInlineQueryResult
   ///
   /// Represents a link to an animated GIF or an animated (i.e., without sound) H.264/MPEG-4 AVC video.
@@ -122,7 +119,7 @@ final class InputInlineQueryResultAnimation extends InputInlineQueryResult {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-  
+
   /// Unique identifier of the query result
   final String id;
 
@@ -155,28 +152,31 @@ final class InputInlineQueryResultAnimation extends InputInlineQueryResult {
 
   /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageAnimation, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
-  
+
   /// Parse from a json
-  factory InputInlineQueryResultAnimation.fromJson(Map<String, dynamic> json) => InputInlineQueryResultAnimation(
-    id: json['id'],
-    title: json['title'],
-    thumbnailUrl: json['thumbnail_url'],
-    thumbnailMimeType: json['thumbnail_mime_type'],
-    videoUrl: json['video_url'],
-    videoMimeType: json['video_mime_type'],
-    videoDuration: json['video_duration'],
-    videoWidth: json['video_width'],
-    videoHeight: json['video_height'],
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
-    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
-  );
-  
-  
+  factory InputInlineQueryResultAnimation.fromJson(Map<String, dynamic> json) =>
+      InputInlineQueryResultAnimation(
+        id: json['id'],
+        title: json['title'],
+        thumbnailUrl: json['thumbnail_url'],
+        thumbnailMimeType: json['thumbnail_mime_type'],
+        videoUrl: json['video_url'],
+        videoMimeType: json['video_mime_type'],
+        videoDuration: json['video_duration'],
+        videoWidth: json['video_width'],
+        videoHeight: json['video_height'],
+        replyMarkup: json['reply_markup'] == null
+            ? null
+            : ReplyMarkup.fromJson(json['reply_markup']),
+        inputMessageContent:
+            InputMessageContent.fromJson(json['input_message_content']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "title": title,
       "thumbnail_url": thumbnailUrl,
@@ -188,8 +188,8 @@ final class InputInlineQueryResultAnimation extends InputInlineQueryResult {
       "video_height": videoHeight,
       "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -218,19 +218,20 @@ final class InputInlineQueryResultAnimation extends InputInlineQueryResult {
     int? videoHeight,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) => InputInlineQueryResultAnimation(
-    id: id ?? this.id,
-    title: title ?? this.title,
-    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-    thumbnailMimeType: thumbnailMimeType ?? this.thumbnailMimeType,
-    videoUrl: videoUrl ?? this.videoUrl,
-    videoMimeType: videoMimeType ?? this.videoMimeType,
-    videoDuration: videoDuration ?? this.videoDuration,
-    videoWidth: videoWidth ?? this.videoWidth,
-    videoHeight: videoHeight ?? this.videoHeight,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-  );
+  }) =>
+      InputInlineQueryResultAnimation(
+        id: id ?? this.id,
+        title: title ?? this.title,
+        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+        thumbnailMimeType: thumbnailMimeType ?? this.thumbnailMimeType,
+        videoUrl: videoUrl ?? this.videoUrl,
+        videoMimeType: videoMimeType ?? this.videoMimeType,
+        videoDuration: videoDuration ?? this.videoDuration,
+        videoWidth: videoWidth ?? this.videoWidth,
+        videoHeight: videoHeight ?? this.videoHeight,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputInlineQueryResultAnimation';
@@ -243,7 +244,6 @@ final class InputInlineQueryResultAnimation extends InputInlineQueryResult {
   @override
   String get currentObjectId => defaultObjectId;
 }
-
 
 /// **InputInlineQueryResultArticle** *(inputInlineQueryResultArticle)* - child of InputInlineQueryResult
 ///
@@ -260,7 +260,6 @@ final class InputInlineQueryResultAnimation extends InputInlineQueryResult {
 /// * [replyMarkup]: The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null *(optional)*.
 /// * [inputMessageContent]: The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact.
 final class InputInlineQueryResultArticle extends InputInlineQueryResult {
-  
   /// **InputInlineQueryResultArticle** *(inputInlineQueryResultArticle)* - child of InputInlineQueryResult
   ///
   /// Represents a link to an article or web page.
@@ -287,7 +286,7 @@ final class InputInlineQueryResultArticle extends InputInlineQueryResult {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-  
+
   /// Unique identifier of the query result
   final String id;
 
@@ -317,27 +316,30 @@ final class InputInlineQueryResultArticle extends InputInlineQueryResult {
 
   /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
-  
+
   /// Parse from a json
-  factory InputInlineQueryResultArticle.fromJson(Map<String, dynamic> json) => InputInlineQueryResultArticle(
-    id: json['id'],
-    url: json['url'],
-    hideUrl: json['hide_url'],
-    title: json['title'],
-    description: json['description'],
-    thumbnailUrl: json['thumbnail_url'],
-    thumbnailWidth: json['thumbnail_width'],
-    thumbnailHeight: json['thumbnail_height'],
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
-    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
-  );
-  
-  
+  factory InputInlineQueryResultArticle.fromJson(Map<String, dynamic> json) =>
+      InputInlineQueryResultArticle(
+        id: json['id'],
+        url: json['url'],
+        hideUrl: json['hide_url'],
+        title: json['title'],
+        description: json['description'],
+        thumbnailUrl: json['thumbnail_url'],
+        thumbnailWidth: json['thumbnail_width'],
+        thumbnailHeight: json['thumbnail_height'],
+        replyMarkup: json['reply_markup'] == null
+            ? null
+            : ReplyMarkup.fromJson(json['reply_markup']),
+        inputMessageContent:
+            InputMessageContent.fromJson(json['input_message_content']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "url": url,
       "hide_url": hideUrl,
@@ -348,8 +350,8 @@ final class InputInlineQueryResultArticle extends InputInlineQueryResult {
       "thumbnail_height": thumbnailHeight,
       "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -376,18 +378,19 @@ final class InputInlineQueryResultArticle extends InputInlineQueryResult {
     int? thumbnailHeight,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) => InputInlineQueryResultArticle(
-    id: id ?? this.id,
-    url: url ?? this.url,
-    hideUrl: hideUrl ?? this.hideUrl,
-    title: title ?? this.title,
-    description: description ?? this.description,
-    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-    thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
-    thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-  );
+  }) =>
+      InputInlineQueryResultArticle(
+        id: id ?? this.id,
+        url: url ?? this.url,
+        hideUrl: hideUrl ?? this.hideUrl,
+        title: title ?? this.title,
+        description: description ?? this.description,
+        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+        thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
+        thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputInlineQueryResultArticle';
@@ -401,7 +404,6 @@ final class InputInlineQueryResultArticle extends InputInlineQueryResult {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputInlineQueryResultAudio** *(inputInlineQueryResultAudio)* - child of InputInlineQueryResult
 ///
 /// Represents a link to an MP3 audio file.
@@ -414,7 +416,6 @@ final class InputInlineQueryResultArticle extends InputInlineQueryResult {
 /// * [replyMarkup]: The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null *(optional)*.
 /// * [inputMessageContent]: The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageAudio, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact.
 final class InputInlineQueryResultAudio extends InputInlineQueryResult {
-  
   /// **InputInlineQueryResultAudio** *(inputInlineQueryResultAudio)* - child of InputInlineQueryResult
   ///
   /// Represents a link to an MP3 audio file.
@@ -435,7 +436,7 @@ final class InputInlineQueryResultAudio extends InputInlineQueryResult {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-  
+
   /// Unique identifier of the query result
   final String id;
 
@@ -456,24 +457,27 @@ final class InputInlineQueryResultAudio extends InputInlineQueryResult {
 
   /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageAudio, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
-  
+
   /// Parse from a json
-  factory InputInlineQueryResultAudio.fromJson(Map<String, dynamic> json) => InputInlineQueryResultAudio(
-    id: json['id'],
-    title: json['title'],
-    performer: json['performer'],
-    audioUrl: json['audio_url'],
-    audioDuration: json['audio_duration'],
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
-    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
-  );
-  
-  
+  factory InputInlineQueryResultAudio.fromJson(Map<String, dynamic> json) =>
+      InputInlineQueryResultAudio(
+        id: json['id'],
+        title: json['title'],
+        performer: json['performer'],
+        audioUrl: json['audio_url'],
+        audioDuration: json['audio_duration'],
+        replyMarkup: json['reply_markup'] == null
+            ? null
+            : ReplyMarkup.fromJson(json['reply_markup']),
+        inputMessageContent:
+            InputMessageContent.fromJson(json['input_message_content']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "title": title,
       "performer": performer,
@@ -481,8 +485,8 @@ final class InputInlineQueryResultAudio extends InputInlineQueryResult {
       "audio_duration": audioDuration,
       "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -503,15 +507,16 @@ final class InputInlineQueryResultAudio extends InputInlineQueryResult {
     int? audioDuration,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) => InputInlineQueryResultAudio(
-    id: id ?? this.id,
-    title: title ?? this.title,
-    performer: performer ?? this.performer,
-    audioUrl: audioUrl ?? this.audioUrl,
-    audioDuration: audioDuration ?? this.audioDuration,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-  );
+  }) =>
+      InputInlineQueryResultAudio(
+        id: id ?? this.id,
+        title: title ?? this.title,
+        performer: performer ?? this.performer,
+        audioUrl: audioUrl ?? this.audioUrl,
+        audioDuration: audioDuration ?? this.audioDuration,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputInlineQueryResultAudio';
@@ -525,7 +530,6 @@ final class InputInlineQueryResultAudio extends InputInlineQueryResult {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputInlineQueryResultContact** *(inputInlineQueryResultContact)* - child of InputInlineQueryResult
 ///
 /// Represents a user contact.
@@ -538,7 +542,6 @@ final class InputInlineQueryResultAudio extends InputInlineQueryResult {
 /// * [replyMarkup]: The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null *(optional)*.
 /// * [inputMessageContent]: The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact.
 final class InputInlineQueryResultContact extends InputInlineQueryResult {
-  
   /// **InputInlineQueryResultContact** *(inputInlineQueryResultContact)* - child of InputInlineQueryResult
   ///
   /// Represents a user contact.
@@ -559,7 +562,7 @@ final class InputInlineQueryResultContact extends InputInlineQueryResult {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-  
+
   /// Unique identifier of the query result
   final String id;
 
@@ -580,24 +583,27 @@ final class InputInlineQueryResultContact extends InputInlineQueryResult {
 
   /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
-  
+
   /// Parse from a json
-  factory InputInlineQueryResultContact.fromJson(Map<String, dynamic> json) => InputInlineQueryResultContact(
-    id: json['id'],
-    contact: Contact.fromJson(json['contact']),
-    thumbnailUrl: json['thumbnail_url'],
-    thumbnailWidth: json['thumbnail_width'],
-    thumbnailHeight: json['thumbnail_height'],
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
-    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
-  );
-  
-  
+  factory InputInlineQueryResultContact.fromJson(Map<String, dynamic> json) =>
+      InputInlineQueryResultContact(
+        id: json['id'],
+        contact: Contact.fromJson(json['contact']),
+        thumbnailUrl: json['thumbnail_url'],
+        thumbnailWidth: json['thumbnail_width'],
+        thumbnailHeight: json['thumbnail_height'],
+        replyMarkup: json['reply_markup'] == null
+            ? null
+            : ReplyMarkup.fromJson(json['reply_markup']),
+        inputMessageContent:
+            InputMessageContent.fromJson(json['input_message_content']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "contact": contact.toJson(),
       "thumbnail_url": thumbnailUrl,
@@ -605,8 +611,8 @@ final class InputInlineQueryResultContact extends InputInlineQueryResult {
       "thumbnail_height": thumbnailHeight,
       "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -627,15 +633,16 @@ final class InputInlineQueryResultContact extends InputInlineQueryResult {
     int? thumbnailHeight,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) => InputInlineQueryResultContact(
-    id: id ?? this.id,
-    contact: contact ?? this.contact,
-    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-    thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
-    thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-  );
+  }) =>
+      InputInlineQueryResultContact(
+        id: id ?? this.id,
+        contact: contact ?? this.contact,
+        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+        thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
+        thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputInlineQueryResultContact';
@@ -648,7 +655,6 @@ final class InputInlineQueryResultContact extends InputInlineQueryResult {
   @override
   String get currentObjectId => defaultObjectId;
 }
-
 
 /// **InputInlineQueryResultDocument** *(inputInlineQueryResultDocument)* - child of InputInlineQueryResult
 ///
@@ -665,7 +671,6 @@ final class InputInlineQueryResultContact extends InputInlineQueryResult {
 /// * [replyMarkup]: The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null *(optional)*.
 /// * [inputMessageContent]: The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageDocument, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact.
 final class InputInlineQueryResultDocument extends InputInlineQueryResult {
-  
   /// **InputInlineQueryResultDocument** *(inputInlineQueryResultDocument)* - child of InputInlineQueryResult
   ///
   /// Represents a link to a file.
@@ -692,7 +697,7 @@ final class InputInlineQueryResultDocument extends InputInlineQueryResult {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-  
+
   /// Unique identifier of the query result
   final String id;
 
@@ -722,27 +727,30 @@ final class InputInlineQueryResultDocument extends InputInlineQueryResult {
 
   /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageDocument, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
-  
+
   /// Parse from a json
-  factory InputInlineQueryResultDocument.fromJson(Map<String, dynamic> json) => InputInlineQueryResultDocument(
-    id: json['id'],
-    title: json['title'],
-    description: json['description'],
-    documentUrl: json['document_url'],
-    mimeType: json['mime_type'],
-    thumbnailUrl: json['thumbnail_url'],
-    thumbnailWidth: json['thumbnail_width'],
-    thumbnailHeight: json['thumbnail_height'],
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
-    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
-  );
-  
-  
+  factory InputInlineQueryResultDocument.fromJson(Map<String, dynamic> json) =>
+      InputInlineQueryResultDocument(
+        id: json['id'],
+        title: json['title'],
+        description: json['description'],
+        documentUrl: json['document_url'],
+        mimeType: json['mime_type'],
+        thumbnailUrl: json['thumbnail_url'],
+        thumbnailWidth: json['thumbnail_width'],
+        thumbnailHeight: json['thumbnail_height'],
+        replyMarkup: json['reply_markup'] == null
+            ? null
+            : ReplyMarkup.fromJson(json['reply_markup']),
+        inputMessageContent:
+            InputMessageContent.fromJson(json['input_message_content']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "title": title,
       "description": description,
@@ -753,8 +761,8 @@ final class InputInlineQueryResultDocument extends InputInlineQueryResult {
       "thumbnail_height": thumbnailHeight,
       "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -781,18 +789,19 @@ final class InputInlineQueryResultDocument extends InputInlineQueryResult {
     int? thumbnailHeight,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) => InputInlineQueryResultDocument(
-    id: id ?? this.id,
-    title: title ?? this.title,
-    description: description ?? this.description,
-    documentUrl: documentUrl ?? this.documentUrl,
-    mimeType: mimeType ?? this.mimeType,
-    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-    thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
-    thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-  );
+  }) =>
+      InputInlineQueryResultDocument(
+        id: id ?? this.id,
+        title: title ?? this.title,
+        description: description ?? this.description,
+        documentUrl: documentUrl ?? this.documentUrl,
+        mimeType: mimeType ?? this.mimeType,
+        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+        thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
+        thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputInlineQueryResultDocument';
@@ -806,7 +815,6 @@ final class InputInlineQueryResultDocument extends InputInlineQueryResult {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputInlineQueryResultGame** *(inputInlineQueryResultGame)* - child of InputInlineQueryResult
 ///
 /// Represents a game.
@@ -815,7 +823,6 @@ final class InputInlineQueryResultDocument extends InputInlineQueryResult {
 /// * [gameShortName]: Short name of the game.
 /// * [replyMarkup]: The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null *(optional)*.
 final class InputInlineQueryResultGame extends InputInlineQueryResult {
-  
   /// **InputInlineQueryResultGame** *(inputInlineQueryResultGame)* - child of InputInlineQueryResult
   ///
   /// Represents a game.
@@ -828,7 +835,7 @@ final class InputInlineQueryResultGame extends InputInlineQueryResult {
     required this.gameShortName,
     this.replyMarkup,
   });
-  
+
   /// Unique identifier of the query result
   final String id;
 
@@ -837,25 +844,27 @@ final class InputInlineQueryResultGame extends InputInlineQueryResult {
 
   /// The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
   final ReplyMarkup? replyMarkup;
-  
+
   /// Parse from a json
-  factory InputInlineQueryResultGame.fromJson(Map<String, dynamic> json) => InputInlineQueryResultGame(
-    id: json['id'],
-    gameShortName: json['game_short_name'],
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
-  );
-  
-  
+  factory InputInlineQueryResultGame.fromJson(Map<String, dynamic> json) =>
+      InputInlineQueryResultGame(
+        id: json['id'],
+        gameShortName: json['game_short_name'],
+        replyMarkup: json['reply_markup'] == null
+            ? null
+            : ReplyMarkup.fromJson(json['reply_markup']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "game_short_name": gameShortName,
       "reply_markup": replyMarkup?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -868,11 +877,12 @@ final class InputInlineQueryResultGame extends InputInlineQueryResult {
     String? id,
     String? gameShortName,
     ReplyMarkup? replyMarkup,
-  }) => InputInlineQueryResultGame(
-    id: id ?? this.id,
-    gameShortName: gameShortName ?? this.gameShortName,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-  );
+  }) =>
+      InputInlineQueryResultGame(
+        id: id ?? this.id,
+        gameShortName: gameShortName ?? this.gameShortName,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputInlineQueryResultGame';
@@ -885,7 +895,6 @@ final class InputInlineQueryResultGame extends InputInlineQueryResult {
   @override
   String get currentObjectId => defaultObjectId;
 }
-
 
 /// **InputInlineQueryResultLocation** *(inputInlineQueryResultLocation)* - child of InputInlineQueryResult
 ///
@@ -901,7 +910,6 @@ final class InputInlineQueryResultGame extends InputInlineQueryResult {
 /// * [replyMarkup]: The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null *(optional)*.
 /// * [inputMessageContent]: The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact.
 final class InputInlineQueryResultLocation extends InputInlineQueryResult {
-  
   /// **InputInlineQueryResultLocation** *(inputInlineQueryResultLocation)* - child of InputInlineQueryResult
   ///
   /// Represents a point on the map.
@@ -926,7 +934,7 @@ final class InputInlineQueryResultLocation extends InputInlineQueryResult {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-  
+
   /// Unique identifier of the query result
   final String id;
 
@@ -953,26 +961,29 @@ final class InputInlineQueryResultLocation extends InputInlineQueryResult {
 
   /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
-  
+
   /// Parse from a json
-  factory InputInlineQueryResultLocation.fromJson(Map<String, dynamic> json) => InputInlineQueryResultLocation(
-    id: json['id'],
-    location: Location.fromJson(json['location']),
-    livePeriod: json['live_period'],
-    title: json['title'],
-    thumbnailUrl: json['thumbnail_url'],
-    thumbnailWidth: json['thumbnail_width'],
-    thumbnailHeight: json['thumbnail_height'],
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
-    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
-  );
-  
-  
+  factory InputInlineQueryResultLocation.fromJson(Map<String, dynamic> json) =>
+      InputInlineQueryResultLocation(
+        id: json['id'],
+        location: Location.fromJson(json['location']),
+        livePeriod: json['live_period'],
+        title: json['title'],
+        thumbnailUrl: json['thumbnail_url'],
+        thumbnailWidth: json['thumbnail_width'],
+        thumbnailHeight: json['thumbnail_height'],
+        replyMarkup: json['reply_markup'] == null
+            ? null
+            : ReplyMarkup.fromJson(json['reply_markup']),
+        inputMessageContent:
+            InputMessageContent.fromJson(json['input_message_content']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "location": location.toJson(),
       "live_period": livePeriod,
@@ -982,8 +993,8 @@ final class InputInlineQueryResultLocation extends InputInlineQueryResult {
       "thumbnail_height": thumbnailHeight,
       "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -1008,17 +1019,18 @@ final class InputInlineQueryResultLocation extends InputInlineQueryResult {
     int? thumbnailHeight,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) => InputInlineQueryResultLocation(
-    id: id ?? this.id,
-    location: location ?? this.location,
-    livePeriod: livePeriod ?? this.livePeriod,
-    title: title ?? this.title,
-    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-    thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
-    thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-  );
+  }) =>
+      InputInlineQueryResultLocation(
+        id: id ?? this.id,
+        location: location ?? this.location,
+        livePeriod: livePeriod ?? this.livePeriod,
+        title: title ?? this.title,
+        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+        thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
+        thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputInlineQueryResultLocation';
@@ -1031,7 +1043,6 @@ final class InputInlineQueryResultLocation extends InputInlineQueryResult {
   @override
   String get currentObjectId => defaultObjectId;
 }
-
 
 /// **InputInlineQueryResultPhoto** *(inputInlineQueryResultPhoto)* - child of InputInlineQueryResult
 ///
@@ -1047,7 +1058,6 @@ final class InputInlineQueryResultLocation extends InputInlineQueryResult {
 /// * [replyMarkup]: The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null *(optional)*.
 /// * [inputMessageContent]: The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessagePhoto, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact.
 final class InputInlineQueryResultPhoto extends InputInlineQueryResult {
-  
   /// **InputInlineQueryResultPhoto** *(inputInlineQueryResultPhoto)* - child of InputInlineQueryResult
   ///
   /// Represents link to a JPEG image.
@@ -1072,7 +1082,7 @@ final class InputInlineQueryResultPhoto extends InputInlineQueryResult {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-  
+
   /// Unique identifier of the query result
   final String id;
 
@@ -1099,26 +1109,29 @@ final class InputInlineQueryResultPhoto extends InputInlineQueryResult {
 
   /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessagePhoto, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
-  
+
   /// Parse from a json
-  factory InputInlineQueryResultPhoto.fromJson(Map<String, dynamic> json) => InputInlineQueryResultPhoto(
-    id: json['id'],
-    title: json['title'],
-    description: json['description'],
-    thumbnailUrl: json['thumbnail_url'],
-    photoUrl: json['photo_url'],
-    photoWidth: json['photo_width'],
-    photoHeight: json['photo_height'],
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
-    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
-  );
-  
-  
+  factory InputInlineQueryResultPhoto.fromJson(Map<String, dynamic> json) =>
+      InputInlineQueryResultPhoto(
+        id: json['id'],
+        title: json['title'],
+        description: json['description'],
+        thumbnailUrl: json['thumbnail_url'],
+        photoUrl: json['photo_url'],
+        photoWidth: json['photo_width'],
+        photoHeight: json['photo_height'],
+        replyMarkup: json['reply_markup'] == null
+            ? null
+            : ReplyMarkup.fromJson(json['reply_markup']),
+        inputMessageContent:
+            InputMessageContent.fromJson(json['input_message_content']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "title": title,
       "description": description,
@@ -1128,8 +1141,8 @@ final class InputInlineQueryResultPhoto extends InputInlineQueryResult {
       "photo_height": photoHeight,
       "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -1154,17 +1167,18 @@ final class InputInlineQueryResultPhoto extends InputInlineQueryResult {
     int? photoHeight,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) => InputInlineQueryResultPhoto(
-    id: id ?? this.id,
-    title: title ?? this.title,
-    description: description ?? this.description,
-    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-    photoUrl: photoUrl ?? this.photoUrl,
-    photoWidth: photoWidth ?? this.photoWidth,
-    photoHeight: photoHeight ?? this.photoHeight,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-  );
+  }) =>
+      InputInlineQueryResultPhoto(
+        id: id ?? this.id,
+        title: title ?? this.title,
+        description: description ?? this.description,
+        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+        photoUrl: photoUrl ?? this.photoUrl,
+        photoWidth: photoWidth ?? this.photoWidth,
+        photoHeight: photoHeight ?? this.photoHeight,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputInlineQueryResultPhoto';
@@ -1178,7 +1192,6 @@ final class InputInlineQueryResultPhoto extends InputInlineQueryResult {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputInlineQueryResultSticker** *(inputInlineQueryResultSticker)* - child of InputInlineQueryResult
 ///
 /// Represents a link to a WEBP, TGS, or WEBM sticker.
@@ -1191,7 +1204,6 @@ final class InputInlineQueryResultPhoto extends InputInlineQueryResult {
 /// * [replyMarkup]: The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null *(optional)*.
 /// * [inputMessageContent]: The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageSticker, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact.
 final class InputInlineQueryResultSticker extends InputInlineQueryResult {
-  
   /// **InputInlineQueryResultSticker** *(inputInlineQueryResultSticker)* - child of InputInlineQueryResult
   ///
   /// Represents a link to a WEBP, TGS, or WEBM sticker.
@@ -1212,7 +1224,7 @@ final class InputInlineQueryResultSticker extends InputInlineQueryResult {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-  
+
   /// Unique identifier of the query result
   final String id;
 
@@ -1233,24 +1245,27 @@ final class InputInlineQueryResultSticker extends InputInlineQueryResult {
 
   /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageSticker, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
-  
+
   /// Parse from a json
-  factory InputInlineQueryResultSticker.fromJson(Map<String, dynamic> json) => InputInlineQueryResultSticker(
-    id: json['id'],
-    thumbnailUrl: json['thumbnail_url'],
-    stickerUrl: json['sticker_url'],
-    stickerWidth: json['sticker_width'],
-    stickerHeight: json['sticker_height'],
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
-    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
-  );
-  
-  
+  factory InputInlineQueryResultSticker.fromJson(Map<String, dynamic> json) =>
+      InputInlineQueryResultSticker(
+        id: json['id'],
+        thumbnailUrl: json['thumbnail_url'],
+        stickerUrl: json['sticker_url'],
+        stickerWidth: json['sticker_width'],
+        stickerHeight: json['sticker_height'],
+        replyMarkup: json['reply_markup'] == null
+            ? null
+            : ReplyMarkup.fromJson(json['reply_markup']),
+        inputMessageContent:
+            InputMessageContent.fromJson(json['input_message_content']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "thumbnail_url": thumbnailUrl,
       "sticker_url": stickerUrl,
@@ -1258,8 +1273,8 @@ final class InputInlineQueryResultSticker extends InputInlineQueryResult {
       "sticker_height": stickerHeight,
       "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -1280,15 +1295,16 @@ final class InputInlineQueryResultSticker extends InputInlineQueryResult {
     int? stickerHeight,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) => InputInlineQueryResultSticker(
-    id: id ?? this.id,
-    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-    stickerUrl: stickerUrl ?? this.stickerUrl,
-    stickerWidth: stickerWidth ?? this.stickerWidth,
-    stickerHeight: stickerHeight ?? this.stickerHeight,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-  );
+  }) =>
+      InputInlineQueryResultSticker(
+        id: id ?? this.id,
+        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+        stickerUrl: stickerUrl ?? this.stickerUrl,
+        stickerWidth: stickerWidth ?? this.stickerWidth,
+        stickerHeight: stickerHeight ?? this.stickerHeight,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputInlineQueryResultSticker';
@@ -1302,7 +1318,6 @@ final class InputInlineQueryResultSticker extends InputInlineQueryResult {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputInlineQueryResultVenue** *(inputInlineQueryResultVenue)* - child of InputInlineQueryResult
 ///
 /// Represents information about a venue.
@@ -1315,7 +1330,6 @@ final class InputInlineQueryResultSticker extends InputInlineQueryResult {
 /// * [replyMarkup]: The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null *(optional)*.
 /// * [inputMessageContent]: The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact.
 final class InputInlineQueryResultVenue extends InputInlineQueryResult {
-  
   /// **InputInlineQueryResultVenue** *(inputInlineQueryResultVenue)* - child of InputInlineQueryResult
   ///
   /// Represents information about a venue.
@@ -1336,7 +1350,7 @@ final class InputInlineQueryResultVenue extends InputInlineQueryResult {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-  
+
   /// Unique identifier of the query result
   final String id;
 
@@ -1357,24 +1371,27 @@ final class InputInlineQueryResultVenue extends InputInlineQueryResult {
 
   /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
-  
+
   /// Parse from a json
-  factory InputInlineQueryResultVenue.fromJson(Map<String, dynamic> json) => InputInlineQueryResultVenue(
-    id: json['id'],
-    venue: Venue.fromJson(json['venue']),
-    thumbnailUrl: json['thumbnail_url'],
-    thumbnailWidth: json['thumbnail_width'],
-    thumbnailHeight: json['thumbnail_height'],
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
-    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
-  );
-  
-  
+  factory InputInlineQueryResultVenue.fromJson(Map<String, dynamic> json) =>
+      InputInlineQueryResultVenue(
+        id: json['id'],
+        venue: Venue.fromJson(json['venue']),
+        thumbnailUrl: json['thumbnail_url'],
+        thumbnailWidth: json['thumbnail_width'],
+        thumbnailHeight: json['thumbnail_height'],
+        replyMarkup: json['reply_markup'] == null
+            ? null
+            : ReplyMarkup.fromJson(json['reply_markup']),
+        inputMessageContent:
+            InputMessageContent.fromJson(json['input_message_content']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "venue": venue.toJson(),
       "thumbnail_url": thumbnailUrl,
@@ -1382,8 +1399,8 @@ final class InputInlineQueryResultVenue extends InputInlineQueryResult {
       "thumbnail_height": thumbnailHeight,
       "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -1404,15 +1421,16 @@ final class InputInlineQueryResultVenue extends InputInlineQueryResult {
     int? thumbnailHeight,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) => InputInlineQueryResultVenue(
-    id: id ?? this.id,
-    venue: venue ?? this.venue,
-    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-    thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
-    thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-  );
+  }) =>
+      InputInlineQueryResultVenue(
+        id: id ?? this.id,
+        venue: venue ?? this.venue,
+        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+        thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
+        thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputInlineQueryResultVenue';
@@ -1425,7 +1443,6 @@ final class InputInlineQueryResultVenue extends InputInlineQueryResult {
   @override
   String get currentObjectId => defaultObjectId;
 }
-
 
 /// **InputInlineQueryResultVideo** *(inputInlineQueryResultVideo)* - child of InputInlineQueryResult
 ///
@@ -1443,7 +1460,6 @@ final class InputInlineQueryResultVenue extends InputInlineQueryResult {
 /// * [replyMarkup]: The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null *(optional)*.
 /// * [inputMessageContent]: The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageVideo, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact.
 final class InputInlineQueryResultVideo extends InputInlineQueryResult {
-  
   /// **InputInlineQueryResultVideo** *(inputInlineQueryResultVideo)* - child of InputInlineQueryResult
   ///
   /// Represents a link to a page containing an embedded video player or a video file.
@@ -1472,7 +1488,7 @@ final class InputInlineQueryResultVideo extends InputInlineQueryResult {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-  
+
   /// Unique identifier of the query result
   final String id;
 
@@ -1505,28 +1521,31 @@ final class InputInlineQueryResultVideo extends InputInlineQueryResult {
 
   /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageVideo, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
-  
+
   /// Parse from a json
-  factory InputInlineQueryResultVideo.fromJson(Map<String, dynamic> json) => InputInlineQueryResultVideo(
-    id: json['id'],
-    title: json['title'],
-    description: json['description'],
-    thumbnailUrl: json['thumbnail_url'],
-    videoUrl: json['video_url'],
-    mimeType: json['mime_type'],
-    videoWidth: json['video_width'],
-    videoHeight: json['video_height'],
-    videoDuration: json['video_duration'],
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
-    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
-  );
-  
-  
+  factory InputInlineQueryResultVideo.fromJson(Map<String, dynamic> json) =>
+      InputInlineQueryResultVideo(
+        id: json['id'],
+        title: json['title'],
+        description: json['description'],
+        thumbnailUrl: json['thumbnail_url'],
+        videoUrl: json['video_url'],
+        mimeType: json['mime_type'],
+        videoWidth: json['video_width'],
+        videoHeight: json['video_height'],
+        videoDuration: json['video_duration'],
+        replyMarkup: json['reply_markup'] == null
+            ? null
+            : ReplyMarkup.fromJson(json['reply_markup']),
+        inputMessageContent:
+            InputMessageContent.fromJson(json['input_message_content']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "title": title,
       "description": description,
@@ -1538,8 +1557,8 @@ final class InputInlineQueryResultVideo extends InputInlineQueryResult {
       "video_duration": videoDuration,
       "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -1568,19 +1587,20 @@ final class InputInlineQueryResultVideo extends InputInlineQueryResult {
     int? videoDuration,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) => InputInlineQueryResultVideo(
-    id: id ?? this.id,
-    title: title ?? this.title,
-    description: description ?? this.description,
-    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-    videoUrl: videoUrl ?? this.videoUrl,
-    mimeType: mimeType ?? this.mimeType,
-    videoWidth: videoWidth ?? this.videoWidth,
-    videoHeight: videoHeight ?? this.videoHeight,
-    videoDuration: videoDuration ?? this.videoDuration,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-  );
+  }) =>
+      InputInlineQueryResultVideo(
+        id: id ?? this.id,
+        title: title ?? this.title,
+        description: description ?? this.description,
+        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+        videoUrl: videoUrl ?? this.videoUrl,
+        mimeType: mimeType ?? this.mimeType,
+        videoWidth: videoWidth ?? this.videoWidth,
+        videoHeight: videoHeight ?? this.videoHeight,
+        videoDuration: videoDuration ?? this.videoDuration,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputInlineQueryResultVideo';
@@ -1594,7 +1614,6 @@ final class InputInlineQueryResultVideo extends InputInlineQueryResult {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputInlineQueryResultVoiceNote** *(inputInlineQueryResultVoiceNote)* - child of InputInlineQueryResult
 ///
 /// Represents a link to an opus-encoded audio file within an OGG container, single channel audio.
@@ -1606,7 +1625,6 @@ final class InputInlineQueryResultVideo extends InputInlineQueryResult {
 /// * [replyMarkup]: The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null *(optional)*.
 /// * [inputMessageContent]: The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageVoiceNote, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact.
 final class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
-  
   /// **InputInlineQueryResultVoiceNote** *(inputInlineQueryResultVoiceNote)* - child of InputInlineQueryResult
   ///
   /// Represents a link to an opus-encoded audio file within an OGG container, single channel audio.
@@ -1625,7 +1643,7 @@ final class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-  
+
   /// Unique identifier of the query result
   final String id;
 
@@ -1643,31 +1661,34 @@ final class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
 
   /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageVoiceNote, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
-  
+
   /// Parse from a json
-  factory InputInlineQueryResultVoiceNote.fromJson(Map<String, dynamic> json) => InputInlineQueryResultVoiceNote(
-    id: json['id'],
-    title: json['title'],
-    voiceNoteUrl: json['voice_note_url'],
-    voiceNoteDuration: json['voice_note_duration'],
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
-    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
-  );
-  
-  
+  factory InputInlineQueryResultVoiceNote.fromJson(Map<String, dynamic> json) =>
+      InputInlineQueryResultVoiceNote(
+        id: json['id'],
+        title: json['title'],
+        voiceNoteUrl: json['voice_note_url'],
+        voiceNoteDuration: json['voice_note_duration'],
+        replyMarkup: json['reply_markup'] == null
+            ? null
+            : ReplyMarkup.fromJson(json['reply_markup']),
+        inputMessageContent:
+            InputMessageContent.fromJson(json['input_message_content']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "title": title,
       "voice_note_url": voiceNoteUrl,
       "voice_note_duration": voiceNoteDuration,
       "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -1686,14 +1707,15 @@ final class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
     int? voiceNoteDuration,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) => InputInlineQueryResultVoiceNote(
-    id: id ?? this.id,
-    title: title ?? this.title,
-    voiceNoteUrl: voiceNoteUrl ?? this.voiceNoteUrl,
-    voiceNoteDuration: voiceNoteDuration ?? this.voiceNoteDuration,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-  );
+  }) =>
+      InputInlineQueryResultVoiceNote(
+        id: id ?? this.id,
+        title: title ?? this.title,
+        voiceNoteUrl: voiceNoteUrl ?? this.voiceNoteUrl,
+        voiceNoteDuration: voiceNoteDuration ?? this.voiceNoteDuration,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputInlineQueryResultVoiceNote';

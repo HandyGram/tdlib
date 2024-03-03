@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ClearImportedContacts extends TdFunction {
-  
   /// **ClearImportedContacts** *(clearImportedContacts)* - TDLib function
   ///
   /// Clears all imported contacts, contact list remains unchanged.
   ///
   /// [Ok] is returned on completion.
   const ClearImportedContacts();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   ClearImportedContacts copyWith() => const ClearImportedContacts();

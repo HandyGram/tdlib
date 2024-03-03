@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Message] is returned on completion.
 final class EditMessageReplyMarkup extends TdFunction {
-  
   /// **EditMessageReplyMarkup** *(editMessageReplyMarkup)* - TDLib function
   ///
   /// Edits the message reply markup; for bots only. Returns the edited message after the edit is completed on the server side.
@@ -25,7 +24,7 @@ final class EditMessageReplyMarkup extends TdFunction {
     required this.messageId,
     this.replyMarkup,
   });
-  
+
   /// The chat the message belongs to
   final int chatId;
 
@@ -34,18 +33,18 @@ final class EditMessageReplyMarkup extends TdFunction {
 
   /// The new message reply markup; pass null if none
   final ReplyMarkup? replyMarkup;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "reply_markup": replyMarkup?.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class EditMessageReplyMarkup extends TdFunction {
     int? chatId,
     int? messageId,
     ReplyMarkup? replyMarkup,
-  }) => EditMessageReplyMarkup(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-  );
+  }) =>
+      EditMessageReplyMarkup(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'editMessageReplyMarkup';

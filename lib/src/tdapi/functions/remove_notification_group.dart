@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class RemoveNotificationGroup extends TdFunction {
-  
   /// **RemoveNotificationGroup** *(removeNotificationGroup)* - TDLib function
   ///
   /// Removes a group of active notifications. Needs to be called only if the notification group is removed by the current user.
@@ -22,36 +21,37 @@ final class RemoveNotificationGroup extends TdFunction {
     required this.notificationGroupId,
     required this.maxNotificationId,
   });
-  
-  /// Notification group identifier 
+
+  /// Notification group identifier
   final int notificationGroupId;
 
   /// The maximum identifier of removed notifications
   final int maxNotificationId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "notification_group_id": notificationGroupId,
       "max_notification_id": maxNotificationId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [notification_group_id]: Notification group identifier 
+  /// * [notification_group_id]: Notification group identifier
   /// * [max_notification_id]: The maximum identifier of removed notifications
   RemoveNotificationGroup copyWith({
     int? notificationGroupId,
     int? maxNotificationId,
-  }) => RemoveNotificationGroup(
-    notificationGroupId: notificationGroupId ?? this.notificationGroupId,
-    maxNotificationId: maxNotificationId ?? this.maxNotificationId,
-  );
+  }) =>
+      RemoveNotificationGroup(
+        notificationGroupId: notificationGroupId ?? this.notificationGroupId,
+        maxNotificationId: maxNotificationId ?? this.maxNotificationId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'removeNotificationGroup';

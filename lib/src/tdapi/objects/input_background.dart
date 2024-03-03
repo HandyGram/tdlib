@@ -4,18 +4,17 @@ part of '../tdapi.dart';
 ///
 /// Contains information about background to set.
 sealed class InputBackground extends TdObject {
-  
   /// **InputBackground** *(inputBackground)* - parent
   ///
   /// Contains information about background to set.
   const InputBackground();
-  
+
   /// a InputBackground return type can be :
   /// * [InputBackgroundLocal]
   /// * [InputBackgroundRemote]
   /// * [InputBackgroundPrevious]
-  factory InputBackground.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory InputBackground.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case InputBackgroundLocal.defaultObjectId:
         return InputBackgroundLocal.fromJson(json);
       case InputBackgroundRemote.defaultObjectId:
@@ -29,7 +28,7 @@ sealed class InputBackground extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -49,14 +48,12 @@ sealed class InputBackground extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputBackgroundLocal** *(inputBackgroundLocal)* - child of InputBackground
 ///
 /// A background from a local file.
 ///
 /// * [background]: Background file to use. Only inputFileLocal and inputFileGenerated are supported. The file must be in JPEG format for wallpapers and in PNG format for patterns.
 final class InputBackgroundLocal extends InputBackground {
-  
   /// **InputBackgroundLocal** *(inputBackgroundLocal)* - child of InputBackground
   ///
   /// A background from a local file.
@@ -65,24 +62,24 @@ final class InputBackgroundLocal extends InputBackground {
   const InputBackgroundLocal({
     required this.background,
   });
-  
+
   /// Background file to use. Only inputFileLocal and inputFileGenerated are supported. The file must be in JPEG format for wallpapers and in PNG format for patterns
   final InputFile background;
-  
+
   /// Parse from a json
-  factory InputBackgroundLocal.fromJson(Map<String, dynamic> json) => InputBackgroundLocal(
-    background: InputFile.fromJson(json['background']),
-  );
-  
-  
+  factory InputBackgroundLocal.fromJson(Map<String, dynamic> json) =>
+      InputBackgroundLocal(
+        background: InputFile.fromJson(json['background']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "background": background.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -91,9 +88,10 @@ final class InputBackgroundLocal extends InputBackground {
   @override
   InputBackgroundLocal copyWith({
     InputFile? background,
-  }) => InputBackgroundLocal(
-    background: background ?? this.background,
-  );
+  }) =>
+      InputBackgroundLocal(
+        background: background ?? this.background,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputBackgroundLocal';
@@ -107,14 +105,12 @@ final class InputBackgroundLocal extends InputBackground {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputBackgroundRemote** *(inputBackgroundRemote)* - child of InputBackground
 ///
 /// A background from the server.
 ///
 /// * [backgroundId]: The background identifier.
 final class InputBackgroundRemote extends InputBackground {
-  
   /// **InputBackgroundRemote** *(inputBackgroundRemote)* - child of InputBackground
   ///
   /// A background from the server.
@@ -123,24 +119,24 @@ final class InputBackgroundRemote extends InputBackground {
   const InputBackgroundRemote({
     required this.backgroundId,
   });
-  
+
   /// The background identifier
   final int backgroundId;
-  
+
   /// Parse from a json
-  factory InputBackgroundRemote.fromJson(Map<String, dynamic> json) => InputBackgroundRemote(
-    backgroundId: int.parse(json['background_id']),
-  );
-  
-  
+  factory InputBackgroundRemote.fromJson(Map<String, dynamic> json) =>
+      InputBackgroundRemote(
+        backgroundId: int.parse(json['background_id']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "background_id": backgroundId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -149,9 +145,10 @@ final class InputBackgroundRemote extends InputBackground {
   @override
   InputBackgroundRemote copyWith({
     int? backgroundId,
-  }) => InputBackgroundRemote(
-    backgroundId: backgroundId ?? this.backgroundId,
-  );
+  }) =>
+      InputBackgroundRemote(
+        backgroundId: backgroundId ?? this.backgroundId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputBackgroundRemote';
@@ -165,14 +162,12 @@ final class InputBackgroundRemote extends InputBackground {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputBackgroundPrevious** *(inputBackgroundPrevious)* - child of InputBackground
 ///
 /// A background previously set in the chat; for chat backgrounds only.
 ///
 /// * [messageId]: Identifier of the message with the background.
 final class InputBackgroundPrevious extends InputBackground {
-  
   /// **InputBackgroundPrevious** *(inputBackgroundPrevious)* - child of InputBackground
   ///
   /// A background previously set in the chat; for chat backgrounds only.
@@ -181,24 +176,24 @@ final class InputBackgroundPrevious extends InputBackground {
   const InputBackgroundPrevious({
     required this.messageId,
   });
-  
+
   /// Identifier of the message with the background
   final int messageId;
-  
+
   /// Parse from a json
-  factory InputBackgroundPrevious.fromJson(Map<String, dynamic> json) => InputBackgroundPrevious(
-    messageId: json['message_id'],
-  );
-  
-  
+  factory InputBackgroundPrevious.fromJson(Map<String, dynamic> json) =>
+      InputBackgroundPrevious(
+        messageId: json['message_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "message_id": messageId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -207,9 +202,10 @@ final class InputBackgroundPrevious extends InputBackground {
   @override
   InputBackgroundPrevious copyWith({
     int? messageId,
-  }) => InputBackgroundPrevious(
-    messageId: messageId ?? this.messageId,
-  );
+  }) =>
+      InputBackgroundPrevious(
+        messageId: messageId ?? this.messageId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputBackgroundPrevious';

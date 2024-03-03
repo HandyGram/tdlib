@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class BanChatMember extends TdFunction {
-  
   /// **BanChatMember** *(banChatMember)* - TDLib function
   ///
   /// Bans a member in a chat; requires can_restrict_members administrator right. Members can't be banned in private or secret chats. In supergroups and channels, the user will not be able to return to the group on their own using invite links, etc., unless unbanned first.
@@ -28,7 +27,7 @@ final class BanChatMember extends TdFunction {
     required this.bannedUntilDate,
     required this.revokeMessages,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -40,19 +39,19 @@ final class BanChatMember extends TdFunction {
 
   /// Pass true to delete all messages in the chat for the user that is being removed. Always true for supergroups and channels
   final bool revokeMessages;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "member_id": memberId.toJson(),
       "banned_until_date": bannedUntilDate,
       "revoke_messages": revokeMessages,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -66,12 +65,13 @@ final class BanChatMember extends TdFunction {
     MessageSender? memberId,
     int? bannedUntilDate,
     bool? revokeMessages,
-  }) => BanChatMember(
-    chatId: chatId ?? this.chatId,
-    memberId: memberId ?? this.memberId,
-    bannedUntilDate: bannedUntilDate ?? this.bannedUntilDate,
-    revokeMessages: revokeMessages ?? this.revokeMessages,
-  );
+  }) =>
+      BanChatMember(
+        chatId: chatId ?? this.chatId,
+        memberId: memberId ?? this.memberId,
+        bannedUntilDate: bannedUntilDate ?? this.bannedUntilDate,
+        revokeMessages: revokeMessages ?? this.revokeMessages,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'banChatMember';

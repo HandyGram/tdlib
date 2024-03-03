@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [PremiumLimit] is returned on completion.
 final class GetPremiumLimit extends TdFunction {
-  
   /// **GetPremiumLimit** *(getPremiumLimit)* - TDLib function
   ///
   /// Returns information about a limit, increased for Premium users. Returns a 404 error if the limit is unknown.
@@ -19,19 +18,19 @@ final class GetPremiumLimit extends TdFunction {
   const GetPremiumLimit({
     required this.limitType,
   });
-  
+
   /// Type of the limit
   final PremiumLimitType limitType;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "limit_type": limitType.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetPremiumLimit extends TdFunction {
   /// * [limit_type]: Type of the limit
   GetPremiumLimit copyWith({
     PremiumLimitType? limitType,
-  }) => GetPremiumLimit(
-    limitType: limitType ?? this.limitType,
-  );
+  }) =>
+      GetPremiumLimit(
+        limitType: limitType ?? this.limitType,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getPremiumLimit';

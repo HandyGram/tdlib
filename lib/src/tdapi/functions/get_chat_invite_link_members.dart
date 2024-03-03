@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 ///
 /// [ChatInviteLinkMembers] is returned on completion.
 final class GetChatInviteLinkMembers extends TdFunction {
-  
   /// **GetChatInviteLinkMembers** *(getChatInviteLinkMembers)* - TDLib function
   ///
   /// Returns chat members joined a chat via an invite link. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links.
@@ -28,7 +27,7 @@ final class GetChatInviteLinkMembers extends TdFunction {
     this.offsetMember,
     required this.limit,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -40,19 +39,19 @@ final class GetChatInviteLinkMembers extends TdFunction {
 
   /// The maximum number of chat members to return; up to 100
   final int limit;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "invite_link": inviteLink,
       "offset_member": offsetMember?.toJson(),
       "limit": limit,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -66,12 +65,13 @@ final class GetChatInviteLinkMembers extends TdFunction {
     String? inviteLink,
     ChatInviteLinkMember? offsetMember,
     int? limit,
-  }) => GetChatInviteLinkMembers(
-    chatId: chatId ?? this.chatId,
-    inviteLink: inviteLink ?? this.inviteLink,
-    offsetMember: offsetMember ?? this.offsetMember,
-    limit: limit ?? this.limit,
-  );
+  }) =>
+      GetChatInviteLinkMembers(
+        chatId: chatId ?? this.chatId,
+        inviteLink: inviteLink ?? this.inviteLink,
+        offsetMember: offsetMember ?? this.offsetMember,
+        limit: limit ?? this.limit,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getChatInviteLinkMembers';

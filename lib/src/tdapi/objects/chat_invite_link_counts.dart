@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [inviteLinkCounts]: List of invite link counts.
 final class ChatInviteLinkCounts extends TdObject {
-  
   /// **ChatInviteLinkCounts** *(chatInviteLinkCounts)* - basic class
   ///
   /// Contains a list of chat invite link counts.
@@ -17,7 +16,7 @@ final class ChatInviteLinkCounts extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// List of invite link counts
   final List<ChatInviteLinkCount> inviteLinkCounts;
 
@@ -28,23 +27,26 @@ final class ChatInviteLinkCounts extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory ChatInviteLinkCounts.fromJson(Map<String, dynamic> json) => ChatInviteLinkCounts(
-    inviteLinkCounts: List<ChatInviteLinkCount>.from((json['invite_link_counts'] ?? []).map((item) => ChatInviteLinkCount.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory ChatInviteLinkCounts.fromJson(Map<String, dynamic> json) =>
+      ChatInviteLinkCounts(
+        inviteLinkCounts: List<ChatInviteLinkCount>.from(
+            (json['invite_link_counts'] ?? [])
+                .map((item) => ChatInviteLinkCount.fromJson(item))
+                .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "invite_link_counts": inviteLinkCounts.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +56,12 @@ final class ChatInviteLinkCounts extends TdObject {
     List<ChatInviteLinkCount>? inviteLinkCounts,
     dynamic extra,
     int? clientId,
-  }) => ChatInviteLinkCounts(
-    inviteLinkCounts: inviteLinkCounts ?? this.inviteLinkCounts,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      ChatInviteLinkCounts(
+        inviteLinkCounts: inviteLinkCounts ?? this.inviteLinkCounts,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatInviteLinkCounts';

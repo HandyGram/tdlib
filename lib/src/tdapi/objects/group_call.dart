@@ -26,7 +26,6 @@ part of '../tdapi.dart';
 /// * [isVideoRecorded]: True, if a video file is being recorded for the call.
 /// * [duration]: Call duration, in seconds; for ended calls only.
 final class GroupCall extends TdObject {
-  
   /// **GroupCall** *(groupCall)* - basic class
   ///
   /// Describes a group call.
@@ -77,7 +76,7 @@ final class GroupCall extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Group call identifier
   final int id;
 
@@ -148,40 +147,42 @@ final class GroupCall extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory GroupCall.fromJson(Map<String, dynamic> json) => GroupCall(
-    id: json['id'],
-    title: json['title'],
-    scheduledStartDate: json['scheduled_start_date'],
-    enabledStartNotification: json['enabled_start_notification'],
-    isActive: json['is_active'],
-    isRtmpStream: json['is_rtmp_stream'],
-    isJoined: json['is_joined'],
-    needRejoin: json['need_rejoin'],
-    canBeManaged: json['can_be_managed'],
-    participantCount: json['participant_count'],
-    hasHiddenListeners: json['has_hidden_listeners'],
-    loadedAllParticipants: json['loaded_all_participants'],
-    recentSpeakers: List<GroupCallRecentSpeaker>.from((json['recent_speakers'] ?? []).map((item) => GroupCallRecentSpeaker.fromJson(item)).toList()),
-    isMyVideoEnabled: json['is_my_video_enabled'],
-    isMyVideoPaused: json['is_my_video_paused'],
-    canEnableVideo: json['can_enable_video'],
-    muteNewParticipants: json['mute_new_participants'],
-    canToggleMuteNewParticipants: json['can_toggle_mute_new_participants'],
-    recordDuration: json['record_duration'] ?? 0,
-    isVideoRecorded: json['is_video_recorded'],
-    duration: json['duration'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: json['id'],
+        title: json['title'],
+        scheduledStartDate: json['scheduled_start_date'],
+        enabledStartNotification: json['enabled_start_notification'],
+        isActive: json['is_active'],
+        isRtmpStream: json['is_rtmp_stream'],
+        isJoined: json['is_joined'],
+        needRejoin: json['need_rejoin'],
+        canBeManaged: json['can_be_managed'],
+        participantCount: json['participant_count'],
+        hasHiddenListeners: json['has_hidden_listeners'],
+        loadedAllParticipants: json['loaded_all_participants'],
+        recentSpeakers: List<GroupCallRecentSpeaker>.from(
+            (json['recent_speakers'] ?? [])
+                .map((item) => GroupCallRecentSpeaker.fromJson(item))
+                .toList()),
+        isMyVideoEnabled: json['is_my_video_enabled'],
+        isMyVideoPaused: json['is_my_video_paused'],
+        canEnableVideo: json['can_enable_video'],
+        muteNewParticipants: json['mute_new_participants'],
+        canToggleMuteNewParticipants: json['can_toggle_mute_new_participants'],
+        recordDuration: json['record_duration'] ?? 0,
+        isVideoRecorded: json['is_video_recorded'],
+        duration: json['duration'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "title": title,
       "scheduled_start_date": scheduledStartDate,
@@ -203,8 +204,8 @@ final class GroupCall extends TdObject {
       "record_duration": recordDuration,
       "is_video_recorded": isVideoRecorded,
       "duration": duration,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -254,31 +255,35 @@ final class GroupCall extends TdObject {
     int? duration,
     dynamic extra,
     int? clientId,
-  }) => GroupCall(
-    id: id ?? this.id,
-    title: title ?? this.title,
-    scheduledStartDate: scheduledStartDate ?? this.scheduledStartDate,
-    enabledStartNotification: enabledStartNotification ?? this.enabledStartNotification,
-    isActive: isActive ?? this.isActive,
-    isRtmpStream: isRtmpStream ?? this.isRtmpStream,
-    isJoined: isJoined ?? this.isJoined,
-    needRejoin: needRejoin ?? this.needRejoin,
-    canBeManaged: canBeManaged ?? this.canBeManaged,
-    participantCount: participantCount ?? this.participantCount,
-    hasHiddenListeners: hasHiddenListeners ?? this.hasHiddenListeners,
-    loadedAllParticipants: loadedAllParticipants ?? this.loadedAllParticipants,
-    recentSpeakers: recentSpeakers ?? this.recentSpeakers,
-    isMyVideoEnabled: isMyVideoEnabled ?? this.isMyVideoEnabled,
-    isMyVideoPaused: isMyVideoPaused ?? this.isMyVideoPaused,
-    canEnableVideo: canEnableVideo ?? this.canEnableVideo,
-    muteNewParticipants: muteNewParticipants ?? this.muteNewParticipants,
-    canToggleMuteNewParticipants: canToggleMuteNewParticipants ?? this.canToggleMuteNewParticipants,
-    recordDuration: recordDuration ?? this.recordDuration,
-    isVideoRecorded: isVideoRecorded ?? this.isVideoRecorded,
-    duration: duration ?? this.duration,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      GroupCall(
+        id: id ?? this.id,
+        title: title ?? this.title,
+        scheduledStartDate: scheduledStartDate ?? this.scheduledStartDate,
+        enabledStartNotification:
+            enabledStartNotification ?? this.enabledStartNotification,
+        isActive: isActive ?? this.isActive,
+        isRtmpStream: isRtmpStream ?? this.isRtmpStream,
+        isJoined: isJoined ?? this.isJoined,
+        needRejoin: needRejoin ?? this.needRejoin,
+        canBeManaged: canBeManaged ?? this.canBeManaged,
+        participantCount: participantCount ?? this.participantCount,
+        hasHiddenListeners: hasHiddenListeners ?? this.hasHiddenListeners,
+        loadedAllParticipants:
+            loadedAllParticipants ?? this.loadedAllParticipants,
+        recentSpeakers: recentSpeakers ?? this.recentSpeakers,
+        isMyVideoEnabled: isMyVideoEnabled ?? this.isMyVideoEnabled,
+        isMyVideoPaused: isMyVideoPaused ?? this.isMyVideoPaused,
+        canEnableVideo: canEnableVideo ?? this.canEnableVideo,
+        muteNewParticipants: muteNewParticipants ?? this.muteNewParticipants,
+        canToggleMuteNewParticipants:
+            canToggleMuteNewParticipants ?? this.canToggleMuteNewParticipants,
+        recordDuration: recordDuration ?? this.recordDuration,
+        isVideoRecorded: isVideoRecorded ?? this.isVideoRecorded,
+        duration: duration ?? this.duration,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'groupCall';

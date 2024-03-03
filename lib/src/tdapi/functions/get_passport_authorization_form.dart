@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 ///
 /// [PassportAuthorizationForm] is returned on completion.
 final class GetPassportAuthorizationForm extends TdFunction {
-  
   /// **GetPassportAuthorizationForm** *(getPassportAuthorizationForm)* - TDLib function
   ///
   /// Returns a Telegram Passport authorization form for sharing data with a service.
@@ -28,7 +27,7 @@ final class GetPassportAuthorizationForm extends TdFunction {
     required this.publicKey,
     required this.nonce,
   });
-  
+
   /// User identifier of the service's bot
   final int botUserId;
 
@@ -40,19 +39,19 @@ final class GetPassportAuthorizationForm extends TdFunction {
 
   /// Unique request identifier provided by the service
   final String nonce;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "bot_user_id": botUserId,
       "scope": scope,
       "public_key": publicKey,
       "nonce": nonce,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -66,12 +65,13 @@ final class GetPassportAuthorizationForm extends TdFunction {
     String? scope,
     String? publicKey,
     String? nonce,
-  }) => GetPassportAuthorizationForm(
-    botUserId: botUserId ?? this.botUserId,
-    scope: scope ?? this.scope,
-    publicKey: publicKey ?? this.publicKey,
-    nonce: nonce ?? this.nonce,
-  );
+  }) =>
+      GetPassportAuthorizationForm(
+        botUserId: botUserId ?? this.botUserId,
+        scope: scope ?? this.scope,
+        publicKey: publicKey ?? this.publicKey,
+        nonce: nonce ?? this.nonce,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getPassportAuthorizationForm';

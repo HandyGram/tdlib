@@ -4,19 +4,18 @@ part of '../tdapi.dart';
 ///
 /// Contains detailed information about a notification.
 sealed class NotificationType extends TdObject {
-  
   /// **NotificationType** *(notificationType)* - parent
   ///
   /// Contains detailed information about a notification.
   const NotificationType();
-  
+
   /// a NotificationType return type can be :
   /// * [NotificationTypeNewMessage]
   /// * [NotificationTypeNewSecretChat]
   /// * [NotificationTypeNewCall]
   /// * [NotificationTypeNewPushMessage]
-  factory NotificationType.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory NotificationType.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case NotificationTypeNewMessage.defaultObjectId:
         return NotificationTypeNewMessage.fromJson(json);
       case NotificationTypeNewSecretChat.defaultObjectId:
@@ -32,7 +31,7 @@ sealed class NotificationType extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -52,7 +51,6 @@ sealed class NotificationType extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **NotificationTypeNewMessage** *(notificationTypeNewMessage)* - child of NotificationType
 ///
 /// New message was received.
@@ -60,7 +58,6 @@ sealed class NotificationType extends TdObject {
 /// * [message]: The message.
 /// * [showPreview]: True, if message content must be displayed in notifications.
 final class NotificationTypeNewMessage extends NotificationType {
-  
   /// **NotificationTypeNewMessage** *(notificationTypeNewMessage)* - child of NotificationType
   ///
   /// New message was received.
@@ -71,43 +68,44 @@ final class NotificationTypeNewMessage extends NotificationType {
     required this.message,
     required this.showPreview,
   });
-  
-  /// The message 
+
+  /// The message
   final Message message;
 
   /// True, if message content must be displayed in notifications
   final bool showPreview;
-  
+
   /// Parse from a json
-  factory NotificationTypeNewMessage.fromJson(Map<String, dynamic> json) => NotificationTypeNewMessage(
-    message: Message.fromJson(json['message']),
-    showPreview: json['show_preview'],
-  );
-  
-  
+  factory NotificationTypeNewMessage.fromJson(Map<String, dynamic> json) =>
+      NotificationTypeNewMessage(
+        message: Message.fromJson(json['message']),
+        showPreview: json['show_preview'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "message": message.toJson(),
       "show_preview": showPreview,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [message]: The message 
+  /// * [message]: The message
   /// * [show_preview]: True, if message content must be displayed in notifications
   @override
   NotificationTypeNewMessage copyWith({
     Message? message,
     bool? showPreview,
-  }) => NotificationTypeNewMessage(
-    message: message ?? this.message,
-    showPreview: showPreview ?? this.showPreview,
-  );
+  }) =>
+      NotificationTypeNewMessage(
+        message: message ?? this.message,
+        showPreview: showPreview ?? this.showPreview,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'notificationTypeNewMessage';
@@ -121,31 +119,31 @@ final class NotificationTypeNewMessage extends NotificationType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **NotificationTypeNewSecretChat** *(notificationTypeNewSecretChat)* - child of NotificationType
 ///
 /// New secret chat was created.
 final class NotificationTypeNewSecretChat extends NotificationType {
-  
   /// **NotificationTypeNewSecretChat** *(notificationTypeNewSecretChat)* - child of NotificationType
   ///
   /// New secret chat was created.
   const NotificationTypeNewSecretChat();
-  
+
   /// Parse from a json
-  factory NotificationTypeNewSecretChat.fromJson(Map<String, dynamic> json) => const NotificationTypeNewSecretChat();
-  
+  factory NotificationTypeNewSecretChat.fromJson(Map<String, dynamic> json) =>
+      const NotificationTypeNewSecretChat();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  NotificationTypeNewSecretChat copyWith() => const NotificationTypeNewSecretChat();
+  NotificationTypeNewSecretChat copyWith() =>
+      const NotificationTypeNewSecretChat();
 
   /// TDLib object type
   static const String defaultObjectId = 'notificationTypeNewSecretChat';
@@ -159,14 +157,12 @@ final class NotificationTypeNewSecretChat extends NotificationType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **NotificationTypeNewCall** *(notificationTypeNewCall)* - child of NotificationType
 ///
 /// New call was received.
 ///
 /// * [callId]: Call identifier.
 final class NotificationTypeNewCall extends NotificationType {
-  
   /// **NotificationTypeNewCall** *(notificationTypeNewCall)* - child of NotificationType
   ///
   /// New call was received.
@@ -175,24 +171,24 @@ final class NotificationTypeNewCall extends NotificationType {
   const NotificationTypeNewCall({
     required this.callId,
   });
-  
+
   /// Call identifier
   final int callId;
-  
+
   /// Parse from a json
-  factory NotificationTypeNewCall.fromJson(Map<String, dynamic> json) => NotificationTypeNewCall(
-    callId: json['call_id'],
-  );
-  
-  
+  factory NotificationTypeNewCall.fromJson(Map<String, dynamic> json) =>
+      NotificationTypeNewCall(
+        callId: json['call_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "call_id": callId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -201,9 +197,10 @@ final class NotificationTypeNewCall extends NotificationType {
   @override
   NotificationTypeNewCall copyWith({
     int? callId,
-  }) => NotificationTypeNewCall(
-    callId: callId ?? this.callId,
-  );
+  }) =>
+      NotificationTypeNewCall(
+        callId: callId ?? this.callId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'notificationTypeNewCall';
@@ -217,7 +214,6 @@ final class NotificationTypeNewCall extends NotificationType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **NotificationTypeNewPushMessage** *(notificationTypeNewPushMessage)* - child of NotificationType
 ///
 /// New message was received through a push notification.
@@ -228,7 +224,6 @@ final class NotificationTypeNewCall extends NotificationType {
 /// * [isOutgoing]: True, if the message is outgoing.
 /// * [content]: Push message content.
 final class NotificationTypeNewPushMessage extends NotificationType {
-  
   /// **NotificationTypeNewPushMessage** *(notificationTypeNewPushMessage)* - child of NotificationType
   ///
   /// New message was received through a push notification.
@@ -245,7 +240,7 @@ final class NotificationTypeNewPushMessage extends NotificationType {
     required this.isOutgoing,
     required this.content,
   });
-  
+
   /// The message identifier. The message will not be available in the chat history, but the identifier can be used in viewMessages, or as a message to be replied in the same chat
   final int messageId;
 
@@ -260,29 +255,29 @@ final class NotificationTypeNewPushMessage extends NotificationType {
 
   /// Push message content
   final PushMessageContent content;
-  
+
   /// Parse from a json
-  factory NotificationTypeNewPushMessage.fromJson(Map<String, dynamic> json) => NotificationTypeNewPushMessage(
-    messageId: json['message_id'],
-    senderId: MessageSender.fromJson(json['sender_id']),
-    senderName: json['sender_name'],
-    isOutgoing: json['is_outgoing'],
-    content: PushMessageContent.fromJson(json['content']),
-  );
-  
-  
+  factory NotificationTypeNewPushMessage.fromJson(Map<String, dynamic> json) =>
+      NotificationTypeNewPushMessage(
+        messageId: json['message_id'],
+        senderId: MessageSender.fromJson(json['sender_id']),
+        senderName: json['sender_name'],
+        isOutgoing: json['is_outgoing'],
+        content: PushMessageContent.fromJson(json['content']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "message_id": messageId,
       "sender_id": senderId.toJson(),
       "sender_name": senderName,
       "is_outgoing": isOutgoing,
       "content": content.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -299,13 +294,14 @@ final class NotificationTypeNewPushMessage extends NotificationType {
     String? senderName,
     bool? isOutgoing,
     PushMessageContent? content,
-  }) => NotificationTypeNewPushMessage(
-    messageId: messageId ?? this.messageId,
-    senderId: senderId ?? this.senderId,
-    senderName: senderName ?? this.senderName,
-    isOutgoing: isOutgoing ?? this.isOutgoing,
-    content: content ?? this.content,
-  );
+  }) =>
+      NotificationTypeNewPushMessage(
+        messageId: messageId ?? this.messageId,
+        senderId: senderId ?? this.senderId,
+        senderName: senderName ?? this.senderName,
+        isOutgoing: isOutgoing ?? this.isOutgoing,
+        content: content ?? this.content,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'notificationTypeNewPushMessage';

@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Background] is returned on completion.
 final class SearchBackground extends TdFunction {
-  
   /// **SearchBackground** *(searchBackground)* - TDLib function
   ///
   /// Searches for a background by its name.
@@ -19,19 +18,19 @@ final class SearchBackground extends TdFunction {
   const SearchBackground({
     required this.name,
   });
-  
+
   /// The name of the background
   final String name;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "name": name,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class SearchBackground extends TdFunction {
   /// * [name]: The name of the background
   SearchBackground copyWith({
     String? name,
-  }) => SearchBackground(
-    name: name ?? this.name,
-  );
+  }) =>
+      SearchBackground(
+        name: name ?? this.name,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'searchBackground';

@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 ///
 /// [File] is returned on completion.
 final class DownloadFile extends TdFunction {
-  
   /// **DownloadFile** *(downloadFile)* - TDLib function
   ///
   /// Downloads a file from the cloud. Download progress and completion of the download will be notified through updateFile updates.
@@ -31,7 +30,7 @@ final class DownloadFile extends TdFunction {
     required this.limit,
     required this.synchronous,
   });
-  
+
   /// Identifier of the file to download
   final int fileId;
 
@@ -46,20 +45,20 @@ final class DownloadFile extends TdFunction {
 
   /// Pass true to return response only after the file download has succeeded, has failed, has been canceled, or a new downloadFile request with different offset/limit parameters was sent; pass false to return file state immediately, just after the download has been started
   final bool synchronous;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "file_id": fileId,
       "priority": priority,
       "offset": offset,
       "limit": limit,
       "synchronous": synchronous,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -75,13 +74,14 @@ final class DownloadFile extends TdFunction {
     int? offset,
     int? limit,
     bool? synchronous,
-  }) => DownloadFile(
-    fileId: fileId ?? this.fileId,
-    priority: priority ?? this.priority,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-    synchronous: synchronous ?? this.synchronous,
-  );
+  }) =>
+      DownloadFile(
+        fileId: fileId ?? this.fileId,
+        priority: priority ?? this.priority,
+        offset: offset ?? this.offset,
+        limit: limit ?? this.limit,
+        synchronous: synchronous ?? this.synchronous,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'downloadFile';

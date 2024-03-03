@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [inviteLinks]: List of the invite links.
 final class ChatFolderInviteLinks extends TdObject {
-  
   /// **ChatFolderInviteLinks** *(chatFolderInviteLinks)* - basic class
   ///
   /// Represents a list of chat folder invite links.
@@ -17,7 +16,7 @@ final class ChatFolderInviteLinks extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// List of the invite links
   final List<ChatFolderInviteLink> inviteLinks;
 
@@ -28,23 +27,26 @@ final class ChatFolderInviteLinks extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory ChatFolderInviteLinks.fromJson(Map<String, dynamic> json) => ChatFolderInviteLinks(
-    inviteLinks: List<ChatFolderInviteLink>.from((json['invite_links'] ?? []).map((item) => ChatFolderInviteLink.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory ChatFolderInviteLinks.fromJson(Map<String, dynamic> json) =>
+      ChatFolderInviteLinks(
+        inviteLinks: List<ChatFolderInviteLink>.from(
+            (json['invite_links'] ?? [])
+                .map((item) => ChatFolderInviteLink.fromJson(item))
+                .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "invite_links": inviteLinks.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +56,12 @@ final class ChatFolderInviteLinks extends TdObject {
     List<ChatFolderInviteLink>? inviteLinks,
     dynamic extra,
     int? clientId,
-  }) => ChatFolderInviteLinks(
-    inviteLinks: inviteLinks ?? this.inviteLinks,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      ChatFolderInviteLinks(
+        inviteLinks: inviteLinks ?? this.inviteLinks,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatFolderInviteLinks';

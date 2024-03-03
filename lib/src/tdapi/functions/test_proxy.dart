@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class TestProxy extends TdFunction {
-  
   /// **TestProxy** *(testProxy)* - TDLib function
   ///
   /// Sends a simple network request to the Telegram servers via proxy; for testing only. Can be called before authorization.
@@ -31,7 +30,7 @@ final class TestProxy extends TdFunction {
     required this.dcId,
     required this.timeout,
   });
-  
+
   /// Proxy server domain or IP address
   final String server;
 
@@ -46,20 +45,20 @@ final class TestProxy extends TdFunction {
 
   /// The maximum overall timeout for the request
   final double timeout;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "server": server,
       "port": port,
       "type": type.toJson(),
       "dc_id": dcId,
       "timeout": timeout,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -75,13 +74,14 @@ final class TestProxy extends TdFunction {
     ProxyType? type,
     int? dcId,
     double? timeout,
-  }) => TestProxy(
-    server: server ?? this.server,
-    port: port ?? this.port,
-    type: type ?? this.type,
-    dcId: dcId ?? this.dcId,
-    timeout: timeout ?? this.timeout,
-  );
+  }) =>
+      TestProxy(
+        server: server ?? this.server,
+        port: port ?? this.port,
+        type: type ?? this.type,
+        dcId: dcId ?? this.dcId,
+        timeout: timeout ?? this.timeout,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'testProxy';

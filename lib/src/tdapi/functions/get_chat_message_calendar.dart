@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 ///
 /// [MessageCalendar] is returned on completion.
 final class GetChatMessageCalendar extends TdFunction {
-  
   /// **GetChatMessageCalendar** *(getChatMessageCalendar)* - TDLib function
   ///
   /// Returns information about the next messages of the specified type in the chat split by days. Returns the results in reverse chronological order. Can return partial result for the last returned day. Behavior of this method depends on the value of the option "utc_time_offset".
@@ -28,7 +27,7 @@ final class GetChatMessageCalendar extends TdFunction {
     required this.fromMessageId,
     required this.savedMessagesTopicId,
   });
-  
+
   /// Identifier of the chat in which to return information about messages
   final int chatId;
 
@@ -40,19 +39,19 @@ final class GetChatMessageCalendar extends TdFunction {
 
   /// If not0, only messages in the specified Saved Messages topic will be considered; pass 0 to consider all messages, or for chats other than Saved Messages
   final int savedMessagesTopicId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "filter": filter.toJson(),
       "from_message_id": fromMessageId,
       "saved_messages_topic_id": savedMessagesTopicId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -66,12 +65,13 @@ final class GetChatMessageCalendar extends TdFunction {
     SearchMessagesFilter? filter,
     int? fromMessageId,
     int? savedMessagesTopicId,
-  }) => GetChatMessageCalendar(
-    chatId: chatId ?? this.chatId,
-    filter: filter ?? this.filter,
-    fromMessageId: fromMessageId ?? this.fromMessageId,
-    savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
-  );
+  }) =>
+      GetChatMessageCalendar(
+        chatId: chatId ?? this.chatId,
+        filter: filter ?? this.filter,
+        fromMessageId: fromMessageId ?? this.fromMessageId,
+        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getChatMessageCalendar';

@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class DeleteStickerSet extends TdFunction {
-  
   /// **DeleteStickerSet** *(deleteStickerSet)* - TDLib function
   ///
   /// Deleted a sticker set; for bots only.
@@ -19,19 +18,19 @@ final class DeleteStickerSet extends TdFunction {
   const DeleteStickerSet({
     required this.name,
   });
-  
+
   /// Sticker set name
   final String name;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "name": name,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class DeleteStickerSet extends TdFunction {
   /// * [name]: Sticker set name
   DeleteStickerSet copyWith({
     String? name,
-  }) => DeleteStickerSet(
-    name: name ?? this.name,
-  );
+  }) =>
+      DeleteStickerSet(
+        name: name ?? this.name,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'deleteStickerSet';

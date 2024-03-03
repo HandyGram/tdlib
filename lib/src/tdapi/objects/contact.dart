@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 /// * [vcard]: Additional data about the user in a form of vCard; 0-2048 bytes in length.
 /// * [userId]: Identifier of the user, if known; 0 otherwise.
 final class Contact extends TdObject {
-  
   /// **Contact** *(contact)* - basic class
   ///
   /// Describes a user contact.
@@ -27,7 +26,7 @@ final class Contact extends TdObject {
     required this.vcard,
     required this.userId,
   });
-  
+
   /// Phone number of the user
   final String phoneNumber;
 
@@ -42,29 +41,28 @@ final class Contact extends TdObject {
 
   /// Identifier of the user, if known; 0 otherwise
   final int userId;
-  
+
   /// Parse from a json
   factory Contact.fromJson(Map<String, dynamic> json) => Contact(
-    phoneNumber: json['phone_number'],
-    firstName: json['first_name'],
-    lastName: json['last_name'],
-    vcard: json['vcard'],
-    userId: json['user_id'],
-  );
-  
-  
+        phoneNumber: json['phone_number'],
+        firstName: json['first_name'],
+        lastName: json['last_name'],
+        vcard: json['vcard'],
+        userId: json['user_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "phone_number": phoneNumber,
       "first_name": firstName,
       "last_name": lastName,
       "vcard": vcard,
       "user_id": userId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -80,13 +78,14 @@ final class Contact extends TdObject {
     String? lastName,
     String? vcard,
     int? userId,
-  }) => Contact(
-    phoneNumber: phoneNumber ?? this.phoneNumber,
-    firstName: firstName ?? this.firstName,
-    lastName: lastName ?? this.lastName,
-    vcard: vcard ?? this.vcard,
-    userId: userId ?? this.userId,
-  );
+  }) =>
+      Contact(
+        phoneNumber: phoneNumber ?? this.phoneNumber,
+        firstName: firstName ?? this.firstName,
+        lastName: lastName ?? this.lastName,
+        vcard: vcard ?? this.vcard,
+        userId: userId ?? this.userId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'contact';

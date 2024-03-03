@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Chat] is returned on completion.
 final class JoinChatByInviteLink extends TdFunction {
-  
   /// **JoinChatByInviteLink** *(joinChatByInviteLink)* - TDLib function
   ///
   /// Uses an invite link to add the current user to the chat if possible. May return an error with a message "INVITE_REQUEST_SENT" if only a join request was created.
@@ -19,19 +18,19 @@ final class JoinChatByInviteLink extends TdFunction {
   const JoinChatByInviteLink({
     required this.inviteLink,
   });
-  
+
   /// Invite link to use
   final String inviteLink;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "invite_link": inviteLink,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class JoinChatByInviteLink extends TdFunction {
   /// * [invite_link]: Invite link to use
   JoinChatByInviteLink copyWith({
     String? inviteLink,
-  }) => JoinChatByInviteLink(
-    inviteLink: inviteLink ?? this.inviteLink,
-  );
+  }) =>
+      JoinChatByInviteLink(
+        inviteLink: inviteLink ?? this.inviteLink,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'joinChatByInviteLink';

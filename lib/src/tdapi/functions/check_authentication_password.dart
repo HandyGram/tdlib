@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class CheckAuthenticationPassword extends TdFunction {
-  
   /// **CheckAuthenticationPassword** *(checkAuthenticationPassword)* - TDLib function
   ///
   /// Checks the 2-step verification password for correctness. Works only when the current authorization state is authorizationStateWaitPassword.
@@ -19,19 +18,19 @@ final class CheckAuthenticationPassword extends TdFunction {
   const CheckAuthenticationPassword({
     required this.password,
   });
-  
+
   /// The 2-step verification password to check
   final String password;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "password": password,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class CheckAuthenticationPassword extends TdFunction {
   /// * [password]: The 2-step verification password to check
   CheckAuthenticationPassword copyWith({
     String? password,
-  }) => CheckAuthenticationPassword(
-    password: password ?? this.password,
-  );
+  }) =>
+      CheckAuthenticationPassword(
+        password: password ?? this.password,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'checkAuthenticationPassword';

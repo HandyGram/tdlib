@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 /// * [port]: Server port number.
 /// * [type]: Server type.
 final class CallServer extends TdObject {
-  
   /// **CallServer** *(callServer)* - basic class
   ///
   /// Describes a server for relaying call data.
@@ -27,7 +26,7 @@ final class CallServer extends TdObject {
     required this.port,
     required this.type,
   });
-  
+
   /// Server identifier
   final int id;
 
@@ -42,29 +41,28 @@ final class CallServer extends TdObject {
 
   /// Server type
   final CallServerType type;
-  
+
   /// Parse from a json
   factory CallServer.fromJson(Map<String, dynamic> json) => CallServer(
-    id: int.parse(json['id']),
-    ipAddress: json['ip_address'],
-    ipv6Address: json['ipv6_address'],
-    port: json['port'],
-    type: CallServerType.fromJson(json['type']),
-  );
-  
-  
+        id: int.parse(json['id']),
+        ipAddress: json['ip_address'],
+        ipv6Address: json['ipv6_address'],
+        port: json['port'],
+        type: CallServerType.fromJson(json['type']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "ip_address": ipAddress,
       "ipv6_address": ipv6Address,
       "port": port,
       "type": type.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -80,13 +78,14 @@ final class CallServer extends TdObject {
     String? ipv6Address,
     int? port,
     CallServerType? type,
-  }) => CallServer(
-    id: id ?? this.id,
-    ipAddress: ipAddress ?? this.ipAddress,
-    ipv6Address: ipv6Address ?? this.ipv6Address,
-    port: port ?? this.port,
-    type: type ?? this.type,
-  );
+  }) =>
+      CallServer(
+        id: id ?? this.id,
+        ipAddress: ipAddress ?? this.ipAddress,
+        ipv6Address: ipv6Address ?? this.ipv6Address,
+        port: port ?? this.port,
+        type: type ?? this.type,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'callServer';

@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Chat] is returned on completion.
 final class UpgradeBasicGroupChatToSupergroupChat extends TdFunction {
-  
   /// **UpgradeBasicGroupChatToSupergroupChat** *(upgradeBasicGroupChatToSupergroupChat)* - TDLib function
   ///
   /// Creates a new supergroup from an existing basic group and sends a corresponding messageChatUpgradeTo and messageChatUpgradeFrom; requires owner privileges. Deactivates the original basic group.
@@ -19,19 +18,19 @@ final class UpgradeBasicGroupChatToSupergroupChat extends TdFunction {
   const UpgradeBasicGroupChatToSupergroupChat({
     required this.chatId,
   });
-  
+
   /// Identifier of the chat to upgrade
   final int chatId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class UpgradeBasicGroupChatToSupergroupChat extends TdFunction {
   /// * [chat_id]: Identifier of the chat to upgrade
   UpgradeBasicGroupChatToSupergroupChat copyWith({
     int? chatId,
-  }) => UpgradeBasicGroupChatToSupergroupChat(
-    chatId: chatId ?? this.chatId,
-  );
+  }) =>
+      UpgradeBasicGroupChatToSupergroupChat(
+        chatId: chatId ?? this.chatId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'upgradeBasicGroupChatToSupergroupChat';

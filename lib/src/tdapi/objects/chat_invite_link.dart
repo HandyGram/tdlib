@@ -17,7 +17,6 @@ part of '../tdapi.dart';
 /// * [isPrimary]: True, if the link is primary. Primary invite link can't have name, expiration date, or usage limit. There is exactly one primary invite link for each administrator with can_invite_users right at a given time.
 /// * [isRevoked]: True, if the link was revoked.
 final class ChatInviteLink extends TdObject {
-  
   /// **ChatInviteLink** *(chatInviteLink)* - basic class
   ///
   /// Contains a chat invite link.
@@ -50,7 +49,7 @@ final class ChatInviteLink extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Chat invite link
   final String inviteLink;
 
@@ -94,31 +93,30 @@ final class ChatInviteLink extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory ChatInviteLink.fromJson(Map<String, dynamic> json) => ChatInviteLink(
-    inviteLink: json['invite_link'],
-    name: json['name'],
-    creatorUserId: json['creator_user_id'],
-    date: json['date'],
-    editDate: json['edit_date'],
-    expirationDate: json['expiration_date'],
-    memberLimit: json['member_limit'],
-    memberCount: json['member_count'],
-    pendingJoinRequestCount: json['pending_join_request_count'],
-    createsJoinRequest: json['creates_join_request'],
-    isPrimary: json['is_primary'],
-    isRevoked: json['is_revoked'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        inviteLink: json['invite_link'],
+        name: json['name'],
+        creatorUserId: json['creator_user_id'],
+        date: json['date'],
+        editDate: json['edit_date'],
+        expirationDate: json['expiration_date'],
+        memberLimit: json['member_limit'],
+        memberCount: json['member_count'],
+        pendingJoinRequestCount: json['pending_join_request_count'],
+        createsJoinRequest: json['creates_join_request'],
+        isPrimary: json['is_primary'],
+        isRevoked: json['is_revoked'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "invite_link": inviteLink,
       "name": name,
       "creator_user_id": creatorUserId,
@@ -131,8 +129,8 @@ final class ChatInviteLink extends TdObject {
       "creates_join_request": createsJoinRequest,
       "is_primary": isPrimary,
       "is_revoked": isRevoked,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -164,22 +162,24 @@ final class ChatInviteLink extends TdObject {
     bool? isRevoked,
     dynamic extra,
     int? clientId,
-  }) => ChatInviteLink(
-    inviteLink: inviteLink ?? this.inviteLink,
-    name: name ?? this.name,
-    creatorUserId: creatorUserId ?? this.creatorUserId,
-    date: date ?? this.date,
-    editDate: editDate ?? this.editDate,
-    expirationDate: expirationDate ?? this.expirationDate,
-    memberLimit: memberLimit ?? this.memberLimit,
-    memberCount: memberCount ?? this.memberCount,
-    pendingJoinRequestCount: pendingJoinRequestCount ?? this.pendingJoinRequestCount,
-    createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
-    isPrimary: isPrimary ?? this.isPrimary,
-    isRevoked: isRevoked ?? this.isRevoked,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      ChatInviteLink(
+        inviteLink: inviteLink ?? this.inviteLink,
+        name: name ?? this.name,
+        creatorUserId: creatorUserId ?? this.creatorUserId,
+        date: date ?? this.date,
+        editDate: editDate ?? this.editDate,
+        expirationDate: expirationDate ?? this.expirationDate,
+        memberLimit: memberLimit ?? this.memberLimit,
+        memberCount: memberCount ?? this.memberCount,
+        pendingJoinRequestCount:
+            pendingJoinRequestCount ?? this.pendingJoinRequestCount,
+        createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
+        isPrimary: isPrimary ?? this.isPrimary,
+        isRevoked: isRevoked ?? this.isRevoked,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatInviteLink';

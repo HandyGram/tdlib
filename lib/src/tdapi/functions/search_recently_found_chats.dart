@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Chats] is returned on completion.
 final class SearchRecentlyFoundChats extends TdFunction {
-  
   /// **SearchRecentlyFoundChats** *(searchRecentlyFoundChats)* - TDLib function
   ///
   /// Searches for the specified query in the title and username of up to 50 recently found chats; this is an offline request.
@@ -22,23 +21,23 @@ final class SearchRecentlyFoundChats extends TdFunction {
     required this.query,
     required this.limit,
   });
-  
+
   /// Query to search for
   final String query;
 
   /// The maximum number of chats to be returned
   final int limit;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "query": query,
       "limit": limit,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class SearchRecentlyFoundChats extends TdFunction {
   SearchRecentlyFoundChats copyWith({
     String? query,
     int? limit,
-  }) => SearchRecentlyFoundChats(
-    query: query ?? this.query,
-    limit: limit ?? this.limit,
-  );
+  }) =>
+      SearchRecentlyFoundChats(
+        query: query ?? this.query,
+        limit: limit ?? this.limit,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'searchRecentlyFoundChats';

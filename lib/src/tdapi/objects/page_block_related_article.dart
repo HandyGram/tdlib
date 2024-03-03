@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 /// * [author]: Article author; may be empty.
 /// * [publishDate]: Point in time (Unix timestamp) when the article was published; 0 if unknown.
 final class PageBlockRelatedArticle extends TdObject {
-  
   /// **PageBlockRelatedArticle** *(pageBlockRelatedArticle)* - basic class
   ///
   /// Contains information about a related article.
@@ -30,7 +29,7 @@ final class PageBlockRelatedArticle extends TdObject {
     required this.author,
     required this.publishDate,
   });
-  
+
   /// Related article URL
   final String url;
 
@@ -48,31 +47,31 @@ final class PageBlockRelatedArticle extends TdObject {
 
   /// Point in time (Unix timestamp) when the article was published; 0 if unknown
   final int publishDate;
-  
+
   /// Parse from a json
-  factory PageBlockRelatedArticle.fromJson(Map<String, dynamic> json) => PageBlockRelatedArticle(
-    url: json['url'],
-    title: json['title'],
-    description: json['description'],
-    photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
-    author: json['author'],
-    publishDate: json['publish_date'],
-  );
-  
-  
+  factory PageBlockRelatedArticle.fromJson(Map<String, dynamic> json) =>
+      PageBlockRelatedArticle(
+        url: json['url'],
+        title: json['title'],
+        description: json['description'],
+        photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
+        author: json['author'],
+        publishDate: json['publish_date'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "url": url,
       "title": title,
       "description": description,
       "photo": photo?.toJson(),
       "author": author,
       "publish_date": publishDate,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -90,14 +89,15 @@ final class PageBlockRelatedArticle extends TdObject {
     Photo? photo,
     String? author,
     int? publishDate,
-  }) => PageBlockRelatedArticle(
-    url: url ?? this.url,
-    title: title ?? this.title,
-    description: description ?? this.description,
-    photo: photo ?? this.photo,
-    author: author ?? this.author,
-    publishDate: publishDate ?? this.publishDate,
-  );
+  }) =>
+      PageBlockRelatedArticle(
+        url: url ?? this.url,
+        title: title ?? this.title,
+        description: description ?? this.description,
+        photo: photo ?? this.photo,
+        author: author ?? this.author,
+        publishDate: publishDate ?? this.publishDate,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'pageBlockRelatedArticle';

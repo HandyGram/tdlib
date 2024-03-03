@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class CheckAuthenticationBotToken extends TdFunction {
-  
   /// **CheckAuthenticationBotToken** *(checkAuthenticationBotToken)* - TDLib function
   ///
   /// Checks the authentication token of a bot; to log in as a bot. Works only when the current authorization state is authorizationStateWaitPhoneNumber. Can be used instead of setAuthenticationPhoneNumber and checkAuthenticationCode to log in.
@@ -19,19 +18,19 @@ final class CheckAuthenticationBotToken extends TdFunction {
   const CheckAuthenticationBotToken({
     required this.token,
   });
-  
+
   /// The bot token
   final String token;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "token": token,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class CheckAuthenticationBotToken extends TdFunction {
   /// * [token]: The bot token
   CheckAuthenticationBotToken copyWith({
     String? token,
-  }) => CheckAuthenticationBotToken(
-    token: token ?? this.token,
-  );
+  }) =>
+      CheckAuthenticationBotToken(
+        token: token ?? this.token,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'checkAuthenticationBotToken';

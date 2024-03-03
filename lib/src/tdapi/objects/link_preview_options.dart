@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 /// * [forceLargeMedia]: True, if shown media preview must be large; ignored in secret chats or if the URL isn't explicitly specified.
 /// * [showAboveText]: True, if link preview must be shown above message text; otherwise, the link preview will be shown below the message text; ignored in secret chats.
 final class LinkPreviewOptions extends TdObject {
-  
   /// **LinkPreviewOptions** *(linkPreviewOptions)* - basic class
   ///
   /// Options to be used for generation of a link preview.
@@ -27,7 +26,7 @@ final class LinkPreviewOptions extends TdObject {
     required this.forceLargeMedia,
     required this.showAboveText,
   });
-  
+
   /// True, if link preview must be disabled
   final bool isDisabled;
 
@@ -42,29 +41,29 @@ final class LinkPreviewOptions extends TdObject {
 
   /// True, if link preview must be shown above message text; otherwise, the link preview will be shown below the message text; ignored in secret chats
   final bool showAboveText;
-  
+
   /// Parse from a json
-  factory LinkPreviewOptions.fromJson(Map<String, dynamic> json) => LinkPreviewOptions(
-    isDisabled: json['is_disabled'],
-    url: json['url'],
-    forceSmallMedia: json['force_small_media'],
-    forceLargeMedia: json['force_large_media'],
-    showAboveText: json['show_above_text'],
-  );
-  
-  
+  factory LinkPreviewOptions.fromJson(Map<String, dynamic> json) =>
+      LinkPreviewOptions(
+        isDisabled: json['is_disabled'],
+        url: json['url'],
+        forceSmallMedia: json['force_small_media'],
+        forceLargeMedia: json['force_large_media'],
+        showAboveText: json['show_above_text'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "is_disabled": isDisabled,
       "url": url,
       "force_small_media": forceSmallMedia,
       "force_large_media": forceLargeMedia,
       "show_above_text": showAboveText,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -80,13 +79,14 @@ final class LinkPreviewOptions extends TdObject {
     bool? forceSmallMedia,
     bool? forceLargeMedia,
     bool? showAboveText,
-  }) => LinkPreviewOptions(
-    isDisabled: isDisabled ?? this.isDisabled,
-    url: url ?? this.url,
-    forceSmallMedia: forceSmallMedia ?? this.forceSmallMedia,
-    forceLargeMedia: forceLargeMedia ?? this.forceLargeMedia,
-    showAboveText: showAboveText ?? this.showAboveText,
-  );
+  }) =>
+      LinkPreviewOptions(
+        isDisabled: isDisabled ?? this.isDisabled,
+        url: url ?? this.url,
+        forceSmallMedia: forceSmallMedia ?? this.forceSmallMedia,
+        forceLargeMedia: forceLargeMedia ?? this.forceLargeMedia,
+        showAboveText: showAboveText ?? this.showAboveText,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'linkPreviewOptions';

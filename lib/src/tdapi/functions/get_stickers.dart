@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 ///
 /// [Stickers] is returned on completion.
 final class GetStickers extends TdFunction {
-  
   /// **GetStickers** *(getStickers)* - TDLib function
   ///
   /// Returns stickers from the installed sticker sets that correspond to any of the given emoji or can be found by sticker-specific keywords. If the query is non-empty, then favorite, recently used or trending stickers may also be returned.
@@ -28,7 +27,7 @@ final class GetStickers extends TdFunction {
     required this.limit,
     required this.chatId,
   });
-  
+
   /// Type of the stickers to return
   final StickerType stickerType;
 
@@ -40,19 +39,19 @@ final class GetStickers extends TdFunction {
 
   /// Chat identifier for which to return stickers. Available custom emoji stickers may be different for different chats
   final int chatId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sticker_type": stickerType.toJson(),
       "query": query,
       "limit": limit,
       "chat_id": chatId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -66,12 +65,13 @@ final class GetStickers extends TdFunction {
     String? query,
     int? limit,
     int? chatId,
-  }) => GetStickers(
-    stickerType: stickerType ?? this.stickerType,
-    query: query ?? this.query,
-    limit: limit ?? this.limit,
-    chatId: chatId ?? this.chatId,
-  );
+  }) =>
+      GetStickers(
+        stickerType: stickerType ?? this.stickerType,
+        query: query ?? this.query,
+        limit: limit ?? this.limit,
+        chatId: chatId ?? this.chatId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getStickers';

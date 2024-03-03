@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 /// * [align]: Horizontal cell content alignment.
 /// * [valign]: Vertical cell content alignment.
 final class PageBlockTableCell extends TdObject {
-  
   /// **PageBlockTableCell** *(pageBlockTableCell)* - basic class
   ///
   /// Represents a cell of a table.
@@ -30,7 +29,7 @@ final class PageBlockTableCell extends TdObject {
     required this.align,
     required this.valign,
   });
-  
+
   /// Cell text; may be null. If the text is null, then the cell must be invisible
   final RichText? text;
 
@@ -48,31 +47,31 @@ final class PageBlockTableCell extends TdObject {
 
   /// Vertical cell content alignment
   final PageBlockVerticalAlignment valign;
-  
+
   /// Parse from a json
-  factory PageBlockTableCell.fromJson(Map<String, dynamic> json) => PageBlockTableCell(
-    text: json['text'] == null ? null : RichText.fromJson(json['text']),
-    isHeader: json['is_header'],
-    colspan: json['colspan'],
-    rowspan: json['rowspan'],
-    align: PageBlockHorizontalAlignment.fromJson(json['align']),
-    valign: PageBlockVerticalAlignment.fromJson(json['valign']),
-  );
-  
-  
+  factory PageBlockTableCell.fromJson(Map<String, dynamic> json) =>
+      PageBlockTableCell(
+        text: json['text'] == null ? null : RichText.fromJson(json['text']),
+        isHeader: json['is_header'],
+        colspan: json['colspan'],
+        rowspan: json['rowspan'],
+        align: PageBlockHorizontalAlignment.fromJson(json['align']),
+        valign: PageBlockVerticalAlignment.fromJson(json['valign']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "text": text?.toJson(),
       "is_header": isHeader,
       "colspan": colspan,
       "rowspan": rowspan,
       "align": align.toJson(),
       "valign": valign.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -90,14 +89,15 @@ final class PageBlockTableCell extends TdObject {
     int? rowspan,
     PageBlockHorizontalAlignment? align,
     PageBlockVerticalAlignment? valign,
-  }) => PageBlockTableCell(
-    text: text ?? this.text,
-    isHeader: isHeader ?? this.isHeader,
-    colspan: colspan ?? this.colspan,
-    rowspan: rowspan ?? this.rowspan,
-    align: align ?? this.align,
-    valign: valign ?? this.valign,
-  );
+  }) =>
+      PageBlockTableCell(
+        text: text ?? this.text,
+        isHeader: isHeader ?? this.isHeader,
+        colspan: colspan ?? this.colspan,
+        rowspan: rowspan ?? this.rowspan,
+        align: align ?? this.align,
+        valign: valign ?? this.valign,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'pageBlockTableCell';

@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 /// * [languagePackDatabaseSize]: Size of the language pack database.
 /// * [logSize]: Size of the TDLib internal log.
 final class StorageStatisticsFast extends TdObject {
-  
   /// **StorageStatisticsFast** *(storageStatisticsFast)* - basic class
   ///
   /// Contains approximate storage usage statistics, excluding files of unknown file type.
@@ -29,7 +28,7 @@ final class StorageStatisticsFast extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Approximate total size of files, in bytes
   final int filesSize;
 
@@ -52,31 +51,31 @@ final class StorageStatisticsFast extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory StorageStatisticsFast.fromJson(Map<String, dynamic> json) => StorageStatisticsFast(
-    filesSize: json['files_size'],
-    fileCount: json['file_count'],
-    databaseSize: json['database_size'],
-    languagePackDatabaseSize: json['language_pack_database_size'],
-    logSize: json['log_size'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory StorageStatisticsFast.fromJson(Map<String, dynamic> json) =>
+      StorageStatisticsFast(
+        filesSize: json['files_size'],
+        fileCount: json['file_count'],
+        databaseSize: json['database_size'],
+        languagePackDatabaseSize: json['language_pack_database_size'],
+        logSize: json['log_size'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "files_size": filesSize,
       "file_count": fileCount,
       "database_size": databaseSize,
       "language_pack_database_size": languagePackDatabaseSize,
       "log_size": logSize,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -94,15 +93,17 @@ final class StorageStatisticsFast extends TdObject {
     int? logSize,
     dynamic extra,
     int? clientId,
-  }) => StorageStatisticsFast(
-    filesSize: filesSize ?? this.filesSize,
-    fileCount: fileCount ?? this.fileCount,
-    databaseSize: databaseSize ?? this.databaseSize,
-    languagePackDatabaseSize: languagePackDatabaseSize ?? this.languagePackDatabaseSize,
-    logSize: logSize ?? this.logSize,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      StorageStatisticsFast(
+        filesSize: filesSize ?? this.filesSize,
+        fileCount: fileCount ?? this.fileCount,
+        databaseSize: databaseSize ?? this.databaseSize,
+        languagePackDatabaseSize:
+            languagePackDatabaseSize ?? this.languagePackDatabaseSize,
+        logSize: logSize ?? this.logSize,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'storageStatisticsFast';

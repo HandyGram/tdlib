@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [areas]: List of input story areas. Currently, a story can have. up to 10 inputStoryAreaTypeLocation, inputStoryAreaTypeFoundVenue, and inputStoryAreaTypePreviousVenue areas,. up to getOption("story_suggested_reaction_area_count_max") inputStoryAreaTypeSuggestedReaction areas, and up to 1 inputStoryAreaTypeMessage area.
 final class InputStoryAreas extends TdObject {
-  
   /// **InputStoryAreas** *(inputStoryAreas)* - basic class
   ///
   /// Contains a list of story areas to be added.
@@ -15,24 +14,26 @@ final class InputStoryAreas extends TdObject {
   const InputStoryAreas({
     required this.areas,
   });
-  
+
   /// List of input story areas. Currently, a story can have. up to 10 inputStoryAreaTypeLocation, inputStoryAreaTypeFoundVenue, and inputStoryAreaTypePreviousVenue areas,. up to getOption("story_suggested_reaction_area_count_max") inputStoryAreaTypeSuggestedReaction areas, and up to 1 inputStoryAreaTypeMessage area
   final List<InputStoryArea> areas;
-  
+
   /// Parse from a json
-  factory InputStoryAreas.fromJson(Map<String, dynamic> json) => InputStoryAreas(
-    areas: List<InputStoryArea>.from((json['areas'] ?? []).map((item) => InputStoryArea.fromJson(item)).toList()),
-  );
-  
-  
+  factory InputStoryAreas.fromJson(Map<String, dynamic> json) =>
+      InputStoryAreas(
+        areas: List<InputStoryArea>.from((json['areas'] ?? [])
+            .map((item) => InputStoryArea.fromJson(item))
+            .toList()),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "areas": areas.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -40,9 +41,10 @@ final class InputStoryAreas extends TdObject {
   /// * [areas]: List of input story areas. Currently, a story can have. up to 10 inputStoryAreaTypeLocation, inputStoryAreaTypeFoundVenue, and inputStoryAreaTypePreviousVenue areas,. up to getOption("story_suggested_reaction_area_count_max") inputStoryAreaTypeSuggestedReaction areas, and up to 1 inputStoryAreaTypeMessage area
   InputStoryAreas copyWith({
     List<InputStoryArea>? areas,
-  }) => InputStoryAreas(
-    areas: areas ?? this.areas,
-  );
+  }) =>
+      InputStoryAreas(
+        areas: areas ?? this.areas,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputStoryAreas';

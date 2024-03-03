@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class AcceptTermsOfService extends TdFunction {
-  
   /// **AcceptTermsOfService** *(acceptTermsOfService)* - TDLib function
   ///
   /// Accepts Telegram terms of services.
@@ -19,19 +18,19 @@ final class AcceptTermsOfService extends TdFunction {
   const AcceptTermsOfService({
     required this.termsOfServiceId,
   });
-  
+
   /// Terms of service identifier
   final String termsOfServiceId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "terms_of_service_id": termsOfServiceId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class AcceptTermsOfService extends TdFunction {
   /// * [terms_of_service_id]: Terms of service identifier
   AcceptTermsOfService copyWith({
     String? termsOfServiceId,
-  }) => AcceptTermsOfService(
-    termsOfServiceId: termsOfServiceId ?? this.termsOfServiceId,
-  );
+  }) =>
+      AcceptTermsOfService(
+        termsOfServiceId: termsOfServiceId ?? this.termsOfServiceId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'acceptTermsOfService';

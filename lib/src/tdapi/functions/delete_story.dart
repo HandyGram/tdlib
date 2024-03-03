@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class DeleteStory extends TdFunction {
-  
   /// **DeleteStory** *(deleteStory)* - TDLib function
   ///
   /// Deletes a previously sent story. Can be called only if story.can_be_deleted == true.
@@ -22,23 +21,23 @@ final class DeleteStory extends TdFunction {
     required this.storySenderChatId,
     required this.storyId,
   });
-  
+
   /// Identifier of the chat that posted the story
   final int storySenderChatId;
 
   /// Identifier of the story to delete
   final int storyId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "story_sender_chat_id": storySenderChatId,
       "story_id": storyId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class DeleteStory extends TdFunction {
   DeleteStory copyWith({
     int? storySenderChatId,
     int? storyId,
-  }) => DeleteStory(
-    storySenderChatId: storySenderChatId ?? this.storySenderChatId,
-    storyId: storyId ?? this.storyId,
-  );
+  }) =>
+      DeleteStory(
+        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+        storyId: storyId ?? this.storyId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'deleteStory';

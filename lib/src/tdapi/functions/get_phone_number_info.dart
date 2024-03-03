@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [PhoneNumberInfo] is returned on completion.
 final class GetPhoneNumberInfo extends TdFunction {
-  
   /// **GetPhoneNumberInfo** *(getPhoneNumberInfo)* - TDLib function
   ///
   /// Returns information about a phone number by its prefix. Can be called before authorization.
@@ -19,19 +18,19 @@ final class GetPhoneNumberInfo extends TdFunction {
   const GetPhoneNumberInfo({
     required this.phoneNumberPrefix,
   });
-  
+
   /// The phone number prefix
   final String phoneNumberPrefix;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "phone_number_prefix": phoneNumberPrefix,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetPhoneNumberInfo extends TdFunction {
   /// * [phone_number_prefix]: The phone number prefix
   GetPhoneNumberInfo copyWith({
     String? phoneNumberPrefix,
-  }) => GetPhoneNumberInfo(
-    phoneNumberPrefix: phoneNumberPrefix ?? this.phoneNumberPrefix,
-  );
+  }) =>
+      GetPhoneNumberInfo(
+        phoneNumberPrefix: phoneNumberPrefix ?? this.phoneNumberPrefix,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getPhoneNumberInfo';

@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 /// * [date]: Point in time (Unix timestamp) when the draft was created.
 /// * [inputMessageText]: Content of the message draft; must be of the type inputMessageText, inputMessageVideoNote, or inputMessageVoiceNote.
 final class DraftMessage extends TdObject {
-  
   /// **DraftMessage** *(draftMessage)* - basic class
   ///
   /// Contains information about a message draft.
@@ -21,7 +20,7 @@ final class DraftMessage extends TdObject {
     required this.date,
     required this.inputMessageText,
   });
-  
+
   /// Information about the message to be replied; must be of the type inputMessageReplyToMessage; may be null if none
   final InputMessageReplyTo? replyTo;
 
@@ -30,25 +29,27 @@ final class DraftMessage extends TdObject {
 
   /// Content of the message draft; must be of the type inputMessageText, inputMessageVideoNote, or inputMessageVoiceNote
   final InputMessageContent inputMessageText;
-  
+
   /// Parse from a json
   factory DraftMessage.fromJson(Map<String, dynamic> json) => DraftMessage(
-    replyTo: json['reply_to'] == null ? null : InputMessageReplyTo.fromJson(json['reply_to']),
-    date: json['date'],
-    inputMessageText: InputMessageContent.fromJson(json['input_message_text']),
-  );
-  
-  
+        replyTo: json['reply_to'] == null
+            ? null
+            : InputMessageReplyTo.fromJson(json['reply_to']),
+        date: json['date'],
+        inputMessageText:
+            InputMessageContent.fromJson(json['input_message_text']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "reply_to": replyTo?.toJson(),
       "date": date,
       "input_message_text": inputMessageText.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -60,11 +61,12 @@ final class DraftMessage extends TdObject {
     InputMessageReplyTo? replyTo,
     int? date,
     InputMessageContent? inputMessageText,
-  }) => DraftMessage(
-    replyTo: replyTo ?? this.replyTo,
-    date: date ?? this.date,
-    inputMessageText: inputMessageText ?? this.inputMessageText,
-  );
+  }) =>
+      DraftMessage(
+        replyTo: replyTo ?? this.replyTo,
+        date: date ?? this.date,
+        inputMessageText: inputMessageText ?? this.inputMessageText,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'draftMessage';

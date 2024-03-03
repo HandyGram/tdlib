@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SharePhoneNumber extends TdFunction {
-  
   /// **SharePhoneNumber** *(sharePhoneNumber)* - TDLib function
   ///
   /// Shares the phone number of the current user with a mutual contact. Supposed to be called when the user clicks on chatActionBarSharePhoneNumber.
@@ -19,19 +18,19 @@ final class SharePhoneNumber extends TdFunction {
   const SharePhoneNumber({
     required this.userId,
   });
-  
+
   /// Identifier of the user with whom to share the phone number. The user must be a mutual contact
   final int userId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "user_id": userId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class SharePhoneNumber extends TdFunction {
   /// * [user_id]: Identifier of the user with whom to share the phone number. The user must be a mutual contact
   SharePhoneNumber copyWith({
     int? userId,
-  }) => SharePhoneNumber(
-    userId: userId ?? this.userId,
-  );
+  }) =>
+      SharePhoneNumber(
+        userId: userId ?? this.userId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'sharePhoneNumber';

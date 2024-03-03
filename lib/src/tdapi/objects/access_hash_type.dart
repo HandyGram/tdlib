@@ -4,17 +4,16 @@ part of '../tdapi.dart';
 ///
 /// Represents the type of an access hash. The following types are possible: user, channel.
 sealed class AccessHashType extends TdObject {
-  
   /// **AccessHashType** *(accessHashType)* - parent
   ///
   /// Represents the type of an access hash. The following types are possible: user, channel.
   const AccessHashType();
-  
+
   /// a AccessHashType return type can be :
   /// * [AccessHashTypeUser]
   /// * [AccessHashTypeChannel]
-  factory AccessHashType.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory AccessHashType.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case AccessHashTypeUser.defaultObjectId:
         return AccessHashTypeUser.fromJson(json);
       case AccessHashTypeChannel.defaultObjectId:
@@ -26,7 +25,7 @@ sealed class AccessHashType extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -46,27 +45,26 @@ sealed class AccessHashType extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **AccessHashTypeUser** *(accessHashTypeUser)* - child of AccessHashType
 ///
 /// An access hash of an user.
 final class AccessHashTypeUser extends AccessHashType {
-  
   /// **AccessHashTypeUser** *(accessHashTypeUser)* - child of AccessHashType
   ///
   /// An access hash of an user.
   const AccessHashTypeUser();
-  
+
   /// Parse from a json
-  factory AccessHashTypeUser.fromJson(Map<String, dynamic> json) => const AccessHashTypeUser();
-  
+  factory AccessHashTypeUser.fromJson(Map<String, dynamic> json) =>
+      const AccessHashTypeUser();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -84,27 +82,26 @@ final class AccessHashTypeUser extends AccessHashType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **AccessHashTypeChannel** *(accessHashTypeChannel)* - child of AccessHashType
 ///
 /// An access hash of a channel.
 final class AccessHashTypeChannel extends AccessHashType {
-  
   /// **AccessHashTypeChannel** *(accessHashTypeChannel)* - child of AccessHashType
   ///
   /// An access hash of a channel.
   const AccessHashTypeChannel();
-  
+
   /// Parse from a json
-  factory AccessHashTypeChannel.fromJson(Map<String, dynamic> json) => const AccessHashTypeChannel();
-  
+  factory AccessHashTypeChannel.fromJson(Map<String, dynamic> json) =>
+      const AccessHashTypeChannel();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override

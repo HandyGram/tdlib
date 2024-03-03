@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 ///
 /// [Message] is returned on completion.
 final class EditMessageMedia extends TdFunction {
-  
   /// **EditMessageMedia** *(editMessageMedia)* - TDLib function
   ///
   /// Edits the content of a message with an animation, an audio, a document, a photo or a video, including message caption. If only the caption needs to be edited, use editMessageCaption instead.. The media can't be edited if the message was set to self-destruct or to a self-destructing media. The type of message content in an album can't be changed with exception of replacing a photo with a video or vice versa. Returns the edited message after the edit is completed on the server side.
@@ -28,7 +27,7 @@ final class EditMessageMedia extends TdFunction {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-  
+
   /// The chat the message belongs to
   final int chatId;
 
@@ -40,19 +39,19 @@ final class EditMessageMedia extends TdFunction {
 
   /// New content of the message. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto or inputMessageVideo
   final InputMessageContent inputMessageContent;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -66,12 +65,13 @@ final class EditMessageMedia extends TdFunction {
     int? messageId,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) => EditMessageMedia(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-  );
+  }) =>
+      EditMessageMedia(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'editMessageMedia';

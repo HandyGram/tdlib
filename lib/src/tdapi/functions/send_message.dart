@@ -13,7 +13,6 @@ part of '../tdapi.dart';
 ///
 /// [Message] is returned on completion.
 final class SendMessage extends TdFunction {
-  
   /// **SendMessage** *(sendMessage)* - TDLib function
   ///
   /// Sends a message. Returns the sent message.
@@ -34,7 +33,7 @@ final class SendMessage extends TdFunction {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-  
+
   /// Target chat
   final int chatId;
 
@@ -52,12 +51,12 @@ final class SendMessage extends TdFunction {
 
   /// The content of the message to be sent
   final InputMessageContent inputMessageContent;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_thread_id": messageThreadId,
       "reply_to": replyTo?.toJson(),
@@ -65,8 +64,8 @@ final class SendMessage extends TdFunction {
       "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -84,14 +83,15 @@ final class SendMessage extends TdFunction {
     MessageSendOptions? options,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) => SendMessage(
-    chatId: chatId ?? this.chatId,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-    replyTo: replyTo ?? this.replyTo,
-    options: options ?? this.options,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-  );
+  }) =>
+      SendMessage(
+        chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+        replyTo: replyTo ?? this.replyTo,
+        options: options ?? this.options,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'sendMessage';

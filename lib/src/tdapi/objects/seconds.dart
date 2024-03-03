@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [seconds]: Number of seconds.
 final class Seconds extends TdObject {
-  
   /// **Seconds** *(seconds)* - basic class
   ///
   /// Contains a value representing a number of seconds.
@@ -17,7 +16,7 @@ final class Seconds extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Number of seconds
   final double seconds;
 
@@ -28,23 +27,22 @@ final class Seconds extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory Seconds.fromJson(Map<String, dynamic> json) => Seconds(
-    seconds: json['seconds'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        seconds: json['seconds'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "seconds": seconds,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +52,12 @@ final class Seconds extends TdObject {
     double? seconds,
     dynamic extra,
     int? clientId,
-  }) => Seconds(
-    seconds: seconds ?? this.seconds,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      Seconds(
+        seconds: seconds ?? this.seconds,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'seconds';

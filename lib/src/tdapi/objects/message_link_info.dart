@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 /// * [mediaTimestamp]: Timestamp from which the video/audio/video note/voice note/story playing must start, in seconds; 0 if not specified. The media can be in the message content or in its web page preview.
 /// * [forAlbum]: True, if the whole media album to which the message belongs is linked.
 final class MessageLinkInfo extends TdObject {
-  
   /// **MessageLinkInfo** *(messageLinkInfo)* - basic class
   ///
   /// Contains information about a link to a message or a forum topic in a chat.
@@ -32,7 +31,7 @@ final class MessageLinkInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// True, if the link is a public link for a message or a forum topic in a chat
   final bool isPublic;
 
@@ -58,33 +57,34 @@ final class MessageLinkInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory MessageLinkInfo.fromJson(Map<String, dynamic> json) => MessageLinkInfo(
-    isPublic: json['is_public'],
-    chatId: json['chat_id'],
-    messageThreadId: json['message_thread_id'],
-    message: json['message'] == null ? null : Message.fromJson(json['message']),
-    mediaTimestamp: json['media_timestamp'],
-    forAlbum: json['for_album'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory MessageLinkInfo.fromJson(Map<String, dynamic> json) =>
+      MessageLinkInfo(
+        isPublic: json['is_public'],
+        chatId: json['chat_id'],
+        messageThreadId: json['message_thread_id'],
+        message:
+            json['message'] == null ? null : Message.fromJson(json['message']),
+        mediaTimestamp: json['media_timestamp'],
+        forAlbum: json['for_album'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "is_public": isPublic,
       "chat_id": chatId,
       "message_thread_id": messageThreadId,
       "message": message?.toJson(),
       "media_timestamp": mediaTimestamp,
       "for_album": forAlbum,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -104,16 +104,17 @@ final class MessageLinkInfo extends TdObject {
     bool? forAlbum,
     dynamic extra,
     int? clientId,
-  }) => MessageLinkInfo(
-    isPublic: isPublic ?? this.isPublic,
-    chatId: chatId ?? this.chatId,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-    message: message ?? this.message,
-    mediaTimestamp: mediaTimestamp ?? this.mediaTimestamp,
-    forAlbum: forAlbum ?? this.forAlbum,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      MessageLinkInfo(
+        isPublic: isPublic ?? this.isPublic,
+        chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+        message: message ?? this.message,
+        mediaTimestamp: mediaTimestamp ?? this.mediaTimestamp,
+        forAlbum: forAlbum ?? this.forAlbum,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'messageLinkInfo';

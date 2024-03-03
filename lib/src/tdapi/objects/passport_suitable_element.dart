@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 /// * [isTranslationRequired]: True, if a certified English translation is required with the document.
 /// * [isNativeNameRequired]: True, if personal details must include the user's name in the language of their country of residence.
 final class PassportSuitableElement extends TdObject {
-  
   /// **PassportSuitableElement** *(passportSuitableElement)* - basic class
   ///
   /// Contains information about a Telegram Passport element that was requested by a service.
@@ -24,7 +23,7 @@ final class PassportSuitableElement extends TdObject {
     required this.isTranslationRequired,
     required this.isNativeNameRequired,
   });
-  
+
   /// Type of the element
   final PassportElementType type;
 
@@ -36,27 +35,27 @@ final class PassportSuitableElement extends TdObject {
 
   /// True, if personal details must include the user's name in the language of their country of residence
   final bool isNativeNameRequired;
-  
+
   /// Parse from a json
-  factory PassportSuitableElement.fromJson(Map<String, dynamic> json) => PassportSuitableElement(
-    type: PassportElementType.fromJson(json['type']),
-    isSelfieRequired: json['is_selfie_required'],
-    isTranslationRequired: json['is_translation_required'],
-    isNativeNameRequired: json['is_native_name_required'],
-  );
-  
-  
+  factory PassportSuitableElement.fromJson(Map<String, dynamic> json) =>
+      PassportSuitableElement(
+        type: PassportElementType.fromJson(json['type']),
+        isSelfieRequired: json['is_selfie_required'],
+        isTranslationRequired: json['is_translation_required'],
+        isNativeNameRequired: json['is_native_name_required'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "type": type.toJson(),
       "is_selfie_required": isSelfieRequired,
       "is_translation_required": isTranslationRequired,
       "is_native_name_required": isNativeNameRequired,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -70,12 +69,14 @@ final class PassportSuitableElement extends TdObject {
     bool? isSelfieRequired,
     bool? isTranslationRequired,
     bool? isNativeNameRequired,
-  }) => PassportSuitableElement(
-    type: type ?? this.type,
-    isSelfieRequired: isSelfieRequired ?? this.isSelfieRequired,
-    isTranslationRequired: isTranslationRequired ?? this.isTranslationRequired,
-    isNativeNameRequired: isNativeNameRequired ?? this.isNativeNameRequired,
-  );
+  }) =>
+      PassportSuitableElement(
+        type: type ?? this.type,
+        isSelfieRequired: isSelfieRequired ?? this.isSelfieRequired,
+        isTranslationRequired:
+            isTranslationRequired ?? this.isTranslationRequired,
+        isNativeNameRequired: isNativeNameRequired ?? this.isNativeNameRequired,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'passportSuitableElement';

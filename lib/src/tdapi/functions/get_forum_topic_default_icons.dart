@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [Stickers] is returned on completion.
 final class GetForumTopicDefaultIcons extends TdFunction {
-  
   /// **GetForumTopicDefaultIcons** *(getForumTopicDefaultIcons)* - TDLib function
   ///
   /// Returns list of custom emojis, which can be used as forum topic icon by all users.
   ///
   /// [Stickers] is returned on completion.
   const GetForumTopicDefaultIcons();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   GetForumTopicDefaultIcons copyWith() => const GetForumTopicDefaultIcons();

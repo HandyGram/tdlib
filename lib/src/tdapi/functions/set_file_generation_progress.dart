@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetFileGenerationProgress extends TdFunction {
-  
   /// **SetFileGenerationProgress** *(setFileGenerationProgress)* - TDLib function
   ///
   /// Informs TDLib on a file generation progress.
@@ -25,7 +24,7 @@ final class SetFileGenerationProgress extends TdFunction {
     required this.expectedSize,
     required this.localPrefixSize,
   });
-  
+
   /// The identifier of the generation process
   final int generationId;
 
@@ -34,18 +33,18 @@ final class SetFileGenerationProgress extends TdFunction {
 
   /// The number of bytes already generated
   final int localPrefixSize;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "generation_id": generationId,
       "expected_size": expectedSize,
       "local_prefix_size": localPrefixSize,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class SetFileGenerationProgress extends TdFunction {
     int? generationId,
     int? expectedSize,
     int? localPrefixSize,
-  }) => SetFileGenerationProgress(
-    generationId: generationId ?? this.generationId,
-    expectedSize: expectedSize ?? this.expectedSize,
-    localPrefixSize: localPrefixSize ?? this.localPrefixSize,
-  );
+  }) =>
+      SetFileGenerationProgress(
+        generationId: generationId ?? this.generationId,
+        expectedSize: expectedSize ?? this.expectedSize,
+        localPrefixSize: localPrefixSize ?? this.localPrefixSize,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setFileGenerationProgress';

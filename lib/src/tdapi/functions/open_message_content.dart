@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class OpenMessageContent extends TdFunction {
-  
   /// **OpenMessageContent** *(openMessageContent)* - TDLib function
   ///
   /// Informs TDLib that the message content has been opened (e.g., the user has opened a photo, video, document, location or venue, or has listened to an audio file or voice note message).. An updateMessageContentOpened update will be generated if something has changed.
@@ -22,23 +21,23 @@ final class OpenMessageContent extends TdFunction {
     required this.chatId,
     required this.messageId,
   });
-  
+
   /// Chat identifier of the message
   final int chatId;
 
   /// Identifier of the message with the opened content
   final int messageId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class OpenMessageContent extends TdFunction {
   OpenMessageContent copyWith({
     int? chatId,
     int? messageId,
-  }) => OpenMessageContent(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-  );
+  }) =>
+      OpenMessageContent(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'openMessageContent';

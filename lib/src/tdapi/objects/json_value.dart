@@ -4,12 +4,11 @@ part of '../tdapi.dart';
 ///
 /// Represents a JSON value.
 sealed class JsonValue extends TdObject {
-  
   /// **JsonValue** *(jsonValue)* - parent
   ///
   /// Represents a JSON value.
   const JsonValue();
-  
+
   /// a JsonValue return type can be :
   /// * [JsonValueNull]
   /// * [JsonValueBoolean]
@@ -17,8 +16,8 @@ sealed class JsonValue extends TdObject {
   /// * [JsonValueString]
   /// * [JsonValueArray]
   /// * [JsonValueObject]
-  factory JsonValue.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory JsonValue.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case JsonValueNull.defaultObjectId:
         return JsonValueNull.fromJson(json);
       case JsonValueBoolean.defaultObjectId:
@@ -38,7 +37,7 @@ sealed class JsonValue extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -58,12 +57,10 @@ sealed class JsonValue extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **JsonValueNull** *(jsonValueNull)* - child of JsonValue
 ///
 /// Represents a null JSON value.
 final class JsonValueNull extends JsonValue {
-  
   /// **JsonValueNull** *(jsonValueNull)* - child of JsonValue
   ///
   /// Represents a null JSON value.
@@ -71,7 +68,7 @@ final class JsonValueNull extends JsonValue {
     this.extra,
     this.clientId,
   });
-  
+
   /// [extra] callback sign
   @override
   final dynamic extra;
@@ -79,31 +76,31 @@ final class JsonValueNull extends JsonValue {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory JsonValueNull.fromJson(Map<String, dynamic> json) => JsonValueNull(
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
   JsonValueNull copyWith({
     dynamic extra,
     int? clientId,
-  }) => JsonValueNull(
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      JsonValueNull(
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'jsonValueNull';
@@ -117,14 +114,12 @@ final class JsonValueNull extends JsonValue {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **JsonValueBoolean** *(jsonValueBoolean)* - child of JsonValue
 ///
 /// Represents a boolean JSON value.
 ///
 /// * [value]: The value.
 final class JsonValueBoolean extends JsonValue {
-  
   /// **JsonValueBoolean** *(jsonValueBoolean)* - child of JsonValue
   ///
   /// Represents a boolean JSON value.
@@ -135,7 +130,7 @@ final class JsonValueBoolean extends JsonValue {
     this.extra,
     this.clientId,
   });
-  
+
   /// The value
   final bool value;
 
@@ -146,23 +141,23 @@ final class JsonValueBoolean extends JsonValue {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory JsonValueBoolean.fromJson(Map<String, dynamic> json) => JsonValueBoolean(
-    value: json['value'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory JsonValueBoolean.fromJson(Map<String, dynamic> json) =>
+      JsonValueBoolean(
+        value: json['value'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "value": value,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -173,11 +168,12 @@ final class JsonValueBoolean extends JsonValue {
     bool? value,
     dynamic extra,
     int? clientId,
-  }) => JsonValueBoolean(
-    value: value ?? this.value,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      JsonValueBoolean(
+        value: value ?? this.value,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'jsonValueBoolean';
@@ -191,14 +187,12 @@ final class JsonValueBoolean extends JsonValue {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **JsonValueNumber** *(jsonValueNumber)* - child of JsonValue
 ///
 /// Represents a numeric JSON value.
 ///
 /// * [value]: The value.
 final class JsonValueNumber extends JsonValue {
-  
   /// **JsonValueNumber** *(jsonValueNumber)* - child of JsonValue
   ///
   /// Represents a numeric JSON value.
@@ -209,7 +203,7 @@ final class JsonValueNumber extends JsonValue {
     this.extra,
     this.clientId,
   });
-  
+
   /// The value
   final double value;
 
@@ -220,23 +214,23 @@ final class JsonValueNumber extends JsonValue {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory JsonValueNumber.fromJson(Map<String, dynamic> json) => JsonValueNumber(
-    value: json['value'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory JsonValueNumber.fromJson(Map<String, dynamic> json) =>
+      JsonValueNumber(
+        value: json['value'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "value": value,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -247,11 +241,12 @@ final class JsonValueNumber extends JsonValue {
     double? value,
     dynamic extra,
     int? clientId,
-  }) => JsonValueNumber(
-    value: value ?? this.value,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      JsonValueNumber(
+        value: value ?? this.value,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'jsonValueNumber';
@@ -265,14 +260,12 @@ final class JsonValueNumber extends JsonValue {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **JsonValueString** *(jsonValueString)* - child of JsonValue
 ///
 /// Represents a string JSON value.
 ///
 /// * [value]: The value.
 final class JsonValueString extends JsonValue {
-  
   /// **JsonValueString** *(jsonValueString)* - child of JsonValue
   ///
   /// Represents a string JSON value.
@@ -283,7 +276,7 @@ final class JsonValueString extends JsonValue {
     this.extra,
     this.clientId,
   });
-  
+
   /// The value
   final String value;
 
@@ -294,23 +287,23 @@ final class JsonValueString extends JsonValue {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory JsonValueString.fromJson(Map<String, dynamic> json) => JsonValueString(
-    value: json['value'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory JsonValueString.fromJson(Map<String, dynamic> json) =>
+      JsonValueString(
+        value: json['value'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "value": value,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -321,11 +314,12 @@ final class JsonValueString extends JsonValue {
     String? value,
     dynamic extra,
     int? clientId,
-  }) => JsonValueString(
-    value: value ?? this.value,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      JsonValueString(
+        value: value ?? this.value,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'jsonValueString';
@@ -339,14 +333,12 @@ final class JsonValueString extends JsonValue {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **JsonValueArray** *(jsonValueArray)* - child of JsonValue
 ///
 /// Represents a JSON array.
 ///
 /// * [values]: The list of array elements.
 final class JsonValueArray extends JsonValue {
-  
   /// **JsonValueArray** *(jsonValueArray)* - child of JsonValue
   ///
   /// Represents a JSON array.
@@ -357,7 +349,7 @@ final class JsonValueArray extends JsonValue {
     this.extra,
     this.clientId,
   });
-  
+
   /// The list of array elements
   final List<JsonValue> values;
 
@@ -368,23 +360,24 @@ final class JsonValueArray extends JsonValue {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory JsonValueArray.fromJson(Map<String, dynamic> json) => JsonValueArray(
-    values: List<JsonValue>.from((json['values'] ?? []).map((item) => JsonValue.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        values: List<JsonValue>.from((json['values'] ?? [])
+            .map((item) => JsonValue.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "values": values.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -395,11 +388,12 @@ final class JsonValueArray extends JsonValue {
     List<JsonValue>? values,
     dynamic extra,
     int? clientId,
-  }) => JsonValueArray(
-    values: values ?? this.values,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      JsonValueArray(
+        values: values ?? this.values,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'jsonValueArray';
@@ -413,14 +407,12 @@ final class JsonValueArray extends JsonValue {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **JsonValueObject** *(jsonValueObject)* - child of JsonValue
 ///
 /// Represents a JSON object.
 ///
 /// * [members]: The list of object members.
 final class JsonValueObject extends JsonValue {
-  
   /// **JsonValueObject** *(jsonValueObject)* - child of JsonValue
   ///
   /// Represents a JSON object.
@@ -431,7 +423,7 @@ final class JsonValueObject extends JsonValue {
     this.extra,
     this.clientId,
   });
-  
+
   /// The list of object members
   final List<JsonObjectMember> members;
 
@@ -442,23 +434,25 @@ final class JsonValueObject extends JsonValue {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory JsonValueObject.fromJson(Map<String, dynamic> json) => JsonValueObject(
-    members: List<JsonObjectMember>.from((json['members'] ?? []).map((item) => JsonObjectMember.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory JsonValueObject.fromJson(Map<String, dynamic> json) =>
+      JsonValueObject(
+        members: List<JsonObjectMember>.from((json['members'] ?? [])
+            .map((item) => JsonObjectMember.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "members": members.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -469,11 +463,12 @@ final class JsonValueObject extends JsonValue {
     List<JsonObjectMember>? members,
     dynamic extra,
     int? clientId,
-  }) => JsonValueObject(
-    members: members ?? this.members,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      JsonValueObject(
+        members: members ?? this.members,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'jsonValueObject';

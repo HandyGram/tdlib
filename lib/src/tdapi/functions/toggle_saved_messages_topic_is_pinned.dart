@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ToggleSavedMessagesTopicIsPinned extends TdFunction {
-  
   /// **ToggleSavedMessagesTopicIsPinned** *(toggleSavedMessagesTopicIsPinned)* - TDLib function
   ///
   /// Changes the pinned state of a Saved Messages topic. There can be up to getOption("pinned_saved_messages_topic_count_max") pinned topics. The limit can be increased with Telegram Premium.
@@ -22,23 +21,23 @@ final class ToggleSavedMessagesTopicIsPinned extends TdFunction {
     required this.savedMessagesTopicId,
     required this.isPinned,
   });
-  
+
   /// Identifier of Saved Messages topic to pin or unpin
   final int savedMessagesTopicId;
 
   /// Pass true to pin the topic; pass false to unpin it
   final bool isPinned;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "saved_messages_topic_id": savedMessagesTopicId,
       "is_pinned": isPinned,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class ToggleSavedMessagesTopicIsPinned extends TdFunction {
   ToggleSavedMessagesTopicIsPinned copyWith({
     int? savedMessagesTopicId,
     bool? isPinned,
-  }) => ToggleSavedMessagesTopicIsPinned(
-    savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
-    isPinned: isPinned ?? this.isPinned,
-  );
+  }) =>
+      ToggleSavedMessagesTopicIsPinned(
+        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
+        isPinned: isPinned ?? this.isPinned,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'toggleSavedMessagesTopicIsPinned';

@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetDefaultMessageAutoDeleteTime extends TdFunction {
-  
   /// **SetDefaultMessageAutoDeleteTime** *(setDefaultMessageAutoDeleteTime)* - TDLib function
   ///
   /// Changes the default message auto-delete time for new chats.
@@ -19,19 +18,19 @@ final class SetDefaultMessageAutoDeleteTime extends TdFunction {
   const SetDefaultMessageAutoDeleteTime({
     required this.messageAutoDeleteTime,
   });
-  
+
   /// New default message auto-delete time; must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically
   final MessageAutoDeleteTime messageAutoDeleteTime;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "message_auto_delete_time": messageAutoDeleteTime.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,11 @@ final class SetDefaultMessageAutoDeleteTime extends TdFunction {
   /// * [message_auto_delete_time]: New default message auto-delete time; must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically
   SetDefaultMessageAutoDeleteTime copyWith({
     MessageAutoDeleteTime? messageAutoDeleteTime,
-  }) => SetDefaultMessageAutoDeleteTime(
-    messageAutoDeleteTime: messageAutoDeleteTime ?? this.messageAutoDeleteTime,
-  );
+  }) =>
+      SetDefaultMessageAutoDeleteTime(
+        messageAutoDeleteTime:
+            messageAutoDeleteTime ?? this.messageAutoDeleteTime,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setDefaultMessageAutoDeleteTime';

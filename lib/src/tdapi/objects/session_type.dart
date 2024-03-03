@@ -4,12 +4,11 @@ part of '../tdapi.dart';
 ///
 /// Represents the type of a session.
 sealed class SessionType extends TdObject {
-  
   /// **SessionType** *(sessionType)* - parent
   ///
   /// Represents the type of a session.
   const SessionType();
-  
+
   /// a SessionType return type can be :
   /// * [SessionTypeAndroid]
   /// * [SessionTypeApple]
@@ -28,8 +27,8 @@ sealed class SessionType extends TdObject {
   /// * [SessionTypeVivaldi]
   /// * [SessionTypeWindows]
   /// * [SessionTypeXbox]
-  factory SessionType.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory SessionType.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case SessionTypeAndroid.defaultObjectId:
         return SessionTypeAndroid.fromJson(json);
       case SessionTypeApple.defaultObjectId:
@@ -71,7 +70,7 @@ sealed class SessionType extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -91,27 +90,26 @@ sealed class SessionType extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SessionTypeAndroid** *(sessionTypeAndroid)* - child of SessionType
 ///
 /// The session is running on an Android device.
 final class SessionTypeAndroid extends SessionType {
-  
   /// **SessionTypeAndroid** *(sessionTypeAndroid)* - child of SessionType
   ///
   /// The session is running on an Android device.
   const SessionTypeAndroid();
-  
+
   /// Parse from a json
-  factory SessionTypeAndroid.fromJson(Map<String, dynamic> json) => const SessionTypeAndroid();
-  
+  factory SessionTypeAndroid.fromJson(Map<String, dynamic> json) =>
+      const SessionTypeAndroid();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -129,27 +127,26 @@ final class SessionTypeAndroid extends SessionType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SessionTypeApple** *(sessionTypeApple)* - child of SessionType
 ///
 /// The session is running on a generic Apple device.
 final class SessionTypeApple extends SessionType {
-  
   /// **SessionTypeApple** *(sessionTypeApple)* - child of SessionType
   ///
   /// The session is running on a generic Apple device.
   const SessionTypeApple();
-  
+
   /// Parse from a json
-  factory SessionTypeApple.fromJson(Map<String, dynamic> json) => const SessionTypeApple();
-  
+  factory SessionTypeApple.fromJson(Map<String, dynamic> json) =>
+      const SessionTypeApple();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -167,27 +164,26 @@ final class SessionTypeApple extends SessionType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SessionTypeBrave** *(sessionTypeBrave)* - child of SessionType
 ///
 /// The session is running on the Brave browser.
 final class SessionTypeBrave extends SessionType {
-  
   /// **SessionTypeBrave** *(sessionTypeBrave)* - child of SessionType
   ///
   /// The session is running on the Brave browser.
   const SessionTypeBrave();
-  
+
   /// Parse from a json
-  factory SessionTypeBrave.fromJson(Map<String, dynamic> json) => const SessionTypeBrave();
-  
+  factory SessionTypeBrave.fromJson(Map<String, dynamic> json) =>
+      const SessionTypeBrave();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -205,27 +201,26 @@ final class SessionTypeBrave extends SessionType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SessionTypeChrome** *(sessionTypeChrome)* - child of SessionType
 ///
 /// The session is running on the Chrome browser.
 final class SessionTypeChrome extends SessionType {
-  
   /// **SessionTypeChrome** *(sessionTypeChrome)* - child of SessionType
   ///
   /// The session is running on the Chrome browser.
   const SessionTypeChrome();
-  
+
   /// Parse from a json
-  factory SessionTypeChrome.fromJson(Map<String, dynamic> json) => const SessionTypeChrome();
-  
+  factory SessionTypeChrome.fromJson(Map<String, dynamic> json) =>
+      const SessionTypeChrome();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -243,27 +238,26 @@ final class SessionTypeChrome extends SessionType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SessionTypeEdge** *(sessionTypeEdge)* - child of SessionType
 ///
 /// The session is running on the Edge browser.
 final class SessionTypeEdge extends SessionType {
-  
   /// **SessionTypeEdge** *(sessionTypeEdge)* - child of SessionType
   ///
   /// The session is running on the Edge browser.
   const SessionTypeEdge();
-  
+
   /// Parse from a json
-  factory SessionTypeEdge.fromJson(Map<String, dynamic> json) => const SessionTypeEdge();
-  
+  factory SessionTypeEdge.fromJson(Map<String, dynamic> json) =>
+      const SessionTypeEdge();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -281,27 +275,26 @@ final class SessionTypeEdge extends SessionType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SessionTypeFirefox** *(sessionTypeFirefox)* - child of SessionType
 ///
 /// The session is running on the Firefox browser.
 final class SessionTypeFirefox extends SessionType {
-  
   /// **SessionTypeFirefox** *(sessionTypeFirefox)* - child of SessionType
   ///
   /// The session is running on the Firefox browser.
   const SessionTypeFirefox();
-  
+
   /// Parse from a json
-  factory SessionTypeFirefox.fromJson(Map<String, dynamic> json) => const SessionTypeFirefox();
-  
+  factory SessionTypeFirefox.fromJson(Map<String, dynamic> json) =>
+      const SessionTypeFirefox();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -319,27 +312,26 @@ final class SessionTypeFirefox extends SessionType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SessionTypeIpad** *(sessionTypeIpad)* - child of SessionType
 ///
 /// The session is running on an iPad device.
 final class SessionTypeIpad extends SessionType {
-  
   /// **SessionTypeIpad** *(sessionTypeIpad)* - child of SessionType
   ///
   /// The session is running on an iPad device.
   const SessionTypeIpad();
-  
+
   /// Parse from a json
-  factory SessionTypeIpad.fromJson(Map<String, dynamic> json) => const SessionTypeIpad();
-  
+  factory SessionTypeIpad.fromJson(Map<String, dynamic> json) =>
+      const SessionTypeIpad();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -357,27 +349,26 @@ final class SessionTypeIpad extends SessionType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SessionTypeIphone** *(sessionTypeIphone)* - child of SessionType
 ///
 /// The session is running on an iPhone device.
 final class SessionTypeIphone extends SessionType {
-  
   /// **SessionTypeIphone** *(sessionTypeIphone)* - child of SessionType
   ///
   /// The session is running on an iPhone device.
   const SessionTypeIphone();
-  
+
   /// Parse from a json
-  factory SessionTypeIphone.fromJson(Map<String, dynamic> json) => const SessionTypeIphone();
-  
+  factory SessionTypeIphone.fromJson(Map<String, dynamic> json) =>
+      const SessionTypeIphone();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -395,27 +386,26 @@ final class SessionTypeIphone extends SessionType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SessionTypeLinux** *(sessionTypeLinux)* - child of SessionType
 ///
 /// The session is running on a Linux device.
 final class SessionTypeLinux extends SessionType {
-  
   /// **SessionTypeLinux** *(sessionTypeLinux)* - child of SessionType
   ///
   /// The session is running on a Linux device.
   const SessionTypeLinux();
-  
+
   /// Parse from a json
-  factory SessionTypeLinux.fromJson(Map<String, dynamic> json) => const SessionTypeLinux();
-  
+  factory SessionTypeLinux.fromJson(Map<String, dynamic> json) =>
+      const SessionTypeLinux();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -433,27 +423,26 @@ final class SessionTypeLinux extends SessionType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SessionTypeMac** *(sessionTypeMac)* - child of SessionType
 ///
 /// The session is running on a Mac device.
 final class SessionTypeMac extends SessionType {
-  
   /// **SessionTypeMac** *(sessionTypeMac)* - child of SessionType
   ///
   /// The session is running on a Mac device.
   const SessionTypeMac();
-  
+
   /// Parse from a json
-  factory SessionTypeMac.fromJson(Map<String, dynamic> json) => const SessionTypeMac();
-  
+  factory SessionTypeMac.fromJson(Map<String, dynamic> json) =>
+      const SessionTypeMac();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -471,27 +460,26 @@ final class SessionTypeMac extends SessionType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SessionTypeOpera** *(sessionTypeOpera)* - child of SessionType
 ///
 /// The session is running on the Opera browser.
 final class SessionTypeOpera extends SessionType {
-  
   /// **SessionTypeOpera** *(sessionTypeOpera)* - child of SessionType
   ///
   /// The session is running on the Opera browser.
   const SessionTypeOpera();
-  
+
   /// Parse from a json
-  factory SessionTypeOpera.fromJson(Map<String, dynamic> json) => const SessionTypeOpera();
-  
+  factory SessionTypeOpera.fromJson(Map<String, dynamic> json) =>
+      const SessionTypeOpera();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -509,27 +497,26 @@ final class SessionTypeOpera extends SessionType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SessionTypeSafari** *(sessionTypeSafari)* - child of SessionType
 ///
 /// The session is running on the Safari browser.
 final class SessionTypeSafari extends SessionType {
-  
   /// **SessionTypeSafari** *(sessionTypeSafari)* - child of SessionType
   ///
   /// The session is running on the Safari browser.
   const SessionTypeSafari();
-  
+
   /// Parse from a json
-  factory SessionTypeSafari.fromJson(Map<String, dynamic> json) => const SessionTypeSafari();
-  
+  factory SessionTypeSafari.fromJson(Map<String, dynamic> json) =>
+      const SessionTypeSafari();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -547,27 +534,26 @@ final class SessionTypeSafari extends SessionType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SessionTypeUbuntu** *(sessionTypeUbuntu)* - child of SessionType
 ///
 /// The session is running on an Ubuntu device.
 final class SessionTypeUbuntu extends SessionType {
-  
   /// **SessionTypeUbuntu** *(sessionTypeUbuntu)* - child of SessionType
   ///
   /// The session is running on an Ubuntu device.
   const SessionTypeUbuntu();
-  
+
   /// Parse from a json
-  factory SessionTypeUbuntu.fromJson(Map<String, dynamic> json) => const SessionTypeUbuntu();
-  
+  factory SessionTypeUbuntu.fromJson(Map<String, dynamic> json) =>
+      const SessionTypeUbuntu();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -585,27 +571,26 @@ final class SessionTypeUbuntu extends SessionType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SessionTypeUnknown** *(sessionTypeUnknown)* - child of SessionType
 ///
 /// The session is running on an unknown type of device.
 final class SessionTypeUnknown extends SessionType {
-  
   /// **SessionTypeUnknown** *(sessionTypeUnknown)* - child of SessionType
   ///
   /// The session is running on an unknown type of device.
   const SessionTypeUnknown();
-  
+
   /// Parse from a json
-  factory SessionTypeUnknown.fromJson(Map<String, dynamic> json) => const SessionTypeUnknown();
-  
+  factory SessionTypeUnknown.fromJson(Map<String, dynamic> json) =>
+      const SessionTypeUnknown();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -623,27 +608,26 @@ final class SessionTypeUnknown extends SessionType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SessionTypeVivaldi** *(sessionTypeVivaldi)* - child of SessionType
 ///
 /// The session is running on the Vivaldi browser.
 final class SessionTypeVivaldi extends SessionType {
-  
   /// **SessionTypeVivaldi** *(sessionTypeVivaldi)* - child of SessionType
   ///
   /// The session is running on the Vivaldi browser.
   const SessionTypeVivaldi();
-  
+
   /// Parse from a json
-  factory SessionTypeVivaldi.fromJson(Map<String, dynamic> json) => const SessionTypeVivaldi();
-  
+  factory SessionTypeVivaldi.fromJson(Map<String, dynamic> json) =>
+      const SessionTypeVivaldi();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -661,27 +645,26 @@ final class SessionTypeVivaldi extends SessionType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SessionTypeWindows** *(sessionTypeWindows)* - child of SessionType
 ///
 /// The session is running on a Windows device.
 final class SessionTypeWindows extends SessionType {
-  
   /// **SessionTypeWindows** *(sessionTypeWindows)* - child of SessionType
   ///
   /// The session is running on a Windows device.
   const SessionTypeWindows();
-  
+
   /// Parse from a json
-  factory SessionTypeWindows.fromJson(Map<String, dynamic> json) => const SessionTypeWindows();
-  
+  factory SessionTypeWindows.fromJson(Map<String, dynamic> json) =>
+      const SessionTypeWindows();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -699,27 +682,26 @@ final class SessionTypeWindows extends SessionType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SessionTypeXbox** *(sessionTypeXbox)* - child of SessionType
 ///
 /// The session is running on an Xbox console.
 final class SessionTypeXbox extends SessionType {
-  
   /// **SessionTypeXbox** *(sessionTypeXbox)* - child of SessionType
   ///
   /// The session is running on an Xbox console.
   const SessionTypeXbox();
-  
+
   /// Parse from a json
-  factory SessionTypeXbox.fromJson(Map<String, dynamic> json) => const SessionTypeXbox();
-  
+  factory SessionTypeXbox.fromJson(Map<String, dynamic> json) =>
+      const SessionTypeXbox();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override

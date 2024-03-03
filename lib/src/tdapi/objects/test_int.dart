@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [value]: Number.
 final class TestInt extends TdObject {
-  
   /// **TestInt** *(testInt)* - basic class
   ///
   /// A simple object containing a number; for testing only.
@@ -17,7 +16,7 @@ final class TestInt extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Number
   final int value;
 
@@ -28,23 +27,22 @@ final class TestInt extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory TestInt.fromJson(Map<String, dynamic> json) => TestInt(
-    value: json['value'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        value: json['value'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "value": value,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +52,12 @@ final class TestInt extends TdObject {
     int? value,
     dynamic extra,
     int? clientId,
-  }) => TestInt(
-    value: value ?? this.value,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      TestInt(
+        value: value ?? this.value,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'testInt';

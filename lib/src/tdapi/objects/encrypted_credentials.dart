@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 /// * [hash]: The decrypted data hash.
 /// * [secret]: Secret for data decryption, encrypted with the service's public key.
 final class EncryptedCredentials extends TdObject {
-  
   /// **EncryptedCredentials** *(encryptedCredentials)* - basic class
   ///
   /// Contains encrypted Telegram Passport data credentials.
@@ -21,50 +20,51 @@ final class EncryptedCredentials extends TdObject {
     required this.hash,
     required this.secret,
   });
-  
-  /// The encrypted credentials 
+
+  /// The encrypted credentials
   final String data;
 
-  /// The decrypted data hash 
+  /// The decrypted data hash
   final String hash;
 
   /// Secret for data decryption, encrypted with the service's public key
   final String secret;
-  
+
   /// Parse from a json
-  factory EncryptedCredentials.fromJson(Map<String, dynamic> json) => EncryptedCredentials(
-    data: json['data'],
-    hash: json['hash'],
-    secret: json['secret'],
-  );
-  
-  
+  factory EncryptedCredentials.fromJson(Map<String, dynamic> json) =>
+      EncryptedCredentials(
+        data: json['data'],
+        hash: json['hash'],
+        secret: json['secret'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "data": data,
       "hash": hash,
       "secret": secret,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [data]: The encrypted credentials 
-  /// * [hash]: The decrypted data hash 
+  /// * [data]: The encrypted credentials
+  /// * [hash]: The decrypted data hash
   /// * [secret]: Secret for data decryption, encrypted with the service's public key
   EncryptedCredentials copyWith({
     String? data,
     String? hash,
     String? secret,
-  }) => EncryptedCredentials(
-    data: data ?? this.data,
-    hash: hash ?? this.hash,
-    secret: secret ?? this.secret,
-  );
+  }) =>
+      EncryptedCredentials(
+        data: data ?? this.data,
+        hash: hash ?? this.hash,
+        secret: secret ?? this.secret,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'encryptedCredentials';

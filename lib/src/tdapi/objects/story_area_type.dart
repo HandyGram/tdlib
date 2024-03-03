@@ -4,19 +4,18 @@ part of '../tdapi.dart';
 ///
 /// Describes type of a clickable rectangle area on a story media.
 sealed class StoryAreaType extends TdObject {
-  
   /// **StoryAreaType** *(storyAreaType)* - parent
   ///
   /// Describes type of a clickable rectangle area on a story media.
   const StoryAreaType();
-  
+
   /// a StoryAreaType return type can be :
   /// * [StoryAreaTypeLocation]
   /// * [StoryAreaTypeVenue]
   /// * [StoryAreaTypeSuggestedReaction]
   /// * [StoryAreaTypeMessage]
-  factory StoryAreaType.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory StoryAreaType.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case StoryAreaTypeLocation.defaultObjectId:
         return StoryAreaTypeLocation.fromJson(json);
       case StoryAreaTypeVenue.defaultObjectId:
@@ -32,7 +31,7 @@ sealed class StoryAreaType extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -52,14 +51,12 @@ sealed class StoryAreaType extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **StoryAreaTypeLocation** *(storyAreaTypeLocation)* - child of StoryAreaType
 ///
 /// An area pointing to a location.
 ///
 /// * [location]: The location.
 final class StoryAreaTypeLocation extends StoryAreaType {
-  
   /// **StoryAreaTypeLocation** *(storyAreaTypeLocation)* - child of StoryAreaType
   ///
   /// An area pointing to a location.
@@ -68,24 +65,24 @@ final class StoryAreaTypeLocation extends StoryAreaType {
   const StoryAreaTypeLocation({
     required this.location,
   });
-  
+
   /// The location
   final Location location;
-  
+
   /// Parse from a json
-  factory StoryAreaTypeLocation.fromJson(Map<String, dynamic> json) => StoryAreaTypeLocation(
-    location: Location.fromJson(json['location']),
-  );
-  
-  
+  factory StoryAreaTypeLocation.fromJson(Map<String, dynamic> json) =>
+      StoryAreaTypeLocation(
+        location: Location.fromJson(json['location']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "location": location.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -94,9 +91,10 @@ final class StoryAreaTypeLocation extends StoryAreaType {
   @override
   StoryAreaTypeLocation copyWith({
     Location? location,
-  }) => StoryAreaTypeLocation(
-    location: location ?? this.location,
-  );
+  }) =>
+      StoryAreaTypeLocation(
+        location: location ?? this.location,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'storyAreaTypeLocation';
@@ -110,14 +108,12 @@ final class StoryAreaTypeLocation extends StoryAreaType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **StoryAreaTypeVenue** *(storyAreaTypeVenue)* - child of StoryAreaType
 ///
 /// An area pointing to a venue.
 ///
 /// * [venue]: Information about the venue.
 final class StoryAreaTypeVenue extends StoryAreaType {
-  
   /// **StoryAreaTypeVenue** *(storyAreaTypeVenue)* - child of StoryAreaType
   ///
   /// An area pointing to a venue.
@@ -126,24 +122,24 @@ final class StoryAreaTypeVenue extends StoryAreaType {
   const StoryAreaTypeVenue({
     required this.venue,
   });
-  
+
   /// Information about the venue
   final Venue venue;
-  
+
   /// Parse from a json
-  factory StoryAreaTypeVenue.fromJson(Map<String, dynamic> json) => StoryAreaTypeVenue(
-    venue: Venue.fromJson(json['venue']),
-  );
-  
-  
+  factory StoryAreaTypeVenue.fromJson(Map<String, dynamic> json) =>
+      StoryAreaTypeVenue(
+        venue: Venue.fromJson(json['venue']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "venue": venue.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -152,9 +148,10 @@ final class StoryAreaTypeVenue extends StoryAreaType {
   @override
   StoryAreaTypeVenue copyWith({
     Venue? venue,
-  }) => StoryAreaTypeVenue(
-    venue: venue ?? this.venue,
-  );
+  }) =>
+      StoryAreaTypeVenue(
+        venue: venue ?? this.venue,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'storyAreaTypeVenue';
@@ -168,7 +165,6 @@ final class StoryAreaTypeVenue extends StoryAreaType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **StoryAreaTypeSuggestedReaction** *(storyAreaTypeSuggestedReaction)* - child of StoryAreaType
 ///
 /// An area pointing to a suggested reaction. App needs to show a clickable reaction on the area and call setStoryReaction when the are is clicked.
@@ -178,7 +174,6 @@ final class StoryAreaTypeVenue extends StoryAreaType {
 /// * [isDark]: True, if reaction has a dark background.
 /// * [isFlipped]: True, if reaction corner is flipped.
 final class StoryAreaTypeSuggestedReaction extends StoryAreaType {
-  
   /// **StoryAreaTypeSuggestedReaction** *(storyAreaTypeSuggestedReaction)* - child of StoryAreaType
   ///
   /// An area pointing to a suggested reaction. App needs to show a clickable reaction on the area and call setStoryReaction when the are is clicked.
@@ -193,7 +188,7 @@ final class StoryAreaTypeSuggestedReaction extends StoryAreaType {
     required this.isDark,
     required this.isFlipped,
   });
-  
+
   /// Type of the reaction
   final ReactionType reactionType;
 
@@ -205,27 +200,27 @@ final class StoryAreaTypeSuggestedReaction extends StoryAreaType {
 
   /// True, if reaction corner is flipped
   final bool isFlipped;
-  
+
   /// Parse from a json
-  factory StoryAreaTypeSuggestedReaction.fromJson(Map<String, dynamic> json) => StoryAreaTypeSuggestedReaction(
-    reactionType: ReactionType.fromJson(json['reaction_type']),
-    totalCount: json['total_count'],
-    isDark: json['is_dark'],
-    isFlipped: json['is_flipped'],
-  );
-  
-  
+  factory StoryAreaTypeSuggestedReaction.fromJson(Map<String, dynamic> json) =>
+      StoryAreaTypeSuggestedReaction(
+        reactionType: ReactionType.fromJson(json['reaction_type']),
+        totalCount: json['total_count'],
+        isDark: json['is_dark'],
+        isFlipped: json['is_flipped'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "reaction_type": reactionType.toJson(),
       "total_count": totalCount,
       "is_dark": isDark,
       "is_flipped": isFlipped,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -240,12 +235,13 @@ final class StoryAreaTypeSuggestedReaction extends StoryAreaType {
     int? totalCount,
     bool? isDark,
     bool? isFlipped,
-  }) => StoryAreaTypeSuggestedReaction(
-    reactionType: reactionType ?? this.reactionType,
-    totalCount: totalCount ?? this.totalCount,
-    isDark: isDark ?? this.isDark,
-    isFlipped: isFlipped ?? this.isFlipped,
-  );
+  }) =>
+      StoryAreaTypeSuggestedReaction(
+        reactionType: reactionType ?? this.reactionType,
+        totalCount: totalCount ?? this.totalCount,
+        isDark: isDark ?? this.isDark,
+        isFlipped: isFlipped ?? this.isFlipped,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'storyAreaTypeSuggestedReaction';
@@ -259,7 +255,6 @@ final class StoryAreaTypeSuggestedReaction extends StoryAreaType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **StoryAreaTypeMessage** *(storyAreaTypeMessage)* - child of StoryAreaType
 ///
 /// An area pointing to a message.
@@ -267,7 +262,6 @@ final class StoryAreaTypeSuggestedReaction extends StoryAreaType {
 /// * [chatId]: Identifier of the chat with the message.
 /// * [messageId]: Identifier of the message.
 final class StoryAreaTypeMessage extends StoryAreaType {
-  
   /// **StoryAreaTypeMessage** *(storyAreaTypeMessage)* - child of StoryAreaType
   ///
   /// An area pointing to a message.
@@ -278,43 +272,44 @@ final class StoryAreaTypeMessage extends StoryAreaType {
     required this.chatId,
     required this.messageId,
   });
-  
-  /// Identifier of the chat with the message 
+
+  /// Identifier of the chat with the message
   final int chatId;
 
   /// Identifier of the message
   final int messageId;
-  
+
   /// Parse from a json
-  factory StoryAreaTypeMessage.fromJson(Map<String, dynamic> json) => StoryAreaTypeMessage(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-  );
-  
-  
+  factory StoryAreaTypeMessage.fromJson(Map<String, dynamic> json) =>
+      StoryAreaTypeMessage(
+        chatId: json['chat_id'],
+        messageId: json['message_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Identifier of the chat with the message 
+  /// * [chat_id]: Identifier of the chat with the message
   /// * [message_id]: Identifier of the message
   @override
   StoryAreaTypeMessage copyWith({
     int? chatId,
     int? messageId,
-  }) => StoryAreaTypeMessage(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-  );
+  }) =>
+      StoryAreaTypeMessage(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'storyAreaTypeMessage';

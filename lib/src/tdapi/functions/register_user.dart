@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class RegisterUser extends TdFunction {
-  
   /// **RegisterUser** *(registerUser)* - TDLib function
   ///
   /// Finishes user registration. Works only when the current authorization state is authorizationStateWaitRegistration.
@@ -25,7 +24,7 @@ final class RegisterUser extends TdFunction {
     required this.lastName,
     required this.disableNotification,
   });
-  
+
   /// The first name of the user; 1-64 characters
   final String firstName;
 
@@ -34,18 +33,18 @@ final class RegisterUser extends TdFunction {
 
   /// Pass true to disable notification about the current user joining Telegram for other users that added them to contact list
   final bool disableNotification;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "first_name": firstName,
       "last_name": lastName,
       "disable_notification": disableNotification,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class RegisterUser extends TdFunction {
     String? firstName,
     String? lastName,
     bool? disableNotification,
-  }) => RegisterUser(
-    firstName: firstName ?? this.firstName,
-    lastName: lastName ?? this.lastName,
-    disableNotification: disableNotification ?? this.disableNotification,
-  );
+  }) =>
+      RegisterUser(
+        firstName: firstName ?? this.firstName,
+        lastName: lastName ?? this.lastName,
+        disableNotification: disableNotification ?? this.disableNotification,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'registerUser';

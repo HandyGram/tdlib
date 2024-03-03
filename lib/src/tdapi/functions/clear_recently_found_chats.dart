@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ClearRecentlyFoundChats extends TdFunction {
-  
   /// **ClearRecentlyFoundChats** *(clearRecentlyFoundChats)* - TDLib function
   ///
   /// Clears the list of recently found chats.
   ///
   /// [Ok] is returned on completion.
   const ClearRecentlyFoundChats();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   ClearRecentlyFoundChats copyWith() => const ClearRecentlyFoundChats();

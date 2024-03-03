@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 /// * [previousValue]: The value for the previous day.
 /// * [growthRatePercentage]: The growth rate of the value, as a percentage.
 final class StatisticalValue extends TdObject {
-  
   /// **StatisticalValue** *(statisticalValue)* - basic class
   ///
   /// A value with information about its recent changes.
@@ -21,50 +20,51 @@ final class StatisticalValue extends TdObject {
     required this.previousValue,
     required this.growthRatePercentage,
   });
-  
-  /// The current value 
+
+  /// The current value
   final double value;
 
-  /// The value for the previous day 
+  /// The value for the previous day
   final double previousValue;
 
   /// The growth rate of the value, as a percentage
   final double growthRatePercentage;
-  
+
   /// Parse from a json
-  factory StatisticalValue.fromJson(Map<String, dynamic> json) => StatisticalValue(
-    value: json['value'],
-    previousValue: json['previous_value'],
-    growthRatePercentage: json['growth_rate_percentage'],
-  );
-  
-  
+  factory StatisticalValue.fromJson(Map<String, dynamic> json) =>
+      StatisticalValue(
+        value: json['value'],
+        previousValue: json['previous_value'],
+        growthRatePercentage: json['growth_rate_percentage'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "value": value,
       "previous_value": previousValue,
       "growth_rate_percentage": growthRatePercentage,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [value]: The current value 
-  /// * [previous_value]: The value for the previous day 
+  /// * [value]: The current value
+  /// * [previous_value]: The value for the previous day
   /// * [growth_rate_percentage]: The growth rate of the value, as a percentage
   StatisticalValue copyWith({
     double? value,
     double? previousValue,
     double? growthRatePercentage,
-  }) => StatisticalValue(
-    value: value ?? this.value,
-    previousValue: previousValue ?? this.previousValue,
-    growthRatePercentage: growthRatePercentage ?? this.growthRatePercentage,
-  );
+  }) =>
+      StatisticalValue(
+        value: value ?? this.value,
+        previousValue: previousValue ?? this.previousValue,
+        growthRatePercentage: growthRatePercentage ?? this.growthRatePercentage,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'statisticalValue';

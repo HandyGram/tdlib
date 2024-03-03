@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 /// * [isUpgrade]: True, if the payment option can be used to upgrade the existing Telegram Premium subscription.
 /// * [lastTransactionId]: Identifier of the last in-store transaction for the currently used option.
 final class PremiumStatePaymentOption extends TdObject {
-  
   /// **PremiumStatePaymentOption** *(premiumStatePaymentOption)* - basic class
   ///
   /// Describes an option for buying or upgrading Telegram Premium for self.
@@ -24,7 +23,7 @@ final class PremiumStatePaymentOption extends TdObject {
     required this.isUpgrade,
     required this.lastTransactionId,
   });
-  
+
   /// Information about the payment option
   final PremiumPaymentOption paymentOption;
 
@@ -36,27 +35,27 @@ final class PremiumStatePaymentOption extends TdObject {
 
   /// Identifier of the last in-store transaction for the currently used option
   final String lastTransactionId;
-  
+
   /// Parse from a json
-  factory PremiumStatePaymentOption.fromJson(Map<String, dynamic> json) => PremiumStatePaymentOption(
-    paymentOption: PremiumPaymentOption.fromJson(json['payment_option']),
-    isCurrent: json['is_current'],
-    isUpgrade: json['is_upgrade'],
-    lastTransactionId: json['last_transaction_id'],
-  );
-  
-  
+  factory PremiumStatePaymentOption.fromJson(Map<String, dynamic> json) =>
+      PremiumStatePaymentOption(
+        paymentOption: PremiumPaymentOption.fromJson(json['payment_option']),
+        isCurrent: json['is_current'],
+        isUpgrade: json['is_upgrade'],
+        lastTransactionId: json['last_transaction_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "payment_option": paymentOption.toJson(),
       "is_current": isCurrent,
       "is_upgrade": isUpgrade,
       "last_transaction_id": lastTransactionId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -70,12 +69,13 @@ final class PremiumStatePaymentOption extends TdObject {
     bool? isCurrent,
     bool? isUpgrade,
     String? lastTransactionId,
-  }) => PremiumStatePaymentOption(
-    paymentOption: paymentOption ?? this.paymentOption,
-    isCurrent: isCurrent ?? this.isCurrent,
-    isUpgrade: isUpgrade ?? this.isUpgrade,
-    lastTransactionId: lastTransactionId ?? this.lastTransactionId,
-  );
+  }) =>
+      PremiumStatePaymentOption(
+        paymentOption: paymentOption ?? this.paymentOption,
+        isCurrent: isCurrent ?? this.isCurrent,
+        isUpgrade: isUpgrade ?? this.isUpgrade,
+        lastTransactionId: lastTransactionId ?? this.lastTransactionId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'premiumStatePaymentOption';

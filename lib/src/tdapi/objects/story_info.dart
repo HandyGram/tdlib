@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 /// * [date]: Point in time (Unix timestamp) when the story was published.
 /// * [isForCloseFriends]: True, if the story is available only to close friends.
 final class StoryInfo extends TdObject {
-  
   /// **StoryInfo** *(storyInfo)* - basic class
   ///
   /// Contains basic information about a story.
@@ -21,7 +20,7 @@ final class StoryInfo extends TdObject {
     required this.date,
     required this.isForCloseFriends,
   });
-  
+
   /// Unique story identifier among stories of the given sender
   final int storyId;
 
@@ -30,25 +29,24 @@ final class StoryInfo extends TdObject {
 
   /// True, if the story is available only to close friends
   final bool isForCloseFriends;
-  
+
   /// Parse from a json
   factory StoryInfo.fromJson(Map<String, dynamic> json) => StoryInfo(
-    storyId: json['story_id'],
-    date: json['date'],
-    isForCloseFriends: json['is_for_close_friends'],
-  );
-  
-  
+        storyId: json['story_id'],
+        date: json['date'],
+        isForCloseFriends: json['is_for_close_friends'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "story_id": storyId,
       "date": date,
       "is_for_close_friends": isForCloseFriends,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -60,11 +58,12 @@ final class StoryInfo extends TdObject {
     int? storyId,
     int? date,
     bool? isForCloseFriends,
-  }) => StoryInfo(
-    storyId: storyId ?? this.storyId,
-    date: date ?? this.date,
-    isForCloseFriends: isForCloseFriends ?? this.isForCloseFriends,
-  );
+  }) =>
+      StoryInfo(
+        storyId: storyId ?? this.storyId,
+        date: date ?? this.date,
+        isForCloseFriends: isForCloseFriends ?? this.isForCloseFriends,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'storyInfo';

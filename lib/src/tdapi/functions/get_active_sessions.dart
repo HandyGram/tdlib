@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [Sessions] is returned on completion.
 final class GetActiveSessions extends TdFunction {
-  
   /// **GetActiveSessions** *(getActiveSessions)* - TDLib function
   ///
   /// Returns all active sessions of the current user.
   ///
   /// [Sessions] is returned on completion.
   const GetActiveSessions();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   GetActiveSessions copyWith() => const GetActiveSessions();

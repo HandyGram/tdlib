@@ -14,7 +14,6 @@ part of '../tdapi.dart';
 /// * [thumbnail]: Animation thumbnail in JPEG or MPEG4 format; may be null *(optional)*.
 /// * [animation]: File containing the animation.
 final class Animation extends TdObject {
-  
   /// **Animation** *(animation)* - basic class
   ///
   /// Describes an animation file. The animation must be encoded in GIF or MPEG4 format.
@@ -39,7 +38,7 @@ final class Animation extends TdObject {
     this.thumbnail,
     required this.animation,
   });
-  
+
   /// Duration of the animation, in seconds; as defined by the sender
   final int duration;
 
@@ -66,26 +65,29 @@ final class Animation extends TdObject {
 
   /// File containing the animation
   final File animation;
-  
+
   /// Parse from a json
   factory Animation.fromJson(Map<String, dynamic> json) => Animation(
-    duration: json['duration'],
-    width: json['width'],
-    height: json['height'],
-    fileName: json['file_name'],
-    mimeType: json['mime_type'],
-    hasStickers: json['has_stickers'],
-    minithumbnail: json['minithumbnail'] == null ? null : Minithumbnail.fromJson(json['minithumbnail']),
-    thumbnail: json['thumbnail'] == null ? null : Thumbnail.fromJson(json['thumbnail']),
-    animation: File.fromJson(json['animation']),
-  );
-  
-  
+        duration: json['duration'],
+        width: json['width'],
+        height: json['height'],
+        fileName: json['file_name'],
+        mimeType: json['mime_type'],
+        hasStickers: json['has_stickers'],
+        minithumbnail: json['minithumbnail'] == null
+            ? null
+            : Minithumbnail.fromJson(json['minithumbnail']),
+        thumbnail: json['thumbnail'] == null
+            ? null
+            : Thumbnail.fromJson(json['thumbnail']),
+        animation: File.fromJson(json['animation']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "duration": duration,
       "width": width,
       "height": height,
@@ -95,8 +97,8 @@ final class Animation extends TdObject {
       "minithumbnail": minithumbnail?.toJson(),
       "thumbnail": thumbnail?.toJson(),
       "animation": animation.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -120,17 +122,18 @@ final class Animation extends TdObject {
     Minithumbnail? minithumbnail,
     Thumbnail? thumbnail,
     File? animation,
-  }) => Animation(
-    duration: duration ?? this.duration,
-    width: width ?? this.width,
-    height: height ?? this.height,
-    fileName: fileName ?? this.fileName,
-    mimeType: mimeType ?? this.mimeType,
-    hasStickers: hasStickers ?? this.hasStickers,
-    minithumbnail: minithumbnail ?? this.minithumbnail,
-    thumbnail: thumbnail ?? this.thumbnail,
-    animation: animation ?? this.animation,
-  );
+  }) =>
+      Animation(
+        duration: duration ?? this.duration,
+        width: width ?? this.width,
+        height: height ?? this.height,
+        fileName: fileName ?? this.fileName,
+        mimeType: mimeType ?? this.mimeType,
+        hasStickers: hasStickers ?? this.hasStickers,
+        minithumbnail: minithumbnail ?? this.minithumbnail,
+        thumbnail: thumbnail ?? this.thumbnail,
+        animation: animation ?? this.animation,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'animation';

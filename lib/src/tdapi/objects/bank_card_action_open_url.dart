@@ -7,7 +7,6 @@ part of '../tdapi.dart';
 /// * [text]: Action text.
 /// * [url]: The URL to be opened.
 final class BankCardActionOpenUrl extends TdObject {
-  
   /// **BankCardActionOpenUrl** *(bankCardActionOpenUrl)* - basic class
   ///
   /// Describes an action associated with a bank card number.
@@ -18,42 +17,43 @@ final class BankCardActionOpenUrl extends TdObject {
     required this.text,
     required this.url,
   });
-  
-  /// Action text 
+
+  /// Action text
   final String text;
 
   /// The URL to be opened
   final String url;
-  
+
   /// Parse from a json
-  factory BankCardActionOpenUrl.fromJson(Map<String, dynamic> json) => BankCardActionOpenUrl(
-    text: json['text'],
-    url: json['url'],
-  );
-  
-  
+  factory BankCardActionOpenUrl.fromJson(Map<String, dynamic> json) =>
+      BankCardActionOpenUrl(
+        text: json['text'],
+        url: json['url'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "text": text,
       "url": url,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [text]: Action text 
+  /// * [text]: Action text
   /// * [url]: The URL to be opened
   BankCardActionOpenUrl copyWith({
     String? text,
     String? url,
-  }) => BankCardActionOpenUrl(
-    text: text ?? this.text,
-    url: url ?? this.url,
-  );
+  }) =>
+      BankCardActionOpenUrl(
+        text: text ?? this.text,
+        url: url ?? this.url,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'bankCardActionOpenUrl';

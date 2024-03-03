@@ -13,7 +13,6 @@ part of '../tdapi.dart';
 /// * [downloadedPrefixSize]: If is_downloading_completed is false, then only some prefix of the file starting from download_offset is ready to be read. downloaded_prefix_size is the size of that prefix in bytes.
 /// * [downloadedSize]: Total downloaded file size, in bytes. Can be used only for calculating download progress. The actual file size may be bigger, and some parts of it may contain garbage.
 final class LocalFile extends TdObject {
-  
   /// **LocalFile** *(localFile)* - basic class
   ///
   /// Represents a local file.
@@ -36,7 +35,7 @@ final class LocalFile extends TdObject {
     required this.downloadedPrefixSize,
     required this.downloadedSize,
   });
-  
+
   /// Local path to the locally available file part; may be empty
   final String path;
 
@@ -60,25 +59,24 @@ final class LocalFile extends TdObject {
 
   /// Total downloaded file size, in bytes. Can be used only for calculating download progress. The actual file size may be bigger, and some parts of it may contain garbage
   final int downloadedSize;
-  
+
   /// Parse from a json
   factory LocalFile.fromJson(Map<String, dynamic> json) => LocalFile(
-    path: json['path'],
-    canBeDownloaded: json['can_be_downloaded'],
-    canBeDeleted: json['can_be_deleted'],
-    isDownloadingActive: json['is_downloading_active'],
-    isDownloadingCompleted: json['is_downloading_completed'],
-    downloadOffset: json['download_offset'],
-    downloadedPrefixSize: json['downloaded_prefix_size'],
-    downloadedSize: json['downloaded_size'],
-  );
-  
-  
+        path: json['path'],
+        canBeDownloaded: json['can_be_downloaded'],
+        canBeDeleted: json['can_be_deleted'],
+        isDownloadingActive: json['is_downloading_active'],
+        isDownloadingCompleted: json['is_downloading_completed'],
+        downloadOffset: json['download_offset'],
+        downloadedPrefixSize: json['downloaded_prefix_size'],
+        downloadedSize: json['downloaded_size'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "path": path,
       "can_be_downloaded": canBeDownloaded,
       "can_be_deleted": canBeDeleted,
@@ -87,8 +85,8 @@ final class LocalFile extends TdObject {
       "download_offset": downloadOffset,
       "downloaded_prefix_size": downloadedPrefixSize,
       "downloaded_size": downloadedSize,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -110,16 +108,18 @@ final class LocalFile extends TdObject {
     int? downloadOffset,
     int? downloadedPrefixSize,
     int? downloadedSize,
-  }) => LocalFile(
-    path: path ?? this.path,
-    canBeDownloaded: canBeDownloaded ?? this.canBeDownloaded,
-    canBeDeleted: canBeDeleted ?? this.canBeDeleted,
-    isDownloadingActive: isDownloadingActive ?? this.isDownloadingActive,
-    isDownloadingCompleted: isDownloadingCompleted ?? this.isDownloadingCompleted,
-    downloadOffset: downloadOffset ?? this.downloadOffset,
-    downloadedPrefixSize: downloadedPrefixSize ?? this.downloadedPrefixSize,
-    downloadedSize: downloadedSize ?? this.downloadedSize,
-  );
+  }) =>
+      LocalFile(
+        path: path ?? this.path,
+        canBeDownloaded: canBeDownloaded ?? this.canBeDownloaded,
+        canBeDeleted: canBeDeleted ?? this.canBeDeleted,
+        isDownloadingActive: isDownloadingActive ?? this.isDownloadingActive,
+        isDownloadingCompleted:
+            isDownloadingCompleted ?? this.isDownloadingCompleted,
+        downloadOffset: downloadOffset ?? this.downloadOffset,
+        downloadedPrefixSize: downloadedPrefixSize ?? this.downloadedPrefixSize,
+        downloadedSize: downloadedSize ?? this.downloadedSize,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'localFile';

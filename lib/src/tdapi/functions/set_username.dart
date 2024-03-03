@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetUsername extends TdFunction {
-  
   /// **SetUsername** *(setUsername)* - TDLib function
   ///
   /// Changes the editable username of the current user.
@@ -19,19 +18,19 @@ final class SetUsername extends TdFunction {
   const SetUsername({
     required this.username,
   });
-  
+
   /// The new value of the username. Use an empty string to remove the username. The username can't be completely removed if there is another active or disabled username
   final String username;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "username": username,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class SetUsername extends TdFunction {
   /// * [username]: The new value of the username. Use an empty string to remove the username. The username can't be completely removed if there is another active or disabled username
   SetUsername copyWith({
     String? username,
-  }) => SetUsername(
-    username: username ?? this.username,
-  );
+  }) =>
+      SetUsername(
+        username: username ?? this.username,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setUsername';

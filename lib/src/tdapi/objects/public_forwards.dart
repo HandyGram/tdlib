@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 /// * [forwards]: List of found public forwards and reposts.
 /// * [nextOffset]: The offset for the next request. If empty, then there are no more results.
 final class PublicForwards extends TdObject {
-  
   /// **PublicForwards** *(publicForwards)* - basic class
   ///
   /// Represents a list of public forwards and reposts as a story of a message or a story.
@@ -23,7 +22,7 @@ final class PublicForwards extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Approximate total number of messages and stories found
   final int totalCount;
 
@@ -40,27 +39,28 @@ final class PublicForwards extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory PublicForwards.fromJson(Map<String, dynamic> json) => PublicForwards(
-    totalCount: json['total_count'],
-    forwards: List<PublicForward>.from((json['forwards'] ?? []).map((item) => PublicForward.fromJson(item)).toList()),
-    nextOffset: json['next_offset'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        totalCount: json['total_count'],
+        forwards: List<PublicForward>.from((json['forwards'] ?? [])
+            .map((item) => PublicForward.fromJson(item))
+            .toList()),
+        nextOffset: json['next_offset'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "total_count": totalCount,
       "forwards": forwards.map((i) => i.toJson()).toList(),
       "next_offset": nextOffset,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -74,13 +74,14 @@ final class PublicForwards extends TdObject {
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) => PublicForwards(
-    totalCount: totalCount ?? this.totalCount,
-    forwards: forwards ?? this.forwards,
-    nextOffset: nextOffset ?? this.nextOffset,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      PublicForwards(
+        totalCount: totalCount ?? this.totalCount,
+        forwards: forwards ?? this.forwards,
+        nextOffset: nextOffset ?? this.nextOffset,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'publicForwards';

@@ -7,7 +7,6 @@ part of '../tdapi.dart';
 /// * [success]: True, if the payment request was successful; otherwise, the verification_url will be non-empty.
 /// * [verificationUrl]: URL for additional payment credentials verification.
 final class PaymentResult extends TdObject {
-  
   /// **PaymentResult** *(paymentResult)* - basic class
   ///
   /// Contains the result of a payment request.
@@ -20,8 +19,8 @@ final class PaymentResult extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// True, if the payment request was successful; otherwise, the verification_url will be non-empty 
+
+  /// True, if the payment request was successful; otherwise, the verification_url will be non-empty
   final bool success;
 
   /// URL for additional payment credentials verification
@@ -34,42 +33,42 @@ final class PaymentResult extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory PaymentResult.fromJson(Map<String, dynamic> json) => PaymentResult(
-    success: json['success'],
-    verificationUrl: json['verification_url'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        success: json['success'],
+        verificationUrl: json['verification_url'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "success": success,
       "verification_url": verificationUrl,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [success]: True, if the payment request was successful; otherwise, the verification_url will be non-empty 
+  /// * [success]: True, if the payment request was successful; otherwise, the verification_url will be non-empty
   /// * [verification_url]: URL for additional payment credentials verification
   PaymentResult copyWith({
     bool? success,
     String? verificationUrl,
     dynamic extra,
     int? clientId,
-  }) => PaymentResult(
-    success: success ?? this.success,
-    verificationUrl: verificationUrl ?? this.verificationUrl,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      PaymentResult(
+        success: success ?? this.success,
+        verificationUrl: verificationUrl ?? this.verificationUrl,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'paymentResult';

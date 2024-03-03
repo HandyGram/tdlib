@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [WebPage] is returned on completion.
 final class GetWebPagePreview extends TdFunction {
-  
   /// **GetWebPagePreview** *(getWebPagePreview)* - TDLib function
   ///
   /// Returns a link preview by the text of a message. Do not call this function too often. Returns a 404 error if the text has no link preview.
@@ -22,23 +21,23 @@ final class GetWebPagePreview extends TdFunction {
     required this.text,
     this.linkPreviewOptions,
   });
-  
+
   /// Message text with formatting
   final FormattedText text;
 
   /// Options to be used for generation of the link preview; pass null to use default link preview options
   final LinkPreviewOptions? linkPreviewOptions;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "text": text.toJson(),
       "link_preview_options": linkPreviewOptions?.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class GetWebPagePreview extends TdFunction {
   GetWebPagePreview copyWith({
     FormattedText? text,
     LinkPreviewOptions? linkPreviewOptions,
-  }) => GetWebPagePreview(
-    text: text ?? this.text,
-    linkPreviewOptions: linkPreviewOptions ?? this.linkPreviewOptions,
-  );
+  }) =>
+      GetWebPagePreview(
+        text: text ?? this.text,
+        linkPreviewOptions: linkPreviewOptions ?? this.linkPreviewOptions,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getWebPagePreview';

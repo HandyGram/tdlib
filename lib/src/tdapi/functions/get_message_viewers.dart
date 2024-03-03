@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [MessageViewers] is returned on completion.
 final class GetMessageViewers extends TdFunction {
-  
   /// **GetMessageViewers** *(getMessageViewers)* - TDLib function
   ///
   /// Returns viewers of a recent outgoing message in a basic group or a supergroup chat. For video notes and voice notes only users, opened content of the message, are returned. The method can be called if message.can_get_viewers == true.
@@ -22,23 +21,23 @@ final class GetMessageViewers extends TdFunction {
     required this.chatId,
     required this.messageId,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
   /// Identifier of the message
   final int messageId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class GetMessageViewers extends TdFunction {
   GetMessageViewers copyWith({
     int? chatId,
     int? messageId,
-  }) => GetMessageViewers(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-  );
+  }) =>
+      GetMessageViewers(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getMessageViewers';

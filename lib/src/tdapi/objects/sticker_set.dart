@@ -20,7 +20,6 @@ part of '../tdapi.dart';
 /// * [stickers]: List of stickers in this set.
 /// * [emojis]: A list of emoji corresponding to the stickers in the same order. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object.
 final class StickerSet extends TdObject {
-  
   /// **StickerSet** *(stickerSet)* - basic class
   ///
   /// Represents a sticker set.
@@ -59,7 +58,7 @@ final class StickerSet extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Identifier of the sticker set
   final int id;
 
@@ -112,34 +111,42 @@ final class StickerSet extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory StickerSet.fromJson(Map<String, dynamic> json) => StickerSet(
-    id: int.parse(json['id']),
-    title: json['title'],
-    name: json['name'],
-    thumbnail: json['thumbnail'] == null ? null : Thumbnail.fromJson(json['thumbnail']),
-    thumbnailOutline: List<ClosedVectorPath>.from((json['thumbnail_outline'] ?? []).map((item) => ClosedVectorPath.fromJson(item)).toList()),
-    isInstalled: json['is_installed'],
-    isArchived: json['is_archived'],
-    isOfficial: json['is_official'],
-    stickerFormat: StickerFormat.fromJson(json['sticker_format']),
-    stickerType: StickerType.fromJson(json['sticker_type']),
-    needsRepainting: json['needs_repainting'],
-    isAllowedAsChatEmojiStatus: json['is_allowed_as_chat_emoji_status'],
-    isViewed: json['is_viewed'],
-    stickers: List<Sticker>.from((json['stickers'] ?? []).map((item) => Sticker.fromJson(item)).toList()),
-    emojis: List<Emojis>.from((json['emojis'] ?? []).map((item) => Emojis.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: int.parse(json['id']),
+        title: json['title'],
+        name: json['name'],
+        thumbnail: json['thumbnail'] == null
+            ? null
+            : Thumbnail.fromJson(json['thumbnail']),
+        thumbnailOutline: List<ClosedVectorPath>.from(
+            (json['thumbnail_outline'] ?? [])
+                .map((item) => ClosedVectorPath.fromJson(item))
+                .toList()),
+        isInstalled: json['is_installed'],
+        isArchived: json['is_archived'],
+        isOfficial: json['is_official'],
+        stickerFormat: StickerFormat.fromJson(json['sticker_format']),
+        stickerType: StickerType.fromJson(json['sticker_type']),
+        needsRepainting: json['needs_repainting'],
+        isAllowedAsChatEmojiStatus: json['is_allowed_as_chat_emoji_status'],
+        isViewed: json['is_viewed'],
+        stickers: List<Sticker>.from((json['stickers'] ?? [])
+            .map((item) => Sticker.fromJson(item))
+            .toList()),
+        emojis: List<Emojis>.from((json['emojis'] ?? [])
+            .map((item) => Emojis.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "title": title,
       "name": name,
@@ -155,8 +162,8 @@ final class StickerSet extends TdObject {
       "is_viewed": isViewed,
       "stickers": stickers.map((i) => i.toJson()).toList(),
       "emojis": emojis.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -194,25 +201,27 @@ final class StickerSet extends TdObject {
     List<Emojis>? emojis,
     dynamic extra,
     int? clientId,
-  }) => StickerSet(
-    id: id ?? this.id,
-    title: title ?? this.title,
-    name: name ?? this.name,
-    thumbnail: thumbnail ?? this.thumbnail,
-    thumbnailOutline: thumbnailOutline ?? this.thumbnailOutline,
-    isInstalled: isInstalled ?? this.isInstalled,
-    isArchived: isArchived ?? this.isArchived,
-    isOfficial: isOfficial ?? this.isOfficial,
-    stickerFormat: stickerFormat ?? this.stickerFormat,
-    stickerType: stickerType ?? this.stickerType,
-    needsRepainting: needsRepainting ?? this.needsRepainting,
-    isAllowedAsChatEmojiStatus: isAllowedAsChatEmojiStatus ?? this.isAllowedAsChatEmojiStatus,
-    isViewed: isViewed ?? this.isViewed,
-    stickers: stickers ?? this.stickers,
-    emojis: emojis ?? this.emojis,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      StickerSet(
+        id: id ?? this.id,
+        title: title ?? this.title,
+        name: name ?? this.name,
+        thumbnail: thumbnail ?? this.thumbnail,
+        thumbnailOutline: thumbnailOutline ?? this.thumbnailOutline,
+        isInstalled: isInstalled ?? this.isInstalled,
+        isArchived: isArchived ?? this.isArchived,
+        isOfficial: isOfficial ?? this.isOfficial,
+        stickerFormat: stickerFormat ?? this.stickerFormat,
+        stickerType: stickerType ?? this.stickerType,
+        needsRepainting: needsRepainting ?? this.needsRepainting,
+        isAllowedAsChatEmojiStatus:
+            isAllowedAsChatEmojiStatus ?? this.isAllowedAsChatEmojiStatus,
+        isViewed: isViewed ?? this.isViewed,
+        stickers: stickers ?? this.stickers,
+        emojis: emojis ?? this.emojis,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'stickerSet';

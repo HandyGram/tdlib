@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class EndGroupCall extends TdFunction {
-  
   /// **EndGroupCall** *(endGroupCall)* - TDLib function
   ///
   /// Ends a group call. Requires groupCall.can_be_managed.
@@ -19,19 +18,19 @@ final class EndGroupCall extends TdFunction {
   const EndGroupCall({
     required this.groupCallId,
   });
-  
+
   /// Group call identifier
   final int groupCallId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "group_call_id": groupCallId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class EndGroupCall extends TdFunction {
   /// * [group_call_id]: Group call identifier
   EndGroupCall copyWith({
     int? groupCallId,
-  }) => EndGroupCall(
-    groupCallId: groupCallId ?? this.groupCallId,
-  );
+  }) =>
+      EndGroupCall(
+        groupCallId: groupCallId ?? this.groupCallId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'endGroupCall';

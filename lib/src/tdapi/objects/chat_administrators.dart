@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [administrators]: A list of chat administrators.
 final class ChatAdministrators extends TdObject {
-  
   /// **ChatAdministrators** *(chatAdministrators)* - basic class
   ///
   /// Represents a list of chat administrators.
@@ -17,7 +16,7 @@ final class ChatAdministrators extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// A list of chat administrators
   final List<ChatAdministrator> administrators;
 
@@ -28,23 +27,26 @@ final class ChatAdministrators extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory ChatAdministrators.fromJson(Map<String, dynamic> json) => ChatAdministrators(
-    administrators: List<ChatAdministrator>.from((json['administrators'] ?? []).map((item) => ChatAdministrator.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory ChatAdministrators.fromJson(Map<String, dynamic> json) =>
+      ChatAdministrators(
+        administrators: List<ChatAdministrator>.from(
+            (json['administrators'] ?? [])
+                .map((item) => ChatAdministrator.fromJson(item))
+                .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "administrators": administrators.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +56,12 @@ final class ChatAdministrators extends TdObject {
     List<ChatAdministrator>? administrators,
     dynamic extra,
     int? clientId,
-  }) => ChatAdministrators(
-    administrators: administrators ?? this.administrators,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      ChatAdministrators(
+        administrators: administrators ?? this.administrators,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatAdministrators';

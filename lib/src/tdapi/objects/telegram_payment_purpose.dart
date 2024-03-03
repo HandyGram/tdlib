@@ -4,17 +4,16 @@ part of '../tdapi.dart';
 ///
 /// Describes a purpose of a payment toward Telegram.
 sealed class TelegramPaymentPurpose extends TdObject {
-  
   /// **TelegramPaymentPurpose** *(telegramPaymentPurpose)* - parent
   ///
   /// Describes a purpose of a payment toward Telegram.
   const TelegramPaymentPurpose();
-  
+
   /// a TelegramPaymentPurpose return type can be :
   /// * [TelegramPaymentPurposePremiumGiftCodes]
   /// * [TelegramPaymentPurposePremiumGiveaway]
-  factory TelegramPaymentPurpose.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory TelegramPaymentPurpose.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case TelegramPaymentPurposePremiumGiftCodes.defaultObjectId:
         return TelegramPaymentPurposePremiumGiftCodes.fromJson(json);
       case TelegramPaymentPurposePremiumGiveaway.defaultObjectId:
@@ -26,7 +25,7 @@ sealed class TelegramPaymentPurpose extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -46,7 +45,6 @@ sealed class TelegramPaymentPurpose extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **TelegramPaymentPurposePremiumGiftCodes** *(telegramPaymentPurposePremiumGiftCodes)* - child of TelegramPaymentPurpose
 ///
 /// The user creating Telegram Premium gift codes for other users.
@@ -56,8 +54,8 @@ sealed class TelegramPaymentPurpose extends TdObject {
 /// * [amount]: Paid amount, in the smallest units of the currency.
 /// * [userIds]: Identifiers of the users which can activate the gift codes.
 /// * [monthCount]: Number of months the Telegram Premium subscription will be active for the users.
-final class TelegramPaymentPurposePremiumGiftCodes extends TelegramPaymentPurpose {
-  
+final class TelegramPaymentPurposePremiumGiftCodes
+    extends TelegramPaymentPurpose {
   /// **TelegramPaymentPurposePremiumGiftCodes** *(telegramPaymentPurposePremiumGiftCodes)* - child of TelegramPaymentPurpose
   ///
   /// The user creating Telegram Premium gift codes for other users.
@@ -74,7 +72,7 @@ final class TelegramPaymentPurposePremiumGiftCodes extends TelegramPaymentPurpos
     required this.userIds,
     required this.monthCount,
   });
-  
+
   /// Identifier of the supergroup or channel chat, which will be automatically boosted by the users for duration of the Premium subscription and which is administered by the user; 0 if none
   final int boostedChatId;
 
@@ -89,29 +87,31 @@ final class TelegramPaymentPurposePremiumGiftCodes extends TelegramPaymentPurpos
 
   /// Number of months the Telegram Premium subscription will be active for the users
   final int monthCount;
-  
+
   /// Parse from a json
-  factory TelegramPaymentPurposePremiumGiftCodes.fromJson(Map<String, dynamic> json) => TelegramPaymentPurposePremiumGiftCodes(
-    boostedChatId: json['boosted_chat_id'] ?? 0,
-    currency: json['currency'],
-    amount: json['amount'],
-    userIds: List<int>.from((json['user_ids'] ?? []).map((item) => item).toList()),
-    monthCount: json['month_count'],
-  );
-  
-  
+  factory TelegramPaymentPurposePremiumGiftCodes.fromJson(
+          Map<String, dynamic> json) =>
+      TelegramPaymentPurposePremiumGiftCodes(
+        boostedChatId: json['boosted_chat_id'] ?? 0,
+        currency: json['currency'],
+        amount: json['amount'],
+        userIds: List<int>.from(
+            (json['user_ids'] ?? []).map((item) => item).toList()),
+        monthCount: json['month_count'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "boosted_chat_id": boostedChatId,
       "currency": currency,
       "amount": amount,
       "user_ids": userIds.map((i) => i).toList(),
       "month_count": monthCount,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -128,16 +128,18 @@ final class TelegramPaymentPurposePremiumGiftCodes extends TelegramPaymentPurpos
     int? amount,
     List<int>? userIds,
     int? monthCount,
-  }) => TelegramPaymentPurposePremiumGiftCodes(
-    boostedChatId: boostedChatId ?? this.boostedChatId,
-    currency: currency ?? this.currency,
-    amount: amount ?? this.amount,
-    userIds: userIds ?? this.userIds,
-    monthCount: monthCount ?? this.monthCount,
-  );
+  }) =>
+      TelegramPaymentPurposePremiumGiftCodes(
+        boostedChatId: boostedChatId ?? this.boostedChatId,
+        currency: currency ?? this.currency,
+        amount: amount ?? this.amount,
+        userIds: userIds ?? this.userIds,
+        monthCount: monthCount ?? this.monthCount,
+      );
 
   /// TDLib object type
-  static const String defaultObjectId = 'telegramPaymentPurposePremiumGiftCodes';
+  static const String defaultObjectId =
+      'telegramPaymentPurposePremiumGiftCodes';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -148,7 +150,6 @@ final class TelegramPaymentPurposePremiumGiftCodes extends TelegramPaymentPurpos
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **TelegramPaymentPurposePremiumGiveaway** *(telegramPaymentPurposePremiumGiveaway)* - child of TelegramPaymentPurpose
 ///
 /// The user creating a Telegram Premium giveaway.
@@ -158,8 +159,8 @@ final class TelegramPaymentPurposePremiumGiftCodes extends TelegramPaymentPurpos
 /// * [amount]: Paid amount, in the smallest units of the currency.
 /// * [winnerCount]: Number of users which will be able to activate the gift codes.
 /// * [monthCount]: Number of months the Telegram Premium subscription will be active for the users.
-final class TelegramPaymentPurposePremiumGiveaway extends TelegramPaymentPurpose {
-  
+final class TelegramPaymentPurposePremiumGiveaway
+    extends TelegramPaymentPurpose {
   /// **TelegramPaymentPurposePremiumGiveaway** *(telegramPaymentPurposePremiumGiveaway)* - child of TelegramPaymentPurpose
   ///
   /// The user creating a Telegram Premium giveaway.
@@ -176,7 +177,7 @@ final class TelegramPaymentPurposePremiumGiveaway extends TelegramPaymentPurpose
     required this.winnerCount,
     required this.monthCount,
   });
-  
+
   /// Giveaway parameters
   final PremiumGiveawayParameters parameters;
 
@@ -191,29 +192,30 @@ final class TelegramPaymentPurposePremiumGiveaway extends TelegramPaymentPurpose
 
   /// Number of months the Telegram Premium subscription will be active for the users
   final int monthCount;
-  
+
   /// Parse from a json
-  factory TelegramPaymentPurposePremiumGiveaway.fromJson(Map<String, dynamic> json) => TelegramPaymentPurposePremiumGiveaway(
-    parameters: PremiumGiveawayParameters.fromJson(json['parameters']),
-    currency: json['currency'],
-    amount: json['amount'],
-    winnerCount: json['winner_count'],
-    monthCount: json['month_count'],
-  );
-  
-  
+  factory TelegramPaymentPurposePremiumGiveaway.fromJson(
+          Map<String, dynamic> json) =>
+      TelegramPaymentPurposePremiumGiveaway(
+        parameters: PremiumGiveawayParameters.fromJson(json['parameters']),
+        currency: json['currency'],
+        amount: json['amount'],
+        winnerCount: json['winner_count'],
+        monthCount: json['month_count'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "parameters": parameters.toJson(),
       "currency": currency,
       "amount": amount,
       "winner_count": winnerCount,
       "month_count": monthCount,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -230,13 +232,14 @@ final class TelegramPaymentPurposePremiumGiveaway extends TelegramPaymentPurpose
     int? amount,
     int? winnerCount,
     int? monthCount,
-  }) => TelegramPaymentPurposePremiumGiveaway(
-    parameters: parameters ?? this.parameters,
-    currency: currency ?? this.currency,
-    amount: amount ?? this.amount,
-    winnerCount: winnerCount ?? this.winnerCount,
-    monthCount: monthCount ?? this.monthCount,
-  );
+  }) =>
+      TelegramPaymentPurposePremiumGiveaway(
+        parameters: parameters ?? this.parameters,
+        currency: currency ?? this.currency,
+        amount: amount ?? this.amount,
+        winnerCount: winnerCount ?? this.winnerCount,
+        monthCount: monthCount ?? this.monthCount,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'telegramPaymentPurposePremiumGiveaway';

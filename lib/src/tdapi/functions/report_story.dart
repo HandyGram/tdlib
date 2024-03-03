@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ReportStory extends TdFunction {
-  
   /// **ReportStory** *(reportStory)* - TDLib function
   ///
   /// Reports a story to the Telegram moderators.
@@ -28,7 +27,7 @@ final class ReportStory extends TdFunction {
     required this.reason,
     required this.text,
   });
-  
+
   /// The identifier of the sender of the story to report
   final int storySenderChatId;
 
@@ -40,19 +39,19 @@ final class ReportStory extends TdFunction {
 
   /// Additional report details; 0-1024 characters
   final String text;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "story_sender_chat_id": storySenderChatId,
       "story_id": storyId,
       "reason": reason.toJson(),
       "text": text,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -66,12 +65,13 @@ final class ReportStory extends TdFunction {
     int? storyId,
     ReportReason? reason,
     String? text,
-  }) => ReportStory(
-    storySenderChatId: storySenderChatId ?? this.storySenderChatId,
-    storyId: storyId ?? this.storyId,
-    reason: reason ?? this.reason,
-    text: text ?? this.text,
-  );
+  }) =>
+      ReportStory(
+        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+        storyId: storyId ?? this.storyId,
+        reason: reason ?? this.reason,
+        text: text ?? this.text,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'reportStory';

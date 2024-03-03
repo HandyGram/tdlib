@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [ReadDatePrivacySettings] is returned on completion.
 final class GetReadDatePrivacySettings extends TdFunction {
-  
   /// **GetReadDatePrivacySettings** *(getReadDatePrivacySettings)* - TDLib function
   ///
   /// Returns privacy settings for message read date.
   ///
   /// [ReadDatePrivacySettings] is returned on completion.
   const GetReadDatePrivacySettings();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   GetReadDatePrivacySettings copyWith() => const GetReadDatePrivacySettings();

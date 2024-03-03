@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 /// * [data]: Arbitrary data, defined while the sound was uploaded.
 /// * [sound]: File containing the sound.
 final class NotificationSound extends TdObject {
-  
   /// **NotificationSound** *(notificationSound)* - basic class
   ///
   /// Describes a notification sound in MP3 format.
@@ -32,7 +31,7 @@ final class NotificationSound extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Unique identifier of the notification sound
   final int id;
 
@@ -58,33 +57,33 @@ final class NotificationSound extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory NotificationSound.fromJson(Map<String, dynamic> json) => NotificationSound(
-    id: int.parse(json['id']),
-    duration: json['duration'],
-    date: json['date'],
-    title: json['title'],
-    data: json['data'],
-    sound: File.fromJson(json['sound']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory NotificationSound.fromJson(Map<String, dynamic> json) =>
+      NotificationSound(
+        id: int.parse(json['id']),
+        duration: json['duration'],
+        date: json['date'],
+        title: json['title'],
+        data: json['data'],
+        sound: File.fromJson(json['sound']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "duration": duration,
       "date": date,
       "title": title,
       "data": data,
       "sound": sound.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -104,16 +103,17 @@ final class NotificationSound extends TdObject {
     File? sound,
     dynamic extra,
     int? clientId,
-  }) => NotificationSound(
-    id: id ?? this.id,
-    duration: duration ?? this.duration,
-    date: date ?? this.date,
-    title: title ?? this.title,
-    data: data ?? this.data,
-    sound: sound ?? this.sound,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      NotificationSound(
+        id: id ?? this.id,
+        duration: duration ?? this.duration,
+        date: date ?? this.date,
+        title: title ?? this.title,
+        data: data ?? this.data,
+        sound: sound ?? this.sound,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'notificationSound';

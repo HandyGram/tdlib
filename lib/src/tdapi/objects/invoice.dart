@@ -19,7 +19,6 @@ part of '../tdapi.dart';
 /// * [sendEmailAddressToProvider]: True, if the user's email address will be sent to the provider.
 /// * [isFlexible]: True, if the total price depends on the shipping method.
 final class Invoice extends TdObject {
-  
   /// **Invoice** *(invoice)* - basic class
   ///
   /// Product invoice.
@@ -54,7 +53,7 @@ final class Invoice extends TdObject {
     required this.sendEmailAddressToProvider,
     required this.isFlexible,
   });
-  
+
   /// ISO 4217 currency code
   final String currency;
 
@@ -96,36 +95,40 @@ final class Invoice extends TdObject {
 
   /// True, if the total price depends on the shipping method
   final bool isFlexible;
-  
+
   /// Parse from a json
   factory Invoice.fromJson(Map<String, dynamic> json) => Invoice(
-    currency: json['currency'],
-    priceParts: List<LabeledPricePart>.from((json['price_parts'] ?? []).map((item) => LabeledPricePart.fromJson(item)).toList()),
-    maxTipAmount: json['max_tip_amount'],
-    suggestedTipAmounts: List<int>.from((json['suggested_tip_amounts'] ?? []).map((item) => item).toList()),
-    recurringPaymentTermsOfServiceUrl: json['recurring_payment_terms_of_service_url'],
-    termsOfServiceUrl: json['terms_of_service_url'],
-    isTest: json['is_test'],
-    needName: json['need_name'],
-    needPhoneNumber: json['need_phone_number'],
-    needEmailAddress: json['need_email_address'],
-    needShippingAddress: json['need_shipping_address'],
-    sendPhoneNumberToProvider: json['send_phone_number_to_provider'],
-    sendEmailAddressToProvider: json['send_email_address_to_provider'],
-    isFlexible: json['is_flexible'],
-  );
-  
-  
+        currency: json['currency'],
+        priceParts: List<LabeledPricePart>.from((json['price_parts'] ?? [])
+            .map((item) => LabeledPricePart.fromJson(item))
+            .toList()),
+        maxTipAmount: json['max_tip_amount'],
+        suggestedTipAmounts: List<int>.from(
+            (json['suggested_tip_amounts'] ?? []).map((item) => item).toList()),
+        recurringPaymentTermsOfServiceUrl:
+            json['recurring_payment_terms_of_service_url'],
+        termsOfServiceUrl: json['terms_of_service_url'],
+        isTest: json['is_test'],
+        needName: json['need_name'],
+        needPhoneNumber: json['need_phone_number'],
+        needEmailAddress: json['need_email_address'],
+        needShippingAddress: json['need_shipping_address'],
+        sendPhoneNumberToProvider: json['send_phone_number_to_provider'],
+        sendEmailAddressToProvider: json['send_email_address_to_provider'],
+        isFlexible: json['is_flexible'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "currency": currency,
       "price_parts": priceParts.map((i) => i.toJson()).toList(),
       "max_tip_amount": maxTipAmount,
       "suggested_tip_amounts": suggestedTipAmounts.map((i) => i).toList(),
-      "recurring_payment_terms_of_service_url": recurringPaymentTermsOfServiceUrl,
+      "recurring_payment_terms_of_service_url":
+          recurringPaymentTermsOfServiceUrl,
       "terms_of_service_url": termsOfServiceUrl,
       "is_test": isTest,
       "need_name": needName,
@@ -135,8 +138,8 @@ final class Invoice extends TdObject {
       "send_phone_number_to_provider": sendPhoneNumberToProvider,
       "send_email_address_to_provider": sendEmailAddressToProvider,
       "is_flexible": isFlexible,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -170,22 +173,26 @@ final class Invoice extends TdObject {
     bool? sendPhoneNumberToProvider,
     bool? sendEmailAddressToProvider,
     bool? isFlexible,
-  }) => Invoice(
-    currency: currency ?? this.currency,
-    priceParts: priceParts ?? this.priceParts,
-    maxTipAmount: maxTipAmount ?? this.maxTipAmount,
-    suggestedTipAmounts: suggestedTipAmounts ?? this.suggestedTipAmounts,
-    recurringPaymentTermsOfServiceUrl: recurringPaymentTermsOfServiceUrl ?? this.recurringPaymentTermsOfServiceUrl,
-    termsOfServiceUrl: termsOfServiceUrl ?? this.termsOfServiceUrl,
-    isTest: isTest ?? this.isTest,
-    needName: needName ?? this.needName,
-    needPhoneNumber: needPhoneNumber ?? this.needPhoneNumber,
-    needEmailAddress: needEmailAddress ?? this.needEmailAddress,
-    needShippingAddress: needShippingAddress ?? this.needShippingAddress,
-    sendPhoneNumberToProvider: sendPhoneNumberToProvider ?? this.sendPhoneNumberToProvider,
-    sendEmailAddressToProvider: sendEmailAddressToProvider ?? this.sendEmailAddressToProvider,
-    isFlexible: isFlexible ?? this.isFlexible,
-  );
+  }) =>
+      Invoice(
+        currency: currency ?? this.currency,
+        priceParts: priceParts ?? this.priceParts,
+        maxTipAmount: maxTipAmount ?? this.maxTipAmount,
+        suggestedTipAmounts: suggestedTipAmounts ?? this.suggestedTipAmounts,
+        recurringPaymentTermsOfServiceUrl: recurringPaymentTermsOfServiceUrl ??
+            this.recurringPaymentTermsOfServiceUrl,
+        termsOfServiceUrl: termsOfServiceUrl ?? this.termsOfServiceUrl,
+        isTest: isTest ?? this.isTest,
+        needName: needName ?? this.needName,
+        needPhoneNumber: needPhoneNumber ?? this.needPhoneNumber,
+        needEmailAddress: needEmailAddress ?? this.needEmailAddress,
+        needShippingAddress: needShippingAddress ?? this.needShippingAddress,
+        sendPhoneNumberToProvider:
+            sendPhoneNumberToProvider ?? this.sendPhoneNumberToProvider,
+        sendEmailAddressToProvider:
+            sendEmailAddressToProvider ?? this.sendEmailAddressToProvider,
+        isFlexible: isFlexible ?? this.isFlexible,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'invoice';

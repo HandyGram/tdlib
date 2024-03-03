@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class EditInlineMessageText extends TdFunction {
-  
   /// **EditInlineMessageText** *(editInlineMessageText)* - TDLib function
   ///
   /// Edits the text of an inline text or game message sent via a bot; for bots only.
@@ -25,7 +24,7 @@ final class EditInlineMessageText extends TdFunction {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-  
+
   /// Inline message identifier
   final String inlineMessageId;
 
@@ -34,18 +33,18 @@ final class EditInlineMessageText extends TdFunction {
 
   /// New text content of the message. Must be of type inputMessageText
   final InputMessageContent inputMessageContent;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "inline_message_id": inlineMessageId,
       "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class EditInlineMessageText extends TdFunction {
     String? inlineMessageId,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) => EditInlineMessageText(
-    inlineMessageId: inlineMessageId ?? this.inlineMessageId,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-  );
+  }) =>
+      EditInlineMessageText(
+        inlineMessageId: inlineMessageId ?? this.inlineMessageId,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'editInlineMessageText';

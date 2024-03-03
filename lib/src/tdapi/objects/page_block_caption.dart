@@ -7,7 +7,6 @@ part of '../tdapi.dart';
 /// * [text]: Content of the caption.
 /// * [credit]: Block credit (like HTML tag <cite>).
 final class PageBlockCaption extends TdObject {
-  
   /// **PageBlockCaption** *(pageBlockCaption)* - basic class
   ///
   /// Contains a caption of an instant view web page block, consisting of a text and a trailing credit.
@@ -18,42 +17,43 @@ final class PageBlockCaption extends TdObject {
     required this.text,
     required this.credit,
   });
-  
-  /// Content of the caption 
+
+  /// Content of the caption
   final RichText text;
 
   /// Block credit (like HTML tag <cite>)
   final RichText credit;
-  
+
   /// Parse from a json
-  factory PageBlockCaption.fromJson(Map<String, dynamic> json) => PageBlockCaption(
-    text: RichText.fromJson(json['text']),
-    credit: RichText.fromJson(json['credit']),
-  );
-  
-  
+  factory PageBlockCaption.fromJson(Map<String, dynamic> json) =>
+      PageBlockCaption(
+        text: RichText.fromJson(json['text']),
+        credit: RichText.fromJson(json['credit']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "text": text.toJson(),
       "credit": credit.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [text]: Content of the caption 
+  /// * [text]: Content of the caption
   /// * [credit]: Block credit (like HTML tag <cite>)
   PageBlockCaption copyWith({
     RichText? text,
     RichText? credit,
-  }) => PageBlockCaption(
-    text: text ?? this.text,
-    credit: credit ?? this.credit,
-  );
+  }) =>
+      PageBlockCaption(
+        text: text ?? this.text,
+        credit: credit ?? this.credit,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'pageBlockCaption';

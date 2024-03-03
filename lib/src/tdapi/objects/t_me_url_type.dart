@@ -4,19 +4,18 @@ part of '../tdapi.dart';
 ///
 /// Describes the type of a URL linking to an internal Telegram entity.
 sealed class TMeUrlType extends TdObject {
-  
   /// **TMeUrlType** *(tMeUrlType)* - parent
   ///
   /// Describes the type of a URL linking to an internal Telegram entity.
   const TMeUrlType();
-  
+
   /// a TMeUrlType return type can be :
   /// * [TMeUrlTypeUser]
   /// * [TMeUrlTypeSupergroup]
   /// * [TMeUrlTypeChatInvite]
   /// * [TMeUrlTypeStickerSet]
-  factory TMeUrlType.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory TMeUrlType.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case TMeUrlTypeUser.defaultObjectId:
         return TMeUrlTypeUser.fromJson(json);
       case TMeUrlTypeSupergroup.defaultObjectId:
@@ -32,7 +31,7 @@ sealed class TMeUrlType extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -52,14 +51,12 @@ sealed class TMeUrlType extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **TMeUrlTypeUser** *(tMeUrlTypeUser)* - child of TMeUrlType
 ///
 /// A URL linking to a user.
 ///
 /// * [userId]: Identifier of the user.
 final class TMeUrlTypeUser extends TMeUrlType {
-  
   /// **TMeUrlTypeUser** *(tMeUrlTypeUser)* - child of TMeUrlType
   ///
   /// A URL linking to a user.
@@ -68,24 +65,23 @@ final class TMeUrlTypeUser extends TMeUrlType {
   const TMeUrlTypeUser({
     required this.userId,
   });
-  
+
   /// Identifier of the user
   final int userId;
-  
+
   /// Parse from a json
   factory TMeUrlTypeUser.fromJson(Map<String, dynamic> json) => TMeUrlTypeUser(
-    userId: json['user_id'],
-  );
-  
-  
+        userId: json['user_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "user_id": userId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -94,9 +90,10 @@ final class TMeUrlTypeUser extends TMeUrlType {
   @override
   TMeUrlTypeUser copyWith({
     int? userId,
-  }) => TMeUrlTypeUser(
-    userId: userId ?? this.userId,
-  );
+  }) =>
+      TMeUrlTypeUser(
+        userId: userId ?? this.userId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'tMeUrlTypeUser';
@@ -110,14 +107,12 @@ final class TMeUrlTypeUser extends TMeUrlType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **TMeUrlTypeSupergroup** *(tMeUrlTypeSupergroup)* - child of TMeUrlType
 ///
 /// A URL linking to a public supergroup or channel.
 ///
 /// * [supergroupId]: Identifier of the supergroup or channel.
 final class TMeUrlTypeSupergroup extends TMeUrlType {
-  
   /// **TMeUrlTypeSupergroup** *(tMeUrlTypeSupergroup)* - child of TMeUrlType
   ///
   /// A URL linking to a public supergroup or channel.
@@ -126,24 +121,24 @@ final class TMeUrlTypeSupergroup extends TMeUrlType {
   const TMeUrlTypeSupergroup({
     required this.supergroupId,
   });
-  
+
   /// Identifier of the supergroup or channel
   final int supergroupId;
-  
+
   /// Parse from a json
-  factory TMeUrlTypeSupergroup.fromJson(Map<String, dynamic> json) => TMeUrlTypeSupergroup(
-    supergroupId: json['supergroup_id'],
-  );
-  
-  
+  factory TMeUrlTypeSupergroup.fromJson(Map<String, dynamic> json) =>
+      TMeUrlTypeSupergroup(
+        supergroupId: json['supergroup_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "supergroup_id": supergroupId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -152,9 +147,10 @@ final class TMeUrlTypeSupergroup extends TMeUrlType {
   @override
   TMeUrlTypeSupergroup copyWith({
     int? supergroupId,
-  }) => TMeUrlTypeSupergroup(
-    supergroupId: supergroupId ?? this.supergroupId,
-  );
+  }) =>
+      TMeUrlTypeSupergroup(
+        supergroupId: supergroupId ?? this.supergroupId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'tMeUrlTypeSupergroup';
@@ -168,14 +164,12 @@ final class TMeUrlTypeSupergroup extends TMeUrlType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **TMeUrlTypeChatInvite** *(tMeUrlTypeChatInvite)* - child of TMeUrlType
 ///
 /// A chat invite link.
 ///
 /// * [info]: Information about the chat invite link.
 final class TMeUrlTypeChatInvite extends TMeUrlType {
-  
   /// **TMeUrlTypeChatInvite** *(tMeUrlTypeChatInvite)* - child of TMeUrlType
   ///
   /// A chat invite link.
@@ -184,24 +178,24 @@ final class TMeUrlTypeChatInvite extends TMeUrlType {
   const TMeUrlTypeChatInvite({
     required this.info,
   });
-  
+
   /// Information about the chat invite link
   final ChatInviteLinkInfo info;
-  
+
   /// Parse from a json
-  factory TMeUrlTypeChatInvite.fromJson(Map<String, dynamic> json) => TMeUrlTypeChatInvite(
-    info: ChatInviteLinkInfo.fromJson(json['info']),
-  );
-  
-  
+  factory TMeUrlTypeChatInvite.fromJson(Map<String, dynamic> json) =>
+      TMeUrlTypeChatInvite(
+        info: ChatInviteLinkInfo.fromJson(json['info']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "info": info.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -210,9 +204,10 @@ final class TMeUrlTypeChatInvite extends TMeUrlType {
   @override
   TMeUrlTypeChatInvite copyWith({
     ChatInviteLinkInfo? info,
-  }) => TMeUrlTypeChatInvite(
-    info: info ?? this.info,
-  );
+  }) =>
+      TMeUrlTypeChatInvite(
+        info: info ?? this.info,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'tMeUrlTypeChatInvite';
@@ -226,14 +221,12 @@ final class TMeUrlTypeChatInvite extends TMeUrlType {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **TMeUrlTypeStickerSet** *(tMeUrlTypeStickerSet)* - child of TMeUrlType
 ///
 /// A URL linking to a sticker set.
 ///
 /// * [stickerSetId]: Identifier of the sticker set.
 final class TMeUrlTypeStickerSet extends TMeUrlType {
-  
   /// **TMeUrlTypeStickerSet** *(tMeUrlTypeStickerSet)* - child of TMeUrlType
   ///
   /// A URL linking to a sticker set.
@@ -242,24 +235,24 @@ final class TMeUrlTypeStickerSet extends TMeUrlType {
   const TMeUrlTypeStickerSet({
     required this.stickerSetId,
   });
-  
+
   /// Identifier of the sticker set
   final int stickerSetId;
-  
+
   /// Parse from a json
-  factory TMeUrlTypeStickerSet.fromJson(Map<String, dynamic> json) => TMeUrlTypeStickerSet(
-    stickerSetId: int.parse(json['sticker_set_id']),
-  );
-  
-  
+  factory TMeUrlTypeStickerSet.fromJson(Map<String, dynamic> json) =>
+      TMeUrlTypeStickerSet(
+        stickerSetId: int.parse(json['sticker_set_id']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sticker_set_id": stickerSetId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -268,9 +261,10 @@ final class TMeUrlTypeStickerSet extends TMeUrlType {
   @override
   TMeUrlTypeStickerSet copyWith({
     int? stickerSetId,
-  }) => TMeUrlTypeStickerSet(
-    stickerSetId: stickerSetId ?? this.stickerSetId,
-  );
+  }) =>
+      TMeUrlTypeStickerSet(
+        stickerSetId: stickerSetId ?? this.stickerSetId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'tMeUrlTypeStickerSet';

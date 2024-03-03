@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 ///
 /// [MessagePositions] is returned on completion.
 final class GetChatSparseMessagePositions extends TdFunction {
-  
   /// **GetChatSparseMessagePositions** *(getChatSparseMessagePositions)* - TDLib function
   ///
   /// Returns sparse positions of messages of the specified type in the chat to be used for shared media scroll implementation. Returns the results in reverse chronological order (i.e., in order of decreasing message_id).. Cannot be used in secret chats or with searchMessagesFilterFailedToSend filter without an enabled message database.
@@ -31,7 +30,7 @@ final class GetChatSparseMessagePositions extends TdFunction {
     required this.limit,
     required this.savedMessagesTopicId,
   });
-  
+
   /// Identifier of the chat in which to return information about message positions
   final int chatId;
 
@@ -46,20 +45,20 @@ final class GetChatSparseMessagePositions extends TdFunction {
 
   /// If not 0, only messages in the specified Saved Messages topic will be considered; pass 0 to consider all messages, or for chats other than Saved Messages
   final int savedMessagesTopicId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "filter": filter.toJson(),
       "from_message_id": fromMessageId,
       "limit": limit,
       "saved_messages_topic_id": savedMessagesTopicId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -75,13 +74,14 @@ final class GetChatSparseMessagePositions extends TdFunction {
     int? fromMessageId,
     int? limit,
     int? savedMessagesTopicId,
-  }) => GetChatSparseMessagePositions(
-    chatId: chatId ?? this.chatId,
-    filter: filter ?? this.filter,
-    fromMessageId: fromMessageId ?? this.fromMessageId,
-    limit: limit ?? this.limit,
-    savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
-  );
+  }) =>
+      GetChatSparseMessagePositions(
+        chatId: chatId ?? this.chatId,
+        filter: filter ?? this.filter,
+        fromMessageId: fromMessageId ?? this.fromMessageId,
+        limit: limit ?? this.limit,
+        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getChatSparseMessagePositions';

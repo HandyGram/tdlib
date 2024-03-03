@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 /// * [title]: Option title.
 /// * [priceParts]: A list of objects used to calculate the total shipping costs.
 final class ShippingOption extends TdObject {
-  
   /// **ShippingOption** *(shippingOption)* - basic class
   ///
   /// One shipping option.
@@ -21,7 +20,7 @@ final class ShippingOption extends TdObject {
     required this.title,
     required this.priceParts,
   });
-  
+
   /// Shipping option identifier
   final String id;
 
@@ -30,25 +29,26 @@ final class ShippingOption extends TdObject {
 
   /// A list of objects used to calculate the total shipping costs
   final List<LabeledPricePart> priceParts;
-  
+
   /// Parse from a json
   factory ShippingOption.fromJson(Map<String, dynamic> json) => ShippingOption(
-    id: json['id'],
-    title: json['title'],
-    priceParts: List<LabeledPricePart>.from((json['price_parts'] ?? []).map((item) => LabeledPricePart.fromJson(item)).toList()),
-  );
-  
-  
+        id: json['id'],
+        title: json['title'],
+        priceParts: List<LabeledPricePart>.from((json['price_parts'] ?? [])
+            .map((item) => LabeledPricePart.fromJson(item))
+            .toList()),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "title": title,
       "price_parts": priceParts.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -60,11 +60,12 @@ final class ShippingOption extends TdObject {
     String? id,
     String? title,
     List<LabeledPricePart>? priceParts,
-  }) => ShippingOption(
-    id: id ?? this.id,
-    title: title ?? this.title,
-    priceParts: priceParts ?? this.priceParts,
-  );
+  }) =>
+      ShippingOption(
+        id: id ?? this.id,
+        title: title ?? this.title,
+        priceParts: priceParts ?? this.priceParts,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'shippingOption';

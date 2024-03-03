@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [ChatBoostStatus] is returned on completion.
 final class GetChatBoostStatus extends TdFunction {
-  
   /// **GetChatBoostStatus** *(getChatBoostStatus)* - TDLib function
   ///
   /// Returns the current boost status for a supergroup or a channel chat.
@@ -19,19 +18,19 @@ final class GetChatBoostStatus extends TdFunction {
   const GetChatBoostStatus({
     required this.chatId,
   });
-  
+
   /// Identifier of the chat
   final int chatId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetChatBoostStatus extends TdFunction {
   /// * [chat_id]: Identifier of the chat
   GetChatBoostStatus copyWith({
     int? chatId,
-  }) => GetChatBoostStatus(
-    chatId: chatId ?? this.chatId,
-  );
+  }) =>
+      GetChatBoostStatus(
+        chatId: chatId ?? this.chatId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getChatBoostStatus';

@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 /// * [fitzpatrickType]: Emoji modifier fitzpatrick type; 0-6; 0 if none.
 /// * [sound]: File containing the sound to be played when the sticker is clicked; may be null. The sound is encoded with the Opus codec, and stored inside an OGG container *(optional)*.
 final class AnimatedEmoji extends TdObject {
-  
   /// **AnimatedEmoji** *(animatedEmoji)* - basic class
   ///
   /// Describes an animated or custom representation of an emoji.
@@ -29,7 +28,7 @@ final class AnimatedEmoji extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Sticker for the emoji; may be null if yet unknown for a custom emoji. If the sticker is a custom emoji, it can have arbitrary format different from stickerFormatTgs
   final Sticker? sticker;
 
@@ -52,31 +51,31 @@ final class AnimatedEmoji extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory AnimatedEmoji.fromJson(Map<String, dynamic> json) => AnimatedEmoji(
-    sticker: json['sticker'] == null ? null : Sticker.fromJson(json['sticker']),
-    stickerWidth: json['sticker_width'],
-    stickerHeight: json['sticker_height'],
-    fitzpatrickType: json['fitzpatrick_type'] ?? 0,
-    sound: json['sound'] == null ? null : File.fromJson(json['sound']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        sticker:
+            json['sticker'] == null ? null : Sticker.fromJson(json['sticker']),
+        stickerWidth: json['sticker_width'],
+        stickerHeight: json['sticker_height'],
+        fitzpatrickType: json['fitzpatrick_type'] ?? 0,
+        sound: json['sound'] == null ? null : File.fromJson(json['sound']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sticker": sticker?.toJson(),
       "sticker_width": stickerWidth,
       "sticker_height": stickerHeight,
       "fitzpatrick_type": fitzpatrickType,
       "sound": sound?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -94,15 +93,16 @@ final class AnimatedEmoji extends TdObject {
     File? sound,
     dynamic extra,
     int? clientId,
-  }) => AnimatedEmoji(
-    sticker: sticker ?? this.sticker,
-    stickerWidth: stickerWidth ?? this.stickerWidth,
-    stickerHeight: stickerHeight ?? this.stickerHeight,
-    fitzpatrickType: fitzpatrickType ?? this.fitzpatrickType,
-    sound: sound ?? this.sound,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      AnimatedEmoji(
+        sticker: sticker ?? this.sticker,
+        stickerWidth: stickerWidth ?? this.stickerWidth,
+        stickerHeight: stickerHeight ?? this.stickerHeight,
+        fitzpatrickType: fitzpatrickType ?? this.fitzpatrickType,
+        sound: sound ?? this.sound,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'animatedEmoji';

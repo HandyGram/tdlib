@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ToggleStoryIsPinned extends TdFunction {
-  
   /// **ToggleStoryIsPinned** *(toggleStoryIsPinned)* - TDLib function
   ///
   /// Toggles whether a story is accessible after expiration. Can be called only if story.can_toggle_is_pinned == true.
@@ -25,7 +24,7 @@ final class ToggleStoryIsPinned extends TdFunction {
     required this.storyId,
     required this.isPinned,
   });
-  
+
   /// Identifier of the chat that posted the story
   final int storySenderChatId;
 
@@ -34,18 +33,18 @@ final class ToggleStoryIsPinned extends TdFunction {
 
   /// Pass true to make the story accessible after expiration; pass false to make it private
   final bool isPinned;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "story_sender_chat_id": storySenderChatId,
       "story_id": storyId,
       "is_pinned": isPinned,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class ToggleStoryIsPinned extends TdFunction {
     int? storySenderChatId,
     int? storyId,
     bool? isPinned,
-  }) => ToggleStoryIsPinned(
-    storySenderChatId: storySenderChatId ?? this.storySenderChatId,
-    storyId: storyId ?? this.storyId,
-    isPinned: isPinned ?? this.isPinned,
-  );
+  }) =>
+      ToggleStoryIsPinned(
+        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+        storyId: storyId ?? this.storyId,
+        isPinned: isPinned ?? this.isPinned,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'toggleStoryIsPinned';

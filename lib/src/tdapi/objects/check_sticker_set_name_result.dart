@@ -4,18 +4,17 @@ part of '../tdapi.dart';
 ///
 /// Represents result of checking whether a name can be used for a new sticker set.
 sealed class CheckStickerSetNameResult extends TdObject {
-  
   /// **CheckStickerSetNameResult** *(checkStickerSetNameResult)* - parent
   ///
   /// Represents result of checking whether a name can be used for a new sticker set.
   const CheckStickerSetNameResult();
-  
+
   /// a CheckStickerSetNameResult return type can be :
   /// * [CheckStickerSetNameResultOk]
   /// * [CheckStickerSetNameResultNameInvalid]
   /// * [CheckStickerSetNameResultNameOccupied]
-  factory CheckStickerSetNameResult.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory CheckStickerSetNameResult.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case CheckStickerSetNameResultOk.defaultObjectId:
         return CheckStickerSetNameResultOk.fromJson(json);
       case CheckStickerSetNameResultNameInvalid.defaultObjectId:
@@ -29,7 +28,7 @@ sealed class CheckStickerSetNameResult extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -49,12 +48,10 @@ sealed class CheckStickerSetNameResult extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **CheckStickerSetNameResultOk** *(checkStickerSetNameResultOk)* - child of CheckStickerSetNameResult
 ///
 /// The name can be set.
 final class CheckStickerSetNameResultOk extends CheckStickerSetNameResult {
-  
   /// **CheckStickerSetNameResultOk** *(checkStickerSetNameResultOk)* - child of CheckStickerSetNameResult
   ///
   /// The name can be set.
@@ -62,7 +59,7 @@ final class CheckStickerSetNameResultOk extends CheckStickerSetNameResult {
     this.extra,
     this.clientId,
   });
-  
+
   /// [extra] callback sign
   @override
   final dynamic extra;
@@ -70,31 +67,32 @@ final class CheckStickerSetNameResultOk extends CheckStickerSetNameResult {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory CheckStickerSetNameResultOk.fromJson(Map<String, dynamic> json) => CheckStickerSetNameResultOk(
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory CheckStickerSetNameResultOk.fromJson(Map<String, dynamic> json) =>
+      CheckStickerSetNameResultOk(
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
   CheckStickerSetNameResultOk copyWith({
     dynamic extra,
     int? clientId,
-  }) => CheckStickerSetNameResultOk(
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      CheckStickerSetNameResultOk(
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'checkStickerSetNameResultOk';
@@ -108,12 +106,11 @@ final class CheckStickerSetNameResultOk extends CheckStickerSetNameResult {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **CheckStickerSetNameResultNameInvalid** *(checkStickerSetNameResultNameInvalid)* - child of CheckStickerSetNameResult
 ///
 /// The name is invalid.
-final class CheckStickerSetNameResultNameInvalid extends CheckStickerSetNameResult {
-  
+final class CheckStickerSetNameResultNameInvalid
+    extends CheckStickerSetNameResult {
   /// **CheckStickerSetNameResultNameInvalid** *(checkStickerSetNameResultNameInvalid)* - child of CheckStickerSetNameResult
   ///
   /// The name is invalid.
@@ -121,7 +118,7 @@ final class CheckStickerSetNameResultNameInvalid extends CheckStickerSetNameResu
     this.extra,
     this.clientId,
   });
-  
+
   /// [extra] callback sign
   @override
   final dynamic extra;
@@ -129,31 +126,33 @@ final class CheckStickerSetNameResultNameInvalid extends CheckStickerSetNameResu
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory CheckStickerSetNameResultNameInvalid.fromJson(Map<String, dynamic> json) => CheckStickerSetNameResultNameInvalid(
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory CheckStickerSetNameResultNameInvalid.fromJson(
+          Map<String, dynamic> json) =>
+      CheckStickerSetNameResultNameInvalid(
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
   CheckStickerSetNameResultNameInvalid copyWith({
     dynamic extra,
     int? clientId,
-  }) => CheckStickerSetNameResultNameInvalid(
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      CheckStickerSetNameResultNameInvalid(
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'checkStickerSetNameResultNameInvalid';
@@ -167,12 +166,11 @@ final class CheckStickerSetNameResultNameInvalid extends CheckStickerSetNameResu
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **CheckStickerSetNameResultNameOccupied** *(checkStickerSetNameResultNameOccupied)* - child of CheckStickerSetNameResult
 ///
 /// The name is occupied.
-final class CheckStickerSetNameResultNameOccupied extends CheckStickerSetNameResult {
-  
+final class CheckStickerSetNameResultNameOccupied
+    extends CheckStickerSetNameResult {
   /// **CheckStickerSetNameResultNameOccupied** *(checkStickerSetNameResultNameOccupied)* - child of CheckStickerSetNameResult
   ///
   /// The name is occupied.
@@ -180,7 +178,7 @@ final class CheckStickerSetNameResultNameOccupied extends CheckStickerSetNameRes
     this.extra,
     this.clientId,
   });
-  
+
   /// [extra] callback sign
   @override
   final dynamic extra;
@@ -188,31 +186,33 @@ final class CheckStickerSetNameResultNameOccupied extends CheckStickerSetNameRes
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory CheckStickerSetNameResultNameOccupied.fromJson(Map<String, dynamic> json) => CheckStickerSetNameResultNameOccupied(
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory CheckStickerSetNameResultNameOccupied.fromJson(
+          Map<String, dynamic> json) =>
+      CheckStickerSetNameResultNameOccupied(
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
   CheckStickerSetNameResultNameOccupied copyWith({
     dynamic extra,
     int? clientId,
-  }) => CheckStickerSetNameResultNameOccupied(
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      CheckStickerSetNameResultNameOccupied(
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'checkStickerSetNameResultNameOccupied';

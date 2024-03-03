@@ -4,18 +4,17 @@ part of '../tdapi.dart';
 ///
 /// Describes the quality of a group call video.
 sealed class GroupCallVideoQuality extends TdObject {
-  
   /// **GroupCallVideoQuality** *(groupCallVideoQuality)* - parent
   ///
   /// Describes the quality of a group call video.
   const GroupCallVideoQuality();
-  
+
   /// a GroupCallVideoQuality return type can be :
   /// * [GroupCallVideoQualityThumbnail]
   /// * [GroupCallVideoQualityMedium]
   /// * [GroupCallVideoQualityFull]
-  factory GroupCallVideoQuality.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory GroupCallVideoQuality.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case GroupCallVideoQualityThumbnail.defaultObjectId:
         return GroupCallVideoQualityThumbnail.fromJson(json);
       case GroupCallVideoQualityMedium.defaultObjectId:
@@ -29,7 +28,7 @@ sealed class GroupCallVideoQuality extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -49,31 +48,31 @@ sealed class GroupCallVideoQuality extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **GroupCallVideoQualityThumbnail** *(groupCallVideoQualityThumbnail)* - child of GroupCallVideoQuality
 ///
 /// The worst available video quality.
 final class GroupCallVideoQualityThumbnail extends GroupCallVideoQuality {
-  
   /// **GroupCallVideoQualityThumbnail** *(groupCallVideoQualityThumbnail)* - child of GroupCallVideoQuality
   ///
   /// The worst available video quality.
   const GroupCallVideoQualityThumbnail();
-  
+
   /// Parse from a json
-  factory GroupCallVideoQualityThumbnail.fromJson(Map<String, dynamic> json) => const GroupCallVideoQualityThumbnail();
-  
+  factory GroupCallVideoQualityThumbnail.fromJson(Map<String, dynamic> json) =>
+      const GroupCallVideoQualityThumbnail();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  GroupCallVideoQualityThumbnail copyWith() => const GroupCallVideoQualityThumbnail();
+  GroupCallVideoQualityThumbnail copyWith() =>
+      const GroupCallVideoQualityThumbnail();
 
   /// TDLib object type
   static const String defaultObjectId = 'groupCallVideoQualityThumbnail';
@@ -87,27 +86,26 @@ final class GroupCallVideoQualityThumbnail extends GroupCallVideoQuality {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **GroupCallVideoQualityMedium** *(groupCallVideoQualityMedium)* - child of GroupCallVideoQuality
 ///
 /// The medium video quality.
 final class GroupCallVideoQualityMedium extends GroupCallVideoQuality {
-  
   /// **GroupCallVideoQualityMedium** *(groupCallVideoQualityMedium)* - child of GroupCallVideoQuality
   ///
   /// The medium video quality.
   const GroupCallVideoQualityMedium();
-  
+
   /// Parse from a json
-  factory GroupCallVideoQualityMedium.fromJson(Map<String, dynamic> json) => const GroupCallVideoQualityMedium();
-  
+  factory GroupCallVideoQualityMedium.fromJson(Map<String, dynamic> json) =>
+      const GroupCallVideoQualityMedium();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -125,27 +123,26 @@ final class GroupCallVideoQualityMedium extends GroupCallVideoQuality {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **GroupCallVideoQualityFull** *(groupCallVideoQualityFull)* - child of GroupCallVideoQuality
 ///
 /// The best available video quality.
 final class GroupCallVideoQualityFull extends GroupCallVideoQuality {
-  
   /// **GroupCallVideoQualityFull** *(groupCallVideoQualityFull)* - child of GroupCallVideoQuality
   ///
   /// The best available video quality.
   const GroupCallVideoQualityFull();
-  
+
   /// Parse from a json
-  factory GroupCallVideoQualityFull.fromJson(Map<String, dynamic> json) => const GroupCallVideoQualityFull();
-  
+  factory GroupCallVideoQualityFull.fromJson(Map<String, dynamic> json) =>
+      const GroupCallVideoQualityFull();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override

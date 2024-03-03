@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [FoundMessages] is returned on completion.
 final class SearchOutgoingDocumentMessages extends TdFunction {
-  
   /// **SearchOutgoingDocumentMessages** *(searchOutgoingDocumentMessages)* - TDLib function
   ///
   /// Searches for outgoing messages with content of the type messageDocument in all chats except secret chats. Returns the results in reverse chronological order.
@@ -22,23 +21,23 @@ final class SearchOutgoingDocumentMessages extends TdFunction {
     required this.query,
     required this.limit,
   });
-  
+
   /// Query to search for in document file name and message caption
   final String query;
 
   /// The maximum number of messages to be returned; up to 100
   final int limit;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "query": query,
       "limit": limit,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class SearchOutgoingDocumentMessages extends TdFunction {
   SearchOutgoingDocumentMessages copyWith({
     String? query,
     int? limit,
-  }) => SearchOutgoingDocumentMessages(
-    query: query ?? this.query,
-    limit: limit ?? this.limit,
-  );
+  }) =>
+      SearchOutgoingDocumentMessages(
+        query: query ?? this.query,
+        limit: limit ?? this.limit,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'searchOutgoingDocumentMessages';

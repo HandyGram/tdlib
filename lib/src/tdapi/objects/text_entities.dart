@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [entities]: List of text entities.
 final class TextEntities extends TdObject {
-  
   /// **TextEntities** *(textEntities)* - basic class
   ///
   /// Contains a list of text entities.
@@ -17,7 +16,7 @@ final class TextEntities extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// List of text entities
   final List<TextEntity> entities;
 
@@ -28,23 +27,24 @@ final class TextEntities extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory TextEntities.fromJson(Map<String, dynamic> json) => TextEntities(
-    entities: List<TextEntity>.from((json['entities'] ?? []).map((item) => TextEntity.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        entities: List<TextEntity>.from((json['entities'] ?? [])
+            .map((item) => TextEntity.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "entities": entities.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +54,12 @@ final class TextEntities extends TdObject {
     List<TextEntity>? entities,
     dynamic extra,
     int? clientId,
-  }) => TextEntities(
-    entities: entities ?? this.entities,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      TextEntities(
+        entities: entities ?? this.entities,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'textEntities';

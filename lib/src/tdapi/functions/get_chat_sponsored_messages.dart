@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [SponsoredMessages] is returned on completion.
 final class GetChatSponsoredMessages extends TdFunction {
-  
   /// **GetChatSponsoredMessages** *(getChatSponsoredMessages)* - TDLib function
   ///
   /// Returns sponsored messages to be shown in a chat; for channel chats only.
@@ -19,19 +18,19 @@ final class GetChatSponsoredMessages extends TdFunction {
   const GetChatSponsoredMessages({
     required this.chatId,
   });
-  
+
   /// Identifier of the chat
   final int chatId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetChatSponsoredMessages extends TdFunction {
   /// * [chat_id]: Identifier of the chat
   GetChatSponsoredMessages copyWith({
     int? chatId,
-  }) => GetChatSponsoredMessages(
-    chatId: chatId ?? this.chatId,
-  );
+  }) =>
+      GetChatSponsoredMessages(
+        chatId: chatId ?? this.chatId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getChatSponsoredMessages';

@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 ///
 /// [MessageLink] is returned on completion.
 final class GetMessageLink extends TdFunction {
-  
   /// **GetMessageLink** *(getMessageLink)* - TDLib function
   ///
   /// Returns an HTTPS link to a message in a chat. Available only for already sent messages in supergroups and channels, or if message.can_get_media_timestamp_links and a media timestamp link is generated. This is an offline request.
@@ -31,7 +30,7 @@ final class GetMessageLink extends TdFunction {
     required this.forAlbum,
     required this.inMessageThread,
   });
-  
+
   /// Identifier of the chat to which the message belongs
   final int chatId;
 
@@ -46,20 +45,20 @@ final class GetMessageLink extends TdFunction {
 
   /// Pass true to create a link to the message as a channel post comment, in a message thread, or a forum topic
   final bool inMessageThread;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "media_timestamp": mediaTimestamp,
       "for_album": forAlbum,
       "in_message_thread": inMessageThread,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -75,13 +74,14 @@ final class GetMessageLink extends TdFunction {
     int? mediaTimestamp,
     bool? forAlbum,
     bool? inMessageThread,
-  }) => GetMessageLink(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    mediaTimestamp: mediaTimestamp ?? this.mediaTimestamp,
-    forAlbum: forAlbum ?? this.forAlbum,
-    inMessageThread: inMessageThread ?? this.inMessageThread,
-  );
+  }) =>
+      GetMessageLink(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        mediaTimestamp: mediaTimestamp ?? this.mediaTimestamp,
+        forAlbum: forAlbum ?? this.forAlbum,
+        inMessageThread: inMessageThread ?? this.inMessageThread,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getMessageLink';

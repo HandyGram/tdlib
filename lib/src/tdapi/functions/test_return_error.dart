@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Error] is returned on completion.
 final class TestReturnError extends TdFunction {
-  
   /// **TestReturnError** *(testReturnError)* - TDLib function
   ///
   /// Returns the specified error and ensures that the Error object is used; for testing only. Can be called synchronously.
@@ -19,19 +18,19 @@ final class TestReturnError extends TdFunction {
   const TestReturnError({
     required this.error,
   });
-  
+
   /// The error to be returned
   final TdError error;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "error": error.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class TestReturnError extends TdFunction {
   /// * [error]: The error to be returned
   TestReturnError copyWith({
     TdError? error,
-  }) => TestReturnError(
-    error: error ?? this.error,
-  );
+  }) =>
+      TestReturnError(
+        error: error ?? this.error,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'testReturnError';

@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [NotificationSounds] is returned on completion.
 final class GetSavedNotificationSound extends TdFunction {
-  
   /// **GetSavedNotificationSound** *(getSavedNotificationSound)* - TDLib function
   ///
   /// Returns saved notification sound by its identifier. Returns a 404 error if there is no saved notification sound with the specified identifier.
@@ -19,19 +18,19 @@ final class GetSavedNotificationSound extends TdFunction {
   const GetSavedNotificationSound({
     required this.notificationSoundId,
   });
-  
+
   /// Identifier of the notification sound
   final int notificationSoundId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "notification_sound_id": notificationSoundId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetSavedNotificationSound extends TdFunction {
   /// * [notification_sound_id]: Identifier of the notification sound
   GetSavedNotificationSound copyWith({
     int? notificationSoundId,
-  }) => GetSavedNotificationSound(
-    notificationSoundId: notificationSoundId ?? this.notificationSoundId,
-  );
+  }) =>
+      GetSavedNotificationSound(
+        notificationSoundId: notificationSoundId ?? this.notificationSoundId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getSavedNotificationSound';

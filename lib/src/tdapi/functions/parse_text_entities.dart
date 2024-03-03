@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [FormattedText] is returned on completion.
 final class ParseTextEntities extends TdFunction {
-  
   /// **ParseTextEntities** *(parseTextEntities)* - TDLib function
   ///
   /// Parses Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, Code, Pre, PreCode, TextUrl and MentionName entities from a marked-up text. Can be called synchronously.
@@ -22,36 +21,37 @@ final class ParseTextEntities extends TdFunction {
     required this.text,
     required this.parseMode,
   });
-  
-  /// The text to parse 
+
+  /// The text to parse
   final String text;
 
   /// Text parse mode
   final TextParseMode parseMode;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "text": text,
       "parse_mode": parseMode.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [text]: The text to parse 
+  /// * [text]: The text to parse
   /// * [parse_mode]: Text parse mode
   ParseTextEntities copyWith({
     String? text,
     TextParseMode? parseMode,
-  }) => ParseTextEntities(
-    text: text ?? this.text,
-    parseMode: parseMode ?? this.parseMode,
-  );
+  }) =>
+      ParseTextEntities(
+        text: text ?? this.text,
+        parseMode: parseMode ?? this.parseMode,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'parseTextEntities';

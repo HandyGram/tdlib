@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [PassportElement] is returned on completion.
 final class GetPassportElement extends TdFunction {
-  
   /// **GetPassportElement** *(getPassportElement)* - TDLib function
   ///
   /// Returns one of the available Telegram Passport elements.
@@ -22,36 +21,37 @@ final class GetPassportElement extends TdFunction {
     required this.type,
     required this.password,
   });
-  
-  /// Telegram Passport element type 
+
+  /// Telegram Passport element type
   final PassportElementType type;
 
   /// The 2-step verification password of the current user
   final String password;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "type": type.toJson(),
       "password": password,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [type]: Telegram Passport element type 
+  /// * [type]: Telegram Passport element type
   /// * [password]: The 2-step verification password of the current user
   GetPassportElement copyWith({
     PassportElementType? type,
     String? password,
-  }) => GetPassportElement(
-    type: type ?? this.type,
-    password: password ?? this.password,
-  );
+  }) =>
+      GetPassportElement(
+        type: type ?? this.type,
+        password: password ?? this.password,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getPassportElement';

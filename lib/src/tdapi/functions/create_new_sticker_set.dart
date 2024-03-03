@@ -15,7 +15,6 @@ part of '../tdapi.dart';
 ///
 /// [StickerSet] is returned on completion.
 final class CreateNewStickerSet extends TdFunction {
-  
   /// **CreateNewStickerSet** *(createNewStickerSet)* - TDLib function
   ///
   /// Creates a new sticker set. Returns the newly created sticker set.
@@ -40,7 +39,7 @@ final class CreateNewStickerSet extends TdFunction {
     required this.stickers,
     required this.source,
   });
-  
+
   /// Sticker set owner; ignored for regular users
   final int userId;
 
@@ -64,12 +63,12 @@ final class CreateNewStickerSet extends TdFunction {
 
   /// Source of the sticker set; may be empty if unknown
   final String source;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "user_id": userId,
       "title": title,
       "name": name,
@@ -79,8 +78,8 @@ final class CreateNewStickerSet extends TdFunction {
       "stickers": stickers.map((i) => i.toJson()).toList(),
       "source": source,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -102,16 +101,17 @@ final class CreateNewStickerSet extends TdFunction {
     bool? needsRepainting,
     List<InputSticker>? stickers,
     String? source,
-  }) => CreateNewStickerSet(
-    userId: userId ?? this.userId,
-    title: title ?? this.title,
-    name: name ?? this.name,
-    stickerFormat: stickerFormat ?? this.stickerFormat,
-    stickerType: stickerType ?? this.stickerType,
-    needsRepainting: needsRepainting ?? this.needsRepainting,
-    stickers: stickers ?? this.stickers,
-    source: source ?? this.source,
-  );
+  }) =>
+      CreateNewStickerSet(
+        userId: userId ?? this.userId,
+        title: title ?? this.title,
+        name: name ?? this.name,
+        stickerFormat: stickerFormat ?? this.stickerFormat,
+        stickerType: stickerType ?? this.stickerType,
+        needsRepainting: needsRepainting ?? this.needsRepainting,
+        stickers: stickers ?? this.stickers,
+        source: source ?? this.source,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'createNewStickerSet';

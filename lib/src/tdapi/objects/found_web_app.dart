@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 /// * [requestWriteAccess]: True, if the user must be asked for the permission to the bot to send them messages.
 /// * [skipConfirmation]: True, if there is no need to show an ordinary open URL confirmation before opening the Web App. The field must be ignored and confirmation must be shown anyway if the Web App link was hidden.
 final class FoundWebApp extends TdObject {
-  
   /// **FoundWebApp** *(foundWebApp)* - basic class
   ///
   /// Contains information about a Web App found by its short name.
@@ -23,7 +22,7 @@ final class FoundWebApp extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// The Web App
   final WebApp webApp;
 
@@ -40,27 +39,26 @@ final class FoundWebApp extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory FoundWebApp.fromJson(Map<String, dynamic> json) => FoundWebApp(
-    webApp: WebApp.fromJson(json['web_app']),
-    requestWriteAccess: json['request_write_access'],
-    skipConfirmation: json['skip_confirmation'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        webApp: WebApp.fromJson(json['web_app']),
+        requestWriteAccess: json['request_write_access'],
+        skipConfirmation: json['skip_confirmation'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "web_app": webApp.toJson(),
       "request_write_access": requestWriteAccess,
       "skip_confirmation": skipConfirmation,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -74,13 +72,14 @@ final class FoundWebApp extends TdObject {
     bool? skipConfirmation,
     dynamic extra,
     int? clientId,
-  }) => FoundWebApp(
-    webApp: webApp ?? this.webApp,
-    requestWriteAccess: requestWriteAccess ?? this.requestWriteAccess,
-    skipConfirmation: skipConfirmation ?? this.skipConfirmation,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      FoundWebApp(
+        webApp: webApp ?? this.webApp,
+        requestWriteAccess: requestWriteAccess ?? this.requestWriteAccess,
+        skipConfirmation: skipConfirmation ?? this.skipConfirmation,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'foundWebApp';

@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [UserSupportInfo] is returned on completion.
 final class SetUserSupportInfo extends TdFunction {
-  
   /// **SetUserSupportInfo** *(setUserSupportInfo)* - TDLib function
   ///
   /// Sets support information for the given user; for Telegram support only.
@@ -22,36 +21,37 @@ final class SetUserSupportInfo extends TdFunction {
     required this.userId,
     required this.message,
   });
-  
-  /// User identifier 
+
+  /// User identifier
   final int userId;
 
   /// New information message
   final FormattedText message;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "user_id": userId,
       "message": message.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [user_id]: User identifier 
+  /// * [user_id]: User identifier
   /// * [message]: New information message
   SetUserSupportInfo copyWith({
     int? userId,
     FormattedText? message,
-  }) => SetUserSupportInfo(
-    userId: userId ?? this.userId,
-    message: message ?? this.message,
-  );
+  }) =>
+      SetUserSupportInfo(
+        userId: userId ?? this.userId,
+        message: message ?? this.message,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setUserSupportInfo';

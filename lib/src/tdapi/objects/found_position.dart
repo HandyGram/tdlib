@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [position]: The position of the match.
 final class FoundPosition extends TdObject {
-  
   /// **FoundPosition** *(foundPosition)* - basic class
   ///
   /// Contains 0-based match position.
@@ -17,7 +16,7 @@ final class FoundPosition extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// The position of the match
   final int position;
 
@@ -28,23 +27,22 @@ final class FoundPosition extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory FoundPosition.fromJson(Map<String, dynamic> json) => FoundPosition(
-    position: json['position'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        position: json['position'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "position": position,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +52,12 @@ final class FoundPosition extends TdObject {
     int? position,
     dynamic extra,
     int? clientId,
-  }) => FoundPosition(
-    position: position ?? this.position,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      FoundPosition(
+        position: position ?? this.position,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'foundPosition';

@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 /// * [sentMessageCount]: Number of sent messages.
 /// * [averageCharacterCount]: Average number of characters in sent messages; 0 if unknown.
 final class ChatStatisticsMessageSenderInfo extends TdObject {
-  
   /// **ChatStatisticsMessageSenderInfo** *(chatStatisticsMessageSenderInfo)* - basic class
   ///
   /// Contains statistics about messages sent by a user.
@@ -21,7 +20,7 @@ final class ChatStatisticsMessageSenderInfo extends TdObject {
     required this.sentMessageCount,
     required this.averageCharacterCount,
   });
-  
+
   /// User identifier
   final int userId;
 
@@ -30,25 +29,25 @@ final class ChatStatisticsMessageSenderInfo extends TdObject {
 
   /// Average number of characters in sent messages; 0 if unknown
   final int averageCharacterCount;
-  
+
   /// Parse from a json
-  factory ChatStatisticsMessageSenderInfo.fromJson(Map<String, dynamic> json) => ChatStatisticsMessageSenderInfo(
-    userId: json['user_id'],
-    sentMessageCount: json['sent_message_count'],
-    averageCharacterCount: json['average_character_count'],
-  );
-  
-  
+  factory ChatStatisticsMessageSenderInfo.fromJson(Map<String, dynamic> json) =>
+      ChatStatisticsMessageSenderInfo(
+        userId: json['user_id'],
+        sentMessageCount: json['sent_message_count'],
+        averageCharacterCount: json['average_character_count'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "user_id": userId,
       "sent_message_count": sentMessageCount,
       "average_character_count": averageCharacterCount,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -60,11 +59,13 @@ final class ChatStatisticsMessageSenderInfo extends TdObject {
     int? userId,
     int? sentMessageCount,
     int? averageCharacterCount,
-  }) => ChatStatisticsMessageSenderInfo(
-    userId: userId ?? this.userId,
-    sentMessageCount: sentMessageCount ?? this.sentMessageCount,
-    averageCharacterCount: averageCharacterCount ?? this.averageCharacterCount,
-  );
+  }) =>
+      ChatStatisticsMessageSenderInfo(
+        userId: userId ?? this.userId,
+        sentMessageCount: sentMessageCount ?? this.sentMessageCount,
+        averageCharacterCount:
+            averageCharacterCount ?? this.averageCharacterCount,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatStatisticsMessageSenderInfo';

@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 /// * [thumbnail]: Document thumbnail in JPEG or PNG format (PNG will be used only for background patterns); as defined by the sender; may be null *(optional)*.
 /// * [document]: File containing the document.
 final class Document extends TdObject {
-  
   /// **Document** *(document)* - basic class
   ///
   /// Describes a document of any type.
@@ -27,7 +26,7 @@ final class Document extends TdObject {
     this.thumbnail,
     required this.document,
   });
-  
+
   /// Original name of the file; as defined by the sender
   final String fileName;
 
@@ -42,29 +41,32 @@ final class Document extends TdObject {
 
   /// File containing the document
   final File document;
-  
+
   /// Parse from a json
   factory Document.fromJson(Map<String, dynamic> json) => Document(
-    fileName: json['file_name'],
-    mimeType: json['mime_type'],
-    minithumbnail: json['minithumbnail'] == null ? null : Minithumbnail.fromJson(json['minithumbnail']),
-    thumbnail: json['thumbnail'] == null ? null : Thumbnail.fromJson(json['thumbnail']),
-    document: File.fromJson(json['document']),
-  );
-  
-  
+        fileName: json['file_name'],
+        mimeType: json['mime_type'],
+        minithumbnail: json['minithumbnail'] == null
+            ? null
+            : Minithumbnail.fromJson(json['minithumbnail']),
+        thumbnail: json['thumbnail'] == null
+            ? null
+            : Thumbnail.fromJson(json['thumbnail']),
+        document: File.fromJson(json['document']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "file_name": fileName,
       "mime_type": mimeType,
       "minithumbnail": minithumbnail?.toJson(),
       "thumbnail": thumbnail?.toJson(),
       "document": document.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -80,13 +82,14 @@ final class Document extends TdObject {
     Minithumbnail? minithumbnail,
     Thumbnail? thumbnail,
     File? document,
-  }) => Document(
-    fileName: fileName ?? this.fileName,
-    mimeType: mimeType ?? this.mimeType,
-    minithumbnail: minithumbnail ?? this.minithumbnail,
-    thumbnail: thumbnail ?? this.thumbnail,
-    document: document ?? this.document,
-  );
+  }) =>
+      Document(
+        fileName: fileName ?? this.fileName,
+        mimeType: mimeType ?? this.mimeType,
+        minithumbnail: minithumbnail ?? this.minithumbnail,
+        thumbnail: thumbnail ?? this.thumbnail,
+        document: document ?? this.document,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'document';

@@ -4,12 +4,11 @@ part of '../tdapi.dart';
 ///
 /// Represents a filter for message search results.
 sealed class SearchMessagesFilter extends TdObject {
-  
   /// **SearchMessagesFilter** *(searchMessagesFilter)* - parent
   ///
   /// Represents a filter for message search results.
   const SearchMessagesFilter();
-  
+
   /// a SearchMessagesFilter return type can be :
   /// * [SearchMessagesFilterEmpty]
   /// * [SearchMessagesFilterAnimation]
@@ -28,8 +27,8 @@ sealed class SearchMessagesFilter extends TdObject {
   /// * [SearchMessagesFilterUnreadReaction]
   /// * [SearchMessagesFilterFailedToSend]
   /// * [SearchMessagesFilterPinned]
-  factory SearchMessagesFilter.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory SearchMessagesFilter.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case SearchMessagesFilterEmpty.defaultObjectId:
         return SearchMessagesFilterEmpty.fromJson(json);
       case SearchMessagesFilterAnimation.defaultObjectId:
@@ -71,7 +70,7 @@ sealed class SearchMessagesFilter extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -91,27 +90,26 @@ sealed class SearchMessagesFilter extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SearchMessagesFilterEmpty** *(searchMessagesFilterEmpty)* - child of SearchMessagesFilter
 ///
 /// Returns all found messages, no filter is applied.
 final class SearchMessagesFilterEmpty extends SearchMessagesFilter {
-  
   /// **SearchMessagesFilterEmpty** *(searchMessagesFilterEmpty)* - child of SearchMessagesFilter
   ///
   /// Returns all found messages, no filter is applied.
   const SearchMessagesFilterEmpty();
-  
+
   /// Parse from a json
-  factory SearchMessagesFilterEmpty.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterEmpty();
-  
+  factory SearchMessagesFilterEmpty.fromJson(Map<String, dynamic> json) =>
+      const SearchMessagesFilterEmpty();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -129,31 +127,31 @@ final class SearchMessagesFilterEmpty extends SearchMessagesFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SearchMessagesFilterAnimation** *(searchMessagesFilterAnimation)* - child of SearchMessagesFilter
 ///
 /// Returns only animation messages.
 final class SearchMessagesFilterAnimation extends SearchMessagesFilter {
-  
   /// **SearchMessagesFilterAnimation** *(searchMessagesFilterAnimation)* - child of SearchMessagesFilter
   ///
   /// Returns only animation messages.
   const SearchMessagesFilterAnimation();
-  
+
   /// Parse from a json
-  factory SearchMessagesFilterAnimation.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterAnimation();
-  
+  factory SearchMessagesFilterAnimation.fromJson(Map<String, dynamic> json) =>
+      const SearchMessagesFilterAnimation();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  SearchMessagesFilterAnimation copyWith() => const SearchMessagesFilterAnimation();
+  SearchMessagesFilterAnimation copyWith() =>
+      const SearchMessagesFilterAnimation();
 
   /// TDLib object type
   static const String defaultObjectId = 'searchMessagesFilterAnimation';
@@ -167,27 +165,26 @@ final class SearchMessagesFilterAnimation extends SearchMessagesFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SearchMessagesFilterAudio** *(searchMessagesFilterAudio)* - child of SearchMessagesFilter
 ///
 /// Returns only audio messages.
 final class SearchMessagesFilterAudio extends SearchMessagesFilter {
-  
   /// **SearchMessagesFilterAudio** *(searchMessagesFilterAudio)* - child of SearchMessagesFilter
   ///
   /// Returns only audio messages.
   const SearchMessagesFilterAudio();
-  
+
   /// Parse from a json
-  factory SearchMessagesFilterAudio.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterAudio();
-  
+  factory SearchMessagesFilterAudio.fromJson(Map<String, dynamic> json) =>
+      const SearchMessagesFilterAudio();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -205,31 +202,31 @@ final class SearchMessagesFilterAudio extends SearchMessagesFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SearchMessagesFilterDocument** *(searchMessagesFilterDocument)* - child of SearchMessagesFilter
 ///
 /// Returns only document messages.
 final class SearchMessagesFilterDocument extends SearchMessagesFilter {
-  
   /// **SearchMessagesFilterDocument** *(searchMessagesFilterDocument)* - child of SearchMessagesFilter
   ///
   /// Returns only document messages.
   const SearchMessagesFilterDocument();
-  
+
   /// Parse from a json
-  factory SearchMessagesFilterDocument.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterDocument();
-  
+  factory SearchMessagesFilterDocument.fromJson(Map<String, dynamic> json) =>
+      const SearchMessagesFilterDocument();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  SearchMessagesFilterDocument copyWith() => const SearchMessagesFilterDocument();
+  SearchMessagesFilterDocument copyWith() =>
+      const SearchMessagesFilterDocument();
 
   /// TDLib object type
   static const String defaultObjectId = 'searchMessagesFilterDocument';
@@ -243,27 +240,26 @@ final class SearchMessagesFilterDocument extends SearchMessagesFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SearchMessagesFilterPhoto** *(searchMessagesFilterPhoto)* - child of SearchMessagesFilter
 ///
 /// Returns only photo messages.
 final class SearchMessagesFilterPhoto extends SearchMessagesFilter {
-  
   /// **SearchMessagesFilterPhoto** *(searchMessagesFilterPhoto)* - child of SearchMessagesFilter
   ///
   /// Returns only photo messages.
   const SearchMessagesFilterPhoto();
-  
+
   /// Parse from a json
-  factory SearchMessagesFilterPhoto.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterPhoto();
-  
+  factory SearchMessagesFilterPhoto.fromJson(Map<String, dynamic> json) =>
+      const SearchMessagesFilterPhoto();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -281,27 +277,26 @@ final class SearchMessagesFilterPhoto extends SearchMessagesFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SearchMessagesFilterVideo** *(searchMessagesFilterVideo)* - child of SearchMessagesFilter
 ///
 /// Returns only video messages.
 final class SearchMessagesFilterVideo extends SearchMessagesFilter {
-  
   /// **SearchMessagesFilterVideo** *(searchMessagesFilterVideo)* - child of SearchMessagesFilter
   ///
   /// Returns only video messages.
   const SearchMessagesFilterVideo();
-  
+
   /// Parse from a json
-  factory SearchMessagesFilterVideo.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterVideo();
-  
+  factory SearchMessagesFilterVideo.fromJson(Map<String, dynamic> json) =>
+      const SearchMessagesFilterVideo();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -319,31 +314,31 @@ final class SearchMessagesFilterVideo extends SearchMessagesFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SearchMessagesFilterVoiceNote** *(searchMessagesFilterVoiceNote)* - child of SearchMessagesFilter
 ///
 /// Returns only voice note messages.
 final class SearchMessagesFilterVoiceNote extends SearchMessagesFilter {
-  
   /// **SearchMessagesFilterVoiceNote** *(searchMessagesFilterVoiceNote)* - child of SearchMessagesFilter
   ///
   /// Returns only voice note messages.
   const SearchMessagesFilterVoiceNote();
-  
+
   /// Parse from a json
-  factory SearchMessagesFilterVoiceNote.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterVoiceNote();
-  
+  factory SearchMessagesFilterVoiceNote.fromJson(Map<String, dynamic> json) =>
+      const SearchMessagesFilterVoiceNote();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  SearchMessagesFilterVoiceNote copyWith() => const SearchMessagesFilterVoiceNote();
+  SearchMessagesFilterVoiceNote copyWith() =>
+      const SearchMessagesFilterVoiceNote();
 
   /// TDLib object type
   static const String defaultObjectId = 'searchMessagesFilterVoiceNote';
@@ -357,31 +352,32 @@ final class SearchMessagesFilterVoiceNote extends SearchMessagesFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SearchMessagesFilterPhotoAndVideo** *(searchMessagesFilterPhotoAndVideo)* - child of SearchMessagesFilter
 ///
 /// Returns only photo and video messages.
 final class SearchMessagesFilterPhotoAndVideo extends SearchMessagesFilter {
-  
   /// **SearchMessagesFilterPhotoAndVideo** *(searchMessagesFilterPhotoAndVideo)* - child of SearchMessagesFilter
   ///
   /// Returns only photo and video messages.
   const SearchMessagesFilterPhotoAndVideo();
-  
+
   /// Parse from a json
-  factory SearchMessagesFilterPhotoAndVideo.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterPhotoAndVideo();
-  
+  factory SearchMessagesFilterPhotoAndVideo.fromJson(
+          Map<String, dynamic> json) =>
+      const SearchMessagesFilterPhotoAndVideo();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  SearchMessagesFilterPhotoAndVideo copyWith() => const SearchMessagesFilterPhotoAndVideo();
+  SearchMessagesFilterPhotoAndVideo copyWith() =>
+      const SearchMessagesFilterPhotoAndVideo();
 
   /// TDLib object type
   static const String defaultObjectId = 'searchMessagesFilterPhotoAndVideo';
@@ -395,27 +391,26 @@ final class SearchMessagesFilterPhotoAndVideo extends SearchMessagesFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SearchMessagesFilterUrl** *(searchMessagesFilterUrl)* - child of SearchMessagesFilter
 ///
 /// Returns only messages containing URLs.
 final class SearchMessagesFilterUrl extends SearchMessagesFilter {
-  
   /// **SearchMessagesFilterUrl** *(searchMessagesFilterUrl)* - child of SearchMessagesFilter
   ///
   /// Returns only messages containing URLs.
   const SearchMessagesFilterUrl();
-  
+
   /// Parse from a json
-  factory SearchMessagesFilterUrl.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterUrl();
-  
+  factory SearchMessagesFilterUrl.fromJson(Map<String, dynamic> json) =>
+      const SearchMessagesFilterUrl();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -433,31 +428,31 @@ final class SearchMessagesFilterUrl extends SearchMessagesFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SearchMessagesFilterChatPhoto** *(searchMessagesFilterChatPhoto)* - child of SearchMessagesFilter
 ///
 /// Returns only messages containing chat photos.
 final class SearchMessagesFilterChatPhoto extends SearchMessagesFilter {
-  
   /// **SearchMessagesFilterChatPhoto** *(searchMessagesFilterChatPhoto)* - child of SearchMessagesFilter
   ///
   /// Returns only messages containing chat photos.
   const SearchMessagesFilterChatPhoto();
-  
+
   /// Parse from a json
-  factory SearchMessagesFilterChatPhoto.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterChatPhoto();
-  
+  factory SearchMessagesFilterChatPhoto.fromJson(Map<String, dynamic> json) =>
+      const SearchMessagesFilterChatPhoto();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  SearchMessagesFilterChatPhoto copyWith() => const SearchMessagesFilterChatPhoto();
+  SearchMessagesFilterChatPhoto copyWith() =>
+      const SearchMessagesFilterChatPhoto();
 
   /// TDLib object type
   static const String defaultObjectId = 'searchMessagesFilterChatPhoto';
@@ -471,31 +466,31 @@ final class SearchMessagesFilterChatPhoto extends SearchMessagesFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SearchMessagesFilterVideoNote** *(searchMessagesFilterVideoNote)* - child of SearchMessagesFilter
 ///
 /// Returns only video note messages.
 final class SearchMessagesFilterVideoNote extends SearchMessagesFilter {
-  
   /// **SearchMessagesFilterVideoNote** *(searchMessagesFilterVideoNote)* - child of SearchMessagesFilter
   ///
   /// Returns only video note messages.
   const SearchMessagesFilterVideoNote();
-  
+
   /// Parse from a json
-  factory SearchMessagesFilterVideoNote.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterVideoNote();
-  
+  factory SearchMessagesFilterVideoNote.fromJson(Map<String, dynamic> json) =>
+      const SearchMessagesFilterVideoNote();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  SearchMessagesFilterVideoNote copyWith() => const SearchMessagesFilterVideoNote();
+  SearchMessagesFilterVideoNote copyWith() =>
+      const SearchMessagesFilterVideoNote();
 
   /// TDLib object type
   static const String defaultObjectId = 'searchMessagesFilterVideoNote';
@@ -509,31 +504,32 @@ final class SearchMessagesFilterVideoNote extends SearchMessagesFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SearchMessagesFilterVoiceAndVideoNote** *(searchMessagesFilterVoiceAndVideoNote)* - child of SearchMessagesFilter
 ///
 /// Returns only voice and video note messages.
 final class SearchMessagesFilterVoiceAndVideoNote extends SearchMessagesFilter {
-  
   /// **SearchMessagesFilterVoiceAndVideoNote** *(searchMessagesFilterVoiceAndVideoNote)* - child of SearchMessagesFilter
   ///
   /// Returns only voice and video note messages.
   const SearchMessagesFilterVoiceAndVideoNote();
-  
+
   /// Parse from a json
-  factory SearchMessagesFilterVoiceAndVideoNote.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterVoiceAndVideoNote();
-  
+  factory SearchMessagesFilterVoiceAndVideoNote.fromJson(
+          Map<String, dynamic> json) =>
+      const SearchMessagesFilterVoiceAndVideoNote();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  SearchMessagesFilterVoiceAndVideoNote copyWith() => const SearchMessagesFilterVoiceAndVideoNote();
+  SearchMessagesFilterVoiceAndVideoNote copyWith() =>
+      const SearchMessagesFilterVoiceAndVideoNote();
 
   /// TDLib object type
   static const String defaultObjectId = 'searchMessagesFilterVoiceAndVideoNote';
@@ -547,27 +543,26 @@ final class SearchMessagesFilterVoiceAndVideoNote extends SearchMessagesFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SearchMessagesFilterMention** *(searchMessagesFilterMention)* - child of SearchMessagesFilter
 ///
 /// Returns only messages with mentions of the current user, or messages that are replies to their messages.
 final class SearchMessagesFilterMention extends SearchMessagesFilter {
-  
   /// **SearchMessagesFilterMention** *(searchMessagesFilterMention)* - child of SearchMessagesFilter
   ///
   /// Returns only messages with mentions of the current user, or messages that are replies to their messages.
   const SearchMessagesFilterMention();
-  
+
   /// Parse from a json
-  factory SearchMessagesFilterMention.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterMention();
-  
+  factory SearchMessagesFilterMention.fromJson(Map<String, dynamic> json) =>
+      const SearchMessagesFilterMention();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -585,31 +580,32 @@ final class SearchMessagesFilterMention extends SearchMessagesFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SearchMessagesFilterUnreadMention** *(searchMessagesFilterUnreadMention)* - child of SearchMessagesFilter
 ///
 /// Returns only messages with unread mentions of the current user, or messages that are replies to their messages. When using this filter the results can't be additionally filtered by a query, a message thread or by the sending user.
 final class SearchMessagesFilterUnreadMention extends SearchMessagesFilter {
-  
   /// **SearchMessagesFilterUnreadMention** *(searchMessagesFilterUnreadMention)* - child of SearchMessagesFilter
   ///
   /// Returns only messages with unread mentions of the current user, or messages that are replies to their messages. When using this filter the results can't be additionally filtered by a query, a message thread or by the sending user.
   const SearchMessagesFilterUnreadMention();
-  
+
   /// Parse from a json
-  factory SearchMessagesFilterUnreadMention.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterUnreadMention();
-  
+  factory SearchMessagesFilterUnreadMention.fromJson(
+          Map<String, dynamic> json) =>
+      const SearchMessagesFilterUnreadMention();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  SearchMessagesFilterUnreadMention copyWith() => const SearchMessagesFilterUnreadMention();
+  SearchMessagesFilterUnreadMention copyWith() =>
+      const SearchMessagesFilterUnreadMention();
 
   /// TDLib object type
   static const String defaultObjectId = 'searchMessagesFilterUnreadMention';
@@ -623,31 +619,32 @@ final class SearchMessagesFilterUnreadMention extends SearchMessagesFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SearchMessagesFilterUnreadReaction** *(searchMessagesFilterUnreadReaction)* - child of SearchMessagesFilter
 ///
 /// Returns only messages with unread reactions for the current user. When using this filter the results can't be additionally filtered by a query, a message thread or by the sending user.
 final class SearchMessagesFilterUnreadReaction extends SearchMessagesFilter {
-  
   /// **SearchMessagesFilterUnreadReaction** *(searchMessagesFilterUnreadReaction)* - child of SearchMessagesFilter
   ///
   /// Returns only messages with unread reactions for the current user. When using this filter the results can't be additionally filtered by a query, a message thread or by the sending user.
   const SearchMessagesFilterUnreadReaction();
-  
+
   /// Parse from a json
-  factory SearchMessagesFilterUnreadReaction.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterUnreadReaction();
-  
+  factory SearchMessagesFilterUnreadReaction.fromJson(
+          Map<String, dynamic> json) =>
+      const SearchMessagesFilterUnreadReaction();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  SearchMessagesFilterUnreadReaction copyWith() => const SearchMessagesFilterUnreadReaction();
+  SearchMessagesFilterUnreadReaction copyWith() =>
+      const SearchMessagesFilterUnreadReaction();
 
   /// TDLib object type
   static const String defaultObjectId = 'searchMessagesFilterUnreadReaction';
@@ -661,31 +658,32 @@ final class SearchMessagesFilterUnreadReaction extends SearchMessagesFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SearchMessagesFilterFailedToSend** *(searchMessagesFilterFailedToSend)* - child of SearchMessagesFilter
 ///
 /// Returns only failed to send messages. This filter can be used only if the message database is used.
 final class SearchMessagesFilterFailedToSend extends SearchMessagesFilter {
-  
   /// **SearchMessagesFilterFailedToSend** *(searchMessagesFilterFailedToSend)* - child of SearchMessagesFilter
   ///
   /// Returns only failed to send messages. This filter can be used only if the message database is used.
   const SearchMessagesFilterFailedToSend();
-  
+
   /// Parse from a json
-  factory SearchMessagesFilterFailedToSend.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterFailedToSend();
-  
+  factory SearchMessagesFilterFailedToSend.fromJson(
+          Map<String, dynamic> json) =>
+      const SearchMessagesFilterFailedToSend();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  SearchMessagesFilterFailedToSend copyWith() => const SearchMessagesFilterFailedToSend();
+  SearchMessagesFilterFailedToSend copyWith() =>
+      const SearchMessagesFilterFailedToSend();
 
   /// TDLib object type
   static const String defaultObjectId = 'searchMessagesFilterFailedToSend';
@@ -699,27 +697,26 @@ final class SearchMessagesFilterFailedToSend extends SearchMessagesFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SearchMessagesFilterPinned** *(searchMessagesFilterPinned)* - child of SearchMessagesFilter
 ///
 /// Returns only pinned messages.
 final class SearchMessagesFilterPinned extends SearchMessagesFilter {
-  
   /// **SearchMessagesFilterPinned** *(searchMessagesFilterPinned)* - child of SearchMessagesFilter
   ///
   /// Returns only pinned messages.
   const SearchMessagesFilterPinned();
-  
+
   /// Parse from a json
-  factory SearchMessagesFilterPinned.fromJson(Map<String, dynamic> json) => const SearchMessagesFilterPinned();
-  
+  factory SearchMessagesFilterPinned.fromJson(Map<String, dynamic> json) =>
+      const SearchMessagesFilterPinned();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override

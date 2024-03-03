@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class OpenStory extends TdFunction {
-  
   /// **OpenStory** *(openStory)* - TDLib function
   ///
   /// Informs TDLib that a story is opened and is being viewed by the user.
@@ -22,23 +21,23 @@ final class OpenStory extends TdFunction {
     required this.storySenderChatId,
     required this.storyId,
   });
-  
+
   /// The identifier of the sender of the opened story
   final int storySenderChatId;
 
   /// The identifier of the story
   final int storyId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "story_sender_chat_id": storySenderChatId,
       "story_id": storyId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class OpenStory extends TdFunction {
   OpenStory copyWith({
     int? storySenderChatId,
     int? storyId,
-  }) => OpenStory(
-    storySenderChatId: storySenderChatId ?? this.storySenderChatId,
-    storyId: storyId ?? this.storyId,
-  );
+  }) =>
+      OpenStory(
+        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+        storyId: storyId ?? this.storyId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'openStory';

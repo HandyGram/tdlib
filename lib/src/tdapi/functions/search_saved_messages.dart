@@ -13,7 +13,6 @@ part of '../tdapi.dart';
 ///
 /// [FoundChatMessages] is returned on completion.
 final class SearchSavedMessages extends TdFunction {
-  
   /// **SearchSavedMessages** *(searchSavedMessages)* - TDLib function
   ///
   /// Searches for messages tagged by the given reaction and with the given words in the Saved Messages chat; for Telegram Premium users only.. Returns the results in reverse chronological order, i.e. in order of decreasing message_id. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
@@ -34,7 +33,7 @@ final class SearchSavedMessages extends TdFunction {
     required this.offset,
     required this.limit,
   });
-  
+
   /// If not 0, only messages in the specified Saved Messages topic will be considered; pass 0 to consider all messages
   final int savedMessagesTopicId;
 
@@ -52,12 +51,12 @@ final class SearchSavedMessages extends TdFunction {
 
   /// The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than -offset.. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
   final int limit;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "saved_messages_topic_id": savedMessagesTopicId,
       "tag": tag?.toJson(),
       "query": query,
@@ -65,8 +64,8 @@ final class SearchSavedMessages extends TdFunction {
       "offset": offset,
       "limit": limit,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -84,14 +83,15 @@ final class SearchSavedMessages extends TdFunction {
     int? fromMessageId,
     int? offset,
     int? limit,
-  }) => SearchSavedMessages(
-    savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
-    tag: tag ?? this.tag,
-    query: query ?? this.query,
-    fromMessageId: fromMessageId ?? this.fromMessageId,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-  );
+  }) =>
+      SearchSavedMessages(
+        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
+        tag: tag ?? this.tag,
+        query: query ?? this.query,
+        fromMessageId: fromMessageId ?? this.fromMessageId,
+        offset: offset ?? this.offset,
+        limit: limit ?? this.limit,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'searchSavedMessages';

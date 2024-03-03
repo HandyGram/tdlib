@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetChatProfileAccentColor extends TdFunction {
-  
   /// **SetChatProfileAccentColor** *(setChatProfileAccentColor)* - TDLib function
   ///
   /// Changes accent color and background custom emoji for profile of a supergroup or channel chat. Requires can_change_info administrator right.
@@ -25,7 +24,7 @@ final class SetChatProfileAccentColor extends TdFunction {
     required this.profileAccentColorId,
     required this.profileBackgroundCustomEmojiId,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -34,18 +33,18 @@ final class SetChatProfileAccentColor extends TdFunction {
 
   /// Identifier of a custom emoji to be shown on the chat's profile photo background; 0 if none. Use chatBoostLevelFeatures.can_set_profile_background_custom_emoji to check whether a custom emoji can be set
   final int profileBackgroundCustomEmojiId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "profile_accent_color_id": profileAccentColorId,
       "profile_background_custom_emoji_id": profileBackgroundCustomEmojiId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,13 @@ final class SetChatProfileAccentColor extends TdFunction {
     int? chatId,
     int? profileAccentColorId,
     int? profileBackgroundCustomEmojiId,
-  }) => SetChatProfileAccentColor(
-    chatId: chatId ?? this.chatId,
-    profileAccentColorId: profileAccentColorId ?? this.profileAccentColorId,
-    profileBackgroundCustomEmojiId: profileBackgroundCustomEmojiId ?? this.profileBackgroundCustomEmojiId,
-  );
+  }) =>
+      SetChatProfileAccentColor(
+        chatId: chatId ?? this.chatId,
+        profileAccentColorId: profileAccentColorId ?? this.profileAccentColorId,
+        profileBackgroundCustomEmojiId: profileBackgroundCustomEmojiId ??
+            this.profileBackgroundCustomEmojiId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setChatProfileAccentColor';

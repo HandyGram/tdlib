@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 /// * [sendingId]: Non-persistent identifier, which will be returned back in messageSendingStatePending object and can be used to match sent messages and corresponding updateNewMessage updates.
 /// * [onlyPreview]: Pass true to get a fake message instead of actually sending them.
 final class MessageSendOptions extends TdObject {
-  
   /// **MessageSendOptions** *(messageSendOptions)* - basic class
   ///
   /// Options to be used when a message is sent.
@@ -33,7 +32,7 @@ final class MessageSendOptions extends TdObject {
     required this.sendingId,
     required this.onlyPreview,
   });
-  
+
   /// Pass true to disable notification for the message
   final bool disableNotification;
 
@@ -54,33 +53,37 @@ final class MessageSendOptions extends TdObject {
 
   /// Pass true to get a fake message instead of actually sending them
   final bool onlyPreview;
-  
+
   /// Parse from a json
-  factory MessageSendOptions.fromJson(Map<String, dynamic> json) => MessageSendOptions(
-    disableNotification: json['disable_notification'],
-    fromBackground: json['from_background'],
-    protectContent: json['protect_content'],
-    updateOrderOfInstalledStickerSets: json['update_order_of_installed_sticker_sets'],
-    schedulingState: json['scheduling_state'] == null ? null : MessageSchedulingState.fromJson(json['scheduling_state']),
-    sendingId: json['sending_id'],
-    onlyPreview: json['only_preview'],
-  );
-  
-  
+  factory MessageSendOptions.fromJson(Map<String, dynamic> json) =>
+      MessageSendOptions(
+        disableNotification: json['disable_notification'],
+        fromBackground: json['from_background'],
+        protectContent: json['protect_content'],
+        updateOrderOfInstalledStickerSets:
+            json['update_order_of_installed_sticker_sets'],
+        schedulingState: json['scheduling_state'] == null
+            ? null
+            : MessageSchedulingState.fromJson(json['scheduling_state']),
+        sendingId: json['sending_id'],
+        onlyPreview: json['only_preview'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "disable_notification": disableNotification,
       "from_background": fromBackground,
       "protect_content": protectContent,
-      "update_order_of_installed_sticker_sets": updateOrderOfInstalledStickerSets,
+      "update_order_of_installed_sticker_sets":
+          updateOrderOfInstalledStickerSets,
       "scheduling_state": schedulingState?.toJson(),
       "sending_id": sendingId,
       "only_preview": onlyPreview,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -100,15 +103,17 @@ final class MessageSendOptions extends TdObject {
     MessageSchedulingState? schedulingState,
     int? sendingId,
     bool? onlyPreview,
-  }) => MessageSendOptions(
-    disableNotification: disableNotification ?? this.disableNotification,
-    fromBackground: fromBackground ?? this.fromBackground,
-    protectContent: protectContent ?? this.protectContent,
-    updateOrderOfInstalledStickerSets: updateOrderOfInstalledStickerSets ?? this.updateOrderOfInstalledStickerSets,
-    schedulingState: schedulingState ?? this.schedulingState,
-    sendingId: sendingId ?? this.sendingId,
-    onlyPreview: onlyPreview ?? this.onlyPreview,
-  );
+  }) =>
+      MessageSendOptions(
+        disableNotification: disableNotification ?? this.disableNotification,
+        fromBackground: fromBackground ?? this.fromBackground,
+        protectContent: protectContent ?? this.protectContent,
+        updateOrderOfInstalledStickerSets: updateOrderOfInstalledStickerSets ??
+            this.updateOrderOfInstalledStickerSets,
+        schedulingState: schedulingState ?? this.schedulingState,
+        sendingId: sendingId ?? this.sendingId,
+        onlyPreview: onlyPreview ?? this.onlyPreview,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'messageSendOptions';

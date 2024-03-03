@@ -4,17 +4,16 @@ part of '../tdapi.dart';
 ///
 /// Describes a list of stories.
 sealed class StoryList extends TdObject {
-  
   /// **StoryList** *(storyList)* - parent
   ///
   /// Describes a list of stories.
   const StoryList();
-  
+
   /// a StoryList return type can be :
   /// * [StoryListMain]
   /// * [StoryListArchive]
-  factory StoryList.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory StoryList.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case StoryListMain.defaultObjectId:
         return StoryListMain.fromJson(json);
       case StoryListArchive.defaultObjectId:
@@ -26,7 +25,7 @@ sealed class StoryList extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -46,27 +45,26 @@ sealed class StoryList extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **StoryListMain** *(storyListMain)* - child of StoryList
 ///
 /// The list of stories, shown in the main chat list and folder chat lists.
 final class StoryListMain extends StoryList {
-  
   /// **StoryListMain** *(storyListMain)* - child of StoryList
   ///
   /// The list of stories, shown in the main chat list and folder chat lists.
   const StoryListMain();
-  
+
   /// Parse from a json
-  factory StoryListMain.fromJson(Map<String, dynamic> json) => const StoryListMain();
-  
+  factory StoryListMain.fromJson(Map<String, dynamic> json) =>
+      const StoryListMain();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -84,27 +82,26 @@ final class StoryListMain extends StoryList {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **StoryListArchive** *(storyListArchive)* - child of StoryList
 ///
 /// The list of stories, shown in the Arvhive chat list.
 final class StoryListArchive extends StoryList {
-  
   /// **StoryListArchive** *(storyListArchive)* - child of StoryList
   ///
   /// The list of stories, shown in the Arvhive chat list.
   const StoryListArchive();
-  
+
   /// Parse from a json
-  factory StoryListArchive.fromJson(Map<String, dynamic> json) => const StoryListArchive();
-  
+  factory StoryListArchive.fromJson(Map<String, dynamic> json) =>
+      const StoryListArchive();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override

@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [days]: Number of days of inactivity before the account will be flagged for deletion; 30-366 days.
 final class AccountTtl extends TdObject {
-  
   /// **AccountTtl** *(accountTtl)* - basic class
   ///
   /// Contains information about the period of inactivity after which the current user's account will automatically be deleted.
@@ -17,7 +16,7 @@ final class AccountTtl extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Number of days of inactivity before the account will be flagged for deletion; 30-366 days
   final int days;
 
@@ -28,23 +27,22 @@ final class AccountTtl extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory AccountTtl.fromJson(Map<String, dynamic> json) => AccountTtl(
-    days: json['days'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        days: json['days'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "days": days,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +52,12 @@ final class AccountTtl extends TdObject {
     int? days,
     dynamic extra,
     int? clientId,
-  }) => AccountTtl(
-    days: days ?? this.days,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      AccountTtl(
+        days: days ?? this.days,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'accountTtl';

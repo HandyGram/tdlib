@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 /// * [maxReadStoryId]: Identifier of the last read active story.
 /// * [stories]: Basic information about the stories; use getStory to get full information about the stories. The stories are in a chronological order (i.e., in order of increasing story identifiers).
 final class ChatActiveStories extends TdObject {
-  
   /// **ChatActiveStories** *(chatActiveStories)* - basic class
   ///
   /// Describes active stories posted by a chat.
@@ -29,7 +28,7 @@ final class ChatActiveStories extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Identifier of the chat that posted the stories
   final int chatId;
 
@@ -52,31 +51,33 @@ final class ChatActiveStories extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory ChatActiveStories.fromJson(Map<String, dynamic> json) => ChatActiveStories(
-    chatId: json['chat_id'],
-    list: json['list'] == null ? null : StoryList.fromJson(json['list']),
-    order: json['order'],
-    maxReadStoryId: json['max_read_story_id'],
-    stories: List<StoryInfo>.from((json['stories'] ?? []).map((item) => StoryInfo.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory ChatActiveStories.fromJson(Map<String, dynamic> json) =>
+      ChatActiveStories(
+        chatId: json['chat_id'],
+        list: json['list'] == null ? null : StoryList.fromJson(json['list']),
+        order: json['order'],
+        maxReadStoryId: json['max_read_story_id'],
+        stories: List<StoryInfo>.from((json['stories'] ?? [])
+            .map((item) => StoryInfo.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "list": list?.toJson(),
       "order": order,
       "max_read_story_id": maxReadStoryId,
       "stories": stories.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -94,15 +95,16 @@ final class ChatActiveStories extends TdObject {
     List<StoryInfo>? stories,
     dynamic extra,
     int? clientId,
-  }) => ChatActiveStories(
-    chatId: chatId ?? this.chatId,
-    list: list ?? this.list,
-    order: order ?? this.order,
-    maxReadStoryId: maxReadStoryId ?? this.maxReadStoryId,
-    stories: stories ?? this.stories,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      ChatActiveStories(
+        chatId: chatId ?? this.chatId,
+        list: list ?? this.list,
+        order: order ?? this.order,
+        maxReadStoryId: maxReadStoryId ?? this.maxReadStoryId,
+        stories: stories ?? this.stories,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatActiveStories';

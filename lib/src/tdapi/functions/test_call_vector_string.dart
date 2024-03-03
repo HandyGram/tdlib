@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [TestVectorString] is returned on completion.
 final class TestCallVectorString extends TdFunction {
-  
   /// **TestCallVectorString** *(testCallVectorString)* - TDLib function
   ///
   /// Returns the received vector of strings; for testing only. This is an offline method. Can be called before authorization.
@@ -19,19 +18,19 @@ final class TestCallVectorString extends TdFunction {
   const TestCallVectorString({
     required this.x,
   });
-  
+
   /// Vector of strings to return
   final List<String> x;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "x": x.map((i) => i).toList(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class TestCallVectorString extends TdFunction {
   /// * [x]: Vector of strings to return
   TestCallVectorString copyWith({
     List<String>? x,
-  }) => TestCallVectorString(
-    x: x ?? this.x,
-  );
+  }) =>
+      TestCallVectorString(
+        x: x ?? this.x,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'testCallVectorString';

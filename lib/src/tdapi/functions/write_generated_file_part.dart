@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class WriteGeneratedFilePart extends TdFunction {
-  
   /// **WriteGeneratedFilePart** *(writeGeneratedFilePart)* - TDLib function
   ///
   /// Writes a part of a generated file. This method is intended to be used only if the application has no direct access to TDLib's file system, because it is usually slower than a direct write to the destination file.
@@ -25,7 +24,7 @@ final class WriteGeneratedFilePart extends TdFunction {
     required this.offset,
     required this.data,
   });
-  
+
   /// The identifier of the generation process
   final int generationId;
 
@@ -34,18 +33,18 @@ final class WriteGeneratedFilePart extends TdFunction {
 
   /// The data to write
   final String data;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "generation_id": generationId,
       "offset": offset,
       "data": data,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class WriteGeneratedFilePart extends TdFunction {
     int? generationId,
     int? offset,
     String? data,
-  }) => WriteGeneratedFilePart(
-    generationId: generationId ?? this.generationId,
-    offset: offset ?? this.offset,
-    data: data ?? this.data,
-  );
+  }) =>
+      WriteGeneratedFilePart(
+        generationId: generationId ?? this.generationId,
+        offset: offset ?? this.offset,
+        data: data ?? this.data,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'writeGeneratedFilePart';

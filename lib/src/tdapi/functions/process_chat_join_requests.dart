@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ProcessChatJoinRequests extends TdFunction {
-  
   /// **ProcessChatJoinRequests** *(processChatJoinRequests)* - TDLib function
   ///
   /// Handles all pending join requests for a given link in a chat.
@@ -25,7 +24,7 @@ final class ProcessChatJoinRequests extends TdFunction {
     required this.inviteLink,
     required this.approve,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -34,18 +33,18 @@ final class ProcessChatJoinRequests extends TdFunction {
 
   /// Pass true to approve all requests; pass false to decline them
   final bool approve;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "invite_link": inviteLink,
       "approve": approve,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class ProcessChatJoinRequests extends TdFunction {
     int? chatId,
     String? inviteLink,
     bool? approve,
-  }) => ProcessChatJoinRequests(
-    chatId: chatId ?? this.chatId,
-    inviteLink: inviteLink ?? this.inviteLink,
-    approve: approve ?? this.approve,
-  );
+  }) =>
+      ProcessChatJoinRequests(
+        chatId: chatId ?? this.chatId,
+        inviteLink: inviteLink ?? this.inviteLink,
+        approve: approve ?? this.approve,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'processChatJoinRequests';

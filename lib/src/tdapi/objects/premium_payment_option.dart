@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 /// * [storeProductId]: Identifier of the store product associated with the option.
 /// * [paymentLink]: An internal link to be opened for buying Telegram Premium to the user if store payment isn't possible; may be null if direct payment isn't available *(optional)*.
 final class PremiumPaymentOption extends TdObject {
-  
   /// **PremiumPaymentOption** *(premiumPaymentOption)* - basic class
   ///
   /// Describes an option for buying Telegram Premium to a user.
@@ -30,7 +29,7 @@ final class PremiumPaymentOption extends TdObject {
     required this.storeProductId,
     this.paymentLink,
   });
-  
+
   /// ISO 4217 currency code for Telegram Premium subscription payment
   final String currency;
 
@@ -48,31 +47,33 @@ final class PremiumPaymentOption extends TdObject {
 
   /// An internal link to be opened for buying Telegram Premium to the user if store payment isn't possible; may be null if direct payment isn't available
   final InternalLinkType? paymentLink;
-  
+
   /// Parse from a json
-  factory PremiumPaymentOption.fromJson(Map<String, dynamic> json) => PremiumPaymentOption(
-    currency: json['currency'],
-    amount: json['amount'],
-    discountPercentage: json['discount_percentage'],
-    monthCount: json['month_count'],
-    storeProductId: json['store_product_id'],
-    paymentLink: json['payment_link'] == null ? null : InternalLinkType.fromJson(json['payment_link']),
-  );
-  
-  
+  factory PremiumPaymentOption.fromJson(Map<String, dynamic> json) =>
+      PremiumPaymentOption(
+        currency: json['currency'],
+        amount: json['amount'],
+        discountPercentage: json['discount_percentage'],
+        monthCount: json['month_count'],
+        storeProductId: json['store_product_id'],
+        paymentLink: json['payment_link'] == null
+            ? null
+            : InternalLinkType.fromJson(json['payment_link']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "currency": currency,
       "amount": amount,
       "discount_percentage": discountPercentage,
       "month_count": monthCount,
       "store_product_id": storeProductId,
       "payment_link": paymentLink?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -90,14 +91,15 @@ final class PremiumPaymentOption extends TdObject {
     int? monthCount,
     String? storeProductId,
     InternalLinkType? paymentLink,
-  }) => PremiumPaymentOption(
-    currency: currency ?? this.currency,
-    amount: amount ?? this.amount,
-    discountPercentage: discountPercentage ?? this.discountPercentage,
-    monthCount: monthCount ?? this.monthCount,
-    storeProductId: storeProductId ?? this.storeProductId,
-    paymentLink: paymentLink ?? this.paymentLink,
-  );
+  }) =>
+      PremiumPaymentOption(
+        currency: currency ?? this.currency,
+        amount: amount ?? this.amount,
+        discountPercentage: discountPercentage ?? this.discountPercentage,
+        monthCount: monthCount ?? this.monthCount,
+        storeProductId: storeProductId ?? this.storeProductId,
+        paymentLink: paymentLink ?? this.paymentLink,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'premiumPaymentOption';

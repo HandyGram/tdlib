@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [AvailableReactions] is returned on completion.
 final class GetStoryAvailableReactions extends TdFunction {
-  
   /// **GetStoryAvailableReactions** *(getStoryAvailableReactions)* - TDLib function
   ///
   /// Returns reactions, which can be chosen for a story.
@@ -19,19 +18,19 @@ final class GetStoryAvailableReactions extends TdFunction {
   const GetStoryAvailableReactions({
     required this.rowSize,
   });
-  
+
   /// Number of reaction per row, 5-25
   final int rowSize;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "row_size": rowSize,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetStoryAvailableReactions extends TdFunction {
   /// * [row_size]: Number of reaction per row, 5-25
   GetStoryAvailableReactions copyWith({
     int? rowSize,
-  }) => GetStoryAvailableReactions(
-    rowSize: rowSize ?? this.rowSize,
-  );
+  }) =>
+      GetStoryAvailableReactions(
+        rowSize: rowSize ?? this.rowSize,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getStoryAvailableReactions';

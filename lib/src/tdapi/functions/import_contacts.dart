@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [ImportedContacts] is returned on completion.
 final class ImportContacts extends TdFunction {
-  
   /// **ImportContacts** *(importContacts)* - TDLib function
   ///
   /// Adds new contacts or edits existing contacts by their phone numbers; contacts' user identifiers are ignored.
@@ -19,19 +18,19 @@ final class ImportContacts extends TdFunction {
   const ImportContacts({
     required this.contacts,
   });
-  
+
   /// The list of contacts to import or edit; contacts' vCard are ignored and are not imported
   final List<Contact> contacts;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "contacts": contacts.map((i) => i.toJson()).toList(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class ImportContacts extends TdFunction {
   /// * [contacts]: The list of contacts to import or edit; contacts' vCard are ignored and are not imported
   ImportContacts copyWith({
     List<Contact>? contacts,
-  }) => ImportContacts(
-    contacts: contacts ?? this.contacts,
-  );
+  }) =>
+      ImportContacts(
+        contacts: contacts ?? this.contacts,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'importContacts';

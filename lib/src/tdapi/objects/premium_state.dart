@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 /// * [paymentOptions]: The list of available options for buying Telegram Premium.
 /// * [animations]: The list of available promotion animations for Premium features.
 final class PremiumState extends TdObject {
-  
   /// **PremiumState** *(premiumState)* - basic class
   ///
   /// Contains state of Telegram Premium subscription and promotion videos for Premium features.
@@ -23,7 +22,7 @@ final class PremiumState extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Text description of the state of the current Premium subscription; may be empty if the current user has no Telegram Premium subscription
   final FormattedText state;
 
@@ -40,27 +39,32 @@ final class PremiumState extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory PremiumState.fromJson(Map<String, dynamic> json) => PremiumState(
-    state: FormattedText.fromJson(json['state']),
-    paymentOptions: List<PremiumStatePaymentOption>.from((json['payment_options'] ?? []).map((item) => PremiumStatePaymentOption.fromJson(item)).toList()),
-    animations: List<PremiumFeaturePromotionAnimation>.from((json['animations'] ?? []).map((item) => PremiumFeaturePromotionAnimation.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        state: FormattedText.fromJson(json['state']),
+        paymentOptions: List<PremiumStatePaymentOption>.from(
+            (json['payment_options'] ?? [])
+                .map((item) => PremiumStatePaymentOption.fromJson(item))
+                .toList()),
+        animations: List<PremiumFeaturePromotionAnimation>.from(
+            (json['animations'] ?? [])
+                .map((item) => PremiumFeaturePromotionAnimation.fromJson(item))
+                .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "state": state.toJson(),
       "payment_options": paymentOptions.map((i) => i.toJson()).toList(),
       "animations": animations.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -74,13 +78,14 @@ final class PremiumState extends TdObject {
     List<PremiumFeaturePromotionAnimation>? animations,
     dynamic extra,
     int? clientId,
-  }) => PremiumState(
-    state: state ?? this.state,
-    paymentOptions: paymentOptions ?? this.paymentOptions,
-    animations: animations ?? this.animations,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      PremiumState(
+        state: state ?? this.state,
+        paymentOptions: paymentOptions ?? this.paymentOptions,
+        animations: animations ?? this.animations,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'premiumState';

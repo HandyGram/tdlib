@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [emojiKeywords]: List of emoji with their keywords.
 final class EmojiKeywords extends TdObject {
-  
   /// **EmojiKeywords** *(emojiKeywords)* - basic class
   ///
   /// Represents a list of emoji with their keywords.
@@ -17,7 +16,7 @@ final class EmojiKeywords extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// List of emoji with their keywords
   final List<EmojiKeyword> emojiKeywords;
 
@@ -28,23 +27,24 @@ final class EmojiKeywords extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory EmojiKeywords.fromJson(Map<String, dynamic> json) => EmojiKeywords(
-    emojiKeywords: List<EmojiKeyword>.from((json['emoji_keywords'] ?? []).map((item) => EmojiKeyword.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        emojiKeywords: List<EmojiKeyword>.from((json['emoji_keywords'] ?? [])
+            .map((item) => EmojiKeyword.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "emoji_keywords": emojiKeywords.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +54,12 @@ final class EmojiKeywords extends TdObject {
     List<EmojiKeyword>? emojiKeywords,
     dynamic extra,
     int? clientId,
-  }) => EmojiKeywords(
-    emojiKeywords: emojiKeywords ?? this.emojiKeywords,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      EmojiKeywords(
+        emojiKeywords: emojiKeywords ?? this.emojiKeywords,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'emojiKeywords';

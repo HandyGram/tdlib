@@ -4,17 +4,16 @@ part of '../tdapi.dart';
 ///
 /// Describes reactions available in the chat.
 sealed class ChatAvailableReactions extends TdObject {
-  
   /// **ChatAvailableReactions** *(chatAvailableReactions)* - parent
   ///
   /// Describes reactions available in the chat.
   const ChatAvailableReactions();
-  
+
   /// a ChatAvailableReactions return type can be :
   /// * [ChatAvailableReactionsAll]
   /// * [ChatAvailableReactionsSome]
-  factory ChatAvailableReactions.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory ChatAvailableReactions.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case ChatAvailableReactionsAll.defaultObjectId:
         return ChatAvailableReactionsAll.fromJson(json);
       case ChatAvailableReactionsSome.defaultObjectId:
@@ -26,7 +25,7 @@ sealed class ChatAvailableReactions extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -46,27 +45,26 @@ sealed class ChatAvailableReactions extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **ChatAvailableReactionsAll** *(chatAvailableReactionsAll)* - child of ChatAvailableReactions
 ///
 /// All reactions are available in the chat.
 final class ChatAvailableReactionsAll extends ChatAvailableReactions {
-  
   /// **ChatAvailableReactionsAll** *(chatAvailableReactionsAll)* - child of ChatAvailableReactions
   ///
   /// All reactions are available in the chat.
   const ChatAvailableReactionsAll();
-  
+
   /// Parse from a json
-  factory ChatAvailableReactionsAll.fromJson(Map<String, dynamic> json) => const ChatAvailableReactionsAll();
-  
+  factory ChatAvailableReactionsAll.fromJson(Map<String, dynamic> json) =>
+      const ChatAvailableReactionsAll();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -84,14 +82,12 @@ final class ChatAvailableReactionsAll extends ChatAvailableReactions {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **ChatAvailableReactionsSome** *(chatAvailableReactionsSome)* - child of ChatAvailableReactions
 ///
 /// Only specific reactions are available in the chat.
 ///
 /// * [reactions]: The list of reactions.
 final class ChatAvailableReactionsSome extends ChatAvailableReactions {
-  
   /// **ChatAvailableReactionsSome** *(chatAvailableReactionsSome)* - child of ChatAvailableReactions
   ///
   /// Only specific reactions are available in the chat.
@@ -100,24 +96,26 @@ final class ChatAvailableReactionsSome extends ChatAvailableReactions {
   const ChatAvailableReactionsSome({
     required this.reactions,
   });
-  
+
   /// The list of reactions
   final List<ReactionType> reactions;
-  
+
   /// Parse from a json
-  factory ChatAvailableReactionsSome.fromJson(Map<String, dynamic> json) => ChatAvailableReactionsSome(
-    reactions: List<ReactionType>.from((json['reactions'] ?? []).map((item) => ReactionType.fromJson(item)).toList()),
-  );
-  
-  
+  factory ChatAvailableReactionsSome.fromJson(Map<String, dynamic> json) =>
+      ChatAvailableReactionsSome(
+        reactions: List<ReactionType>.from((json['reactions'] ?? [])
+            .map((item) => ReactionType.fromJson(item))
+            .toList()),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "reactions": reactions.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -126,9 +124,10 @@ final class ChatAvailableReactionsSome extends ChatAvailableReactions {
   @override
   ChatAvailableReactionsSome copyWith({
     List<ReactionType>? reactions,
-  }) => ChatAvailableReactionsSome(
-    reactions: reactions ?? this.reactions,
-  );
+  }) =>
+      ChatAvailableReactionsSome(
+        reactions: reactions ?? this.reactions,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatAvailableReactionsSome';

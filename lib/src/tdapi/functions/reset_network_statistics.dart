@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ResetNetworkStatistics extends TdFunction {
-  
   /// **ResetNetworkStatistics** *(resetNetworkStatistics)* - TDLib function
   ///
   /// Resets all network data usage statistics to zero. Can be called before authorization.
   ///
   /// [Ok] is returned on completion.
   const ResetNetworkStatistics();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   ResetNetworkStatistics copyWith() => const ResetNetworkStatistics();

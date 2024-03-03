@@ -4,17 +4,16 @@ part of '../tdapi.dart';
 ///
 /// Contains information about Telegram Premium giveaway.
 sealed class PremiumGiveawayInfo extends TdObject {
-  
   /// **PremiumGiveawayInfo** *(premiumGiveawayInfo)* - parent
   ///
   /// Contains information about Telegram Premium giveaway.
   const PremiumGiveawayInfo();
-  
+
   /// a PremiumGiveawayInfo return type can be :
   /// * [PremiumGiveawayInfoOngoing]
   /// * [PremiumGiveawayInfoCompleted]
-  factory PremiumGiveawayInfo.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory PremiumGiveawayInfo.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case PremiumGiveawayInfoOngoing.defaultObjectId:
         return PremiumGiveawayInfoOngoing.fromJson(json);
       case PremiumGiveawayInfoCompleted.defaultObjectId:
@@ -26,7 +25,7 @@ sealed class PremiumGiveawayInfo extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -46,7 +45,6 @@ sealed class PremiumGiveawayInfo extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PremiumGiveawayInfoOngoing** *(premiumGiveawayInfoOngoing)* - child of PremiumGiveawayInfo
 ///
 /// Describes an ongoing giveaway.
@@ -55,7 +53,6 @@ sealed class PremiumGiveawayInfo extends TdObject {
 /// * [status]: Status of the current user in the giveaway.
 /// * [isEnded]: True, if the giveaway has ended and results are being prepared.
 final class PremiumGiveawayInfoOngoing extends PremiumGiveawayInfo {
-  
   /// **PremiumGiveawayInfoOngoing** *(premiumGiveawayInfoOngoing)* - child of PremiumGiveawayInfo
   ///
   /// Describes an ongoing giveaway.
@@ -70,7 +67,7 @@ final class PremiumGiveawayInfoOngoing extends PremiumGiveawayInfo {
     this.extra,
     this.clientId,
   });
-  
+
   /// Point in time (Unix timestamp) when the giveaway was created
   final int creationDate;
 
@@ -87,27 +84,27 @@ final class PremiumGiveawayInfoOngoing extends PremiumGiveawayInfo {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory PremiumGiveawayInfoOngoing.fromJson(Map<String, dynamic> json) => PremiumGiveawayInfoOngoing(
-    creationDate: json['creation_date'],
-    status: PremiumGiveawayParticipantStatus.fromJson(json['status']),
-    isEnded: json['is_ended'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory PremiumGiveawayInfoOngoing.fromJson(Map<String, dynamic> json) =>
+      PremiumGiveawayInfoOngoing(
+        creationDate: json['creation_date'],
+        status: PremiumGiveawayParticipantStatus.fromJson(json['status']),
+        isEnded: json['is_ended'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "creation_date": creationDate,
       "status": status.toJson(),
       "is_ended": isEnded,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -122,13 +119,14 @@ final class PremiumGiveawayInfoOngoing extends PremiumGiveawayInfo {
     bool? isEnded,
     dynamic extra,
     int? clientId,
-  }) => PremiumGiveawayInfoOngoing(
-    creationDate: creationDate ?? this.creationDate,
-    status: status ?? this.status,
-    isEnded: isEnded ?? this.isEnded,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      PremiumGiveawayInfoOngoing(
+        creationDate: creationDate ?? this.creationDate,
+        status: status ?? this.status,
+        isEnded: isEnded ?? this.isEnded,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'premiumGiveawayInfoOngoing';
@@ -142,7 +140,6 @@ final class PremiumGiveawayInfoOngoing extends PremiumGiveawayInfo {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **PremiumGiveawayInfoCompleted** *(premiumGiveawayInfoCompleted)* - child of PremiumGiveawayInfo
 ///
 /// Describes a completed giveaway.
@@ -154,7 +151,6 @@ final class PremiumGiveawayInfoOngoing extends PremiumGiveawayInfo {
 /// * [activationCount]: Number of winners, which activated their gift codes.
 /// * [giftCode]: Telegram Premium gift code that was received by the current user; empty if the user isn't a winner in the giveaway.
 final class PremiumGiveawayInfoCompleted extends PremiumGiveawayInfo {
-  
   /// **PremiumGiveawayInfoCompleted** *(premiumGiveawayInfoCompleted)* - child of PremiumGiveawayInfo
   ///
   /// Describes a completed giveaway.
@@ -175,7 +171,7 @@ final class PremiumGiveawayInfoCompleted extends PremiumGiveawayInfo {
     this.extra,
     this.clientId,
   });
-  
+
   /// Point in time (Unix timestamp) when the giveaway was created
   final int creationDate;
 
@@ -201,33 +197,33 @@ final class PremiumGiveawayInfoCompleted extends PremiumGiveawayInfo {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory PremiumGiveawayInfoCompleted.fromJson(Map<String, dynamic> json) => PremiumGiveawayInfoCompleted(
-    creationDate: json['creation_date'],
-    actualWinnersSelectionDate: json['actual_winners_selection_date'],
-    wasRefunded: json['was_refunded'],
-    winnerCount: json['winner_count'],
-    activationCount: json['activation_count'],
-    giftCode: json['gift_code'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory PremiumGiveawayInfoCompleted.fromJson(Map<String, dynamic> json) =>
+      PremiumGiveawayInfoCompleted(
+        creationDate: json['creation_date'],
+        actualWinnersSelectionDate: json['actual_winners_selection_date'],
+        wasRefunded: json['was_refunded'],
+        winnerCount: json['winner_count'],
+        activationCount: json['activation_count'],
+        giftCode: json['gift_code'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "creation_date": creationDate,
       "actual_winners_selection_date": actualWinnersSelectionDate,
       "was_refunded": wasRefunded,
       "winner_count": winnerCount,
       "activation_count": activationCount,
       "gift_code": giftCode,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -248,16 +244,18 @@ final class PremiumGiveawayInfoCompleted extends PremiumGiveawayInfo {
     String? giftCode,
     dynamic extra,
     int? clientId,
-  }) => PremiumGiveawayInfoCompleted(
-    creationDate: creationDate ?? this.creationDate,
-    actualWinnersSelectionDate: actualWinnersSelectionDate ?? this.actualWinnersSelectionDate,
-    wasRefunded: wasRefunded ?? this.wasRefunded,
-    winnerCount: winnerCount ?? this.winnerCount,
-    activationCount: activationCount ?? this.activationCount,
-    giftCode: giftCode ?? this.giftCode,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      PremiumGiveawayInfoCompleted(
+        creationDate: creationDate ?? this.creationDate,
+        actualWinnersSelectionDate:
+            actualWinnersSelectionDate ?? this.actualWinnersSelectionDate,
+        wasRefunded: wasRefunded ?? this.wasRefunded,
+        winnerCount: winnerCount ?? this.winnerCount,
+        activationCount: activationCount ?? this.activationCount,
+        giftCode: giftCode ?? this.giftCode,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'premiumGiveawayInfoCompleted';

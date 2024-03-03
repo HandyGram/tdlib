@@ -13,7 +13,6 @@ part of '../tdapi.dart';
 ///
 /// [PaymentResult] is returned on completion.
 final class SendPaymentForm extends TdFunction {
-  
   /// **SendPaymentForm** *(sendPaymentForm)* - TDLib function
   ///
   /// Sends a filled-out payment form to the bot for final verification.
@@ -34,7 +33,7 @@ final class SendPaymentForm extends TdFunction {
     required this.credentials,
     required this.tipAmount,
   });
-  
+
   /// The invoice
   final InputInvoice inputInvoice;
 
@@ -52,12 +51,12 @@ final class SendPaymentForm extends TdFunction {
 
   /// Chosen by the user amount of tip in the smallest units of the currency
   final int tipAmount;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "input_invoice": inputInvoice.toJson(),
       "payment_form_id": paymentFormId,
       "order_info_id": orderInfoId,
@@ -65,8 +64,8 @@ final class SendPaymentForm extends TdFunction {
       "credentials": credentials.toJson(),
       "tip_amount": tipAmount,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -84,14 +83,15 @@ final class SendPaymentForm extends TdFunction {
     String? shippingOptionId,
     InputCredentials? credentials,
     int? tipAmount,
-  }) => SendPaymentForm(
-    inputInvoice: inputInvoice ?? this.inputInvoice,
-    paymentFormId: paymentFormId ?? this.paymentFormId,
-    orderInfoId: orderInfoId ?? this.orderInfoId,
-    shippingOptionId: shippingOptionId ?? this.shippingOptionId,
-    credentials: credentials ?? this.credentials,
-    tipAmount: tipAmount ?? this.tipAmount,
-  );
+  }) =>
+      SendPaymentForm(
+        inputInvoice: inputInvoice ?? this.inputInvoice,
+        paymentFormId: paymentFormId ?? this.paymentFormId,
+        orderInfoId: orderInfoId ?? this.orderInfoId,
+        shippingOptionId: shippingOptionId ?? this.shippingOptionId,
+        credentials: credentials ?? this.credentials,
+        tipAmount: tipAmount ?? this.tipAmount,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'sendPaymentForm';

@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [ChatBoostSlots] is returned on completion.
 final class BoostChat extends TdFunction {
-  
   /// **BoostChat** *(boostChat)* - TDLib function
   ///
   /// Boosts a chat and returns the list of available chat boost slots for the current user after the boost.
@@ -22,23 +21,23 @@ final class BoostChat extends TdFunction {
     required this.chatId,
     required this.slotIds,
   });
-  
+
   /// Identifier of the chat
   final int chatId;
 
   /// Identifiers of boost slots of the current user from which to apply boosts to the chat
   final List<int> slotIds;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "slot_ids": slotIds.map((i) => i).toList(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class BoostChat extends TdFunction {
   BoostChat copyWith({
     int? chatId,
     List<int>? slotIds,
-  }) => BoostChat(
-    chatId: chatId ?? this.chatId,
-    slotIds: slotIds ?? this.slotIds,
-  );
+  }) =>
+      BoostChat(
+        chatId: chatId ?? this.chatId,
+        slotIds: slotIds ?? this.slotIds,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'boostChat';

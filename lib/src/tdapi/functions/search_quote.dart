@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [FoundPosition] is returned on completion.
 final class SearchQuote extends TdFunction {
-  
   /// **SearchQuote** *(searchQuote)* - TDLib function
   ///
   /// Searches for a given quote in a text. Returns found quote start position in UTF-16 code units. Returns a 404 error if the quote is not found. Can be called synchronously.
@@ -25,7 +24,7 @@ final class SearchQuote extends TdFunction {
     required this.quote,
     required this.quotePosition,
   });
-  
+
   /// Text in which to search for the quote
   final FormattedText text;
 
@@ -34,18 +33,18 @@ final class SearchQuote extends TdFunction {
 
   /// Approximate quote position in UTF-16 code units
   final int quotePosition;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "text": text.toJson(),
       "quote": quote.toJson(),
       "quote_position": quotePosition,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class SearchQuote extends TdFunction {
     FormattedText? text,
     FormattedText? quote,
     int? quotePosition,
-  }) => SearchQuote(
-    text: text ?? this.text,
-    quote: quote ?? this.quote,
-    quotePosition: quotePosition ?? this.quotePosition,
-  );
+  }) =>
+      SearchQuote(
+        text: text ?? this.text,
+        quote: quote ?? this.quote,
+        quotePosition: quotePosition ?? this.quotePosition,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'searchQuote';

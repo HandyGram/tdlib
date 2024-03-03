@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 ///
 /// [ChatMembers] is returned on completion.
 final class SearchChatMembers extends TdFunction {
-  
   /// **SearchChatMembers** *(searchChatMembers)* - TDLib function
   ///
   /// Searches for a specified query in the first name, last name and usernames of the members of a specified chat. Requires administrator rights if the chat is a channel.
@@ -28,7 +27,7 @@ final class SearchChatMembers extends TdFunction {
     required this.limit,
     this.filter,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -40,19 +39,19 @@ final class SearchChatMembers extends TdFunction {
 
   /// The type of users to search for; pass null to search among all chat members
   final ChatMembersFilter? filter;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "query": query,
       "limit": limit,
       "filter": filter?.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -66,12 +65,13 @@ final class SearchChatMembers extends TdFunction {
     String? query,
     int? limit,
     ChatMembersFilter? filter,
-  }) => SearchChatMembers(
-    chatId: chatId ?? this.chatId,
-    query: query ?? this.query,
-    limit: limit ?? this.limit,
-    filter: filter ?? this.filter,
-  );
+  }) =>
+      SearchChatMembers(
+        chatId: chatId ?? this.chatId,
+        query: query ?? this.query,
+        limit: limit ?? this.limit,
+        filter: filter ?? this.filter,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'searchChatMembers';

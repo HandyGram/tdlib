@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Users] is returned on completion.
 final class SearchContacts extends TdFunction {
-  
   /// **SearchContacts** *(searchContacts)* - TDLib function
   ///
   /// Searches for the specified query in the first names, last names and usernames of the known user contacts.
@@ -22,23 +21,23 @@ final class SearchContacts extends TdFunction {
     required this.query,
     required this.limit,
   });
-  
+
   /// Query to search for; may be empty to return all contacts
   final String query;
 
   /// The maximum number of users to be returned
   final int limit;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "query": query,
       "limit": limit,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class SearchContacts extends TdFunction {
   SearchContacts copyWith({
     String? query,
     int? limit,
-  }) => SearchContacts(
-    query: query ?? this.query,
-    limit: limit ?? this.limit,
-  );
+  }) =>
+      SearchContacts(
+        query: query ?? this.query,
+        limit: limit ?? this.limit,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'searchContacts';

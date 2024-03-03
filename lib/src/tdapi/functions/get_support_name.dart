@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [Text] is returned on completion.
 final class GetSupportName extends TdFunction {
-  
   /// **GetSupportName** *(getSupportName)* - TDLib function
   ///
   /// Returns localized name of the Telegram support user; for Telegram support only.
   ///
   /// [Text] is returned on completion.
   const GetSupportName();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   GetSupportName copyWith() => const GetSupportName();

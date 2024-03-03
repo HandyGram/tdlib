@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [recoveryEmailAddress]: Recovery email address.
 final class RecoveryEmailAddress extends TdObject {
-  
   /// **RecoveryEmailAddress** *(recoveryEmailAddress)* - basic class
   ///
   /// Contains information about the current recovery email address.
@@ -17,7 +16,7 @@ final class RecoveryEmailAddress extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Recovery email address
   final String recoveryEmailAddress;
 
@@ -28,23 +27,23 @@ final class RecoveryEmailAddress extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory RecoveryEmailAddress.fromJson(Map<String, dynamic> json) => RecoveryEmailAddress(
-    recoveryEmailAddress: json['recovery_email_address'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory RecoveryEmailAddress.fromJson(Map<String, dynamic> json) =>
+      RecoveryEmailAddress(
+        recoveryEmailAddress: json['recovery_email_address'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "recovery_email_address": recoveryEmailAddress,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +53,12 @@ final class RecoveryEmailAddress extends TdObject {
     String? recoveryEmailAddress,
     dynamic extra,
     int? clientId,
-  }) => RecoveryEmailAddress(
-    recoveryEmailAddress: recoveryEmailAddress ?? this.recoveryEmailAddress,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      RecoveryEmailAddress(
+        recoveryEmailAddress: recoveryEmailAddress ?? this.recoveryEmailAddress,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'recoveryEmailAddress';

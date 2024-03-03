@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Backgrounds] is returned on completion.
 final class GetInstalledBackgrounds extends TdFunction {
-  
   /// **GetInstalledBackgrounds** *(getInstalledBackgrounds)* - TDLib function
   ///
   /// Returns backgrounds installed by the user.
@@ -19,19 +18,19 @@ final class GetInstalledBackgrounds extends TdFunction {
   const GetInstalledBackgrounds({
     required this.forDarkTheme,
   });
-  
+
   /// Pass true to order returned backgrounds for a dark theme
   final bool forDarkTheme;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "for_dark_theme": forDarkTheme,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetInstalledBackgrounds extends TdFunction {
   /// * [for_dark_theme]: Pass true to order returned backgrounds for a dark theme
   GetInstalledBackgrounds copyWith({
     bool? forDarkTheme,
-  }) => GetInstalledBackgrounds(
-    forDarkTheme: forDarkTheme ?? this.forDarkTheme,
-  );
+  }) =>
+      GetInstalledBackgrounds(
+        forDarkTheme: forDarkTheme ?? this.forDarkTheme,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getInstalledBackgrounds';

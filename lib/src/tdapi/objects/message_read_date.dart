@@ -4,20 +4,19 @@ part of '../tdapi.dart';
 ///
 /// Describes read date of a recent outgoing message in a private chat.
 sealed class MessageReadDate extends TdObject {
-  
   /// **MessageReadDate** *(messageReadDate)* - parent
   ///
   /// Describes read date of a recent outgoing message in a private chat.
   const MessageReadDate();
-  
+
   /// a MessageReadDate return type can be :
   /// * [MessageReadDateRead]
   /// * [MessageReadDateUnread]
   /// * [MessageReadDateTooOld]
   /// * [MessageReadDateUserPrivacyRestricted]
   /// * [MessageReadDateMyPrivacyRestricted]
-  factory MessageReadDate.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory MessageReadDate.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case MessageReadDateRead.defaultObjectId:
         return MessageReadDateRead.fromJson(json);
       case MessageReadDateUnread.defaultObjectId:
@@ -35,7 +34,7 @@ sealed class MessageReadDate extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -55,14 +54,12 @@ sealed class MessageReadDate extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **MessageReadDateRead** *(messageReadDateRead)* - child of MessageReadDate
 ///
 /// Contains read date of the message.
 ///
 /// * [readDate]: Point in time (Unix timestamp) when the message was read by the other user.
 final class MessageReadDateRead extends MessageReadDate {
-  
   /// **MessageReadDateRead** *(messageReadDateRead)* - child of MessageReadDate
   ///
   /// Contains read date of the message.
@@ -73,7 +70,7 @@ final class MessageReadDateRead extends MessageReadDate {
     this.extra,
     this.clientId,
   });
-  
+
   /// Point in time (Unix timestamp) when the message was read by the other user
   final int readDate;
 
@@ -84,23 +81,23 @@ final class MessageReadDateRead extends MessageReadDate {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory MessageReadDateRead.fromJson(Map<String, dynamic> json) => MessageReadDateRead(
-    readDate: json['read_date'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory MessageReadDateRead.fromJson(Map<String, dynamic> json) =>
+      MessageReadDateRead(
+        readDate: json['read_date'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "read_date": readDate,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -111,11 +108,12 @@ final class MessageReadDateRead extends MessageReadDate {
     int? readDate,
     dynamic extra,
     int? clientId,
-  }) => MessageReadDateRead(
-    readDate: readDate ?? this.readDate,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      MessageReadDateRead(
+        readDate: readDate ?? this.readDate,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'messageReadDateRead';
@@ -129,12 +127,10 @@ final class MessageReadDateRead extends MessageReadDate {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **MessageReadDateUnread** *(messageReadDateUnread)* - child of MessageReadDate
 ///
 /// The message is unread yet.
 final class MessageReadDateUnread extends MessageReadDate {
-  
   /// **MessageReadDateUnread** *(messageReadDateUnread)* - child of MessageReadDate
   ///
   /// The message is unread yet.
@@ -142,7 +138,7 @@ final class MessageReadDateUnread extends MessageReadDate {
     this.extra,
     this.clientId,
   });
-  
+
   /// [extra] callback sign
   @override
   final dynamic extra;
@@ -150,31 +146,32 @@ final class MessageReadDateUnread extends MessageReadDate {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory MessageReadDateUnread.fromJson(Map<String, dynamic> json) => MessageReadDateUnread(
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory MessageReadDateUnread.fromJson(Map<String, dynamic> json) =>
+      MessageReadDateUnread(
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
   MessageReadDateUnread copyWith({
     dynamic extra,
     int? clientId,
-  }) => MessageReadDateUnread(
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      MessageReadDateUnread(
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'messageReadDateUnread';
@@ -188,12 +185,10 @@ final class MessageReadDateUnread extends MessageReadDate {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **MessageReadDateTooOld** *(messageReadDateTooOld)* - child of MessageReadDate
 ///
 /// The message is too old to get read date.
 final class MessageReadDateTooOld extends MessageReadDate {
-  
   /// **MessageReadDateTooOld** *(messageReadDateTooOld)* - child of MessageReadDate
   ///
   /// The message is too old to get read date.
@@ -201,7 +196,7 @@ final class MessageReadDateTooOld extends MessageReadDate {
     this.extra,
     this.clientId,
   });
-  
+
   /// [extra] callback sign
   @override
   final dynamic extra;
@@ -209,31 +204,32 @@ final class MessageReadDateTooOld extends MessageReadDate {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory MessageReadDateTooOld.fromJson(Map<String, dynamic> json) => MessageReadDateTooOld(
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory MessageReadDateTooOld.fromJson(Map<String, dynamic> json) =>
+      MessageReadDateTooOld(
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
   MessageReadDateTooOld copyWith({
     dynamic extra,
     int? clientId,
-  }) => MessageReadDateTooOld(
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      MessageReadDateTooOld(
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'messageReadDateTooOld';
@@ -247,12 +243,10 @@ final class MessageReadDateTooOld extends MessageReadDate {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **MessageReadDateUserPrivacyRestricted** *(messageReadDateUserPrivacyRestricted)* - child of MessageReadDate
 ///
 /// The read date is unknown due to privacy settings of the other user.
 final class MessageReadDateUserPrivacyRestricted extends MessageReadDate {
-  
   /// **MessageReadDateUserPrivacyRestricted** *(messageReadDateUserPrivacyRestricted)* - child of MessageReadDate
   ///
   /// The read date is unknown due to privacy settings of the other user.
@@ -260,7 +254,7 @@ final class MessageReadDateUserPrivacyRestricted extends MessageReadDate {
     this.extra,
     this.clientId,
   });
-  
+
   /// [extra] callback sign
   @override
   final dynamic extra;
@@ -268,31 +262,33 @@ final class MessageReadDateUserPrivacyRestricted extends MessageReadDate {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory MessageReadDateUserPrivacyRestricted.fromJson(Map<String, dynamic> json) => MessageReadDateUserPrivacyRestricted(
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory MessageReadDateUserPrivacyRestricted.fromJson(
+          Map<String, dynamic> json) =>
+      MessageReadDateUserPrivacyRestricted(
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
   MessageReadDateUserPrivacyRestricted copyWith({
     dynamic extra,
     int? clientId,
-  }) => MessageReadDateUserPrivacyRestricted(
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      MessageReadDateUserPrivacyRestricted(
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'messageReadDateUserPrivacyRestricted';
@@ -306,12 +302,10 @@ final class MessageReadDateUserPrivacyRestricted extends MessageReadDate {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **MessageReadDateMyPrivacyRestricted** *(messageReadDateMyPrivacyRestricted)* - child of MessageReadDate
 ///
 /// The read date is unknown due to privacy settings of the current user, but will be known if the user subscribes to Telegram Premium.
 final class MessageReadDateMyPrivacyRestricted extends MessageReadDate {
-  
   /// **MessageReadDateMyPrivacyRestricted** *(messageReadDateMyPrivacyRestricted)* - child of MessageReadDate
   ///
   /// The read date is unknown due to privacy settings of the current user, but will be known if the user subscribes to Telegram Premium.
@@ -319,7 +313,7 @@ final class MessageReadDateMyPrivacyRestricted extends MessageReadDate {
     this.extra,
     this.clientId,
   });
-  
+
   /// [extra] callback sign
   @override
   final dynamic extra;
@@ -327,31 +321,33 @@ final class MessageReadDateMyPrivacyRestricted extends MessageReadDate {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory MessageReadDateMyPrivacyRestricted.fromJson(Map<String, dynamic> json) => MessageReadDateMyPrivacyRestricted(
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory MessageReadDateMyPrivacyRestricted.fromJson(
+          Map<String, dynamic> json) =>
+      MessageReadDateMyPrivacyRestricted(
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
   MessageReadDateMyPrivacyRestricted copyWith({
     dynamic extra,
     int? clientId,
-  }) => MessageReadDateMyPrivacyRestricted(
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      MessageReadDateMyPrivacyRestricted(
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'messageReadDateMyPrivacyRestricted';

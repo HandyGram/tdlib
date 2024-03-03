@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [EmojiStatuses] is returned on completion.
 final class GetDefaultChatEmojiStatuses extends TdFunction {
-  
   /// **GetDefaultChatEmojiStatuses** *(getDefaultChatEmojiStatuses)* - TDLib function
   ///
   /// Returns default emoji statuses for chats.
   ///
   /// [EmojiStatuses] is returned on completion.
   const GetDefaultChatEmojiStatuses();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   GetDefaultChatEmojiStatuses copyWith() => const GetDefaultChatEmojiStatuses();

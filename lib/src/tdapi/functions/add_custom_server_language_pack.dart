@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class AddCustomServerLanguagePack extends TdFunction {
-  
   /// **AddCustomServerLanguagePack** *(addCustomServerLanguagePack)* - TDLib function
   ///
   /// Adds a custom server language pack to the list of installed language packs in current localization target. Can be called before authorization.
@@ -19,19 +18,19 @@ final class AddCustomServerLanguagePack extends TdFunction {
   const AddCustomServerLanguagePack({
     required this.languagePackId,
   });
-  
+
   /// Identifier of a language pack to be added
   final String languagePackId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "language_pack_id": languagePackId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class AddCustomServerLanguagePack extends TdFunction {
   /// * [language_pack_id]: Identifier of a language pack to be added
   AddCustomServerLanguagePack copyWith({
     String? languagePackId,
-  }) => AddCustomServerLanguagePack(
-    languagePackId: languagePackId ?? this.languagePackId,
-  );
+  }) =>
+      AddCustomServerLanguagePack(
+        languagePackId: languagePackId ?? this.languagePackId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'addCustomServerLanguagePack';

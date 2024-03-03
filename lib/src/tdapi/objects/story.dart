@@ -29,7 +29,6 @@ part of '../tdapi.dart';
 /// * [areas]: Clickable areas to be shown on the story content.
 /// * [caption]: Caption of the story.
 final class Story extends TdObject {
-  
   /// **Story** *(story)* - basic class
   ///
   /// Represents a story.
@@ -86,7 +85,7 @@ final class Story extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Unique story identifier among stories of the given sender
   final int id;
 
@@ -166,43 +165,53 @@ final class Story extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory Story.fromJson(Map<String, dynamic> json) => Story(
-    id: json['id'],
-    senderChatId: json['sender_chat_id'],
-    senderId: json['sender_id'] == null ? null : MessageSender.fromJson(json['sender_id']),
-    date: json['date'],
-    isBeingSent: json['is_being_sent'],
-    isBeingEdited: json['is_being_edited'],
-    isEdited: json['is_edited'],
-    isPinned: json['is_pinned'],
-    isVisibleOnlyForSelf: json['is_visible_only_for_self'],
-    canBeDeleted: json['can_be_deleted'],
-    canBeEdited: json['can_be_edited'],
-    canBeForwarded: json['can_be_forwarded'],
-    canBeReplied: json['can_be_replied'],
-    canToggleIsPinned: json['can_toggle_is_pinned'],
-    canGetStatistics: json['can_get_statistics'],
-    canGetInteractions: json['can_get_interactions'],
-    hasExpiredViewers: json['has_expired_viewers'],
-    repostInfo: json['repost_info'] == null ? null : StoryRepostInfo.fromJson(json['repost_info']),
-    interactionInfo: json['interaction_info'] == null ? null : StoryInteractionInfo.fromJson(json['interaction_info']),
-    chosenReactionType: json['chosen_reaction_type'] == null ? null : ReactionType.fromJson(json['chosen_reaction_type']),
-    privacySettings: StoryPrivacySettings.fromJson(json['privacy_settings']),
-    content: StoryContent.fromJson(json['content']),
-    areas: List<StoryArea>.from((json['areas'] ?? []).map((item) => StoryArea.fromJson(item)).toList()),
-    caption: FormattedText.fromJson(json['caption']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: json['id'],
+        senderChatId: json['sender_chat_id'],
+        senderId: json['sender_id'] == null
+            ? null
+            : MessageSender.fromJson(json['sender_id']),
+        date: json['date'],
+        isBeingSent: json['is_being_sent'],
+        isBeingEdited: json['is_being_edited'],
+        isEdited: json['is_edited'],
+        isPinned: json['is_pinned'],
+        isVisibleOnlyForSelf: json['is_visible_only_for_self'],
+        canBeDeleted: json['can_be_deleted'],
+        canBeEdited: json['can_be_edited'],
+        canBeForwarded: json['can_be_forwarded'],
+        canBeReplied: json['can_be_replied'],
+        canToggleIsPinned: json['can_toggle_is_pinned'],
+        canGetStatistics: json['can_get_statistics'],
+        canGetInteractions: json['can_get_interactions'],
+        hasExpiredViewers: json['has_expired_viewers'],
+        repostInfo: json['repost_info'] == null
+            ? null
+            : StoryRepostInfo.fromJson(json['repost_info']),
+        interactionInfo: json['interaction_info'] == null
+            ? null
+            : StoryInteractionInfo.fromJson(json['interaction_info']),
+        chosenReactionType: json['chosen_reaction_type'] == null
+            ? null
+            : ReactionType.fromJson(json['chosen_reaction_type']),
+        privacySettings:
+            StoryPrivacySettings.fromJson(json['privacy_settings']),
+        content: StoryContent.fromJson(json['content']),
+        areas: List<StoryArea>.from((json['areas'] ?? [])
+            .map((item) => StoryArea.fromJson(item))
+            .toList()),
+        caption: FormattedText.fromJson(json['caption']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "sender_chat_id": senderChatId,
       "sender_id": senderId?.toJson(),
@@ -227,8 +236,8 @@ final class Story extends TdObject {
       "content": content.toJson(),
       "areas": areas.map((i) => i.toJson()).toList(),
       "caption": caption.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -284,34 +293,35 @@ final class Story extends TdObject {
     FormattedText? caption,
     dynamic extra,
     int? clientId,
-  }) => Story(
-    id: id ?? this.id,
-    senderChatId: senderChatId ?? this.senderChatId,
-    senderId: senderId ?? this.senderId,
-    date: date ?? this.date,
-    isBeingSent: isBeingSent ?? this.isBeingSent,
-    isBeingEdited: isBeingEdited ?? this.isBeingEdited,
-    isEdited: isEdited ?? this.isEdited,
-    isPinned: isPinned ?? this.isPinned,
-    isVisibleOnlyForSelf: isVisibleOnlyForSelf ?? this.isVisibleOnlyForSelf,
-    canBeDeleted: canBeDeleted ?? this.canBeDeleted,
-    canBeEdited: canBeEdited ?? this.canBeEdited,
-    canBeForwarded: canBeForwarded ?? this.canBeForwarded,
-    canBeReplied: canBeReplied ?? this.canBeReplied,
-    canToggleIsPinned: canToggleIsPinned ?? this.canToggleIsPinned,
-    canGetStatistics: canGetStatistics ?? this.canGetStatistics,
-    canGetInteractions: canGetInteractions ?? this.canGetInteractions,
-    hasExpiredViewers: hasExpiredViewers ?? this.hasExpiredViewers,
-    repostInfo: repostInfo ?? this.repostInfo,
-    interactionInfo: interactionInfo ?? this.interactionInfo,
-    chosenReactionType: chosenReactionType ?? this.chosenReactionType,
-    privacySettings: privacySettings ?? this.privacySettings,
-    content: content ?? this.content,
-    areas: areas ?? this.areas,
-    caption: caption ?? this.caption,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      Story(
+        id: id ?? this.id,
+        senderChatId: senderChatId ?? this.senderChatId,
+        senderId: senderId ?? this.senderId,
+        date: date ?? this.date,
+        isBeingSent: isBeingSent ?? this.isBeingSent,
+        isBeingEdited: isBeingEdited ?? this.isBeingEdited,
+        isEdited: isEdited ?? this.isEdited,
+        isPinned: isPinned ?? this.isPinned,
+        isVisibleOnlyForSelf: isVisibleOnlyForSelf ?? this.isVisibleOnlyForSelf,
+        canBeDeleted: canBeDeleted ?? this.canBeDeleted,
+        canBeEdited: canBeEdited ?? this.canBeEdited,
+        canBeForwarded: canBeForwarded ?? this.canBeForwarded,
+        canBeReplied: canBeReplied ?? this.canBeReplied,
+        canToggleIsPinned: canToggleIsPinned ?? this.canToggleIsPinned,
+        canGetStatistics: canGetStatistics ?? this.canGetStatistics,
+        canGetInteractions: canGetInteractions ?? this.canGetInteractions,
+        hasExpiredViewers: hasExpiredViewers ?? this.hasExpiredViewers,
+        repostInfo: repostInfo ?? this.repostInfo,
+        interactionInfo: interactionInfo ?? this.interactionInfo,
+        chosenReactionType: chosenReactionType ?? this.chosenReactionType,
+        privacySettings: privacySettings ?? this.privacySettings,
+        content: content ?? this.content,
+        areas: areas ?? this.areas,
+        caption: caption ?? this.caption,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'story';

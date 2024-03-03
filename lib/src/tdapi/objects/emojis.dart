@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [emojis]: List of emojis.
 final class Emojis extends TdObject {
-  
   /// **Emojis** *(emojis)* - basic class
   ///
   /// Represents a list of emoji.
@@ -17,7 +16,7 @@ final class Emojis extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// List of emojis
   final List<String> emojis;
 
@@ -28,23 +27,23 @@ final class Emojis extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory Emojis.fromJson(Map<String, dynamic> json) => Emojis(
-    emojis: List<String>.from((json['emojis'] ?? []).map((item) => item).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        emojis: List<String>.from(
+            (json['emojis'] ?? []).map((item) => item).toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "emojis": emojis.map((i) => i).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +53,12 @@ final class Emojis extends TdObject {
     List<String>? emojis,
     dynamic extra,
     int? clientId,
-  }) => Emojis(
-    emojis: emojis ?? this.emojis,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      Emojis(
+        emojis: emojis ?? this.emojis,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'emojis';

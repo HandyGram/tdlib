@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [Animations] is returned on completion.
 final class GetSavedAnimations extends TdFunction {
-  
   /// **GetSavedAnimations** *(getSavedAnimations)* - TDLib function
   ///
   /// Returns saved animations.
   ///
   /// [Animations] is returned on completion.
   const GetSavedAnimations();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   GetSavedAnimations copyWith() => const GetSavedAnimations();

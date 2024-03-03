@@ -4,12 +4,11 @@ part of '../tdapi.dart';
 ///
 /// Specifies the kind of chat members to return in searchChatMembers.
 sealed class ChatMembersFilter extends TdObject {
-  
   /// **ChatMembersFilter** *(chatMembersFilter)* - parent
   ///
   /// Specifies the kind of chat members to return in searchChatMembers.
   const ChatMembersFilter();
-  
+
   /// a ChatMembersFilter return type can be :
   /// * [ChatMembersFilterContacts]
   /// * [ChatMembersFilterAdministrators]
@@ -18,8 +17,8 @@ sealed class ChatMembersFilter extends TdObject {
   /// * [ChatMembersFilterRestricted]
   /// * [ChatMembersFilterBanned]
   /// * [ChatMembersFilterBots]
-  factory ChatMembersFilter.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory ChatMembersFilter.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case ChatMembersFilterContacts.defaultObjectId:
         return ChatMembersFilterContacts.fromJson(json);
       case ChatMembersFilterAdministrators.defaultObjectId:
@@ -41,7 +40,7 @@ sealed class ChatMembersFilter extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -61,27 +60,26 @@ sealed class ChatMembersFilter extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **ChatMembersFilterContacts** *(chatMembersFilterContacts)* - child of ChatMembersFilter
 ///
 /// Returns contacts of the user.
 final class ChatMembersFilterContacts extends ChatMembersFilter {
-  
   /// **ChatMembersFilterContacts** *(chatMembersFilterContacts)* - child of ChatMembersFilter
   ///
   /// Returns contacts of the user.
   const ChatMembersFilterContacts();
-  
+
   /// Parse from a json
-  factory ChatMembersFilterContacts.fromJson(Map<String, dynamic> json) => const ChatMembersFilterContacts();
-  
+  factory ChatMembersFilterContacts.fromJson(Map<String, dynamic> json) =>
+      const ChatMembersFilterContacts();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -99,31 +97,31 @@ final class ChatMembersFilterContacts extends ChatMembersFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **ChatMembersFilterAdministrators** *(chatMembersFilterAdministrators)* - child of ChatMembersFilter
 ///
 /// Returns the owner and administrators.
 final class ChatMembersFilterAdministrators extends ChatMembersFilter {
-  
   /// **ChatMembersFilterAdministrators** *(chatMembersFilterAdministrators)* - child of ChatMembersFilter
   ///
   /// Returns the owner and administrators.
   const ChatMembersFilterAdministrators();
-  
+
   /// Parse from a json
-  factory ChatMembersFilterAdministrators.fromJson(Map<String, dynamic> json) => const ChatMembersFilterAdministrators();
-  
+  factory ChatMembersFilterAdministrators.fromJson(Map<String, dynamic> json) =>
+      const ChatMembersFilterAdministrators();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  ChatMembersFilterAdministrators copyWith() => const ChatMembersFilterAdministrators();
+  ChatMembersFilterAdministrators copyWith() =>
+      const ChatMembersFilterAdministrators();
 
   /// TDLib object type
   static const String defaultObjectId = 'chatMembersFilterAdministrators';
@@ -137,27 +135,26 @@ final class ChatMembersFilterAdministrators extends ChatMembersFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **ChatMembersFilterMembers** *(chatMembersFilterMembers)* - child of ChatMembersFilter
 ///
 /// Returns all chat members, including restricted chat members.
 final class ChatMembersFilterMembers extends ChatMembersFilter {
-  
   /// **ChatMembersFilterMembers** *(chatMembersFilterMembers)* - child of ChatMembersFilter
   ///
   /// Returns all chat members, including restricted chat members.
   const ChatMembersFilterMembers();
-  
+
   /// Parse from a json
-  factory ChatMembersFilterMembers.fromJson(Map<String, dynamic> json) => const ChatMembersFilterMembers();
-  
+  factory ChatMembersFilterMembers.fromJson(Map<String, dynamic> json) =>
+      const ChatMembersFilterMembers();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -175,14 +172,12 @@ final class ChatMembersFilterMembers extends ChatMembersFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **ChatMembersFilterMention** *(chatMembersFilterMention)* - child of ChatMembersFilter
 ///
 /// Returns users which can be mentioned in the chat.
 ///
 /// * [messageThreadId]: If non-zero, the identifier of the current message thread.
 final class ChatMembersFilterMention extends ChatMembersFilter {
-  
   /// **ChatMembersFilterMention** *(chatMembersFilterMention)* - child of ChatMembersFilter
   ///
   /// Returns users which can be mentioned in the chat.
@@ -191,24 +186,24 @@ final class ChatMembersFilterMention extends ChatMembersFilter {
   const ChatMembersFilterMention({
     required this.messageThreadId,
   });
-  
+
   /// If non-zero, the identifier of the current message thread
   final int messageThreadId;
-  
+
   /// Parse from a json
-  factory ChatMembersFilterMention.fromJson(Map<String, dynamic> json) => ChatMembersFilterMention(
-    messageThreadId: json['message_thread_id'],
-  );
-  
-  
+  factory ChatMembersFilterMention.fromJson(Map<String, dynamic> json) =>
+      ChatMembersFilterMention(
+        messageThreadId: json['message_thread_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "message_thread_id": messageThreadId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -217,9 +212,10 @@ final class ChatMembersFilterMention extends ChatMembersFilter {
   @override
   ChatMembersFilterMention copyWith({
     int? messageThreadId,
-  }) => ChatMembersFilterMention(
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-  );
+  }) =>
+      ChatMembersFilterMention(
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatMembersFilterMention';
@@ -233,27 +229,26 @@ final class ChatMembersFilterMention extends ChatMembersFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **ChatMembersFilterRestricted** *(chatMembersFilterRestricted)* - child of ChatMembersFilter
 ///
 /// Returns users under certain restrictions in the chat; can be used only by administrators in a supergroup.
 final class ChatMembersFilterRestricted extends ChatMembersFilter {
-  
   /// **ChatMembersFilterRestricted** *(chatMembersFilterRestricted)* - child of ChatMembersFilter
   ///
   /// Returns users under certain restrictions in the chat; can be used only by administrators in a supergroup.
   const ChatMembersFilterRestricted();
-  
+
   /// Parse from a json
-  factory ChatMembersFilterRestricted.fromJson(Map<String, dynamic> json) => const ChatMembersFilterRestricted();
-  
+  factory ChatMembersFilterRestricted.fromJson(Map<String, dynamic> json) =>
+      const ChatMembersFilterRestricted();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -271,27 +266,26 @@ final class ChatMembersFilterRestricted extends ChatMembersFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **ChatMembersFilterBanned** *(chatMembersFilterBanned)* - child of ChatMembersFilter
 ///
 /// Returns users banned from the chat; can be used only by administrators in a supergroup or in a channel.
 final class ChatMembersFilterBanned extends ChatMembersFilter {
-  
   /// **ChatMembersFilterBanned** *(chatMembersFilterBanned)* - child of ChatMembersFilter
   ///
   /// Returns users banned from the chat; can be used only by administrators in a supergroup or in a channel.
   const ChatMembersFilterBanned();
-  
+
   /// Parse from a json
-  factory ChatMembersFilterBanned.fromJson(Map<String, dynamic> json) => const ChatMembersFilterBanned();
-  
+  factory ChatMembersFilterBanned.fromJson(Map<String, dynamic> json) =>
+      const ChatMembersFilterBanned();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -309,27 +303,26 @@ final class ChatMembersFilterBanned extends ChatMembersFilter {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **ChatMembersFilterBots** *(chatMembersFilterBots)* - child of ChatMembersFilter
 ///
 /// Returns bot members of the chat.
 final class ChatMembersFilterBots extends ChatMembersFilter {
-  
   /// **ChatMembersFilterBots** *(chatMembersFilterBots)* - child of ChatMembersFilter
   ///
   /// Returns bot members of the chat.
   const ChatMembersFilterBots();
-  
+
   /// Parse from a json
-  factory ChatMembersFilterBots.fromJson(Map<String, dynamic> json) => const ChatMembersFilterBots();
-  
+  factory ChatMembersFilterBots.fromJson(Map<String, dynamic> json) =>
+      const ChatMembersFilterBots();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override

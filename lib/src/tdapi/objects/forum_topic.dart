@@ -15,7 +15,6 @@ part of '../tdapi.dart';
 /// * [notificationSettings]: Notification settings for the topic.
 /// * [draftMessage]: A draft of a message in the topic; may be null if none *(optional)*.
 final class ForumTopic extends TdObject {
-  
   /// **ForumTopic** *(forumTopic)* - basic class
   ///
   /// Describes a forum topic.
@@ -44,7 +43,7 @@ final class ForumTopic extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Basic information about the topic
   final ForumTopicInfo info;
 
@@ -82,29 +81,33 @@ final class ForumTopic extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory ForumTopic.fromJson(Map<String, dynamic> json) => ForumTopic(
-    info: ForumTopicInfo.fromJson(json['info']),
-    lastMessage: json['last_message'] == null ? null : Message.fromJson(json['last_message']),
-    isPinned: json['is_pinned'],
-    unreadCount: json['unread_count'],
-    lastReadInboxMessageId: json['last_read_inbox_message_id'],
-    lastReadOutboxMessageId: json['last_read_outbox_message_id'],
-    unreadMentionCount: json['unread_mention_count'],
-    unreadReactionCount: json['unread_reaction_count'],
-    notificationSettings: ChatNotificationSettings.fromJson(json['notification_settings']),
-    draftMessage: json['draft_message'] == null ? null : DraftMessage.fromJson(json['draft_message']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        info: ForumTopicInfo.fromJson(json['info']),
+        lastMessage: json['last_message'] == null
+            ? null
+            : Message.fromJson(json['last_message']),
+        isPinned: json['is_pinned'],
+        unreadCount: json['unread_count'],
+        lastReadInboxMessageId: json['last_read_inbox_message_id'],
+        lastReadOutboxMessageId: json['last_read_outbox_message_id'],
+        unreadMentionCount: json['unread_mention_count'],
+        unreadReactionCount: json['unread_reaction_count'],
+        notificationSettings:
+            ChatNotificationSettings.fromJson(json['notification_settings']),
+        draftMessage: json['draft_message'] == null
+            ? null
+            : DraftMessage.fromJson(json['draft_message']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "info": info.toJson(),
       "last_message": lastMessage?.toJson(),
       "is_pinned": isPinned,
@@ -115,8 +118,8 @@ final class ForumTopic extends TdObject {
       "unread_reaction_count": unreadReactionCount,
       "notification_settings": notificationSettings.toJson(),
       "draft_message": draftMessage?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -144,20 +147,23 @@ final class ForumTopic extends TdObject {
     DraftMessage? draftMessage,
     dynamic extra,
     int? clientId,
-  }) => ForumTopic(
-    info: info ?? this.info,
-    lastMessage: lastMessage ?? this.lastMessage,
-    isPinned: isPinned ?? this.isPinned,
-    unreadCount: unreadCount ?? this.unreadCount,
-    lastReadInboxMessageId: lastReadInboxMessageId ?? this.lastReadInboxMessageId,
-    lastReadOutboxMessageId: lastReadOutboxMessageId ?? this.lastReadOutboxMessageId,
-    unreadMentionCount: unreadMentionCount ?? this.unreadMentionCount,
-    unreadReactionCount: unreadReactionCount ?? this.unreadReactionCount,
-    notificationSettings: notificationSettings ?? this.notificationSettings,
-    draftMessage: draftMessage ?? this.draftMessage,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      ForumTopic(
+        info: info ?? this.info,
+        lastMessage: lastMessage ?? this.lastMessage,
+        isPinned: isPinned ?? this.isPinned,
+        unreadCount: unreadCount ?? this.unreadCount,
+        lastReadInboxMessageId:
+            lastReadInboxMessageId ?? this.lastReadInboxMessageId,
+        lastReadOutboxMessageId:
+            lastReadOutboxMessageId ?? this.lastReadOutboxMessageId,
+        unreadMentionCount: unreadMentionCount ?? this.unreadMentionCount,
+        unreadReactionCount: unreadReactionCount ?? this.unreadReactionCount,
+        notificationSettings: notificationSettings ?? this.notificationSettings,
+        draftMessage: draftMessage ?? this.draftMessage,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'forumTopic';

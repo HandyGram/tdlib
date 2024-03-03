@@ -7,7 +7,6 @@ part of '../tdapi.dart';
 /// * [senderChatId]: Identifier of the chat that posted the story.
 /// * [storyId]: Unique story identifier among stories of the given sender.
 final class StoryFullId extends TdObject {
-  
   /// **StoryFullId** *(storyFullId)* - basic class
   ///
   /// Contains identifier of a story along with identifier of its sender.
@@ -18,29 +17,28 @@ final class StoryFullId extends TdObject {
     required this.senderChatId,
     required this.storyId,
   });
-  
+
   /// Identifier of the chat that posted the story
   final int senderChatId;
 
   /// Unique story identifier among stories of the given sender
   final int storyId;
-  
+
   /// Parse from a json
   factory StoryFullId.fromJson(Map<String, dynamic> json) => StoryFullId(
-    senderChatId: json['sender_chat_id'],
-    storyId: json['story_id'],
-  );
-  
-  
+        senderChatId: json['sender_chat_id'],
+        storyId: json['story_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sender_chat_id": senderChatId,
       "story_id": storyId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -50,10 +48,11 @@ final class StoryFullId extends TdObject {
   StoryFullId copyWith({
     int? senderChatId,
     int? storyId,
-  }) => StoryFullId(
-    senderChatId: senderChatId ?? this.senderChatId,
-    storyId: storyId ?? this.storyId,
-  );
+  }) =>
+      StoryFullId(
+        senderChatId: senderChatId ?? this.senderChatId,
+        storyId: storyId ?? this.storyId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'storyFullId';

@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetChatBackground extends TdFunction {
-  
   /// **SetChatBackground** *(setChatBackground)* - TDLib function
   ///
   /// Sets the background in a specific chat. Supported only in private and secret chats with non-deleted users, and in chats with sufficient boost level and can_change_info administrator right.
@@ -31,7 +30,7 @@ final class SetChatBackground extends TdFunction {
     required this.darkThemeDimming,
     required this.onlyForSelf,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -46,20 +45,20 @@ final class SetChatBackground extends TdFunction {
 
   /// Pass true to set background only for self; pass false to set background for all chat users. Always false for backgrounds set in boosted chats. Background can be set for both users only by Telegram Premium users and if set background isn't of the type inputBackgroundPrevious
   final bool onlyForSelf;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "background": background?.toJson(),
       "type": type?.toJson(),
       "dark_theme_dimming": darkThemeDimming,
       "only_for_self": onlyForSelf,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -75,13 +74,14 @@ final class SetChatBackground extends TdFunction {
     BackgroundType? type,
     int? darkThemeDimming,
     bool? onlyForSelf,
-  }) => SetChatBackground(
-    chatId: chatId ?? this.chatId,
-    background: background ?? this.background,
-    type: type ?? this.type,
-    darkThemeDimming: darkThemeDimming ?? this.darkThemeDimming,
-    onlyForSelf: onlyForSelf ?? this.onlyForSelf,
-  );
+  }) =>
+      SetChatBackground(
+        chatId: chatId ?? this.chatId,
+        background: background ?? this.background,
+        type: type ?? this.type,
+        darkThemeDimming: darkThemeDimming ?? this.darkThemeDimming,
+        onlyForSelf: onlyForSelf ?? this.onlyForSelf,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setChatBackground';

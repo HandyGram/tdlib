@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 ///
 /// [Proxy] is returned on completion.
 final class EditProxy extends TdFunction {
-  
   /// **EditProxy** *(editProxy)* - TDLib function
   ///
   /// Edits an existing proxy server for network requests. Can be called before authorization.
@@ -31,7 +30,7 @@ final class EditProxy extends TdFunction {
     required this.enable,
     required this.type,
   });
-  
+
   /// Proxy identifier
   final int proxyId;
 
@@ -46,20 +45,20 @@ final class EditProxy extends TdFunction {
 
   /// Proxy type
   final ProxyType type;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "proxy_id": proxyId,
       "server": server,
       "port": port,
       "enable": enable,
       "type": type.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -75,13 +74,14 @@ final class EditProxy extends TdFunction {
     int? port,
     bool? enable,
     ProxyType? type,
-  }) => EditProxy(
-    proxyId: proxyId ?? this.proxyId,
-    server: server ?? this.server,
-    port: port ?? this.port,
-    enable: enable ?? this.enable,
-    type: type ?? this.type,
-  );
+  }) =>
+      EditProxy(
+        proxyId: proxyId ?? this.proxyId,
+        server: server ?? this.server,
+        port: port ?? this.port,
+        enable: enable ?? this.enable,
+        type: type ?? this.type,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'editProxy';

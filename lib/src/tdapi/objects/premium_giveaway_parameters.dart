@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 /// * [countryCodes]: The list of two-letter ISO 3166-1 alpha-2 codes of countries, users from which will be eligible for the giveaway. If empty, then all users can participate in the giveaway.. There can be up to getOption("giveaway_country_count_max") chosen countries. Users with phone number that was bought on Fragment can participate in any giveaway and the country code "FT" must not be specified in the list.
 /// * [prizeDescription]: Additional description of the giveaway prize; 0-128 characters.
 final class PremiumGiveawayParameters extends TdObject {
-  
   /// **PremiumGiveawayParameters** *(premiumGiveawayParameters)* - basic class
   ///
   /// Describes parameters of a Telegram Premium giveaway.
@@ -33,7 +32,7 @@ final class PremiumGiveawayParameters extends TdObject {
     required this.countryCodes,
     required this.prizeDescription,
   });
-  
+
   /// Identifier of the supergroup or channel chat, which will be automatically boosted by the winners of the giveaway for duration of the Premium subscription.. If the chat is a channel, then can_post_messages right is required in the channel, otherwise, the user must be an administrator in the supergroup
   final int boostedChatId;
 
@@ -54,24 +53,26 @@ final class PremiumGiveawayParameters extends TdObject {
 
   /// Additional description of the giveaway prize; 0-128 characters
   final String prizeDescription;
-  
+
   /// Parse from a json
-  factory PremiumGiveawayParameters.fromJson(Map<String, dynamic> json) => PremiumGiveawayParameters(
-    boostedChatId: json['boosted_chat_id'],
-    additionalChatIds: List<int>.from((json['additional_chat_ids'] ?? []).map((item) => item).toList()),
-    winnersSelectionDate: json['winners_selection_date'],
-    onlyNewMembers: json['only_new_members'],
-    hasPublicWinners: json['has_public_winners'],
-    countryCodes: List<String>.from((json['country_codes'] ?? []).map((item) => item).toList()),
-    prizeDescription: json['prize_description'],
-  );
-  
-  
+  factory PremiumGiveawayParameters.fromJson(Map<String, dynamic> json) =>
+      PremiumGiveawayParameters(
+        boostedChatId: json['boosted_chat_id'],
+        additionalChatIds: List<int>.from(
+            (json['additional_chat_ids'] ?? []).map((item) => item).toList()),
+        winnersSelectionDate: json['winners_selection_date'],
+        onlyNewMembers: json['only_new_members'],
+        hasPublicWinners: json['has_public_winners'],
+        countryCodes: List<String>.from(
+            (json['country_codes'] ?? []).map((item) => item).toList()),
+        prizeDescription: json['prize_description'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "boosted_chat_id": boostedChatId,
       "additional_chat_ids": additionalChatIds.map((i) => i).toList(),
       "winners_selection_date": winnersSelectionDate,
@@ -79,8 +80,8 @@ final class PremiumGiveawayParameters extends TdObject {
       "has_public_winners": hasPublicWinners,
       "country_codes": countryCodes.map((i) => i).toList(),
       "prize_description": prizeDescription,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -100,15 +101,16 @@ final class PremiumGiveawayParameters extends TdObject {
     bool? hasPublicWinners,
     List<String>? countryCodes,
     String? prizeDescription,
-  }) => PremiumGiveawayParameters(
-    boostedChatId: boostedChatId ?? this.boostedChatId,
-    additionalChatIds: additionalChatIds ?? this.additionalChatIds,
-    winnersSelectionDate: winnersSelectionDate ?? this.winnersSelectionDate,
-    onlyNewMembers: onlyNewMembers ?? this.onlyNewMembers,
-    hasPublicWinners: hasPublicWinners ?? this.hasPublicWinners,
-    countryCodes: countryCodes ?? this.countryCodes,
-    prizeDescription: prizeDescription ?? this.prizeDescription,
-  );
+  }) =>
+      PremiumGiveawayParameters(
+        boostedChatId: boostedChatId ?? this.boostedChatId,
+        additionalChatIds: additionalChatIds ?? this.additionalChatIds,
+        winnersSelectionDate: winnersSelectionDate ?? this.winnersSelectionDate,
+        onlyNewMembers: onlyNewMembers ?? this.onlyNewMembers,
+        hasPublicWinners: hasPublicWinners ?? this.hasPublicWinners,
+        countryCodes: countryCodes ?? this.countryCodes,
+        prizeDescription: prizeDescription ?? this.prizeDescription,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'premiumGiveawayParameters';

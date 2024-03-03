@@ -56,6 +56,12 @@ class DartTdDocumentationGenerator {
     validationVariables();
 
     writeToFile();
+
+    runDartFormat();
+  }
+
+  void runDartFormat() {
+    Process.runSync("dart", ["format", "lib/src/tdapi"]);
   }
 
   /// dispatching types and functions from data

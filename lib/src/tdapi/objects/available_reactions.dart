@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 /// * [areTags]: True, if the reactions will be tags and the message can be found by them.
 /// * [unavailabilityReason]: The reason why the current user can't add reactions to the message, despite some other users can; may be null if none *(optional)*.
 final class AvailableReactions extends TdObject {
-  
   /// **AvailableReactions** *(availableReactions)* - basic class
   ///
   /// Represents a list of reactions that can be added to a message.
@@ -32,7 +31,7 @@ final class AvailableReactions extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// List of reactions to be shown at the top
   final List<AvailableReaction> topReactions;
 
@@ -58,33 +57,44 @@ final class AvailableReactions extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory AvailableReactions.fromJson(Map<String, dynamic> json) => AvailableReactions(
-    topReactions: List<AvailableReaction>.from((json['top_reactions'] ?? []).map((item) => AvailableReaction.fromJson(item)).toList()),
-    recentReactions: List<AvailableReaction>.from((json['recent_reactions'] ?? []).map((item) => AvailableReaction.fromJson(item)).toList()),
-    popularReactions: List<AvailableReaction>.from((json['popular_reactions'] ?? []).map((item) => AvailableReaction.fromJson(item)).toList()),
-    allowCustomEmoji: json['allow_custom_emoji'],
-    areTags: json['are_tags'],
-    unavailabilityReason: json['unavailability_reason'] == null ? null : ReactionUnavailabilityReason.fromJson(json['unavailability_reason']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory AvailableReactions.fromJson(Map<String, dynamic> json) =>
+      AvailableReactions(
+        topReactions: List<AvailableReaction>.from((json['top_reactions'] ?? [])
+            .map((item) => AvailableReaction.fromJson(item))
+            .toList()),
+        recentReactions: List<AvailableReaction>.from(
+            (json['recent_reactions'] ?? [])
+                .map((item) => AvailableReaction.fromJson(item))
+                .toList()),
+        popularReactions: List<AvailableReaction>.from(
+            (json['popular_reactions'] ?? [])
+                .map((item) => AvailableReaction.fromJson(item))
+                .toList()),
+        allowCustomEmoji: json['allow_custom_emoji'],
+        areTags: json['are_tags'],
+        unavailabilityReason: json['unavailability_reason'] == null
+            ? null
+            : ReactionUnavailabilityReason.fromJson(
+                json['unavailability_reason']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "top_reactions": topReactions.map((i) => i.toJson()).toList(),
       "recent_reactions": recentReactions.map((i) => i.toJson()).toList(),
       "popular_reactions": popularReactions.map((i) => i.toJson()).toList(),
       "allow_custom_emoji": allowCustomEmoji,
       "are_tags": areTags,
       "unavailability_reason": unavailabilityReason?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -104,16 +114,17 @@ final class AvailableReactions extends TdObject {
     ReactionUnavailabilityReason? unavailabilityReason,
     dynamic extra,
     int? clientId,
-  }) => AvailableReactions(
-    topReactions: topReactions ?? this.topReactions,
-    recentReactions: recentReactions ?? this.recentReactions,
-    popularReactions: popularReactions ?? this.popularReactions,
-    allowCustomEmoji: allowCustomEmoji ?? this.allowCustomEmoji,
-    areTags: areTags ?? this.areTags,
-    unavailabilityReason: unavailabilityReason ?? this.unavailabilityReason,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      AvailableReactions(
+        topReactions: topReactions ?? this.topReactions,
+        recentReactions: recentReactions ?? this.recentReactions,
+        popularReactions: popularReactions ?? this.popularReactions,
+        allowCustomEmoji: allowCustomEmoji ?? this.allowCustomEmoji,
+        areTags: areTags ?? this.areTags,
+        unavailabilityReason: unavailabilityReason ?? this.unavailabilityReason,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'availableReactions';

@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [PhoneNumberInfo] is returned on completion.
 final class GetPhoneNumberInfoSync extends TdFunction {
-  
   /// **GetPhoneNumberInfoSync** *(getPhoneNumberInfoSync)* - TDLib function
   ///
   /// Returns information about a phone number by its prefix synchronously. getCountries must be called at least once after changing localization to the specified language if properly localized country information is expected. Can be called synchronously.
@@ -22,23 +21,23 @@ final class GetPhoneNumberInfoSync extends TdFunction {
     required this.languageCode,
     required this.phoneNumberPrefix,
   });
-  
+
   /// A two-letter ISO 639-1 language code for country information localization
   final String languageCode;
 
   /// The phone number prefix
   final String phoneNumberPrefix;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "language_code": languageCode,
       "phone_number_prefix": phoneNumberPrefix,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class GetPhoneNumberInfoSync extends TdFunction {
   GetPhoneNumberInfoSync copyWith({
     String? languageCode,
     String? phoneNumberPrefix,
-  }) => GetPhoneNumberInfoSync(
-    languageCode: languageCode ?? this.languageCode,
-    phoneNumberPrefix: phoneNumberPrefix ?? this.phoneNumberPrefix,
-  );
+  }) =>
+      GetPhoneNumberInfoSync(
+        languageCode: languageCode ?? this.languageCode,
+        phoneNumberPrefix: phoneNumberPrefix ?? this.phoneNumberPrefix,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getPhoneNumberInfoSync';

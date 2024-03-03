@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 /// * [scale]: Scale of segment durations in the stream. The duration is 1000/(2**scale) milliseconds.
 /// * [timeOffset]: Point in time when the stream currently ends; Unix timestamp in milliseconds.
 final class GroupCallStream extends TdObject {
-  
   /// **GroupCallStream** *(groupCallStream)* - basic class
   ///
   /// Describes an available stream in a group call.
@@ -21,7 +20,7 @@ final class GroupCallStream extends TdObject {
     required this.scale,
     required this.timeOffset,
   });
-  
+
   /// Identifier of an audio/video channel
   final int channelId;
 
@@ -30,25 +29,25 @@ final class GroupCallStream extends TdObject {
 
   /// Point in time when the stream currently ends; Unix timestamp in milliseconds
   final int timeOffset;
-  
+
   /// Parse from a json
-  factory GroupCallStream.fromJson(Map<String, dynamic> json) => GroupCallStream(
-    channelId: json['channel_id'],
-    scale: json['scale'],
-    timeOffset: json['time_offset'],
-  );
-  
-  
+  factory GroupCallStream.fromJson(Map<String, dynamic> json) =>
+      GroupCallStream(
+        channelId: json['channel_id'],
+        scale: json['scale'],
+        timeOffset: json['time_offset'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "channel_id": channelId,
       "scale": scale,
       "time_offset": timeOffset,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -60,11 +59,12 @@ final class GroupCallStream extends TdObject {
     int? channelId,
     int? scale,
     int? timeOffset,
-  }) => GroupCallStream(
-    channelId: channelId ?? this.channelId,
-    scale: scale ?? this.scale,
-    timeOffset: timeOffset ?? this.timeOffset,
-  );
+  }) =>
+      GroupCallStream(
+        channelId: channelId ?? this.channelId,
+        scale: scale ?? this.scale,
+        timeOffset: timeOffset ?? this.timeOffset,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'groupCallStream';

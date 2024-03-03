@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetChatAvailableReactions extends TdFunction {
-  
   /// **SetChatAvailableReactions** *(setChatAvailableReactions)* - TDLib function
   ///
   /// Changes reactions, available in a chat. Available for basic groups, supergroups, and channels. Requires can_change_info member right.
@@ -22,23 +21,23 @@ final class SetChatAvailableReactions extends TdFunction {
     required this.chatId,
     required this.availableReactions,
   });
-  
+
   /// Identifier of the chat
   final int chatId;
 
   /// Reactions available in the chat. All explicitly specified emoji reactions must be active. In channel chats up to the chat's boost level custom emoji reactions can be explicitly specified
   final ChatAvailableReactions availableReactions;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "available_reactions": availableReactions.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class SetChatAvailableReactions extends TdFunction {
   SetChatAvailableReactions copyWith({
     int? chatId,
     ChatAvailableReactions? availableReactions,
-  }) => SetChatAvailableReactions(
-    chatId: chatId ?? this.chatId,
-    availableReactions: availableReactions ?? this.availableReactions,
-  );
+  }) =>
+      SetChatAvailableReactions(
+        chatId: chatId ?? this.chatId,
+        availableReactions: availableReactions ?? this.availableReactions,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setChatAvailableReactions';

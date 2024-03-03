@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class CheckPhoneNumberConfirmationCode extends TdFunction {
-  
   /// **CheckPhoneNumberConfirmationCode** *(checkPhoneNumberConfirmationCode)* - TDLib function
   ///
   /// Checks phone number confirmation code.
@@ -19,19 +18,19 @@ final class CheckPhoneNumberConfirmationCode extends TdFunction {
   const CheckPhoneNumberConfirmationCode({
     required this.code,
   });
-  
+
   /// Confirmation code to check
   final String code;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "code": code,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class CheckPhoneNumberConfirmationCode extends TdFunction {
   /// * [code]: Confirmation code to check
   CheckPhoneNumberConfirmationCode copyWith({
     String? code,
-  }) => CheckPhoneNumberConfirmationCode(
-    code: code ?? this.code,
-  );
+  }) =>
+      CheckPhoneNumberConfirmationCode(
+        code: code ?? this.code,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'checkPhoneNumberConfirmationCode';

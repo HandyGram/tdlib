@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [AuthenticationCodeInfo] is returned on completion.
 final class SendPhoneNumberConfirmationCode extends TdFunction {
-  
   /// **SendPhoneNumberConfirmationCode** *(sendPhoneNumberConfirmationCode)* - TDLib function
   ///
   /// Sends phone number confirmation code to handle links of the type internalLinkTypePhoneNumberConfirmation.
@@ -25,7 +24,7 @@ final class SendPhoneNumberConfirmationCode extends TdFunction {
     required this.phoneNumber,
     this.settings,
   });
-  
+
   /// Hash value from the link
   final String hash;
 
@@ -34,18 +33,18 @@ final class SendPhoneNumberConfirmationCode extends TdFunction {
 
   /// Settings for the authentication of the user's phone number; pass null to use default settings
   final PhoneNumberAuthenticationSettings? settings;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "hash": hash,
       "phone_number": phoneNumber,
       "settings": settings?.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class SendPhoneNumberConfirmationCode extends TdFunction {
     String? hash,
     String? phoneNumber,
     PhoneNumberAuthenticationSettings? settings,
-  }) => SendPhoneNumberConfirmationCode(
-    hash: hash ?? this.hash,
-    phoneNumber: phoneNumber ?? this.phoneNumber,
-    settings: settings ?? this.settings,
-  );
+  }) =>
+      SendPhoneNumberConfirmationCode(
+        hash: hash ?? this.hash,
+        phoneNumber: phoneNumber ?? this.phoneNumber,
+        settings: settings ?? this.settings,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'sendPhoneNumberConfirmationCode';

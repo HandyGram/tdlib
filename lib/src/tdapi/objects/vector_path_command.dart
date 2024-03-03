@@ -4,17 +4,16 @@ part of '../tdapi.dart';
 ///
 /// Represents a vector path command.
 sealed class VectorPathCommand extends TdObject {
-  
   /// **VectorPathCommand** *(vectorPathCommand)* - parent
   ///
   /// Represents a vector path command.
   const VectorPathCommand();
-  
+
   /// a VectorPathCommand return type can be :
   /// * [VectorPathCommandLine]
   /// * [VectorPathCommandCubicBezierCurve]
-  factory VectorPathCommand.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory VectorPathCommand.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case VectorPathCommandLine.defaultObjectId:
         return VectorPathCommandLine.fromJson(json);
       case VectorPathCommandCubicBezierCurve.defaultObjectId:
@@ -26,7 +25,7 @@ sealed class VectorPathCommand extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -46,14 +45,12 @@ sealed class VectorPathCommand extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **VectorPathCommandLine** *(vectorPathCommandLine)* - child of VectorPathCommand
 ///
 /// A straight line to a given point.
 ///
 /// * [endPoint]: The end point of the straight line.
 final class VectorPathCommandLine extends VectorPathCommand {
-  
   /// **VectorPathCommandLine** *(vectorPathCommandLine)* - child of VectorPathCommand
   ///
   /// A straight line to a given point.
@@ -62,24 +59,24 @@ final class VectorPathCommandLine extends VectorPathCommand {
   const VectorPathCommandLine({
     required this.endPoint,
   });
-  
+
   /// The end point of the straight line
   final Point endPoint;
-  
+
   /// Parse from a json
-  factory VectorPathCommandLine.fromJson(Map<String, dynamic> json) => VectorPathCommandLine(
-    endPoint: Point.fromJson(json['end_point']),
-  );
-  
-  
+  factory VectorPathCommandLine.fromJson(Map<String, dynamic> json) =>
+      VectorPathCommandLine(
+        endPoint: Point.fromJson(json['end_point']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "end_point": endPoint.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -88,9 +85,10 @@ final class VectorPathCommandLine extends VectorPathCommand {
   @override
   VectorPathCommandLine copyWith({
     Point? endPoint,
-  }) => VectorPathCommandLine(
-    endPoint: endPoint ?? this.endPoint,
-  );
+  }) =>
+      VectorPathCommandLine(
+        endPoint: endPoint ?? this.endPoint,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'vectorPathCommandLine';
@@ -104,31 +102,32 @@ final class VectorPathCommandLine extends VectorPathCommand {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **VectorPathCommandCubicBezierCurve** *(vectorPathCommandCubicBezierCurve)* - child of VectorPathCommand
 ///
 /// A cubic B.
 final class VectorPathCommandCubicBezierCurve extends VectorPathCommand {
-  
   /// **VectorPathCommandCubicBezierCurve** *(vectorPathCommandCubicBezierCurve)* - child of VectorPathCommand
   ///
   /// A cubic B.
   const VectorPathCommandCubicBezierCurve();
-  
+
   /// Parse from a json
-  factory VectorPathCommandCubicBezierCurve.fromJson(Map<String, dynamic> json) => const VectorPathCommandCubicBezierCurve();
-  
+  factory VectorPathCommandCubicBezierCurve.fromJson(
+          Map<String, dynamic> json) =>
+      const VectorPathCommandCubicBezierCurve();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
-  VectorPathCommandCubicBezierCurve copyWith() => const VectorPathCommandCubicBezierCurve();
+  VectorPathCommandCubicBezierCurve copyWith() =>
+      const VectorPathCommandCubicBezierCurve();
 
   /// TDLib object type
   static const String defaultObjectId = 'vectorPathCommandCubicBezierCurve';

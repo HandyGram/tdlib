@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class EditStory extends TdFunction {
-  
   /// **EditStory** *(editStory)* - TDLib function
   ///
   /// Changes content and caption of a story. Can be called only if story.can_be_edited == true.
@@ -31,7 +30,7 @@ final class EditStory extends TdFunction {
     this.areas,
     this.caption,
   });
-  
+
   /// Identifier of the chat that posted the story
   final int storySenderChatId;
 
@@ -46,20 +45,20 @@ final class EditStory extends TdFunction {
 
   /// New story caption; pass null to keep the current caption
   final FormattedText? caption;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "story_sender_chat_id": storySenderChatId,
       "story_id": storyId,
       "content": content?.toJson(),
       "areas": areas?.toJson(),
       "caption": caption?.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -75,13 +74,14 @@ final class EditStory extends TdFunction {
     InputStoryContent? content,
     InputStoryAreas? areas,
     FormattedText? caption,
-  }) => EditStory(
-    storySenderChatId: storySenderChatId ?? this.storySenderChatId,
-    storyId: storyId ?? this.storyId,
-    content: content ?? this.content,
-    areas: areas ?? this.areas,
-    caption: caption ?? this.caption,
-  );
+  }) =>
+      EditStory(
+        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+        storyId: storyId ?? this.storyId,
+        content: content ?? this.content,
+        areas: areas ?? this.areas,
+        caption: caption ?? this.caption,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'editStory';

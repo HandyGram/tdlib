@@ -21,7 +21,6 @@ part of '../tdapi.dart';
 /// * [useDefaultDisableMentionNotifications]: If true, the value for the relevant type of chat or the forum chat is used instead of disable_mention_notifications.
 /// * [disableMentionNotifications]: If true, notifications for messages with mentions will be created as for an ordinary unread message.
 final class ChatNotificationSettings extends TdObject {
-  
   /// **ChatNotificationSettings** *(chatNotificationSettings)* - basic class
   ///
   /// Contains information about notification settings for a chat or a forum topic.
@@ -60,7 +59,7 @@ final class ChatNotificationSettings extends TdObject {
     required this.useDefaultDisableMentionNotifications,
     required this.disableMentionNotifications,
   });
-  
+
   /// If true, the value for the relevant type of chat or the forum chat is used instead of mute_for
   final bool useDefaultMuteFor;
 
@@ -108,33 +107,36 @@ final class ChatNotificationSettings extends TdObject {
 
   /// If true, notifications for messages with mentions will be created as for an ordinary unread message
   final bool disableMentionNotifications;
-  
+
   /// Parse from a json
-  factory ChatNotificationSettings.fromJson(Map<String, dynamic> json) => ChatNotificationSettings(
-    useDefaultMuteFor: json['use_default_mute_for'],
-    muteFor: json['mute_for'],
-    useDefaultSound: json['use_default_sound'],
-    soundId: int.parse(json['sound_id']),
-    useDefaultShowPreview: json['use_default_show_preview'],
-    showPreview: json['show_preview'],
-    useDefaultMuteStories: json['use_default_mute_stories'],
-    muteStories: json['mute_stories'],
-    useDefaultStorySound: json['use_default_story_sound'],
-    storySoundId: int.parse(json['story_sound_id']),
-    useDefaultShowStorySender: json['use_default_show_story_sender'],
-    showStorySender: json['show_story_sender'],
-    useDefaultDisablePinnedMessageNotifications: json['use_default_disable_pinned_message_notifications'],
-    disablePinnedMessageNotifications: json['disable_pinned_message_notifications'],
-    useDefaultDisableMentionNotifications: json['use_default_disable_mention_notifications'],
-    disableMentionNotifications: json['disable_mention_notifications'],
-  );
-  
-  
+  factory ChatNotificationSettings.fromJson(Map<String, dynamic> json) =>
+      ChatNotificationSettings(
+        useDefaultMuteFor: json['use_default_mute_for'],
+        muteFor: json['mute_for'],
+        useDefaultSound: json['use_default_sound'],
+        soundId: int.parse(json['sound_id']),
+        useDefaultShowPreview: json['use_default_show_preview'],
+        showPreview: json['show_preview'],
+        useDefaultMuteStories: json['use_default_mute_stories'],
+        muteStories: json['mute_stories'],
+        useDefaultStorySound: json['use_default_story_sound'],
+        storySoundId: int.parse(json['story_sound_id']),
+        useDefaultShowStorySender: json['use_default_show_story_sender'],
+        showStorySender: json['show_story_sender'],
+        useDefaultDisablePinnedMessageNotifications:
+            json['use_default_disable_pinned_message_notifications'],
+        disablePinnedMessageNotifications:
+            json['disable_pinned_message_notifications'],
+        useDefaultDisableMentionNotifications:
+            json['use_default_disable_mention_notifications'],
+        disableMentionNotifications: json['disable_mention_notifications'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "use_default_mute_for": useDefaultMuteFor,
       "mute_for": muteFor,
       "use_default_sound": useDefaultSound,
@@ -147,12 +149,14 @@ final class ChatNotificationSettings extends TdObject {
       "story_sound_id": storySoundId,
       "use_default_show_story_sender": useDefaultShowStorySender,
       "show_story_sender": showStorySender,
-      "use_default_disable_pinned_message_notifications": useDefaultDisablePinnedMessageNotifications,
+      "use_default_disable_pinned_message_notifications":
+          useDefaultDisablePinnedMessageNotifications,
       "disable_pinned_message_notifications": disablePinnedMessageNotifications,
-      "use_default_disable_mention_notifications": useDefaultDisableMentionNotifications,
+      "use_default_disable_mention_notifications":
+          useDefaultDisableMentionNotifications,
       "disable_mention_notifications": disableMentionNotifications,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -190,24 +194,34 @@ final class ChatNotificationSettings extends TdObject {
     bool? disablePinnedMessageNotifications,
     bool? useDefaultDisableMentionNotifications,
     bool? disableMentionNotifications,
-  }) => ChatNotificationSettings(
-    useDefaultMuteFor: useDefaultMuteFor ?? this.useDefaultMuteFor,
-    muteFor: muteFor ?? this.muteFor,
-    useDefaultSound: useDefaultSound ?? this.useDefaultSound,
-    soundId: soundId ?? this.soundId,
-    useDefaultShowPreview: useDefaultShowPreview ?? this.useDefaultShowPreview,
-    showPreview: showPreview ?? this.showPreview,
-    useDefaultMuteStories: useDefaultMuteStories ?? this.useDefaultMuteStories,
-    muteStories: muteStories ?? this.muteStories,
-    useDefaultStorySound: useDefaultStorySound ?? this.useDefaultStorySound,
-    storySoundId: storySoundId ?? this.storySoundId,
-    useDefaultShowStorySender: useDefaultShowStorySender ?? this.useDefaultShowStorySender,
-    showStorySender: showStorySender ?? this.showStorySender,
-    useDefaultDisablePinnedMessageNotifications: useDefaultDisablePinnedMessageNotifications ?? this.useDefaultDisablePinnedMessageNotifications,
-    disablePinnedMessageNotifications: disablePinnedMessageNotifications ?? this.disablePinnedMessageNotifications,
-    useDefaultDisableMentionNotifications: useDefaultDisableMentionNotifications ?? this.useDefaultDisableMentionNotifications,
-    disableMentionNotifications: disableMentionNotifications ?? this.disableMentionNotifications,
-  );
+  }) =>
+      ChatNotificationSettings(
+        useDefaultMuteFor: useDefaultMuteFor ?? this.useDefaultMuteFor,
+        muteFor: muteFor ?? this.muteFor,
+        useDefaultSound: useDefaultSound ?? this.useDefaultSound,
+        soundId: soundId ?? this.soundId,
+        useDefaultShowPreview:
+            useDefaultShowPreview ?? this.useDefaultShowPreview,
+        showPreview: showPreview ?? this.showPreview,
+        useDefaultMuteStories:
+            useDefaultMuteStories ?? this.useDefaultMuteStories,
+        muteStories: muteStories ?? this.muteStories,
+        useDefaultStorySound: useDefaultStorySound ?? this.useDefaultStorySound,
+        storySoundId: storySoundId ?? this.storySoundId,
+        useDefaultShowStorySender:
+            useDefaultShowStorySender ?? this.useDefaultShowStorySender,
+        showStorySender: showStorySender ?? this.showStorySender,
+        useDefaultDisablePinnedMessageNotifications:
+            useDefaultDisablePinnedMessageNotifications ??
+                this.useDefaultDisablePinnedMessageNotifications,
+        disablePinnedMessageNotifications: disablePinnedMessageNotifications ??
+            this.disablePinnedMessageNotifications,
+        useDefaultDisableMentionNotifications:
+            useDefaultDisableMentionNotifications ??
+                this.useDefaultDisableMentionNotifications,
+        disableMentionNotifications:
+            disableMentionNotifications ?? this.disableMentionNotifications,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatNotificationSettings';

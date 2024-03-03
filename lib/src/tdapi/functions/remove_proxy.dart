@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class RemoveProxy extends TdFunction {
-  
   /// **RemoveProxy** *(removeProxy)* - TDLib function
   ///
   /// Removes a proxy server. Can be called before authorization.
@@ -19,19 +18,19 @@ final class RemoveProxy extends TdFunction {
   const RemoveProxy({
     required this.proxyId,
   });
-  
+
   /// Proxy identifier
   final int proxyId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "proxy_id": proxyId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class RemoveProxy extends TdFunction {
   /// * [proxy_id]: Proxy identifier
   RemoveProxy copyWith({
     int? proxyId,
-  }) => RemoveProxy(
-    proxyId: proxyId ?? this.proxyId,
-  );
+  }) =>
+      RemoveProxy(
+        proxyId: proxyId ?? this.proxyId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'removeProxy';

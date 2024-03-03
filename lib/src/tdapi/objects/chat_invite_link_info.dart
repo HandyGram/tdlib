@@ -19,7 +19,6 @@ part of '../tdapi.dart';
 /// * [isScam]: True, if many users reported this chat as a scam.
 /// * [isFake]: True, if many users reported this chat as a fake account.
 final class ChatInviteLinkInfo extends TdObject {
-  
   /// **ChatInviteLinkInfo** *(chatInviteLinkInfo)* - basic class
   ///
   /// Contains information about a chat invite link.
@@ -56,7 +55,7 @@ final class ChatInviteLinkInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Chat identifier of the invite link; 0 if the user has no access to the chat before joining
   final int chatId;
 
@@ -106,33 +105,36 @@ final class ChatInviteLinkInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory ChatInviteLinkInfo.fromJson(Map<String, dynamic> json) => ChatInviteLinkInfo(
-    chatId: json['chat_id'],
-    accessibleFor: json['accessible_for'],
-    type: InviteLinkChatType.fromJson(json['type']),
-    title: json['title'],
-    photo: json['photo'] == null ? null : ChatPhotoInfo.fromJson(json['photo']),
-    accentColorId: json['accent_color_id'],
-    description: json['description'],
-    memberCount: json['member_count'],
-    memberUserIds: List<int>.from((json['member_user_ids'] ?? []).map((item) => item).toList()),
-    createsJoinRequest: json['creates_join_request'],
-    isPublic: json['is_public'],
-    isVerified: json['is_verified'],
-    isScam: json['is_scam'],
-    isFake: json['is_fake'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory ChatInviteLinkInfo.fromJson(Map<String, dynamic> json) =>
+      ChatInviteLinkInfo(
+        chatId: json['chat_id'],
+        accessibleFor: json['accessible_for'],
+        type: InviteLinkChatType.fromJson(json['type']),
+        title: json['title'],
+        photo: json['photo'] == null
+            ? null
+            : ChatPhotoInfo.fromJson(json['photo']),
+        accentColorId: json['accent_color_id'],
+        description: json['description'],
+        memberCount: json['member_count'],
+        memberUserIds: List<int>.from(
+            (json['member_user_ids'] ?? []).map((item) => item).toList()),
+        createsJoinRequest: json['creates_join_request'],
+        isPublic: json['is_public'],
+        isVerified: json['is_verified'],
+        isScam: json['is_scam'],
+        isFake: json['is_fake'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "accessible_for": accessibleFor,
       "type": type.toJson(),
@@ -147,8 +149,8 @@ final class ChatInviteLinkInfo extends TdObject {
       "is_verified": isVerified,
       "is_scam": isScam,
       "is_fake": isFake,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -184,24 +186,25 @@ final class ChatInviteLinkInfo extends TdObject {
     bool? isFake,
     dynamic extra,
     int? clientId,
-  }) => ChatInviteLinkInfo(
-    chatId: chatId ?? this.chatId,
-    accessibleFor: accessibleFor ?? this.accessibleFor,
-    type: type ?? this.type,
-    title: title ?? this.title,
-    photo: photo ?? this.photo,
-    accentColorId: accentColorId ?? this.accentColorId,
-    description: description ?? this.description,
-    memberCount: memberCount ?? this.memberCount,
-    memberUserIds: memberUserIds ?? this.memberUserIds,
-    createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
-    isPublic: isPublic ?? this.isPublic,
-    isVerified: isVerified ?? this.isVerified,
-    isScam: isScam ?? this.isScam,
-    isFake: isFake ?? this.isFake,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      ChatInviteLinkInfo(
+        chatId: chatId ?? this.chatId,
+        accessibleFor: accessibleFor ?? this.accessibleFor,
+        type: type ?? this.type,
+        title: title ?? this.title,
+        photo: photo ?? this.photo,
+        accentColorId: accentColorId ?? this.accentColorId,
+        description: description ?? this.description,
+        memberCount: memberCount ?? this.memberCount,
+        memberUserIds: memberUserIds ?? this.memberUserIds,
+        createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
+        isPublic: isPublic ?? this.isPublic,
+        isVerified: isVerified ?? this.isVerified,
+        isScam: isScam ?? this.isScam,
+        isFake: isFake ?? this.isFake,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatInviteLinkInfo';

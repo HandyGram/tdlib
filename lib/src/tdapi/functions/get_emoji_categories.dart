@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [EmojiCategories] is returned on completion.
 final class GetEmojiCategories extends TdFunction {
-  
   /// **GetEmojiCategories** *(getEmojiCategories)* - TDLib function
   ///
   /// Returns available emojis categories.
@@ -19,19 +18,19 @@ final class GetEmojiCategories extends TdFunction {
   const GetEmojiCategories({
     this.type,
   });
-  
+
   /// Type of emoji categories to return; pass null to get default emoji categories
   final EmojiCategoryType? type;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "type": type?.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetEmojiCategories extends TdFunction {
   /// * [type]: Type of emoji categories to return; pass null to get default emoji categories
   GetEmojiCategories copyWith({
     EmojiCategoryType? type,
-  }) => GetEmojiCategories(
-    type: type ?? this.type,
-  );
+  }) =>
+      GetEmojiCategories(
+        type: type ?? this.type,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getEmojiCategories';

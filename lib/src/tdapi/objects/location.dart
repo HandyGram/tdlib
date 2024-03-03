@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 /// * [longitude]: Longitude of the location, in degrees; as defined by the sender.
 /// * [horizontalAccuracy]: The estimated horizontal accuracy of the location, in meters; as defined by the sender. 0 if unknown.
 final class Location extends TdObject {
-  
   /// **Location** *(location)* - basic class
   ///
   /// Describes a location on planet Earth.
@@ -21,7 +20,7 @@ final class Location extends TdObject {
     required this.longitude,
     required this.horizontalAccuracy,
   });
-  
+
   /// Latitude of the location in degrees; as defined by the sender
   final double latitude;
 
@@ -30,25 +29,24 @@ final class Location extends TdObject {
 
   /// The estimated horizontal accuracy of the location, in meters; as defined by the sender. 0 if unknown
   final double horizontalAccuracy;
-  
+
   /// Parse from a json
   factory Location.fromJson(Map<String, dynamic> json) => Location(
-    latitude: json['latitude'],
-    longitude: json['longitude'],
-    horizontalAccuracy: json['horizontal_accuracy'],
-  );
-  
-  
+        latitude: json['latitude'],
+        longitude: json['longitude'],
+        horizontalAccuracy: json['horizontal_accuracy'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "latitude": latitude,
       "longitude": longitude,
       "horizontal_accuracy": horizontalAccuracy,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -60,11 +58,12 @@ final class Location extends TdObject {
     double? latitude,
     double? longitude,
     double? horizontalAccuracy,
-  }) => Location(
-    latitude: latitude ?? this.latitude,
-    longitude: longitude ?? this.longitude,
-    horizontalAccuracy: horizontalAccuracy ?? this.horizontalAccuracy,
-  );
+  }) =>
+      Location(
+        latitude: latitude ?? this.latitude,
+        longitude: longitude ?? this.longitude,
+        horizontalAccuracy: horizontalAccuracy ?? this.horizontalAccuracy,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'location';

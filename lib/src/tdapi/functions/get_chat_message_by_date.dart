@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Message] is returned on completion.
 final class GetChatMessageByDate extends TdFunction {
-  
   /// **GetChatMessageByDate** *(getChatMessageByDate)* - TDLib function
   ///
   /// Returns the last message sent in a chat no later than the specified date.
@@ -22,36 +21,37 @@ final class GetChatMessageByDate extends TdFunction {
     required this.chatId,
     required this.date,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
   /// Point in time (Unix timestamp) relative to which to search for messages
   final int date;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "date": date,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
+  /// * [chat_id]: Chat identifier
   /// * [date]: Point in time (Unix timestamp) relative to which to search for messages
   GetChatMessageByDate copyWith({
     int? chatId,
     int? date,
-  }) => GetChatMessageByDate(
-    chatId: chatId ?? this.chatId,
-    date: date ?? this.date,
-  );
+  }) =>
+      GetChatMessageByDate(
+        chatId: chatId ?? this.chatId,
+        date: date ?? this.date,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getChatMessageByDate';

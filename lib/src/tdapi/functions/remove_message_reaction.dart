@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class RemoveMessageReaction extends TdFunction {
-  
   /// **RemoveMessageReaction** *(removeMessageReaction)* - TDLib function
   ///
   /// Removes a reaction from a message. A chosen reaction can always be removed.
@@ -25,7 +24,7 @@ final class RemoveMessageReaction extends TdFunction {
     required this.messageId,
     required this.reactionType,
   });
-  
+
   /// Identifier of the chat to which the message belongs
   final int chatId;
 
@@ -34,18 +33,18 @@ final class RemoveMessageReaction extends TdFunction {
 
   /// Type of the reaction to remove
   final ReactionType reactionType;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "reaction_type": reactionType.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class RemoveMessageReaction extends TdFunction {
     int? chatId,
     int? messageId,
     ReactionType? reactionType,
-  }) => RemoveMessageReaction(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    reactionType: reactionType ?? this.reactionType,
-  );
+  }) =>
+      RemoveMessageReaction(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        reactionType: reactionType ?? this.reactionType,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'removeMessageReaction';

@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetAuthenticationPhoneNumber extends TdFunction {
-  
   /// **SetAuthenticationPhoneNumber** *(setAuthenticationPhoneNumber)* - TDLib function
   ///
   /// Sets the phone number of the user and sends an authentication code to the user. Works only when the current authorization state is authorizationStateWaitPhoneNumber,. or if there is no pending authentication query and the current authorization state is authorizationStateWaitEmailAddress, authorizationStateWaitEmailCode, authorizationStateWaitCode, authorizationStateWaitRegistration, or authorizationStateWaitPassword.
@@ -22,23 +21,23 @@ final class SetAuthenticationPhoneNumber extends TdFunction {
     required this.phoneNumber,
     this.settings,
   });
-  
+
   /// The phone number of the user, in international format
   final String phoneNumber;
 
   /// Settings for the authentication of the user's phone number; pass null to use default settings
   final PhoneNumberAuthenticationSettings? settings;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "phone_number": phoneNumber,
       "settings": settings?.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class SetAuthenticationPhoneNumber extends TdFunction {
   SetAuthenticationPhoneNumber copyWith({
     String? phoneNumber,
     PhoneNumberAuthenticationSettings? settings,
-  }) => SetAuthenticationPhoneNumber(
-    phoneNumber: phoneNumber ?? this.phoneNumber,
-    settings: settings ?? this.settings,
-  );
+  }) =>
+      SetAuthenticationPhoneNumber(
+        phoneNumber: phoneNumber ?? this.phoneNumber,
+        settings: settings ?? this.settings,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setAuthenticationPhoneNumber';

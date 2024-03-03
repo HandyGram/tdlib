@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetPassportElementErrors extends TdFunction {
-  
   /// **SetPassportElementErrors** *(setPassportElementErrors)* - TDLib function
   ///
   /// Informs the user that some of the elements in their Telegram Passport contain errors; for bots only. The user will not be able to resend the elements, until the errors are fixed.
@@ -22,36 +21,37 @@ final class SetPassportElementErrors extends TdFunction {
     required this.userId,
     required this.errors,
   });
-  
-  /// User identifier 
+
+  /// User identifier
   final int userId;
 
   /// The errors
   final List<InputPassportElementError> errors;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "user_id": userId,
       "errors": errors.map((i) => i.toJson()).toList(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [user_id]: User identifier 
+  /// * [user_id]: User identifier
   /// * [errors]: The errors
   SetPassportElementErrors copyWith({
     int? userId,
     List<InputPassportElementError>? errors,
-  }) => SetPassportElementErrors(
-    userId: userId ?? this.userId,
-    errors: errors ?? this.errors,
-  );
+  }) =>
+      SetPassportElementErrors(
+        userId: userId ?? this.userId,
+        errors: errors ?? this.errors,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setPassportElementErrors';

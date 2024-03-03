@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 /// * [id]: Identifier of the venue in the provider database; as defined by the sender.
 /// * [type]: Type of the venue in the provider database; as defined by the sender.
 final class Venue extends TdObject {
-  
   /// **Venue** *(venue)* - basic class
   ///
   /// Describes a venue.
@@ -30,7 +29,7 @@ final class Venue extends TdObject {
     required this.id,
     required this.type,
   });
-  
+
   /// Venue location; as defined by the sender
   final Location location;
 
@@ -48,31 +47,30 @@ final class Venue extends TdObject {
 
   /// Type of the venue in the provider database; as defined by the sender
   final String type;
-  
+
   /// Parse from a json
   factory Venue.fromJson(Map<String, dynamic> json) => Venue(
-    location: Location.fromJson(json['location']),
-    title: json['title'],
-    address: json['address'],
-    provider: json['provider'],
-    id: json['id'],
-    type: json['type'],
-  );
-  
-  
+        location: Location.fromJson(json['location']),
+        title: json['title'],
+        address: json['address'],
+        provider: json['provider'],
+        id: json['id'],
+        type: json['type'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "location": location.toJson(),
       "title": title,
       "address": address,
       "provider": provider,
       "id": id,
       "type": type,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -90,14 +88,15 @@ final class Venue extends TdObject {
     String? provider,
     String? id,
     String? type,
-  }) => Venue(
-    location: location ?? this.location,
-    title: title ?? this.title,
-    address: address ?? this.address,
-    provider: provider ?? this.provider,
-    id: id ?? this.id,
-    type: type ?? this.type,
-  );
+  }) =>
+      Venue(
+        location: location ?? this.location,
+        title: title ?? this.title,
+        address: address ?? this.address,
+        provider: provider ?? this.provider,
+        id: id ?? this.id,
+        type: type ?? this.type,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'venue';

@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 /// * [senderId]: Identifier of the sender, added the reaction.
 /// * [isBig]: True, if the reaction was added with a big animation.
 final class UnreadReaction extends TdObject {
-  
   /// **UnreadReaction** *(unreadReaction)* - basic class
   ///
   /// Contains information about an unread reaction to a message.
@@ -21,7 +20,7 @@ final class UnreadReaction extends TdObject {
     required this.senderId,
     required this.isBig,
   });
-  
+
   /// Type of the reaction
   final ReactionType type;
 
@@ -30,25 +29,24 @@ final class UnreadReaction extends TdObject {
 
   /// True, if the reaction was added with a big animation
   final bool isBig;
-  
+
   /// Parse from a json
   factory UnreadReaction.fromJson(Map<String, dynamic> json) => UnreadReaction(
-    type: ReactionType.fromJson(json['type']),
-    senderId: MessageSender.fromJson(json['sender_id']),
-    isBig: json['is_big'],
-  );
-  
-  
+        type: ReactionType.fromJson(json['type']),
+        senderId: MessageSender.fromJson(json['sender_id']),
+        isBig: json['is_big'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "type": type.toJson(),
       "sender_id": senderId.toJson(),
       "is_big": isBig,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -60,11 +58,12 @@ final class UnreadReaction extends TdObject {
     ReactionType? type,
     MessageSender? senderId,
     bool? isBig,
-  }) => UnreadReaction(
-    type: type ?? this.type,
-    senderId: senderId ?? this.senderId,
-    isBig: isBig ?? this.isBig,
-  );
+  }) =>
+      UnreadReaction(
+        type: type ?? this.type,
+        senderId: senderId ?? this.senderId,
+        isBig: isBig ?? this.isBig,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'unreadReaction';

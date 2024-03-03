@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [slots]: List of boost slots.
 final class ChatBoostSlots extends TdObject {
-  
   /// **ChatBoostSlots** *(chatBoostSlots)* - basic class
   ///
   /// Contains a list of chat boost slots.
@@ -17,7 +16,7 @@ final class ChatBoostSlots extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// List of boost slots
   final List<ChatBoostSlot> slots;
 
@@ -28,23 +27,24 @@ final class ChatBoostSlots extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory ChatBoostSlots.fromJson(Map<String, dynamic> json) => ChatBoostSlots(
-    slots: List<ChatBoostSlot>.from((json['slots'] ?? []).map((item) => ChatBoostSlot.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        slots: List<ChatBoostSlot>.from((json['slots'] ?? [])
+            .map((item) => ChatBoostSlot.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "slots": slots.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +54,12 @@ final class ChatBoostSlots extends TdObject {
     List<ChatBoostSlot>? slots,
     dynamic extra,
     int? clientId,
-  }) => ChatBoostSlots(
-    slots: slots ?? this.slots,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      ChatBoostSlots(
+        slots: slots ?? this.slots,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatBoostSlots';

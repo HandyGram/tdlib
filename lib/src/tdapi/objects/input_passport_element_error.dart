@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 /// * [message]: Error message.
 /// * [source]: Error source.
 final class InputPassportElementError extends TdObject {
-  
   /// **InputPassportElementError** *(inputPassportElementError)* - basic class
   ///
   /// Contains the description of an error in a Telegram Passport element; for bots only.
@@ -21,50 +20,51 @@ final class InputPassportElementError extends TdObject {
     required this.message,
     required this.source,
   });
-  
-  /// Type of Telegram Passport element that has the error 
+
+  /// Type of Telegram Passport element that has the error
   final PassportElementType type;
 
-  /// Error message 
+  /// Error message
   final String message;
 
   /// Error source
   final InputPassportElementErrorSource source;
-  
+
   /// Parse from a json
-  factory InputPassportElementError.fromJson(Map<String, dynamic> json) => InputPassportElementError(
-    type: PassportElementType.fromJson(json['type']),
-    message: json['message'],
-    source: InputPassportElementErrorSource.fromJson(json['source']),
-  );
-  
-  
+  factory InputPassportElementError.fromJson(Map<String, dynamic> json) =>
+      InputPassportElementError(
+        type: PassportElementType.fromJson(json['type']),
+        message: json['message'],
+        source: InputPassportElementErrorSource.fromJson(json['source']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "type": type.toJson(),
       "message": message,
       "source": source.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [type]: Type of Telegram Passport element that has the error 
-  /// * [message]: Error message 
+  /// * [type]: Type of Telegram Passport element that has the error
+  /// * [message]: Error message
   /// * [source]: Error source
   InputPassportElementError copyWith({
     PassportElementType? type,
     String? message,
     InputPassportElementErrorSource? source,
-  }) => InputPassportElementError(
-    type: type ?? this.type,
-    message: message ?? this.message,
-    source: source ?? this.source,
-  );
+  }) =>
+      InputPassportElementError(
+        type: type ?? this.type,
+        message: message ?? this.message,
+        source: source ?? this.source,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputPassportElementError';

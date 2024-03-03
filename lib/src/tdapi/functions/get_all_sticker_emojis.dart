@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 ///
 /// [Emojis] is returned on completion.
 final class GetAllStickerEmojis extends TdFunction {
-  
   /// **GetAllStickerEmojis** *(getAllStickerEmojis)* - TDLib function
   ///
   /// Returns unique emoji that correspond to stickers to be found by the getStickers(sticker_type, query, 1000000, chat_id).
@@ -28,7 +27,7 @@ final class GetAllStickerEmojis extends TdFunction {
     required this.chatId,
     required this.returnOnlyMainEmoji,
   });
-  
+
   /// Type of the stickers to search for
   final StickerType stickerType;
 
@@ -40,19 +39,19 @@ final class GetAllStickerEmojis extends TdFunction {
 
   /// Pass true if only main emoji for each found sticker must be included in the result
   final bool returnOnlyMainEmoji;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sticker_type": stickerType.toJson(),
       "query": query,
       "chat_id": chatId,
       "return_only_main_emoji": returnOnlyMainEmoji,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -66,12 +65,13 @@ final class GetAllStickerEmojis extends TdFunction {
     String? query,
     int? chatId,
     bool? returnOnlyMainEmoji,
-  }) => GetAllStickerEmojis(
-    stickerType: stickerType ?? this.stickerType,
-    query: query ?? this.query,
-    chatId: chatId ?? this.chatId,
-    returnOnlyMainEmoji: returnOnlyMainEmoji ?? this.returnOnlyMainEmoji,
-  );
+  }) =>
+      GetAllStickerEmojis(
+        stickerType: stickerType ?? this.stickerType,
+        query: query ?? this.query,
+        chatId: chatId ?? this.chatId,
+        returnOnlyMainEmoji: returnOnlyMainEmoji ?? this.returnOnlyMainEmoji,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getAllStickerEmojis';

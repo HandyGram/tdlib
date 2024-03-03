@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Chat] is returned on completion.
 final class CreateNewBasicGroupChat extends TdFunction {
-  
   /// **CreateNewBasicGroupChat** *(createNewBasicGroupChat)* - TDLib function
   ///
   /// Creates a new basic group and sends a corresponding messageBasicGroupChatCreate. Returns the newly created chat.
@@ -25,7 +24,7 @@ final class CreateNewBasicGroupChat extends TdFunction {
     required this.title,
     required this.messageAutoDeleteTime,
   });
-  
+
   /// Identifiers of users to be added to the basic group; may be empty to create a basic group without other members
   final List<int> userIds;
 
@@ -34,18 +33,18 @@ final class CreateNewBasicGroupChat extends TdFunction {
 
   /// Message auto-delete time value, in seconds; must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically
   final int messageAutoDeleteTime;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "user_ids": userIds.map((i) => i).toList(),
       "title": title,
       "message_auto_delete_time": messageAutoDeleteTime,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,13 @@ final class CreateNewBasicGroupChat extends TdFunction {
     List<int>? userIds,
     String? title,
     int? messageAutoDeleteTime,
-  }) => CreateNewBasicGroupChat(
-    userIds: userIds ?? this.userIds,
-    title: title ?? this.title,
-    messageAutoDeleteTime: messageAutoDeleteTime ?? this.messageAutoDeleteTime,
-  );
+  }) =>
+      CreateNewBasicGroupChat(
+        userIds: userIds ?? this.userIds,
+        title: title ?? this.title,
+        messageAutoDeleteTime:
+            messageAutoDeleteTime ?? this.messageAutoDeleteTime,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'createNewBasicGroupChat';

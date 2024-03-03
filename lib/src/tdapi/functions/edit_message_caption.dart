@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 ///
 /// [Message] is returned on completion.
 final class EditMessageCaption extends TdFunction {
-  
   /// **EditMessageCaption** *(editMessageCaption)* - TDLib function
   ///
   /// Edits the message content caption. Returns the edited message after the edit is completed on the server side.
@@ -28,7 +27,7 @@ final class EditMessageCaption extends TdFunction {
     this.replyMarkup,
     this.caption,
   });
-  
+
   /// The chat the message belongs to
   final int chatId;
 
@@ -40,19 +39,19 @@ final class EditMessageCaption extends TdFunction {
 
   /// New message content caption; 0-getOption("message_caption_length_max") characters; pass null to remove caption
   final FormattedText? caption;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "reply_markup": replyMarkup?.toJson(),
       "caption": caption?.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -66,12 +65,13 @@ final class EditMessageCaption extends TdFunction {
     int? messageId,
     ReplyMarkup? replyMarkup,
     FormattedText? caption,
-  }) => EditMessageCaption(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    caption: caption ?? this.caption,
-  );
+  }) =>
+      EditMessageCaption(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+        caption: caption ?? this.caption,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'editMessageCaption';

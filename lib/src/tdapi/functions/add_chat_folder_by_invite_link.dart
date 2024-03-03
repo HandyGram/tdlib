@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class AddChatFolderByInviteLink extends TdFunction {
-  
   /// **AddChatFolderByInviteLink** *(addChatFolderByInviteLink)* - TDLib function
   ///
   /// Adds a chat folder by an invite link.
@@ -22,36 +21,37 @@ final class AddChatFolderByInviteLink extends TdFunction {
     required this.inviteLink,
     required this.chatIds,
   });
-  
-  /// Invite link for the chat folder 
+
+  /// Invite link for the chat folder
   final String inviteLink;
 
   /// Identifiers of the chats added to the chat folder. The chats are automatically joined if they aren't joined yet
   final List<int> chatIds;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "invite_link": inviteLink,
       "chat_ids": chatIds.map((i) => i).toList(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [invite_link]: Invite link for the chat folder 
+  /// * [invite_link]: Invite link for the chat folder
   /// * [chat_ids]: Identifiers of the chats added to the chat folder. The chats are automatically joined if they aren't joined yet
   AddChatFolderByInviteLink copyWith({
     String? inviteLink,
     List<int>? chatIds,
-  }) => AddChatFolderByInviteLink(
-    inviteLink: inviteLink ?? this.inviteLink,
-    chatIds: chatIds ?? this.chatIds,
-  );
+  }) =>
+      AddChatFolderByInviteLink(
+        inviteLink: inviteLink ?? this.inviteLink,
+        chatIds: chatIds ?? this.chatIds,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'addChatFolderByInviteLink';

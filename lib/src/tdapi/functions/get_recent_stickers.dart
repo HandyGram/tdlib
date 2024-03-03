@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Stickers] is returned on completion.
 final class GetRecentStickers extends TdFunction {
-  
   /// **GetRecentStickers** *(getRecentStickers)* - TDLib function
   ///
   /// Returns a list of recently used stickers.
@@ -19,19 +18,19 @@ final class GetRecentStickers extends TdFunction {
   const GetRecentStickers({
     required this.isAttached,
   });
-  
+
   /// Pass true to return stickers and masks that were recently attached to photos or video files; pass false to return recently sent stickers
   final bool isAttached;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "is_attached": isAttached,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetRecentStickers extends TdFunction {
   /// * [is_attached]: Pass true to return stickers and masks that were recently attached to photos or video files; pass false to return recently sent stickers
   GetRecentStickers copyWith({
     bool? isAttached,
-  }) => GetRecentStickers(
-    isAttached: isAttached ?? this.isAttached,
-  );
+  }) =>
+      GetRecentStickers(
+        isAttached: isAttached ?? this.isAttached,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getRecentStickers';

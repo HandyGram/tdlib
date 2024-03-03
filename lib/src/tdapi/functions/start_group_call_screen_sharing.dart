@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Text] is returned on completion.
 final class StartGroupCallScreenSharing extends TdFunction {
-  
   /// **StartGroupCallScreenSharing** *(startGroupCallScreenSharing)* - TDLib function
   ///
   /// Starts screen sharing in a joined group call. Returns join response payload for tgcalls.
@@ -25,7 +24,7 @@ final class StartGroupCallScreenSharing extends TdFunction {
     required this.audioSourceId,
     required this.payload,
   });
-  
+
   /// Group call identifier
   final int groupCallId;
 
@@ -34,18 +33,18 @@ final class StartGroupCallScreenSharing extends TdFunction {
 
   /// Group call join payload; received from tgcalls
   final String payload;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "group_call_id": groupCallId,
       "audio_source_id": audioSourceId,
       "payload": payload,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class StartGroupCallScreenSharing extends TdFunction {
     int? groupCallId,
     int? audioSourceId,
     String? payload,
-  }) => StartGroupCallScreenSharing(
-    groupCallId: groupCallId ?? this.groupCallId,
-    audioSourceId: audioSourceId ?? this.audioSourceId,
-    payload: payload ?? this.payload,
-  );
+  }) =>
+      StartGroupCallScreenSharing(
+        groupCallId: groupCallId ?? this.groupCallId,
+        audioSourceId: audioSourceId ?? this.audioSourceId,
+        payload: payload ?? this.payload,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'startGroupCallScreenSharing';

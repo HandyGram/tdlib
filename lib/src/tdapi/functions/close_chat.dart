@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class CloseChat extends TdFunction {
-  
   /// **CloseChat** *(closeChat)* - TDLib function
   ///
   /// Informs TDLib that the chat is closed by the user. Many useful activities depend on the chat being opened or closed.
@@ -19,19 +18,19 @@ final class CloseChat extends TdFunction {
   const CloseChat({
     required this.chatId,
   });
-  
+
   /// Chat identifier
   final int chatId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class CloseChat extends TdFunction {
   /// * [chat_id]: Chat identifier
   CloseChat copyWith({
     int? chatId,
-  }) => CloseChat(
-    chatId: chatId ?? this.chatId,
-  );
+  }) =>
+      CloseChat(
+        chatId: chatId ?? this.chatId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'closeChat';

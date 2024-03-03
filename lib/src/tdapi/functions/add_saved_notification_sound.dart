@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [NotificationSound] is returned on completion.
 final class AddSavedNotificationSound extends TdFunction {
-  
   /// **AddSavedNotificationSound** *(addSavedNotificationSound)* - TDLib function
   ///
   /// Adds a new notification sound to the list of saved notification sounds. The new notification sound is added to the top of the list. If it is already in the list, its position isn't changed.
@@ -19,19 +18,19 @@ final class AddSavedNotificationSound extends TdFunction {
   const AddSavedNotificationSound({
     required this.sound,
   });
-  
+
   /// Notification sound file to add
   final InputFile sound;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sound": sound.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class AddSavedNotificationSound extends TdFunction {
   /// * [sound]: Notification sound file to add
   AddSavedNotificationSound copyWith({
     InputFile? sound,
-  }) => AddSavedNotificationSound(
-    sound: sound ?? this.sound,
-  );
+  }) =>
+      AddSavedNotificationSound(
+        sound: sound ?? this.sound,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'addSavedNotificationSound';

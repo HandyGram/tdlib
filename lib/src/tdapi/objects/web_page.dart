@@ -32,7 +32,6 @@ part of '../tdapi.dart';
 /// * [storyId]: The identifier of the previewed story; 0 if none.
 /// * [instantViewVersion]: Version of web page instant view (currently, can be 1 or 2); 0 if none.
 final class WebPage extends TdObject {
-  
   /// **WebPage** *(webPage)* - basic class
   ///
   /// Describes a link preview.
@@ -95,7 +94,7 @@ final class WebPage extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Original URL of the link
   final String url;
 
@@ -184,46 +183,54 @@ final class WebPage extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory WebPage.fromJson(Map<String, dynamic> json) => WebPage(
-    url: json['url'],
-    displayUrl: json['display_url'],
-    type: json['type'],
-    siteName: json['site_name'],
-    title: json['title'],
-    description: FormattedText.fromJson(json['description']),
-    photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
-    embedUrl: json['embed_url'],
-    embedType: json['embed_type'],
-    embedWidth: json['embed_width'],
-    embedHeight: json['embed_height'],
-    duration: json['duration'],
-    author: json['author'],
-    hasLargeMedia: json['has_large_media'],
-    showLargeMedia: json['show_large_media'],
-    skipConfirmation: json['skip_confirmation'],
-    showAboveText: json['show_above_text'],
-    animation: json['animation'] == null ? null : Animation.fromJson(json['animation']),
-    audio: json['audio'] == null ? null : Audio.fromJson(json['audio']),
-    document: json['document'] == null ? null : Document.fromJson(json['document']),
-    sticker: json['sticker'] == null ? null : Sticker.fromJson(json['sticker']),
-    video: json['video'] == null ? null : Video.fromJson(json['video']),
-    videoNote: json['video_note'] == null ? null : VideoNote.fromJson(json['video_note']),
-    voiceNote: json['voice_note'] == null ? null : VoiceNote.fromJson(json['voice_note']),
-    storySenderChatId: json['story_sender_chat_id'] ?? 0,
-    storyId: json['story_id'] ?? 0,
-    instantViewVersion: json['instant_view_version'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        url: json['url'],
+        displayUrl: json['display_url'],
+        type: json['type'],
+        siteName: json['site_name'],
+        title: json['title'],
+        description: FormattedText.fromJson(json['description']),
+        photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
+        embedUrl: json['embed_url'],
+        embedType: json['embed_type'],
+        embedWidth: json['embed_width'],
+        embedHeight: json['embed_height'],
+        duration: json['duration'],
+        author: json['author'],
+        hasLargeMedia: json['has_large_media'],
+        showLargeMedia: json['show_large_media'],
+        skipConfirmation: json['skip_confirmation'],
+        showAboveText: json['show_above_text'],
+        animation: json['animation'] == null
+            ? null
+            : Animation.fromJson(json['animation']),
+        audio: json['audio'] == null ? null : Audio.fromJson(json['audio']),
+        document: json['document'] == null
+            ? null
+            : Document.fromJson(json['document']),
+        sticker:
+            json['sticker'] == null ? null : Sticker.fromJson(json['sticker']),
+        video: json['video'] == null ? null : Video.fromJson(json['video']),
+        videoNote: json['video_note'] == null
+            ? null
+            : VideoNote.fromJson(json['video_note']),
+        voiceNote: json['voice_note'] == null
+            ? null
+            : VoiceNote.fromJson(json['voice_note']),
+        storySenderChatId: json['story_sender_chat_id'] ?? 0,
+        storyId: json['story_id'] ?? 0,
+        instantViewVersion: json['instant_view_version'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "url": url,
       "display_url": displayUrl,
       "type": type,
@@ -251,8 +258,8 @@ final class WebPage extends TdObject {
       "story_sender_chat_id": storySenderChatId,
       "story_id": storyId,
       "instant_view_version": instantViewVersion,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -314,37 +321,38 @@ final class WebPage extends TdObject {
     int? instantViewVersion,
     dynamic extra,
     int? clientId,
-  }) => WebPage(
-    url: url ?? this.url,
-    displayUrl: displayUrl ?? this.displayUrl,
-    type: type ?? this.type,
-    siteName: siteName ?? this.siteName,
-    title: title ?? this.title,
-    description: description ?? this.description,
-    photo: photo ?? this.photo,
-    embedUrl: embedUrl ?? this.embedUrl,
-    embedType: embedType ?? this.embedType,
-    embedWidth: embedWidth ?? this.embedWidth,
-    embedHeight: embedHeight ?? this.embedHeight,
-    duration: duration ?? this.duration,
-    author: author ?? this.author,
-    hasLargeMedia: hasLargeMedia ?? this.hasLargeMedia,
-    showLargeMedia: showLargeMedia ?? this.showLargeMedia,
-    skipConfirmation: skipConfirmation ?? this.skipConfirmation,
-    showAboveText: showAboveText ?? this.showAboveText,
-    animation: animation ?? this.animation,
-    audio: audio ?? this.audio,
-    document: document ?? this.document,
-    sticker: sticker ?? this.sticker,
-    video: video ?? this.video,
-    videoNote: videoNote ?? this.videoNote,
-    voiceNote: voiceNote ?? this.voiceNote,
-    storySenderChatId: storySenderChatId ?? this.storySenderChatId,
-    storyId: storyId ?? this.storyId,
-    instantViewVersion: instantViewVersion ?? this.instantViewVersion,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      WebPage(
+        url: url ?? this.url,
+        displayUrl: displayUrl ?? this.displayUrl,
+        type: type ?? this.type,
+        siteName: siteName ?? this.siteName,
+        title: title ?? this.title,
+        description: description ?? this.description,
+        photo: photo ?? this.photo,
+        embedUrl: embedUrl ?? this.embedUrl,
+        embedType: embedType ?? this.embedType,
+        embedWidth: embedWidth ?? this.embedWidth,
+        embedHeight: embedHeight ?? this.embedHeight,
+        duration: duration ?? this.duration,
+        author: author ?? this.author,
+        hasLargeMedia: hasLargeMedia ?? this.hasLargeMedia,
+        showLargeMedia: showLargeMedia ?? this.showLargeMedia,
+        skipConfirmation: skipConfirmation ?? this.skipConfirmation,
+        showAboveText: showAboveText ?? this.showAboveText,
+        animation: animation ?? this.animation,
+        audio: audio ?? this.audio,
+        document: document ?? this.document,
+        sticker: sticker ?? this.sticker,
+        video: video ?? this.video,
+        videoNote: videoNote ?? this.videoNote,
+        voiceNote: voiceNote ?? this.voiceNote,
+        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+        storyId: storyId ?? this.storyId,
+        instantViewVersion: instantViewVersion ?? this.instantViewVersion,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'webPage';

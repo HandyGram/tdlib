@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class StopPoll extends TdFunction {
-  
   /// **StopPoll** *(stopPoll)* - TDLib function
   ///
   /// Stops a poll. A poll in a message can be stopped when the message has can_be_edited flag is set.
@@ -25,7 +24,7 @@ final class StopPoll extends TdFunction {
     required this.messageId,
     this.replyMarkup,
   });
-  
+
   /// Identifier of the chat to which the poll belongs
   final int chatId;
 
@@ -34,18 +33,18 @@ final class StopPoll extends TdFunction {
 
   /// The new message reply markup; pass null if none; for bots only
   final ReplyMarkup? replyMarkup;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "reply_markup": replyMarkup?.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class StopPoll extends TdFunction {
     int? chatId,
     int? messageId,
     ReplyMarkup? replyMarkup,
-  }) => StopPoll(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-  );
+  }) =>
+      StopPoll(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'stopPoll';

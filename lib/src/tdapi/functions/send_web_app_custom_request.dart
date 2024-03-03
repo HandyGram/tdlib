@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [CustomRequestResult] is returned on completion.
 final class SendWebAppCustomRequest extends TdFunction {
-  
   /// **SendWebAppCustomRequest** *(sendWebAppCustomRequest)* - TDLib function
   ///
   /// Sends a custom request from a Web App.
@@ -25,7 +24,7 @@ final class SendWebAppCustomRequest extends TdFunction {
     required this.method,
     required this.parameters,
   });
-  
+
   /// Identifier of the bot
   final int botUserId;
 
@@ -34,18 +33,18 @@ final class SendWebAppCustomRequest extends TdFunction {
 
   /// JSON-serialized method parameters
   final String parameters;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "bot_user_id": botUserId,
       "method": method,
       "parameters": parameters,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class SendWebAppCustomRequest extends TdFunction {
     int? botUserId,
     String? method,
     String? parameters,
-  }) => SendWebAppCustomRequest(
-    botUserId: botUserId ?? this.botUserId,
-    method: method ?? this.method,
-    parameters: parameters ?? this.parameters,
-  );
+  }) =>
+      SendWebAppCustomRequest(
+        botUserId: botUserId ?? this.botUserId,
+        method: method ?? this.method,
+        parameters: parameters ?? this.parameters,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'sendWebAppCustomRequest';

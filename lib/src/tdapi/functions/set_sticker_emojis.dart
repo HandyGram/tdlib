@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetStickerEmojis extends TdFunction {
-  
   /// **SetStickerEmojis** *(setStickerEmojis)* - TDLib function
   ///
   /// Changes the list of emoji corresponding to a sticker; for bots only. The sticker must belong to a regular or custom emoji sticker set created by the bot.
@@ -22,23 +21,23 @@ final class SetStickerEmojis extends TdFunction {
     required this.sticker,
     required this.emojis,
   });
-  
+
   /// Sticker
   final InputFile sticker;
 
   /// New string with 1-20 emoji corresponding to the sticker
   final String emojis;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sticker": sticker.toJson(),
       "emojis": emojis,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class SetStickerEmojis extends TdFunction {
   SetStickerEmojis copyWith({
     InputFile? sticker,
     String? emojis,
-  }) => SetStickerEmojis(
-    sticker: sticker ?? this.sticker,
-    emojis: emojis ?? this.emojis,
-  );
+  }) =>
+      SetStickerEmojis(
+        sticker: sticker ?? this.sticker,
+        emojis: emojis ?? this.emojis,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setStickerEmojis';

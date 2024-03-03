@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class StartScheduledGroupCall extends TdFunction {
-  
   /// **StartScheduledGroupCall** *(startScheduledGroupCall)* - TDLib function
   ///
   /// Starts a scheduled group call.
@@ -19,19 +18,19 @@ final class StartScheduledGroupCall extends TdFunction {
   const StartScheduledGroupCall({
     required this.groupCallId,
   });
-  
+
   /// Group call identifier
   final int groupCallId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "group_call_id": groupCallId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class StartScheduledGroupCall extends TdFunction {
   /// * [group_call_id]: Group call identifier
   StartScheduledGroupCall copyWith({
     int? groupCallId,
-  }) => StartScheduledGroupCall(
-    groupCallId: groupCallId ?? this.groupCallId,
-  );
+  }) =>
+      StartScheduledGroupCall(
+        groupCallId: groupCallId ?? this.groupCallId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'startScheduledGroupCall';

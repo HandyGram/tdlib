@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class RevokeGroupCallInviteLink extends TdFunction {
-  
   /// **RevokeGroupCallInviteLink** *(revokeGroupCallInviteLink)* - TDLib function
   ///
   /// Revokes invite link for a group call. Requires groupCall.can_be_managed group call flag.
@@ -19,19 +18,19 @@ final class RevokeGroupCallInviteLink extends TdFunction {
   const RevokeGroupCallInviteLink({
     required this.groupCallId,
   });
-  
+
   /// Group call identifier
   final int groupCallId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "group_call_id": groupCallId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class RevokeGroupCallInviteLink extends TdFunction {
   /// * [group_call_id]: Group call identifier
   RevokeGroupCallInviteLink copyWith({
     int? groupCallId,
-  }) => RevokeGroupCallInviteLink(
-    groupCallId: groupCallId ?? this.groupCallId,
-  );
+  }) =>
+      RevokeGroupCallInviteLink(
+        groupCallId: groupCallId ?? this.groupCallId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'revokeGroupCallInviteLink';

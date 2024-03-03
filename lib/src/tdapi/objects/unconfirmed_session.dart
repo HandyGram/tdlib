@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 /// * [deviceModel]: Model of the device that was used for the session creation, as provided by the application.
 /// * [location]: A human-readable description of the location from which the session was created, based on the IP address.
 final class UnconfirmedSession extends TdObject {
-  
   /// **UnconfirmedSession** *(unconfirmedSession)* - basic class
   ///
   /// Contains information about an unconfirmed session.
@@ -24,7 +23,7 @@ final class UnconfirmedSession extends TdObject {
     required this.deviceModel,
     required this.location,
   });
-  
+
   /// Session identifier
   final int id;
 
@@ -36,27 +35,27 @@ final class UnconfirmedSession extends TdObject {
 
   /// A human-readable description of the location from which the session was created, based on the IP address
   final String location;
-  
+
   /// Parse from a json
-  factory UnconfirmedSession.fromJson(Map<String, dynamic> json) => UnconfirmedSession(
-    id: int.parse(json['id']),
-    logInDate: json['log_in_date'],
-    deviceModel: json['device_model'],
-    location: json['location'],
-  );
-  
-  
+  factory UnconfirmedSession.fromJson(Map<String, dynamic> json) =>
+      UnconfirmedSession(
+        id: int.parse(json['id']),
+        logInDate: json['log_in_date'],
+        deviceModel: json['device_model'],
+        location: json['location'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "log_in_date": logInDate,
       "device_model": deviceModel,
       "location": location,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -70,12 +69,13 @@ final class UnconfirmedSession extends TdObject {
     int? logInDate,
     String? deviceModel,
     String? location,
-  }) => UnconfirmedSession(
-    id: id ?? this.id,
-    logInDate: logInDate ?? this.logInDate,
-    deviceModel: deviceModel ?? this.deviceModel,
-    location: location ?? this.location,
-  );
+  }) =>
+      UnconfirmedSession(
+        id: id ?? this.id,
+        logInDate: logInDate ?? this.logInDate,
+        deviceModel: deviceModel ?? this.deviceModel,
+        location: location ?? this.location,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'unconfirmedSession';

@@ -13,7 +13,6 @@ part of '../tdapi.dart';
 ///
 /// [ChatInviteLink] is returned on completion.
 final class EditChatInviteLink extends TdFunction {
-  
   /// **EditChatInviteLink** *(editChatInviteLink)* - TDLib function
   ///
   /// Edits a non-primary invite link for a chat. Available for basic groups, supergroups, and channels. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links.
@@ -34,7 +33,7 @@ final class EditChatInviteLink extends TdFunction {
     required this.memberLimit,
     required this.createsJoinRequest,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -52,12 +51,12 @@ final class EditChatInviteLink extends TdFunction {
 
   /// Pass true if users joining the chat via the link need to be approved by chat administrators. In this case, member_limit must be 0
   final bool createsJoinRequest;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "invite_link": inviteLink,
       "name": name,
@@ -65,8 +64,8 @@ final class EditChatInviteLink extends TdFunction {
       "member_limit": memberLimit,
       "creates_join_request": createsJoinRequest,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -84,14 +83,15 @@ final class EditChatInviteLink extends TdFunction {
     int? expirationDate,
     int? memberLimit,
     bool? createsJoinRequest,
-  }) => EditChatInviteLink(
-    chatId: chatId ?? this.chatId,
-    inviteLink: inviteLink ?? this.inviteLink,
-    name: name ?? this.name,
-    expirationDate: expirationDate ?? this.expirationDate,
-    memberLimit: memberLimit ?? this.memberLimit,
-    createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
-  );
+  }) =>
+      EditChatInviteLink(
+        chatId: chatId ?? this.chatId,
+        inviteLink: inviteLink ?? this.inviteLink,
+        name: name ?? this.name,
+        expirationDate: expirationDate ?? this.expirationDate,
+        memberLimit: memberLimit ?? this.memberLimit,
+        createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'editChatInviteLink';

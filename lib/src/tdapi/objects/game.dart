@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 /// * [photo]: Game photo.
 /// * [animation]: Game animation; may be null *(optional)*.
 final class Game extends TdObject {
-  
   /// **Game** *(game)* - basic class
   ///
   /// Describes a game. Use getInternalLink with internalLinkTypeGame to share the game.
@@ -33,7 +32,7 @@ final class Game extends TdObject {
     required this.photo,
     this.animation,
   });
-  
+
   /// Unique game identifier
   final int id;
 
@@ -54,24 +53,25 @@ final class Game extends TdObject {
 
   /// Game animation; may be null
   final Animation? animation;
-  
+
   /// Parse from a json
   factory Game.fromJson(Map<String, dynamic> json) => Game(
-    id: int.parse(json['id']),
-    shortName: json['short_name'],
-    title: json['title'],
-    text: FormattedText.fromJson(json['text']),
-    description: json['description'],
-    photo: Photo.fromJson(json['photo']),
-    animation: json['animation'] == null ? null : Animation.fromJson(json['animation']),
-  );
-  
-  
+        id: int.parse(json['id']),
+        shortName: json['short_name'],
+        title: json['title'],
+        text: FormattedText.fromJson(json['text']),
+        description: json['description'],
+        photo: Photo.fromJson(json['photo']),
+        animation: json['animation'] == null
+            ? null
+            : Animation.fromJson(json['animation']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "short_name": shortName,
       "title": title,
@@ -79,8 +79,8 @@ final class Game extends TdObject {
       "description": description,
       "photo": photo.toJson(),
       "animation": animation?.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -100,15 +100,16 @@ final class Game extends TdObject {
     String? description,
     Photo? photo,
     Animation? animation,
-  }) => Game(
-    id: id ?? this.id,
-    shortName: shortName ?? this.shortName,
-    title: title ?? this.title,
-    text: text ?? this.text,
-    description: description ?? this.description,
-    photo: photo ?? this.photo,
-    animation: animation ?? this.animation,
-  );
+  }) =>
+      Game(
+        id: id ?? this.id,
+        shortName: shortName ?? this.shortName,
+        title: title ?? this.title,
+        text: text ?? this.text,
+        description: description ?? this.description,
+        photo: photo ?? this.photo,
+        animation: animation ?? this.animation,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'game';

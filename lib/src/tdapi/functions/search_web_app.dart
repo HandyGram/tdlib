@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [FoundWebApp] is returned on completion.
 final class SearchWebApp extends TdFunction {
-  
   /// **SearchWebApp** *(searchWebApp)* - TDLib function
   ///
   /// Returns information about a Web App by its short name. Returns a 404 error if the Web App is not found.
@@ -22,23 +21,23 @@ final class SearchWebApp extends TdFunction {
     required this.botUserId,
     required this.webAppShortName,
   });
-  
+
   /// Identifier of the target bot
   final int botUserId;
 
   /// Short name of the Web App
   final String webAppShortName;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "bot_user_id": botUserId,
       "web_app_short_name": webAppShortName,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class SearchWebApp extends TdFunction {
   SearchWebApp copyWith({
     int? botUserId,
     String? webAppShortName,
-  }) => SearchWebApp(
-    botUserId: botUserId ?? this.botUserId,
-    webAppShortName: webAppShortName ?? this.webAppShortName,
-  );
+  }) =>
+      SearchWebApp(
+        botUserId: botUserId ?? this.botUserId,
+        webAppShortName: webAppShortName ?? this.webAppShortName,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'searchWebApp';

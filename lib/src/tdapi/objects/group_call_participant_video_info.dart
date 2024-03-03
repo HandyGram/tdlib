@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 /// * [endpointId]: Video channel endpoint identifier.
 /// * [isPaused]: True, if the video is paused. This flag needs to be ignored, if new video frames are received.
 final class GroupCallParticipantVideoInfo extends TdObject {
-  
   /// **GroupCallParticipantVideoInfo** *(groupCallParticipantVideoInfo)* - basic class
   ///
   /// Contains information about a group call participant's video channel.
@@ -21,7 +20,7 @@ final class GroupCallParticipantVideoInfo extends TdObject {
     required this.endpointId,
     required this.isPaused,
   });
-  
+
   /// List of synchronization source groups of the video
   final List<GroupCallVideoSourceGroup> sourceGroups;
 
@@ -30,25 +29,28 @@ final class GroupCallParticipantVideoInfo extends TdObject {
 
   /// True, if the video is paused. This flag needs to be ignored, if new video frames are received
   final bool isPaused;
-  
+
   /// Parse from a json
-  factory GroupCallParticipantVideoInfo.fromJson(Map<String, dynamic> json) => GroupCallParticipantVideoInfo(
-    sourceGroups: List<GroupCallVideoSourceGroup>.from((json['source_groups'] ?? []).map((item) => GroupCallVideoSourceGroup.fromJson(item)).toList()),
-    endpointId: json['endpoint_id'],
-    isPaused: json['is_paused'],
-  );
-  
-  
+  factory GroupCallParticipantVideoInfo.fromJson(Map<String, dynamic> json) =>
+      GroupCallParticipantVideoInfo(
+        sourceGroups: List<GroupCallVideoSourceGroup>.from(
+            (json['source_groups'] ?? [])
+                .map((item) => GroupCallVideoSourceGroup.fromJson(item))
+                .toList()),
+        endpointId: json['endpoint_id'],
+        isPaused: json['is_paused'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "source_groups": sourceGroups.map((i) => i.toJson()).toList(),
       "endpoint_id": endpointId,
       "is_paused": isPaused,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -60,11 +62,12 @@ final class GroupCallParticipantVideoInfo extends TdObject {
     List<GroupCallVideoSourceGroup>? sourceGroups,
     String? endpointId,
     bool? isPaused,
-  }) => GroupCallParticipantVideoInfo(
-    sourceGroups: sourceGroups ?? this.sourceGroups,
-    endpointId: endpointId ?? this.endpointId,
-    isPaused: isPaused ?? this.isPaused,
-  );
+  }) =>
+      GroupCallParticipantVideoInfo(
+        sourceGroups: sourceGroups ?? this.sourceGroups,
+        endpointId: endpointId ?? this.endpointId,
+        isPaused: isPaused ?? this.isPaused,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'groupCallParticipantVideoInfo';

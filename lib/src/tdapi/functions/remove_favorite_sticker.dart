@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class RemoveFavoriteSticker extends TdFunction {
-  
   /// **RemoveFavoriteSticker** *(removeFavoriteSticker)* - TDLib function
   ///
   /// Removes a sticker from the list of favorite stickers.
@@ -19,19 +18,19 @@ final class RemoveFavoriteSticker extends TdFunction {
   const RemoveFavoriteSticker({
     required this.sticker,
   });
-  
+
   /// Sticker file to delete from the list
   final InputFile sticker;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sticker": sticker.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class RemoveFavoriteSticker extends TdFunction {
   /// * [sticker]: Sticker file to delete from the list
   RemoveFavoriteSticker copyWith({
     InputFile? sticker,
-  }) => RemoveFavoriteSticker(
-    sticker: sticker ?? this.sticker,
-  );
+  }) =>
+      RemoveFavoriteSticker(
+        sticker: sticker ?? this.sticker,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'removeFavoriteSticker';

@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetProfilePhoto extends TdFunction {
-  
   /// **SetProfilePhoto** *(setProfilePhoto)* - TDLib function
   ///
   /// Changes a profile photo for the current user.
@@ -22,23 +21,23 @@ final class SetProfilePhoto extends TdFunction {
     required this.photo,
     required this.isPublic,
   });
-  
+
   /// Profile photo to set
   final InputChatPhoto photo;
 
   /// Pass true to set a public photo, which will be visible even the main photo is hidden by privacy settings
   final bool isPublic;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "photo": photo.toJson(),
       "is_public": isPublic,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class SetProfilePhoto extends TdFunction {
   SetProfilePhoto copyWith({
     InputChatPhoto? photo,
     bool? isPublic,
-  }) => SetProfilePhoto(
-    photo: photo ?? this.photo,
-    isPublic: isPublic ?? this.isPublic,
-  );
+  }) =>
+      SetProfilePhoto(
+        photo: photo ?? this.photo,
+        isPublic: isPublic ?? this.isPublic,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setProfilePhoto';

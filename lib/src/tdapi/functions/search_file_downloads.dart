@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 ///
 /// [FoundFileDownloads] is returned on completion.
 final class SearchFileDownloads extends TdFunction {
-  
   /// **SearchFileDownloads** *(searchFileDownloads)* - TDLib function
   ///
   /// Searches for files in the file download list or recently downloaded files from the list.
@@ -31,7 +30,7 @@ final class SearchFileDownloads extends TdFunction {
     required this.offset,
     required this.limit,
   });
-  
+
   /// Query to search for; may be empty to return all downloaded files
   final String query;
 
@@ -46,20 +45,20 @@ final class SearchFileDownloads extends TdFunction {
 
   /// The maximum number of files to be returned
   final int limit;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "query": query,
       "only_active": onlyActive,
       "only_completed": onlyCompleted,
       "offset": offset,
       "limit": limit,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -75,13 +74,14 @@ final class SearchFileDownloads extends TdFunction {
     bool? onlyCompleted,
     String? offset,
     int? limit,
-  }) => SearchFileDownloads(
-    query: query ?? this.query,
-    onlyActive: onlyActive ?? this.onlyActive,
-    onlyCompleted: onlyCompleted ?? this.onlyCompleted,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-  );
+  }) =>
+      SearchFileDownloads(
+        query: query ?? this.query,
+        onlyActive: onlyActive ?? this.onlyActive,
+        onlyCompleted: onlyCompleted ?? this.onlyCompleted,
+        offset: offset ?? this.offset,
+        limit: limit ?? this.limit,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'searchFileDownloads';

@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Chats] is returned on completion.
 final class GetChatsForChatFolderInviteLink extends TdFunction {
-  
   /// **GetChatsForChatFolderInviteLink** *(getChatsForChatFolderInviteLink)* - TDLib function
   ///
   /// Returns identifiers of chats from a chat folder, suitable for adding to a chat folder invite link.
@@ -19,19 +18,19 @@ final class GetChatsForChatFolderInviteLink extends TdFunction {
   const GetChatsForChatFolderInviteLink({
     required this.chatFolderId,
   });
-  
+
   /// Chat folder identifier
   final int chatFolderId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_folder_id": chatFolderId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetChatsForChatFolderInviteLink extends TdFunction {
   /// * [chat_folder_id]: Chat folder identifier
   GetChatsForChatFolderInviteLink copyWith({
     int? chatFolderId,
-  }) => GetChatsForChatFolderInviteLink(
-    chatFolderId: chatFolderId ?? this.chatFolderId,
-  );
+  }) =>
+      GetChatsForChatFolderInviteLink(
+        chatFolderId: chatFolderId ?? this.chatFolderId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getChatsForChatFolderInviteLink';

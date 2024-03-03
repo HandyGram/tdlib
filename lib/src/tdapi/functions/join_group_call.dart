@@ -14,7 +14,6 @@ part of '../tdapi.dart';
 ///
 /// [Text] is returned on completion.
 final class JoinGroupCall extends TdFunction {
-  
   /// **JoinGroupCall** *(joinGroupCall)* - TDLib function
   ///
   /// Joins an active group call. Returns join response payload for tgcalls.
@@ -37,7 +36,7 @@ final class JoinGroupCall extends TdFunction {
     required this.isMyVideoEnabled,
     required this.inviteHash,
   });
-  
+
   /// Group call identifier
   final int groupCallId;
 
@@ -58,12 +57,12 @@ final class JoinGroupCall extends TdFunction {
 
   /// If non-empty, invite hash to be used to join the group call without being muted by administrators
   final String inviteHash;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "group_call_id": groupCallId,
       "participant_id": participantId?.toJson(),
       "audio_source_id": audioSourceId,
@@ -72,8 +71,8 @@ final class JoinGroupCall extends TdFunction {
       "is_my_video_enabled": isMyVideoEnabled,
       "invite_hash": inviteHash,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -93,15 +92,16 @@ final class JoinGroupCall extends TdFunction {
     bool? isMuted,
     bool? isMyVideoEnabled,
     String? inviteHash,
-  }) => JoinGroupCall(
-    groupCallId: groupCallId ?? this.groupCallId,
-    participantId: participantId ?? this.participantId,
-    audioSourceId: audioSourceId ?? this.audioSourceId,
-    payload: payload ?? this.payload,
-    isMuted: isMuted ?? this.isMuted,
-    isMyVideoEnabled: isMyVideoEnabled ?? this.isMyVideoEnabled,
-    inviteHash: inviteHash ?? this.inviteHash,
-  );
+  }) =>
+      JoinGroupCall(
+        groupCallId: groupCallId ?? this.groupCallId,
+        participantId: participantId ?? this.participantId,
+        audioSourceId: audioSourceId ?? this.audioSourceId,
+        payload: payload ?? this.payload,
+        isMuted: isMuted ?? this.isMuted,
+        isMyVideoEnabled: isMyVideoEnabled ?? this.isMyVideoEnabled,
+        inviteHash: inviteHash ?? this.inviteHash,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'joinGroupCall';

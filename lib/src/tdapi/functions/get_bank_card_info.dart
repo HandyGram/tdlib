@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [BankCardInfo] is returned on completion.
 final class GetBankCardInfo extends TdFunction {
-  
   /// **GetBankCardInfo** *(getBankCardInfo)* - TDLib function
   ///
   /// Returns information about a bank card.
@@ -19,19 +18,19 @@ final class GetBankCardInfo extends TdFunction {
   const GetBankCardInfo({
     required this.bankCardNumber,
   });
-  
+
   /// The bank card number
   final String bankCardNumber;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "bank_card_number": bankCardNumber,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetBankCardInfo extends TdFunction {
   /// * [bank_card_number]: The bank card number
   GetBankCardInfo copyWith({
     String? bankCardNumber,
-  }) => GetBankCardInfo(
-    bankCardNumber: bankCardNumber ?? this.bankCardNumber,
-  );
+  }) =>
+      GetBankCardInfo(
+        bankCardNumber: bankCardNumber ?? this.bankCardNumber,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getBankCardInfo';

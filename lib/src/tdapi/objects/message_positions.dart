@@ -7,7 +7,6 @@ part of '../tdapi.dart';
 /// * [totalCount]: Total number of messages found.
 /// * [positions]: List of message positions.
 final class MessagePositions extends TdObject {
-  
   /// **MessagePositions** *(messagePositions)* - basic class
   ///
   /// Contains a list of message positions.
@@ -20,8 +19,8 @@ final class MessagePositions extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// Total number of messages found 
+
+  /// Total number of messages found
   final int totalCount;
 
   /// List of message positions
@@ -34,42 +33,45 @@ final class MessagePositions extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory MessagePositions.fromJson(Map<String, dynamic> json) => MessagePositions(
-    totalCount: json['total_count'],
-    positions: List<MessagePosition>.from((json['positions'] ?? []).map((item) => MessagePosition.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory MessagePositions.fromJson(Map<String, dynamic> json) =>
+      MessagePositions(
+        totalCount: json['total_count'],
+        positions: List<MessagePosition>.from((json['positions'] ?? [])
+            .map((item) => MessagePosition.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "total_count": totalCount,
       "positions": positions.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [total_count]: Total number of messages found 
+  /// * [total_count]: Total number of messages found
   /// * [positions]: List of message positions
   MessagePositions copyWith({
     int? totalCount,
     List<MessagePosition>? positions,
     dynamic extra,
     int? clientId,
-  }) => MessagePositions(
-    totalCount: totalCount ?? this.totalCount,
-    positions: positions ?? this.positions,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      MessagePositions(
+        totalCount: totalCount ?? this.totalCount,
+        positions: positions ?? this.positions,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'messagePositions';

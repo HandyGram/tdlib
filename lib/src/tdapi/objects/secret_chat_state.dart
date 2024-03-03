@@ -4,18 +4,17 @@ part of '../tdapi.dart';
 ///
 /// Describes the current secret chat state.
 sealed class SecretChatState extends TdObject {
-  
   /// **SecretChatState** *(secretChatState)* - parent
   ///
   /// Describes the current secret chat state.
   const SecretChatState();
-  
+
   /// a SecretChatState return type can be :
   /// * [SecretChatStatePending]
   /// * [SecretChatStateReady]
   /// * [SecretChatStateClosed]
-  factory SecretChatState.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory SecretChatState.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case SecretChatStatePending.defaultObjectId:
         return SecretChatStatePending.fromJson(json);
       case SecretChatStateReady.defaultObjectId:
@@ -29,7 +28,7 @@ sealed class SecretChatState extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -49,27 +48,26 @@ sealed class SecretChatState extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SecretChatStatePending** *(secretChatStatePending)* - child of SecretChatState
 ///
 /// The secret chat is not yet created; waiting for the other user to get online.
 final class SecretChatStatePending extends SecretChatState {
-  
   /// **SecretChatStatePending** *(secretChatStatePending)* - child of SecretChatState
   ///
   /// The secret chat is not yet created; waiting for the other user to get online.
   const SecretChatStatePending();
-  
+
   /// Parse from a json
-  factory SecretChatStatePending.fromJson(Map<String, dynamic> json) => const SecretChatStatePending();
-  
+  factory SecretChatStatePending.fromJson(Map<String, dynamic> json) =>
+      const SecretChatStatePending();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -87,27 +85,26 @@ final class SecretChatStatePending extends SecretChatState {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SecretChatStateReady** *(secretChatStateReady)* - child of SecretChatState
 ///
 /// The secret chat is ready to use.
 final class SecretChatStateReady extends SecretChatState {
-  
   /// **SecretChatStateReady** *(secretChatStateReady)* - child of SecretChatState
   ///
   /// The secret chat is ready to use.
   const SecretChatStateReady();
-  
+
   /// Parse from a json
-  factory SecretChatStateReady.fromJson(Map<String, dynamic> json) => const SecretChatStateReady();
-  
+  factory SecretChatStateReady.fromJson(Map<String, dynamic> json) =>
+      const SecretChatStateReady();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -125,27 +122,26 @@ final class SecretChatStateReady extends SecretChatState {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **SecretChatStateClosed** *(secretChatStateClosed)* - child of SecretChatState
 ///
 /// The secret chat is closed.
 final class SecretChatStateClosed extends SecretChatState {
-  
   /// **SecretChatStateClosed** *(secretChatStateClosed)* - child of SecretChatState
   ///
   /// The secret chat is closed.
   const SecretChatStateClosed();
-  
+
   /// Parse from a json
-  factory SecretChatStateClosed.fromJson(Map<String, dynamic> json) => const SecretChatStateClosed();
-  
+  factory SecretChatStateClosed.fromJson(Map<String, dynamic> json) =>
+      const SecretChatStateClosed();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override

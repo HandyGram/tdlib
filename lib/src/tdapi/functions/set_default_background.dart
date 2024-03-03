@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Background] is returned on completion.
 final class SetDefaultBackground extends TdFunction {
-  
   /// **SetDefaultBackground** *(setDefaultBackground)* - TDLib function
   ///
   /// Sets default background for chats; adds the background to the list of installed backgrounds.
@@ -25,7 +24,7 @@ final class SetDefaultBackground extends TdFunction {
     this.type,
     required this.forDarkTheme,
   });
-  
+
   /// The input background to use; pass null to create a new filled background
   final InputBackground? background;
 
@@ -34,18 +33,18 @@ final class SetDefaultBackground extends TdFunction {
 
   /// Pass true if the background is set for a dark theme
   final bool forDarkTheme;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "background": background?.toJson(),
       "type": type?.toJson(),
       "for_dark_theme": forDarkTheme,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class SetDefaultBackground extends TdFunction {
     InputBackground? background,
     BackgroundType? type,
     bool? forDarkTheme,
-  }) => SetDefaultBackground(
-    background: background ?? this.background,
-    type: type ?? this.type,
-    forDarkTheme: forDarkTheme ?? this.forDarkTheme,
-  );
+  }) =>
+      SetDefaultBackground(
+        background: background ?? this.background,
+        type: type ?? this.type,
+        forDarkTheme: forDarkTheme ?? this.forDarkTheme,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setDefaultBackground';

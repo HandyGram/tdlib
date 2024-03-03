@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class AddChatMembers extends TdFunction {
-  
   /// **AddChatMembers** *(addChatMembers)* - TDLib function
   ///
   /// Adds multiple new members to a chat; requires can_invite_users member right. Currently, this method is only available for supergroups and channels. This method can't be used to join a chat. Members can't be added to a channel if it has more than 200 members.
@@ -22,23 +21,23 @@ final class AddChatMembers extends TdFunction {
     required this.chatId,
     required this.userIds,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
   /// Identifiers of the users to be added to the chat. The maximum number of added users is 20 for supergroups and 100 for channels
   final List<int> userIds;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "user_ids": userIds.map((i) => i).toList(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class AddChatMembers extends TdFunction {
   AddChatMembers copyWith({
     int? chatId,
     List<int>? userIds,
-  }) => AddChatMembers(
-    chatId: chatId ?? this.chatId,
-    userIds: userIds ?? this.userIds,
-  );
+  }) =>
+      AddChatMembers(
+        chatId: chatId ?? this.chatId,
+        userIds: userIds ?? this.userIds,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'addChatMembers';

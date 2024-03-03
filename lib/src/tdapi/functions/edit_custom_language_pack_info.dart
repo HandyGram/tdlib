@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class EditCustomLanguagePackInfo extends TdFunction {
-  
   /// **EditCustomLanguagePackInfo** *(editCustomLanguagePackInfo)* - TDLib function
   ///
   /// Edits information about a custom local language pack in the current localization target. Can be called before authorization.
@@ -19,19 +18,19 @@ final class EditCustomLanguagePackInfo extends TdFunction {
   const EditCustomLanguagePackInfo({
     required this.info,
   });
-  
+
   /// New information about the custom local language pack
   final LanguagePackInfo info;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "info": info.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class EditCustomLanguagePackInfo extends TdFunction {
   /// * [info]: New information about the custom local language pack
   EditCustomLanguagePackInfo copyWith({
     LanguagePackInfo? info,
-  }) => EditCustomLanguagePackInfo(
-    info: info ?? this.info,
-  );
+  }) =>
+      EditCustomLanguagePackInfo(
+        info: info ?? this.info,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'editCustomLanguagePackInfo';

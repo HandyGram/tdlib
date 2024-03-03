@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [ChatBoostFeatures] is returned on completion.
 final class GetChatBoostFeatures extends TdFunction {
-  
   /// **GetChatBoostFeatures** *(getChatBoostFeatures)* - TDLib function
   ///
   /// Returns list of features available on the first 10 chat boost levels; this is an offline request.
@@ -19,19 +18,19 @@ final class GetChatBoostFeatures extends TdFunction {
   const GetChatBoostFeatures({
     required this.isChannel,
   });
-  
+
   /// Pass true to get the list of features for channels; pass false to get the list of features for supergroups
   final bool isChannel;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "is_channel": isChannel,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetChatBoostFeatures extends TdFunction {
   /// * [is_channel]: Pass true to get the list of features for channels; pass false to get the list of features for supergroups
   GetChatBoostFeatures copyWith({
     bool? isChannel,
-  }) => GetChatBoostFeatures(
-    isChannel: isChannel ?? this.isChannel,
-  );
+  }) =>
+      GetChatBoostFeatures(
+        isChannel: isChannel ?? this.isChannel,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getChatBoostFeatures';

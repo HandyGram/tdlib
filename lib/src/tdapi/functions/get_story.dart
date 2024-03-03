@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Story] is returned on completion.
 final class GetStory extends TdFunction {
-  
   /// **GetStory** *(getStory)* - TDLib function
   ///
   /// Returns a story.
@@ -25,7 +24,7 @@ final class GetStory extends TdFunction {
     required this.storyId,
     required this.onlyLocal,
   });
-  
+
   /// Identifier of the chat that posted the story
   final int storySenderChatId;
 
@@ -34,18 +33,18 @@ final class GetStory extends TdFunction {
 
   /// Pass true to get only locally available information without sending network requests
   final bool onlyLocal;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "story_sender_chat_id": storySenderChatId,
       "story_id": storyId,
       "only_local": onlyLocal,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class GetStory extends TdFunction {
     int? storySenderChatId,
     int? storyId,
     bool? onlyLocal,
-  }) => GetStory(
-    storySenderChatId: storySenderChatId ?? this.storySenderChatId,
-    storyId: storyId ?? this.storyId,
-    onlyLocal: onlyLocal ?? this.onlyLocal,
-  );
+  }) =>
+      GetStory(
+        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+        storyId: storyId ?? this.storyId,
+        onlyLocal: onlyLocal ?? this.onlyLocal,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getStory';

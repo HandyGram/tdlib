@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [LoginUrlInfo] is returned on completion.
 final class GetLoginUrlInfo extends TdFunction {
-  
   /// **GetLoginUrlInfo** *(getLoginUrlInfo)* - TDLib function
   ///
   /// Returns information about a button of type inlineKeyboardButtonTypeLoginUrl. The method needs to be called when the user presses the button.
@@ -25,7 +24,7 @@ final class GetLoginUrlInfo extends TdFunction {
     required this.messageId,
     required this.buttonId,
   });
-  
+
   /// Chat identifier of the message with the button
   final int chatId;
 
@@ -34,18 +33,18 @@ final class GetLoginUrlInfo extends TdFunction {
 
   /// Button identifier
   final int buttonId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "button_id": buttonId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class GetLoginUrlInfo extends TdFunction {
     int? chatId,
     int? messageId,
     int? buttonId,
-  }) => GetLoginUrlInfo(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    buttonId: buttonId ?? this.buttonId,
-  );
+  }) =>
+      GetLoginUrlInfo(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        buttonId: buttonId ?? this.buttonId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getLoginUrlInfo';

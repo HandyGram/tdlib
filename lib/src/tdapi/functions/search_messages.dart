@@ -14,7 +14,6 @@ part of '../tdapi.dart';
 ///
 /// [FoundMessages] is returned on completion.
 final class SearchMessages extends TdFunction {
-  
   /// **SearchMessages** *(searchMessages)* - TDLib function
   ///
   /// Searches for messages in all chats except secret chats. Returns the results in reverse chronological order (i.e., in order of decreasing (date, chat_id, message_id)).. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
@@ -37,7 +36,7 @@ final class SearchMessages extends TdFunction {
     required this.minDate,
     required this.maxDate,
   });
-  
+
   /// Chat list in which to search messages; pass null to search in all chats regardless of their chat list. Only Main and Archive chat lists are supported
   final ChatList? chatList;
 
@@ -58,12 +57,12 @@ final class SearchMessages extends TdFunction {
 
   /// If not 0, the maximum date of the messages to return
   final int maxDate;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_list": chatList?.toJson(),
       "query": query,
       "offset": offset,
@@ -72,8 +71,8 @@ final class SearchMessages extends TdFunction {
       "min_date": minDate,
       "max_date": maxDate,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -93,15 +92,16 @@ final class SearchMessages extends TdFunction {
     SearchMessagesFilter? filter,
     int? minDate,
     int? maxDate,
-  }) => SearchMessages(
-    chatList: chatList ?? this.chatList,
-    query: query ?? this.query,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-    filter: filter ?? this.filter,
-    minDate: minDate ?? this.minDate,
-    maxDate: maxDate ?? this.maxDate,
-  );
+  }) =>
+      SearchMessages(
+        chatList: chatList ?? this.chatList,
+        query: query ?? this.query,
+        offset: offset ?? this.offset,
+        limit: limit ?? this.limit,
+        filter: filter ?? this.filter,
+        minDate: minDate ?? this.minDate,
+        maxDate: maxDate ?? this.maxDate,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'searchMessages';

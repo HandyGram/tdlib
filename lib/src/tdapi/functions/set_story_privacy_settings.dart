@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetStoryPrivacySettings extends TdFunction {
-  
   /// **SetStoryPrivacySettings** *(setStoryPrivacySettings)* - TDLib function
   ///
   /// Changes privacy settings of a story. The method can be called only for stories posted on behalf of the current user and if story.can_be_edited == true.
@@ -22,23 +21,23 @@ final class SetStoryPrivacySettings extends TdFunction {
     required this.storyId,
     required this.privacySettings,
   });
-  
+
   /// Identifier of the story
   final int storyId;
 
   /// The new privacy settigs for the story
   final StoryPrivacySettings privacySettings;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "story_id": storyId,
       "privacy_settings": privacySettings.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class SetStoryPrivacySettings extends TdFunction {
   SetStoryPrivacySettings copyWith({
     int? storyId,
     StoryPrivacySettings? privacySettings,
-  }) => SetStoryPrivacySettings(
-    storyId: storyId ?? this.storyId,
-    privacySettings: privacySettings ?? this.privacySettings,
-  );
+  }) =>
+      SetStoryPrivacySettings(
+        storyId: storyId ?? this.storyId,
+        privacySettings: privacySettings ?? this.privacySettings,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setStoryPrivacySettings';

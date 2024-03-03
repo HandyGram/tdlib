@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [AvailableReactions] is returned on completion.
 final class GetMessageAvailableReactions extends TdFunction {
-  
   /// **GetMessageAvailableReactions** *(getMessageAvailableReactions)* - TDLib function
   ///
   /// Returns reactions, which can be added to a message. The list can change after updateActiveEmojiReactions, updateChatAvailableReactions for the chat, or updateMessageInteractionInfo for the message.
@@ -25,7 +24,7 @@ final class GetMessageAvailableReactions extends TdFunction {
     required this.messageId,
     required this.rowSize,
   });
-  
+
   /// Identifier of the chat to which the message belongs
   final int chatId;
 
@@ -34,18 +33,18 @@ final class GetMessageAvailableReactions extends TdFunction {
 
   /// Number of reaction per row, 5-25
   final int rowSize;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "row_size": rowSize,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class GetMessageAvailableReactions extends TdFunction {
     int? chatId,
     int? messageId,
     int? rowSize,
-  }) => GetMessageAvailableReactions(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    rowSize: rowSize ?? this.rowSize,
-  );
+  }) =>
+      GetMessageAvailableReactions(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        rowSize: rowSize ?? this.rowSize,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getMessageAvailableReactions';

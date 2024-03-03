@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class LaunchPrepaidPremiumGiveaway extends TdFunction {
-  
   /// **LaunchPrepaidPremiumGiveaway** *(launchPrepaidPremiumGiveaway)* - TDLib function
   ///
   /// Launches a prepaid Telegram Premium giveaway.
@@ -22,23 +21,23 @@ final class LaunchPrepaidPremiumGiveaway extends TdFunction {
     required this.giveawayId,
     required this.parameters,
   });
-  
+
   /// Unique identifier of the prepaid giveaway
   final int giveawayId;
 
   /// Giveaway parameters
   final PremiumGiveawayParameters parameters;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "giveaway_id": giveawayId,
       "parameters": parameters.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class LaunchPrepaidPremiumGiveaway extends TdFunction {
   LaunchPrepaidPremiumGiveaway copyWith({
     int? giveawayId,
     PremiumGiveawayParameters? parameters,
-  }) => LaunchPrepaidPremiumGiveaway(
-    giveawayId: giveawayId ?? this.giveawayId,
-    parameters: parameters ?? this.parameters,
-  );
+  }) =>
+      LaunchPrepaidPremiumGiveaway(
+        giveawayId: giveawayId ?? this.giveawayId,
+        parameters: parameters ?? this.parameters,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'launchPrepaidPremiumGiveaway';

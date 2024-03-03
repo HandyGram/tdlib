@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 /// * [totalCount]: Total number of active notifications in the group.
 /// * [notifications]: The list of active notifications.
 final class NotificationGroup extends TdObject {
-  
   /// **NotificationGroup** *(notificationGroup)* - basic class
   ///
   /// Describes a group of notifications.
@@ -27,7 +26,7 @@ final class NotificationGroup extends TdObject {
     required this.totalCount,
     required this.notifications,
   });
-  
+
   /// Unique persistent auto-incremented from 1 identifier of the notification group
   final int id;
 
@@ -42,29 +41,31 @@ final class NotificationGroup extends TdObject {
 
   /// The list of active notifications
   final List<Notification> notifications;
-  
+
   /// Parse from a json
-  factory NotificationGroup.fromJson(Map<String, dynamic> json) => NotificationGroup(
-    id: json['id'],
-    type: NotificationGroupType.fromJson(json['type']),
-    chatId: json['chat_id'],
-    totalCount: json['total_count'],
-    notifications: List<Notification>.from((json['notifications'] ?? []).map((item) => Notification.fromJson(item)).toList()),
-  );
-  
-  
+  factory NotificationGroup.fromJson(Map<String, dynamic> json) =>
+      NotificationGroup(
+        id: json['id'],
+        type: NotificationGroupType.fromJson(json['type']),
+        chatId: json['chat_id'],
+        totalCount: json['total_count'],
+        notifications: List<Notification>.from((json['notifications'] ?? [])
+            .map((item) => Notification.fromJson(item))
+            .toList()),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "type": type.toJson(),
       "chat_id": chatId,
       "total_count": totalCount,
       "notifications": notifications.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -80,13 +81,14 @@ final class NotificationGroup extends TdObject {
     int? chatId,
     int? totalCount,
     List<Notification>? notifications,
-  }) => NotificationGroup(
-    id: id ?? this.id,
-    type: type ?? this.type,
-    chatId: chatId ?? this.chatId,
-    totalCount: totalCount ?? this.totalCount,
-    notifications: notifications ?? this.notifications,
-  );
+  }) =>
+      NotificationGroup(
+        id: id ?? this.id,
+        type: type ?? this.type,
+        chatId: chatId ?? this.chatId,
+        totalCount: totalCount ?? this.totalCount,
+        notifications: notifications ?? this.notifications,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'notificationGroup';

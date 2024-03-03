@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class AddNetworkStatistics extends TdFunction {
-  
   /// **AddNetworkStatistics** *(addNetworkStatistics)* - TDLib function
   ///
   /// Adds the specified data to data usage statistics. Can be called before authorization.
@@ -19,19 +18,19 @@ final class AddNetworkStatistics extends TdFunction {
   const AddNetworkStatistics({
     required this.entry,
   });
-  
+
   /// The network statistics entry with the data to be added to statistics
   final NetworkStatisticsEntry entry;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "entry": entry.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class AddNetworkStatistics extends TdFunction {
   /// * [entry]: The network statistics entry with the data to be added to statistics
   AddNetworkStatistics copyWith({
     NetworkStatisticsEntry? entry,
-  }) => AddNetworkStatistics(
-    entry: entry ?? this.entry,
-  );
+  }) =>
+      AddNetworkStatistics(
+        entry: entry ?? this.entry,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'addNetworkStatistics';

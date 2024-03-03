@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [elements]: Telegram Passport elements.
 final class PassportElements extends TdObject {
-  
   /// **PassportElements** *(passportElements)* - basic class
   ///
   /// Contains information about saved Telegram Passport elements.
@@ -17,7 +16,7 @@ final class PassportElements extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Telegram Passport elements
   final List<PassportElement> elements;
 
@@ -28,23 +27,25 @@ final class PassportElements extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory PassportElements.fromJson(Map<String, dynamic> json) => PassportElements(
-    elements: List<PassportElement>.from((json['elements'] ?? []).map((item) => PassportElement.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory PassportElements.fromJson(Map<String, dynamic> json) =>
+      PassportElements(
+        elements: List<PassportElement>.from((json['elements'] ?? [])
+            .map((item) => PassportElement.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "elements": elements.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +55,12 @@ final class PassportElements extends TdObject {
     List<PassportElement>? elements,
     dynamic extra,
     int? clientId,
-  }) => PassportElements(
-    elements: elements ?? this.elements,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      PassportElements(
+        elements: elements ?? this.elements,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'passportElements';

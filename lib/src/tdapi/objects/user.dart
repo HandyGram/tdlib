@@ -33,7 +33,6 @@ part of '../tdapi.dart';
 /// * [languageCode]: IETF language tag of the user's language; only available to bots.
 /// * [addedToAttachmentMenu]: True, if the user added the current bot to attachment menu; only available to bots.
 final class User extends TdObject {
-  
   /// **User** *(user)* - basic class
   ///
   /// Represents a user.
@@ -98,7 +97,7 @@ final class User extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// User identifier
   final int id;
 
@@ -190,47 +189,54 @@ final class User extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory User.fromJson(Map<String, dynamic> json) => User(
-    id: json['id'],
-    firstName: json['first_name'],
-    lastName: json['last_name'],
-    usernames: json['usernames'] == null ? null : Usernames.fromJson(json['usernames']),
-    phoneNumber: json['phone_number'],
-    status: UserStatus.fromJson(json['status']),
-    profilePhoto: json['profile_photo'] == null ? null : ProfilePhoto.fromJson(json['profile_photo']),
-    accentColorId: json['accent_color_id'],
-    backgroundCustomEmojiId: int.tryParse(json['background_custom_emoji_id'] ?? "") ?? 0,
-    profileAccentColorId: json['profile_accent_color_id'],
-    profileBackgroundCustomEmojiId: int.tryParse(json['profile_background_custom_emoji_id'] ?? "") ?? 0,
-    emojiStatus: json['emoji_status'] == null ? null : EmojiStatus.fromJson(json['emoji_status']),
-    isContact: json['is_contact'],
-    isMutualContact: json['is_mutual_contact'],
-    isCloseFriend: json['is_close_friend'],
-    isVerified: json['is_verified'],
-    isPremium: json['is_premium'],
-    isSupport: json['is_support'],
-    restrictionReason: json['restriction_reason'],
-    isScam: json['is_scam'],
-    isFake: json['is_fake'],
-    hasActiveStories: json['has_active_stories'],
-    hasUnreadActiveStories: json['has_unread_active_stories'],
-    restrictsNewChats: json['restricts_new_chats'],
-    haveAccess: json['have_access'],
-    type: UserType.fromJson(json['type']),
-    languageCode: json['language_code'],
-    addedToAttachmentMenu: json['added_to_attachment_menu'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: json['id'],
+        firstName: json['first_name'],
+        lastName: json['last_name'],
+        usernames: json['usernames'] == null
+            ? null
+            : Usernames.fromJson(json['usernames']),
+        phoneNumber: json['phone_number'],
+        status: UserStatus.fromJson(json['status']),
+        profilePhoto: json['profile_photo'] == null
+            ? null
+            : ProfilePhoto.fromJson(json['profile_photo']),
+        accentColorId: json['accent_color_id'],
+        backgroundCustomEmojiId:
+            int.tryParse(json['background_custom_emoji_id'] ?? "") ?? 0,
+        profileAccentColorId: json['profile_accent_color_id'],
+        profileBackgroundCustomEmojiId:
+            int.tryParse(json['profile_background_custom_emoji_id'] ?? "") ?? 0,
+        emojiStatus: json['emoji_status'] == null
+            ? null
+            : EmojiStatus.fromJson(json['emoji_status']),
+        isContact: json['is_contact'],
+        isMutualContact: json['is_mutual_contact'],
+        isCloseFriend: json['is_close_friend'],
+        isVerified: json['is_verified'],
+        isPremium: json['is_premium'],
+        isSupport: json['is_support'],
+        restrictionReason: json['restriction_reason'],
+        isScam: json['is_scam'],
+        isFake: json['is_fake'],
+        hasActiveStories: json['has_active_stories'],
+        hasUnreadActiveStories: json['has_unread_active_stories'],
+        restrictsNewChats: json['restricts_new_chats'],
+        haveAccess: json['have_access'],
+        type: UserType.fromJson(json['type']),
+        languageCode: json['language_code'],
+        addedToAttachmentMenu: json['added_to_attachment_menu'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "first_name": firstName,
       "last_name": lastName,
@@ -259,8 +265,8 @@ final class User extends TdObject {
       "type": type.toJson(),
       "language_code": languageCode,
       "added_to_attachment_menu": addedToAttachmentMenu,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -324,38 +330,43 @@ final class User extends TdObject {
     bool? addedToAttachmentMenu,
     dynamic extra,
     int? clientId,
-  }) => User(
-    id: id ?? this.id,
-    firstName: firstName ?? this.firstName,
-    lastName: lastName ?? this.lastName,
-    usernames: usernames ?? this.usernames,
-    phoneNumber: phoneNumber ?? this.phoneNumber,
-    status: status ?? this.status,
-    profilePhoto: profilePhoto ?? this.profilePhoto,
-    accentColorId: accentColorId ?? this.accentColorId,
-    backgroundCustomEmojiId: backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
-    profileAccentColorId: profileAccentColorId ?? this.profileAccentColorId,
-    profileBackgroundCustomEmojiId: profileBackgroundCustomEmojiId ?? this.profileBackgroundCustomEmojiId,
-    emojiStatus: emojiStatus ?? this.emojiStatus,
-    isContact: isContact ?? this.isContact,
-    isMutualContact: isMutualContact ?? this.isMutualContact,
-    isCloseFriend: isCloseFriend ?? this.isCloseFriend,
-    isVerified: isVerified ?? this.isVerified,
-    isPremium: isPremium ?? this.isPremium,
-    isSupport: isSupport ?? this.isSupport,
-    restrictionReason: restrictionReason ?? this.restrictionReason,
-    isScam: isScam ?? this.isScam,
-    isFake: isFake ?? this.isFake,
-    hasActiveStories: hasActiveStories ?? this.hasActiveStories,
-    hasUnreadActiveStories: hasUnreadActiveStories ?? this.hasUnreadActiveStories,
-    restrictsNewChats: restrictsNewChats ?? this.restrictsNewChats,
-    haveAccess: haveAccess ?? this.haveAccess,
-    type: type ?? this.type,
-    languageCode: languageCode ?? this.languageCode,
-    addedToAttachmentMenu: addedToAttachmentMenu ?? this.addedToAttachmentMenu,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      User(
+        id: id ?? this.id,
+        firstName: firstName ?? this.firstName,
+        lastName: lastName ?? this.lastName,
+        usernames: usernames ?? this.usernames,
+        phoneNumber: phoneNumber ?? this.phoneNumber,
+        status: status ?? this.status,
+        profilePhoto: profilePhoto ?? this.profilePhoto,
+        accentColorId: accentColorId ?? this.accentColorId,
+        backgroundCustomEmojiId:
+            backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
+        profileAccentColorId: profileAccentColorId ?? this.profileAccentColorId,
+        profileBackgroundCustomEmojiId: profileBackgroundCustomEmojiId ??
+            this.profileBackgroundCustomEmojiId,
+        emojiStatus: emojiStatus ?? this.emojiStatus,
+        isContact: isContact ?? this.isContact,
+        isMutualContact: isMutualContact ?? this.isMutualContact,
+        isCloseFriend: isCloseFriend ?? this.isCloseFriend,
+        isVerified: isVerified ?? this.isVerified,
+        isPremium: isPremium ?? this.isPremium,
+        isSupport: isSupport ?? this.isSupport,
+        restrictionReason: restrictionReason ?? this.restrictionReason,
+        isScam: isScam ?? this.isScam,
+        isFake: isFake ?? this.isFake,
+        hasActiveStories: hasActiveStories ?? this.hasActiveStories,
+        hasUnreadActiveStories:
+            hasUnreadActiveStories ?? this.hasUnreadActiveStories,
+        restrictsNewChats: restrictsNewChats ?? this.restrictsNewChats,
+        haveAccess: haveAccess ?? this.haveAccess,
+        type: type ?? this.type,
+        languageCode: languageCode ?? this.languageCode,
+        addedToAttachmentMenu:
+            addedToAttachmentMenu ?? this.addedToAttachmentMenu,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'user';

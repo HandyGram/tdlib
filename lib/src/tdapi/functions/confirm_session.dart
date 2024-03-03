@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ConfirmSession extends TdFunction {
-  
   /// **ConfirmSession** *(confirmSession)* - TDLib function
   ///
   /// Confirms an unconfirmed session of the current user from another device.
@@ -19,19 +18,19 @@ final class ConfirmSession extends TdFunction {
   const ConfirmSession({
     required this.sessionId,
   });
-  
+
   /// Session identifier
   final int sessionId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "session_id": sessionId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class ConfirmSession extends TdFunction {
   /// * [session_id]: Session identifier
   ConfirmSession copyWith({
     int? sessionId,
-  }) => ConfirmSession(
-    sessionId: sessionId ?? this.sessionId,
-  );
+  }) =>
+      ConfirmSession(
+        sessionId: sessionId ?? this.sessionId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'confirmSession';

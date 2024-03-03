@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [CheckStickerSetNameResult] is returned on completion.
 final class CheckStickerSetName extends TdFunction {
-  
   /// **CheckStickerSetName** *(checkStickerSetName)* - TDLib function
   ///
   /// Checks whether a name can be used for a new sticker set.
@@ -19,19 +18,19 @@ final class CheckStickerSetName extends TdFunction {
   const CheckStickerSetName({
     required this.name,
   });
-  
+
   /// Name to be checked
   final String name;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "name": name,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class CheckStickerSetName extends TdFunction {
   /// * [name]: Name to be checked
   CheckStickerSetName copyWith({
     String? name,
-  }) => CheckStickerSetName(
-    name: name ?? this.name,
-  );
+  }) =>
+      CheckStickerSetName(
+        name: name ?? this.name,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'checkStickerSetName';

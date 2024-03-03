@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [NetworkStatistics] is returned on completion.
 final class GetNetworkStatistics extends TdFunction {
-  
   /// **GetNetworkStatistics** *(getNetworkStatistics)* - TDLib function
   ///
   /// Returns network data usage statistics. Can be called before authorization.
@@ -19,19 +18,19 @@ final class GetNetworkStatistics extends TdFunction {
   const GetNetworkStatistics({
     required this.onlyCurrent,
   });
-  
+
   /// Pass true to get statistics only for the current library launch
   final bool onlyCurrent;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "only_current": onlyCurrent,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetNetworkStatistics extends TdFunction {
   /// * [only_current]: Pass true to get statistics only for the current library launch
   GetNetworkStatistics copyWith({
     bool? onlyCurrent,
-  }) => GetNetworkStatistics(
-    onlyCurrent: onlyCurrent ?? this.onlyCurrent,
-  );
+  }) =>
+      GetNetworkStatistics(
+        onlyCurrent: onlyCurrent ?? this.onlyCurrent,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getNetworkStatistics';

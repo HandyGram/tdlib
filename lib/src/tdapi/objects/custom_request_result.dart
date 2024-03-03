@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [result]: A JSON-serialized result.
 final class CustomRequestResult extends TdObject {
-  
   /// **CustomRequestResult** *(customRequestResult)* - basic class
   ///
   /// Contains the result of a custom request.
@@ -17,7 +16,7 @@ final class CustomRequestResult extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// A JSON-serialized result
   final String result;
 
@@ -28,23 +27,23 @@ final class CustomRequestResult extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory CustomRequestResult.fromJson(Map<String, dynamic> json) => CustomRequestResult(
-    result: json['result'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory CustomRequestResult.fromJson(Map<String, dynamic> json) =>
+      CustomRequestResult(
+        result: json['result'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "result": result,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +53,12 @@ final class CustomRequestResult extends TdObject {
     String? result,
     dynamic extra,
     int? clientId,
-  }) => CustomRequestResult(
-    result: result ?? this.result,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      CustomRequestResult(
+        result: result ?? this.result,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'customRequestResult';

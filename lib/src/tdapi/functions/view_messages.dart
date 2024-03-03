@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ViewMessages extends TdFunction {
-  
   /// **ViewMessages** *(viewMessages)* - TDLib function
   ///
   /// Informs TDLib that messages are being viewed by the user. Sponsored messages must be marked as viewed only when the entire text of the message is shown on the screen (excluding the button).. Many useful activities depend on whether the messages are currently being viewed or not (e.g., marking messages as read, incrementing a view counter, updating a view counter, removing deleted messages in supergroups and channels).
@@ -28,7 +27,7 @@ final class ViewMessages extends TdFunction {
     this.source,
     required this.forceRead,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -40,19 +39,19 @@ final class ViewMessages extends TdFunction {
 
   /// Pass true to mark as read the specified messages even the chat is closed
   final bool forceRead;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_ids": messageIds.map((i) => i).toList(),
       "source": source?.toJson(),
       "force_read": forceRead,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -66,12 +65,13 @@ final class ViewMessages extends TdFunction {
     List<int>? messageIds,
     MessageSource? source,
     bool? forceRead,
-  }) => ViewMessages(
-    chatId: chatId ?? this.chatId,
-    messageIds: messageIds ?? this.messageIds,
-    source: source ?? this.source,
-    forceRead: forceRead ?? this.forceRead,
-  );
+  }) =>
+      ViewMessages(
+        chatId: chatId ?? this.chatId,
+        messageIds: messageIds ?? this.messageIds,
+        source: source ?? this.source,
+        forceRead: forceRead ?? this.forceRead,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'viewMessages';

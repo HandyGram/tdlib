@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [FoundChatBoosts] is returned on completion.
 final class GetUserChatBoosts extends TdFunction {
-  
   /// **GetUserChatBoosts** *(getUserChatBoosts)* - TDLib function
   ///
   /// Returns list of boosts applied to a chat by a given user; requires administrator rights in the chat; for bots only.
@@ -22,23 +21,23 @@ final class GetUserChatBoosts extends TdFunction {
     required this.chatId,
     required this.userId,
   });
-  
+
   /// Identifier of the chat
   final int chatId;
 
   /// Identifier of the user
   final int userId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "user_id": userId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class GetUserChatBoosts extends TdFunction {
   GetUserChatBoosts copyWith({
     int? chatId,
     int? userId,
-  }) => GetUserChatBoosts(
-    chatId: chatId ?? this.chatId,
-    userId: userId ?? this.userId,
-  );
+  }) =>
+      GetUserChatBoosts(
+        chatId: chatId ?? this.chatId,
+        userId: userId ?? this.userId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getUserChatBoosts';

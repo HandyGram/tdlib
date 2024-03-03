@@ -7,7 +7,6 @@ part of '../tdapi.dart';
 /// * [color]: Color of the topic icon in RGB format.
 /// * [customEmojiId]: Unique identifier of the custom emoji shown on the topic icon; 0 if none.
 final class ForumTopicIcon extends TdObject {
-  
   /// **ForumTopicIcon** *(forumTopicIcon)* - basic class
   ///
   /// Describes a forum topic icon.
@@ -18,42 +17,42 @@ final class ForumTopicIcon extends TdObject {
     required this.color,
     required this.customEmojiId,
   });
-  
-  /// Color of the topic icon in RGB format 
+
+  /// Color of the topic icon in RGB format
   final int color;
 
   /// Unique identifier of the custom emoji shown on the topic icon; 0 if none
   final int customEmojiId;
-  
+
   /// Parse from a json
   factory ForumTopicIcon.fromJson(Map<String, dynamic> json) => ForumTopicIcon(
-    color: json['color'],
-    customEmojiId: int.tryParse(json['custom_emoji_id'] ?? "") ?? 0,
-  );
-  
-  
+        color: json['color'],
+        customEmojiId: int.tryParse(json['custom_emoji_id'] ?? "") ?? 0,
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "color": color,
       "custom_emoji_id": customEmojiId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [color]: Color of the topic icon in RGB format 
+  /// * [color]: Color of the topic icon in RGB format
   /// * [custom_emoji_id]: Unique identifier of the custom emoji shown on the topic icon; 0 if none
   ForumTopicIcon copyWith({
     int? color,
     int? customEmojiId,
-  }) => ForumTopicIcon(
-    color: color ?? this.color,
-    customEmojiId: customEmojiId ?? this.customEmojiId,
-  );
+  }) =>
+      ForumTopicIcon(
+        color: color ?? this.color,
+        customEmojiId: customEmojiId ?? this.customEmojiId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'forumTopicIcon';

@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 /// * [storeProductId]: Identifier of the store product associated with the option; may be empty if none.
 /// * [storeProductQuantity]: Number of times the store product must be paid.
 final class PremiumGiftCodePaymentOption extends TdObject {
-  
   /// **PremiumGiftCodePaymentOption** *(premiumGiftCodePaymentOption)* - basic class
   ///
   /// Describes an option for creating Telegram Premium gift codes.
@@ -30,7 +29,7 @@ final class PremiumGiftCodePaymentOption extends TdObject {
     required this.storeProductId,
     required this.storeProductQuantity,
   });
-  
+
   /// ISO 4217 currency code for Telegram Premium gift code payment
   final String currency;
 
@@ -48,31 +47,31 @@ final class PremiumGiftCodePaymentOption extends TdObject {
 
   /// Number of times the store product must be paid
   final int storeProductQuantity;
-  
+
   /// Parse from a json
-  factory PremiumGiftCodePaymentOption.fromJson(Map<String, dynamic> json) => PremiumGiftCodePaymentOption(
-    currency: json['currency'],
-    amount: json['amount'],
-    userCount: json['user_count'],
-    monthCount: json['month_count'],
-    storeProductId: json['store_product_id'],
-    storeProductQuantity: json['store_product_quantity'],
-  );
-  
-  
+  factory PremiumGiftCodePaymentOption.fromJson(Map<String, dynamic> json) =>
+      PremiumGiftCodePaymentOption(
+        currency: json['currency'],
+        amount: json['amount'],
+        userCount: json['user_count'],
+        monthCount: json['month_count'],
+        storeProductId: json['store_product_id'],
+        storeProductQuantity: json['store_product_quantity'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "currency": currency,
       "amount": amount,
       "user_count": userCount,
       "month_count": monthCount,
       "store_product_id": storeProductId,
       "store_product_quantity": storeProductQuantity,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -90,14 +89,15 @@ final class PremiumGiftCodePaymentOption extends TdObject {
     int? monthCount,
     String? storeProductId,
     int? storeProductQuantity,
-  }) => PremiumGiftCodePaymentOption(
-    currency: currency ?? this.currency,
-    amount: amount ?? this.amount,
-    userCount: userCount ?? this.userCount,
-    monthCount: monthCount ?? this.monthCount,
-    storeProductId: storeProductId ?? this.storeProductId,
-    storeProductQuantity: storeProductQuantity ?? this.storeProductQuantity,
-  );
+  }) =>
+      PremiumGiftCodePaymentOption(
+        currency: currency ?? this.currency,
+        amount: amount ?? this.amount,
+        userCount: userCount ?? this.userCount,
+        monthCount: monthCount ?? this.monthCount,
+        storeProductId: storeProductId ?? this.storeProductId,
+        storeProductQuantity: storeProductQuantity ?? this.storeProductQuantity,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'premiumGiftCodePaymentOption';

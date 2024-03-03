@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ViewPremiumFeature extends TdFunction {
-  
   /// **ViewPremiumFeature** *(viewPremiumFeature)* - TDLib function
   ///
   /// Informs TDLib that the user viewed detailed information about a Premium feature on the Premium features screen.
@@ -19,19 +18,19 @@ final class ViewPremiumFeature extends TdFunction {
   const ViewPremiumFeature({
     required this.feature,
   });
-  
+
   /// The viewed premium feature
   final PremiumFeature feature;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "feature": feature.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class ViewPremiumFeature extends TdFunction {
   /// * [feature]: The viewed premium feature
   ViewPremiumFeature copyWith({
     PremiumFeature? feature,
-  }) => ViewPremiumFeature(
-    feature: feature ?? this.feature,
-  );
+  }) =>
+      ViewPremiumFeature(
+        feature: feature ?? this.feature,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'viewPremiumFeature';

@@ -4,18 +4,17 @@ part of '../tdapi.dart';
 ///
 /// Describes an invoice to process.
 sealed class InputInvoice extends TdObject {
-  
   /// **InputInvoice** *(inputInvoice)* - parent
   ///
   /// Describes an invoice to process.
   const InputInvoice();
-  
+
   /// a InputInvoice return type can be :
   /// * [InputInvoiceMessage]
   /// * [InputInvoiceName]
   /// * [InputInvoiceTelegram]
-  factory InputInvoice.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory InputInvoice.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case InputInvoiceMessage.defaultObjectId:
         return InputInvoiceMessage.fromJson(json);
       case InputInvoiceName.defaultObjectId:
@@ -29,7 +28,7 @@ sealed class InputInvoice extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -49,7 +48,6 @@ sealed class InputInvoice extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputInvoiceMessage** *(inputInvoiceMessage)* - child of InputInvoice
 ///
 /// An invoice from a message of the type messageInvoice.
@@ -57,7 +55,6 @@ sealed class InputInvoice extends TdObject {
 /// * [chatId]: Chat identifier of the message.
 /// * [messageId]: Message identifier.
 final class InputInvoiceMessage extends InputInvoice {
-  
   /// **InputInvoiceMessage** *(inputInvoiceMessage)* - child of InputInvoice
   ///
   /// An invoice from a message of the type messageInvoice.
@@ -68,43 +65,44 @@ final class InputInvoiceMessage extends InputInvoice {
     required this.chatId,
     required this.messageId,
   });
-  
-  /// Chat identifier of the message 
+
+  /// Chat identifier of the message
   final int chatId;
 
   /// Message identifier
   final int messageId;
-  
+
   /// Parse from a json
-  factory InputInvoiceMessage.fromJson(Map<String, dynamic> json) => InputInvoiceMessage(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-  );
-  
-  
+  factory InputInvoiceMessage.fromJson(Map<String, dynamic> json) =>
+      InputInvoiceMessage(
+        chatId: json['chat_id'],
+        messageId: json['message_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier of the message 
+  /// * [chat_id]: Chat identifier of the message
   /// * [message_id]: Message identifier
   @override
   InputInvoiceMessage copyWith({
     int? chatId,
     int? messageId,
-  }) => InputInvoiceMessage(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-  );
+  }) =>
+      InputInvoiceMessage(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputInvoiceMessage';
@@ -118,14 +116,12 @@ final class InputInvoiceMessage extends InputInvoice {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputInvoiceName** *(inputInvoiceName)* - child of InputInvoice
 ///
 /// An invoice from a link of the type internalLinkTypeInvoice.
 ///
 /// * [name]: Name of the invoice.
 final class InputInvoiceName extends InputInvoice {
-  
   /// **InputInvoiceName** *(inputInvoiceName)* - child of InputInvoice
   ///
   /// An invoice from a link of the type internalLinkTypeInvoice.
@@ -134,24 +130,24 @@ final class InputInvoiceName extends InputInvoice {
   const InputInvoiceName({
     required this.name,
   });
-  
+
   /// Name of the invoice
   final String name;
-  
+
   /// Parse from a json
-  factory InputInvoiceName.fromJson(Map<String, dynamic> json) => InputInvoiceName(
-    name: json['name'],
-  );
-  
-  
+  factory InputInvoiceName.fromJson(Map<String, dynamic> json) =>
+      InputInvoiceName(
+        name: json['name'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "name": name,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -160,9 +156,10 @@ final class InputInvoiceName extends InputInvoice {
   @override
   InputInvoiceName copyWith({
     String? name,
-  }) => InputInvoiceName(
-    name: name ?? this.name,
-  );
+  }) =>
+      InputInvoiceName(
+        name: name ?? this.name,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputInvoiceName';
@@ -176,14 +173,12 @@ final class InputInvoiceName extends InputInvoice {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **InputInvoiceTelegram** *(inputInvoiceTelegram)* - child of InputInvoice
 ///
 /// An invoice for a payment toward Telegram; must not be used in the in-store apps.
 ///
 /// * [purpose]: Transaction purpose.
 final class InputInvoiceTelegram extends InputInvoice {
-  
   /// **InputInvoiceTelegram** *(inputInvoiceTelegram)* - child of InputInvoice
   ///
   /// An invoice for a payment toward Telegram; must not be used in the in-store apps.
@@ -192,24 +187,24 @@ final class InputInvoiceTelegram extends InputInvoice {
   const InputInvoiceTelegram({
     required this.purpose,
   });
-  
+
   /// Transaction purpose
   final TelegramPaymentPurpose purpose;
-  
+
   /// Parse from a json
-  factory InputInvoiceTelegram.fromJson(Map<String, dynamic> json) => InputInvoiceTelegram(
-    purpose: TelegramPaymentPurpose.fromJson(json['purpose']),
-  );
-  
-  
+  factory InputInvoiceTelegram.fromJson(Map<String, dynamic> json) =>
+      InputInvoiceTelegram(
+        purpose: TelegramPaymentPurpose.fromJson(json['purpose']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "purpose": purpose.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -218,9 +213,10 @@ final class InputInvoiceTelegram extends InputInvoice {
   @override
   InputInvoiceTelegram copyWith({
     TelegramPaymentPurpose? purpose,
-  }) => InputInvoiceTelegram(
-    purpose: purpose ?? this.purpose,
-  );
+  }) =>
+      InputInvoiceTelegram(
+        purpose: purpose ?? this.purpose,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'inputInvoiceTelegram';

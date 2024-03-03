@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [EmojiReaction] is returned on completion.
 final class GetEmojiReaction extends TdFunction {
-  
   /// **GetEmojiReaction** *(getEmojiReaction)* - TDLib function
   ///
   /// Returns information about an emoji reaction. Returns a 404 error if the reaction is not found.
@@ -19,19 +18,19 @@ final class GetEmojiReaction extends TdFunction {
   const GetEmojiReaction({
     required this.emoji,
   });
-  
+
   /// Text representation of the reaction
   final String emoji;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "emoji": emoji,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class GetEmojiReaction extends TdFunction {
   /// * [emoji]: Text representation of the reaction
   GetEmojiReaction copyWith({
     String? emoji,
-  }) => GetEmojiReaction(
-    emoji: emoji ?? this.emoji,
-  );
+  }) =>
+      GetEmojiReaction(
+        emoji: emoji ?? this.emoji,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getEmojiReaction';

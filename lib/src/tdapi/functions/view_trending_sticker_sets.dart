@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ViewTrendingStickerSets extends TdFunction {
-  
   /// **ViewTrendingStickerSets** *(viewTrendingStickerSets)* - TDLib function
   ///
   /// Informs the server that some trending sticker sets have been viewed by the user.
@@ -19,19 +18,19 @@ final class ViewTrendingStickerSets extends TdFunction {
   const ViewTrendingStickerSets({
     required this.stickerSetIds,
   });
-  
+
   /// Identifiers of viewed trending sticker sets
   final List<int> stickerSetIds;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "sticker_set_ids": stickerSetIds.map((i) => i).toList(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -39,9 +38,10 @@ final class ViewTrendingStickerSets extends TdFunction {
   /// * [sticker_set_ids]: Identifiers of viewed trending sticker sets
   ViewTrendingStickerSets copyWith({
     List<int>? stickerSetIds,
-  }) => ViewTrendingStickerSets(
-    stickerSetIds: stickerSetIds ?? this.stickerSetIds,
-  );
+  }) =>
+      ViewTrendingStickerSets(
+        stickerSetIds: stickerSetIds ?? this.stickerSetIds,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'viewTrendingStickerSets';

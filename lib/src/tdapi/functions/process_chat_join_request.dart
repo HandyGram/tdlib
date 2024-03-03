@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ProcessChatJoinRequest extends TdFunction {
-  
   /// **ProcessChatJoinRequest** *(processChatJoinRequest)* - TDLib function
   ///
   /// Handles a pending join request in a chat.
@@ -25,43 +24,44 @@ final class ProcessChatJoinRequest extends TdFunction {
     required this.userId,
     required this.approve,
   });
-  
-  /// Chat identifier 
+
+  /// Chat identifier
   final int chatId;
 
-  /// Identifier of the user that sent the request 
+  /// Identifier of the user that sent the request
   final int userId;
 
   /// Pass true to approve the request; pass false to decline it
   final bool approve;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "user_id": userId,
       "approve": approve,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier 
-  /// * [user_id]: Identifier of the user that sent the request 
+  /// * [chat_id]: Chat identifier
+  /// * [user_id]: Identifier of the user that sent the request
   /// * [approve]: Pass true to approve the request; pass false to decline it
   ProcessChatJoinRequest copyWith({
     int? chatId,
     int? userId,
     bool? approve,
-  }) => ProcessChatJoinRequest(
-    chatId: chatId ?? this.chatId,
-    userId: userId ?? this.userId,
-    approve: approve ?? this.approve,
-  );
+  }) =>
+      ProcessChatJoinRequest(
+        chatId: chatId ?? this.chatId,
+        userId: userId ?? this.userId,
+        approve: approve ?? this.approve,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'processChatJoinRequest';

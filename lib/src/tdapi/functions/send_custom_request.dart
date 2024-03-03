@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [CustomRequestResult] is returned on completion.
 final class SendCustomRequest extends TdFunction {
-  
   /// **SendCustomRequest** *(sendCustomRequest)* - TDLib function
   ///
   /// Sends a custom request; for bots only.
@@ -22,36 +21,37 @@ final class SendCustomRequest extends TdFunction {
     required this.method,
     required this.parameters,
   });
-  
-  /// The method name 
+
+  /// The method name
   final String method;
 
   /// JSON-serialized method parameters
   final String parameters;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "method": method,
       "parameters": parameters,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [method]: The method name 
+  /// * [method]: The method name
   /// * [parameters]: JSON-serialized method parameters
   SendCustomRequest copyWith({
     String? method,
     String? parameters,
-  }) => SendCustomRequest(
-    method: method ?? this.method,
-    parameters: parameters ?? this.parameters,
-  );
+  }) =>
+      SendCustomRequest(
+        method: method ?? this.method,
+        parameters: parameters ?? this.parameters,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'sendCustomRequest';

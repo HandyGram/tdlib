@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ClearRecentEmojiStatuses extends TdFunction {
-  
   /// **ClearRecentEmojiStatuses** *(clearRecentEmojiStatuses)* - TDLib function
   ///
   /// Clears the list of recently used emoji statuses for self status.
   ///
   /// [Ok] is returned on completion.
   const ClearRecentEmojiStatuses();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   ClearRecentEmojiStatuses copyWith() => const ClearRecentEmojiStatuses();

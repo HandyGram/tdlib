@@ -20,7 +20,6 @@ part of '../tdapi.dart';
 /// * [canDeleteStories]: True, if the administrator can delete stories posted by other users; applicable to supergroups and channels only.
 /// * [isAnonymous]: True, if the administrator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only.
 final class ChatAdministratorRights extends TdObject {
-  
   /// **ChatAdministratorRights** *(chatAdministratorRights)* - basic class
   ///
   /// Describes rights of the administrator.
@@ -57,7 +56,7 @@ final class ChatAdministratorRights extends TdObject {
     required this.canDeleteStories,
     required this.isAnonymous,
   });
-  
+
   /// True, if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report supergroup spam messages and ignore slow mode. Implied by any other privilege; applicable to supergroups and channels only
   final bool canManageChat;
 
@@ -102,32 +101,32 @@ final class ChatAdministratorRights extends TdObject {
 
   /// True, if the administrator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only
   final bool isAnonymous;
-  
+
   /// Parse from a json
-  factory ChatAdministratorRights.fromJson(Map<String, dynamic> json) => ChatAdministratorRights(
-    canManageChat: json['can_manage_chat'],
-    canChangeInfo: json['can_change_info'],
-    canPostMessages: json['can_post_messages'],
-    canEditMessages: json['can_edit_messages'],
-    canDeleteMessages: json['can_delete_messages'],
-    canInviteUsers: json['can_invite_users'],
-    canRestrictMembers: json['can_restrict_members'],
-    canPinMessages: json['can_pin_messages'],
-    canManageTopics: json['can_manage_topics'],
-    canPromoteMembers: json['can_promote_members'],
-    canManageVideoChats: json['can_manage_video_chats'],
-    canPostStories: json['can_post_stories'],
-    canEditStories: json['can_edit_stories'],
-    canDeleteStories: json['can_delete_stories'],
-    isAnonymous: json['is_anonymous'],
-  );
-  
-  
+  factory ChatAdministratorRights.fromJson(Map<String, dynamic> json) =>
+      ChatAdministratorRights(
+        canManageChat: json['can_manage_chat'],
+        canChangeInfo: json['can_change_info'],
+        canPostMessages: json['can_post_messages'],
+        canEditMessages: json['can_edit_messages'],
+        canDeleteMessages: json['can_delete_messages'],
+        canInviteUsers: json['can_invite_users'],
+        canRestrictMembers: json['can_restrict_members'],
+        canPinMessages: json['can_pin_messages'],
+        canManageTopics: json['can_manage_topics'],
+        canPromoteMembers: json['can_promote_members'],
+        canManageVideoChats: json['can_manage_video_chats'],
+        canPostStories: json['can_post_stories'],
+        canEditStories: json['can_edit_stories'],
+        canDeleteStories: json['can_delete_stories'],
+        isAnonymous: json['is_anonymous'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "can_manage_chat": canManageChat,
       "can_change_info": canChangeInfo,
       "can_post_messages": canPostMessages,
@@ -143,8 +142,8 @@ final class ChatAdministratorRights extends TdObject {
       "can_edit_stories": canEditStories,
       "can_delete_stories": canDeleteStories,
       "is_anonymous": isAnonymous,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -180,23 +179,24 @@ final class ChatAdministratorRights extends TdObject {
     bool? canEditStories,
     bool? canDeleteStories,
     bool? isAnonymous,
-  }) => ChatAdministratorRights(
-    canManageChat: canManageChat ?? this.canManageChat,
-    canChangeInfo: canChangeInfo ?? this.canChangeInfo,
-    canPostMessages: canPostMessages ?? this.canPostMessages,
-    canEditMessages: canEditMessages ?? this.canEditMessages,
-    canDeleteMessages: canDeleteMessages ?? this.canDeleteMessages,
-    canInviteUsers: canInviteUsers ?? this.canInviteUsers,
-    canRestrictMembers: canRestrictMembers ?? this.canRestrictMembers,
-    canPinMessages: canPinMessages ?? this.canPinMessages,
-    canManageTopics: canManageTopics ?? this.canManageTopics,
-    canPromoteMembers: canPromoteMembers ?? this.canPromoteMembers,
-    canManageVideoChats: canManageVideoChats ?? this.canManageVideoChats,
-    canPostStories: canPostStories ?? this.canPostStories,
-    canEditStories: canEditStories ?? this.canEditStories,
-    canDeleteStories: canDeleteStories ?? this.canDeleteStories,
-    isAnonymous: isAnonymous ?? this.isAnonymous,
-  );
+  }) =>
+      ChatAdministratorRights(
+        canManageChat: canManageChat ?? this.canManageChat,
+        canChangeInfo: canChangeInfo ?? this.canChangeInfo,
+        canPostMessages: canPostMessages ?? this.canPostMessages,
+        canEditMessages: canEditMessages ?? this.canEditMessages,
+        canDeleteMessages: canDeleteMessages ?? this.canDeleteMessages,
+        canInviteUsers: canInviteUsers ?? this.canInviteUsers,
+        canRestrictMembers: canRestrictMembers ?? this.canRestrictMembers,
+        canPinMessages: canPinMessages ?? this.canPinMessages,
+        canManageTopics: canManageTopics ?? this.canManageTopics,
+        canPromoteMembers: canPromoteMembers ?? this.canPromoteMembers,
+        canManageVideoChats: canManageVideoChats ?? this.canManageVideoChats,
+        canPostStories: canPostStories ?? this.canPostStories,
+        canEditStories: canEditStories ?? this.canEditStories,
+        canDeleteStories: canDeleteStories ?? this.canDeleteStories,
+        isAnonymous: isAnonymous ?? this.isAnonymous,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatAdministratorRights';

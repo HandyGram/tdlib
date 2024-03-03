@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class ReportMessageReactions extends TdFunction {
-  
   /// **ReportMessageReactions** *(reportMessageReactions)* - TDLib function
   ///
   /// Reports reactions set on a message to the Telegram moderators. Reactions on a message can be reported only if message.can_report_reactions.
@@ -25,7 +24,7 @@ final class ReportMessageReactions extends TdFunction {
     required this.messageId,
     required this.senderId,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -34,18 +33,18 @@ final class ReportMessageReactions extends TdFunction {
 
   /// Identifier of the sender, which added the reaction
   final MessageSender senderId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "sender_id": senderId.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class ReportMessageReactions extends TdFunction {
     int? chatId,
     int? messageId,
     MessageSender? senderId,
-  }) => ReportMessageReactions(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    senderId: senderId ?? this.senderId,
-  );
+  }) =>
+      ReportMessageReactions(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        senderId: senderId ?? this.senderId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'reportMessageReactions';

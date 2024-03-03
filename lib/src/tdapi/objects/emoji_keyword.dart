@@ -7,7 +7,6 @@ part of '../tdapi.dart';
 /// * [emoji]: The emoji.
 /// * [keyword]: The keyword.
 final class EmojiKeyword extends TdObject {
-  
   /// **EmojiKeyword** *(emojiKeyword)* - basic class
   ///
   /// Represents an emoji with its keyword.
@@ -18,42 +17,42 @@ final class EmojiKeyword extends TdObject {
     required this.emoji,
     required this.keyword,
   });
-  
-  /// The emoji 
+
+  /// The emoji
   final String emoji;
 
   /// The keyword
   final String keyword;
-  
+
   /// Parse from a json
   factory EmojiKeyword.fromJson(Map<String, dynamic> json) => EmojiKeyword(
-    emoji: json['emoji'],
-    keyword: json['keyword'],
-  );
-  
-  
+        emoji: json['emoji'],
+        keyword: json['keyword'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "emoji": emoji,
       "keyword": keyword,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [emoji]: The emoji 
+  /// * [emoji]: The emoji
   /// * [keyword]: The keyword
   EmojiKeyword copyWith({
     String? emoji,
     String? keyword,
-  }) => EmojiKeyword(
-    emoji: emoji ?? this.emoji,
-    keyword: keyword ?? this.keyword,
-  );
+  }) =>
+      EmojiKeyword(
+        emoji: emoji ?? this.emoji,
+        keyword: keyword ?? this.keyword,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'emojiKeyword';

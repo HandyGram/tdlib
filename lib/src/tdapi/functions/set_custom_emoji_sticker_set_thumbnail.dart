@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetCustomEmojiStickerSetThumbnail extends TdFunction {
-  
   /// **SetCustomEmojiStickerSetThumbnail** *(setCustomEmojiStickerSetThumbnail)* - TDLib function
   ///
   /// Sets a custom emoji sticker set thumbnail; for bots only.
@@ -22,23 +21,23 @@ final class SetCustomEmojiStickerSetThumbnail extends TdFunction {
     required this.name,
     required this.customEmojiId,
   });
-  
+
   /// Sticker set name
   final String name;
 
   /// Identifier of the custom emoji from the sticker set, which will be set as sticker set thumbnail; pass 0 to remove the sticker set thumbnail
   final int customEmojiId;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "name": name,
       "custom_emoji_id": customEmojiId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -48,10 +47,11 @@ final class SetCustomEmojiStickerSetThumbnail extends TdFunction {
   SetCustomEmojiStickerSetThumbnail copyWith({
     String? name,
     int? customEmojiId,
-  }) => SetCustomEmojiStickerSetThumbnail(
-    name: name ?? this.name,
-    customEmojiId: customEmojiId ?? this.customEmojiId,
-  );
+  }) =>
+      SetCustomEmojiStickerSetThumbnail(
+        name: name ?? this.name,
+        customEmojiId: customEmojiId ?? this.customEmojiId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setCustomEmojiStickerSetThumbnail';

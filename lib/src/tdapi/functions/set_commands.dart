@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 ///
 /// [Ok] is returned on completion.
 final class SetCommands extends TdFunction {
-  
   /// **SetCommands** *(setCommands)* - TDLib function
   ///
   /// Sets the list of commands supported by the bot for the given user scope and language; for bots only.
@@ -25,7 +24,7 @@ final class SetCommands extends TdFunction {
     required this.languageCode,
     required this.commands,
   });
-  
+
   /// The scope to which the commands are relevant; pass null to change commands in the default bot command scope
   final BotCommandScope? scope;
 
@@ -34,18 +33,18 @@ final class SetCommands extends TdFunction {
 
   /// List of the bot's commands
   final List<BotCommand> commands;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "scope": scope?.toJson(),
       "language_code": languageCode,
       "commands": commands.map((i) => i.toJson()).toList(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -57,11 +56,12 @@ final class SetCommands extends TdFunction {
     BotCommandScope? scope,
     String? languageCode,
     List<BotCommand>? commands,
-  }) => SetCommands(
-    scope: scope ?? this.scope,
-    languageCode: languageCode ?? this.languageCode,
-    commands: commands ?? this.commands,
-  );
+  }) =>
+      SetCommands(
+        scope: scope ?? this.scope,
+        languageCode: languageCode ?? this.languageCode,
+        commands: commands ?? this.commands,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'setCommands';

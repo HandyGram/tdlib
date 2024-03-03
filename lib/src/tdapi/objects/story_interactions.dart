@@ -10,7 +10,6 @@ part of '../tdapi.dart';
 /// * [interactions]: List of story interactions.
 /// * [nextOffset]: The offset for the next request. If empty, then there are no more results.
 final class StoryInteractions extends TdObject {
-  
   /// **StoryInteractions** *(storyInteractions)* - basic class
   ///
   /// Represents a list of interactions with a story.
@@ -29,7 +28,7 @@ final class StoryInteractions extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// Approximate total number of interactions found
   final int totalCount;
 
@@ -52,31 +51,33 @@ final class StoryInteractions extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory StoryInteractions.fromJson(Map<String, dynamic> json) => StoryInteractions(
-    totalCount: json['total_count'],
-    totalForwardCount: json['total_forward_count'],
-    totalReactionCount: json['total_reaction_count'],
-    interactions: List<StoryInteraction>.from((json['interactions'] ?? []).map((item) => StoryInteraction.fromJson(item)).toList()),
-    nextOffset: json['next_offset'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory StoryInteractions.fromJson(Map<String, dynamic> json) =>
+      StoryInteractions(
+        totalCount: json['total_count'],
+        totalForwardCount: json['total_forward_count'],
+        totalReactionCount: json['total_reaction_count'],
+        interactions: List<StoryInteraction>.from((json['interactions'] ?? [])
+            .map((item) => StoryInteraction.fromJson(item))
+            .toList()),
+        nextOffset: json['next_offset'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "total_count": totalCount,
       "total_forward_count": totalForwardCount,
       "total_reaction_count": totalReactionCount,
       "interactions": interactions.map((i) => i.toJson()).toList(),
       "next_offset": nextOffset,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -94,15 +95,16 @@ final class StoryInteractions extends TdObject {
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) => StoryInteractions(
-    totalCount: totalCount ?? this.totalCount,
-    totalForwardCount: totalForwardCount ?? this.totalForwardCount,
-    totalReactionCount: totalReactionCount ?? this.totalReactionCount,
-    interactions: interactions ?? this.interactions,
-    nextOffset: nextOffset ?? this.nextOffset,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      StoryInteractions(
+        totalCount: totalCount ?? this.totalCount,
+        totalForwardCount: totalForwardCount ?? this.totalForwardCount,
+        totalReactionCount: totalReactionCount ?? this.totalReactionCount,
+        interactions: interactions ?? this.interactions,
+        nextOffset: nextOffset ?? this.nextOffset,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'storyInteractions';

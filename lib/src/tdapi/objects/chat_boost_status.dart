@@ -15,7 +15,6 @@ part of '../tdapi.dart';
 /// * [premiumMemberPercentage]: A percentage of Telegram Premium subscribers joined the chat; always 0 if the current user isn't an administrator in the chat.
 /// * [prepaidGiveaways]: The list of prepaid giveaways available for the chat; only for chat administrators.
 final class ChatBoostStatus extends TdObject {
-  
   /// **ChatBoostStatus** *(chatBoostStatus)* - basic class
   ///
   /// Describes current boost status of a chat.
@@ -44,7 +43,7 @@ final class ChatBoostStatus extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// An HTTP URL, which can be used to boost the chat
   final String boostUrl;
 
@@ -82,29 +81,33 @@ final class ChatBoostStatus extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory ChatBoostStatus.fromJson(Map<String, dynamic> json) => ChatBoostStatus(
-    boostUrl: json['boost_url'],
-    appliedSlotIds: List<int>.from((json['applied_slot_ids'] ?? []).map((item) => item).toList()),
-    level: json['level'],
-    giftCodeBoostCount: json['gift_code_boost_count'],
-    boostCount: json['boost_count'],
-    currentLevelBoostCount: json['current_level_boost_count'],
-    nextLevelBoostCount: json['next_level_boost_count'],
-    premiumMemberCount: json['premium_member_count'],
-    premiumMemberPercentage: json['premium_member_percentage'],
-    prepaidGiveaways: List<PrepaidPremiumGiveaway>.from((json['prepaid_giveaways'] ?? []).map((item) => PrepaidPremiumGiveaway.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory ChatBoostStatus.fromJson(Map<String, dynamic> json) =>
+      ChatBoostStatus(
+        boostUrl: json['boost_url'],
+        appliedSlotIds: List<int>.from(
+            (json['applied_slot_ids'] ?? []).map((item) => item).toList()),
+        level: json['level'],
+        giftCodeBoostCount: json['gift_code_boost_count'],
+        boostCount: json['boost_count'],
+        currentLevelBoostCount: json['current_level_boost_count'],
+        nextLevelBoostCount: json['next_level_boost_count'],
+        premiumMemberCount: json['premium_member_count'],
+        premiumMemberPercentage: json['premium_member_percentage'],
+        prepaidGiveaways: List<PrepaidPremiumGiveaway>.from(
+            (json['prepaid_giveaways'] ?? [])
+                .map((item) => PrepaidPremiumGiveaway.fromJson(item))
+                .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "boost_url": boostUrl,
       "applied_slot_ids": appliedSlotIds.map((i) => i).toList(),
       "level": level,
@@ -115,8 +118,8 @@ final class ChatBoostStatus extends TdObject {
       "premium_member_count": premiumMemberCount,
       "premium_member_percentage": premiumMemberPercentage,
       "prepaid_giveaways": prepaidGiveaways.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -144,20 +147,23 @@ final class ChatBoostStatus extends TdObject {
     List<PrepaidPremiumGiveaway>? prepaidGiveaways,
     dynamic extra,
     int? clientId,
-  }) => ChatBoostStatus(
-    boostUrl: boostUrl ?? this.boostUrl,
-    appliedSlotIds: appliedSlotIds ?? this.appliedSlotIds,
-    level: level ?? this.level,
-    giftCodeBoostCount: giftCodeBoostCount ?? this.giftCodeBoostCount,
-    boostCount: boostCount ?? this.boostCount,
-    currentLevelBoostCount: currentLevelBoostCount ?? this.currentLevelBoostCount,
-    nextLevelBoostCount: nextLevelBoostCount ?? this.nextLevelBoostCount,
-    premiumMemberCount: premiumMemberCount ?? this.premiumMemberCount,
-    premiumMemberPercentage: premiumMemberPercentage ?? this.premiumMemberPercentage,
-    prepaidGiveaways: prepaidGiveaways ?? this.prepaidGiveaways,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      ChatBoostStatus(
+        boostUrl: boostUrl ?? this.boostUrl,
+        appliedSlotIds: appliedSlotIds ?? this.appliedSlotIds,
+        level: level ?? this.level,
+        giftCodeBoostCount: giftCodeBoostCount ?? this.giftCodeBoostCount,
+        boostCount: boostCount ?? this.boostCount,
+        currentLevelBoostCount:
+            currentLevelBoostCount ?? this.currentLevelBoostCount,
+        nextLevelBoostCount: nextLevelBoostCount ?? this.nextLevelBoostCount,
+        premiumMemberCount: premiumMemberCount ?? this.premiumMemberCount,
+        premiumMemberPercentage:
+            premiumMemberPercentage ?? this.premiumMemberPercentage,
+        prepaidGiveaways: prepaidGiveaways ?? this.prepaidGiveaways,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatBoostStatus';

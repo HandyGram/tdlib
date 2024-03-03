@@ -4,19 +4,18 @@ part of '../tdapi.dart';
 ///
 /// Part of the face, relative to which a mask is placed.
 sealed class MaskPoint extends TdObject {
-  
   /// **MaskPoint** *(maskPoint)* - parent
   ///
   /// Part of the face, relative to which a mask is placed.
   const MaskPoint();
-  
+
   /// a MaskPoint return type can be :
   /// * [MaskPointForehead]
   /// * [MaskPointEyes]
   /// * [MaskPointMouth]
   /// * [MaskPointChin]
-  factory MaskPoint.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory MaskPoint.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case MaskPointForehead.defaultObjectId:
         return MaskPointForehead.fromJson(json);
       case MaskPointEyes.defaultObjectId:
@@ -32,7 +31,7 @@ sealed class MaskPoint extends TdObject {
         );
     }
   }
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson();
@@ -52,27 +51,26 @@ sealed class MaskPoint extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **MaskPointForehead** *(maskPointForehead)* - child of MaskPoint
 ///
 /// The mask is placed relatively to the forehead.
 final class MaskPointForehead extends MaskPoint {
-  
   /// **MaskPointForehead** *(maskPointForehead)* - child of MaskPoint
   ///
   /// The mask is placed relatively to the forehead.
   const MaskPointForehead();
-  
+
   /// Parse from a json
-  factory MaskPointForehead.fromJson(Map<String, dynamic> json) => const MaskPointForehead();
-  
+  factory MaskPointForehead.fromJson(Map<String, dynamic> json) =>
+      const MaskPointForehead();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -90,27 +88,26 @@ final class MaskPointForehead extends MaskPoint {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **MaskPointEyes** *(maskPointEyes)* - child of MaskPoint
 ///
 /// The mask is placed relatively to the eyes.
 final class MaskPointEyes extends MaskPoint {
-  
   /// **MaskPointEyes** *(maskPointEyes)* - child of MaskPoint
   ///
   /// The mask is placed relatively to the eyes.
   const MaskPointEyes();
-  
+
   /// Parse from a json
-  factory MaskPointEyes.fromJson(Map<String, dynamic> json) => const MaskPointEyes();
-  
+  factory MaskPointEyes.fromJson(Map<String, dynamic> json) =>
+      const MaskPointEyes();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -128,27 +125,26 @@ final class MaskPointEyes extends MaskPoint {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **MaskPointMouth** *(maskPointMouth)* - child of MaskPoint
 ///
 /// The mask is placed relatively to the mouth.
 final class MaskPointMouth extends MaskPoint {
-  
   /// **MaskPointMouth** *(maskPointMouth)* - child of MaskPoint
   ///
   /// The mask is placed relatively to the mouth.
   const MaskPointMouth();
-  
+
   /// Parse from a json
-  factory MaskPointMouth.fromJson(Map<String, dynamic> json) => const MaskPointMouth();
-  
+  factory MaskPointMouth.fromJson(Map<String, dynamic> json) =>
+      const MaskPointMouth();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override
@@ -166,27 +162,26 @@ final class MaskPointMouth extends MaskPoint {
   String get currentObjectId => defaultObjectId;
 }
 
-
 /// **MaskPointChin** *(maskPointChin)* - child of MaskPoint
 ///
 /// The mask is placed relatively to the chin.
 final class MaskPointChin extends MaskPoint {
-  
   /// **MaskPointChin** *(maskPointChin)* - child of MaskPoint
   ///
   /// The mask is placed relatively to the chin.
   const MaskPointChin();
-  
+
   /// Parse from a json
-  factory MaskPointChin.fromJson(Map<String, dynamic> json) => const MaskPointChin();
-  
+  factory MaskPointChin.fromJson(Map<String, dynamic> json) =>
+      const MaskPointChin();
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
-		};
-	}
+    return {
+      "@type": defaultObjectId,
+    };
+  }
 
   /// Copy instance with no modifications.
   @override

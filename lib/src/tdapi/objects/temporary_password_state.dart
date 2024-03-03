@@ -7,7 +7,6 @@ part of '../tdapi.dart';
 /// * [hasPassword]: True, if a temporary password is available.
 /// * [validFor]: Time left before the temporary password expires, in seconds.
 final class TemporaryPasswordState extends TdObject {
-  
   /// **TemporaryPasswordState** *(temporaryPasswordState)* - basic class
   ///
   /// Returns information about the availability of a temporary password, which can be used for payments.
@@ -20,8 +19,8 @@ final class TemporaryPasswordState extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// True, if a temporary password is available 
+
+  /// True, if a temporary password is available
   final bool hasPassword;
 
   /// Time left before the temporary password expires, in seconds
@@ -34,42 +33,43 @@ final class TemporaryPasswordState extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory TemporaryPasswordState.fromJson(Map<String, dynamic> json) => TemporaryPasswordState(
-    hasPassword: json['has_password'],
-    validFor: json['valid_for'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory TemporaryPasswordState.fromJson(Map<String, dynamic> json) =>
+      TemporaryPasswordState(
+        hasPassword: json['has_password'],
+        validFor: json['valid_for'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "has_password": hasPassword,
       "valid_for": validFor,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [has_password]: True, if a temporary password is available 
+  /// * [has_password]: True, if a temporary password is available
   /// * [valid_for]: Time left before the temporary password expires, in seconds
   TemporaryPasswordState copyWith({
     bool? hasPassword,
     int? validFor,
     dynamic extra,
     int? clientId,
-  }) => TemporaryPasswordState(
-    hasPassword: hasPassword ?? this.hasPassword,
-    validFor: validFor ?? this.validFor,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      TemporaryPasswordState(
+        hasPassword: hasPassword ?? this.hasPassword,
+        validFor: validFor ?? this.validFor,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'temporaryPasswordState';

@@ -14,7 +14,6 @@ part of '../tdapi.dart';
 ///
 /// [Chat] is returned on completion.
 final class CreateNewSupergroupChat extends TdFunction {
-  
   /// **CreateNewSupergroupChat** *(createNewSupergroupChat)* - TDLib function
   ///
   /// Creates a new supergroup or channel and sends a corresponding messageSupergroupChatCreate. Returns the newly created chat.
@@ -37,7 +36,7 @@ final class CreateNewSupergroupChat extends TdFunction {
     required this.messageAutoDeleteTime,
     required this.forImport,
   });
-  
+
   /// Title of the new chat; 1-128 characters
   final String title;
 
@@ -58,12 +57,12 @@ final class CreateNewSupergroupChat extends TdFunction {
 
   /// Pass true to create a supergroup for importing messages using importMessages
   final bool forImport;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "title": title,
       "is_forum": isForum,
       "is_channel": isChannel,
@@ -72,8 +71,8 @@ final class CreateNewSupergroupChat extends TdFunction {
       "message_auto_delete_time": messageAutoDeleteTime,
       "for_import": forImport,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -93,15 +92,17 @@ final class CreateNewSupergroupChat extends TdFunction {
     ChatLocation? location,
     int? messageAutoDeleteTime,
     bool? forImport,
-  }) => CreateNewSupergroupChat(
-    title: title ?? this.title,
-    isForum: isForum ?? this.isForum,
-    isChannel: isChannel ?? this.isChannel,
-    description: description ?? this.description,
-    location: location ?? this.location,
-    messageAutoDeleteTime: messageAutoDeleteTime ?? this.messageAutoDeleteTime,
-    forImport: forImport ?? this.forImport,
-  );
+  }) =>
+      CreateNewSupergroupChat(
+        title: title ?? this.title,
+        isForum: isForum ?? this.isForum,
+        isChannel: isChannel ?? this.isChannel,
+        description: description ?? this.description,
+        location: location ?? this.location,
+        messageAutoDeleteTime:
+            messageAutoDeleteTime ?? this.messageAutoDeleteTime,
+        forImport: forImport ?? this.forImport,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'createNewSupergroupChat';

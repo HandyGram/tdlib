@@ -20,7 +20,6 @@ part of '../tdapi.dart';
 /// * [size]: Total number of stickers in the set.
 /// * [covers]: Up to the first 5 stickers from the set, depending on the context. If the application needs more stickers the full sticker set needs to be requested.
 final class StickerSetInfo extends TdObject {
-  
   /// **StickerSetInfo** *(stickerSetInfo)* - basic class
   ///
   /// Represents short information about a sticker set.
@@ -57,7 +56,7 @@ final class StickerSetInfo extends TdObject {
     required this.size,
     required this.covers,
   });
-  
+
   /// Identifier of the sticker set
   final int id;
 
@@ -102,32 +101,38 @@ final class StickerSetInfo extends TdObject {
 
   /// Up to the first 5 stickers from the set, depending on the context. If the application needs more stickers the full sticker set needs to be requested
   final List<Sticker> covers;
-  
+
   /// Parse from a json
   factory StickerSetInfo.fromJson(Map<String, dynamic> json) => StickerSetInfo(
-    id: int.parse(json['id']),
-    title: json['title'],
-    name: json['name'],
-    thumbnail: json['thumbnail'] == null ? null : Thumbnail.fromJson(json['thumbnail']),
-    thumbnailOutline: List<ClosedVectorPath>.from((json['thumbnail_outline'] ?? []).map((item) => ClosedVectorPath.fromJson(item)).toList()),
-    isInstalled: json['is_installed'],
-    isArchived: json['is_archived'],
-    isOfficial: json['is_official'],
-    stickerFormat: StickerFormat.fromJson(json['sticker_format']),
-    stickerType: StickerType.fromJson(json['sticker_type']),
-    needsRepainting: json['needs_repainting'],
-    isAllowedAsChatEmojiStatus: json['is_allowed_as_chat_emoji_status'],
-    isViewed: json['is_viewed'],
-    size: json['size'],
-    covers: List<Sticker>.from((json['covers'] ?? []).map((item) => Sticker.fromJson(item)).toList()),
-  );
-  
-  
+        id: int.parse(json['id']),
+        title: json['title'],
+        name: json['name'],
+        thumbnail: json['thumbnail'] == null
+            ? null
+            : Thumbnail.fromJson(json['thumbnail']),
+        thumbnailOutline: List<ClosedVectorPath>.from(
+            (json['thumbnail_outline'] ?? [])
+                .map((item) => ClosedVectorPath.fromJson(item))
+                .toList()),
+        isInstalled: json['is_installed'],
+        isArchived: json['is_archived'],
+        isOfficial: json['is_official'],
+        stickerFormat: StickerFormat.fromJson(json['sticker_format']),
+        stickerType: StickerType.fromJson(json['sticker_type']),
+        needsRepainting: json['needs_repainting'],
+        isAllowedAsChatEmojiStatus: json['is_allowed_as_chat_emoji_status'],
+        isViewed: json['is_viewed'],
+        size: json['size'],
+        covers: List<Sticker>.from((json['covers'] ?? [])
+            .map((item) => Sticker.fromJson(item))
+            .toList()),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "id": id,
       "title": title,
       "name": name,
@@ -143,8 +148,8 @@ final class StickerSetInfo extends TdObject {
       "is_viewed": isViewed,
       "size": size,
       "covers": covers.map((i) => i.toJson()).toList(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -180,23 +185,25 @@ final class StickerSetInfo extends TdObject {
     bool? isViewed,
     int? size,
     List<Sticker>? covers,
-  }) => StickerSetInfo(
-    id: id ?? this.id,
-    title: title ?? this.title,
-    name: name ?? this.name,
-    thumbnail: thumbnail ?? this.thumbnail,
-    thumbnailOutline: thumbnailOutline ?? this.thumbnailOutline,
-    isInstalled: isInstalled ?? this.isInstalled,
-    isArchived: isArchived ?? this.isArchived,
-    isOfficial: isOfficial ?? this.isOfficial,
-    stickerFormat: stickerFormat ?? this.stickerFormat,
-    stickerType: stickerType ?? this.stickerType,
-    needsRepainting: needsRepainting ?? this.needsRepainting,
-    isAllowedAsChatEmojiStatus: isAllowedAsChatEmojiStatus ?? this.isAllowedAsChatEmojiStatus,
-    isViewed: isViewed ?? this.isViewed,
-    size: size ?? this.size,
-    covers: covers ?? this.covers,
-  );
+  }) =>
+      StickerSetInfo(
+        id: id ?? this.id,
+        title: title ?? this.title,
+        name: name ?? this.name,
+        thumbnail: thumbnail ?? this.thumbnail,
+        thumbnailOutline: thumbnailOutline ?? this.thumbnailOutline,
+        isInstalled: isInstalled ?? this.isInstalled,
+        isArchived: isArchived ?? this.isArchived,
+        isOfficial: isOfficial ?? this.isOfficial,
+        stickerFormat: stickerFormat ?? this.stickerFormat,
+        stickerType: stickerType ?? this.stickerType,
+        needsRepainting: needsRepainting ?? this.needsRepainting,
+        isAllowedAsChatEmojiStatus:
+            isAllowedAsChatEmojiStatus ?? this.isAllowedAsChatEmojiStatus,
+        isViewed: isViewed ?? this.isViewed,
+        size: size ?? this.size,
+        covers: covers ?? this.covers,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'stickerSetInfo';

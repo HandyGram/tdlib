@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 /// * [position]: Approximate quote position in the original message in UTF-16 code units as specified by the message sender.
 /// * [isManual]: True, if the quote was manually chosen by the message sender.
 final class TextQuote extends TdObject {
-  
   /// **TextQuote** *(textQuote)* - basic class
   ///
   /// Describes manually or automatically chosen quote from another message.
@@ -21,7 +20,7 @@ final class TextQuote extends TdObject {
     required this.position,
     required this.isManual,
   });
-  
+
   /// Text of the quote. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities can be present in the text
   final FormattedText text;
 
@@ -30,25 +29,24 @@ final class TextQuote extends TdObject {
 
   /// True, if the quote was manually chosen by the message sender
   final bool isManual;
-  
+
   /// Parse from a json
   factory TextQuote.fromJson(Map<String, dynamic> json) => TextQuote(
-    text: FormattedText.fromJson(json['text']),
-    position: json['position'],
-    isManual: json['is_manual'],
-  );
-  
-  
+        text: FormattedText.fromJson(json['text']),
+        position: json['position'],
+        isManual: json['is_manual'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "text": text.toJson(),
       "position": position,
       "is_manual": isManual,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -60,11 +58,12 @@ final class TextQuote extends TdObject {
     FormattedText? text,
     int? position,
     bool? isManual,
-  }) => TextQuote(
-    text: text ?? this.text,
-    position: position ?? this.position,
-    isManual: isManual ?? this.isManual,
-  );
+  }) =>
+      TextQuote(
+        text: text ?? this.text,
+        position: position ?? this.position,
+        isManual: isManual ?? this.isManual,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'textQuote';

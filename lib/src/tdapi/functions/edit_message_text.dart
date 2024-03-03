@@ -11,7 +11,6 @@ part of '../tdapi.dart';
 ///
 /// [Message] is returned on completion.
 final class EditMessageText extends TdFunction {
-  
   /// **EditMessageText** *(editMessageText)* - TDLib function
   ///
   /// Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side.
@@ -28,7 +27,7 @@ final class EditMessageText extends TdFunction {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-  
+
   /// The chat the message belongs to
   final int chatId;
 
@@ -40,19 +39,19 @@ final class EditMessageText extends TdFunction {
 
   /// New text content of the message. Must be of type inputMessageText
   final InputMessageContent inputMessageContent;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "message_id": messageId,
       "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -66,12 +65,13 @@ final class EditMessageText extends TdFunction {
     int? messageId,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) => EditMessageText(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-  );
+  }) =>
+      EditMessageText(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'editMessageText';

@@ -6,7 +6,6 @@ part of '../tdapi.dart';
 ///
 /// * [showReadDate]: True, if message read date is shown to other users in private chats. If false and the current user isn't a Telegram Premium user, then they will not be able to see other's message read date.
 final class ReadDatePrivacySettings extends TdObject {
-  
   /// **ReadDatePrivacySettings** *(readDatePrivacySettings)* - basic class
   ///
   /// Contains privacy settings for message read date in private chats. Read dates are always shown to the users that can see online status of the current user regardless of this setting.
@@ -17,7 +16,7 @@ final class ReadDatePrivacySettings extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// True, if message read date is shown to other users in private chats. If false and the current user isn't a Telegram Premium user, then they will not be able to see other's message read date.
   final bool showReadDate;
 
@@ -28,23 +27,23 @@ final class ReadDatePrivacySettings extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory ReadDatePrivacySettings.fromJson(Map<String, dynamic> json) => ReadDatePrivacySettings(
-    showReadDate: json['show_read_date'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory ReadDatePrivacySettings.fromJson(Map<String, dynamic> json) =>
+      ReadDatePrivacySettings(
+        showReadDate: json['show_read_date'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "show_read_date": showReadDate,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -54,11 +53,12 @@ final class ReadDatePrivacySettings extends TdObject {
     bool? showReadDate,
     dynamic extra,
     int? clientId,
-  }) => ReadDatePrivacySettings(
-    showReadDate: showReadDate ?? this.showReadDate,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      ReadDatePrivacySettings(
+        showReadDate: showReadDate ?? this.showReadDate,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'readDatePrivacySettings';

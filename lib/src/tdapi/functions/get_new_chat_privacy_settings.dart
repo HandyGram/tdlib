@@ -6,23 +6,21 @@ part of '../tdapi.dart';
 ///
 /// [NewChatPrivacySettings] is returned on completion.
 final class GetNewChatPrivacySettings extends TdFunction {
-  
   /// **GetNewChatPrivacySettings** *(getNewChatPrivacySettings)* - TDLib function
   ///
   /// Returns privacy settings for new chat creation.
   ///
   /// [NewChatPrivacySettings] is returned on completion.
   const GetNewChatPrivacySettings();
-  
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy instance with no modifications.
   GetNewChatPrivacySettings copyWith() => const GetNewChatPrivacySettings();

@@ -8,7 +8,6 @@ part of '../tdapi.dart';
 /// * [lightSettings]: Theme settings for a light chat theme.
 /// * [darkSettings]: Theme settings for a dark chat theme.
 final class ChatTheme extends TdObject {
-  
   /// **ChatTheme** *(chatTheme)* - basic class
   ///
   /// Describes a chat theme.
@@ -21,7 +20,7 @@ final class ChatTheme extends TdObject {
     required this.lightSettings,
     required this.darkSettings,
   });
-  
+
   /// Theme name
   final String name;
 
@@ -30,25 +29,24 @@ final class ChatTheme extends TdObject {
 
   /// Theme settings for a dark chat theme
   final ThemeSettings darkSettings;
-  
+
   /// Parse from a json
   factory ChatTheme.fromJson(Map<String, dynamic> json) => ChatTheme(
-    name: json['name'],
-    lightSettings: ThemeSettings.fromJson(json['light_settings']),
-    darkSettings: ThemeSettings.fromJson(json['dark_settings']),
-  );
-  
-  
+        name: json['name'],
+        lightSettings: ThemeSettings.fromJson(json['light_settings']),
+        darkSettings: ThemeSettings.fromJson(json['dark_settings']),
+      );
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "name": name,
       "light_settings": lightSettings.toJson(),
       "dark_settings": darkSettings.toJson(),
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -60,11 +58,12 @@ final class ChatTheme extends TdObject {
     String? name,
     ThemeSettings? lightSettings,
     ThemeSettings? darkSettings,
-  }) => ChatTheme(
-    name: name ?? this.name,
-    lightSettings: lightSettings ?? this.lightSettings,
-    darkSettings: darkSettings ?? this.darkSettings,
-  );
+  }) =>
+      ChatTheme(
+        name: name ?? this.name,
+        lightSettings: lightSettings ?? this.lightSettings,
+        darkSettings: darkSettings ?? this.darkSettings,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatTheme';

@@ -9,7 +9,6 @@ part of '../tdapi.dart';
 ///
 /// [HttpUrl] is returned on completion.
 final class GetBackgroundUrl extends TdFunction {
-  
   /// **GetBackgroundUrl** *(getBackgroundUrl)* - TDLib function
   ///
   /// Constructs a persistent HTTP URL for a background.
@@ -22,36 +21,37 @@ final class GetBackgroundUrl extends TdFunction {
     required this.name,
     required this.type,
   });
-  
-  /// Background name 
+
+  /// Background name
   final String name;
 
   /// Background type; backgroundTypeChatTheme isn't supported
   final BackgroundType type;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "name": name,
       "type": type.toJson(),
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [name]: Background name 
+  /// * [name]: Background name
   /// * [type]: Background type; backgroundTypeChatTheme isn't supported
   GetBackgroundUrl copyWith({
     String? name,
     BackgroundType? type,
-  }) => GetBackgroundUrl(
-    name: name ?? this.name,
-    type: type ?? this.type,
-  );
+  }) =>
+      GetBackgroundUrl(
+        name: name ?? this.name,
+        type: type ?? this.type,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getBackgroundUrl';

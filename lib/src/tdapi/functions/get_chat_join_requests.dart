@@ -12,7 +12,6 @@ part of '../tdapi.dart';
 ///
 /// [ChatJoinRequests] is returned on completion.
 final class GetChatJoinRequests extends TdFunction {
-  
   /// **GetChatJoinRequests** *(getChatJoinRequests)* - TDLib function
   ///
   /// Returns pending join requests in a chat.
@@ -31,7 +30,7 @@ final class GetChatJoinRequests extends TdFunction {
     this.offsetRequest,
     required this.limit,
   });
-  
+
   /// Chat identifier
   final int chatId;
 
@@ -46,20 +45,20 @@ final class GetChatJoinRequests extends TdFunction {
 
   /// The maximum number of requests to join the chat to return
   final int limit;
-  
+
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-		return {
-			"@type": defaultObjectId,
+    return {
+      "@type": defaultObjectId,
       "chat_id": chatId,
       "invite_link": inviteLink,
       "query": query,
       "offset_request": offsetRequest?.toJson(),
       "limit": limit,
       "@extra": extra,
-		};
-	}
+    };
+  }
 
   /// Copy model with modified properties.
   ///
@@ -75,13 +74,14 @@ final class GetChatJoinRequests extends TdFunction {
     String? query,
     ChatJoinRequest? offsetRequest,
     int? limit,
-  }) => GetChatJoinRequests(
-    chatId: chatId ?? this.chatId,
-    inviteLink: inviteLink ?? this.inviteLink,
-    query: query ?? this.query,
-    offsetRequest: offsetRequest ?? this.offsetRequest,
-    limit: limit ?? this.limit,
-  );
+  }) =>
+      GetChatJoinRequests(
+        chatId: chatId ?? this.chatId,
+        inviteLink: inviteLink ?? this.inviteLink,
+        query: query ?? this.query,
+        offsetRequest: offsetRequest ?? this.offsetRequest,
+        limit: limit ?? this.limit,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'getChatJoinRequests';
