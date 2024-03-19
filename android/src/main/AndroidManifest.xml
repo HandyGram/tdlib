@@ -1,3 +1,4 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="org.naji.td.handy_tdlib">
+  package="ru.tdrk.handy_tdlib">
+  <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

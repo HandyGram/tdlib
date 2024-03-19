@@ -1,1 +1,9 @@
-rootProject.name = 'handy_tdlib'
+pluginManagement {
+    repositories {
+        google()
+    }
+}
+
+plugins {
+    id 'com.android.library' version '8.2.0' apply false
+}

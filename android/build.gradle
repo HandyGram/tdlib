@@ -1,38 +1,15 @@
-group 'org.naji.td.handy_tdlib'
-version '2.0'
-
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath 'com.android.tools.build:gradle:7.3.1'
-    }
+plugins {
+    id "com.android.library"
 }
-
-rootProject.allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-
-apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 33
-
-    // Conditional for compatibility with AGP <4.2.
-    if (project.android.hasProperty('namespace')) {
-        namespace 'org.naji.td.handy_tdlib'
-    }
+    namespace "ru.tdrk.handy_tdlib"
+    compileSdkVersion 34
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 21
         ndk {
-            abiFilters  'armeabi-v7a','arm64-v8a','x86','x86_64'
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
         }
     }
 
@@ -46,5 +23,4 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
 }
