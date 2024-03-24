@@ -1,3 +1,6 @@
+## 2.3.4
+* Updated README a bit
+
 ## 2.3.3
 * Updated to TDLib 1.8.26
 * Updated to Android Gradle Plugin 8.2

@@ -1,6 +1,6 @@
 name: handy_tdlib
 description: TDLib for Dart. Uses libtdjson. Improved fork of tdlib package by i-Naji
-version: 2.3.3
+version: 2.3.4
 repository: https://github.com/HandyGram/tdlib
 
 environment:
