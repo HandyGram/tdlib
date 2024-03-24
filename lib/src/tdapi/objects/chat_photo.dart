@@ -56,7 +56,7 @@ final class ChatPhoto extends TdObject {
 
   /// Parse from a json
   factory ChatPhoto.fromJson(Map<String, dynamic> json) => ChatPhoto(
-        id: int.parse(json['id']),
+        id: json['id'] is int ? json['id'] : int.parse(json['id']),
         addedDate: json['added_date'],
         minithumbnail: json['minithumbnail'] == null
             ? null

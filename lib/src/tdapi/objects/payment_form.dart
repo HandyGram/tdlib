@@ -102,7 +102,7 @@ final class PaymentForm extends TdObject {
 
   /// Parse from a json
   factory PaymentForm.fromJson(Map<String, dynamic> json) => PaymentForm(
-        id: int.parse(json['id']),
+        id: json['id'] is int ? json['id'] : int.parse(json['id']),
         invoice: Invoice.fromJson(json['invoice']),
         sellerBotUserId: json['seller_bot_user_id'],
         paymentProviderUserId: json['payment_provider_user_id'],

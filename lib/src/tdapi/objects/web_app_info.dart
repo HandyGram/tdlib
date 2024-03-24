@@ -36,7 +36,9 @@ final class WebAppInfo extends TdObject {
 
   /// Parse from a json
   factory WebAppInfo.fromJson(Map<String, dynamic> json) => WebAppInfo(
-        launchId: int.parse(json['launch_id']),
+        launchId: json['launch_id'] is int
+            ? json['launch_id']
+            : int.parse(json['launch_id']),
         url: json['url'],
         extra: json['@extra'],
         clientId: json['@client_id'],

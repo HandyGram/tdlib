@@ -126,7 +126,9 @@ final class InputBackgroundRemote extends InputBackground {
   /// Parse from a json
   factory InputBackgroundRemote.fromJson(Map<String, dynamic> json) =>
       InputBackgroundRemote(
-        backgroundId: int.parse(json['background_id']),
+        backgroundId: json['background_id'] is int
+            ? json['background_id']
+            : int.parse(json['background_id']),
       );
 
   /// Convert model to TDLib JSON format

@@ -44,7 +44,7 @@ final class CallServer extends TdObject {
 
   /// Parse from a json
   factory CallServer.fromJson(Map<String, dynamic> json) => CallServer(
-        id: int.parse(json['id']),
+        id: json['id'] is int ? json['id'] : int.parse(json['id']),
         ipAddress: json['ip_address'],
         ipv6Address: json['ipv6_address'],
         port: json['port'],

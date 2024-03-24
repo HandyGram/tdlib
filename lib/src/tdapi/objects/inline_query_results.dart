@@ -49,7 +49,9 @@ final class InlineQueryResults extends TdObject {
   /// Parse from a json
   factory InlineQueryResults.fromJson(Map<String, dynamic> json) =>
       InlineQueryResults(
-        inlineQueryId: int.parse(json['inline_query_id']),
+        inlineQueryId: json['inline_query_id'] is int
+            ? json['inline_query_id']
+            : int.parse(json['inline_query_id']),
         button: json['button'] == null
             ? null
             : InlineQueryResultsButton.fromJson(json['button']),

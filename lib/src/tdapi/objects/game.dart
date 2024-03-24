@@ -56,7 +56,7 @@ final class Game extends TdObject {
 
   /// Parse from a json
   factory Game.fromJson(Map<String, dynamic> json) => Game(
-        id: int.parse(json['id']),
+        id: json['id'] is int ? json['id'] : int.parse(json['id']),
         shortName: json['short_name'],
         title: json['title'],
         text: FormattedText.fromJson(json['text']),

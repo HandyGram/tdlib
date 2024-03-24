@@ -39,7 +39,7 @@ final class PrepaidPremiumGiveaway extends TdObject {
   /// Parse from a json
   factory PrepaidPremiumGiveaway.fromJson(Map<String, dynamic> json) =>
       PrepaidPremiumGiveaway(
-        id: int.parse(json['id']),
+        id: json['id'] is int ? json['id'] : int.parse(json['id']),
         winnerCount: json['winner_count'],
         monthCount: json['month_count'],
         paymentDate: json['payment_date'],

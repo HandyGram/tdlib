@@ -60,7 +60,7 @@ final class Background extends TdObject {
 
   /// Parse from a json
   factory Background.fromJson(Map<String, dynamic> json) => Background(
-        id: int.parse(json['id']),
+        id: json['id'] is int ? json['id'] : int.parse(json['id']),
         isDefault: json['is_default'],
         isDark: json['is_dark'],
         name: json['name'],

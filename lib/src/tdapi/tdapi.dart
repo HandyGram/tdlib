@@ -55,12 +55,19 @@ part 'objects/chat_background.dart';
 part 'objects/profile_photo.dart';
 part 'objects/chat_photo_info.dart';
 part 'objects/user_type.dart';
-part 'objects/access_hash_type.dart';
-part 'objects/access_hash.dart';
 part 'objects/bot_command.dart';
 part 'objects/bot_commands.dart';
 part 'objects/bot_menu_button.dart';
 part 'objects/chat_location.dart';
+part 'objects/business_away_message_schedule.dart';
+part 'objects/business_location.dart';
+part 'objects/business_recipients.dart';
+part 'objects/business_away_message_settings.dart';
+part 'objects/business_greeting_message_settings.dart';
+part 'objects/business_connected_bot.dart';
+part 'objects/business_opening_hours_interval.dart';
+part 'objects/business_opening_hours.dart';
+part 'objects/business_info.dart';
 part 'objects/chat_photo_sticker_type.dart';
 part 'objects/chat_photo_sticker.dart';
 part 'objects/animated_chat_photo.dart';
@@ -288,6 +295,8 @@ part 'objects/chat_active_stories.dart';
 part 'objects/story_interaction_type.dart';
 part 'objects/story_interaction.dart';
 part 'objects/story_interactions.dart';
+part 'objects/quick_reply_message.dart';
+part 'objects/quick_reply_shortcut.dart';
 part 'objects/public_forward.dart';
 part 'objects/public_forwards.dart';
 part 'objects/chat_boost_level_features.dart';
@@ -371,6 +380,8 @@ part 'objects/background_type.dart';
 part 'objects/input_background.dart';
 part 'objects/theme_settings.dart';
 part 'objects/chat_theme.dart';
+part 'objects/time_zone.dart';
+part 'objects/time_zones.dart';
 part 'objects/hashtags.dart';
 part 'objects/can_send_story_result.dart';
 part 'objects/can_transfer_ownership_result.dart';
@@ -418,7 +429,6 @@ part 'objects/storage_statistics_by_chat.dart';
 part 'objects/storage_statistics.dart';
 part 'objects/storage_statistics_fast.dart';
 part 'objects/database_statistics.dart';
-part 'objects/memory_statistics.dart';
 part 'objects/network_type.dart';
 part 'objects/network_statistics_entry.dart';
 part 'objects/network_statistics.dart';
@@ -599,6 +609,7 @@ part 'functions/send_message_album.dart';
 part 'functions/send_bot_start_message.dart';
 part 'functions/send_inline_query_result_message.dart';
 part 'functions/forward_messages.dart';
+part 'functions/send_quick_reply_shortcut_messages.dart';
 part 'functions/resend_messages.dart';
 part 'functions/add_local_message.dart';
 part 'functions/delete_messages.dart';
@@ -615,6 +626,13 @@ part 'functions/edit_inline_message_media.dart';
 part 'functions/edit_inline_message_caption.dart';
 part 'functions/edit_inline_message_reply_markup.dart';
 part 'functions/edit_message_scheduling_state.dart';
+part 'functions/check_quick_reply_shortcut_name.dart';
+part 'functions/load_quick_reply_shortcuts.dart';
+part 'functions/set_quick_reply_shortcut_name.dart';
+part 'functions/delete_quick_reply_shortcut.dart';
+part 'functions/reorder_quick_reply_shortcuts.dart';
+part 'functions/load_quick_reply_shortcut_messages.dart';
+part 'functions/delete_quick_reply_shortcut_messages.dart';
 part 'functions/get_forum_topic_default_icons.dart';
 part 'functions/create_forum_topic.dart';
 part 'functions/edit_forum_topic.dart';
@@ -708,6 +726,7 @@ part 'functions/delete_chat_folder.dart';
 part 'functions/get_chat_folder_chats_to_leave.dart';
 part 'functions/get_chat_folder_chat_count.dart';
 part 'functions/reorder_chat_folders.dart';
+part 'functions/toggle_chat_folder_tags.dart';
 part 'functions/get_recommended_chat_folders.dart';
 part 'functions/get_chat_folder_default_icon_name.dart';
 part 'functions/get_chats_for_chat_folder_invite_link.dart';
@@ -953,9 +972,16 @@ part 'functions/toggle_username_is_active.dart';
 part 'functions/reorder_active_usernames.dart';
 part 'functions/set_emoji_status.dart';
 part 'functions/set_location.dart';
+part 'functions/set_business_location.dart';
+part 'functions/set_business_opening_hours.dart';
+part 'functions/set_business_greeting_message_settings.dart';
+part 'functions/set_business_away_message_settings.dart';
 part 'functions/change_phone_number.dart';
 part 'functions/resend_change_phone_number_code.dart';
 part 'functions/check_change_phone_number_code.dart';
+part 'functions/get_business_connected_bot.dart';
+part 'functions/set_business_connected_bot.dart';
+part 'functions/delete_business_connected_bot.dart';
 part 'functions/get_user_link.dart';
 part 'functions/search_user_by_token.dart';
 part 'functions/set_commands.dart';
@@ -1007,6 +1033,7 @@ part 'functions/report_supergroup_anti_spam_false_positive.dart';
 part 'functions/get_supergroup_members.dart';
 part 'functions/close_secret_chat.dart';
 part 'functions/get_chat_event_log.dart';
+part 'functions/get_time_zones.dart';
 part 'functions/get_payment_form.dart';
 part 'functions/validate_order_info.dart';
 part 'functions/send_payment_form.dart';
@@ -1062,7 +1089,6 @@ part 'functions/get_statistical_graph.dart';
 part 'functions/get_storage_statistics.dart';
 part 'functions/get_storage_statistics_fast.dart';
 part 'functions/get_database_statistics.dart';
-part 'functions/get_memory_statistics.dart';
 part 'functions/optimize_storage.dart';
 part 'functions/set_network_type.dart';
 part 'functions/get_network_statistics.dart';
@@ -1362,12 +1388,6 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return UserTypeBot.fromJson(parsed);
     case 'userTypeUnknown':
       return UserTypeUnknown.fromJson(parsed);
-    case 'accessHashTypeUser':
-      return AccessHashTypeUser.fromJson(parsed);
-    case 'accessHashTypeChannel':
-      return AccessHashTypeChannel.fromJson(parsed);
-    case 'accessHash':
-      return AccessHash.fromJson(parsed);
     case 'botCommand':
       return BotCommand.fromJson(parsed);
     case 'botCommands':
@@ -1376,6 +1396,28 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return BotMenuButton.fromJson(parsed);
     case 'chatLocation':
       return ChatLocation.fromJson(parsed);
+    case 'businessAwayMessageScheduleAlways':
+      return BusinessAwayMessageScheduleAlways.fromJson(parsed);
+    case 'businessAwayMessageScheduleOutsideOfOpeningHours':
+      return BusinessAwayMessageScheduleOutsideOfOpeningHours.fromJson(parsed);
+    case 'businessAwayMessageScheduleCustom':
+      return BusinessAwayMessageScheduleCustom.fromJson(parsed);
+    case 'businessLocation':
+      return BusinessLocation.fromJson(parsed);
+    case 'businessRecipients':
+      return BusinessRecipients.fromJson(parsed);
+    case 'businessAwayMessageSettings':
+      return BusinessAwayMessageSettings.fromJson(parsed);
+    case 'businessGreetingMessageSettings':
+      return BusinessGreetingMessageSettings.fromJson(parsed);
+    case 'businessConnectedBot':
+      return BusinessConnectedBot.fromJson(parsed);
+    case 'businessOpeningHoursInterval':
+      return BusinessOpeningHoursInterval.fromJson(parsed);
+    case 'businessOpeningHours':
+      return BusinessOpeningHours.fromJson(parsed);
+    case 'businessInfo':
+      return BusinessInfo.fromJson(parsed);
     case 'chatPhotoStickerTypeRegularOrMask':
       return ChatPhotoStickerTypeRegularOrMask.fromJson(parsed);
     case 'chatPhotoStickerTypeCustomEmoji':
@@ -2550,6 +2592,10 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return StoryInteraction.fromJson(parsed);
     case 'storyInteractions':
       return StoryInteractions.fromJson(parsed);
+    case 'quickReplyMessage':
+      return QuickReplyMessage.fromJson(parsed);
+    case 'quickReplyShortcut':
+      return QuickReplyShortcut.fromJson(parsed);
     case 'publicForwardMessage':
       return PublicForwardMessage.fromJson(parsed);
     case 'publicForwardStory':
@@ -3071,6 +3117,10 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return ThemeSettings.fromJson(parsed);
     case 'chatTheme':
       return ChatTheme.fromJson(parsed);
+    case 'timeZone':
+      return TimeZone.fromJson(parsed);
+    case 'timeZones':
+      return TimeZones.fromJson(parsed);
     case 'hashtags':
       return Hashtags.fromJson(parsed);
     case 'canSendStoryResultOk':
@@ -3517,8 +3567,6 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return StorageStatisticsFast.fromJson(parsed);
     case 'databaseStatistics':
       return DatabaseStatistics.fromJson(parsed);
-    case 'memoryStatistics':
-      return MemoryStatistics.fromJson(parsed);
     case 'networkTypeNone':
       return NetworkTypeNone.fromJson(parsed);
     case 'networkTypeMobile':
@@ -3729,6 +3777,10 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return UpdateChatLastMessage.fromJson(parsed);
     case 'updateChatPosition':
       return UpdateChatPosition.fromJson(parsed);
+    case 'updateChatAddedToList':
+      return UpdateChatAddedToList.fromJson(parsed);
+    case 'updateChatRemovedFromList':
+      return UpdateChatRemovedFromList.fromJson(parsed);
     case 'updateChatReadInbox':
       return UpdateChatReadInbox.fromJson(parsed);
     case 'updateChatReadOutbox':
@@ -3783,6 +3835,14 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return UpdateSavedMessagesTopic.fromJson(parsed);
     case 'updateSavedMessagesTopicCount':
       return UpdateSavedMessagesTopicCount.fromJson(parsed);
+    case 'updateQuickReplyShortcut':
+      return UpdateQuickReplyShortcut.fromJson(parsed);
+    case 'updateQuickReplyShortcutDeleted':
+      return UpdateQuickReplyShortcutDeleted.fromJson(parsed);
+    case 'updateQuickReplyShortcuts':
+      return UpdateQuickReplyShortcuts.fromJson(parsed);
+    case 'updateQuickReplyShortcutMessages':
+      return UpdateQuickReplyShortcutMessages.fromJson(parsed);
     case 'updateForumTopicInfo':
       return UpdateForumTopicInfo.fromJson(parsed);
     case 'updateScopeNotificationSettings':
@@ -3803,8 +3863,6 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return UpdateUserStatus.fromJson(parsed);
     case 'updateUser':
       return UpdateUser.fromJson(parsed);
-    case 'updateAccessHash':
-      return UpdateAccessHash.fromJson(parsed);
     case 'updateBasicGroup':
       return UpdateBasicGroup.fromJson(parsed);
     case 'updateSupergroup':

@@ -50,7 +50,7 @@ final class ProfilePhoto extends TdObject {
 
   /// Parse from a json
   factory ProfilePhoto.fromJson(Map<String, dynamic> json) => ProfilePhoto(
-        id: int.parse(json['id']),
+        id: json['id'] is int ? json['id'] : int.parse(json['id']),
         small: File.fromJson(json['small']),
         big: File.fromJson(json['big']),
         minithumbnail: json['minithumbnail'] == null

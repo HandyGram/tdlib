@@ -39,7 +39,7 @@ final class ChatPosition extends TdObject {
   /// Parse from a json
   factory ChatPosition.fromJson(Map<String, dynamic> json) => ChatPosition(
         list: ChatList.fromJson(json['list']),
-        order: int.parse(json['order']),
+        order: json['order'] is int ? json['order'] : int.parse(json['order']),
         isPinned: json['is_pinned'],
         source:
             json['source'] == null ? null : ChatSource.fromJson(json['source']),

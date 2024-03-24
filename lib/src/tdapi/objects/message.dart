@@ -338,7 +338,9 @@ final class Message extends TdObject {
         viaBotUserId: json['via_bot_user_id'],
         senderBoostCount: json['sender_boost_count'] ?? 0,
         authorSignature: json['author_signature'],
-        mediaAlbumId: int.parse(json['media_album_id']),
+        mediaAlbumId: json['media_album_id'] is int
+            ? json['media_album_id']
+            : int.parse(json['media_album_id']),
         restrictionReason: json['restriction_reason'],
         content: MessageContent.fromJson(json['content']),
         replyMarkup: json['reply_markup'] == null

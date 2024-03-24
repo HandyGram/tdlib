@@ -72,7 +72,9 @@ final class InputChatPhotoPrevious extends InputChatPhoto {
   /// Parse from a json
   factory InputChatPhotoPrevious.fromJson(Map<String, dynamic> json) =>
       InputChatPhotoPrevious(
-        chatPhotoId: int.parse(json['chat_photo_id']),
+        chatPhotoId: json['chat_photo_id'] is int
+            ? json['chat_photo_id']
+            : int.parse(json['chat_photo_id']),
       );
 
   /// Convert model to TDLib JSON format

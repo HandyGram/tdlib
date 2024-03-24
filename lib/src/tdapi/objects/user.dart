@@ -204,11 +204,16 @@ final class User extends TdObject {
             ? null
             : ProfilePhoto.fromJson(json['profile_photo']),
         accentColorId: json['accent_color_id'],
-        backgroundCustomEmojiId:
-            int.tryParse(json['background_custom_emoji_id'] ?? "") ?? 0,
+        backgroundCustomEmojiId: json['background_custom_emoji_id'] is int
+            ? json['background_custom_emoji_id']
+            : int.tryParse(json['background_custom_emoji_id'] ?? "") ?? 0,
         profileAccentColorId: json['profile_accent_color_id'],
         profileBackgroundCustomEmojiId:
-            int.tryParse(json['profile_background_custom_emoji_id'] ?? "") ?? 0,
+            json['profile_background_custom_emoji_id'] is int
+                ? json['profile_background_custom_emoji_id']
+                : int.tryParse(
+                        json['profile_background_custom_emoji_id'] ?? "") ??
+                    0,
         emojiStatus: json['emoji_status'] == null
             ? null
             : EmojiStatus.fromJson(json['emoji_status']),

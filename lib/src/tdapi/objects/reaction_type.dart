@@ -123,7 +123,9 @@ final class ReactionTypeCustomEmoji extends ReactionType {
   /// Parse from a json
   factory ReactionTypeCustomEmoji.fromJson(Map<String, dynamic> json) =>
       ReactionTypeCustomEmoji(
-        customEmojiId: int.parse(json['custom_emoji_id']),
+        customEmojiId: json['custom_emoji_id'] is int
+            ? json['custom_emoji_id']
+            : int.parse(json['custom_emoji_id']),
       );
 
   /// Convert model to TDLib JSON format

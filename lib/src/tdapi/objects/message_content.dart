@@ -3219,8 +3219,9 @@ final class MessageForumTopicEdited extends MessageContent {
       MessageForumTopicEdited(
         name: json['name'],
         editIconCustomEmojiId: json['edit_icon_custom_emoji_id'],
-        iconCustomEmojiId:
-            int.tryParse(json['icon_custom_emoji_id'] ?? "") ?? 0,
+        iconCustomEmojiId: json['icon_custom_emoji_id'] is int
+            ? json['icon_custom_emoji_id']
+            : int.tryParse(json['icon_custom_emoji_id'] ?? "") ?? 0,
       );
 
   /// Convert model to TDLib JSON format
@@ -3529,7 +3530,9 @@ final class MessageGameScore extends MessageContent {
   factory MessageGameScore.fromJson(Map<String, dynamic> json) =>
       MessageGameScore(
         gameMessageId: json['game_message_id'],
-        gameId: int.parse(json['game_id']),
+        gameId: json['game_id'] is int
+            ? json['game_id']
+            : int.parse(json['game_id']),
         score: json['score'],
       );
 
@@ -3907,8 +3910,9 @@ final class MessageGiftedPremium extends MessageContent {
         currency: json['currency'],
         amount: json['amount'],
         cryptocurrency: json['cryptocurrency'],
-        cryptocurrencyAmount:
-            int.tryParse(json['cryptocurrency_amount'] ?? "") ?? 0,
+        cryptocurrencyAmount: json['cryptocurrency_amount'] is int
+            ? json['cryptocurrency_amount']
+            : int.tryParse(json['cryptocurrency_amount'] ?? "") ?? 0,
         monthCount: json['month_count'],
         sticker:
             json['sticker'] == null ? null : Sticker.fromJson(json['sticker']),
@@ -4054,7 +4058,9 @@ final class MessagePremiumGiftCode extends MessageContent {
         currency: json['currency'],
         amount: json['amount'],
         cryptocurrency: json['cryptocurrency'],
-        cryptocurrencyAmount: int.parse(json['cryptocurrency_amount']),
+        cryptocurrencyAmount: json['cryptocurrency_amount'] is int
+            ? json['cryptocurrency_amount']
+            : int.parse(json['cryptocurrency_amount']),
         monthCount: json['month_count'],
         sticker:
             json['sticker'] == null ? null : Sticker.fromJson(json['sticker']),

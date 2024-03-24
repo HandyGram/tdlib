@@ -54,7 +54,7 @@ final class SavedMessagesTopic extends TdObject {
         id: json['id'],
         type: SavedMessagesTopicType.fromJson(json['type']),
         isPinned: json['is_pinned'],
-        order: int.parse(json['order']),
+        order: json['order'] is int ? json['order'] : int.parse(json['order']),
         lastMessage: json['last_message'] == null
             ? null
             : Message.fromJson(json['last_message']),

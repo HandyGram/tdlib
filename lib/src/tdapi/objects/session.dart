@@ -132,7 +132,7 @@ final class Session extends TdObject {
 
   /// Parse from a json
   factory Session.fromJson(Map<String, dynamic> json) => Session(
-        id: int.parse(json['id']),
+        id: json['id'] is int ? json['id'] : int.parse(json['id']),
         isCurrent: json['is_current'],
         isPasswordPending: json['is_password_pending'],
         isUnconfirmed: json['is_unconfirmed'],

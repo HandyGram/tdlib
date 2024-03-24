@@ -213,7 +213,7 @@ final class OptionValueInteger extends OptionValue {
   /// Parse from a json
   factory OptionValueInteger.fromJson(Map<String, dynamic> json) =>
       OptionValueInteger(
-        value: int.parse(json['value']),
+        value: json['value'] is int ? json['value'] : int.parse(json['value']),
         extra: json['@extra'],
         clientId: json['@client_id'],
       );

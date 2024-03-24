@@ -15,6 +15,7 @@ part of '../tdapi.dart';
 /// * [permissions]: Actions that non-administrator chat members are allowed to take in the chat.
 /// * [lastMessage]: Last message in the chat; may be null if none or unknown *(optional)*.
 /// * [positions]: Positions of the chat in chat lists.
+/// * [chatLists]: Chat lists to which the chat belongs. A chat can have a non-zero position in a chat list even it doesn't belong to the chat list and have no position in a chat list even it belongs to the chat list.
 /// * [messageSenderId]: Identifier of a user or chat that is selected to send messages in the chat; may be null if the user can't change message sender *(optional)*.
 /// * [blockList]: Block list to which the chat is added; may be null if none *(optional)*.
 /// * [hasProtectedContent]: True, if chat content can't be saved locally, forwarded, or copied.
@@ -59,6 +60,7 @@ final class Chat extends TdObject {
   /// * [permissions]: Actions that non-administrator chat members are allowed to take in the chat.
   /// * [lastMessage]: Last message in the chat; may be null if none or unknown *(optional)*.
   /// * [positions]: Positions of the chat in chat lists.
+  /// * [chatLists]: Chat lists to which the chat belongs. A chat can have a non-zero position in a chat list even it doesn't belong to the chat list and have no position in a chat list even it belongs to the chat list.
   /// * [messageSenderId]: Identifier of a user or chat that is selected to send messages in the chat; may be null if the user can't change message sender *(optional)*.
   /// * [blockList]: Block list to which the chat is added; may be null if none *(optional)*.
   /// * [hasProtectedContent]: True, if chat content can't be saved locally, forwarded, or copied.
@@ -99,6 +101,7 @@ final class Chat extends TdObject {
     required this.permissions,
     this.lastMessage,
     required this.positions,
+    required this.chatLists,
     this.messageSenderId,
     this.blockList,
     required this.hasProtectedContent,
@@ -163,6 +166,9 @@ final class Chat extends TdObject {
 
   /// Positions of the chat in chat lists
   final List<ChatPosition> positions;
+
+  /// Chat lists to which the chat belongs. A chat can have a non-zero position in a chat list even it doesn't belong to the chat list and have no position in a chat list even it belongs to the chat list
+  final List<ChatList> chatLists;
 
   /// Identifier of a user or chat that is selected to send messages in the chat; may be null if the user can't change message sender
   final MessageSender? messageSenderId;
@@ -265,17 +271,25 @@ final class Chat extends TdObject {
             ? null
             : ChatPhotoInfo.fromJson(json['photo']),
         accentColorId: json['accent_color_id'],
-        backgroundCustomEmojiId:
-            int.tryParse(json['background_custom_emoji_id'] ?? "") ?? 0,
+        backgroundCustomEmojiId: json['background_custom_emoji_id'] is int
+            ? json['background_custom_emoji_id']
+            : int.tryParse(json['background_custom_emoji_id'] ?? "") ?? 0,
         profileAccentColorId: json['profile_accent_color_id'],
         profileBackgroundCustomEmojiId:
-            int.tryParse(json['profile_background_custom_emoji_id'] ?? "") ?? 0,
+            json['profile_background_custom_emoji_id'] is int
+                ? json['profile_background_custom_emoji_id']
+                : int.tryParse(
+                        json['profile_background_custom_emoji_id'] ?? "") ??
+                    0,
         permissions: ChatPermissions.fromJson(json['permissions']),
         lastMessage: json['last_message'] == null
             ? null
             : Message.fromJson(json['last_message']),
         positions: List<ChatPosition>.from((json['positions'] ?? [])
             .map((item) => ChatPosition.fromJson(item))
+            .toList()),
+        chatLists: List<ChatList>.from((json['chat_lists'] ?? [])
+            .map((item) => ChatList.fromJson(item))
             .toList()),
         messageSenderId: json['message_sender_id'] == null
             ? null
@@ -341,6 +355,7 @@ final class Chat extends TdObject {
       "permissions": permissions.toJson(),
       "last_message": lastMessage?.toJson(),
       "positions": positions.map((i) => i.toJson()).toList(),
+      "chat_lists": chatLists.map((i) => i.toJson()).toList(),
       "message_sender_id": messageSenderId?.toJson(),
       "block_list": blockList?.toJson(),
       "has_protected_content": hasProtectedContent,
@@ -386,6 +401,7 @@ final class Chat extends TdObject {
   /// * [permissions]: Actions that non-administrator chat members are allowed to take in the chat
   /// * [last_message]: Last message in the chat; may be null if none or unknown
   /// * [positions]: Positions of the chat in chat lists
+  /// * [chat_lists]: Chat lists to which the chat belongs. A chat can have a non-zero position in a chat list even it doesn't belong to the chat list and have no position in a chat list even it belongs to the chat list
   /// * [message_sender_id]: Identifier of a user or chat that is selected to send messages in the chat; may be null if the user can't change message sender
   /// * [block_list]: Block list to which the chat is added; may be null if none
   /// * [has_protected_content]: True, if chat content can't be saved locally, forwarded, or copied
@@ -426,6 +442,7 @@ final class Chat extends TdObject {
     ChatPermissions? permissions,
     Message? lastMessage,
     List<ChatPosition>? positions,
+    List<ChatList>? chatLists,
     MessageSender? messageSenderId,
     BlockList? blockList,
     bool? hasProtectedContent,
@@ -471,6 +488,7 @@ final class Chat extends TdObject {
         permissions: permissions ?? this.permissions,
         lastMessage: lastMessage ?? this.lastMessage,
         positions: positions ?? this.positions,
+        chatLists: chatLists ?? this.chatLists,
         messageSenderId: messageSenderId ?? this.messageSenderId,
         blockList: blockList ?? this.blockList,
         hasProtectedContent: hasProtectedContent ?? this.hasProtectedContent,

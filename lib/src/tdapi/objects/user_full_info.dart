@@ -19,6 +19,7 @@ part of '../tdapi.dart';
 /// * [bio]: A short user bio; may be null for bots *(optional)*.
 /// * [premiumGiftOptions]: The list of available options for gifting Telegram Premium to the user.
 /// * [groupInCommonCount]: Number of group chats where both the other user and the current user are a member; 0 for the current user.
+/// * [businessInfo]: Information about business settings for Telegram Business accounts; may be null if none *(optional)*.
 /// * [botInfo]: For bots, information about the bot; may be null if the user isn't a bot *(optional)*.
 final class UserFullInfo extends TdObject {
   /// **UserFullInfo** *(userFullInfo)* - basic class
@@ -40,6 +41,7 @@ final class UserFullInfo extends TdObject {
   /// * [bio]: A short user bio; may be null for bots *(optional)*.
   /// * [premiumGiftOptions]: The list of available options for gifting Telegram Premium to the user.
   /// * [groupInCommonCount]: Number of group chats where both the other user and the current user are a member; 0 for the current user.
+  /// * [businessInfo]: Information about business settings for Telegram Business accounts; may be null if none *(optional)*.
   /// * [botInfo]: For bots, information about the bot; may be null if the user isn't a bot *(optional)*.
   const UserFullInfo({
     this.personalPhoto,
@@ -57,6 +59,7 @@ final class UserFullInfo extends TdObject {
     this.bio,
     required this.premiumGiftOptions,
     required this.groupInCommonCount,
+    this.businessInfo,
     this.botInfo,
     this.extra,
     this.clientId,
@@ -107,6 +110,9 @@ final class UserFullInfo extends TdObject {
   /// Number of group chats where both the other user and the current user are a member; 0 for the current user
   final int groupInCommonCount;
 
+  /// Information about business settings for Telegram Business accounts; may be null if none
+  final BusinessInfo? businessInfo;
+
   /// For bots, information about the bot; may be null if the user isn't a bot
   final BotInfo? botInfo;
 
@@ -146,6 +152,9 @@ final class UserFullInfo extends TdObject {
                 .map((item) => PremiumPaymentOption.fromJson(item))
                 .toList()),
         groupInCommonCount: json['group_in_common_count'],
+        businessInfo: json['business_info'] == null
+            ? null
+            : BusinessInfo.fromJson(json['business_info']),
         botInfo: json['bot_info'] == null
             ? null
             : BotInfo.fromJson(json['bot_info']),
@@ -175,6 +184,7 @@ final class UserFullInfo extends TdObject {
       "premium_gift_options":
           premiumGiftOptions.map((i) => i.toJson()).toList(),
       "group_in_common_count": groupInCommonCount,
+      "business_info": businessInfo?.toJson(),
       "bot_info": botInfo?.toJson(),
     };
   }
@@ -197,6 +207,7 @@ final class UserFullInfo extends TdObject {
   /// * [bio]: A short user bio; may be null for bots
   /// * [premium_gift_options]: The list of available options for gifting Telegram Premium to the user
   /// * [group_in_common_count]: Number of group chats where both the other user and the current user are a member; 0 for the current user
+  /// * [business_info]: Information about business settings for Telegram Business accounts; may be null if none
   /// * [bot_info]: For bots, information about the bot; may be null if the user isn't a bot
   UserFullInfo copyWith({
     ChatPhoto? personalPhoto,
@@ -214,6 +225,7 @@ final class UserFullInfo extends TdObject {
     FormattedText? bio,
     List<PremiumPaymentOption>? premiumGiftOptions,
     int? groupInCommonCount,
+    BusinessInfo? businessInfo,
     BotInfo? botInfo,
     dynamic extra,
     int? clientId,
@@ -237,6 +249,7 @@ final class UserFullInfo extends TdObject {
         bio: bio ?? this.bio,
         premiumGiftOptions: premiumGiftOptions ?? this.premiumGiftOptions,
         groupInCommonCount: groupInCommonCount ?? this.groupInCommonCount,
+        businessInfo: businessInfo ?? this.businessInfo,
         botInfo: botInfo ?? this.botInfo,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,

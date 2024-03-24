@@ -80,11 +80,15 @@ final class ScopeNotificationSettings extends TdObject {
   factory ScopeNotificationSettings.fromJson(Map<String, dynamic> json) =>
       ScopeNotificationSettings(
         muteFor: json['mute_for'],
-        soundId: int.parse(json['sound_id']),
+        soundId: json['sound_id'] is int
+            ? json['sound_id']
+            : int.parse(json['sound_id']),
         showPreview: json['show_preview'],
         useDefaultMuteStories: json['use_default_mute_stories'],
         muteStories: json['mute_stories'],
-        storySoundId: int.parse(json['story_sound_id']),
+        storySoundId: json['story_sound_id'] is int
+            ? json['story_sound_id']
+            : int.parse(json['story_sound_id']),
         showStorySender: json['show_story_sender'],
         disablePinnedMessageNotifications:
             json['disable_pinned_message_notifications'],

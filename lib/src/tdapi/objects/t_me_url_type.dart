@@ -242,7 +242,9 @@ final class TMeUrlTypeStickerSet extends TMeUrlType {
   /// Parse from a json
   factory TMeUrlTypeStickerSet.fromJson(Map<String, dynamic> json) =>
       TMeUrlTypeStickerSet(
-        stickerSetId: int.parse(json['sticker_set_id']),
+        stickerSetId: json['sticker_set_id'] is int
+            ? json['sticker_set_id']
+            : int.parse(json['sticker_set_id']),
       );
 
   /// Convert model to TDLib JSON format

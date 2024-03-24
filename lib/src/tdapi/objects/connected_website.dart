@@ -69,7 +69,7 @@ final class ConnectedWebsite extends TdObject {
   /// Parse from a json
   factory ConnectedWebsite.fromJson(Map<String, dynamic> json) =>
       ConnectedWebsite(
-        id: int.parse(json['id']),
+        id: json['id'] is int ? json['id'] : int.parse(json['id']),
         domainName: json['domain_name'],
         botUserId: json['bot_user_id'],
         browser: json['browser'],

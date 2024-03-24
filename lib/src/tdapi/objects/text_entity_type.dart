@@ -887,7 +887,9 @@ final class TextEntityTypeCustomEmoji extends TextEntityType {
   /// Parse from a json
   factory TextEntityTypeCustomEmoji.fromJson(Map<String, dynamic> json) =>
       TextEntityTypeCustomEmoji(
-        customEmojiId: int.parse(json['custom_emoji_id']),
+        customEmojiId: json['custom_emoji_id'] is int
+            ? json['custom_emoji_id']
+            : int.parse(json['custom_emoji_id']),
       );
 
   /// Convert model to TDLib JSON format

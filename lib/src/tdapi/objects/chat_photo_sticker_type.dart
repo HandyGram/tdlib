@@ -73,8 +73,12 @@ final class ChatPhotoStickerTypeRegularOrMask extends ChatPhotoStickerType {
   factory ChatPhotoStickerTypeRegularOrMask.fromJson(
           Map<String, dynamic> json) =>
       ChatPhotoStickerTypeRegularOrMask(
-        stickerSetId: int.parse(json['sticker_set_id']),
-        stickerId: int.parse(json['sticker_id']),
+        stickerSetId: json['sticker_set_id'] is int
+            ? json['sticker_set_id']
+            : int.parse(json['sticker_set_id']),
+        stickerId: json['sticker_id'] is int
+            ? json['sticker_id']
+            : int.parse(json['sticker_id']),
       );
 
   /// Convert model to TDLib JSON format
@@ -135,7 +139,9 @@ final class ChatPhotoStickerTypeCustomEmoji extends ChatPhotoStickerType {
   /// Parse from a json
   factory ChatPhotoStickerTypeCustomEmoji.fromJson(Map<String, dynamic> json) =>
       ChatPhotoStickerTypeCustomEmoji(
-        customEmojiId: int.parse(json['custom_emoji_id']),
+        customEmojiId: json['custom_emoji_id'] is int
+            ? json['custom_emoji_id']
+            : int.parse(json['custom_emoji_id']),
       );
 
   /// Convert model to TDLib JSON format

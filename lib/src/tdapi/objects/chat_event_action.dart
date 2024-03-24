@@ -1666,8 +1666,12 @@ final class ChatEventStickerSetChanged extends ChatEventAction {
   /// Parse from a json
   factory ChatEventStickerSetChanged.fromJson(Map<String, dynamic> json) =>
       ChatEventStickerSetChanged(
-        oldStickerSetId: int.tryParse(json['old_sticker_set_id'] ?? "") ?? 0,
-        newStickerSetId: int.tryParse(json['new_sticker_set_id'] ?? "") ?? 0,
+        oldStickerSetId: json['old_sticker_set_id'] is int
+            ? json['old_sticker_set_id']
+            : int.tryParse(json['old_sticker_set_id'] ?? "") ?? 0,
+        newStickerSetId: json['new_sticker_set_id'] is int
+            ? json['new_sticker_set_id']
+            : int.tryParse(json['new_sticker_set_id'] ?? "") ?? 0,
       );
 
   /// Convert model to TDLib JSON format
@@ -1735,8 +1739,12 @@ final class ChatEventCustomEmojiStickerSetChanged extends ChatEventAction {
   factory ChatEventCustomEmojiStickerSetChanged.fromJson(
           Map<String, dynamic> json) =>
       ChatEventCustomEmojiStickerSetChanged(
-        oldStickerSetId: int.tryParse(json['old_sticker_set_id'] ?? "") ?? 0,
-        newStickerSetId: int.tryParse(json['new_sticker_set_id'] ?? "") ?? 0,
+        oldStickerSetId: json['old_sticker_set_id'] is int
+            ? json['old_sticker_set_id']
+            : int.tryParse(json['old_sticker_set_id'] ?? "") ?? 0,
+        newStickerSetId: json['new_sticker_set_id'] is int
+            ? json['new_sticker_set_id']
+            : int.tryParse(json['new_sticker_set_id'] ?? "") ?? 0,
       );
 
   /// Convert model to TDLib JSON format
@@ -2022,11 +2030,15 @@ final class ChatEventAccentColorChanged extends ChatEventAction {
   factory ChatEventAccentColorChanged.fromJson(Map<String, dynamic> json) =>
       ChatEventAccentColorChanged(
         oldAccentColorId: json['old_accent_color_id'],
-        oldBackgroundCustomEmojiId:
-            int.tryParse(json['old_background_custom_emoji_id'] ?? "") ?? 0,
+        oldBackgroundCustomEmojiId: json['old_background_custom_emoji_id']
+                is int
+            ? json['old_background_custom_emoji_id']
+            : int.tryParse(json['old_background_custom_emoji_id'] ?? "") ?? 0,
         newAccentColorId: json['new_accent_color_id'],
-        newBackgroundCustomEmojiId:
-            int.tryParse(json['new_background_custom_emoji_id'] ?? "") ?? 0,
+        newBackgroundCustomEmojiId: json['new_background_custom_emoji_id']
+                is int
+            ? json['new_background_custom_emoji_id']
+            : int.tryParse(json['new_background_custom_emoji_id'] ?? "") ?? 0,
       );
 
   /// Convert model to TDLib JSON format
@@ -2117,13 +2129,19 @@ final class ChatEventProfileAccentColorChanged extends ChatEventAction {
           Map<String, dynamic> json) =>
       ChatEventProfileAccentColorChanged(
         oldProfileAccentColorId: json['old_profile_accent_color_id'],
-        oldProfileBackgroundCustomEmojiId: int.tryParse(
-                json['old_profile_background_custom_emoji_id'] ?? "") ??
-            0,
+        oldProfileBackgroundCustomEmojiId:
+            json['old_profile_background_custom_emoji_id'] is int
+                ? json['old_profile_background_custom_emoji_id']
+                : int.tryParse(
+                        json['old_profile_background_custom_emoji_id'] ?? "") ??
+                    0,
         newProfileAccentColorId: json['new_profile_accent_color_id'],
-        newProfileBackgroundCustomEmojiId: int.tryParse(
-                json['new_profile_background_custom_emoji_id'] ?? "") ??
-            0,
+        newProfileBackgroundCustomEmojiId:
+            json['new_profile_background_custom_emoji_id'] is int
+                ? json['new_profile_background_custom_emoji_id']
+                : int.tryParse(
+                        json['new_profile_background_custom_emoji_id'] ?? "") ??
+                    0,
       );
 
   /// Convert model to TDLib JSON format

@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **SetLocation** *(setLocation)* - TDLib function
 ///
-/// Changes the location of the current user. Needs to be called if getOption("is_location_visible") is true and location changes for more than 1 kilometer.
+/// Changes the location of the current user. Needs to be called if getOption("is_location_visible") is true and location changes for more than 1 kilometer. Must not be called if the user has a business location.
 ///
 /// * [location]: The new location of the user.
 ///
@@ -10,7 +10,7 @@ part of '../tdapi.dart';
 final class SetLocation extends TdFunction {
   /// **SetLocation** *(setLocation)* - TDLib function
   ///
-  /// Changes the location of the current user. Needs to be called if getOption("is_location_visible") is true and location changes for more than 1 kilometer.
+  /// Changes the location of the current user. Needs to be called if getOption("is_location_visible") is true and location changes for more than 1 kilometer. Must not be called if the user has a business location.
   ///
   /// * [location]: The new location of the user.
   ///

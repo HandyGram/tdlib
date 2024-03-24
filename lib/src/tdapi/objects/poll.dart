@@ -74,7 +74,7 @@ final class Poll extends TdObject {
 
   /// Parse from a json
   factory Poll.fromJson(Map<String, dynamic> json) => Poll(
-        id: int.parse(json['id']),
+        id: json['id'] is int ? json['id'] : int.parse(json['id']),
         question: json['question'],
         options: List<PollOption>.from((json['options'] ?? [])
             .map((item) => PollOption.fromJson(item))

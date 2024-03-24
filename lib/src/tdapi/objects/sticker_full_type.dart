@@ -193,7 +193,9 @@ final class StickerFullTypeCustomEmoji extends StickerFullType {
   /// Parse from a json
   factory StickerFullTypeCustomEmoji.fromJson(Map<String, dynamic> json) =>
       StickerFullTypeCustomEmoji(
-        customEmojiId: int.parse(json['custom_emoji_id']),
+        customEmojiId: json['custom_emoji_id'] is int
+            ? json['custom_emoji_id']
+            : int.parse(json['custom_emoji_id']),
         needsRepainting: json['needs_repainting'],
       );
 

@@ -114,13 +114,17 @@ final class ChatNotificationSettings extends TdObject {
         useDefaultMuteFor: json['use_default_mute_for'],
         muteFor: json['mute_for'],
         useDefaultSound: json['use_default_sound'],
-        soundId: int.parse(json['sound_id']),
+        soundId: json['sound_id'] is int
+            ? json['sound_id']
+            : int.parse(json['sound_id']),
         useDefaultShowPreview: json['use_default_show_preview'],
         showPreview: json['show_preview'],
         useDefaultMuteStories: json['use_default_mute_stories'],
         muteStories: json['mute_stories'],
         useDefaultStorySound: json['use_default_story_sound'],
-        storySoundId: int.parse(json['story_sound_id']),
+        storySoundId: json['story_sound_id'] is int
+            ? json['story_sound_id']
+            : int.parse(json['story_sound_id']),
         useDefaultShowStorySender: json['use_default_show_story_sender'],
         showStorySender: json['show_story_sender'],
         useDefaultDisablePinnedMessageNotifications:

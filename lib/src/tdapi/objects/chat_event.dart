@@ -38,7 +38,7 @@ final class ChatEvent extends TdObject {
 
   /// Parse from a json
   factory ChatEvent.fromJson(Map<String, dynamic> json) => ChatEvent(
-        id: int.parse(json['id']),
+        id: json['id'] is int ? json['id'] : int.parse(json['id']),
         date: json['date'],
         memberId: MessageSender.fromJson(json['member_id']),
         action: ChatEventAction.fromJson(json['action']),

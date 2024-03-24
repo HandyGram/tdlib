@@ -30,7 +30,7 @@ final class PushReceiverId extends TdObject {
 
   /// Parse from a json
   factory PushReceiverId.fromJson(Map<String, dynamic> json) => PushReceiverId(
-        id: int.parse(json['id']),
+        id: json['id'] is int ? json['id'] : int.parse(json['id']),
         extra: json['@extra'],
         clientId: json['@client_id'],
       );

@@ -214,9 +214,12 @@ final class SupergroupFullInfo extends TdObject {
         hasPinnedStories: json['has_pinned_stories'],
         myBoostCount: json['my_boost_count'],
         unrestrictBoostCount: json['unrestrict_boost_count'],
-        stickerSetId: int.tryParse(json['sticker_set_id'] ?? "") ?? 0,
-        customEmojiStickerSetId:
-            int.tryParse(json['custom_emoji_sticker_set_id'] ?? "") ?? 0,
+        stickerSetId: json['sticker_set_id'] is int
+            ? json['sticker_set_id']
+            : int.tryParse(json['sticker_set_id'] ?? "") ?? 0,
+        customEmojiStickerSetId: json['custom_emoji_sticker_set_id'] is int
+            ? json['custom_emoji_sticker_set_id']
+            : int.tryParse(json['custom_emoji_sticker_set_id'] ?? "") ?? 0,
         location: json['location'] == null
             ? null
             : ChatLocation.fromJson(json['location']),

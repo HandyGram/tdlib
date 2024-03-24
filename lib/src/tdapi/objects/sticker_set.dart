@@ -114,7 +114,7 @@ final class StickerSet extends TdObject {
 
   /// Parse from a json
   factory StickerSet.fromJson(Map<String, dynamic> json) => StickerSet(
-        id: int.parse(json['id']),
+        id: json['id'] is int ? json['id'] : int.parse(json['id']),
         title: json['title'],
         name: json['name'],
         thumbnail: json['thumbnail'] == null

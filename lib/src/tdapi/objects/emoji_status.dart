@@ -26,7 +26,9 @@ final class EmojiStatus extends TdObject {
 
   /// Parse from a json
   factory EmojiStatus.fromJson(Map<String, dynamic> json) => EmojiStatus(
-        customEmojiId: int.parse(json['custom_emoji_id']),
+        customEmojiId: json['custom_emoji_id'] is int
+            ? json['custom_emoji_id']
+            : int.parse(json['custom_emoji_id']),
         expirationDate: json['expiration_date'],
       );
 

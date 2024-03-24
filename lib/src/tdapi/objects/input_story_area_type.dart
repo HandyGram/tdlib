@@ -138,7 +138,9 @@ final class InputStoryAreaTypeFoundVenue extends InputStoryAreaType {
   /// Parse from a json
   factory InputStoryAreaTypeFoundVenue.fromJson(Map<String, dynamic> json) =>
       InputStoryAreaTypeFoundVenue(
-        queryId: int.parse(json['query_id']),
+        queryId: json['query_id'] is int
+            ? json['query_id']
+            : int.parse(json['query_id']),
         resultId: json['result_id'],
       );
 

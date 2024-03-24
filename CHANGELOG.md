@@ -1,3 +1,8 @@
+## 2.3.3
+* Updated to TDLib 1.8.26
+* Updated to Android Gradle Plugin 8.2
+* Added android.permission.INTERNET in manifest
+
 ## 2.3.2
 * Added formatting to generator
 * Improved documentation
