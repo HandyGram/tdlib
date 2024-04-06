@@ -2,18 +2,18 @@ part of '../tdapi.dart';
 
 /// **SetStickerSetTitle** *(setStickerSetTitle)* - TDLib function
 ///
-/// Sets a sticker set title; for bots only.
+/// Sets a sticker set title.
 ///
-/// * [name]: Sticker set name.
+/// * [name]: Sticker set name. The sticker set must be owned by the current user.
 /// * [title]: New sticker set title.
 ///
 /// [Ok] is returned on completion.
 final class SetStickerSetTitle extends TdFunction {
   /// **SetStickerSetTitle** *(setStickerSetTitle)* - TDLib function
   ///
-  /// Sets a sticker set title; for bots only.
+  /// Sets a sticker set title.
   ///
-  /// * [name]: Sticker set name.
+  /// * [name]: Sticker set name. The sticker set must be owned by the current user.
   /// * [title]: New sticker set title.
   ///
   /// [Ok] is returned on completion.
@@ -22,7 +22,7 @@ final class SetStickerSetTitle extends TdFunction {
     required this.title,
   });
 
-  /// Sticker set name
+  /// Sticker set name. The sticker set must be owned by the current user
   final String name;
 
   /// New sticker set title
@@ -42,7 +42,7 @@ final class SetStickerSetTitle extends TdFunction {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [name]: Sticker set name
+  /// * [name]: Sticker set name. The sticker set must be owned by the current user
   /// * [title]: New sticker set title
   SetStickerSetTitle copyWith({
     String? name,

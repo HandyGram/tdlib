@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **SetNewChatPrivacySettings** *(setNewChatPrivacySettings)* - TDLib function
 ///
-/// Changes privacy settings for new chat creation; for Telegram Premium users only.
+/// Changes privacy settings for new chat creation; can be used only if getOption("can_set_new_chat_privacy_settings").
 ///
 /// * [settings]: New settings.
 ///
@@ -10,7 +10,7 @@ part of '../tdapi.dart';
 final class SetNewChatPrivacySettings extends TdFunction {
   /// **SetNewChatPrivacySettings** *(setNewChatPrivacySettings)* - TDLib function
   ///
-  /// Changes privacy settings for new chat creation; for Telegram Premium users only.
+  /// Changes privacy settings for new chat creation; can be used only if getOption("can_set_new_chat_privacy_settings").
   ///
   /// * [settings]: New settings.
   ///

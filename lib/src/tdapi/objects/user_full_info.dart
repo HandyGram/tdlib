@@ -17,6 +17,8 @@ part of '../tdapi.dart';
 /// * [needPhoneNumberPrivacyException]: True, if the current user needs to explicitly allow to share their phone number with the user when the method addContact is used.
 /// * [setChatBackground]: True, if the user set chat background for both chat users and it wasn't reverted yet.
 /// * [bio]: A short user bio; may be null for bots *(optional)*.
+/// * [birthdate]: Birthdate of the user; may be null if unknown *(optional)*.
+/// * [personalChatId]: Identifier of the personal chat of the user; 0 if none.
 /// * [premiumGiftOptions]: The list of available options for gifting Telegram Premium to the user.
 /// * [groupInCommonCount]: Number of group chats where both the other user and the current user are a member; 0 for the current user.
 /// * [businessInfo]: Information about business settings for Telegram Business accounts; may be null if none *(optional)*.
@@ -39,6 +41,8 @@ final class UserFullInfo extends TdObject {
   /// * [needPhoneNumberPrivacyException]: True, if the current user needs to explicitly allow to share their phone number with the user when the method addContact is used.
   /// * [setChatBackground]: True, if the user set chat background for both chat users and it wasn't reverted yet.
   /// * [bio]: A short user bio; may be null for bots *(optional)*.
+  /// * [birthdate]: Birthdate of the user; may be null if unknown *(optional)*.
+  /// * [personalChatId]: Identifier of the personal chat of the user; 0 if none.
   /// * [premiumGiftOptions]: The list of available options for gifting Telegram Premium to the user.
   /// * [groupInCommonCount]: Number of group chats where both the other user and the current user are a member; 0 for the current user.
   /// * [businessInfo]: Information about business settings for Telegram Business accounts; may be null if none *(optional)*.
@@ -57,6 +61,8 @@ final class UserFullInfo extends TdObject {
     required this.needPhoneNumberPrivacyException,
     required this.setChatBackground,
     this.bio,
+    this.birthdate,
+    required this.personalChatId,
     required this.premiumGiftOptions,
     required this.groupInCommonCount,
     this.businessInfo,
@@ -104,6 +110,12 @@ final class UserFullInfo extends TdObject {
   /// A short user bio; may be null for bots
   final FormattedText? bio;
 
+  /// Birthdate of the user; may be null if unknown
+  final Birthdate? birthdate;
+
+  /// Identifier of the personal chat of the user; 0 if none
+  final int personalChatId;
+
   /// The list of available options for gifting Telegram Premium to the user
   final List<PremiumPaymentOption> premiumGiftOptions;
 
@@ -147,6 +159,10 @@ final class UserFullInfo extends TdObject {
             json['need_phone_number_privacy_exception'],
         setChatBackground: json['set_chat_background'],
         bio: json['bio'] == null ? null : FormattedText.fromJson(json['bio']),
+        birthdate: json['birthdate'] == null
+            ? null
+            : Birthdate.fromJson(json['birthdate']),
+        personalChatId: json['personal_chat_id'] ?? 0,
         premiumGiftOptions: List<PremiumPaymentOption>.from(
             (json['premium_gift_options'] ?? [])
                 .map((item) => PremiumPaymentOption.fromJson(item))
@@ -181,6 +197,8 @@ final class UserFullInfo extends TdObject {
       "need_phone_number_privacy_exception": needPhoneNumberPrivacyException,
       "set_chat_background": setChatBackground,
       "bio": bio?.toJson(),
+      "birthdate": birthdate?.toJson(),
+      "personal_chat_id": personalChatId,
       "premium_gift_options":
           premiumGiftOptions.map((i) => i.toJson()).toList(),
       "group_in_common_count": groupInCommonCount,
@@ -205,6 +223,8 @@ final class UserFullInfo extends TdObject {
   /// * [need_phone_number_privacy_exception]: True, if the current user needs to explicitly allow to share their phone number with the user when the method addContact is used
   /// * [set_chat_background]: True, if the user set chat background for both chat users and it wasn't reverted yet
   /// * [bio]: A short user bio; may be null for bots
+  /// * [birthdate]: Birthdate of the user; may be null if unknown
+  /// * [personal_chat_id]: Identifier of the personal chat of the user; 0 if none
   /// * [premium_gift_options]: The list of available options for gifting Telegram Premium to the user
   /// * [group_in_common_count]: Number of group chats where both the other user and the current user are a member; 0 for the current user
   /// * [business_info]: Information about business settings for Telegram Business accounts; may be null if none
@@ -223,6 +243,8 @@ final class UserFullInfo extends TdObject {
     bool? needPhoneNumberPrivacyException,
     bool? setChatBackground,
     FormattedText? bio,
+    Birthdate? birthdate,
+    int? personalChatId,
     List<PremiumPaymentOption>? premiumGiftOptions,
     int? groupInCommonCount,
     BusinessInfo? businessInfo,
@@ -247,6 +269,8 @@ final class UserFullInfo extends TdObject {
             this.needPhoneNumberPrivacyException,
         setChatBackground: setChatBackground ?? this.setChatBackground,
         bio: bio ?? this.bio,
+        birthdate: birthdate ?? this.birthdate,
+        personalChatId: personalChatId ?? this.personalChatId,
         premiumGiftOptions: premiumGiftOptions ?? this.premiumGiftOptions,
         groupInCommonCount: groupInCommonCount ?? this.groupInCommonCount,
         businessInfo: businessInfo ?? this.businessInfo,

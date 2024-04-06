@@ -2,37 +2,43 @@ part of '../tdapi.dart';
 
 /// **SetStickerSetThumbnail** *(setStickerSetThumbnail)* - TDLib function
 ///
-/// Sets a sticker set thumbnail; for bots only.
+/// Sets a sticker set thumbnail.
 ///
-/// * [userId]: Sticker set owner.
-/// * [name]: Sticker set name.
-/// * [thumbnail]: Thumbnail to set in PNG, TGS, or WEBM format; pass null to remove the sticker set thumbnail. Thumbnail format must match the format of stickers in the set *(optional)*.
+/// * [userId]: Sticker set owner; ignored for regular users.
+/// * [name]: Sticker set name. The sticker set must be owned by the current user.
+/// * [thumbnail]: Thumbnail to set; pass null to remove the sticker set thumbnail *(optional)*.
+/// * [format]: Format of the thumbnail; pass null if thumbnail is removed *(optional)*.
 ///
 /// [Ok] is returned on completion.
 final class SetStickerSetThumbnail extends TdFunction {
   /// **SetStickerSetThumbnail** *(setStickerSetThumbnail)* - TDLib function
   ///
-  /// Sets a sticker set thumbnail; for bots only.
+  /// Sets a sticker set thumbnail.
   ///
-  /// * [userId]: Sticker set owner.
-  /// * [name]: Sticker set name.
-  /// * [thumbnail]: Thumbnail to set in PNG, TGS, or WEBM format; pass null to remove the sticker set thumbnail. Thumbnail format must match the format of stickers in the set *(optional)*.
+  /// * [userId]: Sticker set owner; ignored for regular users.
+  /// * [name]: Sticker set name. The sticker set must be owned by the current user.
+  /// * [thumbnail]: Thumbnail to set; pass null to remove the sticker set thumbnail *(optional)*.
+  /// * [format]: Format of the thumbnail; pass null if thumbnail is removed *(optional)*.
   ///
   /// [Ok] is returned on completion.
   const SetStickerSetThumbnail({
     required this.userId,
     required this.name,
     this.thumbnail,
+    this.format,
   });
 
-  /// Sticker set owner
+  /// Sticker set owner; ignored for regular users
   final int userId;
 
-  /// Sticker set name
+  /// Sticker set name. The sticker set must be owned by the current user
   final String name;
 
-  /// Thumbnail to set in PNG, TGS, or WEBM format; pass null to remove the sticker set thumbnail. Thumbnail format must match the format of stickers in the set
+  /// Thumbnail to set; pass null to remove the sticker set thumbnail
   final InputFile? thumbnail;
+
+  /// Format of the thumbnail; pass null if thumbnail is removed
+  final StickerFormat? format;
 
   /// Convert model to TDLib JSON format
   @override
@@ -42,6 +48,7 @@ final class SetStickerSetThumbnail extends TdFunction {
       "user_id": userId,
       "name": name,
       "thumbnail": thumbnail?.toJson(),
+      "format": format?.toJson(),
       "@extra": extra,
     };
   }
@@ -49,18 +56,21 @@ final class SetStickerSetThumbnail extends TdFunction {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [user_id]: Sticker set owner
-  /// * [name]: Sticker set name
-  /// * [thumbnail]: Thumbnail to set in PNG, TGS, or WEBM format; pass null to remove the sticker set thumbnail. Thumbnail format must match the format of stickers in the set
+  /// * [user_id]: Sticker set owner; ignored for regular users
+  /// * [name]: Sticker set name. The sticker set must be owned by the current user
+  /// * [thumbnail]: Thumbnail to set; pass null to remove the sticker set thumbnail
+  /// * [format]: Format of the thumbnail; pass null if thumbnail is removed
   SetStickerSetThumbnail copyWith({
     int? userId,
     String? name,
     InputFile? thumbnail,
+    StickerFormat? format,
   }) =>
       SetStickerSetThumbnail(
         userId: userId ?? this.userId,
         name: name ?? this.name,
         thumbnail: thumbnail ?? this.thumbnail,
+        format: format ?? this.format,
       );
 
   /// TDLib object type

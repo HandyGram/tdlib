@@ -253,6 +253,9 @@ final class KeyboardButtonTypeRequestPoll extends KeyboardButtonType {
 /// * [restrictUserIsPremium]: True, if the shared users must or must not be Telegram Premium users.
 /// * [userIsPremium]: True, if the shared users must be Telegram Premium users; otherwise, the shared users must not be Telegram Premium users. Ignored if restrict_user_is_premium is false.
 /// * [maxQuantity]: The maximum number of users to share.
+/// * [requestName]: Pass true to request name of the users; bots only.
+/// * [requestUsername]: Pass true to request username of the users; bots only.
+/// * [requestPhoto]: Pass true to request photo of the users; bots only.
 final class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
   /// **KeyboardButtonTypeRequestUsers** *(keyboardButtonTypeRequestUsers)* - child of KeyboardButtonType
   ///
@@ -264,6 +267,9 @@ final class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
   /// * [restrictUserIsPremium]: True, if the shared users must or must not be Telegram Premium users.
   /// * [userIsPremium]: True, if the shared users must be Telegram Premium users; otherwise, the shared users must not be Telegram Premium users. Ignored if restrict_user_is_premium is false.
   /// * [maxQuantity]: The maximum number of users to share.
+  /// * [requestName]: Pass true to request name of the users; bots only.
+  /// * [requestUsername]: Pass true to request username of the users; bots only.
+  /// * [requestPhoto]: Pass true to request photo of the users; bots only.
   const KeyboardButtonTypeRequestUsers({
     required this.id,
     required this.restrictUserIsBot,
@@ -271,6 +277,9 @@ final class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
     required this.restrictUserIsPremium,
     required this.userIsPremium,
     required this.maxQuantity,
+    required this.requestName,
+    required this.requestUsername,
+    required this.requestPhoto,
   });
 
   /// Unique button identifier
@@ -291,6 +300,15 @@ final class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
   /// The maximum number of users to share
   final int maxQuantity;
 
+  /// Pass true to request name of the users; bots only
+  final bool requestName;
+
+  /// Pass true to request username of the users; bots only
+  final bool requestUsername;
+
+  /// Pass true to request photo of the users; bots only
+  final bool requestPhoto;
+
   /// Parse from a json
   factory KeyboardButtonTypeRequestUsers.fromJson(Map<String, dynamic> json) =>
       KeyboardButtonTypeRequestUsers(
@@ -300,6 +318,9 @@ final class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
         restrictUserIsPremium: json['restrict_user_is_premium'],
         userIsPremium: json['user_is_premium'],
         maxQuantity: json['max_quantity'],
+        requestName: json['request_name'],
+        requestUsername: json['request_username'],
+        requestPhoto: json['request_photo'],
       );
 
   /// Convert model to TDLib JSON format
@@ -313,6 +334,9 @@ final class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
       "restrict_user_is_premium": restrictUserIsPremium,
       "user_is_premium": userIsPremium,
       "max_quantity": maxQuantity,
+      "request_name": requestName,
+      "request_username": requestUsername,
+      "request_photo": requestPhoto,
     };
   }
 
@@ -325,6 +349,9 @@ final class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
   /// * [restrict_user_is_premium]: True, if the shared users must or must not be Telegram Premium users
   /// * [user_is_premium]: True, if the shared users must be Telegram Premium users; otherwise, the shared users must not be Telegram Premium users. Ignored if restrict_user_is_premium is false
   /// * [max_quantity]: The maximum number of users to share
+  /// * [request_name]: Pass true to request name of the users; bots only
+  /// * [request_username]: Pass true to request username of the users; bots only
+  /// * [request_photo]: Pass true to request photo of the users; bots only
   @override
   KeyboardButtonTypeRequestUsers copyWith({
     int? id,
@@ -333,6 +360,9 @@ final class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
     bool? restrictUserIsPremium,
     bool? userIsPremium,
     int? maxQuantity,
+    bool? requestName,
+    bool? requestUsername,
+    bool? requestPhoto,
   }) =>
       KeyboardButtonTypeRequestUsers(
         id: id ?? this.id,
@@ -342,6 +372,9 @@ final class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
             restrictUserIsPremium ?? this.restrictUserIsPremium,
         userIsPremium: userIsPremium ?? this.userIsPremium,
         maxQuantity: maxQuantity ?? this.maxQuantity,
+        requestName: requestName ?? this.requestName,
+        requestUsername: requestUsername ?? this.requestUsername,
+        requestPhoto: requestPhoto ?? this.requestPhoto,
       );
 
   /// TDLib object type
@@ -370,6 +403,9 @@ final class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
 /// * [userAdministratorRights]: Expected user administrator rights in the chat; may be null if they aren't restricted *(optional)*.
 /// * [botAdministratorRights]: Expected bot administrator rights in the chat; may be null if they aren't restricted *(optional)*.
 /// * [botIsMember]: True, if the bot must be a member of the chat; for basic group and supergroup chats only.
+/// * [requestTitle]: Pass true to request title of the chat; bots only.
+/// * [requestUsername]: Pass true to request username of the chat; bots only.
+/// * [requestPhoto]: Pass true to request photo of the chat; bots only.
 final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
   /// **KeyboardButtonTypeRequestChat** *(keyboardButtonTypeRequestChat)* - child of KeyboardButtonType
   ///
@@ -385,6 +421,9 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
   /// * [userAdministratorRights]: Expected user administrator rights in the chat; may be null if they aren't restricted *(optional)*.
   /// * [botAdministratorRights]: Expected bot administrator rights in the chat; may be null if they aren't restricted *(optional)*.
   /// * [botIsMember]: True, if the bot must be a member of the chat; for basic group and supergroup chats only.
+  /// * [requestTitle]: Pass true to request title of the chat; bots only.
+  /// * [requestUsername]: Pass true to request username of the chat; bots only.
+  /// * [requestPhoto]: Pass true to request photo of the chat; bots only.
   const KeyboardButtonTypeRequestChat({
     required this.id,
     required this.chatIsChannel,
@@ -396,6 +435,9 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
     this.userAdministratorRights,
     this.botAdministratorRights,
     required this.botIsMember,
+    required this.requestTitle,
+    required this.requestUsername,
+    required this.requestPhoto,
   });
 
   /// Unique button identifier
@@ -428,6 +470,15 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
   /// True, if the bot must be a member of the chat; for basic group and supergroup chats only
   final bool botIsMember;
 
+  /// Pass true to request title of the chat; bots only
+  final bool requestTitle;
+
+  /// Pass true to request username of the chat; bots only
+  final bool requestUsername;
+
+  /// Pass true to request photo of the chat; bots only
+  final bool requestPhoto;
+
   /// Parse from a json
   factory KeyboardButtonTypeRequestChat.fromJson(Map<String, dynamic> json) =>
       KeyboardButtonTypeRequestChat(
@@ -447,6 +498,9 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
             : ChatAdministratorRights.fromJson(
                 json['bot_administrator_rights']),
         botIsMember: json['bot_is_member'],
+        requestTitle: json['request_title'],
+        requestUsername: json['request_username'],
+        requestPhoto: json['request_photo'],
       );
 
   /// Convert model to TDLib JSON format
@@ -464,6 +518,9 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
       "user_administrator_rights": userAdministratorRights?.toJson(),
       "bot_administrator_rights": botAdministratorRights?.toJson(),
       "bot_is_member": botIsMember,
+      "request_title": requestTitle,
+      "request_username": requestUsername,
+      "request_photo": requestPhoto,
     };
   }
 
@@ -480,6 +537,9 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
   /// * [user_administrator_rights]: Expected user administrator rights in the chat; may be null if they aren't restricted
   /// * [bot_administrator_rights]: Expected bot administrator rights in the chat; may be null if they aren't restricted
   /// * [bot_is_member]: True, if the bot must be a member of the chat; for basic group and supergroup chats only
+  /// * [request_title]: Pass true to request title of the chat; bots only
+  /// * [request_username]: Pass true to request username of the chat; bots only
+  /// * [request_photo]: Pass true to request photo of the chat; bots only
   @override
   KeyboardButtonTypeRequestChat copyWith({
     int? id,
@@ -492,6 +552,9 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
     ChatAdministratorRights? userAdministratorRights,
     ChatAdministratorRights? botAdministratorRights,
     bool? botIsMember,
+    bool? requestTitle,
+    bool? requestUsername,
+    bool? requestPhoto,
   }) =>
       KeyboardButtonTypeRequestChat(
         id: id ?? this.id,
@@ -507,6 +570,9 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
         botAdministratorRights:
             botAdministratorRights ?? this.botAdministratorRights,
         botIsMember: botIsMember ?? this.botIsMember,
+        requestTitle: requestTitle ?? this.requestTitle,
+        requestUsername: requestUsername ?? this.requestUsername,
+        requestPhoto: requestPhoto ?? this.requestPhoto,
       );
 
   /// TDLib object type

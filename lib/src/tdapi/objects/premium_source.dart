@@ -12,6 +12,7 @@ sealed class PremiumSource extends TdObject {
   /// a PremiumSource return type can be :
   /// * [PremiumSourceLimitExceeded]
   /// * [PremiumSourceFeature]
+  /// * [PremiumSourceBusinessFeature]
   /// * [PremiumSourceStoryFeature]
   /// * [PremiumSourceLink]
   /// * [PremiumSourceSettings]
@@ -21,6 +22,8 @@ sealed class PremiumSource extends TdObject {
         return PremiumSourceLimitExceeded.fromJson(json);
       case PremiumSourceFeature.defaultObjectId:
         return PremiumSourceFeature.fromJson(json);
+      case PremiumSourceBusinessFeature.defaultObjectId:
+        return PremiumSourceBusinessFeature.fromJson(json);
       case PremiumSourceStoryFeature.defaultObjectId:
         return PremiumSourceStoryFeature.fromJson(json);
       case PremiumSourceLink.defaultObjectId:
@@ -158,6 +161,65 @@ final class PremiumSourceFeature extends PremiumSource {
 
   /// TDLib object type
   static const String defaultObjectId = 'premiumSourceFeature';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **PremiumSourceBusinessFeature** *(premiumSourceBusinessFeature)* - child of PremiumSource
+///
+/// A user tried to use a Business feature.
+///
+/// * [feature]: The used feature; pass null if none specific feature was used *(optional)*.
+final class PremiumSourceBusinessFeature extends PremiumSource {
+  /// **PremiumSourceBusinessFeature** *(premiumSourceBusinessFeature)* - child of PremiumSource
+  ///
+  /// A user tried to use a Business feature.
+  ///
+  /// * [feature]: The used feature; pass null if none specific feature was used *(optional)*.
+  const PremiumSourceBusinessFeature({
+    this.feature,
+  });
+
+  /// The used feature; pass null if none specific feature was used
+  final BusinessFeature? feature;
+
+  /// Parse from a json
+  factory PremiumSourceBusinessFeature.fromJson(Map<String, dynamic> json) =>
+      PremiumSourceBusinessFeature(
+        feature: json['feature'] == null
+            ? null
+            : BusinessFeature.fromJson(json['feature']),
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "feature": feature?.toJson(),
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [feature]: The used feature; pass null if none specific feature was used
+  @override
+  PremiumSourceBusinessFeature copyWith({
+    BusinessFeature? feature,
+  }) =>
+      PremiumSourceBusinessFeature(
+        feature: feature ?? this.feature,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'premiumSourceBusinessFeature';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

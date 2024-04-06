@@ -135,6 +135,7 @@ final class UserTypeDeleted extends UserType {
 /// * [isInline]: True, if the bot supports inline queries.
 /// * [inlineQueryPlaceholder]: Placeholder for inline queries (displayed on the application input field).
 /// * [needLocation]: True, if the location of the user is expected to be sent with every inline query to this bot.
+/// * [canConnectToBusiness]: True, if the bot supports connection to Telegram Business accounts.
 /// * [canBeAddedToAttachmentMenu]: True, if the bot can be added to attachment or side menu.
 final class UserTypeBot extends UserType {
   /// **UserTypeBot** *(userTypeBot)* - child of UserType
@@ -147,6 +148,7 @@ final class UserTypeBot extends UserType {
   /// * [isInline]: True, if the bot supports inline queries.
   /// * [inlineQueryPlaceholder]: Placeholder for inline queries (displayed on the application input field).
   /// * [needLocation]: True, if the location of the user is expected to be sent with every inline query to this bot.
+  /// * [canConnectToBusiness]: True, if the bot supports connection to Telegram Business accounts.
   /// * [canBeAddedToAttachmentMenu]: True, if the bot can be added to attachment or side menu.
   const UserTypeBot({
     required this.canBeEdited,
@@ -155,6 +157,7 @@ final class UserTypeBot extends UserType {
     required this.isInline,
     required this.inlineQueryPlaceholder,
     required this.needLocation,
+    required this.canConnectToBusiness,
     required this.canBeAddedToAttachmentMenu,
   });
 
@@ -176,6 +179,9 @@ final class UserTypeBot extends UserType {
   /// True, if the location of the user is expected to be sent with every inline query to this bot
   final bool needLocation;
 
+  /// True, if the bot supports connection to Telegram Business accounts
+  final bool canConnectToBusiness;
+
   /// True, if the bot can be added to attachment or side menu
   final bool canBeAddedToAttachmentMenu;
 
@@ -187,6 +193,7 @@ final class UserTypeBot extends UserType {
         isInline: json['is_inline'],
         inlineQueryPlaceholder: json['inline_query_placeholder'],
         needLocation: json['need_location'],
+        canConnectToBusiness: json['can_connect_to_business'],
         canBeAddedToAttachmentMenu: json['can_be_added_to_attachment_menu'],
       );
 
@@ -201,6 +208,7 @@ final class UserTypeBot extends UserType {
       "is_inline": isInline,
       "inline_query_placeholder": inlineQueryPlaceholder,
       "need_location": needLocation,
+      "can_connect_to_business": canConnectToBusiness,
       "can_be_added_to_attachment_menu": canBeAddedToAttachmentMenu,
     };
   }
@@ -214,6 +222,7 @@ final class UserTypeBot extends UserType {
   /// * [is_inline]: True, if the bot supports inline queries
   /// * [inline_query_placeholder]: Placeholder for inline queries (displayed on the application input field)
   /// * [need_location]: True, if the location of the user is expected to be sent with every inline query to this bot
+  /// * [can_connect_to_business]: True, if the bot supports connection to Telegram Business accounts
   /// * [can_be_added_to_attachment_menu]: True, if the bot can be added to attachment or side menu
   @override
   UserTypeBot copyWith({
@@ -223,6 +232,7 @@ final class UserTypeBot extends UserType {
     bool? isInline,
     String? inlineQueryPlaceholder,
     bool? needLocation,
+    bool? canConnectToBusiness,
     bool? canBeAddedToAttachmentMenu,
   }) =>
       UserTypeBot(
@@ -234,6 +244,7 @@ final class UserTypeBot extends UserType {
         inlineQueryPlaceholder:
             inlineQueryPlaceholder ?? this.inlineQueryPlaceholder,
         needLocation: needLocation ?? this.needLocation,
+        canConnectToBusiness: canConnectToBusiness ?? this.canConnectToBusiness,
         canBeAddedToAttachmentMenu:
             canBeAddedToAttachmentMenu ?? this.canBeAddedToAttachmentMenu,
       );

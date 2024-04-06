@@ -128,8 +128,13 @@ sealed class Update extends TdObject {
   /// * [UpdateAnimatedEmojiMessageClicked]
   /// * [UpdateAnimationSearchParameters]
   /// * [UpdateSuggestedActions]
+  /// * [UpdateContactCloseBirthdays]
   /// * [UpdateAddChatMembersPrivacyForbidden]
   /// * [UpdateAutosaveSettings]
+  /// * [UpdateBusinessConnection]
+  /// * [UpdateNewBusinessMessage]
+  /// * [UpdateBusinessMessageEdited]
+  /// * [UpdateBusinessMessagesDeleted]
   /// * [UpdateNewInlineQuery]
   /// * [UpdateNewChosenInlineResult]
   /// * [UpdateNewCallbackQuery]
@@ -383,10 +388,20 @@ sealed class Update extends TdObject {
         return UpdateAnimationSearchParameters.fromJson(json);
       case UpdateSuggestedActions.defaultObjectId:
         return UpdateSuggestedActions.fromJson(json);
+      case UpdateContactCloseBirthdays.defaultObjectId:
+        return UpdateContactCloseBirthdays.fromJson(json);
       case UpdateAddChatMembersPrivacyForbidden.defaultObjectId:
         return UpdateAddChatMembersPrivacyForbidden.fromJson(json);
       case UpdateAutosaveSettings.defaultObjectId:
         return UpdateAutosaveSettings.fromJson(json);
+      case UpdateBusinessConnection.defaultObjectId:
+        return UpdateBusinessConnection.fromJson(json);
+      case UpdateNewBusinessMessage.defaultObjectId:
+        return UpdateNewBusinessMessage.fromJson(json);
+      case UpdateBusinessMessageEdited.defaultObjectId:
+        return UpdateBusinessMessageEdited.fromJson(json);
+      case UpdateBusinessMessagesDeleted.defaultObjectId:
+        return UpdateBusinessMessagesDeleted.fromJson(json);
       case UpdateNewInlineQuery.defaultObjectId:
         return UpdateNewInlineQuery.fromJson(json);
       case UpdateNewChosenInlineResult.defaultObjectId:
@@ -10124,7 +10139,7 @@ final class UpdateSavedMessagesTags extends Update {
 ///
 /// The parameters of speech recognition without Telegram Premium subscription has changed.
 ///
-/// * [maxMediaDuration]: The maximum allowed duration of media for speech recognition without Telegram Premium subscription.
+/// * [maxMediaDuration]: The maximum allowed duration of media for speech recognition without Telegram Premium subscription, in seconds.
 /// * [weeklyCount]: The total number of allowed speech recognitions per week; 0 if none.
 /// * [leftCount]: Number of left speech recognition attempts this week.
 /// * [nextResetDate]: Point in time (Unix timestamp) when the weekly number of tries will reset; 0 if unknown.
@@ -10133,7 +10148,7 @@ final class UpdateSpeechRecognitionTrial extends Update {
   ///
   /// The parameters of speech recognition without Telegram Premium subscription has changed.
   ///
-  /// * [maxMediaDuration]: The maximum allowed duration of media for speech recognition without Telegram Premium subscription.
+  /// * [maxMediaDuration]: The maximum allowed duration of media for speech recognition without Telegram Premium subscription, in seconds.
   /// * [weeklyCount]: The total number of allowed speech recognitions per week; 0 if none.
   /// * [leftCount]: Number of left speech recognition attempts this week.
   /// * [nextResetDate]: Point in time (Unix timestamp) when the weekly number of tries will reset; 0 if unknown.
@@ -10146,7 +10161,7 @@ final class UpdateSpeechRecognitionTrial extends Update {
     this.clientId,
   });
 
-  /// The maximum allowed duration of media for speech recognition without Telegram Premium subscription
+  /// The maximum allowed duration of media for speech recognition without Telegram Premium subscription, in seconds
   final int maxMediaDuration;
 
   /// The total number of allowed speech recognitions per week; 0 if none
@@ -10192,7 +10207,7 @@ final class UpdateSpeechRecognitionTrial extends Update {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [max_media_duration]: The maximum allowed duration of media for speech recognition without Telegram Premium subscription
+  /// * [max_media_duration]: The maximum allowed duration of media for speech recognition without Telegram Premium subscription, in seconds
   /// * [weekly_count]: The total number of allowed speech recognitions per week; 0 if none
   /// * [left_count]: Number of left speech recognition attempts this week
   /// * [next_reset_date]: Point in time (Unix timestamp) when the weekly number of tries will reset; 0 if unknown
@@ -10570,6 +10585,83 @@ final class UpdateSuggestedActions extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
+/// **UpdateContactCloseBirthdays** *(updateContactCloseBirthdays)* - child of Update
+///
+/// The list of contacts that had birthdays recently or will have birthday soon has changed.
+///
+/// * [closeBirthdayUsers]: List of contact users with close birthday.
+final class UpdateContactCloseBirthdays extends Update {
+  /// **UpdateContactCloseBirthdays** *(updateContactCloseBirthdays)* - child of Update
+  ///
+  /// The list of contacts that had birthdays recently or will have birthday soon has changed.
+  ///
+  /// * [closeBirthdayUsers]: List of contact users with close birthday.
+  const UpdateContactCloseBirthdays({
+    required this.closeBirthdayUsers,
+    this.extra,
+    this.clientId,
+  });
+
+  /// List of contact users with close birthday
+  final List<CloseBirthdayUser> closeBirthdayUsers;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+
+  /// Parse from a json
+  factory UpdateContactCloseBirthdays.fromJson(Map<String, dynamic> json) =>
+      UpdateContactCloseBirthdays(
+        closeBirthdayUsers: List<CloseBirthdayUser>.from(
+            (json['close_birthday_users'] ?? [])
+                .map((item) => CloseBirthdayUser.fromJson(item))
+                .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "close_birthday_users":
+          closeBirthdayUsers.map((i) => i.toJson()).toList(),
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [close_birthday_users]: List of contact users with close birthday
+  @override
+  UpdateContactCloseBirthdays copyWith({
+    List<CloseBirthdayUser>? closeBirthdayUsers,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      UpdateContactCloseBirthdays(
+        closeBirthdayUsers: closeBirthdayUsers ?? this.closeBirthdayUsers,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'updateContactCloseBirthdays';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
 /// **UpdateAddChatMembersPrivacyForbidden** *(updateAddChatMembersPrivacyForbidden)* - child of Update
 ///
 /// Adding users to a chat has failed because of their privacy settings. An invite link can be shared with the users if appropriate.
@@ -10732,6 +10824,343 @@ final class UpdateAutosaveSettings extends Update {
 
   /// TDLib object type
   static const String defaultObjectId = 'updateAutosaveSettings';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **UpdateBusinessConnection** *(updateBusinessConnection)* - child of Update
+///
+/// A business connection has changed; for bots only.
+///
+/// * [connection]: New data about the connection.
+final class UpdateBusinessConnection extends Update {
+  /// **UpdateBusinessConnection** *(updateBusinessConnection)* - child of Update
+  ///
+  /// A business connection has changed; for bots only.
+  ///
+  /// * [connection]: New data about the connection.
+  const UpdateBusinessConnection({
+    required this.connection,
+    this.extra,
+    this.clientId,
+  });
+
+  /// New data about the connection
+  final BusinessConnection connection;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+
+  /// Parse from a json
+  factory UpdateBusinessConnection.fromJson(Map<String, dynamic> json) =>
+      UpdateBusinessConnection(
+        connection: BusinessConnection.fromJson(json['connection']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "connection": connection.toJson(),
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [connection]: New data about the connection
+  @override
+  UpdateBusinessConnection copyWith({
+    BusinessConnection? connection,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      UpdateBusinessConnection(
+        connection: connection ?? this.connection,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'updateBusinessConnection';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **UpdateNewBusinessMessage** *(updateNewBusinessMessage)* - child of Update
+///
+/// A new message was added to a business account; for bots only.
+///
+/// * [connectionId]: Unique identifier of the business connection.
+/// * [message]: The new message.
+final class UpdateNewBusinessMessage extends Update {
+  /// **UpdateNewBusinessMessage** *(updateNewBusinessMessage)* - child of Update
+  ///
+  /// A new message was added to a business account; for bots only.
+  ///
+  /// * [connectionId]: Unique identifier of the business connection.
+  /// * [message]: The new message.
+  const UpdateNewBusinessMessage({
+    required this.connectionId,
+    required this.message,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Unique identifier of the business connection
+  final String connectionId;
+
+  /// The new message
+  final BusinessMessage message;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+
+  /// Parse from a json
+  factory UpdateNewBusinessMessage.fromJson(Map<String, dynamic> json) =>
+      UpdateNewBusinessMessage(
+        connectionId: json['connection_id'],
+        message: BusinessMessage.fromJson(json['message']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "connection_id": connectionId,
+      "message": message.toJson(),
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [connection_id]: Unique identifier of the business connection
+  /// * [message]: The new message
+  @override
+  UpdateNewBusinessMessage copyWith({
+    String? connectionId,
+    BusinessMessage? message,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      UpdateNewBusinessMessage(
+        connectionId: connectionId ?? this.connectionId,
+        message: message ?? this.message,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'updateNewBusinessMessage';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **UpdateBusinessMessageEdited** *(updateBusinessMessageEdited)* - child of Update
+///
+/// A message in a business account was edited; for bots only.
+///
+/// * [connectionId]: Unique identifier of the business connection.
+/// * [message]: The edited message.
+final class UpdateBusinessMessageEdited extends Update {
+  /// **UpdateBusinessMessageEdited** *(updateBusinessMessageEdited)* - child of Update
+  ///
+  /// A message in a business account was edited; for bots only.
+  ///
+  /// * [connectionId]: Unique identifier of the business connection.
+  /// * [message]: The edited message.
+  const UpdateBusinessMessageEdited({
+    required this.connectionId,
+    required this.message,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Unique identifier of the business connection
+  final String connectionId;
+
+  /// The edited message
+  final BusinessMessage message;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+
+  /// Parse from a json
+  factory UpdateBusinessMessageEdited.fromJson(Map<String, dynamic> json) =>
+      UpdateBusinessMessageEdited(
+        connectionId: json['connection_id'],
+        message: BusinessMessage.fromJson(json['message']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "connection_id": connectionId,
+      "message": message.toJson(),
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [connection_id]: Unique identifier of the business connection
+  /// * [message]: The edited message
+  @override
+  UpdateBusinessMessageEdited copyWith({
+    String? connectionId,
+    BusinessMessage? message,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      UpdateBusinessMessageEdited(
+        connectionId: connectionId ?? this.connectionId,
+        message: message ?? this.message,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'updateBusinessMessageEdited';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **UpdateBusinessMessagesDeleted** *(updateBusinessMessagesDeleted)* - child of Update
+///
+/// Messages in a business account were deleted; for bots only.
+///
+/// * [connectionId]: Unique identifier of the business connection.
+/// * [chatId]: Identifier of a chat in the business account in which messages were deleted.
+/// * [messageIds]: Unique message identifiers of the deleted messages.
+final class UpdateBusinessMessagesDeleted extends Update {
+  /// **UpdateBusinessMessagesDeleted** *(updateBusinessMessagesDeleted)* - child of Update
+  ///
+  /// Messages in a business account were deleted; for bots only.
+  ///
+  /// * [connectionId]: Unique identifier of the business connection.
+  /// * [chatId]: Identifier of a chat in the business account in which messages were deleted.
+  /// * [messageIds]: Unique message identifiers of the deleted messages.
+  const UpdateBusinessMessagesDeleted({
+    required this.connectionId,
+    required this.chatId,
+    required this.messageIds,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Unique identifier of the business connection
+  final String connectionId;
+
+  /// Identifier of a chat in the business account in which messages were deleted
+  final int chatId;
+
+  /// Unique message identifiers of the deleted messages
+  final List<int> messageIds;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+
+  /// Parse from a json
+  factory UpdateBusinessMessagesDeleted.fromJson(Map<String, dynamic> json) =>
+      UpdateBusinessMessagesDeleted(
+        connectionId: json['connection_id'],
+        chatId: json['chat_id'],
+        messageIds: List<int>.from(
+            (json['message_ids'] ?? []).map((item) => item).toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "connection_id": connectionId,
+      "chat_id": chatId,
+      "message_ids": messageIds.map((i) => i).toList(),
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [connection_id]: Unique identifier of the business connection
+  /// * [chat_id]: Identifier of a chat in the business account in which messages were deleted
+  /// * [message_ids]: Unique message identifiers of the deleted messages
+  @override
+  UpdateBusinessMessagesDeleted copyWith({
+    String? connectionId,
+    int? chatId,
+    List<int>? messageIds,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      UpdateBusinessMessagesDeleted(
+        connectionId: connectionId ?? this.connectionId,
+        chatId: chatId ?? this.chatId,
+        messageIds: messageIds ?? this.messageIds,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'updateBusinessMessagesDeleted';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

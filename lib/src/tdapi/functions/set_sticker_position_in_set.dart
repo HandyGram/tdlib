@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **SetStickerPositionInSet** *(setStickerPositionInSet)* - TDLib function
 ///
-/// Changes the position of a sticker in the set to which it belongs; for bots only. The sticker set must have been created by the bot.
+/// Changes the position of a sticker in the set to which it belongs. The sticker set must be owned by the current user.
 ///
 /// * [sticker]: Sticker.
 /// * [position]: New position of the sticker in the set, 0-based.
@@ -11,7 +11,7 @@ part of '../tdapi.dart';
 final class SetStickerPositionInSet extends TdFunction {
   /// **SetStickerPositionInSet** *(setStickerPositionInSet)* - TDLib function
   ///
-  /// Changes the position of a sticker in the set to which it belongs; for bots only. The sticker set must have been created by the bot.
+  /// Changes the position of a sticker in the set to which it belongs. The sticker set must be owned by the current user.
   ///
   /// * [sticker]: Sticker.
   /// * [position]: New position of the sticker in the set, 0-based.

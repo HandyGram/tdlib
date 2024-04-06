@@ -12,6 +12,7 @@ sealed class UserPrivacySettingRule extends TdObject {
   /// a UserPrivacySettingRule return type can be :
   /// * [UserPrivacySettingRuleAllowAll]
   /// * [UserPrivacySettingRuleAllowContacts]
+  /// * [UserPrivacySettingRuleAllowPremiumUsers]
   /// * [UserPrivacySettingRuleAllowUsers]
   /// * [UserPrivacySettingRuleAllowChatMembers]
   /// * [UserPrivacySettingRuleRestrictAll]
@@ -24,6 +25,8 @@ sealed class UserPrivacySettingRule extends TdObject {
         return UserPrivacySettingRuleAllowAll.fromJson(json);
       case UserPrivacySettingRuleAllowContacts.defaultObjectId:
         return UserPrivacySettingRuleAllowContacts.fromJson(json);
+      case UserPrivacySettingRuleAllowPremiumUsers.defaultObjectId:
+        return UserPrivacySettingRuleAllowPremiumUsers.fromJson(json);
       case UserPrivacySettingRuleAllowUsers.defaultObjectId:
         return UserPrivacySettingRuleAllowUsers.fromJson(json);
       case UserPrivacySettingRuleAllowChatMembers.defaultObjectId:
@@ -130,6 +133,47 @@ final class UserPrivacySettingRuleAllowContacts extends UserPrivacySettingRule {
 
   /// TDLib object type
   static const String defaultObjectId = 'userPrivacySettingRuleAllowContacts';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **UserPrivacySettingRuleAllowPremiumUsers** *(userPrivacySettingRuleAllowPremiumUsers)* - child of UserPrivacySettingRule
+///
+/// A rule to allow all Premium Users to do something; currently, allowed only for userPrivacySettingAllowChatInvites.
+final class UserPrivacySettingRuleAllowPremiumUsers
+    extends UserPrivacySettingRule {
+  /// **UserPrivacySettingRuleAllowPremiumUsers** *(userPrivacySettingRuleAllowPremiumUsers)* - child of UserPrivacySettingRule
+  ///
+  /// A rule to allow all Premium Users to do something; currently, allowed only for userPrivacySettingAllowChatInvites.
+  const UserPrivacySettingRuleAllowPremiumUsers();
+
+  /// Parse from a json
+  factory UserPrivacySettingRuleAllowPremiumUsers.fromJson(
+          Map<String, dynamic> json) =>
+      const UserPrivacySettingRuleAllowPremiumUsers();
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+    };
+  }
+
+  /// Copy instance with no modifications.
+  @override
+  UserPrivacySettingRuleAllowPremiumUsers copyWith() =>
+      const UserPrivacySettingRuleAllowPremiumUsers();
+
+  /// TDLib object type
+  static const String defaultObjectId =
+      'userPrivacySettingRuleAllowPremiumUsers';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

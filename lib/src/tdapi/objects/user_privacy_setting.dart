@@ -15,6 +15,7 @@ sealed class UserPrivacySetting extends TdObject {
   /// * [UserPrivacySettingShowLinkInForwardedMessages]
   /// * [UserPrivacySettingShowPhoneNumber]
   /// * [UserPrivacySettingShowBio]
+  /// * [UserPrivacySettingShowBirthdate]
   /// * [UserPrivacySettingAllowChatInvites]
   /// * [UserPrivacySettingAllowCalls]
   /// * [UserPrivacySettingAllowPeerToPeerCalls]
@@ -32,6 +33,8 @@ sealed class UserPrivacySetting extends TdObject {
         return UserPrivacySettingShowPhoneNumber.fromJson(json);
       case UserPrivacySettingShowBio.defaultObjectId:
         return UserPrivacySettingShowBio.fromJson(json);
+      case UserPrivacySettingShowBirthdate.defaultObjectId:
+        return UserPrivacySettingShowBirthdate.fromJson(json);
       case UserPrivacySettingAllowChatInvites.defaultObjectId:
         return UserPrivacySettingAllowChatInvites.fromJson(json);
       case UserPrivacySettingAllowCalls.defaultObjectId:
@@ -255,6 +258,44 @@ final class UserPrivacySettingShowBio extends UserPrivacySetting {
 
   /// TDLib object type
   static const String defaultObjectId = 'userPrivacySettingShowBio';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **UserPrivacySettingShowBirthdate** *(userPrivacySettingShowBirthdate)* - child of UserPrivacySetting
+///
+/// A privacy setting for managing whether the user's birthdate is visible.
+final class UserPrivacySettingShowBirthdate extends UserPrivacySetting {
+  /// **UserPrivacySettingShowBirthdate** *(userPrivacySettingShowBirthdate)* - child of UserPrivacySetting
+  ///
+  /// A privacy setting for managing whether the user's birthdate is visible.
+  const UserPrivacySettingShowBirthdate();
+
+  /// Parse from a json
+  factory UserPrivacySettingShowBirthdate.fromJson(Map<String, dynamic> json) =>
+      const UserPrivacySettingShowBirthdate();
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+    };
+  }
+
+  /// Copy instance with no modifications.
+  @override
+  UserPrivacySettingShowBirthdate copyWith() =>
+      const UserPrivacySettingShowBirthdate();
+
+  /// TDLib object type
+  static const String defaultObjectId = 'userPrivacySettingShowBirthdate';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

@@ -2,24 +2,24 @@ part of '../tdapi.dart';
 
 /// **DeleteStickerSet** *(deleteStickerSet)* - TDLib function
 ///
-/// Deleted a sticker set; for bots only.
+/// Completely deletes a sticker set.
 ///
-/// * [name]: Sticker set name.
+/// * [name]: Sticker set name. The sticker set must be owned by the current user.
 ///
 /// [Ok] is returned on completion.
 final class DeleteStickerSet extends TdFunction {
   /// **DeleteStickerSet** *(deleteStickerSet)* - TDLib function
   ///
-  /// Deleted a sticker set; for bots only.
+  /// Completely deletes a sticker set.
   ///
-  /// * [name]: Sticker set name.
+  /// * [name]: Sticker set name. The sticker set must be owned by the current user.
   ///
   /// [Ok] is returned on completion.
   const DeleteStickerSet({
     required this.name,
   });
 
-  /// Sticker set name
+  /// Sticker set name. The sticker set must be owned by the current user
   final String name;
 
   /// Convert model to TDLib JSON format
@@ -35,7 +35,7 @@ final class DeleteStickerSet extends TdFunction {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [name]: Sticker set name
+  /// * [name]: Sticker set name. The sticker set must be owned by the current user
   DeleteStickerSet copyWith({
     String? name,
   }) =>

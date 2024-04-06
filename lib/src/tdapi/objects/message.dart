@@ -11,6 +11,7 @@ part of '../tdapi.dart';
 /// * [schedulingState]: The scheduling state of the message; may be null if the message isn't scheduled *(optional)*.
 /// * [isOutgoing]: True, if the message is outgoing.
 /// * [isPinned]: True, if the message is pinned.
+/// * [isFromOffline]: True, if the message was sent because of a scheduled action by the message sender, for example, as away, or greeting service message.
 /// * [canBeEdited]: True, if the message can be edited. For live location and poll messages this fields shows whether editMessageLiveLocation or stopPoll can be used with this message by the application.
 /// * [canBeForwarded]: True, if the message can be forwarded.
 /// * [canBeRepliedInAnotherChat]: True, if the message can be replied in another chat or topic.
@@ -40,7 +41,8 @@ part of '../tdapi.dart';
 /// * [selfDestructType]: The message's self-destruct type; may be null if none *(optional)*.
 /// * [selfDestructIn]: Time left before the message self-destruct timer expires, in seconds; 0 if self-destruction isn't scheduled yet.
 /// * [autoDeleteIn]: Time left before the message will be automatically deleted by message_auto_delete_time setting of the chat, in seconds; 0 if never.
-/// * [viaBotUserId]: If non-zero, the user identifier of the bot through which this message was sent.
+/// * [viaBotUserId]: If non-zero, the user identifier of the inline bot through which this message was sent.
+/// * [senderBusinessBotUserId]: If non-zero, the user identifier of the business bot that sent this message.
 /// * [senderBoostCount]: Number of times the sender of the message boosted the supergroup at the time the message was sent; 0 if none or unknown. For messages sent by the current user, supergroupFullInfo.my_boost_count must be used instead.
 /// * [authorSignature]: For channel posts and anonymous group messages, optional author signature.
 /// * [mediaAlbumId]: Unique identifier of an album this message belongs to. Only audios, documents, photos and videos can be grouped together in albums.
@@ -59,6 +61,7 @@ final class Message extends TdObject {
   /// * [schedulingState]: The scheduling state of the message; may be null if the message isn't scheduled *(optional)*.
   /// * [isOutgoing]: True, if the message is outgoing.
   /// * [isPinned]: True, if the message is pinned.
+  /// * [isFromOffline]: True, if the message was sent because of a scheduled action by the message sender, for example, as away, or greeting service message.
   /// * [canBeEdited]: True, if the message can be edited. For live location and poll messages this fields shows whether editMessageLiveLocation or stopPoll can be used with this message by the application.
   /// * [canBeForwarded]: True, if the message can be forwarded.
   /// * [canBeRepliedInAnotherChat]: True, if the message can be replied in another chat or topic.
@@ -88,7 +91,8 @@ final class Message extends TdObject {
   /// * [selfDestructType]: The message's self-destruct type; may be null if none *(optional)*.
   /// * [selfDestructIn]: Time left before the message self-destruct timer expires, in seconds; 0 if self-destruction isn't scheduled yet.
   /// * [autoDeleteIn]: Time left before the message will be automatically deleted by message_auto_delete_time setting of the chat, in seconds; 0 if never.
-  /// * [viaBotUserId]: If non-zero, the user identifier of the bot through which this message was sent.
+  /// * [viaBotUserId]: If non-zero, the user identifier of the inline bot through which this message was sent.
+  /// * [senderBusinessBotUserId]: If non-zero, the user identifier of the business bot that sent this message.
   /// * [senderBoostCount]: Number of times the sender of the message boosted the supergroup at the time the message was sent; 0 if none or unknown. For messages sent by the current user, supergroupFullInfo.my_boost_count must be used instead.
   /// * [authorSignature]: For channel posts and anonymous group messages, optional author signature.
   /// * [mediaAlbumId]: Unique identifier of an album this message belongs to. Only audios, documents, photos and videos can be grouped together in albums.
@@ -103,6 +107,7 @@ final class Message extends TdObject {
     this.schedulingState,
     required this.isOutgoing,
     required this.isPinned,
+    required this.isFromOffline,
     required this.canBeEdited,
     required this.canBeForwarded,
     required this.canBeRepliedInAnotherChat,
@@ -133,6 +138,7 @@ final class Message extends TdObject {
     required this.selfDestructIn,
     required this.autoDeleteIn,
     required this.viaBotUserId,
+    required this.senderBusinessBotUserId,
     required this.senderBoostCount,
     required this.authorSignature,
     required this.mediaAlbumId,
@@ -163,6 +169,9 @@ final class Message extends TdObject {
 
   /// True, if the message is pinned
   final bool isPinned;
+
+  /// True, if the message was sent because of a scheduled action by the message sender, for example, as away, or greeting service message
+  final bool isFromOffline;
 
   /// True, if the message can be edited. For live location and poll messages this fields shows whether editMessageLiveLocation or stopPoll can be used with this message by the application
   final bool canBeEdited;
@@ -251,8 +260,11 @@ final class Message extends TdObject {
   /// Time left before the message will be automatically deleted by message_auto_delete_time setting of the chat, in seconds; 0 if never
   final double autoDeleteIn;
 
-  /// If non-zero, the user identifier of the bot through which this message was sent
+  /// If non-zero, the user identifier of the inline bot through which this message was sent
   final int viaBotUserId;
+
+  /// If non-zero, the user identifier of the business bot that sent this message
+  final int senderBusinessBotUserId;
 
   /// Number of times the sender of the message boosted the supergroup at the time the message was sent; 0 if none or unknown. For messages sent by the current user, supergroupFullInfo.my_boost_count must be used instead
   final int senderBoostCount;
@@ -293,6 +305,7 @@ final class Message extends TdObject {
             : MessageSchedulingState.fromJson(json['scheduling_state']),
         isOutgoing: json['is_outgoing'],
         isPinned: json['is_pinned'],
+        isFromOffline: json['is_from_offline'],
         canBeEdited: json['can_be_edited'],
         canBeForwarded: json['can_be_forwarded'],
         canBeRepliedInAnotherChat: json['can_be_replied_in_another_chat'],
@@ -336,6 +349,7 @@ final class Message extends TdObject {
         selfDestructIn: json['self_destruct_in'],
         autoDeleteIn: json['auto_delete_in'],
         viaBotUserId: json['via_bot_user_id'],
+        senderBusinessBotUserId: json['sender_business_bot_user_id'],
         senderBoostCount: json['sender_boost_count'] ?? 0,
         authorSignature: json['author_signature'],
         mediaAlbumId: json['media_album_id'] is int
@@ -362,6 +376,7 @@ final class Message extends TdObject {
       "scheduling_state": schedulingState?.toJson(),
       "is_outgoing": isOutgoing,
       "is_pinned": isPinned,
+      "is_from_offline": isFromOffline,
       "can_be_edited": canBeEdited,
       "can_be_forwarded": canBeForwarded,
       "can_be_replied_in_another_chat": canBeRepliedInAnotherChat,
@@ -392,6 +407,7 @@ final class Message extends TdObject {
       "self_destruct_in": selfDestructIn,
       "auto_delete_in": autoDeleteIn,
       "via_bot_user_id": viaBotUserId,
+      "sender_business_bot_user_id": senderBusinessBotUserId,
       "sender_boost_count": senderBoostCount,
       "author_signature": authorSignature,
       "media_album_id": mediaAlbumId,
@@ -411,6 +427,7 @@ final class Message extends TdObject {
   /// * [scheduling_state]: The scheduling state of the message; may be null if the message isn't scheduled
   /// * [is_outgoing]: True, if the message is outgoing
   /// * [is_pinned]: True, if the message is pinned
+  /// * [is_from_offline]: True, if the message was sent because of a scheduled action by the message sender, for example, as away, or greeting service message
   /// * [can_be_edited]: True, if the message can be edited. For live location and poll messages this fields shows whether editMessageLiveLocation or stopPoll can be used with this message by the application
   /// * [can_be_forwarded]: True, if the message can be forwarded
   /// * [can_be_replied_in_another_chat]: True, if the message can be replied in another chat or topic
@@ -440,7 +457,8 @@ final class Message extends TdObject {
   /// * [self_destruct_type]: The message's self-destruct type; may be null if none
   /// * [self_destruct_in]: Time left before the message self-destruct timer expires, in seconds; 0 if self-destruction isn't scheduled yet
   /// * [auto_delete_in]: Time left before the message will be automatically deleted by message_auto_delete_time setting of the chat, in seconds; 0 if never
-  /// * [via_bot_user_id]: If non-zero, the user identifier of the bot through which this message was sent
+  /// * [via_bot_user_id]: If non-zero, the user identifier of the inline bot through which this message was sent
+  /// * [sender_business_bot_user_id]: If non-zero, the user identifier of the business bot that sent this message
   /// * [sender_boost_count]: Number of times the sender of the message boosted the supergroup at the time the message was sent; 0 if none or unknown. For messages sent by the current user, supergroupFullInfo.my_boost_count must be used instead
   /// * [author_signature]: For channel posts and anonymous group messages, optional author signature
   /// * [media_album_id]: Unique identifier of an album this message belongs to. Only audios, documents, photos and videos can be grouped together in albums
@@ -455,6 +473,7 @@ final class Message extends TdObject {
     MessageSchedulingState? schedulingState,
     bool? isOutgoing,
     bool? isPinned,
+    bool? isFromOffline,
     bool? canBeEdited,
     bool? canBeForwarded,
     bool? canBeRepliedInAnotherChat,
@@ -485,6 +504,7 @@ final class Message extends TdObject {
     double? selfDestructIn,
     double? autoDeleteIn,
     int? viaBotUserId,
+    int? senderBusinessBotUserId,
     int? senderBoostCount,
     String? authorSignature,
     int? mediaAlbumId,
@@ -502,6 +522,7 @@ final class Message extends TdObject {
         schedulingState: schedulingState ?? this.schedulingState,
         isOutgoing: isOutgoing ?? this.isOutgoing,
         isPinned: isPinned ?? this.isPinned,
+        isFromOffline: isFromOffline ?? this.isFromOffline,
         canBeEdited: canBeEdited ?? this.canBeEdited,
         canBeForwarded: canBeForwarded ?? this.canBeForwarded,
         canBeRepliedInAnotherChat:
@@ -537,6 +558,8 @@ final class Message extends TdObject {
         selfDestructIn: selfDestructIn ?? this.selfDestructIn,
         autoDeleteIn: autoDeleteIn ?? this.autoDeleteIn,
         viaBotUserId: viaBotUserId ?? this.viaBotUserId,
+        senderBusinessBotUserId:
+            senderBusinessBotUserId ?? this.senderBusinessBotUserId,
         senderBoostCount: senderBoostCount ?? this.senderBoostCount,
         authorSignature: authorSignature ?? this.authorSignature,
         mediaAlbumId: mediaAlbumId ?? this.mediaAlbumId,

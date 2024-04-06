@@ -4,7 +4,7 @@ part of '../tdapi.dart';
 ///
 /// Describes an animated or custom representation of an emoji.
 ///
-/// * [sticker]: Sticker for the emoji; may be null if yet unknown for a custom emoji. If the sticker is a custom emoji, it can have arbitrary format different from stickerFormatTgs *(optional)*.
+/// * [sticker]: Sticker for the emoji; may be null if yet unknown for a custom emoji. If the sticker is a custom emoji, then it can have arbitrary format *(optional)*.
 /// * [stickerWidth]: Expected width of the sticker, which can be used if the sticker is null.
 /// * [stickerHeight]: Expected height of the sticker, which can be used if the sticker is null.
 /// * [fitzpatrickType]: Emoji modifier fitzpatrick type; 0-6; 0 if none.
@@ -14,7 +14,7 @@ final class AnimatedEmoji extends TdObject {
   ///
   /// Describes an animated or custom representation of an emoji.
   ///
-  /// * [sticker]: Sticker for the emoji; may be null if yet unknown for a custom emoji. If the sticker is a custom emoji, it can have arbitrary format different from stickerFormatTgs *(optional)*.
+  /// * [sticker]: Sticker for the emoji; may be null if yet unknown for a custom emoji. If the sticker is a custom emoji, then it can have arbitrary format *(optional)*.
   /// * [stickerWidth]: Expected width of the sticker, which can be used if the sticker is null.
   /// * [stickerHeight]: Expected height of the sticker, which can be used if the sticker is null.
   /// * [fitzpatrickType]: Emoji modifier fitzpatrick type; 0-6; 0 if none.
@@ -29,7 +29,7 @@ final class AnimatedEmoji extends TdObject {
     this.clientId,
   });
 
-  /// Sticker for the emoji; may be null if yet unknown for a custom emoji. If the sticker is a custom emoji, it can have arbitrary format different from stickerFormatTgs
+  /// Sticker for the emoji; may be null if yet unknown for a custom emoji. If the sticker is a custom emoji, then it can have arbitrary format
   final Sticker? sticker;
 
   /// Expected width of the sticker, which can be used if the sticker is null
@@ -80,7 +80,7 @@ final class AnimatedEmoji extends TdObject {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [sticker]: Sticker for the emoji; may be null if yet unknown for a custom emoji. If the sticker is a custom emoji, it can have arbitrary format different from stickerFormatTgs
+  /// * [sticker]: Sticker for the emoji; may be null if yet unknown for a custom emoji. If the sticker is a custom emoji, then it can have arbitrary format
   /// * [sticker_width]: Expected width of the sticker, which can be used if the sticker is null
   /// * [sticker_height]: Expected height of the sticker, which can be used if the sticker is null
   /// * [fitzpatrick_type]: Emoji modifier fitzpatrick type; 0-6; 0 if none

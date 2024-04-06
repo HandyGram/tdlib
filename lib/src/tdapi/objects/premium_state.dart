@@ -7,6 +7,7 @@ part of '../tdapi.dart';
 /// * [state]: Text description of the state of the current Premium subscription; may be empty if the current user has no Telegram Premium subscription.
 /// * [paymentOptions]: The list of available options for buying Telegram Premium.
 /// * [animations]: The list of available promotion animations for Premium features.
+/// * [businessAnimations]: The list of available promotion animations for Business features.
 final class PremiumState extends TdObject {
   /// **PremiumState** *(premiumState)* - basic class
   ///
@@ -15,10 +16,12 @@ final class PremiumState extends TdObject {
   /// * [state]: Text description of the state of the current Premium subscription; may be empty if the current user has no Telegram Premium subscription.
   /// * [paymentOptions]: The list of available options for buying Telegram Premium.
   /// * [animations]: The list of available promotion animations for Premium features.
+  /// * [businessAnimations]: The list of available promotion animations for Business features.
   const PremiumState({
     required this.state,
     required this.paymentOptions,
     required this.animations,
+    required this.businessAnimations,
     this.extra,
     this.clientId,
   });
@@ -31,6 +34,9 @@ final class PremiumState extends TdObject {
 
   /// The list of available promotion animations for Premium features
   final List<PremiumFeaturePromotionAnimation> animations;
+
+  /// The list of available promotion animations for Business features
+  final List<BusinessFeaturePromotionAnimation> businessAnimations;
 
   /// [extra] callback sign
   @override
@@ -51,6 +57,10 @@ final class PremiumState extends TdObject {
             (json['animations'] ?? [])
                 .map((item) => PremiumFeaturePromotionAnimation.fromJson(item))
                 .toList()),
+        businessAnimations: List<BusinessFeaturePromotionAnimation>.from(
+            (json['business_animations'] ?? [])
+                .map((item) => BusinessFeaturePromotionAnimation.fromJson(item))
+                .toList()),
         extra: json['@extra'],
         clientId: json['@client_id'],
       );
@@ -63,6 +73,7 @@ final class PremiumState extends TdObject {
       "state": state.toJson(),
       "payment_options": paymentOptions.map((i) => i.toJson()).toList(),
       "animations": animations.map((i) => i.toJson()).toList(),
+      "business_animations": businessAnimations.map((i) => i.toJson()).toList(),
     };
   }
 
@@ -72,10 +83,12 @@ final class PremiumState extends TdObject {
   /// * [state]: Text description of the state of the current Premium subscription; may be empty if the current user has no Telegram Premium subscription
   /// * [payment_options]: The list of available options for buying Telegram Premium
   /// * [animations]: The list of available promotion animations for Premium features
+  /// * [business_animations]: The list of available promotion animations for Business features
   PremiumState copyWith({
     FormattedText? state,
     List<PremiumStatePaymentOption>? paymentOptions,
     List<PremiumFeaturePromotionAnimation>? animations,
+    List<BusinessFeaturePromotionAnimation>? businessAnimations,
     dynamic extra,
     int? clientId,
   }) =>
@@ -83,6 +96,7 @@ final class PremiumState extends TdObject {
         state: state ?? this.state,
         paymentOptions: paymentOptions ?? this.paymentOptions,
         animations: animations ?? this.animations,
+        businessAnimations: businessAnimations ?? this.businessAnimations,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

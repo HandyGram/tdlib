@@ -239,12 +239,12 @@ final class CheckChatUsernameResultUsernameOccupied
 
 /// **CheckChatUsernameResultUsernamePurchasable** *(checkChatUsernameResultUsernamePurchasable)* - child of CheckChatUsernameResult
 ///
-/// The username can be purchased at fragment.com.
+/// The username can be purchased at https://fragment.com. Information about the username can be received using getCollectibleItemInfo.
 final class CheckChatUsernameResultUsernamePurchasable
     extends CheckChatUsernameResult {
   /// **CheckChatUsernameResultUsernamePurchasable** *(checkChatUsernameResultUsernamePurchasable)* - child of CheckChatUsernameResult
   ///
-  /// The username can be purchased at fragment.com.
+  /// The username can be purchased at https://fragment.com. Information about the username can be received using getCollectibleItemInfo.
   const CheckChatUsernameResultUsernamePurchasable({
     this.extra,
     this.clientId,

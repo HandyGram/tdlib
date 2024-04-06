@@ -1740,7 +1740,7 @@ final class InternalLinkTypeMessageDraft extends InternalLinkType {
 ///
 /// The link contains a request of Telegram passport data. Call getPassportAuthorizationForm with the given parameters to process the link if the link was received from outside of the application; otherwise, ignore it.
 ///
-/// * [botUserId]: User identifier of the service's bot.
+/// * [botUserId]: User identifier of the service's bot; the corresponding user may be unknown yet.
 /// * [scope]: Telegram Passport element types requested by the service.
 /// * [publicKey]: Service's public key.
 /// * [nonce]: Unique request identifier provided by the service.
@@ -1750,7 +1750,7 @@ final class InternalLinkTypePassportDataRequest extends InternalLinkType {
   ///
   /// The link contains a request of Telegram passport data. Call getPassportAuthorizationForm with the given parameters to process the link if the link was received from outside of the application; otherwise, ignore it.
   ///
-  /// * [botUserId]: User identifier of the service's bot.
+  /// * [botUserId]: User identifier of the service's bot; the corresponding user may be unknown yet.
   /// * [scope]: Telegram Passport element types requested by the service.
   /// * [publicKey]: Service's public key.
   /// * [nonce]: Unique request identifier provided by the service.
@@ -1765,7 +1765,7 @@ final class InternalLinkTypePassportDataRequest extends InternalLinkType {
     this.clientId,
   });
 
-  /// User identifier of the service's bot
+  /// User identifier of the service's bot; the corresponding user may be unknown yet
   final int botUserId;
 
   /// Telegram Passport element types requested by the service
@@ -1817,7 +1817,7 @@ final class InternalLinkTypePassportDataRequest extends InternalLinkType {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [bot_user_id]: User identifier of the service's bot
+  /// * [bot_user_id]: User identifier of the service's bot; the corresponding user may be unknown yet
   /// * [scope]: Telegram Passport element types requested by the service
   /// * [public_key]: Service's public key
   /// * [nonce]: Unique request identifier provided by the service

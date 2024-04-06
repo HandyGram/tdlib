@@ -4,7 +4,7 @@ part of '../tdapi.dart';
 ///
 /// Changes the business opening hours of the current user. Requires Telegram Business subscription.
 ///
-/// * [openingHours]: The new opening hours of the business; pass null to remove the opening hours *(optional)*.
+/// * [openingHours]: The new opening hours of the business; pass null to remove the opening hours; up to 28 time intervals can be specified *(optional)*.
 ///
 /// [Ok] is returned on completion.
 final class SetBusinessOpeningHours extends TdFunction {
@@ -12,14 +12,14 @@ final class SetBusinessOpeningHours extends TdFunction {
   ///
   /// Changes the business opening hours of the current user. Requires Telegram Business subscription.
   ///
-  /// * [openingHours]: The new opening hours of the business; pass null to remove the opening hours *(optional)*.
+  /// * [openingHours]: The new opening hours of the business; pass null to remove the opening hours; up to 28 time intervals can be specified *(optional)*.
   ///
   /// [Ok] is returned on completion.
   const SetBusinessOpeningHours({
     this.openingHours,
   });
 
-  /// The new opening hours of the business; pass null to remove the opening hours
+  /// The new opening hours of the business; pass null to remove the opening hours; up to 28 time intervals can be specified
   final BusinessOpeningHours? openingHours;
 
   /// Convert model to TDLib JSON format
@@ -35,7 +35,7 @@ final class SetBusinessOpeningHours extends TdFunction {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [opening_hours]: The new opening hours of the business; pass null to remove the opening hours
+  /// * [opening_hours]: The new opening hours of the business; pass null to remove the opening hours; up to 28 time intervals can be specified
   SetBusinessOpeningHours copyWith({
     BusinessOpeningHours? openingHours,
   }) =>

@@ -57,7 +57,7 @@ sealed class MessageExtendedMedia extends TdObject {
 ///
 /// * [width]: Media width; 0 if unknown.
 /// * [height]: Media height; 0 if unknown.
-/// * [duration]: Media duration; 0 if unknown.
+/// * [duration]: Media duration, in seconds; 0 if unknown.
 /// * [minithumbnail]: Media minithumbnail; may be null *(optional)*.
 /// * [caption]: Media caption.
 final class MessageExtendedMediaPreview extends MessageExtendedMedia {
@@ -67,7 +67,7 @@ final class MessageExtendedMediaPreview extends MessageExtendedMedia {
   ///
   /// * [width]: Media width; 0 if unknown.
   /// * [height]: Media height; 0 if unknown.
-  /// * [duration]: Media duration; 0 if unknown.
+  /// * [duration]: Media duration, in seconds; 0 if unknown.
   /// * [minithumbnail]: Media minithumbnail; may be null *(optional)*.
   /// * [caption]: Media caption.
   const MessageExtendedMediaPreview({
@@ -84,7 +84,7 @@ final class MessageExtendedMediaPreview extends MessageExtendedMedia {
   /// Media height; 0 if unknown
   final int height;
 
-  /// Media duration; 0 if unknown
+  /// Media duration, in seconds; 0 if unknown
   final int duration;
 
   /// Media minithumbnail; may be null
@@ -123,7 +123,7 @@ final class MessageExtendedMediaPreview extends MessageExtendedMedia {
   /// Properties:
   /// * [width]: Media width; 0 if unknown
   /// * [height]: Media height; 0 if unknown
-  /// * [duration]: Media duration; 0 if unknown
+  /// * [duration]: Media duration, in seconds; 0 if unknown
   /// * [minithumbnail]: Media minithumbnail; may be null
   /// * [caption]: Media caption
   @override

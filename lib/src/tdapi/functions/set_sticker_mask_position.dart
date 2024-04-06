@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **SetStickerMaskPosition** *(setStickerMaskPosition)* - TDLib function
 ///
-/// Changes the mask position of a mask sticker; for bots only. The sticker must belong to a mask sticker set created by the bot.
+/// Changes the mask position of a mask sticker. The sticker must belong to a mask sticker set that is owned by the current user.
 ///
 /// * [sticker]: Sticker.
 /// * [maskPosition]: Position where the mask is placed; pass null to remove mask position *(optional)*.
@@ -11,7 +11,7 @@ part of '../tdapi.dart';
 final class SetStickerMaskPosition extends TdFunction {
   /// **SetStickerMaskPosition** *(setStickerMaskPosition)* - TDLib function
   ///
-  /// Changes the mask position of a mask sticker; for bots only. The sticker must belong to a mask sticker set created by the bot.
+  /// Changes the mask position of a mask sticker. The sticker must belong to a mask sticker set that is owned by the current user.
   ///
   /// * [sticker]: Sticker.
   /// * [maskPosition]: Position where the mask is placed; pass null to remove mask position *(optional)*.

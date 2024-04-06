@@ -7,7 +7,7 @@ part of '../tdapi.dart';
 /// * [country]: Information about the country to which the phone number belongs; may be null *(optional)*.
 /// * [countryCallingCode]: The part of the phone number denoting country calling code or its part.
 /// * [formattedPhoneNumber]: The phone number without country calling code formatted accordingly to local rules. Expected digits are returned as '-', but even more digits might be entered by the user.
-/// * [isAnonymous]: True, if the phone number was bought on Fragment and isn't tied to a SIM card.
+/// * [isAnonymous]: True, if the phone number was bought at https://fragment.com and isn't tied to a SIM card. Information about the phone number can be received using getCollectibleItemInfo.
 final class PhoneNumberInfo extends TdObject {
   /// **PhoneNumberInfo** *(phoneNumberInfo)* - basic class
   ///
@@ -16,7 +16,7 @@ final class PhoneNumberInfo extends TdObject {
   /// * [country]: Information about the country to which the phone number belongs; may be null *(optional)*.
   /// * [countryCallingCode]: The part of the phone number denoting country calling code or its part.
   /// * [formattedPhoneNumber]: The phone number without country calling code formatted accordingly to local rules. Expected digits are returned as '-', but even more digits might be entered by the user.
-  /// * [isAnonymous]: True, if the phone number was bought on Fragment and isn't tied to a SIM card.
+  /// * [isAnonymous]: True, if the phone number was bought at https://fragment.com and isn't tied to a SIM card. Information about the phone number can be received using getCollectibleItemInfo.
   const PhoneNumberInfo({
     this.country,
     required this.countryCallingCode,
@@ -35,7 +35,7 @@ final class PhoneNumberInfo extends TdObject {
   /// The phone number without country calling code formatted accordingly to local rules. Expected digits are returned as '-', but even more digits might be entered by the user
   final String formattedPhoneNumber;
 
-  /// True, if the phone number was bought on Fragment and isn't tied to a SIM card
+  /// True, if the phone number was bought at https://fragment.com and isn't tied to a SIM card. Information about the phone number can be received using getCollectibleItemInfo
   final bool isAnonymous;
 
   /// [extra] callback sign
@@ -77,7 +77,7 @@ final class PhoneNumberInfo extends TdObject {
   /// * [country]: Information about the country to which the phone number belongs; may be null
   /// * [country_calling_code]: The part of the phone number denoting country calling code or its part
   /// * [formatted_phone_number]: The phone number without country calling code formatted accordingly to local rules. Expected digits are returned as '-', but even more digits might be entered by the user
-  /// * [is_anonymous]: True, if the phone number was bought on Fragment and isn't tied to a SIM card
+  /// * [is_anonymous]: True, if the phone number was bought at https://fragment.com and isn't tied to a SIM card. Information about the phone number can be received using getCollectibleItemInfo
   PhoneNumberInfo copyWith({
     CountryInfo? country,
     String? countryCallingCode,

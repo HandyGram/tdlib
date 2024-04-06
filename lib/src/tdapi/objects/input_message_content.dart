@@ -943,7 +943,7 @@ final class InputMessageVideo extends InputMessageContent {
 ///
 /// * [videoNote]: Video note to be sent.
 /// * [thumbnail]: Video thumbnail; may be null if empty; pass null to skip thumbnail uploading *(optional)*.
-/// * [duration]: Duration of the video, in seconds.
+/// * [duration]: Duration of the video, in seconds; 0-60.
 /// * [length]: Video width and height; must be positive and not greater than 640.
 /// * [selfDestructType]: Video note self-destruct type; may be null if none; pass null if none; private chats only *(optional)*.
 final class InputMessageVideoNote extends InputMessageContent {
@@ -953,7 +953,7 @@ final class InputMessageVideoNote extends InputMessageContent {
   ///
   /// * [videoNote]: Video note to be sent.
   /// * [thumbnail]: Video thumbnail; may be null if empty; pass null to skip thumbnail uploading *(optional)*.
-  /// * [duration]: Duration of the video, in seconds.
+  /// * [duration]: Duration of the video, in seconds; 0-60.
   /// * [length]: Video width and height; must be positive and not greater than 640.
   /// * [selfDestructType]: Video note self-destruct type; may be null if none; pass null if none; private chats only *(optional)*.
   const InputMessageVideoNote({
@@ -970,7 +970,7 @@ final class InputMessageVideoNote extends InputMessageContent {
   /// Video thumbnail; may be null if empty; pass null to skip thumbnail uploading
   final InputThumbnail? thumbnail;
 
-  /// Duration of the video, in seconds
+  /// Duration of the video, in seconds; 0-60
   final int duration;
 
   /// Video width and height; must be positive and not greater than 640
@@ -1011,7 +1011,7 @@ final class InputMessageVideoNote extends InputMessageContent {
   /// Properties:
   /// * [video_note]: Video note to be sent
   /// * [thumbnail]: Video thumbnail; may be null if empty; pass null to skip thumbnail uploading
-  /// * [duration]: Duration of the video, in seconds
+  /// * [duration]: Duration of the video, in seconds; 0-60
   /// * [length]: Video width and height; must be positive and not greater than 640
   /// * [self_destruct_type]: Video note self-destruct type; may be null if none; pass null if none; private chats only
   @override

@@ -20,6 +20,7 @@ sealed class SuggestedAction extends TdObject {
   /// * [SuggestedActionRestorePremium]
   /// * [SuggestedActionSubscribeToAnnualPremium]
   /// * [SuggestedActionGiftPremiumForChristmas]
+  /// * [SuggestedActionSetBirthdate]
   factory SuggestedAction.fromJson(Map<String, dynamic> json) {
     switch (json["@type"]) {
       case SuggestedActionEnableArchiveAndMuteNewChats.defaultObjectId:
@@ -42,6 +43,8 @@ sealed class SuggestedAction extends TdObject {
         return SuggestedActionSubscribeToAnnualPremium.fromJson(json);
       case SuggestedActionGiftPremiumForChristmas.defaultObjectId:
         return SuggestedActionGiftPremiumForChristmas.fromJson(json);
+      case SuggestedActionSetBirthdate.defaultObjectId:
+        return SuggestedActionSetBirthdate.fromJson(json);
       default:
         throw FormatException(
           "Unknown object ${json["@type"]} (expected child of SuggestedAction)",
@@ -486,6 +489,43 @@ final class SuggestedActionGiftPremiumForChristmas extends SuggestedAction {
   /// TDLib object type
   static const String defaultObjectId =
       'suggestedActionGiftPremiumForChristmas';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **SuggestedActionSetBirthdate** *(suggestedActionSetBirthdate)* - child of SuggestedAction
+///
+/// Suggests the user to set birthdate.
+final class SuggestedActionSetBirthdate extends SuggestedAction {
+  /// **SuggestedActionSetBirthdate** *(suggestedActionSetBirthdate)* - child of SuggestedAction
+  ///
+  /// Suggests the user to set birthdate.
+  const SuggestedActionSetBirthdate();
+
+  /// Parse from a json
+  factory SuggestedActionSetBirthdate.fromJson(Map<String, dynamic> json) =>
+      const SuggestedActionSetBirthdate();
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+    };
+  }
+
+  /// Copy instance with no modifications.
+  @override
+  SuggestedActionSetBirthdate copyWith() => const SuggestedActionSetBirthdate();
+
+  /// TDLib object type
+  static const String defaultObjectId = 'suggestedActionSetBirthdate';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

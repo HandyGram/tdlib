@@ -32,6 +32,7 @@ sealed class PremiumFeature extends TdObject {
   /// * [PremiumFeatureSavedMessagesTags]
   /// * [PremiumFeatureMessagePrivacy]
   /// * [PremiumFeatureLastSeenTimes]
+  /// * [PremiumFeatureBusiness]
   factory PremiumFeature.fromJson(Map<String, dynamic> json) {
     switch (json["@type"]) {
       case PremiumFeatureIncreasedLimits.defaultObjectId:
@@ -78,6 +79,8 @@ sealed class PremiumFeature extends TdObject {
         return PremiumFeatureMessagePrivacy.fromJson(json);
       case PremiumFeatureLastSeenTimes.defaultObjectId:
         return PremiumFeatureLastSeenTimes.fromJson(json);
+      case PremiumFeatureBusiness.defaultObjectId:
+        return PremiumFeatureBusiness.fromJson(json);
       default:
         throw FormatException(
           "Unknown object ${json["@type"]} (expected child of PremiumFeature)",
@@ -487,11 +490,11 @@ final class PremiumFeatureProfileBadge extends PremiumFeature {
 
 /// **PremiumFeatureEmojiStatus** *(premiumFeatureEmojiStatus)* - child of PremiumFeature
 ///
-/// An emoji status shown along with the user's name.
+/// The ability to show an emoji status along with the user's name.
 final class PremiumFeatureEmojiStatus extends PremiumFeature {
   /// **PremiumFeatureEmojiStatus** *(premiumFeatureEmojiStatus)* - child of PremiumFeature
   ///
-  /// An emoji status shown along with the user's name.
+  /// The ability to show an emoji status along with the user's name.
   const PremiumFeatureEmojiStatus();
 
   /// Parse from a json
@@ -928,6 +931,43 @@ final class PremiumFeatureLastSeenTimes extends PremiumFeature {
 
   /// TDLib object type
   static const String defaultObjectId = 'premiumFeatureLastSeenTimes';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **PremiumFeatureBusiness** *(premiumFeatureBusiness)* - child of PremiumFeature
+///
+/// The ability to use Business features.
+final class PremiumFeatureBusiness extends PremiumFeature {
+  /// **PremiumFeatureBusiness** *(premiumFeatureBusiness)* - child of PremiumFeature
+  ///
+  /// The ability to use Business features.
+  const PremiumFeatureBusiness();
+
+  /// Parse from a json
+  factory PremiumFeatureBusiness.fromJson(Map<String, dynamic> json) =>
+      const PremiumFeatureBusiness();
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+    };
+  }
+
+  /// Copy instance with no modifications.
+  @override
+  PremiumFeatureBusiness copyWith() => const PremiumFeatureBusiness();
+
+  /// TDLib object type
+  static const String defaultObjectId = 'premiumFeatureBusiness';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

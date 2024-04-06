@@ -1,3 +1,6 @@
+## 2.3.5
+* Updated to TDLib 1.8.27 (d7203eb71)
+
 ## 2.3.4
 * Updated README a bit
 

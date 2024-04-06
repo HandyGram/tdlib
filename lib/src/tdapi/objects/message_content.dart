@@ -4554,22 +4554,22 @@ final class MessageContactRegistered extends MessageContent {
 ///
 /// The current user shared users, which were requested by the bot.
 ///
-/// * [userIds]: Identifier of the shared users.
+/// * [users]: The shared users.
 /// * [buttonId]: Identifier of the keyboard button with the request.
 final class MessageUsersShared extends MessageContent {
   /// **MessageUsersShared** *(messageUsersShared)* - child of MessageContent
   ///
   /// The current user shared users, which were requested by the bot.
   ///
-  /// * [userIds]: Identifier of the shared users.
+  /// * [users]: The shared users.
   /// * [buttonId]: Identifier of the keyboard button with the request.
   const MessageUsersShared({
-    required this.userIds,
+    required this.users,
     required this.buttonId,
   });
 
-  /// Identifier of the shared users
-  final List<int> userIds;
+  /// The shared users
+  final List<SharedUser> users;
 
   /// Identifier of the keyboard button with the request
   final int buttonId;
@@ -4577,8 +4577,9 @@ final class MessageUsersShared extends MessageContent {
   /// Parse from a json
   factory MessageUsersShared.fromJson(Map<String, dynamic> json) =>
       MessageUsersShared(
-        userIds: List<int>.from(
-            (json['user_ids'] ?? []).map((item) => item).toList()),
+        users: List<SharedUser>.from((json['users'] ?? [])
+            .map((item) => SharedUser.fromJson(item))
+            .toList()),
         buttonId: json['button_id'],
       );
 
@@ -4587,7 +4588,7 @@ final class MessageUsersShared extends MessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": defaultObjectId,
-      "user_ids": userIds.map((i) => i).toList(),
+      "users": users.map((i) => i.toJson()).toList(),
       "button_id": buttonId,
     };
   }
@@ -4595,15 +4596,15 @@ final class MessageUsersShared extends MessageContent {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [user_ids]: Identifier of the shared users
+  /// * [users]: The shared users
   /// * [button_id]: Identifier of the keyboard button with the request
   @override
   MessageUsersShared copyWith({
-    List<int>? userIds,
+    List<SharedUser>? users,
     int? buttonId,
   }) =>
       MessageUsersShared(
-        userIds: userIds ?? this.userIds,
+        users: users ?? this.users,
         buttonId: buttonId ?? this.buttonId,
       );
 
@@ -4623,22 +4624,22 @@ final class MessageUsersShared extends MessageContent {
 ///
 /// The current user shared a chat, which was requested by the bot.
 ///
-/// * [chatId]: Identifier of the shared chat.
+/// * [chat]: The shared chat.
 /// * [buttonId]: Identifier of the keyboard button with the request.
 final class MessageChatShared extends MessageContent {
   /// **MessageChatShared** *(messageChatShared)* - child of MessageContent
   ///
   /// The current user shared a chat, which was requested by the bot.
   ///
-  /// * [chatId]: Identifier of the shared chat.
+  /// * [chat]: The shared chat.
   /// * [buttonId]: Identifier of the keyboard button with the request.
   const MessageChatShared({
-    required this.chatId,
+    required this.chat,
     required this.buttonId,
   });
 
-  /// Identifier of the shared chat
-  final int chatId;
+  /// The shared chat
+  final SharedChat chat;
 
   /// Identifier of the keyboard button with the request
   final int buttonId;
@@ -4646,7 +4647,7 @@ final class MessageChatShared extends MessageContent {
   /// Parse from a json
   factory MessageChatShared.fromJson(Map<String, dynamic> json) =>
       MessageChatShared(
-        chatId: json['chat_id'],
+        chat: SharedChat.fromJson(json['chat']),
         buttonId: json['button_id'],
       );
 
@@ -4655,7 +4656,7 @@ final class MessageChatShared extends MessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": defaultObjectId,
-      "chat_id": chatId,
+      "chat": chat.toJson(),
       "button_id": buttonId,
     };
   }
@@ -4663,15 +4664,15 @@ final class MessageChatShared extends MessageContent {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Identifier of the shared chat
+  /// * [chat]: The shared chat
   /// * [button_id]: Identifier of the keyboard button with the request
   @override
   MessageChatShared copyWith({
-    int? chatId,
+    SharedChat? chat,
     int? buttonId,
   }) =>
       MessageChatShared(
-        chatId: chatId ?? this.chatId,
+        chat: chat ?? this.chat,
         buttonId: buttonId ?? this.buttonId,
       );
 

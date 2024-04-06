@@ -5,6 +5,7 @@ part of '../tdapi.dart';
 /// Describes private chats chosen for automatic interaction with a business.
 ///
 /// * [chatIds]: Identifiers of selected private chats.
+/// * [excludedChatIds]: Identifiers of private chats that are always excluded; for businessConnectedBot only.
 /// * [selectExistingChats]: True, if all existing private chats are selected.
 /// * [selectNewChats]: True, if all new private chats are selected.
 /// * [selectContacts]: True, if all private chats with contacts are selected.
@@ -16,6 +17,7 @@ final class BusinessRecipients extends TdObject {
   /// Describes private chats chosen for automatic interaction with a business.
   ///
   /// * [chatIds]: Identifiers of selected private chats.
+  /// * [excludedChatIds]: Identifiers of private chats that are always excluded; for businessConnectedBot only.
   /// * [selectExistingChats]: True, if all existing private chats are selected.
   /// * [selectNewChats]: True, if all new private chats are selected.
   /// * [selectContacts]: True, if all private chats with contacts are selected.
@@ -23,6 +25,7 @@ final class BusinessRecipients extends TdObject {
   /// * [excludeSelected]: If true, then all private chats except the selected are chosen. Otherwise, only the selected chats are chosen.
   const BusinessRecipients({
     required this.chatIds,
+    required this.excludedChatIds,
     required this.selectExistingChats,
     required this.selectNewChats,
     required this.selectContacts,
@@ -32,6 +35,9 @@ final class BusinessRecipients extends TdObject {
 
   /// Identifiers of selected private chats
   final List<int> chatIds;
+
+  /// Identifiers of private chats that are always excluded; for businessConnectedBot only
+  final List<int> excludedChatIds;
 
   /// True, if all existing private chats are selected
   final bool selectExistingChats;
@@ -53,6 +59,8 @@ final class BusinessRecipients extends TdObject {
       BusinessRecipients(
         chatIds: List<int>.from(
             (json['chat_ids'] ?? []).map((item) => item).toList()),
+        excludedChatIds: List<int>.from(
+            (json['excluded_chat_ids'] ?? []).map((item) => item).toList()),
         selectExistingChats: json['select_existing_chats'],
         selectNewChats: json['select_new_chats'],
         selectContacts: json['select_contacts'],
@@ -66,6 +74,7 @@ final class BusinessRecipients extends TdObject {
     return {
       "@type": defaultObjectId,
       "chat_ids": chatIds.map((i) => i).toList(),
+      "excluded_chat_ids": excludedChatIds.map((i) => i).toList(),
       "select_existing_chats": selectExistingChats,
       "select_new_chats": selectNewChats,
       "select_contacts": selectContacts,
@@ -78,6 +87,7 @@ final class BusinessRecipients extends TdObject {
   ///
   /// Properties:
   /// * [chat_ids]: Identifiers of selected private chats
+  /// * [excluded_chat_ids]: Identifiers of private chats that are always excluded; for businessConnectedBot only
   /// * [select_existing_chats]: True, if all existing private chats are selected
   /// * [select_new_chats]: True, if all new private chats are selected
   /// * [select_contacts]: True, if all private chats with contacts are selected
@@ -85,6 +95,7 @@ final class BusinessRecipients extends TdObject {
   /// * [exclude_selected]: If true, then all private chats except the selected are chosen. Otherwise, only the selected chats are chosen
   BusinessRecipients copyWith({
     List<int>? chatIds,
+    List<int>? excludedChatIds,
     bool? selectExistingChats,
     bool? selectNewChats,
     bool? selectContacts,
@@ -93,6 +104,7 @@ final class BusinessRecipients extends TdObject {
   }) =>
       BusinessRecipients(
         chatIds: chatIds ?? this.chatIds,
+        excludedChatIds: excludedChatIds ?? this.excludedChatIds,
         selectExistingChats: selectExistingChats ?? this.selectExistingChats,
         selectNewChats: selectNewChats ?? this.selectNewChats,
         selectContacts: selectContacts ?? this.selectContacts,

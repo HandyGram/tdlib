@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 ///
 /// * [activeUsernames]: List of active usernames; the first one must be shown as the primary username. The order of active usernames can be changed with reorderActiveUsernames, reorderBotActiveUsernames or reorderSupergroupActiveUsernames.
 /// * [disabledUsernames]: List of currently disabled usernames; the username can be activated with toggleUsernameIsActive, toggleBotUsernameIsActive, or toggleSupergroupUsernameIsActive.
-/// * [editableUsername]: The active username, which can be changed with setUsername or setSupergroupUsername.
+/// * [editableUsername]: The active username, which can be changed with setUsername or setSupergroupUsername. Information about other active usernames can be received using getCollectibleItemInfo.
 final class Usernames extends TdObject {
   /// **Usernames** *(usernames)* - basic class
   ///
@@ -14,7 +14,7 @@ final class Usernames extends TdObject {
   ///
   /// * [activeUsernames]: List of active usernames; the first one must be shown as the primary username. The order of active usernames can be changed with reorderActiveUsernames, reorderBotActiveUsernames or reorderSupergroupActiveUsernames.
   /// * [disabledUsernames]: List of currently disabled usernames; the username can be activated with toggleUsernameIsActive, toggleBotUsernameIsActive, or toggleSupergroupUsernameIsActive.
-  /// * [editableUsername]: The active username, which can be changed with setUsername or setSupergroupUsername.
+  /// * [editableUsername]: The active username, which can be changed with setUsername or setSupergroupUsername. Information about other active usernames can be received using getCollectibleItemInfo.
   const Usernames({
     required this.activeUsernames,
     required this.disabledUsernames,
@@ -27,7 +27,7 @@ final class Usernames extends TdObject {
   /// List of currently disabled usernames; the username can be activated with toggleUsernameIsActive, toggleBotUsernameIsActive, or toggleSupergroupUsernameIsActive
   final List<String> disabledUsernames;
 
-  /// The active username, which can be changed with setUsername or setSupergroupUsername
+  /// The active username, which can be changed with setUsername or setSupergroupUsername. Information about other active usernames can be received using getCollectibleItemInfo
   final String editableUsername;
 
   /// Parse from a json
@@ -55,7 +55,7 @@ final class Usernames extends TdObject {
   /// Properties:
   /// * [active_usernames]: List of active usernames; the first one must be shown as the primary username. The order of active usernames can be changed with reorderActiveUsernames, reorderBotActiveUsernames or reorderSupergroupActiveUsernames
   /// * [disabled_usernames]: List of currently disabled usernames; the username can be activated with toggleUsernameIsActive, toggleBotUsernameIsActive, or toggleSupergroupUsernameIsActive
-  /// * [editable_username]: The active username, which can be changed with setUsername or setSupergroupUsername
+  /// * [editable_username]: The active username, which can be changed with setUsername or setSupergroupUsername. Information about other active usernames can be received using getCollectibleItemInfo
   Usernames copyWith({
     List<String>? activeUsernames,
     List<String>? disabledUsernames,

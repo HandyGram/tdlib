@@ -210,11 +210,11 @@ final class ThumbnailFormatPng extends ThumbnailFormat {
 
 /// **ThumbnailFormatTgs** *(thumbnailFormatTgs)* - child of ThumbnailFormat
 ///
-/// The thumbnail is in TGS format. It will be used only for TGS sticker sets.
+/// The thumbnail is in TGS format. It will be used only for sticker sets.
 final class ThumbnailFormatTgs extends ThumbnailFormat {
   /// **ThumbnailFormatTgs** *(thumbnailFormatTgs)* - child of ThumbnailFormat
   ///
-  /// The thumbnail is in TGS format. It will be used only for TGS sticker sets.
+  /// The thumbnail is in TGS format. It will be used only for sticker sets.
   const ThumbnailFormatTgs();
 
   /// Parse from a json
@@ -247,11 +247,11 @@ final class ThumbnailFormatTgs extends ThumbnailFormat {
 
 /// **ThumbnailFormatWebm** *(thumbnailFormatWebm)* - child of ThumbnailFormat
 ///
-/// The thumbnail is in WEBM format. It will be used only for WEBM sticker sets.
+/// The thumbnail is in WEBM format. It will be used only for sticker sets.
 final class ThumbnailFormatWebm extends ThumbnailFormat {
   /// **ThumbnailFormatWebm** *(thumbnailFormatWebm)* - child of ThumbnailFormat
   ///
-  /// The thumbnail is in WEBM format. It will be used only for WEBM sticker sets.
+  /// The thumbnail is in WEBM format. It will be used only for sticker sets.
   const ThumbnailFormatWebm();
 
   /// Parse from a json
@@ -284,11 +284,11 @@ final class ThumbnailFormatWebm extends ThumbnailFormat {
 
 /// **ThumbnailFormatWebp** *(thumbnailFormatWebp)* - child of ThumbnailFormat
 ///
-/// The thumbnail is in WEBP format. It will be used only for some stickers.
+/// The thumbnail is in WEBP format. It will be used only for some stickers and sticker sets.
 final class ThumbnailFormatWebp extends ThumbnailFormat {
   /// **ThumbnailFormatWebp** *(thumbnailFormatWebp)* - child of ThumbnailFormat
   ///
-  /// The thumbnail is in WEBP format. It will be used only for some stickers.
+  /// The thumbnail is in WEBP format. It will be used only for some stickers and sticker sets.
   const ThumbnailFormatWebp();
 
   /// Parse from a json

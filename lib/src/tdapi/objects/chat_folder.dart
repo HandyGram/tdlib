@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 ///
 /// * [title]: The title of the folder; 1-12 characters without line feeds.
 /// * [icon]: The chosen icon for the chat folder; may be null. If null, use getChatFolderDefaultIconName to get default icon name for the folder *(optional)*.
-/// * [colorId]: The identifier of the chosen color for the chat folder icon; from -1 to 6. If -1, then color is didabled.
+/// * [colorId]: The identifier of the chosen color for the chat folder icon; from -1 to 6. If -1, then color is didabled. Can't be changed if folder tags are disabled or the current user doesn't have Telegram Premium subscription.
 /// * [isShareable]: True, if at least one link has been created for the folder.
 /// * [pinnedChatIds]: The chat identifiers of pinned chats in the folder. There can be up to getOption("chat_folder_chosen_chat_count_max") pinned and always included non-secret chats and the same number of secret chats, but the limit can be increased with Telegram Premium.
 /// * [includedChatIds]: The chat identifiers of always included chats in the folder. There can be up to getOption("chat_folder_chosen_chat_count_max") pinned and always included non-secret chats and the same number of secret chats, but the limit can be increased with Telegram Premium.
@@ -26,7 +26,7 @@ final class ChatFolder extends TdObject {
   ///
   /// * [title]: The title of the folder; 1-12 characters without line feeds.
   /// * [icon]: The chosen icon for the chat folder; may be null. If null, use getChatFolderDefaultIconName to get default icon name for the folder *(optional)*.
-  /// * [colorId]: The identifier of the chosen color for the chat folder icon; from -1 to 6. If -1, then color is didabled.
+  /// * [colorId]: The identifier of the chosen color for the chat folder icon; from -1 to 6. If -1, then color is didabled. Can't be changed if folder tags are disabled or the current user doesn't have Telegram Premium subscription.
   /// * [isShareable]: True, if at least one link has been created for the folder.
   /// * [pinnedChatIds]: The chat identifiers of pinned chats in the folder. There can be up to getOption("chat_folder_chosen_chat_count_max") pinned and always included non-secret chats and the same number of secret chats, but the limit can be increased with Telegram Premium.
   /// * [includedChatIds]: The chat identifiers of always included chats in the folder. There can be up to getOption("chat_folder_chosen_chat_count_max") pinned and always included non-secret chats and the same number of secret chats, but the limit can be increased with Telegram Premium.
@@ -65,7 +65,7 @@ final class ChatFolder extends TdObject {
   /// The chosen icon for the chat folder; may be null. If null, use getChatFolderDefaultIconName to get default icon name for the folder
   final ChatFolderIcon? icon;
 
-  /// The identifier of the chosen color for the chat folder icon; from -1 to 6. If -1, then color is didabled
+  /// The identifier of the chosen color for the chat folder icon; from -1 to 6. If -1, then color is didabled. Can't be changed if folder tags are disabled or the current user doesn't have Telegram Premium subscription
   final int colorId;
 
   /// True, if at least one link has been created for the folder
@@ -165,7 +165,7 @@ final class ChatFolder extends TdObject {
   /// Properties:
   /// * [title]: The title of the folder; 1-12 characters without line feeds
   /// * [icon]: The chosen icon for the chat folder; may be null. If null, use getChatFolderDefaultIconName to get default icon name for the folder
-  /// * [color_id]: The identifier of the chosen color for the chat folder icon; from -1 to 6. If -1, then color is didabled
+  /// * [color_id]: The identifier of the chosen color for the chat folder icon; from -1 to 6. If -1, then color is didabled. Can't be changed if folder tags are disabled or the current user doesn't have Telegram Premium subscription
   /// * [is_shareable]: True, if at least one link has been created for the folder
   /// * [pinned_chat_ids]: The chat identifiers of pinned chats in the folder. There can be up to getOption("chat_folder_chosen_chat_count_max") pinned and always included non-secret chats and the same number of secret chats, but the limit can be increased with Telegram Premium
   /// * [included_chat_ids]: The chat identifiers of always included chats in the folder. There can be up to getOption("chat_folder_chosen_chat_count_max") pinned and always included non-secret chats and the same number of secret chats, but the limit can be increased with Telegram Premium

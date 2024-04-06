@@ -9,10 +9,10 @@ part of '../tdapi.dart';
 /// * [name]: Name of the sticker set.
 /// * [thumbnail]: Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null. The file can be downloaded only before the thumbnail is changed *(optional)*.
 /// * [thumbnailOutline]: Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner.
+/// * [isOwned]: True, if the sticker set is owned by the current user.
 /// * [isInstalled]: True, if the sticker set has been installed by the current user.
 /// * [isArchived]: True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously.
 /// * [isOfficial]: True, if the sticker set is official.
-/// * [stickerFormat]: Format of the stickers in the set.
 /// * [stickerType]: Type of the stickers in the set.
 /// * [needsRepainting]: True, if stickers in the sticker set are custom emoji that must be repainted; for custom emoji sticker sets only.
 /// * [isAllowedAsChatEmojiStatus]: True, if stickers in the sticker set are custom emoji that can be used as chat emoji status; for custom emoji sticker sets only.
@@ -29,10 +29,10 @@ final class StickerSet extends TdObject {
   /// * [name]: Name of the sticker set.
   /// * [thumbnail]: Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null. The file can be downloaded only before the thumbnail is changed *(optional)*.
   /// * [thumbnailOutline]: Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner.
+  /// * [isOwned]: True, if the sticker set is owned by the current user.
   /// * [isInstalled]: True, if the sticker set has been installed by the current user.
   /// * [isArchived]: True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously.
   /// * [isOfficial]: True, if the sticker set is official.
-  /// * [stickerFormat]: Format of the stickers in the set.
   /// * [stickerType]: Type of the stickers in the set.
   /// * [needsRepainting]: True, if stickers in the sticker set are custom emoji that must be repainted; for custom emoji sticker sets only.
   /// * [isAllowedAsChatEmojiStatus]: True, if stickers in the sticker set are custom emoji that can be used as chat emoji status; for custom emoji sticker sets only.
@@ -45,10 +45,10 @@ final class StickerSet extends TdObject {
     required this.name,
     this.thumbnail,
     required this.thumbnailOutline,
+    required this.isOwned,
     required this.isInstalled,
     required this.isArchived,
     required this.isOfficial,
-    required this.stickerFormat,
     required this.stickerType,
     required this.needsRepainting,
     required this.isAllowedAsChatEmojiStatus,
@@ -74,6 +74,9 @@ final class StickerSet extends TdObject {
   /// Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner
   final List<ClosedVectorPath> thumbnailOutline;
 
+  /// True, if the sticker set is owned by the current user
+  final bool isOwned;
+
   /// True, if the sticker set has been installed by the current user
   final bool isInstalled;
 
@@ -82,9 +85,6 @@ final class StickerSet extends TdObject {
 
   /// True, if the sticker set is official
   final bool isOfficial;
-
-  /// Format of the stickers in the set
-  final StickerFormat stickerFormat;
 
   /// Type of the stickers in the set
   final StickerType stickerType;
@@ -124,10 +124,10 @@ final class StickerSet extends TdObject {
             (json['thumbnail_outline'] ?? [])
                 .map((item) => ClosedVectorPath.fromJson(item))
                 .toList()),
+        isOwned: json['is_owned'],
         isInstalled: json['is_installed'],
         isArchived: json['is_archived'],
         isOfficial: json['is_official'],
-        stickerFormat: StickerFormat.fromJson(json['sticker_format']),
         stickerType: StickerType.fromJson(json['sticker_type']),
         needsRepainting: json['needs_repainting'],
         isAllowedAsChatEmojiStatus: json['is_allowed_as_chat_emoji_status'],
@@ -152,10 +152,10 @@ final class StickerSet extends TdObject {
       "name": name,
       "thumbnail": thumbnail?.toJson(),
       "thumbnail_outline": thumbnailOutline.map((i) => i.toJson()).toList(),
+      "is_owned": isOwned,
       "is_installed": isInstalled,
       "is_archived": isArchived,
       "is_official": isOfficial,
-      "sticker_format": stickerFormat.toJson(),
       "sticker_type": stickerType.toJson(),
       "needs_repainting": needsRepainting,
       "is_allowed_as_chat_emoji_status": isAllowedAsChatEmojiStatus,
@@ -173,10 +173,10 @@ final class StickerSet extends TdObject {
   /// * [name]: Name of the sticker set
   /// * [thumbnail]: Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null. The file can be downloaded only before the thumbnail is changed
   /// * [thumbnail_outline]: Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner
+  /// * [is_owned]: True, if the sticker set is owned by the current user
   /// * [is_installed]: True, if the sticker set has been installed by the current user
   /// * [is_archived]: True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously
   /// * [is_official]: True, if the sticker set is official
-  /// * [sticker_format]: Format of the stickers in the set
   /// * [sticker_type]: Type of the stickers in the set
   /// * [needs_repainting]: True, if stickers in the sticker set are custom emoji that must be repainted; for custom emoji sticker sets only
   /// * [is_allowed_as_chat_emoji_status]: True, if stickers in the sticker set are custom emoji that can be used as chat emoji status; for custom emoji sticker sets only
@@ -189,10 +189,10 @@ final class StickerSet extends TdObject {
     String? name,
     Thumbnail? thumbnail,
     List<ClosedVectorPath>? thumbnailOutline,
+    bool? isOwned,
     bool? isInstalled,
     bool? isArchived,
     bool? isOfficial,
-    StickerFormat? stickerFormat,
     StickerType? stickerType,
     bool? needsRepainting,
     bool? isAllowedAsChatEmojiStatus,
@@ -208,10 +208,10 @@ final class StickerSet extends TdObject {
         name: name ?? this.name,
         thumbnail: thumbnail ?? this.thumbnail,
         thumbnailOutline: thumbnailOutline ?? this.thumbnailOutline,
+        isOwned: isOwned ?? this.isOwned,
         isInstalled: isInstalled ?? this.isInstalled,
         isArchived: isArchived ?? this.isArchived,
         isOfficial: isOfficial ?? this.isOfficial,
-        stickerFormat: stickerFormat ?? this.stickerFormat,
         stickerType: stickerType ?? this.stickerType,
         needsRepainting: needsRepainting ?? this.needsRepainting,
         isAllowedAsChatEmojiStatus:

@@ -2,18 +2,18 @@ part of '../tdapi.dart';
 
 /// **SetCustomEmojiStickerSetThumbnail** *(setCustomEmojiStickerSetThumbnail)* - TDLib function
 ///
-/// Sets a custom emoji sticker set thumbnail; for bots only.
+/// Sets a custom emoji sticker set thumbnail.
 ///
-/// * [name]: Sticker set name.
+/// * [name]: Sticker set name. The sticker set must be owned by the current user.
 /// * [customEmojiId]: Identifier of the custom emoji from the sticker set, which will be set as sticker set thumbnail; pass 0 to remove the sticker set thumbnail.
 ///
 /// [Ok] is returned on completion.
 final class SetCustomEmojiStickerSetThumbnail extends TdFunction {
   /// **SetCustomEmojiStickerSetThumbnail** *(setCustomEmojiStickerSetThumbnail)* - TDLib function
   ///
-  /// Sets a custom emoji sticker set thumbnail; for bots only.
+  /// Sets a custom emoji sticker set thumbnail.
   ///
-  /// * [name]: Sticker set name.
+  /// * [name]: Sticker set name. The sticker set must be owned by the current user.
   /// * [customEmojiId]: Identifier of the custom emoji from the sticker set, which will be set as sticker set thumbnail; pass 0 to remove the sticker set thumbnail.
   ///
   /// [Ok] is returned on completion.
@@ -22,7 +22,7 @@ final class SetCustomEmojiStickerSetThumbnail extends TdFunction {
     required this.customEmojiId,
   });
 
-  /// Sticker set name
+  /// Sticker set name. The sticker set must be owned by the current user
   final String name;
 
   /// Identifier of the custom emoji from the sticker set, which will be set as sticker set thumbnail; pass 0 to remove the sticker set thumbnail
@@ -42,7 +42,7 @@ final class SetCustomEmojiStickerSetThumbnail extends TdFunction {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [name]: Sticker set name
+  /// * [name]: Sticker set name. The sticker set must be owned by the current user
   /// * [custom_emoji_id]: Identifier of the custom emoji from the sticker set, which will be set as sticker set thumbnail; pass 0 to remove the sticker set thumbnail
   SetCustomEmojiStickerSetThumbnail copyWith({
     String? name,

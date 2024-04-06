@@ -2,24 +2,24 @@ part of '../tdapi.dart';
 
 /// **RemoveStickerFromSet** *(removeStickerFromSet)* - TDLib function
 ///
-/// Removes a sticker from the set to which it belongs; for bots only. The sticker set must have been created by the bot.
+/// Removes a sticker from the set to which it belongs. The sticker set must be owned by the current user.
 ///
-/// * [sticker]: Sticker.
+/// * [sticker]: Sticker to remove from the set.
 ///
 /// [Ok] is returned on completion.
 final class RemoveStickerFromSet extends TdFunction {
   /// **RemoveStickerFromSet** *(removeStickerFromSet)* - TDLib function
   ///
-  /// Removes a sticker from the set to which it belongs; for bots only. The sticker set must have been created by the bot.
+  /// Removes a sticker from the set to which it belongs. The sticker set must be owned by the current user.
   ///
-  /// * [sticker]: Sticker.
+  /// * [sticker]: Sticker to remove from the set.
   ///
   /// [Ok] is returned on completion.
   const RemoveStickerFromSet({
     required this.sticker,
   });
 
-  /// Sticker
+  /// Sticker to remove from the set
   final InputFile sticker;
 
   /// Convert model to TDLib JSON format
@@ -35,7 +35,7 @@ final class RemoveStickerFromSet extends TdFunction {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [sticker]: Sticker
+  /// * [sticker]: Sticker to remove from the set
   RemoveStickerFromSet copyWith({
     InputFile? sticker,
   }) =>

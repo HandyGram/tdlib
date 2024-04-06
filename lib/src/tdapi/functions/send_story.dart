@@ -7,7 +7,7 @@ part of '../tdapi.dart';
 /// * [chatId]: Identifier of the chat that will post the story.
 /// * [content]: Content of the story.
 /// * [areas]: Clickable rectangle areas to be shown on the story media; pass null if none *(optional)*.
-/// * [caption]: Story caption; pass null to use an empty caption; 0-getOption("story_caption_length_max") characters *(optional)*.
+/// * [caption]: Story caption; pass null to use an empty caption; 0-getOption("story_caption_length_max") characters; can have entities only if getOption("can_use_text_entities_in_story_caption") *(optional)*.
 /// * [privacySettings]: The privacy settings for the story; ignored for stories sent to supergroup and channel chats.
 /// * [activePeriod]: Period after which the story is moved to archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400 for Telegram Premium users, and 86400 otherwise.
 /// * [fromStoryFullId]: Full identifier of the original story, which content was used to create the story.
@@ -23,7 +23,7 @@ final class SendStory extends TdFunction {
   /// * [chatId]: Identifier of the chat that will post the story.
   /// * [content]: Content of the story.
   /// * [areas]: Clickable rectangle areas to be shown on the story media; pass null if none *(optional)*.
-  /// * [caption]: Story caption; pass null to use an empty caption; 0-getOption("story_caption_length_max") characters *(optional)*.
+  /// * [caption]: Story caption; pass null to use an empty caption; 0-getOption("story_caption_length_max") characters; can have entities only if getOption("can_use_text_entities_in_story_caption") *(optional)*.
   /// * [privacySettings]: The privacy settings for the story; ignored for stories sent to supergroup and channel chats.
   /// * [activePeriod]: Period after which the story is moved to archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400 for Telegram Premium users, and 86400 otherwise.
   /// * [fromStoryFullId]: Full identifier of the original story, which content was used to create the story.
@@ -52,7 +52,7 @@ final class SendStory extends TdFunction {
   /// Clickable rectangle areas to be shown on the story media; pass null if none
   final InputStoryAreas? areas;
 
-  /// Story caption; pass null to use an empty caption; 0-getOption("story_caption_length_max") characters
+  /// Story caption; pass null to use an empty caption; 0-getOption("story_caption_length_max") characters; can have entities only if getOption("can_use_text_entities_in_story_caption")
   final FormattedText? caption;
 
   /// The privacy settings for the story; ignored for stories sent to supergroup and channel chats
@@ -94,7 +94,7 @@ final class SendStory extends TdFunction {
   /// * [chat_id]: Identifier of the chat that will post the story
   /// * [content]: Content of the story
   /// * [areas]: Clickable rectangle areas to be shown on the story media; pass null if none
-  /// * [caption]: Story caption; pass null to use an empty caption; 0-getOption("story_caption_length_max") characters
+  /// * [caption]: Story caption; pass null to use an empty caption; 0-getOption("story_caption_length_max") characters; can have entities only if getOption("can_use_text_entities_in_story_caption")
   /// * [privacy_settings]: The privacy settings for the story; ignored for stories sent to supergroup and channel chats
   /// * [active_period]: Period after which the story is moved to archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400 for Telegram Premium users, and 86400 otherwise
   /// * [from_story_full_id]: Full identifier of the original story, which content was used to create the story

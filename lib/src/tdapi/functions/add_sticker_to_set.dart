@@ -2,20 +2,20 @@ part of '../tdapi.dart';
 
 /// **AddStickerToSet** *(addStickerToSet)* - TDLib function
 ///
-/// Adds a new sticker to a set; for bots only.
+/// Adds a new sticker to a set.
 ///
-/// * [userId]: Sticker set owner.
-/// * [name]: Sticker set name.
+/// * [userId]: Sticker set owner; ignored for regular users.
+/// * [name]: Sticker set name. The sticker set must be owned by the current user, and contain less than 200 stickers for custom emoji sticker sets and less than 120 otherwise.
 /// * [sticker]: Sticker to add to the set.
 ///
 /// [Ok] is returned on completion.
 final class AddStickerToSet extends TdFunction {
   /// **AddStickerToSet** *(addStickerToSet)* - TDLib function
   ///
-  /// Adds a new sticker to a set; for bots only.
+  /// Adds a new sticker to a set.
   ///
-  /// * [userId]: Sticker set owner.
-  /// * [name]: Sticker set name.
+  /// * [userId]: Sticker set owner; ignored for regular users.
+  /// * [name]: Sticker set name. The sticker set must be owned by the current user, and contain less than 200 stickers for custom emoji sticker sets and less than 120 otherwise.
   /// * [sticker]: Sticker to add to the set.
   ///
   /// [Ok] is returned on completion.
@@ -25,10 +25,10 @@ final class AddStickerToSet extends TdFunction {
     required this.sticker,
   });
 
-  /// Sticker set owner
+  /// Sticker set owner; ignored for regular users
   final int userId;
 
-  /// Sticker set name
+  /// Sticker set name. The sticker set must be owned by the current user, and contain less than 200 stickers for custom emoji sticker sets and less than 120 otherwise
   final String name;
 
   /// Sticker to add to the set
@@ -49,8 +49,8 @@ final class AddStickerToSet extends TdFunction {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [user_id]: Sticker set owner
-  /// * [name]: Sticker set name
+  /// * [user_id]: Sticker set owner; ignored for regular users
+  /// * [name]: Sticker set name. The sticker set must be owned by the current user, and contain less than 200 stickers for custom emoji sticker sets and less than 120 otherwise
   /// * [sticker]: Sticker to add to the set
   AddStickerToSet copyWith({
     int? userId,

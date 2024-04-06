@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 /// Returns a list of archived sticker sets.
 ///
 /// * [stickerType]: Type of the sticker sets to return.
-/// * [offsetStickerSetId]: Identifier of the sticker set from which to return the result.
+/// * [offsetStickerSetId]: Identifier of the sticker set from which to return the result; use 0 to get results from the beginning.
 /// * [limit]: The maximum number of sticker sets to return; up to 100.
 ///
 /// [StickerSets] is returned on completion.
@@ -15,7 +15,7 @@ final class GetArchivedStickerSets extends TdFunction {
   /// Returns a list of archived sticker sets.
   ///
   /// * [stickerType]: Type of the sticker sets to return.
-  /// * [offsetStickerSetId]: Identifier of the sticker set from which to return the result.
+  /// * [offsetStickerSetId]: Identifier of the sticker set from which to return the result; use 0 to get results from the beginning.
   /// * [limit]: The maximum number of sticker sets to return; up to 100.
   ///
   /// [StickerSets] is returned on completion.
@@ -28,7 +28,7 @@ final class GetArchivedStickerSets extends TdFunction {
   /// Type of the sticker sets to return
   final StickerType stickerType;
 
-  /// Identifier of the sticker set from which to return the result
+  /// Identifier of the sticker set from which to return the result; use 0 to get results from the beginning
   final int offsetStickerSetId;
 
   /// The maximum number of sticker sets to return; up to 100
@@ -50,7 +50,7 @@ final class GetArchivedStickerSets extends TdFunction {
   ///
   /// Properties:
   /// * [sticker_type]: Type of the sticker sets to return
-  /// * [offset_sticker_set_id]: Identifier of the sticker set from which to return the result
+  /// * [offset_sticker_set_id]: Identifier of the sticker set from which to return the result; use 0 to get results from the beginning
   /// * [limit]: The maximum number of sticker sets to return; up to 100
   GetArchivedStickerSets copyWith({
     StickerType? stickerType,

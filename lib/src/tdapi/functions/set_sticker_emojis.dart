@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **SetStickerEmojis** *(setStickerEmojis)* - TDLib function
 ///
-/// Changes the list of emoji corresponding to a sticker; for bots only. The sticker must belong to a regular or custom emoji sticker set created by the bot.
+/// Changes the list of emoji corresponding to a sticker. The sticker must belong to a regular or custom emoji sticker set that is owned by the current user.
 ///
 /// * [sticker]: Sticker.
 /// * [emojis]: New string with 1-20 emoji corresponding to the sticker.
@@ -11,7 +11,7 @@ part of '../tdapi.dart';
 final class SetStickerEmojis extends TdFunction {
   /// **SetStickerEmojis** *(setStickerEmojis)* - TDLib function
   ///
-  /// Changes the list of emoji corresponding to a sticker; for bots only. The sticker must belong to a regular or custom emoji sticker set created by the bot.
+  /// Changes the list of emoji corresponding to a sticker. The sticker must belong to a regular or custom emoji sticker set that is owned by the current user.
   ///
   /// * [sticker]: Sticker.
   /// * [emojis]: New string with 1-20 emoji corresponding to the sticker.
