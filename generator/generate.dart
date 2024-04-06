@@ -60,8 +60,16 @@ class DartTdDocumentationGenerator {
     runDartFormat();
   }
 
-  void runDartFormat() {
-    Process.runSync("dart", ["format", "lib/src/tdapi"]);
+  Future<void> runProcess(String process, List<String> args) async {
+    final pr = await Process.start(process, args);
+    stdout.addStream(pr.stdout);
+    stderr.addStream(pr.stderr);
+    await pr.exitCode;
+  }
+
+  void runDartFormat() async {
+    await runProcess("dart", ["format", "lib/src/tdapi"]);
+    await runProcess("dart", ["analyze"]);
   }
 
   /// dispatching types and functions from data
