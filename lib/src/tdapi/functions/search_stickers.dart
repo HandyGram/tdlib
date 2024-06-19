@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 /// Searches for stickers from public sticker sets that correspond to any of the given emoji.
 ///
 /// * [stickerType]: Type of the stickers to return.
-/// * [emojis]: Space-separated list of emoji to search for; must be non-empty.
+/// * [emojis]: Space-separated list of emojis to search for; must be non-empty.
 /// * [limit]: The maximum number of stickers to be returned; 0-100.
 ///
 /// [Stickers] is returned on completion.
@@ -15,7 +15,7 @@ final class SearchStickers extends TdFunction {
   /// Searches for stickers from public sticker sets that correspond to any of the given emoji.
   ///
   /// * [stickerType]: Type of the stickers to return.
-  /// * [emojis]: Space-separated list of emoji to search for; must be non-empty.
+  /// * [emojis]: Space-separated list of emojis to search for; must be non-empty.
   /// * [limit]: The maximum number of stickers to be returned; 0-100.
   ///
   /// [Stickers] is returned on completion.
@@ -28,7 +28,7 @@ final class SearchStickers extends TdFunction {
   /// Type of the stickers to return
   final StickerType stickerType;
 
-  /// Space-separated list of emoji to search for; must be non-empty
+  /// Space-separated list of emojis to search for; must be non-empty
   final String emojis;
 
   /// The maximum number of stickers to be returned; 0-100
@@ -50,7 +50,7 @@ final class SearchStickers extends TdFunction {
   ///
   /// Properties:
   /// * [sticker_type]: Type of the stickers to return
-  /// * [emojis]: Space-separated list of emoji to search for; must be non-empty
+  /// * [emojis]: Space-separated list of emojis to search for; must be non-empty
   /// * [limit]: The maximum number of stickers to be returned; 0-100
   SearchStickers copyWith({
     StickerType? stickerType,

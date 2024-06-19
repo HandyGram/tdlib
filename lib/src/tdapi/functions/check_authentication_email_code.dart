@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **CheckAuthenticationEmailCode** *(checkAuthenticationEmailCode)* - TDLib function
 ///
-/// Checks the authentication of a email address. Works only when the current authorization state is authorizationStateWaitEmailCode.
+/// Checks the authentication of an email address. Works only when the current authorization state is authorizationStateWaitEmailCode.
 ///
 /// * [code]: Email address authentication to check.
 ///
@@ -10,7 +10,7 @@ part of '../tdapi.dart';
 final class CheckAuthenticationEmailCode extends TdFunction {
   /// **CheckAuthenticationEmailCode** *(checkAuthenticationEmailCode)* - TDLib function
   ///
-  /// Checks the authentication of a email address. Works only when the current authorization state is authorizationStateWaitEmailCode.
+  /// Checks the authentication of an email address. Works only when the current authorization state is authorizationStateWaitEmailCode.
   ///
   /// * [code]: Email address authentication to check.
   ///

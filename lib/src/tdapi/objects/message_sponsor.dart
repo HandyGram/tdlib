@@ -4,7 +4,7 @@ part of '../tdapi.dart';
 ///
 /// Information about the sponsor of a message.
 ///
-/// * [type]: Type of the sponsor.
+/// * [url]: URL of the sponsor to be opened when the message is clicked.
 /// * [photo]: Photo of the sponsor; may be null if must not be shown *(optional)*.
 /// * [info]: Additional optional information about the sponsor to be shown along with the message.
 final class MessageSponsor extends TdObject {
@@ -12,30 +12,28 @@ final class MessageSponsor extends TdObject {
   ///
   /// Information about the sponsor of a message.
   ///
-  /// * [type]: Type of the sponsor.
+  /// * [url]: URL of the sponsor to be opened when the message is clicked.
   /// * [photo]: Photo of the sponsor; may be null if must not be shown *(optional)*.
   /// * [info]: Additional optional information about the sponsor to be shown along with the message.
   const MessageSponsor({
-    required this.type,
+    required this.url,
     this.photo,
     required this.info,
   });
 
-  /// Type of the sponsor
-  final MessageSponsorType type;
+  /// URL of the sponsor to be opened when the message is clicked
+  final String url;
 
   /// Photo of the sponsor; may be null if must not be shown
-  final ChatPhotoInfo? photo;
+  final Photo? photo;
 
   /// Additional optional information about the sponsor to be shown along with the message
   final String info;
 
   /// Parse from a json
   factory MessageSponsor.fromJson(Map<String, dynamic> json) => MessageSponsor(
-        type: MessageSponsorType.fromJson(json['type']),
-        photo: json['photo'] == null
-            ? null
-            : ChatPhotoInfo.fromJson(json['photo']),
+        url: json['url'],
+        photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
         info: json['info'],
       );
 
@@ -44,7 +42,7 @@ final class MessageSponsor extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": defaultObjectId,
-      "type": type.toJson(),
+      "url": url,
       "photo": photo?.toJson(),
       "info": info,
     };
@@ -53,16 +51,16 @@ final class MessageSponsor extends TdObject {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [type]: Type of the sponsor
+  /// * [url]: URL of the sponsor to be opened when the message is clicked
   /// * [photo]: Photo of the sponsor; may be null if must not be shown
   /// * [info]: Additional optional information about the sponsor to be shown along with the message
   MessageSponsor copyWith({
-    MessageSponsorType? type,
-    ChatPhotoInfo? photo,
+    String? url,
+    Photo? photo,
     String? info,
   }) =>
       MessageSponsor(
-        type: type ?? this.type,
+        url: url ?? this.url,
         photo: photo ?? this.photo,
         info: info ?? this.info,
       );

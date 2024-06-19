@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **UserType** *(userType)* - parent
 ///
-/// Represents the type of a user. The following types are possible: regular users, deleted users and bots.
+/// Represents the type of user. The following types are possible: regular users, deleted users and bots.
 sealed class UserType extends TdObject {
   /// **UserType** *(userType)* - parent
   ///
-  /// Represents the type of a user. The following types are possible: regular users, deleted users and bots.
+  /// Represents the type of user. The following types are possible: regular users, deleted users and bots.
   const UserType();
 
   /// a UserType return type can be :

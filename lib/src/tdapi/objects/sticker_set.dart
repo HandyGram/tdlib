@@ -18,7 +18,7 @@ part of '../tdapi.dart';
 /// * [isAllowedAsChatEmojiStatus]: True, if stickers in the sticker set are custom emoji that can be used as chat emoji status; for custom emoji sticker sets only.
 /// * [isViewed]: True for already viewed trending sticker sets.
 /// * [stickers]: List of stickers in this set.
-/// * [emojis]: A list of emoji corresponding to the stickers in the same order. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object.
+/// * [emojis]: A list of emojis corresponding to the stickers in the same order. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object.
 final class StickerSet extends TdObject {
   /// **StickerSet** *(stickerSet)* - basic class
   ///
@@ -38,7 +38,7 @@ final class StickerSet extends TdObject {
   /// * [isAllowedAsChatEmojiStatus]: True, if stickers in the sticker set are custom emoji that can be used as chat emoji status; for custom emoji sticker sets only.
   /// * [isViewed]: True for already viewed trending sticker sets.
   /// * [stickers]: List of stickers in this set.
-  /// * [emojis]: A list of emoji corresponding to the stickers in the same order. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object.
+  /// * [emojis]: A list of emojis corresponding to the stickers in the same order. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object.
   const StickerSet({
     required this.id,
     required this.title,
@@ -101,7 +101,7 @@ final class StickerSet extends TdObject {
   /// List of stickers in this set
   final List<Sticker> stickers;
 
-  /// A list of emoji corresponding to the stickers in the same order. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object
+  /// A list of emojis corresponding to the stickers in the same order. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object
   final List<Emojis> emojis;
 
   /// [extra] callback sign
@@ -182,7 +182,7 @@ final class StickerSet extends TdObject {
   /// * [is_allowed_as_chat_emoji_status]: True, if stickers in the sticker set are custom emoji that can be used as chat emoji status; for custom emoji sticker sets only
   /// * [is_viewed]: True for already viewed trending sticker sets
   /// * [stickers]: List of stickers in this set
-  /// * [emojis]: A list of emoji corresponding to the stickers in the same order. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object
+  /// * [emojis]: A list of emojis corresponding to the stickers in the same order. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object
   StickerSet copyWith({
     int? id,
     String? title,

@@ -334,6 +334,7 @@ final class MessageText extends MessageContent {
 ///
 /// * [animation]: The animation description.
 /// * [caption]: Animation caption.
+/// * [showCaptionAboveMedia]: True, if caption must be shown above the animation; otherwise, caption must be shown below the animation.
 /// * [hasSpoiler]: True, if the animation preview must be covered by a spoiler animation.
 /// * [isSecret]: True, if the animation thumbnail must be blurred and the animation must be shown only while tapped.
 final class MessageAnimation extends MessageContent {
@@ -343,11 +344,13 @@ final class MessageAnimation extends MessageContent {
   ///
   /// * [animation]: The animation description.
   /// * [caption]: Animation caption.
+  /// * [showCaptionAboveMedia]: True, if caption must be shown above the animation; otherwise, caption must be shown below the animation.
   /// * [hasSpoiler]: True, if the animation preview must be covered by a spoiler animation.
   /// * [isSecret]: True, if the animation thumbnail must be blurred and the animation must be shown only while tapped.
   const MessageAnimation({
     required this.animation,
     required this.caption,
+    required this.showCaptionAboveMedia,
     required this.hasSpoiler,
     required this.isSecret,
   });
@@ -357,6 +360,9 @@ final class MessageAnimation extends MessageContent {
 
   /// Animation caption
   final FormattedText caption;
+
+  /// True, if caption must be shown above the animation; otherwise, caption must be shown below the animation
+  final bool showCaptionAboveMedia;
 
   /// True, if the animation preview must be covered by a spoiler animation
   final bool hasSpoiler;
@@ -369,6 +375,7 @@ final class MessageAnimation extends MessageContent {
       MessageAnimation(
         animation: Animation.fromJson(json['animation']),
         caption: FormattedText.fromJson(json['caption']),
+        showCaptionAboveMedia: json['show_caption_above_media'],
         hasSpoiler: json['has_spoiler'],
         isSecret: json['is_secret'],
       );
@@ -380,6 +387,7 @@ final class MessageAnimation extends MessageContent {
       "@type": defaultObjectId,
       "animation": animation.toJson(),
       "caption": caption.toJson(),
+      "show_caption_above_media": showCaptionAboveMedia,
       "has_spoiler": hasSpoiler,
       "is_secret": isSecret,
     };
@@ -390,18 +398,22 @@ final class MessageAnimation extends MessageContent {
   /// Properties:
   /// * [animation]: The animation description
   /// * [caption]: Animation caption
+  /// * [show_caption_above_media]: True, if caption must be shown above the animation; otherwise, caption must be shown below the animation
   /// * [has_spoiler]: True, if the animation preview must be covered by a spoiler animation
   /// * [is_secret]: True, if the animation thumbnail must be blurred and the animation must be shown only while tapped
   @override
   MessageAnimation copyWith({
     Animation? animation,
     FormattedText? caption,
+    bool? showCaptionAboveMedia,
     bool? hasSpoiler,
     bool? isSecret,
   }) =>
       MessageAnimation(
         animation: animation ?? this.animation,
         caption: caption ?? this.caption,
+        showCaptionAboveMedia:
+            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
         hasSpoiler: hasSpoiler ?? this.hasSpoiler,
         isSecret: isSecret ?? this.isSecret,
       );
@@ -559,6 +571,7 @@ final class MessageDocument extends MessageContent {
 ///
 /// * [photo]: The photo.
 /// * [caption]: Photo caption.
+/// * [showCaptionAboveMedia]: True, if caption must be shown above the photo; otherwise, caption must be shown below the photo.
 /// * [hasSpoiler]: True, if the photo preview must be covered by a spoiler animation.
 /// * [isSecret]: True, if the photo must be blurred and must be shown only while tapped.
 final class MessagePhoto extends MessageContent {
@@ -568,11 +581,13 @@ final class MessagePhoto extends MessageContent {
   ///
   /// * [photo]: The photo.
   /// * [caption]: Photo caption.
+  /// * [showCaptionAboveMedia]: True, if caption must be shown above the photo; otherwise, caption must be shown below the photo.
   /// * [hasSpoiler]: True, if the photo preview must be covered by a spoiler animation.
   /// * [isSecret]: True, if the photo must be blurred and must be shown only while tapped.
   const MessagePhoto({
     required this.photo,
     required this.caption,
+    required this.showCaptionAboveMedia,
     required this.hasSpoiler,
     required this.isSecret,
   });
@@ -582,6 +597,9 @@ final class MessagePhoto extends MessageContent {
 
   /// Photo caption
   final FormattedText caption;
+
+  /// True, if caption must be shown above the photo; otherwise, caption must be shown below the photo
+  final bool showCaptionAboveMedia;
 
   /// True, if the photo preview must be covered by a spoiler animation
   final bool hasSpoiler;
@@ -593,6 +611,7 @@ final class MessagePhoto extends MessageContent {
   factory MessagePhoto.fromJson(Map<String, dynamic> json) => MessagePhoto(
         photo: Photo.fromJson(json['photo']),
         caption: FormattedText.fromJson(json['caption']),
+        showCaptionAboveMedia: json['show_caption_above_media'],
         hasSpoiler: json['has_spoiler'],
         isSecret: json['is_secret'],
       );
@@ -604,6 +623,7 @@ final class MessagePhoto extends MessageContent {
       "@type": defaultObjectId,
       "photo": photo.toJson(),
       "caption": caption.toJson(),
+      "show_caption_above_media": showCaptionAboveMedia,
       "has_spoiler": hasSpoiler,
       "is_secret": isSecret,
     };
@@ -614,18 +634,22 @@ final class MessagePhoto extends MessageContent {
   /// Properties:
   /// * [photo]: The photo
   /// * [caption]: Photo caption
+  /// * [show_caption_above_media]: True, if caption must be shown above the photo; otherwise, caption must be shown below the photo
   /// * [has_spoiler]: True, if the photo preview must be covered by a spoiler animation
   /// * [is_secret]: True, if the photo must be blurred and must be shown only while tapped
   @override
   MessagePhoto copyWith({
     Photo? photo,
     FormattedText? caption,
+    bool? showCaptionAboveMedia,
     bool? hasSpoiler,
     bool? isSecret,
   }) =>
       MessagePhoto(
         photo: photo ?? this.photo,
         caption: caption ?? this.caption,
+        showCaptionAboveMedia:
+            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
         hasSpoiler: hasSpoiler ?? this.hasSpoiler,
         isSecret: isSecret ?? this.isSecret,
       );
@@ -715,6 +739,7 @@ final class MessageSticker extends MessageContent {
 ///
 /// * [video]: The video description.
 /// * [caption]: Video caption.
+/// * [showCaptionAboveMedia]: True, if caption must be shown above the video; otherwise, caption must be shown below the video.
 /// * [hasSpoiler]: True, if the video preview must be covered by a spoiler animation.
 /// * [isSecret]: True, if the video thumbnail must be blurred and the video must be shown only while tapped.
 final class MessageVideo extends MessageContent {
@@ -724,11 +749,13 @@ final class MessageVideo extends MessageContent {
   ///
   /// * [video]: The video description.
   /// * [caption]: Video caption.
+  /// * [showCaptionAboveMedia]: True, if caption must be shown above the video; otherwise, caption must be shown below the video.
   /// * [hasSpoiler]: True, if the video preview must be covered by a spoiler animation.
   /// * [isSecret]: True, if the video thumbnail must be blurred and the video must be shown only while tapped.
   const MessageVideo({
     required this.video,
     required this.caption,
+    required this.showCaptionAboveMedia,
     required this.hasSpoiler,
     required this.isSecret,
   });
@@ -738,6 +765,9 @@ final class MessageVideo extends MessageContent {
 
   /// Video caption
   final FormattedText caption;
+
+  /// True, if caption must be shown above the video; otherwise, caption must be shown below the video
+  final bool showCaptionAboveMedia;
 
   /// True, if the video preview must be covered by a spoiler animation
   final bool hasSpoiler;
@@ -749,6 +779,7 @@ final class MessageVideo extends MessageContent {
   factory MessageVideo.fromJson(Map<String, dynamic> json) => MessageVideo(
         video: Video.fromJson(json['video']),
         caption: FormattedText.fromJson(json['caption']),
+        showCaptionAboveMedia: json['show_caption_above_media'],
         hasSpoiler: json['has_spoiler'],
         isSecret: json['is_secret'],
       );
@@ -760,6 +791,7 @@ final class MessageVideo extends MessageContent {
       "@type": defaultObjectId,
       "video": video.toJson(),
       "caption": caption.toJson(),
+      "show_caption_above_media": showCaptionAboveMedia,
       "has_spoiler": hasSpoiler,
       "is_secret": isSecret,
     };
@@ -770,18 +802,22 @@ final class MessageVideo extends MessageContent {
   /// Properties:
   /// * [video]: The video description
   /// * [caption]: Video caption
+  /// * [show_caption_above_media]: True, if caption must be shown above the video; otherwise, caption must be shown below the video
   /// * [has_spoiler]: True, if the video preview must be covered by a spoiler animation
   /// * [is_secret]: True, if the video thumbnail must be blurred and the video must be shown only while tapped
   @override
   MessageVideo copyWith({
     Video? video,
     FormattedText? caption,
+    bool? showCaptionAboveMedia,
     bool? hasSpoiler,
     bool? isSecret,
   }) =>
       MessageVideo(
         video: video ?? this.video,
         caption: caption ?? this.caption,
+        showCaptionAboveMedia:
+            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
         hasSpoiler: hasSpoiler ?? this.hasSpoiler,
         isSecret: isSecret ?? this.isSecret,
       );
@@ -1109,8 +1145,8 @@ final class MessageExpiredVoiceNote extends MessageContent {
 /// A message with a location.
 ///
 /// * [location]: The location description.
-/// * [livePeriod]: Time relative to the message send date, for which the location can be updated, in seconds.
-/// * [expiresIn]: Left time for which the location can be updated, in seconds. updateMessageContent is not sent when this field changes.
+/// * [livePeriod]: Time relative to the message send date, for which the location can be updated, in seconds; if 0x7FFFFFFF, then location can be updated forever.
+/// * [expiresIn]: Left time for which the location can be updated, in seconds. If 0, then the location can't be updated anymore. The update updateMessageContent is not sent when this field changes.
 /// * [heading]: For live locations, a direction in which the location moves, in degrees; 1-360. If 0 the direction is unknown.
 /// * [proximityAlertRadius]: For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). 0 if the notification is disabled. Available only to the message sender.
 final class MessageLocation extends MessageContent {
@@ -1119,8 +1155,8 @@ final class MessageLocation extends MessageContent {
   /// A message with a location.
   ///
   /// * [location]: The location description.
-  /// * [livePeriod]: Time relative to the message send date, for which the location can be updated, in seconds.
-  /// * [expiresIn]: Left time for which the location can be updated, in seconds. updateMessageContent is not sent when this field changes.
+  /// * [livePeriod]: Time relative to the message send date, for which the location can be updated, in seconds; if 0x7FFFFFFF, then location can be updated forever.
+  /// * [expiresIn]: Left time for which the location can be updated, in seconds. If 0, then the location can't be updated anymore. The update updateMessageContent is not sent when this field changes.
   /// * [heading]: For live locations, a direction in which the location moves, in degrees; 1-360. If 0 the direction is unknown.
   /// * [proximityAlertRadius]: For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). 0 if the notification is disabled. Available only to the message sender.
   const MessageLocation({
@@ -1134,10 +1170,10 @@ final class MessageLocation extends MessageContent {
   /// The location description
   final Location location;
 
-  /// Time relative to the message send date, for which the location can be updated, in seconds
+  /// Time relative to the message send date, for which the location can be updated, in seconds; if 0x7FFFFFFF, then location can be updated forever
   final int livePeriod;
 
-  /// Left time for which the location can be updated, in seconds. updateMessageContent is not sent when this field changes
+  /// Left time for which the location can be updated, in seconds. If 0, then the location can't be updated anymore. The update updateMessageContent is not sent when this field changes
   final int expiresIn;
 
   /// For live locations, a direction in which the location moves, in degrees; 1-360. If 0 the direction is unknown
@@ -1173,8 +1209,8 @@ final class MessageLocation extends MessageContent {
   ///
   /// Properties:
   /// * [location]: The location description
-  /// * [live_period]: Time relative to the message send date, for which the location can be updated, in seconds
-  /// * [expires_in]: Left time for which the location can be updated, in seconds. updateMessageContent is not sent when this field changes
+  /// * [live_period]: Time relative to the message send date, for which the location can be updated, in seconds; if 0x7FFFFFFF, then location can be updated forever
+  /// * [expires_in]: Left time for which the location can be updated, in seconds. If 0, then the location can't be updated anymore. The update updateMessageContent is not sent when this field changes
   /// * [heading]: For live locations, a direction in which the location moves, in degrees; 1-360. If 0 the direction is unknown
   /// * [proximity_alert_radius]: For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). 0 if the notification is disabled. Available only to the message sender
   @override
@@ -1389,8 +1425,8 @@ final class MessageAnimatedEmoji extends MessageContent {
 ///
 /// A dice message. The dice value is randomly generated by the server.
 ///
-/// * [initialState]: The animated stickers with the initial dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known *(optional)*.
-/// * [finalState]: The animated stickers with the final dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known *(optional)*.
+/// * [initialState]: The animated stickers with the initial dice animation; may be null if unknown. The update updateMessageContent will be sent when the sticker became known *(optional)*.
+/// * [finalState]: The animated stickers with the final dice animation; may be null if unknown. The update updateMessageContent will be sent when the sticker became known *(optional)*.
 /// * [emoji]: Emoji on which the dice throw animation is based.
 /// * [value]: The dice value. If the value is 0, the dice don't have final state yet.
 /// * [successAnimationFrameNumber]: Number of frame after which a success animation like a shower of confetti needs to be shown on updateMessageSendSucceeded.
@@ -1399,8 +1435,8 @@ final class MessageDice extends MessageContent {
   ///
   /// A dice message. The dice value is randomly generated by the server.
   ///
-  /// * [initialState]: The animated stickers with the initial dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known *(optional)*.
-  /// * [finalState]: The animated stickers with the final dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known *(optional)*.
+  /// * [initialState]: The animated stickers with the initial dice animation; may be null if unknown. The update updateMessageContent will be sent when the sticker became known *(optional)*.
+  /// * [finalState]: The animated stickers with the final dice animation; may be null if unknown. The update updateMessageContent will be sent when the sticker became known *(optional)*.
   /// * [emoji]: Emoji on which the dice throw animation is based.
   /// * [value]: The dice value. If the value is 0, the dice don't have final state yet.
   /// * [successAnimationFrameNumber]: Number of frame after which a success animation like a shower of confetti needs to be shown on updateMessageSendSucceeded.
@@ -1412,10 +1448,10 @@ final class MessageDice extends MessageContent {
     required this.successAnimationFrameNumber,
   });
 
-  /// The animated stickers with the initial dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known
+  /// The animated stickers with the initial dice animation; may be null if unknown. The update updateMessageContent will be sent when the sticker became known
   final DiceStickers? initialState;
 
-  /// The animated stickers with the final dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known
+  /// The animated stickers with the final dice animation; may be null if unknown. The update updateMessageContent will be sent when the sticker became known
   final DiceStickers? finalState;
 
   /// Emoji on which the dice throw animation is based
@@ -1456,8 +1492,8 @@ final class MessageDice extends MessageContent {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [initial_state]: The animated stickers with the initial dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known
-  /// * [final_state]: The animated stickers with the final dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known
+  /// * [initial_state]: The animated stickers with the initial dice animation; may be null if unknown. The update updateMessageContent will be sent when the sticker became known
+  /// * [final_state]: The animated stickers with the final dice animation; may be null if unknown. The update updateMessageContent will be sent when the sticker became known
   /// * [emoji]: Emoji on which the dice throw animation is based
   /// * [value]: The dice value. If the value is 0, the dice don't have final state yet
   /// * [success_animation_frame_number]: Number of frame after which a success animation like a shower of confetti needs to be shown on updateMessageSendSucceeded
@@ -1684,9 +1720,7 @@ final class MessageStory extends MessageContent {
 ///
 /// A message with an invoice from a bot. Use getInternalLink with internalLinkTypeBotStart to share the invoice.
 ///
-/// * [title]: Product title.
-/// * [description]: Product description.
-/// * [photo]: Product photo; may be null *(optional)*.
+/// * [productInfo]: Information about the product.
 /// * [currency]: Currency for the product price.
 /// * [totalAmount]: Product total price in the smallest units of the currency.
 /// * [startParameter]: Unique invoice bot start_parameter to be passed to getInternalLink.
@@ -1699,9 +1733,7 @@ final class MessageInvoice extends MessageContent {
   ///
   /// A message with an invoice from a bot. Use getInternalLink with internalLinkTypeBotStart to share the invoice.
   ///
-  /// * [title]: Product title.
-  /// * [description]: Product description.
-  /// * [photo]: Product photo; may be null *(optional)*.
+  /// * [productInfo]: Information about the product.
   /// * [currency]: Currency for the product price.
   /// * [totalAmount]: Product total price in the smallest units of the currency.
   /// * [startParameter]: Unique invoice bot start_parameter to be passed to getInternalLink.
@@ -1710,9 +1742,7 @@ final class MessageInvoice extends MessageContent {
   /// * [receiptMessageId]: The identifier of the message with the receipt, after the product has been purchased.
   /// * [extendedMedia]: Extended media attached to the invoice; may be null *(optional)*.
   const MessageInvoice({
-    required this.title,
-    required this.description,
-    this.photo,
+    required this.productInfo,
     required this.currency,
     required this.totalAmount,
     required this.startParameter,
@@ -1722,14 +1752,8 @@ final class MessageInvoice extends MessageContent {
     this.extendedMedia,
   });
 
-  /// Product title
-  final String title;
-
-  /// Product description
-  final FormattedText description;
-
-  /// Product photo; may be null
-  final Photo? photo;
+  /// Information about the product
+  final ProductInfo productInfo;
 
   /// Currency for the product price
   final String currency;
@@ -1754,9 +1778,7 @@ final class MessageInvoice extends MessageContent {
 
   /// Parse from a json
   factory MessageInvoice.fromJson(Map<String, dynamic> json) => MessageInvoice(
-        title: json['title'],
-        description: FormattedText.fromJson(json['description']),
-        photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
+        productInfo: ProductInfo.fromJson(json['product_info']),
         currency: json['currency'],
         totalAmount: json['total_amount'],
         startParameter: json['start_parameter'],
@@ -1773,9 +1795,7 @@ final class MessageInvoice extends MessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": defaultObjectId,
-      "title": title,
-      "description": description.toJson(),
-      "photo": photo?.toJson(),
+      "product_info": productInfo.toJson(),
       "currency": currency,
       "total_amount": totalAmount,
       "start_parameter": startParameter,
@@ -1789,9 +1809,7 @@ final class MessageInvoice extends MessageContent {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [title]: Product title
-  /// * [description]: Product description
-  /// * [photo]: Product photo; may be null
+  /// * [product_info]: Information about the product
   /// * [currency]: Currency for the product price
   /// * [total_amount]: Product total price in the smallest units of the currency
   /// * [start_parameter]: Unique invoice bot start_parameter to be passed to getInternalLink
@@ -1801,9 +1819,7 @@ final class MessageInvoice extends MessageContent {
   /// * [extended_media]: Extended media attached to the invoice; may be null
   @override
   MessageInvoice copyWith({
-    String? title,
-    FormattedText? description,
-    Photo? photo,
+    ProductInfo? productInfo,
     String? currency,
     int? totalAmount,
     String? startParameter,
@@ -1813,9 +1829,7 @@ final class MessageInvoice extends MessageContent {
     MessageExtendedMedia? extendedMedia,
   }) =>
       MessageInvoice(
-        title: title ?? this.title,
-        description: description ?? this.description,
-        photo: photo ?? this.photo,
+        productInfo: productInfo ?? this.productInfo,
         currency: currency ?? this.currency,
         totalAmount: totalAmount ?? this.totalAmount,
         startParameter: startParameter ?? this.startParameter,
@@ -2099,14 +2113,14 @@ final class MessageVideoChatEnded extends MessageContent {
 
 /// **MessageInviteVideoChatParticipants** *(messageInviteVideoChatParticipants)* - child of MessageContent
 ///
-/// A message with information about an invite to a video chat.
+/// A message with information about an invitation to a video chat.
 ///
 /// * [groupCallId]: Identifier of the video chat. The video chat can be received through the method getGroupCall.
 /// * [userIds]: Invited user identifiers.
 final class MessageInviteVideoChatParticipants extends MessageContent {
   /// **MessageInviteVideoChatParticipants** *(messageInviteVideoChatParticipants)* - child of MessageContent
   ///
-  /// A message with information about an invite to a video chat.
+  /// A message with information about an invitation to a video chat.
   ///
   /// * [groupCallId]: Identifier of the video chat. The video chat can be received through the method getGroupCall.
   /// * [userIds]: Invited user identifiers.

@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **GetCommands** *(getCommands)* - TDLib function
 ///
-/// Returns list of commands supported by the bot for the given user scope and language; for bots only.
+/// Returns the list of commands supported by the bot for the given user scope and language; for bots only.
 ///
 /// * [scope]: The scope to which the commands are relevant; pass null to get commands in the default bot command scope *(optional)*.
 /// * [languageCode]: A two-letter ISO 639-1 language code or an empty string.
@@ -11,7 +11,7 @@ part of '../tdapi.dart';
 final class GetCommands extends TdFunction {
   /// **GetCommands** *(getCommands)* - TDLib function
   ///
-  /// Returns list of commands supported by the bot for the given user scope and language; for bots only.
+  /// Returns the list of commands supported by the bot for the given user scope and language; for bots only.
   ///
   /// * [scope]: The scope to which the commands are relevant; pass null to get commands in the default bot command scope *(optional)*.
   /// * [languageCode]: A two-letter ISO 639-1 language code or an empty string.

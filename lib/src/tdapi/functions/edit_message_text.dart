@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **EditMessageText** *(editMessageText)* - TDLib function
 ///
-/// Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side.
+/// Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side.. Can be used only if message.can_be_edited == true.
 ///
 /// * [chatId]: The chat the message belongs to.
 /// * [messageId]: Identifier of the message.
@@ -13,7 +13,7 @@ part of '../tdapi.dart';
 final class EditMessageText extends TdFunction {
   /// **EditMessageText** *(editMessageText)* - TDLib function
   ///
-  /// Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side.
+  /// Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side.. Can be used only if message.can_be_edited == true.
   ///
   /// * [chatId]: The chat the message belongs to.
   /// * [messageId]: Identifier of the message.

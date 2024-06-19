@@ -2,21 +2,21 @@ part of '../tdapi.dart';
 
 /// **VoiceNote** *(voiceNote)* - basic class
 ///
-/// Describes a voice note. The voice note must be encoded with the Opus codec, and stored inside an OGG container. Voice notes can have only a single audio channel.
+/// Describes a voice note.
 ///
 /// * [duration]: Duration of the voice note, in seconds; as defined by the sender.
 /// * [waveform]: A waveform representation of the voice note in 5-bit format.
-/// * [mimeType]: MIME type of the file; as defined by the sender.
+/// * [mimeType]: MIME type of the file; as defined by the sender. Usually, one of "audio/ogg" for Opus in an OGG container, "audio/mpeg" for an MP3 audio, or "audio/mp4" for an M4A audio.
 /// * [speechRecognitionResult]: Result of speech recognition in the voice note; may be null *(optional)*.
 /// * [voice]: File containing the voice note.
 final class VoiceNote extends TdObject {
   /// **VoiceNote** *(voiceNote)* - basic class
   ///
-  /// Describes a voice note. The voice note must be encoded with the Opus codec, and stored inside an OGG container. Voice notes can have only a single audio channel.
+  /// Describes a voice note.
   ///
   /// * [duration]: Duration of the voice note, in seconds; as defined by the sender.
   /// * [waveform]: A waveform representation of the voice note in 5-bit format.
-  /// * [mimeType]: MIME type of the file; as defined by the sender.
+  /// * [mimeType]: MIME type of the file; as defined by the sender. Usually, one of "audio/ogg" for Opus in an OGG container, "audio/mpeg" for an MP3 audio, or "audio/mp4" for an M4A audio.
   /// * [speechRecognitionResult]: Result of speech recognition in the voice note; may be null *(optional)*.
   /// * [voice]: File containing the voice note.
   const VoiceNote({
@@ -33,7 +33,7 @@ final class VoiceNote extends TdObject {
   /// A waveform representation of the voice note in 5-bit format
   final String waveform;
 
-  /// MIME type of the file; as defined by the sender
+  /// MIME type of the file; as defined by the sender. Usually, one of "audio/ogg" for Opus in an OGG container, "audio/mpeg" for an MP3 audio, or "audio/mp4" for an M4A audio
   final String mimeType;
 
   /// Result of speech recognition in the voice note; may be null
@@ -72,7 +72,7 @@ final class VoiceNote extends TdObject {
   /// Properties:
   /// * [duration]: Duration of the voice note, in seconds; as defined by the sender
   /// * [waveform]: A waveform representation of the voice note in 5-bit format
-  /// * [mime_type]: MIME type of the file; as defined by the sender
+  /// * [mime_type]: MIME type of the file; as defined by the sender. Usually, one of "audio/ogg" for Opus in an OGG container, "audio/mpeg" for an MP3 audio, or "audio/mp4" for an M4A audio
   /// * [speech_recognition_result]: Result of speech recognition in the voice note; may be null
   /// * [voice]: File containing the voice note
   VoiceNote copyWith({

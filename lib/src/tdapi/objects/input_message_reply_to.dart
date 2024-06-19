@@ -11,11 +11,14 @@ sealed class InputMessageReplyTo extends TdObject {
 
   /// a InputMessageReplyTo return type can be :
   /// * [InputMessageReplyToMessage]
+  /// * [InputMessageReplyToExternalMessage]
   /// * [InputMessageReplyToStory]
   factory InputMessageReplyTo.fromJson(Map<String, dynamic> json) {
     switch (json["@type"]) {
       case InputMessageReplyToMessage.defaultObjectId:
         return InputMessageReplyToMessage.fromJson(json);
+      case InputMessageReplyToExternalMessage.defaultObjectId:
+        return InputMessageReplyToExternalMessage.fromJson(json);
       case InputMessageReplyToStory.defaultObjectId:
         return InputMessageReplyToStory.fromJson(json);
       default:
@@ -47,29 +50,23 @@ sealed class InputMessageReplyTo extends TdObject {
 
 /// **InputMessageReplyToMessage** *(inputMessageReplyToMessage)* - child of InputMessageReplyTo
 ///
-/// Describes a message to be replied.
+/// Describes a message to be replied in the same chat and forum topic.
 ///
-/// * [chatId]: The identifier of the chat to which the message to be replied belongs; pass 0 if the message to be replied is in the same chat. Must always be 0 for replies in secret chats. A message can be replied in another chat or topic only if message.can_be_replied_in_another_chat.
-/// * [messageId]: The identifier of the message to be replied in the same or the specified chat.
+/// * [messageId]: The identifier of the message to be replied in the same chat and forum topic.
 /// * [quote]: Quote from the message to be replied; pass null if none. Must always be null for replies in secret chats *(optional)*.
 final class InputMessageReplyToMessage extends InputMessageReplyTo {
   /// **InputMessageReplyToMessage** *(inputMessageReplyToMessage)* - child of InputMessageReplyTo
   ///
-  /// Describes a message to be replied.
+  /// Describes a message to be replied in the same chat and forum topic.
   ///
-  /// * [chatId]: The identifier of the chat to which the message to be replied belongs; pass 0 if the message to be replied is in the same chat. Must always be 0 for replies in secret chats. A message can be replied in another chat or topic only if message.can_be_replied_in_another_chat.
-  /// * [messageId]: The identifier of the message to be replied in the same or the specified chat.
+  /// * [messageId]: The identifier of the message to be replied in the same chat and forum topic.
   /// * [quote]: Quote from the message to be replied; pass null if none. Must always be null for replies in secret chats *(optional)*.
   const InputMessageReplyToMessage({
-    required this.chatId,
     required this.messageId,
     this.quote,
   });
 
-  /// The identifier of the chat to which the message to be replied belongs; pass 0 if the message to be replied is in the same chat. Must always be 0 for replies in secret chats. A message can be replied in another chat or topic only if message.can_be_replied_in_another_chat
-  final int chatId;
-
-  /// The identifier of the message to be replied in the same or the specified chat
+  /// The identifier of the message to be replied in the same chat and forum topic
   final int messageId;
 
   /// Quote from the message to be replied; pass null if none. Must always be null for replies in secret chats
@@ -78,6 +75,83 @@ final class InputMessageReplyToMessage extends InputMessageReplyTo {
   /// Parse from a json
   factory InputMessageReplyToMessage.fromJson(Map<String, dynamic> json) =>
       InputMessageReplyToMessage(
+        messageId: json['message_id'],
+        quote: json['quote'] == null
+            ? null
+            : InputTextQuote.fromJson(json['quote']),
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "message_id": messageId,
+      "quote": quote?.toJson(),
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [message_id]: The identifier of the message to be replied in the same chat and forum topic
+  /// * [quote]: Quote from the message to be replied; pass null if none. Must always be null for replies in secret chats
+  @override
+  InputMessageReplyToMessage copyWith({
+    int? messageId,
+    InputTextQuote? quote,
+  }) =>
+      InputMessageReplyToMessage(
+        messageId: messageId ?? this.messageId,
+        quote: quote ?? this.quote,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'inputMessageReplyToMessage';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **InputMessageReplyToExternalMessage** *(inputMessageReplyToExternalMessage)* - child of InputMessageReplyTo
+///
+/// Describes a message to be replied that is from a different chat or a forum topic; not supported in secret chats.
+///
+/// * [chatId]: The identifier of the chat to which the message to be replied belongs.
+/// * [messageId]: The identifier of the message to be replied in the specified chat. A message can be replied in another chat or topic only if message.can_be_replied_in_another_chat.
+/// * [quote]: Quote from the message to be replied; pass null if none *(optional)*.
+final class InputMessageReplyToExternalMessage extends InputMessageReplyTo {
+  /// **InputMessageReplyToExternalMessage** *(inputMessageReplyToExternalMessage)* - child of InputMessageReplyTo
+  ///
+  /// Describes a message to be replied that is from a different chat or a forum topic; not supported in secret chats.
+  ///
+  /// * [chatId]: The identifier of the chat to which the message to be replied belongs.
+  /// * [messageId]: The identifier of the message to be replied in the specified chat. A message can be replied in another chat or topic only if message.can_be_replied_in_another_chat.
+  /// * [quote]: Quote from the message to be replied; pass null if none *(optional)*.
+  const InputMessageReplyToExternalMessage({
+    required this.chatId,
+    required this.messageId,
+    this.quote,
+  });
+
+  /// The identifier of the chat to which the message to be replied belongs
+  final int chatId;
+
+  /// The identifier of the message to be replied in the specified chat. A message can be replied in another chat or topic only if message.can_be_replied_in_another_chat
+  final int messageId;
+
+  /// Quote from the message to be replied; pass null if none
+  final InputTextQuote? quote;
+
+  /// Parse from a json
+  factory InputMessageReplyToExternalMessage.fromJson(
+          Map<String, dynamic> json) =>
+      InputMessageReplyToExternalMessage(
         chatId: json['chat_id'],
         messageId: json['message_id'],
         quote: json['quote'] == null
@@ -99,23 +173,23 @@ final class InputMessageReplyToMessage extends InputMessageReplyTo {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: The identifier of the chat to which the message to be replied belongs; pass 0 if the message to be replied is in the same chat. Must always be 0 for replies in secret chats. A message can be replied in another chat or topic only if message.can_be_replied_in_another_chat
-  /// * [message_id]: The identifier of the message to be replied in the same or the specified chat
-  /// * [quote]: Quote from the message to be replied; pass null if none. Must always be null for replies in secret chats
+  /// * [chat_id]: The identifier of the chat to which the message to be replied belongs
+  /// * [message_id]: The identifier of the message to be replied in the specified chat. A message can be replied in another chat or topic only if message.can_be_replied_in_another_chat
+  /// * [quote]: Quote from the message to be replied; pass null if none
   @override
-  InputMessageReplyToMessage copyWith({
+  InputMessageReplyToExternalMessage copyWith({
     int? chatId,
     int? messageId,
     InputTextQuote? quote,
   }) =>
-      InputMessageReplyToMessage(
+      InputMessageReplyToExternalMessage(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,
         quote: quote ?? this.quote,
       );
 
   /// TDLib object type
-  static const String defaultObjectId = 'inputMessageReplyToMessage';
+  static const String defaultObjectId = 'inputMessageReplyToExternalMessage';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

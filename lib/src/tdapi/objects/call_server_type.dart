@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **CallServerType** *(callServerType)* - parent
 ///
-/// Describes the type of a call server.
+/// Describes the type of call server.
 sealed class CallServerType extends TdObject {
   /// **CallServerType** *(callServerType)* - parent
   ///
-  /// Describes the type of a call server.
+  /// Describes the type of call server.
   const CallServerType();
 
   /// a CallServerType return type can be :

@@ -259,11 +259,11 @@ final class PremiumStoryFeatureSaveStories extends PremiumStoryFeature {
 
 /// **PremiumStoryFeatureLinksAndFormatting** *(premiumStoryFeatureLinksAndFormatting)* - child of PremiumStoryFeature
 ///
-/// The ability to use links and formatting in story caption.
+/// The ability to use links and formatting in story caption, and use inputStoryAreaTypeLink areas.
 final class PremiumStoryFeatureLinksAndFormatting extends PremiumStoryFeature {
   /// **PremiumStoryFeatureLinksAndFormatting** *(premiumStoryFeatureLinksAndFormatting)* - child of PremiumStoryFeature
   ///
-  /// The ability to use links and formatting in story caption.
+  /// The ability to use links and formatting in story caption, and use inputStoryAreaTypeLink areas.
   const PremiumStoryFeatureLinksAndFormatting();
 
   /// Parse from a json

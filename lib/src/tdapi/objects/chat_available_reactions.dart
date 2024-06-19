@@ -48,27 +48,47 @@ sealed class ChatAvailableReactions extends TdObject {
 /// **ChatAvailableReactionsAll** *(chatAvailableReactionsAll)* - child of ChatAvailableReactions
 ///
 /// All reactions are available in the chat.
+///
+/// * [maxReactionCount]: The maximum allowed number of reactions per message; 1-11.
 final class ChatAvailableReactionsAll extends ChatAvailableReactions {
   /// **ChatAvailableReactionsAll** *(chatAvailableReactionsAll)* - child of ChatAvailableReactions
   ///
   /// All reactions are available in the chat.
-  const ChatAvailableReactionsAll();
+  ///
+  /// * [maxReactionCount]: The maximum allowed number of reactions per message; 1-11.
+  const ChatAvailableReactionsAll({
+    required this.maxReactionCount,
+  });
+
+  /// The maximum allowed number of reactions per message; 1-11
+  final int maxReactionCount;
 
   /// Parse from a json
   factory ChatAvailableReactionsAll.fromJson(Map<String, dynamic> json) =>
-      const ChatAvailableReactionsAll();
+      ChatAvailableReactionsAll(
+        maxReactionCount: json['max_reaction_count'],
+      );
 
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": defaultObjectId,
+      "max_reaction_count": maxReactionCount,
     };
   }
 
-  /// Copy instance with no modifications.
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [max_reaction_count]: The maximum allowed number of reactions per message; 1-11
   @override
-  ChatAvailableReactionsAll copyWith() => const ChatAvailableReactionsAll();
+  ChatAvailableReactionsAll copyWith({
+    int? maxReactionCount,
+  }) =>
+      ChatAvailableReactionsAll(
+        maxReactionCount: maxReactionCount ?? this.maxReactionCount,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatAvailableReactionsAll';
@@ -87,18 +107,24 @@ final class ChatAvailableReactionsAll extends ChatAvailableReactions {
 /// Only specific reactions are available in the chat.
 ///
 /// * [reactions]: The list of reactions.
+/// * [maxReactionCount]: The maximum allowed number of reactions per message; 1-11.
 final class ChatAvailableReactionsSome extends ChatAvailableReactions {
   /// **ChatAvailableReactionsSome** *(chatAvailableReactionsSome)* - child of ChatAvailableReactions
   ///
   /// Only specific reactions are available in the chat.
   ///
   /// * [reactions]: The list of reactions.
+  /// * [maxReactionCount]: The maximum allowed number of reactions per message; 1-11.
   const ChatAvailableReactionsSome({
     required this.reactions,
+    required this.maxReactionCount,
   });
 
   /// The list of reactions
   final List<ReactionType> reactions;
+
+  /// The maximum allowed number of reactions per message; 1-11
+  final int maxReactionCount;
 
   /// Parse from a json
   factory ChatAvailableReactionsSome.fromJson(Map<String, dynamic> json) =>
@@ -106,6 +132,7 @@ final class ChatAvailableReactionsSome extends ChatAvailableReactions {
         reactions: List<ReactionType>.from((json['reactions'] ?? [])
             .map((item) => ReactionType.fromJson(item))
             .toList()),
+        maxReactionCount: json['max_reaction_count'],
       );
 
   /// Convert model to TDLib JSON format
@@ -114,6 +141,7 @@ final class ChatAvailableReactionsSome extends ChatAvailableReactions {
     return {
       "@type": defaultObjectId,
       "reactions": reactions.map((i) => i.toJson()).toList(),
+      "max_reaction_count": maxReactionCount,
     };
   }
 
@@ -121,12 +149,15 @@ final class ChatAvailableReactionsSome extends ChatAvailableReactions {
   ///
   /// Properties:
   /// * [reactions]: The list of reactions
+  /// * [max_reaction_count]: The maximum allowed number of reactions per message; 1-11
   @override
   ChatAvailableReactionsSome copyWith({
     List<ReactionType>? reactions,
+    int? maxReactionCount,
   }) =>
       ChatAvailableReactionsSome(
         reactions: reactions ?? this.reactions,
+        maxReactionCount: maxReactionCount ?? this.maxReactionCount,
       );
 
   /// TDLib object type

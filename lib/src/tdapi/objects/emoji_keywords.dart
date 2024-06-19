@@ -2,22 +2,22 @@ part of '../tdapi.dart';
 
 /// **EmojiKeywords** *(emojiKeywords)* - basic class
 ///
-/// Represents a list of emoji with their keywords.
+/// Represents a list of emojis with their keywords.
 ///
-/// * [emojiKeywords]: List of emoji with their keywords.
+/// * [emojiKeywords]: List of emojis with their keywords.
 final class EmojiKeywords extends TdObject {
   /// **EmojiKeywords** *(emojiKeywords)* - basic class
   ///
-  /// Represents a list of emoji with their keywords.
+  /// Represents a list of emojis with their keywords.
   ///
-  /// * [emojiKeywords]: List of emoji with their keywords.
+  /// * [emojiKeywords]: List of emojis with their keywords.
   const EmojiKeywords({
     required this.emojiKeywords,
     this.extra,
     this.clientId,
   });
 
-  /// List of emoji with their keywords
+  /// List of emojis with their keywords
   final List<EmojiKeyword> emojiKeywords;
 
   /// [extra] callback sign
@@ -49,7 +49,7 @@ final class EmojiKeywords extends TdObject {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [emoji_keywords]: List of emoji with their keywords
+  /// * [emoji_keywords]: List of emojis with their keywords
   EmojiKeywords copyWith({
     List<EmojiKeyword>? emojiKeywords,
     dynamic extra,

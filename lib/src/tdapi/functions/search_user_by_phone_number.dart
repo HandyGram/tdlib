@@ -5,6 +5,7 @@ part of '../tdapi.dart';
 /// Searches a user by their phone number. Returns a 404 error if the user can't be found.
 ///
 /// * [phoneNumber]: Phone number to search for.
+/// * [onlyLocal]: Pass true to get only locally available information without sending network requests.
 ///
 /// [User] is returned on completion.
 final class SearchUserByPhoneNumber extends TdFunction {
@@ -13,14 +14,19 @@ final class SearchUserByPhoneNumber extends TdFunction {
   /// Searches a user by their phone number. Returns a 404 error if the user can't be found.
   ///
   /// * [phoneNumber]: Phone number to search for.
+  /// * [onlyLocal]: Pass true to get only locally available information without sending network requests.
   ///
   /// [User] is returned on completion.
   const SearchUserByPhoneNumber({
     required this.phoneNumber,
+    required this.onlyLocal,
   });
 
   /// Phone number to search for
   final String phoneNumber;
+
+  /// Pass true to get only locally available information without sending network requests
+  final bool onlyLocal;
 
   /// Convert model to TDLib JSON format
   @override
@@ -28,6 +34,7 @@ final class SearchUserByPhoneNumber extends TdFunction {
     return {
       "@type": defaultObjectId,
       "phone_number": phoneNumber,
+      "only_local": onlyLocal,
       "@extra": extra,
     };
   }
@@ -36,11 +43,14 @@ final class SearchUserByPhoneNumber extends TdFunction {
   ///
   /// Properties:
   /// * [phone_number]: Phone number to search for
+  /// * [only_local]: Pass true to get only locally available information without sending network requests
   SearchUserByPhoneNumber copyWith({
     String? phoneNumber,
+    bool? onlyLocal,
   }) =>
       SearchUserByPhoneNumber(
         phoneNumber: phoneNumber ?? this.phoneNumber,
+        onlyLocal: onlyLocal ?? this.onlyLocal,
       );
 
   /// TDLib object type

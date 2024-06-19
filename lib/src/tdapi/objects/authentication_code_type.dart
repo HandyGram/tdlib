@@ -12,6 +12,8 @@ sealed class AuthenticationCodeType extends TdObject {
   /// a AuthenticationCodeType return type can be :
   /// * [AuthenticationCodeTypeTelegramMessage]
   /// * [AuthenticationCodeTypeSms]
+  /// * [AuthenticationCodeTypeSmsWord]
+  /// * [AuthenticationCodeTypeSmsPhrase]
   /// * [AuthenticationCodeTypeCall]
   /// * [AuthenticationCodeTypeFlashCall]
   /// * [AuthenticationCodeTypeMissedCall]
@@ -24,6 +26,10 @@ sealed class AuthenticationCodeType extends TdObject {
         return AuthenticationCodeTypeTelegramMessage.fromJson(json);
       case AuthenticationCodeTypeSms.defaultObjectId:
         return AuthenticationCodeTypeSms.fromJson(json);
+      case AuthenticationCodeTypeSmsWord.defaultObjectId:
+        return AuthenticationCodeTypeSmsWord.fromJson(json);
+      case AuthenticationCodeTypeSmsPhrase.defaultObjectId:
+        return AuthenticationCodeTypeSmsPhrase.fromJson(json);
       case AuthenticationCodeTypeCall.defaultObjectId:
         return AuthenticationCodeTypeCall.fromJson(json);
       case AuthenticationCodeTypeFlashCall.defaultObjectId:
@@ -65,14 +71,14 @@ sealed class AuthenticationCodeType extends TdObject {
 
 /// **AuthenticationCodeTypeTelegramMessage** *(authenticationCodeTypeTelegramMessage)* - child of AuthenticationCodeType
 ///
-/// An authentication code is delivered via a private Telegram message, which can be viewed from another active session.
+/// A digit-only authentication code is delivered via a private Telegram message, which can be viewed from another active session.
 ///
 /// * [length]: Length of the code.
 final class AuthenticationCodeTypeTelegramMessage
     extends AuthenticationCodeType {
   /// **AuthenticationCodeTypeTelegramMessage** *(authenticationCodeTypeTelegramMessage)* - child of AuthenticationCodeType
   ///
-  /// An authentication code is delivered via a private Telegram message, which can be viewed from another active session.
+  /// A digit-only authentication code is delivered via a private Telegram message, which can be viewed from another active session.
   ///
   /// * [length]: Length of the code.
   const AuthenticationCodeTypeTelegramMessage({
@@ -124,13 +130,13 @@ final class AuthenticationCodeTypeTelegramMessage
 
 /// **AuthenticationCodeTypeSms** *(authenticationCodeTypeSms)* - child of AuthenticationCodeType
 ///
-/// An authentication code is delivered via an SMS message to the specified phone number; applications may not receive this type of code.
+/// A digit-only authentication code is delivered via an SMS message to the specified phone number; non-official applications may not receive this type of code.
 ///
 /// * [length]: Length of the code.
 final class AuthenticationCodeTypeSms extends AuthenticationCodeType {
   /// **AuthenticationCodeTypeSms** *(authenticationCodeTypeSms)* - child of AuthenticationCodeType
   ///
-  /// An authentication code is delivered via an SMS message to the specified phone number; applications may not receive this type of code.
+  /// A digit-only authentication code is delivered via an SMS message to the specified phone number; non-official applications may not receive this type of code.
   ///
   /// * [length]: Length of the code.
   const AuthenticationCodeTypeSms({
@@ -179,15 +185,129 @@ final class AuthenticationCodeTypeSms extends AuthenticationCodeType {
   String get currentObjectId => defaultObjectId;
 }
 
+/// **AuthenticationCodeTypeSmsWord** *(authenticationCodeTypeSmsWord)* - child of AuthenticationCodeType
+///
+/// An authentication code is a word delivered via an SMS message to the specified phone number; non-official applications may not receive this type of code.
+///
+/// * [firstLetter]: The first letters of the word if known.
+final class AuthenticationCodeTypeSmsWord extends AuthenticationCodeType {
+  /// **AuthenticationCodeTypeSmsWord** *(authenticationCodeTypeSmsWord)* - child of AuthenticationCodeType
+  ///
+  /// An authentication code is a word delivered via an SMS message to the specified phone number; non-official applications may not receive this type of code.
+  ///
+  /// * [firstLetter]: The first letters of the word if known.
+  const AuthenticationCodeTypeSmsWord({
+    required this.firstLetter,
+  });
+
+  /// The first letters of the word if known
+  final String firstLetter;
+
+  /// Parse from a json
+  factory AuthenticationCodeTypeSmsWord.fromJson(Map<String, dynamic> json) =>
+      AuthenticationCodeTypeSmsWord(
+        firstLetter: json['first_letter'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "first_letter": firstLetter,
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [first_letter]: The first letters of the word if known
+  @override
+  AuthenticationCodeTypeSmsWord copyWith({
+    String? firstLetter,
+  }) =>
+      AuthenticationCodeTypeSmsWord(
+        firstLetter: firstLetter ?? this.firstLetter,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'authenticationCodeTypeSmsWord';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **AuthenticationCodeTypeSmsPhrase** *(authenticationCodeTypeSmsPhrase)* - child of AuthenticationCodeType
+///
+/// An authentication code is a phrase from multiple words delivered via an SMS message to the specified phone number; non-official applications may not receive this type of code.
+///
+/// * [firstWord]: The first word of the phrase if known.
+final class AuthenticationCodeTypeSmsPhrase extends AuthenticationCodeType {
+  /// **AuthenticationCodeTypeSmsPhrase** *(authenticationCodeTypeSmsPhrase)* - child of AuthenticationCodeType
+  ///
+  /// An authentication code is a phrase from multiple words delivered via an SMS message to the specified phone number; non-official applications may not receive this type of code.
+  ///
+  /// * [firstWord]: The first word of the phrase if known.
+  const AuthenticationCodeTypeSmsPhrase({
+    required this.firstWord,
+  });
+
+  /// The first word of the phrase if known
+  final String firstWord;
+
+  /// Parse from a json
+  factory AuthenticationCodeTypeSmsPhrase.fromJson(Map<String, dynamic> json) =>
+      AuthenticationCodeTypeSmsPhrase(
+        firstWord: json['first_word'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "first_word": firstWord,
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [first_word]: The first word of the phrase if known
+  @override
+  AuthenticationCodeTypeSmsPhrase copyWith({
+    String? firstWord,
+  }) =>
+      AuthenticationCodeTypeSmsPhrase(
+        firstWord: firstWord ?? this.firstWord,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'authenticationCodeTypeSmsPhrase';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
 /// **AuthenticationCodeTypeCall** *(authenticationCodeTypeCall)* - child of AuthenticationCodeType
 ///
-/// An authentication code is delivered via a phone call to the specified phone number.
+/// A digit-only authentication code is delivered via a phone call to the specified phone number.
 ///
 /// * [length]: Length of the code.
 final class AuthenticationCodeTypeCall extends AuthenticationCodeType {
   /// **AuthenticationCodeTypeCall** *(authenticationCodeTypeCall)* - child of AuthenticationCodeType
   ///
-  /// An authentication code is delivered via a phone call to the specified phone number.
+  /// A digit-only authentication code is delivered via a phone call to the specified phone number.
   ///
   /// * [length]: Length of the code.
   const AuthenticationCodeTypeCall({
@@ -364,14 +484,14 @@ final class AuthenticationCodeTypeMissedCall extends AuthenticationCodeType {
 
 /// **AuthenticationCodeTypeFragment** *(authenticationCodeTypeFragment)* - child of AuthenticationCodeType
 ///
-/// An authentication code is delivered to https://fragment.com. The user must be logged in there via a wallet owning the phone number's NFT.
+/// A digit-only authentication code is delivered to https://fragment.com. The user must be logged in there via a wallet owning the phone number's NFT.
 ///
 /// * [url]: URL to open to receive the code.
 /// * [length]: Length of the code.
 final class AuthenticationCodeTypeFragment extends AuthenticationCodeType {
   /// **AuthenticationCodeTypeFragment** *(authenticationCodeTypeFragment)* - child of AuthenticationCodeType
   ///
-  /// An authentication code is delivered to https://fragment.com. The user must be logged in there via a wallet owning the phone number's NFT.
+  /// A digit-only authentication code is delivered to https://fragment.com. The user must be logged in there via a wallet owning the phone number's NFT.
   ///
   /// * [url]: URL to open to receive the code.
   /// * [length]: Length of the code.
@@ -432,24 +552,30 @@ final class AuthenticationCodeTypeFragment extends AuthenticationCodeType {
 
 /// **AuthenticationCodeTypeFirebaseAndroid** *(authenticationCodeTypeFirebaseAndroid)* - child of AuthenticationCodeType
 ///
-/// An authentication code is delivered via Firebase Authentication to the official Android application.
+/// A digit-only authentication code is delivered via Firebase Authentication to the official Android application.
 ///
-/// * [nonce]: Nonce to pass to the SafetyNet Attestation API.
+/// * [usePlayIntegrity]: True, if Play Integrity API must be used for device verification. Otherwise, SafetyNet Attestation API must be used.
+/// * [nonce]: Nonce to pass to the Play Integrity API or the SafetyNet Attestation API.
 /// * [length]: Length of the code.
 final class AuthenticationCodeTypeFirebaseAndroid
     extends AuthenticationCodeType {
   /// **AuthenticationCodeTypeFirebaseAndroid** *(authenticationCodeTypeFirebaseAndroid)* - child of AuthenticationCodeType
   ///
-  /// An authentication code is delivered via Firebase Authentication to the official Android application.
+  /// A digit-only authentication code is delivered via Firebase Authentication to the official Android application.
   ///
-  /// * [nonce]: Nonce to pass to the SafetyNet Attestation API.
+  /// * [usePlayIntegrity]: True, if Play Integrity API must be used for device verification. Otherwise, SafetyNet Attestation API must be used.
+  /// * [nonce]: Nonce to pass to the Play Integrity API or the SafetyNet Attestation API.
   /// * [length]: Length of the code.
   const AuthenticationCodeTypeFirebaseAndroid({
+    required this.usePlayIntegrity,
     required this.nonce,
     required this.length,
   });
 
-  /// Nonce to pass to the SafetyNet Attestation API
+  /// True, if Play Integrity API must be used for device verification. Otherwise, SafetyNet Attestation API must be used
+  final bool usePlayIntegrity;
+
+  /// Nonce to pass to the Play Integrity API or the SafetyNet Attestation API
   final String nonce;
 
   /// Length of the code
@@ -459,6 +585,7 @@ final class AuthenticationCodeTypeFirebaseAndroid
   factory AuthenticationCodeTypeFirebaseAndroid.fromJson(
           Map<String, dynamic> json) =>
       AuthenticationCodeTypeFirebaseAndroid(
+        usePlayIntegrity: json['use_play_integrity'],
         nonce: json['nonce'],
         length: json['length'],
       );
@@ -468,6 +595,7 @@ final class AuthenticationCodeTypeFirebaseAndroid
   Map<String, dynamic> toJson() {
     return {
       "@type": defaultObjectId,
+      "use_play_integrity": usePlayIntegrity,
       "nonce": nonce,
       "length": length,
     };
@@ -476,14 +604,17 @@ final class AuthenticationCodeTypeFirebaseAndroid
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [nonce]: Nonce to pass to the SafetyNet Attestation API
+  /// * [use_play_integrity]: True, if Play Integrity API must be used for device verification. Otherwise, SafetyNet Attestation API must be used
+  /// * [nonce]: Nonce to pass to the Play Integrity API or the SafetyNet Attestation API
   /// * [length]: Length of the code
   @override
   AuthenticationCodeTypeFirebaseAndroid copyWith({
+    bool? usePlayIntegrity,
     String? nonce,
     int? length,
   }) =>
       AuthenticationCodeTypeFirebaseAndroid(
+        usePlayIntegrity: usePlayIntegrity ?? this.usePlayIntegrity,
         nonce: nonce ?? this.nonce,
         length: length ?? this.length,
       );
@@ -502,7 +633,7 @@ final class AuthenticationCodeTypeFirebaseAndroid
 
 /// **AuthenticationCodeTypeFirebaseIos** *(authenticationCodeTypeFirebaseIos)* - child of AuthenticationCodeType
 ///
-/// An authentication code is delivered via Firebase Authentication to the official iOS application.
+/// A digit-only authentication code is delivered via Firebase Authentication to the official iOS application.
 ///
 /// * [receipt]: Receipt of successful application token validation to compare with receipt from push notification.
 /// * [pushTimeout]: Time after the next authentication method is supposed to be used if verification push notification isn't received, in seconds.
@@ -510,7 +641,7 @@ final class AuthenticationCodeTypeFirebaseAndroid
 final class AuthenticationCodeTypeFirebaseIos extends AuthenticationCodeType {
   /// **AuthenticationCodeTypeFirebaseIos** *(authenticationCodeTypeFirebaseIos)* - child of AuthenticationCodeType
   ///
-  /// An authentication code is delivered via Firebase Authentication to the official iOS application.
+  /// A digit-only authentication code is delivered via Firebase Authentication to the official iOS application.
   ///
   /// * [receipt]: Receipt of successful application token validation to compare with receipt from push notification.
   /// * [pushTimeout]: Time after the next authentication method is supposed to be used if verification push notification isn't received, in seconds.

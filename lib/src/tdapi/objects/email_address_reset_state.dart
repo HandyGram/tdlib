@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **EmailAddressResetState** *(emailAddressResetState)* - parent
 ///
-/// Describes reset state of a email address.
+/// Describes reset state of an email address.
 sealed class EmailAddressResetState extends TdObject {
   /// **EmailAddressResetState** *(emailAddressResetState)* - parent
   ///
-  /// Describes reset state of a email address.
+  /// Describes reset state of an email address.
   const EmailAddressResetState();
 
   /// a EmailAddressResetState return type can be :

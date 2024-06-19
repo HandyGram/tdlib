@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **ChatType** *(chatType)* - parent
 ///
-/// Describes the type of a chat.
+/// Describes the type of chat.
 sealed class ChatType extends TdObject {
   /// **ChatType** *(chatType)* - parent
   ///
-  /// Describes the type of a chat.
+  /// Describes the type of chat.
   const ChatType();
 
   /// a ChatType return type can be :

@@ -5,6 +5,7 @@ part of '../tdapi.dart';
 /// Searches for messages in all chats except secret chats. Returns the results in reverse chronological order (i.e., in order of decreasing (date, chat_id, message_id)).. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
 ///
 /// * [chatList]: Chat list in which to search messages; pass null to search in all chats regardless of their chat list. Only Main and Archive chat lists are supported *(optional)*.
+/// * [onlyInChannels]: Pass true to search only for messages in channels.
 /// * [query]: Query to search for.
 /// * [offset]: Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results.
 /// * [limit]: The maximum number of messages to be returned; up to 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
@@ -19,6 +20,7 @@ final class SearchMessages extends TdFunction {
   /// Searches for messages in all chats except secret chats. Returns the results in reverse chronological order (i.e., in order of decreasing (date, chat_id, message_id)).. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
   ///
   /// * [chatList]: Chat list in which to search messages; pass null to search in all chats regardless of their chat list. Only Main and Archive chat lists are supported *(optional)*.
+  /// * [onlyInChannels]: Pass true to search only for messages in channels.
   /// * [query]: Query to search for.
   /// * [offset]: Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results.
   /// * [limit]: The maximum number of messages to be returned; up to 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
@@ -29,6 +31,7 @@ final class SearchMessages extends TdFunction {
   /// [FoundMessages] is returned on completion.
   const SearchMessages({
     this.chatList,
+    required this.onlyInChannels,
     required this.query,
     required this.offset,
     required this.limit,
@@ -39,6 +42,9 @@ final class SearchMessages extends TdFunction {
 
   /// Chat list in which to search messages; pass null to search in all chats regardless of their chat list. Only Main and Archive chat lists are supported
   final ChatList? chatList;
+
+  /// Pass true to search only for messages in channels
+  final bool onlyInChannels;
 
   /// Query to search for
   final String query;
@@ -64,6 +70,7 @@ final class SearchMessages extends TdFunction {
     return {
       "@type": defaultObjectId,
       "chat_list": chatList?.toJson(),
+      "only_in_channels": onlyInChannels,
       "query": query,
       "offset": offset,
       "limit": limit,
@@ -78,6 +85,7 @@ final class SearchMessages extends TdFunction {
   ///
   /// Properties:
   /// * [chat_list]: Chat list in which to search messages; pass null to search in all chats regardless of their chat list. Only Main and Archive chat lists are supported
+  /// * [only_in_channels]: Pass true to search only for messages in channels
   /// * [query]: Query to search for
   /// * [offset]: Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
   /// * [limit]: The maximum number of messages to be returned; up to 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
@@ -86,6 +94,7 @@ final class SearchMessages extends TdFunction {
   /// * [max_date]: If not 0, the maximum date of the messages to return
   SearchMessages copyWith({
     ChatList? chatList,
+    bool? onlyInChannels,
     String? query,
     String? offset,
     int? limit,
@@ -95,6 +104,7 @@ final class SearchMessages extends TdFunction {
   }) =>
       SearchMessages(
         chatList: chatList ?? this.chatList,
+        onlyInChannels: onlyInChannels ?? this.onlyInChannels,
         query: query ?? this.query,
         offset: offset ?? this.offset,
         limit: limit ?? this.limit,

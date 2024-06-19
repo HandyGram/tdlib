@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **ChatStatisticsObjectType** *(chatStatisticsObjectType)* - parent
 ///
-/// Describes type of an object, for which statistics are provided.
+/// Describes type of object, for which statistics are provided.
 sealed class ChatStatisticsObjectType extends TdObject {
   /// **ChatStatisticsObjectType** *(chatStatisticsObjectType)* - parent
   ///
-  /// Describes type of an object, for which statistics are provided.
+  /// Describes type of object, for which statistics are provided.
   const ChatStatisticsObjectType();
 
   /// a ChatStatisticsObjectType return type can be :

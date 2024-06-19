@@ -39,6 +39,7 @@ part of '../tdapi.dart';
 /// * [background]: Background set for the chat; may be null if none *(optional)*.
 /// * [themeName]: If non-empty, name of a theme, set for the chat.
 /// * [actionBar]: Information about actions which must be possible to do through the chat action bar; may be null if none *(optional)*.
+/// * [businessBotManageBar]: Information about bar for managing a business bot in the chat; may be null if none *(optional)*.
 /// * [videoChat]: Information about video chat of the chat.
 /// * [pendingJoinRequests]: Information about pending join requests; may be null if none *(optional)*.
 /// * [replyMarkupMessageId]: Identifier of the message from which reply markup needs to be used; 0 if there is no default custom reply markup in the chat.
@@ -84,6 +85,7 @@ final class Chat extends TdObject {
   /// * [background]: Background set for the chat; may be null if none *(optional)*.
   /// * [themeName]: If non-empty, name of a theme, set for the chat.
   /// * [actionBar]: Information about actions which must be possible to do through the chat action bar; may be null if none *(optional)*.
+  /// * [businessBotManageBar]: Information about bar for managing a business bot in the chat; may be null if none *(optional)*.
   /// * [videoChat]: Information about video chat of the chat.
   /// * [pendingJoinRequests]: Information about pending join requests; may be null if none *(optional)*.
   /// * [replyMarkupMessageId]: Identifier of the message from which reply markup needs to be used; 0 if there is no default custom reply markup in the chat.
@@ -125,6 +127,7 @@ final class Chat extends TdObject {
     this.background,
     required this.themeName,
     this.actionBar,
+    this.businessBotManageBar,
     required this.videoChat,
     this.pendingJoinRequests,
     required this.replyMarkupMessageId,
@@ -239,6 +242,9 @@ final class Chat extends TdObject {
   /// Information about actions which must be possible to do through the chat action bar; may be null if none
   final ChatActionBar? actionBar;
 
+  /// Information about bar for managing a business bot in the chat; may be null if none
+  final BusinessBotManageBar? businessBotManageBar;
+
   /// Information about video chat of the chat
   final VideoChat videoChat;
 
@@ -326,6 +332,9 @@ final class Chat extends TdObject {
         actionBar: json['action_bar'] == null
             ? null
             : ChatActionBar.fromJson(json['action_bar']),
+        businessBotManageBar: json['business_bot_manage_bar'] == null
+            ? null
+            : BusinessBotManageBar.fromJson(json['business_bot_manage_bar']),
         videoChat: VideoChat.fromJson(json['video_chat']),
         pendingJoinRequests: json['pending_join_requests'] == null
             ? null
@@ -379,6 +388,7 @@ final class Chat extends TdObject {
       "background": background?.toJson(),
       "theme_name": themeName,
       "action_bar": actionBar?.toJson(),
+      "business_bot_manage_bar": businessBotManageBar?.toJson(),
       "video_chat": videoChat.toJson(),
       "pending_join_requests": pendingJoinRequests?.toJson(),
       "reply_markup_message_id": replyMarkupMessageId,
@@ -425,6 +435,7 @@ final class Chat extends TdObject {
   /// * [background]: Background set for the chat; may be null if none
   /// * [theme_name]: If non-empty, name of a theme, set for the chat
   /// * [action_bar]: Information about actions which must be possible to do through the chat action bar; may be null if none
+  /// * [business_bot_manage_bar]: Information about bar for managing a business bot in the chat; may be null if none
   /// * [video_chat]: Information about video chat of the chat
   /// * [pending_join_requests]: Information about pending join requests; may be null if none
   /// * [reply_markup_message_id]: Identifier of the message from which reply markup needs to be used; 0 if there is no default custom reply markup in the chat
@@ -466,6 +477,7 @@ final class Chat extends TdObject {
     ChatBackground? background,
     String? themeName,
     ChatActionBar? actionBar,
+    BusinessBotManageBar? businessBotManageBar,
     VideoChat? videoChat,
     ChatJoinRequestsInfo? pendingJoinRequests,
     int? replyMarkupMessageId,
@@ -518,6 +530,7 @@ final class Chat extends TdObject {
         background: background ?? this.background,
         themeName: themeName ?? this.themeName,
         actionBar: actionBar ?? this.actionBar,
+        businessBotManageBar: businessBotManageBar ?? this.businessBotManageBar,
         videoChat: videoChat ?? this.videoChat,
         pendingJoinRequests: pendingJoinRequests ?? this.pendingJoinRequests,
         replyMarkupMessageId: replyMarkupMessageId ?? this.replyMarkupMessageId,

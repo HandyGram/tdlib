@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **PremiumLimitType** *(premiumLimitType)* - parent
 ///
-/// Describes type of a limit, increased for Premium users.
+/// Describes type of limit, increased for Premium users.
 sealed class PremiumLimitType extends TdObject {
   /// **PremiumLimitType** *(premiumLimitType)* - parent
   ///
-  /// Describes type of a limit, increased for Premium users.
+  /// Describes type of limit, increased for Premium users.
   const PremiumLimitType();
 
   /// a PremiumLimitType return type can be :

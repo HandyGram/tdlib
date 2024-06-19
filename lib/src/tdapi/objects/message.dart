@@ -35,6 +35,7 @@ part of '../tdapi.dart';
 /// * [importInfo]: Information about the initial message for messages created with importMessages; may be null if the message isn't imported *(optional)*.
 /// * [interactionInfo]: Information about interactions with the message; may be null if none *(optional)*.
 /// * [unreadReactions]: Information about unread reactions added to the message.
+/// * [factCheck]: Information about fact-check added to the message; may be null if none *(optional)*.
 /// * [replyTo]: Information about the message or the story this message is replying to; may be null if none *(optional)*.
 /// * [messageThreadId]: If non-zero, the identifier of the message thread the message belongs to; unique within the chat to which the message belongs.
 /// * [savedMessagesTopicId]: Identifier of the Saved Messages topic for the message; 0 for messages not from Saved Messages.
@@ -45,7 +46,8 @@ part of '../tdapi.dart';
 /// * [senderBusinessBotUserId]: If non-zero, the user identifier of the business bot that sent this message.
 /// * [senderBoostCount]: Number of times the sender of the message boosted the supergroup at the time the message was sent; 0 if none or unknown. For messages sent by the current user, supergroupFullInfo.my_boost_count must be used instead.
 /// * [authorSignature]: For channel posts and anonymous group messages, optional author signature.
-/// * [mediaAlbumId]: Unique identifier of an album this message belongs to. Only audios, documents, photos and videos can be grouped together in albums.
+/// * [mediaAlbumId]: Unique identifier of an album this message belongs to; 0 if none. Only audios, documents, photos and videos can be grouped together in albums.
+/// * [effectId]: Unique identifier of the effect added to the message; 0 if none.
 /// * [restrictionReason]: If non-empty, contains a human-readable description of the reason why access to this message must be restricted.
 /// * [content]: Content of the message.
 /// * [replyMarkup]: Reply markup for the message; may be null if none *(optional)*.
@@ -85,6 +87,7 @@ final class Message extends TdObject {
   /// * [importInfo]: Information about the initial message for messages created with importMessages; may be null if the message isn't imported *(optional)*.
   /// * [interactionInfo]: Information about interactions with the message; may be null if none *(optional)*.
   /// * [unreadReactions]: Information about unread reactions added to the message.
+  /// * [factCheck]: Information about fact-check added to the message; may be null if none *(optional)*.
   /// * [replyTo]: Information about the message or the story this message is replying to; may be null if none *(optional)*.
   /// * [messageThreadId]: If non-zero, the identifier of the message thread the message belongs to; unique within the chat to which the message belongs.
   /// * [savedMessagesTopicId]: Identifier of the Saved Messages topic for the message; 0 for messages not from Saved Messages.
@@ -95,7 +98,8 @@ final class Message extends TdObject {
   /// * [senderBusinessBotUserId]: If non-zero, the user identifier of the business bot that sent this message.
   /// * [senderBoostCount]: Number of times the sender of the message boosted the supergroup at the time the message was sent; 0 if none or unknown. For messages sent by the current user, supergroupFullInfo.my_boost_count must be used instead.
   /// * [authorSignature]: For channel posts and anonymous group messages, optional author signature.
-  /// * [mediaAlbumId]: Unique identifier of an album this message belongs to. Only audios, documents, photos and videos can be grouped together in albums.
+  /// * [mediaAlbumId]: Unique identifier of an album this message belongs to; 0 if none. Only audios, documents, photos and videos can be grouped together in albums.
+  /// * [effectId]: Unique identifier of the effect added to the message; 0 if none.
   /// * [restrictionReason]: If non-empty, contains a human-readable description of the reason why access to this message must be restricted.
   /// * [content]: Content of the message.
   /// * [replyMarkup]: Reply markup for the message; may be null if none *(optional)*.
@@ -131,6 +135,7 @@ final class Message extends TdObject {
     this.importInfo,
     this.interactionInfo,
     required this.unreadReactions,
+    this.factCheck,
     this.replyTo,
     required this.messageThreadId,
     required this.savedMessagesTopicId,
@@ -142,6 +147,7 @@ final class Message extends TdObject {
     required this.senderBoostCount,
     required this.authorSignature,
     required this.mediaAlbumId,
+    required this.effectId,
     required this.restrictionReason,
     required this.content,
     this.replyMarkup,
@@ -242,6 +248,9 @@ final class Message extends TdObject {
   /// Information about unread reactions added to the message
   final List<UnreadReaction> unreadReactions;
 
+  /// Information about fact-check added to the message; may be null if none
+  final FactCheck? factCheck;
+
   /// Information about the message or the story this message is replying to; may be null if none
   final MessageReplyTo? replyTo;
 
@@ -272,8 +281,11 @@ final class Message extends TdObject {
   /// For channel posts and anonymous group messages, optional author signature
   final String authorSignature;
 
-  /// Unique identifier of an album this message belongs to. Only audios, documents, photos and videos can be grouped together in albums
+  /// Unique identifier of an album this message belongs to; 0 if none. Only audios, documents, photos and videos can be grouped together in albums
   final int mediaAlbumId;
+
+  /// Unique identifier of the effect added to the message; 0 if none
+  final int effectId;
 
   /// If non-empty, contains a human-readable description of the reason why access to this message must be restricted
   final String restrictionReason;
@@ -338,6 +350,9 @@ final class Message extends TdObject {
             (json['unread_reactions'] ?? [])
                 .map((item) => UnreadReaction.fromJson(item))
                 .toList()),
+        factCheck: json['fact_check'] == null
+            ? null
+            : FactCheck.fromJson(json['fact_check']),
         replyTo: json['reply_to'] == null
             ? null
             : MessageReplyTo.fromJson(json['reply_to']),
@@ -354,7 +369,10 @@ final class Message extends TdObject {
         authorSignature: json['author_signature'],
         mediaAlbumId: json['media_album_id'] is int
             ? json['media_album_id']
-            : int.parse(json['media_album_id']),
+            : int.tryParse(json['media_album_id'] ?? "") ?? 0,
+        effectId: json['effect_id'] is int
+            ? json['effect_id']
+            : int.tryParse(json['effect_id'] ?? "") ?? 0,
         restrictionReason: json['restriction_reason'],
         content: MessageContent.fromJson(json['content']),
         replyMarkup: json['reply_markup'] == null
@@ -400,6 +418,7 @@ final class Message extends TdObject {
       "import_info": importInfo?.toJson(),
       "interaction_info": interactionInfo?.toJson(),
       "unread_reactions": unreadReactions.map((i) => i.toJson()).toList(),
+      "fact_check": factCheck?.toJson(),
       "reply_to": replyTo?.toJson(),
       "message_thread_id": messageThreadId,
       "saved_messages_topic_id": savedMessagesTopicId,
@@ -411,6 +430,7 @@ final class Message extends TdObject {
       "sender_boost_count": senderBoostCount,
       "author_signature": authorSignature,
       "media_album_id": mediaAlbumId,
+      "effect_id": effectId,
       "restriction_reason": restrictionReason,
       "content": content.toJson(),
       "reply_markup": replyMarkup?.toJson(),
@@ -451,6 +471,7 @@ final class Message extends TdObject {
   /// * [import_info]: Information about the initial message for messages created with importMessages; may be null if the message isn't imported
   /// * [interaction_info]: Information about interactions with the message; may be null if none
   /// * [unread_reactions]: Information about unread reactions added to the message
+  /// * [fact_check]: Information about fact-check added to the message; may be null if none
   /// * [reply_to]: Information about the message or the story this message is replying to; may be null if none
   /// * [message_thread_id]: If non-zero, the identifier of the message thread the message belongs to; unique within the chat to which the message belongs
   /// * [saved_messages_topic_id]: Identifier of the Saved Messages topic for the message; 0 for messages not from Saved Messages
@@ -461,7 +482,8 @@ final class Message extends TdObject {
   /// * [sender_business_bot_user_id]: If non-zero, the user identifier of the business bot that sent this message
   /// * [sender_boost_count]: Number of times the sender of the message boosted the supergroup at the time the message was sent; 0 if none or unknown. For messages sent by the current user, supergroupFullInfo.my_boost_count must be used instead
   /// * [author_signature]: For channel posts and anonymous group messages, optional author signature
-  /// * [media_album_id]: Unique identifier of an album this message belongs to. Only audios, documents, photos and videos can be grouped together in albums
+  /// * [media_album_id]: Unique identifier of an album this message belongs to; 0 if none. Only audios, documents, photos and videos can be grouped together in albums
+  /// * [effect_id]: Unique identifier of the effect added to the message; 0 if none
   /// * [restriction_reason]: If non-empty, contains a human-readable description of the reason why access to this message must be restricted
   /// * [content]: Content of the message
   /// * [reply_markup]: Reply markup for the message; may be null if none
@@ -497,6 +519,7 @@ final class Message extends TdObject {
     MessageImportInfo? importInfo,
     MessageInteractionInfo? interactionInfo,
     List<UnreadReaction>? unreadReactions,
+    FactCheck? factCheck,
     MessageReplyTo? replyTo,
     int? messageThreadId,
     int? savedMessagesTopicId,
@@ -508,6 +531,7 @@ final class Message extends TdObject {
     int? senderBoostCount,
     String? authorSignature,
     int? mediaAlbumId,
+    int? effectId,
     String? restrictionReason,
     MessageContent? content,
     ReplyMarkup? replyMarkup,
@@ -551,6 +575,7 @@ final class Message extends TdObject {
         importInfo: importInfo ?? this.importInfo,
         interactionInfo: interactionInfo ?? this.interactionInfo,
         unreadReactions: unreadReactions ?? this.unreadReactions,
+        factCheck: factCheck ?? this.factCheck,
         replyTo: replyTo ?? this.replyTo,
         messageThreadId: messageThreadId ?? this.messageThreadId,
         savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
@@ -563,6 +588,7 @@ final class Message extends TdObject {
         senderBoostCount: senderBoostCount ?? this.senderBoostCount,
         authorSignature: authorSignature ?? this.authorSignature,
         mediaAlbumId: mediaAlbumId ?? this.mediaAlbumId,
+        effectId: effectId ?? this.effectId,
         restrictionReason: restrictionReason ?? this.restrictionReason,
         content: content ?? this.content,
         replyMarkup: replyMarkup ?? this.replyMarkup,

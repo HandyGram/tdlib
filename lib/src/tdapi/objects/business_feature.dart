@@ -16,7 +16,7 @@ sealed class BusinessFeature extends TdObject {
   /// * [BusinessFeatureGreetingMessage]
   /// * [BusinessFeatureAwayMessage]
   /// * [BusinessFeatureAccountLinks]
-  /// * [BusinessFeatureIntro]
+  /// * [BusinessFeatureStartPage]
   /// * [BusinessFeatureBots]
   /// * [BusinessFeatureEmojiStatus]
   /// * [BusinessFeatureChatFolderTags]
@@ -35,8 +35,8 @@ sealed class BusinessFeature extends TdObject {
         return BusinessFeatureAwayMessage.fromJson(json);
       case BusinessFeatureAccountLinks.defaultObjectId:
         return BusinessFeatureAccountLinks.fromJson(json);
-      case BusinessFeatureIntro.defaultObjectId:
-        return BusinessFeatureIntro.fromJson(json);
+      case BusinessFeatureStartPage.defaultObjectId:
+        return BusinessFeatureStartPage.fromJson(json);
       case BusinessFeatureBots.defaultObjectId:
         return BusinessFeatureBots.fromJson(json);
       case BusinessFeatureEmojiStatus.defaultObjectId:
@@ -295,18 +295,18 @@ final class BusinessFeatureAccountLinks extends BusinessFeature {
   String get currentObjectId => defaultObjectId;
 }
 
-/// **BusinessFeatureIntro** *(businessFeatureIntro)* - child of BusinessFeature
+/// **BusinessFeatureStartPage** *(businessFeatureStartPage)* - child of BusinessFeature
 ///
-/// The ability to customize intro.
-final class BusinessFeatureIntro extends BusinessFeature {
-  /// **BusinessFeatureIntro** *(businessFeatureIntro)* - child of BusinessFeature
+/// The ability to customize start page.
+final class BusinessFeatureStartPage extends BusinessFeature {
+  /// **BusinessFeatureStartPage** *(businessFeatureStartPage)* - child of BusinessFeature
   ///
-  /// The ability to customize intro.
-  const BusinessFeatureIntro();
+  /// The ability to customize start page.
+  const BusinessFeatureStartPage();
 
   /// Parse from a json
-  factory BusinessFeatureIntro.fromJson(Map<String, dynamic> json) =>
-      const BusinessFeatureIntro();
+  factory BusinessFeatureStartPage.fromJson(Map<String, dynamic> json) =>
+      const BusinessFeatureStartPage();
 
   /// Convert model to TDLib JSON format
   @override
@@ -318,10 +318,10 @@ final class BusinessFeatureIntro extends BusinessFeature {
 
   /// Copy instance with no modifications.
   @override
-  BusinessFeatureIntro copyWith() => const BusinessFeatureIntro();
+  BusinessFeatureStartPage copyWith() => const BusinessFeatureStartPage();
 
   /// TDLib object type
-  static const String defaultObjectId = 'businessFeatureIntro';
+  static const String defaultObjectId = 'businessFeatureStartPage';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

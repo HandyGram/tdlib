@@ -4,7 +4,7 @@ part of '../tdapi.dart';
 ///
 /// Describes one answer option of a poll.
 ///
-/// * [text]: Option text; 1-100 characters.
+/// * [text]: Option text; 1-100 characters. Only custom emoji entities are allowed.
 /// * [voterCount]: Number of voters for this option, available only for closed or voted polls.
 /// * [votePercentage]: The percentage of votes for this option; 0-100.
 /// * [isChosen]: True, if the option was chosen by the user.
@@ -14,7 +14,7 @@ final class PollOption extends TdObject {
   ///
   /// Describes one answer option of a poll.
   ///
-  /// * [text]: Option text; 1-100 characters.
+  /// * [text]: Option text; 1-100 characters. Only custom emoji entities are allowed.
   /// * [voterCount]: Number of voters for this option, available only for closed or voted polls.
   /// * [votePercentage]: The percentage of votes for this option; 0-100.
   /// * [isChosen]: True, if the option was chosen by the user.
@@ -27,8 +27,8 @@ final class PollOption extends TdObject {
     required this.isBeingChosen,
   });
 
-  /// Option text; 1-100 characters
-  final String text;
+  /// Option text; 1-100 characters. Only custom emoji entities are allowed
+  final FormattedText text;
 
   /// Number of voters for this option, available only for closed or voted polls
   final int voterCount;
@@ -44,7 +44,7 @@ final class PollOption extends TdObject {
 
   /// Parse from a json
   factory PollOption.fromJson(Map<String, dynamic> json) => PollOption(
-        text: json['text'],
+        text: FormattedText.fromJson(json['text']),
         voterCount: json['voter_count'],
         votePercentage: json['vote_percentage'],
         isChosen: json['is_chosen'],
@@ -56,7 +56,7 @@ final class PollOption extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": defaultObjectId,
-      "text": text,
+      "text": text.toJson(),
       "voter_count": voterCount,
       "vote_percentage": votePercentage,
       "is_chosen": isChosen,
@@ -67,13 +67,13 @@ final class PollOption extends TdObject {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [text]: Option text; 1-100 characters
+  /// * [text]: Option text; 1-100 characters. Only custom emoji entities are allowed
   /// * [voter_count]: Number of voters for this option, available only for closed or voted polls
   /// * [vote_percentage]: The percentage of votes for this option; 0-100
   /// * [is_chosen]: True, if the option was chosen by the user
   /// * [is_being_chosen]: True, if the option is being chosen by a pending setPollAnswer request
   PollOption copyWith({
-    String? text,
+    FormattedText? text,
     int? voterCount,
     int? votePercentage,
     bool? isChosen,

@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **OpenChatSimilarChat** *(openChatSimilarChat)* - TDLib function
 ///
-/// Informs TDLib that a chat was opened from the list of similar chats. The method is independent from openChat and closeChat methods.
+/// Informs TDLib that a chat was opened from the list of similar chats. The method is independent of openChat and closeChat methods.
 ///
 /// * [chatId]: Identifier of the original chat, which similar chats were requested.
 /// * [openedChatId]: Identifier of the opened chat.
@@ -11,7 +11,7 @@ part of '../tdapi.dart';
 final class OpenChatSimilarChat extends TdFunction {
   /// **OpenChatSimilarChat** *(openChatSimilarChat)* - TDLib function
   ///
-  /// Informs TDLib that a chat was opened from the list of similar chats. The method is independent from openChat and closeChat methods.
+  /// Informs TDLib that a chat was opened from the list of similar chats. The method is independent of openChat and closeChat methods.
   ///
   /// * [chatId]: Identifier of the original chat, which similar chats were requested.
   /// * [openedChatId]: Identifier of the opened chat.

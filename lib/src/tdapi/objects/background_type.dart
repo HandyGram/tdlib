@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **BackgroundType** *(backgroundType)* - parent
 ///
-/// Describes the type of a background.
+/// Describes the type of background.
 sealed class BackgroundType extends TdObject {
   /// **BackgroundType** *(backgroundType)* - parent
   ///
-  /// Describes the type of a background.
+  /// Describes the type of background.
   const BackgroundType();
 
   /// a BackgroundType return type can be :

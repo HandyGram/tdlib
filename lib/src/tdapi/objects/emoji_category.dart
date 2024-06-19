@@ -2,23 +2,26 @@ part of '../tdapi.dart';
 
 /// **EmojiCategory** *(emojiCategory)* - basic class
 ///
-/// Contains a list of similar emoji to search for in getStickers and searchStickers.
+/// Describes an emoji category.
 ///
 /// * [name]: Name of the category.
 /// * [icon]: Custom emoji sticker, which represents icon of the category.
-/// * [emojis]: List of emojis in the category.
+/// * [source]: Source of stickers for the emoji category.
+/// * [isGreeting]: True, if the category must be shown first when choosing a sticker for the start page.
 final class EmojiCategory extends TdObject {
   /// **EmojiCategory** *(emojiCategory)* - basic class
   ///
-  /// Contains a list of similar emoji to search for in getStickers and searchStickers.
+  /// Describes an emoji category.
   ///
   /// * [name]: Name of the category.
   /// * [icon]: Custom emoji sticker, which represents icon of the category.
-  /// * [emojis]: List of emojis in the category.
+  /// * [source]: Source of stickers for the emoji category.
+  /// * [isGreeting]: True, if the category must be shown first when choosing a sticker for the start page.
   const EmojiCategory({
     required this.name,
     required this.icon,
-    required this.emojis,
+    required this.source,
+    required this.isGreeting,
   });
 
   /// Name of the category
@@ -27,15 +30,18 @@ final class EmojiCategory extends TdObject {
   /// Custom emoji sticker, which represents icon of the category
   final Sticker icon;
 
-  /// List of emojis in the category
-  final List<String> emojis;
+  /// Source of stickers for the emoji category
+  final EmojiCategorySource source;
+
+  /// True, if the category must be shown first when choosing a sticker for the start page
+  final bool isGreeting;
 
   /// Parse from a json
   factory EmojiCategory.fromJson(Map<String, dynamic> json) => EmojiCategory(
         name: json['name'],
         icon: Sticker.fromJson(json['icon']),
-        emojis: List<String>.from(
-            (json['emojis'] ?? []).map((item) => item).toList()),
+        source: EmojiCategorySource.fromJson(json['source']),
+        isGreeting: json['is_greeting'],
       );
 
   /// Convert model to TDLib JSON format
@@ -45,7 +51,8 @@ final class EmojiCategory extends TdObject {
       "@type": defaultObjectId,
       "name": name,
       "icon": icon.toJson(),
-      "emojis": emojis.map((i) => i).toList(),
+      "source": source.toJson(),
+      "is_greeting": isGreeting,
     };
   }
 
@@ -54,16 +61,19 @@ final class EmojiCategory extends TdObject {
   /// Properties:
   /// * [name]: Name of the category
   /// * [icon]: Custom emoji sticker, which represents icon of the category
-  /// * [emojis]: List of emojis in the category
+  /// * [source]: Source of stickers for the emoji category
+  /// * [is_greeting]: True, if the category must be shown first when choosing a sticker for the start page
   EmojiCategory copyWith({
     String? name,
     Sticker? icon,
-    List<String>? emojis,
+    EmojiCategorySource? source,
+    bool? isGreeting,
   }) =>
       EmojiCategory(
         name: name ?? this.name,
         icon: icon ?? this.icon,
-        emojis: emojis ?? this.emojis,
+        source: source ?? this.source,
+        isGreeting: isGreeting ?? this.isGreeting,
       );
 
   /// TDLib object type

@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **NetworkType** *(networkType)* - parent
 ///
-/// Represents the type of a network.
+/// Represents the type of network.
 sealed class NetworkType extends TdObject {
   /// **NetworkType** *(networkType)* - parent
   ///
-  /// Represents the type of a network.
+  /// Represents the type of network.
   const NetworkType();
 
   /// a NetworkType return type can be :

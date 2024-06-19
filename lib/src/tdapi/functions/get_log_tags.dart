@@ -2,13 +2,13 @@ part of '../tdapi.dart';
 
 /// **GetLogTags** *(getLogTags)* - TDLib function
 ///
-/// Returns list of available TDLib internal log tags, for example,.
+/// Returns the list of available TDLib internal log tags, for example,.
 ///
 /// [LogTags] is returned on completion.
 final class GetLogTags extends TdFunction {
   /// **GetLogTags** *(getLogTags)* - TDLib function
   ///
-  /// Returns list of available TDLib internal log tags, for example,.
+  /// Returns the list of available TDLib internal log tags, for example,.
   ///
   /// [LogTags] is returned on completion.
   const GetLogTags();

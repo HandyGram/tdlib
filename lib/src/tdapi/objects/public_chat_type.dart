@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **PublicChatType** *(publicChatType)* - parent
 ///
-/// Describes a type of public chats.
+/// Describes type of public chat.
 sealed class PublicChatType extends TdObject {
   /// **PublicChatType** *(publicChatType)* - parent
   ///
-  /// Describes a type of public chats.
+  /// Describes type of public chat.
   const PublicChatType();
 
   /// a PublicChatType return type can be :

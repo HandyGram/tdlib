@@ -4,18 +4,18 @@ part of '../tdapi.dart';
 ///
 /// Contains a list of story areas to be added.
 ///
-/// * [areas]: List of input story areas. Currently, a story can have. up to 10 inputStoryAreaTypeLocation, inputStoryAreaTypeFoundVenue, and inputStoryAreaTypePreviousVenue areas,. up to getOption("story_suggested_reaction_area_count_max") inputStoryAreaTypeSuggestedReaction areas, and up to 1 inputStoryAreaTypeMessage area.
+/// * [areas]: List of input story areas. Currently, a story can have. up to 10 inputStoryAreaTypeLocation, inputStoryAreaTypeFoundVenue, and inputStoryAreaTypePreviousVenue areas,. up to getOption("story_suggested_reaction_area_count_max") inputStoryAreaTypeSuggestedReaction areas,. up to 1 inputStoryAreaTypeMessage area, and. up to getOption("story_link_area_count_max") inputStoryAreaTypeLink areas if the current user is a Telegram Premium user.
 final class InputStoryAreas extends TdObject {
   /// **InputStoryAreas** *(inputStoryAreas)* - basic class
   ///
   /// Contains a list of story areas to be added.
   ///
-  /// * [areas]: List of input story areas. Currently, a story can have. up to 10 inputStoryAreaTypeLocation, inputStoryAreaTypeFoundVenue, and inputStoryAreaTypePreviousVenue areas,. up to getOption("story_suggested_reaction_area_count_max") inputStoryAreaTypeSuggestedReaction areas, and up to 1 inputStoryAreaTypeMessage area.
+  /// * [areas]: List of input story areas. Currently, a story can have. up to 10 inputStoryAreaTypeLocation, inputStoryAreaTypeFoundVenue, and inputStoryAreaTypePreviousVenue areas,. up to getOption("story_suggested_reaction_area_count_max") inputStoryAreaTypeSuggestedReaction areas,. up to 1 inputStoryAreaTypeMessage area, and. up to getOption("story_link_area_count_max") inputStoryAreaTypeLink areas if the current user is a Telegram Premium user.
   const InputStoryAreas({
     required this.areas,
   });
 
-  /// List of input story areas. Currently, a story can have. up to 10 inputStoryAreaTypeLocation, inputStoryAreaTypeFoundVenue, and inputStoryAreaTypePreviousVenue areas,. up to getOption("story_suggested_reaction_area_count_max") inputStoryAreaTypeSuggestedReaction areas, and up to 1 inputStoryAreaTypeMessage area
+  /// List of input story areas. Currently, a story can have. up to 10 inputStoryAreaTypeLocation, inputStoryAreaTypeFoundVenue, and inputStoryAreaTypePreviousVenue areas,. up to getOption("story_suggested_reaction_area_count_max") inputStoryAreaTypeSuggestedReaction areas,. up to 1 inputStoryAreaTypeMessage area, and. up to getOption("story_link_area_count_max") inputStoryAreaTypeLink areas if the current user is a Telegram Premium user
   final List<InputStoryArea> areas;
 
   /// Parse from a json
@@ -38,7 +38,7 @@ final class InputStoryAreas extends TdObject {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [areas]: List of input story areas. Currently, a story can have. up to 10 inputStoryAreaTypeLocation, inputStoryAreaTypeFoundVenue, and inputStoryAreaTypePreviousVenue areas,. up to getOption("story_suggested_reaction_area_count_max") inputStoryAreaTypeSuggestedReaction areas, and up to 1 inputStoryAreaTypeMessage area
+  /// * [areas]: List of input story areas. Currently, a story can have. up to 10 inputStoryAreaTypeLocation, inputStoryAreaTypeFoundVenue, and inputStoryAreaTypePreviousVenue areas,. up to getOption("story_suggested_reaction_area_count_max") inputStoryAreaTypeSuggestedReaction areas,. up to 1 inputStoryAreaTypeMessage area, and. up to getOption("story_link_area_count_max") inputStoryAreaTypeLink areas if the current user is a Telegram Premium user
   InputStoryAreas copyWith({
     List<InputStoryArea>? areas,
   }) =>

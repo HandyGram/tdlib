@@ -11,13 +11,13 @@ part of '../tdapi.dart';
 /// * [isBeingSent]: True, if the story is being sent by the current user.
 /// * [isBeingEdited]: True, if the story is being edited by the current user.
 /// * [isEdited]: True, if the story was edited.
-/// * [isPinned]: True, if the story is saved in the sender's profile and will be available there after expiration.
+/// * [isPostedToChatPage]: True, if the story is saved in the sender's profile and will be available there after expiration.
 /// * [isVisibleOnlyForSelf]: True, if the story is visible only for the current user.
 /// * [canBeDeleted]: True, if the story can be deleted.
 /// * [canBeEdited]: True, if the story can be edited.
 /// * [canBeForwarded]: True, if the story can be forwarded as a message. Otherwise, screenshots and saving of the story content must be also forbidden.
 /// * [canBeReplied]: True, if the story can be replied in the chat with the story sender.
-/// * [canToggleIsPinned]: True, if the story's is_pinned value can be changed.
+/// * [canToggleIsPostedToChatPage]: True, if the story's is_posted_to_chat_page value can be changed.
 /// * [canGetStatistics]: True, if the story statistics are available through getStoryStatistics.
 /// * [canGetInteractions]: True, if interactions with the story can be received through getStoryInteractions.
 /// * [hasExpiredViewers]: True, if users viewed the story can't be received, because the story has expired more than getOption("story_viewers_expiration_delay") seconds ago.
@@ -40,13 +40,13 @@ final class Story extends TdObject {
   /// * [isBeingSent]: True, if the story is being sent by the current user.
   /// * [isBeingEdited]: True, if the story is being edited by the current user.
   /// * [isEdited]: True, if the story was edited.
-  /// * [isPinned]: True, if the story is saved in the sender's profile and will be available there after expiration.
+  /// * [isPostedToChatPage]: True, if the story is saved in the sender's profile and will be available there after expiration.
   /// * [isVisibleOnlyForSelf]: True, if the story is visible only for the current user.
   /// * [canBeDeleted]: True, if the story can be deleted.
   /// * [canBeEdited]: True, if the story can be edited.
   /// * [canBeForwarded]: True, if the story can be forwarded as a message. Otherwise, screenshots and saving of the story content must be also forbidden.
   /// * [canBeReplied]: True, if the story can be replied in the chat with the story sender.
-  /// * [canToggleIsPinned]: True, if the story's is_pinned value can be changed.
+  /// * [canToggleIsPostedToChatPage]: True, if the story's is_posted_to_chat_page value can be changed.
   /// * [canGetStatistics]: True, if the story statistics are available through getStoryStatistics.
   /// * [canGetInteractions]: True, if interactions with the story can be received through getStoryInteractions.
   /// * [hasExpiredViewers]: True, if users viewed the story can't be received, because the story has expired more than getOption("story_viewers_expiration_delay") seconds ago.
@@ -65,13 +65,13 @@ final class Story extends TdObject {
     required this.isBeingSent,
     required this.isBeingEdited,
     required this.isEdited,
-    required this.isPinned,
+    required this.isPostedToChatPage,
     required this.isVisibleOnlyForSelf,
     required this.canBeDeleted,
     required this.canBeEdited,
     required this.canBeForwarded,
     required this.canBeReplied,
-    required this.canToggleIsPinned,
+    required this.canToggleIsPostedToChatPage,
     required this.canGetStatistics,
     required this.canGetInteractions,
     required this.hasExpiredViewers,
@@ -108,7 +108,7 @@ final class Story extends TdObject {
   final bool isEdited;
 
   /// True, if the story is saved in the sender's profile and will be available there after expiration
-  final bool isPinned;
+  final bool isPostedToChatPage;
 
   /// True, if the story is visible only for the current user
   final bool isVisibleOnlyForSelf;
@@ -125,8 +125,8 @@ final class Story extends TdObject {
   /// True, if the story can be replied in the chat with the story sender
   final bool canBeReplied;
 
-  /// True, if the story's is_pinned value can be changed
-  final bool canToggleIsPinned;
+  /// True, if the story's is_posted_to_chat_page value can be changed
+  final bool canToggleIsPostedToChatPage;
 
   /// True, if the story statistics are available through getStoryStatistics
   final bool canGetStatistics;
@@ -177,13 +177,13 @@ final class Story extends TdObject {
         isBeingSent: json['is_being_sent'],
         isBeingEdited: json['is_being_edited'],
         isEdited: json['is_edited'],
-        isPinned: json['is_pinned'],
+        isPostedToChatPage: json['is_posted_to_chat_page'],
         isVisibleOnlyForSelf: json['is_visible_only_for_self'],
         canBeDeleted: json['can_be_deleted'],
         canBeEdited: json['can_be_edited'],
         canBeForwarded: json['can_be_forwarded'],
         canBeReplied: json['can_be_replied'],
-        canToggleIsPinned: json['can_toggle_is_pinned'],
+        canToggleIsPostedToChatPage: json['can_toggle_is_posted_to_chat_page'],
         canGetStatistics: json['can_get_statistics'],
         canGetInteractions: json['can_get_interactions'],
         hasExpiredViewers: json['has_expired_viewers'],
@@ -219,13 +219,13 @@ final class Story extends TdObject {
       "is_being_sent": isBeingSent,
       "is_being_edited": isBeingEdited,
       "is_edited": isEdited,
-      "is_pinned": isPinned,
+      "is_posted_to_chat_page": isPostedToChatPage,
       "is_visible_only_for_self": isVisibleOnlyForSelf,
       "can_be_deleted": canBeDeleted,
       "can_be_edited": canBeEdited,
       "can_be_forwarded": canBeForwarded,
       "can_be_replied": canBeReplied,
-      "can_toggle_is_pinned": canToggleIsPinned,
+      "can_toggle_is_posted_to_chat_page": canToggleIsPostedToChatPage,
       "can_get_statistics": canGetStatistics,
       "can_get_interactions": canGetInteractions,
       "has_expired_viewers": hasExpiredViewers,
@@ -249,13 +249,13 @@ final class Story extends TdObject {
   /// * [is_being_sent]: True, if the story is being sent by the current user
   /// * [is_being_edited]: True, if the story is being edited by the current user
   /// * [is_edited]: True, if the story was edited
-  /// * [is_pinned]: True, if the story is saved in the sender's profile and will be available there after expiration
+  /// * [is_posted_to_chat_page]: True, if the story is saved in the sender's profile and will be available there after expiration
   /// * [is_visible_only_for_self]: True, if the story is visible only for the current user
   /// * [can_be_deleted]: True, if the story can be deleted
   /// * [can_be_edited]: True, if the story can be edited
   /// * [can_be_forwarded]: True, if the story can be forwarded as a message. Otherwise, screenshots and saving of the story content must be also forbidden
   /// * [can_be_replied]: True, if the story can be replied in the chat with the story sender
-  /// * [can_toggle_is_pinned]: True, if the story's is_pinned value can be changed
+  /// * [can_toggle_is_posted_to_chat_page]: True, if the story's is_posted_to_chat_page value can be changed
   /// * [can_get_statistics]: True, if the story statistics are available through getStoryStatistics
   /// * [can_get_interactions]: True, if interactions with the story can be received through getStoryInteractions
   /// * [has_expired_viewers]: True, if users viewed the story can't be received, because the story has expired more than getOption("story_viewers_expiration_delay") seconds ago
@@ -274,13 +274,13 @@ final class Story extends TdObject {
     bool? isBeingSent,
     bool? isBeingEdited,
     bool? isEdited,
-    bool? isPinned,
+    bool? isPostedToChatPage,
     bool? isVisibleOnlyForSelf,
     bool? canBeDeleted,
     bool? canBeEdited,
     bool? canBeForwarded,
     bool? canBeReplied,
-    bool? canToggleIsPinned,
+    bool? canToggleIsPostedToChatPage,
     bool? canGetStatistics,
     bool? canGetInteractions,
     bool? hasExpiredViewers,
@@ -302,13 +302,14 @@ final class Story extends TdObject {
         isBeingSent: isBeingSent ?? this.isBeingSent,
         isBeingEdited: isBeingEdited ?? this.isBeingEdited,
         isEdited: isEdited ?? this.isEdited,
-        isPinned: isPinned ?? this.isPinned,
+        isPostedToChatPage: isPostedToChatPage ?? this.isPostedToChatPage,
         isVisibleOnlyForSelf: isVisibleOnlyForSelf ?? this.isVisibleOnlyForSelf,
         canBeDeleted: canBeDeleted ?? this.canBeDeleted,
         canBeEdited: canBeEdited ?? this.canBeEdited,
         canBeForwarded: canBeForwarded ?? this.canBeForwarded,
         canBeReplied: canBeReplied ?? this.canBeReplied,
-        canToggleIsPinned: canToggleIsPinned ?? this.canToggleIsPinned,
+        canToggleIsPostedToChatPage:
+            canToggleIsPostedToChatPage ?? this.canToggleIsPostedToChatPage,
         canGetStatistics: canGetStatistics ?? this.canGetStatistics,
         canGetInteractions: canGetInteractions ?? this.canGetInteractions,
         hasExpiredViewers: hasExpiredViewers ?? this.hasExpiredViewers,

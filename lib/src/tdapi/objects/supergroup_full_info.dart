@@ -19,8 +19,10 @@ part of '../tdapi.dart';
 /// * [canSetStickerSet]: True, if the supergroup sticker set can be changed.
 /// * [canSetLocation]: True, if the supergroup location can be changed.
 /// * [canGetStatistics]: True, if the supergroup or channel statistics are available.
+/// * [canGetRevenueStatistics]: True, if the supergroup or channel revenue statistics are available.
 /// * [canToggleAggressiveAntiSpam]: True, if aggressive anti-spam checks can be enabled or disabled in the supergroup.
 /// * [isAllHistoryAvailable]: True, if new chat members will have access to old messages. In public, discussion, of forum groups and all channels, old messages are always available,. so this option affects only private non-forum supergroups without a linked chat. The value of this field is only available to chat administrators.
+/// * [canHaveSponsoredMessages]: True, if the chat can have sponsored messages. The value of this field is only available to the owner of the chat.
 /// * [hasAggressiveAntiSpamEnabled]: True, if aggressive anti-spam checks are enabled in the supergroup. The value of this field is only available to chat administrators.
 /// * [hasPinnedStories]: True, if the supergroup or channel has pinned stories.
 /// * [myBoostCount]: Number of times the current user boosted the supergroup or channel.
@@ -52,8 +54,10 @@ final class SupergroupFullInfo extends TdObject {
   /// * [canSetStickerSet]: True, if the supergroup sticker set can be changed.
   /// * [canSetLocation]: True, if the supergroup location can be changed.
   /// * [canGetStatistics]: True, if the supergroup or channel statistics are available.
+  /// * [canGetRevenueStatistics]: True, if the supergroup or channel revenue statistics are available.
   /// * [canToggleAggressiveAntiSpam]: True, if aggressive anti-spam checks can be enabled or disabled in the supergroup.
   /// * [isAllHistoryAvailable]: True, if new chat members will have access to old messages. In public, discussion, of forum groups and all channels, old messages are always available,. so this option affects only private non-forum supergroups without a linked chat. The value of this field is only available to chat administrators.
+  /// * [canHaveSponsoredMessages]: True, if the chat can have sponsored messages. The value of this field is only available to the owner of the chat.
   /// * [hasAggressiveAntiSpamEnabled]: True, if aggressive anti-spam checks are enabled in the supergroup. The value of this field is only available to chat administrators.
   /// * [hasPinnedStories]: True, if the supergroup or channel has pinned stories.
   /// * [myBoostCount]: Number of times the current user boosted the supergroup or channel.
@@ -81,8 +85,10 @@ final class SupergroupFullInfo extends TdObject {
     required this.canSetStickerSet,
     required this.canSetLocation,
     required this.canGetStatistics,
+    required this.canGetRevenueStatistics,
     required this.canToggleAggressiveAntiSpam,
     required this.isAllHistoryAvailable,
+    required this.canHaveSponsoredMessages,
     required this.hasAggressiveAntiSpamEnabled,
     required this.hasPinnedStories,
     required this.myBoostCount,
@@ -143,11 +149,17 @@ final class SupergroupFullInfo extends TdObject {
   /// True, if the supergroup or channel statistics are available
   final bool canGetStatistics;
 
+  /// True, if the supergroup or channel revenue statistics are available
+  final bool canGetRevenueStatistics;
+
   /// True, if aggressive anti-spam checks can be enabled or disabled in the supergroup
   final bool canToggleAggressiveAntiSpam;
 
   /// True, if new chat members will have access to old messages. In public, discussion, of forum groups and all channels, old messages are always available,. so this option affects only private non-forum supergroups without a linked chat. The value of this field is only available to chat administrators
   final bool isAllHistoryAvailable;
+
+  /// True, if the chat can have sponsored messages. The value of this field is only available to the owner of the chat
+  final bool canHaveSponsoredMessages;
 
   /// True, if aggressive anti-spam checks are enabled in the supergroup. The value of this field is only available to chat administrators
   final bool hasAggressiveAntiSpamEnabled;
@@ -208,8 +220,10 @@ final class SupergroupFullInfo extends TdObject {
         canSetStickerSet: json['can_set_sticker_set'],
         canSetLocation: json['can_set_location'],
         canGetStatistics: json['can_get_statistics'],
+        canGetRevenueStatistics: json['can_get_revenue_statistics'],
         canToggleAggressiveAntiSpam: json['can_toggle_aggressive_anti_spam'],
         isAllHistoryAvailable: json['is_all_history_available'],
+        canHaveSponsoredMessages: json['can_have_sponsored_messages'],
         hasAggressiveAntiSpamEnabled: json['has_aggressive_anti_spam_enabled'],
         hasPinnedStories: json['has_pinned_stories'],
         myBoostCount: json['my_boost_count'],
@@ -255,8 +269,10 @@ final class SupergroupFullInfo extends TdObject {
       "can_set_sticker_set": canSetStickerSet,
       "can_set_location": canSetLocation,
       "can_get_statistics": canGetStatistics,
+      "can_get_revenue_statistics": canGetRevenueStatistics,
       "can_toggle_aggressive_anti_spam": canToggleAggressiveAntiSpam,
       "is_all_history_available": isAllHistoryAvailable,
+      "can_have_sponsored_messages": canHaveSponsoredMessages,
       "has_aggressive_anti_spam_enabled": hasAggressiveAntiSpamEnabled,
       "has_pinned_stories": hasPinnedStories,
       "my_boost_count": myBoostCount,
@@ -289,8 +305,10 @@ final class SupergroupFullInfo extends TdObject {
   /// * [can_set_sticker_set]: True, if the supergroup sticker set can be changed
   /// * [can_set_location]: True, if the supergroup location can be changed
   /// * [can_get_statistics]: True, if the supergroup or channel statistics are available
+  /// * [can_get_revenue_statistics]: True, if the supergroup or channel revenue statistics are available
   /// * [can_toggle_aggressive_anti_spam]: True, if aggressive anti-spam checks can be enabled or disabled in the supergroup
   /// * [is_all_history_available]: True, if new chat members will have access to old messages. In public, discussion, of forum groups and all channels, old messages are always available,. so this option affects only private non-forum supergroups without a linked chat. The value of this field is only available to chat administrators
+  /// * [can_have_sponsored_messages]: True, if the chat can have sponsored messages. The value of this field is only available to the owner of the chat
   /// * [has_aggressive_anti_spam_enabled]: True, if aggressive anti-spam checks are enabled in the supergroup. The value of this field is only available to chat administrators
   /// * [has_pinned_stories]: True, if the supergroup or channel has pinned stories
   /// * [my_boost_count]: Number of times the current user boosted the supergroup or channel
@@ -318,8 +336,10 @@ final class SupergroupFullInfo extends TdObject {
     bool? canSetStickerSet,
     bool? canSetLocation,
     bool? canGetStatistics,
+    bool? canGetRevenueStatistics,
     bool? canToggleAggressiveAntiSpam,
     bool? isAllHistoryAvailable,
+    bool? canHaveSponsoredMessages,
     bool? hasAggressiveAntiSpamEnabled,
     bool? hasPinnedStories,
     int? myBoostCount,
@@ -351,10 +371,14 @@ final class SupergroupFullInfo extends TdObject {
         canSetStickerSet: canSetStickerSet ?? this.canSetStickerSet,
         canSetLocation: canSetLocation ?? this.canSetLocation,
         canGetStatistics: canGetStatistics ?? this.canGetStatistics,
+        canGetRevenueStatistics:
+            canGetRevenueStatistics ?? this.canGetRevenueStatistics,
         canToggleAggressiveAntiSpam:
             canToggleAggressiveAntiSpam ?? this.canToggleAggressiveAntiSpam,
         isAllHistoryAvailable:
             isAllHistoryAvailable ?? this.isAllHistoryAvailable,
+        canHaveSponsoredMessages:
+            canHaveSponsoredMessages ?? this.canHaveSponsoredMessages,
         hasAggressiveAntiSpamEnabled:
             hasAggressiveAntiSpamEnabled ?? this.hasAggressiveAntiSpamEnabled,
         hasPinnedStories: hasPinnedStories ?? this.hasPinnedStories,

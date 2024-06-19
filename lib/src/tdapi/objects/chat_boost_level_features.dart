@@ -17,6 +17,7 @@ part of '../tdapi.dart';
 /// * [canSetCustomBackground]: True, if custom background can be set in the chat for all users.
 /// * [canSetCustomEmojiStickerSet]: True, if custom emoji sticker set can be set for the chat.
 /// * [canRecognizeSpeech]: True, if speech recognition can be used for video note and voice note messages by all users.
+/// * [canDisableSponsoredMessages]: True, if sponsored messages can be disabled in the chat.
 final class ChatBoostLevelFeatures extends TdObject {
   /// **ChatBoostLevelFeatures** *(chatBoostLevelFeatures)* - basic class
   ///
@@ -35,6 +36,7 @@ final class ChatBoostLevelFeatures extends TdObject {
   /// * [canSetCustomBackground]: True, if custom background can be set in the chat for all users.
   /// * [canSetCustomEmojiStickerSet]: True, if custom emoji sticker set can be set for the chat.
   /// * [canRecognizeSpeech]: True, if speech recognition can be used for video note and voice note messages by all users.
+  /// * [canDisableSponsoredMessages]: True, if sponsored messages can be disabled in the chat.
   const ChatBoostLevelFeatures({
     required this.level,
     required this.storyPerDayCount,
@@ -49,6 +51,7 @@ final class ChatBoostLevelFeatures extends TdObject {
     required this.canSetCustomBackground,
     required this.canSetCustomEmojiStickerSet,
     required this.canRecognizeSpeech,
+    required this.canDisableSponsoredMessages,
     this.extra,
     this.clientId,
   });
@@ -92,6 +95,9 @@ final class ChatBoostLevelFeatures extends TdObject {
   /// True, if speech recognition can be used for video note and voice note messages by all users
   final bool canRecognizeSpeech;
 
+  /// True, if sponsored messages can be disabled in the chat
+  final bool canDisableSponsoredMessages;
+
   /// [extra] callback sign
   @override
   final dynamic extra;
@@ -117,6 +123,7 @@ final class ChatBoostLevelFeatures extends TdObject {
         canSetCustomBackground: json['can_set_custom_background'],
         canSetCustomEmojiStickerSet: json['can_set_custom_emoji_sticker_set'],
         canRecognizeSpeech: json['can_recognize_speech'],
+        canDisableSponsoredMessages: json['can_disable_sponsored_messages'],
         extra: json['@extra'],
         clientId: json['@client_id'],
       );
@@ -140,6 +147,7 @@ final class ChatBoostLevelFeatures extends TdObject {
       "can_set_custom_background": canSetCustomBackground,
       "can_set_custom_emoji_sticker_set": canSetCustomEmojiStickerSet,
       "can_recognize_speech": canRecognizeSpeech,
+      "can_disable_sponsored_messages": canDisableSponsoredMessages,
     };
   }
 
@@ -159,6 +167,7 @@ final class ChatBoostLevelFeatures extends TdObject {
   /// * [can_set_custom_background]: True, if custom background can be set in the chat for all users
   /// * [can_set_custom_emoji_sticker_set]: True, if custom emoji sticker set can be set for the chat
   /// * [can_recognize_speech]: True, if speech recognition can be used for video note and voice note messages by all users
+  /// * [can_disable_sponsored_messages]: True, if sponsored messages can be disabled in the chat
   ChatBoostLevelFeatures copyWith({
     int? level,
     int? storyPerDayCount,
@@ -173,6 +182,7 @@ final class ChatBoostLevelFeatures extends TdObject {
     bool? canSetCustomBackground,
     bool? canSetCustomEmojiStickerSet,
     bool? canRecognizeSpeech,
+    bool? canDisableSponsoredMessages,
     dynamic extra,
     int? clientId,
   }) =>
@@ -198,6 +208,8 @@ final class ChatBoostLevelFeatures extends TdObject {
         canSetCustomEmojiStickerSet:
             canSetCustomEmojiStickerSet ?? this.canSetCustomEmojiStickerSet,
         canRecognizeSpeech: canRecognizeSpeech ?? this.canRecognizeSpeech,
+        canDisableSponsoredMessages:
+            canDisableSponsoredMessages ?? this.canDisableSponsoredMessages,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

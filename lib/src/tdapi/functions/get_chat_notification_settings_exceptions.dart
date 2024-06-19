@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **GetChatNotificationSettingsExceptions** *(getChatNotificationSettingsExceptions)* - TDLib function
 ///
-/// Returns list of chats with non-default notification settings for new messages.
+/// Returns the list of chats with non-default notification settings for new messages.
 ///
 /// * [scope]: If specified, only chats from the scope will be returned; pass null to return chats from all scopes *(optional)*.
 /// * [compareSound]: Pass true to include in the response chats with only non-default sound.
@@ -11,7 +11,7 @@ part of '../tdapi.dart';
 final class GetChatNotificationSettingsExceptions extends TdFunction {
   /// **GetChatNotificationSettingsExceptions** *(getChatNotificationSettingsExceptions)* - TDLib function
   ///
-  /// Returns list of chats with non-default notification settings for new messages.
+  /// Returns the list of chats with non-default notification settings for new messages.
   ///
   /// * [scope]: If specified, only chats from the scope will be returned; pass null to return chats from all scopes *(optional)*.
   /// * [compareSound]: Pass true to include in the response chats with only non-default sound.

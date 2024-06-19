@@ -170,8 +170,9 @@ final class CallStateExchangingKeys extends CallState {
 /// * [servers]: List of available call servers.
 /// * [config]: A JSON-encoded call config.
 /// * [encryptionKey]: Call encryption key.
-/// * [emojis]: Encryption key emojis fingerprint.
+/// * [emojis]: Encryption key fingerprint represented as 4 emoji.
 /// * [allowP2p]: True, if peer-to-peer connection is allowed by users privacy settings.
+/// * [customParameters]: Custom JSON-encoded call parameters to be passed to tgcalls.
 final class CallStateReady extends CallState {
   /// **CallStateReady** *(callStateReady)* - child of CallState
   ///
@@ -181,8 +182,9 @@ final class CallStateReady extends CallState {
   /// * [servers]: List of available call servers.
   /// * [config]: A JSON-encoded call config.
   /// * [encryptionKey]: Call encryption key.
-  /// * [emojis]: Encryption key emojis fingerprint.
+  /// * [emojis]: Encryption key fingerprint represented as 4 emoji.
   /// * [allowP2p]: True, if peer-to-peer connection is allowed by users privacy settings.
+  /// * [customParameters]: Custom JSON-encoded call parameters to be passed to tgcalls.
   const CallStateReady({
     required this.protocol,
     required this.servers,
@@ -190,6 +192,7 @@ final class CallStateReady extends CallState {
     required this.encryptionKey,
     required this.emojis,
     required this.allowP2p,
+    required this.customParameters,
   });
 
   /// Call protocols supported by the other call participant
@@ -204,11 +207,14 @@ final class CallStateReady extends CallState {
   /// Call encryption key
   final String encryptionKey;
 
-  /// Encryption key emojis fingerprint
+  /// Encryption key fingerprint represented as 4 emoji
   final List<String> emojis;
 
   /// True, if peer-to-peer connection is allowed by users privacy settings
   final bool allowP2p;
+
+  /// Custom JSON-encoded call parameters to be passed to tgcalls
+  final String customParameters;
 
   /// Parse from a json
   factory CallStateReady.fromJson(Map<String, dynamic> json) => CallStateReady(
@@ -221,6 +227,7 @@ final class CallStateReady extends CallState {
         emojis: List<String>.from(
             (json['emojis'] ?? []).map((item) => item).toList()),
         allowP2p: json['allow_p2p'],
+        customParameters: json['custom_parameters'],
       );
 
   /// Convert model to TDLib JSON format
@@ -234,6 +241,7 @@ final class CallStateReady extends CallState {
       "encryption_key": encryptionKey,
       "emojis": emojis.map((i) => i).toList(),
       "allow_p2p": allowP2p,
+      "custom_parameters": customParameters,
     };
   }
 
@@ -244,8 +252,9 @@ final class CallStateReady extends CallState {
   /// * [servers]: List of available call servers
   /// * [config]: A JSON-encoded call config
   /// * [encryption_key]: Call encryption key
-  /// * [emojis]: Encryption key emojis fingerprint
+  /// * [emojis]: Encryption key fingerprint represented as 4 emoji
   /// * [allow_p2p]: True, if peer-to-peer connection is allowed by users privacy settings
+  /// * [custom_parameters]: Custom JSON-encoded call parameters to be passed to tgcalls
   @override
   CallStateReady copyWith({
     CallProtocol? protocol,
@@ -254,6 +263,7 @@ final class CallStateReady extends CallState {
     String? encryptionKey,
     List<String>? emojis,
     bool? allowP2p,
+    String? customParameters,
   }) =>
       CallStateReady(
         protocol: protocol ?? this.protocol,
@@ -262,6 +272,7 @@ final class CallStateReady extends CallState {
         encryptionKey: encryptionKey ?? this.encryptionKey,
         emojis: emojis ?? this.emojis,
         allowP2p: allowP2p ?? this.allowP2p,
+        customParameters: customParameters ?? this.customParameters,
       );
 
   /// TDLib object type

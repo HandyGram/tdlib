@@ -14,6 +14,7 @@ sealed class StorePaymentPurpose extends TdObject {
   /// * [StorePaymentPurposeGiftedPremium]
   /// * [StorePaymentPurposePremiumGiftCodes]
   /// * [StorePaymentPurposePremiumGiveaway]
+  /// * [StorePaymentPurposeStars]
   factory StorePaymentPurpose.fromJson(Map<String, dynamic> json) {
     switch (json["@type"]) {
       case StorePaymentPurposePremiumSubscription.defaultObjectId:
@@ -24,6 +25,8 @@ sealed class StorePaymentPurpose extends TdObject {
         return StorePaymentPurposePremiumGiftCodes.fromJson(json);
       case StorePaymentPurposePremiumGiveaway.defaultObjectId:
         return StorePaymentPurposePremiumGiveaway.fromJson(json);
+      case StorePaymentPurposeStars.defaultObjectId:
+        return StorePaymentPurposeStars.fromJson(json);
       default:
         throw FormatException(
           "Unknown object ${json["@type"]} (expected child of StorePaymentPurpose)",
@@ -363,6 +366,85 @@ final class StorePaymentPurposePremiumGiveaway extends StorePaymentPurpose {
 
   /// TDLib object type
   static const String defaultObjectId = 'storePaymentPurposePremiumGiveaway';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **StorePaymentPurposeStars** *(storePaymentPurposeStars)* - child of StorePaymentPurpose
+///
+/// The user buying Telegram stars.
+///
+/// * [currency]: ISO 4217 currency code of the payment currency.
+/// * [amount]: Paid amount, in the smallest units of the currency.
+/// * [starCount]: Number of bought stars.
+final class StorePaymentPurposeStars extends StorePaymentPurpose {
+  /// **StorePaymentPurposeStars** *(storePaymentPurposeStars)* - child of StorePaymentPurpose
+  ///
+  /// The user buying Telegram stars.
+  ///
+  /// * [currency]: ISO 4217 currency code of the payment currency.
+  /// * [amount]: Paid amount, in the smallest units of the currency.
+  /// * [starCount]: Number of bought stars.
+  const StorePaymentPurposeStars({
+    required this.currency,
+    required this.amount,
+    required this.starCount,
+  });
+
+  /// ISO 4217 currency code of the payment currency
+  final String currency;
+
+  /// Paid amount, in the smallest units of the currency
+  final int amount;
+
+  /// Number of bought stars
+  final int starCount;
+
+  /// Parse from a json
+  factory StorePaymentPurposeStars.fromJson(Map<String, dynamic> json) =>
+      StorePaymentPurposeStars(
+        currency: json['currency'],
+        amount: json['amount'],
+        starCount: json['star_count'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "currency": currency,
+      "amount": amount,
+      "star_count": starCount,
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [currency]: ISO 4217 currency code of the payment currency
+  /// * [amount]: Paid amount, in the smallest units of the currency
+  /// * [star_count]: Number of bought stars
+  @override
+  StorePaymentPurposeStars copyWith({
+    String? currency,
+    int? amount,
+    int? starCount,
+  }) =>
+      StorePaymentPurposeStars(
+        currency: currency ?? this.currency,
+        amount: amount ?? this.amount,
+        starCount: starCount ?? this.starCount,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'storePaymentPurposeStars';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

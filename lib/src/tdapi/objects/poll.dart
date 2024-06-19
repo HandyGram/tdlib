@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 /// Describes a poll.
 ///
 /// * [id]: Unique poll identifier.
-/// * [question]: Poll question; 1-300 characters.
+/// * [question]: Poll question; 1-300 characters. Only custom emoji entities are allowed.
 /// * [options]: List of poll answer options.
 /// * [totalVoterCount]: Total number of voters, participating in the poll.
 /// * [recentVoterIds]: Identifiers of recent voters, if the poll is non-anonymous.
@@ -20,7 +20,7 @@ final class Poll extends TdObject {
   /// Describes a poll.
   ///
   /// * [id]: Unique poll identifier.
-  /// * [question]: Poll question; 1-300 characters.
+  /// * [question]: Poll question; 1-300 characters. Only custom emoji entities are allowed.
   /// * [options]: List of poll answer options.
   /// * [totalVoterCount]: Total number of voters, participating in the poll.
   /// * [recentVoterIds]: Identifiers of recent voters, if the poll is non-anonymous.
@@ -45,8 +45,8 @@ final class Poll extends TdObject {
   /// Unique poll identifier
   final int id;
 
-  /// Poll question; 1-300 characters
-  final String question;
+  /// Poll question; 1-300 characters. Only custom emoji entities are allowed
+  final FormattedText question;
 
   /// List of poll answer options
   final List<PollOption> options;
@@ -75,7 +75,7 @@ final class Poll extends TdObject {
   /// Parse from a json
   factory Poll.fromJson(Map<String, dynamic> json) => Poll(
         id: json['id'] is int ? json['id'] : int.parse(json['id']),
-        question: json['question'],
+        question: FormattedText.fromJson(json['question']),
         options: List<PollOption>.from((json['options'] ?? [])
             .map((item) => PollOption.fromJson(item))
             .toList()),
@@ -97,7 +97,7 @@ final class Poll extends TdObject {
     return {
       "@type": defaultObjectId,
       "id": id,
-      "question": question,
+      "question": question.toJson(),
       "options": options.map((i) => i.toJson()).toList(),
       "total_voter_count": totalVoterCount,
       "recent_voter_ids": recentVoterIds.map((i) => i.toJson()).toList(),
@@ -113,7 +113,7 @@ final class Poll extends TdObject {
   ///
   /// Properties:
   /// * [id]: Unique poll identifier
-  /// * [question]: Poll question; 1-300 characters
+  /// * [question]: Poll question; 1-300 characters. Only custom emoji entities are allowed
   /// * [options]: List of poll answer options
   /// * [total_voter_count]: Total number of voters, participating in the poll
   /// * [recent_voter_ids]: Identifiers of recent voters, if the poll is non-anonymous
@@ -124,7 +124,7 @@ final class Poll extends TdObject {
   /// * [is_closed]: True, if the poll is closed
   Poll copyWith({
     int? id,
-    String? question,
+    FormattedText? question,
     List<PollOption>? options,
     int? totalVoterCount,
     List<MessageSender>? recentVoterIds,

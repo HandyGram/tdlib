@@ -5,50 +5,23 @@ part of '../tdapi.dart';
 /// Contains information about an invoice payment form.
 ///
 /// * [id]: The payment form identifier.
-/// * [invoice]: Full information about the invoice.
+/// * [type]: Type of the payment form.
 /// * [sellerBotUserId]: User identifier of the seller bot.
-/// * [paymentProviderUserId]: User identifier of the payment provider bot.
-/// * [paymentProvider]: Information about the payment provider.
-/// * [additionalPaymentOptions]: The list of additional payment options.
-/// * [savedOrderInfo]: Saved server-side order information; may be null *(optional)*.
-/// * [savedCredentials]: The list of saved payment credentials.
-/// * [canSaveCredentials]: True, if the user can choose to save credentials.
-/// * [needPassword]: True, if the user will be able to save credentials, if sets up a 2-step verification password.
-/// * [productTitle]: Product title.
-/// * [productDescription]: Product description.
-/// * [productPhoto]: Product photo; may be null *(optional)*.
+/// * [productInfo]: Information about the product.
 final class PaymentForm extends TdObject {
   /// **PaymentForm** *(paymentForm)* - basic class
   ///
   /// Contains information about an invoice payment form.
   ///
   /// * [id]: The payment form identifier.
-  /// * [invoice]: Full information about the invoice.
+  /// * [type]: Type of the payment form.
   /// * [sellerBotUserId]: User identifier of the seller bot.
-  /// * [paymentProviderUserId]: User identifier of the payment provider bot.
-  /// * [paymentProvider]: Information about the payment provider.
-  /// * [additionalPaymentOptions]: The list of additional payment options.
-  /// * [savedOrderInfo]: Saved server-side order information; may be null *(optional)*.
-  /// * [savedCredentials]: The list of saved payment credentials.
-  /// * [canSaveCredentials]: True, if the user can choose to save credentials.
-  /// * [needPassword]: True, if the user will be able to save credentials, if sets up a 2-step verification password.
-  /// * [productTitle]: Product title.
-  /// * [productDescription]: Product description.
-  /// * [productPhoto]: Product photo; may be null *(optional)*.
+  /// * [productInfo]: Information about the product.
   const PaymentForm({
     required this.id,
-    required this.invoice,
+    required this.type,
     required this.sellerBotUserId,
-    required this.paymentProviderUserId,
-    required this.paymentProvider,
-    required this.additionalPaymentOptions,
-    this.savedOrderInfo,
-    required this.savedCredentials,
-    required this.canSaveCredentials,
-    required this.needPassword,
-    required this.productTitle,
-    required this.productDescription,
-    this.productPhoto,
+    required this.productInfo,
     this.extra,
     this.clientId,
   });
@@ -56,41 +29,14 @@ final class PaymentForm extends TdObject {
   /// The payment form identifier
   final int id;
 
-  /// Full information about the invoice
-  final Invoice invoice;
+  /// Type of the payment form
+  final PaymentFormType type;
 
   /// User identifier of the seller bot
   final int sellerBotUserId;
 
-  /// User identifier of the payment provider bot
-  final int paymentProviderUserId;
-
-  /// Information about the payment provider
-  final PaymentProvider paymentProvider;
-
-  /// The list of additional payment options
-  final List<PaymentOption> additionalPaymentOptions;
-
-  /// Saved server-side order information; may be null
-  final OrderInfo? savedOrderInfo;
-
-  /// The list of saved payment credentials
-  final List<SavedCredentials> savedCredentials;
-
-  /// True, if the user can choose to save credentials
-  final bool canSaveCredentials;
-
-  /// True, if the user will be able to save credentials, if sets up a 2-step verification password
-  final bool needPassword;
-
-  /// Product title
-  final String productTitle;
-
-  /// Product description
-  final FormattedText productDescription;
-
-  /// Product photo; may be null
-  final Photo? productPhoto;
+  /// Information about the product
+  final ProductInfo productInfo;
 
   /// [extra] callback sign
   @override
@@ -103,28 +49,9 @@ final class PaymentForm extends TdObject {
   /// Parse from a json
   factory PaymentForm.fromJson(Map<String, dynamic> json) => PaymentForm(
         id: json['id'] is int ? json['id'] : int.parse(json['id']),
-        invoice: Invoice.fromJson(json['invoice']),
+        type: PaymentFormType.fromJson(json['type']),
         sellerBotUserId: json['seller_bot_user_id'],
-        paymentProviderUserId: json['payment_provider_user_id'],
-        paymentProvider: PaymentProvider.fromJson(json['payment_provider']),
-        additionalPaymentOptions: List<PaymentOption>.from(
-            (json['additional_payment_options'] ?? [])
-                .map((item) => PaymentOption.fromJson(item))
-                .toList()),
-        savedOrderInfo: json['saved_order_info'] == null
-            ? null
-            : OrderInfo.fromJson(json['saved_order_info']),
-        savedCredentials: List<SavedCredentials>.from(
-            (json['saved_credentials'] ?? [])
-                .map((item) => SavedCredentials.fromJson(item))
-                .toList()),
-        canSaveCredentials: json['can_save_credentials'],
-        needPassword: json['need_password'],
-        productTitle: json['product_title'],
-        productDescription: FormattedText.fromJson(json['product_description']),
-        productPhoto: json['product_photo'] == null
-            ? null
-            : Photo.fromJson(json['product_photo']),
+        productInfo: ProductInfo.fromJson(json['product_info']),
         extra: json['@extra'],
         clientId: json['@client_id'],
       );
@@ -135,19 +62,9 @@ final class PaymentForm extends TdObject {
     return {
       "@type": defaultObjectId,
       "id": id,
-      "invoice": invoice.toJson(),
+      "type": type.toJson(),
       "seller_bot_user_id": sellerBotUserId,
-      "payment_provider_user_id": paymentProviderUserId,
-      "payment_provider": paymentProvider.toJson(),
-      "additional_payment_options":
-          additionalPaymentOptions.map((i) => i.toJson()).toList(),
-      "saved_order_info": savedOrderInfo?.toJson(),
-      "saved_credentials": savedCredentials.map((i) => i.toJson()).toList(),
-      "can_save_credentials": canSaveCredentials,
-      "need_password": needPassword,
-      "product_title": productTitle,
-      "product_description": productDescription.toJson(),
-      "product_photo": productPhoto?.toJson(),
+      "product_info": productInfo.toJson(),
     };
   }
 
@@ -155,51 +72,22 @@ final class PaymentForm extends TdObject {
   ///
   /// Properties:
   /// * [id]: The payment form identifier
-  /// * [invoice]: Full information about the invoice
+  /// * [type]: Type of the payment form
   /// * [seller_bot_user_id]: User identifier of the seller bot
-  /// * [payment_provider_user_id]: User identifier of the payment provider bot
-  /// * [payment_provider]: Information about the payment provider
-  /// * [additional_payment_options]: The list of additional payment options
-  /// * [saved_order_info]: Saved server-side order information; may be null
-  /// * [saved_credentials]: The list of saved payment credentials
-  /// * [can_save_credentials]: True, if the user can choose to save credentials
-  /// * [need_password]: True, if the user will be able to save credentials, if sets up a 2-step verification password
-  /// * [product_title]: Product title
-  /// * [product_description]: Product description
-  /// * [product_photo]: Product photo; may be null
+  /// * [product_info]: Information about the product
   PaymentForm copyWith({
     int? id,
-    Invoice? invoice,
+    PaymentFormType? type,
     int? sellerBotUserId,
-    int? paymentProviderUserId,
-    PaymentProvider? paymentProvider,
-    List<PaymentOption>? additionalPaymentOptions,
-    OrderInfo? savedOrderInfo,
-    List<SavedCredentials>? savedCredentials,
-    bool? canSaveCredentials,
-    bool? needPassword,
-    String? productTitle,
-    FormattedText? productDescription,
-    Photo? productPhoto,
+    ProductInfo? productInfo,
     dynamic extra,
     int? clientId,
   }) =>
       PaymentForm(
         id: id ?? this.id,
-        invoice: invoice ?? this.invoice,
+        type: type ?? this.type,
         sellerBotUserId: sellerBotUserId ?? this.sellerBotUserId,
-        paymentProviderUserId:
-            paymentProviderUserId ?? this.paymentProviderUserId,
-        paymentProvider: paymentProvider ?? this.paymentProvider,
-        additionalPaymentOptions:
-            additionalPaymentOptions ?? this.additionalPaymentOptions,
-        savedOrderInfo: savedOrderInfo ?? this.savedOrderInfo,
-        savedCredentials: savedCredentials ?? this.savedCredentials,
-        canSaveCredentials: canSaveCredentials ?? this.canSaveCredentials,
-        needPassword: needPassword ?? this.needPassword,
-        productTitle: productTitle ?? this.productTitle,
-        productDescription: productDescription ?? this.productDescription,
-        productPhoto: productPhoto ?? this.productPhoto,
+        productInfo: productInfo ?? this.productInfo,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

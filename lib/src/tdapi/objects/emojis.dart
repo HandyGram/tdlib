@@ -2,13 +2,13 @@ part of '../tdapi.dart';
 
 /// **Emojis** *(emojis)* - basic class
 ///
-/// Represents a list of emoji.
+/// Represents a list of emojis.
 ///
 /// * [emojis]: List of emojis.
 final class Emojis extends TdObject {
   /// **Emojis** *(emojis)* - basic class
   ///
-  /// Represents a list of emoji.
+  /// Represents a list of emojis.
   ///
   /// * [emojis]: List of emojis.
   const Emojis({

@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **ProxyType** *(proxyType)* - parent
 ///
-/// Describes the type of a proxy server.
+/// Describes the type of proxy server.
 sealed class ProxyType extends TdObject {
   /// **ProxyType** *(proxyType)* - parent
   ///
-  /// Describes the type of a proxy server.
+  /// Describes the type of proxy server.
   const ProxyType();
 
   /// a ProxyType return type can be :

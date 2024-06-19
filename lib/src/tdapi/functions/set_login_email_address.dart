@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **SetLoginEmailAddress** *(setLoginEmailAddress)* - TDLib function
 ///
-/// Changes the login email address of the user. The email address can be changed only if the current user already has login email and passwordState.login_email_address_pattern is non-empty.. The change will not be applied until the new login email address is confirmed with checkLoginEmailAddressCode. To use Apple setLoginEmailAddress/Google setLoginEmailAddress instead of a email address, call checkLoginEmailAddressCode directly.
+/// Changes the login email address of the user. The email address can be changed only if the current user already has login email and passwordState.login_email_address_pattern is non-empty.. The change will not be applied until the new login email address is confirmed with checkLoginEmailAddressCode. To use Apple setLoginEmailAddress/Google setLoginEmailAddress instead of an email address, call checkLoginEmailAddressCode directly.
 ///
 /// * [newLoginEmailAddress]: New login email address.
 ///
@@ -10,7 +10,7 @@ part of '../tdapi.dart';
 final class SetLoginEmailAddress extends TdFunction {
   /// **SetLoginEmailAddress** *(setLoginEmailAddress)* - TDLib function
   ///
-  /// Changes the login email address of the user. The email address can be changed only if the current user already has login email and passwordState.login_email_address_pattern is non-empty.. The change will not be applied until the new login email address is confirmed with checkLoginEmailAddressCode. To use Apple setLoginEmailAddress/Google setLoginEmailAddress instead of a email address, call checkLoginEmailAddressCode directly.
+  /// Changes the login email address of the user. The email address can be changed only if the current user already has login email and passwordState.login_email_address_pattern is non-empty.. The change will not be applied until the new login email address is confirmed with checkLoginEmailAddressCode. To use Apple setLoginEmailAddress/Google setLoginEmailAddress instead of an email address, call checkLoginEmailAddressCode directly.
   ///
   /// * [newLoginEmailAddress]: New login email address.
   ///

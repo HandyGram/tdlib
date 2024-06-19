@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **PassportElementType** *(passportElementType)* - parent
 ///
-/// Contains the type of a Telegram Passport element.
+/// Contains the type of Telegram Passport element.
 sealed class PassportElementType extends TdObject {
   /// **PassportElementType** *(passportElementType)* - parent
   ///
-  /// Contains the type of a Telegram Passport element.
+  /// Contains the type of Telegram Passport element.
   const PassportElementType();
 
   /// a PassportElementType return type can be :

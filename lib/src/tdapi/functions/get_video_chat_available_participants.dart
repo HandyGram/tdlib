@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **GetVideoChatAvailableParticipants** *(getVideoChatAvailableParticipants)* - TDLib function
 ///
-/// Returns list of participant identifiers, on whose behalf a video chat in the chat can be joined.
+/// Returns the list of participant identifiers, on whose behalf a video chat in the chat can be joined.
 ///
 /// * [chatId]: Chat identifier.
 ///
@@ -10,7 +10,7 @@ part of '../tdapi.dart';
 final class GetVideoChatAvailableParticipants extends TdFunction {
   /// **GetVideoChatAvailableParticipants** *(getVideoChatAvailableParticipants)* - TDLib function
   ///
-  /// Returns list of participant identifiers, on whose behalf a video chat in the chat can be joined.
+  /// Returns the list of participant identifiers, on whose behalf a video chat in the chat can be joined.
   ///
   /// * [chatId]: Chat identifier.
   ///

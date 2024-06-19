@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **GetChatBoostFeatures** *(getChatBoostFeatures)* - TDLib function
 ///
-/// Returns list of features available on the first 10 chat boost levels; this is an offline request.
+/// Returns the list of features available for different chat boost levels; this is an offline request.
 ///
 /// * [isChannel]: Pass true to get the list of features for channels; pass false to get the list of features for supergroups.
 ///
@@ -10,7 +10,7 @@ part of '../tdapi.dart';
 final class GetChatBoostFeatures extends TdFunction {
   /// **GetChatBoostFeatures** *(getChatBoostFeatures)* - TDLib function
   ///
-  /// Returns list of features available on the first 10 chat boost levels; this is an offline request.
+  /// Returns the list of features available for different chat boost levels; this is an offline request.
   ///
   /// * [isChannel]: Pass true to get the list of features for channels; pass false to get the list of features for supergroups.
   ///

@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **InlineKeyboardButtonType** *(inlineKeyboardButtonType)* - parent
 ///
-/// Describes the type of an inline keyboard button.
+/// Describes the type of inline keyboard button.
 sealed class InlineKeyboardButtonType extends TdObject {
   /// **InlineKeyboardButtonType** *(inlineKeyboardButtonType)* - parent
   ///
-  /// Describes the type of an inline keyboard button.
+  /// Describes the type of inline keyboard button.
   const InlineKeyboardButtonType();
 
   /// a InlineKeyboardButtonType return type can be :

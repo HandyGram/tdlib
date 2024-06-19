@@ -16,7 +16,7 @@ part of '../tdapi.dart';
 /// * [canPromoteMembers]: True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that were directly or indirectly promoted by them.
 /// * [canManageVideoChats]: True, if the administrator can manage video chats.
 /// * [canPostStories]: True, if the administrator can create new chat stories, or edit and delete posted stories; applicable to supergroups and channels only.
-/// * [canEditStories]: True, if the administrator can edit stories posted by other users, pin stories and access story archive; applicable to supergroups and channels only.
+/// * [canEditStories]: True, if the administrator can edit stories posted by other users, post stories to the chat page, pin chat stories, and access story archive; applicable to supergroups and channels only.
 /// * [canDeleteStories]: True, if the administrator can delete stories posted by other users; applicable to supergroups and channels only.
 /// * [isAnonymous]: True, if the administrator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only.
 final class ChatAdministratorRights extends TdObject {
@@ -36,7 +36,7 @@ final class ChatAdministratorRights extends TdObject {
   /// * [canPromoteMembers]: True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that were directly or indirectly promoted by them.
   /// * [canManageVideoChats]: True, if the administrator can manage video chats.
   /// * [canPostStories]: True, if the administrator can create new chat stories, or edit and delete posted stories; applicable to supergroups and channels only.
-  /// * [canEditStories]: True, if the administrator can edit stories posted by other users, pin stories and access story archive; applicable to supergroups and channels only.
+  /// * [canEditStories]: True, if the administrator can edit stories posted by other users, post stories to the chat page, pin chat stories, and access story archive; applicable to supergroups and channels only.
   /// * [canDeleteStories]: True, if the administrator can delete stories posted by other users; applicable to supergroups and channels only.
   /// * [isAnonymous]: True, if the administrator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only.
   const ChatAdministratorRights({
@@ -93,7 +93,7 @@ final class ChatAdministratorRights extends TdObject {
   /// True, if the administrator can create new chat stories, or edit and delete posted stories; applicable to supergroups and channels only
   final bool canPostStories;
 
-  /// True, if the administrator can edit stories posted by other users, pin stories and access story archive; applicable to supergroups and channels only
+  /// True, if the administrator can edit stories posted by other users, post stories to the chat page, pin chat stories, and access story archive; applicable to supergroups and channels only
   final bool canEditStories;
 
   /// True, if the administrator can delete stories posted by other users; applicable to supergroups and channels only
@@ -160,7 +160,7 @@ final class ChatAdministratorRights extends TdObject {
   /// * [can_promote_members]: True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that were directly or indirectly promoted by them
   /// * [can_manage_video_chats]: True, if the administrator can manage video chats
   /// * [can_post_stories]: True, if the administrator can create new chat stories, or edit and delete posted stories; applicable to supergroups and channels only
-  /// * [can_edit_stories]: True, if the administrator can edit stories posted by other users, pin stories and access story archive; applicable to supergroups and channels only
+  /// * [can_edit_stories]: True, if the administrator can edit stories posted by other users, post stories to the chat page, pin chat stories, and access story archive; applicable to supergroups and channels only
   /// * [can_delete_stories]: True, if the administrator can delete stories posted by other users; applicable to supergroups and channels only
   /// * [is_anonymous]: True, if the administrator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only
   ChatAdministratorRights copyWith({

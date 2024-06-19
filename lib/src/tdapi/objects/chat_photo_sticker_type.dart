@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **ChatPhotoStickerType** *(chatPhotoStickerType)* - parent
 ///
-/// Describes type of a sticker, which was used to create a chat photo.
+/// Describes type of sticker, which was used to create a chat photo.
 sealed class ChatPhotoStickerType extends TdObject {
   /// **ChatPhotoStickerType** *(chatPhotoStickerType)* - parent
   ///
-  /// Describes type of a sticker, which was used to create a chat photo.
+  /// Describes type of sticker, which was used to create a chat photo.
   const ChatPhotoStickerType();
 
   /// a ChatPhotoStickerType return type can be :

@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **AddFileToDownloads** *(addFileToDownloads)* - TDLib function
 ///
-/// Adds a file from a message to the list of file downloads. Download progress and completion of the download will be notified through updateFile updates.. If message database is used, the list of file downloads is persistent across application restarts. The downloading is independent from download using downloadFile, i.e. it continues if downloadFile is canceled or is used to download a part of the file.
+/// Adds a file from a message to the list of file downloads. Download progress and completion of the download will be notified through updateFile updates.. If message database is used, the list of file downloads is persistent across application restarts. The downloading is independent of download using downloadFile, i.e. it continues if downloadFile is canceled or is used to download a part of the file.
 ///
 /// * [fileId]: Identifier of the file to download.
 /// * [chatId]: Chat identifier of the message with the file.
@@ -13,7 +13,7 @@ part of '../tdapi.dart';
 final class AddFileToDownloads extends TdFunction {
   /// **AddFileToDownloads** *(addFileToDownloads)* - TDLib function
   ///
-  /// Adds a file from a message to the list of file downloads. Download progress and completion of the download will be notified through updateFile updates.. If message database is used, the list of file downloads is persistent across application restarts. The downloading is independent from download using downloadFile, i.e. it continues if downloadFile is canceled or is used to download a part of the file.
+  /// Adds a file from a message to the list of file downloads. Download progress and completion of the download will be notified through updateFile updates.. If message database is used, the list of file downloads is persistent across application restarts. The downloading is independent of download using downloadFile, i.e. it continues if downloadFile is canceled or is used to download a part of the file.
   ///
   /// * [fileId]: Identifier of the file to download.
   /// * [chatId]: Chat identifier of the message with the file.

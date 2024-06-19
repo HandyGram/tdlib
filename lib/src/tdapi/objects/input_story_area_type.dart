@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **InputStoryAreaType** *(inputStoryAreaType)* - parent
 ///
-/// Describes type of a clickable rectangle area on a story media to be added.
+/// Describes type of clickable rectangle area on a story media to be added.
 sealed class InputStoryAreaType extends TdObject {
   /// **InputStoryAreaType** *(inputStoryAreaType)* - parent
   ///
-  /// Describes type of a clickable rectangle area on a story media to be added.
+  /// Describes type of clickable rectangle area on a story media to be added.
   const InputStoryAreaType();
 
   /// a InputStoryAreaType return type can be :
@@ -15,6 +15,7 @@ sealed class InputStoryAreaType extends TdObject {
   /// * [InputStoryAreaTypePreviousVenue]
   /// * [InputStoryAreaTypeSuggestedReaction]
   /// * [InputStoryAreaTypeMessage]
+  /// * [InputStoryAreaTypeLink]
   factory InputStoryAreaType.fromJson(Map<String, dynamic> json) {
     switch (json["@type"]) {
       case InputStoryAreaTypeLocation.defaultObjectId:
@@ -27,6 +28,8 @@ sealed class InputStoryAreaType extends TdObject {
         return InputStoryAreaTypeSuggestedReaction.fromJson(json);
       case InputStoryAreaTypeMessage.defaultObjectId:
         return InputStoryAreaTypeMessage.fromJson(json);
+      case InputStoryAreaTypeLink.defaultObjectId:
+        return InputStoryAreaTypeLink.fromJson(json);
       default:
         throw FormatException(
           "Unknown object ${json["@type"]} (expected child of InputStoryAreaType)",
@@ -59,23 +62,32 @@ sealed class InputStoryAreaType extends TdObject {
 /// An area pointing to a location.
 ///
 /// * [location]: The location.
+/// * [address]: Address of the location; pass null if unknown *(optional)*.
 final class InputStoryAreaTypeLocation extends InputStoryAreaType {
   /// **InputStoryAreaTypeLocation** *(inputStoryAreaTypeLocation)* - child of InputStoryAreaType
   ///
   /// An area pointing to a location.
   ///
   /// * [location]: The location.
+  /// * [address]: Address of the location; pass null if unknown *(optional)*.
   const InputStoryAreaTypeLocation({
     required this.location,
+    this.address,
   });
 
   /// The location
   final Location location;
 
+  /// Address of the location; pass null if unknown
+  final LocationAddress? address;
+
   /// Parse from a json
   factory InputStoryAreaTypeLocation.fromJson(Map<String, dynamic> json) =>
       InputStoryAreaTypeLocation(
         location: Location.fromJson(json['location']),
+        address: json['address'] == null
+            ? null
+            : LocationAddress.fromJson(json['address']),
       );
 
   /// Convert model to TDLib JSON format
@@ -84,6 +96,7 @@ final class InputStoryAreaTypeLocation extends InputStoryAreaType {
     return {
       "@type": defaultObjectId,
       "location": location.toJson(),
+      "address": address?.toJson(),
     };
   }
 
@@ -91,12 +104,15 @@ final class InputStoryAreaTypeLocation extends InputStoryAreaType {
   ///
   /// Properties:
   /// * [location]: The location
+  /// * [address]: Address of the location; pass null if unknown
   @override
   InputStoryAreaTypeLocation copyWith({
     Location? location,
+    LocationAddress? address,
   }) =>
       InputStoryAreaTypeLocation(
         location: location ?? this.location,
+        address: address ?? this.address,
       );
 
   /// TDLib object type
@@ -387,6 +403,63 @@ final class InputStoryAreaTypeMessage extends InputStoryAreaType {
 
   /// TDLib object type
   static const String defaultObjectId = 'inputStoryAreaTypeMessage';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **InputStoryAreaTypeLink** *(inputStoryAreaTypeLink)* - child of InputStoryAreaType
+///
+/// An area pointing to a HTTP or tg:// link.
+///
+/// * [url]: HTTP or tg:// URL to be opened when the area is clicked.
+final class InputStoryAreaTypeLink extends InputStoryAreaType {
+  /// **InputStoryAreaTypeLink** *(inputStoryAreaTypeLink)* - child of InputStoryAreaType
+  ///
+  /// An area pointing to a HTTP or tg:// link.
+  ///
+  /// * [url]: HTTP or tg:// URL to be opened when the area is clicked.
+  const InputStoryAreaTypeLink({
+    required this.url,
+  });
+
+  /// HTTP or tg:// URL to be opened when the area is clicked
+  final String url;
+
+  /// Parse from a json
+  factory InputStoryAreaTypeLink.fromJson(Map<String, dynamic> json) =>
+      InputStoryAreaTypeLink(
+        url: json['url'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "url": url,
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [url]: HTTP or tg:// URL to be opened when the area is clicked
+  @override
+  InputStoryAreaTypeLink copyWith({
+    String? url,
+  }) =>
+      InputStoryAreaTypeLink(
+        url: url ?? this.url,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'inputStoryAreaTypeLink';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

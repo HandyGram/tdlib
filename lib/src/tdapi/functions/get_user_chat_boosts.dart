@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **GetUserChatBoosts** *(getUserChatBoosts)* - TDLib function
 ///
-/// Returns list of boosts applied to a chat by a given user; requires administrator rights in the chat; for bots only.
+/// Returns the list of boosts applied to a chat by a given user; requires administrator rights in the chat; for bots only.
 ///
 /// * [chatId]: Identifier of the chat.
 /// * [userId]: Identifier of the user.
@@ -11,7 +11,7 @@ part of '../tdapi.dart';
 final class GetUserChatBoosts extends TdFunction {
   /// **GetUserChatBoosts** *(getUserChatBoosts)* - TDLib function
   ///
-  /// Returns list of boosts applied to a chat by a given user; requires administrator rights in the chat; for bots only.
+  /// Returns the list of boosts applied to a chat by a given user; requires administrator rights in the chat; for bots only.
   ///
   /// * [chatId]: Identifier of the chat.
   /// * [userId]: Identifier of the user.

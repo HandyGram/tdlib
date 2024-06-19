@@ -2,13 +2,13 @@ part of '../tdapi.dart';
 
 /// **GetStoryNotificationSettingsExceptions** *(getStoryNotificationSettingsExceptions)* - TDLib function
 ///
-/// Returns list of chats with non-default notification settings for stories.
+/// Returns the list of chats with non-default notification settings for stories.
 ///
 /// [Chats] is returned on completion.
 final class GetStoryNotificationSettingsExceptions extends TdFunction {
   /// **GetStoryNotificationSettingsExceptions** *(getStoryNotificationSettingsExceptions)* - TDLib function
   ///
-  /// Returns list of chats with non-default notification settings for stories.
+  /// Returns the list of chats with non-default notification settings for stories.
   ///
   /// [Chats] is returned on completion.
   const GetStoryNotificationSettingsExceptions();

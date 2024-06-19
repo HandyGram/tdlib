@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **GetChatAvailableMessageSenders** *(getChatAvailableMessageSenders)* - TDLib function
 ///
-/// Returns list of message sender identifiers, which can be used to send messages in a chat.
+/// Returns the list of message sender identifiers, which can be used to send messages in a chat.
 ///
 /// * [chatId]: Chat identifier.
 ///
@@ -10,7 +10,7 @@ part of '../tdapi.dart';
 final class GetChatAvailableMessageSenders extends TdFunction {
   /// **GetChatAvailableMessageSenders** *(getChatAvailableMessageSenders)* - TDLib function
   ///
-  /// Returns list of message sender identifiers, which can be used to send messages in a chat.
+  /// Returns the list of message sender identifiers, which can be used to send messages in a chat.
   ///
   /// * [chatId]: Chat identifier.
   ///

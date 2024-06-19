@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **PreliminaryUploadFile** *(preliminaryUploadFile)* - TDLib function
 ///
-/// Preliminary uploads a file to the cloud before sending it in a message, which can be useful for uploading of being recorded voice and video notes. Updates updateFile will be used. to notify about upload progress and successful completion of the upload. The file will not have a persistent remote identifier until it is sent in a message.
+/// Preliminary uploads a file to the cloud before sending it in a message, which can be useful for uploading of being recorded voice and video notes.. In all other cases there is no need to preliminary upload a file. Updates updateFile will be used to notify about upload progress.. The upload will not be completed until the file is sent in a message.
 ///
 /// * [file]: File to upload.
 /// * [fileType]: File type; pass null if unknown *(optional)*.
@@ -12,7 +12,7 @@ part of '../tdapi.dart';
 final class PreliminaryUploadFile extends TdFunction {
   /// **PreliminaryUploadFile** *(preliminaryUploadFile)* - TDLib function
   ///
-  /// Preliminary uploads a file to the cloud before sending it in a message, which can be useful for uploading of being recorded voice and video notes. Updates updateFile will be used. to notify about upload progress and successful completion of the upload. The file will not have a persistent remote identifier until it is sent in a message.
+  /// Preliminary uploads a file to the cloud before sending it in a message, which can be useful for uploading of being recorded voice and video notes.. In all other cases there is no need to preliminary upload a file. Updates updateFile will be used to notify about upload progress.. The upload will not be completed until the file is sent in a message.
   ///
   /// * [file]: File to upload.
   /// * [fileType]: File type; pass null if unknown *(optional)*.

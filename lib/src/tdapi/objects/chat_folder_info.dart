@@ -7,7 +7,7 @@ part of '../tdapi.dart';
 /// * [id]: Unique chat folder identifier.
 /// * [title]: The title of the folder; 1-12 characters without line feeds.
 /// * [icon]: The chosen or default icon for the chat folder.
-/// * [colorId]: The identifier of the chosen color for the chat folder icon; from -1 to 6. If -1, then color is didabled.
+/// * [colorId]: The identifier of the chosen color for the chat folder icon; from -1 to 6. If -1, then color is disabled.
 /// * [isShareable]: True, if at least one link has been created for the folder.
 /// * [hasMyInviteLinks]: True, if the chat folder has invite links created by the current user.
 final class ChatFolderInfo extends TdObject {
@@ -18,7 +18,7 @@ final class ChatFolderInfo extends TdObject {
   /// * [id]: Unique chat folder identifier.
   /// * [title]: The title of the folder; 1-12 characters without line feeds.
   /// * [icon]: The chosen or default icon for the chat folder.
-  /// * [colorId]: The identifier of the chosen color for the chat folder icon; from -1 to 6. If -1, then color is didabled.
+  /// * [colorId]: The identifier of the chosen color for the chat folder icon; from -1 to 6. If -1, then color is disabled.
   /// * [isShareable]: True, if at least one link has been created for the folder.
   /// * [hasMyInviteLinks]: True, if the chat folder has invite links created by the current user.
   const ChatFolderInfo({
@@ -41,7 +41,7 @@ final class ChatFolderInfo extends TdObject {
   /// The chosen or default icon for the chat folder
   final ChatFolderIcon icon;
 
-  /// The identifier of the chosen color for the chat folder icon; from -1 to 6. If -1, then color is didabled
+  /// The identifier of the chosen color for the chat folder icon; from -1 to 6. If -1, then color is disabled
   final int colorId;
 
   /// True, if at least one link has been created for the folder
@@ -90,7 +90,7 @@ final class ChatFolderInfo extends TdObject {
   /// * [id]: Unique chat folder identifier
   /// * [title]: The title of the folder; 1-12 characters without line feeds
   /// * [icon]: The chosen or default icon for the chat folder
-  /// * [color_id]: The identifier of the chosen color for the chat folder icon; from -1 to 6. If -1, then color is didabled
+  /// * [color_id]: The identifier of the chosen color for the chat folder icon; from -1 to 6. If -1, then color is disabled
   /// * [is_shareable]: True, if at least one link has been created for the folder
   /// * [has_my_invite_links]: True, if the chat folder has invite links created by the current user
   ChatFolderInfo copyWith({

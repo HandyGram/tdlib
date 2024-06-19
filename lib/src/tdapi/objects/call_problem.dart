@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **CallProblem** *(callProblem)* - parent
 ///
-/// Describes the exact type of a problem with a call.
+/// Describes the exact type of problem with a call.
 sealed class CallProblem extends TdObject {
   /// **CallProblem** *(callProblem)* - parent
   ///
-  /// Describes the exact type of a problem with a call.
+  /// Describes the exact type of problem with a call.
   const CallProblem();
 
   /// a CallProblem return type can be :

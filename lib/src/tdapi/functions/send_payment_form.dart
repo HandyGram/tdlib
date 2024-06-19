@@ -8,7 +8,7 @@ part of '../tdapi.dart';
 /// * [paymentFormId]: Payment form identifier returned by getPaymentForm.
 /// * [orderInfoId]: Identifier returned by validateOrderInfo, or an empty string.
 /// * [shippingOptionId]: Identifier of a chosen shipping option, if applicable.
-/// * [credentials]: The credentials chosen by user for payment.
+/// * [credentials]: The credentials chosen by user for payment; pass null for a payment in Telegram stars *(optional)*.
 /// * [tipAmount]: Chosen by the user amount of tip in the smallest units of the currency.
 ///
 /// [PaymentResult] is returned on completion.
@@ -21,7 +21,7 @@ final class SendPaymentForm extends TdFunction {
   /// * [paymentFormId]: Payment form identifier returned by getPaymentForm.
   /// * [orderInfoId]: Identifier returned by validateOrderInfo, or an empty string.
   /// * [shippingOptionId]: Identifier of a chosen shipping option, if applicable.
-  /// * [credentials]: The credentials chosen by user for payment.
+  /// * [credentials]: The credentials chosen by user for payment; pass null for a payment in Telegram stars *(optional)*.
   /// * [tipAmount]: Chosen by the user amount of tip in the smallest units of the currency.
   ///
   /// [PaymentResult] is returned on completion.
@@ -30,7 +30,7 @@ final class SendPaymentForm extends TdFunction {
     required this.paymentFormId,
     required this.orderInfoId,
     required this.shippingOptionId,
-    required this.credentials,
+    this.credentials,
     required this.tipAmount,
   });
 
@@ -46,8 +46,8 @@ final class SendPaymentForm extends TdFunction {
   /// Identifier of a chosen shipping option, if applicable
   final String shippingOptionId;
 
-  /// The credentials chosen by user for payment
-  final InputCredentials credentials;
+  /// The credentials chosen by user for payment; pass null for a payment in Telegram stars
+  final InputCredentials? credentials;
 
   /// Chosen by the user amount of tip in the smallest units of the currency
   final int tipAmount;
@@ -61,7 +61,7 @@ final class SendPaymentForm extends TdFunction {
       "payment_form_id": paymentFormId,
       "order_info_id": orderInfoId,
       "shipping_option_id": shippingOptionId,
-      "credentials": credentials.toJson(),
+      "credentials": credentials?.toJson(),
       "tip_amount": tipAmount,
       "@extra": extra,
     };
@@ -74,7 +74,7 @@ final class SendPaymentForm extends TdFunction {
   /// * [payment_form_id]: Payment form identifier returned by getPaymentForm
   /// * [order_info_id]: Identifier returned by validateOrderInfo, or an empty string
   /// * [shipping_option_id]: Identifier of a chosen shipping option, if applicable
-  /// * [credentials]: The credentials chosen by user for payment
+  /// * [credentials]: The credentials chosen by user for payment; pass null for a payment in Telegram stars
   /// * [tip_amount]: Chosen by the user amount of tip in the smallest units of the currency
   SendPaymentForm copyWith({
     InputInvoice? inputInvoice,

@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **GetEmojiCategories** *(getEmojiCategories)* - TDLib function
 ///
-/// Returns available emojis categories.
+/// Returns available emoji categories.
 ///
 /// * [type]: Type of emoji categories to return; pass null to get default emoji categories *(optional)*.
 ///
@@ -10,7 +10,7 @@ part of '../tdapi.dart';
 final class GetEmojiCategories extends TdFunction {
   /// **GetEmojiCategories** *(getEmojiCategories)* - TDLib function
   ///
-  /// Returns available emojis categories.
+  /// Returns available emoji categories.
   ///
   /// * [type]: Type of emoji categories to return; pass null to get default emoji categories *(optional)*.
   ///

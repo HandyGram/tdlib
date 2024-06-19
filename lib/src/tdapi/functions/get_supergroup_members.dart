@@ -7,7 +7,7 @@ part of '../tdapi.dart';
 /// * [supergroupId]: Identifier of the supergroup or channel.
 /// * [filter]: The type of users to return; pass null to use supergroupMembersFilterRecent *(optional)*.
 /// * [offset]: Number of users to skip.
-/// * [limit]: The maximum number of users be returned; up to 200.
+/// * [limit]: The maximum number of users to be returned; up to 200.
 ///
 /// [ChatMembers] is returned on completion.
 final class GetSupergroupMembers extends TdFunction {
@@ -18,7 +18,7 @@ final class GetSupergroupMembers extends TdFunction {
   /// * [supergroupId]: Identifier of the supergroup or channel.
   /// * [filter]: The type of users to return; pass null to use supergroupMembersFilterRecent *(optional)*.
   /// * [offset]: Number of users to skip.
-  /// * [limit]: The maximum number of users be returned; up to 200.
+  /// * [limit]: The maximum number of users to be returned; up to 200.
   ///
   /// [ChatMembers] is returned on completion.
   const GetSupergroupMembers({
@@ -37,7 +37,7 @@ final class GetSupergroupMembers extends TdFunction {
   /// Number of users to skip
   final int offset;
 
-  /// The maximum number of users be returned; up to 200
+  /// The maximum number of users to be returned; up to 200
   final int limit;
 
   /// Convert model to TDLib JSON format
@@ -59,7 +59,7 @@ final class GetSupergroupMembers extends TdFunction {
   /// * [supergroup_id]: Identifier of the supergroup or channel
   /// * [filter]: The type of users to return; pass null to use supergroupMembersFilterRecent
   /// * [offset]: Number of users to skip
-  /// * [limit]: The maximum number of users be returned; up to 200
+  /// * [limit]: The maximum number of users to be returned; up to 200
   GetSupergroupMembers copyWith({
     int? supergroupId,
     SupergroupMembersFilter? filter,

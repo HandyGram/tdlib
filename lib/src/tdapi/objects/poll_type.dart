@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **PollType** *(pollType)* - parent
 ///
-/// Describes the type of a poll.
+/// Describes the type of poll.
 sealed class PollType extends TdObject {
   /// **PollType** *(pollType)* - parent
   ///
-  /// Describes the type of a poll.
+  /// Describes the type of poll.
   const PollType();
 
   /// a PollType return type can be :

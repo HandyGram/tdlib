@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **SavedMessagesTopicType** *(savedMessagesTopicType)* - parent
 ///
-/// Describes type of a Saved Messages topic.
+/// Describes type of Saved Messages topic.
 sealed class SavedMessagesTopicType extends TdObject {
   /// **SavedMessagesTopicType** *(savedMessagesTopicType)* - parent
   ///
-  /// Describes type of a Saved Messages topic.
+  /// Describes type of Saved Messages topic.
   const SavedMessagesTopicType();
 
   /// a SavedMessagesTopicType return type can be :

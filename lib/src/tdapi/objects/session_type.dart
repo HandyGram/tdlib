@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **SessionType** *(sessionType)* - parent
 ///
-/// Represents the type of a session.
+/// Represents the type of session.
 sealed class SessionType extends TdObject {
   /// **SessionType** *(sessionType)* - parent
   ///
-  /// Represents the type of a session.
+  /// Represents the type of session.
   const SessionType();
 
   /// a SessionType return type can be :

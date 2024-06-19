@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **FileType** *(fileType)* - parent
 ///
-/// Represents the type of a file.
+/// Represents the type of file.
 sealed class FileType extends TdObject {
   /// **FileType** *(fileType)* - parent
   ///
-  /// Represents the type of a file.
+  /// Represents the type of file.
   const FileType();
 
   /// a FileType return type can be :

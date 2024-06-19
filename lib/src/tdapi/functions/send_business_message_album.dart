@@ -9,7 +9,8 @@ part of '../tdapi.dart';
 /// * [replyTo]: Information about the message to be replied; pass null if none *(optional)*.
 /// * [disableNotification]: Pass true to disable notification for the message.
 /// * [protectContent]: Pass true if the content of the message must be protected from forwarding and saving.
-/// * [inputMessageContents]: Contents of messages to be sent. At most 10 messages can be added to an album.
+/// * [effectId]: Identifier of the effect to apply to the message.
+/// * [inputMessageContents]: Contents of messages to be sent. At most 10 messages can be added to an album. All messages must have the same value of show_caption_above_media.
 ///
 /// [BusinessMessages] is returned on completion.
 final class SendBusinessMessageAlbum extends TdFunction {
@@ -22,7 +23,8 @@ final class SendBusinessMessageAlbum extends TdFunction {
   /// * [replyTo]: Information about the message to be replied; pass null if none *(optional)*.
   /// * [disableNotification]: Pass true to disable notification for the message.
   /// * [protectContent]: Pass true if the content of the message must be protected from forwarding and saving.
-  /// * [inputMessageContents]: Contents of messages to be sent. At most 10 messages can be added to an album.
+  /// * [effectId]: Identifier of the effect to apply to the message.
+  /// * [inputMessageContents]: Contents of messages to be sent. At most 10 messages can be added to an album. All messages must have the same value of show_caption_above_media.
   ///
   /// [BusinessMessages] is returned on completion.
   const SendBusinessMessageAlbum({
@@ -31,6 +33,7 @@ final class SendBusinessMessageAlbum extends TdFunction {
     this.replyTo,
     required this.disableNotification,
     required this.protectContent,
+    required this.effectId,
     required this.inputMessageContents,
   });
 
@@ -49,7 +52,10 @@ final class SendBusinessMessageAlbum extends TdFunction {
   /// Pass true if the content of the message must be protected from forwarding and saving
   final bool protectContent;
 
-  /// Contents of messages to be sent. At most 10 messages can be added to an album
+  /// Identifier of the effect to apply to the message
+  final int effectId;
+
+  /// Contents of messages to be sent. At most 10 messages can be added to an album. All messages must have the same value of show_caption_above_media
   final List<InputMessageContent> inputMessageContents;
 
   /// Convert model to TDLib JSON format
@@ -62,6 +68,7 @@ final class SendBusinessMessageAlbum extends TdFunction {
       "reply_to": replyTo?.toJson(),
       "disable_notification": disableNotification,
       "protect_content": protectContent,
+      "effect_id": effectId,
       "input_message_contents":
           inputMessageContents.map((i) => i.toJson()).toList(),
       "@extra": extra,
@@ -76,13 +83,15 @@ final class SendBusinessMessageAlbum extends TdFunction {
   /// * [reply_to]: Information about the message to be replied; pass null if none
   /// * [disable_notification]: Pass true to disable notification for the message
   /// * [protect_content]: Pass true if the content of the message must be protected from forwarding and saving
-  /// * [input_message_contents]: Contents of messages to be sent. At most 10 messages can be added to an album
+  /// * [effect_id]: Identifier of the effect to apply to the message
+  /// * [input_message_contents]: Contents of messages to be sent. At most 10 messages can be added to an album. All messages must have the same value of show_caption_above_media
   SendBusinessMessageAlbum copyWith({
     String? businessConnectionId,
     int? chatId,
     InputMessageReplyTo? replyTo,
     bool? disableNotification,
     bool? protectContent,
+    int? effectId,
     List<InputMessageContent>? inputMessageContents,
   }) =>
       SendBusinessMessageAlbum(
@@ -91,6 +100,7 @@ final class SendBusinessMessageAlbum extends TdFunction {
         replyTo: replyTo ?? this.replyTo,
         disableNotification: disableNotification ?? this.disableNotification,
         protectContent: protectContent ?? this.protectContent,
+        effectId: effectId ?? this.effectId,
         inputMessageContents: inputMessageContents ?? this.inputMessageContents,
       );
 

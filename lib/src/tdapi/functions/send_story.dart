@@ -11,7 +11,7 @@ part of '../tdapi.dart';
 /// * [privacySettings]: The privacy settings for the story; ignored for stories sent to supergroup and channel chats.
 /// * [activePeriod]: Period after which the story is moved to archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400 for Telegram Premium users, and 86400 otherwise.
 /// * [fromStoryFullId]: Full identifier of the original story, which content was used to create the story.
-/// * [isPinned]: Pass true to keep the story accessible after expiration.
+/// * [isPostedToChatPage]: Pass true to keep the story accessible after expiration.
 /// * [protectContent]: Pass true if the content of the story must be protected from forwarding and screenshotting.
 ///
 /// [Story] is returned on completion.
@@ -27,7 +27,7 @@ final class SendStory extends TdFunction {
   /// * [privacySettings]: The privacy settings for the story; ignored for stories sent to supergroup and channel chats.
   /// * [activePeriod]: Period after which the story is moved to archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400 for Telegram Premium users, and 86400 otherwise.
   /// * [fromStoryFullId]: Full identifier of the original story, which content was used to create the story.
-  /// * [isPinned]: Pass true to keep the story accessible after expiration.
+  /// * [isPostedToChatPage]: Pass true to keep the story accessible after expiration.
   /// * [protectContent]: Pass true if the content of the story must be protected from forwarding and screenshotting.
   ///
   /// [Story] is returned on completion.
@@ -39,7 +39,7 @@ final class SendStory extends TdFunction {
     required this.privacySettings,
     required this.activePeriod,
     required this.fromStoryFullId,
-    required this.isPinned,
+    required this.isPostedToChatPage,
     required this.protectContent,
   });
 
@@ -65,7 +65,7 @@ final class SendStory extends TdFunction {
   final StoryFullId fromStoryFullId;
 
   /// Pass true to keep the story accessible after expiration
-  final bool isPinned;
+  final bool isPostedToChatPage;
 
   /// Pass true if the content of the story must be protected from forwarding and screenshotting
   final bool protectContent;
@@ -82,7 +82,7 @@ final class SendStory extends TdFunction {
       "privacy_settings": privacySettings.toJson(),
       "active_period": activePeriod,
       "from_story_full_id": fromStoryFullId.toJson(),
-      "is_pinned": isPinned,
+      "is_posted_to_chat_page": isPostedToChatPage,
       "protect_content": protectContent,
       "@extra": extra,
     };
@@ -98,7 +98,7 @@ final class SendStory extends TdFunction {
   /// * [privacy_settings]: The privacy settings for the story; ignored for stories sent to supergroup and channel chats
   /// * [active_period]: Period after which the story is moved to archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400 for Telegram Premium users, and 86400 otherwise
   /// * [from_story_full_id]: Full identifier of the original story, which content was used to create the story
-  /// * [is_pinned]: Pass true to keep the story accessible after expiration
+  /// * [is_posted_to_chat_page]: Pass true to keep the story accessible after expiration
   /// * [protect_content]: Pass true if the content of the story must be protected from forwarding and screenshotting
   SendStory copyWith({
     int? chatId,
@@ -108,7 +108,7 @@ final class SendStory extends TdFunction {
     StoryPrivacySettings? privacySettings,
     int? activePeriod,
     StoryFullId? fromStoryFullId,
-    bool? isPinned,
+    bool? isPostedToChatPage,
     bool? protectContent,
   }) =>
       SendStory(
@@ -119,7 +119,7 @@ final class SendStory extends TdFunction {
         privacySettings: privacySettings ?? this.privacySettings,
         activePeriod: activePeriod ?? this.activePeriod,
         fromStoryFullId: fromStoryFullId ?? this.fromStoryFullId,
-        isPinned: isPinned ?? this.isPinned,
+        isPostedToChatPage: isPostedToChatPage ?? this.isPostedToChatPage,
         protectContent: protectContent ?? this.protectContent,
       );
 

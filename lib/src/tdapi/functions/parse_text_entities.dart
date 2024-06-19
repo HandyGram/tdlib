@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **ParseTextEntities** *(parseTextEntities)* - TDLib function
 ///
-/// Parses Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, Code, Pre, PreCode, TextUrl and MentionName entities from a marked-up text. Can be called synchronously.
+/// Parses Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, ExpandableBlockQuote, Code, Pre, PreCode, TextUrl. and MentionName entities from a marked-up text. Can be called synchronously.
 ///
 /// * [text]: The text to parse.
 /// * [parseMode]: Text parse mode.
@@ -11,7 +11,7 @@ part of '../tdapi.dart';
 final class ParseTextEntities extends TdFunction {
   /// **ParseTextEntities** *(parseTextEntities)* - TDLib function
   ///
-  /// Parses Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, Code, Pre, PreCode, TextUrl and MentionName entities from a marked-up text. Can be called synchronously.
+  /// Parses Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, ExpandableBlockQuote, Code, Pre, PreCode, TextUrl. and MentionName entities from a marked-up text. Can be called synchronously.
   ///
   /// * [text]: The text to parse.
   /// * [parseMode]: Text parse mode.

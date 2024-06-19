@@ -8,7 +8,7 @@ part of '../tdapi.dart';
 /// * [messageThreadId]: If not 0, the message thread identifier in which the messages will be sent.
 /// * [replyTo]: Information about the message or story to be replied; pass null if none *(optional)*.
 /// * [options]: Options to be used to send the messages; pass null to use default options *(optional)*.
-/// * [inputMessageContents]: Contents of messages to be sent. At most 10 messages can be added to an album.
+/// * [inputMessageContents]: Contents of messages to be sent. At most 10 messages can be added to an album. All messages must have the same value of show_caption_above_media.
 ///
 /// [Messages] is returned on completion.
 final class SendMessageAlbum extends TdFunction {
@@ -20,7 +20,7 @@ final class SendMessageAlbum extends TdFunction {
   /// * [messageThreadId]: If not 0, the message thread identifier in which the messages will be sent.
   /// * [replyTo]: Information about the message or story to be replied; pass null if none *(optional)*.
   /// * [options]: Options to be used to send the messages; pass null to use default options *(optional)*.
-  /// * [inputMessageContents]: Contents of messages to be sent. At most 10 messages can be added to an album.
+  /// * [inputMessageContents]: Contents of messages to be sent. At most 10 messages can be added to an album. All messages must have the same value of show_caption_above_media.
   ///
   /// [Messages] is returned on completion.
   const SendMessageAlbum({
@@ -43,7 +43,7 @@ final class SendMessageAlbum extends TdFunction {
   /// Options to be used to send the messages; pass null to use default options
   final MessageSendOptions? options;
 
-  /// Contents of messages to be sent. At most 10 messages can be added to an album
+  /// Contents of messages to be sent. At most 10 messages can be added to an album. All messages must have the same value of show_caption_above_media
   final List<InputMessageContent> inputMessageContents;
 
   /// Convert model to TDLib JSON format
@@ -68,7 +68,7 @@ final class SendMessageAlbum extends TdFunction {
   /// * [message_thread_id]: If not 0, the message thread identifier in which the messages will be sent
   /// * [reply_to]: Information about the message or story to be replied; pass null if none
   /// * [options]: Options to be used to send the messages; pass null to use default options
-  /// * [input_message_contents]: Contents of messages to be sent. At most 10 messages can be added to an album
+  /// * [input_message_contents]: Contents of messages to be sent. At most 10 messages can be added to an album. All messages must have the same value of show_caption_above_media
   SendMessageAlbum copyWith({
     int? chatId,
     int? messageThreadId,

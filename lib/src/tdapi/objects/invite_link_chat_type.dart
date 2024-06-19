@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **InviteLinkChatType** *(inviteLinkChatType)* - parent
 ///
-/// Describes the type of a chat to which points an invite link.
+/// Describes the type of chat to which points an invite link.
 sealed class InviteLinkChatType extends TdObject {
   /// **InviteLinkChatType** *(inviteLinkChatType)* - parent
   ///
-  /// Describes the type of a chat to which points an invite link.
+  /// Describes the type of chat to which points an invite link.
   const InviteLinkChatType();
 
   /// a InviteLinkChatType return type can be :

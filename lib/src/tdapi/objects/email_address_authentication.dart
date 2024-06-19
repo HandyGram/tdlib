@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **EmailAddressAuthentication** *(emailAddressAuthentication)* - parent
 ///
-/// Contains authentication data for a email address.
+/// Contains authentication data for an email address.
 sealed class EmailAddressAuthentication extends TdObject {
   /// **EmailAddressAuthentication** *(emailAddressAuthentication)* - parent
   ///
-  /// Contains authentication data for a email address.
+  /// Contains authentication data for an email address.
   const EmailAddressAuthentication();
 
   /// a EmailAddressAuthentication return type can be :

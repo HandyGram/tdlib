@@ -67,11 +67,15 @@ part 'objects/business_recipients.dart';
 part 'objects/business_away_message_settings.dart';
 part 'objects/business_greeting_message_settings.dart';
 part 'objects/business_connected_bot.dart';
-part 'objects/business_intro.dart';
-part 'objects/input_business_intro.dart';
+part 'objects/business_start_page.dart';
+part 'objects/input_business_start_page.dart';
 part 'objects/business_opening_hours_interval.dart';
 part 'objects/business_opening_hours.dart';
 part 'objects/business_info.dart';
+part 'objects/business_chat_link.dart';
+part 'objects/business_chat_links.dart';
+part 'objects/input_business_chat_link.dart';
+part 'objects/business_chat_link_info.dart';
 part 'objects/chat_photo_sticker_type.dart';
 part 'objects/chat_photo_sticker.dart';
 part 'objects/animated_chat_photo.dart';
@@ -80,11 +84,18 @@ part 'objects/chat_photos.dart';
 part 'objects/input_chat_photo.dart';
 part 'objects/chat_permissions.dart';
 part 'objects/chat_administrator_rights.dart';
+part 'objects/product_info.dart';
 part 'objects/premium_payment_option.dart';
 part 'objects/premium_state_payment_option.dart';
 part 'objects/premium_gift_code_payment_option.dart';
 part 'objects/premium_gift_code_payment_options.dart';
 part 'objects/premium_gift_code_info.dart';
+part 'objects/star_payment_option.dart';
+part 'objects/star_payment_options.dart';
+part 'objects/star_transaction_direction.dart';
+part 'objects/star_transaction_partner.dart';
+part 'objects/star_transaction.dart';
+part 'objects/star_transactions.dart';
 part 'objects/premium_giveaway_participant_status.dart';
 part 'objects/premium_giveaway_info.dart';
 part 'objects/accent_color.dart';
@@ -138,11 +149,14 @@ part 'objects/message_reaction.dart';
 part 'objects/message_reactions.dart';
 part 'objects/message_interaction_info.dart';
 part 'objects/unread_reaction.dart';
+part 'objects/message_effect_type.dart';
+part 'objects/message_effect.dart';
 part 'objects/message_sending_state.dart';
 part 'objects/text_quote.dart';
 part 'objects/input_text_quote.dart';
 part 'objects/message_reply_to.dart';
 part 'objects/input_message_reply_to.dart';
+part 'objects/fact_check.dart';
 part 'objects/message.dart';
 part 'objects/messages.dart';
 part 'objects/found_messages.dart';
@@ -154,7 +168,6 @@ part 'objects/message_calendar.dart';
 part 'objects/business_message.dart';
 part 'objects/business_messages.dart';
 part 'objects/message_source.dart';
-part 'objects/message_sponsor_type.dart';
 part 'objects/message_sponsor.dart';
 part 'objects/sponsored_message.dart';
 part 'objects/sponsored_messages.dart';
@@ -166,6 +179,8 @@ part 'objects/found_file_downloads.dart';
 part 'objects/notification_settings_scope.dart';
 part 'objects/chat_notification_settings.dart';
 part 'objects/scope_notification_settings.dart';
+part 'objects/reaction_notification_source.dart';
+part 'objects/reaction_notification_settings.dart';
 part 'objects/draft_message.dart';
 part 'objects/chat_type.dart';
 part 'objects/chat_folder_icon.dart';
@@ -184,9 +199,13 @@ part 'objects/chat_position.dart';
 part 'objects/chat_available_reactions.dart';
 part 'objects/saved_messages_tag.dart';
 part 'objects/saved_messages_tags.dart';
+part 'objects/business_bot_manage_bar.dart';
 part 'objects/video_chat.dart';
 part 'objects/chat.dart';
 part 'objects/chats.dart';
+part 'objects/failed_to_add_member.dart';
+part 'objects/failed_to_add_members.dart';
+part 'objects/created_basic_group_chat.dart';
 part 'objects/chat_nearby.dart';
 part 'objects/chats_nearby.dart';
 part 'objects/public_chat_type.dart';
@@ -227,6 +246,7 @@ part 'objects/collectible_item_info.dart';
 part 'objects/bank_card_action_open_url.dart';
 part 'objects/bank_card_info.dart';
 part 'objects/address.dart';
+part 'objects/location_address.dart';
 part 'objects/theme_parameters.dart';
 part 'objects/labeled_price_part.dart';
 part 'objects/invoice.dart';
@@ -236,9 +256,11 @@ part 'objects/saved_credentials.dart';
 part 'objects/input_credentials.dart';
 part 'objects/payment_provider.dart';
 part 'objects/payment_option.dart';
+part 'objects/payment_form_type.dart';
 part 'objects/payment_form.dart';
 part 'objects/validated_order_info.dart';
 part 'objects/payment_result.dart';
+part 'objects/payment_receipt_type.dart';
 part 'objects/payment_receipt.dart';
 part 'objects/input_invoice.dart';
 part 'objects/message_extended_media.dart';
@@ -283,6 +305,7 @@ part 'objects/sticker_set.dart';
 part 'objects/sticker_set_info.dart';
 part 'objects/sticker_sets.dart';
 part 'objects/trending_sticker_sets.dart';
+part 'objects/emoji_category_source.dart';
 part 'objects/emoji_category.dart';
 part 'objects/emoji_categories.dart';
 part 'objects/emoji_category_type.dart';
@@ -301,6 +324,7 @@ part 'objects/story_repost_info.dart';
 part 'objects/story_interaction_info.dart';
 part 'objects/story.dart';
 part 'objects/stories.dart';
+part 'objects/found_stories.dart';
 part 'objects/story_full_id.dart';
 part 'objects/story_info.dart';
 part 'objects/chat_active_stories.dart';
@@ -308,6 +332,7 @@ part 'objects/story_interaction_type.dart';
 part 'objects/story_interaction.dart';
 part 'objects/story_interactions.dart';
 part 'objects/quick_reply_message.dart';
+part 'objects/quick_reply_messages.dart';
 part 'objects/quick_reply_shortcut.dart';
 part 'objects/public_forward.dart';
 part 'objects/public_forwards.dart';
@@ -320,6 +345,7 @@ part 'objects/chat_boost.dart';
 part 'objects/found_chat_boosts.dart';
 part 'objects/chat_boost_slot.dart';
 part 'objects/chat_boost_slots.dart';
+part 'objects/resend_code_reason.dart';
 part 'objects/call_discard_reason.dart';
 part 'objects/call_protocol.dart';
 part 'objects/call_server_type.dart';
@@ -481,11 +507,20 @@ part 'objects/chat_statistics_message_sender_info.dart';
 part 'objects/chat_statistics_administrator_actions_info.dart';
 part 'objects/chat_statistics_inviter_info.dart';
 part 'objects/chat_statistics.dart';
+part 'objects/chat_revenue_amount.dart';
+part 'objects/chat_revenue_statistics.dart';
 part 'objects/message_statistics.dart';
 part 'objects/story_statistics.dart';
+part 'objects/revenue_withdrawal_state.dart';
+part 'objects/chat_revenue_transaction_type.dart';
+part 'objects/chat_revenue_transaction.dart';
+part 'objects/chat_revenue_transactions.dart';
+part 'objects/star_revenue_status.dart';
+part 'objects/star_revenue_statistics.dart';
 part 'objects/point.dart';
 part 'objects/vector_path_command.dart';
 part 'objects/bot_command_scope.dart';
+part 'objects/phone_number_code_type.dart';
 part 'objects/update.dart';
 part 'objects/updates.dart';
 part 'objects/log_stream.dart';
@@ -514,6 +549,7 @@ part 'functions/request_authentication_password_recovery.dart';
 part 'functions/check_authentication_password_recovery_code.dart';
 part 'functions/recover_authentication_password.dart';
 part 'functions/send_authentication_firebase_sms.dart';
+part 'functions/report_authentication_code_missing.dart';
 part 'functions/check_authentication_bot_token.dart';
 part 'functions/log_out.dart';
 part 'functions/close.dart';
@@ -565,6 +601,7 @@ part 'functions/search_public_chats.dart';
 part 'functions/search_chats.dart';
 part 'functions/search_chats_on_server.dart';
 part 'functions/search_chats_nearby.dart';
+part 'functions/get_recommended_chats.dart';
 part 'functions/get_chat_similar_chats.dart';
 part 'functions/get_chat_similar_chat_count.dart';
 part 'functions/open_chat_similar_chat.dart';
@@ -599,6 +636,13 @@ part 'functions/search_secret_messages.dart';
 part 'functions/search_saved_messages.dart';
 part 'functions/search_call_messages.dart';
 part 'functions/search_outgoing_document_messages.dart';
+part 'functions/search_public_messages_by_tag.dart';
+part 'functions/search_public_stories_by_tag.dart';
+part 'functions/search_public_stories_by_location.dart';
+part 'functions/search_public_stories_by_venue.dart';
+part 'functions/get_searched_for_tags.dart';
+part 'functions/remove_searched_for_tag.dart';
+part 'functions/clear_searched_for_tags.dart';
 part 'functions/delete_all_call_messages.dart';
 part 'functions/search_chat_recent_location_messages.dart';
 part 'functions/get_active_live_location_messages.dart';
@@ -644,8 +688,15 @@ part 'functions/edit_inline_message_media.dart';
 part 'functions/edit_inline_message_caption.dart';
 part 'functions/edit_inline_message_reply_markup.dart';
 part 'functions/edit_message_scheduling_state.dart';
+part 'functions/set_message_fact_check.dart';
 part 'functions/send_business_message.dart';
 part 'functions/send_business_message_album.dart';
+part 'functions/edit_business_message_text.dart';
+part 'functions/edit_business_message_live_location.dart';
+part 'functions/edit_business_message_media.dart';
+part 'functions/edit_business_message_caption.dart';
+part 'functions/edit_business_message_reply_markup.dart';
+part 'functions/stop_business_poll.dart';
 part 'functions/check_quick_reply_shortcut_name.dart';
 part 'functions/load_quick_reply_shortcuts.dart';
 part 'functions/set_quick_reply_shortcut_name.dart';
@@ -653,6 +704,11 @@ part 'functions/delete_quick_reply_shortcut.dart';
 part 'functions/reorder_quick_reply_shortcuts.dart';
 part 'functions/load_quick_reply_shortcut_messages.dart';
 part 'functions/delete_quick_reply_shortcut_messages.dart';
+part 'functions/add_quick_reply_shortcut_message.dart';
+part 'functions/add_quick_reply_shortcut_inline_query_result_message.dart';
+part 'functions/add_quick_reply_shortcut_message_album.dart';
+part 'functions/readd_quick_reply_shortcut_messages.dart';
+part 'functions/edit_quick_reply_message.dart';
 part 'functions/get_forum_topic_default_icons.dart';
 part 'functions/create_forum_topic.dart';
 part 'functions/edit_forum_topic.dart';
@@ -676,6 +732,7 @@ part 'functions/get_message_added_reactions.dart';
 part 'functions/set_default_reaction_type.dart';
 part 'functions/get_saved_messages_tags.dart';
 part 'functions/set_saved_messages_tag_label.dart';
+part 'functions/get_message_effect.dart';
 part 'functions/search_quote.dart';
 part 'functions/get_text_entities.dart';
 part 'functions/parse_text_entities.dart';
@@ -693,6 +750,7 @@ part 'functions/set_poll_answer.dart';
 part 'functions/get_poll_voters.dart';
 part 'functions/stop_poll.dart';
 part 'functions/hide_suggested_action.dart';
+part 'functions/hide_contact_close_birthdays.dart';
 part 'functions/get_business_connection.dart';
 part 'functions/get_login_url_info.dart';
 part 'functions/get_login_url.dart';
@@ -807,6 +865,7 @@ part 'functions/remove_saved_notification_sound.dart';
 part 'functions/get_chat_notification_settings_exceptions.dart';
 part 'functions/get_scope_notification_settings.dart';
 part 'functions/set_scope_notification_settings.dart';
+part 'functions/set_reaction_notification_settings.dart';
 part 'functions/reset_all_notification_settings.dart';
 part 'functions/toggle_chat_is_pinned.dart';
 part 'functions/set_pinned_chats.dart';
@@ -817,14 +876,15 @@ part 'functions/can_send_story.dart';
 part 'functions/send_story.dart';
 part 'functions/edit_story.dart';
 part 'functions/set_story_privacy_settings.dart';
-part 'functions/toggle_story_is_pinned.dart';
+part 'functions/toggle_story_is_posted_to_chat_page.dart';
 part 'functions/delete_story.dart';
 part 'functions/get_story_notification_settings_exceptions.dart';
 part 'functions/load_active_stories.dart';
 part 'functions/set_chat_active_stories_list.dart';
 part 'functions/get_chat_active_stories.dart';
-part 'functions/get_chat_pinned_stories.dart';
+part 'functions/get_chat_posted_to_chat_page_stories.dart';
 part 'functions/get_chat_archived_stories.dart';
+part 'functions/set_chat_pinned_stories.dart';
 part 'functions/open_story.dart';
 part 'functions/close_story.dart';
 part 'functions/get_story_available_reactions.dart';
@@ -869,6 +929,7 @@ part 'functions/toggle_all_downloads_are_paused.dart';
 part 'functions/remove_file_from_downloads.dart';
 part 'functions/remove_all_files_from_downloads.dart';
 part 'functions/search_file_downloads.dart';
+part 'functions/set_application_verification_token.dart';
 part 'functions/get_message_file_type.dart';
 part 'functions/get_message_import_confirmation_text.dart';
 part 'functions/import_messages.dart';
@@ -945,6 +1006,7 @@ part 'functions/get_user_profile_photos.dart';
 part 'functions/get_stickers.dart';
 part 'functions/get_all_sticker_emojis.dart';
 part 'functions/search_stickers.dart';
+part 'functions/get_greeting_stickers.dart';
 part 'functions/get_premium_stickers.dart';
 part 'functions/get_installed_sticker_sets.dart';
 part 'functions/get_archived_sticker_sets.dart';
@@ -995,17 +1057,27 @@ part 'functions/set_birthdate.dart';
 part 'functions/set_personal_chat.dart';
 part 'functions/set_emoji_status.dart';
 part 'functions/set_location.dart';
+part 'functions/toggle_has_sponsored_messages_enabled.dart';
 part 'functions/set_business_location.dart';
 part 'functions/set_business_opening_hours.dart';
 part 'functions/set_business_greeting_message_settings.dart';
 part 'functions/set_business_away_message_settings.dart';
-part 'functions/set_business_intro.dart';
-part 'functions/change_phone_number.dart';
-part 'functions/resend_change_phone_number_code.dart';
-part 'functions/check_change_phone_number_code.dart';
+part 'functions/set_business_start_page.dart';
+part 'functions/send_phone_number_code.dart';
+part 'functions/send_phone_number_firebase_sms.dart';
+part 'functions/report_phone_number_code_missing.dart';
+part 'functions/resend_phone_number_code.dart';
+part 'functions/check_phone_number_code.dart';
 part 'functions/get_business_connected_bot.dart';
 part 'functions/set_business_connected_bot.dart';
 part 'functions/delete_business_connected_bot.dart';
+part 'functions/toggle_business_connected_bot_chat_is_paused.dart';
+part 'functions/remove_business_connected_bot_from_chat.dart';
+part 'functions/get_business_chat_links.dart';
+part 'functions/create_business_chat_link.dart';
+part 'functions/edit_business_chat_link.dart';
+part 'functions/delete_business_chat_link.dart';
+part 'functions/get_business_chat_link_info.dart';
 part 'functions/get_user_link.dart';
 part 'functions/search_user_by_token.dart';
 part 'functions/set_commands.dart';
@@ -1048,6 +1120,7 @@ part 'functions/toggle_supergroup_sign_messages.dart';
 part 'functions/toggle_supergroup_join_to_send_messages.dart';
 part 'functions/toggle_supergroup_join_by_request.dart';
 part 'functions/toggle_supergroup_is_all_history_available.dart';
+part 'functions/toggle_supergroup_can_have_sponsored_messages.dart';
 part 'functions/toggle_supergroup_has_hidden_members.dart';
 part 'functions/toggle_supergroup_has_aggressive_anti_spam_enabled.dart';
 part 'functions/toggle_supergroup_is_forum.dart';
@@ -1066,6 +1139,7 @@ part 'functions/get_saved_order_info.dart';
 part 'functions/delete_saved_order_info.dart';
 part 'functions/delete_saved_credentials.dart';
 part 'functions/create_invoice_link.dart';
+part 'functions/refund_star_payment.dart';
 part 'functions/get_support_user.dart';
 part 'functions/get_background_url.dart';
 part 'functions/search_background.dart';
@@ -1105,6 +1179,11 @@ part 'functions/remove_chat_action_bar.dart';
 part 'functions/report_chat.dart';
 part 'functions/report_chat_photo.dart';
 part 'functions/report_message_reactions.dart';
+part 'functions/get_chat_revenue_statistics.dart';
+part 'functions/get_chat_revenue_withdrawal_url.dart';
+part 'functions/get_chat_revenue_transactions.dart';
+part 'functions/get_star_revenue_statistics.dart';
+part 'functions/get_star_withdrawal_url.dart';
 part 'functions/get_chat_statistics.dart';
 part 'functions/get_message_statistics.dart';
 part 'functions/get_message_public_forwards.dart';
@@ -1130,18 +1209,12 @@ part 'functions/set_passport_element.dart';
 part 'functions/delete_passport_element.dart';
 part 'functions/set_passport_element_errors.dart';
 part 'functions/get_preferred_country_language.dart';
-part 'functions/send_phone_number_verification_code.dart';
-part 'functions/resend_phone_number_verification_code.dart';
-part 'functions/check_phone_number_verification_code.dart';
 part 'functions/send_email_address_verification_code.dart';
 part 'functions/resend_email_address_verification_code.dart';
 part 'functions/check_email_address_verification_code.dart';
 part 'functions/get_passport_authorization_form.dart';
 part 'functions/get_passport_authorization_form_available_elements.dart';
 part 'functions/send_passport_authorization_form.dart';
-part 'functions/send_phone_number_confirmation_code.dart';
-part 'functions/resend_phone_number_confirmation_code.dart';
-part 'functions/check_phone_number_confirmation_code.dart';
 part 'functions/set_bot_updates_status.dart';
 part 'functions/upload_sticker_file.dart';
 part 'functions/get_suggested_sticker_set_name.dart';
@@ -1171,7 +1244,9 @@ part 'functions/check_premium_gift_code.dart';
 part 'functions/apply_premium_gift_code.dart';
 part 'functions/launch_prepaid_premium_giveaway.dart';
 part 'functions/get_premium_giveaway_info.dart';
-part 'functions/can_purchase_premium.dart';
+part 'functions/get_star_payment_options.dart';
+part 'functions/get_star_transactions.dart';
+part 'functions/can_purchase_from_store.dart';
 part 'functions/assign_app_store_transaction.dart';
 part 'functions/assign_google_play_transaction.dart';
 part 'functions/get_business_features.dart';
@@ -1234,6 +1309,10 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return AuthenticationCodeTypeTelegramMessage.fromJson(parsed);
     case 'authenticationCodeTypeSms':
       return AuthenticationCodeTypeSms.fromJson(parsed);
+    case 'authenticationCodeTypeSmsWord':
+      return AuthenticationCodeTypeSmsWord.fromJson(parsed);
+    case 'authenticationCodeTypeSmsPhrase':
+      return AuthenticationCodeTypeSmsPhrase.fromJson(parsed);
     case 'authenticationCodeTypeCall':
       return AuthenticationCodeTypeCall.fromJson(parsed);
     case 'authenticationCodeTypeFlashCall':
@@ -1444,16 +1523,24 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return BusinessGreetingMessageSettings.fromJson(parsed);
     case 'businessConnectedBot':
       return BusinessConnectedBot.fromJson(parsed);
-    case 'businessIntro':
-      return BusinessIntro.fromJson(parsed);
-    case 'inputBusinessIntro':
-      return InputBusinessIntro.fromJson(parsed);
+    case 'businessStartPage':
+      return BusinessStartPage.fromJson(parsed);
+    case 'inputBusinessStartPage':
+      return InputBusinessStartPage.fromJson(parsed);
     case 'businessOpeningHoursInterval':
       return BusinessOpeningHoursInterval.fromJson(parsed);
     case 'businessOpeningHours':
       return BusinessOpeningHours.fromJson(parsed);
     case 'businessInfo':
       return BusinessInfo.fromJson(parsed);
+    case 'businessChatLink':
+      return BusinessChatLink.fromJson(parsed);
+    case 'businessChatLinks':
+      return BusinessChatLinks.fromJson(parsed);
+    case 'inputBusinessChatLink':
+      return InputBusinessChatLink.fromJson(parsed);
+    case 'businessChatLinkInfo':
+      return BusinessChatLinkInfo.fromJson(parsed);
     case 'chatPhotoStickerTypeRegularOrMask':
       return ChatPhotoStickerTypeRegularOrMask.fromJson(parsed);
     case 'chatPhotoStickerTypeCustomEmoji':
@@ -1478,6 +1565,8 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return ChatPermissions.fromJson(parsed);
     case 'chatAdministratorRights':
       return ChatAdministratorRights.fromJson(parsed);
+    case 'productInfo':
+      return ProductInfo.fromJson(parsed);
     case 'premiumPaymentOption':
       return PremiumPaymentOption.fromJson(parsed);
     case 'premiumStatePaymentOption':
@@ -1488,6 +1577,32 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return PremiumGiftCodePaymentOptions.fromJson(parsed);
     case 'premiumGiftCodeInfo':
       return PremiumGiftCodeInfo.fromJson(parsed);
+    case 'starPaymentOption':
+      return StarPaymentOption.fromJson(parsed);
+    case 'starPaymentOptions':
+      return StarPaymentOptions.fromJson(parsed);
+    case 'starTransactionDirectionIncoming':
+      return StarTransactionDirectionIncoming.fromJson(parsed);
+    case 'starTransactionDirectionOutgoing':
+      return StarTransactionDirectionOutgoing.fromJson(parsed);
+    case 'starTransactionPartnerTelegram':
+      return StarTransactionPartnerTelegram.fromJson(parsed);
+    case 'starTransactionPartnerAppStore':
+      return StarTransactionPartnerAppStore.fromJson(parsed);
+    case 'starTransactionPartnerGooglePlay':
+      return StarTransactionPartnerGooglePlay.fromJson(parsed);
+    case 'starTransactionPartnerFragment':
+      return StarTransactionPartnerFragment.fromJson(parsed);
+    case 'starTransactionPartnerUser':
+      return StarTransactionPartnerUser.fromJson(parsed);
+    case 'starTransactionPartnerChannel':
+      return StarTransactionPartnerChannel.fromJson(parsed);
+    case 'starTransactionPartnerUnsupported':
+      return StarTransactionPartnerUnsupported.fromJson(parsed);
+    case 'starTransaction':
+      return StarTransaction.fromJson(parsed);
+    case 'starTransactions':
+      return StarTransactions.fromJson(parsed);
     case 'premiumGiveawayParticipantStatusEligible':
       return PremiumGiveawayParticipantStatusEligible.fromJson(parsed);
     case 'premiumGiveawayParticipantStatusParticipating':
@@ -1666,6 +1781,12 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return MessageInteractionInfo.fromJson(parsed);
     case 'unreadReaction':
       return UnreadReaction.fromJson(parsed);
+    case 'messageEffectTypeEmojiReaction':
+      return MessageEffectTypeEmojiReaction.fromJson(parsed);
+    case 'messageEffectTypePremiumSticker':
+      return MessageEffectTypePremiumSticker.fromJson(parsed);
+    case 'messageEffect':
+      return MessageEffect.fromJson(parsed);
     case 'messageSendingStatePending':
       return MessageSendingStatePending.fromJson(parsed);
     case 'messageSendingStateFailed':
@@ -1680,8 +1801,12 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return MessageReplyToStory.fromJson(parsed);
     case 'inputMessageReplyToMessage':
       return InputMessageReplyToMessage.fromJson(parsed);
+    case 'inputMessageReplyToExternalMessage':
+      return InputMessageReplyToExternalMessage.fromJson(parsed);
     case 'inputMessageReplyToStory':
       return InputMessageReplyToStory.fromJson(parsed);
+    case 'factCheck':
+      return FactCheck.fromJson(parsed);
     case 'message':
       return Message.fromJson(parsed);
     case 'messages':
@@ -1722,16 +1847,6 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return MessageSourceScreenshot.fromJson(parsed);
     case 'messageSourceOther':
       return MessageSourceOther.fromJson(parsed);
-    case 'messageSponsorTypeBot':
-      return MessageSponsorTypeBot.fromJson(parsed);
-    case 'messageSponsorTypeWebApp':
-      return MessageSponsorTypeWebApp.fromJson(parsed);
-    case 'messageSponsorTypePublicChannel':
-      return MessageSponsorTypePublicChannel.fromJson(parsed);
-    case 'messageSponsorTypePrivateChannel':
-      return MessageSponsorTypePrivateChannel.fromJson(parsed);
-    case 'messageSponsorTypeWebsite':
-      return MessageSponsorTypeWebsite.fromJson(parsed);
     case 'messageSponsor':
       return MessageSponsor.fromJson(parsed);
     case 'sponsoredMessage':
@@ -1766,6 +1881,14 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return ChatNotificationSettings.fromJson(parsed);
     case 'scopeNotificationSettings':
       return ScopeNotificationSettings.fromJson(parsed);
+    case 'reactionNotificationSourceNone':
+      return ReactionNotificationSourceNone.fromJson(parsed);
+    case 'reactionNotificationSourceContacts':
+      return ReactionNotificationSourceContacts.fromJson(parsed);
+    case 'reactionNotificationSourceAll':
+      return ReactionNotificationSourceAll.fromJson(parsed);
+    case 'reactionNotificationSettings':
+      return ReactionNotificationSettings.fromJson(parsed);
     case 'draftMessage':
       return DraftMessage.fromJson(parsed);
     case 'chatTypePrivate':
@@ -1816,12 +1939,20 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return SavedMessagesTag.fromJson(parsed);
     case 'savedMessagesTags':
       return SavedMessagesTags.fromJson(parsed);
+    case 'businessBotManageBar':
+      return BusinessBotManageBar.fromJson(parsed);
     case 'videoChat':
       return VideoChat.fromJson(parsed);
     case 'chat':
       return Chat.fromJson(parsed);
     case 'chats':
       return Chats.fromJson(parsed);
+    case 'failedToAddMember':
+      return FailedToAddMember.fromJson(parsed);
+    case 'failedToAddMembers':
+      return FailedToAddMembers.fromJson(parsed);
+    case 'createdBasicGroupChat':
+      return CreatedBasicGroupChat.fromJson(parsed);
     case 'chatNearby':
       return ChatNearby.fromJson(parsed);
     case 'chatsNearby':
@@ -2054,6 +2185,8 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return BankCardInfo.fromJson(parsed);
     case 'address':
       return Address.fromJson(parsed);
+    case 'locationAddress':
+      return LocationAddress.fromJson(parsed);
     case 'themeParameters':
       return ThemeParameters.fromJson(parsed);
     case 'labeledPricePart':
@@ -2082,12 +2215,20 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return PaymentProviderOther.fromJson(parsed);
     case 'paymentOption':
       return PaymentOption.fromJson(parsed);
+    case 'paymentFormTypeRegular':
+      return PaymentFormTypeRegular.fromJson(parsed);
+    case 'paymentFormTypeStars':
+      return PaymentFormTypeStars.fromJson(parsed);
     case 'paymentForm':
       return PaymentForm.fromJson(parsed);
     case 'validatedOrderInfo':
       return ValidatedOrderInfo.fromJson(parsed);
     case 'paymentResult':
       return PaymentResult.fromJson(parsed);
+    case 'paymentReceiptTypeRegular':
+      return PaymentReceiptTypeRegular.fromJson(parsed);
+    case 'paymentReceiptTypeStars':
+      return PaymentReceiptTypeStars.fromJson(parsed);
     case 'paymentReceipt':
       return PaymentReceipt.fromJson(parsed);
     case 'inputInvoiceMessage':
@@ -2424,6 +2565,8 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return TextEntityTypePreCode.fromJson(parsed);
     case 'textEntityTypeBlockQuote':
       return TextEntityTypeBlockQuote.fromJson(parsed);
+    case 'textEntityTypeExpandableBlockQuote':
+      return TextEntityTypeExpandableBlockQuote.fromJson(parsed);
     case 'textEntityTypeTextUrl':
       return TextEntityTypeTextUrl.fromJson(parsed);
     case 'textEntityTypeMentionName':
@@ -2574,12 +2717,18 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return StickerSets.fromJson(parsed);
     case 'trendingStickerSets':
       return TrendingStickerSets.fromJson(parsed);
+    case 'emojiCategorySourceSearch':
+      return EmojiCategorySourceSearch.fromJson(parsed);
+    case 'emojiCategorySourcePremium':
+      return EmojiCategorySourcePremium.fromJson(parsed);
     case 'emojiCategory':
       return EmojiCategory.fromJson(parsed);
     case 'emojiCategories':
       return EmojiCategories.fromJson(parsed);
     case 'emojiCategoryTypeDefault':
       return EmojiCategoryTypeDefault.fromJson(parsed);
+    case 'emojiCategoryTypeRegularStickers':
+      return EmojiCategoryTypeRegularStickers.fromJson(parsed);
     case 'emojiCategoryTypeEmojiStatus':
       return EmojiCategoryTypeEmojiStatus.fromJson(parsed);
     case 'emojiCategoryTypeChatPhoto':
@@ -2594,6 +2743,8 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return StoryAreaTypeSuggestedReaction.fromJson(parsed);
     case 'storyAreaTypeMessage':
       return StoryAreaTypeMessage.fromJson(parsed);
+    case 'storyAreaTypeLink':
+      return StoryAreaTypeLink.fromJson(parsed);
     case 'storyArea':
       return StoryArea.fromJson(parsed);
     case 'inputStoryAreaTypeLocation':
@@ -2606,6 +2757,8 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return InputStoryAreaTypeSuggestedReaction.fromJson(parsed);
     case 'inputStoryAreaTypeMessage':
       return InputStoryAreaTypeMessage.fromJson(parsed);
+    case 'inputStoryAreaTypeLink':
+      return InputStoryAreaTypeLink.fromJson(parsed);
     case 'inputStoryArea':
       return InputStoryArea.fromJson(parsed);
     case 'inputStoryAreas':
@@ -2638,6 +2791,8 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return Story.fromJson(parsed);
     case 'stories':
       return Stories.fromJson(parsed);
+    case 'foundStories':
+      return FoundStories.fromJson(parsed);
     case 'storyFullId':
       return StoryFullId.fromJson(parsed);
     case 'storyInfo':
@@ -2656,6 +2811,8 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return StoryInteractions.fromJson(parsed);
     case 'quickReplyMessage':
       return QuickReplyMessage.fromJson(parsed);
+    case 'quickReplyMessages':
+      return QuickReplyMessages.fromJson(parsed);
     case 'quickReplyShortcut':
       return QuickReplyShortcut.fromJson(parsed);
     case 'publicForwardMessage':
@@ -2686,6 +2843,10 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return ChatBoostSlot.fromJson(parsed);
     case 'chatBoostSlots':
       return ChatBoostSlots.fromJson(parsed);
+    case 'resendCodeReasonUserRequest':
+      return ResendCodeReasonUserRequest.fromJson(parsed);
+    case 'resendCodeReasonVerificationFailed':
+      return ResendCodeReasonVerificationFailed.fromJson(parsed);
     case 'callDiscardReasonEmpty':
       return CallDiscardReasonEmpty.fromJson(parsed);
     case 'callDiscardReasonMissed':
@@ -3101,8 +3262,8 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return BusinessFeatureAwayMessage.fromJson(parsed);
     case 'businessFeatureAccountLinks':
       return BusinessFeatureAccountLinks.fromJson(parsed);
-    case 'businessFeatureIntro':
-      return BusinessFeatureIntro.fromJson(parsed);
+    case 'businessFeatureStartPage':
+      return BusinessFeatureStartPage.fromJson(parsed);
     case 'businessFeatureBots':
       return BusinessFeatureBots.fromJson(parsed);
     case 'businessFeatureEmojiStatus':
@@ -3157,10 +3318,14 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return StorePaymentPurposePremiumGiftCodes.fromJson(parsed);
     case 'storePaymentPurposePremiumGiveaway':
       return StorePaymentPurposePremiumGiveaway.fromJson(parsed);
+    case 'storePaymentPurposeStars':
+      return StorePaymentPurposeStars.fromJson(parsed);
     case 'telegramPaymentPurposePremiumGiftCodes':
       return TelegramPaymentPurposePremiumGiftCodes.fromJson(parsed);
     case 'telegramPaymentPurposePremiumGiveaway':
       return TelegramPaymentPurposePremiumGiveaway.fromJson(parsed);
+    case 'telegramPaymentPurposeStars':
+      return TelegramPaymentPurposeStars.fromJson(parsed);
     case 'deviceTokenFirebaseCloudMessaging':
       return DeviceTokenFirebaseCloudMessaging.fromJson(parsed);
     case 'deviceTokenApplePush':
@@ -3530,6 +3695,8 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return InternalLinkTypeBotStart.fromJson(parsed);
     case 'internalLinkTypeBotStartInGroup':
       return InternalLinkTypeBotStartInGroup.fromJson(parsed);
+    case 'internalLinkTypeBusinessChat':
+      return InternalLinkTypeBusinessChat.fromJson(parsed);
     case 'internalLinkTypeChangePhoneNumber':
       return InternalLinkTypeChangePhoneNumber.fromJson(parsed);
     case 'internalLinkTypeChatBoost':
@@ -3761,6 +3928,8 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return SuggestedActionGiftPremiumForChristmas.fromJson(parsed);
     case 'suggestedActionSetBirthdate':
       return SuggestedActionSetBirthdate.fromJson(parsed);
+    case 'suggestedActionExtendPremium':
+      return SuggestedActionExtendPremium.fromJson(parsed);
     case 'count':
       return Count.fromJson(parsed);
     case 'text':
@@ -3813,10 +3982,34 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return ChatStatisticsSupergroup.fromJson(parsed);
     case 'chatStatisticsChannel':
       return ChatStatisticsChannel.fromJson(parsed);
+    case 'chatRevenueAmount':
+      return ChatRevenueAmount.fromJson(parsed);
+    case 'chatRevenueStatistics':
+      return ChatRevenueStatistics.fromJson(parsed);
     case 'messageStatistics':
       return MessageStatistics.fromJson(parsed);
     case 'storyStatistics':
       return StoryStatistics.fromJson(parsed);
+    case 'revenueWithdrawalStatePending':
+      return RevenueWithdrawalStatePending.fromJson(parsed);
+    case 'revenueWithdrawalStateSucceeded':
+      return RevenueWithdrawalStateSucceeded.fromJson(parsed);
+    case 'revenueWithdrawalStateFailed':
+      return RevenueWithdrawalStateFailed.fromJson(parsed);
+    case 'chatRevenueTransactionTypeEarnings':
+      return ChatRevenueTransactionTypeEarnings.fromJson(parsed);
+    case 'chatRevenueTransactionTypeWithdrawal':
+      return ChatRevenueTransactionTypeWithdrawal.fromJson(parsed);
+    case 'chatRevenueTransactionTypeRefund':
+      return ChatRevenueTransactionTypeRefund.fromJson(parsed);
+    case 'chatRevenueTransaction':
+      return ChatRevenueTransaction.fromJson(parsed);
+    case 'chatRevenueTransactions':
+      return ChatRevenueTransactions.fromJson(parsed);
+    case 'starRevenueStatus':
+      return StarRevenueStatus.fromJson(parsed);
+    case 'starRevenueStatistics':
+      return StarRevenueStatistics.fromJson(parsed);
     case 'point':
       return Point.fromJson(parsed);
     case 'vectorPathCommandLine':
@@ -3837,6 +4030,12 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return BotCommandScopeChatAdministrators.fromJson(parsed);
     case 'botCommandScopeChatMember':
       return BotCommandScopeChatMember.fromJson(parsed);
+    case 'phoneNumberCodeTypeChange':
+      return PhoneNumberCodeTypeChange.fromJson(parsed);
+    case 'phoneNumberCodeTypeVerify':
+      return PhoneNumberCodeTypeVerify.fromJson(parsed);
+    case 'phoneNumberCodeTypeConfirmOwnership':
+      return PhoneNumberCodeTypeConfirmOwnership.fromJson(parsed);
     case 'updateAuthorizationState':
       return UpdateAuthorizationState.fromJson(parsed);
     case 'updateNewMessage':
@@ -3861,6 +4060,8 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return UpdateMessageMentionRead.fromJson(parsed);
     case 'updateMessageUnreadReactions':
       return UpdateMessageUnreadReactions.fromJson(parsed);
+    case 'updateMessageFactCheck':
+      return UpdateMessageFactCheck.fromJson(parsed);
     case 'updateMessageLiveLocationViewed':
       return UpdateMessageLiveLocationViewed.fromJson(parsed);
     case 'updateNewChat':
@@ -3887,6 +4088,8 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return UpdateChatReadOutbox.fromJson(parsed);
     case 'updateChatActionBar':
       return UpdateChatActionBar.fromJson(parsed);
+    case 'updateChatBusinessBotManageBar':
+      return UpdateChatBusinessBotManageBar.fromJson(parsed);
     case 'updateChatAvailableReactions':
       return UpdateChatAvailableReactions.fromJson(parsed);
     case 'updateChatDraftMessage':
@@ -3947,6 +4150,8 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return UpdateForumTopicInfo.fromJson(parsed);
     case 'updateScopeNotificationSettings':
       return UpdateScopeNotificationSettings.fromJson(parsed);
+    case 'updateReactionNotificationSettings':
+      return UpdateReactionNotificationSettings.fromJson(parsed);
     case 'updateNotification':
       return UpdateNotification.fromJson(parsed);
     case 'updateNotificationGroup':
@@ -3991,6 +4196,8 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return UpdateFileDownload.fromJson(parsed);
     case 'updateFileRemovedFromDownloads':
       return UpdateFileRemovedFromDownloads.fromJson(parsed);
+    case 'updateApplicationVerificationRequired':
+      return UpdateApplicationVerificationRequired.fromJson(parsed);
     case 'updateCall':
       return UpdateCall.fromJson(parsed);
     case 'updateGroupCall':
@@ -4059,10 +4266,18 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return UpdateWebAppMessageSent.fromJson(parsed);
     case 'updateActiveEmojiReactions':
       return UpdateActiveEmojiReactions.fromJson(parsed);
+    case 'updateAvailableMessageEffects':
+      return UpdateAvailableMessageEffects.fromJson(parsed);
     case 'updateDefaultReactionType':
       return UpdateDefaultReactionType.fromJson(parsed);
     case 'updateSavedMessagesTags':
       return UpdateSavedMessagesTags.fromJson(parsed);
+    case 'updateOwnedStarCount':
+      return UpdateOwnedStarCount.fromJson(parsed);
+    case 'updateChatRevenueAmount':
+      return UpdateChatRevenueAmount.fromJson(parsed);
+    case 'updateStarRevenueStatus':
+      return UpdateStarRevenueStatus.fromJson(parsed);
     case 'updateSpeechRecognitionTrial':
       return UpdateSpeechRecognitionTrial.fromJson(parsed);
     case 'updateDiceEmojis':
@@ -4073,10 +4288,10 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return UpdateAnimationSearchParameters.fromJson(parsed);
     case 'updateSuggestedActions':
       return UpdateSuggestedActions.fromJson(parsed);
+    case 'updateSpeedLimitNotification':
+      return UpdateSpeedLimitNotification.fromJson(parsed);
     case 'updateContactCloseBirthdays':
       return UpdateContactCloseBirthdays.fromJson(parsed);
-    case 'updateAddChatMembersPrivacyForbidden':
-      return UpdateAddChatMembersPrivacyForbidden.fromJson(parsed);
     case 'updateAutosaveSettings':
       return UpdateAutosaveSettings.fromJson(parsed);
     case 'updateBusinessConnection':
@@ -4095,6 +4310,8 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return UpdateNewCallbackQuery.fromJson(parsed);
     case 'updateNewInlineCallbackQuery':
       return UpdateNewInlineCallbackQuery.fromJson(parsed);
+    case 'updateNewBusinessCallbackQuery':
+      return UpdateNewBusinessCallbackQuery.fromJson(parsed);
     case 'updateNewShippingQuery':
       return UpdateNewShippingQuery.fromJson(parsed);
     case 'updateNewPreCheckoutQuery':

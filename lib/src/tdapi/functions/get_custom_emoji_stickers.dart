@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **GetCustomEmojiStickers** *(getCustomEmojiStickers)* - TDLib function
 ///
-/// Returns list of custom emoji stickers by their identifiers. Stickers are returned in arbitrary order. Only found stickers are returned.
+/// Returns the list of custom emoji stickers by their identifiers. Stickers are returned in arbitrary order. Only found stickers are returned.
 ///
 /// * [customEmojiIds]: Identifiers of custom emoji stickers. At most 200 custom emoji stickers can be received simultaneously.
 ///
@@ -10,7 +10,7 @@ part of '../tdapi.dart';
 final class GetCustomEmojiStickers extends TdFunction {
   /// **GetCustomEmojiStickers** *(getCustomEmojiStickers)* - TDLib function
   ///
-  /// Returns list of custom emoji stickers by their identifiers. Stickers are returned in arbitrary order. Only found stickers are returned.
+  /// Returns the list of custom emoji stickers by their identifiers. Stickers are returned in arbitrary order. Only found stickers are returned.
   ///
   /// * [customEmojiIds]: Identifiers of custom emoji stickers. At most 200 custom emoji stickers can be received simultaneously.
   ///

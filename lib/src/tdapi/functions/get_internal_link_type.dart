@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **GetInternalLinkType** *(getInternalLinkType)* - TDLib function
 ///
-/// Returns information about the type of an internal link. Returns a 404 error if the link is not internal. Can be called before authorization.
+/// Returns information about the type of internal link. Returns a 404 error if the link is not internal. Can be called before authorization.
 ///
 /// * [link]: The link.
 ///
@@ -10,7 +10,7 @@ part of '../tdapi.dart';
 final class GetInternalLinkType extends TdFunction {
   /// **GetInternalLinkType** *(getInternalLinkType)* - TDLib function
   ///
-  /// Returns information about the type of an internal link. Returns a 404 error if the link is not internal. Can be called before authorization.
+  /// Returns information about the type of internal link. Returns a 404 error if the link is not internal. Can be called before authorization.
   ///
   /// * [link]: The link.
   ///

@@ -12,6 +12,7 @@ part of '../tdapi.dart';
 /// * [minCustomBackgroundBoostLevel]: The minimum boost level required to set custom chat background.
 /// * [minCustomEmojiStickerSetBoostLevel]: The minimum boost level required to set custom emoji sticker set for the chat; for supergroup chats only.
 /// * [minSpeechRecognitionBoostLevel]: The minimum boost level allowing to recognize speech in video note and voice note messages for non-Premium users; for supergroup chats only.
+/// * [minSponsoredMessageDisableBoostLevel]: The minimum boost level allowing to disable sponsored messages in the chat; for channel chats only.
 final class ChatBoostFeatures extends TdObject {
   /// **ChatBoostFeatures** *(chatBoostFeatures)* - basic class
   ///
@@ -25,6 +26,7 @@ final class ChatBoostFeatures extends TdObject {
   /// * [minCustomBackgroundBoostLevel]: The minimum boost level required to set custom chat background.
   /// * [minCustomEmojiStickerSetBoostLevel]: The minimum boost level required to set custom emoji sticker set for the chat; for supergroup chats only.
   /// * [minSpeechRecognitionBoostLevel]: The minimum boost level allowing to recognize speech in video note and voice note messages for non-Premium users; for supergroup chats only.
+  /// * [minSponsoredMessageDisableBoostLevel]: The minimum boost level allowing to disable sponsored messages in the chat; for channel chats only.
   const ChatBoostFeatures({
     required this.features,
     required this.minProfileBackgroundCustomEmojiBoostLevel,
@@ -34,6 +36,7 @@ final class ChatBoostFeatures extends TdObject {
     required this.minCustomBackgroundBoostLevel,
     required this.minCustomEmojiStickerSetBoostLevel,
     required this.minSpeechRecognitionBoostLevel,
+    required this.minSponsoredMessageDisableBoostLevel,
     this.extra,
     this.clientId,
   });
@@ -62,6 +65,9 @@ final class ChatBoostFeatures extends TdObject {
   /// The minimum boost level allowing to recognize speech in video note and voice note messages for non-Premium users; for supergroup chats only
   final int minSpeechRecognitionBoostLevel;
 
+  /// The minimum boost level allowing to disable sponsored messages in the chat; for channel chats only
+  final int minSponsoredMessageDisableBoostLevel;
+
   /// [extra] callback sign
   @override
   final dynamic extra;
@@ -89,6 +95,8 @@ final class ChatBoostFeatures extends TdObject {
             json['min_custom_emoji_sticker_set_boost_level'],
         minSpeechRecognitionBoostLevel:
             json['min_speech_recognition_boost_level'],
+        minSponsoredMessageDisableBoostLevel:
+            json['min_sponsored_message_disable_boost_level'],
         extra: json['@extra'],
         clientId: json['@client_id'],
       );
@@ -109,6 +117,8 @@ final class ChatBoostFeatures extends TdObject {
       "min_custom_emoji_sticker_set_boost_level":
           minCustomEmojiStickerSetBoostLevel,
       "min_speech_recognition_boost_level": minSpeechRecognitionBoostLevel,
+      "min_sponsored_message_disable_boost_level":
+          minSponsoredMessageDisableBoostLevel,
     };
   }
 
@@ -123,6 +133,7 @@ final class ChatBoostFeatures extends TdObject {
   /// * [min_custom_background_boost_level]: The minimum boost level required to set custom chat background
   /// * [min_custom_emoji_sticker_set_boost_level]: The minimum boost level required to set custom emoji sticker set for the chat; for supergroup chats only
   /// * [min_speech_recognition_boost_level]: The minimum boost level allowing to recognize speech in video note and voice note messages for non-Premium users; for supergroup chats only
+  /// * [min_sponsored_message_disable_boost_level]: The minimum boost level allowing to disable sponsored messages in the chat; for channel chats only
   ChatBoostFeatures copyWith({
     List<ChatBoostLevelFeatures>? features,
     int? minProfileBackgroundCustomEmojiBoostLevel,
@@ -132,6 +143,7 @@ final class ChatBoostFeatures extends TdObject {
     int? minCustomBackgroundBoostLevel,
     int? minCustomEmojiStickerSetBoostLevel,
     int? minSpeechRecognitionBoostLevel,
+    int? minSponsoredMessageDisableBoostLevel,
     dynamic extra,
     int? clientId,
   }) =>
@@ -154,6 +166,9 @@ final class ChatBoostFeatures extends TdObject {
                 this.minCustomEmojiStickerSetBoostLevel,
         minSpeechRecognitionBoostLevel: minSpeechRecognitionBoostLevel ??
             this.minSpeechRecognitionBoostLevel,
+        minSponsoredMessageDisableBoostLevel:
+            minSponsoredMessageDisableBoostLevel ??
+                this.minSponsoredMessageDisableBoostLevel,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 /// Returns stickers from the installed sticker sets that correspond to any of the given emoji or can be found by sticker-specific keywords. If the query is non-empty, then favorite, recently used or trending stickers may also be returned.
 ///
 /// * [stickerType]: Type of the stickers to return.
-/// * [query]: Search query; a space-separated list of emoji or a keyword prefix. If empty, returns all known installed stickers.
+/// * [query]: Search query; a space-separated list of emojis or a keyword prefix. If empty, returns all known installed stickers.
 /// * [limit]: The maximum number of stickers to be returned.
 /// * [chatId]: Chat identifier for which to return stickers. Available custom emoji stickers may be different for different chats.
 ///
@@ -16,7 +16,7 @@ final class GetStickers extends TdFunction {
   /// Returns stickers from the installed sticker sets that correspond to any of the given emoji or can be found by sticker-specific keywords. If the query is non-empty, then favorite, recently used or trending stickers may also be returned.
   ///
   /// * [stickerType]: Type of the stickers to return.
-  /// * [query]: Search query; a space-separated list of emoji or a keyword prefix. If empty, returns all known installed stickers.
+  /// * [query]: Search query; a space-separated list of emojis or a keyword prefix. If empty, returns all known installed stickers.
   /// * [limit]: The maximum number of stickers to be returned.
   /// * [chatId]: Chat identifier for which to return stickers. Available custom emoji stickers may be different for different chats.
   ///
@@ -31,7 +31,7 @@ final class GetStickers extends TdFunction {
   /// Type of the stickers to return
   final StickerType stickerType;
 
-  /// Search query; a space-separated list of emoji or a keyword prefix. If empty, returns all known installed stickers
+  /// Search query; a space-separated list of emojis or a keyword prefix. If empty, returns all known installed stickers
   final String query;
 
   /// The maximum number of stickers to be returned
@@ -57,7 +57,7 @@ final class GetStickers extends TdFunction {
   ///
   /// Properties:
   /// * [sticker_type]: Type of the stickers to return
-  /// * [query]: Search query; a space-separated list of emoji or a keyword prefix. If empty, returns all known installed stickers
+  /// * [query]: Search query; a space-separated list of emojis or a keyword prefix. If empty, returns all known installed stickers
   /// * [limit]: The maximum number of stickers to be returned
   /// * [chat_id]: Chat identifier for which to return stickers. Available custom emoji stickers may be different for different chats
   GetStickers copyWith({

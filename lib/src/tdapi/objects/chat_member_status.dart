@@ -61,7 +61,7 @@ sealed class ChatMemberStatus extends TdObject {
 ///
 /// The user is the owner of the chat and has all the administrator privileges.
 ///
-/// * [customTitle]: A custom title of the owner; 0-16 characters without emojis; applicable to supergroups only.
+/// * [customTitle]: A custom title of the owner; 0-16 characters without emoji; applicable to supergroups only.
 /// * [isAnonymous]: True, if the creator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only.
 /// * [isMember]: True, if the user is a member of the chat.
 final class ChatMemberStatusCreator extends ChatMemberStatus {
@@ -69,7 +69,7 @@ final class ChatMemberStatusCreator extends ChatMemberStatus {
   ///
   /// The user is the owner of the chat and has all the administrator privileges.
   ///
-  /// * [customTitle]: A custom title of the owner; 0-16 characters without emojis; applicable to supergroups only.
+  /// * [customTitle]: A custom title of the owner; 0-16 characters without emoji; applicable to supergroups only.
   /// * [isAnonymous]: True, if the creator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only.
   /// * [isMember]: True, if the user is a member of the chat.
   const ChatMemberStatusCreator({
@@ -78,7 +78,7 @@ final class ChatMemberStatusCreator extends ChatMemberStatus {
     required this.isMember,
   });
 
-  /// A custom title of the owner; 0-16 characters without emojis; applicable to supergroups only
+  /// A custom title of the owner; 0-16 characters without emoji; applicable to supergroups only
   final String customTitle;
 
   /// True, if the creator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only
@@ -109,7 +109,7 @@ final class ChatMemberStatusCreator extends ChatMemberStatus {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [custom_title]: A custom title of the owner; 0-16 characters without emojis; applicable to supergroups only
+  /// * [custom_title]: A custom title of the owner; 0-16 characters without emoji; applicable to supergroups only
   /// * [is_anonymous]: True, if the creator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only
   /// * [is_member]: True, if the user is a member of the chat
   @override
@@ -140,7 +140,7 @@ final class ChatMemberStatusCreator extends ChatMemberStatus {
 ///
 /// The user is a member of the chat and has some additional privileges. In basic groups, administrators can edit and delete messages sent by others, add new members, ban unprivileged members, and manage video chats.. In supergroups and channels, there are more detailed options for administrator privileges.
 ///
-/// * [customTitle]: A custom title of the administrator; 0-16 characters without emojis; applicable to supergroups only.
+/// * [customTitle]: A custom title of the administrator; 0-16 characters without emoji; applicable to supergroups only.
 /// * [canBeEdited]: True, if the current user can edit the administrator privileges for the called user.
 /// * [rights]: Rights of the administrator.
 final class ChatMemberStatusAdministrator extends ChatMemberStatus {
@@ -148,7 +148,7 @@ final class ChatMemberStatusAdministrator extends ChatMemberStatus {
   ///
   /// The user is a member of the chat and has some additional privileges. In basic groups, administrators can edit and delete messages sent by others, add new members, ban unprivileged members, and manage video chats.. In supergroups and channels, there are more detailed options for administrator privileges.
   ///
-  /// * [customTitle]: A custom title of the administrator; 0-16 characters without emojis; applicable to supergroups only.
+  /// * [customTitle]: A custom title of the administrator; 0-16 characters without emoji; applicable to supergroups only.
   /// * [canBeEdited]: True, if the current user can edit the administrator privileges for the called user.
   /// * [rights]: Rights of the administrator.
   const ChatMemberStatusAdministrator({
@@ -157,7 +157,7 @@ final class ChatMemberStatusAdministrator extends ChatMemberStatus {
     required this.rights,
   });
 
-  /// A custom title of the administrator; 0-16 characters without emojis; applicable to supergroups only
+  /// A custom title of the administrator; 0-16 characters without emoji; applicable to supergroups only
   final String customTitle;
 
   /// True, if the current user can edit the administrator privileges for the called user
@@ -188,7 +188,7 @@ final class ChatMemberStatusAdministrator extends ChatMemberStatus {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [custom_title]: A custom title of the administrator; 0-16 characters without emojis; applicable to supergroups only
+  /// * [custom_title]: A custom title of the administrator; 0-16 characters without emoji; applicable to supergroups only
   /// * [can_be_edited]: True, if the current user can edit the administrator privileges for the called user
   /// * [rights]: Rights of the administrator
   @override

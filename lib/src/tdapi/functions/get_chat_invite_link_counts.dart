@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **GetChatInviteLinkCounts** *(getChatInviteLinkCounts)* - TDLib function
 ///
-/// Returns list of chat administrators with number of their invite links. Requires owner privileges in the chat.
+/// Returns the list of chat administrators with number of their invite links. Requires owner privileges in the chat.
 ///
 /// * [chatId]: Chat identifier.
 ///
@@ -10,7 +10,7 @@ part of '../tdapi.dart';
 final class GetChatInviteLinkCounts extends TdFunction {
   /// **GetChatInviteLinkCounts** *(getChatInviteLinkCounts)* - TDLib function
   ///
-  /// Returns list of chat administrators with number of their invite links. Requires owner privileges in the chat.
+  /// Returns the list of chat administrators with number of their invite links. Requires owner privileges in the chat.
   ///
   /// * [chatId]: Chat identifier.
   ///

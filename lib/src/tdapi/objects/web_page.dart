@@ -30,6 +30,7 @@ part of '../tdapi.dart';
 /// * [voiceNote]: Preview of the content as a voice note, if available; may be null *(optional)*.
 /// * [storySenderChatId]: The identifier of the sender of the previewed story; 0 if none.
 /// * [storyId]: The identifier of the previewed story; 0 if none.
+/// * [stickers]: Up to 4 stickers from the sticker set available via the link.
 /// * [instantViewVersion]: Version of web page instant view (currently, can be 1 or 2); 0 if none.
 final class WebPage extends TdObject {
   /// **WebPage** *(webPage)* - basic class
@@ -62,6 +63,7 @@ final class WebPage extends TdObject {
   /// * [voiceNote]: Preview of the content as a voice note, if available; may be null *(optional)*.
   /// * [storySenderChatId]: The identifier of the sender of the previewed story; 0 if none.
   /// * [storyId]: The identifier of the previewed story; 0 if none.
+  /// * [stickers]: Up to 4 stickers from the sticker set available via the link.
   /// * [instantViewVersion]: Version of web page instant view (currently, can be 1 or 2); 0 if none.
   const WebPage({
     required this.url,
@@ -90,6 +92,7 @@ final class WebPage extends TdObject {
     this.voiceNote,
     required this.storySenderChatId,
     required this.storyId,
+    required this.stickers,
     required this.instantViewVersion,
     this.extra,
     this.clientId,
@@ -173,6 +176,9 @@ final class WebPage extends TdObject {
   /// The identifier of the previewed story; 0 if none
   final int storyId;
 
+  /// Up to 4 stickers from the sticker set available via the link
+  final List<Sticker> stickers;
+
   /// Version of web page instant view (currently, can be 1 or 2); 0 if none
   final int instantViewVersion;
 
@@ -221,6 +227,9 @@ final class WebPage extends TdObject {
             : VoiceNote.fromJson(json['voice_note']),
         storySenderChatId: json['story_sender_chat_id'] ?? 0,
         storyId: json['story_id'] ?? 0,
+        stickers: List<Sticker>.from((json['stickers'] ?? [])
+            .map((item) => Sticker.fromJson(item))
+            .toList()),
         instantViewVersion: json['instant_view_version'] ?? 0,
         extra: json['@extra'],
         clientId: json['@client_id'],
@@ -257,6 +266,7 @@ final class WebPage extends TdObject {
       "voice_note": voiceNote?.toJson(),
       "story_sender_chat_id": storySenderChatId,
       "story_id": storyId,
+      "stickers": stickers.map((i) => i.toJson()).toList(),
       "instant_view_version": instantViewVersion,
     };
   }
@@ -290,6 +300,7 @@ final class WebPage extends TdObject {
   /// * [voice_note]: Preview of the content as a voice note, if available; may be null
   /// * [story_sender_chat_id]: The identifier of the sender of the previewed story; 0 if none
   /// * [story_id]: The identifier of the previewed story; 0 if none
+  /// * [stickers]: Up to 4 stickers from the sticker set available via the link
   /// * [instant_view_version]: Version of web page instant view (currently, can be 1 or 2); 0 if none
   WebPage copyWith({
     String? url,
@@ -318,6 +329,7 @@ final class WebPage extends TdObject {
     VoiceNote? voiceNote,
     int? storySenderChatId,
     int? storyId,
+    List<Sticker>? stickers,
     int? instantViewVersion,
     dynamic extra,
     int? clientId,
@@ -349,6 +361,7 @@ final class WebPage extends TdObject {
         voiceNote: voiceNote ?? this.voiceNote,
         storySenderChatId: storySenderChatId ?? this.storySenderChatId,
         storyId: storyId ?? this.storyId,
+        stickers: stickers ?? this.stickers,
         instantViewVersion: instantViewVersion ?? this.instantViewVersion,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,

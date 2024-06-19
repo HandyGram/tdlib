@@ -7,7 +7,7 @@ part of '../tdapi.dart';
 /// * [origin]: Origin of the forwarded message.
 /// * [date]: Point in time (Unix timestamp) when the message was originally sent.
 /// * [source]: For messages forwarded to the chat with the current user (Saved Messages), to the Replies bot chat, or to the channel's discussion group, information about the source message from which the message was forwarded last time; may be null for other forwards or if unknown *(optional)*.
-/// * [publicServiceAnnouncementType]: The type of a public service announcement for the forwarded message.
+/// * [publicServiceAnnouncementType]: The type of public service announcement for the forwarded message.
 final class MessageForwardInfo extends TdObject {
   /// **MessageForwardInfo** *(messageForwardInfo)* - basic class
   ///
@@ -16,7 +16,7 @@ final class MessageForwardInfo extends TdObject {
   /// * [origin]: Origin of the forwarded message.
   /// * [date]: Point in time (Unix timestamp) when the message was originally sent.
   /// * [source]: For messages forwarded to the chat with the current user (Saved Messages), to the Replies bot chat, or to the channel's discussion group, information about the source message from which the message was forwarded last time; may be null for other forwards or if unknown *(optional)*.
-  /// * [publicServiceAnnouncementType]: The type of a public service announcement for the forwarded message.
+  /// * [publicServiceAnnouncementType]: The type of public service announcement for the forwarded message.
   const MessageForwardInfo({
     required this.origin,
     required this.date,
@@ -33,7 +33,7 @@ final class MessageForwardInfo extends TdObject {
   /// For messages forwarded to the chat with the current user (Saved Messages), to the Replies bot chat, or to the channel's discussion group, information about the source message from which the message was forwarded last time; may be null for other forwards or if unknown
   final ForwardSource? source;
 
-  /// The type of a public service announcement for the forwarded message
+  /// The type of public service announcement for the forwarded message
   final String publicServiceAnnouncementType;
 
   /// Parse from a json
@@ -65,7 +65,7 @@ final class MessageForwardInfo extends TdObject {
   /// * [origin]: Origin of the forwarded message
   /// * [date]: Point in time (Unix timestamp) when the message was originally sent
   /// * [source]: For messages forwarded to the chat with the current user (Saved Messages), to the Replies bot chat, or to the channel's discussion group, information about the source message from which the message was forwarded last time; may be null for other forwards or if unknown
-  /// * [public_service_announcement_type]: The type of a public service announcement for the forwarded message
+  /// * [public_service_announcement_type]: The type of public service announcement for the forwarded message
   MessageForwardInfo copyWith({
     MessageOrigin? origin,
     int? date,

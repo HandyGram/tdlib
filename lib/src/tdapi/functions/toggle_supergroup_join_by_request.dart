@@ -4,7 +4,7 @@ part of '../tdapi.dart';
 ///
 /// Toggles whether all users directly joining the supergroup need to be approved by supergroup administrators; requires can_restrict_members administrator right.
 ///
-/// * [supergroupId]: Identifier of the channel.
+/// * [supergroupId]: Identifier of the supergroup that isn't a broadcast group.
 /// * [joinByRequest]: New value of join_by_request.
 ///
 /// [Ok] is returned on completion.
@@ -13,7 +13,7 @@ final class ToggleSupergroupJoinByRequest extends TdFunction {
   ///
   /// Toggles whether all users directly joining the supergroup need to be approved by supergroup administrators; requires can_restrict_members administrator right.
   ///
-  /// * [supergroupId]: Identifier of the channel.
+  /// * [supergroupId]: Identifier of the supergroup that isn't a broadcast group.
   /// * [joinByRequest]: New value of join_by_request.
   ///
   /// [Ok] is returned on completion.
@@ -22,7 +22,7 @@ final class ToggleSupergroupJoinByRequest extends TdFunction {
     required this.joinByRequest,
   });
 
-  /// Identifier of the channel
+  /// Identifier of the supergroup that isn't a broadcast group
   final int supergroupId;
 
   /// New value of join_by_request
@@ -42,7 +42,7 @@ final class ToggleSupergroupJoinByRequest extends TdFunction {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [supergroup_id]: Identifier of the channel
+  /// * [supergroup_id]: Identifier of the supergroup that isn't a broadcast group
   /// * [join_by_request]: New value of join_by_request
   ToggleSupergroupJoinByRequest copyWith({
     int? supergroupId,

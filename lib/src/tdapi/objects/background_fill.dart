@@ -188,18 +188,18 @@ final class BackgroundFillGradient extends BackgroundFill {
 ///
 /// Describes a freeform gradient fill of a background.
 ///
-/// * [colors]: A list of 3 or 4 colors of the freeform gradients in the RGB24 format.
+/// * [colors]: A list of 3 or 4 colors of the freeform gradient in the RGB24 format.
 final class BackgroundFillFreeformGradient extends BackgroundFill {
   /// **BackgroundFillFreeformGradient** *(backgroundFillFreeformGradient)* - child of BackgroundFill
   ///
   /// Describes a freeform gradient fill of a background.
   ///
-  /// * [colors]: A list of 3 or 4 colors of the freeform gradients in the RGB24 format.
+  /// * [colors]: A list of 3 or 4 colors of the freeform gradient in the RGB24 format.
   const BackgroundFillFreeformGradient({
     required this.colors,
   });
 
-  /// A list of 3 or 4 colors of the freeform gradients in the RGB24 format
+  /// A list of 3 or 4 colors of the freeform gradient in the RGB24 format
   final List<int> colors;
 
   /// Parse from a json
@@ -221,7 +221,7 @@ final class BackgroundFillFreeformGradient extends BackgroundFill {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [colors]: A list of 3 or 4 colors of the freeform gradients in the RGB24 format
+  /// * [colors]: A list of 3 or 4 colors of the freeform gradient in the RGB24 format
   @override
   BackgroundFillFreeformGradient copyWith({
     List<int>? colors,

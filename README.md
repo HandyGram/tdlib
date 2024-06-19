@@ -4,7 +4,7 @@
 
 ## About plugin
 
-This is a Flutter [plugin](https://pub.dev/packages/handy_tdlib) for [TDLib (Telegram Database Library)](https://github.com/tdlib) v1.8.27
+This is a Flutter [plugin](https://pub.dev/packages/handy_tdlib) for [TDLib (Telegram Database Library)](https://github.com/tdlib) v1.8.31
 
 This plugin is a complete TDLib's JSON interface binding package to help you create your own Telegram client.
 

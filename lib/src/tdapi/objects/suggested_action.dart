@@ -21,6 +21,7 @@ sealed class SuggestedAction extends TdObject {
   /// * [SuggestedActionSubscribeToAnnualPremium]
   /// * [SuggestedActionGiftPremiumForChristmas]
   /// * [SuggestedActionSetBirthdate]
+  /// * [SuggestedActionExtendPremium]
   factory SuggestedAction.fromJson(Map<String, dynamic> json) {
     switch (json["@type"]) {
       case SuggestedActionEnableArchiveAndMuteNewChats.defaultObjectId:
@@ -45,6 +46,8 @@ sealed class SuggestedAction extends TdObject {
         return SuggestedActionGiftPremiumForChristmas.fromJson(json);
       case SuggestedActionSetBirthdate.defaultObjectId:
         return SuggestedActionSetBirthdate.fromJson(json);
+      case SuggestedActionExtendPremium.defaultObjectId:
+        return SuggestedActionExtendPremium.fromJson(json);
       default:
         throw FormatException(
           "Unknown object ${json["@type"]} (expected child of SuggestedAction)",
@@ -526,6 +529,64 @@ final class SuggestedActionSetBirthdate extends SuggestedAction {
 
   /// TDLib object type
   static const String defaultObjectId = 'suggestedActionSetBirthdate';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **SuggestedActionExtendPremium** *(suggestedActionExtendPremium)* - child of SuggestedAction
+///
+/// Suggests the user to extend their expiring Telegram Premium subscription.
+///
+/// * [managePremiumSubscriptionUrl]: A URL for managing Telegram Premium subscription.
+final class SuggestedActionExtendPremium extends SuggestedAction {
+  /// **SuggestedActionExtendPremium** *(suggestedActionExtendPremium)* - child of SuggestedAction
+  ///
+  /// Suggests the user to extend their expiring Telegram Premium subscription.
+  ///
+  /// * [managePremiumSubscriptionUrl]: A URL for managing Telegram Premium subscription.
+  const SuggestedActionExtendPremium({
+    required this.managePremiumSubscriptionUrl,
+  });
+
+  /// A URL for managing Telegram Premium subscription
+  final String managePremiumSubscriptionUrl;
+
+  /// Parse from a json
+  factory SuggestedActionExtendPremium.fromJson(Map<String, dynamic> json) =>
+      SuggestedActionExtendPremium(
+        managePremiumSubscriptionUrl: json['manage_premium_subscription_url'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "manage_premium_subscription_url": managePremiumSubscriptionUrl,
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [manage_premium_subscription_url]: A URL for managing Telegram Premium subscription
+  @override
+  SuggestedActionExtendPremium copyWith({
+    String? managePremiumSubscriptionUrl,
+  }) =>
+      SuggestedActionExtendPremium(
+        managePremiumSubscriptionUrl:
+            managePremiumSubscriptionUrl ?? this.managePremiumSubscriptionUrl,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'suggestedActionExtendPremium';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

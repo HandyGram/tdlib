@@ -6,6 +6,7 @@ part of '../tdapi.dart';
 ///
 /// * [totalCount]: Approximate total number of stories found.
 /// * [stories]: The list of stories.
+/// * [pinnedStoryIds]: Identifiers of the pinned stories; returned only in getChatPostedToChatPageStories with from_story_id == 0.
 final class Stories extends TdObject {
   /// **Stories** *(stories)* - basic class
   ///
@@ -13,9 +14,11 @@ final class Stories extends TdObject {
   ///
   /// * [totalCount]: Approximate total number of stories found.
   /// * [stories]: The list of stories.
+  /// * [pinnedStoryIds]: Identifiers of the pinned stories; returned only in getChatPostedToChatPageStories with from_story_id == 0.
   const Stories({
     required this.totalCount,
     required this.stories,
+    required this.pinnedStoryIds,
     this.extra,
     this.clientId,
   });
@@ -25,6 +28,9 @@ final class Stories extends TdObject {
 
   /// The list of stories
   final List<Story> stories;
+
+  /// Identifiers of the pinned stories; returned only in getChatPostedToChatPageStories with from_story_id == 0
+  final List<int> pinnedStoryIds;
 
   /// [extra] callback sign
   @override
@@ -40,6 +46,8 @@ final class Stories extends TdObject {
         stories: List<Story>.from((json['stories'] ?? [])
             .map((item) => Story.fromJson(item))
             .toList()),
+        pinnedStoryIds: List<int>.from(
+            (json['pinned_story_ids'] ?? []).map((item) => item).toList()),
         extra: json['@extra'],
         clientId: json['@client_id'],
       );
@@ -51,6 +59,7 @@ final class Stories extends TdObject {
       "@type": defaultObjectId,
       "total_count": totalCount,
       "stories": stories.map((i) => i.toJson()).toList(),
+      "pinned_story_ids": pinnedStoryIds.map((i) => i).toList(),
     };
   }
 
@@ -59,15 +68,18 @@ final class Stories extends TdObject {
   /// Properties:
   /// * [total_count]: Approximate total number of stories found
   /// * [stories]: The list of stories
+  /// * [pinned_story_ids]: Identifiers of the pinned stories; returned only in getChatPostedToChatPageStories with from_story_id == 0
   Stories copyWith({
     int? totalCount,
     List<Story>? stories,
+    List<int>? pinnedStoryIds,
     dynamic extra,
     int? clientId,
   }) =>
       Stories(
         totalCount: totalCount ?? this.totalCount,
         stories: stories ?? this.stories,
+        pinnedStoryIds: pinnedStoryIds ?? this.pinnedStoryIds,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

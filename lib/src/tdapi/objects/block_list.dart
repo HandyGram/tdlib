@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **BlockList** *(blockList)* - parent
 ///
-/// Describes a type of a block list.
+/// Describes type of block list.
 sealed class BlockList extends TdObject {
   /// **BlockList** *(blockList)* - parent
   ///
-  /// Describes a type of a block list.
+  /// Describes type of block list.
   const BlockList();
 
   /// a BlockList return type can be :

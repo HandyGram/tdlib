@@ -4,7 +4,7 @@ part of '../tdapi.dart';
 ///
 /// Toggles whether joining is mandatory to send messages to a discussion supergroup; requires can_restrict_members administrator right.
 ///
-/// * [supergroupId]: Identifier of the supergroup.
+/// * [supergroupId]: Identifier of the supergroup that isn't a broadcast group.
 /// * [joinToSendMessages]: New value of join_to_send_messages.
 ///
 /// [Ok] is returned on completion.
@@ -13,7 +13,7 @@ final class ToggleSupergroupJoinToSendMessages extends TdFunction {
   ///
   /// Toggles whether joining is mandatory to send messages to a discussion supergroup; requires can_restrict_members administrator right.
   ///
-  /// * [supergroupId]: Identifier of the supergroup.
+  /// * [supergroupId]: Identifier of the supergroup that isn't a broadcast group.
   /// * [joinToSendMessages]: New value of join_to_send_messages.
   ///
   /// [Ok] is returned on completion.
@@ -22,7 +22,7 @@ final class ToggleSupergroupJoinToSendMessages extends TdFunction {
     required this.joinToSendMessages,
   });
 
-  /// Identifier of the supergroup
+  /// Identifier of the supergroup that isn't a broadcast group
   final int supergroupId;
 
   /// New value of join_to_send_messages
@@ -42,7 +42,7 @@ final class ToggleSupergroupJoinToSendMessages extends TdFunction {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [supergroup_id]: Identifier of the supergroup
+  /// * [supergroup_id]: Identifier of the supergroup that isn't a broadcast group
   /// * [join_to_send_messages]: New value of join_to_send_messages
   ToggleSupergroupJoinToSendMessages copyWith({
     int? supergroupId,

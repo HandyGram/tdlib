@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **StickerType** *(stickerType)* - parent
 ///
-/// Describes type of a sticker.
+/// Describes type of sticker.
 sealed class StickerType extends TdObject {
   /// **StickerType** *(stickerType)* - parent
   ///
-  /// Describes type of a sticker.
+  /// Describes type of sticker.
   const StickerType();
 
   /// a StickerType return type can be :

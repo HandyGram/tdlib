@@ -4,57 +4,30 @@ part of '../tdapi.dart';
 ///
 /// Contains information about a successful payment.
 ///
-/// * [title]: Product title.
-/// * [description]: Product description.
-/// * [photo]: Product photo; may be null *(optional)*.
+/// * [productInfo]: Information about the product.
 /// * [date]: Point in time (Unix timestamp) when the payment was made.
 /// * [sellerBotUserId]: User identifier of the seller bot.
-/// * [paymentProviderUserId]: User identifier of the payment provider bot.
-/// * [invoice]: Information about the invoice.
-/// * [orderInfo]: Order information; may be null *(optional)*.
-/// * [shippingOption]: Chosen shipping option; may be null *(optional)*.
-/// * [credentialsTitle]: Title of the saved credentials chosen by the buyer.
-/// * [tipAmount]: The amount of tip chosen by the buyer in the smallest units of the currency.
+/// * [type]: Type of the payment receipt.
 final class PaymentReceipt extends TdObject {
   /// **PaymentReceipt** *(paymentReceipt)* - basic class
   ///
   /// Contains information about a successful payment.
   ///
-  /// * [title]: Product title.
-  /// * [description]: Product description.
-  /// * [photo]: Product photo; may be null *(optional)*.
+  /// * [productInfo]: Information about the product.
   /// * [date]: Point in time (Unix timestamp) when the payment was made.
   /// * [sellerBotUserId]: User identifier of the seller bot.
-  /// * [paymentProviderUserId]: User identifier of the payment provider bot.
-  /// * [invoice]: Information about the invoice.
-  /// * [orderInfo]: Order information; may be null *(optional)*.
-  /// * [shippingOption]: Chosen shipping option; may be null *(optional)*.
-  /// * [credentialsTitle]: Title of the saved credentials chosen by the buyer.
-  /// * [tipAmount]: The amount of tip chosen by the buyer in the smallest units of the currency.
+  /// * [type]: Type of the payment receipt.
   const PaymentReceipt({
-    required this.title,
-    required this.description,
-    this.photo,
+    required this.productInfo,
     required this.date,
     required this.sellerBotUserId,
-    required this.paymentProviderUserId,
-    required this.invoice,
-    this.orderInfo,
-    this.shippingOption,
-    required this.credentialsTitle,
-    required this.tipAmount,
+    required this.type,
     this.extra,
     this.clientId,
   });
 
-  /// Product title
-  final String title;
-
-  /// Product description
-  final FormattedText description;
-
-  /// Product photo; may be null
-  final Photo? photo;
+  /// Information about the product
+  final ProductInfo productInfo;
 
   /// Point in time (Unix timestamp) when the payment was made
   final int date;
@@ -62,23 +35,8 @@ final class PaymentReceipt extends TdObject {
   /// User identifier of the seller bot
   final int sellerBotUserId;
 
-  /// User identifier of the payment provider bot
-  final int paymentProviderUserId;
-
-  /// Information about the invoice
-  final Invoice invoice;
-
-  /// Order information; may be null
-  final OrderInfo? orderInfo;
-
-  /// Chosen shipping option; may be null
-  final ShippingOption? shippingOption;
-
-  /// Title of the saved credentials chosen by the buyer
-  final String credentialsTitle;
-
-  /// The amount of tip chosen by the buyer in the smallest units of the currency
-  final int tipAmount;
+  /// Type of the payment receipt
+  final PaymentReceiptType type;
 
   /// [extra] callback sign
   @override
@@ -90,21 +48,10 @@ final class PaymentReceipt extends TdObject {
 
   /// Parse from a json
   factory PaymentReceipt.fromJson(Map<String, dynamic> json) => PaymentReceipt(
-        title: json['title'],
-        description: FormattedText.fromJson(json['description']),
-        photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
+        productInfo: ProductInfo.fromJson(json['product_info']),
         date: json['date'],
         sellerBotUserId: json['seller_bot_user_id'],
-        paymentProviderUserId: json['payment_provider_user_id'],
-        invoice: Invoice.fromJson(json['invoice']),
-        orderInfo: json['order_info'] == null
-            ? null
-            : OrderInfo.fromJson(json['order_info']),
-        shippingOption: json['shipping_option'] == null
-            ? null
-            : ShippingOption.fromJson(json['shipping_option']),
-        credentialsTitle: json['credentials_title'],
-        tipAmount: json['tip_amount'],
+        type: PaymentReceiptType.fromJson(json['type']),
         extra: json['@extra'],
         clientId: json['@client_id'],
       );
@@ -114,62 +61,33 @@ final class PaymentReceipt extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": defaultObjectId,
-      "title": title,
-      "description": description.toJson(),
-      "photo": photo?.toJson(),
+      "product_info": productInfo.toJson(),
       "date": date,
       "seller_bot_user_id": sellerBotUserId,
-      "payment_provider_user_id": paymentProviderUserId,
-      "invoice": invoice.toJson(),
-      "order_info": orderInfo?.toJson(),
-      "shipping_option": shippingOption?.toJson(),
-      "credentials_title": credentialsTitle,
-      "tip_amount": tipAmount,
+      "type": type.toJson(),
     };
   }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [title]: Product title
-  /// * [description]: Product description
-  /// * [photo]: Product photo; may be null
+  /// * [product_info]: Information about the product
   /// * [date]: Point in time (Unix timestamp) when the payment was made
   /// * [seller_bot_user_id]: User identifier of the seller bot
-  /// * [payment_provider_user_id]: User identifier of the payment provider bot
-  /// * [invoice]: Information about the invoice
-  /// * [order_info]: Order information; may be null
-  /// * [shipping_option]: Chosen shipping option; may be null
-  /// * [credentials_title]: Title of the saved credentials chosen by the buyer
-  /// * [tip_amount]: The amount of tip chosen by the buyer in the smallest units of the currency
+  /// * [type]: Type of the payment receipt
   PaymentReceipt copyWith({
-    String? title,
-    FormattedText? description,
-    Photo? photo,
+    ProductInfo? productInfo,
     int? date,
     int? sellerBotUserId,
-    int? paymentProviderUserId,
-    Invoice? invoice,
-    OrderInfo? orderInfo,
-    ShippingOption? shippingOption,
-    String? credentialsTitle,
-    int? tipAmount,
+    PaymentReceiptType? type,
     dynamic extra,
     int? clientId,
   }) =>
       PaymentReceipt(
-        title: title ?? this.title,
-        description: description ?? this.description,
-        photo: photo ?? this.photo,
+        productInfo: productInfo ?? this.productInfo,
         date: date ?? this.date,
         sellerBotUserId: sellerBotUserId ?? this.sellerBotUserId,
-        paymentProviderUserId:
-            paymentProviderUserId ?? this.paymentProviderUserId,
-        invoice: invoice ?? this.invoice,
-        orderInfo: orderInfo ?? this.orderInfo,
-        shippingOption: shippingOption ?? this.shippingOption,
-        credentialsTitle: credentialsTitle ?? this.credentialsTitle,
-        tipAmount: tipAmount ?? this.tipAmount,
+        type: type ?? this.type,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

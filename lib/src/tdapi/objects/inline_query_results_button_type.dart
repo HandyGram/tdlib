@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **InlineQueryResultsButtonType** *(inlineQueryResultsButtonType)* - parent
 ///
-/// Represents a type of a button in results of inline query.
+/// Represents type of button in results of inline query.
 sealed class InlineQueryResultsButtonType extends TdObject {
   /// **InlineQueryResultsButtonType** *(inlineQueryResultsButtonType)* - parent
   ///
-  /// Represents a type of a button in results of inline query.
+  /// Represents type of button in results of inline query.
   const InlineQueryResultsButtonType();
 
   /// a InlineQueryResultsButtonType return type can be :

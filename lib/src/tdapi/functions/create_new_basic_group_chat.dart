@@ -2,23 +2,23 @@ part of '../tdapi.dart';
 
 /// **CreateNewBasicGroupChat** *(createNewBasicGroupChat)* - TDLib function
 ///
-/// Creates a new basic group and sends a corresponding messageBasicGroupChatCreate. Returns the newly created chat.
+/// Creates a new basic group and sends a corresponding messageBasicGroupChatCreate. Returns information about the newly created chat.
 ///
 /// * [userIds]: Identifiers of users to be added to the basic group; may be empty to create a basic group without other members.
 /// * [title]: Title of the new basic group; 1-128 characters.
 /// * [messageAutoDeleteTime]: Message auto-delete time value, in seconds; must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically.
 ///
-/// [Chat] is returned on completion.
+/// [CreatedBasicGroupChat] is returned on completion.
 final class CreateNewBasicGroupChat extends TdFunction {
   /// **CreateNewBasicGroupChat** *(createNewBasicGroupChat)* - TDLib function
   ///
-  /// Creates a new basic group and sends a corresponding messageBasicGroupChatCreate. Returns the newly created chat.
+  /// Creates a new basic group and sends a corresponding messageBasicGroupChatCreate. Returns information about the newly created chat.
   ///
   /// * [userIds]: Identifiers of users to be added to the basic group; may be empty to create a basic group without other members.
   /// * [title]: Title of the new basic group; 1-128 characters.
   /// * [messageAutoDeleteTime]: Message auto-delete time value, in seconds; must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically.
   ///
-  /// [Chat] is returned on completion.
+  /// [CreatedBasicGroupChat] is returned on completion.
   const CreateNewBasicGroupChat({
     required this.userIds,
     required this.title,

@@ -9,6 +9,7 @@ part of '../tdapi.dart';
 /// * [protectContent]: Pass true if the content of the message must be protected from forwarding and saving; for bots only.
 /// * [updateOrderOfInstalledStickerSets]: Pass true if the user explicitly chosen a sticker or a custom emoji from an installed sticker set; applicable only to sendMessage and sendMessageAlbum.
 /// * [schedulingState]: Message scheduling state; pass null to send message immediately. Messages sent to a secret chat, live location messages and self-destructing messages can't be scheduled *(optional)*.
+/// * [effectId]: Identifier of the effect to apply to the message; pass 0 if none; applicable only to sendMessage and sendMessageAlbum in private chats.
 /// * [sendingId]: Non-persistent identifier, which will be returned back in messageSendingStatePending object and can be used to match sent messages and corresponding updateNewMessage updates.
 /// * [onlyPreview]: Pass true to get a fake message instead of actually sending them.
 final class MessageSendOptions extends TdObject {
@@ -21,6 +22,7 @@ final class MessageSendOptions extends TdObject {
   /// * [protectContent]: Pass true if the content of the message must be protected from forwarding and saving; for bots only.
   /// * [updateOrderOfInstalledStickerSets]: Pass true if the user explicitly chosen a sticker or a custom emoji from an installed sticker set; applicable only to sendMessage and sendMessageAlbum.
   /// * [schedulingState]: Message scheduling state; pass null to send message immediately. Messages sent to a secret chat, live location messages and self-destructing messages can't be scheduled *(optional)*.
+  /// * [effectId]: Identifier of the effect to apply to the message; pass 0 if none; applicable only to sendMessage and sendMessageAlbum in private chats.
   /// * [sendingId]: Non-persistent identifier, which will be returned back in messageSendingStatePending object and can be used to match sent messages and corresponding updateNewMessage updates.
   /// * [onlyPreview]: Pass true to get a fake message instead of actually sending them.
   const MessageSendOptions({
@@ -29,6 +31,7 @@ final class MessageSendOptions extends TdObject {
     required this.protectContent,
     required this.updateOrderOfInstalledStickerSets,
     this.schedulingState,
+    required this.effectId,
     required this.sendingId,
     required this.onlyPreview,
   });
@@ -48,6 +51,9 @@ final class MessageSendOptions extends TdObject {
   /// Message scheduling state; pass null to send message immediately. Messages sent to a secret chat, live location messages and self-destructing messages can't be scheduled
   final MessageSchedulingState? schedulingState;
 
+  /// Identifier of the effect to apply to the message; pass 0 if none; applicable only to sendMessage and sendMessageAlbum in private chats
+  final int effectId;
+
   /// Non-persistent identifier, which will be returned back in messageSendingStatePending object and can be used to match sent messages and corresponding updateNewMessage updates
   final int sendingId;
 
@@ -65,6 +71,9 @@ final class MessageSendOptions extends TdObject {
         schedulingState: json['scheduling_state'] == null
             ? null
             : MessageSchedulingState.fromJson(json['scheduling_state']),
+        effectId: json['effect_id'] is int
+            ? json['effect_id']
+            : int.tryParse(json['effect_id'] ?? "") ?? 0,
         sendingId: json['sending_id'],
         onlyPreview: json['only_preview'],
       );
@@ -80,6 +89,7 @@ final class MessageSendOptions extends TdObject {
       "update_order_of_installed_sticker_sets":
           updateOrderOfInstalledStickerSets,
       "scheduling_state": schedulingState?.toJson(),
+      "effect_id": effectId,
       "sending_id": sendingId,
       "only_preview": onlyPreview,
     };
@@ -93,6 +103,7 @@ final class MessageSendOptions extends TdObject {
   /// * [protect_content]: Pass true if the content of the message must be protected from forwarding and saving; for bots only
   /// * [update_order_of_installed_sticker_sets]: Pass true if the user explicitly chosen a sticker or a custom emoji from an installed sticker set; applicable only to sendMessage and sendMessageAlbum
   /// * [scheduling_state]: Message scheduling state; pass null to send message immediately. Messages sent to a secret chat, live location messages and self-destructing messages can't be scheduled
+  /// * [effect_id]: Identifier of the effect to apply to the message; pass 0 if none; applicable only to sendMessage and sendMessageAlbum in private chats
   /// * [sending_id]: Non-persistent identifier, which will be returned back in messageSendingStatePending object and can be used to match sent messages and corresponding updateNewMessage updates
   /// * [only_preview]: Pass true to get a fake message instead of actually sending them
   MessageSendOptions copyWith({
@@ -101,6 +112,7 @@ final class MessageSendOptions extends TdObject {
     bool? protectContent,
     bool? updateOrderOfInstalledStickerSets,
     MessageSchedulingState? schedulingState,
+    int? effectId,
     int? sendingId,
     bool? onlyPreview,
   }) =>
@@ -111,6 +123,7 @@ final class MessageSendOptions extends TdObject {
         updateOrderOfInstalledStickerSets: updateOrderOfInstalledStickerSets ??
             this.updateOrderOfInstalledStickerSets,
         schedulingState: schedulingState ?? this.schedulingState,
+        effectId: effectId ?? this.effectId,
         sendingId: sendingId ?? this.sendingId,
         onlyPreview: onlyPreview ?? this.onlyPreview,
       );

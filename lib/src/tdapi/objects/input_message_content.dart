@@ -97,7 +97,7 @@ sealed class InputMessageContent extends TdObject {
 ///
 /// A text message.
 ///
-/// * [text]: Formatted text to be sent; 0-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually.
+/// * [text]: Formatted text to be sent; 0-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, ExpandableBlockQuote,. Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually.
 /// * [linkPreviewOptions]: Options to be used for generation of a link preview; may be null if none; pass null to use default link preview options *(optional)*.
 /// * [clearDraft]: True, if a chat message draft must be deleted.
 final class InputMessageText extends InputMessageContent {
@@ -105,7 +105,7 @@ final class InputMessageText extends InputMessageContent {
   ///
   /// A text message.
   ///
-  /// * [text]: Formatted text to be sent; 0-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually.
+  /// * [text]: Formatted text to be sent; 0-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, ExpandableBlockQuote,. Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually.
   /// * [linkPreviewOptions]: Options to be used for generation of a link preview; may be null if none; pass null to use default link preview options *(optional)*.
   /// * [clearDraft]: True, if a chat message draft must be deleted.
   const InputMessageText({
@@ -114,7 +114,7 @@ final class InputMessageText extends InputMessageContent {
     required this.clearDraft,
   });
 
-  /// Formatted text to be sent; 0-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually
+  /// Formatted text to be sent; 0-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, ExpandableBlockQuote,. Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually
   final FormattedText text;
 
   /// Options to be used for generation of a link preview; may be null if none; pass null to use default link preview options
@@ -147,7 +147,7 @@ final class InputMessageText extends InputMessageContent {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [text]: Formatted text to be sent; 0-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually
+  /// * [text]: Formatted text to be sent; 0-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, ExpandableBlockQuote,. Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually
   /// * [link_preview_options]: Options to be used for generation of a link preview; may be null if none; pass null to use default link preview options
   /// * [clear_draft]: True, if a chat message draft must be deleted
   @override
@@ -185,6 +185,7 @@ final class InputMessageText extends InputMessageContent {
 /// * [width]: Width of the animation; may be replaced by the server.
 /// * [height]: Height of the animation; may be replaced by the server.
 /// * [caption]: Animation caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
+/// * [showCaptionAboveMedia]: True, if caption must be shown above the animation; otherwise, caption must be shown below the animation; not supported in secret chats.
 /// * [hasSpoiler]: True, if the animation preview must be covered by a spoiler animation; not supported in secret chats.
 final class InputMessageAnimation extends InputMessageContent {
   /// **InputMessageAnimation** *(inputMessageAnimation)* - child of InputMessageContent
@@ -198,6 +199,7 @@ final class InputMessageAnimation extends InputMessageContent {
   /// * [width]: Width of the animation; may be replaced by the server.
   /// * [height]: Height of the animation; may be replaced by the server.
   /// * [caption]: Animation caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
+  /// * [showCaptionAboveMedia]: True, if caption must be shown above the animation; otherwise, caption must be shown below the animation; not supported in secret chats.
   /// * [hasSpoiler]: True, if the animation preview must be covered by a spoiler animation; not supported in secret chats.
   const InputMessageAnimation({
     required this.animation,
@@ -207,6 +209,7 @@ final class InputMessageAnimation extends InputMessageContent {
     required this.width,
     required this.height,
     this.caption,
+    required this.showCaptionAboveMedia,
     required this.hasSpoiler,
   });
 
@@ -231,6 +234,9 @@ final class InputMessageAnimation extends InputMessageContent {
   /// Animation caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
+  /// True, if caption must be shown above the animation; otherwise, caption must be shown below the animation; not supported in secret chats
+  final bool showCaptionAboveMedia;
+
   /// True, if the animation preview must be covered by a spoiler animation; not supported in secret chats
   final bool hasSpoiler;
 
@@ -251,6 +257,7 @@ final class InputMessageAnimation extends InputMessageContent {
         caption: json['caption'] == null
             ? null
             : FormattedText.fromJson(json['caption']),
+        showCaptionAboveMedia: json['show_caption_above_media'],
         hasSpoiler: json['has_spoiler'],
       );
 
@@ -266,6 +273,7 @@ final class InputMessageAnimation extends InputMessageContent {
       "width": width,
       "height": height,
       "caption": caption?.toJson(),
+      "show_caption_above_media": showCaptionAboveMedia,
       "has_spoiler": hasSpoiler,
     };
   }
@@ -280,6 +288,7 @@ final class InputMessageAnimation extends InputMessageContent {
   /// * [width]: Width of the animation; may be replaced by the server
   /// * [height]: Height of the animation; may be replaced by the server
   /// * [caption]: Animation caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
+  /// * [show_caption_above_media]: True, if caption must be shown above the animation; otherwise, caption must be shown below the animation; not supported in secret chats
   /// * [has_spoiler]: True, if the animation preview must be covered by a spoiler animation; not supported in secret chats
   @override
   InputMessageAnimation copyWith({
@@ -290,6 +299,7 @@ final class InputMessageAnimation extends InputMessageContent {
     int? width,
     int? height,
     FormattedText? caption,
+    bool? showCaptionAboveMedia,
     bool? hasSpoiler,
   }) =>
       InputMessageAnimation(
@@ -300,6 +310,8 @@ final class InputMessageAnimation extends InputMessageContent {
         width: width ?? this.width,
         height: height ?? this.height,
         caption: caption ?? this.caption,
+        showCaptionAboveMedia:
+            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
         hasSpoiler: hasSpoiler ?? this.hasSpoiler,
       );
 
@@ -536,6 +548,7 @@ final class InputMessageDocument extends InputMessageContent {
 /// * [width]: Photo width.
 /// * [height]: Photo height.
 /// * [caption]: Photo caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
+/// * [showCaptionAboveMedia]: True, if caption must be shown above the photo; otherwise, caption must be shown below the photo; not supported in secret chats.
 /// * [selfDestructType]: Photo self-destruct type; pass null if none; private chats only *(optional)*.
 /// * [hasSpoiler]: True, if the photo preview must be covered by a spoiler animation; not supported in secret chats.
 final class InputMessagePhoto extends InputMessageContent {
@@ -549,6 +562,7 @@ final class InputMessagePhoto extends InputMessageContent {
   /// * [width]: Photo width.
   /// * [height]: Photo height.
   /// * [caption]: Photo caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
+  /// * [showCaptionAboveMedia]: True, if caption must be shown above the photo; otherwise, caption must be shown below the photo; not supported in secret chats.
   /// * [selfDestructType]: Photo self-destruct type; pass null if none; private chats only *(optional)*.
   /// * [hasSpoiler]: True, if the photo preview must be covered by a spoiler animation; not supported in secret chats.
   const InputMessagePhoto({
@@ -558,6 +572,7 @@ final class InputMessagePhoto extends InputMessageContent {
     required this.width,
     required this.height,
     this.caption,
+    required this.showCaptionAboveMedia,
     this.selfDestructType,
     required this.hasSpoiler,
   });
@@ -579,6 +594,9 @@ final class InputMessagePhoto extends InputMessageContent {
 
   /// Photo caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
+
+  /// True, if caption must be shown above the photo; otherwise, caption must be shown below the photo; not supported in secret chats
+  final bool showCaptionAboveMedia;
 
   /// Photo self-destruct type; pass null if none; private chats only
   final MessageSelfDestructType? selfDestructType;
@@ -602,6 +620,7 @@ final class InputMessagePhoto extends InputMessageContent {
         caption: json['caption'] == null
             ? null
             : FormattedText.fromJson(json['caption']),
+        showCaptionAboveMedia: json['show_caption_above_media'],
         selfDestructType: json['self_destruct_type'] == null
             ? null
             : MessageSelfDestructType.fromJson(json['self_destruct_type']),
@@ -619,6 +638,7 @@ final class InputMessagePhoto extends InputMessageContent {
       "width": width,
       "height": height,
       "caption": caption?.toJson(),
+      "show_caption_above_media": showCaptionAboveMedia,
       "self_destruct_type": selfDestructType?.toJson(),
       "has_spoiler": hasSpoiler,
     };
@@ -633,6 +653,7 @@ final class InputMessagePhoto extends InputMessageContent {
   /// * [width]: Photo width
   /// * [height]: Photo height
   /// * [caption]: Photo caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
+  /// * [show_caption_above_media]: True, if caption must be shown above the photo; otherwise, caption must be shown below the photo; not supported in secret chats
   /// * [self_destruct_type]: Photo self-destruct type; pass null if none; private chats only
   /// * [has_spoiler]: True, if the photo preview must be covered by a spoiler animation; not supported in secret chats
   @override
@@ -643,6 +664,7 @@ final class InputMessagePhoto extends InputMessageContent {
     int? width,
     int? height,
     FormattedText? caption,
+    bool? showCaptionAboveMedia,
     MessageSelfDestructType? selfDestructType,
     bool? hasSpoiler,
   }) =>
@@ -653,6 +675,8 @@ final class InputMessagePhoto extends InputMessageContent {
         width: width ?? this.width,
         height: height ?? this.height,
         caption: caption ?? this.caption,
+        showCaptionAboveMedia:
+            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
         selfDestructType: selfDestructType ?? this.selfDestructType,
         hasSpoiler: hasSpoiler ?? this.hasSpoiler,
       );
@@ -784,6 +808,7 @@ final class InputMessageSticker extends InputMessageContent {
 /// * [height]: Video height.
 /// * [supportsStreaming]: True, if the video is supposed to be streamed.
 /// * [caption]: Video caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
+/// * [showCaptionAboveMedia]: True, if caption must be shown above the video; otherwise, caption must be shown below the video; not supported in secret chats.
 /// * [selfDestructType]: Video self-destruct type; pass null if none; private chats only *(optional)*.
 /// * [hasSpoiler]: True, if the video preview must be covered by a spoiler animation; not supported in secret chats.
 final class InputMessageVideo extends InputMessageContent {
@@ -799,6 +824,7 @@ final class InputMessageVideo extends InputMessageContent {
   /// * [height]: Video height.
   /// * [supportsStreaming]: True, if the video is supposed to be streamed.
   /// * [caption]: Video caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
+  /// * [showCaptionAboveMedia]: True, if caption must be shown above the video; otherwise, caption must be shown below the video; not supported in secret chats.
   /// * [selfDestructType]: Video self-destruct type; pass null if none; private chats only *(optional)*.
   /// * [hasSpoiler]: True, if the video preview must be covered by a spoiler animation; not supported in secret chats.
   const InputMessageVideo({
@@ -810,6 +836,7 @@ final class InputMessageVideo extends InputMessageContent {
     required this.height,
     required this.supportsStreaming,
     this.caption,
+    required this.showCaptionAboveMedia,
     this.selfDestructType,
     required this.hasSpoiler,
   });
@@ -838,6 +865,9 @@ final class InputMessageVideo extends InputMessageContent {
   /// Video caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
+  /// True, if caption must be shown above the video; otherwise, caption must be shown below the video; not supported in secret chats
+  final bool showCaptionAboveMedia;
+
   /// Video self-destruct type; pass null if none; private chats only
   final MessageSelfDestructType? selfDestructType;
 
@@ -862,6 +892,7 @@ final class InputMessageVideo extends InputMessageContent {
         caption: json['caption'] == null
             ? null
             : FormattedText.fromJson(json['caption']),
+        showCaptionAboveMedia: json['show_caption_above_media'],
         selfDestructType: json['self_destruct_type'] == null
             ? null
             : MessageSelfDestructType.fromJson(json['self_destruct_type']),
@@ -881,6 +912,7 @@ final class InputMessageVideo extends InputMessageContent {
       "height": height,
       "supports_streaming": supportsStreaming,
       "caption": caption?.toJson(),
+      "show_caption_above_media": showCaptionAboveMedia,
       "self_destruct_type": selfDestructType?.toJson(),
       "has_spoiler": hasSpoiler,
     };
@@ -897,6 +929,7 @@ final class InputMessageVideo extends InputMessageContent {
   /// * [height]: Video height
   /// * [supports_streaming]: True, if the video is supposed to be streamed
   /// * [caption]: Video caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
+  /// * [show_caption_above_media]: True, if caption must be shown above the video; otherwise, caption must be shown below the video; not supported in secret chats
   /// * [self_destruct_type]: Video self-destruct type; pass null if none; private chats only
   /// * [has_spoiler]: True, if the video preview must be covered by a spoiler animation; not supported in secret chats
   @override
@@ -909,6 +942,7 @@ final class InputMessageVideo extends InputMessageContent {
     int? height,
     bool? supportsStreaming,
     FormattedText? caption,
+    bool? showCaptionAboveMedia,
     MessageSelfDestructType? selfDestructType,
     bool? hasSpoiler,
   }) =>
@@ -921,6 +955,8 @@ final class InputMessageVideo extends InputMessageContent {
         height: height ?? this.height,
         supportsStreaming: supportsStreaming ?? this.supportsStreaming,
         caption: caption ?? this.caption,
+        showCaptionAboveMedia:
+            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
         selfDestructType: selfDestructType ?? this.selfDestructType,
         hasSpoiler: hasSpoiler ?? this.hasSpoiler,
       );
@@ -1046,7 +1082,7 @@ final class InputMessageVideoNote extends InputMessageContent {
 ///
 /// A voice note message.
 ///
-/// * [voiceNote]: Voice note to be sent.
+/// * [voiceNote]: Voice note to be sent. The voice note must be encoded with the Opus codec and stored inside an OGG container with a single audio channel, or be in MP3 or M4A format as regular audio.
 /// * [duration]: Duration of the voice note, in seconds.
 /// * [waveform]: Waveform representation of the voice note in 5-bit format.
 /// * [caption]: Voice note caption; may be null if empty; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
@@ -1056,7 +1092,7 @@ final class InputMessageVoiceNote extends InputMessageContent {
   ///
   /// A voice note message.
   ///
-  /// * [voiceNote]: Voice note to be sent.
+  /// * [voiceNote]: Voice note to be sent. The voice note must be encoded with the Opus codec and stored inside an OGG container with a single audio channel, or be in MP3 or M4A format as regular audio.
   /// * [duration]: Duration of the voice note, in seconds.
   /// * [waveform]: Waveform representation of the voice note in 5-bit format.
   /// * [caption]: Voice note caption; may be null if empty; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
@@ -1069,7 +1105,7 @@ final class InputMessageVoiceNote extends InputMessageContent {
     this.selfDestructType,
   });
 
-  /// Voice note to be sent
+  /// Voice note to be sent. The voice note must be encoded with the Opus codec and stored inside an OGG container with a single audio channel, or be in MP3 or M4A format as regular audio
   final InputFile voiceNote;
 
   /// Duration of the voice note, in seconds
@@ -1114,7 +1150,7 @@ final class InputMessageVoiceNote extends InputMessageContent {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [voice_note]: Voice note to be sent
+  /// * [voice_note]: Voice note to be sent. The voice note must be encoded with the Opus codec and stored inside an OGG container with a single audio channel, or be in MP3 or M4A format as regular audio
   /// * [duration]: Duration of the voice note, in seconds
   /// * [waveform]: Waveform representation of the voice note in 5-bit format
   /// * [caption]: Voice note caption; may be null if empty; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
@@ -1152,7 +1188,7 @@ final class InputMessageVoiceNote extends InputMessageContent {
 /// A message with a location.
 ///
 /// * [location]: Location to be sent.
-/// * [livePeriod]: Period for which the location can be updated, in seconds; must be between 60 and 86400 for a live location and 0 otherwise.
+/// * [livePeriod]: Period for which the location can be updated, in seconds; must be between 60 and 86400 for a temporary live location, 0x7FFFFFFF for permanent live location, and 0 otherwise.
 /// * [heading]: For live locations, a direction in which the location moves, in degrees; 1-360. Pass 0 if unknown.
 /// * [proximityAlertRadius]: For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled. Can't be enabled in channels and Saved Messages.
 final class InputMessageLocation extends InputMessageContent {
@@ -1161,7 +1197,7 @@ final class InputMessageLocation extends InputMessageContent {
   /// A message with a location.
   ///
   /// * [location]: Location to be sent.
-  /// * [livePeriod]: Period for which the location can be updated, in seconds; must be between 60 and 86400 for a live location and 0 otherwise.
+  /// * [livePeriod]: Period for which the location can be updated, in seconds; must be between 60 and 86400 for a temporary live location, 0x7FFFFFFF for permanent live location, and 0 otherwise.
   /// * [heading]: For live locations, a direction in which the location moves, in degrees; 1-360. Pass 0 if unknown.
   /// * [proximityAlertRadius]: For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled. Can't be enabled in channels and Saved Messages.
   const InputMessageLocation({
@@ -1174,7 +1210,7 @@ final class InputMessageLocation extends InputMessageContent {
   /// Location to be sent
   final Location location;
 
-  /// Period for which the location can be updated, in seconds; must be between 60 and 86400 for a live location and 0 otherwise
+  /// Period for which the location can be updated, in seconds; must be between 60 and 86400 for a temporary live location, 0x7FFFFFFF for permanent live location, and 0 otherwise
   final int livePeriod;
 
   /// For live locations, a direction in which the location moves, in degrees; 1-360. Pass 0 if unknown
@@ -1208,7 +1244,7 @@ final class InputMessageLocation extends InputMessageContent {
   ///
   /// Properties:
   /// * [location]: Location to be sent
-  /// * [live_period]: Period for which the location can be updated, in seconds; must be between 60 and 86400 for a live location and 0 otherwise
+  /// * [live_period]: Period for which the location can be updated, in seconds; must be between 60 and 86400 for a temporary live location, 0x7FFFFFFF for permanent live location, and 0 otherwise
   /// * [heading]: For live locations, a direction in which the location moves, in degrees; 1-360. Pass 0 if unknown
   /// * [proximity_alert_radius]: For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled. Can't be enabled in channels and Saved Messages
   @override
@@ -1499,7 +1535,7 @@ final class InputMessageGame extends InputMessageContent {
 /// * [photoWidth]: Product photo width.
 /// * [photoHeight]: Product photo height.
 /// * [payload]: The invoice payload.
-/// * [providerToken]: Payment provider token.
+/// * [providerToken]: Payment provider token; may be empty for payments in Telegram Stars.
 /// * [providerData]: JSON-encoded data about the invoice, which will be shared with the payment provider.
 /// * [startParameter]: Unique invoice bot deep link parameter for the generation of this invoice. If empty, it would be possible to pay directly from forwards of the invoice message.
 /// * [extendedMediaContent]: The content of extended media attached to the invoice. The content of the message to be sent. Must be one of the following types: inputMessagePhoto, inputMessageVideo.
@@ -1516,7 +1552,7 @@ final class InputMessageInvoice extends InputMessageContent {
   /// * [photoWidth]: Product photo width.
   /// * [photoHeight]: Product photo height.
   /// * [payload]: The invoice payload.
-  /// * [providerToken]: Payment provider token.
+  /// * [providerToken]: Payment provider token; may be empty for payments in Telegram Stars.
   /// * [providerData]: JSON-encoded data about the invoice, which will be shared with the payment provider.
   /// * [startParameter]: Unique invoice bot deep link parameter for the generation of this invoice. If empty, it would be possible to pay directly from forwards of the invoice message.
   /// * [extendedMediaContent]: The content of extended media attached to the invoice. The content of the message to be sent. Must be one of the following types: inputMessagePhoto, inputMessageVideo.
@@ -1559,7 +1595,7 @@ final class InputMessageInvoice extends InputMessageContent {
   /// The invoice payload
   final String payload;
 
-  /// Payment provider token
+  /// Payment provider token; may be empty for payments in Telegram Stars
   final String providerToken;
 
   /// JSON-encoded data about the invoice, which will be shared with the payment provider
@@ -1620,7 +1656,7 @@ final class InputMessageInvoice extends InputMessageContent {
   /// * [photo_width]: Product photo width
   /// * [photo_height]: Product photo height
   /// * [payload]: The invoice payload
-  /// * [provider_token]: Payment provider token
+  /// * [provider_token]: Payment provider token; may be empty for payments in Telegram Stars
   /// * [provider_data]: JSON-encoded data about the invoice, which will be shared with the payment provider
   /// * [start_parameter]: Unique invoice bot deep link parameter for the generation of this invoice. If empty, it would be possible to pay directly from forwards of the invoice message
   /// * [extended_media_content]: The content of extended media attached to the invoice. The content of the message to be sent. Must be one of the following types: inputMessagePhoto, inputMessageVideo
@@ -1670,8 +1706,8 @@ final class InputMessageInvoice extends InputMessageContent {
 ///
 /// A message with a poll. Polls can't be sent to secret chats. Polls can be sent only to a private chat with a bot.
 ///
-/// * [question]: Poll question; 1-255 characters (up to 300 characters for bots).
-/// * [options]: List of poll answer options, 2-10 strings 1-100 characters each.
+/// * [question]: Poll question; 1-255 characters (up to 300 characters for bots). Only custom emoji entities are allowed to be added and only by Premium users.
+/// * [options]: List of poll answer options, 2-10 strings 1-100 characters each. Only custom emoji entities are allowed to be added and only by Premium users.
 /// * [isAnonymous]: True, if the poll voters are anonymous. Non-anonymous polls can't be sent or forwarded to channels.
 /// * [type]: Type of the poll.
 /// * [openPeriod]: Amount of time the poll will be active after creation, in seconds; for bots only.
@@ -1682,8 +1718,8 @@ final class InputMessagePoll extends InputMessageContent {
   ///
   /// A message with a poll. Polls can't be sent to secret chats. Polls can be sent only to a private chat with a bot.
   ///
-  /// * [question]: Poll question; 1-255 characters (up to 300 characters for bots).
-  /// * [options]: List of poll answer options, 2-10 strings 1-100 characters each.
+  /// * [question]: Poll question; 1-255 characters (up to 300 characters for bots). Only custom emoji entities are allowed to be added and only by Premium users.
+  /// * [options]: List of poll answer options, 2-10 strings 1-100 characters each. Only custom emoji entities are allowed to be added and only by Premium users.
   /// * [isAnonymous]: True, if the poll voters are anonymous. Non-anonymous polls can't be sent or forwarded to channels.
   /// * [type]: Type of the poll.
   /// * [openPeriod]: Amount of time the poll will be active after creation, in seconds; for bots only.
@@ -1699,11 +1735,11 @@ final class InputMessagePoll extends InputMessageContent {
     required this.isClosed,
   });
 
-  /// Poll question; 1-255 characters (up to 300 characters for bots)
-  final String question;
+  /// Poll question; 1-255 characters (up to 300 characters for bots). Only custom emoji entities are allowed to be added and only by Premium users
+  final FormattedText question;
 
-  /// List of poll answer options, 2-10 strings 1-100 characters each
-  final List<String> options;
+  /// List of poll answer options, 2-10 strings 1-100 characters each. Only custom emoji entities are allowed to be added and only by Premium users
+  final List<FormattedText> options;
 
   /// True, if the poll voters are anonymous. Non-anonymous polls can't be sent or forwarded to channels
   final bool isAnonymous;
@@ -1723,9 +1759,10 @@ final class InputMessagePoll extends InputMessageContent {
   /// Parse from a json
   factory InputMessagePoll.fromJson(Map<String, dynamic> json) =>
       InputMessagePoll(
-        question: json['question'],
-        options: List<String>.from(
-            (json['options'] ?? []).map((item) => item).toList()),
+        question: FormattedText.fromJson(json['question']),
+        options: List<FormattedText>.from((json['options'] ?? [])
+            .map((item) => FormattedText.fromJson(item))
+            .toList()),
         isAnonymous: json['is_anonymous'],
         type: PollType.fromJson(json['type']),
         openPeriod: json['open_period'],
@@ -1738,8 +1775,8 @@ final class InputMessagePoll extends InputMessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": defaultObjectId,
-      "question": question,
-      "options": options.map((i) => i).toList(),
+      "question": question.toJson(),
+      "options": options.map((i) => i.toJson()).toList(),
       "is_anonymous": isAnonymous,
       "type": type.toJson(),
       "open_period": openPeriod,
@@ -1751,8 +1788,8 @@ final class InputMessagePoll extends InputMessageContent {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [question]: Poll question; 1-255 characters (up to 300 characters for bots)
-  /// * [options]: List of poll answer options, 2-10 strings 1-100 characters each
+  /// * [question]: Poll question; 1-255 characters (up to 300 characters for bots). Only custom emoji entities are allowed to be added and only by Premium users
+  /// * [options]: List of poll answer options, 2-10 strings 1-100 characters each. Only custom emoji entities are allowed to be added and only by Premium users
   /// * [is_anonymous]: True, if the poll voters are anonymous. Non-anonymous polls can't be sent or forwarded to channels
   /// * [type]: Type of the poll
   /// * [open_period]: Amount of time the poll will be active after creation, in seconds; for bots only
@@ -1760,8 +1797,8 @@ final class InputMessagePoll extends InputMessageContent {
   /// * [is_closed]: True, if the poll needs to be sent already closed; for bots only
   @override
   InputMessagePoll copyWith({
-    String? question,
-    List<String>? options,
+    FormattedText? question,
+    List<FormattedText>? options,
     bool? isAnonymous,
     PollType? type,
     int? openPeriod,

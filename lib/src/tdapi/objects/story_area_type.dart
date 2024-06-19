@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **StoryAreaType** *(storyAreaType)* - parent
 ///
-/// Describes type of a clickable rectangle area on a story media.
+/// Describes type of clickable rectangle area on a story media.
 sealed class StoryAreaType extends TdObject {
   /// **StoryAreaType** *(storyAreaType)* - parent
   ///
-  /// Describes type of a clickable rectangle area on a story media.
+  /// Describes type of clickable rectangle area on a story media.
   const StoryAreaType();
 
   /// a StoryAreaType return type can be :
@@ -14,6 +14,7 @@ sealed class StoryAreaType extends TdObject {
   /// * [StoryAreaTypeVenue]
   /// * [StoryAreaTypeSuggestedReaction]
   /// * [StoryAreaTypeMessage]
+  /// * [StoryAreaTypeLink]
   factory StoryAreaType.fromJson(Map<String, dynamic> json) {
     switch (json["@type"]) {
       case StoryAreaTypeLocation.defaultObjectId:
@@ -24,6 +25,8 @@ sealed class StoryAreaType extends TdObject {
         return StoryAreaTypeSuggestedReaction.fromJson(json);
       case StoryAreaTypeMessage.defaultObjectId:
         return StoryAreaTypeMessage.fromJson(json);
+      case StoryAreaTypeLink.defaultObjectId:
+        return StoryAreaTypeLink.fromJson(json);
       default:
         throw FormatException(
           "Unknown object ${json["@type"]} (expected child of StoryAreaType)",
@@ -56,23 +59,32 @@ sealed class StoryAreaType extends TdObject {
 /// An area pointing to a location.
 ///
 /// * [location]: The location.
+/// * [address]: Address of the location; may be null if unknown *(optional)*.
 final class StoryAreaTypeLocation extends StoryAreaType {
   /// **StoryAreaTypeLocation** *(storyAreaTypeLocation)* - child of StoryAreaType
   ///
   /// An area pointing to a location.
   ///
   /// * [location]: The location.
+  /// * [address]: Address of the location; may be null if unknown *(optional)*.
   const StoryAreaTypeLocation({
     required this.location,
+    this.address,
   });
 
   /// The location
   final Location location;
 
+  /// Address of the location; may be null if unknown
+  final LocationAddress? address;
+
   /// Parse from a json
   factory StoryAreaTypeLocation.fromJson(Map<String, dynamic> json) =>
       StoryAreaTypeLocation(
         location: Location.fromJson(json['location']),
+        address: json['address'] == null
+            ? null
+            : LocationAddress.fromJson(json['address']),
       );
 
   /// Convert model to TDLib JSON format
@@ -81,6 +93,7 @@ final class StoryAreaTypeLocation extends StoryAreaType {
     return {
       "@type": defaultObjectId,
       "location": location.toJson(),
+      "address": address?.toJson(),
     };
   }
 
@@ -88,12 +101,15 @@ final class StoryAreaTypeLocation extends StoryAreaType {
   ///
   /// Properties:
   /// * [location]: The location
+  /// * [address]: Address of the location; may be null if unknown
   @override
   StoryAreaTypeLocation copyWith({
     Location? location,
+    LocationAddress? address,
   }) =>
       StoryAreaTypeLocation(
         location: location ?? this.location,
+        address: address ?? this.address,
       );
 
   /// TDLib object type
@@ -313,6 +329,63 @@ final class StoryAreaTypeMessage extends StoryAreaType {
 
   /// TDLib object type
   static const String defaultObjectId = 'storyAreaTypeMessage';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **StoryAreaTypeLink** *(storyAreaTypeLink)* - child of StoryAreaType
+///
+/// An area pointing to a HTTP or tg:// link.
+///
+/// * [url]: HTTP or tg:// URL to be opened when the area is clicked.
+final class StoryAreaTypeLink extends StoryAreaType {
+  /// **StoryAreaTypeLink** *(storyAreaTypeLink)* - child of StoryAreaType
+  ///
+  /// An area pointing to a HTTP or tg:// link.
+  ///
+  /// * [url]: HTTP or tg:// URL to be opened when the area is clicked.
+  const StoryAreaTypeLink({
+    required this.url,
+  });
+
+  /// HTTP or tg:// URL to be opened when the area is clicked
+  final String url;
+
+  /// Parse from a json
+  factory StoryAreaTypeLink.fromJson(Map<String, dynamic> json) =>
+      StoryAreaTypeLink(
+        url: json['url'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "url": url,
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [url]: HTTP or tg:// URL to be opened when the area is clicked
+  @override
+  StoryAreaTypeLink copyWith({
+    String? url,
+  }) =>
+      StoryAreaTypeLink(
+        url: url ?? this.url,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'storyAreaTypeLink';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

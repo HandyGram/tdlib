@@ -27,6 +27,7 @@ sealed class TextEntityType extends TdObject {
   /// * [TextEntityTypePre]
   /// * [TextEntityTypePreCode]
   /// * [TextEntityTypeBlockQuote]
+  /// * [TextEntityTypeExpandableBlockQuote]
   /// * [TextEntityTypeTextUrl]
   /// * [TextEntityTypeMentionName]
   /// * [TextEntityTypeCustomEmoji]
@@ -67,6 +68,8 @@ sealed class TextEntityType extends TdObject {
         return TextEntityTypePreCode.fromJson(json);
       case TextEntityTypeBlockQuote.defaultObjectId:
         return TextEntityTypeBlockQuote.fromJson(json);
+      case TextEntityTypeExpandableBlockQuote.defaultObjectId:
+        return TextEntityTypeExpandableBlockQuote.fromJson(json);
       case TextEntityTypeTextUrl.defaultObjectId:
         return TextEntityTypeTextUrl.fromJson(json);
       case TextEntityTypeMentionName.defaultObjectId:
@@ -717,11 +720,11 @@ final class TextEntityTypePreCode extends TextEntityType {
 
 /// **TextEntityTypeBlockQuote** *(textEntityTypeBlockQuote)* - child of TextEntityType
 ///
-/// Text that must be formatted as if inside a blockquote HTML tag.
+/// Text that must be formatted as if inside a blockquote HTML tag; not supported in secret chats.
 final class TextEntityTypeBlockQuote extends TextEntityType {
   /// **TextEntityTypeBlockQuote** *(textEntityTypeBlockQuote)* - child of TextEntityType
   ///
-  /// Text that must be formatted as if inside a blockquote HTML tag.
+  /// Text that must be formatted as if inside a blockquote HTML tag; not supported in secret chats.
   const TextEntityTypeBlockQuote();
 
   /// Parse from a json
@@ -742,6 +745,45 @@ final class TextEntityTypeBlockQuote extends TextEntityType {
 
   /// TDLib object type
   static const String defaultObjectId = 'textEntityTypeBlockQuote';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **TextEntityTypeExpandableBlockQuote** *(textEntityTypeExpandableBlockQuote)* - child of TextEntityType
+///
+/// Text that must be formatted as if inside a blockquote HTML tag and collapsed by default to 3 lines with the ability to show full text; not supported in secret chats.
+final class TextEntityTypeExpandableBlockQuote extends TextEntityType {
+  /// **TextEntityTypeExpandableBlockQuote** *(textEntityTypeExpandableBlockQuote)* - child of TextEntityType
+  ///
+  /// Text that must be formatted as if inside a blockquote HTML tag and collapsed by default to 3 lines with the ability to show full text; not supported in secret chats.
+  const TextEntityTypeExpandableBlockQuote();
+
+  /// Parse from a json
+  factory TextEntityTypeExpandableBlockQuote.fromJson(
+          Map<String, dynamic> json) =>
+      const TextEntityTypeExpandableBlockQuote();
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+    };
+  }
+
+  /// Copy instance with no modifications.
+  @override
+  TextEntityTypeExpandableBlockQuote copyWith() =>
+      const TextEntityTypeExpandableBlockQuote();
+
+  /// TDLib object type
+  static const String defaultObjectId = 'textEntityTypeExpandableBlockQuote';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

@@ -9,6 +9,7 @@ part of '../tdapi.dart';
 /// * [widthPercentage]: The width of the rectangle, as a percentage of the media width.
 /// * [heightPercentage]: The height of the rectangle, as a percentage of the media height.
 /// * [rotationAngle]: Clockwise rotation angle of the rectangle, in degrees; 0-360.
+/// * [cornerRadiusPercentage]: The radius of the rectangle corner rounding, as a percentage of the media width.
 final class StoryAreaPosition extends TdObject {
   /// **StoryAreaPosition** *(storyAreaPosition)* - basic class
   ///
@@ -19,12 +20,14 @@ final class StoryAreaPosition extends TdObject {
   /// * [widthPercentage]: The width of the rectangle, as a percentage of the media width.
   /// * [heightPercentage]: The height of the rectangle, as a percentage of the media height.
   /// * [rotationAngle]: Clockwise rotation angle of the rectangle, in degrees; 0-360.
+  /// * [cornerRadiusPercentage]: The radius of the rectangle corner rounding, as a percentage of the media width.
   const StoryAreaPosition({
     required this.xPercentage,
     required this.yPercentage,
     required this.widthPercentage,
     required this.heightPercentage,
     required this.rotationAngle,
+    required this.cornerRadiusPercentage,
   });
 
   /// The abscissa of the rectangle's center, as a percentage of the media width
@@ -42,6 +45,9 @@ final class StoryAreaPosition extends TdObject {
   /// Clockwise rotation angle of the rectangle, in degrees; 0-360
   final double rotationAngle;
 
+  /// The radius of the rectangle corner rounding, as a percentage of the media width
+  final double cornerRadiusPercentage;
+
   /// Parse from a json
   factory StoryAreaPosition.fromJson(Map<String, dynamic> json) =>
       StoryAreaPosition(
@@ -50,6 +56,7 @@ final class StoryAreaPosition extends TdObject {
         widthPercentage: json['width_percentage'],
         heightPercentage: json['height_percentage'],
         rotationAngle: json['rotation_angle'],
+        cornerRadiusPercentage: json['corner_radius_percentage'],
       );
 
   /// Convert model to TDLib JSON format
@@ -62,6 +69,7 @@ final class StoryAreaPosition extends TdObject {
       "width_percentage": widthPercentage,
       "height_percentage": heightPercentage,
       "rotation_angle": rotationAngle,
+      "corner_radius_percentage": cornerRadiusPercentage,
     };
   }
 
@@ -73,12 +81,14 @@ final class StoryAreaPosition extends TdObject {
   /// * [width_percentage]: The width of the rectangle, as a percentage of the media width
   /// * [height_percentage]: The height of the rectangle, as a percentage of the media height
   /// * [rotation_angle]: Clockwise rotation angle of the rectangle, in degrees; 0-360
+  /// * [corner_radius_percentage]: The radius of the rectangle corner rounding, as a percentage of the media width
   StoryAreaPosition copyWith({
     double? xPercentage,
     double? yPercentage,
     double? widthPercentage,
     double? heightPercentage,
     double? rotationAngle,
+    double? cornerRadiusPercentage,
   }) =>
       StoryAreaPosition(
         xPercentage: xPercentage ?? this.xPercentage,
@@ -86,6 +96,8 @@ final class StoryAreaPosition extends TdObject {
         widthPercentage: widthPercentage ?? this.widthPercentage,
         heightPercentage: heightPercentage ?? this.heightPercentage,
         rotationAngle: rotationAngle ?? this.rotationAngle,
+        cornerRadiusPercentage:
+            cornerRadiusPercentage ?? this.cornerRadiusPercentage,
       );
 
   /// TDLib object type

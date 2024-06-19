@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **TMeUrlType** *(tMeUrlType)* - parent
 ///
-/// Describes the type of a URL linking to an internal Telegram entity.
+/// Describes the type of URL linking to an internal Telegram entity.
 sealed class TMeUrlType extends TdObject {
   /// **TMeUrlType** *(tMeUrlType)* - parent
   ///
-  /// Describes the type of a URL linking to an internal Telegram entity.
+  /// Describes the type of URL linking to an internal Telegram entity.
   const TMeUrlType();
 
   /// a TMeUrlType return type can be :
