@@ -5,8 +5,8 @@ TMP="$(mktemp -d)"
 # https://unix.stackexchange.com/a/340156
 # Init timer stuff
 gettimer() {
-  printf "%02d" $(($1 / 3600))
-  printf "%02d" $((($1 / 60) % 60))
+  printf "%02d:" $(($1 / 3600))
+  printf "%02d:" $((($1 / 60) % 60))
   printf "%02d\n" $(($1 % 60))
 }
 SECONDS=0
