@@ -1,3 +1,10 @@
+## 2.3.8
+* Fixed JSON parsing of these objects:
+    * [EmojiStatuses]
+    * [UpdateInstalledStickerSets]
+    * [UpdateSavedNotificationSounds]
+    * [UpdateAvailableMessageEffects]
+
 ## 2.3.7
 * Updated to TDLib 1.8.31 (63c7d0301)
 

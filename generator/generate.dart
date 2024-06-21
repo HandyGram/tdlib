@@ -523,10 +523,8 @@ class TlObjectArg {
             description.contains("pass null")) &
         !description
             .contains('List of'); // null list fiedls are just empty listes.
-    read = getRead(name, type,
-        isInt64: tlType == 'int64',
-        optional: optional,
-        intOptional: description.contains('0 if none'));
+    read = getRead(name, type, tlType,
+        optional: optional, intOptional: description.contains('0 if none'));
     write = getWrite(this.argName, type, optional: optional);
   }
 
@@ -550,16 +548,16 @@ class TlObjectArg {
 
   static String getRead(
     String name,
-    String type, {
+    String type,
+    String? tlType, {
     String pattern = 'PLACE',
     String itemName = 'item',
-    bool isInt64 = false,
     bool optional = false,
     bool intOptional = false,
   }) {
     String readFromJson;
     if (dartTypes.contains(type)) {
-      if (isInt64) {
+      if (tlType == 'int64') {
         readFromJson = !optional && !intOptional
             ? '$pattern is int ? $pattern : int.parse($pattern)'
             : '$pattern is int ? $pattern : int.tryParse($pattern ?? "")';
@@ -571,8 +569,9 @@ class TlObjectArg {
       }
     } else if (type.startsWith('List')) {
       final subType = type.substring(5, type.length - 1);
+      final subTlType = tlType?.substring(7, tlType.length - 1);
       readFromJson =
-          'TYPE.from(($pattern ?? []).map(($itemName) => ${getRead(name, subType, pattern: itemName, itemName: 'innerItem')}).toList())';
+          'TYPE.from(($pattern ?? []).map(($itemName) => ${getRead(name, subType, subTlType, pattern: itemName, itemName: 'innerItem')}).toList())';
     } else {
       readFromJson =
           '${optional ? '$pattern == null ? null : ' : ''}TYPE.fromJson($pattern)';

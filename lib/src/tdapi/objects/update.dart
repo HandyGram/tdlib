@@ -8935,8 +8935,9 @@ final class UpdateInstalledStickerSets extends Update {
   factory UpdateInstalledStickerSets.fromJson(Map<String, dynamic> json) =>
       UpdateInstalledStickerSets(
         stickerType: StickerType.fromJson(json['sticker_type']),
-        stickerSetIds: List<int>.from(
-            (json['sticker_set_ids'] ?? []).map((item) => item).toList()),
+        stickerSetIds: List<int>.from((json['sticker_set_ids'] ?? [])
+            .map((item) => item is int ? item : int.parse(item))
+            .toList()),
         extra: json['@extra'],
         clientId: json['@client_id'],
       );
@@ -9332,7 +9333,7 @@ final class UpdateSavedNotificationSounds extends Update {
       UpdateSavedNotificationSounds(
         notificationSoundIds: List<int>.from(
             (json['notification_sound_ids'] ?? [])
-                .map((item) => item)
+                .map((item) => item is int ? item : int.parse(item))
                 .toList()),
         extra: json['@extra'],
         clientId: json['@client_id'],
@@ -10383,10 +10384,12 @@ final class UpdateAvailableMessageEffects extends Update {
   /// Parse from a json
   factory UpdateAvailableMessageEffects.fromJson(Map<String, dynamic> json) =>
       UpdateAvailableMessageEffects(
-        reactionEffectIds: List<int>.from(
-            (json['reaction_effect_ids'] ?? []).map((item) => item).toList()),
-        stickerEffectIds: List<int>.from(
-            (json['sticker_effect_ids'] ?? []).map((item) => item).toList()),
+        reactionEffectIds: List<int>.from((json['reaction_effect_ids'] ?? [])
+            .map((item) => item is int ? item : int.parse(item))
+            .toList()),
+        stickerEffectIds: List<int>.from((json['sticker_effect_ids'] ?? [])
+            .map((item) => item is int ? item : int.parse(item))
+            .toList()),
         extra: json['@extra'],
         clientId: json['@client_id'],
       );
