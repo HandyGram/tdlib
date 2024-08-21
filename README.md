@@ -73,8 +73,6 @@ Check [HandyGram](https://github.com/HandyGram) on GitHub for some code examples
 
 ## Usage
 
-**Documentation button on this pub page**
-
-[Official TDLib guide (a bit old)](https://core.telegram.org/tdlib/getting-started)
-
-[Documentation for currently used by this plugin TDLib version](https://handygram.github.io/tdlib)
+* [TDLib Data Repository layer in HandyGram](https://github.com/HandyGram/HandyGram/tree/main/lib/src/common/tdlib)
+* **Documentation button on this pub page**
+* [Official TDLib guide (a bit old)](https://core.telegram.org/tdlib/getting-started)
