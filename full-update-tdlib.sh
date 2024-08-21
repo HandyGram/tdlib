@@ -17,6 +17,9 @@ git clone https://github.com/tdlib/td.git $TMP || exit 1
 git clone https://github.com/HandyGram/tdlib-example.git $TMP/example/handygram || exit 1
 cd "$TMP/example/handygram" || exit 1
 
+echo "  | Patching CMakeLists.txt..."
+sed -i'.bak' 's/cmake_minimum_required(VERSION 3\.0\.2/cmake_minimum_required\(VERSION 3\.6/g' "$TMP/CMakeLists.txt"
+
 DOWNLOAD_SECONDS=$SECONDS
 DOWNLOAD_ELAPSED="$(gettimer $DOWNLOAD_SECONDS)"
 SECONDS=0
