@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 /// Edits the time when a scheduled message will be sent. Scheduling state of all messages in the same album or forwarded together with the message will be also changed.
 ///
 /// * [chatId]: The chat the message belongs to.
-/// * [messageId]: Identifier of the message.
+/// * [messageId]: Identifier of the message. Use messageProperties.can_edit_scheduling_state to check whether the message is suitable.
 /// * [schedulingState]: The new message scheduling state; pass null to send the message immediately *(optional)*.
 ///
 /// [Ok] is returned on completion.
@@ -15,7 +15,7 @@ final class EditMessageSchedulingState extends TdFunction {
   /// Edits the time when a scheduled message will be sent. Scheduling state of all messages in the same album or forwarded together with the message will be also changed.
   ///
   /// * [chatId]: The chat the message belongs to.
-  /// * [messageId]: Identifier of the message.
+  /// * [messageId]: Identifier of the message. Use messageProperties.can_edit_scheduling_state to check whether the message is suitable.
   /// * [schedulingState]: The new message scheduling state; pass null to send the message immediately *(optional)*.
   ///
   /// [Ok] is returned on completion.
@@ -28,7 +28,7 @@ final class EditMessageSchedulingState extends TdFunction {
   /// The chat the message belongs to
   final int chatId;
 
-  /// Identifier of the message
+  /// Identifier of the message. Use messageProperties.can_edit_scheduling_state to check whether the message is suitable
   final int messageId;
 
   /// The new message scheduling state; pass null to send the message immediately
@@ -50,7 +50,7 @@ final class EditMessageSchedulingState extends TdFunction {
   ///
   /// Properties:
   /// * [chat_id]: The chat the message belongs to
-  /// * [message_id]: Identifier of the message
+  /// * [message_id]: Identifier of the message. Use messageProperties.can_edit_scheduling_state to check whether the message is suitable
   /// * [scheduling_state]: The new message scheduling state; pass null to send the message immediately
   EditMessageSchedulingState copyWith({
     int? chatId,

@@ -4,7 +4,7 @@ part of '../tdapi.dart';
 ///
 /// Checks whether the current user can send a story on behalf of a chat; requires can_post_stories right for supergroup and channel chats.
 ///
-/// * [chatId]: Chat identifier.
+/// * [chatId]: Chat identifier. Pass Saved Messages chat identifier when posting a story on behalf of the current user.
 ///
 /// [CanSendStoryResult] is returned on completion.
 final class CanSendStory extends TdFunction {
@@ -12,14 +12,14 @@ final class CanSendStory extends TdFunction {
   ///
   /// Checks whether the current user can send a story on behalf of a chat; requires can_post_stories right for supergroup and channel chats.
   ///
-  /// * [chatId]: Chat identifier.
+  /// * [chatId]: Chat identifier. Pass Saved Messages chat identifier when posting a story on behalf of the current user.
   ///
   /// [CanSendStoryResult] is returned on completion.
   const CanSendStory({
     required this.chatId,
   });
 
-  /// Chat identifier
+  /// Chat identifier. Pass Saved Messages chat identifier when posting a story on behalf of the current user
   final int chatId;
 
   /// Convert model to TDLib JSON format
@@ -35,7 +35,7 @@ final class CanSendStory extends TdFunction {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [chat_id]: Chat identifier
+  /// * [chat_id]: Chat identifier. Pass Saved Messages chat identifier when posting a story on behalf of the current user
   CanSendStory copyWith({
     int? chatId,
   }) =>

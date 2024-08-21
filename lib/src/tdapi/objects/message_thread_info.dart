@@ -8,7 +8,7 @@ part of '../tdapi.dart';
 /// * [messageThreadId]: Message thread identifier, unique within the chat.
 /// * [replyInfo]: Information about the message thread; may be null for forum topic threads *(optional)*.
 /// * [unreadMessageCount]: Approximate number of unread messages in the message thread.
-/// * [messages]: The messages from which the thread starts. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id).
+/// * [messages]: The messages from which the thread starts. The messages are returned in reverse chronological order (i.e., in order of decreasing message_id).
 /// * [draftMessage]: A draft of a message in the message thread; may be null if none *(optional)*.
 final class MessageThreadInfo extends TdObject {
   /// **MessageThreadInfo** *(messageThreadInfo)* - basic class
@@ -19,7 +19,7 @@ final class MessageThreadInfo extends TdObject {
   /// * [messageThreadId]: Message thread identifier, unique within the chat.
   /// * [replyInfo]: Information about the message thread; may be null for forum topic threads *(optional)*.
   /// * [unreadMessageCount]: Approximate number of unread messages in the message thread.
-  /// * [messages]: The messages from which the thread starts. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id).
+  /// * [messages]: The messages from which the thread starts. The messages are returned in reverse chronological order (i.e., in order of decreasing message_id).
   /// * [draftMessage]: A draft of a message in the message thread; may be null if none *(optional)*.
   const MessageThreadInfo({
     required this.chatId,
@@ -44,7 +44,7 @@ final class MessageThreadInfo extends TdObject {
   /// Approximate number of unread messages in the message thread
   final int unreadMessageCount;
 
-  /// The messages from which the thread starts. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id)
+  /// The messages from which the thread starts. The messages are returned in reverse chronological order (i.e., in order of decreasing message_id)
   final List<Message> messages;
 
   /// A draft of a message in the message thread; may be null if none
@@ -98,7 +98,7 @@ final class MessageThreadInfo extends TdObject {
   /// * [message_thread_id]: Message thread identifier, unique within the chat
   /// * [reply_info]: Information about the message thread; may be null for forum topic threads
   /// * [unread_message_count]: Approximate number of unread messages in the message thread
-  /// * [messages]: The messages from which the thread starts. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id)
+  /// * [messages]: The messages from which the thread starts. The messages are returned in reverse chronological order (i.e., in order of decreasing message_id)
   /// * [draft_message]: A draft of a message in the message thread; may be null if none
   MessageThreadInfo copyWith({
     int? chatId,

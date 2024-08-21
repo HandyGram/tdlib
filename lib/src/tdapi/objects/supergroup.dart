@@ -8,11 +8,12 @@ part of '../tdapi.dart';
 /// * [usernames]: Usernames of the supergroup or channel; may be null *(optional)*.
 /// * [date]: Point in time (Unix timestamp) when the current user joined, or the point in time when the supergroup or channel was created, in case the user is not a member.
 /// * [status]: Status of the current user in the supergroup or channel; custom title will always be empty.
-/// * [memberCount]: Number of members in the supergroup or channel; 0 if unknown. Currently, it is guaranteed to be known only if the supergroup or channel was received through. getChatSimilarChats, getChatsToSendStories, getCreatedPublicChats, getGroupsInCommon, getInactiveSupergroupChats, getRecommendedChats, getSuitableDiscussionChats,. getUserPrivacySettingRules, getVideoChatAvailableParticipants, searchChatsNearby, searchPublicChats, or in chatFolderInviteLinkInfo.missing_chat_ids, or in userFullInfo.personal_chat_id,. or for chats with messages or stories from publicForwards.
+/// * [memberCount]: Number of members in the supergroup or channel; 0 if unknown. Currently, it is guaranteed to be known only if the supergroup or channel was received through. getChatSimilarChats, getChatsToSendStories, getCreatedPublicChats, getGroupsInCommon, getInactiveSupergroupChats, getRecommendedChats, getSuitableDiscussionChats,. getUserPrivacySettingRules, getVideoChatAvailableParticipants, searchChatsNearby, searchPublicChats, or in chatFolderInviteLinkInfo.missing_chat_ids, or in userFullInfo.personal_chat_id,. or for chats with messages or stories from publicForwards and foundStories.
 /// * [boostLevel]: Approximate boost level for the chat.
 /// * [hasLinkedChat]: True, if the channel has a discussion group, or the supergroup is the designated discussion group for a channel.
 /// * [hasLocation]: True, if the supergroup is connected to a location, i.e. the supergroup is a location-based supergroup.
-/// * [signMessages]: True, if messages sent to the channel need to contain information about the sender. This field is only applicable to channels.
+/// * [signMessages]: True, if messages sent to the channel contains name of the sender. This field is only applicable to channels.
+/// * [showMessageSender]: True, if messages sent to the channel have information about the sender user. This field is only applicable to channels.
 /// * [joinToSendMessages]: True, if users need to join the supergroup before they can send messages. Always true for channels and non-discussion supergroups.
 /// * [joinByRequest]: True, if all users directly joining the supergroup need to be approved by supergroup administrators. Always false for channels and supergroups without username, location, or a linked chat.
 /// * [isSlowModeEnabled]: True, if the slow mode is enabled in the supergroup.
@@ -20,6 +21,7 @@ part of '../tdapi.dart';
 /// * [isBroadcastGroup]: True, if the supergroup is a broadcast group, i.e. only administrators can send messages and there is no limit on the number of members.
 /// * [isForum]: True, if the supergroup is a forum with topics.
 /// * [isVerified]: True, if the supergroup or channel is verified.
+/// * [hasSensitiveContent]: True, if content of media messages in the supergroup or channel chat must be hidden with 18+ spoiler.
 /// * [restrictionReason]: If non-empty, contains a human-readable description of the reason why access to this supergroup or channel must be restricted.
 /// * [isScam]: True, if many users reported this supergroup or channel as a scam.
 /// * [isFake]: True, if many users reported this supergroup or channel as a fake account.
@@ -34,11 +36,12 @@ final class Supergroup extends TdObject {
   /// * [usernames]: Usernames of the supergroup or channel; may be null *(optional)*.
   /// * [date]: Point in time (Unix timestamp) when the current user joined, or the point in time when the supergroup or channel was created, in case the user is not a member.
   /// * [status]: Status of the current user in the supergroup or channel; custom title will always be empty.
-  /// * [memberCount]: Number of members in the supergroup or channel; 0 if unknown. Currently, it is guaranteed to be known only if the supergroup or channel was received through. getChatSimilarChats, getChatsToSendStories, getCreatedPublicChats, getGroupsInCommon, getInactiveSupergroupChats, getRecommendedChats, getSuitableDiscussionChats,. getUserPrivacySettingRules, getVideoChatAvailableParticipants, searchChatsNearby, searchPublicChats, or in chatFolderInviteLinkInfo.missing_chat_ids, or in userFullInfo.personal_chat_id,. or for chats with messages or stories from publicForwards.
+  /// * [memberCount]: Number of members in the supergroup or channel; 0 if unknown. Currently, it is guaranteed to be known only if the supergroup or channel was received through. getChatSimilarChats, getChatsToSendStories, getCreatedPublicChats, getGroupsInCommon, getInactiveSupergroupChats, getRecommendedChats, getSuitableDiscussionChats,. getUserPrivacySettingRules, getVideoChatAvailableParticipants, searchChatsNearby, searchPublicChats, or in chatFolderInviteLinkInfo.missing_chat_ids, or in userFullInfo.personal_chat_id,. or for chats with messages or stories from publicForwards and foundStories.
   /// * [boostLevel]: Approximate boost level for the chat.
   /// * [hasLinkedChat]: True, if the channel has a discussion group, or the supergroup is the designated discussion group for a channel.
   /// * [hasLocation]: True, if the supergroup is connected to a location, i.e. the supergroup is a location-based supergroup.
-  /// * [signMessages]: True, if messages sent to the channel need to contain information about the sender. This field is only applicable to channels.
+  /// * [signMessages]: True, if messages sent to the channel contains name of the sender. This field is only applicable to channels.
+  /// * [showMessageSender]: True, if messages sent to the channel have information about the sender user. This field is only applicable to channels.
   /// * [joinToSendMessages]: True, if users need to join the supergroup before they can send messages. Always true for channels and non-discussion supergroups.
   /// * [joinByRequest]: True, if all users directly joining the supergroup need to be approved by supergroup administrators. Always false for channels and supergroups without username, location, or a linked chat.
   /// * [isSlowModeEnabled]: True, if the slow mode is enabled in the supergroup.
@@ -46,6 +49,7 @@ final class Supergroup extends TdObject {
   /// * [isBroadcastGroup]: True, if the supergroup is a broadcast group, i.e. only administrators can send messages and there is no limit on the number of members.
   /// * [isForum]: True, if the supergroup is a forum with topics.
   /// * [isVerified]: True, if the supergroup or channel is verified.
+  /// * [hasSensitiveContent]: True, if content of media messages in the supergroup or channel chat must be hidden with 18+ spoiler.
   /// * [restrictionReason]: If non-empty, contains a human-readable description of the reason why access to this supergroup or channel must be restricted.
   /// * [isScam]: True, if many users reported this supergroup or channel as a scam.
   /// * [isFake]: True, if many users reported this supergroup or channel as a fake account.
@@ -61,6 +65,7 @@ final class Supergroup extends TdObject {
     required this.hasLinkedChat,
     required this.hasLocation,
     required this.signMessages,
+    required this.showMessageSender,
     required this.joinToSendMessages,
     required this.joinByRequest,
     required this.isSlowModeEnabled,
@@ -68,6 +73,7 @@ final class Supergroup extends TdObject {
     required this.isBroadcastGroup,
     required this.isForum,
     required this.isVerified,
+    required this.hasSensitiveContent,
     required this.restrictionReason,
     required this.isScam,
     required this.isFake,
@@ -89,7 +95,7 @@ final class Supergroup extends TdObject {
   /// Status of the current user in the supergroup or channel; custom title will always be empty
   final ChatMemberStatus status;
 
-  /// Number of members in the supergroup or channel; 0 if unknown. Currently, it is guaranteed to be known only if the supergroup or channel was received through. getChatSimilarChats, getChatsToSendStories, getCreatedPublicChats, getGroupsInCommon, getInactiveSupergroupChats, getRecommendedChats, getSuitableDiscussionChats,. getUserPrivacySettingRules, getVideoChatAvailableParticipants, searchChatsNearby, searchPublicChats, or in chatFolderInviteLinkInfo.missing_chat_ids, or in userFullInfo.personal_chat_id,. or for chats with messages or stories from publicForwards
+  /// Number of members in the supergroup or channel; 0 if unknown. Currently, it is guaranteed to be known only if the supergroup or channel was received through. getChatSimilarChats, getChatsToSendStories, getCreatedPublicChats, getGroupsInCommon, getInactiveSupergroupChats, getRecommendedChats, getSuitableDiscussionChats,. getUserPrivacySettingRules, getVideoChatAvailableParticipants, searchChatsNearby, searchPublicChats, or in chatFolderInviteLinkInfo.missing_chat_ids, or in userFullInfo.personal_chat_id,. or for chats with messages or stories from publicForwards and foundStories
   final int memberCount;
 
   /// Approximate boost level for the chat
@@ -101,8 +107,11 @@ final class Supergroup extends TdObject {
   /// True, if the supergroup is connected to a location, i.e. the supergroup is a location-based supergroup
   final bool hasLocation;
 
-  /// True, if messages sent to the channel need to contain information about the sender. This field is only applicable to channels
+  /// True, if messages sent to the channel contains name of the sender. This field is only applicable to channels
   final bool signMessages;
+
+  /// True, if messages sent to the channel have information about the sender user. This field is only applicable to channels
+  final bool showMessageSender;
 
   /// True, if users need to join the supergroup before they can send messages. Always true for channels and non-discussion supergroups
   final bool joinToSendMessages;
@@ -124,6 +133,9 @@ final class Supergroup extends TdObject {
 
   /// True, if the supergroup or channel is verified
   final bool isVerified;
+
+  /// True, if content of media messages in the supergroup or channel chat must be hidden with 18+ spoiler
+  final bool hasSensitiveContent;
 
   /// If non-empty, contains a human-readable description of the reason why access to this supergroup or channel must be restricted
   final String restrictionReason;
@@ -161,6 +173,7 @@ final class Supergroup extends TdObject {
         hasLinkedChat: json['has_linked_chat'],
         hasLocation: json['has_location'],
         signMessages: json['sign_messages'],
+        showMessageSender: json['show_message_sender'],
         joinToSendMessages: json['join_to_send_messages'],
         joinByRequest: json['join_by_request'],
         isSlowModeEnabled: json['is_slow_mode_enabled'],
@@ -168,6 +181,7 @@ final class Supergroup extends TdObject {
         isBroadcastGroup: json['is_broadcast_group'],
         isForum: json['is_forum'],
         isVerified: json['is_verified'],
+        hasSensitiveContent: json['has_sensitive_content'],
         restrictionReason: json['restriction_reason'],
         isScam: json['is_scam'],
         isFake: json['is_fake'],
@@ -191,6 +205,7 @@ final class Supergroup extends TdObject {
       "has_linked_chat": hasLinkedChat,
       "has_location": hasLocation,
       "sign_messages": signMessages,
+      "show_message_sender": showMessageSender,
       "join_to_send_messages": joinToSendMessages,
       "join_by_request": joinByRequest,
       "is_slow_mode_enabled": isSlowModeEnabled,
@@ -198,6 +213,7 @@ final class Supergroup extends TdObject {
       "is_broadcast_group": isBroadcastGroup,
       "is_forum": isForum,
       "is_verified": isVerified,
+      "has_sensitive_content": hasSensitiveContent,
       "restriction_reason": restrictionReason,
       "is_scam": isScam,
       "is_fake": isFake,
@@ -213,11 +229,12 @@ final class Supergroup extends TdObject {
   /// * [usernames]: Usernames of the supergroup or channel; may be null
   /// * [date]: Point in time (Unix timestamp) when the current user joined, or the point in time when the supergroup or channel was created, in case the user is not a member
   /// * [status]: Status of the current user in the supergroup or channel; custom title will always be empty
-  /// * [member_count]: Number of members in the supergroup or channel; 0 if unknown. Currently, it is guaranteed to be known only if the supergroup or channel was received through. getChatSimilarChats, getChatsToSendStories, getCreatedPublicChats, getGroupsInCommon, getInactiveSupergroupChats, getRecommendedChats, getSuitableDiscussionChats,. getUserPrivacySettingRules, getVideoChatAvailableParticipants, searchChatsNearby, searchPublicChats, or in chatFolderInviteLinkInfo.missing_chat_ids, or in userFullInfo.personal_chat_id,. or for chats with messages or stories from publicForwards
+  /// * [member_count]: Number of members in the supergroup or channel; 0 if unknown. Currently, it is guaranteed to be known only if the supergroup or channel was received through. getChatSimilarChats, getChatsToSendStories, getCreatedPublicChats, getGroupsInCommon, getInactiveSupergroupChats, getRecommendedChats, getSuitableDiscussionChats,. getUserPrivacySettingRules, getVideoChatAvailableParticipants, searchChatsNearby, searchPublicChats, or in chatFolderInviteLinkInfo.missing_chat_ids, or in userFullInfo.personal_chat_id,. or for chats with messages or stories from publicForwards and foundStories
   /// * [boost_level]: Approximate boost level for the chat
   /// * [has_linked_chat]: True, if the channel has a discussion group, or the supergroup is the designated discussion group for a channel
   /// * [has_location]: True, if the supergroup is connected to a location, i.e. the supergroup is a location-based supergroup
-  /// * [sign_messages]: True, if messages sent to the channel need to contain information about the sender. This field is only applicable to channels
+  /// * [sign_messages]: True, if messages sent to the channel contains name of the sender. This field is only applicable to channels
+  /// * [show_message_sender]: True, if messages sent to the channel have information about the sender user. This field is only applicable to channels
   /// * [join_to_send_messages]: True, if users need to join the supergroup before they can send messages. Always true for channels and non-discussion supergroups
   /// * [join_by_request]: True, if all users directly joining the supergroup need to be approved by supergroup administrators. Always false for channels and supergroups without username, location, or a linked chat
   /// * [is_slow_mode_enabled]: True, if the slow mode is enabled in the supergroup
@@ -225,6 +242,7 @@ final class Supergroup extends TdObject {
   /// * [is_broadcast_group]: True, if the supergroup is a broadcast group, i.e. only administrators can send messages and there is no limit on the number of members
   /// * [is_forum]: True, if the supergroup is a forum with topics
   /// * [is_verified]: True, if the supergroup or channel is verified
+  /// * [has_sensitive_content]: True, if content of media messages in the supergroup or channel chat must be hidden with 18+ spoiler
   /// * [restriction_reason]: If non-empty, contains a human-readable description of the reason why access to this supergroup or channel must be restricted
   /// * [is_scam]: True, if many users reported this supergroup or channel as a scam
   /// * [is_fake]: True, if many users reported this supergroup or channel as a fake account
@@ -240,6 +258,7 @@ final class Supergroup extends TdObject {
     bool? hasLinkedChat,
     bool? hasLocation,
     bool? signMessages,
+    bool? showMessageSender,
     bool? joinToSendMessages,
     bool? joinByRequest,
     bool? isSlowModeEnabled,
@@ -247,6 +266,7 @@ final class Supergroup extends TdObject {
     bool? isBroadcastGroup,
     bool? isForum,
     bool? isVerified,
+    bool? hasSensitiveContent,
     String? restrictionReason,
     bool? isScam,
     bool? isFake,
@@ -265,6 +285,7 @@ final class Supergroup extends TdObject {
         hasLinkedChat: hasLinkedChat ?? this.hasLinkedChat,
         hasLocation: hasLocation ?? this.hasLocation,
         signMessages: signMessages ?? this.signMessages,
+        showMessageSender: showMessageSender ?? this.showMessageSender,
         joinToSendMessages: joinToSendMessages ?? this.joinToSendMessages,
         joinByRequest: joinByRequest ?? this.joinByRequest,
         isSlowModeEnabled: isSlowModeEnabled ?? this.isSlowModeEnabled,
@@ -272,6 +293,7 @@ final class Supergroup extends TdObject {
         isBroadcastGroup: isBroadcastGroup ?? this.isBroadcastGroup,
         isForum: isForum ?? this.isForum,
         isVerified: isVerified ?? this.isVerified,
+        hasSensitiveContent: hasSensitiveContent ?? this.hasSensitiveContent,
         restrictionReason: restrictionReason ?? this.restrictionReason,
         isScam: isScam ?? this.isScam,
         isFake: isFake ?? this.isFake,

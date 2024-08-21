@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 /// Reports a chat to the Telegram moderators. A chat can be reported only from the chat action bar, or if chat.can_be_reported.
 ///
 /// * [chatId]: Chat identifier.
-/// * [messageIds]: Identifiers of reported messages; may be empty to report the whole chat.
+/// * [messageIds]: Identifiers of reported messages; may be empty to report the whole chat. Use messageProperties.can_be_reported to check whether the message can be reported.
 /// * [reason]: The reason for reporting the chat.
 /// * [text]: Additional report details; 0-1024 characters.
 ///
@@ -16,7 +16,7 @@ final class ReportChat extends TdFunction {
   /// Reports a chat to the Telegram moderators. A chat can be reported only from the chat action bar, or if chat.can_be_reported.
   ///
   /// * [chatId]: Chat identifier.
-  /// * [messageIds]: Identifiers of reported messages; may be empty to report the whole chat.
+  /// * [messageIds]: Identifiers of reported messages; may be empty to report the whole chat. Use messageProperties.can_be_reported to check whether the message can be reported.
   /// * [reason]: The reason for reporting the chat.
   /// * [text]: Additional report details; 0-1024 characters.
   ///
@@ -31,7 +31,7 @@ final class ReportChat extends TdFunction {
   /// Chat identifier
   final int chatId;
 
-  /// Identifiers of reported messages; may be empty to report the whole chat
+  /// Identifiers of reported messages; may be empty to report the whole chat. Use messageProperties.can_be_reported to check whether the message can be reported
   final List<int> messageIds;
 
   /// The reason for reporting the chat
@@ -57,7 +57,7 @@ final class ReportChat extends TdFunction {
   ///
   /// Properties:
   /// * [chat_id]: Chat identifier
-  /// * [message_ids]: Identifiers of reported messages; may be empty to report the whole chat
+  /// * [message_ids]: Identifiers of reported messages; may be empty to report the whole chat. Use messageProperties.can_be_reported to check whether the message can be reported
   /// * [reason]: The reason for reporting the chat
   /// * [text]: Additional report details; 0-1024 characters
   ReportChat copyWith({

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 ///
 /// * [storySenderChatId]: The identifier of the sender of the story.
 /// * [storyId]: Story identifier.
-/// * [reactionType]: Pass the default heart reaction or a suggested reaction type to receive only interactions with the specified reaction type; pass null to receive all interactions *(optional)*.
+/// * [reactionType]: Pass the default heart reaction or a suggested reaction type to receive only interactions with the specified reaction type; pass null to receive all interactions; reactionTypePaid isn't supported *(optional)*.
 /// * [preferForwards]: Pass true to get forwards and reposts first, then reactions, then other views; pass false to get interactions sorted just by interaction date.
 /// * [offset]: Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results.
 /// * [limit]: The maximum number of story interactions to return.
@@ -19,7 +19,7 @@ final class GetChatStoryInteractions extends TdFunction {
   ///
   /// * [storySenderChatId]: The identifier of the sender of the story.
   /// * [storyId]: Story identifier.
-  /// * [reactionType]: Pass the default heart reaction or a suggested reaction type to receive only interactions with the specified reaction type; pass null to receive all interactions *(optional)*.
+  /// * [reactionType]: Pass the default heart reaction or a suggested reaction type to receive only interactions with the specified reaction type; pass null to receive all interactions; reactionTypePaid isn't supported *(optional)*.
   /// * [preferForwards]: Pass true to get forwards and reposts first, then reactions, then other views; pass false to get interactions sorted just by interaction date.
   /// * [offset]: Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results.
   /// * [limit]: The maximum number of story interactions to return.
@@ -40,7 +40,7 @@ final class GetChatStoryInteractions extends TdFunction {
   /// Story identifier
   final int storyId;
 
-  /// Pass the default heart reaction or a suggested reaction type to receive only interactions with the specified reaction type; pass null to receive all interactions
+  /// Pass the default heart reaction or a suggested reaction type to receive only interactions with the specified reaction type; pass null to receive all interactions; reactionTypePaid isn't supported
   final ReactionType? reactionType;
 
   /// Pass true to get forwards and reposts first, then reactions, then other views; pass false to get interactions sorted just by interaction date
@@ -72,7 +72,7 @@ final class GetChatStoryInteractions extends TdFunction {
   /// Properties:
   /// * [story_sender_chat_id]: The identifier of the sender of the story
   /// * [story_id]: Story identifier
-  /// * [reaction_type]: Pass the default heart reaction or a suggested reaction type to receive only interactions with the specified reaction type; pass null to receive all interactions
+  /// * [reaction_type]: Pass the default heart reaction or a suggested reaction type to receive only interactions with the specified reaction type; pass null to receive all interactions; reactionTypePaid isn't supported
   /// * [prefer_forwards]: Pass true to get forwards and reposts first, then reactions, then other views; pass false to get interactions sorted just by interaction date
   /// * [offset]: Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
   /// * [limit]: The maximum number of story interactions to return

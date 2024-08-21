@@ -2,10 +2,10 @@ part of '../tdapi.dart';
 
 /// **EditMessageMedia** *(editMessageMedia)* - TDLib function
 ///
-/// Edits the content of a message with an animation, an audio, a document, a photo or a video, including message caption. If only the caption needs to be edited, use editMessageCaption instead.. The media can't be edited if the message was set to self-destruct or to a self-destructing media. The type of message content in an album can't be changed with exception of replacing a photo with a video or vice versa.. Returns the edited message after the edit is completed on the server side. Can be used only if message.can_be_edited == true.
+/// Edits the content of a message with an animation, an audio, a document, a photo or a video, including message caption. If only the caption needs to be edited, use editMessageCaption instead.. The media can't be edited if the message was set to self-destruct or to a self-destructing media. The type of message content in an album can't be changed with exception of replacing a photo with a video or vice versa.. Returns the edited message after the edit is completed on the server side.
 ///
 /// * [chatId]: The chat the message belongs to.
-/// * [messageId]: Identifier of the message.
+/// * [messageId]: Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited.
 /// * [replyMarkup]: The new message reply markup; pass null if none; for bots only *(optional)*.
 /// * [inputMessageContent]: New content of the message. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto or inputMessageVideo.
 ///
@@ -13,10 +13,10 @@ part of '../tdapi.dart';
 final class EditMessageMedia extends TdFunction {
   /// **EditMessageMedia** *(editMessageMedia)* - TDLib function
   ///
-  /// Edits the content of a message with an animation, an audio, a document, a photo or a video, including message caption. If only the caption needs to be edited, use editMessageCaption instead.. The media can't be edited if the message was set to self-destruct or to a self-destructing media. The type of message content in an album can't be changed with exception of replacing a photo with a video or vice versa.. Returns the edited message after the edit is completed on the server side. Can be used only if message.can_be_edited == true.
+  /// Edits the content of a message with an animation, an audio, a document, a photo or a video, including message caption. If only the caption needs to be edited, use editMessageCaption instead.. The media can't be edited if the message was set to self-destruct or to a self-destructing media. The type of message content in an album can't be changed with exception of replacing a photo with a video or vice versa.. Returns the edited message after the edit is completed on the server side.
   ///
   /// * [chatId]: The chat the message belongs to.
-  /// * [messageId]: Identifier of the message.
+  /// * [messageId]: Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited.
   /// * [replyMarkup]: The new message reply markup; pass null if none; for bots only *(optional)*.
   /// * [inputMessageContent]: New content of the message. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto or inputMessageVideo.
   ///
@@ -31,7 +31,7 @@ final class EditMessageMedia extends TdFunction {
   /// The chat the message belongs to
   final int chatId;
 
-  /// Identifier of the message
+  /// Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited
   final int messageId;
 
   /// The new message reply markup; pass null if none; for bots only
@@ -57,7 +57,7 @@ final class EditMessageMedia extends TdFunction {
   ///
   /// Properties:
   /// * [chat_id]: The chat the message belongs to
-  /// * [message_id]: Identifier of the message
+  /// * [message_id]: Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited
   /// * [reply_markup]: The new message reply markup; pass null if none; for bots only
   /// * [input_message_content]: New content of the message. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto or inputMessageVideo
   EditMessageMedia copyWith({

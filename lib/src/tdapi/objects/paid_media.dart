@@ -1,32 +1,32 @@
 part of '../tdapi.dart';
 
-/// **MessageExtendedMedia** *(messageExtendedMedia)* - parent
+/// **PaidMedia** *(paidMedia)* - parent
 ///
-/// Describes a media, which is attached to an invoice.
-sealed class MessageExtendedMedia extends TdObject {
-  /// **MessageExtendedMedia** *(messageExtendedMedia)* - parent
+/// Describes a paid media.
+sealed class PaidMedia extends TdObject {
+  /// **PaidMedia** *(paidMedia)* - parent
   ///
-  /// Describes a media, which is attached to an invoice.
-  const MessageExtendedMedia();
+  /// Describes a paid media.
+  const PaidMedia();
 
-  /// a MessageExtendedMedia return type can be :
-  /// * [MessageExtendedMediaPreview]
-  /// * [MessageExtendedMediaPhoto]
-  /// * [MessageExtendedMediaVideo]
-  /// * [MessageExtendedMediaUnsupported]
-  factory MessageExtendedMedia.fromJson(Map<String, dynamic> json) {
+  /// a PaidMedia return type can be :
+  /// * [PaidMediaPreview]
+  /// * [PaidMediaPhoto]
+  /// * [PaidMediaVideo]
+  /// * [PaidMediaUnsupported]
+  factory PaidMedia.fromJson(Map<String, dynamic> json) {
     switch (json["@type"]) {
-      case MessageExtendedMediaPreview.defaultObjectId:
-        return MessageExtendedMediaPreview.fromJson(json);
-      case MessageExtendedMediaPhoto.defaultObjectId:
-        return MessageExtendedMediaPhoto.fromJson(json);
-      case MessageExtendedMediaVideo.defaultObjectId:
-        return MessageExtendedMediaVideo.fromJson(json);
-      case MessageExtendedMediaUnsupported.defaultObjectId:
-        return MessageExtendedMediaUnsupported.fromJson(json);
+      case PaidMediaPreview.defaultObjectId:
+        return PaidMediaPreview.fromJson(json);
+      case PaidMediaPhoto.defaultObjectId:
+        return PaidMediaPhoto.fromJson(json);
+      case PaidMediaVideo.defaultObjectId:
+        return PaidMediaVideo.fromJson(json);
+      case PaidMediaUnsupported.defaultObjectId:
+        return PaidMediaUnsupported.fromJson(json);
       default:
         throw FormatException(
-          "Unknown object ${json["@type"]} (expected child of MessageExtendedMedia)",
+          "Unknown object ${json["@type"]} (expected child of PaidMedia)",
           json,
         );
     }
@@ -37,10 +37,10 @@ sealed class MessageExtendedMedia extends TdObject {
   Map<String, dynamic> toJson();
 
   /// Copy instance with no modifications.
-  MessageExtendedMedia copyWith();
+  PaidMedia copyWith();
 
   /// TDLib object type
-  static const String defaultObjectId = 'messageExtendedMedia';
+  static const String defaultObjectId = 'paidMedia';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -51,7 +51,7 @@ sealed class MessageExtendedMedia extends TdObject {
   String get currentObjectId => defaultObjectId;
 }
 
-/// **MessageExtendedMediaPreview** *(messageExtendedMediaPreview)* - child of MessageExtendedMedia
+/// **PaidMediaPreview** *(paidMediaPreview)* - child of PaidMedia
 ///
 /// The media is hidden until the invoice is paid.
 ///
@@ -59,9 +59,8 @@ sealed class MessageExtendedMedia extends TdObject {
 /// * [height]: Media height; 0 if unknown.
 /// * [duration]: Media duration, in seconds; 0 if unknown.
 /// * [minithumbnail]: Media minithumbnail; may be null *(optional)*.
-/// * [caption]: Media caption.
-final class MessageExtendedMediaPreview extends MessageExtendedMedia {
-  /// **MessageExtendedMediaPreview** *(messageExtendedMediaPreview)* - child of MessageExtendedMedia
+final class PaidMediaPreview extends PaidMedia {
+  /// **PaidMediaPreview** *(paidMediaPreview)* - child of PaidMedia
   ///
   /// The media is hidden until the invoice is paid.
   ///
@@ -69,13 +68,11 @@ final class MessageExtendedMediaPreview extends MessageExtendedMedia {
   /// * [height]: Media height; 0 if unknown.
   /// * [duration]: Media duration, in seconds; 0 if unknown.
   /// * [minithumbnail]: Media minithumbnail; may be null *(optional)*.
-  /// * [caption]: Media caption.
-  const MessageExtendedMediaPreview({
+  const PaidMediaPreview({
     required this.width,
     required this.height,
     required this.duration,
     this.minithumbnail,
-    required this.caption,
   });
 
   /// Media width; 0 if unknown
@@ -90,19 +87,15 @@ final class MessageExtendedMediaPreview extends MessageExtendedMedia {
   /// Media minithumbnail; may be null
   final Minithumbnail? minithumbnail;
 
-  /// Media caption
-  final FormattedText caption;
-
   /// Parse from a json
-  factory MessageExtendedMediaPreview.fromJson(Map<String, dynamic> json) =>
-      MessageExtendedMediaPreview(
+  factory PaidMediaPreview.fromJson(Map<String, dynamic> json) =>
+      PaidMediaPreview(
         width: json['width'],
         height: json['height'],
         duration: json['duration'],
         minithumbnail: json['minithumbnail'] == null
             ? null
             : Minithumbnail.fromJson(json['minithumbnail']),
-        caption: FormattedText.fromJson(json['caption']),
       );
 
   /// Convert model to TDLib JSON format
@@ -114,7 +107,6 @@ final class MessageExtendedMediaPreview extends MessageExtendedMedia {
       "height": height,
       "duration": duration,
       "minithumbnail": minithumbnail?.toJson(),
-      "caption": caption.toJson(),
     };
   }
 
@@ -125,25 +117,22 @@ final class MessageExtendedMediaPreview extends MessageExtendedMedia {
   /// * [height]: Media height; 0 if unknown
   /// * [duration]: Media duration, in seconds; 0 if unknown
   /// * [minithumbnail]: Media minithumbnail; may be null
-  /// * [caption]: Media caption
   @override
-  MessageExtendedMediaPreview copyWith({
+  PaidMediaPreview copyWith({
     int? width,
     int? height,
     int? duration,
     Minithumbnail? minithumbnail,
-    FormattedText? caption,
   }) =>
-      MessageExtendedMediaPreview(
+      PaidMediaPreview(
         width: width ?? this.width,
         height: height ?? this.height,
         duration: duration ?? this.duration,
         minithumbnail: minithumbnail ?? this.minithumbnail,
-        caption: caption ?? this.caption,
       );
 
   /// TDLib object type
-  static const String defaultObjectId = 'messageExtendedMediaPreview';
+  static const String defaultObjectId = 'paidMediaPreview';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -154,35 +143,27 @@ final class MessageExtendedMediaPreview extends MessageExtendedMedia {
   String get currentObjectId => defaultObjectId;
 }
 
-/// **MessageExtendedMediaPhoto** *(messageExtendedMediaPhoto)* - child of MessageExtendedMedia
+/// **PaidMediaPhoto** *(paidMediaPhoto)* - child of PaidMedia
 ///
 /// The media is a photo.
 ///
 /// * [photo]: The photo.
-/// * [caption]: Photo caption.
-final class MessageExtendedMediaPhoto extends MessageExtendedMedia {
-  /// **MessageExtendedMediaPhoto** *(messageExtendedMediaPhoto)* - child of MessageExtendedMedia
+final class PaidMediaPhoto extends PaidMedia {
+  /// **PaidMediaPhoto** *(paidMediaPhoto)* - child of PaidMedia
   ///
   /// The media is a photo.
   ///
   /// * [photo]: The photo.
-  /// * [caption]: Photo caption.
-  const MessageExtendedMediaPhoto({
+  const PaidMediaPhoto({
     required this.photo,
-    required this.caption,
   });
 
   /// The photo
   final Photo photo;
 
-  /// Photo caption
-  final FormattedText caption;
-
   /// Parse from a json
-  factory MessageExtendedMediaPhoto.fromJson(Map<String, dynamic> json) =>
-      MessageExtendedMediaPhoto(
+  factory PaidMediaPhoto.fromJson(Map<String, dynamic> json) => PaidMediaPhoto(
         photo: Photo.fromJson(json['photo']),
-        caption: FormattedText.fromJson(json['caption']),
       );
 
   /// Convert model to TDLib JSON format
@@ -191,7 +172,6 @@ final class MessageExtendedMediaPhoto extends MessageExtendedMedia {
     return {
       "@type": defaultObjectId,
       "photo": photo.toJson(),
-      "caption": caption.toJson(),
     };
   }
 
@@ -199,19 +179,16 @@ final class MessageExtendedMediaPhoto extends MessageExtendedMedia {
   ///
   /// Properties:
   /// * [photo]: The photo
-  /// * [caption]: Photo caption
   @override
-  MessageExtendedMediaPhoto copyWith({
+  PaidMediaPhoto copyWith({
     Photo? photo,
-    FormattedText? caption,
   }) =>
-      MessageExtendedMediaPhoto(
+      PaidMediaPhoto(
         photo: photo ?? this.photo,
-        caption: caption ?? this.caption,
       );
 
   /// TDLib object type
-  static const String defaultObjectId = 'messageExtendedMediaPhoto';
+  static const String defaultObjectId = 'paidMediaPhoto';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -222,35 +199,27 @@ final class MessageExtendedMediaPhoto extends MessageExtendedMedia {
   String get currentObjectId => defaultObjectId;
 }
 
-/// **MessageExtendedMediaVideo** *(messageExtendedMediaVideo)* - child of MessageExtendedMedia
+/// **PaidMediaVideo** *(paidMediaVideo)* - child of PaidMedia
 ///
 /// The media is a video.
 ///
 /// * [video]: The video.
-/// * [caption]: Photo caption.
-final class MessageExtendedMediaVideo extends MessageExtendedMedia {
-  /// **MessageExtendedMediaVideo** *(messageExtendedMediaVideo)* - child of MessageExtendedMedia
+final class PaidMediaVideo extends PaidMedia {
+  /// **PaidMediaVideo** *(paidMediaVideo)* - child of PaidMedia
   ///
   /// The media is a video.
   ///
   /// * [video]: The video.
-  /// * [caption]: Photo caption.
-  const MessageExtendedMediaVideo({
+  const PaidMediaVideo({
     required this.video,
-    required this.caption,
   });
 
   /// The video
   final Video video;
 
-  /// Photo caption
-  final FormattedText caption;
-
   /// Parse from a json
-  factory MessageExtendedMediaVideo.fromJson(Map<String, dynamic> json) =>
-      MessageExtendedMediaVideo(
+  factory PaidMediaVideo.fromJson(Map<String, dynamic> json) => PaidMediaVideo(
         video: Video.fromJson(json['video']),
-        caption: FormattedText.fromJson(json['caption']),
       );
 
   /// Convert model to TDLib JSON format
@@ -259,7 +228,6 @@ final class MessageExtendedMediaVideo extends MessageExtendedMedia {
     return {
       "@type": defaultObjectId,
       "video": video.toJson(),
-      "caption": caption.toJson(),
     };
   }
 
@@ -267,19 +235,16 @@ final class MessageExtendedMediaVideo extends MessageExtendedMedia {
   ///
   /// Properties:
   /// * [video]: The video
-  /// * [caption]: Photo caption
   @override
-  MessageExtendedMediaVideo copyWith({
+  PaidMediaVideo copyWith({
     Video? video,
-    FormattedText? caption,
   }) =>
-      MessageExtendedMediaVideo(
+      PaidMediaVideo(
         video: video ?? this.video,
-        caption: caption ?? this.caption,
       );
 
   /// TDLib object type
-  static const String defaultObjectId = 'messageExtendedMediaVideo';
+  static const String defaultObjectId = 'paidMediaVideo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -290,53 +255,33 @@ final class MessageExtendedMediaVideo extends MessageExtendedMedia {
   String get currentObjectId => defaultObjectId;
 }
 
-/// **MessageExtendedMediaUnsupported** *(messageExtendedMediaUnsupported)* - child of MessageExtendedMedia
+/// **PaidMediaUnsupported** *(paidMediaUnsupported)* - child of PaidMedia
 ///
 /// The media is unsupported.
-///
-/// * [caption]: Media caption.
-final class MessageExtendedMediaUnsupported extends MessageExtendedMedia {
-  /// **MessageExtendedMediaUnsupported** *(messageExtendedMediaUnsupported)* - child of MessageExtendedMedia
+final class PaidMediaUnsupported extends PaidMedia {
+  /// **PaidMediaUnsupported** *(paidMediaUnsupported)* - child of PaidMedia
   ///
   /// The media is unsupported.
-  ///
-  /// * [caption]: Media caption.
-  const MessageExtendedMediaUnsupported({
-    required this.caption,
-  });
-
-  /// Media caption
-  final FormattedText caption;
+  const PaidMediaUnsupported();
 
   /// Parse from a json
-  factory MessageExtendedMediaUnsupported.fromJson(Map<String, dynamic> json) =>
-      MessageExtendedMediaUnsupported(
-        caption: FormattedText.fromJson(json['caption']),
-      );
+  factory PaidMediaUnsupported.fromJson(Map<String, dynamic> json) =>
+      const PaidMediaUnsupported();
 
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": defaultObjectId,
-      "caption": caption.toJson(),
     };
   }
 
-  /// Copy model with modified properties.
-  ///
-  /// Properties:
-  /// * [caption]: Media caption
+  /// Copy instance with no modifications.
   @override
-  MessageExtendedMediaUnsupported copyWith({
-    FormattedText? caption,
-  }) =>
-      MessageExtendedMediaUnsupported(
-        caption: caption ?? this.caption,
-      );
+  PaidMediaUnsupported copyWith() => const PaidMediaUnsupported();
 
   /// TDLib object type
-  static const String defaultObjectId = 'messageExtendedMediaUnsupported';
+  static const String defaultObjectId = 'paidMediaUnsupported';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

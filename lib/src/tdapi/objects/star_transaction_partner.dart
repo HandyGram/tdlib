@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **StarTransactionPartner** *(starTransactionPartner)* - parent
 ///
-/// Describes source or recipient of a transaction with Telegram stars.
+/// Describes source or recipient of a transaction with Telegram Stars.
 sealed class StarTransactionPartner extends TdObject {
   /// **StarTransactionPartner** *(starTransactionPartner)* - parent
   ///
-  /// Describes source or recipient of a transaction with Telegram stars.
+  /// Describes source or recipient of a transaction with Telegram Stars.
   const StarTransactionPartner();
 
   /// a StarTransactionPartner return type can be :
@@ -14,8 +14,11 @@ sealed class StarTransactionPartner extends TdObject {
   /// * [StarTransactionPartnerAppStore]
   /// * [StarTransactionPartnerGooglePlay]
   /// * [StarTransactionPartnerFragment]
-  /// * [StarTransactionPartnerUser]
+  /// * [StarTransactionPartnerTelegramAds]
+  /// * [StarTransactionPartnerBot]
+  /// * [StarTransactionPartnerBusiness]
   /// * [StarTransactionPartnerChannel]
+  /// * [StarTransactionPartnerUser]
   /// * [StarTransactionPartnerUnsupported]
   factory StarTransactionPartner.fromJson(Map<String, dynamic> json) {
     switch (json["@type"]) {
@@ -27,10 +30,16 @@ sealed class StarTransactionPartner extends TdObject {
         return StarTransactionPartnerGooglePlay.fromJson(json);
       case StarTransactionPartnerFragment.defaultObjectId:
         return StarTransactionPartnerFragment.fromJson(json);
-      case StarTransactionPartnerUser.defaultObjectId:
-        return StarTransactionPartnerUser.fromJson(json);
+      case StarTransactionPartnerTelegramAds.defaultObjectId:
+        return StarTransactionPartnerTelegramAds.fromJson(json);
+      case StarTransactionPartnerBot.defaultObjectId:
+        return StarTransactionPartnerBot.fromJson(json);
+      case StarTransactionPartnerBusiness.defaultObjectId:
+        return StarTransactionPartnerBusiness.fromJson(json);
       case StarTransactionPartnerChannel.defaultObjectId:
         return StarTransactionPartnerChannel.fromJson(json);
+      case StarTransactionPartnerUser.defaultObjectId:
+        return StarTransactionPartnerUser.fromJson(json);
       case StarTransactionPartnerUnsupported.defaultObjectId:
         return StarTransactionPartnerUnsupported.fromJson(json);
       default:
@@ -234,37 +243,74 @@ final class StarTransactionPartnerFragment extends StarTransactionPartner {
   String get currentObjectId => defaultObjectId;
 }
 
-/// **StarTransactionPartnerUser** *(starTransactionPartnerUser)* - child of StarTransactionPartner
+/// **StarTransactionPartnerTelegramAds** *(starTransactionPartnerTelegramAds)* - child of StarTransactionPartner
 ///
-/// The transaction is a transaction with another user.
-///
-/// * [userId]: Identifier of the user.
-/// * [productInfo]: Information about the bought product; may be null if none *(optional)*.
-final class StarTransactionPartnerUser extends StarTransactionPartner {
-  /// **StarTransactionPartnerUser** *(starTransactionPartnerUser)* - child of StarTransactionPartner
+/// The transaction is a transaction with Telegram Ad platform.
+final class StarTransactionPartnerTelegramAds extends StarTransactionPartner {
+  /// **StarTransactionPartnerTelegramAds** *(starTransactionPartnerTelegramAds)* - child of StarTransactionPartner
   ///
-  /// The transaction is a transaction with another user.
-  ///
-  /// * [userId]: Identifier of the user.
-  /// * [productInfo]: Information about the bought product; may be null if none *(optional)*.
-  const StarTransactionPartnerUser({
-    required this.userId,
-    this.productInfo,
-  });
-
-  /// Identifier of the user
-  final int userId;
-
-  /// Information about the bought product; may be null if none
-  final ProductInfo? productInfo;
+  /// The transaction is a transaction with Telegram Ad platform.
+  const StarTransactionPartnerTelegramAds();
 
   /// Parse from a json
-  factory StarTransactionPartnerUser.fromJson(Map<String, dynamic> json) =>
-      StarTransactionPartnerUser(
+  factory StarTransactionPartnerTelegramAds.fromJson(
+          Map<String, dynamic> json) =>
+      const StarTransactionPartnerTelegramAds();
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+    };
+  }
+
+  /// Copy instance with no modifications.
+  @override
+  StarTransactionPartnerTelegramAds copyWith() =>
+      const StarTransactionPartnerTelegramAds();
+
+  /// TDLib object type
+  static const String defaultObjectId = 'starTransactionPartnerTelegramAds';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **StarTransactionPartnerBot** *(starTransactionPartnerBot)* - child of StarTransactionPartner
+///
+/// The transaction is a transaction with a bot.
+///
+/// * [userId]: Identifier of the bot.
+/// * [purpose]: Purpose of the transaction.
+final class StarTransactionPartnerBot extends StarTransactionPartner {
+  /// **StarTransactionPartnerBot** *(starTransactionPartnerBot)* - child of StarTransactionPartner
+  ///
+  /// The transaction is a transaction with a bot.
+  ///
+  /// * [userId]: Identifier of the bot.
+  /// * [purpose]: Purpose of the transaction.
+  const StarTransactionPartnerBot({
+    required this.userId,
+    required this.purpose,
+  });
+
+  /// Identifier of the bot
+  final int userId;
+
+  /// Purpose of the transaction
+  final BotTransactionPurpose purpose;
+
+  /// Parse from a json
+  factory StarTransactionPartnerBot.fromJson(Map<String, dynamic> json) =>
+      StarTransactionPartnerBot(
         userId: json['user_id'],
-        productInfo: json['product_info'] == null
-            ? null
-            : ProductInfo.fromJson(json['product_info']),
+        purpose: BotTransactionPurpose.fromJson(json['purpose']),
       );
 
   /// Convert model to TDLib JSON format
@@ -273,27 +319,97 @@ final class StarTransactionPartnerUser extends StarTransactionPartner {
     return {
       "@type": defaultObjectId,
       "user_id": userId,
-      "product_info": productInfo?.toJson(),
+      "purpose": purpose.toJson(),
     };
   }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [user_id]: Identifier of the user
-  /// * [product_info]: Information about the bought product; may be null if none
+  /// * [user_id]: Identifier of the bot
+  /// * [purpose]: Purpose of the transaction
   @override
-  StarTransactionPartnerUser copyWith({
+  StarTransactionPartnerBot copyWith({
     int? userId,
-    ProductInfo? productInfo,
+    BotTransactionPurpose? purpose,
   }) =>
-      StarTransactionPartnerUser(
+      StarTransactionPartnerBot(
         userId: userId ?? this.userId,
-        productInfo: productInfo ?? this.productInfo,
+        purpose: purpose ?? this.purpose,
       );
 
   /// TDLib object type
-  static const String defaultObjectId = 'starTransactionPartnerUser';
+  static const String defaultObjectId = 'starTransactionPartnerBot';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **StarTransactionPartnerBusiness** *(starTransactionPartnerBusiness)* - child of StarTransactionPartner
+///
+/// The transaction is a transaction with a business account.
+///
+/// * [userId]: Identifier of the business account user.
+/// * [media]: The bought media if the trancastion wasn't refunded.
+final class StarTransactionPartnerBusiness extends StarTransactionPartner {
+  /// **StarTransactionPartnerBusiness** *(starTransactionPartnerBusiness)* - child of StarTransactionPartner
+  ///
+  /// The transaction is a transaction with a business account.
+  ///
+  /// * [userId]: Identifier of the business account user.
+  /// * [media]: The bought media if the trancastion wasn't refunded.
+  const StarTransactionPartnerBusiness({
+    required this.userId,
+    required this.media,
+  });
+
+  /// Identifier of the business account user
+  final int userId;
+
+  /// The bought media if the trancastion wasn't refunded
+  final List<PaidMedia> media;
+
+  /// Parse from a json
+  factory StarTransactionPartnerBusiness.fromJson(Map<String, dynamic> json) =>
+      StarTransactionPartnerBusiness(
+        userId: json['user_id'],
+        media: List<PaidMedia>.from((json['media'] ?? [])
+            .map((item) => PaidMedia.fromJson(item))
+            .toList()),
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "user_id": userId,
+      "media": media.map((i) => i.toJson()).toList(),
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: Identifier of the business account user
+  /// * [media]: The bought media if the trancastion wasn't refunded
+  @override
+  StarTransactionPartnerBusiness copyWith({
+    int? userId,
+    List<PaidMedia>? media,
+  }) =>
+      StarTransactionPartnerBusiness(
+        userId: userId ?? this.userId,
+        media: media ?? this.media,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'starTransactionPartnerBusiness';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -309,23 +425,30 @@ final class StarTransactionPartnerUser extends StarTransactionPartner {
 /// The transaction is a transaction with a channel chat.
 ///
 /// * [chatId]: Identifier of the chat.
+/// * [purpose]: Purpose of the transaction.
 final class StarTransactionPartnerChannel extends StarTransactionPartner {
   /// **StarTransactionPartnerChannel** *(starTransactionPartnerChannel)* - child of StarTransactionPartner
   ///
   /// The transaction is a transaction with a channel chat.
   ///
   /// * [chatId]: Identifier of the chat.
+  /// * [purpose]: Purpose of the transaction.
   const StarTransactionPartnerChannel({
     required this.chatId,
+    required this.purpose,
   });
 
   /// Identifier of the chat
   final int chatId;
 
+  /// Purpose of the transaction
+  final ChannelTransactionPurpose purpose;
+
   /// Parse from a json
   factory StarTransactionPartnerChannel.fromJson(Map<String, dynamic> json) =>
       StarTransactionPartnerChannel(
         chatId: json['chat_id'],
+        purpose: ChannelTransactionPurpose.fromJson(json['purpose']),
       );
 
   /// Convert model to TDLib JSON format
@@ -334,6 +457,7 @@ final class StarTransactionPartnerChannel extends StarTransactionPartner {
     return {
       "@type": defaultObjectId,
       "chat_id": chatId,
+      "purpose": purpose.toJson(),
     };
   }
 
@@ -341,16 +465,88 @@ final class StarTransactionPartnerChannel extends StarTransactionPartner {
   ///
   /// Properties:
   /// * [chat_id]: Identifier of the chat
+  /// * [purpose]: Purpose of the transaction
   @override
   StarTransactionPartnerChannel copyWith({
     int? chatId,
+    ChannelTransactionPurpose? purpose,
   }) =>
       StarTransactionPartnerChannel(
         chatId: chatId ?? this.chatId,
+        purpose: purpose ?? this.purpose,
       );
 
   /// TDLib object type
   static const String defaultObjectId = 'starTransactionPartnerChannel';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **StarTransactionPartnerUser** *(starTransactionPartnerUser)* - child of StarTransactionPartner
+///
+/// The transaction is a gift of Telegram Stars from another user.
+///
+/// * [userId]: Identifier of the user; 0 if the gift was anonymous.
+/// * [sticker]: A sticker to be shown in the transaction information; may be null if unknown *(optional)*.
+final class StarTransactionPartnerUser extends StarTransactionPartner {
+  /// **StarTransactionPartnerUser** *(starTransactionPartnerUser)* - child of StarTransactionPartner
+  ///
+  /// The transaction is a gift of Telegram Stars from another user.
+  ///
+  /// * [userId]: Identifier of the user; 0 if the gift was anonymous.
+  /// * [sticker]: A sticker to be shown in the transaction information; may be null if unknown *(optional)*.
+  const StarTransactionPartnerUser({
+    required this.userId,
+    this.sticker,
+  });
+
+  /// Identifier of the user; 0 if the gift was anonymous
+  final int userId;
+
+  /// A sticker to be shown in the transaction information; may be null if unknown
+  final Sticker? sticker;
+
+  /// Parse from a json
+  factory StarTransactionPartnerUser.fromJson(Map<String, dynamic> json) =>
+      StarTransactionPartnerUser(
+        userId: json['user_id'],
+        sticker:
+            json['sticker'] == null ? null : Sticker.fromJson(json['sticker']),
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "user_id": userId,
+      "sticker": sticker?.toJson(),
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: Identifier of the user; 0 if the gift was anonymous
+  /// * [sticker]: A sticker to be shown in the transaction information; may be null if unknown
+  @override
+  StarTransactionPartnerUser copyWith({
+    int? userId,
+    Sticker? sticker,
+  }) =>
+      StarTransactionPartnerUser(
+        userId: userId ?? this.userId,
+        sticker: sticker ?? this.sticker,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'starTransactionPartnerUser';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

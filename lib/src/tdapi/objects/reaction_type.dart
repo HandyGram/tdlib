@@ -12,12 +12,15 @@ sealed class ReactionType extends TdObject {
   /// a ReactionType return type can be :
   /// * [ReactionTypeEmoji]
   /// * [ReactionTypeCustomEmoji]
+  /// * [ReactionTypePaid]
   factory ReactionType.fromJson(Map<String, dynamic> json) {
     switch (json["@type"]) {
       case ReactionTypeEmoji.defaultObjectId:
         return ReactionTypeEmoji.fromJson(json);
       case ReactionTypeCustomEmoji.defaultObjectId:
         return ReactionTypeCustomEmoji.fromJson(json);
+      case ReactionTypePaid.defaultObjectId:
+        return ReactionTypePaid.fromJson(json);
       default:
         throw FormatException(
           "Unknown object ${json["@type"]} (expected child of ReactionType)",
@@ -151,6 +154,43 @@ final class ReactionTypeCustomEmoji extends ReactionType {
 
   /// TDLib object type
   static const String defaultObjectId = 'reactionTypeCustomEmoji';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **ReactionTypePaid** *(reactionTypePaid)* - child of ReactionType
+///
+/// The paid reaction in a channel chat.
+final class ReactionTypePaid extends ReactionType {
+  /// **ReactionTypePaid** *(reactionTypePaid)* - child of ReactionType
+  ///
+  /// The paid reaction in a channel chat.
+  const ReactionTypePaid();
+
+  /// Parse from a json
+  factory ReactionTypePaid.fromJson(Map<String, dynamic> json) =>
+      const ReactionTypePaid();
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+    };
+  }
+
+  /// Copy instance with no modifications.
+  @override
+  ReactionTypePaid copyWith() => const ReactionTypePaid();
+
+  /// TDLib object type
+  static const String defaultObjectId = 'reactionTypePaid';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

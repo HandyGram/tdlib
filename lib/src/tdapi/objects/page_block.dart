@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **PageBlock** *(pageBlock)* - parent
 ///
-/// Describes a block of an instant view web page.
+/// Describes a block of an instant view for a web page.
 sealed class PageBlock extends TdObject {
   /// **PageBlock** *(pageBlock)* - parent
   ///
-  /// Describes a block of an instant view web page.
+  /// Describes a block of an instant view for a web page.
   const PageBlock();
 
   /// a PageBlock return type can be :
@@ -1393,7 +1393,7 @@ final class PageBlockCover extends PageBlock {
 ///
 /// An embedded web page.
 ///
-/// * [url]: Web page URL, if available.
+/// * [url]: URL of the embedded page, if available.
 /// * [html]: HTML-markup of the embedded page.
 /// * [posterPhoto]: Poster photo, if available; may be null *(optional)*.
 /// * [width]: Block width; 0 if unknown.
@@ -1406,7 +1406,7 @@ final class PageBlockEmbedded extends PageBlock {
   ///
   /// An embedded web page.
   ///
-  /// * [url]: Web page URL, if available.
+  /// * [url]: URL of the embedded page, if available.
   /// * [html]: HTML-markup of the embedded page.
   /// * [posterPhoto]: Poster photo, if available; may be null *(optional)*.
   /// * [width]: Block width; 0 if unknown.
@@ -1425,7 +1425,7 @@ final class PageBlockEmbedded extends PageBlock {
     required this.allowScrolling,
   });
 
-  /// Web page URL, if available
+  /// URL of the embedded page, if available
   final String url;
 
   /// HTML-markup of the embedded page
@@ -1483,7 +1483,7 @@ final class PageBlockEmbedded extends PageBlock {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [url]: Web page URL, if available
+  /// * [url]: URL of the embedded page, if available
   /// * [html]: HTML-markup of the embedded page
   /// * [poster_photo]: Poster photo, if available; may be null
   /// * [width]: Block width; 0 if unknown
@@ -1529,7 +1529,7 @@ final class PageBlockEmbedded extends PageBlock {
 ///
 /// An embedded post.
 ///
-/// * [url]: Web page URL.
+/// * [url]: URL of the embedded post.
 /// * [author]: Post author.
 /// * [authorPhoto]: Post author photo; may be null *(optional)*.
 /// * [date]: Point in time (Unix timestamp) when the post was created; 0 if unknown.
@@ -1540,7 +1540,7 @@ final class PageBlockEmbeddedPost extends PageBlock {
   ///
   /// An embedded post.
   ///
-  /// * [url]: Web page URL.
+  /// * [url]: URL of the embedded post.
   /// * [author]: Post author.
   /// * [authorPhoto]: Post author photo; may be null *(optional)*.
   /// * [date]: Point in time (Unix timestamp) when the post was created; 0 if unknown.
@@ -1555,7 +1555,7 @@ final class PageBlockEmbeddedPost extends PageBlock {
     required this.caption,
   });
 
-  /// Web page URL
+  /// URL of the embedded post
   final String url;
 
   /// Post author
@@ -1605,7 +1605,7 @@ final class PageBlockEmbeddedPost extends PageBlock {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [url]: Web page URL
+  /// * [url]: URL of the embedded post
   /// * [author]: Post author
   /// * [author_photo]: Post author photo; may be null
   /// * [date]: Point in time (Unix timestamp) when the post was created; 0 if unknown

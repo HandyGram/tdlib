@@ -52,21 +52,21 @@ sealed class InputMessageReplyTo extends TdObject {
 ///
 /// Describes a message to be replied in the same chat and forum topic.
 ///
-/// * [messageId]: The identifier of the message to be replied in the same chat and forum topic.
+/// * [messageId]: The identifier of the message to be replied in the same chat and forum topic. A message can be replied in the same chat and forum topic only if messageProperties.can_be_replied.
 /// * [quote]: Quote from the message to be replied; pass null if none. Must always be null for replies in secret chats *(optional)*.
 final class InputMessageReplyToMessage extends InputMessageReplyTo {
   /// **InputMessageReplyToMessage** *(inputMessageReplyToMessage)* - child of InputMessageReplyTo
   ///
   /// Describes a message to be replied in the same chat and forum topic.
   ///
-  /// * [messageId]: The identifier of the message to be replied in the same chat and forum topic.
+  /// * [messageId]: The identifier of the message to be replied in the same chat and forum topic. A message can be replied in the same chat and forum topic only if messageProperties.can_be_replied.
   /// * [quote]: Quote from the message to be replied; pass null if none. Must always be null for replies in secret chats *(optional)*.
   const InputMessageReplyToMessage({
     required this.messageId,
     this.quote,
   });
 
-  /// The identifier of the message to be replied in the same chat and forum topic
+  /// The identifier of the message to be replied in the same chat and forum topic. A message can be replied in the same chat and forum topic only if messageProperties.can_be_replied
   final int messageId;
 
   /// Quote from the message to be replied; pass null if none. Must always be null for replies in secret chats
@@ -94,7 +94,7 @@ final class InputMessageReplyToMessage extends InputMessageReplyTo {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [message_id]: The identifier of the message to be replied in the same chat and forum topic
+  /// * [message_id]: The identifier of the message to be replied in the same chat and forum topic. A message can be replied in the same chat and forum topic only if messageProperties.can_be_replied
   /// * [quote]: Quote from the message to be replied; pass null if none. Must always be null for replies in secret chats
   @override
   InputMessageReplyToMessage copyWith({
@@ -123,7 +123,7 @@ final class InputMessageReplyToMessage extends InputMessageReplyTo {
 /// Describes a message to be replied that is from a different chat or a forum topic; not supported in secret chats.
 ///
 /// * [chatId]: The identifier of the chat to which the message to be replied belongs.
-/// * [messageId]: The identifier of the message to be replied in the specified chat. A message can be replied in another chat or topic only if message.can_be_replied_in_another_chat.
+/// * [messageId]: The identifier of the message to be replied in the specified chat. A message can be replied in another chat or forum topic only if messageProperties.can_be_replied_in_another_chat.
 /// * [quote]: Quote from the message to be replied; pass null if none *(optional)*.
 final class InputMessageReplyToExternalMessage extends InputMessageReplyTo {
   /// **InputMessageReplyToExternalMessage** *(inputMessageReplyToExternalMessage)* - child of InputMessageReplyTo
@@ -131,7 +131,7 @@ final class InputMessageReplyToExternalMessage extends InputMessageReplyTo {
   /// Describes a message to be replied that is from a different chat or a forum topic; not supported in secret chats.
   ///
   /// * [chatId]: The identifier of the chat to which the message to be replied belongs.
-  /// * [messageId]: The identifier of the message to be replied in the specified chat. A message can be replied in another chat or topic only if message.can_be_replied_in_another_chat.
+  /// * [messageId]: The identifier of the message to be replied in the specified chat. A message can be replied in another chat or forum topic only if messageProperties.can_be_replied_in_another_chat.
   /// * [quote]: Quote from the message to be replied; pass null if none *(optional)*.
   const InputMessageReplyToExternalMessage({
     required this.chatId,
@@ -142,7 +142,7 @@ final class InputMessageReplyToExternalMessage extends InputMessageReplyTo {
   /// The identifier of the chat to which the message to be replied belongs
   final int chatId;
 
-  /// The identifier of the message to be replied in the specified chat. A message can be replied in another chat or topic only if message.can_be_replied_in_another_chat
+  /// The identifier of the message to be replied in the specified chat. A message can be replied in another chat or forum topic only if messageProperties.can_be_replied_in_another_chat
   final int messageId;
 
   /// Quote from the message to be replied; pass null if none
@@ -174,7 +174,7 @@ final class InputMessageReplyToExternalMessage extends InputMessageReplyTo {
   ///
   /// Properties:
   /// * [chat_id]: The identifier of the chat to which the message to be replied belongs
-  /// * [message_id]: The identifier of the message to be replied in the specified chat. A message can be replied in another chat or topic only if message.can_be_replied_in_another_chat
+  /// * [message_id]: The identifier of the message to be replied in the specified chat. A message can be replied in another chat or forum topic only if messageProperties.can_be_replied_in_another_chat
   /// * [quote]: Quote from the message to be replied; pass null if none
   @override
   InputMessageReplyToExternalMessage copyWith({

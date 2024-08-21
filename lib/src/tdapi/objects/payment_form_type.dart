@@ -192,20 +192,20 @@ final class PaymentFormTypeRegular extends PaymentFormType {
 
 /// **PaymentFormTypeStars** *(paymentFormTypeStars)* - child of PaymentFormType
 ///
-/// The payment form is for a payment in Telegram stars.
+/// The payment form is for a payment in Telegram Stars.
 ///
-/// * [starCount]: Number of Telegram stars that will be paid.
+/// * [starCount]: Number of Telegram Stars that will be paid.
 final class PaymentFormTypeStars extends PaymentFormType {
   /// **PaymentFormTypeStars** *(paymentFormTypeStars)* - child of PaymentFormType
   ///
-  /// The payment form is for a payment in Telegram stars.
+  /// The payment form is for a payment in Telegram Stars.
   ///
-  /// * [starCount]: Number of Telegram stars that will be paid.
+  /// * [starCount]: Number of Telegram Stars that will be paid.
   const PaymentFormTypeStars({
     required this.starCount,
   });
 
-  /// Number of Telegram stars that will be paid
+  /// Number of Telegram Stars that will be paid
   final int starCount;
 
   /// Parse from a json
@@ -226,7 +226,7 @@ final class PaymentFormTypeStars extends PaymentFormType {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [star_count]: Number of Telegram stars that will be paid
+  /// * [star_count]: Number of Telegram Stars that will be paid
   @override
   PaymentFormTypeStars copyWith({
     int? starCount,

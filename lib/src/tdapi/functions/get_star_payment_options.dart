@@ -2,13 +2,13 @@ part of '../tdapi.dart';
 
 /// **GetStarPaymentOptions** *(getStarPaymentOptions)* - TDLib function
 ///
-/// Returns available options for Telegram stars purchase.
+/// Returns available options for Telegram Stars purchase.
 ///
 /// [StarPaymentOptions] is returned on completion.
 final class GetStarPaymentOptions extends TdFunction {
   /// **GetStarPaymentOptions** *(getStarPaymentOptions)* - TDLib function
   ///
-  /// Returns available options for Telegram stars purchase.
+  /// Returns available options for Telegram Stars purchase.
   ///
   /// [StarPaymentOptions] is returned on completion.
   const GetStarPaymentOptions();

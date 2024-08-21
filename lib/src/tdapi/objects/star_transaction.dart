@@ -2,20 +2,20 @@ part of '../tdapi.dart';
 
 /// **StarTransaction** *(starTransaction)* - basic class
 ///
-/// Represents a transaction changing the amount of owned Telegram stars.
+/// Represents a transaction changing the amount of owned Telegram Stars.
 ///
 /// * [id]: Unique identifier of the transaction.
-/// * [starCount]: The amount of added owned Telegram stars; negative for outgoing transactions.
+/// * [starCount]: The amount of added owned Telegram Stars; negative for outgoing transactions.
 /// * [isRefund]: True, if the transaction is a refund of a previous transaction.
 /// * [date]: Point in time (Unix timestamp) when the transaction was completed.
 /// * [partner]: Source of the incoming transaction, or its recipient for outgoing transactions.
 final class StarTransaction extends TdObject {
   /// **StarTransaction** *(starTransaction)* - basic class
   ///
-  /// Represents a transaction changing the amount of owned Telegram stars.
+  /// Represents a transaction changing the amount of owned Telegram Stars.
   ///
   /// * [id]: Unique identifier of the transaction.
-  /// * [starCount]: The amount of added owned Telegram stars; negative for outgoing transactions.
+  /// * [starCount]: The amount of added owned Telegram Stars; negative for outgoing transactions.
   /// * [isRefund]: True, if the transaction is a refund of a previous transaction.
   /// * [date]: Point in time (Unix timestamp) when the transaction was completed.
   /// * [partner]: Source of the incoming transaction, or its recipient for outgoing transactions.
@@ -30,7 +30,7 @@ final class StarTransaction extends TdObject {
   /// Unique identifier of the transaction
   final String id;
 
-  /// The amount of added owned Telegram stars; negative for outgoing transactions
+  /// The amount of added owned Telegram Stars; negative for outgoing transactions
   final int starCount;
 
   /// True, if the transaction is a refund of a previous transaction
@@ -69,7 +69,7 @@ final class StarTransaction extends TdObject {
   ///
   /// Properties:
   /// * [id]: Unique identifier of the transaction
-  /// * [star_count]: The amount of added owned Telegram stars; negative for outgoing transactions
+  /// * [star_count]: The amount of added owned Telegram Stars; negative for outgoing transactions
   /// * [is_refund]: True, if the transaction is a refund of a previous transaction
   /// * [date]: Point in time (Unix timestamp) when the transaction was completed
   /// * [partner]: Source of the incoming transaction, or its recipient for outgoing transactions

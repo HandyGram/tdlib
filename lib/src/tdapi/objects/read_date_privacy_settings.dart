@@ -17,7 +17,7 @@ final class ReadDatePrivacySettings extends TdObject {
     this.clientId,
   });
 
-  /// True, if message read date is shown to other users in private chats. If false and the current user isn't a Telegram Premium user, then they will not be able to see other's message read date.
+  /// True, if message read date is shown to other users in private chats. If false and the current user isn't a Telegram Premium user, then they will not be able to see other's message read date
   final bool showReadDate;
 
   /// [extra] callback sign
@@ -48,7 +48,7 @@ final class ReadDatePrivacySettings extends TdObject {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [show_read_date]: True, if message read date is shown to other users in private chats. If false and the current user isn't a Telegram Premium user, then they will not be able to see other's message read date.
+  /// * [show_read_date]: True, if message read date is shown to other users in private chats. If false and the current user isn't a Telegram Premium user, then they will not be able to see other's message read date
   ReadDatePrivacySettings copyWith({
     bool? showReadDate,
     dynamic extra,

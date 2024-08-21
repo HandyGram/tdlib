@@ -14,6 +14,7 @@ sealed class MessageContent extends TdObject {
   /// * [MessageAnimation]
   /// * [MessageAudio]
   /// * [MessageDocument]
+  /// * [MessagePaidMedia]
   /// * [MessagePhoto]
   /// * [MessageSticker]
   /// * [MessageVideo]
@@ -63,12 +64,14 @@ sealed class MessageContent extends TdObject {
   /// * [MessageGameScore]
   /// * [MessagePaymentSuccessful]
   /// * [MessagePaymentSuccessfulBot]
+  /// * [MessagePaymentRefunded]
   /// * [MessageGiftedPremium]
   /// * [MessagePremiumGiftCode]
   /// * [MessagePremiumGiveawayCreated]
   /// * [MessagePremiumGiveaway]
   /// * [MessagePremiumGiveawayCompleted]
   /// * [MessagePremiumGiveawayWinners]
+  /// * [MessageGiftedStars]
   /// * [MessageContactRegistered]
   /// * [MessageUsersShared]
   /// * [MessageChatShared]
@@ -89,6 +92,8 @@ sealed class MessageContent extends TdObject {
         return MessageAudio.fromJson(json);
       case MessageDocument.defaultObjectId:
         return MessageDocument.fromJson(json);
+      case MessagePaidMedia.defaultObjectId:
+        return MessagePaidMedia.fromJson(json);
       case MessagePhoto.defaultObjectId:
         return MessagePhoto.fromJson(json);
       case MessageSticker.defaultObjectId:
@@ -187,6 +192,8 @@ sealed class MessageContent extends TdObject {
         return MessagePaymentSuccessful.fromJson(json);
       case MessagePaymentSuccessfulBot.defaultObjectId:
         return MessagePaymentSuccessfulBot.fromJson(json);
+      case MessagePaymentRefunded.defaultObjectId:
+        return MessagePaymentRefunded.fromJson(json);
       case MessageGiftedPremium.defaultObjectId:
         return MessageGiftedPremium.fromJson(json);
       case MessagePremiumGiftCode.defaultObjectId:
@@ -199,6 +206,8 @@ sealed class MessageContent extends TdObject {
         return MessagePremiumGiveawayCompleted.fromJson(json);
       case MessagePremiumGiveawayWinners.defaultObjectId:
         return MessagePremiumGiveawayWinners.fromJson(json);
+      case MessageGiftedStars.defaultObjectId:
+        return MessageGiftedStars.fromJson(json);
       case MessageContactRegistered.defaultObjectId:
         return MessageContactRegistered.fromJson(json);
       case MessageUsersShared.defaultObjectId:
@@ -251,7 +260,7 @@ sealed class MessageContent extends TdObject {
 /// A text message.
 ///
 /// * [text]: Text of the message.
-/// * [webPage]: A link preview attached to the message; may be null *(optional)*.
+/// * [linkPreview]: A link preview attached to the message; may be null *(optional)*.
 /// * [linkPreviewOptions]: Options which were used for generation of the link preview; may be null if default options were used *(optional)*.
 final class MessageText extends MessageContent {
   /// **MessageText** *(messageText)* - child of MessageContent
@@ -259,11 +268,11 @@ final class MessageText extends MessageContent {
   /// A text message.
   ///
   /// * [text]: Text of the message.
-  /// * [webPage]: A link preview attached to the message; may be null *(optional)*.
+  /// * [linkPreview]: A link preview attached to the message; may be null *(optional)*.
   /// * [linkPreviewOptions]: Options which were used for generation of the link preview; may be null if default options were used *(optional)*.
   const MessageText({
     required this.text,
-    this.webPage,
+    this.linkPreview,
     this.linkPreviewOptions,
   });
 
@@ -271,7 +280,7 @@ final class MessageText extends MessageContent {
   final FormattedText text;
 
   /// A link preview attached to the message; may be null
-  final WebPage? webPage;
+  final LinkPreview? linkPreview;
 
   /// Options which were used for generation of the link preview; may be null if default options were used
   final LinkPreviewOptions? linkPreviewOptions;
@@ -279,9 +288,9 @@ final class MessageText extends MessageContent {
   /// Parse from a json
   factory MessageText.fromJson(Map<String, dynamic> json) => MessageText(
         text: FormattedText.fromJson(json['text']),
-        webPage: json['web_page'] == null
+        linkPreview: json['link_preview'] == null
             ? null
-            : WebPage.fromJson(json['web_page']),
+            : LinkPreview.fromJson(json['link_preview']),
         linkPreviewOptions: json['link_preview_options'] == null
             ? null
             : LinkPreviewOptions.fromJson(json['link_preview_options']),
@@ -293,7 +302,7 @@ final class MessageText extends MessageContent {
     return {
       "@type": defaultObjectId,
       "text": text.toJson(),
-      "web_page": webPage?.toJson(),
+      "link_preview": linkPreview?.toJson(),
       "link_preview_options": linkPreviewOptions?.toJson(),
     };
   }
@@ -302,17 +311,17 @@ final class MessageText extends MessageContent {
   ///
   /// Properties:
   /// * [text]: Text of the message
-  /// * [web_page]: A link preview attached to the message; may be null
+  /// * [link_preview]: A link preview attached to the message; may be null
   /// * [link_preview_options]: Options which were used for generation of the link preview; may be null if default options were used
   @override
   MessageText copyWith({
     FormattedText? text,
-    WebPage? webPage,
+    LinkPreview? linkPreview,
     LinkPreviewOptions? linkPreviewOptions,
   }) =>
       MessageText(
         text: text ?? this.text,
-        webPage: webPage ?? this.webPage,
+        linkPreview: linkPreview ?? this.linkPreview,
         linkPreviewOptions: linkPreviewOptions ?? this.linkPreviewOptions,
       );
 
@@ -334,7 +343,7 @@ final class MessageText extends MessageContent {
 ///
 /// * [animation]: The animation description.
 /// * [caption]: Animation caption.
-/// * [showCaptionAboveMedia]: True, if caption must be shown above the animation; otherwise, caption must be shown below the animation.
+/// * [showCaptionAboveMedia]: True, if the caption must be shown above the animation; otherwise, the caption must be shown below the animation.
 /// * [hasSpoiler]: True, if the animation preview must be covered by a spoiler animation.
 /// * [isSecret]: True, if the animation thumbnail must be blurred and the animation must be shown only while tapped.
 final class MessageAnimation extends MessageContent {
@@ -344,7 +353,7 @@ final class MessageAnimation extends MessageContent {
   ///
   /// * [animation]: The animation description.
   /// * [caption]: Animation caption.
-  /// * [showCaptionAboveMedia]: True, if caption must be shown above the animation; otherwise, caption must be shown below the animation.
+  /// * [showCaptionAboveMedia]: True, if the caption must be shown above the animation; otherwise, the caption must be shown below the animation.
   /// * [hasSpoiler]: True, if the animation preview must be covered by a spoiler animation.
   /// * [isSecret]: True, if the animation thumbnail must be blurred and the animation must be shown only while tapped.
   const MessageAnimation({
@@ -361,7 +370,7 @@ final class MessageAnimation extends MessageContent {
   /// Animation caption
   final FormattedText caption;
 
-  /// True, if caption must be shown above the animation; otherwise, caption must be shown below the animation
+  /// True, if the caption must be shown above the animation; otherwise, the caption must be shown below the animation
   final bool showCaptionAboveMedia;
 
   /// True, if the animation preview must be covered by a spoiler animation
@@ -398,7 +407,7 @@ final class MessageAnimation extends MessageContent {
   /// Properties:
   /// * [animation]: The animation description
   /// * [caption]: Animation caption
-  /// * [show_caption_above_media]: True, if caption must be shown above the animation; otherwise, caption must be shown below the animation
+  /// * [show_caption_above_media]: True, if the caption must be shown above the animation; otherwise, the caption must be shown below the animation
   /// * [has_spoiler]: True, if the animation preview must be covered by a spoiler animation
   /// * [is_secret]: True, if the animation thumbnail must be blurred and the animation must be shown only while tapped
   @override
@@ -565,13 +574,106 @@ final class MessageDocument extends MessageContent {
   String get currentObjectId => defaultObjectId;
 }
 
+/// **MessagePaidMedia** *(messagePaidMedia)* - child of MessageContent
+///
+/// A message with paid media.
+///
+/// * [starCount]: Number of Telegram Stars needed to buy access to the media in the message.
+/// * [media]: Information about the media.
+/// * [caption]: Media caption.
+/// * [showCaptionAboveMedia]: True, if the caption must be shown above the media; otherwise, the caption must be shown below the media.
+final class MessagePaidMedia extends MessageContent {
+  /// **MessagePaidMedia** *(messagePaidMedia)* - child of MessageContent
+  ///
+  /// A message with paid media.
+  ///
+  /// * [starCount]: Number of Telegram Stars needed to buy access to the media in the message.
+  /// * [media]: Information about the media.
+  /// * [caption]: Media caption.
+  /// * [showCaptionAboveMedia]: True, if the caption must be shown above the media; otherwise, the caption must be shown below the media.
+  const MessagePaidMedia({
+    required this.starCount,
+    required this.media,
+    required this.caption,
+    required this.showCaptionAboveMedia,
+  });
+
+  /// Number of Telegram Stars needed to buy access to the media in the message
+  final int starCount;
+
+  /// Information about the media
+  final List<PaidMedia> media;
+
+  /// Media caption
+  final FormattedText caption;
+
+  /// True, if the caption must be shown above the media; otherwise, the caption must be shown below the media
+  final bool showCaptionAboveMedia;
+
+  /// Parse from a json
+  factory MessagePaidMedia.fromJson(Map<String, dynamic> json) =>
+      MessagePaidMedia(
+        starCount: json['star_count'],
+        media: List<PaidMedia>.from((json['media'] ?? [])
+            .map((item) => PaidMedia.fromJson(item))
+            .toList()),
+        caption: FormattedText.fromJson(json['caption']),
+        showCaptionAboveMedia: json['show_caption_above_media'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "star_count": starCount,
+      "media": media.map((i) => i.toJson()).toList(),
+      "caption": caption.toJson(),
+      "show_caption_above_media": showCaptionAboveMedia,
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [star_count]: Number of Telegram Stars needed to buy access to the media in the message
+  /// * [media]: Information about the media
+  /// * [caption]: Media caption
+  /// * [show_caption_above_media]: True, if the caption must be shown above the media; otherwise, the caption must be shown below the media
+  @override
+  MessagePaidMedia copyWith({
+    int? starCount,
+    List<PaidMedia>? media,
+    FormattedText? caption,
+    bool? showCaptionAboveMedia,
+  }) =>
+      MessagePaidMedia(
+        starCount: starCount ?? this.starCount,
+        media: media ?? this.media,
+        caption: caption ?? this.caption,
+        showCaptionAboveMedia:
+            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'messagePaidMedia';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
 /// **MessagePhoto** *(messagePhoto)* - child of MessageContent
 ///
 /// A photo message.
 ///
 /// * [photo]: The photo.
 /// * [caption]: Photo caption.
-/// * [showCaptionAboveMedia]: True, if caption must be shown above the photo; otherwise, caption must be shown below the photo.
+/// * [showCaptionAboveMedia]: True, if the caption must be shown above the photo; otherwise, the caption must be shown below the photo.
 /// * [hasSpoiler]: True, if the photo preview must be covered by a spoiler animation.
 /// * [isSecret]: True, if the photo must be blurred and must be shown only while tapped.
 final class MessagePhoto extends MessageContent {
@@ -581,7 +683,7 @@ final class MessagePhoto extends MessageContent {
   ///
   /// * [photo]: The photo.
   /// * [caption]: Photo caption.
-  /// * [showCaptionAboveMedia]: True, if caption must be shown above the photo; otherwise, caption must be shown below the photo.
+  /// * [showCaptionAboveMedia]: True, if the caption must be shown above the photo; otherwise, the caption must be shown below the photo.
   /// * [hasSpoiler]: True, if the photo preview must be covered by a spoiler animation.
   /// * [isSecret]: True, if the photo must be blurred and must be shown only while tapped.
   const MessagePhoto({
@@ -598,7 +700,7 @@ final class MessagePhoto extends MessageContent {
   /// Photo caption
   final FormattedText caption;
 
-  /// True, if caption must be shown above the photo; otherwise, caption must be shown below the photo
+  /// True, if the caption must be shown above the photo; otherwise, the caption must be shown below the photo
   final bool showCaptionAboveMedia;
 
   /// True, if the photo preview must be covered by a spoiler animation
@@ -634,7 +736,7 @@ final class MessagePhoto extends MessageContent {
   /// Properties:
   /// * [photo]: The photo
   /// * [caption]: Photo caption
-  /// * [show_caption_above_media]: True, if caption must be shown above the photo; otherwise, caption must be shown below the photo
+  /// * [show_caption_above_media]: True, if the caption must be shown above the photo; otherwise, the caption must be shown below the photo
   /// * [has_spoiler]: True, if the photo preview must be covered by a spoiler animation
   /// * [is_secret]: True, if the photo must be blurred and must be shown only while tapped
   @override
@@ -739,7 +841,7 @@ final class MessageSticker extends MessageContent {
 ///
 /// * [video]: The video description.
 /// * [caption]: Video caption.
-/// * [showCaptionAboveMedia]: True, if caption must be shown above the video; otherwise, caption must be shown below the video.
+/// * [showCaptionAboveMedia]: True, if the caption must be shown above the video; otherwise, the caption must be shown below the video.
 /// * [hasSpoiler]: True, if the video preview must be covered by a spoiler animation.
 /// * [isSecret]: True, if the video thumbnail must be blurred and the video must be shown only while tapped.
 final class MessageVideo extends MessageContent {
@@ -749,7 +851,7 @@ final class MessageVideo extends MessageContent {
   ///
   /// * [video]: The video description.
   /// * [caption]: Video caption.
-  /// * [showCaptionAboveMedia]: True, if caption must be shown above the video; otherwise, caption must be shown below the video.
+  /// * [showCaptionAboveMedia]: True, if the caption must be shown above the video; otherwise, the caption must be shown below the video.
   /// * [hasSpoiler]: True, if the video preview must be covered by a spoiler animation.
   /// * [isSecret]: True, if the video thumbnail must be blurred and the video must be shown only while tapped.
   const MessageVideo({
@@ -766,7 +868,7 @@ final class MessageVideo extends MessageContent {
   /// Video caption
   final FormattedText caption;
 
-  /// True, if caption must be shown above the video; otherwise, caption must be shown below the video
+  /// True, if the caption must be shown above the video; otherwise, the caption must be shown below the video
   final bool showCaptionAboveMedia;
 
   /// True, if the video preview must be covered by a spoiler animation
@@ -802,7 +904,7 @@ final class MessageVideo extends MessageContent {
   /// Properties:
   /// * [video]: The video description
   /// * [caption]: Video caption
-  /// * [show_caption_above_media]: True, if caption must be shown above the video; otherwise, caption must be shown below the video
+  /// * [show_caption_above_media]: True, if the caption must be shown above the video; otherwise, the caption must be shown below the video
   /// * [has_spoiler]: True, if the video preview must be covered by a spoiler animation
   /// * [is_secret]: True, if the video thumbnail must be blurred and the video must be shown only while tapped
   @override
@@ -1727,7 +1829,8 @@ final class MessageStory extends MessageContent {
 /// * [isTest]: True, if the invoice is a test invoice.
 /// * [needShippingAddress]: True, if the shipping address must be specified.
 /// * [receiptMessageId]: The identifier of the message with the receipt, after the product has been purchased.
-/// * [extendedMedia]: Extended media attached to the invoice; may be null *(optional)*.
+/// * [paidMedia]: Extended media attached to the invoice; may be null if none *(optional)*.
+/// * [paidMediaCaption]: Extended media caption; may be null if none *(optional)*.
 final class MessageInvoice extends MessageContent {
   /// **MessageInvoice** *(messageInvoice)* - child of MessageContent
   ///
@@ -1740,7 +1843,8 @@ final class MessageInvoice extends MessageContent {
   /// * [isTest]: True, if the invoice is a test invoice.
   /// * [needShippingAddress]: True, if the shipping address must be specified.
   /// * [receiptMessageId]: The identifier of the message with the receipt, after the product has been purchased.
-  /// * [extendedMedia]: Extended media attached to the invoice; may be null *(optional)*.
+  /// * [paidMedia]: Extended media attached to the invoice; may be null if none *(optional)*.
+  /// * [paidMediaCaption]: Extended media caption; may be null if none *(optional)*.
   const MessageInvoice({
     required this.productInfo,
     required this.currency,
@@ -1749,7 +1853,8 @@ final class MessageInvoice extends MessageContent {
     required this.isTest,
     required this.needShippingAddress,
     required this.receiptMessageId,
-    this.extendedMedia,
+    this.paidMedia,
+    this.paidMediaCaption,
   });
 
   /// Information about the product
@@ -1773,8 +1878,11 @@ final class MessageInvoice extends MessageContent {
   /// The identifier of the message with the receipt, after the product has been purchased
   final int receiptMessageId;
 
-  /// Extended media attached to the invoice; may be null
-  final MessageExtendedMedia? extendedMedia;
+  /// Extended media attached to the invoice; may be null if none
+  final PaidMedia? paidMedia;
+
+  /// Extended media caption; may be null if none
+  final FormattedText? paidMediaCaption;
 
   /// Parse from a json
   factory MessageInvoice.fromJson(Map<String, dynamic> json) => MessageInvoice(
@@ -1785,9 +1893,12 @@ final class MessageInvoice extends MessageContent {
         isTest: json['is_test'],
         needShippingAddress: json['need_shipping_address'],
         receiptMessageId: json['receipt_message_id'],
-        extendedMedia: json['extended_media'] == null
+        paidMedia: json['paid_media'] == null
             ? null
-            : MessageExtendedMedia.fromJson(json['extended_media']),
+            : PaidMedia.fromJson(json['paid_media']),
+        paidMediaCaption: json['paid_media_caption'] == null
+            ? null
+            : FormattedText.fromJson(json['paid_media_caption']),
       );
 
   /// Convert model to TDLib JSON format
@@ -1802,7 +1913,8 @@ final class MessageInvoice extends MessageContent {
       "is_test": isTest,
       "need_shipping_address": needShippingAddress,
       "receipt_message_id": receiptMessageId,
-      "extended_media": extendedMedia?.toJson(),
+      "paid_media": paidMedia?.toJson(),
+      "paid_media_caption": paidMediaCaption?.toJson(),
     };
   }
 
@@ -1816,7 +1928,8 @@ final class MessageInvoice extends MessageContent {
   /// * [is_test]: True, if the invoice is a test invoice
   /// * [need_shipping_address]: True, if the shipping address must be specified
   /// * [receipt_message_id]: The identifier of the message with the receipt, after the product has been purchased
-  /// * [extended_media]: Extended media attached to the invoice; may be null
+  /// * [paid_media]: Extended media attached to the invoice; may be null if none
+  /// * [paid_media_caption]: Extended media caption; may be null if none
   @override
   MessageInvoice copyWith({
     ProductInfo? productInfo,
@@ -1826,7 +1939,8 @@ final class MessageInvoice extends MessageContent {
     bool? isTest,
     bool? needShippingAddress,
     int? receiptMessageId,
-    MessageExtendedMedia? extendedMedia,
+    PaidMedia? paidMedia,
+    FormattedText? paidMediaCaption,
   }) =>
       MessageInvoice(
         productInfo: productInfo ?? this.productInfo,
@@ -1836,7 +1950,8 @@ final class MessageInvoice extends MessageContent {
         isTest: isTest ?? this.isTest,
         needShippingAddress: needShippingAddress ?? this.needShippingAddress,
         receiptMessageId: receiptMessageId ?? this.receiptMessageId,
-        extendedMedia: extendedMedia ?? this.extendedMedia,
+        paidMedia: paidMedia ?? this.paidMedia,
+        paidMediaCaption: paidMediaCaption ?? this.paidMediaCaption,
       );
 
   /// TDLib object type
@@ -3863,11 +3978,126 @@ final class MessagePaymentSuccessfulBot extends MessageContent {
   String get currentObjectId => defaultObjectId;
 }
 
+/// **MessagePaymentRefunded** *(messagePaymentRefunded)* - child of MessageContent
+///
+/// A payment has been refunded.
+///
+/// * [ownerId]: Identifier of the previous owner of the Telegram Stars that refunds them.
+/// * [currency]: Currency for the price of the product.
+/// * [totalAmount]: Total price for the product, in the smallest units of the currency.
+/// * [invoicePayload]: Invoice payload; only for bots.
+/// * [telegramPaymentChargeId]: Telegram payment identifier.
+/// * [providerPaymentChargeId]: Provider payment identifier.
+final class MessagePaymentRefunded extends MessageContent {
+  /// **MessagePaymentRefunded** *(messagePaymentRefunded)* - child of MessageContent
+  ///
+  /// A payment has been refunded.
+  ///
+  /// * [ownerId]: Identifier of the previous owner of the Telegram Stars that refunds them.
+  /// * [currency]: Currency for the price of the product.
+  /// * [totalAmount]: Total price for the product, in the smallest units of the currency.
+  /// * [invoicePayload]: Invoice payload; only for bots.
+  /// * [telegramPaymentChargeId]: Telegram payment identifier.
+  /// * [providerPaymentChargeId]: Provider payment identifier.
+  const MessagePaymentRefunded({
+    required this.ownerId,
+    required this.currency,
+    required this.totalAmount,
+    required this.invoicePayload,
+    required this.telegramPaymentChargeId,
+    required this.providerPaymentChargeId,
+  });
+
+  /// Identifier of the previous owner of the Telegram Stars that refunds them
+  final MessageSender ownerId;
+
+  /// Currency for the price of the product
+  final String currency;
+
+  /// Total price for the product, in the smallest units of the currency
+  final int totalAmount;
+
+  /// Invoice payload; only for bots
+  final String invoicePayload;
+
+  /// Telegram payment identifier
+  final String telegramPaymentChargeId;
+
+  /// Provider payment identifier
+  final String providerPaymentChargeId;
+
+  /// Parse from a json
+  factory MessagePaymentRefunded.fromJson(Map<String, dynamic> json) =>
+      MessagePaymentRefunded(
+        ownerId: MessageSender.fromJson(json['owner_id']),
+        currency: json['currency'],
+        totalAmount: json['total_amount'],
+        invoicePayload: json['invoice_payload'],
+        telegramPaymentChargeId: json['telegram_payment_charge_id'],
+        providerPaymentChargeId: json['provider_payment_charge_id'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "owner_id": ownerId.toJson(),
+      "currency": currency,
+      "total_amount": totalAmount,
+      "invoice_payload": invoicePayload,
+      "telegram_payment_charge_id": telegramPaymentChargeId,
+      "provider_payment_charge_id": providerPaymentChargeId,
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [owner_id]: Identifier of the previous owner of the Telegram Stars that refunds them
+  /// * [currency]: Currency for the price of the product
+  /// * [total_amount]: Total price for the product, in the smallest units of the currency
+  /// * [invoice_payload]: Invoice payload; only for bots
+  /// * [telegram_payment_charge_id]: Telegram payment identifier
+  /// * [provider_payment_charge_id]: Provider payment identifier
+  @override
+  MessagePaymentRefunded copyWith({
+    MessageSender? ownerId,
+    String? currency,
+    int? totalAmount,
+    String? invoicePayload,
+    String? telegramPaymentChargeId,
+    String? providerPaymentChargeId,
+  }) =>
+      MessagePaymentRefunded(
+        ownerId: ownerId ?? this.ownerId,
+        currency: currency ?? this.currency,
+        totalAmount: totalAmount ?? this.totalAmount,
+        invoicePayload: invoicePayload ?? this.invoicePayload,
+        telegramPaymentChargeId:
+            telegramPaymentChargeId ?? this.telegramPaymentChargeId,
+        providerPaymentChargeId:
+            providerPaymentChargeId ?? this.providerPaymentChargeId,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'messagePaymentRefunded';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
 /// **MessageGiftedPremium** *(messageGiftedPremium)* - child of MessageContent
 ///
-/// Telegram Premium was gifted to the user.
+/// Telegram Premium was gifted to a user.
 ///
-/// * [gifterUserId]: The identifier of a user that gifted Telegram Premium; 0 if the gift was anonymous.
+/// * [gifterUserId]: The identifier of a user that gifted Telegram Premium; 0 if the gift was anonymous or is outgoing.
+/// * [receiverUserId]: The identifier of a user that received Telegram Premium; 0 if the gift is incoming.
 /// * [currency]: Currency for the paid amount.
 /// * [amount]: The paid amount, in the smallest units of the currency.
 /// * [cryptocurrency]: Cryptocurrency used to pay for the gift; may be empty if none.
@@ -3877,9 +4107,10 @@ final class MessagePaymentSuccessfulBot extends MessageContent {
 final class MessageGiftedPremium extends MessageContent {
   /// **MessageGiftedPremium** *(messageGiftedPremium)* - child of MessageContent
   ///
-  /// Telegram Premium was gifted to the user.
+  /// Telegram Premium was gifted to a user.
   ///
-  /// * [gifterUserId]: The identifier of a user that gifted Telegram Premium; 0 if the gift was anonymous.
+  /// * [gifterUserId]: The identifier of a user that gifted Telegram Premium; 0 if the gift was anonymous or is outgoing.
+  /// * [receiverUserId]: The identifier of a user that received Telegram Premium; 0 if the gift is incoming.
   /// * [currency]: Currency for the paid amount.
   /// * [amount]: The paid amount, in the smallest units of the currency.
   /// * [cryptocurrency]: Cryptocurrency used to pay for the gift; may be empty if none.
@@ -3888,6 +4119,7 @@ final class MessageGiftedPremium extends MessageContent {
   /// * [sticker]: A sticker to be shown in the message; may be null if unknown *(optional)*.
   const MessageGiftedPremium({
     required this.gifterUserId,
+    required this.receiverUserId,
     required this.currency,
     required this.amount,
     required this.cryptocurrency,
@@ -3896,8 +4128,11 @@ final class MessageGiftedPremium extends MessageContent {
     this.sticker,
   });
 
-  /// The identifier of a user that gifted Telegram Premium; 0 if the gift was anonymous
+  /// The identifier of a user that gifted Telegram Premium; 0 if the gift was anonymous or is outgoing
   final int gifterUserId;
+
+  /// The identifier of a user that received Telegram Premium; 0 if the gift is incoming
+  final int receiverUserId;
 
   /// Currency for the paid amount
   final String currency;
@@ -3921,6 +4156,7 @@ final class MessageGiftedPremium extends MessageContent {
   factory MessageGiftedPremium.fromJson(Map<String, dynamic> json) =>
       MessageGiftedPremium(
         gifterUserId: json['gifter_user_id'],
+        receiverUserId: json['receiver_user_id'],
         currency: json['currency'],
         amount: json['amount'],
         cryptocurrency: json['cryptocurrency'],
@@ -3938,6 +4174,7 @@ final class MessageGiftedPremium extends MessageContent {
     return {
       "@type": defaultObjectId,
       "gifter_user_id": gifterUserId,
+      "receiver_user_id": receiverUserId,
       "currency": currency,
       "amount": amount,
       "cryptocurrency": cryptocurrency,
@@ -3950,7 +4187,8 @@ final class MessageGiftedPremium extends MessageContent {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [gifter_user_id]: The identifier of a user that gifted Telegram Premium; 0 if the gift was anonymous
+  /// * [gifter_user_id]: The identifier of a user that gifted Telegram Premium; 0 if the gift was anonymous or is outgoing
+  /// * [receiver_user_id]: The identifier of a user that received Telegram Premium; 0 if the gift is incoming
   /// * [currency]: Currency for the paid amount
   /// * [amount]: The paid amount, in the smallest units of the currency
   /// * [cryptocurrency]: Cryptocurrency used to pay for the gift; may be empty if none
@@ -3960,6 +4198,7 @@ final class MessageGiftedPremium extends MessageContent {
   @override
   MessageGiftedPremium copyWith({
     int? gifterUserId,
+    int? receiverUserId,
     String? currency,
     int? amount,
     String? cryptocurrency,
@@ -3969,6 +4208,7 @@ final class MessageGiftedPremium extends MessageContent {
   }) =>
       MessageGiftedPremium(
         gifterUserId: gifterUserId ?? this.gifterUserId,
+        receiverUserId: receiverUserId ?? this.receiverUserId,
         currency: currency ?? this.currency,
         amount: amount ?? this.amount,
         cryptocurrency: cryptocurrency ?? this.cryptocurrency,
@@ -4152,11 +4392,11 @@ final class MessagePremiumGiftCode extends MessageContent {
 
 /// **MessagePremiumGiveawayCreated** *(messagePremiumGiveawayCreated)* - child of MessageContent
 ///
-/// A Telegram Premium giveaway was created for the chat.
+/// A Telegram Premium giveaway was created for the chat. Use telegramPaymentPurposePremiumGiveaway or storePaymentPurposePremiumGiveaway to create a giveaway.
 final class MessagePremiumGiveawayCreated extends MessageContent {
   /// **MessagePremiumGiveawayCreated** *(messagePremiumGiveawayCreated)* - child of MessageContent
   ///
-  /// A Telegram Premium giveaway was created for the chat.
+  /// A Telegram Premium giveaway was created for the chat. Use telegramPaymentPurposePremiumGiveaway or storePaymentPurposePremiumGiveaway to create a giveaway.
   const MessagePremiumGiveawayCreated();
 
   /// Parse from a json
@@ -4517,6 +4757,154 @@ final class MessagePremiumGiveawayWinners extends MessageContent {
 
   /// TDLib object type
   static const String defaultObjectId = 'messagePremiumGiveawayWinners';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **MessageGiftedStars** *(messageGiftedStars)* - child of MessageContent
+///
+/// Telegram Stars were gifted to a user.
+///
+/// * [gifterUserId]: The identifier of a user that gifted Telegram Stars; 0 if the gift was anonymous or is outgoing.
+/// * [receiverUserId]: The identifier of a user that received Telegram Stars; 0 if the gift is incoming.
+/// * [currency]: Currency for the paid amount.
+/// * [amount]: The paid amount, in the smallest units of the currency.
+/// * [cryptocurrency]: Cryptocurrency used to pay for the gift; may be empty if none.
+/// * [cryptocurrencyAmount]: The paid amount, in the smallest units of the cryptocurrency; 0 if none.
+/// * [starCount]: Number of Telegram Stars that were gifted.
+/// * [transactionId]: Identifier of the transaction for Telegram Stars purchase; for receiver only.
+/// * [sticker]: A sticker to be shown in the message; may be null if unknown *(optional)*.
+final class MessageGiftedStars extends MessageContent {
+  /// **MessageGiftedStars** *(messageGiftedStars)* - child of MessageContent
+  ///
+  /// Telegram Stars were gifted to a user.
+  ///
+  /// * [gifterUserId]: The identifier of a user that gifted Telegram Stars; 0 if the gift was anonymous or is outgoing.
+  /// * [receiverUserId]: The identifier of a user that received Telegram Stars; 0 if the gift is incoming.
+  /// * [currency]: Currency for the paid amount.
+  /// * [amount]: The paid amount, in the smallest units of the currency.
+  /// * [cryptocurrency]: Cryptocurrency used to pay for the gift; may be empty if none.
+  /// * [cryptocurrencyAmount]: The paid amount, in the smallest units of the cryptocurrency; 0 if none.
+  /// * [starCount]: Number of Telegram Stars that were gifted.
+  /// * [transactionId]: Identifier of the transaction for Telegram Stars purchase; for receiver only.
+  /// * [sticker]: A sticker to be shown in the message; may be null if unknown *(optional)*.
+  const MessageGiftedStars({
+    required this.gifterUserId,
+    required this.receiverUserId,
+    required this.currency,
+    required this.amount,
+    required this.cryptocurrency,
+    required this.cryptocurrencyAmount,
+    required this.starCount,
+    required this.transactionId,
+    this.sticker,
+  });
+
+  /// The identifier of a user that gifted Telegram Stars; 0 if the gift was anonymous or is outgoing
+  final int gifterUserId;
+
+  /// The identifier of a user that received Telegram Stars; 0 if the gift is incoming
+  final int receiverUserId;
+
+  /// Currency for the paid amount
+  final String currency;
+
+  /// The paid amount, in the smallest units of the currency
+  final int amount;
+
+  /// Cryptocurrency used to pay for the gift; may be empty if none
+  final String cryptocurrency;
+
+  /// The paid amount, in the smallest units of the cryptocurrency; 0 if none
+  final int cryptocurrencyAmount;
+
+  /// Number of Telegram Stars that were gifted
+  final int starCount;
+
+  /// Identifier of the transaction for Telegram Stars purchase; for receiver only
+  final String transactionId;
+
+  /// A sticker to be shown in the message; may be null if unknown
+  final Sticker? sticker;
+
+  /// Parse from a json
+  factory MessageGiftedStars.fromJson(Map<String, dynamic> json) =>
+      MessageGiftedStars(
+        gifterUserId: json['gifter_user_id'],
+        receiverUserId: json['receiver_user_id'],
+        currency: json['currency'],
+        amount: json['amount'],
+        cryptocurrency: json['cryptocurrency'],
+        cryptocurrencyAmount: json['cryptocurrency_amount'] is int
+            ? json['cryptocurrency_amount']
+            : int.tryParse(json['cryptocurrency_amount'] ?? "") ?? 0,
+        starCount: json['star_count'],
+        transactionId: json['transaction_id'],
+        sticker:
+            json['sticker'] == null ? null : Sticker.fromJson(json['sticker']),
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "gifter_user_id": gifterUserId,
+      "receiver_user_id": receiverUserId,
+      "currency": currency,
+      "amount": amount,
+      "cryptocurrency": cryptocurrency,
+      "cryptocurrency_amount": cryptocurrencyAmount,
+      "star_count": starCount,
+      "transaction_id": transactionId,
+      "sticker": sticker?.toJson(),
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [gifter_user_id]: The identifier of a user that gifted Telegram Stars; 0 if the gift was anonymous or is outgoing
+  /// * [receiver_user_id]: The identifier of a user that received Telegram Stars; 0 if the gift is incoming
+  /// * [currency]: Currency for the paid amount
+  /// * [amount]: The paid amount, in the smallest units of the currency
+  /// * [cryptocurrency]: Cryptocurrency used to pay for the gift; may be empty if none
+  /// * [cryptocurrency_amount]: The paid amount, in the smallest units of the cryptocurrency; 0 if none
+  /// * [star_count]: Number of Telegram Stars that were gifted
+  /// * [transaction_id]: Identifier of the transaction for Telegram Stars purchase; for receiver only
+  /// * [sticker]: A sticker to be shown in the message; may be null if unknown
+  @override
+  MessageGiftedStars copyWith({
+    int? gifterUserId,
+    int? receiverUserId,
+    String? currency,
+    int? amount,
+    String? cryptocurrency,
+    int? cryptocurrencyAmount,
+    int? starCount,
+    String? transactionId,
+    Sticker? sticker,
+  }) =>
+      MessageGiftedStars(
+        gifterUserId: gifterUserId ?? this.gifterUserId,
+        receiverUserId: receiverUserId ?? this.receiverUserId,
+        currency: currency ?? this.currency,
+        amount: amount ?? this.amount,
+        cryptocurrency: cryptocurrency ?? this.cryptocurrency,
+        cryptocurrencyAmount: cryptocurrencyAmount ?? this.cryptocurrencyAmount,
+        starCount: starCount ?? this.starCount,
+        transactionId: transactionId ?? this.transactionId,
+        sticker: sticker ?? this.sticker,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'messageGiftedStars';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

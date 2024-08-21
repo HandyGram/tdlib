@@ -5,14 +5,14 @@ part of '../tdapi.dart';
 /// Describes a button to be shown instead of bot commands menu button.
 ///
 /// * [text]: Text of the button.
-/// * [url]: URL to be passed to openWebApp.
+/// * [url]: URL of a Web App to open when the button is pressed. If the link is of the type internalLinkTypeWebApp, then it must be processed accordingly. Otherwise, the link must be passed to openWebApp.
 final class BotMenuButton extends TdObject {
   /// **BotMenuButton** *(botMenuButton)* - basic class
   ///
   /// Describes a button to be shown instead of bot commands menu button.
   ///
   /// * [text]: Text of the button.
-  /// * [url]: URL to be passed to openWebApp.
+  /// * [url]: URL of a Web App to open when the button is pressed. If the link is of the type internalLinkTypeWebApp, then it must be processed accordingly. Otherwise, the link must be passed to openWebApp.
   const BotMenuButton({
     required this.text,
     required this.url,
@@ -23,7 +23,7 @@ final class BotMenuButton extends TdObject {
   /// Text of the button
   final String text;
 
-  /// URL to be passed to openWebApp
+  /// URL of a Web App to open when the button is pressed. If the link is of the type internalLinkTypeWebApp, then it must be processed accordingly. Otherwise, the link must be passed to openWebApp
   final String url;
 
   /// [extra] callback sign
@@ -56,7 +56,7 @@ final class BotMenuButton extends TdObject {
   ///
   /// Properties:
   /// * [text]: Text of the button
-  /// * [url]: URL to be passed to openWebApp
+  /// * [url]: URL of a Web App to open when the button is pressed. If the link is of the type internalLinkTypeWebApp, then it must be processed accordingly. Otherwise, the link must be passed to openWebApp
   BotMenuButton copyWith({
     String? text,
     String? url,

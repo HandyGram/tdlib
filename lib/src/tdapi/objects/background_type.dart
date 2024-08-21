@@ -146,7 +146,7 @@ final class BackgroundTypePattern extends BackgroundType {
   /// Fill of the background
   final BackgroundFill fill;
 
-  /// Intensity of the pattern when it is shown above the filled background; 0-100.
+  /// Intensity of the pattern when it is shown above the filled background; 0-100
   final int intensity;
 
   /// True, if the background fill must be applied only to the pattern itself. All other pixels are black in this case. For dark themes only
@@ -180,7 +180,7 @@ final class BackgroundTypePattern extends BackgroundType {
   ///
   /// Properties:
   /// * [fill]: Fill of the background
-  /// * [intensity]: Intensity of the pattern when it is shown above the filled background; 0-100.
+  /// * [intensity]: Intensity of the pattern when it is shown above the filled background; 0-100
   /// * [is_inverted]: True, if the background fill must be applied only to the pattern itself. All other pixels are black in this case. For dark themes only
   /// * [is_moving]: True, if the background needs to be slightly moved when device is tilted
   @override

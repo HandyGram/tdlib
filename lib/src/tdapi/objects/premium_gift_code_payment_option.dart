@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **PremiumGiftCodePaymentOption** *(premiumGiftCodePaymentOption)* - basic class
 ///
-/// Describes an option for creating Telegram Premium gift codes.
+/// Describes an option for creating Telegram Premium gift codes. Use telegramPaymentPurposePremiumGiftCodes for out-of-store payments.
 ///
 /// * [currency]: ISO 4217 currency code for Telegram Premium gift code payment.
 /// * [amount]: The amount to pay, in the smallest units of the currency.
@@ -13,7 +13,7 @@ part of '../tdapi.dart';
 final class PremiumGiftCodePaymentOption extends TdObject {
   /// **PremiumGiftCodePaymentOption** *(premiumGiftCodePaymentOption)* - basic class
   ///
-  /// Describes an option for creating Telegram Premium gift codes.
+  /// Describes an option for creating Telegram Premium gift codes. Use telegramPaymentPurposePremiumGiftCodes for out-of-store payments.
   ///
   /// * [currency]: ISO 4217 currency code for Telegram Premium gift code payment.
   /// * [amount]: The amount to pay, in the smallest units of the currency.

@@ -2,14 +2,14 @@ part of '../tdapi.dart';
 
 /// **PageBlockCaption** *(pageBlockCaption)* - basic class
 ///
-/// Contains a caption of an instant view web page block, consisting of a text and a trailing credit.
+/// Contains a caption of another block.
 ///
 /// * [text]: Content of the caption.
 /// * [credit]: Block credit (like HTML tag <cite>).
 final class PageBlockCaption extends TdObject {
   /// **PageBlockCaption** *(pageBlockCaption)* - basic class
   ///
-  /// Contains a caption of an instant view web page block, consisting of a text and a trailing credit.
+  /// Contains a caption of another block.
   ///
   /// * [text]: Content of the caption.
   /// * [credit]: Block credit (like HTML tag <cite>).

@@ -12,6 +12,7 @@ part of '../tdapi.dart';
 /// * [minithumbnail]: Video minithumbnail; may be null *(optional)*.
 /// * [thumbnail]: Video thumbnail in JPEG or MPEG4 format; may be null *(optional)*.
 /// * [preloadPrefixSize]: Size of file prefix, which is supposed to be preloaded, in bytes.
+/// * [coverFrameTimestamp]: Timestamp of the frame used as video thumbnail.
 /// * [video]: File containing the video.
 final class StoryVideo extends TdObject {
   /// **StoryVideo** *(storyVideo)* - basic class
@@ -26,6 +27,7 @@ final class StoryVideo extends TdObject {
   /// * [minithumbnail]: Video minithumbnail; may be null *(optional)*.
   /// * [thumbnail]: Video thumbnail in JPEG or MPEG4 format; may be null *(optional)*.
   /// * [preloadPrefixSize]: Size of file prefix, which is supposed to be preloaded, in bytes.
+  /// * [coverFrameTimestamp]: Timestamp of the frame used as video thumbnail.
   /// * [video]: File containing the video.
   const StoryVideo({
     required this.duration,
@@ -36,6 +38,7 @@ final class StoryVideo extends TdObject {
     this.minithumbnail,
     this.thumbnail,
     required this.preloadPrefixSize,
+    required this.coverFrameTimestamp,
     required this.video,
   });
 
@@ -63,6 +66,9 @@ final class StoryVideo extends TdObject {
   /// Size of file prefix, which is supposed to be preloaded, in bytes
   final int preloadPrefixSize;
 
+  /// Timestamp of the frame used as video thumbnail
+  final double coverFrameTimestamp;
+
   /// File containing the video
   final File video;
 
@@ -80,6 +86,7 @@ final class StoryVideo extends TdObject {
             ? null
             : Thumbnail.fromJson(json['thumbnail']),
         preloadPrefixSize: json['preload_prefix_size'],
+        coverFrameTimestamp: json['cover_frame_timestamp'],
         video: File.fromJson(json['video']),
       );
 
@@ -96,6 +103,7 @@ final class StoryVideo extends TdObject {
       "minithumbnail": minithumbnail?.toJson(),
       "thumbnail": thumbnail?.toJson(),
       "preload_prefix_size": preloadPrefixSize,
+      "cover_frame_timestamp": coverFrameTimestamp,
       "video": video.toJson(),
     };
   }
@@ -111,6 +119,7 @@ final class StoryVideo extends TdObject {
   /// * [minithumbnail]: Video minithumbnail; may be null
   /// * [thumbnail]: Video thumbnail in JPEG or MPEG4 format; may be null
   /// * [preload_prefix_size]: Size of file prefix, which is supposed to be preloaded, in bytes
+  /// * [cover_frame_timestamp]: Timestamp of the frame used as video thumbnail
   /// * [video]: File containing the video
   StoryVideo copyWith({
     double? duration,
@@ -121,6 +130,7 @@ final class StoryVideo extends TdObject {
     Minithumbnail? minithumbnail,
     Thumbnail? thumbnail,
     int? preloadPrefixSize,
+    double? coverFrameTimestamp,
     File? video,
   }) =>
       StoryVideo(
@@ -132,6 +142,7 @@ final class StoryVideo extends TdObject {
         minithumbnail: minithumbnail ?? this.minithumbnail,
         thumbnail: thumbnail ?? this.thumbnail,
         preloadPrefixSize: preloadPrefixSize ?? this.preloadPrefixSize,
+        coverFrameTimestamp: coverFrameTimestamp ?? this.coverFrameTimestamp,
         video: video ?? this.video,
       );
 

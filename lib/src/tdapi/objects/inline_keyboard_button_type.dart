@@ -70,18 +70,18 @@ sealed class InlineKeyboardButtonType extends TdObject {
 ///
 /// A button that opens a specified URL.
 ///
-/// * [url]: HTTP or tg:// URL to open.
+/// * [url]: HTTP or tg:// URL to open. If the link is of the type internalLinkTypeWebApp, then the button must be marked as a Web App button.
 final class InlineKeyboardButtonTypeUrl extends InlineKeyboardButtonType {
   /// **InlineKeyboardButtonTypeUrl** *(inlineKeyboardButtonTypeUrl)* - child of InlineKeyboardButtonType
   ///
   /// A button that opens a specified URL.
   ///
-  /// * [url]: HTTP or tg:// URL to open.
+  /// * [url]: HTTP or tg:// URL to open. If the link is of the type internalLinkTypeWebApp, then the button must be marked as a Web App button.
   const InlineKeyboardButtonTypeUrl({
     required this.url,
   });
 
-  /// HTTP or tg:// URL to open
+  /// HTTP or tg:// URL to open. If the link is of the type internalLinkTypeWebApp, then the button must be marked as a Web App button
   final String url;
 
   /// Parse from a json
@@ -102,7 +102,7 @@ final class InlineKeyboardButtonTypeUrl extends InlineKeyboardButtonType {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [url]: HTTP or tg:// URL to open
+  /// * [url]: HTTP or tg:// URL to open. If the link is of the type internalLinkTypeWebApp, then the button must be marked as a Web App button
   @override
   InlineKeyboardButtonTypeUrl copyWith({
     String? url,

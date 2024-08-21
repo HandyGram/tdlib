@@ -971,18 +971,18 @@ final class TextEntityTypeCustomEmoji extends TextEntityType {
 ///
 /// A media timestamp.
 ///
-/// * [mediaTimestamp]: Timestamp from which a video/audio/video note/voice note/story playing must start, in seconds. The media can be in the content or the web page preview of the current message, or in the same places in the replied message.
+/// * [mediaTimestamp]: Timestamp from which a video/audio/video note/voice note/story playing must start, in seconds. The media can be in the content or the link preview of the current message, or in the same places in the replied message.
 final class TextEntityTypeMediaTimestamp extends TextEntityType {
   /// **TextEntityTypeMediaTimestamp** *(textEntityTypeMediaTimestamp)* - child of TextEntityType
   ///
   /// A media timestamp.
   ///
-  /// * [mediaTimestamp]: Timestamp from which a video/audio/video note/voice note/story playing must start, in seconds. The media can be in the content or the web page preview of the current message, or in the same places in the replied message.
+  /// * [mediaTimestamp]: Timestamp from which a video/audio/video note/voice note/story playing must start, in seconds. The media can be in the content or the link preview of the current message, or in the same places in the replied message.
   const TextEntityTypeMediaTimestamp({
     required this.mediaTimestamp,
   });
 
-  /// Timestamp from which a video/audio/video note/voice note/story playing must start, in seconds. The media can be in the content or the web page preview of the current message, or in the same places in the replied message
+  /// Timestamp from which a video/audio/video note/voice note/story playing must start, in seconds. The media can be in the content or the link preview of the current message, or in the same places in the replied message
   final int mediaTimestamp;
 
   /// Parse from a json
@@ -1003,7 +1003,7 @@ final class TextEntityTypeMediaTimestamp extends TextEntityType {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [media_timestamp]: Timestamp from which a video/audio/video note/voice note/story playing must start, in seconds. The media can be in the content or the web page preview of the current message, or in the same places in the replied message
+  /// * [media_timestamp]: Timestamp from which a video/audio/video note/voice note/story playing must start, in seconds. The media can be in the content or the link preview of the current message, or in the same places in the replied message
   @override
   TextEntityTypeMediaTimestamp copyWith({
     int? mediaTimestamp,

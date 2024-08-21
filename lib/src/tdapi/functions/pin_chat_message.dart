@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **PinChatMessage** *(pinChatMessage)* - TDLib function
 ///
-/// Pins a message in a chat; requires can_pin_messages member right if the chat is a basic group or supergroup, or can_edit_messages administrator right if the chat is a channel.
+/// Pins a message in a chat. A message can be pinned only if messageProperties.can_be_pinned.
 ///
 /// * [chatId]: Identifier of the chat.
 /// * [messageId]: Identifier of the new pinned message.
@@ -13,7 +13,7 @@ part of '../tdapi.dart';
 final class PinChatMessage extends TdFunction {
   /// **PinChatMessage** *(pinChatMessage)* - TDLib function
   ///
-  /// Pins a message in a chat; requires can_pin_messages member right if the chat is a basic group or supergroup, or can_edit_messages administrator right if the chat is a channel.
+  /// Pins a message in a chat. A message can be pinned only if messageProperties.can_be_pinned.
   ///
   /// * [chatId]: Identifier of the chat.
   /// * [messageId]: Identifier of the new pinned message.

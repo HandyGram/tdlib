@@ -2,21 +2,21 @@ part of '../tdapi.dart';
 
 /// **StarPaymentOption** *(starPaymentOption)* - basic class
 ///
-/// Describes an option for buying Telegram stars.
+/// Describes an option for buying Telegram Stars. Use telegramPaymentPurposeStars for out-of-store payments.
 ///
 /// * [currency]: ISO 4217 currency code for the payment.
 /// * [amount]: The amount to pay, in the smallest units of the currency.
-/// * [starCount]: Number of Telegram stars that will be purchased.
+/// * [starCount]: Number of Telegram Stars that will be purchased.
 /// * [storeProductId]: Identifier of the store product associated with the option; may be empty if none.
 /// * [isAdditional]: True, if the option must be shown only in the full list of payment options.
 final class StarPaymentOption extends TdObject {
   /// **StarPaymentOption** *(starPaymentOption)* - basic class
   ///
-  /// Describes an option for buying Telegram stars.
+  /// Describes an option for buying Telegram Stars. Use telegramPaymentPurposeStars for out-of-store payments.
   ///
   /// * [currency]: ISO 4217 currency code for the payment.
   /// * [amount]: The amount to pay, in the smallest units of the currency.
-  /// * [starCount]: Number of Telegram stars that will be purchased.
+  /// * [starCount]: Number of Telegram Stars that will be purchased.
   /// * [storeProductId]: Identifier of the store product associated with the option; may be empty if none.
   /// * [isAdditional]: True, if the option must be shown only in the full list of payment options.
   const StarPaymentOption({
@@ -33,7 +33,7 @@ final class StarPaymentOption extends TdObject {
   /// The amount to pay, in the smallest units of the currency
   final int amount;
 
-  /// Number of Telegram stars that will be purchased
+  /// Number of Telegram Stars that will be purchased
   final int starCount;
 
   /// Identifier of the store product associated with the option; may be empty if none
@@ -70,7 +70,7 @@ final class StarPaymentOption extends TdObject {
   /// Properties:
   /// * [currency]: ISO 4217 currency code for the payment
   /// * [amount]: The amount to pay, in the smallest units of the currency
-  /// * [star_count]: Number of Telegram stars that will be purchased
+  /// * [star_count]: Number of Telegram Stars that will be purchased
   /// * [store_product_id]: Identifier of the store product associated with the option; may be empty if none
   /// * [is_additional]: True, if the option must be shown only in the full list of payment options
   StarPaymentOption copyWith({

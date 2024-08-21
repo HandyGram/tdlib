@@ -5,8 +5,8 @@ part of '../tdapi.dart';
 /// Returns reactions added for a message, along with their sender.
 ///
 /// * [chatId]: Identifier of the chat to which the message belongs.
-/// * [messageId]: Identifier of the message.
-/// * [reactionType]: Type of the reactions to return; pass null to return all added reactions *(optional)*.
+/// * [messageId]: Identifier of the message. Use message.interaction_info.reactions.can_get_added_reactions to check whether added reactions can be received for the message.
+/// * [reactionType]: Type of the reactions to return; pass null to return all added reactions; reactionTypePaid isn't supported *(optional)*.
 /// * [offset]: Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results.
 /// * [limit]: The maximum number of reactions to be returned; must be positive and can't be greater than 100.
 ///
@@ -17,8 +17,8 @@ final class GetMessageAddedReactions extends TdFunction {
   /// Returns reactions added for a message, along with their sender.
   ///
   /// * [chatId]: Identifier of the chat to which the message belongs.
-  /// * [messageId]: Identifier of the message.
-  /// * [reactionType]: Type of the reactions to return; pass null to return all added reactions *(optional)*.
+  /// * [messageId]: Identifier of the message. Use message.interaction_info.reactions.can_get_added_reactions to check whether added reactions can be received for the message.
+  /// * [reactionType]: Type of the reactions to return; pass null to return all added reactions; reactionTypePaid isn't supported *(optional)*.
   /// * [offset]: Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results.
   /// * [limit]: The maximum number of reactions to be returned; must be positive and can't be greater than 100.
   ///
@@ -34,10 +34,10 @@ final class GetMessageAddedReactions extends TdFunction {
   /// Identifier of the chat to which the message belongs
   final int chatId;
 
-  /// Identifier of the message
+  /// Identifier of the message. Use message.interaction_info.reactions.can_get_added_reactions to check whether added reactions can be received for the message
   final int messageId;
 
-  /// Type of the reactions to return; pass null to return all added reactions
+  /// Type of the reactions to return; pass null to return all added reactions; reactionTypePaid isn't supported
   final ReactionType? reactionType;
 
   /// Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
@@ -64,8 +64,8 @@ final class GetMessageAddedReactions extends TdFunction {
   ///
   /// Properties:
   /// * [chat_id]: Identifier of the chat to which the message belongs
-  /// * [message_id]: Identifier of the message
-  /// * [reaction_type]: Type of the reactions to return; pass null to return all added reactions
+  /// * [message_id]: Identifier of the message. Use message.interaction_info.reactions.can_get_added_reactions to check whether added reactions can be received for the message
+  /// * [reaction_type]: Type of the reactions to return; pass null to return all added reactions; reactionTypePaid isn't supported
   /// * [offset]: Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
   /// * [limit]: The maximum number of reactions to be returned; must be positive and can't be greater than 100
   GetMessageAddedReactions copyWith({

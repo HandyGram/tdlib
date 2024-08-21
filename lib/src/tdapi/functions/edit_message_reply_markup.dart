@@ -2,20 +2,20 @@ part of '../tdapi.dart';
 
 /// **EditMessageReplyMarkup** *(editMessageReplyMarkup)* - TDLib function
 ///
-/// Edits the message reply markup; for bots only. Returns the edited message after the edit is completed on the server side.. Can be used only if message.can_be_edited == true.
+/// Edits the message reply markup; for bots only. Returns the edited message after the edit is completed on the server side.
 ///
 /// * [chatId]: The chat the message belongs to.
-/// * [messageId]: Identifier of the message.
+/// * [messageId]: Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited.
 /// * [replyMarkup]: The new message reply markup; pass null if none *(optional)*.
 ///
 /// [Message] is returned on completion.
 final class EditMessageReplyMarkup extends TdFunction {
   /// **EditMessageReplyMarkup** *(editMessageReplyMarkup)* - TDLib function
   ///
-  /// Edits the message reply markup; for bots only. Returns the edited message after the edit is completed on the server side.. Can be used only if message.can_be_edited == true.
+  /// Edits the message reply markup; for bots only. Returns the edited message after the edit is completed on the server side.
   ///
   /// * [chatId]: The chat the message belongs to.
-  /// * [messageId]: Identifier of the message.
+  /// * [messageId]: Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited.
   /// * [replyMarkup]: The new message reply markup; pass null if none *(optional)*.
   ///
   /// [Message] is returned on completion.
@@ -28,7 +28,7 @@ final class EditMessageReplyMarkup extends TdFunction {
   /// The chat the message belongs to
   final int chatId;
 
-  /// Identifier of the message
+  /// Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited
   final int messageId;
 
   /// The new message reply markup; pass null if none
@@ -50,7 +50,7 @@ final class EditMessageReplyMarkup extends TdFunction {
   ///
   /// Properties:
   /// * [chat_id]: The chat the message belongs to
-  /// * [message_id]: Identifier of the message
+  /// * [message_id]: Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited
   /// * [reply_markup]: The new message reply markup; pass null if none
   EditMessageReplyMarkup copyWith({
     int? chatId,

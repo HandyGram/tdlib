@@ -554,8 +554,7 @@ final class AuthenticationCodeTypeFragment extends AuthenticationCodeType {
 ///
 /// A digit-only authentication code is delivered via Firebase Authentication to the official Android application.
 ///
-/// * [usePlayIntegrity]: True, if Play Integrity API must be used for device verification. Otherwise, SafetyNet Attestation API must be used.
-/// * [nonce]: Nonce to pass to the Play Integrity API or the SafetyNet Attestation API.
+/// * [deviceVerificationParameters]: Parameters to be used for device verification.
 /// * [length]: Length of the code.
 final class AuthenticationCodeTypeFirebaseAndroid
     extends AuthenticationCodeType {
@@ -563,20 +562,15 @@ final class AuthenticationCodeTypeFirebaseAndroid
   ///
   /// A digit-only authentication code is delivered via Firebase Authentication to the official Android application.
   ///
-  /// * [usePlayIntegrity]: True, if Play Integrity API must be used for device verification. Otherwise, SafetyNet Attestation API must be used.
-  /// * [nonce]: Nonce to pass to the Play Integrity API or the SafetyNet Attestation API.
+  /// * [deviceVerificationParameters]: Parameters to be used for device verification.
   /// * [length]: Length of the code.
   const AuthenticationCodeTypeFirebaseAndroid({
-    required this.usePlayIntegrity,
-    required this.nonce,
+    required this.deviceVerificationParameters,
     required this.length,
   });
 
-  /// True, if Play Integrity API must be used for device verification. Otherwise, SafetyNet Attestation API must be used
-  final bool usePlayIntegrity;
-
-  /// Nonce to pass to the Play Integrity API or the SafetyNet Attestation API
-  final String nonce;
+  /// Parameters to be used for device verification
+  final FirebaseDeviceVerificationParameters deviceVerificationParameters;
 
   /// Length of the code
   final int length;
@@ -585,8 +579,9 @@ final class AuthenticationCodeTypeFirebaseAndroid
   factory AuthenticationCodeTypeFirebaseAndroid.fromJson(
           Map<String, dynamic> json) =>
       AuthenticationCodeTypeFirebaseAndroid(
-        usePlayIntegrity: json['use_play_integrity'],
-        nonce: json['nonce'],
+        deviceVerificationParameters:
+            FirebaseDeviceVerificationParameters.fromJson(
+                json['device_verification_parameters']),
         length: json['length'],
       );
 
@@ -595,8 +590,7 @@ final class AuthenticationCodeTypeFirebaseAndroid
   Map<String, dynamic> toJson() {
     return {
       "@type": defaultObjectId,
-      "use_play_integrity": usePlayIntegrity,
-      "nonce": nonce,
+      "device_verification_parameters": deviceVerificationParameters.toJson(),
       "length": length,
     };
   }
@@ -604,18 +598,16 @@ final class AuthenticationCodeTypeFirebaseAndroid
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [use_play_integrity]: True, if Play Integrity API must be used for device verification. Otherwise, SafetyNet Attestation API must be used
-  /// * [nonce]: Nonce to pass to the Play Integrity API or the SafetyNet Attestation API
+  /// * [device_verification_parameters]: Parameters to be used for device verification
   /// * [length]: Length of the code
   @override
   AuthenticationCodeTypeFirebaseAndroid copyWith({
-    bool? usePlayIntegrity,
-    String? nonce,
+    FirebaseDeviceVerificationParameters? deviceVerificationParameters,
     int? length,
   }) =>
       AuthenticationCodeTypeFirebaseAndroid(
-        usePlayIntegrity: usePlayIntegrity ?? this.usePlayIntegrity,
-        nonce: nonce ?? this.nonce,
+        deviceVerificationParameters:
+            deviceVerificationParameters ?? this.deviceVerificationParameters,
         length: length ?? this.length,
       );
 

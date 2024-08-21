@@ -164,23 +164,23 @@ final class PaymentReceiptTypeRegular extends PaymentReceiptType {
 
 /// **PaymentReceiptTypeStars** *(paymentReceiptTypeStars)* - child of PaymentReceiptType
 ///
-/// The payment was done using Telegram stars.
+/// The payment was done using Telegram Stars.
 ///
-/// * [starCount]: Number of Telegram stars that were paid.
+/// * [starCount]: Number of Telegram Stars that were paid.
 /// * [transactionId]: Unique identifier of the transaction that can be used to dispute it.
 final class PaymentReceiptTypeStars extends PaymentReceiptType {
   /// **PaymentReceiptTypeStars** *(paymentReceiptTypeStars)* - child of PaymentReceiptType
   ///
-  /// The payment was done using Telegram stars.
+  /// The payment was done using Telegram Stars.
   ///
-  /// * [starCount]: Number of Telegram stars that were paid.
+  /// * [starCount]: Number of Telegram Stars that were paid.
   /// * [transactionId]: Unique identifier of the transaction that can be used to dispute it.
   const PaymentReceiptTypeStars({
     required this.starCount,
     required this.transactionId,
   });
 
-  /// Number of Telegram stars that were paid
+  /// Number of Telegram Stars that were paid
   final int starCount;
 
   /// Unique identifier of the transaction that can be used to dispute it
@@ -206,7 +206,7 @@ final class PaymentReceiptTypeStars extends PaymentReceiptType {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [star_count]: Number of Telegram stars that were paid
+  /// * [star_count]: Number of Telegram Stars that were paid
   /// * [transaction_id]: Unique identifier of the transaction that can be used to dispute it
   @override
   PaymentReceiptTypeStars copyWith({

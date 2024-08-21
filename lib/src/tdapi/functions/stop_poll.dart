@@ -2,20 +2,20 @@ part of '../tdapi.dart';
 
 /// **StopPoll** *(stopPoll)* - TDLib function
 ///
-/// Stops a poll. A poll in a message can be stopped when the message has can_be_edited flag is set.
+/// Stops a poll.
 ///
 /// * [chatId]: Identifier of the chat to which the poll belongs.
-/// * [messageId]: Identifier of the message containing the poll.
+/// * [messageId]: Identifier of the message containing the poll. Use messageProperties.can_be_edited to check whether the poll can be stopped.
 /// * [replyMarkup]: The new message reply markup; pass null if none; for bots only *(optional)*.
 ///
 /// [Ok] is returned on completion.
 final class StopPoll extends TdFunction {
   /// **StopPoll** *(stopPoll)* - TDLib function
   ///
-  /// Stops a poll. A poll in a message can be stopped when the message has can_be_edited flag is set.
+  /// Stops a poll.
   ///
   /// * [chatId]: Identifier of the chat to which the poll belongs.
-  /// * [messageId]: Identifier of the message containing the poll.
+  /// * [messageId]: Identifier of the message containing the poll. Use messageProperties.can_be_edited to check whether the poll can be stopped.
   /// * [replyMarkup]: The new message reply markup; pass null if none; for bots only *(optional)*.
   ///
   /// [Ok] is returned on completion.
@@ -28,7 +28,7 @@ final class StopPoll extends TdFunction {
   /// Identifier of the chat to which the poll belongs
   final int chatId;
 
-  /// Identifier of the message containing the poll
+  /// Identifier of the message containing the poll. Use messageProperties.can_be_edited to check whether the poll can be stopped
   final int messageId;
 
   /// The new message reply markup; pass null if none; for bots only
@@ -50,7 +50,7 @@ final class StopPoll extends TdFunction {
   ///
   /// Properties:
   /// * [chat_id]: Identifier of the chat to which the poll belongs
-  /// * [message_id]: Identifier of the message containing the poll
+  /// * [message_id]: Identifier of the message containing the poll. Use messageProperties.can_be_edited to check whether the poll can be stopped
   /// * [reply_markup]: The new message reply markup; pass null if none; for bots only
   StopPoll copyWith({
     int? chatId,

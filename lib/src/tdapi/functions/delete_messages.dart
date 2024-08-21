@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 /// Deletes messages.
 ///
 /// * [chatId]: Chat identifier.
-/// * [messageIds]: Identifiers of the messages to be deleted.
+/// * [messageIds]: Identifiers of the messages to be deleted. Use messageProperties.can_be_deleted_only_for_self and messageProperties.can_be_deleted_for_all_users to get suitable messages.
 /// * [revoke]: Pass true to delete messages for all chat members. Always true for supergroups, channels and secret chats.
 ///
 /// [Ok] is returned on completion.
@@ -15,7 +15,7 @@ final class DeleteMessages extends TdFunction {
   /// Deletes messages.
   ///
   /// * [chatId]: Chat identifier.
-  /// * [messageIds]: Identifiers of the messages to be deleted.
+  /// * [messageIds]: Identifiers of the messages to be deleted. Use messageProperties.can_be_deleted_only_for_self and messageProperties.can_be_deleted_for_all_users to get suitable messages.
   /// * [revoke]: Pass true to delete messages for all chat members. Always true for supergroups, channels and secret chats.
   ///
   /// [Ok] is returned on completion.
@@ -28,7 +28,7 @@ final class DeleteMessages extends TdFunction {
   /// Chat identifier
   final int chatId;
 
-  /// Identifiers of the messages to be deleted
+  /// Identifiers of the messages to be deleted. Use messageProperties.can_be_deleted_only_for_self and messageProperties.can_be_deleted_for_all_users to get suitable messages
   final List<int> messageIds;
 
   /// Pass true to delete messages for all chat members. Always true for supergroups, channels and secret chats
@@ -50,7 +50,7 @@ final class DeleteMessages extends TdFunction {
   ///
   /// Properties:
   /// * [chat_id]: Chat identifier
-  /// * [message_ids]: Identifiers of the messages to be deleted
+  /// * [message_ids]: Identifiers of the messages to be deleted. Use messageProperties.can_be_deleted_only_for_self and messageProperties.can_be_deleted_for_all_users to get suitable messages
   /// * [revoke]: Pass true to delete messages for all chat members. Always true for supergroups, channels and secret chats
   DeleteMessages copyWith({
     int? chatId,

@@ -8,7 +8,7 @@ part of '../tdapi.dart';
 /// * [list]: Identifier of the story list in which the stories are shown; may be null if the stories aren't shown in a story list *(optional)*.
 /// * [order]: A parameter used to determine order of the stories in the story list; 0 if the stories doesn't need to be shown in the story list. Stories must be sorted by the pair (order, story_sender_chat_id) in descending order.
 /// * [maxReadStoryId]: Identifier of the last read active story.
-/// * [stories]: Basic information about the stories; use getStory to get full information about the stories. The stories are in a chronological order (i.e., in order of increasing story identifiers).
+/// * [stories]: Basic information about the stories; use getStory to get full information about the stories. The stories are in chronological order (i.e., in order of increasing story identifiers).
 final class ChatActiveStories extends TdObject {
   /// **ChatActiveStories** *(chatActiveStories)* - basic class
   ///
@@ -18,7 +18,7 @@ final class ChatActiveStories extends TdObject {
   /// * [list]: Identifier of the story list in which the stories are shown; may be null if the stories aren't shown in a story list *(optional)*.
   /// * [order]: A parameter used to determine order of the stories in the story list; 0 if the stories doesn't need to be shown in the story list. Stories must be sorted by the pair (order, story_sender_chat_id) in descending order.
   /// * [maxReadStoryId]: Identifier of the last read active story.
-  /// * [stories]: Basic information about the stories; use getStory to get full information about the stories. The stories are in a chronological order (i.e., in order of increasing story identifiers).
+  /// * [stories]: Basic information about the stories; use getStory to get full information about the stories. The stories are in chronological order (i.e., in order of increasing story identifiers).
   const ChatActiveStories({
     required this.chatId,
     this.list,
@@ -41,7 +41,7 @@ final class ChatActiveStories extends TdObject {
   /// Identifier of the last read active story
   final int maxReadStoryId;
 
-  /// Basic information about the stories; use getStory to get full information about the stories. The stories are in a chronological order (i.e., in order of increasing story identifiers)
+  /// Basic information about the stories; use getStory to get full information about the stories. The stories are in chronological order (i.e., in order of increasing story identifiers)
   final List<StoryInfo> stories;
 
   /// [extra] callback sign
@@ -86,7 +86,7 @@ final class ChatActiveStories extends TdObject {
   /// * [list]: Identifier of the story list in which the stories are shown; may be null if the stories aren't shown in a story list
   /// * [order]: A parameter used to determine order of the stories in the story list; 0 if the stories doesn't need to be shown in the story list. Stories must be sorted by the pair (order, story_sender_chat_id) in descending order
   /// * [max_read_story_id]: Identifier of the last read active story
-  /// * [stories]: Basic information about the stories; use getStory to get full information about the stories. The stories are in a chronological order (i.e., in order of increasing story identifiers)
+  /// * [stories]: Basic information about the stories; use getStory to get full information about the stories. The stories are in chronological order (i.e., in order of increasing story identifiers)
   ChatActiveStories copyWith({
     int? chatId,
     StoryList? list,

@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **GetMessageStatistics** *(getMessageStatistics)* - TDLib function
 ///
-/// Returns detailed statistics about a message. Can be used only if message.can_get_statistics == true.
+/// Returns detailed statistics about a message. Can be used only if messageProperties.can_get_statistics == true.
 ///
 /// * [chatId]: Chat identifier.
 /// * [messageId]: Message identifier.
@@ -12,7 +12,7 @@ part of '../tdapi.dart';
 final class GetMessageStatistics extends TdFunction {
   /// **GetMessageStatistics** *(getMessageStatistics)* - TDLib function
   ///
-  /// Returns detailed statistics about a message. Can be used only if message.can_get_statistics == true.
+  /// Returns detailed statistics about a message. Can be used only if messageProperties.can_get_statistics == true.
   ///
   /// * [chatId]: Chat identifier.
   /// * [messageId]: Message identifier.

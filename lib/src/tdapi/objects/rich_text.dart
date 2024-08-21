@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **RichText** *(richText)* - parent
 ///
-/// Describes a text object inside an instant-view web page.
+/// Describes a formatted text object.
 sealed class RichText extends TdObject {
   /// **RichText** *(richText)* - parent
   ///
-  /// Describes a text object inside an instant-view web page.
+  /// Describes a formatted text object.
   const RichText();
 
   /// a RichText return type can be :
@@ -892,7 +892,7 @@ final class RichTextIcon extends RichText {
 
 /// **RichTextReference** *(richTextReference)* - child of RichText
 ///
-/// A reference to a richTexts object on the same web page.
+/// A reference to a richTexts object on the same page.
 ///
 /// * [text]: The text.
 /// * [anchorName]: The name of a richTextAnchor object, which is the first element of the target richTexts object.
@@ -900,7 +900,7 @@ final class RichTextIcon extends RichText {
 final class RichTextReference extends RichText {
   /// **RichTextReference** *(richTextReference)* - child of RichText
   ///
-  /// A reference to a richTexts object on the same web page.
+  /// A reference to a richTexts object on the same page.
   ///
   /// * [text]: The text.
   /// * [anchorName]: The name of a richTextAnchor object, which is the first element of the target richTexts object.
@@ -1027,7 +1027,7 @@ final class RichTextAnchor extends RichText {
 
 /// **RichTextAnchorLink** *(richTextAnchorLink)* - child of RichText
 ///
-/// A link to an anchor on the same web page.
+/// A link to an anchor on the same page.
 ///
 /// * [text]: The link text.
 /// * [anchorName]: The anchor name. If the name is empty, the link must bring back to top.
@@ -1035,7 +1035,7 @@ final class RichTextAnchor extends RichText {
 final class RichTextAnchorLink extends RichText {
   /// **RichTextAnchorLink** *(richTextAnchorLink)* - child of RichText
   ///
-  /// A link to an anchor on the same web page.
+  /// A link to an anchor on the same page.
   ///
   /// * [text]: The link text.
   /// * [anchorName]: The anchor name. If the name is empty, the link must bring back to top.

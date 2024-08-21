@@ -218,27 +218,47 @@ final class ChatMemberStatusAdministrator extends ChatMemberStatus {
 /// **ChatMemberStatusMember** *(chatMemberStatusMember)* - child of ChatMemberStatus
 ///
 /// The user is a member of the chat, without any additional privileges or restrictions.
+///
+/// * [memberUntilDate]: Point in time (Unix timestamp) when the user will be removed from the chat because of the expired subscription; 0 if never. Ignored in setChatMemberStatus.
 final class ChatMemberStatusMember extends ChatMemberStatus {
   /// **ChatMemberStatusMember** *(chatMemberStatusMember)* - child of ChatMemberStatus
   ///
   /// The user is a member of the chat, without any additional privileges or restrictions.
-  const ChatMemberStatusMember();
+  ///
+  /// * [memberUntilDate]: Point in time (Unix timestamp) when the user will be removed from the chat because of the expired subscription; 0 if never. Ignored in setChatMemberStatus.
+  const ChatMemberStatusMember({
+    required this.memberUntilDate,
+  });
+
+  /// Point in time (Unix timestamp) when the user will be removed from the chat because of the expired subscription; 0 if never. Ignored in setChatMemberStatus
+  final int memberUntilDate;
 
   /// Parse from a json
   factory ChatMemberStatusMember.fromJson(Map<String, dynamic> json) =>
-      const ChatMemberStatusMember();
+      ChatMemberStatusMember(
+        memberUntilDate: json['member_until_date'],
+      );
 
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": defaultObjectId,
+      "member_until_date": memberUntilDate,
     };
   }
 
-  /// Copy instance with no modifications.
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [member_until_date]: Point in time (Unix timestamp) when the user will be removed from the chat because of the expired subscription; 0 if never. Ignored in setChatMemberStatus
   @override
-  ChatMemberStatusMember copyWith() => const ChatMemberStatusMember();
+  ChatMemberStatusMember copyWith({
+    int? memberUntilDate,
+  }) =>
+      ChatMemberStatusMember(
+        memberUntilDate: memberUntilDate ?? this.memberUntilDate,
+      );
 
   /// TDLib object type
   static const String defaultObjectId = 'chatMemberStatusMember';

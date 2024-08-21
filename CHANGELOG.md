@@ -1,3 +1,6 @@
+## 2.3.9
+* Updated to TDLib 1.8.35 (9b6ff5863)
+
 ## 2.3.8
 * Fixed JSON parsing of these objects:
     * [EmojiStatuses]

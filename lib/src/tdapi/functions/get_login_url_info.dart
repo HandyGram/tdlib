@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 /// Returns information about a button of type inlineKeyboardButtonTypeLoginUrl. The method needs to be called when the user presses the button.
 ///
 /// * [chatId]: Chat identifier of the message with the button.
-/// * [messageId]: Message identifier of the message with the button.
+/// * [messageId]: Message identifier of the message with the button. The message must not be scheduled.
 /// * [buttonId]: Button identifier.
 ///
 /// [LoginUrlInfo] is returned on completion.
@@ -15,7 +15,7 @@ final class GetLoginUrlInfo extends TdFunction {
   /// Returns information about a button of type inlineKeyboardButtonTypeLoginUrl. The method needs to be called when the user presses the button.
   ///
   /// * [chatId]: Chat identifier of the message with the button.
-  /// * [messageId]: Message identifier of the message with the button.
+  /// * [messageId]: Message identifier of the message with the button. The message must not be scheduled.
   /// * [buttonId]: Button identifier.
   ///
   /// [LoginUrlInfo] is returned on completion.
@@ -28,7 +28,7 @@ final class GetLoginUrlInfo extends TdFunction {
   /// Chat identifier of the message with the button
   final int chatId;
 
-  /// Message identifier of the message with the button
+  /// Message identifier of the message with the button. The message must not be scheduled
   final int messageId;
 
   /// Button identifier
@@ -50,7 +50,7 @@ final class GetLoginUrlInfo extends TdFunction {
   ///
   /// Properties:
   /// * [chat_id]: Chat identifier of the message with the button
-  /// * [message_id]: Message identifier of the message with the button
+  /// * [message_id]: Message identifier of the message with the button. The message must not be scheduled
   /// * [button_id]: Button identifier
   GetLoginUrlInfo copyWith({
     int? chatId,

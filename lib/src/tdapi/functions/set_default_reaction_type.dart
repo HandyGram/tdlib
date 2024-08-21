@@ -4,7 +4,7 @@ part of '../tdapi.dart';
 ///
 /// Changes type of default reaction for the current user.
 ///
-/// * [reactionType]: New type of the default reaction.
+/// * [reactionType]: New type of the default reaction. The paid reaction can't be set as default.
 ///
 /// [Ok] is returned on completion.
 final class SetDefaultReactionType extends TdFunction {
@@ -12,14 +12,14 @@ final class SetDefaultReactionType extends TdFunction {
   ///
   /// Changes type of default reaction for the current user.
   ///
-  /// * [reactionType]: New type of the default reaction.
+  /// * [reactionType]: New type of the default reaction. The paid reaction can't be set as default.
   ///
   /// [Ok] is returned on completion.
   const SetDefaultReactionType({
     required this.reactionType,
   });
 
-  /// New type of the default reaction
+  /// New type of the default reaction. The paid reaction can't be set as default
   final ReactionType reactionType;
 
   /// Convert model to TDLib JSON format
@@ -35,7 +35,7 @@ final class SetDefaultReactionType extends TdFunction {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [reaction_type]: New type of the default reaction
+  /// * [reaction_type]: New type of the default reaction. The paid reaction can't be set as default
   SetDefaultReactionType copyWith({
     ReactionType? reactionType,
   }) =>

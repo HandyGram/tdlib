@@ -6,6 +6,7 @@ part of '../tdapi.dart';
 ///
 /// * [chatId]: Chat identifier.
 /// * [inviteLink]: Invite link for which to return chat members.
+/// * [onlyWithExpiredSubscription]: Pass true if the link is a subscription link and only members with expired subscription must be returned.
 /// * [offsetMember]: A chat member from which to return next chat members; pass null to get results from the beginning *(optional)*.
 /// * [limit]: The maximum number of chat members to return; up to 100.
 ///
@@ -17,6 +18,7 @@ final class GetChatInviteLinkMembers extends TdFunction {
   ///
   /// * [chatId]: Chat identifier.
   /// * [inviteLink]: Invite link for which to return chat members.
+  /// * [onlyWithExpiredSubscription]: Pass true if the link is a subscription link and only members with expired subscription must be returned.
   /// * [offsetMember]: A chat member from which to return next chat members; pass null to get results from the beginning *(optional)*.
   /// * [limit]: The maximum number of chat members to return; up to 100.
   ///
@@ -24,6 +26,7 @@ final class GetChatInviteLinkMembers extends TdFunction {
   const GetChatInviteLinkMembers({
     required this.chatId,
     required this.inviteLink,
+    required this.onlyWithExpiredSubscription,
     this.offsetMember,
     required this.limit,
   });
@@ -33,6 +36,9 @@ final class GetChatInviteLinkMembers extends TdFunction {
 
   /// Invite link for which to return chat members
   final String inviteLink;
+
+  /// Pass true if the link is a subscription link and only members with expired subscription must be returned
+  final bool onlyWithExpiredSubscription;
 
   /// A chat member from which to return next chat members; pass null to get results from the beginning
   final ChatInviteLinkMember? offsetMember;
@@ -47,6 +53,7 @@ final class GetChatInviteLinkMembers extends TdFunction {
       "@type": defaultObjectId,
       "chat_id": chatId,
       "invite_link": inviteLink,
+      "only_with_expired_subscription": onlyWithExpiredSubscription,
       "offset_member": offsetMember?.toJson(),
       "limit": limit,
       "@extra": extra,
@@ -58,17 +65,21 @@ final class GetChatInviteLinkMembers extends TdFunction {
   /// Properties:
   /// * [chat_id]: Chat identifier
   /// * [invite_link]: Invite link for which to return chat members
+  /// * [only_with_expired_subscription]: Pass true if the link is a subscription link and only members with expired subscription must be returned
   /// * [offset_member]: A chat member from which to return next chat members; pass null to get results from the beginning
   /// * [limit]: The maximum number of chat members to return; up to 100
   GetChatInviteLinkMembers copyWith({
     int? chatId,
     String? inviteLink,
+    bool? onlyWithExpiredSubscription,
     ChatInviteLinkMember? offsetMember,
     int? limit,
   }) =>
       GetChatInviteLinkMembers(
         chatId: chatId ?? this.chatId,
         inviteLink: inviteLink ?? this.inviteLink,
+        onlyWithExpiredSubscription:
+            onlyWithExpiredSubscription ?? this.onlyWithExpiredSubscription,
         offsetMember: offsetMember ?? this.offsetMember,
         limit: limit ?? this.limit,
       );

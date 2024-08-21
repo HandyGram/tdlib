@@ -15,6 +15,7 @@ sealed class TopChatCategory extends TdObject {
   /// * [TopChatCategoryGroups]
   /// * [TopChatCategoryChannels]
   /// * [TopChatCategoryInlineBots]
+  /// * [TopChatCategoryWebAppBots]
   /// * [TopChatCategoryCalls]
   /// * [TopChatCategoryForwardChats]
   factory TopChatCategory.fromJson(Map<String, dynamic> json) {
@@ -29,6 +30,8 @@ sealed class TopChatCategory extends TdObject {
         return TopChatCategoryChannels.fromJson(json);
       case TopChatCategoryInlineBots.defaultObjectId:
         return TopChatCategoryInlineBots.fromJson(json);
+      case TopChatCategoryWebAppBots.defaultObjectId:
+        return TopChatCategoryWebAppBots.fromJson(json);
       case TopChatCategoryCalls.defaultObjectId:
         return TopChatCategoryCalls.fromJson(json);
       case TopChatCategoryForwardChats.defaultObjectId:
@@ -235,6 +238,43 @@ final class TopChatCategoryInlineBots extends TopChatCategory {
 
   /// TDLib object type
   static const String defaultObjectId = 'topChatCategoryInlineBots';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **TopChatCategoryWebAppBots** *(topChatCategoryWebAppBots)* - child of TopChatCategory
+///
+/// A category containing frequently used chats with bots, which Web Apps were opened.
+final class TopChatCategoryWebAppBots extends TopChatCategory {
+  /// **TopChatCategoryWebAppBots** *(topChatCategoryWebAppBots)* - child of TopChatCategory
+  ///
+  /// A category containing frequently used chats with bots, which Web Apps were opened.
+  const TopChatCategoryWebAppBots();
+
+  /// Parse from a json
+  factory TopChatCategoryWebAppBots.fromJson(Map<String, dynamic> json) =>
+      const TopChatCategoryWebAppBots();
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+    };
+  }
+
+  /// Copy instance with no modifications.
+  @override
+  TopChatCategoryWebAppBots copyWith() => const TopChatCategoryWebAppBots();
+
+  /// TDLib object type
+  static const String defaultObjectId = 'topChatCategoryWebAppBots';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

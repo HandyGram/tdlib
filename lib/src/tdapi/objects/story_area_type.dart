@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **StoryAreaType** *(storyAreaType)* - parent
 ///
-/// Describes type of clickable rectangle area on a story media.
+/// Describes type of clickable area on a story media.
 sealed class StoryAreaType extends TdObject {
   /// **StoryAreaType** *(storyAreaType)* - parent
   ///
-  /// Describes type of clickable rectangle area on a story media.
+  /// Describes type of clickable area on a story media.
   const StoryAreaType();
 
   /// a StoryAreaType return type can be :
@@ -15,6 +15,7 @@ sealed class StoryAreaType extends TdObject {
   /// * [StoryAreaTypeSuggestedReaction]
   /// * [StoryAreaTypeMessage]
   /// * [StoryAreaTypeLink]
+  /// * [StoryAreaTypeWeather]
   factory StoryAreaType.fromJson(Map<String, dynamic> json) {
     switch (json["@type"]) {
       case StoryAreaTypeLocation.defaultObjectId:
@@ -27,6 +28,8 @@ sealed class StoryAreaType extends TdObject {
         return StoryAreaTypeMessage.fromJson(json);
       case StoryAreaTypeLink.defaultObjectId:
         return StoryAreaTypeLink.fromJson(json);
+      case StoryAreaTypeWeather.defaultObjectId:
+        return StoryAreaTypeWeather.fromJson(json);
       default:
         throw FormatException(
           "Unknown object ${json["@type"]} (expected child of StoryAreaType)",
@@ -386,6 +389,85 @@ final class StoryAreaTypeLink extends StoryAreaType {
 
   /// TDLib object type
   static const String defaultObjectId = 'storyAreaTypeLink';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **StoryAreaTypeWeather** *(storyAreaTypeWeather)* - child of StoryAreaType
+///
+/// An area with information about weather.
+///
+/// * [temperature]: Temperature, in degree Celsius.
+/// * [emoji]: Emoji representing the weather.
+/// * [backgroundColor]: A color of the area background in the ARGB format.
+final class StoryAreaTypeWeather extends StoryAreaType {
+  /// **StoryAreaTypeWeather** *(storyAreaTypeWeather)* - child of StoryAreaType
+  ///
+  /// An area with information about weather.
+  ///
+  /// * [temperature]: Temperature, in degree Celsius.
+  /// * [emoji]: Emoji representing the weather.
+  /// * [backgroundColor]: A color of the area background in the ARGB format.
+  const StoryAreaTypeWeather({
+    required this.temperature,
+    required this.emoji,
+    required this.backgroundColor,
+  });
+
+  /// Temperature, in degree Celsius
+  final double temperature;
+
+  /// Emoji representing the weather
+  final String emoji;
+
+  /// A color of the area background in the ARGB format
+  final int backgroundColor;
+
+  /// Parse from a json
+  factory StoryAreaTypeWeather.fromJson(Map<String, dynamic> json) =>
+      StoryAreaTypeWeather(
+        temperature: json['temperature'],
+        emoji: json['emoji'],
+        backgroundColor: json['background_color'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "temperature": temperature,
+      "emoji": emoji,
+      "background_color": backgroundColor,
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [temperature]: Temperature, in degree Celsius
+  /// * [emoji]: Emoji representing the weather
+  /// * [background_color]: A color of the area background in the ARGB format
+  @override
+  StoryAreaTypeWeather copyWith({
+    double? temperature,
+    String? emoji,
+    int? backgroundColor,
+  }) =>
+      StoryAreaTypeWeather(
+        temperature: temperature ?? this.temperature,
+        emoji: emoji ?? this.emoji,
+        backgroundColor: backgroundColor ?? this.backgroundColor,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'storyAreaTypeWeather';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

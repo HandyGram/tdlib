@@ -44,6 +44,7 @@ sealed class ChatEventAction extends TdObject {
   /// * [ChatEventIsAllHistoryAvailableToggled]
   /// * [ChatEventHasAggressiveAntiSpamEnabledToggled]
   /// * [ChatEventSignMessagesToggled]
+  /// * [ChatEventShowMessageSenderToggled]
   /// * [ChatEventInviteLinkEdited]
   /// * [ChatEventInviteLinkRevoked]
   /// * [ChatEventInviteLinkDeleted]
@@ -129,6 +130,8 @@ sealed class ChatEventAction extends TdObject {
         return ChatEventHasAggressiveAntiSpamEnabledToggled.fromJson(json);
       case ChatEventSignMessagesToggled.defaultObjectId:
         return ChatEventSignMessagesToggled.fromJson(json);
+      case ChatEventShowMessageSenderToggled.defaultObjectId:
+        return ChatEventShowMessageSenderToggled.fromJson(json);
       case ChatEventInviteLinkEdited.defaultObjectId:
         return ChatEventInviteLinkEdited.fromJson(json);
       case ChatEventInviteLinkRevoked.defaultObjectId:
@@ -2477,6 +2480,64 @@ final class ChatEventSignMessagesToggled extends ChatEventAction {
 
   /// TDLib object type
   static const String defaultObjectId = 'chatEventSignMessagesToggled';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **ChatEventShowMessageSenderToggled** *(chatEventShowMessageSenderToggled)* - child of ChatEventAction
+///
+/// The show_message_sender setting of a channel was toggled.
+///
+/// * [showMessageSender]: New value of show_message_sender.
+final class ChatEventShowMessageSenderToggled extends ChatEventAction {
+  /// **ChatEventShowMessageSenderToggled** *(chatEventShowMessageSenderToggled)* - child of ChatEventAction
+  ///
+  /// The show_message_sender setting of a channel was toggled.
+  ///
+  /// * [showMessageSender]: New value of show_message_sender.
+  const ChatEventShowMessageSenderToggled({
+    required this.showMessageSender,
+  });
+
+  /// New value of show_message_sender
+  final bool showMessageSender;
+
+  /// Parse from a json
+  factory ChatEventShowMessageSenderToggled.fromJson(
+          Map<String, dynamic> json) =>
+      ChatEventShowMessageSenderToggled(
+        showMessageSender: json['show_message_sender'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "show_message_sender": showMessageSender,
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [show_message_sender]: New value of show_message_sender
+  @override
+  ChatEventShowMessageSenderToggled copyWith({
+    bool? showMessageSender,
+  }) =>
+      ChatEventShowMessageSenderToggled(
+        showMessageSender: showMessageSender ?? this.showMessageSender,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'chatEventShowMessageSenderToggled';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

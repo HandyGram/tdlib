@@ -9,7 +9,7 @@ part of '../tdapi.dart';
 /// * [webAppShortName]: Short name of the Web App.
 /// * [startParameter]: Start parameter from internalLinkTypeWebApp.
 /// * [theme]: Preferred Web App theme; pass null to use the default theme *(optional)*.
-/// * [applicationName]: Short name of the application; 0-64 English letters, digits, and underscores.
+/// * [applicationName]: Short name of the current application; 0-64 English letters, digits, and underscores.
 /// * [allowWriteAccess]: Pass true if the current user allowed the bot to send them messages.
 ///
 /// [HttpUrl] is returned on completion.
@@ -23,7 +23,7 @@ final class GetWebAppLinkUrl extends TdFunction {
   /// * [webAppShortName]: Short name of the Web App.
   /// * [startParameter]: Start parameter from internalLinkTypeWebApp.
   /// * [theme]: Preferred Web App theme; pass null to use the default theme *(optional)*.
-  /// * [applicationName]: Short name of the application; 0-64 English letters, digits, and underscores.
+  /// * [applicationName]: Short name of the current application; 0-64 English letters, digits, and underscores.
   /// * [allowWriteAccess]: Pass true if the current user allowed the bot to send them messages.
   ///
   /// [HttpUrl] is returned on completion.
@@ -52,7 +52,7 @@ final class GetWebAppLinkUrl extends TdFunction {
   /// Preferred Web App theme; pass null to use the default theme
   final ThemeParameters? theme;
 
-  /// Short name of the application; 0-64 English letters, digits, and underscores
+  /// Short name of the current application; 0-64 English letters, digits, and underscores
   final String applicationName;
 
   /// Pass true if the current user allowed the bot to send them messages
@@ -82,7 +82,7 @@ final class GetWebAppLinkUrl extends TdFunction {
   /// * [web_app_short_name]: Short name of the Web App
   /// * [start_parameter]: Start parameter from internalLinkTypeWebApp
   /// * [theme]: Preferred Web App theme; pass null to use the default theme
-  /// * [application_name]: Short name of the application; 0-64 English letters, digits, and underscores
+  /// * [application_name]: Short name of the current application; 0-64 English letters, digits, and underscores
   /// * [allow_write_access]: Pass true if the current user allowed the bot to send them messages
   GetWebAppLinkUrl copyWith({
     int? chatId,

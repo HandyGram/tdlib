@@ -2,10 +2,10 @@ part of '../tdapi.dart';
 
 /// **EditMessageText** *(editMessageText)* - TDLib function
 ///
-/// Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side.. Can be used only if message.can_be_edited == true.
+/// Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side.
 ///
 /// * [chatId]: The chat the message belongs to.
-/// * [messageId]: Identifier of the message.
+/// * [messageId]: Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited.
 /// * [replyMarkup]: The new message reply markup; pass null if none; for bots only *(optional)*.
 /// * [inputMessageContent]: New text content of the message. Must be of type inputMessageText.
 ///
@@ -13,10 +13,10 @@ part of '../tdapi.dart';
 final class EditMessageText extends TdFunction {
   /// **EditMessageText** *(editMessageText)* - TDLib function
   ///
-  /// Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side.. Can be used only if message.can_be_edited == true.
+  /// Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side.
   ///
   /// * [chatId]: The chat the message belongs to.
-  /// * [messageId]: Identifier of the message.
+  /// * [messageId]: Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited.
   /// * [replyMarkup]: The new message reply markup; pass null if none; for bots only *(optional)*.
   /// * [inputMessageContent]: New text content of the message. Must be of type inputMessageText.
   ///
@@ -31,7 +31,7 @@ final class EditMessageText extends TdFunction {
   /// The chat the message belongs to
   final int chatId;
 
-  /// Identifier of the message
+  /// Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited
   final int messageId;
 
   /// The new message reply markup; pass null if none; for bots only
@@ -57,7 +57,7 @@ final class EditMessageText extends TdFunction {
   ///
   /// Properties:
   /// * [chat_id]: The chat the message belongs to
-  /// * [message_id]: Identifier of the message
+  /// * [message_id]: Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited
   /// * [reply_markup]: The new message reply markup; pass null if none; for bots only
   /// * [input_message_content]: New text content of the message. Must be of type inputMessageText
   EditMessageText copyWith({

@@ -8,7 +8,7 @@ part of '../tdapi.dart';
 /// * [botUserId]: Identifier of the bot, providing the Web App.
 /// * [url]: The URL from an inlineKeyboardButtonTypeWebApp button, a botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an empty string otherwise.
 /// * [theme]: Preferred Web App theme; pass null to use the default theme *(optional)*.
-/// * [applicationName]: Short name of the application; 0-64 English letters, digits, and underscores.
+/// * [applicationName]: Short name of the current application; 0-64 English letters, digits, and underscores.
 /// * [messageThreadId]: If not 0, the message thread identifier in which the message will be sent.
 /// * [replyTo]: Information about the message or story to be replied in the message sent by the Web App; pass null if none *(optional)*.
 ///
@@ -22,7 +22,7 @@ final class OpenWebApp extends TdFunction {
   /// * [botUserId]: Identifier of the bot, providing the Web App.
   /// * [url]: The URL from an inlineKeyboardButtonTypeWebApp button, a botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an empty string otherwise.
   /// * [theme]: Preferred Web App theme; pass null to use the default theme *(optional)*.
-  /// * [applicationName]: Short name of the application; 0-64 English letters, digits, and underscores.
+  /// * [applicationName]: Short name of the current application; 0-64 English letters, digits, and underscores.
   /// * [messageThreadId]: If not 0, the message thread identifier in which the message will be sent.
   /// * [replyTo]: Information about the message or story to be replied in the message sent by the Web App; pass null if none *(optional)*.
   ///
@@ -49,7 +49,7 @@ final class OpenWebApp extends TdFunction {
   /// Preferred Web App theme; pass null to use the default theme
   final ThemeParameters? theme;
 
-  /// Short name of the application; 0-64 English letters, digits, and underscores
+  /// Short name of the current application; 0-64 English letters, digits, and underscores
   final String applicationName;
 
   /// If not 0, the message thread identifier in which the message will be sent
@@ -81,7 +81,7 @@ final class OpenWebApp extends TdFunction {
   /// * [bot_user_id]: Identifier of the bot, providing the Web App
   /// * [url]: The URL from an inlineKeyboardButtonTypeWebApp button, a botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an empty string otherwise
   /// * [theme]: Preferred Web App theme; pass null to use the default theme
-  /// * [application_name]: Short name of the application; 0-64 English letters, digits, and underscores
+  /// * [application_name]: Short name of the current application; 0-64 English letters, digits, and underscores
   /// * [message_thread_id]: If not 0, the message thread identifier in which the message will be sent
   /// * [reply_to]: Information about the message or story to be replied in the message sent by the Web App; pass null if none
   OpenWebApp copyWith({

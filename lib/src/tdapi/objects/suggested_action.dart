@@ -22,6 +22,7 @@ sealed class SuggestedAction extends TdObject {
   /// * [SuggestedActionGiftPremiumForChristmas]
   /// * [SuggestedActionSetBirthdate]
   /// * [SuggestedActionExtendPremium]
+  /// * [SuggestedActionExtendStarSubscriptions]
   factory SuggestedAction.fromJson(Map<String, dynamic> json) {
     switch (json["@type"]) {
       case SuggestedActionEnableArchiveAndMuteNewChats.defaultObjectId:
@@ -48,6 +49,8 @@ sealed class SuggestedAction extends TdObject {
         return SuggestedActionSetBirthdate.fromJson(json);
       case SuggestedActionExtendPremium.defaultObjectId:
         return SuggestedActionExtendPremium.fromJson(json);
+      case SuggestedActionExtendStarSubscriptions.defaultObjectId:
+        return SuggestedActionExtendStarSubscriptions.fromJson(json);
       default:
         throw FormatException(
           "Unknown object ${json["@type"]} (expected child of SuggestedAction)",
@@ -587,6 +590,46 @@ final class SuggestedActionExtendPremium extends SuggestedAction {
 
   /// TDLib object type
   static const String defaultObjectId = 'suggestedActionExtendPremium';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **SuggestedActionExtendStarSubscriptions** *(suggestedActionExtendStarSubscriptions)* - child of SuggestedAction
+///
+/// Suggests the user to extend their expiring Telegram Star subscriptions. Call getStarSubscriptions with only_expiring == true. to get the number of expiring subscriptions and the number of required to buy Telegram Stars.
+final class SuggestedActionExtendStarSubscriptions extends SuggestedAction {
+  /// **SuggestedActionExtendStarSubscriptions** *(suggestedActionExtendStarSubscriptions)* - child of SuggestedAction
+  ///
+  /// Suggests the user to extend their expiring Telegram Star subscriptions. Call getStarSubscriptions with only_expiring == true. to get the number of expiring subscriptions and the number of required to buy Telegram Stars.
+  const SuggestedActionExtendStarSubscriptions();
+
+  /// Parse from a json
+  factory SuggestedActionExtendStarSubscriptions.fromJson(
+          Map<String, dynamic> json) =>
+      const SuggestedActionExtendStarSubscriptions();
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+    };
+  }
+
+  /// Copy instance with no modifications.
+  @override
+  SuggestedActionExtendStarSubscriptions copyWith() =>
+      const SuggestedActionExtendStarSubscriptions();
+
+  /// TDLib object type
+  static const String defaultObjectId =
+      'suggestedActionExtendStarSubscriptions';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

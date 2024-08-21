@@ -2,10 +2,10 @@ part of '../tdapi.dart';
 
 /// **EditMessageLiveLocation** *(editMessageLiveLocation)* - TDLib function
 ///
-/// Edits the message content of a live location. Messages can be edited for a limited period of time specified in the live location.. Returns the edited message after the edit is completed on the server side. Can be used only if message.can_be_edited == true.
+/// Edits the message content of a live location. Messages can be edited for a limited period of time specified in the live location.. Returns the edited message after the edit is completed on the server side.
 ///
 /// * [chatId]: The chat the message belongs to.
-/// * [messageId]: Identifier of the message.
+/// * [messageId]: Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited.
 /// * [replyMarkup]: The new message reply markup; pass null if none; for bots only *(optional)*.
 /// * [location]: New location content of the message; pass null to stop sharing the live location *(optional)*.
 /// * [livePeriod]: New time relative to the message send date, for which the location can be updated, in seconds. If 0x7FFFFFFF specified, then the location can be updated forever.. Otherwise, must not exceed the current live_period by more than a day, and the live location expiration date must remain in the next 90 days. Pass 0 to keep the current live_period.
@@ -16,10 +16,10 @@ part of '../tdapi.dart';
 final class EditMessageLiveLocation extends TdFunction {
   /// **EditMessageLiveLocation** *(editMessageLiveLocation)* - TDLib function
   ///
-  /// Edits the message content of a live location. Messages can be edited for a limited period of time specified in the live location.. Returns the edited message after the edit is completed on the server side. Can be used only if message.can_be_edited == true.
+  /// Edits the message content of a live location. Messages can be edited for a limited period of time specified in the live location.. Returns the edited message after the edit is completed on the server side.
   ///
   /// * [chatId]: The chat the message belongs to.
-  /// * [messageId]: Identifier of the message.
+  /// * [messageId]: Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited.
   /// * [replyMarkup]: The new message reply markup; pass null if none; for bots only *(optional)*.
   /// * [location]: New location content of the message; pass null to stop sharing the live location *(optional)*.
   /// * [livePeriod]: New time relative to the message send date, for which the location can be updated, in seconds. If 0x7FFFFFFF specified, then the location can be updated forever.. Otherwise, must not exceed the current live_period by more than a day, and the live location expiration date must remain in the next 90 days. Pass 0 to keep the current live_period.
@@ -40,7 +40,7 @@ final class EditMessageLiveLocation extends TdFunction {
   /// The chat the message belongs to
   final int chatId;
 
-  /// Identifier of the message
+  /// Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited
   final int messageId;
 
   /// The new message reply markup; pass null if none; for bots only
@@ -78,7 +78,7 @@ final class EditMessageLiveLocation extends TdFunction {
   ///
   /// Properties:
   /// * [chat_id]: The chat the message belongs to
-  /// * [message_id]: Identifier of the message
+  /// * [message_id]: Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited
   /// * [reply_markup]: The new message reply markup; pass null if none; for bots only
   /// * [location]: New location content of the message; pass null to stop sharing the live location
   /// * [live_period]: New time relative to the message send date, for which the location can be updated, in seconds. If 0x7FFFFFFF specified, then the location can be updated forever.. Otherwise, must not exceed the current live_period by more than a day, and the live location expiration date must remain in the next 90 days. Pass 0 to keep the current live_period

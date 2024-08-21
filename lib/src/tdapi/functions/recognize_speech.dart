@@ -2,19 +2,19 @@ part of '../tdapi.dart';
 
 /// **RecognizeSpeech** *(recognizeSpeech)* - TDLib function
 ///
-/// Recognizes speech in a video note or a voice note message. The message must be successfully sent, must not be scheduled, and must be from a non-secret chat.
+/// Recognizes speech in a video note or a voice note message.
 ///
 /// * [chatId]: Identifier of the chat to which the message belongs.
-/// * [messageId]: Identifier of the message.
+/// * [messageId]: Identifier of the message. Use messageProperties.can_recognize_speech to check whether the message is suitable.
 ///
 /// [Ok] is returned on completion.
 final class RecognizeSpeech extends TdFunction {
   /// **RecognizeSpeech** *(recognizeSpeech)* - TDLib function
   ///
-  /// Recognizes speech in a video note or a voice note message. The message must be successfully sent, must not be scheduled, and must be from a non-secret chat.
+  /// Recognizes speech in a video note or a voice note message.
   ///
   /// * [chatId]: Identifier of the chat to which the message belongs.
-  /// * [messageId]: Identifier of the message.
+  /// * [messageId]: Identifier of the message. Use messageProperties.can_recognize_speech to check whether the message is suitable.
   ///
   /// [Ok] is returned on completion.
   const RecognizeSpeech({
@@ -25,7 +25,7 @@ final class RecognizeSpeech extends TdFunction {
   /// Identifier of the chat to which the message belongs
   final int chatId;
 
-  /// Identifier of the message
+  /// Identifier of the message. Use messageProperties.can_recognize_speech to check whether the message is suitable
   final int messageId;
 
   /// Convert model to TDLib JSON format
@@ -43,7 +43,7 @@ final class RecognizeSpeech extends TdFunction {
   ///
   /// Properties:
   /// * [chat_id]: Identifier of the chat to which the message belongs
-  /// * [message_id]: Identifier of the message
+  /// * [message_id]: Identifier of the message. Use messageProperties.can_recognize_speech to check whether the message is suitable
   RecognizeSpeech copyWith({
     int? chatId,
     int? messageId,

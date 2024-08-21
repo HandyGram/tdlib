@@ -14,6 +14,7 @@ sealed class InputMessageContent extends TdObject {
   /// * [InputMessageAnimation]
   /// * [InputMessageAudio]
   /// * [InputMessageDocument]
+  /// * [InputMessagePaidMedia]
   /// * [InputMessagePhoto]
   /// * [InputMessageSticker]
   /// * [InputMessageVideo]
@@ -38,6 +39,8 @@ sealed class InputMessageContent extends TdObject {
         return InputMessageAudio.fromJson(json);
       case InputMessageDocument.defaultObjectId:
         return InputMessageDocument.fromJson(json);
+      case InputMessagePaidMedia.defaultObjectId:
+        return InputMessagePaidMedia.fromJson(json);
       case InputMessagePhoto.defaultObjectId:
         return InputMessagePhoto.fromJson(json);
       case InputMessageSticker.defaultObjectId:
@@ -185,7 +188,7 @@ final class InputMessageText extends InputMessageContent {
 /// * [width]: Width of the animation; may be replaced by the server.
 /// * [height]: Height of the animation; may be replaced by the server.
 /// * [caption]: Animation caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
-/// * [showCaptionAboveMedia]: True, if caption must be shown above the animation; otherwise, caption must be shown below the animation; not supported in secret chats.
+/// * [showCaptionAboveMedia]: True, if the caption must be shown above the animation; otherwise, the caption must be shown below the animation; not supported in secret chats.
 /// * [hasSpoiler]: True, if the animation preview must be covered by a spoiler animation; not supported in secret chats.
 final class InputMessageAnimation extends InputMessageContent {
   /// **InputMessageAnimation** *(inputMessageAnimation)* - child of InputMessageContent
@@ -199,7 +202,7 @@ final class InputMessageAnimation extends InputMessageContent {
   /// * [width]: Width of the animation; may be replaced by the server.
   /// * [height]: Height of the animation; may be replaced by the server.
   /// * [caption]: Animation caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
-  /// * [showCaptionAboveMedia]: True, if caption must be shown above the animation; otherwise, caption must be shown below the animation; not supported in secret chats.
+  /// * [showCaptionAboveMedia]: True, if the caption must be shown above the animation; otherwise, the caption must be shown below the animation; not supported in secret chats.
   /// * [hasSpoiler]: True, if the animation preview must be covered by a spoiler animation; not supported in secret chats.
   const InputMessageAnimation({
     required this.animation,
@@ -234,7 +237,7 @@ final class InputMessageAnimation extends InputMessageContent {
   /// Animation caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
-  /// True, if caption must be shown above the animation; otherwise, caption must be shown below the animation; not supported in secret chats
+  /// True, if the caption must be shown above the animation; otherwise, the caption must be shown below the animation; not supported in secret chats
   final bool showCaptionAboveMedia;
 
   /// True, if the animation preview must be covered by a spoiler animation; not supported in secret chats
@@ -288,7 +291,7 @@ final class InputMessageAnimation extends InputMessageContent {
   /// * [width]: Width of the animation; may be replaced by the server
   /// * [height]: Height of the animation; may be replaced by the server
   /// * [caption]: Animation caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
-  /// * [show_caption_above_media]: True, if caption must be shown above the animation; otherwise, caption must be shown below the animation; not supported in secret chats
+  /// * [show_caption_above_media]: True, if the caption must be shown above the animation; otherwise, the caption must be shown below the animation; not supported in secret chats
   /// * [has_spoiler]: True, if the animation preview must be covered by a spoiler animation; not supported in secret chats
   @override
   InputMessageAnimation copyWith({
@@ -538,6 +541,101 @@ final class InputMessageDocument extends InputMessageContent {
   String get currentObjectId => defaultObjectId;
 }
 
+/// **InputMessagePaidMedia** *(inputMessagePaidMedia)* - child of InputMessageContent
+///
+/// A message with paid media; can be used only in channel chats with supergroupFullInfo.has_paid_media_allowed.
+///
+/// * [starCount]: The number of Telegram Stars that must be paid to see the media; 1-getOption("paid_media_message_star_count_max").
+/// * [paidMedia]: The content of the paid media.
+/// * [caption]: Message caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
+/// * [showCaptionAboveMedia]: True, if the caption must be shown above the video; otherwise, the caption must be shown below the video; not supported in secret chats.
+final class InputMessagePaidMedia extends InputMessageContent {
+  /// **InputMessagePaidMedia** *(inputMessagePaidMedia)* - child of InputMessageContent
+  ///
+  /// A message with paid media; can be used only in channel chats with supergroupFullInfo.has_paid_media_allowed.
+  ///
+  /// * [starCount]: The number of Telegram Stars that must be paid to see the media; 1-getOption("paid_media_message_star_count_max").
+  /// * [paidMedia]: The content of the paid media.
+  /// * [caption]: Message caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
+  /// * [showCaptionAboveMedia]: True, if the caption must be shown above the video; otherwise, the caption must be shown below the video; not supported in secret chats.
+  const InputMessagePaidMedia({
+    required this.starCount,
+    required this.paidMedia,
+    this.caption,
+    required this.showCaptionAboveMedia,
+  });
+
+  /// The number of Telegram Stars that must be paid to see the media; 1-getOption("paid_media_message_star_count_max")
+  final int starCount;
+
+  /// The content of the paid media
+  final List<InputPaidMedia> paidMedia;
+
+  /// Message caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
+  final FormattedText? caption;
+
+  /// True, if the caption must be shown above the video; otherwise, the caption must be shown below the video; not supported in secret chats
+  final bool showCaptionAboveMedia;
+
+  /// Parse from a json
+  factory InputMessagePaidMedia.fromJson(Map<String, dynamic> json) =>
+      InputMessagePaidMedia(
+        starCount: json['star_count'],
+        paidMedia: List<InputPaidMedia>.from((json['paid_media'] ?? [])
+            .map((item) => InputPaidMedia.fromJson(item))
+            .toList()),
+        caption: json['caption'] == null
+            ? null
+            : FormattedText.fromJson(json['caption']),
+        showCaptionAboveMedia: json['show_caption_above_media'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "star_count": starCount,
+      "paid_media": paidMedia.map((i) => i.toJson()).toList(),
+      "caption": caption?.toJson(),
+      "show_caption_above_media": showCaptionAboveMedia,
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [star_count]: The number of Telegram Stars that must be paid to see the media; 1-getOption("paid_media_message_star_count_max")
+  /// * [paid_media]: The content of the paid media
+  /// * [caption]: Message caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
+  /// * [show_caption_above_media]: True, if the caption must be shown above the video; otherwise, the caption must be shown below the video; not supported in secret chats
+  @override
+  InputMessagePaidMedia copyWith({
+    int? starCount,
+    List<InputPaidMedia>? paidMedia,
+    FormattedText? caption,
+    bool? showCaptionAboveMedia,
+  }) =>
+      InputMessagePaidMedia(
+        starCount: starCount ?? this.starCount,
+        paidMedia: paidMedia ?? this.paidMedia,
+        caption: caption ?? this.caption,
+        showCaptionAboveMedia:
+            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'inputMessagePaidMedia';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
 /// **InputMessagePhoto** *(inputMessagePhoto)* - child of InputMessageContent
 ///
 /// A photo message.
@@ -548,7 +646,7 @@ final class InputMessageDocument extends InputMessageContent {
 /// * [width]: Photo width.
 /// * [height]: Photo height.
 /// * [caption]: Photo caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
-/// * [showCaptionAboveMedia]: True, if caption must be shown above the photo; otherwise, caption must be shown below the photo; not supported in secret chats.
+/// * [showCaptionAboveMedia]: True, if the caption must be shown above the photo; otherwise, the caption must be shown below the photo; not supported in secret chats.
 /// * [selfDestructType]: Photo self-destruct type; pass null if none; private chats only *(optional)*.
 /// * [hasSpoiler]: True, if the photo preview must be covered by a spoiler animation; not supported in secret chats.
 final class InputMessagePhoto extends InputMessageContent {
@@ -562,7 +660,7 @@ final class InputMessagePhoto extends InputMessageContent {
   /// * [width]: Photo width.
   /// * [height]: Photo height.
   /// * [caption]: Photo caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
-  /// * [showCaptionAboveMedia]: True, if caption must be shown above the photo; otherwise, caption must be shown below the photo; not supported in secret chats.
+  /// * [showCaptionAboveMedia]: True, if the caption must be shown above the photo; otherwise, the caption must be shown below the photo; not supported in secret chats.
   /// * [selfDestructType]: Photo self-destruct type; pass null if none; private chats only *(optional)*.
   /// * [hasSpoiler]: True, if the photo preview must be covered by a spoiler animation; not supported in secret chats.
   const InputMessagePhoto({
@@ -595,7 +693,7 @@ final class InputMessagePhoto extends InputMessageContent {
   /// Photo caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
-  /// True, if caption must be shown above the photo; otherwise, caption must be shown below the photo; not supported in secret chats
+  /// True, if the caption must be shown above the photo; otherwise, the caption must be shown below the photo; not supported in secret chats
   final bool showCaptionAboveMedia;
 
   /// Photo self-destruct type; pass null if none; private chats only
@@ -653,7 +751,7 @@ final class InputMessagePhoto extends InputMessageContent {
   /// * [width]: Photo width
   /// * [height]: Photo height
   /// * [caption]: Photo caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
-  /// * [show_caption_above_media]: True, if caption must be shown above the photo; otherwise, caption must be shown below the photo; not supported in secret chats
+  /// * [show_caption_above_media]: True, if the caption must be shown above the photo; otherwise, the caption must be shown below the photo; not supported in secret chats
   /// * [self_destruct_type]: Photo self-destruct type; pass null if none; private chats only
   /// * [has_spoiler]: True, if the photo preview must be covered by a spoiler animation; not supported in secret chats
   @override
@@ -808,7 +906,7 @@ final class InputMessageSticker extends InputMessageContent {
 /// * [height]: Video height.
 /// * [supportsStreaming]: True, if the video is supposed to be streamed.
 /// * [caption]: Video caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
-/// * [showCaptionAboveMedia]: True, if caption must be shown above the video; otherwise, caption must be shown below the video; not supported in secret chats.
+/// * [showCaptionAboveMedia]: True, if the caption must be shown above the video; otherwise, the caption must be shown below the video; not supported in secret chats.
 /// * [selfDestructType]: Video self-destruct type; pass null if none; private chats only *(optional)*.
 /// * [hasSpoiler]: True, if the video preview must be covered by a spoiler animation; not supported in secret chats.
 final class InputMessageVideo extends InputMessageContent {
@@ -824,7 +922,7 @@ final class InputMessageVideo extends InputMessageContent {
   /// * [height]: Video height.
   /// * [supportsStreaming]: True, if the video is supposed to be streamed.
   /// * [caption]: Video caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
-  /// * [showCaptionAboveMedia]: True, if caption must be shown above the video; otherwise, caption must be shown below the video; not supported in secret chats.
+  /// * [showCaptionAboveMedia]: True, if the caption must be shown above the video; otherwise, the caption must be shown below the video; not supported in secret chats.
   /// * [selfDestructType]: Video self-destruct type; pass null if none; private chats only *(optional)*.
   /// * [hasSpoiler]: True, if the video preview must be covered by a spoiler animation; not supported in secret chats.
   const InputMessageVideo({
@@ -865,7 +963,7 @@ final class InputMessageVideo extends InputMessageContent {
   /// Video caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
-  /// True, if caption must be shown above the video; otherwise, caption must be shown below the video; not supported in secret chats
+  /// True, if the caption must be shown above the video; otherwise, the caption must be shown below the video; not supported in secret chats
   final bool showCaptionAboveMedia;
 
   /// Video self-destruct type; pass null if none; private chats only
@@ -929,7 +1027,7 @@ final class InputMessageVideo extends InputMessageContent {
   /// * [height]: Video height
   /// * [supports_streaming]: True, if the video is supposed to be streamed
   /// * [caption]: Video caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
-  /// * [show_caption_above_media]: True, if caption must be shown above the video; otherwise, caption must be shown below the video; not supported in secret chats
+  /// * [show_caption_above_media]: True, if the caption must be shown above the video; otherwise, the caption must be shown below the video; not supported in secret chats
   /// * [self_destruct_type]: Video self-destruct type; pass null if none; private chats only
   /// * [has_spoiler]: True, if the video preview must be covered by a spoiler animation; not supported in secret chats
   @override
@@ -1538,7 +1636,8 @@ final class InputMessageGame extends InputMessageContent {
 /// * [providerToken]: Payment provider token; may be empty for payments in Telegram Stars.
 /// * [providerData]: JSON-encoded data about the invoice, which will be shared with the payment provider.
 /// * [startParameter]: Unique invoice bot deep link parameter for the generation of this invoice. If empty, it would be possible to pay directly from forwards of the invoice message.
-/// * [extendedMediaContent]: The content of extended media attached to the invoice. The content of the message to be sent. Must be one of the following types: inputMessagePhoto, inputMessageVideo.
+/// * [paidMedia]: The content of paid media attached to the invoice; pass null if none *(optional)*.
+/// * [paidMediaCaption]: Paid media caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
 final class InputMessageInvoice extends InputMessageContent {
   /// **InputMessageInvoice** *(inputMessageInvoice)* - child of InputMessageContent
   ///
@@ -1555,7 +1654,8 @@ final class InputMessageInvoice extends InputMessageContent {
   /// * [providerToken]: Payment provider token; may be empty for payments in Telegram Stars.
   /// * [providerData]: JSON-encoded data about the invoice, which will be shared with the payment provider.
   /// * [startParameter]: Unique invoice bot deep link parameter for the generation of this invoice. If empty, it would be possible to pay directly from forwards of the invoice message.
-  /// * [extendedMediaContent]: The content of extended media attached to the invoice. The content of the message to be sent. Must be one of the following types: inputMessagePhoto, inputMessageVideo.
+  /// * [paidMedia]: The content of paid media attached to the invoice; pass null if none *(optional)*.
+  /// * [paidMediaCaption]: Paid media caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
   const InputMessageInvoice({
     required this.invoice,
     required this.title,
@@ -1568,7 +1668,8 @@ final class InputMessageInvoice extends InputMessageContent {
     required this.providerToken,
     required this.providerData,
     required this.startParameter,
-    required this.extendedMediaContent,
+    this.paidMedia,
+    this.paidMediaCaption,
   });
 
   /// Invoice
@@ -1604,8 +1705,11 @@ final class InputMessageInvoice extends InputMessageContent {
   /// Unique invoice bot deep link parameter for the generation of this invoice. If empty, it would be possible to pay directly from forwards of the invoice message
   final String startParameter;
 
-  /// The content of extended media attached to the invoice. The content of the message to be sent. Must be one of the following types: inputMessagePhoto, inputMessageVideo
-  final InputMessageContent extendedMediaContent;
+  /// The content of paid media attached to the invoice; pass null if none
+  final InputPaidMedia? paidMedia;
+
+  /// Paid media caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
+  final FormattedText? paidMediaCaption;
 
   /// Parse from a json
   factory InputMessageInvoice.fromJson(Map<String, dynamic> json) =>
@@ -1621,8 +1725,12 @@ final class InputMessageInvoice extends InputMessageContent {
         providerToken: json['provider_token'],
         providerData: json['provider_data'],
         startParameter: json['start_parameter'],
-        extendedMediaContent:
-            InputMessageContent.fromJson(json['extended_media_content']),
+        paidMedia: json['paid_media'] == null
+            ? null
+            : InputPaidMedia.fromJson(json['paid_media']),
+        paidMediaCaption: json['paid_media_caption'] == null
+            ? null
+            : FormattedText.fromJson(json['paid_media_caption']),
       );
 
   /// Convert model to TDLib JSON format
@@ -1641,7 +1749,8 @@ final class InputMessageInvoice extends InputMessageContent {
       "provider_token": providerToken,
       "provider_data": providerData,
       "start_parameter": startParameter,
-      "extended_media_content": extendedMediaContent.toJson(),
+      "paid_media": paidMedia?.toJson(),
+      "paid_media_caption": paidMediaCaption?.toJson(),
     };
   }
 
@@ -1659,7 +1768,8 @@ final class InputMessageInvoice extends InputMessageContent {
   /// * [provider_token]: Payment provider token; may be empty for payments in Telegram Stars
   /// * [provider_data]: JSON-encoded data about the invoice, which will be shared with the payment provider
   /// * [start_parameter]: Unique invoice bot deep link parameter for the generation of this invoice. If empty, it would be possible to pay directly from forwards of the invoice message
-  /// * [extended_media_content]: The content of extended media attached to the invoice. The content of the message to be sent. Must be one of the following types: inputMessagePhoto, inputMessageVideo
+  /// * [paid_media]: The content of paid media attached to the invoice; pass null if none
+  /// * [paid_media_caption]: Paid media caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   @override
   InputMessageInvoice copyWith({
     Invoice? invoice,
@@ -1673,7 +1783,8 @@ final class InputMessageInvoice extends InputMessageContent {
     String? providerToken,
     String? providerData,
     String? startParameter,
-    InputMessageContent? extendedMediaContent,
+    InputPaidMedia? paidMedia,
+    FormattedText? paidMediaCaption,
   }) =>
       InputMessageInvoice(
         invoice: invoice ?? this.invoice,
@@ -1687,7 +1798,8 @@ final class InputMessageInvoice extends InputMessageContent {
         providerToken: providerToken ?? this.providerToken,
         providerData: providerData ?? this.providerData,
         startParameter: startParameter ?? this.startParameter,
-        extendedMediaContent: extendedMediaContent ?? this.extendedMediaContent,
+        paidMedia: paidMedia ?? this.paidMedia,
+        paidMediaCaption: paidMediaCaption ?? this.paidMediaCaption,
       );
 
   /// TDLib object type
@@ -1900,7 +2012,7 @@ final class InputMessageStory extends InputMessageContent {
 /// A forwarded message.
 ///
 /// * [fromChatId]: Identifier for the chat this forwarded message came from.
-/// * [messageId]: Identifier of the message to forward. A message can be forwarded only if message.can_be_forwarded.
+/// * [messageId]: Identifier of the message to forward. A message can be forwarded only if messageProperties.can_be_forwarded.
 /// * [inGameShare]: True, if a game message is being shared from a launched game; applies only to game messages.
 /// * [copyOptions]: Options to be used to copy content of the message without reference to the original sender; pass null to forward the message as usual *(optional)*.
 final class InputMessageForwarded extends InputMessageContent {
@@ -1909,7 +2021,7 @@ final class InputMessageForwarded extends InputMessageContent {
   /// A forwarded message.
   ///
   /// * [fromChatId]: Identifier for the chat this forwarded message came from.
-  /// * [messageId]: Identifier of the message to forward. A message can be forwarded only if message.can_be_forwarded.
+  /// * [messageId]: Identifier of the message to forward. A message can be forwarded only if messageProperties.can_be_forwarded.
   /// * [inGameShare]: True, if a game message is being shared from a launched game; applies only to game messages.
   /// * [copyOptions]: Options to be used to copy content of the message without reference to the original sender; pass null to forward the message as usual *(optional)*.
   const InputMessageForwarded({
@@ -1922,7 +2034,7 @@ final class InputMessageForwarded extends InputMessageContent {
   /// Identifier for the chat this forwarded message came from
   final int fromChatId;
 
-  /// Identifier of the message to forward. A message can be forwarded only if message.can_be_forwarded
+  /// Identifier of the message to forward. A message can be forwarded only if messageProperties.can_be_forwarded
   final int messageId;
 
   /// True, if a game message is being shared from a launched game; applies only to game messages
@@ -1958,7 +2070,7 @@ final class InputMessageForwarded extends InputMessageContent {
   ///
   /// Properties:
   /// * [from_chat_id]: Identifier for the chat this forwarded message came from
-  /// * [message_id]: Identifier of the message to forward. A message can be forwarded only if message.can_be_forwarded
+  /// * [message_id]: Identifier of the message to forward. A message can be forwarded only if messageProperties.can_be_forwarded
   /// * [in_game_share]: True, if a game message is being shared from a launched game; applies only to game messages
   /// * [copy_options]: Options to be used to copy content of the message without reference to the original sender; pass null to forward the message as usual
   @override

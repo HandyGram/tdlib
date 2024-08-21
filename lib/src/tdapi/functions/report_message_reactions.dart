@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **ReportMessageReactions** *(reportMessageReactions)* - TDLib function
 ///
-/// Reports reactions set on a message to the Telegram moderators. Reactions on a message can be reported only if message.can_report_reactions.
+/// Reports reactions set on a message to the Telegram moderators. Reactions on a message can be reported only if messageProperties.can_report_reactions.
 ///
 /// * [chatId]: Chat identifier.
 /// * [messageId]: Message identifier.
@@ -12,7 +12,7 @@ part of '../tdapi.dart';
 final class ReportMessageReactions extends TdFunction {
   /// **ReportMessageReactions** *(reportMessageReactions)* - TDLib function
   ///
-  /// Reports reactions set on a message to the Telegram moderators. Reactions on a message can be reported only if message.can_report_reactions.
+  /// Reports reactions set on a message to the Telegram moderators. Reactions on a message can be reported only if messageProperties.can_report_reactions.
   ///
   /// * [chatId]: Chat identifier.
   /// * [messageId]: Message identifier.

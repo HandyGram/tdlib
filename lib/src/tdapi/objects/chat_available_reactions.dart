@@ -47,13 +47,13 @@ sealed class ChatAvailableReactions extends TdObject {
 
 /// **ChatAvailableReactionsAll** *(chatAvailableReactionsAll)* - child of ChatAvailableReactions
 ///
-/// All reactions are available in the chat.
+/// All reactions are available in the chat, excluding the paid reaction and custom reactions in channel chats.
 ///
 /// * [maxReactionCount]: The maximum allowed number of reactions per message; 1-11.
 final class ChatAvailableReactionsAll extends ChatAvailableReactions {
   /// **ChatAvailableReactionsAll** *(chatAvailableReactionsAll)* - child of ChatAvailableReactions
   ///
-  /// All reactions are available in the chat.
+  /// All reactions are available in the chat, excluding the paid reaction and custom reactions in channel chats.
   ///
   /// * [maxReactionCount]: The maximum allowed number of reactions per message; 1-11.
   const ChatAvailableReactionsAll({

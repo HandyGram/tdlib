@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **GetSavedMessagesTopicHistory** *(getSavedMessagesTopicHistory)* - TDLib function
 ///
-/// Returns messages in a Saved Messages topic. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id).
+/// Returns messages in a Saved Messages topic. The messages are returned in reverse chronological order (i.e., in order of decreasing message_id).
 ///
 /// * [savedMessagesTopicId]: Identifier of Saved Messages topic which messages will be fetched.
 /// * [fromMessageId]: Identifier of the message starting from which messages must be fetched; use 0 to get results from the last message.
@@ -13,7 +13,7 @@ part of '../tdapi.dart';
 final class GetSavedMessagesTopicHistory extends TdFunction {
   /// **GetSavedMessagesTopicHistory** *(getSavedMessagesTopicHistory)* - TDLib function
   ///
-  /// Returns messages in a Saved Messages topic. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id).
+  /// Returns messages in a Saved Messages topic. The messages are returned in reverse chronological order (i.e., in order of decreasing message_id).
   ///
   /// * [savedMessagesTopicId]: Identifier of Saved Messages topic which messages will be fetched.
   /// * [fromMessageId]: Identifier of the message starting from which messages must be fetched; use 0 to get results from the last message.

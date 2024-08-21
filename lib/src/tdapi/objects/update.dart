@@ -128,6 +128,7 @@ sealed class Update extends TdObject {
   /// * [UpdateAvailableMessageEffects]
   /// * [UpdateDefaultReactionType]
   /// * [UpdateSavedMessagesTags]
+  /// * [UpdateActiveLiveLocationMessages]
   /// * [UpdateOwnedStarCount]
   /// * [UpdateChatRevenueAmount]
   /// * [UpdateStarRevenueStatus]
@@ -397,6 +398,8 @@ sealed class Update extends TdObject {
         return UpdateDefaultReactionType.fromJson(json);
       case UpdateSavedMessagesTags.defaultObjectId:
         return UpdateSavedMessagesTags.fromJson(json);
+      case UpdateActiveLiveLocationMessages.defaultObjectId:
+        return UpdateActiveLiveLocationMessages.fromJson(json);
       case UpdateOwnedStarCount.defaultObjectId:
         return UpdateOwnedStarCount.fromJson(json);
       case UpdateChatRevenueAmount.defaultObjectId:
@@ -7462,17 +7465,20 @@ final class UpdateFileRemovedFromDownloads extends Update {
 /// A request can't be completed unless application verification is performed; for official mobile applications only.. The method setApplicationVerificationToken must be called once the verification is completed or failed.
 ///
 /// * [verificationId]: Unique identifier for the verification process.
-/// * [nonce]: Unique nonce for the classic Play Integrity verification (https://developer.android.com/google/play/integrity/classic) for Android,. or a unique string to compare with verify_nonce field from a push notification for iOS.
+/// * [nonce]: Unique base64url-encoded nonce for the classic Play Integrity verification (https://developer.android.com/google/play/integrity/classic) for Android,. or a unique string to compare with verify_nonce field from a push notification for iOS.
+/// * [cloudProjectNumber]: Cloud project number to pass to the Play Integrity API on Android.
 final class UpdateApplicationVerificationRequired extends Update {
   /// **UpdateApplicationVerificationRequired** *(updateApplicationVerificationRequired)* - child of Update
   ///
   /// A request can't be completed unless application verification is performed; for official mobile applications only.. The method setApplicationVerificationToken must be called once the verification is completed or failed.
   ///
   /// * [verificationId]: Unique identifier for the verification process.
-  /// * [nonce]: Unique nonce for the classic Play Integrity verification (https://developer.android.com/google/play/integrity/classic) for Android,. or a unique string to compare with verify_nonce field from a push notification for iOS.
+  /// * [nonce]: Unique base64url-encoded nonce for the classic Play Integrity verification (https://developer.android.com/google/play/integrity/classic) for Android,. or a unique string to compare with verify_nonce field from a push notification for iOS.
+  /// * [cloudProjectNumber]: Cloud project number to pass to the Play Integrity API on Android.
   const UpdateApplicationVerificationRequired({
     required this.verificationId,
     required this.nonce,
+    required this.cloudProjectNumber,
     this.extra,
     this.clientId,
   });
@@ -7480,8 +7486,11 @@ final class UpdateApplicationVerificationRequired extends Update {
   /// Unique identifier for the verification process
   final int verificationId;
 
-  /// Unique nonce for the classic Play Integrity verification (https://developer.android.com/google/play/integrity/classic) for Android,. or a unique string to compare with verify_nonce field from a push notification for iOS
+  /// Unique base64url-encoded nonce for the classic Play Integrity verification (https://developer.android.com/google/play/integrity/classic) for Android,. or a unique string to compare with verify_nonce field from a push notification for iOS
   final String nonce;
+
+  /// Cloud project number to pass to the Play Integrity API on Android
+  final int cloudProjectNumber;
 
   /// [extra] callback sign
   @override
@@ -7497,6 +7506,9 @@ final class UpdateApplicationVerificationRequired extends Update {
       UpdateApplicationVerificationRequired(
         verificationId: json['verification_id'],
         nonce: json['nonce'],
+        cloudProjectNumber: json['cloud_project_number'] is int
+            ? json['cloud_project_number']
+            : int.parse(json['cloud_project_number']),
         extra: json['@extra'],
         clientId: json['@client_id'],
       );
@@ -7508,6 +7520,7 @@ final class UpdateApplicationVerificationRequired extends Update {
       "@type": defaultObjectId,
       "verification_id": verificationId,
       "nonce": nonce,
+      "cloud_project_number": cloudProjectNumber,
     };
   }
 
@@ -7515,17 +7528,20 @@ final class UpdateApplicationVerificationRequired extends Update {
   ///
   /// Properties:
   /// * [verification_id]: Unique identifier for the verification process
-  /// * [nonce]: Unique nonce for the classic Play Integrity verification (https://developer.android.com/google/play/integrity/classic) for Android,. or a unique string to compare with verify_nonce field from a push notification for iOS
+  /// * [nonce]: Unique base64url-encoded nonce for the classic Play Integrity verification (https://developer.android.com/google/play/integrity/classic) for Android,. or a unique string to compare with verify_nonce field from a push notification for iOS
+  /// * [cloud_project_number]: Cloud project number to pass to the Play Integrity API on Android
   @override
   UpdateApplicationVerificationRequired copyWith({
     int? verificationId,
     String? nonce,
+    int? cloudProjectNumber,
     dynamic extra,
     int? clientId,
   }) =>
       UpdateApplicationVerificationRequired(
         verificationId: verificationId ?? this.verificationId,
         nonce: nonce ?? this.nonce,
+        cloudProjectNumber: cloudProjectNumber ?? this.cloudProjectNumber,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
@@ -10592,24 +10608,100 @@ final class UpdateSavedMessagesTags extends Update {
   String get currentObjectId => defaultObjectId;
 }
 
+/// **UpdateActiveLiveLocationMessages** *(updateActiveLiveLocationMessages)* - child of Update
+///
+/// The list of messages with active live location that need to be updated by the application has changed. The list is persistent across application restarts only if the message database is used.
+///
+/// * [messages]: The list of messages with active live locations.
+final class UpdateActiveLiveLocationMessages extends Update {
+  /// **UpdateActiveLiveLocationMessages** *(updateActiveLiveLocationMessages)* - child of Update
+  ///
+  /// The list of messages with active live location that need to be updated by the application has changed. The list is persistent across application restarts only if the message database is used.
+  ///
+  /// * [messages]: The list of messages with active live locations.
+  const UpdateActiveLiveLocationMessages({
+    required this.messages,
+    this.extra,
+    this.clientId,
+  });
+
+  /// The list of messages with active live locations
+  final List<Message> messages;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+
+  /// Parse from a json
+  factory UpdateActiveLiveLocationMessages.fromJson(
+          Map<String, dynamic> json) =>
+      UpdateActiveLiveLocationMessages(
+        messages: List<Message>.from((json['messages'] ?? [])
+            .map((item) => Message.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "messages": messages.map((i) => i.toJson()).toList(),
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [messages]: The list of messages with active live locations
+  @override
+  UpdateActiveLiveLocationMessages copyWith({
+    List<Message>? messages,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      UpdateActiveLiveLocationMessages(
+        messages: messages ?? this.messages,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'updateActiveLiveLocationMessages';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
 /// **UpdateOwnedStarCount** *(updateOwnedStarCount)* - child of Update
 ///
-/// The number of Telegram stars owned by the current user has changed.
+/// The number of Telegram Stars owned by the current user has changed.
 ///
-/// * [starCount]: The new number of Telegram stars owned.
+/// * [starCount]: The new number of Telegram Stars owned.
 final class UpdateOwnedStarCount extends Update {
   /// **UpdateOwnedStarCount** *(updateOwnedStarCount)* - child of Update
   ///
-  /// The number of Telegram stars owned by the current user has changed.
+  /// The number of Telegram Stars owned by the current user has changed.
   ///
-  /// * [starCount]: The new number of Telegram stars owned.
+  /// * [starCount]: The new number of Telegram Stars owned.
   const UpdateOwnedStarCount({
     required this.starCount,
     this.extra,
     this.clientId,
   });
 
-  /// The new number of Telegram stars owned
+  /// The new number of Telegram Stars owned
   final int starCount;
 
   /// [extra] callback sign
@@ -10640,7 +10732,7 @@ final class UpdateOwnedStarCount extends Update {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [star_count]: The new number of Telegram stars owned
+  /// * [star_count]: The new number of Telegram Stars owned
   @override
   UpdateOwnedStarCount copyWith({
     int? starCount,
@@ -10751,17 +10843,17 @@ final class UpdateChatRevenueAmount extends Update {
 
 /// **UpdateStarRevenueStatus** *(updateStarRevenueStatus)* - child of Update
 ///
-/// The Telegram star revenue earned by a bot or a chat has changed. If star transactions screen of the chat is opened, then getStarTransactions may be called to fetch new transactions.
+/// The Telegram Star revenue earned by a bot or a chat has changed. If Telegram Star transaction screen of the chat is opened, then getStarTransactions may be called to fetch new transactions.
 ///
-/// * [ownerId]: Identifier of the owner of the Telegram stars.
-/// * [status]: New Telegram star revenue status.
+/// * [ownerId]: Identifier of the owner of the Telegram Stars.
+/// * [status]: New Telegram Star revenue status.
 final class UpdateStarRevenueStatus extends Update {
   /// **UpdateStarRevenueStatus** *(updateStarRevenueStatus)* - child of Update
   ///
-  /// The Telegram star revenue earned by a bot or a chat has changed. If star transactions screen of the chat is opened, then getStarTransactions may be called to fetch new transactions.
+  /// The Telegram Star revenue earned by a bot or a chat has changed. If Telegram Star transaction screen of the chat is opened, then getStarTransactions may be called to fetch new transactions.
   ///
-  /// * [ownerId]: Identifier of the owner of the Telegram stars.
-  /// * [status]: New Telegram star revenue status.
+  /// * [ownerId]: Identifier of the owner of the Telegram Stars.
+  /// * [status]: New Telegram Star revenue status.
   const UpdateStarRevenueStatus({
     required this.ownerId,
     required this.status,
@@ -10769,10 +10861,10 @@ final class UpdateStarRevenueStatus extends Update {
     this.clientId,
   });
 
-  /// Identifier of the owner of the Telegram stars
+  /// Identifier of the owner of the Telegram Stars
   final MessageSender ownerId;
 
-  /// New Telegram star revenue status
+  /// New Telegram Star revenue status
   final StarRevenueStatus status;
 
   /// [extra] callback sign
@@ -10805,8 +10897,8 @@ final class UpdateStarRevenueStatus extends Update {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [owner_id]: Identifier of the owner of the Telegram stars
-  /// * [status]: New Telegram star revenue status
+  /// * [owner_id]: Identifier of the owner of the Telegram Stars
+  /// * [status]: New Telegram Star revenue status
   @override
   UpdateStarRevenueStatus copyWith({
     MessageSender? ownerId,

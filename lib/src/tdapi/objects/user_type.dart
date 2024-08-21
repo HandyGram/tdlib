@@ -132,11 +132,13 @@ final class UserTypeDeleted extends UserType {
 /// * [canBeEdited]: True, if the bot is owned by the current user and can be edited using the methods toggleBotUsernameIsActive, reorderBotActiveUsernames, setBotProfilePhoto, setBotName, setBotInfoDescription, and setBotInfoShortDescription.
 /// * [canJoinGroups]: True, if the bot can be invited to basic group and supergroup chats.
 /// * [canReadAllGroupMessages]: True, if the bot can read all messages in basic group or supergroup chats and not just those addressed to the bot. In private and channel chats a bot can always read all messages.
+/// * [hasMainWebApp]: True, if the bot has the main Web App.
 /// * [isInline]: True, if the bot supports inline queries.
 /// * [inlineQueryPlaceholder]: Placeholder for inline queries (displayed on the application input field).
 /// * [needLocation]: True, if the location of the user is expected to be sent with every inline query to this bot.
 /// * [canConnectToBusiness]: True, if the bot supports connection to Telegram Business accounts.
 /// * [canBeAddedToAttachmentMenu]: True, if the bot can be added to attachment or side menu.
+/// * [activeUserCount]: The number of recently active users of the bot.
 final class UserTypeBot extends UserType {
   /// **UserTypeBot** *(userTypeBot)* - child of UserType
   ///
@@ -145,20 +147,24 @@ final class UserTypeBot extends UserType {
   /// * [canBeEdited]: True, if the bot is owned by the current user and can be edited using the methods toggleBotUsernameIsActive, reorderBotActiveUsernames, setBotProfilePhoto, setBotName, setBotInfoDescription, and setBotInfoShortDescription.
   /// * [canJoinGroups]: True, if the bot can be invited to basic group and supergroup chats.
   /// * [canReadAllGroupMessages]: True, if the bot can read all messages in basic group or supergroup chats and not just those addressed to the bot. In private and channel chats a bot can always read all messages.
+  /// * [hasMainWebApp]: True, if the bot has the main Web App.
   /// * [isInline]: True, if the bot supports inline queries.
   /// * [inlineQueryPlaceholder]: Placeholder for inline queries (displayed on the application input field).
   /// * [needLocation]: True, if the location of the user is expected to be sent with every inline query to this bot.
   /// * [canConnectToBusiness]: True, if the bot supports connection to Telegram Business accounts.
   /// * [canBeAddedToAttachmentMenu]: True, if the bot can be added to attachment or side menu.
+  /// * [activeUserCount]: The number of recently active users of the bot.
   const UserTypeBot({
     required this.canBeEdited,
     required this.canJoinGroups,
     required this.canReadAllGroupMessages,
+    required this.hasMainWebApp,
     required this.isInline,
     required this.inlineQueryPlaceholder,
     required this.needLocation,
     required this.canConnectToBusiness,
     required this.canBeAddedToAttachmentMenu,
+    required this.activeUserCount,
   });
 
   /// True, if the bot is owned by the current user and can be edited using the methods toggleBotUsernameIsActive, reorderBotActiveUsernames, setBotProfilePhoto, setBotName, setBotInfoDescription, and setBotInfoShortDescription
@@ -169,6 +175,9 @@ final class UserTypeBot extends UserType {
 
   /// True, if the bot can read all messages in basic group or supergroup chats and not just those addressed to the bot. In private and channel chats a bot can always read all messages
   final bool canReadAllGroupMessages;
+
+  /// True, if the bot has the main Web App
+  final bool hasMainWebApp;
 
   /// True, if the bot supports inline queries
   final bool isInline;
@@ -185,16 +194,21 @@ final class UserTypeBot extends UserType {
   /// True, if the bot can be added to attachment or side menu
   final bool canBeAddedToAttachmentMenu;
 
+  /// The number of recently active users of the bot
+  final int activeUserCount;
+
   /// Parse from a json
   factory UserTypeBot.fromJson(Map<String, dynamic> json) => UserTypeBot(
         canBeEdited: json['can_be_edited'],
         canJoinGroups: json['can_join_groups'],
         canReadAllGroupMessages: json['can_read_all_group_messages'],
+        hasMainWebApp: json['has_main_web_app'],
         isInline: json['is_inline'],
         inlineQueryPlaceholder: json['inline_query_placeholder'],
         needLocation: json['need_location'],
         canConnectToBusiness: json['can_connect_to_business'],
         canBeAddedToAttachmentMenu: json['can_be_added_to_attachment_menu'],
+        activeUserCount: json['active_user_count'],
       );
 
   /// Convert model to TDLib JSON format
@@ -205,11 +219,13 @@ final class UserTypeBot extends UserType {
       "can_be_edited": canBeEdited,
       "can_join_groups": canJoinGroups,
       "can_read_all_group_messages": canReadAllGroupMessages,
+      "has_main_web_app": hasMainWebApp,
       "is_inline": isInline,
       "inline_query_placeholder": inlineQueryPlaceholder,
       "need_location": needLocation,
       "can_connect_to_business": canConnectToBusiness,
       "can_be_added_to_attachment_menu": canBeAddedToAttachmentMenu,
+      "active_user_count": activeUserCount,
     };
   }
 
@@ -219,27 +235,32 @@ final class UserTypeBot extends UserType {
   /// * [can_be_edited]: True, if the bot is owned by the current user and can be edited using the methods toggleBotUsernameIsActive, reorderBotActiveUsernames, setBotProfilePhoto, setBotName, setBotInfoDescription, and setBotInfoShortDescription
   /// * [can_join_groups]: True, if the bot can be invited to basic group and supergroup chats
   /// * [can_read_all_group_messages]: True, if the bot can read all messages in basic group or supergroup chats and not just those addressed to the bot. In private and channel chats a bot can always read all messages
+  /// * [has_main_web_app]: True, if the bot has the main Web App
   /// * [is_inline]: True, if the bot supports inline queries
   /// * [inline_query_placeholder]: Placeholder for inline queries (displayed on the application input field)
   /// * [need_location]: True, if the location of the user is expected to be sent with every inline query to this bot
   /// * [can_connect_to_business]: True, if the bot supports connection to Telegram Business accounts
   /// * [can_be_added_to_attachment_menu]: True, if the bot can be added to attachment or side menu
+  /// * [active_user_count]: The number of recently active users of the bot
   @override
   UserTypeBot copyWith({
     bool? canBeEdited,
     bool? canJoinGroups,
     bool? canReadAllGroupMessages,
+    bool? hasMainWebApp,
     bool? isInline,
     String? inlineQueryPlaceholder,
     bool? needLocation,
     bool? canConnectToBusiness,
     bool? canBeAddedToAttachmentMenu,
+    int? activeUserCount,
   }) =>
       UserTypeBot(
         canBeEdited: canBeEdited ?? this.canBeEdited,
         canJoinGroups: canJoinGroups ?? this.canJoinGroups,
         canReadAllGroupMessages:
             canReadAllGroupMessages ?? this.canReadAllGroupMessages,
+        hasMainWebApp: hasMainWebApp ?? this.hasMainWebApp,
         isInline: isInline ?? this.isInline,
         inlineQueryPlaceholder:
             inlineQueryPlaceholder ?? this.inlineQueryPlaceholder,
@@ -247,6 +268,7 @@ final class UserTypeBot extends UserType {
         canConnectToBusiness: canConnectToBusiness ?? this.canConnectToBusiness,
         canBeAddedToAttachmentMenu:
             canBeAddedToAttachmentMenu ?? this.canBeAddedToAttachmentMenu,
+        activeUserCount: activeUserCount ?? this.activeUserCount,
       );
 
   /// TDLib object type

@@ -7,7 +7,7 @@ part of '../tdapi.dart';
 /// * [chatId]: Identifier of the chat to which to forward messages.
 /// * [messageThreadId]: If not 0, the message thread identifier in which the message will be sent; for forum threads only.
 /// * [fromChatId]: Identifier of the chat from which to forward messages.
-/// * [messageIds]: Identifiers of the messages to forward. Message identifiers must be in a strictly increasing order. At most 100 messages can be forwarded simultaneously. A message can be forwarded only if message.can_be_forwarded.
+/// * [messageIds]: Identifiers of the messages to forward. Message identifiers must be in a strictly increasing order. At most 100 messages can be forwarded simultaneously. A message can be forwarded only if messageProperties.can_be_forwarded.
 /// * [options]: Options to be used to send the messages; pass null to use default options *(optional)*.
 /// * [sendCopy]: Pass true to copy content of the messages without reference to the original sender. Always true if the messages are forwarded to a secret chat or are local.
 /// * [removeCaption]: Pass true to remove media captions of message copies. Ignored if send_copy is false.
@@ -21,7 +21,7 @@ final class ForwardMessages extends TdFunction {
   /// * [chatId]: Identifier of the chat to which to forward messages.
   /// * [messageThreadId]: If not 0, the message thread identifier in which the message will be sent; for forum threads only.
   /// * [fromChatId]: Identifier of the chat from which to forward messages.
-  /// * [messageIds]: Identifiers of the messages to forward. Message identifiers must be in a strictly increasing order. At most 100 messages can be forwarded simultaneously. A message can be forwarded only if message.can_be_forwarded.
+  /// * [messageIds]: Identifiers of the messages to forward. Message identifiers must be in a strictly increasing order. At most 100 messages can be forwarded simultaneously. A message can be forwarded only if messageProperties.can_be_forwarded.
   /// * [options]: Options to be used to send the messages; pass null to use default options *(optional)*.
   /// * [sendCopy]: Pass true to copy content of the messages without reference to the original sender. Always true if the messages are forwarded to a secret chat or are local.
   /// * [removeCaption]: Pass true to remove media captions of message copies. Ignored if send_copy is false.
@@ -46,7 +46,7 @@ final class ForwardMessages extends TdFunction {
   /// Identifier of the chat from which to forward messages
   final int fromChatId;
 
-  /// Identifiers of the messages to forward. Message identifiers must be in a strictly increasing order. At most 100 messages can be forwarded simultaneously. A message can be forwarded only if message.can_be_forwarded
+  /// Identifiers of the messages to forward. Message identifiers must be in a strictly increasing order. At most 100 messages can be forwarded simultaneously. A message can be forwarded only if messageProperties.can_be_forwarded
   final List<int> messageIds;
 
   /// Options to be used to send the messages; pass null to use default options
@@ -80,7 +80,7 @@ final class ForwardMessages extends TdFunction {
   /// * [chat_id]: Identifier of the chat to which to forward messages
   /// * [message_thread_id]: If not 0, the message thread identifier in which the message will be sent; for forum threads only
   /// * [from_chat_id]: Identifier of the chat from which to forward messages
-  /// * [message_ids]: Identifiers of the messages to forward. Message identifiers must be in a strictly increasing order. At most 100 messages can be forwarded simultaneously. A message can be forwarded only if message.can_be_forwarded
+  /// * [message_ids]: Identifiers of the messages to forward. Message identifiers must be in a strictly increasing order. At most 100 messages can be forwarded simultaneously. A message can be forwarded only if messageProperties.can_be_forwarded
   /// * [options]: Options to be used to send the messages; pass null to use default options
   /// * [send_copy]: Pass true to copy content of the messages without reference to the original sender. Always true if the messages are forwarded to a secret chat or are local
   /// * [remove_caption]: Pass true to remove media captions of message copies. Ignored if send_copy is false

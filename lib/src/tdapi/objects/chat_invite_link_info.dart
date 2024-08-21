@@ -13,6 +13,7 @@ part of '../tdapi.dart';
 /// * [description]: Chat description.
 /// * [memberCount]: Number of members in the chat.
 /// * [memberUserIds]: User identifiers of some chat members that may be known to the current user.
+/// * [subscriptionInfo]: Information about subscription plan that must be paid by the user to use the link; may be null if the link doesn't require subscription *(optional)*.
 /// * [createsJoinRequest]: True, if the link only creates join request.
 /// * [isPublic]: True, if the chat is a public supergroup or channel, i.e. it has a username or it is a location-based supergroup.
 /// * [isVerified]: True, if the chat is verified.
@@ -32,6 +33,7 @@ final class ChatInviteLinkInfo extends TdObject {
   /// * [description]: Chat description.
   /// * [memberCount]: Number of members in the chat.
   /// * [memberUserIds]: User identifiers of some chat members that may be known to the current user.
+  /// * [subscriptionInfo]: Information about subscription plan that must be paid by the user to use the link; may be null if the link doesn't require subscription *(optional)*.
   /// * [createsJoinRequest]: True, if the link only creates join request.
   /// * [isPublic]: True, if the chat is a public supergroup or channel, i.e. it has a username or it is a location-based supergroup.
   /// * [isVerified]: True, if the chat is verified.
@@ -47,6 +49,7 @@ final class ChatInviteLinkInfo extends TdObject {
     required this.description,
     required this.memberCount,
     required this.memberUserIds,
+    this.subscriptionInfo,
     required this.createsJoinRequest,
     required this.isPublic,
     required this.isVerified,
@@ -82,6 +85,9 @@ final class ChatInviteLinkInfo extends TdObject {
 
   /// User identifiers of some chat members that may be known to the current user
   final List<int> memberUserIds;
+
+  /// Information about subscription plan that must be paid by the user to use the link; may be null if the link doesn't require subscription
+  final ChatInviteLinkSubscriptionInfo? subscriptionInfo;
 
   /// True, if the link only creates join request
   final bool createsJoinRequest;
@@ -121,6 +127,10 @@ final class ChatInviteLinkInfo extends TdObject {
         memberCount: json['member_count'],
         memberUserIds: List<int>.from(
             (json['member_user_ids'] ?? []).map((item) => item).toList()),
+        subscriptionInfo: json['subscription_info'] == null
+            ? null
+            : ChatInviteLinkSubscriptionInfo.fromJson(
+                json['subscription_info']),
         createsJoinRequest: json['creates_join_request'],
         isPublic: json['is_public'],
         isVerified: json['is_verified'],
@@ -144,6 +154,7 @@ final class ChatInviteLinkInfo extends TdObject {
       "description": description,
       "member_count": memberCount,
       "member_user_ids": memberUserIds.map((i) => i).toList(),
+      "subscription_info": subscriptionInfo?.toJson(),
       "creates_join_request": createsJoinRequest,
       "is_public": isPublic,
       "is_verified": isVerified,
@@ -164,6 +175,7 @@ final class ChatInviteLinkInfo extends TdObject {
   /// * [description]: Chat description
   /// * [member_count]: Number of members in the chat
   /// * [member_user_ids]: User identifiers of some chat members that may be known to the current user
+  /// * [subscription_info]: Information about subscription plan that must be paid by the user to use the link; may be null if the link doesn't require subscription
   /// * [creates_join_request]: True, if the link only creates join request
   /// * [is_public]: True, if the chat is a public supergroup or channel, i.e. it has a username or it is a location-based supergroup
   /// * [is_verified]: True, if the chat is verified
@@ -179,6 +191,7 @@ final class ChatInviteLinkInfo extends TdObject {
     String? description,
     int? memberCount,
     List<int>? memberUserIds,
+    ChatInviteLinkSubscriptionInfo? subscriptionInfo,
     bool? createsJoinRequest,
     bool? isPublic,
     bool? isVerified,
@@ -197,6 +210,7 @@ final class ChatInviteLinkInfo extends TdObject {
         description: description ?? this.description,
         memberCount: memberCount ?? this.memberCount,
         memberUserIds: memberUserIds ?? this.memberUserIds,
+        subscriptionInfo: subscriptionInfo ?? this.subscriptionInfo,
         createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
         isPublic: isPublic ?? this.isPublic,
         isVerified: isVerified ?? this.isVerified,

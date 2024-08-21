@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **GetMessageEmbeddingCode** *(getMessageEmbeddingCode)* - TDLib function
 ///
-/// Returns an HTML code for embedding the message. Available only for messages in supergroups and channels with a username.
+/// Returns an HTML code for embedding the message. Available only if messageProperties.can_get_embedding_code.
 ///
 /// * [chatId]: Identifier of the chat to which the message belongs.
 /// * [messageId]: Identifier of the message.
@@ -12,7 +12,7 @@ part of '../tdapi.dart';
 final class GetMessageEmbeddingCode extends TdFunction {
   /// **GetMessageEmbeddingCode** *(getMessageEmbeddingCode)* - TDLib function
   ///
-  /// Returns an HTML code for embedding the message. Available only for messages in supergroups and channels with a username.
+  /// Returns an HTML code for embedding the message. Available only if messageProperties.can_get_embedding_code.
   ///
   /// * [chatId]: Identifier of the chat to which the message belongs.
   /// * [messageId]: Identifier of the message.

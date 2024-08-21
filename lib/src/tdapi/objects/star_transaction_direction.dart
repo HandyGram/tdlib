@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **StarTransactionDirection** *(starTransactionDirection)* - parent
 ///
-/// Describes direction of a transaction with Telegram stars.
+/// Describes direction of a transaction with Telegram Stars.
 sealed class StarTransactionDirection extends TdObject {
   /// **StarTransactionDirection** *(starTransactionDirection)* - parent
   ///
-  /// Describes direction of a transaction with Telegram stars.
+  /// Describes direction of a transaction with Telegram Stars.
   const StarTransactionDirection();
 
   /// a StarTransactionDirection return type can be :
@@ -47,11 +47,11 @@ sealed class StarTransactionDirection extends TdObject {
 
 /// **StarTransactionDirectionIncoming** *(starTransactionDirectionIncoming)* - child of StarTransactionDirection
 ///
-/// The transaction is incoming and increases the number of owned Telegram stars.
+/// The transaction is incoming and increases the number of owned Telegram Stars.
 final class StarTransactionDirectionIncoming extends StarTransactionDirection {
   /// **StarTransactionDirectionIncoming** *(starTransactionDirectionIncoming)* - child of StarTransactionDirection
   ///
-  /// The transaction is incoming and increases the number of owned Telegram stars.
+  /// The transaction is incoming and increases the number of owned Telegram Stars.
   const StarTransactionDirectionIncoming();
 
   /// Parse from a json
@@ -86,11 +86,11 @@ final class StarTransactionDirectionIncoming extends StarTransactionDirection {
 
 /// **StarTransactionDirectionOutgoing** *(starTransactionDirectionOutgoing)* - child of StarTransactionDirection
 ///
-/// The transaction is outgoing and decreases the number of owned Telegram stars.
+/// The transaction is outgoing and decreases the number of owned Telegram Stars.
 final class StarTransactionDirectionOutgoing extends StarTransactionDirection {
   /// **StarTransactionDirectionOutgoing** *(starTransactionDirectionOutgoing)* - child of StarTransactionDirection
   ///
-  /// The transaction is outgoing and decreases the number of owned Telegram stars.
+  /// The transaction is outgoing and decreases the number of owned Telegram Stars.
   const StarTransactionDirectionOutgoing();
 
   /// Parse from a json

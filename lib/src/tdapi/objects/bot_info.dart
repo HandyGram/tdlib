@@ -10,8 +10,10 @@ part of '../tdapi.dart';
 /// * [animation]: Animation shown in the chat with the bot if the chat is empty; may be null *(optional)*.
 /// * [menuButton]: Information about a button to show instead of the bot commands menu button; may be null if ordinary bot commands menu must be shown *(optional)*.
 /// * [commands]: List of the bot commands.
+/// * [privacyPolicyUrl]: The HTTP link to the privacy policy of the bot. If empty, then /privacy command must be used if supported by the bot. If the command isn't supported, then https://telegram.org/privacy-tpa must be opened.
 /// * [defaultGroupAdministratorRights]: Default administrator rights for adding the bot to basic group and supergroup chats; may be null *(optional)*.
 /// * [defaultChannelAdministratorRights]: Default administrator rights for adding the bot to channels; may be null *(optional)*.
+/// * [hasMediaPreviews]: True, if the bot has media previews.
 /// * [editCommandsLink]: The internal link, which can be used to edit bot commands; may be null *(optional)*.
 /// * [editDescriptionLink]: The internal link, which can be used to edit bot description; may be null *(optional)*.
 /// * [editDescriptionMediaLink]: The internal link, which can be used to edit the photo or animation shown in the chat with the bot if the chat is empty; may be null *(optional)*.
@@ -27,8 +29,10 @@ final class BotInfo extends TdObject {
   /// * [animation]: Animation shown in the chat with the bot if the chat is empty; may be null *(optional)*.
   /// * [menuButton]: Information about a button to show instead of the bot commands menu button; may be null if ordinary bot commands menu must be shown *(optional)*.
   /// * [commands]: List of the bot commands.
+  /// * [privacyPolicyUrl]: The HTTP link to the privacy policy of the bot. If empty, then /privacy command must be used if supported by the bot. If the command isn't supported, then https://telegram.org/privacy-tpa must be opened.
   /// * [defaultGroupAdministratorRights]: Default administrator rights for adding the bot to basic group and supergroup chats; may be null *(optional)*.
   /// * [defaultChannelAdministratorRights]: Default administrator rights for adding the bot to channels; may be null *(optional)*.
+  /// * [hasMediaPreviews]: True, if the bot has media previews.
   /// * [editCommandsLink]: The internal link, which can be used to edit bot commands; may be null *(optional)*.
   /// * [editDescriptionLink]: The internal link, which can be used to edit bot description; may be null *(optional)*.
   /// * [editDescriptionMediaLink]: The internal link, which can be used to edit the photo or animation shown in the chat with the bot if the chat is empty; may be null *(optional)*.
@@ -40,8 +44,10 @@ final class BotInfo extends TdObject {
     this.animation,
     this.menuButton,
     required this.commands,
+    required this.privacyPolicyUrl,
     this.defaultGroupAdministratorRights,
     this.defaultChannelAdministratorRights,
+    required this.hasMediaPreviews,
     this.editCommandsLink,
     this.editDescriptionLink,
     this.editDescriptionMediaLink,
@@ -66,11 +72,17 @@ final class BotInfo extends TdObject {
   /// List of the bot commands
   final List<BotCommand> commands;
 
+  /// The HTTP link to the privacy policy of the bot. If empty, then /privacy command must be used if supported by the bot. If the command isn't supported, then https://telegram.org/privacy-tpa must be opened
+  final String privacyPolicyUrl;
+
   /// Default administrator rights for adding the bot to basic group and supergroup chats; may be null
   final ChatAdministratorRights? defaultGroupAdministratorRights;
 
   /// Default administrator rights for adding the bot to channels; may be null
   final ChatAdministratorRights? defaultChannelAdministratorRights;
+
+  /// True, if the bot has media previews
+  final bool hasMediaPreviews;
 
   /// The internal link, which can be used to edit bot commands; may be null
   final InternalLinkType? editCommandsLink;
@@ -98,6 +110,7 @@ final class BotInfo extends TdObject {
         commands: List<BotCommand>.from((json['commands'] ?? [])
             .map((item) => BotCommand.fromJson(item))
             .toList()),
+        privacyPolicyUrl: json['privacy_policy_url'],
         defaultGroupAdministratorRights:
             json['default_group_administrator_rights'] == null
                 ? null
@@ -108,6 +121,7 @@ final class BotInfo extends TdObject {
                 ? null
                 : ChatAdministratorRights.fromJson(
                     json['default_channel_administrator_rights']),
+        hasMediaPreviews: json['has_media_previews'],
         editCommandsLink: json['edit_commands_link'] == null
             ? null
             : InternalLinkType.fromJson(json['edit_commands_link']),
@@ -133,10 +147,12 @@ final class BotInfo extends TdObject {
       "animation": animation?.toJson(),
       "menu_button": menuButton?.toJson(),
       "commands": commands.map((i) => i.toJson()).toList(),
+      "privacy_policy_url": privacyPolicyUrl,
       "default_group_administrator_rights":
           defaultGroupAdministratorRights?.toJson(),
       "default_channel_administrator_rights":
           defaultChannelAdministratorRights?.toJson(),
+      "has_media_previews": hasMediaPreviews,
       "edit_commands_link": editCommandsLink?.toJson(),
       "edit_description_link": editDescriptionLink?.toJson(),
       "edit_description_media_link": editDescriptionMediaLink?.toJson(),
@@ -153,8 +169,10 @@ final class BotInfo extends TdObject {
   /// * [animation]: Animation shown in the chat with the bot if the chat is empty; may be null
   /// * [menu_button]: Information about a button to show instead of the bot commands menu button; may be null if ordinary bot commands menu must be shown
   /// * [commands]: List of the bot commands
+  /// * [privacy_policy_url]: The HTTP link to the privacy policy of the bot. If empty, then /privacy command must be used if supported by the bot. If the command isn't supported, then https://telegram.org/privacy-tpa must be opened
   /// * [default_group_administrator_rights]: Default administrator rights for adding the bot to basic group and supergroup chats; may be null
   /// * [default_channel_administrator_rights]: Default administrator rights for adding the bot to channels; may be null
+  /// * [has_media_previews]: True, if the bot has media previews
   /// * [edit_commands_link]: The internal link, which can be used to edit bot commands; may be null
   /// * [edit_description_link]: The internal link, which can be used to edit bot description; may be null
   /// * [edit_description_media_link]: The internal link, which can be used to edit the photo or animation shown in the chat with the bot if the chat is empty; may be null
@@ -166,8 +184,10 @@ final class BotInfo extends TdObject {
     Animation? animation,
     BotMenuButton? menuButton,
     List<BotCommand>? commands,
+    String? privacyPolicyUrl,
     ChatAdministratorRights? defaultGroupAdministratorRights,
     ChatAdministratorRights? defaultChannelAdministratorRights,
+    bool? hasMediaPreviews,
     InternalLinkType? editCommandsLink,
     InternalLinkType? editDescriptionLink,
     InternalLinkType? editDescriptionMediaLink,
@@ -180,10 +200,12 @@ final class BotInfo extends TdObject {
         animation: animation ?? this.animation,
         menuButton: menuButton ?? this.menuButton,
         commands: commands ?? this.commands,
+        privacyPolicyUrl: privacyPolicyUrl ?? this.privacyPolicyUrl,
         defaultGroupAdministratorRights: defaultGroupAdministratorRights ??
             this.defaultGroupAdministratorRights,
         defaultChannelAdministratorRights: defaultChannelAdministratorRights ??
             this.defaultChannelAdministratorRights,
+        hasMediaPreviews: hasMediaPreviews ?? this.hasMediaPreviews,
         editCommandsLink: editCommandsLink ?? this.editCommandsLink,
         editDescriptionLink: editDescriptionLink ?? this.editDescriptionLink,
         editDescriptionMediaLink:

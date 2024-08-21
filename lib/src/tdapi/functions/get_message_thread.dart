@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **GetMessageThread** *(getMessageThread)* - TDLib function
 ///
-/// Returns information about a message thread. Can be used only if message.can_get_message_thread == true.
+/// Returns information about a message thread. Can be used only if messageProperties.can_get_message_thread == true.
 ///
 /// * [chatId]: Chat identifier.
 /// * [messageId]: Identifier of the message.
@@ -11,7 +11,7 @@ part of '../tdapi.dart';
 final class GetMessageThread extends TdFunction {
   /// **GetMessageThread** *(getMessageThread)* - TDLib function
   ///
-  /// Returns information about a message thread. Can be used only if message.can_get_message_thread == true.
+  /// Returns information about a message thread. Can be used only if messageProperties.can_get_message_thread == true.
   ///
   /// * [chatId]: Chat identifier.
   /// * [messageId]: Identifier of the message.

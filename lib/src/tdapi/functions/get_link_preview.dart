@@ -1,23 +1,23 @@
 part of '../tdapi.dart';
 
-/// **GetWebPagePreview** *(getWebPagePreview)* - TDLib function
+/// **GetLinkPreview** *(getLinkPreview)* - TDLib function
 ///
 /// Returns a link preview by the text of a message. Do not call this function too often. Returns a 404 error if the text has no link preview.
 ///
 /// * [text]: Message text with formatting.
 /// * [linkPreviewOptions]: Options to be used for generation of the link preview; pass null to use default link preview options *(optional)*.
 ///
-/// [WebPage] is returned on completion.
-final class GetWebPagePreview extends TdFunction {
-  /// **GetWebPagePreview** *(getWebPagePreview)* - TDLib function
+/// [LinkPreview] is returned on completion.
+final class GetLinkPreview extends TdFunction {
+  /// **GetLinkPreview** *(getLinkPreview)* - TDLib function
   ///
   /// Returns a link preview by the text of a message. Do not call this function too often. Returns a 404 error if the text has no link preview.
   ///
   /// * [text]: Message text with formatting.
   /// * [linkPreviewOptions]: Options to be used for generation of the link preview; pass null to use default link preview options *(optional)*.
   ///
-  /// [WebPage] is returned on completion.
-  const GetWebPagePreview({
+  /// [LinkPreview] is returned on completion.
+  const GetLinkPreview({
     required this.text,
     this.linkPreviewOptions,
   });
@@ -44,17 +44,17 @@ final class GetWebPagePreview extends TdFunction {
   /// Properties:
   /// * [text]: Message text with formatting
   /// * [link_preview_options]: Options to be used for generation of the link preview; pass null to use default link preview options
-  GetWebPagePreview copyWith({
+  GetLinkPreview copyWith({
     FormattedText? text,
     LinkPreviewOptions? linkPreviewOptions,
   }) =>
-      GetWebPagePreview(
+      GetLinkPreview(
         text: text ?? this.text,
         linkPreviewOptions: linkPreviewOptions ?? this.linkPreviewOptions,
       );
 
   /// TDLib object type
-  static const String defaultObjectId = 'getWebPagePreview';
+  static const String defaultObjectId = 'getLinkPreview';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

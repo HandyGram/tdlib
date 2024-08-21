@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **GetMessageLink** *(getMessageLink)* - TDLib function
 ///
-/// Returns an HTTPS link to a message in a chat. Available only for already sent messages in supergroups and channels, or if message.can_get_media_timestamp_links and a media timestamp link is generated. This is an offline request.
+/// Returns an HTTPS link to a message in a chat. Available only if messageProperties.can_get_link, or if messageProperties.can_get_media_timestamp_links and a media timestamp link is generated. This is an offline request.
 ///
 /// * [chatId]: Identifier of the chat to which the message belongs.
 /// * [messageId]: Identifier of the message.
-/// * [mediaTimestamp]: If not 0, timestamp from which the video/audio/video note/voice note/story playing must start, in seconds. The media can be in the message content or in its web page preview.
+/// * [mediaTimestamp]: If not 0, timestamp from which the video/audio/video note/voice note/story playing must start, in seconds. The media can be in the message content or in its link preview.
 /// * [forAlbum]: Pass true to create a link for the whole media album.
 /// * [inMessageThread]: Pass true to create a link to the message as a channel post comment, in a message thread, or a forum topic.
 ///
@@ -14,11 +14,11 @@ part of '../tdapi.dart';
 final class GetMessageLink extends TdFunction {
   /// **GetMessageLink** *(getMessageLink)* - TDLib function
   ///
-  /// Returns an HTTPS link to a message in a chat. Available only for already sent messages in supergroups and channels, or if message.can_get_media_timestamp_links and a media timestamp link is generated. This is an offline request.
+  /// Returns an HTTPS link to a message in a chat. Available only if messageProperties.can_get_link, or if messageProperties.can_get_media_timestamp_links and a media timestamp link is generated. This is an offline request.
   ///
   /// * [chatId]: Identifier of the chat to which the message belongs.
   /// * [messageId]: Identifier of the message.
-  /// * [mediaTimestamp]: If not 0, timestamp from which the video/audio/video note/voice note/story playing must start, in seconds. The media can be in the message content or in its web page preview.
+  /// * [mediaTimestamp]: If not 0, timestamp from which the video/audio/video note/voice note/story playing must start, in seconds. The media can be in the message content or in its link preview.
   /// * [forAlbum]: Pass true to create a link for the whole media album.
   /// * [inMessageThread]: Pass true to create a link to the message as a channel post comment, in a message thread, or a forum topic.
   ///
@@ -37,7 +37,7 @@ final class GetMessageLink extends TdFunction {
   /// Identifier of the message
   final int messageId;
 
-  /// If not 0, timestamp from which the video/audio/video note/voice note/story playing must start, in seconds. The media can be in the message content or in its web page preview
+  /// If not 0, timestamp from which the video/audio/video note/voice note/story playing must start, in seconds. The media can be in the message content or in its link preview
   final int mediaTimestamp;
 
   /// Pass true to create a link for the whole media album
@@ -65,7 +65,7 @@ final class GetMessageLink extends TdFunction {
   /// Properties:
   /// * [chat_id]: Identifier of the chat to which the message belongs
   /// * [message_id]: Identifier of the message
-  /// * [media_timestamp]: If not 0, timestamp from which the video/audio/video note/voice note/story playing must start, in seconds. The media can be in the message content or in its web page preview
+  /// * [media_timestamp]: If not 0, timestamp from which the video/audio/video note/voice note/story playing must start, in seconds. The media can be in the message content or in its link preview
   /// * [for_album]: Pass true to create a link for the whole media album
   /// * [in_message_thread]: Pass true to create a link to the message as a channel post comment, in a message thread, or a forum topic
   GetMessageLink copyWith({

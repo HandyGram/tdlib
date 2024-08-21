@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 ///
 /// * [chatId]: Identifier of the chat to which the message belongs.
 /// * [messageId]: Identifier of the message.
-/// * [reactionType]: Type of the reaction to remove.
+/// * [reactionType]: Type of the reaction to remove. The paid reaction can't be removed.
 ///
 /// [Ok] is returned on completion.
 final class RemoveMessageReaction extends TdFunction {
@@ -16,7 +16,7 @@ final class RemoveMessageReaction extends TdFunction {
   ///
   /// * [chatId]: Identifier of the chat to which the message belongs.
   /// * [messageId]: Identifier of the message.
-  /// * [reactionType]: Type of the reaction to remove.
+  /// * [reactionType]: Type of the reaction to remove. The paid reaction can't be removed.
   ///
   /// [Ok] is returned on completion.
   const RemoveMessageReaction({
@@ -31,7 +31,7 @@ final class RemoveMessageReaction extends TdFunction {
   /// Identifier of the message
   final int messageId;
 
-  /// Type of the reaction to remove
+  /// Type of the reaction to remove. The paid reaction can't be removed
   final ReactionType reactionType;
 
   /// Convert model to TDLib JSON format
@@ -51,7 +51,7 @@ final class RemoveMessageReaction extends TdFunction {
   /// Properties:
   /// * [chat_id]: Identifier of the chat to which the message belongs
   /// * [message_id]: Identifier of the message
-  /// * [reaction_type]: Type of the reaction to remove
+  /// * [reaction_type]: Type of the reaction to remove. The paid reaction can't be removed
   RemoveMessageReaction copyWith({
     int? chatId,
     int? messageId,

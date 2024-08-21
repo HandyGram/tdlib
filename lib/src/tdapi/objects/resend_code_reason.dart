@@ -86,18 +86,18 @@ final class ResendCodeReasonUserRequest extends ResendCodeReason {
 ///
 /// The code is re-sent, because device verification has failed.
 ///
-/// * [errorMessage]: Cause of the verification failure, for example, PLAY_SERVICES_NOT_AVAILABLE, APNS_RECEIVE_TIMEOUT, APNS_INIT_FAILED, etc.
+/// * [errorMessage]: Cause of the verification failure, for example, PLAY_SERVICES_NOT_AVAILABLE, APNS_RECEIVE_TIMEOUT, or APNS_INIT_FAILED.
 final class ResendCodeReasonVerificationFailed extends ResendCodeReason {
   /// **ResendCodeReasonVerificationFailed** *(resendCodeReasonVerificationFailed)* - child of ResendCodeReason
   ///
   /// The code is re-sent, because device verification has failed.
   ///
-  /// * [errorMessage]: Cause of the verification failure, for example, PLAY_SERVICES_NOT_AVAILABLE, APNS_RECEIVE_TIMEOUT, APNS_INIT_FAILED, etc.
+  /// * [errorMessage]: Cause of the verification failure, for example, PLAY_SERVICES_NOT_AVAILABLE, APNS_RECEIVE_TIMEOUT, or APNS_INIT_FAILED.
   const ResendCodeReasonVerificationFailed({
     required this.errorMessage,
   });
 
-  /// Cause of the verification failure, for example, PLAY_SERVICES_NOT_AVAILABLE, APNS_RECEIVE_TIMEOUT, APNS_INIT_FAILED, etc.
+  /// Cause of the verification failure, for example, PLAY_SERVICES_NOT_AVAILABLE, APNS_RECEIVE_TIMEOUT, or APNS_INIT_FAILED
   final String errorMessage;
 
   /// Parse from a json
@@ -119,7 +119,7 @@ final class ResendCodeReasonVerificationFailed extends ResendCodeReason {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [error_message]: Cause of the verification failure, for example, PLAY_SERVICES_NOT_AVAILABLE, APNS_RECEIVE_TIMEOUT, APNS_INIT_FAILED, etc.
+  /// * [error_message]: Cause of the verification failure, for example, PLAY_SERVICES_NOT_AVAILABLE, APNS_RECEIVE_TIMEOUT, or APNS_INIT_FAILED
   @override
   ResendCodeReasonVerificationFailed copyWith({
     String? errorMessage,

@@ -2,11 +2,11 @@ part of '../tdapi.dart';
 
 /// **InputStoryAreaType** *(inputStoryAreaType)* - parent
 ///
-/// Describes type of clickable rectangle area on a story media to be added.
+/// Describes type of clickable area on a story media to be added.
 sealed class InputStoryAreaType extends TdObject {
   /// **InputStoryAreaType** *(inputStoryAreaType)* - parent
   ///
-  /// Describes type of clickable rectangle area on a story media to be added.
+  /// Describes type of clickable area on a story media to be added.
   const InputStoryAreaType();
 
   /// a InputStoryAreaType return type can be :
@@ -16,6 +16,7 @@ sealed class InputStoryAreaType extends TdObject {
   /// * [InputStoryAreaTypeSuggestedReaction]
   /// * [InputStoryAreaTypeMessage]
   /// * [InputStoryAreaTypeLink]
+  /// * [InputStoryAreaTypeWeather]
   factory InputStoryAreaType.fromJson(Map<String, dynamic> json) {
     switch (json["@type"]) {
       case InputStoryAreaTypeLocation.defaultObjectId:
@@ -30,6 +31,8 @@ sealed class InputStoryAreaType extends TdObject {
         return InputStoryAreaTypeMessage.fromJson(json);
       case InputStoryAreaTypeLink.defaultObjectId:
         return InputStoryAreaTypeLink.fromJson(json);
+      case InputStoryAreaTypeWeather.defaultObjectId:
+        return InputStoryAreaTypeWeather.fromJson(json);
       default:
         throw FormatException(
           "Unknown object ${json["@type"]} (expected child of InputStoryAreaType)",
@@ -350,14 +353,14 @@ final class InputStoryAreaTypeSuggestedReaction extends InputStoryAreaType {
 /// An area pointing to a message.
 ///
 /// * [chatId]: Identifier of the chat with the message. Currently, the chat must be a supergroup or a channel chat.
-/// * [messageId]: Identifier of the message. Only successfully sent non-scheduled messages can be specified.
+/// * [messageId]: Identifier of the message. Use messageProperties.can_be_shared_in_story to check whether the message is suitable.
 final class InputStoryAreaTypeMessage extends InputStoryAreaType {
   /// **InputStoryAreaTypeMessage** *(inputStoryAreaTypeMessage)* - child of InputStoryAreaType
   ///
   /// An area pointing to a message.
   ///
   /// * [chatId]: Identifier of the chat with the message. Currently, the chat must be a supergroup or a channel chat.
-  /// * [messageId]: Identifier of the message. Only successfully sent non-scheduled messages can be specified.
+  /// * [messageId]: Identifier of the message. Use messageProperties.can_be_shared_in_story to check whether the message is suitable.
   const InputStoryAreaTypeMessage({
     required this.chatId,
     required this.messageId,
@@ -366,7 +369,7 @@ final class InputStoryAreaTypeMessage extends InputStoryAreaType {
   /// Identifier of the chat with the message. Currently, the chat must be a supergroup or a channel chat
   final int chatId;
 
-  /// Identifier of the message. Only successfully sent non-scheduled messages can be specified
+  /// Identifier of the message. Use messageProperties.can_be_shared_in_story to check whether the message is suitable
   final int messageId;
 
   /// Parse from a json
@@ -390,7 +393,7 @@ final class InputStoryAreaTypeMessage extends InputStoryAreaType {
   ///
   /// Properties:
   /// * [chat_id]: Identifier of the chat with the message. Currently, the chat must be a supergroup or a channel chat
-  /// * [message_id]: Identifier of the message. Only successfully sent non-scheduled messages can be specified
+  /// * [message_id]: Identifier of the message. Use messageProperties.can_be_shared_in_story to check whether the message is suitable
   @override
   InputStoryAreaTypeMessage copyWith({
     int? chatId,
@@ -460,6 +463,85 @@ final class InputStoryAreaTypeLink extends InputStoryAreaType {
 
   /// TDLib object type
   static const String defaultObjectId = 'inputStoryAreaTypeLink';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **InputStoryAreaTypeWeather** *(inputStoryAreaTypeWeather)* - child of InputStoryAreaType
+///
+/// An area with information about weather.
+///
+/// * [temperature]: Temperature, in degree Celsius.
+/// * [emoji]: Emoji representing the weather.
+/// * [backgroundColor]: A color of the area background in the ARGB format.
+final class InputStoryAreaTypeWeather extends InputStoryAreaType {
+  /// **InputStoryAreaTypeWeather** *(inputStoryAreaTypeWeather)* - child of InputStoryAreaType
+  ///
+  /// An area with information about weather.
+  ///
+  /// * [temperature]: Temperature, in degree Celsius.
+  /// * [emoji]: Emoji representing the weather.
+  /// * [backgroundColor]: A color of the area background in the ARGB format.
+  const InputStoryAreaTypeWeather({
+    required this.temperature,
+    required this.emoji,
+    required this.backgroundColor,
+  });
+
+  /// Temperature, in degree Celsius
+  final double temperature;
+
+  /// Emoji representing the weather
+  final String emoji;
+
+  /// A color of the area background in the ARGB format
+  final int backgroundColor;
+
+  /// Parse from a json
+  factory InputStoryAreaTypeWeather.fromJson(Map<String, dynamic> json) =>
+      InputStoryAreaTypeWeather(
+        temperature: json['temperature'],
+        emoji: json['emoji'],
+        backgroundColor: json['background_color'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "temperature": temperature,
+      "emoji": emoji,
+      "background_color": backgroundColor,
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [temperature]: Temperature, in degree Celsius
+  /// * [emoji]: Emoji representing the weather
+  /// * [background_color]: A color of the area background in the ARGB format
+  @override
+  InputStoryAreaTypeWeather copyWith({
+    double? temperature,
+    String? emoji,
+    int? backgroundColor,
+  }) =>
+      InputStoryAreaTypeWeather(
+        temperature: temperature ?? this.temperature,
+        emoji: emoji ?? this.emoji,
+        backgroundColor: backgroundColor ?? this.backgroundColor,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'inputStoryAreaTypeWeather';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

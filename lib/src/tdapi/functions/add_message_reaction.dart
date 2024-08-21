@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 ///
 /// * [chatId]: Identifier of the chat to which the message belongs.
 /// * [messageId]: Identifier of the message.
-/// * [reactionType]: Type of the reaction to add.
+/// * [reactionType]: Type of the reaction to add. Use addPaidMessageReaction instead to add the paid reaction.
 /// * [isBig]: Pass true if the reaction is added with a big animation.
 /// * [updateRecentReactions]: Pass true if the reaction needs to be added to recent reactions; tags are never added to the list of recent reactions.
 ///
@@ -18,7 +18,7 @@ final class AddMessageReaction extends TdFunction {
   ///
   /// * [chatId]: Identifier of the chat to which the message belongs.
   /// * [messageId]: Identifier of the message.
-  /// * [reactionType]: Type of the reaction to add.
+  /// * [reactionType]: Type of the reaction to add. Use addPaidMessageReaction instead to add the paid reaction.
   /// * [isBig]: Pass true if the reaction is added with a big animation.
   /// * [updateRecentReactions]: Pass true if the reaction needs to be added to recent reactions; tags are never added to the list of recent reactions.
   ///
@@ -37,7 +37,7 @@ final class AddMessageReaction extends TdFunction {
   /// Identifier of the message
   final int messageId;
 
-  /// Type of the reaction to add
+  /// Type of the reaction to add. Use addPaidMessageReaction instead to add the paid reaction
   final ReactionType reactionType;
 
   /// Pass true if the reaction is added with a big animation
@@ -65,7 +65,7 @@ final class AddMessageReaction extends TdFunction {
   /// Properties:
   /// * [chat_id]: Identifier of the chat to which the message belongs
   /// * [message_id]: Identifier of the message
-  /// * [reaction_type]: Type of the reaction to add
+  /// * [reaction_type]: Type of the reaction to add. Use addPaidMessageReaction instead to add the paid reaction
   /// * [is_big]: Pass true if the reaction is added with a big animation
   /// * [update_recent_reactions]: Pass true if the reaction needs to be added to recent reactions; tags are never added to the list of recent reactions
   AddMessageReaction copyWith({

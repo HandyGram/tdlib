@@ -2,19 +2,19 @@ part of '../tdapi.dart';
 
 /// **StarRevenueStatistics** *(starRevenueStatistics)* - basic class
 ///
-/// A detailed statistics about Telegram stars earned by a bot or a chat.
+/// A detailed statistics about Telegram Stars earned by a bot or a chat.
 ///
 /// * [revenueByDayGraph]: A graph containing amount of revenue in a given day.
-/// * [status]: Telegram star revenue status.
-/// * [usdRate]: Current conversion rate of a Telegram star to USD.
+/// * [status]: Telegram Star revenue status.
+/// * [usdRate]: Current conversion rate of a Telegram Star to USD.
 final class StarRevenueStatistics extends TdObject {
   /// **StarRevenueStatistics** *(starRevenueStatistics)* - basic class
   ///
-  /// A detailed statistics about Telegram stars earned by a bot or a chat.
+  /// A detailed statistics about Telegram Stars earned by a bot or a chat.
   ///
   /// * [revenueByDayGraph]: A graph containing amount of revenue in a given day.
-  /// * [status]: Telegram star revenue status.
-  /// * [usdRate]: Current conversion rate of a Telegram star to USD.
+  /// * [status]: Telegram Star revenue status.
+  /// * [usdRate]: Current conversion rate of a Telegram Star to USD.
   const StarRevenueStatistics({
     required this.revenueByDayGraph,
     required this.status,
@@ -26,10 +26,10 @@ final class StarRevenueStatistics extends TdObject {
   /// A graph containing amount of revenue in a given day
   final StatisticalGraph revenueByDayGraph;
 
-  /// Telegram star revenue status
+  /// Telegram Star revenue status
   final StarRevenueStatus status;
 
-  /// Current conversion rate of a Telegram star to USD
+  /// Current conversion rate of a Telegram Star to USD
   final double usdRate;
 
   /// [extra] callback sign
@@ -66,8 +66,8 @@ final class StarRevenueStatistics extends TdObject {
   ///
   /// Properties:
   /// * [revenue_by_day_graph]: A graph containing amount of revenue in a given day
-  /// * [status]: Telegram star revenue status
-  /// * [usd_rate]: Current conversion rate of a Telegram star to USD
+  /// * [status]: Telegram Star revenue status
+  /// * [usd_rate]: Current conversion rate of a Telegram Star to USD
   StarRevenueStatistics copyWith({
     StatisticalGraph? revenueByDayGraph,
     StarRevenueStatus? status,

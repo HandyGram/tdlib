@@ -7,7 +7,7 @@ part of '../tdapi.dart';
 /// * [messageId]: Message identifier; unique for the chat to which the sponsored message belongs among both ordinary and sponsored messages.
 /// * [isRecommended]: True, if the message needs to be labeled as "recommended" instead of "sponsored".
 /// * [canBeReported]: True, if the message can be reported to Telegram moderators through reportChatSponsoredMessage.
-/// * [content]: Content of the message. Currently, can be only of the type messageText.
+/// * [content]: Content of the message. Currently, can be only of the types messageText, messageAnimation, messagePhoto, or messageVideo.
 /// * [sponsor]: Information about the sponsor of the message.
 /// * [title]: Title of the sponsored message.
 /// * [buttonText]: Text for the message action button.
@@ -22,7 +22,7 @@ final class SponsoredMessage extends TdObject {
   /// * [messageId]: Message identifier; unique for the chat to which the sponsored message belongs among both ordinary and sponsored messages.
   /// * [isRecommended]: True, if the message needs to be labeled as "recommended" instead of "sponsored".
   /// * [canBeReported]: True, if the message can be reported to Telegram moderators through reportChatSponsoredMessage.
-  /// * [content]: Content of the message. Currently, can be only of the type messageText.
+  /// * [content]: Content of the message. Currently, can be only of the types messageText, messageAnimation, messagePhoto, or messageVideo.
   /// * [sponsor]: Information about the sponsor of the message.
   /// * [title]: Title of the sponsored message.
   /// * [buttonText]: Text for the message action button.
@@ -51,7 +51,7 @@ final class SponsoredMessage extends TdObject {
   /// True, if the message can be reported to Telegram moderators through reportChatSponsoredMessage
   final bool canBeReported;
 
-  /// Content of the message. Currently, can be only of the type messageText
+  /// Content of the message. Currently, can be only of the types messageText, messageAnimation, messagePhoto, or messageVideo
   final MessageContent content;
 
   /// Information about the sponsor of the message
@@ -113,7 +113,7 @@ final class SponsoredMessage extends TdObject {
   /// * [message_id]: Message identifier; unique for the chat to which the sponsored message belongs among both ordinary and sponsored messages
   /// * [is_recommended]: True, if the message needs to be labeled as "recommended" instead of "sponsored"
   /// * [can_be_reported]: True, if the message can be reported to Telegram moderators through reportChatSponsoredMessage
-  /// * [content]: Content of the message. Currently, can be only of the type messageText
+  /// * [content]: Content of the message. Currently, can be only of the types messageText, messageAnimation, messagePhoto, or messageVideo
   /// * [sponsor]: Information about the sponsor of the message
   /// * [title]: Title of the sponsored message
   /// * [button_text]: Text for the message action button

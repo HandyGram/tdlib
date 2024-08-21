@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 /// Sends a callback query to a bot and returns an answer. Returns an error with code 502 if the bot fails to answer the query before the query timeout expires.
 ///
 /// * [chatId]: Identifier of the chat with the message.
-/// * [messageId]: Identifier of the message from which the query originated.
+/// * [messageId]: Identifier of the message from which the query originated. The message must not be scheduled.
 /// * [payload]: Query payload.
 ///
 /// [CallbackQueryAnswer] is returned on completion.
@@ -15,7 +15,7 @@ final class GetCallbackQueryAnswer extends TdFunction {
   /// Sends a callback query to a bot and returns an answer. Returns an error with code 502 if the bot fails to answer the query before the query timeout expires.
   ///
   /// * [chatId]: Identifier of the chat with the message.
-  /// * [messageId]: Identifier of the message from which the query originated.
+  /// * [messageId]: Identifier of the message from which the query originated. The message must not be scheduled.
   /// * [payload]: Query payload.
   ///
   /// [CallbackQueryAnswer] is returned on completion.
@@ -28,7 +28,7 @@ final class GetCallbackQueryAnswer extends TdFunction {
   /// Identifier of the chat with the message
   final int chatId;
 
-  /// Identifier of the message from which the query originated
+  /// Identifier of the message from which the query originated. The message must not be scheduled
   final int messageId;
 
   /// Query payload
@@ -50,7 +50,7 @@ final class GetCallbackQueryAnswer extends TdFunction {
   ///
   /// Properties:
   /// * [chat_id]: Identifier of the chat with the message
-  /// * [message_id]: Identifier of the message from which the query originated
+  /// * [message_id]: Identifier of the message from which the query originated. The message must not be scheduled
   /// * [payload]: Query payload
   GetCallbackQueryAnswer copyWith({
     int? chatId,

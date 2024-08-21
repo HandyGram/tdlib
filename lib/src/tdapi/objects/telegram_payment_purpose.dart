@@ -13,6 +13,8 @@ sealed class TelegramPaymentPurpose extends TdObject {
   /// * [TelegramPaymentPurposePremiumGiftCodes]
   /// * [TelegramPaymentPurposePremiumGiveaway]
   /// * [TelegramPaymentPurposeStars]
+  /// * [TelegramPaymentPurposeGiftedStars]
+  /// * [TelegramPaymentPurposeJoinChat]
   factory TelegramPaymentPurpose.fromJson(Map<String, dynamic> json) {
     switch (json["@type"]) {
       case TelegramPaymentPurposePremiumGiftCodes.defaultObjectId:
@@ -21,6 +23,10 @@ sealed class TelegramPaymentPurpose extends TdObject {
         return TelegramPaymentPurposePremiumGiveaway.fromJson(json);
       case TelegramPaymentPurposeStars.defaultObjectId:
         return TelegramPaymentPurposeStars.fromJson(json);
+      case TelegramPaymentPurposeGiftedStars.defaultObjectId:
+        return TelegramPaymentPurposeGiftedStars.fromJson(json);
+      case TelegramPaymentPurposeJoinChat.defaultObjectId:
+        return TelegramPaymentPurposeJoinChat.fromJson(json);
       default:
         throw FormatException(
           "Unknown object ${json["@type"]} (expected child of TelegramPaymentPurpose)",
@@ -258,19 +264,19 @@ final class TelegramPaymentPurposePremiumGiveaway
 
 /// **TelegramPaymentPurposeStars** *(telegramPaymentPurposeStars)* - child of TelegramPaymentPurpose
 ///
-/// The user buying Telegram stars.
+/// The user buying Telegram Stars.
 ///
 /// * [currency]: ISO 4217 currency code of the payment currency.
 /// * [amount]: Paid amount, in the smallest units of the currency.
-/// * [starCount]: Number of bought stars.
+/// * [starCount]: Number of bought Telegram Stars.
 final class TelegramPaymentPurposeStars extends TelegramPaymentPurpose {
   /// **TelegramPaymentPurposeStars** *(telegramPaymentPurposeStars)* - child of TelegramPaymentPurpose
   ///
-  /// The user buying Telegram stars.
+  /// The user buying Telegram Stars.
   ///
   /// * [currency]: ISO 4217 currency code of the payment currency.
   /// * [amount]: Paid amount, in the smallest units of the currency.
-  /// * [starCount]: Number of bought stars.
+  /// * [starCount]: Number of bought Telegram Stars.
   const TelegramPaymentPurposeStars({
     required this.currency,
     required this.amount,
@@ -283,7 +289,7 @@ final class TelegramPaymentPurposeStars extends TelegramPaymentPurpose {
   /// Paid amount, in the smallest units of the currency
   final int amount;
 
-  /// Number of bought stars
+  /// Number of bought Telegram Stars
   final int starCount;
 
   /// Parse from a json
@@ -310,7 +316,7 @@ final class TelegramPaymentPurposeStars extends TelegramPaymentPurpose {
   /// Properties:
   /// * [currency]: ISO 4217 currency code of the payment currency
   /// * [amount]: Paid amount, in the smallest units of the currency
-  /// * [star_count]: Number of bought stars
+  /// * [star_count]: Number of bought Telegram Stars
   @override
   TelegramPaymentPurposeStars copyWith({
     String? currency,
@@ -325,6 +331,154 @@ final class TelegramPaymentPurposeStars extends TelegramPaymentPurpose {
 
   /// TDLib object type
   static const String defaultObjectId = 'telegramPaymentPurposeStars';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **TelegramPaymentPurposeGiftedStars** *(telegramPaymentPurposeGiftedStars)* - child of TelegramPaymentPurpose
+///
+/// The user buying Telegram Stars for other users.
+///
+/// * [userId]: Identifier of the user to which Telegram Stars are gifted.
+/// * [currency]: ISO 4217 currency code of the payment currency.
+/// * [amount]: Paid amount, in the smallest units of the currency.
+/// * [starCount]: Number of bought Telegram Stars.
+final class TelegramPaymentPurposeGiftedStars extends TelegramPaymentPurpose {
+  /// **TelegramPaymentPurposeGiftedStars** *(telegramPaymentPurposeGiftedStars)* - child of TelegramPaymentPurpose
+  ///
+  /// The user buying Telegram Stars for other users.
+  ///
+  /// * [userId]: Identifier of the user to which Telegram Stars are gifted.
+  /// * [currency]: ISO 4217 currency code of the payment currency.
+  /// * [amount]: Paid amount, in the smallest units of the currency.
+  /// * [starCount]: Number of bought Telegram Stars.
+  const TelegramPaymentPurposeGiftedStars({
+    required this.userId,
+    required this.currency,
+    required this.amount,
+    required this.starCount,
+  });
+
+  /// Identifier of the user to which Telegram Stars are gifted
+  final int userId;
+
+  /// ISO 4217 currency code of the payment currency
+  final String currency;
+
+  /// Paid amount, in the smallest units of the currency
+  final int amount;
+
+  /// Number of bought Telegram Stars
+  final int starCount;
+
+  /// Parse from a json
+  factory TelegramPaymentPurposeGiftedStars.fromJson(
+          Map<String, dynamic> json) =>
+      TelegramPaymentPurposeGiftedStars(
+        userId: json['user_id'],
+        currency: json['currency'],
+        amount: json['amount'],
+        starCount: json['star_count'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "user_id": userId,
+      "currency": currency,
+      "amount": amount,
+      "star_count": starCount,
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: Identifier of the user to which Telegram Stars are gifted
+  /// * [currency]: ISO 4217 currency code of the payment currency
+  /// * [amount]: Paid amount, in the smallest units of the currency
+  /// * [star_count]: Number of bought Telegram Stars
+  @override
+  TelegramPaymentPurposeGiftedStars copyWith({
+    int? userId,
+    String? currency,
+    int? amount,
+    int? starCount,
+  }) =>
+      TelegramPaymentPurposeGiftedStars(
+        userId: userId ?? this.userId,
+        currency: currency ?? this.currency,
+        amount: amount ?? this.amount,
+        starCount: starCount ?? this.starCount,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'telegramPaymentPurposeGiftedStars';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **TelegramPaymentPurposeJoinChat** *(telegramPaymentPurposeJoinChat)* - child of TelegramPaymentPurpose
+///
+/// The user joins a chat and subscribes to regular payments in Telegram Stars.
+///
+/// * [inviteLink]: Invite link to use.
+final class TelegramPaymentPurposeJoinChat extends TelegramPaymentPurpose {
+  /// **TelegramPaymentPurposeJoinChat** *(telegramPaymentPurposeJoinChat)* - child of TelegramPaymentPurpose
+  ///
+  /// The user joins a chat and subscribes to regular payments in Telegram Stars.
+  ///
+  /// * [inviteLink]: Invite link to use.
+  const TelegramPaymentPurposeJoinChat({
+    required this.inviteLink,
+  });
+
+  /// Invite link to use
+  final String inviteLink;
+
+  /// Parse from a json
+  factory TelegramPaymentPurposeJoinChat.fromJson(Map<String, dynamic> json) =>
+      TelegramPaymentPurposeJoinChat(
+        inviteLink: json['invite_link'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "invite_link": inviteLink,
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [invite_link]: Invite link to use
+  @override
+  TelegramPaymentPurposeJoinChat copyWith({
+    String? inviteLink,
+  }) =>
+      TelegramPaymentPurposeJoinChat(
+        inviteLink: inviteLink ?? this.inviteLink,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'telegramPaymentPurposeJoinChat';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

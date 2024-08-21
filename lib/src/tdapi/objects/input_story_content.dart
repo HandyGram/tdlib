@@ -123,6 +123,7 @@ final class InputStoryContentPhoto extends InputStoryContent {
 /// * [video]: Video to be sent. The video size must be 720x1280. The video must be streamable and stored in MPEG4 format, after encoding with x265 codec and key frames added each second.
 /// * [addedStickerFileIds]: File identifiers of the stickers added to the video, if applicable.
 /// * [duration]: Precise duration of the video, in seconds; 0-60.
+/// * [coverFrameTimestamp]: Timestamp of the frame, which will be used as video thumbnail.
 /// * [isAnimation]: True, if the video has no sound.
 final class InputStoryContentVideo extends InputStoryContent {
   /// **InputStoryContentVideo** *(inputStoryContentVideo)* - child of InputStoryContent
@@ -132,11 +133,13 @@ final class InputStoryContentVideo extends InputStoryContent {
   /// * [video]: Video to be sent. The video size must be 720x1280. The video must be streamable and stored in MPEG4 format, after encoding with x265 codec and key frames added each second.
   /// * [addedStickerFileIds]: File identifiers of the stickers added to the video, if applicable.
   /// * [duration]: Precise duration of the video, in seconds; 0-60.
+  /// * [coverFrameTimestamp]: Timestamp of the frame, which will be used as video thumbnail.
   /// * [isAnimation]: True, if the video has no sound.
   const InputStoryContentVideo({
     required this.video,
     required this.addedStickerFileIds,
     required this.duration,
+    required this.coverFrameTimestamp,
     required this.isAnimation,
   });
 
@@ -148,6 +151,9 @@ final class InputStoryContentVideo extends InputStoryContent {
 
   /// Precise duration of the video, in seconds; 0-60
   final double duration;
+
+  /// Timestamp of the frame, which will be used as video thumbnail
+  final double coverFrameTimestamp;
 
   /// True, if the video has no sound
   final bool isAnimation;
@@ -161,6 +167,7 @@ final class InputStoryContentVideo extends InputStoryContent {
                 .map((item) => item)
                 .toList()),
         duration: json['duration'],
+        coverFrameTimestamp: json['cover_frame_timestamp'],
         isAnimation: json['is_animation'],
       );
 
@@ -172,6 +179,7 @@ final class InputStoryContentVideo extends InputStoryContent {
       "video": video.toJson(),
       "added_sticker_file_ids": addedStickerFileIds.map((i) => i).toList(),
       "duration": duration,
+      "cover_frame_timestamp": coverFrameTimestamp,
       "is_animation": isAnimation,
     };
   }
@@ -182,18 +190,21 @@ final class InputStoryContentVideo extends InputStoryContent {
   /// * [video]: Video to be sent. The video size must be 720x1280. The video must be streamable and stored in MPEG4 format, after encoding with x265 codec and key frames added each second
   /// * [added_sticker_file_ids]: File identifiers of the stickers added to the video, if applicable
   /// * [duration]: Precise duration of the video, in seconds; 0-60
+  /// * [cover_frame_timestamp]: Timestamp of the frame, which will be used as video thumbnail
   /// * [is_animation]: True, if the video has no sound
   @override
   InputStoryContentVideo copyWith({
     InputFile? video,
     List<int>? addedStickerFileIds,
     double? duration,
+    double? coverFrameTimestamp,
     bool? isAnimation,
   }) =>
       InputStoryContentVideo(
         video: video ?? this.video,
         addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
         duration: duration ?? this.duration,
+        coverFrameTimestamp: coverFrameTimestamp ?? this.coverFrameTimestamp,
         isAnimation: isAnimation ?? this.isAnimation,
       );
 

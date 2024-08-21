@@ -18,6 +18,7 @@ sealed class InternalLinkType extends TdObject {
   /// * [InternalLinkTypeBotStart]
   /// * [InternalLinkTypeBotStartInGroup]
   /// * [InternalLinkTypeBusinessChat]
+  /// * [InternalLinkTypeBuyStars]
   /// * [InternalLinkTypeChangePhoneNumber]
   /// * [InternalLinkTypeChatBoost]
   /// * [InternalLinkTypeChatFolderInvite]
@@ -30,6 +31,7 @@ sealed class InternalLinkType extends TdObject {
   /// * [InternalLinkTypeInvoice]
   /// * [InternalLinkTypeLanguagePack]
   /// * [InternalLinkTypeLanguageSettings]
+  /// * [InternalLinkTypeMainWebApp]
   /// * [InternalLinkTypeMessage]
   /// * [InternalLinkTypeMessageDraft]
   /// * [InternalLinkTypePassportDataRequest]
@@ -43,7 +45,6 @@ sealed class InternalLinkType extends TdObject {
   /// * [InternalLinkTypeQrCodeAuthentication]
   /// * [InternalLinkTypeRestorePurchases]
   /// * [InternalLinkTypeSettings]
-  /// * [InternalLinkTypeSideMenuBot]
   /// * [InternalLinkTypeStickerSet]
   /// * [InternalLinkTypeStory]
   /// * [InternalLinkTypeTheme]
@@ -72,6 +73,8 @@ sealed class InternalLinkType extends TdObject {
         return InternalLinkTypeBotStartInGroup.fromJson(json);
       case InternalLinkTypeBusinessChat.defaultObjectId:
         return InternalLinkTypeBusinessChat.fromJson(json);
+      case InternalLinkTypeBuyStars.defaultObjectId:
+        return InternalLinkTypeBuyStars.fromJson(json);
       case InternalLinkTypeChangePhoneNumber.defaultObjectId:
         return InternalLinkTypeChangePhoneNumber.fromJson(json);
       case InternalLinkTypeChatBoost.defaultObjectId:
@@ -98,6 +101,8 @@ sealed class InternalLinkType extends TdObject {
         return InternalLinkTypeLanguagePack.fromJson(json);
       case InternalLinkTypeLanguageSettings.defaultObjectId:
         return InternalLinkTypeLanguageSettings.fromJson(json);
+      case InternalLinkTypeMainWebApp.defaultObjectId:
+        return InternalLinkTypeMainWebApp.fromJson(json);
       case InternalLinkTypeMessage.defaultObjectId:
         return InternalLinkTypeMessage.fromJson(json);
       case InternalLinkTypeMessageDraft.defaultObjectId:
@@ -124,8 +129,6 @@ sealed class InternalLinkType extends TdObject {
         return InternalLinkTypeRestorePurchases.fromJson(json);
       case InternalLinkTypeSettings.defaultObjectId:
         return InternalLinkTypeSettings.fromJson(json);
-      case InternalLinkTypeSideMenuBot.defaultObjectId:
-        return InternalLinkTypeSideMenuBot.fromJson(json);
       case InternalLinkTypeStickerSet.defaultObjectId:
         return InternalLinkTypeStickerSet.fromJson(json);
       case InternalLinkTypeStory.defaultObjectId:
@@ -233,7 +236,7 @@ final class InternalLinkTypeActiveSessions extends InternalLinkType {
 
 /// **InternalLinkTypeAttachmentMenuBot** *(internalLinkTypeAttachmentMenuBot)* - child of InternalLinkType
 ///
-/// The link is a link to an attachment menu bot to be opened in the specified or a chosen chat. Process given target_chat to open the chat.. Then, call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then, use getAttachmentMenuBot to receive information about the bot.. If the bot isn't added to attachment menu, then show a disclaimer about Mini Apps being a third-party apps, ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu.. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot.. If the attachment menu bot can't be used in the opened chat, show an error to the user. If the bot is added to attachment menu and can be used in the chat, then use openWebApp with the given URL.
+/// The link is a link to an attachment menu bot to be opened in the specified or a chosen chat. Process given target_chat to open the chat.. Then, call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then, use getAttachmentMenuBot to receive information about the bot.. If the bot isn't added to attachment menu, then show a disclaimer about Mini Apps being third-party applications, ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu.. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot.. If the attachment menu bot can't be used in the opened chat, show an error to the user. If the bot is added to attachment menu and can be used in the chat, then use openWebApp with the given URL.
 ///
 /// * [targetChat]: Target chat to be opened.
 /// * [botUsername]: Username of the bot.
@@ -241,7 +244,7 @@ final class InternalLinkTypeActiveSessions extends InternalLinkType {
 final class InternalLinkTypeAttachmentMenuBot extends InternalLinkType {
   /// **InternalLinkTypeAttachmentMenuBot** *(internalLinkTypeAttachmentMenuBot)* - child of InternalLinkType
   ///
-  /// The link is a link to an attachment menu bot to be opened in the specified or a chosen chat. Process given target_chat to open the chat.. Then, call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then, use getAttachmentMenuBot to receive information about the bot.. If the bot isn't added to attachment menu, then show a disclaimer about Mini Apps being a third-party apps, ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu.. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot.. If the attachment menu bot can't be used in the opened chat, show an error to the user. If the bot is added to attachment menu and can be used in the chat, then use openWebApp with the given URL.
+  /// The link is a link to an attachment menu bot to be opened in the specified or a chosen chat. Process given target_chat to open the chat.. Then, call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then, use getAttachmentMenuBot to receive information about the bot.. If the bot isn't added to attachment menu, then show a disclaimer about Mini Apps being third-party applications, ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu.. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot.. If the attachment menu bot can't be used in the opened chat, show an error to the user. If the bot is added to attachment menu and can be used in the chat, then use openWebApp with the given URL.
   ///
   /// * [targetChat]: Target chat to be opened.
   /// * [botUsername]: Username of the bot.
@@ -824,13 +827,97 @@ final class InternalLinkTypeBusinessChat extends InternalLinkType {
   String get currentObjectId => defaultObjectId;
 }
 
+/// **InternalLinkTypeBuyStars** *(internalLinkTypeBuyStars)* - child of InternalLinkType
+///
+/// The link is a link to the Telegram Star purchase section of the application.
+///
+/// * [starCount]: The number of Telegram Stars that must be owned by the user.
+/// * [purpose]: Purpose of Telegram Star purchase. Arbitrary string specified by the server, for example, "subs" if the Telegram Stars are required to extend channel subscriptions.
+final class InternalLinkTypeBuyStars extends InternalLinkType {
+  /// **InternalLinkTypeBuyStars** *(internalLinkTypeBuyStars)* - child of InternalLinkType
+  ///
+  /// The link is a link to the Telegram Star purchase section of the application.
+  ///
+  /// * [starCount]: The number of Telegram Stars that must be owned by the user.
+  /// * [purpose]: Purpose of Telegram Star purchase. Arbitrary string specified by the server, for example, "subs" if the Telegram Stars are required to extend channel subscriptions.
+  const InternalLinkTypeBuyStars({
+    required this.starCount,
+    required this.purpose,
+    this.extra,
+    this.clientId,
+  });
+
+  /// The number of Telegram Stars that must be owned by the user
+  final int starCount;
+
+  /// Purpose of Telegram Star purchase. Arbitrary string specified by the server, for example, "subs" if the Telegram Stars are required to extend channel subscriptions
+  final String purpose;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+
+  /// Parse from a json
+  factory InternalLinkTypeBuyStars.fromJson(Map<String, dynamic> json) =>
+      InternalLinkTypeBuyStars(
+        starCount: json['star_count'],
+        purpose: json['purpose'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "star_count": starCount,
+      "purpose": purpose,
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [star_count]: The number of Telegram Stars that must be owned by the user
+  /// * [purpose]: Purpose of Telegram Star purchase. Arbitrary string specified by the server, for example, "subs" if the Telegram Stars are required to extend channel subscriptions
+  @override
+  InternalLinkTypeBuyStars copyWith({
+    int? starCount,
+    String? purpose,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      InternalLinkTypeBuyStars(
+        starCount: starCount ?? this.starCount,
+        purpose: purpose ?? this.purpose,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'internalLinkTypeBuyStars';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
 /// **InternalLinkTypeChangePhoneNumber** *(internalLinkTypeChangePhoneNumber)* - child of InternalLinkType
 ///
-/// The link is a link to the change phone number section of the app.
+/// The link is a link to the change phone number section of the application.
 final class InternalLinkTypeChangePhoneNumber extends InternalLinkType {
   /// **InternalLinkTypeChangePhoneNumber** *(internalLinkTypeChangePhoneNumber)* - child of InternalLinkType
   ///
-  /// The link is a link to the change phone number section of the app.
+  /// The link is a link to the change phone number section of the application.
   const InternalLinkTypeChangePhoneNumber({
     this.extra,
     this.clientId,
@@ -1032,11 +1119,11 @@ final class InternalLinkTypeChatFolderInvite extends InternalLinkType {
 
 /// **InternalLinkTypeChatFolderSettings** *(internalLinkTypeChatFolderSettings)* - child of InternalLinkType
 ///
-/// The link is a link to the folder section of the app settings.
+/// The link is a link to the folder section of the application settings.
 final class InternalLinkTypeChatFolderSettings extends InternalLinkType {
   /// **InternalLinkTypeChatFolderSettings** *(internalLinkTypeChatFolderSettings)* - child of InternalLinkType
   ///
-  /// The link is a link to the folder section of the app settings.
+  /// The link is a link to the folder section of the application settings.
   const InternalLinkTypeChatFolderSettings({
     this.extra,
     this.clientId,
@@ -1164,12 +1251,12 @@ final class InternalLinkTypeChatInvite extends InternalLinkType {
 
 /// **InternalLinkTypeDefaultMessageAutoDeleteTimerSettings** *(internalLinkTypeDefaultMessageAutoDeleteTimerSettings)* - child of InternalLinkType
 ///
-/// The link is a link to the default message auto-delete timer settings section of the app settings.
+/// The link is a link to the default message auto-delete timer settings section of the application settings.
 final class InternalLinkTypeDefaultMessageAutoDeleteTimerSettings
     extends InternalLinkType {
   /// **InternalLinkTypeDefaultMessageAutoDeleteTimerSettings** *(internalLinkTypeDefaultMessageAutoDeleteTimerSettings)* - child of InternalLinkType
   ///
-  /// The link is a link to the default message auto-delete timer settings section of the app settings.
+  /// The link is a link to the default message auto-delete timer settings section of the application settings.
   const InternalLinkTypeDefaultMessageAutoDeleteTimerSettings({
     this.extra,
     this.clientId,
@@ -1225,11 +1312,11 @@ final class InternalLinkTypeDefaultMessageAutoDeleteTimerSettings
 
 /// **InternalLinkTypeEditProfileSettings** *(internalLinkTypeEditProfileSettings)* - child of InternalLinkType
 ///
-/// The link is a link to the edit profile section of the app settings.
+/// The link is a link to the edit profile section of the application settings.
 final class InternalLinkTypeEditProfileSettings extends InternalLinkType {
   /// **InternalLinkTypeEditProfileSettings** *(internalLinkTypeEditProfileSettings)* - child of InternalLinkType
   ///
-  /// The link is a link to the edit profile section of the app settings.
+  /// The link is a link to the edit profile section of the application settings.
   const InternalLinkTypeEditProfileSettings({
     this.extra,
     this.clientId,
@@ -1598,11 +1685,11 @@ final class InternalLinkTypeLanguagePack extends InternalLinkType {
 
 /// **InternalLinkTypeLanguageSettings** *(internalLinkTypeLanguageSettings)* - child of InternalLinkType
 ///
-/// The link is a link to the language section of the app settings.
+/// The link is a link to the language section of the application settings.
 final class InternalLinkTypeLanguageSettings extends InternalLinkType {
   /// **InternalLinkTypeLanguageSettings** *(internalLinkTypeLanguageSettings)* - child of InternalLinkType
   ///
-  /// The link is a link to the language section of the app settings.
+  /// The link is a link to the language section of the application settings.
   const InternalLinkTypeLanguageSettings({
     this.extra,
     this.clientId,
@@ -1645,6 +1732,101 @@ final class InternalLinkTypeLanguageSettings extends InternalLinkType {
 
   /// TDLib object type
   static const String defaultObjectId = 'internalLinkTypeLanguageSettings';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **InternalLinkTypeMainWebApp** *(internalLinkTypeMainWebApp)* - child of InternalLinkType
+///
+/// The link is a link to the main Web App of a bot. Call searchPublicChat with the given bot username, check that the user is a bot and has the main Web App.. If the bot can be added to attachment menu, then use getAttachmentMenuBot to receive information about the bot, then if the bot isn't added to side menu,. show a disclaimer about Mini Apps being third-party applications, ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu,. then if the user accepts the terms and confirms adding, use toggleBotIsAddedToAttachmentMenu to add the bot.. Then, use getMainWebApp with the given start parameter and open the returned URL as a Web App.
+///
+/// * [botUsername]: Username of the bot.
+/// * [startParameter]: Start parameter to be passed to getMainWebApp.
+/// * [isCompact]: True, if the Web App must be opened in the compact mode instead of the full-size mode.
+final class InternalLinkTypeMainWebApp extends InternalLinkType {
+  /// **InternalLinkTypeMainWebApp** *(internalLinkTypeMainWebApp)* - child of InternalLinkType
+  ///
+  /// The link is a link to the main Web App of a bot. Call searchPublicChat with the given bot username, check that the user is a bot and has the main Web App.. If the bot can be added to attachment menu, then use getAttachmentMenuBot to receive information about the bot, then if the bot isn't added to side menu,. show a disclaimer about Mini Apps being third-party applications, ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu,. then if the user accepts the terms and confirms adding, use toggleBotIsAddedToAttachmentMenu to add the bot.. Then, use getMainWebApp with the given start parameter and open the returned URL as a Web App.
+  ///
+  /// * [botUsername]: Username of the bot.
+  /// * [startParameter]: Start parameter to be passed to getMainWebApp.
+  /// * [isCompact]: True, if the Web App must be opened in the compact mode instead of the full-size mode.
+  const InternalLinkTypeMainWebApp({
+    required this.botUsername,
+    required this.startParameter,
+    required this.isCompact,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Username of the bot
+  final String botUsername;
+
+  /// Start parameter to be passed to getMainWebApp
+  final String startParameter;
+
+  /// True, if the Web App must be opened in the compact mode instead of the full-size mode
+  final bool isCompact;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+
+  /// Parse from a json
+  factory InternalLinkTypeMainWebApp.fromJson(Map<String, dynamic> json) =>
+      InternalLinkTypeMainWebApp(
+        botUsername: json['bot_username'],
+        startParameter: json['start_parameter'],
+        isCompact: json['is_compact'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "bot_username": botUsername,
+      "start_parameter": startParameter,
+      "is_compact": isCompact,
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [bot_username]: Username of the bot
+  /// * [start_parameter]: Start parameter to be passed to getMainWebApp
+  /// * [is_compact]: True, if the Web App must be opened in the compact mode instead of the full-size mode
+  @override
+  InternalLinkTypeMainWebApp copyWith({
+    String? botUsername,
+    String? startParameter,
+    bool? isCompact,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      InternalLinkTypeMainWebApp(
+        botUsername: botUsername ?? this.botUsername,
+        startParameter: startParameter ?? this.startParameter,
+        isCompact: isCompact ?? this.isCompact,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'internalLinkTypeMainWebApp';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -2237,12 +2419,12 @@ final class InternalLinkTypePremiumGiftCode extends InternalLinkType {
 
 /// **InternalLinkTypePrivacyAndSecuritySettings** *(internalLinkTypePrivacyAndSecuritySettings)* - child of InternalLinkType
 ///
-/// The link is a link to the privacy and security section of the app settings.
+/// The link is a link to the privacy and security section of the application settings.
 final class InternalLinkTypePrivacyAndSecuritySettings
     extends InternalLinkType {
   /// **InternalLinkTypePrivacyAndSecuritySettings** *(internalLinkTypePrivacyAndSecuritySettings)* - child of InternalLinkType
   ///
-  /// The link is a link to the privacy and security section of the app settings.
+  /// The link is a link to the privacy and security section of the application settings.
   const InternalLinkTypePrivacyAndSecuritySettings({
     this.extra,
     this.clientId,
@@ -2397,6 +2579,7 @@ final class InternalLinkTypeProxy extends InternalLinkType {
 ///
 /// * [chatUsername]: Username of the chat.
 /// * [draftText]: Draft text for message to send in the chat.
+/// * [openProfile]: True, if chat profile information screen must be opened; otherwise, the chat itself must be opened.
 final class InternalLinkTypePublicChat extends InternalLinkType {
   /// **InternalLinkTypePublicChat** *(internalLinkTypePublicChat)* - child of InternalLinkType
   ///
@@ -2404,9 +2587,11 @@ final class InternalLinkTypePublicChat extends InternalLinkType {
   ///
   /// * [chatUsername]: Username of the chat.
   /// * [draftText]: Draft text for message to send in the chat.
+  /// * [openProfile]: True, if chat profile information screen must be opened; otherwise, the chat itself must be opened.
   const InternalLinkTypePublicChat({
     required this.chatUsername,
     required this.draftText,
+    required this.openProfile,
     this.extra,
     this.clientId,
   });
@@ -2416,6 +2601,9 @@ final class InternalLinkTypePublicChat extends InternalLinkType {
 
   /// Draft text for message to send in the chat
   final String draftText;
+
+  /// True, if chat profile information screen must be opened; otherwise, the chat itself must be opened
+  final bool openProfile;
 
   /// [extra] callback sign
   @override
@@ -2430,6 +2618,7 @@ final class InternalLinkTypePublicChat extends InternalLinkType {
       InternalLinkTypePublicChat(
         chatUsername: json['chat_username'],
         draftText: json['draft_text'],
+        openProfile: json['open_profile'],
         extra: json['@extra'],
         clientId: json['@client_id'],
       );
@@ -2441,6 +2630,7 @@ final class InternalLinkTypePublicChat extends InternalLinkType {
       "@type": defaultObjectId,
       "chat_username": chatUsername,
       "draft_text": draftText,
+      "open_profile": openProfile,
     };
   }
 
@@ -2449,16 +2639,19 @@ final class InternalLinkTypePublicChat extends InternalLinkType {
   /// Properties:
   /// * [chat_username]: Username of the chat
   /// * [draft_text]: Draft text for message to send in the chat
+  /// * [open_profile]: True, if chat profile information screen must be opened; otherwise, the chat itself must be opened
   @override
   InternalLinkTypePublicChat copyWith({
     String? chatUsername,
     String? draftText,
+    bool? openProfile,
     dynamic extra,
     int? clientId,
   }) =>
       InternalLinkTypePublicChat(
         chatUsername: chatUsername ?? this.chatUsername,
         draftText: draftText ?? this.draftText,
+        openProfile: openProfile ?? this.openProfile,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
@@ -2651,90 +2844,6 @@ final class InternalLinkTypeSettings extends InternalLinkType {
   String get currentObjectId => defaultObjectId;
 }
 
-/// **InternalLinkTypeSideMenuBot** *(internalLinkTypeSideMenuBot)* - child of InternalLinkType
-///
-/// The link is a link to a bot, which can be installed to the side menu. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu.. Then, use getAttachmentMenuBot to receive information about the bot. If the bot isn't added to side menu, then show a disclaimer about Mini Apps being a third-party apps,. ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot.. If the bot is added to side menu, then use getWebAppUrl with the given URL and open the returned URL as a Web App.
-///
-/// * [botUsername]: Username of the bot.
-/// * [url]: URL to be passed to getWebAppUrl.
-final class InternalLinkTypeSideMenuBot extends InternalLinkType {
-  /// **InternalLinkTypeSideMenuBot** *(internalLinkTypeSideMenuBot)* - child of InternalLinkType
-  ///
-  /// The link is a link to a bot, which can be installed to the side menu. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu.. Then, use getAttachmentMenuBot to receive information about the bot. If the bot isn't added to side menu, then show a disclaimer about Mini Apps being a third-party apps,. ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot.. If the bot is added to side menu, then use getWebAppUrl with the given URL and open the returned URL as a Web App.
-  ///
-  /// * [botUsername]: Username of the bot.
-  /// * [url]: URL to be passed to getWebAppUrl.
-  const InternalLinkTypeSideMenuBot({
-    required this.botUsername,
-    required this.url,
-    this.extra,
-    this.clientId,
-  });
-
-  /// Username of the bot
-  final String botUsername;
-
-  /// URL to be passed to getWebAppUrl
-  final String url;
-
-  /// [extra] callback sign
-  @override
-  final dynamic extra;
-
-  /// [clientId] client identifier
-  @override
-  final int? clientId;
-
-  /// Parse from a json
-  factory InternalLinkTypeSideMenuBot.fromJson(Map<String, dynamic> json) =>
-      InternalLinkTypeSideMenuBot(
-        botUsername: json['bot_username'],
-        url: json['url'],
-        extra: json['@extra'],
-        clientId: json['@client_id'],
-      );
-
-  /// Convert model to TDLib JSON format
-  @override
-  Map<String, dynamic> toJson() {
-    return {
-      "@type": defaultObjectId,
-      "bot_username": botUsername,
-      "url": url,
-    };
-  }
-
-  /// Copy model with modified properties.
-  ///
-  /// Properties:
-  /// * [bot_username]: Username of the bot
-  /// * [url]: URL to be passed to getWebAppUrl
-  @override
-  InternalLinkTypeSideMenuBot copyWith({
-    String? botUsername,
-    String? url,
-    dynamic extra,
-    int? clientId,
-  }) =>
-      InternalLinkTypeSideMenuBot(
-        botUsername: botUsername ?? this.botUsername,
-        url: url ?? this.url,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
-
-  /// TDLib object type
-  static const String defaultObjectId = 'internalLinkTypeSideMenuBot';
-
-  /// Convert model to TDLib JSON format, encoded into String.
-  @override
-  String toString() => jsonEncode(toJson());
-
-  /// TDLib object type for current class instance
-  @override
-  String get currentObjectId => defaultObjectId;
-}
-
 /// **InternalLinkTypeStickerSet** *(internalLinkTypeStickerSet)* - child of InternalLinkType
 ///
 /// The link is a link to a sticker set. Call searchStickerSet with the given sticker set name to process the link and show the sticker set.. If the sticker set is found and the user wants to add it, then call changeStickerSet.
@@ -2905,13 +3014,13 @@ final class InternalLinkTypeStory extends InternalLinkType {
 
 /// **InternalLinkTypeTheme** *(internalLinkTypeTheme)* - child of InternalLinkType
 ///
-/// The link is a link to a theme. TDLib has no theme support yet.
+/// The link is a link to a cloud theme. TDLib has no theme support yet.
 ///
 /// * [themeName]: Name of the theme.
 final class InternalLinkTypeTheme extends InternalLinkType {
   /// **InternalLinkTypeTheme** *(internalLinkTypeTheme)* - child of InternalLinkType
   ///
-  /// The link is a link to a theme. TDLib has no theme support yet.
+  /// The link is a link to a cloud theme. TDLib has no theme support yet.
   ///
   /// * [themeName]: Name of the theme.
   const InternalLinkTypeTheme({
@@ -2978,11 +3087,11 @@ final class InternalLinkTypeTheme extends InternalLinkType {
 
 /// **InternalLinkTypeThemeSettings** *(internalLinkTypeThemeSettings)* - child of InternalLinkType
 ///
-/// The link is a link to the theme section of the app settings.
+/// The link is a link to the theme section of the application settings.
 final class InternalLinkTypeThemeSettings extends InternalLinkType {
   /// **InternalLinkTypeThemeSettings** *(internalLinkTypeThemeSettings)* - child of InternalLinkType
   ///
-  /// The link is a link to the theme section of the app settings.
+  /// The link is a link to the theme section of the application settings.
   const InternalLinkTypeThemeSettings({
     this.extra,
     this.clientId,
@@ -3168,20 +3277,23 @@ final class InternalLinkTypeUnsupportedProxy extends InternalLinkType {
 
 /// **InternalLinkTypeUserPhoneNumber** *(internalLinkTypeUserPhoneNumber)* - child of InternalLinkType
 ///
-/// The link is a link to a user by its phone number. Call searchUserByPhoneNumber with the given phone number to process the link.. If the user is found, then call createPrivateChat and open the chat. If draft text isn't empty, then put the draft text in the input field.
+/// The link is a link to a user by its phone number. Call searchUserByPhoneNumber with the given phone number to process the link.. If the user is found, then call createPrivateChat and open user's profile information screen or the chat itself. If draft text isn't empty, then put the draft text in the input field.
 ///
 /// * [phoneNumber]: Phone number of the user.
 /// * [draftText]: Draft text for message to send in the chat.
+/// * [openProfile]: True, if user's profile information screen must be opened; otherwise, the chat itself must be opened.
 final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
   /// **InternalLinkTypeUserPhoneNumber** *(internalLinkTypeUserPhoneNumber)* - child of InternalLinkType
   ///
-  /// The link is a link to a user by its phone number. Call searchUserByPhoneNumber with the given phone number to process the link.. If the user is found, then call createPrivateChat and open the chat. If draft text isn't empty, then put the draft text in the input field.
+  /// The link is a link to a user by its phone number. Call searchUserByPhoneNumber with the given phone number to process the link.. If the user is found, then call createPrivateChat and open user's profile information screen or the chat itself. If draft text isn't empty, then put the draft text in the input field.
   ///
   /// * [phoneNumber]: Phone number of the user.
   /// * [draftText]: Draft text for message to send in the chat.
+  /// * [openProfile]: True, if user's profile information screen must be opened; otherwise, the chat itself must be opened.
   const InternalLinkTypeUserPhoneNumber({
     required this.phoneNumber,
     required this.draftText,
+    required this.openProfile,
     this.extra,
     this.clientId,
   });
@@ -3191,6 +3303,9 @@ final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
 
   /// Draft text for message to send in the chat
   final String draftText;
+
+  /// True, if user's profile information screen must be opened; otherwise, the chat itself must be opened
+  final bool openProfile;
 
   /// [extra] callback sign
   @override
@@ -3205,6 +3320,7 @@ final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
       InternalLinkTypeUserPhoneNumber(
         phoneNumber: json['phone_number'],
         draftText: json['draft_text'],
+        openProfile: json['open_profile'],
         extra: json['@extra'],
         clientId: json['@client_id'],
       );
@@ -3216,6 +3332,7 @@ final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
       "@type": defaultObjectId,
       "phone_number": phoneNumber,
       "draft_text": draftText,
+      "open_profile": openProfile,
     };
   }
 
@@ -3224,16 +3341,19 @@ final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
   /// Properties:
   /// * [phone_number]: Phone number of the user
   /// * [draft_text]: Draft text for message to send in the chat
+  /// * [open_profile]: True, if user's profile information screen must be opened; otherwise, the chat itself must be opened
   @override
   InternalLinkTypeUserPhoneNumber copyWith({
     String? phoneNumber,
     String? draftText,
+    bool? openProfile,
     dynamic extra,
     int? clientId,
   }) =>
       InternalLinkTypeUserPhoneNumber(
         phoneNumber: phoneNumber ?? this.phoneNumber,
         draftText: draftText ?? this.draftText,
+        openProfile: openProfile ?? this.openProfile,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
@@ -3420,23 +3540,26 @@ final class InternalLinkTypeVideoChat extends InternalLinkType {
 
 /// **InternalLinkTypeWebApp** *(internalLinkTypeWebApp)* - child of InternalLinkType
 ///
-/// The link is a link to a Web App. Call searchPublicChat with the given bot username, check that the user is a bot, then call searchWebApp with the received bot and the given web_app_short_name.. Process received foundWebApp by showing a confirmation dialog if needed. If the bot can be added to attachment or side menu, but isn't added yet, then show a disclaimer about Mini Apps being a third-party apps. instead of the dialog and ask the user to accept their Terms of service. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot.. Then, call getWebAppLinkUrl and open the returned URL as a Web App.
+/// The link is a link to a Web App. Call searchPublicChat with the given bot username, check that the user is a bot, then call searchWebApp with the received bot and the given web_app_short_name.. Process received foundWebApp by showing a confirmation dialog if needed. If the bot can be added to attachment or side menu, but isn't added yet, then show a disclaimer about Mini Apps being third-party applications. instead of the dialog and ask the user to accept their Terms of service. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot.. Then, call getWebAppLinkUrl and open the returned URL as a Web App.
 ///
 /// * [botUsername]: Username of the bot that owns the Web App.
 /// * [webAppShortName]: Short name of the Web App.
 /// * [startParameter]: Start parameter to be passed to getWebAppLinkUrl.
+/// * [isCompact]: True, if the Web App must be opened in the compact mode instead of the full-size mode.
 final class InternalLinkTypeWebApp extends InternalLinkType {
   /// **InternalLinkTypeWebApp** *(internalLinkTypeWebApp)* - child of InternalLinkType
   ///
-  /// The link is a link to a Web App. Call searchPublicChat with the given bot username, check that the user is a bot, then call searchWebApp with the received bot and the given web_app_short_name.. Process received foundWebApp by showing a confirmation dialog if needed. If the bot can be added to attachment or side menu, but isn't added yet, then show a disclaimer about Mini Apps being a third-party apps. instead of the dialog and ask the user to accept their Terms of service. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot.. Then, call getWebAppLinkUrl and open the returned URL as a Web App.
+  /// The link is a link to a Web App. Call searchPublicChat with the given bot username, check that the user is a bot, then call searchWebApp with the received bot and the given web_app_short_name.. Process received foundWebApp by showing a confirmation dialog if needed. If the bot can be added to attachment or side menu, but isn't added yet, then show a disclaimer about Mini Apps being third-party applications. instead of the dialog and ask the user to accept their Terms of service. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot.. Then, call getWebAppLinkUrl and open the returned URL as a Web App.
   ///
   /// * [botUsername]: Username of the bot that owns the Web App.
   /// * [webAppShortName]: Short name of the Web App.
   /// * [startParameter]: Start parameter to be passed to getWebAppLinkUrl.
+  /// * [isCompact]: True, if the Web App must be opened in the compact mode instead of the full-size mode.
   const InternalLinkTypeWebApp({
     required this.botUsername,
     required this.webAppShortName,
     required this.startParameter,
+    required this.isCompact,
     this.extra,
     this.clientId,
   });
@@ -3449,6 +3572,9 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
 
   /// Start parameter to be passed to getWebAppLinkUrl
   final String startParameter;
+
+  /// True, if the Web App must be opened in the compact mode instead of the full-size mode
+  final bool isCompact;
 
   /// [extra] callback sign
   @override
@@ -3464,6 +3590,7 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
         botUsername: json['bot_username'],
         webAppShortName: json['web_app_short_name'],
         startParameter: json['start_parameter'],
+        isCompact: json['is_compact'],
         extra: json['@extra'],
         clientId: json['@client_id'],
       );
@@ -3476,6 +3603,7 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
       "bot_username": botUsername,
       "web_app_short_name": webAppShortName,
       "start_parameter": startParameter,
+      "is_compact": isCompact,
     };
   }
 
@@ -3485,11 +3613,13 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
   /// * [bot_username]: Username of the bot that owns the Web App
   /// * [web_app_short_name]: Short name of the Web App
   /// * [start_parameter]: Start parameter to be passed to getWebAppLinkUrl
+  /// * [is_compact]: True, if the Web App must be opened in the compact mode instead of the full-size mode
   @override
   InternalLinkTypeWebApp copyWith({
     String? botUsername,
     String? webAppShortName,
     String? startParameter,
+    bool? isCompact,
     dynamic extra,
     int? clientId,
   }) =>
@@ -3497,6 +3627,7 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
         botUsername: botUsername ?? this.botUsername,
         webAppShortName: webAppShortName ?? this.webAppShortName,
         startParameter: startParameter ?? this.startParameter,
+        isCompact: isCompact ?? this.isCompact,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

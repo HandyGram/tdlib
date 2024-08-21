@@ -107,7 +107,7 @@ final class MessageSendingStatePending extends MessageSendingState {
 /// The message failed to be sent.
 ///
 /// * [error]: The cause of the message sending failure.
-/// * [canRetry]: True, if the message can be re-sent.
+/// * [canRetry]: True, if the message can be re-sent using resendMessages or readdQuickReplyShortcutMessages.
 /// * [needAnotherSender]: True, if the message can be re-sent only on behalf of a different sender.
 /// * [needAnotherReplyQuote]: True, if the message can be re-sent only if another quote is chosen in the message that is replied by the given message.
 /// * [needDropReply]: True, if the message can be re-sent only if the message to be replied is removed. This will be done automatically by resendMessages.
@@ -118,7 +118,7 @@ final class MessageSendingStateFailed extends MessageSendingState {
   /// The message failed to be sent.
   ///
   /// * [error]: The cause of the message sending failure.
-  /// * [canRetry]: True, if the message can be re-sent.
+  /// * [canRetry]: True, if the message can be re-sent using resendMessages or readdQuickReplyShortcutMessages.
   /// * [needAnotherSender]: True, if the message can be re-sent only on behalf of a different sender.
   /// * [needAnotherReplyQuote]: True, if the message can be re-sent only if another quote is chosen in the message that is replied by the given message.
   /// * [needDropReply]: True, if the message can be re-sent only if the message to be replied is removed. This will be done automatically by resendMessages.
@@ -135,7 +135,7 @@ final class MessageSendingStateFailed extends MessageSendingState {
   /// The cause of the message sending failure
   final TdError error;
 
-  /// True, if the message can be re-sent
+  /// True, if the message can be re-sent using resendMessages or readdQuickReplyShortcutMessages
   final bool canRetry;
 
   /// True, if the message can be re-sent only on behalf of a different sender
@@ -179,7 +179,7 @@ final class MessageSendingStateFailed extends MessageSendingState {
   ///
   /// Properties:
   /// * [error]: The cause of the message sending failure
-  /// * [can_retry]: True, if the message can be re-sent
+  /// * [can_retry]: True, if the message can be re-sent using resendMessages or readdQuickReplyShortcutMessages
   /// * [need_another_sender]: True, if the message can be re-sent only on behalf of a different sender
   /// * [need_another_reply_quote]: True, if the message can be re-sent only if another quote is chosen in the message that is replied by the given message
   /// * [need_drop_reply]: True, if the message can be re-sent only if the message to be replied is removed. This will be done automatically by resendMessages

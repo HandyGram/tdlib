@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **GetChatRevenueWithdrawalUrl** *(getChatRevenueWithdrawalUrl)* - TDLib function
 ///
-/// Returns URL for chat revenue withdrawal; requires owner privileges in the chat. Currently, this method can be used only for channels if supergroupFullInfo.can_get_revenue_statistics == true and getOption("can_withdraw_chat_revenue").
+/// Returns a URL for chat revenue withdrawal; requires owner privileges in the chat. Currently, this method can be used only for channels if supergroupFullInfo.can_get_revenue_statistics == true and getOption("can_withdraw_chat_revenue").
 ///
 /// * [chatId]: Chat identifier.
 /// * [password]: The 2-step verification password of the current user.
@@ -11,7 +11,7 @@ part of '../tdapi.dart';
 final class GetChatRevenueWithdrawalUrl extends TdFunction {
   /// **GetChatRevenueWithdrawalUrl** *(getChatRevenueWithdrawalUrl)* - TDLib function
   ///
-  /// Returns URL for chat revenue withdrawal; requires owner privileges in the chat. Currently, this method can be used only for channels if supergroupFullInfo.can_get_revenue_statistics == true and getOption("can_withdraw_chat_revenue").
+  /// Returns a URL for chat revenue withdrawal; requires owner privileges in the chat. Currently, this method can be used only for channels if supergroupFullInfo.can_get_revenue_statistics == true and getOption("can_withdraw_chat_revenue").
   ///
   /// * [chatId]: Chat identifier.
   /// * [password]: The 2-step verification password of the current user.

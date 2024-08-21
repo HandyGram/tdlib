@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 /// Reports a false deletion of a message by aggressive anti-spam checks; requires administrator rights in the supergroup. Can be called only for messages from chatEventMessageDeleted with can_report_anti_spam_false_positive == true.
 ///
 /// * [supergroupId]: Supergroup identifier.
-/// * [messageId]: Identifier of the erroneously deleted message.
+/// * [messageId]: Identifier of the erroneously deleted message from chatEventMessageDeleted.
 ///
 /// [Ok] is returned on completion.
 final class ReportSupergroupAntiSpamFalsePositive extends TdFunction {
@@ -14,7 +14,7 @@ final class ReportSupergroupAntiSpamFalsePositive extends TdFunction {
   /// Reports a false deletion of a message by aggressive anti-spam checks; requires administrator rights in the supergroup. Can be called only for messages from chatEventMessageDeleted with can_report_anti_spam_false_positive == true.
   ///
   /// * [supergroupId]: Supergroup identifier.
-  /// * [messageId]: Identifier of the erroneously deleted message.
+  /// * [messageId]: Identifier of the erroneously deleted message from chatEventMessageDeleted.
   ///
   /// [Ok] is returned on completion.
   const ReportSupergroupAntiSpamFalsePositive({
@@ -25,7 +25,7 @@ final class ReportSupergroupAntiSpamFalsePositive extends TdFunction {
   /// Supergroup identifier
   final int supergroupId;
 
-  /// Identifier of the erroneously deleted message
+  /// Identifier of the erroneously deleted message from chatEventMessageDeleted
   final int messageId;
 
   /// Convert model to TDLib JSON format
@@ -43,7 +43,7 @@ final class ReportSupergroupAntiSpamFalsePositive extends TdFunction {
   ///
   /// Properties:
   /// * [supergroup_id]: Supergroup identifier
-  /// * [message_id]: Identifier of the erroneously deleted message
+  /// * [message_id]: Identifier of the erroneously deleted message from chatEventMessageDeleted
   ReportSupergroupAntiSpamFalsePositive copyWith({
     int? supergroupId,
     int? messageId,

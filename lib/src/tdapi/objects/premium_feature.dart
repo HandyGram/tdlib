@@ -33,6 +33,7 @@ sealed class PremiumFeature extends TdObject {
   /// * [PremiumFeatureMessagePrivacy]
   /// * [PremiumFeatureLastSeenTimes]
   /// * [PremiumFeatureBusiness]
+  /// * [PremiumFeatureMessageEffects]
   factory PremiumFeature.fromJson(Map<String, dynamic> json) {
     switch (json["@type"]) {
       case PremiumFeatureIncreasedLimits.defaultObjectId:
@@ -81,6 +82,8 @@ sealed class PremiumFeature extends TdObject {
         return PremiumFeatureLastSeenTimes.fromJson(json);
       case PremiumFeatureBusiness.defaultObjectId:
         return PremiumFeatureBusiness.fromJson(json);
+      case PremiumFeatureMessageEffects.defaultObjectId:
+        return PremiumFeatureMessageEffects.fromJson(json);
       default:
         throw FormatException(
           "Unknown object ${json["@type"]} (expected child of PremiumFeature)",
@@ -968,6 +971,44 @@ final class PremiumFeatureBusiness extends PremiumFeature {
 
   /// TDLib object type
   static const String defaultObjectId = 'premiumFeatureBusiness';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **PremiumFeatureMessageEffects** *(premiumFeatureMessageEffects)* - child of PremiumFeature
+///
+/// The ability to use all available message effects.
+final class PremiumFeatureMessageEffects extends PremiumFeature {
+  /// **PremiumFeatureMessageEffects** *(premiumFeatureMessageEffects)* - child of PremiumFeature
+  ///
+  /// The ability to use all available message effects.
+  const PremiumFeatureMessageEffects();
+
+  /// Parse from a json
+  factory PremiumFeatureMessageEffects.fromJson(Map<String, dynamic> json) =>
+      const PremiumFeatureMessageEffects();
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+    };
+  }
+
+  /// Copy instance with no modifications.
+  @override
+  PremiumFeatureMessageEffects copyWith() =>
+      const PremiumFeatureMessageEffects();
+
+  /// TDLib object type
+  static const String defaultObjectId = 'premiumFeatureMessageEffects';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

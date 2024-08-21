@@ -2,20 +2,20 @@ part of '../tdapi.dart';
 
 /// **GetStarWithdrawalUrl** *(getStarWithdrawalUrl)* - TDLib function
 ///
-/// Returns URL for Telegram star withdrawal.
+/// Returns a URL for Telegram Star withdrawal.
 ///
-/// * [ownerId]: Identifier of the owner of the Telegram stars; can be identifier of an owned bot, or identifier of a channel chat with supergroupFullInfo.can_get_revenue_statistics == true.
-/// * [starCount]: The number of Telegram stars to withdraw. Must be at least getOption("star_withdrawal_count_min").
+/// * [ownerId]: Identifier of the owner of the Telegram Stars; can be identifier of an owned bot, or identifier of an owned channel chat.
+/// * [starCount]: The number of Telegram Stars to withdraw. Must be at least getOption("star_withdrawal_count_min").
 /// * [password]: The 2-step verification password of the current user.
 ///
 /// [HttpUrl] is returned on completion.
 final class GetStarWithdrawalUrl extends TdFunction {
   /// **GetStarWithdrawalUrl** *(getStarWithdrawalUrl)* - TDLib function
   ///
-  /// Returns URL for Telegram star withdrawal.
+  /// Returns a URL for Telegram Star withdrawal.
   ///
-  /// * [ownerId]: Identifier of the owner of the Telegram stars; can be identifier of an owned bot, or identifier of a channel chat with supergroupFullInfo.can_get_revenue_statistics == true.
-  /// * [starCount]: The number of Telegram stars to withdraw. Must be at least getOption("star_withdrawal_count_min").
+  /// * [ownerId]: Identifier of the owner of the Telegram Stars; can be identifier of an owned bot, or identifier of an owned channel chat.
+  /// * [starCount]: The number of Telegram Stars to withdraw. Must be at least getOption("star_withdrawal_count_min").
   /// * [password]: The 2-step verification password of the current user.
   ///
   /// [HttpUrl] is returned on completion.
@@ -25,10 +25,10 @@ final class GetStarWithdrawalUrl extends TdFunction {
     required this.password,
   });
 
-  /// Identifier of the owner of the Telegram stars; can be identifier of an owned bot, or identifier of a channel chat with supergroupFullInfo.can_get_revenue_statistics == true
+  /// Identifier of the owner of the Telegram Stars; can be identifier of an owned bot, or identifier of an owned channel chat
   final MessageSender ownerId;
 
-  /// The number of Telegram stars to withdraw. Must be at least getOption("star_withdrawal_count_min")
+  /// The number of Telegram Stars to withdraw. Must be at least getOption("star_withdrawal_count_min")
   final int starCount;
 
   /// The 2-step verification password of the current user
@@ -49,8 +49,8 @@ final class GetStarWithdrawalUrl extends TdFunction {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [owner_id]: Identifier of the owner of the Telegram stars; can be identifier of an owned bot, or identifier of a channel chat with supergroupFullInfo.can_get_revenue_statistics == true
-  /// * [star_count]: The number of Telegram stars to withdraw. Must be at least getOption("star_withdrawal_count_min")
+  /// * [owner_id]: Identifier of the owner of the Telegram Stars; can be identifier of an owned bot, or identifier of an owned channel chat
+  /// * [star_count]: The number of Telegram Stars to withdraw. Must be at least getOption("star_withdrawal_count_min")
   /// * [password]: The 2-step verification password of the current user
   GetStarWithdrawalUrl copyWith({
     MessageSender? ownerId,

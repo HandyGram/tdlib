@@ -20,6 +20,7 @@ sealed class PushMessageContent extends TdObject {
   /// * [PushMessageContentGameScore]
   /// * [PushMessageContentInvoice]
   /// * [PushMessageContentLocation]
+  /// * [PushMessageContentPaidMedia]
   /// * [PushMessageContentPhoto]
   /// * [PushMessageContentPoll]
   /// * [PushMessageContentPremiumGiftCode]
@@ -66,6 +67,8 @@ sealed class PushMessageContent extends TdObject {
         return PushMessageContentInvoice.fromJson(json);
       case PushMessageContentLocation.defaultObjectId:
         return PushMessageContentLocation.fromJson(json);
+      case PushMessageContentPaidMedia.defaultObjectId:
+        return PushMessageContentPaidMedia.fromJson(json);
       case PushMessageContentPhoto.defaultObjectId:
         return PushMessageContentPhoto.fromJson(json);
       case PushMessageContentPoll.defaultObjectId:
@@ -797,6 +800,74 @@ final class PushMessageContentLocation extends PushMessageContent {
 
   /// TDLib object type
   static const String defaultObjectId = 'pushMessageContentLocation';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **PushMessageContentPaidMedia** *(pushMessageContentPaidMedia)* - child of PushMessageContent
+///
+/// A message with paid media.
+///
+/// * [starCount]: Number of Telegram Stars needed to buy access to the media in the message; 0 for pinned message.
+/// * [isPinned]: True, if the message is a pinned message with the specified content.
+final class PushMessageContentPaidMedia extends PushMessageContent {
+  /// **PushMessageContentPaidMedia** *(pushMessageContentPaidMedia)* - child of PushMessageContent
+  ///
+  /// A message with paid media.
+  ///
+  /// * [starCount]: Number of Telegram Stars needed to buy access to the media in the message; 0 for pinned message.
+  /// * [isPinned]: True, if the message is a pinned message with the specified content.
+  const PushMessageContentPaidMedia({
+    required this.starCount,
+    required this.isPinned,
+  });
+
+  /// Number of Telegram Stars needed to buy access to the media in the message; 0 for pinned message
+  final int starCount;
+
+  /// True, if the message is a pinned message with the specified content
+  final bool isPinned;
+
+  /// Parse from a json
+  factory PushMessageContentPaidMedia.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentPaidMedia(
+        starCount: json['star_count'],
+        isPinned: json['is_pinned'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "star_count": starCount,
+      "is_pinned": isPinned,
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [star_count]: Number of Telegram Stars needed to buy access to the media in the message; 0 for pinned message
+  /// * [is_pinned]: True, if the message is a pinned message with the specified content
+  @override
+  PushMessageContentPaidMedia copyWith({
+    int? starCount,
+    bool? isPinned,
+  }) =>
+      PushMessageContentPaidMedia(
+        starCount: starCount ?? this.starCount,
+        isPinned: isPinned ?? this.isPinned,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'pushMessageContentPaidMedia';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

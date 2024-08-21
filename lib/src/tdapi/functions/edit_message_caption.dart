@@ -2,25 +2,25 @@ part of '../tdapi.dart';
 
 /// **EditMessageCaption** *(editMessageCaption)* - TDLib function
 ///
-/// Edits the message content caption. Returns the edited message after the edit is completed on the server side.. Can be used only if message.can_be_edited == true.
+/// Edits the message content caption. Returns the edited message after the edit is completed on the server side.
 ///
 /// * [chatId]: The chat the message belongs to.
-/// * [messageId]: Identifier of the message.
+/// * [messageId]: Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited.
 /// * [replyMarkup]: The new message reply markup; pass null if none; for bots only *(optional)*.
 /// * [caption]: New message content caption; 0-getOption("message_caption_length_max") characters; pass null to remove caption *(optional)*.
-/// * [showCaptionAboveMedia]: Pass true to show the caption above the media; otherwise, caption will be shown below the media. Can be true only for animation, photo, and video messages.
+/// * [showCaptionAboveMedia]: Pass true to show the caption above the media; otherwise, the caption will be shown below the media. Can be true only for animation, photo, and video messages.
 ///
 /// [Message] is returned on completion.
 final class EditMessageCaption extends TdFunction {
   /// **EditMessageCaption** *(editMessageCaption)* - TDLib function
   ///
-  /// Edits the message content caption. Returns the edited message after the edit is completed on the server side.. Can be used only if message.can_be_edited == true.
+  /// Edits the message content caption. Returns the edited message after the edit is completed on the server side.
   ///
   /// * [chatId]: The chat the message belongs to.
-  /// * [messageId]: Identifier of the message.
+  /// * [messageId]: Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited.
   /// * [replyMarkup]: The new message reply markup; pass null if none; for bots only *(optional)*.
   /// * [caption]: New message content caption; 0-getOption("message_caption_length_max") characters; pass null to remove caption *(optional)*.
-  /// * [showCaptionAboveMedia]: Pass true to show the caption above the media; otherwise, caption will be shown below the media. Can be true only for animation, photo, and video messages.
+  /// * [showCaptionAboveMedia]: Pass true to show the caption above the media; otherwise, the caption will be shown below the media. Can be true only for animation, photo, and video messages.
   ///
   /// [Message] is returned on completion.
   const EditMessageCaption({
@@ -34,7 +34,7 @@ final class EditMessageCaption extends TdFunction {
   /// The chat the message belongs to
   final int chatId;
 
-  /// Identifier of the message
+  /// Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited
   final int messageId;
 
   /// The new message reply markup; pass null if none; for bots only
@@ -43,7 +43,7 @@ final class EditMessageCaption extends TdFunction {
   /// New message content caption; 0-getOption("message_caption_length_max") characters; pass null to remove caption
   final FormattedText? caption;
 
-  /// Pass true to show the caption above the media; otherwise, caption will be shown below the media. Can be true only for animation, photo, and video messages
+  /// Pass true to show the caption above the media; otherwise, the caption will be shown below the media. Can be true only for animation, photo, and video messages
   final bool showCaptionAboveMedia;
 
   /// Convert model to TDLib JSON format
@@ -64,10 +64,10 @@ final class EditMessageCaption extends TdFunction {
   ///
   /// Properties:
   /// * [chat_id]: The chat the message belongs to
-  /// * [message_id]: Identifier of the message
+  /// * [message_id]: Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited
   /// * [reply_markup]: The new message reply markup; pass null if none; for bots only
   /// * [caption]: New message content caption; 0-getOption("message_caption_length_max") characters; pass null to remove caption
-  /// * [show_caption_above_media]: Pass true to show the caption above the media; otherwise, caption will be shown below the media. Can be true only for animation, photo, and video messages
+  /// * [show_caption_above_media]: Pass true to show the caption above the media; otherwise, the caption will be shown below the media. Can be true only for animation, photo, and video messages
   EditMessageCaption copyWith({
     int? chatId,
     int? messageId,

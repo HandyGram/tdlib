@@ -8,6 +8,7 @@ part of '../tdapi.dart';
 /// * [secondaryBackgroundColor]: A secondary color for the background in the RGB24 format.
 /// * [headerBackgroundColor]: A color of the header background in the RGB24 format.
 /// * [sectionBackgroundColor]: A color of the section background in the RGB24 format.
+/// * [sectionSeparatorColor]: A color of the section separator in the RGB24 format.
 /// * [textColor]: A color of text in the RGB24 format.
 /// * [accentTextColor]: An accent color of the text in the RGB24 format.
 /// * [sectionHeaderTextColor]: A color of text on the section headers in the RGB24 format.
@@ -26,6 +27,7 @@ final class ThemeParameters extends TdObject {
   /// * [secondaryBackgroundColor]: A secondary color for the background in the RGB24 format.
   /// * [headerBackgroundColor]: A color of the header background in the RGB24 format.
   /// * [sectionBackgroundColor]: A color of the section background in the RGB24 format.
+  /// * [sectionSeparatorColor]: A color of the section separator in the RGB24 format.
   /// * [textColor]: A color of text in the RGB24 format.
   /// * [accentTextColor]: An accent color of the text in the RGB24 format.
   /// * [sectionHeaderTextColor]: A color of text on the section headers in the RGB24 format.
@@ -40,6 +42,7 @@ final class ThemeParameters extends TdObject {
     required this.secondaryBackgroundColor,
     required this.headerBackgroundColor,
     required this.sectionBackgroundColor,
+    required this.sectionSeparatorColor,
     required this.textColor,
     required this.accentTextColor,
     required this.sectionHeaderTextColor,
@@ -62,6 +65,9 @@ final class ThemeParameters extends TdObject {
 
   /// A color of the section background in the RGB24 format
   final int sectionBackgroundColor;
+
+  /// A color of the section separator in the RGB24 format
+  final int sectionSeparatorColor;
 
   /// A color of text in the RGB24 format
   final int textColor;
@@ -97,6 +103,7 @@ final class ThemeParameters extends TdObject {
         secondaryBackgroundColor: json['secondary_background_color'],
         headerBackgroundColor: json['header_background_color'],
         sectionBackgroundColor: json['section_background_color'],
+        sectionSeparatorColor: json['section_separator_color'],
         textColor: json['text_color'],
         accentTextColor: json['accent_text_color'],
         sectionHeaderTextColor: json['section_header_text_color'],
@@ -117,6 +124,7 @@ final class ThemeParameters extends TdObject {
       "secondary_background_color": secondaryBackgroundColor,
       "header_background_color": headerBackgroundColor,
       "section_background_color": sectionBackgroundColor,
+      "section_separator_color": sectionSeparatorColor,
       "text_color": textColor,
       "accent_text_color": accentTextColor,
       "section_header_text_color": sectionHeaderTextColor,
@@ -136,6 +144,7 @@ final class ThemeParameters extends TdObject {
   /// * [secondary_background_color]: A secondary color for the background in the RGB24 format
   /// * [header_background_color]: A color of the header background in the RGB24 format
   /// * [section_background_color]: A color of the section background in the RGB24 format
+  /// * [section_separator_color]: A color of the section separator in the RGB24 format
   /// * [text_color]: A color of text in the RGB24 format
   /// * [accent_text_color]: An accent color of the text in the RGB24 format
   /// * [section_header_text_color]: A color of text on the section headers in the RGB24 format
@@ -150,6 +159,7 @@ final class ThemeParameters extends TdObject {
     int? secondaryBackgroundColor,
     int? headerBackgroundColor,
     int? sectionBackgroundColor,
+    int? sectionSeparatorColor,
     int? textColor,
     int? accentTextColor,
     int? sectionHeaderTextColor,
@@ -168,6 +178,8 @@ final class ThemeParameters extends TdObject {
             headerBackgroundColor ?? this.headerBackgroundColor,
         sectionBackgroundColor:
             sectionBackgroundColor ?? this.sectionBackgroundColor,
+        sectionSeparatorColor:
+            sectionSeparatorColor ?? this.sectionSeparatorColor,
         textColor: textColor ?? this.textColor,
         accentTextColor: accentTextColor ?? this.accentTextColor,
         sectionHeaderTextColor:

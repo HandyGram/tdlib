@@ -10,8 +10,10 @@ part of '../tdapi.dart';
 /// * [date]: Point in time (Unix timestamp) when the link was created.
 /// * [editDate]: Point in time (Unix timestamp) when the link was last edited; 0 if never or unknown.
 /// * [expirationDate]: Point in time (Unix timestamp) when the link will expire; 0 if never.
+/// * [subscriptionPricing]: Information about subscription plan that is applied to the users joining the chat by the link; may be null if the link doesn't require subscription *(optional)*.
 /// * [memberLimit]: The maximum number of members, which can join the chat using the link simultaneously; 0 if not limited. Always 0 if the link requires approval.
 /// * [memberCount]: Number of chat members, which joined the chat using the link.
+/// * [expiredMemberCount]: Number of chat members, which joined the chat using the link, but have already left because of expired subscription; for subscription links only.
 /// * [pendingJoinRequestCount]: Number of pending join requests created using this link.
 /// * [createsJoinRequest]: True, if the link only creates join request. If true, total number of joining members will be unlimited.
 /// * [isPrimary]: True, if the link is primary. Primary invite link can't have name, expiration date, or usage limit. There is exactly one primary invite link for each administrator with can_invite_users right at a given time.
@@ -27,8 +29,10 @@ final class ChatInviteLink extends TdObject {
   /// * [date]: Point in time (Unix timestamp) when the link was created.
   /// * [editDate]: Point in time (Unix timestamp) when the link was last edited; 0 if never or unknown.
   /// * [expirationDate]: Point in time (Unix timestamp) when the link will expire; 0 if never.
+  /// * [subscriptionPricing]: Information about subscription plan that is applied to the users joining the chat by the link; may be null if the link doesn't require subscription *(optional)*.
   /// * [memberLimit]: The maximum number of members, which can join the chat using the link simultaneously; 0 if not limited. Always 0 if the link requires approval.
   /// * [memberCount]: Number of chat members, which joined the chat using the link.
+  /// * [expiredMemberCount]: Number of chat members, which joined the chat using the link, but have already left because of expired subscription; for subscription links only.
   /// * [pendingJoinRequestCount]: Number of pending join requests created using this link.
   /// * [createsJoinRequest]: True, if the link only creates join request. If true, total number of joining members will be unlimited.
   /// * [isPrimary]: True, if the link is primary. Primary invite link can't have name, expiration date, or usage limit. There is exactly one primary invite link for each administrator with can_invite_users right at a given time.
@@ -40,8 +44,10 @@ final class ChatInviteLink extends TdObject {
     required this.date,
     required this.editDate,
     required this.expirationDate,
+    this.subscriptionPricing,
     required this.memberLimit,
     required this.memberCount,
+    required this.expiredMemberCount,
     required this.pendingJoinRequestCount,
     required this.createsJoinRequest,
     required this.isPrimary,
@@ -68,11 +74,17 @@ final class ChatInviteLink extends TdObject {
   /// Point in time (Unix timestamp) when the link will expire; 0 if never
   final int expirationDate;
 
+  /// Information about subscription plan that is applied to the users joining the chat by the link; may be null if the link doesn't require subscription
+  final StarSubscriptionPricing? subscriptionPricing;
+
   /// The maximum number of members, which can join the chat using the link simultaneously; 0 if not limited. Always 0 if the link requires approval
   final int memberLimit;
 
   /// Number of chat members, which joined the chat using the link
   final int memberCount;
+
+  /// Number of chat members, which joined the chat using the link, but have already left because of expired subscription; for subscription links only
+  final int expiredMemberCount;
 
   /// Number of pending join requests created using this link
   final int pendingJoinRequestCount;
@@ -102,8 +114,12 @@ final class ChatInviteLink extends TdObject {
         date: json['date'],
         editDate: json['edit_date'],
         expirationDate: json['expiration_date'],
+        subscriptionPricing: json['subscription_pricing'] == null
+            ? null
+            : StarSubscriptionPricing.fromJson(json['subscription_pricing']),
         memberLimit: json['member_limit'],
         memberCount: json['member_count'],
+        expiredMemberCount: json['expired_member_count'],
         pendingJoinRequestCount: json['pending_join_request_count'],
         createsJoinRequest: json['creates_join_request'],
         isPrimary: json['is_primary'],
@@ -123,8 +139,10 @@ final class ChatInviteLink extends TdObject {
       "date": date,
       "edit_date": editDate,
       "expiration_date": expirationDate,
+      "subscription_pricing": subscriptionPricing?.toJson(),
       "member_limit": memberLimit,
       "member_count": memberCount,
+      "expired_member_count": expiredMemberCount,
       "pending_join_request_count": pendingJoinRequestCount,
       "creates_join_request": createsJoinRequest,
       "is_primary": isPrimary,
@@ -141,8 +159,10 @@ final class ChatInviteLink extends TdObject {
   /// * [date]: Point in time (Unix timestamp) when the link was created
   /// * [edit_date]: Point in time (Unix timestamp) when the link was last edited; 0 if never or unknown
   /// * [expiration_date]: Point in time (Unix timestamp) when the link will expire; 0 if never
+  /// * [subscription_pricing]: Information about subscription plan that is applied to the users joining the chat by the link; may be null if the link doesn't require subscription
   /// * [member_limit]: The maximum number of members, which can join the chat using the link simultaneously; 0 if not limited. Always 0 if the link requires approval
   /// * [member_count]: Number of chat members, which joined the chat using the link
+  /// * [expired_member_count]: Number of chat members, which joined the chat using the link, but have already left because of expired subscription; for subscription links only
   /// * [pending_join_request_count]: Number of pending join requests created using this link
   /// * [creates_join_request]: True, if the link only creates join request. If true, total number of joining members will be unlimited
   /// * [is_primary]: True, if the link is primary. Primary invite link can't have name, expiration date, or usage limit. There is exactly one primary invite link for each administrator with can_invite_users right at a given time
@@ -154,8 +174,10 @@ final class ChatInviteLink extends TdObject {
     int? date,
     int? editDate,
     int? expirationDate,
+    StarSubscriptionPricing? subscriptionPricing,
     int? memberLimit,
     int? memberCount,
+    int? expiredMemberCount,
     int? pendingJoinRequestCount,
     bool? createsJoinRequest,
     bool? isPrimary,
@@ -170,8 +192,10 @@ final class ChatInviteLink extends TdObject {
         date: date ?? this.date,
         editDate: editDate ?? this.editDate,
         expirationDate: expirationDate ?? this.expirationDate,
+        subscriptionPricing: subscriptionPricing ?? this.subscriptionPricing,
         memberLimit: memberLimit ?? this.memberLimit,
         memberCount: memberCount ?? this.memberCount,
+        expiredMemberCount: expiredMemberCount ?? this.expiredMemberCount,
         pendingJoinRequestCount:
             pendingJoinRequestCount ?? this.pendingJoinRequestCount,
         createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,

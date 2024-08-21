@@ -50,14 +50,14 @@ sealed class InputInvoice extends TdObject {
 
 /// **InputInvoiceMessage** *(inputInvoiceMessage)* - child of InputInvoice
 ///
-/// An invoice from a message of the type messageInvoice.
+/// An invoice from a message of the type messageInvoice or paid media purchase from messagePaidMedia.
 ///
 /// * [chatId]: Chat identifier of the message.
 /// * [messageId]: Message identifier.
 final class InputInvoiceMessage extends InputInvoice {
   /// **InputInvoiceMessage** *(inputInvoiceMessage)* - child of InputInvoice
   ///
-  /// An invoice from a message of the type messageInvoice.
+  /// An invoice from a message of the type messageInvoice or paid media purchase from messagePaidMedia.
   ///
   /// * [chatId]: Chat identifier of the message.
   /// * [messageId]: Message identifier.

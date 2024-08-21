@@ -13,6 +13,7 @@ part of '../tdapi.dart';
 /// * [linkedChatId]: Chat identifier of a discussion group for the channel, or a channel, for which the supergroup is the designated discussion group; 0 if none or unknown.
 /// * [slowModeDelay]: Delay between consecutive sent messages for non-administrator supergroup members, in seconds.
 /// * [slowModeDelayExpiresIn]: Time left before next message can be sent in the supergroup, in seconds. An updateSupergroupFullInfo update is not triggered when value of this field changes, but both new and old values are non-zero.
+/// * [canEnablePaidReaction]: True, if paid reaction can be enabled in the channel chat; for channels only.
 /// * [canGetMembers]: True, if members of the chat can be retrieved via getSupergroupMembers or searchChatMembers.
 /// * [hasHiddenMembers]: True, if non-administrators can receive only administrators and bots using getSupergroupMembers or searchChatMembers.
 /// * [canHideMembers]: True, if non-administrators and non-bots can be hidden in responses to getSupergroupMembers and searchChatMembers for non-administrators.
@@ -20,10 +21,12 @@ part of '../tdapi.dart';
 /// * [canSetLocation]: True, if the supergroup location can be changed.
 /// * [canGetStatistics]: True, if the supergroup or channel statistics are available.
 /// * [canGetRevenueStatistics]: True, if the supergroup or channel revenue statistics are available.
+/// * [canGetStarRevenueStatistics]: True, if the supergroup or channel Telegram Star revenue statistics are available.
 /// * [canToggleAggressiveAntiSpam]: True, if aggressive anti-spam checks can be enabled or disabled in the supergroup.
 /// * [isAllHistoryAvailable]: True, if new chat members will have access to old messages. In public, discussion, of forum groups and all channels, old messages are always available,. so this option affects only private non-forum supergroups without a linked chat. The value of this field is only available to chat administrators.
 /// * [canHaveSponsoredMessages]: True, if the chat can have sponsored messages. The value of this field is only available to the owner of the chat.
 /// * [hasAggressiveAntiSpamEnabled]: True, if aggressive anti-spam checks are enabled in the supergroup. The value of this field is only available to chat administrators.
+/// * [hasPaidMediaAllowed]: True, if paid media can be sent and forwarded to the channel chat; for channels only.
 /// * [hasPinnedStories]: True, if the supergroup or channel has pinned stories.
 /// * [myBoostCount]: Number of times the current user boosted the supergroup or channel.
 /// * [unrestrictBoostCount]: Number of times the supergroup must be boosted by a user to ignore slow mode and chat permission restrictions; 0 if unspecified.
@@ -48,6 +51,7 @@ final class SupergroupFullInfo extends TdObject {
   /// * [linkedChatId]: Chat identifier of a discussion group for the channel, or a channel, for which the supergroup is the designated discussion group; 0 if none or unknown.
   /// * [slowModeDelay]: Delay between consecutive sent messages for non-administrator supergroup members, in seconds.
   /// * [slowModeDelayExpiresIn]: Time left before next message can be sent in the supergroup, in seconds. An updateSupergroupFullInfo update is not triggered when value of this field changes, but both new and old values are non-zero.
+  /// * [canEnablePaidReaction]: True, if paid reaction can be enabled in the channel chat; for channels only.
   /// * [canGetMembers]: True, if members of the chat can be retrieved via getSupergroupMembers or searchChatMembers.
   /// * [hasHiddenMembers]: True, if non-administrators can receive only administrators and bots using getSupergroupMembers or searchChatMembers.
   /// * [canHideMembers]: True, if non-administrators and non-bots can be hidden in responses to getSupergroupMembers and searchChatMembers for non-administrators.
@@ -55,10 +59,12 @@ final class SupergroupFullInfo extends TdObject {
   /// * [canSetLocation]: True, if the supergroup location can be changed.
   /// * [canGetStatistics]: True, if the supergroup or channel statistics are available.
   /// * [canGetRevenueStatistics]: True, if the supergroup or channel revenue statistics are available.
+  /// * [canGetStarRevenueStatistics]: True, if the supergroup or channel Telegram Star revenue statistics are available.
   /// * [canToggleAggressiveAntiSpam]: True, if aggressive anti-spam checks can be enabled or disabled in the supergroup.
   /// * [isAllHistoryAvailable]: True, if new chat members will have access to old messages. In public, discussion, of forum groups and all channels, old messages are always available,. so this option affects only private non-forum supergroups without a linked chat. The value of this field is only available to chat administrators.
   /// * [canHaveSponsoredMessages]: True, if the chat can have sponsored messages. The value of this field is only available to the owner of the chat.
   /// * [hasAggressiveAntiSpamEnabled]: True, if aggressive anti-spam checks are enabled in the supergroup. The value of this field is only available to chat administrators.
+  /// * [hasPaidMediaAllowed]: True, if paid media can be sent and forwarded to the channel chat; for channels only.
   /// * [hasPinnedStories]: True, if the supergroup or channel has pinned stories.
   /// * [myBoostCount]: Number of times the current user boosted the supergroup or channel.
   /// * [unrestrictBoostCount]: Number of times the supergroup must be boosted by a user to ignore slow mode and chat permission restrictions; 0 if unspecified.
@@ -79,6 +85,7 @@ final class SupergroupFullInfo extends TdObject {
     required this.linkedChatId,
     required this.slowModeDelay,
     required this.slowModeDelayExpiresIn,
+    required this.canEnablePaidReaction,
     required this.canGetMembers,
     required this.hasHiddenMembers,
     required this.canHideMembers,
@@ -86,10 +93,12 @@ final class SupergroupFullInfo extends TdObject {
     required this.canSetLocation,
     required this.canGetStatistics,
     required this.canGetRevenueStatistics,
+    required this.canGetStarRevenueStatistics,
     required this.canToggleAggressiveAntiSpam,
     required this.isAllHistoryAvailable,
     required this.canHaveSponsoredMessages,
     required this.hasAggressiveAntiSpamEnabled,
+    required this.hasPaidMediaAllowed,
     required this.hasPinnedStories,
     required this.myBoostCount,
     required this.unrestrictBoostCount,
@@ -131,6 +140,9 @@ final class SupergroupFullInfo extends TdObject {
   /// Time left before next message can be sent in the supergroup, in seconds. An updateSupergroupFullInfo update is not triggered when value of this field changes, but both new and old values are non-zero
   final double slowModeDelayExpiresIn;
 
+  /// True, if paid reaction can be enabled in the channel chat; for channels only
+  final bool canEnablePaidReaction;
+
   /// True, if members of the chat can be retrieved via getSupergroupMembers or searchChatMembers
   final bool canGetMembers;
 
@@ -152,6 +164,9 @@ final class SupergroupFullInfo extends TdObject {
   /// True, if the supergroup or channel revenue statistics are available
   final bool canGetRevenueStatistics;
 
+  /// True, if the supergroup or channel Telegram Star revenue statistics are available
+  final bool canGetStarRevenueStatistics;
+
   /// True, if aggressive anti-spam checks can be enabled or disabled in the supergroup
   final bool canToggleAggressiveAntiSpam;
 
@@ -163,6 +178,9 @@ final class SupergroupFullInfo extends TdObject {
 
   /// True, if aggressive anti-spam checks are enabled in the supergroup. The value of this field is only available to chat administrators
   final bool hasAggressiveAntiSpamEnabled;
+
+  /// True, if paid media can be sent and forwarded to the channel chat; for channels only
+  final bool hasPaidMediaAllowed;
 
   /// True, if the supergroup or channel has pinned stories
   final bool hasPinnedStories;
@@ -214,6 +232,7 @@ final class SupergroupFullInfo extends TdObject {
         linkedChatId: json['linked_chat_id'] ?? 0,
         slowModeDelay: json['slow_mode_delay'],
         slowModeDelayExpiresIn: json['slow_mode_delay_expires_in'],
+        canEnablePaidReaction: json['can_enable_paid_reaction'],
         canGetMembers: json['can_get_members'],
         hasHiddenMembers: json['has_hidden_members'],
         canHideMembers: json['can_hide_members'],
@@ -221,10 +240,12 @@ final class SupergroupFullInfo extends TdObject {
         canSetLocation: json['can_set_location'],
         canGetStatistics: json['can_get_statistics'],
         canGetRevenueStatistics: json['can_get_revenue_statistics'],
+        canGetStarRevenueStatistics: json['can_get_star_revenue_statistics'],
         canToggleAggressiveAntiSpam: json['can_toggle_aggressive_anti_spam'],
         isAllHistoryAvailable: json['is_all_history_available'],
         canHaveSponsoredMessages: json['can_have_sponsored_messages'],
         hasAggressiveAntiSpamEnabled: json['has_aggressive_anti_spam_enabled'],
+        hasPaidMediaAllowed: json['has_paid_media_allowed'],
         hasPinnedStories: json['has_pinned_stories'],
         myBoostCount: json['my_boost_count'],
         unrestrictBoostCount: json['unrestrict_boost_count'],
@@ -263,6 +284,7 @@ final class SupergroupFullInfo extends TdObject {
       "linked_chat_id": linkedChatId,
       "slow_mode_delay": slowModeDelay,
       "slow_mode_delay_expires_in": slowModeDelayExpiresIn,
+      "can_enable_paid_reaction": canEnablePaidReaction,
       "can_get_members": canGetMembers,
       "has_hidden_members": hasHiddenMembers,
       "can_hide_members": canHideMembers,
@@ -270,10 +292,12 @@ final class SupergroupFullInfo extends TdObject {
       "can_set_location": canSetLocation,
       "can_get_statistics": canGetStatistics,
       "can_get_revenue_statistics": canGetRevenueStatistics,
+      "can_get_star_revenue_statistics": canGetStarRevenueStatistics,
       "can_toggle_aggressive_anti_spam": canToggleAggressiveAntiSpam,
       "is_all_history_available": isAllHistoryAvailable,
       "can_have_sponsored_messages": canHaveSponsoredMessages,
       "has_aggressive_anti_spam_enabled": hasAggressiveAntiSpamEnabled,
+      "has_paid_media_allowed": hasPaidMediaAllowed,
       "has_pinned_stories": hasPinnedStories,
       "my_boost_count": myBoostCount,
       "unrestrict_boost_count": unrestrictBoostCount,
@@ -299,6 +323,7 @@ final class SupergroupFullInfo extends TdObject {
   /// * [linked_chat_id]: Chat identifier of a discussion group for the channel, or a channel, for which the supergroup is the designated discussion group; 0 if none or unknown
   /// * [slow_mode_delay]: Delay between consecutive sent messages for non-administrator supergroup members, in seconds
   /// * [slow_mode_delay_expires_in]: Time left before next message can be sent in the supergroup, in seconds. An updateSupergroupFullInfo update is not triggered when value of this field changes, but both new and old values are non-zero
+  /// * [can_enable_paid_reaction]: True, if paid reaction can be enabled in the channel chat; for channels only
   /// * [can_get_members]: True, if members of the chat can be retrieved via getSupergroupMembers or searchChatMembers
   /// * [has_hidden_members]: True, if non-administrators can receive only administrators and bots using getSupergroupMembers or searchChatMembers
   /// * [can_hide_members]: True, if non-administrators and non-bots can be hidden in responses to getSupergroupMembers and searchChatMembers for non-administrators
@@ -306,10 +331,12 @@ final class SupergroupFullInfo extends TdObject {
   /// * [can_set_location]: True, if the supergroup location can be changed
   /// * [can_get_statistics]: True, if the supergroup or channel statistics are available
   /// * [can_get_revenue_statistics]: True, if the supergroup or channel revenue statistics are available
+  /// * [can_get_star_revenue_statistics]: True, if the supergroup or channel Telegram Star revenue statistics are available
   /// * [can_toggle_aggressive_anti_spam]: True, if aggressive anti-spam checks can be enabled or disabled in the supergroup
   /// * [is_all_history_available]: True, if new chat members will have access to old messages. In public, discussion, of forum groups and all channels, old messages are always available,. so this option affects only private non-forum supergroups without a linked chat. The value of this field is only available to chat administrators
   /// * [can_have_sponsored_messages]: True, if the chat can have sponsored messages. The value of this field is only available to the owner of the chat
   /// * [has_aggressive_anti_spam_enabled]: True, if aggressive anti-spam checks are enabled in the supergroup. The value of this field is only available to chat administrators
+  /// * [has_paid_media_allowed]: True, if paid media can be sent and forwarded to the channel chat; for channels only
   /// * [has_pinned_stories]: True, if the supergroup or channel has pinned stories
   /// * [my_boost_count]: Number of times the current user boosted the supergroup or channel
   /// * [unrestrict_boost_count]: Number of times the supergroup must be boosted by a user to ignore slow mode and chat permission restrictions; 0 if unspecified
@@ -330,6 +357,7 @@ final class SupergroupFullInfo extends TdObject {
     int? linkedChatId,
     int? slowModeDelay,
     double? slowModeDelayExpiresIn,
+    bool? canEnablePaidReaction,
     bool? canGetMembers,
     bool? hasHiddenMembers,
     bool? canHideMembers,
@@ -337,10 +365,12 @@ final class SupergroupFullInfo extends TdObject {
     bool? canSetLocation,
     bool? canGetStatistics,
     bool? canGetRevenueStatistics,
+    bool? canGetStarRevenueStatistics,
     bool? canToggleAggressiveAntiSpam,
     bool? isAllHistoryAvailable,
     bool? canHaveSponsoredMessages,
     bool? hasAggressiveAntiSpamEnabled,
+    bool? hasPaidMediaAllowed,
     bool? hasPinnedStories,
     int? myBoostCount,
     int? unrestrictBoostCount,
@@ -365,6 +395,8 @@ final class SupergroupFullInfo extends TdObject {
         slowModeDelay: slowModeDelay ?? this.slowModeDelay,
         slowModeDelayExpiresIn:
             slowModeDelayExpiresIn ?? this.slowModeDelayExpiresIn,
+        canEnablePaidReaction:
+            canEnablePaidReaction ?? this.canEnablePaidReaction,
         canGetMembers: canGetMembers ?? this.canGetMembers,
         hasHiddenMembers: hasHiddenMembers ?? this.hasHiddenMembers,
         canHideMembers: canHideMembers ?? this.canHideMembers,
@@ -373,6 +405,8 @@ final class SupergroupFullInfo extends TdObject {
         canGetStatistics: canGetStatistics ?? this.canGetStatistics,
         canGetRevenueStatistics:
             canGetRevenueStatistics ?? this.canGetRevenueStatistics,
+        canGetStarRevenueStatistics:
+            canGetStarRevenueStatistics ?? this.canGetStarRevenueStatistics,
         canToggleAggressiveAntiSpam:
             canToggleAggressiveAntiSpam ?? this.canToggleAggressiveAntiSpam,
         isAllHistoryAvailable:
@@ -381,6 +415,7 @@ final class SupergroupFullInfo extends TdObject {
             canHaveSponsoredMessages ?? this.canHaveSponsoredMessages,
         hasAggressiveAntiSpamEnabled:
             hasAggressiveAntiSpamEnabled ?? this.hasAggressiveAntiSpamEnabled,
+        hasPaidMediaAllowed: hasPaidMediaAllowed ?? this.hasPaidMediaAllowed,
         hasPinnedStories: hasPinnedStories ?? this.hasPinnedStories,
         myBoostCount: myBoostCount ?? this.myBoostCount,
         unrestrictBoostCount: unrestrictBoostCount ?? this.unrestrictBoostCount,
