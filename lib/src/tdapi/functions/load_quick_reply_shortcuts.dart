@@ -2,13 +2,13 @@ part of '../tdapi.dart';
 
 /// **LoadQuickReplyShortcuts** *(loadQuickReplyShortcuts)* - TDLib function
 ///
-/// Loads quick reply shortcuts created by the current user. The loaded topics will be sent through updateQuickReplyShortcuts.
+/// Loads quick reply shortcuts created by the current user. The loaded data will be sent through updateQuickReplyShortcut and updateQuickReplyShortcuts.
 ///
 /// [Ok] is returned on completion.
 final class LoadQuickReplyShortcuts extends TdFunction {
   /// **LoadQuickReplyShortcuts** *(loadQuickReplyShortcuts)* - TDLib function
   ///
-  /// Loads quick reply shortcuts created by the current user. The loaded topics will be sent through updateQuickReplyShortcuts.
+  /// Loads quick reply shortcuts created by the current user. The loaded data will be sent through updateQuickReplyShortcut and updateQuickReplyShortcuts.
   ///
   /// [Ok] is returned on completion.
   const LoadQuickReplyShortcuts();

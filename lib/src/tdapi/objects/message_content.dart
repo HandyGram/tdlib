@@ -67,11 +67,12 @@ sealed class MessageContent extends TdObject {
   /// * [MessagePaymentRefunded]
   /// * [MessageGiftedPremium]
   /// * [MessagePremiumGiftCode]
-  /// * [MessagePremiumGiveawayCreated]
-  /// * [MessagePremiumGiveaway]
-  /// * [MessagePremiumGiveawayCompleted]
-  /// * [MessagePremiumGiveawayWinners]
+  /// * [MessageGiveawayCreated]
+  /// * [MessageGiveaway]
+  /// * [MessageGiveawayCompleted]
+  /// * [MessageGiveawayWinners]
   /// * [MessageGiftedStars]
+  /// * [MessageGiveawayPrizeStars]
   /// * [MessageContactRegistered]
   /// * [MessageUsersShared]
   /// * [MessageChatShared]
@@ -198,16 +199,18 @@ sealed class MessageContent extends TdObject {
         return MessageGiftedPremium.fromJson(json);
       case MessagePremiumGiftCode.defaultObjectId:
         return MessagePremiumGiftCode.fromJson(json);
-      case MessagePremiumGiveawayCreated.defaultObjectId:
-        return MessagePremiumGiveawayCreated.fromJson(json);
-      case MessagePremiumGiveaway.defaultObjectId:
-        return MessagePremiumGiveaway.fromJson(json);
-      case MessagePremiumGiveawayCompleted.defaultObjectId:
-        return MessagePremiumGiveawayCompleted.fromJson(json);
-      case MessagePremiumGiveawayWinners.defaultObjectId:
-        return MessagePremiumGiveawayWinners.fromJson(json);
+      case MessageGiveawayCreated.defaultObjectId:
+        return MessageGiveawayCreated.fromJson(json);
+      case MessageGiveaway.defaultObjectId:
+        return MessageGiveaway.fromJson(json);
+      case MessageGiveawayCompleted.defaultObjectId:
+        return MessageGiveawayCompleted.fromJson(json);
+      case MessageGiveawayWinners.defaultObjectId:
+        return MessageGiveawayWinners.fromJson(json);
       case MessageGiftedStars.defaultObjectId:
         return MessageGiftedStars.fromJson(json);
+      case MessageGiveawayPrizeStars.defaultObjectId:
+        return MessageGiveawayPrizeStars.fromJson(json);
       case MessageContactRegistered.defaultObjectId:
         return MessageContactRegistered.fromJson(json);
       case MessageUsersShared.defaultObjectId:
@@ -4390,34 +4393,53 @@ final class MessagePremiumGiftCode extends MessageContent {
   String get currentObjectId => defaultObjectId;
 }
 
-/// **MessagePremiumGiveawayCreated** *(messagePremiumGiveawayCreated)* - child of MessageContent
+/// **MessageGiveawayCreated** *(messageGiveawayCreated)* - child of MessageContent
 ///
-/// A Telegram Premium giveaway was created for the chat. Use telegramPaymentPurposePremiumGiveaway or storePaymentPurposePremiumGiveaway to create a giveaway.
-final class MessagePremiumGiveawayCreated extends MessageContent {
-  /// **MessagePremiumGiveawayCreated** *(messagePremiumGiveawayCreated)* - child of MessageContent
+/// A giveaway was created for the chat. Use telegramPaymentPurposePremiumGiveaway, storePaymentPurposePremiumGiveaway, telegramPaymentPurposeStarGiveaway, or storePaymentPurposeStarGiveaway to create a giveaway.
+///
+/// * [starCount]: Number of Telegram Stars that will be shared by winners of the giveaway; 0 for Telegram Premium giveaways.
+final class MessageGiveawayCreated extends MessageContent {
+  /// **MessageGiveawayCreated** *(messageGiveawayCreated)* - child of MessageContent
   ///
-  /// A Telegram Premium giveaway was created for the chat. Use telegramPaymentPurposePremiumGiveaway or storePaymentPurposePremiumGiveaway to create a giveaway.
-  const MessagePremiumGiveawayCreated();
+  /// A giveaway was created for the chat. Use telegramPaymentPurposePremiumGiveaway, storePaymentPurposePremiumGiveaway, telegramPaymentPurposeStarGiveaway, or storePaymentPurposeStarGiveaway to create a giveaway.
+  ///
+  /// * [starCount]: Number of Telegram Stars that will be shared by winners of the giveaway; 0 for Telegram Premium giveaways.
+  const MessageGiveawayCreated({
+    required this.starCount,
+  });
+
+  /// Number of Telegram Stars that will be shared by winners of the giveaway; 0 for Telegram Premium giveaways
+  final int starCount;
 
   /// Parse from a json
-  factory MessagePremiumGiveawayCreated.fromJson(Map<String, dynamic> json) =>
-      const MessagePremiumGiveawayCreated();
+  factory MessageGiveawayCreated.fromJson(Map<String, dynamic> json) =>
+      MessageGiveawayCreated(
+        starCount: json['star_count'],
+      );
 
   /// Convert model to TDLib JSON format
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": defaultObjectId,
+      "star_count": starCount,
     };
   }
 
-  /// Copy instance with no modifications.
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [star_count]: Number of Telegram Stars that will be shared by winners of the giveaway; 0 for Telegram Premium giveaways
   @override
-  MessagePremiumGiveawayCreated copyWith() =>
-      const MessagePremiumGiveawayCreated();
+  MessageGiveawayCreated copyWith({
+    int? starCount,
+  }) =>
+      MessageGiveawayCreated(
+        starCount: starCount ?? this.starCount,
+      );
 
   /// TDLib object type
-  static const String defaultObjectId = 'messagePremiumGiveawayCreated';
+  static const String defaultObjectId = 'messageGiveawayCreated';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -4428,48 +4450,48 @@ final class MessagePremiumGiveawayCreated extends MessageContent {
   String get currentObjectId => defaultObjectId;
 }
 
-/// **MessagePremiumGiveaway** *(messagePremiumGiveaway)* - child of MessageContent
+/// **MessageGiveaway** *(messageGiveaway)* - child of MessageContent
 ///
-/// A Telegram Premium giveaway.
+/// A giveaway.
 ///
 /// * [parameters]: Giveaway parameters.
 /// * [winnerCount]: Number of users which will receive Telegram Premium subscription gift codes.
-/// * [monthCount]: Number of months the Telegram Premium subscription will be active after code activation.
+/// * [prize]: Prize of the giveaway.
 /// * [sticker]: A sticker to be shown in the message; may be null if unknown *(optional)*.
-final class MessagePremiumGiveaway extends MessageContent {
-  /// **MessagePremiumGiveaway** *(messagePremiumGiveaway)* - child of MessageContent
+final class MessageGiveaway extends MessageContent {
+  /// **MessageGiveaway** *(messageGiveaway)* - child of MessageContent
   ///
-  /// A Telegram Premium giveaway.
+  /// A giveaway.
   ///
   /// * [parameters]: Giveaway parameters.
   /// * [winnerCount]: Number of users which will receive Telegram Premium subscription gift codes.
-  /// * [monthCount]: Number of months the Telegram Premium subscription will be active after code activation.
+  /// * [prize]: Prize of the giveaway.
   /// * [sticker]: A sticker to be shown in the message; may be null if unknown *(optional)*.
-  const MessagePremiumGiveaway({
+  const MessageGiveaway({
     required this.parameters,
     required this.winnerCount,
-    required this.monthCount,
+    required this.prize,
     this.sticker,
   });
 
   /// Giveaway parameters
-  final PremiumGiveawayParameters parameters;
+  final GiveawayParameters parameters;
 
   /// Number of users which will receive Telegram Premium subscription gift codes
   final int winnerCount;
 
-  /// Number of months the Telegram Premium subscription will be active after code activation
-  final int monthCount;
+  /// Prize of the giveaway
+  final GiveawayPrize prize;
 
   /// A sticker to be shown in the message; may be null if unknown
   final Sticker? sticker;
 
   /// Parse from a json
-  factory MessagePremiumGiveaway.fromJson(Map<String, dynamic> json) =>
-      MessagePremiumGiveaway(
-        parameters: PremiumGiveawayParameters.fromJson(json['parameters']),
+  factory MessageGiveaway.fromJson(Map<String, dynamic> json) =>
+      MessageGiveaway(
+        parameters: GiveawayParameters.fromJson(json['parameters']),
         winnerCount: json['winner_count'],
-        monthCount: json['month_count'],
+        prize: GiveawayPrize.fromJson(json['prize']),
         sticker:
             json['sticker'] == null ? null : Sticker.fromJson(json['sticker']),
       );
@@ -4481,7 +4503,7 @@ final class MessagePremiumGiveaway extends MessageContent {
       "@type": defaultObjectId,
       "parameters": parameters.toJson(),
       "winner_count": winnerCount,
-      "month_count": monthCount,
+      "prize": prize.toJson(),
       "sticker": sticker?.toJson(),
     };
   }
@@ -4491,24 +4513,24 @@ final class MessagePremiumGiveaway extends MessageContent {
   /// Properties:
   /// * [parameters]: Giveaway parameters
   /// * [winner_count]: Number of users which will receive Telegram Premium subscription gift codes
-  /// * [month_count]: Number of months the Telegram Premium subscription will be active after code activation
+  /// * [prize]: Prize of the giveaway
   /// * [sticker]: A sticker to be shown in the message; may be null if unknown
   @override
-  MessagePremiumGiveaway copyWith({
-    PremiumGiveawayParameters? parameters,
+  MessageGiveaway copyWith({
+    GiveawayParameters? parameters,
     int? winnerCount,
-    int? monthCount,
+    GiveawayPrize? prize,
     Sticker? sticker,
   }) =>
-      MessagePremiumGiveaway(
+      MessageGiveaway(
         parameters: parameters ?? this.parameters,
         winnerCount: winnerCount ?? this.winnerCount,
-        monthCount: monthCount ?? this.monthCount,
+        prize: prize ?? this.prize,
         sticker: sticker ?? this.sticker,
       );
 
   /// TDLib object type
-  static const String defaultObjectId = 'messagePremiumGiveaway';
+  static const String defaultObjectId = 'messageGiveaway';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -4519,24 +4541,27 @@ final class MessagePremiumGiveaway extends MessageContent {
   String get currentObjectId => defaultObjectId;
 }
 
-/// **MessagePremiumGiveawayCompleted** *(messagePremiumGiveawayCompleted)* - child of MessageContent
+/// **MessageGiveawayCompleted** *(messageGiveawayCompleted)* - child of MessageContent
 ///
-/// A Telegram Premium giveaway without public winners has been completed for the chat.
+/// A giveaway without public winners has been completed for the chat.
 ///
 /// * [giveawayMessageId]: Identifier of the message with the giveaway; can be 0 if the message was deleted.
 /// * [winnerCount]: Number of winners in the giveaway.
-/// * [unclaimedPrizeCount]: Number of undistributed prizes.
-final class MessagePremiumGiveawayCompleted extends MessageContent {
-  /// **MessagePremiumGiveawayCompleted** *(messagePremiumGiveawayCompleted)* - child of MessageContent
+/// * [isStarGiveaway]: True, if the giveaway is a Telegram Star giveaway.
+/// * [unclaimedPrizeCount]: Number of undistributed prizes; for Telegram Premium giveaways only.
+final class MessageGiveawayCompleted extends MessageContent {
+  /// **MessageGiveawayCompleted** *(messageGiveawayCompleted)* - child of MessageContent
   ///
-  /// A Telegram Premium giveaway without public winners has been completed for the chat.
+  /// A giveaway without public winners has been completed for the chat.
   ///
   /// * [giveawayMessageId]: Identifier of the message with the giveaway; can be 0 if the message was deleted.
   /// * [winnerCount]: Number of winners in the giveaway.
-  /// * [unclaimedPrizeCount]: Number of undistributed prizes.
-  const MessagePremiumGiveawayCompleted({
+  /// * [isStarGiveaway]: True, if the giveaway is a Telegram Star giveaway.
+  /// * [unclaimedPrizeCount]: Number of undistributed prizes; for Telegram Premium giveaways only.
+  const MessageGiveawayCompleted({
     required this.giveawayMessageId,
     required this.winnerCount,
+    required this.isStarGiveaway,
     required this.unclaimedPrizeCount,
   });
 
@@ -4546,14 +4571,18 @@ final class MessagePremiumGiveawayCompleted extends MessageContent {
   /// Number of winners in the giveaway
   final int winnerCount;
 
-  /// Number of undistributed prizes
+  /// True, if the giveaway is a Telegram Star giveaway
+  final bool isStarGiveaway;
+
+  /// Number of undistributed prizes; for Telegram Premium giveaways only
   final int unclaimedPrizeCount;
 
   /// Parse from a json
-  factory MessagePremiumGiveawayCompleted.fromJson(Map<String, dynamic> json) =>
-      MessagePremiumGiveawayCompleted(
+  factory MessageGiveawayCompleted.fromJson(Map<String, dynamic> json) =>
+      MessageGiveawayCompleted(
         giveawayMessageId: json['giveaway_message_id'],
         winnerCount: json['winner_count'],
+        isStarGiveaway: json['is_star_giveaway'],
         unclaimedPrizeCount: json['unclaimed_prize_count'],
       );
 
@@ -4564,6 +4593,7 @@ final class MessagePremiumGiveawayCompleted extends MessageContent {
       "@type": defaultObjectId,
       "giveaway_message_id": giveawayMessageId,
       "winner_count": winnerCount,
+      "is_star_giveaway": isStarGiveaway,
       "unclaimed_prize_count": unclaimedPrizeCount,
     };
   }
@@ -4573,21 +4603,24 @@ final class MessagePremiumGiveawayCompleted extends MessageContent {
   /// Properties:
   /// * [giveaway_message_id]: Identifier of the message with the giveaway; can be 0 if the message was deleted
   /// * [winner_count]: Number of winners in the giveaway
-  /// * [unclaimed_prize_count]: Number of undistributed prizes
+  /// * [is_star_giveaway]: True, if the giveaway is a Telegram Star giveaway
+  /// * [unclaimed_prize_count]: Number of undistributed prizes; for Telegram Premium giveaways only
   @override
-  MessagePremiumGiveawayCompleted copyWith({
+  MessageGiveawayCompleted copyWith({
     int? giveawayMessageId,
     int? winnerCount,
+    bool? isStarGiveaway,
     int? unclaimedPrizeCount,
   }) =>
-      MessagePremiumGiveawayCompleted(
+      MessageGiveawayCompleted(
         giveawayMessageId: giveawayMessageId ?? this.giveawayMessageId,
         winnerCount: winnerCount ?? this.winnerCount,
+        isStarGiveaway: isStarGiveaway ?? this.isStarGiveaway,
         unclaimedPrizeCount: unclaimedPrizeCount ?? this.unclaimedPrizeCount,
       );
 
   /// TDLib object type
-  static const String defaultObjectId = 'messagePremiumGiveawayCompleted';
+  static const String defaultObjectId = 'messageGiveawayCompleted';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -4598,52 +4631,52 @@ final class MessagePremiumGiveawayCompleted extends MessageContent {
   String get currentObjectId => defaultObjectId;
 }
 
-/// **MessagePremiumGiveawayWinners** *(messagePremiumGiveawayWinners)* - child of MessageContent
+/// **MessageGiveawayWinners** *(messageGiveawayWinners)* - child of MessageContent
 ///
-/// A Telegram Premium giveaway with public winners has been completed for the chat.
+/// A giveaway with public winners has been completed for the chat.
 ///
-/// * [boostedChatId]: Identifier of the channel chat, which was automatically boosted by the winners of the giveaway for duration of the Premium subscription.
+/// * [boostedChatId]: Identifier of the supergroup or channel chat, which was automatically boosted by the winners of the giveaway.
 /// * [giveawayMessageId]: Identifier of the message with the giveaway in the boosted chat.
 /// * [additionalChatCount]: Number of other chats that participated in the giveaway.
 /// * [actualWinnersSelectionDate]: Point in time (Unix timestamp) when the winners were selected. May be bigger than winners selection date specified in parameters of the giveaway.
 /// * [onlyNewMembers]: True, if only new members of the chats were eligible for the giveaway.
 /// * [wasRefunded]: True, if the giveaway was canceled and was fully refunded.
-/// * [monthCount]: Number of months the Telegram Premium subscription will be active after code activation.
+/// * [prize]: Prize of the giveaway.
 /// * [prizeDescription]: Additional description of the giveaway prize.
 /// * [winnerCount]: Total number of winners in the giveaway.
 /// * [winnerUserIds]: Up to 100 user identifiers of the winners of the giveaway.
-/// * [unclaimedPrizeCount]: Number of undistributed prizes.
-final class MessagePremiumGiveawayWinners extends MessageContent {
-  /// **MessagePremiumGiveawayWinners** *(messagePremiumGiveawayWinners)* - child of MessageContent
+/// * [unclaimedPrizeCount]: Number of undistributed prizes; for Telegram Premium giveaways only.
+final class MessageGiveawayWinners extends MessageContent {
+  /// **MessageGiveawayWinners** *(messageGiveawayWinners)* - child of MessageContent
   ///
-  /// A Telegram Premium giveaway with public winners has been completed for the chat.
+  /// A giveaway with public winners has been completed for the chat.
   ///
-  /// * [boostedChatId]: Identifier of the channel chat, which was automatically boosted by the winners of the giveaway for duration of the Premium subscription.
+  /// * [boostedChatId]: Identifier of the supergroup or channel chat, which was automatically boosted by the winners of the giveaway.
   /// * [giveawayMessageId]: Identifier of the message with the giveaway in the boosted chat.
   /// * [additionalChatCount]: Number of other chats that participated in the giveaway.
   /// * [actualWinnersSelectionDate]: Point in time (Unix timestamp) when the winners were selected. May be bigger than winners selection date specified in parameters of the giveaway.
   /// * [onlyNewMembers]: True, if only new members of the chats were eligible for the giveaway.
   /// * [wasRefunded]: True, if the giveaway was canceled and was fully refunded.
-  /// * [monthCount]: Number of months the Telegram Premium subscription will be active after code activation.
+  /// * [prize]: Prize of the giveaway.
   /// * [prizeDescription]: Additional description of the giveaway prize.
   /// * [winnerCount]: Total number of winners in the giveaway.
   /// * [winnerUserIds]: Up to 100 user identifiers of the winners of the giveaway.
-  /// * [unclaimedPrizeCount]: Number of undistributed prizes.
-  const MessagePremiumGiveawayWinners({
+  /// * [unclaimedPrizeCount]: Number of undistributed prizes; for Telegram Premium giveaways only.
+  const MessageGiveawayWinners({
     required this.boostedChatId,
     required this.giveawayMessageId,
     required this.additionalChatCount,
     required this.actualWinnersSelectionDate,
     required this.onlyNewMembers,
     required this.wasRefunded,
-    required this.monthCount,
+    required this.prize,
     required this.prizeDescription,
     required this.winnerCount,
     required this.winnerUserIds,
     required this.unclaimedPrizeCount,
   });
 
-  /// Identifier of the channel chat, which was automatically boosted by the winners of the giveaway for duration of the Premium subscription
+  /// Identifier of the supergroup or channel chat, which was automatically boosted by the winners of the giveaway
   final int boostedChatId;
 
   /// Identifier of the message with the giveaway in the boosted chat
@@ -4661,8 +4694,8 @@ final class MessagePremiumGiveawayWinners extends MessageContent {
   /// True, if the giveaway was canceled and was fully refunded
   final bool wasRefunded;
 
-  /// Number of months the Telegram Premium subscription will be active after code activation
-  final int monthCount;
+  /// Prize of the giveaway
+  final GiveawayPrize prize;
 
   /// Additional description of the giveaway prize
   final String prizeDescription;
@@ -4673,19 +4706,19 @@ final class MessagePremiumGiveawayWinners extends MessageContent {
   /// Up to 100 user identifiers of the winners of the giveaway
   final List<int> winnerUserIds;
 
-  /// Number of undistributed prizes
+  /// Number of undistributed prizes; for Telegram Premium giveaways only
   final int unclaimedPrizeCount;
 
   /// Parse from a json
-  factory MessagePremiumGiveawayWinners.fromJson(Map<String, dynamic> json) =>
-      MessagePremiumGiveawayWinners(
+  factory MessageGiveawayWinners.fromJson(Map<String, dynamic> json) =>
+      MessageGiveawayWinners(
         boostedChatId: json['boosted_chat_id'],
         giveawayMessageId: json['giveaway_message_id'],
         additionalChatCount: json['additional_chat_count'],
         actualWinnersSelectionDate: json['actual_winners_selection_date'],
         onlyNewMembers: json['only_new_members'],
         wasRefunded: json['was_refunded'],
-        monthCount: json['month_count'],
+        prize: GiveawayPrize.fromJson(json['prize']),
         prizeDescription: json['prize_description'],
         winnerCount: json['winner_count'],
         winnerUserIds: List<int>.from(
@@ -4704,7 +4737,7 @@ final class MessagePremiumGiveawayWinners extends MessageContent {
       "actual_winners_selection_date": actualWinnersSelectionDate,
       "only_new_members": onlyNewMembers,
       "was_refunded": wasRefunded,
-      "month_count": monthCount,
+      "prize": prize.toJson(),
       "prize_description": prizeDescription,
       "winner_count": winnerCount,
       "winner_user_ids": winnerUserIds.map((i) => i).toList(),
@@ -4715,32 +4748,32 @@ final class MessagePremiumGiveawayWinners extends MessageContent {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [boosted_chat_id]: Identifier of the channel chat, which was automatically boosted by the winners of the giveaway for duration of the Premium subscription
+  /// * [boosted_chat_id]: Identifier of the supergroup or channel chat, which was automatically boosted by the winners of the giveaway
   /// * [giveaway_message_id]: Identifier of the message with the giveaway in the boosted chat
   /// * [additional_chat_count]: Number of other chats that participated in the giveaway
   /// * [actual_winners_selection_date]: Point in time (Unix timestamp) when the winners were selected. May be bigger than winners selection date specified in parameters of the giveaway
   /// * [only_new_members]: True, if only new members of the chats were eligible for the giveaway
   /// * [was_refunded]: True, if the giveaway was canceled and was fully refunded
-  /// * [month_count]: Number of months the Telegram Premium subscription will be active after code activation
+  /// * [prize]: Prize of the giveaway
   /// * [prize_description]: Additional description of the giveaway prize
   /// * [winner_count]: Total number of winners in the giveaway
   /// * [winner_user_ids]: Up to 100 user identifiers of the winners of the giveaway
-  /// * [unclaimed_prize_count]: Number of undistributed prizes
+  /// * [unclaimed_prize_count]: Number of undistributed prizes; for Telegram Premium giveaways only
   @override
-  MessagePremiumGiveawayWinners copyWith({
+  MessageGiveawayWinners copyWith({
     int? boostedChatId,
     int? giveawayMessageId,
     int? additionalChatCount,
     int? actualWinnersSelectionDate,
     bool? onlyNewMembers,
     bool? wasRefunded,
-    int? monthCount,
+    GiveawayPrize? prize,
     String? prizeDescription,
     int? winnerCount,
     List<int>? winnerUserIds,
     int? unclaimedPrizeCount,
   }) =>
-      MessagePremiumGiveawayWinners(
+      MessageGiveawayWinners(
         boostedChatId: boostedChatId ?? this.boostedChatId,
         giveawayMessageId: giveawayMessageId ?? this.giveawayMessageId,
         additionalChatCount: additionalChatCount ?? this.additionalChatCount,
@@ -4748,7 +4781,7 @@ final class MessagePremiumGiveawayWinners extends MessageContent {
             actualWinnersSelectionDate ?? this.actualWinnersSelectionDate,
         onlyNewMembers: onlyNewMembers ?? this.onlyNewMembers,
         wasRefunded: wasRefunded ?? this.wasRefunded,
-        monthCount: monthCount ?? this.monthCount,
+        prize: prize ?? this.prize,
         prizeDescription: prizeDescription ?? this.prizeDescription,
         winnerCount: winnerCount ?? this.winnerCount,
         winnerUserIds: winnerUserIds ?? this.winnerUserIds,
@@ -4756,7 +4789,7 @@ final class MessagePremiumGiveawayWinners extends MessageContent {
       );
 
   /// TDLib object type
-  static const String defaultObjectId = 'messagePremiumGiveawayWinners';
+  static const String defaultObjectId = 'messageGiveawayWinners';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -4905,6 +4938,119 @@ final class MessageGiftedStars extends MessageContent {
 
   /// TDLib object type
   static const String defaultObjectId = 'messageGiftedStars';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **MessageGiveawayPrizeStars** *(messageGiveawayPrizeStars)* - child of MessageContent
+///
+/// A Telegram Stars were received by the cuurent user from a giveaway.
+///
+/// * [starCount]: Number of Telegram Stars that were received.
+/// * [transactionId]: Identifier of the transaction for Telegram Stars credit.
+/// * [boostedChatId]: Identifier of the supergroup or channel chat, which was automatically boosted by the winners of the giveaway.
+/// * [giveawayMessageId]: Identifier of the message with the giveaway in the boosted chat; can be 0 if the message was deleted.
+/// * [isUnclaimed]: True, if the corresponding winner wasn't chosen and the Telegram Stars were received by the owner of the boosted chat.
+/// * [sticker]: A sticker to be shown in the message; may be null if unknown *(optional)*.
+final class MessageGiveawayPrizeStars extends MessageContent {
+  /// **MessageGiveawayPrizeStars** *(messageGiveawayPrizeStars)* - child of MessageContent
+  ///
+  /// A Telegram Stars were received by the cuurent user from a giveaway.
+  ///
+  /// * [starCount]: Number of Telegram Stars that were received.
+  /// * [transactionId]: Identifier of the transaction for Telegram Stars credit.
+  /// * [boostedChatId]: Identifier of the supergroup or channel chat, which was automatically boosted by the winners of the giveaway.
+  /// * [giveawayMessageId]: Identifier of the message with the giveaway in the boosted chat; can be 0 if the message was deleted.
+  /// * [isUnclaimed]: True, if the corresponding winner wasn't chosen and the Telegram Stars were received by the owner of the boosted chat.
+  /// * [sticker]: A sticker to be shown in the message; may be null if unknown *(optional)*.
+  const MessageGiveawayPrizeStars({
+    required this.starCount,
+    required this.transactionId,
+    required this.boostedChatId,
+    required this.giveawayMessageId,
+    required this.isUnclaimed,
+    this.sticker,
+  });
+
+  /// Number of Telegram Stars that were received
+  final int starCount;
+
+  /// Identifier of the transaction for Telegram Stars credit
+  final String transactionId;
+
+  /// Identifier of the supergroup or channel chat, which was automatically boosted by the winners of the giveaway
+  final int boostedChatId;
+
+  /// Identifier of the message with the giveaway in the boosted chat; can be 0 if the message was deleted
+  final int giveawayMessageId;
+
+  /// True, if the corresponding winner wasn't chosen and the Telegram Stars were received by the owner of the boosted chat
+  final bool isUnclaimed;
+
+  /// A sticker to be shown in the message; may be null if unknown
+  final Sticker? sticker;
+
+  /// Parse from a json
+  factory MessageGiveawayPrizeStars.fromJson(Map<String, dynamic> json) =>
+      MessageGiveawayPrizeStars(
+        starCount: json['star_count'],
+        transactionId: json['transaction_id'],
+        boostedChatId: json['boosted_chat_id'],
+        giveawayMessageId: json['giveaway_message_id'],
+        isUnclaimed: json['is_unclaimed'],
+        sticker:
+            json['sticker'] == null ? null : Sticker.fromJson(json['sticker']),
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "star_count": starCount,
+      "transaction_id": transactionId,
+      "boosted_chat_id": boostedChatId,
+      "giveaway_message_id": giveawayMessageId,
+      "is_unclaimed": isUnclaimed,
+      "sticker": sticker?.toJson(),
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [star_count]: Number of Telegram Stars that were received
+  /// * [transaction_id]: Identifier of the transaction for Telegram Stars credit
+  /// * [boosted_chat_id]: Identifier of the supergroup or channel chat, which was automatically boosted by the winners of the giveaway
+  /// * [giveaway_message_id]: Identifier of the message with the giveaway in the boosted chat; can be 0 if the message was deleted
+  /// * [is_unclaimed]: True, if the corresponding winner wasn't chosen and the Telegram Stars were received by the owner of the boosted chat
+  /// * [sticker]: A sticker to be shown in the message; may be null if unknown
+  @override
+  MessageGiveawayPrizeStars copyWith({
+    int? starCount,
+    String? transactionId,
+    int? boostedChatId,
+    int? giveawayMessageId,
+    bool? isUnclaimed,
+    Sticker? sticker,
+  }) =>
+      MessageGiveawayPrizeStars(
+        starCount: starCount ?? this.starCount,
+        transactionId: transactionId ?? this.transactionId,
+        boostedChatId: boostedChatId ?? this.boostedChatId,
+        giveawayMessageId: giveawayMessageId ?? this.giveawayMessageId,
+        isUnclaimed: isUnclaimed ?? this.isUnclaimed,
+        sticker: sticker ?? this.sticker,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'messageGiveawayPrizeStars';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

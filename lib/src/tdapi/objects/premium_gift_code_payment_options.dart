@@ -2,13 +2,13 @@ part of '../tdapi.dart';
 
 /// **PremiumGiftCodePaymentOptions** *(premiumGiftCodePaymentOptions)* - basic class
 ///
-/// Contains a list of options for creating Telegram Premium gift codes.
+/// Contains a list of options for creating Telegram Premium gift codes or Telegram Premium giveaway.
 ///
 /// * [options]: The list of options.
 final class PremiumGiftCodePaymentOptions extends TdObject {
   /// **PremiumGiftCodePaymentOptions** *(premiumGiftCodePaymentOptions)* - basic class
   ///
-  /// Contains a list of options for creating Telegram Premium gift codes.
+  /// Contains a list of options for creating Telegram Premium gift codes or Telegram Premium giveaway.
   ///
   /// * [options]: The list of options.
   const PremiumGiftCodePaymentOptions({

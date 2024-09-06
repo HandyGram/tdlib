@@ -22,6 +22,8 @@ sealed class LinkPreviewType extends TdObject {
   /// * [LinkPreviewTypeEmbeddedAnimationPlayer]
   /// * [LinkPreviewTypeEmbeddedAudioPlayer]
   /// * [LinkPreviewTypeEmbeddedVideoPlayer]
+  /// * [LinkPreviewTypeExternalAudio]
+  /// * [LinkPreviewTypeExternalVideo]
   /// * [LinkPreviewTypeInvoice]
   /// * [LinkPreviewTypeMessage]
   /// * [LinkPreviewTypePhoto]
@@ -65,6 +67,10 @@ sealed class LinkPreviewType extends TdObject {
         return LinkPreviewTypeEmbeddedAudioPlayer.fromJson(json);
       case LinkPreviewTypeEmbeddedVideoPlayer.defaultObjectId:
         return LinkPreviewTypeEmbeddedVideoPlayer.fromJson(json);
+      case LinkPreviewTypeExternalAudio.defaultObjectId:
+        return LinkPreviewTypeExternalAudio.fromJson(json);
+      case LinkPreviewTypeExternalVideo.defaultObjectId:
+        return LinkPreviewTypeExternalVideo.fromJson(json);
       case LinkPreviewTypeInvoice.defaultObjectId:
         return LinkPreviewTypeInvoice.fromJson(json);
       case LinkPreviewTypeMessage.defaultObjectId:
@@ -201,30 +207,23 @@ final class LinkPreviewTypeAlbum extends LinkPreviewType {
 /// The link is a link to an animation.
 ///
 /// * [animation]: The animation.
-/// * [author]: Author of the animation.
 final class LinkPreviewTypeAnimation extends LinkPreviewType {
   /// **LinkPreviewTypeAnimation** *(linkPreviewTypeAnimation)* - child of LinkPreviewType
   ///
   /// The link is a link to an animation.
   ///
   /// * [animation]: The animation.
-  /// * [author]: Author of the animation.
   const LinkPreviewTypeAnimation({
     required this.animation,
-    required this.author,
   });
 
   /// The animation
   final Animation animation;
 
-  /// Author of the animation
-  final String author;
-
   /// Parse from a json
   factory LinkPreviewTypeAnimation.fromJson(Map<String, dynamic> json) =>
       LinkPreviewTypeAnimation(
         animation: Animation.fromJson(json['animation']),
-        author: json['author'],
       );
 
   /// Convert model to TDLib JSON format
@@ -233,7 +232,6 @@ final class LinkPreviewTypeAnimation extends LinkPreviewType {
     return {
       "@type": defaultObjectId,
       "animation": animation.toJson(),
-      "author": author,
     };
   }
 
@@ -241,15 +239,12 @@ final class LinkPreviewTypeAnimation extends LinkPreviewType {
   ///
   /// Properties:
   /// * [animation]: The animation
-  /// * [author]: Author of the animation
   @override
   LinkPreviewTypeAnimation copyWith({
     Animation? animation,
-    String? author,
   }) =>
       LinkPreviewTypeAnimation(
         animation: animation ?? this.animation,
-        author: author ?? this.author,
       );
 
   /// TDLib object type
@@ -269,30 +264,23 @@ final class LinkPreviewTypeAnimation extends LinkPreviewType {
 /// The link is a link to an app at App Store or Google Play.
 ///
 /// * [photo]: Photo for the app.
-/// * [author]: Author of the app.
 final class LinkPreviewTypeApp extends LinkPreviewType {
   /// **LinkPreviewTypeApp** *(linkPreviewTypeApp)* - child of LinkPreviewType
   ///
   /// The link is a link to an app at App Store or Google Play.
   ///
   /// * [photo]: Photo for the app.
-  /// * [author]: Author of the app.
   const LinkPreviewTypeApp({
     required this.photo,
-    required this.author,
   });
 
   /// Photo for the app
   final Photo photo;
 
-  /// Author of the app
-  final String author;
-
   /// Parse from a json
   factory LinkPreviewTypeApp.fromJson(Map<String, dynamic> json) =>
       LinkPreviewTypeApp(
         photo: Photo.fromJson(json['photo']),
-        author: json['author'],
       );
 
   /// Convert model to TDLib JSON format
@@ -301,7 +289,6 @@ final class LinkPreviewTypeApp extends LinkPreviewType {
     return {
       "@type": defaultObjectId,
       "photo": photo.toJson(),
-      "author": author,
     };
   }
 
@@ -309,15 +296,12 @@ final class LinkPreviewTypeApp extends LinkPreviewType {
   ///
   /// Properties:
   /// * [photo]: Photo for the app
-  /// * [author]: Author of the app
   @override
   LinkPreviewTypeApp copyWith({
     Photo? photo,
-    String? author,
   }) =>
       LinkPreviewTypeApp(
         photo: photo ?? this.photo,
-        author: author ?? this.author,
       );
 
   /// TDLib object type
@@ -337,30 +321,23 @@ final class LinkPreviewTypeApp extends LinkPreviewType {
 /// The link is a link to a web site.
 ///
 /// * [photo]: Article's main photo; may be null *(optional)*.
-/// * [author]: Author of the article.
 final class LinkPreviewTypeArticle extends LinkPreviewType {
   /// **LinkPreviewTypeArticle** *(linkPreviewTypeArticle)* - child of LinkPreviewType
   ///
   /// The link is a link to a web site.
   ///
   /// * [photo]: Article's main photo; may be null *(optional)*.
-  /// * [author]: Author of the article.
   const LinkPreviewTypeArticle({
     this.photo,
-    required this.author,
   });
 
   /// Article's main photo; may be null
   final Photo? photo;
 
-  /// Author of the article
-  final String author;
-
   /// Parse from a json
   factory LinkPreviewTypeArticle.fromJson(Map<String, dynamic> json) =>
       LinkPreviewTypeArticle(
         photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
-        author: json['author'],
       );
 
   /// Convert model to TDLib JSON format
@@ -369,7 +346,6 @@ final class LinkPreviewTypeArticle extends LinkPreviewType {
     return {
       "@type": defaultObjectId,
       "photo": photo?.toJson(),
-      "author": author,
     };
   }
 
@@ -377,15 +353,12 @@ final class LinkPreviewTypeArticle extends LinkPreviewType {
   ///
   /// Properties:
   /// * [photo]: Article's main photo; may be null
-  /// * [author]: Author of the article
   @override
   LinkPreviewTypeArticle copyWith({
     Photo? photo,
-    String? author,
   }) =>
       LinkPreviewTypeArticle(
         photo: photo ?? this.photo,
-        author: author ?? this.author,
       );
 
   /// TDLib object type
@@ -404,52 +377,24 @@ final class LinkPreviewTypeArticle extends LinkPreviewType {
 ///
 /// The link is a link to an audio.
 ///
-/// * [url]: URL of the audio; may be empty if none.
-/// * [mimeType]: MIME type of the audio file.
-/// * [audio]: The audio description; may be null if unknown *(optional)*.
-/// * [duration]: Duration of the audio, in seconds; 0 if unknown.
-/// * [author]: Author of the audio.
+/// * [audio]: The audio description.
 final class LinkPreviewTypeAudio extends LinkPreviewType {
   /// **LinkPreviewTypeAudio** *(linkPreviewTypeAudio)* - child of LinkPreviewType
   ///
   /// The link is a link to an audio.
   ///
-  /// * [url]: URL of the audio; may be empty if none.
-  /// * [mimeType]: MIME type of the audio file.
-  /// * [audio]: The audio description; may be null if unknown *(optional)*.
-  /// * [duration]: Duration of the audio, in seconds; 0 if unknown.
-  /// * [author]: Author of the audio.
+  /// * [audio]: The audio description.
   const LinkPreviewTypeAudio({
-    required this.url,
-    required this.mimeType,
-    this.audio,
-    required this.duration,
-    required this.author,
+    required this.audio,
   });
 
-  /// URL of the audio; may be empty if none
-  final String url;
-
-  /// MIME type of the audio file
-  final String mimeType;
-
-  /// The audio description; may be null if unknown
-  final Audio? audio;
-
-  /// Duration of the audio, in seconds; 0 if unknown
-  final int duration;
-
-  /// Author of the audio
-  final String author;
+  /// The audio description
+  final Audio audio;
 
   /// Parse from a json
   factory LinkPreviewTypeAudio.fromJson(Map<String, dynamic> json) =>
       LinkPreviewTypeAudio(
-        url: json['url'],
-        mimeType: json['mime_type'],
-        audio: json['audio'] == null ? null : Audio.fromJson(json['audio']),
-        duration: json['duration'],
-        author: json['author'],
+        audio: Audio.fromJson(json['audio']),
       );
 
   /// Convert model to TDLib JSON format
@@ -457,36 +402,20 @@ final class LinkPreviewTypeAudio extends LinkPreviewType {
   Map<String, dynamic> toJson() {
     return {
       "@type": defaultObjectId,
-      "url": url,
-      "mime_type": mimeType,
-      "audio": audio?.toJson(),
-      "duration": duration,
-      "author": author,
+      "audio": audio.toJson(),
     };
   }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [url]: URL of the audio; may be empty if none
-  /// * [mime_type]: MIME type of the audio file
-  /// * [audio]: The audio description; may be null if unknown
-  /// * [duration]: Duration of the audio, in seconds; 0 if unknown
-  /// * [author]: Author of the audio
+  /// * [audio]: The audio description
   @override
   LinkPreviewTypeAudio copyWith({
-    String? url,
-    String? mimeType,
     Audio? audio,
-    int? duration,
-    String? author,
   }) =>
       LinkPreviewTypeAudio(
-        url: url ?? this.url,
-        mimeType: mimeType ?? this.mimeType,
         audio: audio ?? this.audio,
-        duration: duration ?? this.duration,
-        author: author ?? this.author,
       );
 
   /// TDLib object type
@@ -714,30 +643,23 @@ final class LinkPreviewTypeChat extends LinkPreviewType {
 /// The link is a link to a general file.
 ///
 /// * [document]: The document description.
-/// * [author]: Author of the document.
 final class LinkPreviewTypeDocument extends LinkPreviewType {
   /// **LinkPreviewTypeDocument** *(linkPreviewTypeDocument)* - child of LinkPreviewType
   ///
   /// The link is a link to a general file.
   ///
   /// * [document]: The document description.
-  /// * [author]: Author of the document.
   const LinkPreviewTypeDocument({
     required this.document,
-    required this.author,
   });
 
   /// The document description
   final Document document;
 
-  /// Author of the document
-  final String author;
-
   /// Parse from a json
   factory LinkPreviewTypeDocument.fromJson(Map<String, dynamic> json) =>
       LinkPreviewTypeDocument(
         document: Document.fromJson(json['document']),
-        author: json['author'],
       );
 
   /// Convert model to TDLib JSON format
@@ -746,7 +668,6 @@ final class LinkPreviewTypeDocument extends LinkPreviewType {
     return {
       "@type": defaultObjectId,
       "document": document.toJson(),
-      "author": author,
     };
   }
 
@@ -754,15 +675,12 @@ final class LinkPreviewTypeDocument extends LinkPreviewType {
   ///
   /// Properties:
   /// * [document]: The document description
-  /// * [author]: Author of the document
   @override
   LinkPreviewTypeDocument copyWith({
     Document? document,
-    String? author,
   }) =>
       LinkPreviewTypeDocument(
         document: document ?? this.document,
-        author: author ?? this.author,
       );
 
   /// TDLib object type
@@ -784,7 +702,6 @@ final class LinkPreviewTypeDocument extends LinkPreviewType {
 /// * [url]: URL of the external animation player.
 /// * [thumbnail]: Thumbnail of the animation; may be null if unknown *(optional)*.
 /// * [duration]: Duration of the animation, in seconds.
-/// * [author]: Author of the animation.
 /// * [width]: Expected width of the embedded player.
 /// * [height]: Expected height of the embedded player.
 final class LinkPreviewTypeEmbeddedAnimationPlayer extends LinkPreviewType {
@@ -795,14 +712,12 @@ final class LinkPreviewTypeEmbeddedAnimationPlayer extends LinkPreviewType {
   /// * [url]: URL of the external animation player.
   /// * [thumbnail]: Thumbnail of the animation; may be null if unknown *(optional)*.
   /// * [duration]: Duration of the animation, in seconds.
-  /// * [author]: Author of the animation.
   /// * [width]: Expected width of the embedded player.
   /// * [height]: Expected height of the embedded player.
   const LinkPreviewTypeEmbeddedAnimationPlayer({
     required this.url,
     this.thumbnail,
     required this.duration,
-    required this.author,
     required this.width,
     required this.height,
   });
@@ -815,9 +730,6 @@ final class LinkPreviewTypeEmbeddedAnimationPlayer extends LinkPreviewType {
 
   /// Duration of the animation, in seconds
   final int duration;
-
-  /// Author of the animation
-  final String author;
 
   /// Expected width of the embedded player
   final int width;
@@ -834,7 +746,6 @@ final class LinkPreviewTypeEmbeddedAnimationPlayer extends LinkPreviewType {
             ? null
             : Photo.fromJson(json['thumbnail']),
         duration: json['duration'],
-        author: json['author'],
         width: json['width'],
         height: json['height'],
       );
@@ -847,7 +758,6 @@ final class LinkPreviewTypeEmbeddedAnimationPlayer extends LinkPreviewType {
       "url": url,
       "thumbnail": thumbnail?.toJson(),
       "duration": duration,
-      "author": author,
       "width": width,
       "height": height,
     };
@@ -859,7 +769,6 @@ final class LinkPreviewTypeEmbeddedAnimationPlayer extends LinkPreviewType {
   /// * [url]: URL of the external animation player
   /// * [thumbnail]: Thumbnail of the animation; may be null if unknown
   /// * [duration]: Duration of the animation, in seconds
-  /// * [author]: Author of the animation
   /// * [width]: Expected width of the embedded player
   /// * [height]: Expected height of the embedded player
   @override
@@ -867,7 +776,6 @@ final class LinkPreviewTypeEmbeddedAnimationPlayer extends LinkPreviewType {
     String? url,
     Photo? thumbnail,
     int? duration,
-    String? author,
     int? width,
     int? height,
   }) =>
@@ -875,7 +783,6 @@ final class LinkPreviewTypeEmbeddedAnimationPlayer extends LinkPreviewType {
         url: url ?? this.url,
         thumbnail: thumbnail ?? this.thumbnail,
         duration: duration ?? this.duration,
-        author: author ?? this.author,
         width: width ?? this.width,
         height: height ?? this.height,
       );
@@ -900,7 +807,6 @@ final class LinkPreviewTypeEmbeddedAnimationPlayer extends LinkPreviewType {
 /// * [url]: URL of the external audio player.
 /// * [thumbnail]: Thumbnail of the audio; may be null if unknown *(optional)*.
 /// * [duration]: Duration of the audio, in seconds.
-/// * [author]: Author of the audio.
 /// * [width]: Expected width of the embedded player.
 /// * [height]: Expected height of the embedded player.
 final class LinkPreviewTypeEmbeddedAudioPlayer extends LinkPreviewType {
@@ -911,14 +817,12 @@ final class LinkPreviewTypeEmbeddedAudioPlayer extends LinkPreviewType {
   /// * [url]: URL of the external audio player.
   /// * [thumbnail]: Thumbnail of the audio; may be null if unknown *(optional)*.
   /// * [duration]: Duration of the audio, in seconds.
-  /// * [author]: Author of the audio.
   /// * [width]: Expected width of the embedded player.
   /// * [height]: Expected height of the embedded player.
   const LinkPreviewTypeEmbeddedAudioPlayer({
     required this.url,
     this.thumbnail,
     required this.duration,
-    required this.author,
     required this.width,
     required this.height,
   });
@@ -931,9 +835,6 @@ final class LinkPreviewTypeEmbeddedAudioPlayer extends LinkPreviewType {
 
   /// Duration of the audio, in seconds
   final int duration;
-
-  /// Author of the audio
-  final String author;
 
   /// Expected width of the embedded player
   final int width;
@@ -950,7 +851,6 @@ final class LinkPreviewTypeEmbeddedAudioPlayer extends LinkPreviewType {
             ? null
             : Photo.fromJson(json['thumbnail']),
         duration: json['duration'],
-        author: json['author'],
         width: json['width'],
         height: json['height'],
       );
@@ -963,7 +863,6 @@ final class LinkPreviewTypeEmbeddedAudioPlayer extends LinkPreviewType {
       "url": url,
       "thumbnail": thumbnail?.toJson(),
       "duration": duration,
-      "author": author,
       "width": width,
       "height": height,
     };
@@ -975,7 +874,6 @@ final class LinkPreviewTypeEmbeddedAudioPlayer extends LinkPreviewType {
   /// * [url]: URL of the external audio player
   /// * [thumbnail]: Thumbnail of the audio; may be null if unknown
   /// * [duration]: Duration of the audio, in seconds
-  /// * [author]: Author of the audio
   /// * [width]: Expected width of the embedded player
   /// * [height]: Expected height of the embedded player
   @override
@@ -983,7 +881,6 @@ final class LinkPreviewTypeEmbeddedAudioPlayer extends LinkPreviewType {
     String? url,
     Photo? thumbnail,
     int? duration,
-    String? author,
     int? width,
     int? height,
   }) =>
@@ -991,7 +888,6 @@ final class LinkPreviewTypeEmbeddedAudioPlayer extends LinkPreviewType {
         url: url ?? this.url,
         thumbnail: thumbnail ?? this.thumbnail,
         duration: duration ?? this.duration,
-        author: author ?? this.author,
         width: width ?? this.width,
         height: height ?? this.height,
       );
@@ -1015,7 +911,6 @@ final class LinkPreviewTypeEmbeddedAudioPlayer extends LinkPreviewType {
 /// * [url]: URL of the external video player.
 /// * [thumbnail]: Thumbnail of the video; may be null if unknown *(optional)*.
 /// * [duration]: Duration of the video, in seconds.
-/// * [author]: Author of the video.
 /// * [width]: Expected width of the embedded player.
 /// * [height]: Expected height of the embedded player.
 final class LinkPreviewTypeEmbeddedVideoPlayer extends LinkPreviewType {
@@ -1026,14 +921,12 @@ final class LinkPreviewTypeEmbeddedVideoPlayer extends LinkPreviewType {
   /// * [url]: URL of the external video player.
   /// * [thumbnail]: Thumbnail of the video; may be null if unknown *(optional)*.
   /// * [duration]: Duration of the video, in seconds.
-  /// * [author]: Author of the video.
   /// * [width]: Expected width of the embedded player.
   /// * [height]: Expected height of the embedded player.
   const LinkPreviewTypeEmbeddedVideoPlayer({
     required this.url,
     this.thumbnail,
     required this.duration,
-    required this.author,
     required this.width,
     required this.height,
   });
@@ -1046,9 +939,6 @@ final class LinkPreviewTypeEmbeddedVideoPlayer extends LinkPreviewType {
 
   /// Duration of the video, in seconds
   final int duration;
-
-  /// Author of the video
-  final String author;
 
   /// Expected width of the embedded player
   final int width;
@@ -1065,7 +955,6 @@ final class LinkPreviewTypeEmbeddedVideoPlayer extends LinkPreviewType {
             ? null
             : Photo.fromJson(json['thumbnail']),
         duration: json['duration'],
-        author: json['author'],
         width: json['width'],
         height: json['height'],
       );
@@ -1078,7 +967,6 @@ final class LinkPreviewTypeEmbeddedVideoPlayer extends LinkPreviewType {
       "url": url,
       "thumbnail": thumbnail?.toJson(),
       "duration": duration,
-      "author": author,
       "width": width,
       "height": height,
     };
@@ -1090,7 +978,6 @@ final class LinkPreviewTypeEmbeddedVideoPlayer extends LinkPreviewType {
   /// * [url]: URL of the external video player
   /// * [thumbnail]: Thumbnail of the video; may be null if unknown
   /// * [duration]: Duration of the video, in seconds
-  /// * [author]: Author of the video
   /// * [width]: Expected width of the embedded player
   /// * [height]: Expected height of the embedded player
   @override
@@ -1098,7 +985,6 @@ final class LinkPreviewTypeEmbeddedVideoPlayer extends LinkPreviewType {
     String? url,
     Photo? thumbnail,
     int? duration,
-    String? author,
     int? width,
     int? height,
   }) =>
@@ -1106,13 +992,192 @@ final class LinkPreviewTypeEmbeddedVideoPlayer extends LinkPreviewType {
         url: url ?? this.url,
         thumbnail: thumbnail ?? this.thumbnail,
         duration: duration ?? this.duration,
-        author: author ?? this.author,
         width: width ?? this.width,
         height: height ?? this.height,
       );
 
   /// TDLib object type
   static const String defaultObjectId = 'linkPreviewTypeEmbeddedVideoPlayer';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **LinkPreviewTypeExternalAudio** *(linkPreviewTypeExternalAudio)* - child of LinkPreviewType
+///
+/// The link is a link to an audio file.
+///
+/// * [url]: URL of the audio file.
+/// * [mimeType]: MIME type of the audio file.
+/// * [duration]: Duration of the audio, in seconds; 0 if unknown.
+final class LinkPreviewTypeExternalAudio extends LinkPreviewType {
+  /// **LinkPreviewTypeExternalAudio** *(linkPreviewTypeExternalAudio)* - child of LinkPreviewType
+  ///
+  /// The link is a link to an audio file.
+  ///
+  /// * [url]: URL of the audio file.
+  /// * [mimeType]: MIME type of the audio file.
+  /// * [duration]: Duration of the audio, in seconds; 0 if unknown.
+  const LinkPreviewTypeExternalAudio({
+    required this.url,
+    required this.mimeType,
+    required this.duration,
+  });
+
+  /// URL of the audio file
+  final String url;
+
+  /// MIME type of the audio file
+  final String mimeType;
+
+  /// Duration of the audio, in seconds; 0 if unknown
+  final int duration;
+
+  /// Parse from a json
+  factory LinkPreviewTypeExternalAudio.fromJson(Map<String, dynamic> json) =>
+      LinkPreviewTypeExternalAudio(
+        url: json['url'],
+        mimeType: json['mime_type'],
+        duration: json['duration'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "url": url,
+      "mime_type": mimeType,
+      "duration": duration,
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [url]: URL of the audio file
+  /// * [mime_type]: MIME type of the audio file
+  /// * [duration]: Duration of the audio, in seconds; 0 if unknown
+  @override
+  LinkPreviewTypeExternalAudio copyWith({
+    String? url,
+    String? mimeType,
+    int? duration,
+  }) =>
+      LinkPreviewTypeExternalAudio(
+        url: url ?? this.url,
+        mimeType: mimeType ?? this.mimeType,
+        duration: duration ?? this.duration,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'linkPreviewTypeExternalAudio';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **LinkPreviewTypeExternalVideo** *(linkPreviewTypeExternalVideo)* - child of LinkPreviewType
+///
+/// The link is a link to a video file.
+///
+/// * [url]: URL of the video file.
+/// * [mimeType]: MIME type of the video file.
+/// * [width]: Expected width of the video preview; 0 if unknown.
+/// * [height]: Expected height of the video preview; 0 if unknown.
+/// * [duration]: Duration of the video, in seconds; 0 if unknown.
+final class LinkPreviewTypeExternalVideo extends LinkPreviewType {
+  /// **LinkPreviewTypeExternalVideo** *(linkPreviewTypeExternalVideo)* - child of LinkPreviewType
+  ///
+  /// The link is a link to a video file.
+  ///
+  /// * [url]: URL of the video file.
+  /// * [mimeType]: MIME type of the video file.
+  /// * [width]: Expected width of the video preview; 0 if unknown.
+  /// * [height]: Expected height of the video preview; 0 if unknown.
+  /// * [duration]: Duration of the video, in seconds; 0 if unknown.
+  const LinkPreviewTypeExternalVideo({
+    required this.url,
+    required this.mimeType,
+    required this.width,
+    required this.height,
+    required this.duration,
+  });
+
+  /// URL of the video file
+  final String url;
+
+  /// MIME type of the video file
+  final String mimeType;
+
+  /// Expected width of the video preview; 0 if unknown
+  final int width;
+
+  /// Expected height of the video preview; 0 if unknown
+  final int height;
+
+  /// Duration of the video, in seconds; 0 if unknown
+  final int duration;
+
+  /// Parse from a json
+  factory LinkPreviewTypeExternalVideo.fromJson(Map<String, dynamic> json) =>
+      LinkPreviewTypeExternalVideo(
+        url: json['url'],
+        mimeType: json['mime_type'],
+        width: json['width'],
+        height: json['height'],
+        duration: json['duration'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "url": url,
+      "mime_type": mimeType,
+      "width": width,
+      "height": height,
+      "duration": duration,
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [url]: URL of the video file
+  /// * [mime_type]: MIME type of the video file
+  /// * [width]: Expected width of the video preview; 0 if unknown
+  /// * [height]: Expected height of the video preview; 0 if unknown
+  /// * [duration]: Duration of the video, in seconds; 0 if unknown
+  @override
+  LinkPreviewTypeExternalVideo copyWith({
+    String? url,
+    String? mimeType,
+    int? width,
+    int? height,
+    int? duration,
+  }) =>
+      LinkPreviewTypeExternalVideo(
+        url: url ?? this.url,
+        mimeType: mimeType ?? this.mimeType,
+        width: width ?? this.width,
+        height: height ?? this.height,
+        duration: duration ?? this.duration,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'linkPreviewTypeExternalVideo';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
@@ -1202,30 +1267,23 @@ final class LinkPreviewTypeMessage extends LinkPreviewType {
 /// The link is a link to a photo.
 ///
 /// * [photo]: The photo.
-/// * [author]: Author of the photo.
 final class LinkPreviewTypePhoto extends LinkPreviewType {
   /// **LinkPreviewTypePhoto** *(linkPreviewTypePhoto)* - child of LinkPreviewType
   ///
   /// The link is a link to a photo.
   ///
   /// * [photo]: The photo.
-  /// * [author]: Author of the photo.
   const LinkPreviewTypePhoto({
     required this.photo,
-    required this.author,
   });
 
   /// The photo
   final Photo photo;
 
-  /// Author of the photo
-  final String author;
-
   /// Parse from a json
   factory LinkPreviewTypePhoto.fromJson(Map<String, dynamic> json) =>
       LinkPreviewTypePhoto(
         photo: Photo.fromJson(json['photo']),
-        author: json['author'],
       );
 
   /// Convert model to TDLib JSON format
@@ -1234,7 +1292,6 @@ final class LinkPreviewTypePhoto extends LinkPreviewType {
     return {
       "@type": defaultObjectId,
       "photo": photo.toJson(),
-      "author": author,
     };
   }
 
@@ -1242,15 +1299,12 @@ final class LinkPreviewTypePhoto extends LinkPreviewType {
   ///
   /// Properties:
   /// * [photo]: The photo
-  /// * [author]: Author of the photo
   @override
   LinkPreviewTypePhoto copyWith({
     Photo? photo,
-    String? author,
   }) =>
       LinkPreviewTypePhoto(
         photo: photo ?? this.photo,
-        author: author ?? this.author,
       );
 
   /// TDLib object type
@@ -1762,66 +1816,24 @@ final class LinkPreviewTypeUser extends LinkPreviewType {
 ///
 /// The link is a link to a video.
 ///
-/// * [url]: URL of the video; may be empty if none.
-/// * [mimeType]: MIME type of the video file.
-/// * [video]: The video description; may be null if unknown *(optional)*.
-/// * [width]: Expected width of the preview.
-/// * [height]: Expected height of the preview.
-/// * [duration]: Duration of the video, in seconds; 0 if unknown.
-/// * [author]: Author of the video.
+/// * [video]: The video description.
 final class LinkPreviewTypeVideo extends LinkPreviewType {
   /// **LinkPreviewTypeVideo** *(linkPreviewTypeVideo)* - child of LinkPreviewType
   ///
   /// The link is a link to a video.
   ///
-  /// * [url]: URL of the video; may be empty if none.
-  /// * [mimeType]: MIME type of the video file.
-  /// * [video]: The video description; may be null if unknown *(optional)*.
-  /// * [width]: Expected width of the preview.
-  /// * [height]: Expected height of the preview.
-  /// * [duration]: Duration of the video, in seconds; 0 if unknown.
-  /// * [author]: Author of the video.
+  /// * [video]: The video description.
   const LinkPreviewTypeVideo({
-    required this.url,
-    required this.mimeType,
-    this.video,
-    required this.width,
-    required this.height,
-    required this.duration,
-    required this.author,
+    required this.video,
   });
 
-  /// URL of the video; may be empty if none
-  final String url;
-
-  /// MIME type of the video file
-  final String mimeType;
-
-  /// The video description; may be null if unknown
-  final Video? video;
-
-  /// Expected width of the preview
-  final int width;
-
-  /// Expected height of the preview
-  final int height;
-
-  /// Duration of the video, in seconds; 0 if unknown
-  final int duration;
-
-  /// Author of the video
-  final String author;
+  /// The video description
+  final Video video;
 
   /// Parse from a json
   factory LinkPreviewTypeVideo.fromJson(Map<String, dynamic> json) =>
       LinkPreviewTypeVideo(
-        url: json['url'],
-        mimeType: json['mime_type'],
-        video: json['video'] == null ? null : Video.fromJson(json['video']),
-        width: json['width'],
-        height: json['height'],
-        duration: json['duration'],
-        author: json['author'],
+        video: Video.fromJson(json['video']),
       );
 
   /// Convert model to TDLib JSON format
@@ -1829,44 +1841,20 @@ final class LinkPreviewTypeVideo extends LinkPreviewType {
   Map<String, dynamic> toJson() {
     return {
       "@type": defaultObjectId,
-      "url": url,
-      "mime_type": mimeType,
-      "video": video?.toJson(),
-      "width": width,
-      "height": height,
-      "duration": duration,
-      "author": author,
+      "video": video.toJson(),
     };
   }
 
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [url]: URL of the video; may be empty if none
-  /// * [mime_type]: MIME type of the video file
-  /// * [video]: The video description; may be null if unknown
-  /// * [width]: Expected width of the preview
-  /// * [height]: Expected height of the preview
-  /// * [duration]: Duration of the video, in seconds; 0 if unknown
-  /// * [author]: Author of the video
+  /// * [video]: The video description
   @override
   LinkPreviewTypeVideo copyWith({
-    String? url,
-    String? mimeType,
     Video? video,
-    int? width,
-    int? height,
-    int? duration,
-    String? author,
   }) =>
       LinkPreviewTypeVideo(
-        url: url ?? this.url,
-        mimeType: mimeType ?? this.mimeType,
         video: video ?? this.video,
-        width: width ?? this.width,
-        height: height ?? this.height,
-        duration: duration ?? this.duration,
-        author: author ?? this.author,
       );
 
   /// TDLib object type

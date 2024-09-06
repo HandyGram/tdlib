@@ -17,6 +17,7 @@ part of '../tdapi.dart';
 /// * [inviteLinkChanges]: True, if changes to invite links need to be returned.
 /// * [videoChatChanges]: True, if video chat actions need to be returned.
 /// * [forumChanges]: True, if forum-related actions need to be returned.
+/// * [subscriptionExtensions]: True, if subscription extensions need to be returned.
 final class ChatEventLogFilters extends TdObject {
   /// **ChatEventLogFilters** *(chatEventLogFilters)* - basic class
   ///
@@ -35,6 +36,7 @@ final class ChatEventLogFilters extends TdObject {
   /// * [inviteLinkChanges]: True, if changes to invite links need to be returned.
   /// * [videoChatChanges]: True, if video chat actions need to be returned.
   /// * [forumChanges]: True, if forum-related actions need to be returned.
+  /// * [subscriptionExtensions]: True, if subscription extensions need to be returned.
   const ChatEventLogFilters({
     required this.messageEdits,
     required this.messageDeletions,
@@ -49,6 +51,7 @@ final class ChatEventLogFilters extends TdObject {
     required this.inviteLinkChanges,
     required this.videoChatChanges,
     required this.forumChanges,
+    required this.subscriptionExtensions,
   });
 
   /// True, if message edits need to be returned
@@ -90,6 +93,9 @@ final class ChatEventLogFilters extends TdObject {
   /// True, if forum-related actions need to be returned
   final bool forumChanges;
 
+  /// True, if subscription extensions need to be returned
+  final bool subscriptionExtensions;
+
   /// Parse from a json
   factory ChatEventLogFilters.fromJson(Map<String, dynamic> json) =>
       ChatEventLogFilters(
@@ -106,6 +112,7 @@ final class ChatEventLogFilters extends TdObject {
         inviteLinkChanges: json['invite_link_changes'],
         videoChatChanges: json['video_chat_changes'],
         forumChanges: json['forum_changes'],
+        subscriptionExtensions: json['subscription_extensions'],
       );
 
   /// Convert model to TDLib JSON format
@@ -126,6 +133,7 @@ final class ChatEventLogFilters extends TdObject {
       "invite_link_changes": inviteLinkChanges,
       "video_chat_changes": videoChatChanges,
       "forum_changes": forumChanges,
+      "subscription_extensions": subscriptionExtensions,
     };
   }
 
@@ -145,6 +153,7 @@ final class ChatEventLogFilters extends TdObject {
   /// * [invite_link_changes]: True, if changes to invite links need to be returned
   /// * [video_chat_changes]: True, if video chat actions need to be returned
   /// * [forum_changes]: True, if forum-related actions need to be returned
+  /// * [subscription_extensions]: True, if subscription extensions need to be returned
   ChatEventLogFilters copyWith({
     bool? messageEdits,
     bool? messageDeletions,
@@ -159,6 +168,7 @@ final class ChatEventLogFilters extends TdObject {
     bool? inviteLinkChanges,
     bool? videoChatChanges,
     bool? forumChanges,
+    bool? subscriptionExtensions,
   }) =>
       ChatEventLogFilters(
         messageEdits: messageEdits ?? this.messageEdits,
@@ -174,6 +184,8 @@ final class ChatEventLogFilters extends TdObject {
         inviteLinkChanges: inviteLinkChanges ?? this.inviteLinkChanges,
         videoChatChanges: videoChatChanges ?? this.videoChatChanges,
         forumChanges: forumChanges ?? this.forumChanges,
+        subscriptionExtensions:
+            subscriptionExtensions ?? this.subscriptionExtensions,
       );
 
   /// TDLib object type

@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **MessageCopyOptions** *(messageCopyOptions)* - basic class
 ///
-/// Options to be used when a message content is copied without reference to the original sender. Service messages, messages with messageInvoice, messagePaidMedia, messagePremiumGiveaway, or messagePremiumGiveawayWinners content can't be copied.
+/// Options to be used when a message content is copied without reference to the original sender. Service messages, messages with messageInvoice, messagePaidMedia, messageGiveaway, or messageGiveawayWinners content can't be copied.
 ///
 /// * [sendCopy]: True, if content of the message needs to be copied without reference to the original sender. Always true if the message is forwarded to a secret chat or is local.
 /// * [replaceCaption]: True, if media caption of the message copy needs to be replaced. Ignored if send_copy is false.
@@ -11,7 +11,7 @@ part of '../tdapi.dart';
 final class MessageCopyOptions extends TdObject {
   /// **MessageCopyOptions** *(messageCopyOptions)* - basic class
   ///
-  /// Options to be used when a message content is copied without reference to the original sender. Service messages, messages with messageInvoice, messagePaidMedia, messagePremiumGiveaway, or messagePremiumGiveawayWinners content can't be copied.
+  /// Options to be used when a message content is copied without reference to the original sender. Service messages, messages with messageInvoice, messagePaidMedia, messageGiveaway, or messageGiveawayWinners content can't be copied.
   ///
   /// * [sendCopy]: True, if content of the message needs to be copied without reference to the original sender. Always true if the message is forwarded to a secret chat or is local.
   /// * [replaceCaption]: True, if media caption of the message copy needs to be replaced. Ignored if send_copy is false.

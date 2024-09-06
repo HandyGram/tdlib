@@ -1,3 +1,6 @@
+## 2.3.10
+* Updated to TDLib 1.8.36 (87d881071)
+
 ## 2.3.9
 * Updated to TDLib 1.8.35 (9b6ff5863)
 

@@ -72,7 +72,7 @@ final class ChatBoostStatus extends TdObject {
   final double premiumMemberPercentage;
 
   /// The list of prepaid giveaways available for the chat; only for chat administrators
-  final List<PrepaidPremiumGiveaway> prepaidGiveaways;
+  final List<PrepaidGiveaway> prepaidGiveaways;
 
   /// [extra] callback sign
   @override
@@ -95,9 +95,9 @@ final class ChatBoostStatus extends TdObject {
         nextLevelBoostCount: json['next_level_boost_count'],
         premiumMemberCount: json['premium_member_count'],
         premiumMemberPercentage: json['premium_member_percentage'],
-        prepaidGiveaways: List<PrepaidPremiumGiveaway>.from(
+        prepaidGiveaways: List<PrepaidGiveaway>.from(
             (json['prepaid_giveaways'] ?? [])
-                .map((item) => PrepaidPremiumGiveaway.fromJson(item))
+                .map((item) => PrepaidGiveaway.fromJson(item))
                 .toList()),
         extra: json['@extra'],
         clientId: json['@client_id'],
@@ -144,7 +144,7 @@ final class ChatBoostStatus extends TdObject {
     int? nextLevelBoostCount,
     int? premiumMemberCount,
     double? premiumMemberPercentage,
-    List<PrepaidPremiumGiveaway>? prepaidGiveaways,
+    List<PrepaidGiveaway>? prepaidGiveaways,
     dynamic extra,
     int? clientId,
   }) =>

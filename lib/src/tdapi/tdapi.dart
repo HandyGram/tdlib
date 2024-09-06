@@ -96,14 +96,18 @@ part 'objects/premium_gift_code_payment_options.dart';
 part 'objects/premium_gift_code_info.dart';
 part 'objects/star_payment_option.dart';
 part 'objects/star_payment_options.dart';
+part 'objects/star_giveaway_winner_option.dart';
+part 'objects/star_giveaway_payment_option.dart';
+part 'objects/star_giveaway_payment_options.dart';
 part 'objects/star_transaction_direction.dart';
 part 'objects/bot_transaction_purpose.dart';
-part 'objects/channel_transaction_purpose.dart';
+part 'objects/chat_transaction_purpose.dart';
 part 'objects/star_transaction_partner.dart';
 part 'objects/star_transaction.dart';
 part 'objects/star_transactions.dart';
-part 'objects/premium_giveaway_participant_status.dart';
-part 'objects/premium_giveaway_info.dart';
+part 'objects/giveaway_participant_status.dart';
+part 'objects/giveaway_info.dart';
+part 'objects/giveaway_prize.dart';
 part 'objects/accent_color.dart';
 part 'objects/profile_accent_colors.dart';
 part 'objects/profile_accent_color.dart';
@@ -277,7 +281,7 @@ part 'objects/payment_receipt_type.dart';
 part 'objects/payment_receipt.dart';
 part 'objects/input_invoice.dart';
 part 'objects/paid_media.dart';
-part 'objects/premium_giveaway_parameters.dart';
+part 'objects/giveaway_parameters.dart';
 part 'objects/dated_file.dart';
 part 'objects/passport_element_type.dart';
 part 'objects/date.dart';
@@ -359,7 +363,7 @@ part 'objects/bot_media_preview_info.dart';
 part 'objects/chat_boost_level_features.dart';
 part 'objects/chat_boost_features.dart';
 part 'objects/chat_boost_source.dart';
-part 'objects/prepaid_premium_giveaway.dart';
+part 'objects/prepaid_giveaway.dart';
 part 'objects/chat_boost_status.dart';
 part 'objects/chat_boost.dart';
 part 'objects/found_chat_boosts.dart';
@@ -747,7 +751,8 @@ part 'functions/get_message_available_reactions.dart';
 part 'functions/clear_recent_reactions.dart';
 part 'functions/add_message_reaction.dart';
 part 'functions/remove_message_reaction.dart';
-part 'functions/add_paid_message_reaction.dart';
+part 'functions/add_pending_paid_message_reaction.dart';
+part 'functions/commit_pending_paid_message_reactions.dart';
 part 'functions/remove_pending_paid_message_reactions.dart';
 part 'functions/toggle_paid_message_reaction_is_anonymous.dart';
 part 'functions/set_message_reactions.dart';
@@ -781,7 +786,7 @@ part 'functions/share_users_with_bot.dart';
 part 'functions/share_chat_with_bot.dart';
 part 'functions/get_inline_query_results.dart';
 part 'functions/answer_inline_query.dart';
-part 'functions/get_popular_web_app_bots.dart';
+part 'functions/get_grossing_web_app_bots.dart';
 part 'functions/search_web_app.dart';
 part 'functions/get_web_app_link_url.dart';
 part 'functions/get_main_web_app.dart';
@@ -1042,6 +1047,7 @@ part 'functions/get_archived_sticker_sets.dart';
 part 'functions/get_trending_sticker_sets.dart';
 part 'functions/get_attached_sticker_sets.dart';
 part 'functions/get_sticker_set.dart';
+part 'functions/get_sticker_set_name.dart';
 part 'functions/search_sticker_set.dart';
 part 'functions/search_installed_sticker_sets.dart';
 part 'functions/search_sticker_sets.dart';
@@ -1278,10 +1284,11 @@ part 'functions/get_premium_state.dart';
 part 'functions/get_premium_gift_code_payment_options.dart';
 part 'functions/check_premium_gift_code.dart';
 part 'functions/apply_premium_gift_code.dart';
-part 'functions/launch_prepaid_premium_giveaway.dart';
-part 'functions/get_premium_giveaway_info.dart';
+part 'functions/launch_prepaid_giveaway.dart';
+part 'functions/get_giveaway_info.dart';
 part 'functions/get_star_payment_options.dart';
 part 'functions/get_star_gift_payment_options.dart';
+part 'functions/get_star_giveaway_payment_options.dart';
 part 'functions/get_star_transactions.dart';
 part 'functions/get_star_subscriptions.dart';
 part 'functions/can_purchase_from_store.dart';
@@ -1631,6 +1638,12 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return StarPaymentOption.fromJson(parsed);
     case 'starPaymentOptions':
       return StarPaymentOptions.fromJson(parsed);
+    case 'starGiveawayWinnerOption':
+      return StarGiveawayWinnerOption.fromJson(parsed);
+    case 'starGiveawayPaymentOption':
+      return StarGiveawayPaymentOption.fromJson(parsed);
+    case 'starGiveawayPaymentOptions':
+      return StarGiveawayPaymentOptions.fromJson(parsed);
     case 'starTransactionDirectionIncoming':
       return StarTransactionDirectionIncoming.fromJson(parsed);
     case 'starTransactionDirectionOutgoing':
@@ -1639,12 +1652,14 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return BotTransactionPurposePaidMedia.fromJson(parsed);
     case 'botTransactionPurposeInvoicePayment':
       return BotTransactionPurposeInvoicePayment.fromJson(parsed);
-    case 'channelTransactionPurposePaidMedia':
-      return ChannelTransactionPurposePaidMedia.fromJson(parsed);
-    case 'channelTransactionPurposeJoin':
-      return ChannelTransactionPurposeJoin.fromJson(parsed);
-    case 'channelTransactionPurposeReaction':
-      return ChannelTransactionPurposeReaction.fromJson(parsed);
+    case 'chatTransactionPurposePaidMedia':
+      return ChatTransactionPurposePaidMedia.fromJson(parsed);
+    case 'chatTransactionPurposeJoin':
+      return ChatTransactionPurposeJoin.fromJson(parsed);
+    case 'chatTransactionPurposeReaction':
+      return ChatTransactionPurposeReaction.fromJson(parsed);
+    case 'chatTransactionPurposeGiveaway':
+      return ChatTransactionPurposeGiveaway.fromJson(parsed);
     case 'starTransactionPartnerTelegram':
       return StarTransactionPartnerTelegram.fromJson(parsed);
     case 'starTransactionPartnerAppStore':
@@ -1659,8 +1674,8 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return StarTransactionPartnerBot.fromJson(parsed);
     case 'starTransactionPartnerBusiness':
       return StarTransactionPartnerBusiness.fromJson(parsed);
-    case 'starTransactionPartnerChannel':
-      return StarTransactionPartnerChannel.fromJson(parsed);
+    case 'starTransactionPartnerChat':
+      return StarTransactionPartnerChat.fromJson(parsed);
     case 'starTransactionPartnerUser':
       return StarTransactionPartnerUser.fromJson(parsed);
     case 'starTransactionPartnerUnsupported':
@@ -1669,20 +1684,24 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return StarTransaction.fromJson(parsed);
     case 'starTransactions':
       return StarTransactions.fromJson(parsed);
-    case 'premiumGiveawayParticipantStatusEligible':
-      return PremiumGiveawayParticipantStatusEligible.fromJson(parsed);
-    case 'premiumGiveawayParticipantStatusParticipating':
-      return PremiumGiveawayParticipantStatusParticipating.fromJson(parsed);
-    case 'premiumGiveawayParticipantStatusAlreadyWasMember':
-      return PremiumGiveawayParticipantStatusAlreadyWasMember.fromJson(parsed);
-    case 'premiumGiveawayParticipantStatusAdministrator':
-      return PremiumGiveawayParticipantStatusAdministrator.fromJson(parsed);
-    case 'premiumGiveawayParticipantStatusDisallowedCountry':
-      return PremiumGiveawayParticipantStatusDisallowedCountry.fromJson(parsed);
-    case 'premiumGiveawayInfoOngoing':
-      return PremiumGiveawayInfoOngoing.fromJson(parsed);
-    case 'premiumGiveawayInfoCompleted':
-      return PremiumGiveawayInfoCompleted.fromJson(parsed);
+    case 'giveawayParticipantStatusEligible':
+      return GiveawayParticipantStatusEligible.fromJson(parsed);
+    case 'giveawayParticipantStatusParticipating':
+      return GiveawayParticipantStatusParticipating.fromJson(parsed);
+    case 'giveawayParticipantStatusAlreadyWasMember':
+      return GiveawayParticipantStatusAlreadyWasMember.fromJson(parsed);
+    case 'giveawayParticipantStatusAdministrator':
+      return GiveawayParticipantStatusAdministrator.fromJson(parsed);
+    case 'giveawayParticipantStatusDisallowedCountry':
+      return GiveawayParticipantStatusDisallowedCountry.fromJson(parsed);
+    case 'giveawayInfoOngoing':
+      return GiveawayInfoOngoing.fromJson(parsed);
+    case 'giveawayInfoCompleted':
+      return GiveawayInfoCompleted.fromJson(parsed);
+    case 'giveawayPrizePremium':
+      return GiveawayPrizePremium.fromJson(parsed);
+    case 'giveawayPrizeStars':
+      return GiveawayPrizeStars.fromJson(parsed);
     case 'accentColor':
       return AccentColor.fromJson(parsed);
     case 'profileAccentColors':
@@ -2271,6 +2290,10 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return LinkPreviewTypeEmbeddedAudioPlayer.fromJson(parsed);
     case 'linkPreviewTypeEmbeddedVideoPlayer':
       return LinkPreviewTypeEmbeddedVideoPlayer.fromJson(parsed);
+    case 'linkPreviewTypeExternalAudio':
+      return LinkPreviewTypeExternalAudio.fromJson(parsed);
+    case 'linkPreviewTypeExternalVideo':
+      return LinkPreviewTypeExternalVideo.fromJson(parsed);
     case 'linkPreviewTypeInvoice':
       return LinkPreviewTypeInvoice.fromJson(parsed);
     case 'linkPreviewTypeMessage':
@@ -2385,8 +2408,8 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return PaidMediaVideo.fromJson(parsed);
     case 'paidMediaUnsupported':
       return PaidMediaUnsupported.fromJson(parsed);
-    case 'premiumGiveawayParameters':
-      return PremiumGiveawayParameters.fromJson(parsed);
+    case 'giveawayParameters':
+      return GiveawayParameters.fromJson(parsed);
     case 'datedFile':
       return DatedFile.fromJson(parsed);
     case 'passportElementTypePersonalDetails':
@@ -2647,16 +2670,18 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return MessageGiftedPremium.fromJson(parsed);
     case 'messagePremiumGiftCode':
       return MessagePremiumGiftCode.fromJson(parsed);
-    case 'messagePremiumGiveawayCreated':
-      return MessagePremiumGiveawayCreated.fromJson(parsed);
-    case 'messagePremiumGiveaway':
-      return MessagePremiumGiveaway.fromJson(parsed);
-    case 'messagePremiumGiveawayCompleted':
-      return MessagePremiumGiveawayCompleted.fromJson(parsed);
-    case 'messagePremiumGiveawayWinners':
-      return MessagePremiumGiveawayWinners.fromJson(parsed);
+    case 'messageGiveawayCreated':
+      return MessageGiveawayCreated.fromJson(parsed);
+    case 'messageGiveaway':
+      return MessageGiveaway.fromJson(parsed);
+    case 'messageGiveawayCompleted':
+      return MessageGiveawayCompleted.fromJson(parsed);
+    case 'messageGiveawayWinners':
+      return MessageGiveawayWinners.fromJson(parsed);
     case 'messageGiftedStars':
       return MessageGiftedStars.fromJson(parsed);
+    case 'messageGiveawayPrizeStars':
+      return MessageGiveawayPrizeStars.fromJson(parsed);
     case 'messageContactRegistered':
       return MessageContactRegistered.fromJson(parsed);
     case 'messageUsersShared':
@@ -2999,8 +3024,8 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return ChatBoostSourceGiveaway.fromJson(parsed);
     case 'chatBoostSourcePremium':
       return ChatBoostSourcePremium.fromJson(parsed);
-    case 'prepaidPremiumGiveaway':
-      return PrepaidPremiumGiveaway.fromJson(parsed);
+    case 'prepaidGiveaway':
+      return PrepaidGiveaway.fromJson(parsed);
     case 'chatBoostStatus':
       return ChatBoostStatus.fromJson(parsed);
     case 'chatBoost':
@@ -3240,6 +3265,8 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return ChatEventMemberPromoted.fromJson(parsed);
     case 'chatEventMemberRestricted':
       return ChatEventMemberRestricted.fromJson(parsed);
+    case 'chatEventMemberSubscriptionExtended':
+      return ChatEventMemberSubscriptionExtended.fromJson(parsed);
     case 'chatEventAvailableReactionsChanged':
       return ChatEventAvailableReactionsChanged.fromJson(parsed);
     case 'chatEventBackgroundChanged':
@@ -3490,6 +3517,8 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return StorePaymentPurposePremiumGiftCodes.fromJson(parsed);
     case 'storePaymentPurposePremiumGiveaway':
       return StorePaymentPurposePremiumGiveaway.fromJson(parsed);
+    case 'storePaymentPurposeStarGiveaway':
+      return StorePaymentPurposeStarGiveaway.fromJson(parsed);
     case 'storePaymentPurposeStars':
       return StorePaymentPurposeStars.fromJson(parsed);
     case 'storePaymentPurposeGiftedStars':
@@ -3502,6 +3531,8 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return TelegramPaymentPurposeStars.fromJson(parsed);
     case 'telegramPaymentPurposeGiftedStars':
       return TelegramPaymentPurposeGiftedStars.fromJson(parsed);
+    case 'telegramPaymentPurposeStarGiveaway':
+      return TelegramPaymentPurposeStarGiveaway.fromJson(parsed);
     case 'telegramPaymentPurposeJoinChat':
       return TelegramPaymentPurposeJoinChat.fromJson(parsed);
     case 'deviceTokenFirebaseCloudMessaging':
@@ -3636,8 +3667,8 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return PushMessageContentPoll.fromJson(parsed);
     case 'pushMessageContentPremiumGiftCode':
       return PushMessageContentPremiumGiftCode.fromJson(parsed);
-    case 'pushMessageContentPremiumGiveaway':
-      return PushMessageContentPremiumGiveaway.fromJson(parsed);
+    case 'pushMessageContentGiveaway':
+      return PushMessageContentGiveaway.fromJson(parsed);
     case 'pushMessageContentScreenshotTaken':
       return PushMessageContentScreenshotTaken.fromJson(parsed);
     case 'pushMessageContentSticker':
@@ -4520,6 +4551,8 @@ TdObject? convertMapToObject(final Map<String, dynamic>? parsed) {
       return UpdateMessageReaction.fromJson(parsed);
     case 'updateMessageReactions':
       return UpdateMessageReactions.fromJson(parsed);
+    case 'updatePaidMediaPurchased':
+      return UpdatePaidMediaPurchased.fromJson(parsed);
     case 'updates':
       return Updates.fromJson(parsed);
     case 'logStreamDefault':

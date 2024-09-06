@@ -54,7 +54,7 @@ sealed class MessageReplyTo extends TdObject {
 /// * [quote]: Chosen quote from the replied message; may be null if none *(optional)*.
 /// * [origin]: Information about origin of the message if the message was from another chat or topic; may be null for messages from the same chat *(optional)*.
 /// * [originSendDate]: Point in time (Unix timestamp) when the message was sent if the message was from another chat or topic; 0 for messages from the same chat.
-/// * [content]: Media content of the message if the message was from another chat or topic; may be null for messages from the same chat and messages without media.. Can be only one of the following types: messageAnimation, messageAudio, messageContact, messageDice, messageDocument, messageGame, messageInvoice, messageLocation,. messagePaidMedia, messagePhoto, messagePoll, messagePremiumGiveaway, messagePremiumGiveawayWinners, messageSticker, messageStory, messageText (for link preview),. messageVenue, messageVideo, messageVideoNote, or messageVoiceNote *(optional)*.
+/// * [content]: Media content of the message if the message was from another chat or topic; may be null for messages from the same chat and messages without media.. Can be only one of the following types: messageAnimation, messageAudio, messageContact, messageDice, messageDocument, messageGame, messageGiveaway, messageGiveawayWinners,. messageInvoice, messageLocation, messagePaidMedia, messagePhoto, messagePoll, messageSticker, messageStory, messageText (for link preview), messageVenue, messageVideo,. messageVideoNote, or messageVoiceNote *(optional)*.
 final class MessageReplyToMessage extends MessageReplyTo {
   /// **MessageReplyToMessage** *(messageReplyToMessage)* - child of MessageReplyTo
   ///
@@ -65,7 +65,7 @@ final class MessageReplyToMessage extends MessageReplyTo {
   /// * [quote]: Chosen quote from the replied message; may be null if none *(optional)*.
   /// * [origin]: Information about origin of the message if the message was from another chat or topic; may be null for messages from the same chat *(optional)*.
   /// * [originSendDate]: Point in time (Unix timestamp) when the message was sent if the message was from another chat or topic; 0 for messages from the same chat.
-  /// * [content]: Media content of the message if the message was from another chat or topic; may be null for messages from the same chat and messages without media.. Can be only one of the following types: messageAnimation, messageAudio, messageContact, messageDice, messageDocument, messageGame, messageInvoice, messageLocation,. messagePaidMedia, messagePhoto, messagePoll, messagePremiumGiveaway, messagePremiumGiveawayWinners, messageSticker, messageStory, messageText (for link preview),. messageVenue, messageVideo, messageVideoNote, or messageVoiceNote *(optional)*.
+  /// * [content]: Media content of the message if the message was from another chat or topic; may be null for messages from the same chat and messages without media.. Can be only one of the following types: messageAnimation, messageAudio, messageContact, messageDice, messageDocument, messageGame, messageGiveaway, messageGiveawayWinners,. messageInvoice, messageLocation, messagePaidMedia, messagePhoto, messagePoll, messageSticker, messageStory, messageText (for link preview), messageVenue, messageVideo,. messageVideoNote, or messageVoiceNote *(optional)*.
   const MessageReplyToMessage({
     required this.chatId,
     required this.messageId,
@@ -90,7 +90,7 @@ final class MessageReplyToMessage extends MessageReplyTo {
   /// Point in time (Unix timestamp) when the message was sent if the message was from another chat or topic; 0 for messages from the same chat
   final int originSendDate;
 
-  /// Media content of the message if the message was from another chat or topic; may be null for messages from the same chat and messages without media.. Can be only one of the following types: messageAnimation, messageAudio, messageContact, messageDice, messageDocument, messageGame, messageInvoice, messageLocation,. messagePaidMedia, messagePhoto, messagePoll, messagePremiumGiveaway, messagePremiumGiveawayWinners, messageSticker, messageStory, messageText (for link preview),. messageVenue, messageVideo, messageVideoNote, or messageVoiceNote
+  /// Media content of the message if the message was from another chat or topic; may be null for messages from the same chat and messages without media.. Can be only one of the following types: messageAnimation, messageAudio, messageContact, messageDice, messageDocument, messageGame, messageGiveaway, messageGiveawayWinners,. messageInvoice, messageLocation, messagePaidMedia, messagePhoto, messagePoll, messageSticker, messageStory, messageText (for link preview), messageVenue, messageVideo,. messageVideoNote, or messageVoiceNote
   final MessageContent? content;
 
   /// Parse from a json
@@ -130,7 +130,7 @@ final class MessageReplyToMessage extends MessageReplyTo {
   /// * [quote]: Chosen quote from the replied message; may be null if none
   /// * [origin]: Information about origin of the message if the message was from another chat or topic; may be null for messages from the same chat
   /// * [origin_send_date]: Point in time (Unix timestamp) when the message was sent if the message was from another chat or topic; 0 for messages from the same chat
-  /// * [content]: Media content of the message if the message was from another chat or topic; may be null for messages from the same chat and messages without media.. Can be only one of the following types: messageAnimation, messageAudio, messageContact, messageDice, messageDocument, messageGame, messageInvoice, messageLocation,. messagePaidMedia, messagePhoto, messagePoll, messagePremiumGiveaway, messagePremiumGiveawayWinners, messageSticker, messageStory, messageText (for link preview),. messageVenue, messageVideo, messageVideoNote, or messageVoiceNote
+  /// * [content]: Media content of the message if the message was from another chat or topic; may be null for messages from the same chat and messages without media.. Can be only one of the following types: messageAnimation, messageAudio, messageContact, messageDice, messageDocument, messageGame, messageGiveaway, messageGiveawayWinners,. messageInvoice, messageLocation, messagePaidMedia, messagePhoto, messagePoll, messageSticker, messageStory, messageText (for link preview), messageVenue, messageVideo,. messageVideoNote, or messageVoiceNote
   @override
   MessageReplyToMessage copyWith({
     int? chatId,

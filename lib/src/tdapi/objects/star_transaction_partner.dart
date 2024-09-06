@@ -17,7 +17,7 @@ sealed class StarTransactionPartner extends TdObject {
   /// * [StarTransactionPartnerTelegramAds]
   /// * [StarTransactionPartnerBot]
   /// * [StarTransactionPartnerBusiness]
-  /// * [StarTransactionPartnerChannel]
+  /// * [StarTransactionPartnerChat]
   /// * [StarTransactionPartnerUser]
   /// * [StarTransactionPartnerUnsupported]
   factory StarTransactionPartner.fromJson(Map<String, dynamic> json) {
@@ -36,8 +36,8 @@ sealed class StarTransactionPartner extends TdObject {
         return StarTransactionPartnerBot.fromJson(json);
       case StarTransactionPartnerBusiness.defaultObjectId:
         return StarTransactionPartnerBusiness.fromJson(json);
-      case StarTransactionPartnerChannel.defaultObjectId:
-        return StarTransactionPartnerChannel.fromJson(json);
+      case StarTransactionPartnerChat.defaultObjectId:
+        return StarTransactionPartnerChat.fromJson(json);
       case StarTransactionPartnerUser.defaultObjectId:
         return StarTransactionPartnerUser.fromJson(json);
       case StarTransactionPartnerUnsupported.defaultObjectId:
@@ -420,20 +420,20 @@ final class StarTransactionPartnerBusiness extends StarTransactionPartner {
   String get currentObjectId => defaultObjectId;
 }
 
-/// **StarTransactionPartnerChannel** *(starTransactionPartnerChannel)* - child of StarTransactionPartner
+/// **StarTransactionPartnerChat** *(starTransactionPartnerChat)* - child of StarTransactionPartner
 ///
-/// The transaction is a transaction with a channel chat.
+/// The transaction is a transaction with a supergroup or a channel chat.
 ///
 /// * [chatId]: Identifier of the chat.
 /// * [purpose]: Purpose of the transaction.
-final class StarTransactionPartnerChannel extends StarTransactionPartner {
-  /// **StarTransactionPartnerChannel** *(starTransactionPartnerChannel)* - child of StarTransactionPartner
+final class StarTransactionPartnerChat extends StarTransactionPartner {
+  /// **StarTransactionPartnerChat** *(starTransactionPartnerChat)* - child of StarTransactionPartner
   ///
-  /// The transaction is a transaction with a channel chat.
+  /// The transaction is a transaction with a supergroup or a channel chat.
   ///
   /// * [chatId]: Identifier of the chat.
   /// * [purpose]: Purpose of the transaction.
-  const StarTransactionPartnerChannel({
+  const StarTransactionPartnerChat({
     required this.chatId,
     required this.purpose,
   });
@@ -442,13 +442,13 @@ final class StarTransactionPartnerChannel extends StarTransactionPartner {
   final int chatId;
 
   /// Purpose of the transaction
-  final ChannelTransactionPurpose purpose;
+  final ChatTransactionPurpose purpose;
 
   /// Parse from a json
-  factory StarTransactionPartnerChannel.fromJson(Map<String, dynamic> json) =>
-      StarTransactionPartnerChannel(
+  factory StarTransactionPartnerChat.fromJson(Map<String, dynamic> json) =>
+      StarTransactionPartnerChat(
         chatId: json['chat_id'],
-        purpose: ChannelTransactionPurpose.fromJson(json['purpose']),
+        purpose: ChatTransactionPurpose.fromJson(json['purpose']),
       );
 
   /// Convert model to TDLib JSON format
@@ -467,17 +467,17 @@ final class StarTransactionPartnerChannel extends StarTransactionPartner {
   /// * [chat_id]: Identifier of the chat
   /// * [purpose]: Purpose of the transaction
   @override
-  StarTransactionPartnerChannel copyWith({
+  StarTransactionPartnerChat copyWith({
     int? chatId,
-    ChannelTransactionPurpose? purpose,
+    ChatTransactionPurpose? purpose,
   }) =>
-      StarTransactionPartnerChannel(
+      StarTransactionPartnerChat(
         chatId: chatId ?? this.chatId,
         purpose: purpose ?? this.purpose,
       );
 
   /// TDLib object type
-  static const String defaultObjectId = 'starTransactionPartnerChannel';
+  static const String defaultObjectId = 'starTransactionPartnerChat';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

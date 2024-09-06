@@ -118,24 +118,27 @@ final class ChatBoostSourceGiftCode extends ChatBoostSource {
 
 /// **ChatBoostSourceGiveaway** *(chatBoostSourceGiveaway)* - child of ChatBoostSource
 ///
-/// The chat created a Telegram Premium giveaway.
+/// The chat created a giveaway.
 ///
 /// * [userId]: Identifier of a user that won in the giveaway; 0 if none.
-/// * [giftCode]: The created Telegram Premium gift code if it was used by the user or can be claimed by the current user; an empty string otherwise.
+/// * [giftCode]: The created Telegram Premium gift code if it was used by the user or can be claimed by the current user; an empty string otherwise; for Telegram Premium giveways only.
+/// * [starCount]: Number of Telegram Stars distributed among winners of the giveaway.
 /// * [giveawayMessageId]: Identifier of the corresponding giveaway message; can be an identifier of a deleted message.
-/// * [isUnclaimed]: True, if the winner for the corresponding Telegram Premium subscription wasn't chosen, because there were not enough participants.
+/// * [isUnclaimed]: True, if the winner for the corresponding giveaway prize wasn't chosen, because there were not enough participants.
 final class ChatBoostSourceGiveaway extends ChatBoostSource {
   /// **ChatBoostSourceGiveaway** *(chatBoostSourceGiveaway)* - child of ChatBoostSource
   ///
-  /// The chat created a Telegram Premium giveaway.
+  /// The chat created a giveaway.
   ///
   /// * [userId]: Identifier of a user that won in the giveaway; 0 if none.
-  /// * [giftCode]: The created Telegram Premium gift code if it was used by the user or can be claimed by the current user; an empty string otherwise.
+  /// * [giftCode]: The created Telegram Premium gift code if it was used by the user or can be claimed by the current user; an empty string otherwise; for Telegram Premium giveways only.
+  /// * [starCount]: Number of Telegram Stars distributed among winners of the giveaway.
   /// * [giveawayMessageId]: Identifier of the corresponding giveaway message; can be an identifier of a deleted message.
-  /// * [isUnclaimed]: True, if the winner for the corresponding Telegram Premium subscription wasn't chosen, because there were not enough participants.
+  /// * [isUnclaimed]: True, if the winner for the corresponding giveaway prize wasn't chosen, because there were not enough participants.
   const ChatBoostSourceGiveaway({
     required this.userId,
     required this.giftCode,
+    required this.starCount,
     required this.giveawayMessageId,
     required this.isUnclaimed,
   });
@@ -143,13 +146,16 @@ final class ChatBoostSourceGiveaway extends ChatBoostSource {
   /// Identifier of a user that won in the giveaway; 0 if none
   final int userId;
 
-  /// The created Telegram Premium gift code if it was used by the user or can be claimed by the current user; an empty string otherwise
+  /// The created Telegram Premium gift code if it was used by the user or can be claimed by the current user; an empty string otherwise; for Telegram Premium giveways only
   final String giftCode;
+
+  /// Number of Telegram Stars distributed among winners of the giveaway
+  final int starCount;
 
   /// Identifier of the corresponding giveaway message; can be an identifier of a deleted message
   final int giveawayMessageId;
 
-  /// True, if the winner for the corresponding Telegram Premium subscription wasn't chosen, because there were not enough participants
+  /// True, if the winner for the corresponding giveaway prize wasn't chosen, because there were not enough participants
   final bool isUnclaimed;
 
   /// Parse from a json
@@ -157,6 +163,7 @@ final class ChatBoostSourceGiveaway extends ChatBoostSource {
       ChatBoostSourceGiveaway(
         userId: json['user_id'] ?? 0,
         giftCode: json['gift_code'],
+        starCount: json['star_count'],
         giveawayMessageId: json['giveaway_message_id'],
         isUnclaimed: json['is_unclaimed'],
       );
@@ -168,6 +175,7 @@ final class ChatBoostSourceGiveaway extends ChatBoostSource {
       "@type": defaultObjectId,
       "user_id": userId,
       "gift_code": giftCode,
+      "star_count": starCount,
       "giveaway_message_id": giveawayMessageId,
       "is_unclaimed": isUnclaimed,
     };
@@ -177,19 +185,22 @@ final class ChatBoostSourceGiveaway extends ChatBoostSource {
   ///
   /// Properties:
   /// * [user_id]: Identifier of a user that won in the giveaway; 0 if none
-  /// * [gift_code]: The created Telegram Premium gift code if it was used by the user or can be claimed by the current user; an empty string otherwise
+  /// * [gift_code]: The created Telegram Premium gift code if it was used by the user or can be claimed by the current user; an empty string otherwise; for Telegram Premium giveways only
+  /// * [star_count]: Number of Telegram Stars distributed among winners of the giveaway
   /// * [giveaway_message_id]: Identifier of the corresponding giveaway message; can be an identifier of a deleted message
-  /// * [is_unclaimed]: True, if the winner for the corresponding Telegram Premium subscription wasn't chosen, because there were not enough participants
+  /// * [is_unclaimed]: True, if the winner for the corresponding giveaway prize wasn't chosen, because there were not enough participants
   @override
   ChatBoostSourceGiveaway copyWith({
     int? userId,
     String? giftCode,
+    int? starCount,
     int? giveawayMessageId,
     bool? isUnclaimed,
   }) =>
       ChatBoostSourceGiveaway(
         userId: userId ?? this.userId,
         giftCode: giftCode ?? this.giftCode,
+        starCount: starCount ?? this.starCount,
         giveawayMessageId: giveawayMessageId ?? this.giveawayMessageId,
         isUnclaimed: isUnclaimed ?? this.isUnclaimed,
       );

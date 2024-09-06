@@ -14,6 +14,7 @@ sealed class TelegramPaymentPurpose extends TdObject {
   /// * [TelegramPaymentPurposePremiumGiveaway]
   /// * [TelegramPaymentPurposeStars]
   /// * [TelegramPaymentPurposeGiftedStars]
+  /// * [TelegramPaymentPurposeStarGiveaway]
   /// * [TelegramPaymentPurposeJoinChat]
   factory TelegramPaymentPurpose.fromJson(Map<String, dynamic> json) {
     switch (json["@type"]) {
@@ -25,6 +26,8 @@ sealed class TelegramPaymentPurpose extends TdObject {
         return TelegramPaymentPurposeStars.fromJson(json);
       case TelegramPaymentPurposeGiftedStars.defaultObjectId:
         return TelegramPaymentPurposeGiftedStars.fromJson(json);
+      case TelegramPaymentPurposeStarGiveaway.defaultObjectId:
+        return TelegramPaymentPurposeStarGiveaway.fromJson(json);
       case TelegramPaymentPurposeJoinChat.defaultObjectId:
         return TelegramPaymentPurposeJoinChat.fromJson(json);
       default:
@@ -188,7 +191,7 @@ final class TelegramPaymentPurposePremiumGiveaway
   });
 
   /// Giveaway parameters
-  final PremiumGiveawayParameters parameters;
+  final GiveawayParameters parameters;
 
   /// ISO 4217 currency code of the payment currency
   final String currency;
@@ -206,7 +209,7 @@ final class TelegramPaymentPurposePremiumGiveaway
   factory TelegramPaymentPurposePremiumGiveaway.fromJson(
           Map<String, dynamic> json) =>
       TelegramPaymentPurposePremiumGiveaway(
-        parameters: PremiumGiveawayParameters.fromJson(json['parameters']),
+        parameters: GiveawayParameters.fromJson(json['parameters']),
         currency: json['currency'],
         amount: json['amount'],
         winnerCount: json['winner_count'],
@@ -236,7 +239,7 @@ final class TelegramPaymentPurposePremiumGiveaway
   /// * [month_count]: Number of months the Telegram Premium subscription will be active for the users
   @override
   TelegramPaymentPurposePremiumGiveaway copyWith({
-    PremiumGiveawayParameters? parameters,
+    GiveawayParameters? parameters,
     String? currency,
     int? amount,
     int? winnerCount,
@@ -422,6 +425,108 @@ final class TelegramPaymentPurposeGiftedStars extends TelegramPaymentPurpose {
 
   /// TDLib object type
   static const String defaultObjectId = 'telegramPaymentPurposeGiftedStars';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **TelegramPaymentPurposeStarGiveaway** *(telegramPaymentPurposeStarGiveaway)* - child of TelegramPaymentPurpose
+///
+/// The user creating a Telegram Star giveaway.
+///
+/// * [parameters]: Giveaway parameters.
+/// * [currency]: ISO 4217 currency code of the payment currency.
+/// * [amount]: Paid amount, in the smallest units of the currency.
+/// * [winnerCount]: The number of users to receive Telegram Stars.
+/// * [starCount]: The number of Telegram Stars to be distributed through the giveaway.
+final class TelegramPaymentPurposeStarGiveaway extends TelegramPaymentPurpose {
+  /// **TelegramPaymentPurposeStarGiveaway** *(telegramPaymentPurposeStarGiveaway)* - child of TelegramPaymentPurpose
+  ///
+  /// The user creating a Telegram Star giveaway.
+  ///
+  /// * [parameters]: Giveaway parameters.
+  /// * [currency]: ISO 4217 currency code of the payment currency.
+  /// * [amount]: Paid amount, in the smallest units of the currency.
+  /// * [winnerCount]: The number of users to receive Telegram Stars.
+  /// * [starCount]: The number of Telegram Stars to be distributed through the giveaway.
+  const TelegramPaymentPurposeStarGiveaway({
+    required this.parameters,
+    required this.currency,
+    required this.amount,
+    required this.winnerCount,
+    required this.starCount,
+  });
+
+  /// Giveaway parameters
+  final GiveawayParameters parameters;
+
+  /// ISO 4217 currency code of the payment currency
+  final String currency;
+
+  /// Paid amount, in the smallest units of the currency
+  final int amount;
+
+  /// The number of users to receive Telegram Stars
+  final int winnerCount;
+
+  /// The number of Telegram Stars to be distributed through the giveaway
+  final int starCount;
+
+  /// Parse from a json
+  factory TelegramPaymentPurposeStarGiveaway.fromJson(
+          Map<String, dynamic> json) =>
+      TelegramPaymentPurposeStarGiveaway(
+        parameters: GiveawayParameters.fromJson(json['parameters']),
+        currency: json['currency'],
+        amount: json['amount'],
+        winnerCount: json['winner_count'],
+        starCount: json['star_count'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "parameters": parameters.toJson(),
+      "currency": currency,
+      "amount": amount,
+      "winner_count": winnerCount,
+      "star_count": starCount,
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [parameters]: Giveaway parameters
+  /// * [currency]: ISO 4217 currency code of the payment currency
+  /// * [amount]: Paid amount, in the smallest units of the currency
+  /// * [winner_count]: The number of users to receive Telegram Stars
+  /// * [star_count]: The number of Telegram Stars to be distributed through the giveaway
+  @override
+  TelegramPaymentPurposeStarGiveaway copyWith({
+    GiveawayParameters? parameters,
+    String? currency,
+    int? amount,
+    int? winnerCount,
+    int? starCount,
+  }) =>
+      TelegramPaymentPurposeStarGiveaway(
+        parameters: parameters ?? this.parameters,
+        currency: currency ?? this.currency,
+        amount: amount ?? this.amount,
+        winnerCount: winnerCount ?? this.winnerCount,
+        starCount: starCount ?? this.starCount,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'telegramPaymentPurposeStarGiveaway';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

@@ -24,7 +24,7 @@ sealed class PushMessageContent extends TdObject {
   /// * [PushMessageContentPhoto]
   /// * [PushMessageContentPoll]
   /// * [PushMessageContentPremiumGiftCode]
-  /// * [PushMessageContentPremiumGiveaway]
+  /// * [PushMessageContentGiveaway]
   /// * [PushMessageContentScreenshotTaken]
   /// * [PushMessageContentSticker]
   /// * [PushMessageContentStory]
@@ -75,8 +75,8 @@ sealed class PushMessageContent extends TdObject {
         return PushMessageContentPoll.fromJson(json);
       case PushMessageContentPremiumGiftCode.defaultObjectId:
         return PushMessageContentPremiumGiftCode.fromJson(json);
-      case PushMessageContentPremiumGiveaway.defaultObjectId:
-        return PushMessageContentPremiumGiveaway.fromJson(json);
+      case PushMessageContentGiveaway.defaultObjectId:
+        return PushMessageContentGiveaway.fromJson(json);
       case PushMessageContentScreenshotTaken.defaultObjectId:
         return PushMessageContentScreenshotTaken.fromJson(json);
       case PushMessageContentSticker.defaultObjectId:
@@ -1105,42 +1105,43 @@ final class PushMessageContentPremiumGiftCode extends PushMessageContent {
   String get currentObjectId => defaultObjectId;
 }
 
-/// **PushMessageContentPremiumGiveaway** *(pushMessageContentPremiumGiveaway)* - child of PushMessageContent
+/// **PushMessageContentGiveaway** *(pushMessageContentGiveaway)* - child of PushMessageContent
 ///
-/// A message with a Telegram Premium giveaway.
+/// A message with a giveaway.
 ///
-/// * [winnerCount]: Number of users which will receive Telegram Premium subscription gift codes; 0 for pinned message.
-/// * [monthCount]: Number of months the Telegram Premium subscription will be active after code activation; 0 for pinned message.
+/// * [winnerCount]: Number of users which will receive giveaway prizes; 0 for pinned message.
+/// * [prize]: Prize of the giveaway; may be null for pinned message *(optional)*.
 /// * [isPinned]: True, if the message is a pinned message with the specified content.
-final class PushMessageContentPremiumGiveaway extends PushMessageContent {
-  /// **PushMessageContentPremiumGiveaway** *(pushMessageContentPremiumGiveaway)* - child of PushMessageContent
+final class PushMessageContentGiveaway extends PushMessageContent {
+  /// **PushMessageContentGiveaway** *(pushMessageContentGiveaway)* - child of PushMessageContent
   ///
-  /// A message with a Telegram Premium giveaway.
+  /// A message with a giveaway.
   ///
-  /// * [winnerCount]: Number of users which will receive Telegram Premium subscription gift codes; 0 for pinned message.
-  /// * [monthCount]: Number of months the Telegram Premium subscription will be active after code activation; 0 for pinned message.
+  /// * [winnerCount]: Number of users which will receive giveaway prizes; 0 for pinned message.
+  /// * [prize]: Prize of the giveaway; may be null for pinned message *(optional)*.
   /// * [isPinned]: True, if the message is a pinned message with the specified content.
-  const PushMessageContentPremiumGiveaway({
+  const PushMessageContentGiveaway({
     required this.winnerCount,
-    required this.monthCount,
+    this.prize,
     required this.isPinned,
   });
 
-  /// Number of users which will receive Telegram Premium subscription gift codes; 0 for pinned message
+  /// Number of users which will receive giveaway prizes; 0 for pinned message
   final int winnerCount;
 
-  /// Number of months the Telegram Premium subscription will be active after code activation; 0 for pinned message
-  final int monthCount;
+  /// Prize of the giveaway; may be null for pinned message
+  final GiveawayPrize? prize;
 
   /// True, if the message is a pinned message with the specified content
   final bool isPinned;
 
   /// Parse from a json
-  factory PushMessageContentPremiumGiveaway.fromJson(
-          Map<String, dynamic> json) =>
-      PushMessageContentPremiumGiveaway(
+  factory PushMessageContentGiveaway.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentGiveaway(
         winnerCount: json['winner_count'],
-        monthCount: json['month_count'],
+        prize: json['prize'] == null
+            ? null
+            : GiveawayPrize.fromJson(json['prize']),
         isPinned: json['is_pinned'],
       );
 
@@ -1150,7 +1151,7 @@ final class PushMessageContentPremiumGiveaway extends PushMessageContent {
     return {
       "@type": defaultObjectId,
       "winner_count": winnerCount,
-      "month_count": monthCount,
+      "prize": prize?.toJson(),
       "is_pinned": isPinned,
     };
   }
@@ -1158,23 +1159,23 @@ final class PushMessageContentPremiumGiveaway extends PushMessageContent {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [winner_count]: Number of users which will receive Telegram Premium subscription gift codes; 0 for pinned message
-  /// * [month_count]: Number of months the Telegram Premium subscription will be active after code activation; 0 for pinned message
+  /// * [winner_count]: Number of users which will receive giveaway prizes; 0 for pinned message
+  /// * [prize]: Prize of the giveaway; may be null for pinned message
   /// * [is_pinned]: True, if the message is a pinned message with the specified content
   @override
-  PushMessageContentPremiumGiveaway copyWith({
+  PushMessageContentGiveaway copyWith({
     int? winnerCount,
-    int? monthCount,
+    GiveawayPrize? prize,
     bool? isPinned,
   }) =>
-      PushMessageContentPremiumGiveaway(
+      PushMessageContentGiveaway(
         winnerCount: winnerCount ?? this.winnerCount,
-        monthCount: monthCount ?? this.monthCount,
+        prize: prize ?? this.prize,
         isPinned: isPinned ?? this.isPinned,
       );
 
   /// TDLib object type
-  static const String defaultObjectId = 'pushMessageContentPremiumGiveaway';
+  static const String defaultObjectId = 'pushMessageContentGiveaway';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

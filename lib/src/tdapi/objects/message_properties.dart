@@ -4,6 +4,7 @@ part of '../tdapi.dart';
 ///
 /// Contains properties of a message and describes actions that can be done with the message right now.
 ///
+/// * [canBeCopiedToSecretChat]: True, if content of the message can be copied to a secret chat using inputMessageForwarded or forwardMessages with copy options.
 /// * [canBeDeletedOnlyForSelf]: True, if the message can be deleted only for the current user while other users will continue to see it using the method deleteMessages with revoke == false.
 /// * [canBeDeletedForAllUsers]: True, if the message can be deleted for all users using the method deleteMessages with revoke == true.
 /// * [canBeEdited]: True, if the message can be edited using the methods editMessageText, editMessageMedia, editMessageCaption, or editMessageReplyMarkup.. For live location and poll messages this fields shows whether editMessageLiveLocation or stopPoll can be used with this message.
@@ -33,6 +34,7 @@ final class MessageProperties extends TdObject {
   ///
   /// Contains properties of a message and describes actions that can be done with the message right now.
   ///
+  /// * [canBeCopiedToSecretChat]: True, if content of the message can be copied to a secret chat using inputMessageForwarded or forwardMessages with copy options.
   /// * [canBeDeletedOnlyForSelf]: True, if the message can be deleted only for the current user while other users will continue to see it using the method deleteMessages with revoke == false.
   /// * [canBeDeletedForAllUsers]: True, if the message can be deleted for all users using the method deleteMessages with revoke == true.
   /// * [canBeEdited]: True, if the message can be edited using the methods editMessageText, editMessageMedia, editMessageCaption, or editMessageReplyMarkup.. For live location and poll messages this fields shows whether editMessageLiveLocation or stopPoll can be used with this message.
@@ -58,6 +60,7 @@ final class MessageProperties extends TdObject {
   /// * [canSetFactCheck]: True, if fact check for the message can be changed through setMessageFactCheck.
   /// * [needShowStatistics]: True, if message statistics must be available from context menu of the message.
   const MessageProperties({
+    required this.canBeCopiedToSecretChat,
     required this.canBeDeletedOnlyForSelf,
     required this.canBeDeletedForAllUsers,
     required this.canBeEdited,
@@ -85,6 +88,9 @@ final class MessageProperties extends TdObject {
     this.extra,
     this.clientId,
   });
+
+  /// True, if content of the message can be copied to a secret chat using inputMessageForwarded or forwardMessages with copy options
+  final bool canBeCopiedToSecretChat;
 
   /// True, if the message can be deleted only for the current user while other users will continue to see it using the method deleteMessages with revoke == false
   final bool canBeDeletedOnlyForSelf;
@@ -169,6 +175,7 @@ final class MessageProperties extends TdObject {
   /// Parse from a json
   factory MessageProperties.fromJson(Map<String, dynamic> json) =>
       MessageProperties(
+        canBeCopiedToSecretChat: json['can_be_copied_to_secret_chat'],
         canBeDeletedOnlyForSelf: json['can_be_deleted_only_for_self'],
         canBeDeletedForAllUsers: json['can_be_deleted_for_all_users'],
         canBeEdited: json['can_be_edited'],
@@ -202,6 +209,7 @@ final class MessageProperties extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": defaultObjectId,
+      "can_be_copied_to_secret_chat": canBeCopiedToSecretChat,
       "can_be_deleted_only_for_self": canBeDeletedOnlyForSelf,
       "can_be_deleted_for_all_users": canBeDeletedForAllUsers,
       "can_be_edited": canBeEdited,
@@ -232,6 +240,7 @@ final class MessageProperties extends TdObject {
   /// Copy model with modified properties.
   ///
   /// Properties:
+  /// * [can_be_copied_to_secret_chat]: True, if content of the message can be copied to a secret chat using inputMessageForwarded or forwardMessages with copy options
   /// * [can_be_deleted_only_for_self]: True, if the message can be deleted only for the current user while other users will continue to see it using the method deleteMessages with revoke == false
   /// * [can_be_deleted_for_all_users]: True, if the message can be deleted for all users using the method deleteMessages with revoke == true
   /// * [can_be_edited]: True, if the message can be edited using the methods editMessageText, editMessageMedia, editMessageCaption, or editMessageReplyMarkup.. For live location and poll messages this fields shows whether editMessageLiveLocation or stopPoll can be used with this message
@@ -257,6 +266,7 @@ final class MessageProperties extends TdObject {
   /// * [can_set_fact_check]: True, if fact check for the message can be changed through setMessageFactCheck
   /// * [need_show_statistics]: True, if message statistics must be available from context menu of the message
   MessageProperties copyWith({
+    bool? canBeCopiedToSecretChat,
     bool? canBeDeletedOnlyForSelf,
     bool? canBeDeletedForAllUsers,
     bool? canBeEdited,
@@ -285,6 +295,8 @@ final class MessageProperties extends TdObject {
     int? clientId,
   }) =>
       MessageProperties(
+        canBeCopiedToSecretChat:
+            canBeCopiedToSecretChat ?? this.canBeCopiedToSecretChat,
         canBeDeletedOnlyForSelf:
             canBeDeletedOnlyForSelf ?? this.canBeDeletedOnlyForSelf,
         canBeDeletedForAllUsers:

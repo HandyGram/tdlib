@@ -50,18 +50,24 @@ sealed class BotTransactionPurpose extends TdObject {
 /// Paid media were bought.
 ///
 /// * [media]: The bought media if the trancastion wasn't refunded.
+/// * [payload]: Bot-provided payload; for bots only.
 final class BotTransactionPurposePaidMedia extends BotTransactionPurpose {
   /// **BotTransactionPurposePaidMedia** *(botTransactionPurposePaidMedia)* - child of BotTransactionPurpose
   ///
   /// Paid media were bought.
   ///
   /// * [media]: The bought media if the trancastion wasn't refunded.
+  /// * [payload]: Bot-provided payload; for bots only.
   const BotTransactionPurposePaidMedia({
     required this.media,
+    required this.payload,
   });
 
   /// The bought media if the trancastion wasn't refunded
   final List<PaidMedia> media;
+
+  /// Bot-provided payload; for bots only
+  final String payload;
 
   /// Parse from a json
   factory BotTransactionPurposePaidMedia.fromJson(Map<String, dynamic> json) =>
@@ -69,6 +75,7 @@ final class BotTransactionPurposePaidMedia extends BotTransactionPurpose {
         media: List<PaidMedia>.from((json['media'] ?? [])
             .map((item) => PaidMedia.fromJson(item))
             .toList()),
+        payload: json['payload'],
       );
 
   /// Convert model to TDLib JSON format
@@ -77,6 +84,7 @@ final class BotTransactionPurposePaidMedia extends BotTransactionPurpose {
     return {
       "@type": defaultObjectId,
       "media": media.map((i) => i.toJson()).toList(),
+      "payload": payload,
     };
   }
 
@@ -84,12 +92,15 @@ final class BotTransactionPurposePaidMedia extends BotTransactionPurpose {
   ///
   /// Properties:
   /// * [media]: The bought media if the trancastion wasn't refunded
+  /// * [payload]: Bot-provided payload; for bots only
   @override
   BotTransactionPurposePaidMedia copyWith({
     List<PaidMedia>? media,
+    String? payload,
   }) =>
       BotTransactionPurposePaidMedia(
         media: media ?? this.media,
+        payload: payload ?? this.payload,
       );
 
   /// TDLib object type

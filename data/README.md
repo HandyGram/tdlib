@@ -1,7 +1,7 @@
 ### TDLib build information
 |                 |                                                           |
 |:----------------|----------------------------------------------------------:|
-| **Build date**  | Aug 21 2024 17:36 MSK                                     |
-| **Version**     | 1.8.35                                                    |
-| **Commit**      | 9b6ff5863                                                 |
+| **Build date**  | Sep 06 2024 23:57 MSK                                     |
+| **Version**     | 1.8.36                                                    |
+| **Commit**      | 87d881071                                                 |
 | **Repository**  | [tdlib/td.git](https://github.com/tdlib/td.git)           |

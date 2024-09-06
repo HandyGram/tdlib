@@ -9,6 +9,7 @@ part of '../tdapi.dart';
 /// * [siteName]: Short name of the site (e.g., Google Docs, App Store).
 /// * [title]: Title of the content.
 /// * [description]: Description of the content.
+/// * [author]: Author of the content.
 /// * [type]: Type of the link preview.
 /// * [hasLargeMedia]: True, if size of media in the preview can be changed.
 /// * [showLargeMedia]: True, if large media preview must be shown; otherwise, the media preview must be shown small and only the first frame must be shown for videos.
@@ -26,6 +27,7 @@ final class LinkPreview extends TdObject {
   /// * [siteName]: Short name of the site (e.g., Google Docs, App Store).
   /// * [title]: Title of the content.
   /// * [description]: Description of the content.
+  /// * [author]: Author of the content.
   /// * [type]: Type of the link preview.
   /// * [hasLargeMedia]: True, if size of media in the preview can be changed.
   /// * [showLargeMedia]: True, if large media preview must be shown; otherwise, the media preview must be shown small and only the first frame must be shown for videos.
@@ -39,6 +41,7 @@ final class LinkPreview extends TdObject {
     required this.siteName,
     required this.title,
     required this.description,
+    required this.author,
     required this.type,
     required this.hasLargeMedia,
     required this.showLargeMedia,
@@ -64,6 +67,9 @@ final class LinkPreview extends TdObject {
 
   /// Description of the content
   final FormattedText description;
+
+  /// Author of the content
+  final String author;
 
   /// Type of the link preview
   final LinkPreviewType type;
@@ -101,6 +107,7 @@ final class LinkPreview extends TdObject {
         siteName: json['site_name'],
         title: json['title'],
         description: FormattedText.fromJson(json['description']),
+        author: json['author'],
         type: LinkPreviewType.fromJson(json['type']),
         hasLargeMedia: json['has_large_media'],
         showLargeMedia: json['show_large_media'],
@@ -122,6 +129,7 @@ final class LinkPreview extends TdObject {
       "site_name": siteName,
       "title": title,
       "description": description.toJson(),
+      "author": author,
       "type": type.toJson(),
       "has_large_media": hasLargeMedia,
       "show_large_media": showLargeMedia,
@@ -140,6 +148,7 @@ final class LinkPreview extends TdObject {
   /// * [site_name]: Short name of the site (e.g., Google Docs, App Store)
   /// * [title]: Title of the content
   /// * [description]: Description of the content
+  /// * [author]: Author of the content
   /// * [type]: Type of the link preview
   /// * [has_large_media]: True, if size of media in the preview can be changed
   /// * [show_large_media]: True, if large media preview must be shown; otherwise, the media preview must be shown small and only the first frame must be shown for videos
@@ -153,6 +162,7 @@ final class LinkPreview extends TdObject {
     String? siteName,
     String? title,
     FormattedText? description,
+    String? author,
     LinkPreviewType? type,
     bool? hasLargeMedia,
     bool? showLargeMedia,
@@ -169,6 +179,7 @@ final class LinkPreview extends TdObject {
         siteName: siteName ?? this.siteName,
         title: title ?? this.title,
         description: description ?? this.description,
+        author: author ?? this.author,
         type: type ?? this.type,
         hasLargeMedia: hasLargeMedia ?? this.hasLargeMedia,
         showLargeMedia: showLargeMedia ?? this.showLargeMedia,

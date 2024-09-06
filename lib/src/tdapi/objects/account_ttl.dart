@@ -4,20 +4,20 @@ part of '../tdapi.dart';
 ///
 /// Contains information about the period of inactivity after which the current user's account will automatically be deleted.
 ///
-/// * [days]: Number of days of inactivity before the account will be flagged for deletion; 30-366 days.
+/// * [days]: Number of days of inactivity before the account will be flagged for deletion; 30-730 days.
 final class AccountTtl extends TdObject {
   /// **AccountTtl** *(accountTtl)* - basic class
   ///
   /// Contains information about the period of inactivity after which the current user's account will automatically be deleted.
   ///
-  /// * [days]: Number of days of inactivity before the account will be flagged for deletion; 30-366 days.
+  /// * [days]: Number of days of inactivity before the account will be flagged for deletion; 30-730 days.
   const AccountTtl({
     required this.days,
     this.extra,
     this.clientId,
   });
 
-  /// Number of days of inactivity before the account will be flagged for deletion; 30-366 days
+  /// Number of days of inactivity before the account will be flagged for deletion; 30-730 days
   final int days;
 
   /// [extra] callback sign
@@ -47,7 +47,7 @@ final class AccountTtl extends TdObject {
   /// Copy model with modified properties.
   ///
   /// Properties:
-  /// * [days]: Number of days of inactivity before the account will be flagged for deletion; 30-366 days
+  /// * [days]: Number of days of inactivity before the account will be flagged for deletion; 30-730 days
   AccountTtl copyWith({
     int? days,
     dynamic extra,

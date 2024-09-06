@@ -2,29 +2,29 @@ part of '../tdapi.dart';
 
 /// **PremiumGiftCodePaymentOption** *(premiumGiftCodePaymentOption)* - basic class
 ///
-/// Describes an option for creating Telegram Premium gift codes. Use telegramPaymentPurposePremiumGiftCodes for out-of-store payments.
+/// Describes an option for creating Telegram Premium gift codes or Telegram Premium giveaway. Use telegramPaymentPurposePremiumGiftCodes or telegramPaymentPurposePremiumGiveaway for out-of-store payments.
 ///
 /// * [currency]: ISO 4217 currency code for Telegram Premium gift code payment.
 /// * [amount]: The amount to pay, in the smallest units of the currency.
-/// * [userCount]: Number of users which will be able to activate the gift codes.
+/// * [winnerCount]: Number of users which will be able to activate the gift codes.
 /// * [monthCount]: Number of months the Telegram Premium subscription will be active.
 /// * [storeProductId]: Identifier of the store product associated with the option; may be empty if none.
 /// * [storeProductQuantity]: Number of times the store product must be paid.
 final class PremiumGiftCodePaymentOption extends TdObject {
   /// **PremiumGiftCodePaymentOption** *(premiumGiftCodePaymentOption)* - basic class
   ///
-  /// Describes an option for creating Telegram Premium gift codes. Use telegramPaymentPurposePremiumGiftCodes for out-of-store payments.
+  /// Describes an option for creating Telegram Premium gift codes or Telegram Premium giveaway. Use telegramPaymentPurposePremiumGiftCodes or telegramPaymentPurposePremiumGiveaway for out-of-store payments.
   ///
   /// * [currency]: ISO 4217 currency code for Telegram Premium gift code payment.
   /// * [amount]: The amount to pay, in the smallest units of the currency.
-  /// * [userCount]: Number of users which will be able to activate the gift codes.
+  /// * [winnerCount]: Number of users which will be able to activate the gift codes.
   /// * [monthCount]: Number of months the Telegram Premium subscription will be active.
   /// * [storeProductId]: Identifier of the store product associated with the option; may be empty if none.
   /// * [storeProductQuantity]: Number of times the store product must be paid.
   const PremiumGiftCodePaymentOption({
     required this.currency,
     required this.amount,
-    required this.userCount,
+    required this.winnerCount,
     required this.monthCount,
     required this.storeProductId,
     required this.storeProductQuantity,
@@ -37,7 +37,7 @@ final class PremiumGiftCodePaymentOption extends TdObject {
   final int amount;
 
   /// Number of users which will be able to activate the gift codes
-  final int userCount;
+  final int winnerCount;
 
   /// Number of months the Telegram Premium subscription will be active
   final int monthCount;
@@ -53,7 +53,7 @@ final class PremiumGiftCodePaymentOption extends TdObject {
       PremiumGiftCodePaymentOption(
         currency: json['currency'],
         amount: json['amount'],
-        userCount: json['user_count'],
+        winnerCount: json['winner_count'],
         monthCount: json['month_count'],
         storeProductId: json['store_product_id'],
         storeProductQuantity: json['store_product_quantity'],
@@ -66,7 +66,7 @@ final class PremiumGiftCodePaymentOption extends TdObject {
       "@type": defaultObjectId,
       "currency": currency,
       "amount": amount,
-      "user_count": userCount,
+      "winner_count": winnerCount,
       "month_count": monthCount,
       "store_product_id": storeProductId,
       "store_product_quantity": storeProductQuantity,
@@ -78,14 +78,14 @@ final class PremiumGiftCodePaymentOption extends TdObject {
   /// Properties:
   /// * [currency]: ISO 4217 currency code for Telegram Premium gift code payment
   /// * [amount]: The amount to pay, in the smallest units of the currency
-  /// * [user_count]: Number of users which will be able to activate the gift codes
+  /// * [winner_count]: Number of users which will be able to activate the gift codes
   /// * [month_count]: Number of months the Telegram Premium subscription will be active
   /// * [store_product_id]: Identifier of the store product associated with the option; may be empty if none
   /// * [store_product_quantity]: Number of times the store product must be paid
   PremiumGiftCodePaymentOption copyWith({
     String? currency,
     int? amount,
-    int? userCount,
+    int? winnerCount,
     int? monthCount,
     String? storeProductId,
     int? storeProductQuantity,
@@ -93,7 +93,7 @@ final class PremiumGiftCodePaymentOption extends TdObject {
       PremiumGiftCodePaymentOption(
         currency: currency ?? this.currency,
         amount: amount ?? this.amount,
-        userCount: userCount ?? this.userCount,
+        winnerCount: winnerCount ?? this.winnerCount,
         monthCount: monthCount ?? this.monthCount,
         storeProductId: storeProductId ?? this.storeProductId,
         storeProductQuantity: storeProductQuantity ?? this.storeProductQuantity,

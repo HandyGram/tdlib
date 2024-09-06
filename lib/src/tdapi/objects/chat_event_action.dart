@@ -22,6 +22,7 @@ sealed class ChatEventAction extends TdObject {
   /// * [ChatEventMemberLeft]
   /// * [ChatEventMemberPromoted]
   /// * [ChatEventMemberRestricted]
+  /// * [ChatEventMemberSubscriptionExtended]
   /// * [ChatEventAvailableReactionsChanged]
   /// * [ChatEventBackgroundChanged]
   /// * [ChatEventDescriptionChanged]
@@ -86,6 +87,8 @@ sealed class ChatEventAction extends TdObject {
         return ChatEventMemberPromoted.fromJson(json);
       case ChatEventMemberRestricted.defaultObjectId:
         return ChatEventMemberRestricted.fromJson(json);
+      case ChatEventMemberSubscriptionExtended.defaultObjectId:
+        return ChatEventMemberSubscriptionExtended.fromJson(json);
       case ChatEventAvailableReactionsChanged.defaultObjectId:
         return ChatEventAvailableReactionsChanged.fromJson(json);
       case ChatEventBackgroundChanged.defaultObjectId:
@@ -928,6 +931,86 @@ final class ChatEventMemberRestricted extends ChatEventAction {
 
   /// TDLib object type
   static const String defaultObjectId = 'chatEventMemberRestricted';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **ChatEventMemberSubscriptionExtended** *(chatEventMemberSubscriptionExtended)* - child of ChatEventAction
+///
+/// A chat member extended their subscription to the chat.
+///
+/// * [userId]: Affected chat member user identifier.
+/// * [oldStatus]: Previous status of the chat member.
+/// * [newStatus]: New status of the chat member.
+final class ChatEventMemberSubscriptionExtended extends ChatEventAction {
+  /// **ChatEventMemberSubscriptionExtended** *(chatEventMemberSubscriptionExtended)* - child of ChatEventAction
+  ///
+  /// A chat member extended their subscription to the chat.
+  ///
+  /// * [userId]: Affected chat member user identifier.
+  /// * [oldStatus]: Previous status of the chat member.
+  /// * [newStatus]: New status of the chat member.
+  const ChatEventMemberSubscriptionExtended({
+    required this.userId,
+    required this.oldStatus,
+    required this.newStatus,
+  });
+
+  /// Affected chat member user identifier
+  final int userId;
+
+  /// Previous status of the chat member
+  final ChatMemberStatus oldStatus;
+
+  /// New status of the chat member
+  final ChatMemberStatus newStatus;
+
+  /// Parse from a json
+  factory ChatEventMemberSubscriptionExtended.fromJson(
+          Map<String, dynamic> json) =>
+      ChatEventMemberSubscriptionExtended(
+        userId: json['user_id'],
+        oldStatus: ChatMemberStatus.fromJson(json['old_status']),
+        newStatus: ChatMemberStatus.fromJson(json['new_status']),
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "user_id": userId,
+      "old_status": oldStatus.toJson(),
+      "new_status": newStatus.toJson(),
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: Affected chat member user identifier
+  /// * [old_status]: Previous status of the chat member
+  /// * [new_status]: New status of the chat member
+  @override
+  ChatEventMemberSubscriptionExtended copyWith({
+    int? userId,
+    ChatMemberStatus? oldStatus,
+    ChatMemberStatus? newStatus,
+  }) =>
+      ChatEventMemberSubscriptionExtended(
+        userId: userId ?? this.userId,
+        oldStatus: oldStatus ?? this.oldStatus,
+        newStatus: newStatus ?? this.newStatus,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'chatEventMemberSubscriptionExtended';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override

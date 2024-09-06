@@ -8,6 +8,7 @@ part of '../tdapi.dart';
 /// * [totalAmount]: Total amount of the cryptocurrency earned, in the smallest units of the cryptocurrency.
 /// * [balanceAmount]: Amount of the cryptocurrency that isn't withdrawn yet, in the smallest units of the cryptocurrency.
 /// * [availableAmount]: Amount of the cryptocurrency available for withdrawal, in the smallest units of the cryptocurrency.
+/// * [withdrawalEnabled]: True, if Telegram Stars can be withdrawn now or later.
 final class ChatRevenueAmount extends TdObject {
   /// **ChatRevenueAmount** *(chatRevenueAmount)* - basic class
   ///
@@ -17,11 +18,13 @@ final class ChatRevenueAmount extends TdObject {
   /// * [totalAmount]: Total amount of the cryptocurrency earned, in the smallest units of the cryptocurrency.
   /// * [balanceAmount]: Amount of the cryptocurrency that isn't withdrawn yet, in the smallest units of the cryptocurrency.
   /// * [availableAmount]: Amount of the cryptocurrency available for withdrawal, in the smallest units of the cryptocurrency.
+  /// * [withdrawalEnabled]: True, if Telegram Stars can be withdrawn now or later.
   const ChatRevenueAmount({
     required this.cryptocurrency,
     required this.totalAmount,
     required this.balanceAmount,
     required this.availableAmount,
+    required this.withdrawalEnabled,
   });
 
   /// Cryptocurrency in which revenue is calculated
@@ -36,6 +39,9 @@ final class ChatRevenueAmount extends TdObject {
   /// Amount of the cryptocurrency available for withdrawal, in the smallest units of the cryptocurrency
   final int availableAmount;
 
+  /// True, if Telegram Stars can be withdrawn now or later
+  final bool withdrawalEnabled;
+
   /// Parse from a json
   factory ChatRevenueAmount.fromJson(Map<String, dynamic> json) =>
       ChatRevenueAmount(
@@ -49,6 +55,7 @@ final class ChatRevenueAmount extends TdObject {
         availableAmount: json['available_amount'] is int
             ? json['available_amount']
             : int.parse(json['available_amount']),
+        withdrawalEnabled: json['withdrawal_enabled'],
       );
 
   /// Convert model to TDLib JSON format
@@ -60,6 +67,7 @@ final class ChatRevenueAmount extends TdObject {
       "total_amount": totalAmount,
       "balance_amount": balanceAmount,
       "available_amount": availableAmount,
+      "withdrawal_enabled": withdrawalEnabled,
     };
   }
 
@@ -70,17 +78,20 @@ final class ChatRevenueAmount extends TdObject {
   /// * [total_amount]: Total amount of the cryptocurrency earned, in the smallest units of the cryptocurrency
   /// * [balance_amount]: Amount of the cryptocurrency that isn't withdrawn yet, in the smallest units of the cryptocurrency
   /// * [available_amount]: Amount of the cryptocurrency available for withdrawal, in the smallest units of the cryptocurrency
+  /// * [withdrawal_enabled]: True, if Telegram Stars can be withdrawn now or later
   ChatRevenueAmount copyWith({
     String? cryptocurrency,
     int? totalAmount,
     int? balanceAmount,
     int? availableAmount,
+    bool? withdrawalEnabled,
   }) =>
       ChatRevenueAmount(
         cryptocurrency: cryptocurrency ?? this.cryptocurrency,
         totalAmount: totalAmount ?? this.totalAmount,
         balanceAmount: balanceAmount ?? this.balanceAmount,
         availableAmount: availableAmount ?? this.availableAmount,
+        withdrawalEnabled: withdrawalEnabled ?? this.withdrawalEnabled,
       );
 
   /// TDLib object type

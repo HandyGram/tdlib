@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **RemovePendingPaidMessageReactions** *(removePendingPaidMessageReactions)* - TDLib function
 ///
-/// Removes all pending paid reactions on a message. Can be called within 5 seconds after the last addPaidMessageReaction call.
+/// Removes all pending paid reactions on a message.
 ///
 /// * [chatId]: Identifier of the chat to which the message belongs.
 /// * [messageId]: Identifier of the message.
@@ -11,7 +11,7 @@ part of '../tdapi.dart';
 final class RemovePendingPaidMessageReactions extends TdFunction {
   /// **RemovePendingPaidMessageReactions** *(removePendingPaidMessageReactions)* - TDLib function
   ///
-  /// Removes all pending paid reactions on a message. Can be called within 5 seconds after the last addPaidMessageReaction call.
+  /// Removes all pending paid reactions on a message.
   ///
   /// * [chatId]: Identifier of the chat to which the message belongs.
   /// * [messageId]: Identifier of the message.

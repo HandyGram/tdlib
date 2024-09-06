@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 /// **GetPremiumGiftCodePaymentOptions** *(getPremiumGiftCodePaymentOptions)* - TDLib function
 ///
-/// Returns available options for Telegram Premium gift code or giveaway creation.
+/// Returns available options for Telegram Premium gift code or Telegram Premium giveaway creation.
 ///
 /// * [boostedChatId]: Identifier of the supergroup or channel chat, which will be automatically boosted by receivers of the gift codes and which is administered by the user; 0 if none.
 ///
@@ -10,7 +10,7 @@ part of '../tdapi.dart';
 final class GetPremiumGiftCodePaymentOptions extends TdFunction {
   /// **GetPremiumGiftCodePaymentOptions** *(getPremiumGiftCodePaymentOptions)* - TDLib function
   ///
-  /// Returns available options for Telegram Premium gift code or giveaway creation.
+  /// Returns available options for Telegram Premium gift code or Telegram Premium giveaway creation.
   ///
   /// * [boostedChatId]: Identifier of the supergroup or channel chat, which will be automatically boosted by receivers of the gift codes and which is administered by the user; 0 if none.
   ///

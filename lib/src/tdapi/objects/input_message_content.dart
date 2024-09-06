@@ -549,6 +549,7 @@ final class InputMessageDocument extends InputMessageContent {
 /// * [paidMedia]: The content of the paid media.
 /// * [caption]: Message caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
 /// * [showCaptionAboveMedia]: True, if the caption must be shown above the video; otherwise, the caption must be shown below the video; not supported in secret chats.
+/// * [payload]: Bot-provided data for the paid media; bots only.
 final class InputMessagePaidMedia extends InputMessageContent {
   /// **InputMessagePaidMedia** *(inputMessagePaidMedia)* - child of InputMessageContent
   ///
@@ -558,11 +559,13 @@ final class InputMessagePaidMedia extends InputMessageContent {
   /// * [paidMedia]: The content of the paid media.
   /// * [caption]: Message caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters *(optional)*.
   /// * [showCaptionAboveMedia]: True, if the caption must be shown above the video; otherwise, the caption must be shown below the video; not supported in secret chats.
+  /// * [payload]: Bot-provided data for the paid media; bots only.
   const InputMessagePaidMedia({
     required this.starCount,
     required this.paidMedia,
     this.caption,
     required this.showCaptionAboveMedia,
+    required this.payload,
   });
 
   /// The number of Telegram Stars that must be paid to see the media; 1-getOption("paid_media_message_star_count_max")
@@ -577,6 +580,9 @@ final class InputMessagePaidMedia extends InputMessageContent {
   /// True, if the caption must be shown above the video; otherwise, the caption must be shown below the video; not supported in secret chats
   final bool showCaptionAboveMedia;
 
+  /// Bot-provided data for the paid media; bots only
+  final String payload;
+
   /// Parse from a json
   factory InputMessagePaidMedia.fromJson(Map<String, dynamic> json) =>
       InputMessagePaidMedia(
@@ -588,6 +594,7 @@ final class InputMessagePaidMedia extends InputMessageContent {
             ? null
             : FormattedText.fromJson(json['caption']),
         showCaptionAboveMedia: json['show_caption_above_media'],
+        payload: json['payload'],
       );
 
   /// Convert model to TDLib JSON format
@@ -599,6 +606,7 @@ final class InputMessagePaidMedia extends InputMessageContent {
       "paid_media": paidMedia.map((i) => i.toJson()).toList(),
       "caption": caption?.toJson(),
       "show_caption_above_media": showCaptionAboveMedia,
+      "payload": payload,
     };
   }
 
@@ -609,12 +617,14 @@ final class InputMessagePaidMedia extends InputMessageContent {
   /// * [paid_media]: The content of the paid media
   /// * [caption]: Message caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   /// * [show_caption_above_media]: True, if the caption must be shown above the video; otherwise, the caption must be shown below the video; not supported in secret chats
+  /// * [payload]: Bot-provided data for the paid media; bots only
   @override
   InputMessagePaidMedia copyWith({
     int? starCount,
     List<InputPaidMedia>? paidMedia,
     FormattedText? caption,
     bool? showCaptionAboveMedia,
+    String? payload,
   }) =>
       InputMessagePaidMedia(
         starCount: starCount ?? this.starCount,
@@ -622,6 +632,7 @@ final class InputMessagePaidMedia extends InputMessageContent {
         caption: caption ?? this.caption,
         showCaptionAboveMedia:
             showCaptionAboveMedia ?? this.showCaptionAboveMedia,
+        payload: payload ?? this.payload,
       );
 
   /// TDLib object type

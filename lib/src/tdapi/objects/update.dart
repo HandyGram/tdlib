@@ -160,6 +160,7 @@ sealed class Update extends TdObject {
   /// * [UpdateChatBoost]
   /// * [UpdateMessageReaction]
   /// * [UpdateMessageReactions]
+  /// * [UpdatePaidMediaPurchased]
   factory Update.fromJson(Map<String, dynamic> json) {
     switch (json["@type"]) {
       case UpdateAuthorizationState.defaultObjectId:
@@ -462,6 +463,8 @@ sealed class Update extends TdObject {
         return UpdateMessageReaction.fromJson(json);
       case UpdateMessageReactions.defaultObjectId:
         return UpdateMessageReactions.fromJson(json);
+      case UpdatePaidMediaPurchased.defaultObjectId:
+        return UpdatePaidMediaPurchased.fromJson(json);
       default:
         throw FormatException(
           "Unknown object ${json["@type"]} (expected child of Update)",
@@ -13740,6 +13743,90 @@ final class UpdateMessageReactions extends Update {
 
   /// TDLib object type
   static const String defaultObjectId = 'updateMessageReactions';
+
+  /// Convert model to TDLib JSON format, encoded into String.
+  @override
+  String toString() => jsonEncode(toJson());
+
+  /// TDLib object type for current class instance
+  @override
+  String get currentObjectId => defaultObjectId;
+}
+
+/// **UpdatePaidMediaPurchased** *(updatePaidMediaPurchased)* - child of Update
+///
+/// Paid media were purchased by a user; for bots only.
+///
+/// * [userId]: User identifier.
+/// * [payload]: Bot-specified payload for the paid media.
+final class UpdatePaidMediaPurchased extends Update {
+  /// **UpdatePaidMediaPurchased** *(updatePaidMediaPurchased)* - child of Update
+  ///
+  /// Paid media were purchased by a user; for bots only.
+  ///
+  /// * [userId]: User identifier.
+  /// * [payload]: Bot-specified payload for the paid media.
+  const UpdatePaidMediaPurchased({
+    required this.userId,
+    required this.payload,
+    this.extra,
+    this.clientId,
+  });
+
+  /// User identifier
+  final int userId;
+
+  /// Bot-specified payload for the paid media
+  final String payload;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+
+  /// Parse from a json
+  factory UpdatePaidMediaPurchased.fromJson(Map<String, dynamic> json) =>
+      UpdatePaidMediaPurchased(
+        userId: json['user_id'],
+        payload: json['payload'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
+  /// Convert model to TDLib JSON format
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": defaultObjectId,
+      "user_id": userId,
+      "payload": payload,
+    };
+  }
+
+  /// Copy model with modified properties.
+  ///
+  /// Properties:
+  /// * [user_id]: User identifier
+  /// * [payload]: Bot-specified payload for the paid media
+  @override
+  UpdatePaidMediaPurchased copyWith({
+    int? userId,
+    String? payload,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      UpdatePaidMediaPurchased(
+        userId: userId ?? this.userId,
+        payload: payload ?? this.payload,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib object type
+  static const String defaultObjectId = 'updatePaidMediaPurchased';
 
   /// Convert model to TDLib JSON format, encoded into String.
   @override
