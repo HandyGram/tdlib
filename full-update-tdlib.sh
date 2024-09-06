@@ -86,6 +86,6 @@ Update steps duration:
   * Building OpenSSL: $OSSL_ELAPSED
   * Building TDLib: $TD_ELAPSED
   * Updating TDLib: $UPD_ELAPSED
-  * Removing build files: $RM_SECONDS
+  * Removing build files: $RM_ELAPSED
 
 Total: $TOTAL_ELAPSED"
