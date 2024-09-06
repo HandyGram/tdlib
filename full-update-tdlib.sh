@@ -1,6 +1,5 @@
 #!/bin/bash
 MYDIR="$(realpath $(dirname $0))"
-TMP="$(mktemp -d)"
 
 # https://unix.stackexchange.com/a/340156
 # Init timer stuff
@@ -11,10 +10,17 @@ gettimer() {
 }
 SECONDS=0
 
+if [ "$1" ] && [ -d "$1" ]; then
+TMP="$1"
+else
+TMP="$(mktemp -d)"
+
 # Download TDLib and custom example
 echo "| Downloading source code..."
 git clone https://github.com/tdlib/td.git $TMP || exit 1
 git clone https://github.com/HandyGram/tdlib-example.git $TMP/example/handygram || exit 1
+fi # if arg1 is dir
+
 cd "$TMP/example/handygram" || exit 1
 
 echo "  | Patching CMakeLists.txt..."
@@ -32,10 +38,12 @@ ENV_SECONDS=$SECONDS
 ENV_ELAPSED="$(gettimer $ENV_SECONDS)"
 SECONDS=0
 
+if [ ! -d "third-party/openssl" ]; then
 # Build OpenSSL and remove temporary files
 echo "| Building OpenSSL..."
 ./build-openssl.sh || exit 1
 rm -rf ./openssl-*
+fi
 
 OSSL_SECONDS=$SECONDS
 OSSL_ELAPSED="$(gettimer $OSSL_SECONDS)"
